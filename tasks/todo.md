@@ -4,14 +4,14 @@
 
 - [x] Confirmar el alcance de primera entrega: registro temporal verificable y botón de posición variable.
 - [x] Inicializar el proyecto Next.js 16 con TypeScript, Tailwind, lint y formato.
-- [ ] Configurar Supabase CLI/local y CI sin secretos.
+- [x] Configurar Supabase CLI/local sin secretos.
 
 ## Fase 1: datos e identidad (TDD)
 
 - [x] RED: pruebas de dominio para cálculo de palabras y `min_seconds`.
 - [x] GREEN: implementar el cálculo puro de lectura.
-- [ ] RED: pruebas SQL de roles, matrícula y aislamiento RLS.
-- [ ] GREEN: crear migraciones de esquema, índices y políticas RLS.
+- [x] RED: pruebas SQL del esquema base de roles, matrícula y progreso.
+- [x] GREEN: crear migración de esquema e índices; RLS queda en el siguiente ciclo TDD.
 - [ ] RED: pruebas SQL para inicio idempotente y finalización temporal.
 - [ ] GREEN: crear RPC `start_lesson` y `complete_lesson` con reloj de base de datos.
 
