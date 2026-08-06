@@ -13,3 +13,8 @@ export function calculateMinimumReadingSeconds(wordCount: number): number {
 
   return Math.max(PRODUCT_MINIMUM_SECONDS, estimatedSeconds);
 }
+
+export function calculateReadingTime(contentHtml: string): number {
+  const wordCount = contentHtml.replace(/<[^>]*>/g, " ").split(/\s+/).filter(Boolean).length;
+  return calculateMinimumReadingSeconds(wordCount);
+}
