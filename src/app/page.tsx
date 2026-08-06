@@ -35,11 +35,14 @@ export default function HomePage() {
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-            CMS de Cursos con Registro Temporal <span className="text-[#1a80ff]">Verificable por Servidor</span>
+            CMS de Cursos con Registro Temporal{" "}
+            <span className="text-[#1a80ff]">Verificable por Servidor</span>
           </h1>
 
           <p className="text-base sm:text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
-            Plataforma educativa de alto rendimiento diseñada para crear cursos estructurados, lecciones enriquecidas y garantizar tiempos mínimos de estudio reales validados en PostgreSQL.
+            Plataforma educativa de alto rendimiento diseñada para crear cursos
+            estructurados, lecciones enriquecidas y garantizar tiempos mínimos
+            de estudio reales validados en PostgreSQL.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -48,8 +51,18 @@ export default function HomePage() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-[#1a80ff] px-8 py-4 text-sm font-extrabold text-white shadow-lg shadow-blue-500/25 hover:bg-[#0066e6] hover:scale-105 transition-all"
             >
               <span>Ingresar a la Plataforma</span>
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
               </svg>
             </Link>
 
@@ -68,9 +81,13 @@ export default function HomePage() {
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 text-[#1a80ff] text-2xl font-bold">
               ⏱️
             </div>
-            <h3 className="text-lg font-bold text-white">Reloj de Servidor Anti-Fraude</h3>
+            <h3 className="text-lg font-bold text-white">
+              Reloj de Servidor Anti-Fraude
+            </h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              El tiempo real transcurrido se deriva en PostgreSQL mediante la diferencia atómica `completed_at - started_at`. Imposible de manipular desde el navegador.
+              El tiempo real transcurrido se deriva en PostgreSQL mediante la
+              diferencia atómica `completed_at - started_at`. Imposible de
+              manipular desde el navegador.
             </p>
           </div>
 
@@ -78,9 +95,13 @@ export default function HomePage() {
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 text-[#1a80ff] text-2xl font-bold">
               🎯
             </div>
-            <h3 className="text-lg font-bold text-white">Botón Posición Aleatoria</h3>
+            <h3 className="text-lg font-bold text-white">
+              Botón Posición Aleatoria
+            </h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Dificulta autoclickers automáticos mediante la asignación de coordenadas aleatorias horizontales estables por carga dentro del dock de avance inferior.
+              Dificulta autoclickers automáticos mediante la asignación de
+              coordenadas aleatorias horizontales estables por carga dentro del
+              dock de avance inferior.
             </p>
           </div>
 
@@ -88,9 +109,13 @@ export default function HomePage() {
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 text-[#1a80ff] text-2xl font-bold">
               📊
             </div>
-            <h3 className="text-lg font-bold text-white">CMS de Instructor Completo</h3>
+            <h3 className="text-lg font-bold text-white">
+              CMS de Instructor Completo
+            </h3>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Editor de contenidos enriquecidos, cálculo automático de minutos de lectura por recuento de palabras y auditoría completa de matriculados.
+              Editor de contenidos enriquecidos, cálculo automático de minutos
+              de lectura por recuento de palabras y auditoría completa de
+              matriculados.
             </p>
           </div>
         </div>
@@ -98,7 +123,8 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="border-t border-slate-800 bg-slate-950 py-8 text-center text-xs text-slate-500">
-        &copy; {new Date().getFullYear()} Blue Team CMS. Plataforma de Formación Profesional.
+        &copy; {new Date().getFullYear()} Blue Team CMS. Plataforma de Formación
+        Profesional.
       </footer>
     </div>
   );

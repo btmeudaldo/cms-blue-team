@@ -6,7 +6,9 @@ type CourseImageUploaderProps = {
   defaultImageUrl?: string;
 };
 
-export function CourseImageUploader({ defaultImageUrl = "" }: CourseImageUploaderProps) {
+export function CourseImageUploader({
+  defaultImageUrl = "",
+}: CourseImageUploaderProps) {
   const [mode, setMode] = useState<"url" | "file">("url");
   const [imageUrl, setImageUrl] = useState(defaultImageUrl);
   const [previewUrl, setPreviewUrl] = useState(defaultImageUrl);
@@ -84,11 +86,17 @@ export function CourseImageUploader({ defaultImageUrl = "" }: CourseImageUploade
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
           />
           <div className="flex flex-col items-center justify-center gap-1">
-            <span className="text-2xl group-hover:scale-110 transition-transform">📤</span>
-            <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
-              {fileName ? `Archivo seleccionado: ${fileName}` : "Haz clic para seleccionar imagen de tu equipo"}
+            <span className="text-2xl group-hover:scale-110 transition-transform">
+              📤
             </span>
-            <span className="text-[10px] text-slate-400">PNG, JPG, WEBP o SVG (Se guardará codificada en BD)</span>
+            <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+              {fileName
+                ? `Archivo seleccionado: ${fileName}`
+                : "Haz clic para seleccionar imagen de tu equipo"}
+            </span>
+            <span className="text-[10px] text-slate-400">
+              PNG, JPG, WEBP o SVG (Se guardará codificada en BD)
+            </span>
           </div>
         </div>
       )}
@@ -96,7 +104,11 @@ export function CourseImageUploader({ defaultImageUrl = "" }: CourseImageUploade
       {/* Image Thumbnail Preview */}
       {previewUrl && (
         <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 h-36 bg-slate-900 group">
-          <img src={previewUrl} alt="Vista previa de portada" className="w-full h-full object-cover" />
+          <img
+            src={previewUrl}
+            alt="Vista previa de portada"
+            className="w-full h-full object-cover"
+          />
           <div className="absolute top-2 right-2">
             <button
               type="button"

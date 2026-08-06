@@ -4,8 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { completeLessonAction, startLessonAction } from "@/app/actions/progress.actions";
+import {
+  completeLessonAction,
+  heartbeatLessonAction,
+  pauseLessonAction,
+  resumeLessonAction,
+  startLessonAction,
+} from "@/app/actions/progress.actions";
 import { Header } from "@/shared/components/header";
+import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 
 type LessonPlayerProps = {
   contentHtml: string;
@@ -36,27 +43,57 @@ export function LessonPlayer({
   role = "student",
 }: LessonPlayerProps) {
   const router = useRouter();
+  const safeContentHtml = sanitizeLessonHtml(contentHtml);
   const contentRef = useRef<HTMLDivElement>(null);
+  const hasStartedRef = useRef(isAlreadyCompleted);
 
-  const [remainingSeconds, setRemainingSeconds] = useState(isAlreadyCompleted ? 0 : minSeconds);
+  const [remainingSeconds, setRemainingSeconds] = useState(
+    isAlreadyCompleted ? 0 : minSeconds,
+  );
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [reachedScrollThreshold, setReachedScrollThreshold] = useState(isAlreadyCompleted);
+  const [reachedScrollThreshold, setReachedScrollThreshold] =
+    useState(isAlreadyCompleted);
   const [isCompleting, setIsCompleting] = useState(false);
-  const [isCompletedSuccess, setIsCompletedSuccess] = useState(isAlreadyCompleted);
+  const [isCompletedSuccess, setIsCompletedSuccess] =
+    useState(isAlreadyCompleted);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [hasServerStarted, setHasServerStarted] = useState(isAlreadyCompleted);
 
   // Focus & Visibility state: timer ticks ONLY when window/tab is actively focused
   const [isWindowFocused, setIsWindowFocused] = useState(true);
 
-  // Hydration-safe random horizontal position for anti-cheating button (between 8% and 82%)
+  // Hydration-safe random horizontal position for anti-cheating button (between 8% and 92%)
   const [horizontalPosition, setHorizontalPosition] = useState(50);
 
   useEffect(() => {
     const array = new Uint32Array(1);
     crypto.getRandomValues(array);
-    const randomPos = 8 + (array[0] % 75);
-    setHorizontalPosition(randomPos);
+    const randomPos = 8 + (array[0] % 85);
+    const frame = window.requestAnimationFrame(() =>
+      setHorizontalPosition(randomPos),
+    );
+    return () => window.cancelAnimationFrame(frame);
   }, []);
+
+  useEffect(() => {
+    if (isAlreadyCompleted) return;
+
+    let isMounted = true;
+    hasStartedRef.current = true;
+    startLessonAction(lessonId)
+      .then(() => {
+        hasStartedRef.current = true;
+        if (isMounted) setHasServerStarted(true);
+      })
+      .catch((err) => {
+        hasStartedRef.current = false;
+        if (isMounted) setErrorMessage((err as Error).message);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [isAlreadyCompleted, lessonId]);
 
   // Track window focus and document visibility
   useEffect(() => {
@@ -64,6 +101,10 @@ export function LessonPlayer({
       const isVisible = document.visibilityState === "visible";
       const hasFocus = document.hasFocus();
       setIsWindowFocused(isVisible && hasFocus);
+      if (!hasStartedRef.current || isAlreadyCompleted) return;
+      void (isVisible && hasFocus
+        ? resumeLessonAction(lessonId)
+        : pauseLessonAction(lessonId));
     }
 
     updateFocusState();
@@ -76,13 +117,18 @@ export function LessonPlayer({
       window.removeEventListener("focus", updateFocusState);
       window.removeEventListener("blur", updateFocusState);
       document.removeEventListener("visibilitychange", updateFocusState);
+      if (hasStartedRef.current && !isAlreadyCompleted)
+        void pauseLessonAction(lessonId);
     };
-  }, []);
+  }, [hasServerStarted, isAlreadyCompleted, lessonId]);
 
-  const canAdvance = (remainingSeconds === 0 && reachedScrollThreshold && !isCompleting) || isAlreadyCompleted;
+  const canAdvance =
+    (remainingSeconds === 0 && reachedScrollThreshold && !isCompleting) ||
+    isAlreadyCompleted;
 
   // Initialize progress on server
   useEffect(() => {
+    if (hasStartedRef.current) return;
     let isMounted = true;
     startLessonAction(lessonId).catch((err) => {
       if (isMounted) console.error("Error al iniciar lección:", err);
@@ -103,18 +149,34 @@ export function LessonPlayer({
     return () => window.clearInterval(timer);
   }, [remainingSeconds, isWindowFocused]);
 
+  useEffect(() => {
+    if (!hasServerStarted || !isWindowFocused || isCompletedSuccess) return;
+
+    const heartbeat = window.setInterval(() => {
+      void heartbeatLessonAction(lessonId).catch((err) => {
+        setErrorMessage((err as Error).message);
+      });
+    }, 10_000);
+
+    return () => window.clearInterval(heartbeat);
+  }, [hasServerStarted, isCompletedSuccess, isWindowFocused, lessonId]);
+
   // Scroll listener
   useEffect(() => {
     function handleWindowScroll() {
-      const el = document.documentElement;
-      const totalScrollable = el.scrollHeight - window.innerHeight;
-      if (totalScrollable <= 0) {
+      const article = contentRef.current;
+      if (!article) return;
+      const bounds = article.getBoundingClientRect();
+      if (bounds.height <= window.innerHeight) {
         setScrollProgress(100);
         setReachedScrollThreshold(true);
         return;
       }
-      const currentScroll = window.scrollY;
-      const pct = Math.min(100, Math.round((currentScroll / totalScrollable) * 100));
+      const traversedPixels = window.innerHeight - bounds.top;
+      const pct = Math.min(
+        100,
+        Math.max(0, Math.round((traversedPixels / bounds.height) * 100)),
+      );
       setScrollProgress(pct);
       if (pct >= 90) {
         setReachedScrollThreshold(true);
@@ -158,7 +220,10 @@ export function LessonPlayer({
   }
 
   // Timer circular percentage calculation
-  const timerPct = minSeconds > 0 ? Math.round(((minSeconds - remainingSeconds) / minSeconds) * 100) : 100;
+  const timerPct =
+    minSeconds > 0
+      ? Math.round(((minSeconds - remainingSeconds) / minSeconds) * 100)
+      : 100;
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 transition-colors">
@@ -178,8 +243,12 @@ export function LessonPlayer({
               &larr;
             </Link>
             <div>
-              <h2 className="text-sm font-extrabold text-slate-900 dark:text-white line-clamp-1">{lessonTitle}</h2>
-              <p className="text-[11px] text-slate-400 dark:text-slate-500 font-medium">Verificación Temporal Activa</p>
+              <h2 className="text-sm font-extrabold text-slate-900 dark:text-white line-clamp-1">
+                {lessonTitle}
+              </h2>
+              <p className="text-[11px] text-slate-400 dark:text-slate-500 font-medium">
+                Verificación Temporal Activa
+              </p>
             </div>
           </div>
 
@@ -188,7 +257,10 @@ export function LessonPlayer({
             {/* Countdown Badge with Pause Status when tab is inactive */}
             <div className="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 border border-slate-200 dark:border-slate-700">
               <div className="relative flex h-5 w-5 items-center justify-center">
-                <svg className="w-5 h-5 -rotate-90 transform" viewBox="0 0 36 36">
+                <svg
+                  className="w-5 h-5 -rotate-90 transform"
+                  viewBox="0 0 36 36"
+                >
                   <path
                     className="text-slate-200 dark:text-slate-700"
                     strokeWidth="4"
@@ -201,8 +273,8 @@ export function LessonPlayer({
                       remainingSeconds === 0
                         ? "text-emerald-500"
                         : !isWindowFocused
-                        ? "text-rose-500 animate-pulse"
-                        : "text-[#1a80ff]"
+                          ? "text-rose-500 animate-pulse"
+                          : "text-[#1a80ff]"
                     }
                     strokeDasharray={`${timerPct}, 100`}
                     strokeWidth="4"
@@ -214,13 +286,15 @@ export function LessonPlayer({
                 </svg>
               </div>
               <div className="flex flex-col leading-tight">
-                <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">Tiempo Exigido</span>
+                <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">
+                  Tiempo Exigido
+                </span>
                 <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
                   {remainingSeconds === 0
                     ? "✓ Cumplido"
                     : !isWindowFocused
-                    ? "⏸ Pausado (Fuera de pestaña)"
-                    : "En proceso..."}
+                      ? "⏸ Pausado (Fuera de pestaña)"
+                      : "En proceso..."}
                 </span>
               </div>
             </div>
@@ -228,9 +302,13 @@ export function LessonPlayer({
             {/* Scroll Indicator Badge */}
             <div className="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 border border-slate-200 dark:border-slate-700">
               <div className="flex flex-col leading-tight text-right">
-                <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">Desplazamiento 90%</span>
+                <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">
+                  Desplazamiento 90%
+                </span>
                 <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
-                  {reachedScrollThreshold ? "✓ Alcanzado" : `${scrollProgress}%`}
+                  {reachedScrollThreshold
+                    ? "✓ Alcanzado"
+                    : `${scrollProgress}%`}
                 </span>
               </div>
             </div>
@@ -260,7 +338,7 @@ export function LessonPlayer({
         <article
           ref={contentRef}
           className="prose prose-slate dark:prose-invert max-w-none rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 shadow-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-4"
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
+          dangerouslySetInnerHTML={{ __html: safeContentHtml }}
         />
       </main>
 
@@ -273,15 +351,15 @@ export function LessonPlayer({
               remainingSeconds === 0
                 ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
                 : !isWindowFocused
-                ? "bg-rose-500/20 text-rose-300 border border-rose-500/30 animate-pulse"
-                : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
+                  ? "bg-rose-500/20 text-rose-300 border border-rose-500/30 animate-pulse"
+                  : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
             }`}
           >
             {remainingSeconds === 0
               ? "✓ Tiempo cumplido"
               : !isWindowFocused
-              ? "⏸ Pausado (Selecciona esta ventana)"
-              : "⏳ Tiempo en proceso"}
+                ? "⏸ Pausado (Selecciona esta ventana)"
+                : "⏳ Tiempo en proceso"}
           </span>
 
           {/* Requirement 2: Scroll */}
@@ -292,7 +370,9 @@ export function LessonPlayer({
                 : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
             }`}
           >
-            {reachedScrollThreshold ? "✓ Desplazamiento cumplido" : "📜 Desplazamiento al final"}
+            {reachedScrollThreshold
+              ? "✓ Desplazamiento cumplido"
+              : "📜 Desplazamiento al final"}
           </span>
         </div>
       )}
@@ -320,12 +400,12 @@ export function LessonPlayer({
               {isCompleting
                 ? "Verificando en servidor..."
                 : isCompletedSuccess
-                ? nextLessonId
-                  ? "✓ Completada"
-                  : "✓ Finalizado"
-                : nextLessonId
-                ? "Completar y Avanzar"
-                : "Finalizar"}
+                  ? nextLessonId
+                    ? "✓ Completada"
+                    : "✓ Finalizado"
+                  : nextLessonId
+                    ? "Completar y Avanzar"
+                    : "Finalizar"}
             </button>
           </div>
         </div>

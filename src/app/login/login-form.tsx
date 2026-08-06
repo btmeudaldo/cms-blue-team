@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { demoLoginAction, signInAction, signUpAction } from "@/app/actions/auth.actions";
+import {
+  demoLoginAction,
+  signInAction,
+  signUpAction,
+} from "@/app/actions/auth.actions";
 
 export function LoginForm() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -13,7 +17,8 @@ export function LoginForm() {
     setLoadingDemo(role);
     setFormError(null);
     try {
-      const res = (await demoLoginAction(role)) as { error?: string } | undefined;
+      const res = (await demoLoginAction(role)) as
+        { error?: string } | undefined;
       if (res?.error) {
         setFormError(res.error);
       }
@@ -32,12 +37,16 @@ export function LoginForm() {
     const formData = new FormData(event.currentTarget);
 
     try {
-      const res = (isSignUp ? await signUpAction(formData) : await signInAction(formData)) as { error?: string } | undefined;
+      const res = (
+        isSignUp ? await signUpAction(formData) : await signInAction(formData)
+      ) as { error?: string } | undefined;
       if (res?.error) {
         setFormError(res.error);
       }
     } catch (err) {
-      setFormError((err as Error).message || "Ocurrió un error inesperado al autenticar.");
+      setFormError(
+        (err as Error).message || "Ocurrió un error inesperado al autenticar.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -48,13 +57,24 @@ export function LoginForm() {
       {/* Quick Demo Login Card with 3 Dedicated Roles */}
       <div className="rounded-2xl border border-blue-100 dark:border-blue-900/50 bg-gradient-to-br from-blue-50/90 to-indigo-50/50 dark:from-blue-950/40 dark:to-indigo-950/20 p-5 shadow-sm space-y-3">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1a80ff]">
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13 10V3L4 14h7v7l9-11h-7z"
+            />
           </svg>
           Prueba Rápida de 1-Clic (Demo)
         </div>
         <p className="text-xs text-slate-600 dark:text-slate-300">
-          Explora los distintos roles del sistema inmediatamente sin ingresar contraseña:
+          Explora los distintos roles del sistema inmediatamente sin ingresar
+          contraseña:
         </p>
 
         <div className="grid grid-cols-3 gap-2">
@@ -69,7 +89,9 @@ export function LoginForm() {
             <span className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff]">
               {loadingDemo === "student" ? "Cargando..." : "Alumno"}
             </span>
-            <span className="text-[9px] text-slate-500 dark:text-slate-400">Ver cursos</span>
+            <span className="text-[9px] text-slate-500 dark:text-slate-400">
+              Ver cursos
+            </span>
           </button>
 
           {/* Demo Instructor */}
@@ -83,7 +105,9 @@ export function LoginForm() {
             <span className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff]">
               {loadingDemo === "instructor" ? "Cargando..." : "Instructor"}
             </span>
-            <span className="text-[9px] text-slate-500 dark:text-slate-400">Crear y asignar</span>
+            <span className="text-[9px] text-slate-500 dark:text-slate-400">
+              Crear y asignar
+            </span>
           </button>
 
           {/* Demo Admin */}
@@ -97,7 +121,9 @@ export function LoginForm() {
             <span className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff]">
               {loadingDemo === "admin" ? "Cargando..." : "Admin"}
             </span>
-            <span className="text-[9px] text-slate-500 dark:text-slate-400">Control total</span>
+            <span className="text-[9px] text-slate-500 dark:text-slate-400">
+              Control total
+            </span>
           </button>
         </div>
       </div>
@@ -128,7 +154,9 @@ export function LoginForm() {
             </div>
             {!isSignUp && (
               <p className="text-[11px] opacity-90">
-                Tip: Si es tu primera vez, puedes hacer clic en <strong>Registrar nuevo usuario</strong> arriba o usar los botones de <strong>Prueba Rápida Demo</strong>.
+                Tip: Si es tu primera vez, puedes hacer clic en{" "}
+                <strong>Registrar nuevo usuario</strong> arriba o usar los
+                botones de <strong>Prueba Rápida Demo</strong>.
               </p>
             )}
           </div>
@@ -177,19 +205,10 @@ export function LoginForm() {
           </div>
 
           {isSignUp && (
-            <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                Rol deseado
-              </label>
-              <select
-                name="role"
-                className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden focus:ring-2 focus:ring-blue-100 transition-all"
-              >
-                <option value="student">Estudiante</option>
-                <option value="instructor">Instructor</option>
-                <option value="admin">Administrador Global</option>
-              </select>
-            </div>
+            <p className="rounded-xl border border-blue-100 bg-blue-50 px-3.5 py-2.5 text-xs text-blue-800 dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-200">
+              Las cuentas nuevas se registran como alumnos. Un administrador
+              puede asignar otros roles desde el panel de usuarios.
+            </p>
           )}
 
           <button
@@ -200,8 +219,8 @@ export function LoginForm() {
             {isSubmitting
               ? "Verificando..."
               : isSignUp
-              ? "Registrar e Ingresar"
-              : "Ingresar a la plataforma"}
+                ? "Registrar e Ingresar"
+                : "Ingresar a la plataforma"}
           </button>
         </form>
       </div>

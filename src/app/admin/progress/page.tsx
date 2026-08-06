@@ -2,19 +2,28 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { Header } from "@/shared/components/header";
-import { getResilientAllProgress, getResilientProfiles, getResilientUser } from "@/shared/lib/supabase/resilient";
-import { mockStore } from "@/shared/lib/mock-store";
+import {
+  getResilientAllProgress,
+  getResilientCourses,
+  getResilientProfiles,
+  getResilientUser,
+} from "@/shared/lib/supabase/resilient";
 
 export default async function AdminProgressAuditPage() {
   const { user, profile: currentProfile } = await getResilientUser();
 
-  if (currentProfile?.role !== "admin" && currentProfile?.role !== "instructor") {
+  if (
+    currentProfile?.role !== "admin" &&
+    currentProfile?.role !== "instructor"
+  ) {
     redirect("/courses");
   }
 
-  const profiles = await getResilientProfiles();
-  const progressRecords = await getResilientAllProgress();
-  const courses = mockStore.getCourses();
+  const [profiles, progressRecords, courses] = await Promise.all([
+    getResilientProfiles(),
+    getResilientAllProgress(),
+    getResilientCourses(user.id, true),
+  ]);
 
   // Create lookup maps
   const profileMap = new Map(profiles.map((p: any) => [p.id, p]));
@@ -27,20 +36,31 @@ export default async function AdminProgressAuditPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
-      <Header userEmail={user.email} userName={currentProfile?.full_name} role={currentProfile?.role} />
+      <Header
+        userEmail={user.email}
+        userName={currentProfile?.full_name}
+        role={currentProfile?.role}
+      />
 
       <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">
-              <Link href="/admin" className="hover:text-[#1a80ff] transition-colors">
+              <Link
+                href="/admin"
+                className="hover:text-[#1a80ff] transition-colors"
+              >
                 Administración
               </Link>
               <span>&rsaquo;</span>
-              <span className="text-slate-900 dark:text-white">Auditoría de Tiempos</span>
+              <span className="text-slate-900 dark:text-white">
+                Auditoría de Tiempos
+              </span>
             </div>
-            <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">Registro de Tiempos Anticheating</h1>
+            <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+              Registro de Tiempos Anticheating
+            </h1>
           </div>
 
           <Link
@@ -81,35 +101,56 @@ export default async function AdminProgressAuditPage() {
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                   {progressRecords.map((item: any, idx: number) => {
-                    const prof = profileMap.get(item.user_id) || profiles.find((p: any) => p.role === "student") || profiles[0];
-                    const les = lessonMap.get(item.lesson_id) || { title: item.lesson_id, min_seconds: 30, courseTitle: "Fundamentos de Ciberseguridad Blue Team" };
+                    const prof =
+                      profileMap.get(item.user_id) ||
+                      profiles.find((p: any) => p.role === "student") ||
+                      profiles[0];
+                    const les = lessonMap.get(item.lesson_id) || {
+                      title: item.lesson_id,
+                      min_seconds: 30,
+                      courseTitle: "Fundamentos de Ciberseguridad Blue Team",
+                    };
                     const minSecs = les?.min_seconds || 30;
                     const elapsed = item.elapsed_seconds || 0;
                     const isCompleted = item.is_completed;
                     const isCompliant = elapsed >= minSecs && isCompleted;
 
                     return (
-                      <tr key={idx} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors">
+                      <tr
+                        key={idx}
+                        className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors"
+                      >
                         <td className="px-6 py-4">
                           <div className="font-bold text-slate-900 dark:text-white">
                             {prof?.full_name || "Estudiante BlueTeam"}
                           </div>
-                          <div className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">{prof?.email || "student@blueteam.com"}</div>
+                          <div className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">
+                            {prof?.email || "student@blueteam.com"}
+                          </div>
                         </td>
 
                         <td className="px-6 py-4">
-                          <div className="font-semibold text-slate-800 dark:text-slate-200">{les?.title || item.lesson_id}</div>
+                          <div className="font-semibold text-slate-800 dark:text-slate-200">
+                            {les?.title || item.lesson_id}
+                          </div>
                           <div className="text-[11px] text-[#1a80ff] font-semibold">
-                            {les?.courseTitle || "Fundamentos de Ciberseguridad Blue Team"}
+                            {les?.courseTitle ||
+                              "Fundamentos de Ciberseguridad Blue Team"}
                           </div>
                         </td>
 
                         <td className="px-6 py-4 font-mono text-[11px] text-slate-600 dark:text-slate-400">
-                          {item.started_at ? new Date(item.started_at).toLocaleString("es-ES") : "—"}
+                          {item.started_at
+                            ? new Date(item.started_at).toLocaleString("es-ES")
+                            : "—"}
                         </td>
 
                         <td className="px-6 py-4 font-mono text-[11px] text-slate-600 dark:text-slate-400">
-                          {item.completed_at ? new Date(item.completed_at).toLocaleString("es-ES") : "—"}
+                          {item.completed_at
+                            ? new Date(item.completed_at).toLocaleString(
+                                "es-ES",
+                              )
+                            : "—"}
                         </td>
 
                         <td className="px-6 py-4">

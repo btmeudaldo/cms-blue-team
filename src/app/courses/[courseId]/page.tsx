@@ -1,7 +1,11 @@
 import Link from "next/link";
 
 import { Header } from "@/shared/components/header";
-import { getResilientCourseDetail, getResilientUser, getResilientUserProgress } from "@/shared/lib/supabase/resilient";
+import {
+  getResilientCourseDetail,
+  getResilientUser,
+  getResilientUserProgress,
+} from "@/shared/lib/supabase/resilient";
 
 export default async function StudentCourseDetailPage({
   params,
@@ -17,30 +21,44 @@ export default async function StudentCourseDetailPage({
 
   // Sort lessons
   const lessons = (course.lessons || []).sort(
-    (a: any, b: any) => a.sequence_order - b.sequence_order
+    (a: any, b: any) => a.sequence_order - b.sequence_order,
   );
 
   // Fetch progress for this user using resilient fallback
   const userProgress = await getResilientUserProgress(user.id);
   const progressMap = new Map(
-    userProgress?.map((p: any) => [p.lesson_id, p]) || []
+    userProgress?.map((p: any) => [p.lesson_id, p]) || [],
   );
 
-  const completedCount = lessons.filter((l: any) => (progressMap.get(l.id) as any)?.is_completed).length;
-  const progressPercent = lessons.length > 0 ? Math.round((completedCount / lessons.length) * 100) : 0;
+  const completedCount = lessons.filter(
+    (l: any) => (progressMap.get(l.id) as any)?.is_completed,
+  ).length;
+  const progressPercent =
+    lessons.length > 0
+      ? Math.round((completedCount / lessons.length) * 100)
+      : 0;
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
-      <Header userEmail={user.email} userName={profile?.full_name} role={role} />
+      <Header
+        userEmail={user.email}
+        userName={profile?.full_name}
+        role={role}
+      />
 
       <main className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Breadcrumb & Navigation */}
         <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
-          <Link href="/courses" className="hover:text-[#1a80ff] transition-colors">
+          <Link
+            href="/courses"
+            className="hover:text-[#1a80ff] transition-colors"
+          >
             Mis Cursos
           </Link>
           <span>&rsaquo;</span>
-          <span className="text-slate-900 dark:text-white truncate">{course.title}</span>
+          <span className="text-slate-900 dark:text-white truncate">
+            {course.title}
+          </span>
         </div>
 
         {/* Course Header Banner */}
@@ -64,9 +82,23 @@ export default async function StudentCourseDetailPage({
                 href={`/courses/${course.id}/lessons/${lessons[0].id}`}
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#1a80ff] px-6 py-3 text-sm font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all"
               >
-                <span>{completedCount > 0 ? "Continuar Aprendizaje" : "Comenzar Curso"}</span>
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                <span>
+                  {completedCount > 0
+                    ? "Continuar Aprendizaje"
+                    : "Comenzar Curso"}
+                </span>
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
                 </svg>
               </Link>
             )}
@@ -79,7 +111,9 @@ export default async function StudentCourseDetailPage({
                 {progressPercent}%
               </div>
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Progreso del Estudiante</h4>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                  Progreso del Estudiante
+                </h4>
                 <p className="text-sm font-bold text-slate-800 dark:text-slate-200">
                   {completedCount} de {lessons.length} lecciones completadas
                 </p>
@@ -101,7 +135,9 @@ export default async function StudentCourseDetailPage({
         <div className="space-y-4">
           <h2 className="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
             <span>Contenido del Curso</span>
-            <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">({lessons.length} temas)</span>
+            <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">
+              ({lessons.length} temas)
+            </span>
           </h2>
 
           {lessons.length === 0 ? (
@@ -143,7 +179,8 @@ export default async function StudentCourseDetailPage({
                           )}
                         </div>
                         <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                          {lesson.word_count || 0} palabras &middot; Tiempo mín. exigido: {lesson.min_seconds}s
+                          {lesson.word_count || 0} palabras &middot; Tiempo mín.
+                          exigido: {lesson.min_seconds}s
                         </p>
                       </div>
                     </div>

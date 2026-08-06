@@ -1,13 +1,25 @@
 import { afterEach, describe, expect, it } from "vitest";
 
-import { getSupabasePublicEnv } from "./env";
+import { getSupabaseAdminEnv, getSupabasePublicEnv } from "./env";
 
 const originalUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const originalKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+const originalServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 afterEach(() => {
   process.env.NEXT_PUBLIC_SUPABASE_URL = originalUrl;
   process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = originalKey;
+  process.env.SUPABASE_SERVICE_ROLE_KEY = originalServiceRoleKey;
+});
+
+describe("getSupabaseAdminEnv", () => {
+  it("requires a server-only service role key", () => {
+    process.env.NEXT_PUBLIC_SUPABASE_URL = "http://127.0.0.1:54321";
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY = "public-key";
+    delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    expect(getSupabaseAdminEnv).toThrow("Missing Supabase service role key");
+  });
 });
 
 describe("getSupabasePublicEnv", () => {

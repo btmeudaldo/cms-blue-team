@@ -3,55 +3,57 @@
 import { revalidatePath } from "next/cache";
 
 import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
-import { mockStore } from "@/shared/lib/mock-store";
 
 export async function startLessonAction(lessonId: string) {
-  let userId = "student-123";
-  try {
-    const supabase = await createSupabaseServerClient();
-    const timeoutPromise = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("Supabase timeout")), 1500)
-    );
-    const authPromise = supabase.auth.getUser();
-    const authRes: any = await Promise.race([authPromise, timeoutPromise]);
-
-    if (authRes?.data?.user) {
-      userId = authRes.data.user.id;
-      const rpcPromise = supabase.rpc("start_lesson", { p_lesson_id: lessonId });
-      await Promise.race([rpcPromise, timeoutPromise]);
-    }
-  } catch (err) {
-    // Offline fallback
-  }
-
-  return mockStore.startLesson(userId, lessonId);
+  const supabase = await createSupabaseServerClient();
+  const { data: auth, error: authError } = await supabase.auth.getUser();
+  if (authError || !auth.user) throw new Error("Unauthenticated");
+  const { data, error } = await supabase.rpc("start_lesson", {
+    p_lesson_id: lessonId,
+  });
+  if (error) throw new Error(error.message);
+  return data;
 }
 
-export async function completeLessonAction(lessonId: string, pathToRevalidate: string) {
-  let userId = "student-123";
-  try {
-    const supabase = await createSupabaseServerClient();
-    const timeoutPromise = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("Supabase timeout")), 1500)
-    );
-    const authPromise = supabase.auth.getUser();
-    const authRes: any = await Promise.race([authPromise, timeoutPromise]);
-
-    if (authRes?.data?.user) {
-      userId = authRes.data.user.id;
-      const rpcPromise = supabase.rpc("complete_lesson", { p_lesson_id: lessonId });
-      await Promise.race([rpcPromise, timeoutPromise]);
-    }
-  } catch (err) {
-    // Offline fallback
-  }
-
-  // Always register in mock store to guarantee instant client updates!
-  const result = mockStore.completeLesson(userId, lessonId);
+export async function completeLessonAction(
+  lessonId: string,
+  pathToRevalidate: string,
+) {
+  const supabase = await createSupabaseServerClient();
+  const { data: auth, error: authError } = await supabase.auth.getUser();
+  if (authError || !auth.user) throw new Error("Unauthenticated");
+  const { data: result, error } = await supabase.rpc("complete_lesson", {
+    p_lesson_id: lessonId,
+  });
+  if (error) throw new Error(error.message);
 
   revalidatePath(pathToRevalidate);
   revalidatePath("/courses");
   revalidatePath("/admin/progress");
 
   return result;
+}
+
+async function callProgressRpc(
+  functionName: "pause_lesson" | "resume_lesson" | "heartbeat_lesson",
+  lessonId: string,
+) {
+  const supabase = await createSupabaseServerClient();
+  const { data: auth, error: authError } = await supabase.auth.getUser();
+  if (authError || !auth.user) throw new Error("Unauthenticated");
+
+  const { error } = await supabase.rpc(functionName, { p_lesson_id: lessonId });
+  if (error) throw new Error(error.message);
+}
+
+export async function pauseLessonAction(lessonId: string) {
+  return callProgressRpc("pause_lesson", lessonId);
+}
+
+export async function resumeLessonAction(lessonId: string) {
+  return callProgressRpc("resume_lesson", lessonId);
+}
+
+export async function heartbeatLessonAction(lessonId: string) {
+  return callProgressRpc("heartbeat_lesson", lessonId);
 }

@@ -25,8 +25,12 @@ export function StudentEnrollmentManager({
 }: StudentEnrollmentManagerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filterTab, setFilterTab] = useState<"all" | "enrolled" | "available">("all");
-  const [selectedCourseIds, setSelectedCourseIds] = useState<string[]>(initialEnrolledCourseIds);
+  const [filterTab, setFilterTab] = useState<"all" | "enrolled" | "available">(
+    "all",
+  );
+  const [selectedCourseIds, setSelectedCourseIds] = useState<string[]>(
+    initialEnrolledCourseIds,
+  );
   const [isPending, startTransition] = useTransition();
 
   const allCourseIds = courses.map((c) => c.id);
@@ -50,7 +54,11 @@ export function StudentEnrollmentManager({
 
   function handleSaveChanges() {
     startTransition(async () => {
-      await updateStudentEnrollmentsAction(userId, selectedCourseIds, allCourseIds);
+      await updateStudentEnrollmentsAction(
+        userId,
+        selectedCourseIds,
+        allCourseIds,
+      );
       setIsOpen(false);
     });
   }
@@ -82,7 +90,12 @@ export function StudentEnrollmentManager({
               : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-blue-300 hover:text-[#1a80ff]"
           }`}
         >
-          <span>🎓 {enrolledCount === 0 ? "Sin Matrículas" : `${enrolledCount} ${enrolledCount === 1 ? "Curso Matriculado" : "Cursos Matriculados"}`}</span>
+          <span>
+            🎓{" "}
+            {enrolledCount === 0
+              ? "Sin Matrículas"
+              : `${enrolledCount} ${enrolledCount === 1 ? "Curso Matriculado" : "Cursos Matriculados"}`}
+          </span>
           <span className="text-[10px] opacity-60">▼ Modificar</span>
         </button>
       </div>
@@ -98,7 +111,11 @@ export function StudentEnrollmentManager({
                   <span>🎓</span> Gestión de Matrículas Aeronáuticas
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                  Estudiante: <strong className="text-slate-800 dark:text-slate-200">{userName}</strong> &middot; ({selectedCourseIds.length} seleccionados)
+                  Estudiante:{" "}
+                  <strong className="text-slate-800 dark:text-slate-200">
+                    {userName}
+                  </strong>{" "}
+                  &middot; ({selectedCourseIds.length} seleccionados)
                 </p>
               </div>
 
@@ -177,7 +194,9 @@ export function StudentEnrollmentManager({
                 >
                   Marcar Todos
                 </button>
-                <span className="text-slate-300 dark:text-slate-700">&middot;</span>
+                <span className="text-slate-300 dark:text-slate-700">
+                  &middot;
+                </span>
                 <button
                   type="button"
                   onClick={handleDeselectAll}
@@ -192,7 +211,8 @@ export function StudentEnrollmentManager({
             <div className="max-h-64 overflow-y-auto space-y-2 pr-1 custom-scrollbar">
               {filteredCourses.length === 0 ? (
                 <div className="py-8 text-center text-xs text-slate-400">
-                  No se encontraron cursos que coincidan con &quot;{searchQuery}&quot;.
+                  No se encontraron cursos que coincidan con &quot;{searchQuery}
+                  &quot;.
                 </div>
               ) : (
                 filteredCourses.map((course) => {
@@ -221,7 +241,8 @@ export function StudentEnrollmentManager({
                             <span>{course.title}</span>
                           </div>
                           <div className="text-[10px] text-slate-400 dark:text-slate-500 font-mono mt-0.5">
-                            /{course.slug} &middot; {lessonCount} {lessonCount === 1 ? "lección" : "lecciones"}
+                            /{course.slug} &middot; {lessonCount}{" "}
+                            {lessonCount === 1 ? "lección" : "lecciones"}
                           </div>
                         </div>
                       </div>
@@ -244,7 +265,10 @@ export function StudentEnrollmentManager({
             {/* Footer Action Bar */}
             <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
               <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
-                Total a guardar: <strong className="text-[#1a80ff]">{selectedCourseIds.length} cursos</strong>
+                Total a guardar:{" "}
+                <strong className="text-[#1a80ff]">
+                  {selectedCourseIds.length} cursos
+                </strong>
               </span>
 
               <div className="flex items-center gap-3">

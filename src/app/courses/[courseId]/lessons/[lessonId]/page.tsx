@@ -1,6 +1,10 @@
 import { LessonPlayer } from "@/features/learning/components/lesson-player";
 import { calculateMinimumReadingSeconds } from "@/features/learning/domain/reading-time";
-import { getResilientCourseDetail, getResilientUser, getResilientUserProgress } from "@/shared/lib/supabase/resilient";
+import {
+  getResilientCourseDetail,
+  getResilientUser,
+  getResilientUserProgress,
+} from "@/shared/lib/supabase/resilient";
 
 export default async function StudentLessonPage({
   params,
@@ -14,10 +18,12 @@ export default async function StudentLessonPage({
   const course = await getResilientCourseDetail(courseId);
 
   const lessons = (course.lessons || []).sort(
-    (a: any, b: any) => a.sequence_order - b.sequence_order
+    (a: any, b: any) => a.sequence_order - b.sequence_order,
   );
 
-  let currentIndex = lessons.findIndex((l: any) => l.id === lessonId || l.slug === lessonId);
+  let currentIndex = lessons.findIndex(
+    (l: any) => l.id === lessonId || l.slug === lessonId,
+  );
   if (currentIndex === -1) {
     currentIndex = 0; // Fallback to first lesson if not matched exactly
   }
@@ -44,18 +50,21 @@ export default async function StudentLessonPage({
   };
 
   const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
-  const nextLesson = currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
+  const nextLesson =
+    currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
 
   // Check progress
   const userProgress = await getResilientUserProgress(user.id);
   const progressMap = new Map(
-    userProgress?.map((p: any) => [p.lesson_id, p]) || []
+    userProgress?.map((p: any) => [p.lesson_id, p]) || [],
   );
 
-  const isAlreadyCompleted = (progressMap.get(currentLesson.id) as any)?.is_completed ?? false;
-  const computedMinSeconds = currentLesson.min_seconds && currentLesson.min_seconds >= 30
-    ? currentLesson.min_seconds
-    : calculateMinimumReadingSeconds(currentLesson.word_count || 100);
+  const isAlreadyCompleted =
+    (progressMap.get(currentLesson.id) as any)?.is_completed ?? false;
+  const computedMinSeconds =
+    currentLesson.min_seconds && currentLesson.min_seconds >= 30
+      ? currentLesson.min_seconds
+      : calculateMinimumReadingSeconds(currentLesson.word_count || 100);
 
   return (
     <LessonPlayer

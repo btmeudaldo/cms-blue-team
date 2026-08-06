@@ -52,9 +52,17 @@ export function SeedDemoButton({
           strokeWidth={2}
         >
           {loading ? (
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4 12a8 8 0 018-8v8H4z" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M4 12a8 8 0 018-8v8H4z"
+            />
           ) : (
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 4v16m8-8H4"
+            />
           )}
         </svg>
         <span>{loading ? "Generando lecciones..." : label}</span>

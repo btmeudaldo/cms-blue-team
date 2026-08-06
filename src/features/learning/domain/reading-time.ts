@@ -15,6 +15,9 @@ export function calculateMinimumReadingSeconds(wordCount: number): number {
 }
 
 export function calculateReadingTime(contentHtml: string): number {
-  const wordCount = contentHtml.replace(/<[^>]*>/g, " ").split(/\s+/).filter(Boolean).length;
+  const wordCount = contentHtml
+    .replace(/<[^>]*>/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
   return calculateMinimumReadingSeconds(wordCount);
 }

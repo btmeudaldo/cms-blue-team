@@ -34,7 +34,8 @@ export default function LoginPage() {
 
       {/* Footer */}
       <footer className="py-6 text-center text-xs text-slate-400 dark:text-slate-500">
-        &copy; {new Date().getFullYear()} Blue Team CMS. Plataforma de Formación con Verificación Temporal.
+        &copy; {new Date().getFullYear()} Blue Team CMS. Plataforma de Formación
+        con Verificación Temporal.
       </footer>
     </main>
   );

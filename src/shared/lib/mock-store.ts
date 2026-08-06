@@ -99,7 +99,8 @@ const mockCourses: MockCourse[] = [
     slug: "fundamentos-pilotaje-privado-ppl",
     description:
       "Aprende las bases teóricas de la sustentación alar, mecánica de vuelo, instrumentos de cabina y navegación VFR.",
-    image_url: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80",
+    image_url:
+      "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80",
     created_at: new Date().toISOString(),
     lessons: [
       {
@@ -130,7 +131,8 @@ const mockCourses: MockCourse[] = [
     slug: "seguridad-meteorologia-aeronaval",
     description:
       "Gestión de situaciones críticas de vuelo, lectura de informes METAR/TAF y coordinación de tripulación en cabina (CRM).",
-    image_url: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80",
+    image_url:
+      "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80",
     created_at: new Date().toISOString(),
     lessons: [
       {
@@ -244,8 +246,13 @@ export const mockStore = {
     }
     return user;
   },
-  updateProfileRole(userId: string, newRole: "student" | "instructor" | "admin") {
-    const profile = mockProfiles.find((p) => p.id === userId || p.email === userId);
+  updateProfileRole(
+    userId: string,
+    newRole: "student" | "instructor" | "admin",
+  ) {
+    const profile = mockProfiles.find(
+      (p) => p.id === userId || p.email === userId,
+    );
     if (profile) {
       profile.role = newRole;
     }

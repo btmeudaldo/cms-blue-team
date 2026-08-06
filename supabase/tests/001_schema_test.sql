@@ -1,6 +1,6 @@
 begin;
 
-select plan(22);
+select plan(28);
 
 select has_table('public', 'profiles', 'profiles stores each authenticated user role');
 select has_table('public', 'courses', 'courses stores course metadata');
@@ -10,6 +10,9 @@ select has_table('public', 'user_lesson_progress', 'progress stores server-verif
 
 select has_column('public', 'profiles', 'role', 'profiles exposes a role');
 select has_column('public', 'courses', 'created_by', 'courses retain their instructor');
+select has_column('public', 'courses', 'image_url', 'courses store their optional cover image');
+select has_column('public', 'lessons', 'slug', 'lessons expose a stable URL identifier');
+select has_column('public', 'lessons', 'sequence_order', 'lessons expose their presentation order');
 select has_column('public', 'lessons', 'min_seconds', 'lessons define the server-enforced minimum');
 select has_column('public', 'user_lesson_progress', 'started_at', 'progress records a server start timestamp');
 select has_column('public', 'user_lesson_progress', 'completed_at', 'progress records a completion timestamp');
@@ -28,6 +31,9 @@ select ok((select count(*) > 0 from pg_policy where polrelid = 'public.user_less
 
 select has_function('public', 'start_lesson', array['uuid'], 'start_lesson RPC exists');
 select has_function('public', 'complete_lesson', array['uuid'], 'complete_lesson RPC exists');
+select has_function('public', 'pause_lesson', array['uuid'], 'pause_lesson RPC exists');
+select has_function('public', 'resume_lesson', array['uuid'], 'resume_lesson RPC exists');
+select has_function('public', 'heartbeat_lesson', array['uuid'], 'heartbeat_lesson RPC exists');
 
 select * from finish();
 

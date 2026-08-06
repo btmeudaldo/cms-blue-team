@@ -3,7 +3,10 @@ import { notFound, redirect } from "next/navigation";
 
 import { Header } from "@/shared/components/header";
 import { updateLessonAction } from "@/app/actions/lesson.actions";
-import { getResilientCourseDetail, getResilientUser } from "@/shared/lib/supabase/resilient";
+import {
+  getResilientCourseDetail,
+  getResilientUser,
+} from "@/shared/lib/supabase/resilient";
 import { LessonEditorForm } from "@/features/learning/components/lesson-editor-form";
 
 export default async function EditLessonPage({
@@ -14,14 +17,15 @@ export default async function EditLessonPage({
   const { courseId, lessonId } = await params;
   const { user, profile } = await getResilientUser();
 
-  if (profile?.role !== "admin" && profile?.role !== "instructor") redirect("/courses");
+  if (profile?.role !== "admin" && profile?.role !== "instructor")
+    redirect("/courses");
 
   const course = await getResilientCourseDetail(courseId);
 
   if (!course) notFound();
 
   const lesson = (course.lessons || []).find(
-    (l: any) => l.id === lessonId || l.slug === lessonId
+    (l: any) => l.id === lessonId || l.slug === lessonId,
   );
 
   if (!lesson) notFound();
@@ -30,24 +34,38 @@ export default async function EditLessonPage({
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
-      <Header userEmail={user.email} userName={profile?.full_name} role={profile?.role} />
+      <Header
+        userEmail={user.email}
+        userName={profile?.full_name}
+        role={profile?.role}
+      />
 
       <main className="flex-1 mx-auto w-full max-w-4xl px-4 sm:px-6 py-8 space-y-8">
         {/* Navigation */}
         <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">
-              <Link href="/admin/courses" className="hover:text-[#1a80ff] transition-colors">
+              <Link
+                href="/admin/courses"
+                className="hover:text-[#1a80ff] transition-colors"
+              >
                 Cursos
               </Link>
               <span>&rsaquo;</span>
-              <Link href={`/admin/courses/${courseId}`} className="hover:text-[#1a80ff] transition-colors">
+              <Link
+                href={`/admin/courses/${courseId}`}
+                className="hover:text-[#1a80ff] transition-colors"
+              >
                 {course.title}
               </Link>
               <span>&rsaquo;</span>
-              <span className="text-slate-900 dark:text-white truncate">{lesson.title}</span>
+              <span className="text-slate-900 dark:text-white truncate">
+                {lesson.title}
+              </span>
             </div>
-            <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">Editar Lección</h1>
+            <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+              Editar Lección
+            </h1>
           </div>
 
           <Link

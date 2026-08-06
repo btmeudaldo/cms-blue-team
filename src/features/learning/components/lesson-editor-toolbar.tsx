@@ -30,8 +30,12 @@ const PRESET_IMAGES = [
   },
 ];
 
-export function LessonEditorToolbar({ contentHtml, onChangeContentHtml }: LessonEditorToolbarProps) {
+export function LessonEditorToolbar({
+  contentHtml,
+  onChangeContentHtml,
+}: LessonEditorToolbarProps) {
   const editorRef = useRef<HTMLDivElement>(null);
+  const initialContentHtmlRef = useRef(contentHtml);
   const [showImageModal, setShowImageModal] = useState(false);
   const [imageTab, setImageTab] = useState<"file" | "url" | "presets">("file");
   const [customImageUrl, setCustomImageUrl] = useState("");
@@ -43,7 +47,9 @@ export function LessonEditorToolbar({ contentHtml, onChangeContentHtml }: Lesson
   // Constant mount dependency array [] to prevent React Hook render size mismatch
   useEffect(() => {
     if (editorRef.current) {
-      editorRef.current.innerHTML = contentHtml || "<p>Escribe aquí el contenido de la lección para los alumnos de aviación...</p>";
+      editorRef.current.innerHTML =
+        initialContentHtmlRef.current ||
+        "<p>Escribe aquí el contenido de la lección para los alumnos de aviación...</p>";
     }
   }, []);
 
@@ -61,7 +67,9 @@ export function LessonEditorToolbar({ contentHtml, onChangeContentHtml }: Lesson
       // Switching back from Code mode to Visual -> populate innerHTML after render
       setTimeout(() => {
         if (editorRef.current) {
-          editorRef.current.innerHTML = contentHtml || "<p>Escribe aquí el contenido de la lección para los alumnos de aviación...</p>";
+          editorRef.current.innerHTML =
+            contentHtml ||
+            "<p>Escribe aquí el contenido de la lección para los alumnos de aviación...</p>";
         }
       }, 0);
     }
@@ -101,7 +109,11 @@ export function LessonEditorToolbar({ contentHtml, onChangeContentHtml }: Lesson
     editorRef.current.focus();
     const selection = window.getSelection();
 
-    if (selection && selection.rangeCount > 0 && selection.toString().trim().length > 0) {
+    if (
+      selection &&
+      selection.rangeCount > 0 &&
+      selection.toString().trim().length > 0
+    ) {
       const range = selection.getRangeAt(0);
       const selectedText = selection.toString();
       const ul = document.createElement("ul");
@@ -118,7 +130,7 @@ export function LessonEditorToolbar({ contentHtml, onChangeContentHtml }: Lesson
       range.insertNode(ul);
     } else {
       insertBlockSnippet(
-        '<ul style="list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;">\n  <li>Elemento de lista 1</li>\n  <li>Elemento de lista 2</li>\n</ul><p><br></p>'
+        '<ul style="list-style-type: disc; padding-left: 1.5rem; margin: 0.5rem 0;">\n  <li>Elemento de lista 1</li>\n  <li>Elemento de lista 2</li>\n</ul><p><br></p>',
       );
     }
     handleVisualInput();
@@ -128,7 +140,11 @@ export function LessonEditorToolbar({ contentHtml, onChangeContentHtml }: Lesson
     if (!editorRef.current) return;
     editorRef.current.focus();
     const selection = window.getSelection();
-    if (selection && selection.rangeCount > 0 && selection.toString().trim().length > 0) {
+    if (
+      selection &&
+      selection.rangeCount > 0 &&
+      selection.toString().trim().length > 0
+    ) {
       const range = selection.getRangeAt(0);
       const selectedText = selection.toString();
       const span = document.createElement("span");
@@ -317,7 +333,7 @@ export function LessonEditorToolbar({ contentHtml, onChangeContentHtml }: Lesson
               type="button"
               onClick={() =>
                 insertBlockSnippet(
-                  '<div class="my-4 rounded-2xl bg-sky-50 dark:bg-sky-950/50 border border-sky-200 dark:border-sky-800 p-4 text-xs text-sky-900 dark:text-sky-200 font-semibold">\n  <strong>✈️ Nota de Vuelo:</strong> Comprueba siempre la lista de verificación antes del despegue.\n</div><p><br></p>'
+                  '<div class="my-4 rounded-2xl bg-sky-50 dark:bg-sky-950/50 border border-sky-200 dark:border-sky-800 p-4 text-xs text-sky-900 dark:text-sky-200 font-semibold">\n  <strong>✈️ Nota de Vuelo:</strong> Comprueba siempre la lista de verificación antes del despegue.\n</div><p><br></p>',
                 )
               }
               className="h-9 px-3 flex items-center justify-center rounded-xl bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 text-xs font-bold text-[#1a80ff] hover:bg-[#1a80ff] hover:text-white transition-all cursor-pointer shadow-2xs"
@@ -461,11 +477,17 @@ export function LessonEditorToolbar({ contentHtml, onChangeContentHtml }: Lesson
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                   />
                   <div className="flex flex-col items-center justify-center gap-1.5">
-                    <span className="text-3xl group-hover:scale-110 transition-transform">📤</span>
-                    <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
-                      {fileName ? `Imagen seleccionada: ${fileName}` : "Haz clic para elegir imagen de tu equipo"}
+                    <span className="text-3xl group-hover:scale-110 transition-transform">
+                      📤
                     </span>
-                    <span className="text-[10px] text-slate-400">Archivos PNG, JPG, WEBP o SVG</span>
+                    <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+                      {fileName
+                        ? `Imagen seleccionada: ${fileName}`
+                        : "Haz clic para elegir imagen de tu equipo"}
+                    </span>
+                    <span className="text-[10px] text-slate-400">
+                      Archivos PNG, JPG, WEBP o SVG
+                    </span>
                   </div>
                 </div>
 
@@ -479,10 +501,16 @@ export function LessonEditorToolbar({ contentHtml, onChangeContentHtml }: Lesson
 
                 {fileDataUrl && (
                   <div className="space-y-3">
-                    <img src={fileDataUrl} alt="Vista previa" className="w-full h-32 object-cover rounded-xl border border-slate-200 dark:border-slate-800" />
+                    <img
+                      src={fileDataUrl}
+                      alt="Vista previa"
+                      className="w-full h-32 object-cover rounded-xl border border-slate-200 dark:border-slate-800"
+                    />
                     <button
                       type="button"
-                      onClick={() => handleInsertImage(fileDataUrl, customCaption)}
+                      onClick={() =>
+                        handleInsertImage(fileDataUrl, customCaption)
+                      }
                       className="w-full rounded-xl bg-[#1a80ff] py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all cursor-pointer"
                     >
                       Insertar Imagen en el Editor Visual
@@ -512,7 +540,9 @@ export function LessonEditorToolbar({ contentHtml, onChangeContentHtml }: Lesson
                 {customImageUrl && (
                   <button
                     type="button"
-                    onClick={() => handleInsertImage(customImageUrl, customCaption)}
+                    onClick={() =>
+                      handleInsertImage(customImageUrl, customCaption)
+                    }
                     className="w-full rounded-xl bg-[#1a80ff] py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all cursor-pointer"
                   >
                     Insertar Imagen desde URL
@@ -528,14 +558,22 @@ export function LessonEditorToolbar({ contentHtml, onChangeContentHtml }: Lesson
                   <button
                     key={idx}
                     type="button"
-                    onClick={() => handleInsertImage(preset.url, preset.caption)}
+                    onClick={() =>
+                      handleInsertImage(preset.url, preset.caption)
+                    }
                     className="flex flex-col text-left rounded-xl border border-slate-200 dark:border-slate-800 p-2.5 bg-slate-50 dark:bg-slate-950 hover:border-[#1a80ff] hover:bg-blue-50/50 dark:hover:bg-blue-950/40 transition-all group cursor-pointer"
                   >
-                    <img src={preset.url} alt={preset.title} className="w-full h-20 object-cover rounded-lg mb-1.5" />
+                    <img
+                      src={preset.url}
+                      alt={preset.title}
+                      className="w-full h-20 object-cover rounded-lg mb-1.5"
+                    />
                     <span className="text-[11px] font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff]">
                       {preset.title}
                     </span>
-                    <span className="text-[9px] text-slate-400 line-clamp-1">{preset.caption}</span>
+                    <span className="text-[9px] text-slate-400 line-clamp-1">
+                      {preset.caption}
+                    </span>
                   </button>
                 ))}
               </div>

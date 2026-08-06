@@ -110,7 +110,8 @@ export function LessonEditorForm({
             className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-2.5 text-sm text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden focus:ring-2 focus:ring-blue-100 transition-all"
           />
           <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-1">
-            Si se deja vacío, el sistema calculará automáticamente según el número de palabras.
+            Si se deja vacío, el sistema calculará automáticamente según el
+            número de palabras.
           </p>
         </div>
       </div>
@@ -119,7 +120,10 @@ export function LessonEditorForm({
         <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">
           Contenido Enriquecido con Texto e Imágenes
         </label>
-        <LessonEditorToolbar contentHtml={contentHtml} onChangeContentHtml={setContentHtml} />
+        <LessonEditorToolbar
+          contentHtml={contentHtml}
+          onChangeContentHtml={setContentHtml}
+        />
       </div>
 
       <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
@@ -134,7 +138,11 @@ export function LessonEditorForm({
           disabled={isSubmitting}
           className="rounded-xl bg-[#1a80ff] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all disabled:opacity-50 cursor-pointer"
         >
-          {isSubmitting ? "Guardando..." : isEditing ? "Guardar Cambios" : "Guardar Lección"}
+          {isSubmitting
+            ? "Guardando..."
+            : isEditing
+              ? "Guardar Cambios"
+              : "Guardar Lección"}
         </button>
       </div>
     </form>
