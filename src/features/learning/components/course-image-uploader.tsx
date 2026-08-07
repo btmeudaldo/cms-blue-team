@@ -94,7 +94,7 @@ export function CourseImageUploader({
     setIsDragging(false);
   }
 
-  // Export current visually centered & zoomed image to Data URL using Canvas safely (Full-Bleed 100% Crop)
+  // Export current visually centered & zoomed image to Data URL using Canvas safely (1:1 Aspect Ratio Preserved, Zero Distortion)
   function applyCanvasCrop() {
     if (!previewUrl) return;
 
@@ -111,29 +111,30 @@ export function CourseImageUploader({
 
         const containerWidth = containerRef.current?.clientWidth || 260;
 
-        // Base crop size in original image coordinates
-        const baseCropSize = Math.min(img.width, img.height);
-        const cropSize = Math.max(10, baseCropSize / Math.max(0.1, scale));
+        // Base crop size (1:1 Square in source image coordinates)
+        const baseSquare = Math.min(img.width, img.height);
+        const cropSize = Math.max(10, baseSquare / Math.max(0.1, scale));
 
         // Drag offset factor relative to container width
         const dragFactor = cropSize / containerWidth;
         const centerX = img.width / 2 - position.x * dragFactor;
         const centerY = img.height / 2 - position.y * dragFactor;
 
-        // Calculate source sub-rectangle (sx, sy, sw, sh)
+        // Calculate top-left corner of 1:1 square crop window
         let sx = centerX - cropSize / 2;
         let sy = centerY - cropSize / 2;
 
-        // Clamp crop window to valid image bounds
+        // Clamp crop window within source image bounds
         const maxSx = Math.max(0, img.width - cropSize);
         const maxSy = Math.max(0, img.height - cropSize);
         sx = Math.max(0, Math.min(maxSx, sx));
         sy = Math.max(0, Math.min(maxSy, sy));
 
-        const sw = Math.min(cropSize, img.width - sx);
-        const sh = Math.min(cropSize, img.height - sy);
+        // Enforce exact 1:1 square source dimensions to prevent ANY image stretching/distortion
+        const sw = cropSize;
+        const sh = cropSize;
 
-        // Draw sub-rectangle to fill 100% of the square canvas without black margins
+        // Draw 1:1 square sub-rectangle to 1:1 square canvas (zero distortion)
         ctx.drawImage(img, sx, sy, sw, sh, 0, 0, size, size);
 
         const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.85);
