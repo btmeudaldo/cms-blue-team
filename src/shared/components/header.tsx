@@ -30,16 +30,16 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
             className="flex items-center gap-2.5 group shrink-0"
           >
             <img
-              src="/logo.png"
-              alt="BLUE TEAM Escuela de Aviación"
-              className="h-10 w-auto object-contain group-hover:scale-105 transition-transform"
+              src="/logo.jpg"
+              alt="BLUE TEAM Flight School"
+              className="h-10 w-10 rounded-xl object-cover shadow-xs border border-blue-200 dark:border-blue-800 group-hover:scale-105 transition-transform"
             />
             <div className="flex flex-col">
               <span className="font-extrabold text-base sm:text-lg leading-tight tracking-tight text-slate-900 dark:text-white">
                 BLUE<span className="text-[#1a80ff]">TEAM</span>
               </span>
               <span className="text-[9px] uppercase font-bold tracking-widest text-slate-400 dark:text-slate-500">
-                Escuela de Aviación
+                Flight School
               </span>
             </div>
           </Link>

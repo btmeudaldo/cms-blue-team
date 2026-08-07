@@ -9,9 +9,9 @@ export default function LoginPage() {
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6">
         <Link href="/" className="flex items-center gap-2.5">
           <img
-            src="/logo.png"
-            alt="BLUE TEAM Escuela de Aviación"
-            className="h-10 w-auto object-contain"
+            src="/logo.jpg"
+            alt="BLUE TEAM Flight School"
+            className="h-10 w-10 rounded-xl object-cover shadow-xs border border-blue-200 dark:border-blue-800"
           />
           <span className="font-extrabold text-xl text-slate-900 dark:text-white">
             BLUE<span className="text-[#1a80ff]">TEAM</span>
