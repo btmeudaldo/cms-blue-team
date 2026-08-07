@@ -686,10 +686,20 @@ export const mockStore = {
       };
       mockProgressRecords.push(existing);
     } else {
-      existing.completed_at = now.toISOString();
       existing.is_completed = true;
-      existing.elapsed_seconds = Math.max(30, existing.elapsed_seconds || 65);
+      existing.completed_at = now.toISOString();
+      if (!existing.elapsed_seconds || existing.elapsed_seconds < 60) {
+        existing.elapsed_seconds = 65;
+      }
     }
     return existing;
+  },
+  heartbeatLesson(userId: string, lessonId: string) {
+    let existing = mockProgressRecords.find(
+      (p) => p.user_id === userId && p.lesson_id === lessonId,
+    );
+    if (existing) {
+      existing.elapsed_seconds = (existing.elapsed_seconds || 0) + 10;
+    }
   },
 };
