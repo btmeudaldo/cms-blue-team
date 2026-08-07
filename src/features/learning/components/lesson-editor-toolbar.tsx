@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { getImageFrameAlignmentClasses } from "../domain/image-frame-alignment";
+import { getImageFrameAlignment } from "../domain/image-frame-alignment";
 import { getNextImageFrameWidth } from "../domain/image-frame-size";
 
 type LessonEditorToolbarProps = {
@@ -101,12 +101,18 @@ export function LessonEditorToolbar({
       if (!wrapper.querySelector(".img-editor-controls")) {
         const controls = document.createElement("div");
         controls.className =
-          "img-editor-controls flex items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-100 dark:border-slate-800 select-none";
+          "img-editor-controls mb-3 space-y-2 rounded-xl border border-blue-100 bg-blue-50/50 p-3 dark:border-blue-900/60 dark:bg-blue-950/20 select-none";
         controls.setAttribute("contenteditable", "false");
+        const leftAlignment = getImageFrameAlignment("left");
+        const centerAlignment = getImageFrameAlignment("center");
+        const rightAlignment = getImageFrameAlignment("right");
         controls.innerHTML = `
-          <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 flex items-center gap-1">
-            🖼️ Formato Cuadrado (1:1)
-          </span>
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-[11px] font-bold text-blue-700 dark:text-blue-300 flex items-center gap-1">
+              🖼️ Controles de esta imagen
+            </span>
+            <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500">Formato cuadrado (1:1)</span>
+          </div>
           <div class="flex flex-wrap items-center gap-1.5">
             <button type="button" class="img-btn-fit px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 text-[#1a80ff] text-[11px] font-bold rounded-lg border border-blue-200 dark:border-blue-800 transition-colors cursor-pointer" title="Ver imagen completa sin recortar (contain/cover)">
               🎯 Ver Completa / Llenar
@@ -120,15 +126,18 @@ export function LessonEditorToolbar({
             <button type="button" class="img-btn-enlarge px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Agrandar el cuadro completo de la imagen">
               🔍+ Cuadro
             </button>
-            <button type="button" class="img-btn-align-left px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Alinear el cuadro de imagen a la izquierda">
-              ⬅️ Izquierda
-            </button>
-            <button type="button" class="img-btn-align-center px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Centrar el cuadro de imagen">
-              ↔️ Centro
-            </button>
-            <button type="button" class="img-btn-align-right px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Alinear el cuadro de imagen a la derecha">
-              ➡️ Derecha
-            </button>
+            <div class="flex flex-wrap items-center gap-1 rounded-lg border border-blue-200 bg-white p-1 dark:border-blue-800 dark:bg-slate-900" role="group" aria-label="Alineación de esta imagen">
+              <span class="px-1 text-[10px] font-bold text-blue-700 dark:text-blue-300">Alinear imagen:</span>
+              <button type="button" class="img-btn-align-left px-2 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg transition-colors cursor-pointer" title="Alinear el cuadro de imagen a la izquierda">
+                ⬅️ ${leftAlignment.label}
+              </button>
+              <button type="button" class="img-btn-align-center px-2 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg transition-colors cursor-pointer" title="Centrar el cuadro de imagen">
+                ↔️ ${centerAlignment.label}
+              </button>
+              <button type="button" class="img-btn-align-right px-2 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg transition-colors cursor-pointer" title="Alinear el cuadro de imagen a la derecha">
+                ➡️ ${rightAlignment.label}
+              </button>
+            </div>
             <button type="button" class="img-btn-up px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover la imagen arriba de la lección">
               ⬆️ Arriba
             </button>
@@ -251,7 +260,7 @@ export function LessonEditorToolbar({
               : "center";
 
           wrapper.classList.remove("mx-auto", "ml-auto", "mr-auto");
-          wrapper.classList.add(...getImageFrameAlignmentClasses(alignment));
+          wrapper.classList.add(...getImageFrameAlignment(alignment).classes);
         } else if (btnFit) {
           const img = wrapper.querySelector("img");
           if (img) {

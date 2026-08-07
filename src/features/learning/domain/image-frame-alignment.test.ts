@@ -1,17 +1,26 @@
 import { describe, expect, it } from "vitest";
 
-import { getImageFrameAlignmentClasses } from "./image-frame-alignment";
+import { getImageFrameAlignment } from "./image-frame-alignment";
 
-describe("getImageFrameAlignmentClasses", () => {
+describe("getImageFrameAlignment", () => {
   it("aligns an image frame to the left", () => {
-    expect(getImageFrameAlignmentClasses("left")).toEqual(["mr-auto"]);
+    expect(getImageFrameAlignment("left")).toEqual({
+      classes: ["mr-auto"],
+      label: "Izquierda",
+    });
   });
 
   it("centers an image frame", () => {
-    expect(getImageFrameAlignmentClasses("center")).toEqual(["mx-auto"]);
+    expect(getImageFrameAlignment("center")).toEqual({
+      classes: ["mx-auto"],
+      label: "Centro",
+    });
   });
 
   it("aligns an image frame to the right", () => {
-    expect(getImageFrameAlignmentClasses("right")).toEqual(["ml-auto"]);
+    expect(getImageFrameAlignment("right")).toEqual({
+      classes: ["ml-auto"],
+      label: "Derecha",
+    });
   });
 });

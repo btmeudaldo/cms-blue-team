@@ -1,15 +1,20 @@
 export type ImageFrameAlignment = "left" | "center" | "right";
 
-export function getImageFrameAlignmentClasses(
+type ImageFrameAlignmentConfig = {
+  classes: string[];
+  label: string;
+};
+
+export function getImageFrameAlignment(
   alignment: ImageFrameAlignment,
-): string[] {
+): ImageFrameAlignmentConfig {
   if (alignment === "left") {
-    return ["mr-auto"];
+    return { classes: ["mr-auto"], label: "Izquierda" };
   }
 
   if (alignment === "right") {
-    return ["ml-auto"];
+    return { classes: ["ml-auto"], label: "Derecha" };
   }
 
-  return ["mx-auto"];
+  return { classes: ["mx-auto"], label: "Centro" };
 }
