@@ -140,6 +140,16 @@ export default async function CoursesPage() {
                   className="group flex flex-col justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm card-hover transition-all"
                 >
                   <div className="space-y-3">
+                    {course.image_url && (
+                      <div className="relative rounded-xl overflow-hidden aspect-square w-full bg-slate-900 border border-slate-200 dark:border-slate-800 mb-1">
+                        <img
+                          src={course.image_url}
+                          alt={course.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+
                     <div className="flex items-center justify-between">
                       <span className="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 text-xs font-bold text-[#1a80ff]">
                         {totalLessons}{" "}

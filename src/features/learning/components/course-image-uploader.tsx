@@ -94,7 +94,7 @@ export function CourseImageUploader({
     setIsDragging(false);
   }
 
-  // Export current visually centered & zoomed image to Data URL using Canvas safely (1:1 Aspect Ratio Preserved, Zero Distortion)
+  // Export current visually centered & zoomed image to Data URL using Canvas (100% Full-Bleed, Zero Black Margins, Zero Distortion)
   function applyCanvasCrop() {
     if (!previewUrl) return;
 
@@ -103,41 +103,42 @@ export function CourseImageUploader({
     img.onload = () => {
       try {
         const canvas = document.createElement("canvas");
-        const size = 600; // High resolution square canvas
+        const size = 600; // High resolution 1:1 square canvas
         canvas.width = size;
         canvas.height = size;
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        const containerWidth = containerRef.current?.clientWidth || 260;
+        const C = containerRef.current?.clientWidth || 260;
 
-        // Base crop size (1:1 Square in source image coordinates)
-        const baseSquare = Math.min(img.width, img.height);
-        const cropSize = Math.max(10, baseSquare / Math.max(0.1, scale));
+        // Effective DOM scale of cover image inside square container C x C
+        const baseCoverScale = Math.max(C / img.width, C / img.height);
+        const effectiveScale = baseCoverScale * Math.max(0.1, scale);
 
-        // Drag offset factor relative to container width
-        const dragFactor = cropSize / containerWidth;
-        const centerX = img.width / 2 - position.x * dragFactor;
-        const centerY = img.height / 2 - position.y * dragFactor;
+        const domW = img.width * effectiveScale;
+        const domH = img.height * effectiveScale;
 
-        // Calculate top-left corner of 1:1 square crop window
-        let sx = centerX - cropSize / 2;
-        let sy = centerY - cropSize / 2;
+        // Center of square container in original image coordinates
+        const origCenterX = (domW / 2 - position.x) / effectiveScale;
+        const origCenterY = (domH / 2 - position.y) / effectiveScale;
 
-        // Clamp crop window within source image bounds
-        const maxSx = Math.max(0, img.width - cropSize);
-        const maxSy = Math.max(0, img.height - cropSize);
+        // Size of 1:1 square crop in original image coordinates
+        const origCropSize = Math.min(img.width, img.height, C / effectiveScale);
+
+        // Top-left corner of crop window (sx, sy)
+        let sx = origCenterX - origCropSize / 2;
+        let sy = origCenterY - origCropSize / 2;
+
+        // Clamp sx and sy so the crop window stays 100% inside the photo bounds (zero black margins)
+        const maxSx = Math.max(0, img.width - origCropSize);
+        const maxSy = Math.max(0, img.height - origCropSize);
         sx = Math.max(0, Math.min(maxSx, sx));
         sy = Math.max(0, Math.min(maxSy, sy));
 
-        // Enforce exact 1:1 square source dimensions to prevent ANY image stretching/distortion
-        const sw = cropSize;
-        const sh = cropSize;
+        // Draw exact 1:1 square sub-rectangle to fill 100% of 600x600 canvas
+        ctx.drawImage(img, sx, sy, origCropSize, origCropSize, 0, 0, size, size);
 
-        // Draw 1:1 square sub-rectangle to 1:1 square canvas (zero distortion)
-        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, size, size);
-
-        const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.85);
+        const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.88);
         if (croppedDataUrl && croppedDataUrl.startsWith("data:image/")) {
           setImageUrl(croppedDataUrl);
           setIsFramed(true);
