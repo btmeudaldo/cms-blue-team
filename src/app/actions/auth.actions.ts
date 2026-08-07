@@ -12,11 +12,16 @@ import { mockStore } from "@/shared/lib/mock-store";
 
 export async function signInAction(formData: FormData) {
   const email = String(formData.get("email") ?? "").trim();
-  const password = String(formData.get("password") ?? "");
+  const password = String(formData.get("password") ?? "").trim();
 
   if (!email || !password) {
     return { error: "Por favor ingresa tu correo y contraseña." };
   }
+
+  const isValidPassword =
+    password === "blueteam" ||
+    password === process.env.DEMO_STUDENT_PASSWORD ||
+    password === process.env.DEMO_ADMIN_PASSWORD;
 
   try {
     const supabase = await createSupabaseServerClient();
@@ -30,7 +35,13 @@ export async function signInAction(formData: FormData) {
     // Supabase offline or mock mode fallback
   }
 
-  // Resilient fallback for testing
+  if (!isValidPassword) {
+    return {
+      error: "Credenciales inválidas. Comprueba tu correo y contraseña.",
+    };
+  }
+
+  // Resilient fallback for testing with valid password
   const mockProfiles = mockStore.getProfiles();
   const match = mockProfiles.find(
     (p) => p.email.toLowerCase() === email.toLowerCase() || p.id === email,
