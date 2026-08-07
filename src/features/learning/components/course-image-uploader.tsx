@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 
 import { getDefaultImageFrame } from "@/features/learning/domain/image-framing";
+import { shouldShowImageFrameEditor } from "@/features/learning/domain/image-frame-editor";
 
 type CourseImageUploaderProps = {
   defaultImageUrl?: string | null;
@@ -16,6 +17,7 @@ export function CourseImageUploader({
   const [imageUrl, setImageUrl] = useState(initialUrl);
   const [previewUrl, setPreviewUrl] = useState(initialUrl);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [isEditingFrame, setIsEditingFrame] = useState(false);
 
   // Interactive framing states: zoom, position X/Y, dragging
   const [scale, setScale] = useState(getDefaultImageFrame().scale);
@@ -39,6 +41,7 @@ export function CourseImageUploader({
     if (!file) return;
 
     resetFraming();
+    setIsEditingFrame(true);
     setFileName(file.name);
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -51,6 +54,7 @@ export function CourseImageUploader({
 
   function handleUrlChange(val: string) {
     resetFraming();
+    setIsEditingFrame(true);
     setImageUrl(val);
     setPreviewUrl(val);
   }
@@ -127,7 +131,11 @@ export function CourseImageUploader({
         const origCenterY = (domH / 2 - position.y) / effectiveScale;
 
         // Size of 1:1 square crop in original image coordinates
-        const origCropSize = Math.min(img.width, img.height, C / effectiveScale);
+        const origCropSize = Math.min(
+          img.width,
+          img.height,
+          C / effectiveScale,
+        );
 
         // Top-left corner of crop window (sx, sy)
         let sx = origCenterX - origCropSize / 2;
@@ -140,12 +148,23 @@ export function CourseImageUploader({
         sy = Math.max(0, Math.min(maxSy, sy));
 
         // Draw exact 1:1 square sub-rectangle to fill 100% of 600x600 canvas
-        ctx.drawImage(img, sx, sy, origCropSize, origCropSize, 0, 0, size, size);
+        ctx.drawImage(
+          img,
+          sx,
+          sy,
+          origCropSize,
+          origCropSize,
+          0,
+          0,
+          size,
+          size,
+        );
 
         const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.88);
         if (croppedDataUrl && croppedDataUrl.startsWith("data:image/")) {
           setImageUrl(croppedDataUrl);
           setIsFramed(true);
+          setIsEditingFrame(false);
         }
       } catch (err) {
         // Safe fallback for CORS-protected external web images
@@ -154,6 +173,7 @@ export function CourseImageUploader({
     };
     img.onerror = () => {
       setIsFramed(true);
+      setIsEditingFrame(false);
     };
     img.src = previewUrl;
   }
@@ -231,125 +251,158 @@ export function CourseImageUploader({
       {/* Interactive Visual Framer Box (Drag, Zoom & Center) */}
       {previewUrl && (
         <div className="space-y-3 p-4 rounded-3xl border border-blue-200 dark:border-blue-900/40 bg-blue-50/50 dark:bg-blue-950/20">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-              <span>🎯</span> Encuadre Visual Cuadrado (1:1)
-            </span>
-            <span className="text-[10px] text-slate-500 font-semibold">
-              💡 Arrastra la foto completa para centrarla
-            </span>
-          </div>
-
-          {/* Interactive Square Container */}
-          <div
-            ref={containerRef}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            className={`relative rounded-2xl overflow-hidden border-2 border-dashed border-[#1a80ff]/50 aspect-square w-full max-w-[260px] mx-auto bg-slate-950 shadow-lg select-none touch-none ${
-              isDragging ? "cursor-grabbing" : "cursor-grab"
-            }`}
-          >
-            <img
-              ref={imageRef}
-              src={previewUrl}
-              alt="Portada interactiva"
-              style={{
-                transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) scale(${scale})`,
-                transition: isDragging ? "none" : "transform 0.1s ease-out",
-              }}
-              className="absolute top-1/2 left-1/2 min-w-full min-h-full max-w-none max-h-none object-cover pointer-events-none select-none"
-            />
-
-            {/* Grid Overlay Guide Lines */}
-            <div className="absolute inset-0 border border-white/20 pointer-events-none grid grid-cols-3 grid-rows-3">
-              <div className="border-r border-b border-white/10"></div>
-              <div className="border-r border-b border-white/10"></div>
-              <div className="border-b border-white/10"></div>
-              <div className="border-r border-b border-white/10"></div>
-              <div className="border-r border-b border-white/10"></div>
-              <div className="border-b border-white/10"></div>
-              <div className="border-r border-white/10"></div>
-              <div className="border-r border-white/10"></div>
-              <div></div>
-            </div>
-
-            {/* Delete Button */}
-            <div className="absolute top-2 right-2 z-20">
+          {!shouldShowImageFrameEditor(previewUrl, isEditingFrame) && (
+            <>
+              <div className="relative mx-auto aspect-square w-full max-w-[260px] overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-lg">
+                <img
+                  src={imageUrl}
+                  alt="Portada guardada"
+                  className="h-full w-full object-cover"
+                />
+              </div>
               <button
                 type="button"
-                onClick={() => {
-                  setImageUrl("");
-                  setPreviewUrl("");
-                  setFileName(null);
-                  setIsFramed(false);
-                }}
-                className="rounded-lg bg-slate-900/85 hover:bg-rose-600 text-white px-2 py-1 text-[10px] font-bold backdrop-blur-xs transition-colors cursor-pointer shadow-sm"
+                onClick={() => setIsEditingFrame(true)}
+                className="mx-auto flex rounded-xl border border-[#1a80ff] bg-white px-4 py-2 text-xs font-bold text-[#1a80ff] transition-colors hover:bg-blue-50"
               >
-                ✕ Eliminar
+                Editar encuadre
               </button>
-            </div>
-          </div>
+            </>
+          )}
 
-          {/* Controls Bar: Zoom Slider & Recenter */}
-          <div className="space-y-2 max-w-[260px] mx-auto">
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
-              <span>🔍 Zoom / Tamaño:</span>
-              <span className="font-mono text-[#1a80ff] font-bold">
-                {Math.round(scale * 100)}%
-              </span>
-            </div>
+          {shouldShowImageFrameEditor(previewUrl, isEditingFrame) && (
+            <>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                  <span>🎯</span> Encuadre Visual Cuadrado (1:1)
+                </span>
+                <span className="text-[10px] text-slate-500 font-semibold">
+                  💡 Arrastra la foto completa para centrarla
+                </span>
+              </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setScale((s) => Math.max(0.2, s - 0.1))}
-                className="rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2 py-1 text-xs font-extrabold hover:bg-slate-100 cursor-pointer"
+              {/* Interactive Square Container */}
+              <div
+                ref={containerRef}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                className={`relative rounded-2xl overflow-hidden border-2 border-dashed border-[#1a80ff]/50 aspect-square w-full max-w-[260px] mx-auto bg-slate-950 shadow-lg select-none touch-none ${
+                  isDragging ? "cursor-grabbing" : "cursor-grab"
+                }`}
               >
-                ➖
-              </button>
-              <input
-                type="range"
-                min="0.2"
-                max="3.0"
-                step="0.05"
-                value={scale}
-                onChange={(e) => setScale(parseFloat(e.target.value))}
-                className="flex-1 accent-[#1a80ff] cursor-pointer"
-              />
-              <button
-                type="button"
-                onClick={() => setScale((s) => Math.min(3.0, s + 0.1))}
-                className="rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2 py-1 text-xs font-extrabold hover:bg-slate-100 cursor-pointer"
-              >
-                ➕
-              </button>
-            </div>
+                <img
+                  ref={imageRef}
+                  src={previewUrl}
+                  alt="Portada interactiva"
+                  style={{
+                    transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) scale(${scale})`,
+                    transition: isDragging ? "none" : "transform 0.1s ease-out",
+                  }}
+                  className="absolute top-1/2 left-1/2 min-w-full min-h-full max-w-none max-h-none object-cover pointer-events-none select-none"
+                />
 
-            <div className="flex items-center gap-2 pt-1">
-              <button
-                type="button"
-                onClick={resetFraming}
-                className="flex-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 py-1.5 text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-              >
-                🎯 Recentrar Posición
-              </button>
-              <button
-                type="button"
-                onClick={applyCanvasCrop}
-                className="flex-1 rounded-xl bg-[#1a80ff] py-1.5 text-[11px] font-bold text-white shadow-xs hover:bg-[#0066e6] transition-colors cursor-pointer"
-              >
-                {isFramed ? "✅ Encuadre Aplicado" : "✨ Fijar Encuadre"}
-              </button>
-            </div>
-          </div>
+                {/* Grid Overlay Guide Lines */}
+                <div className="absolute inset-0 border border-white/20 pointer-events-none grid grid-cols-3 grid-rows-3">
+                  <div className="border-r border-b border-white/10"></div>
+                  <div className="border-r border-b border-white/10"></div>
+                  <div className="border-b border-white/10"></div>
+                  <div className="border-r border-b border-white/10"></div>
+                  <div className="border-r border-b border-white/10"></div>
+                  <div className="border-b border-white/10"></div>
+                  <div className="border-r border-white/10"></div>
+                  <div className="border-r border-white/10"></div>
+                  <div></div>
+                </div>
+
+                {/* Delete Button */}
+                <div className="absolute top-2 right-2 z-20">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setImageUrl("");
+                      setPreviewUrl("");
+                      setFileName(null);
+                      setIsFramed(false);
+                      setIsEditingFrame(false);
+                    }}
+                    className="rounded-lg bg-slate-900/85 hover:bg-rose-600 text-white px-2 py-1 text-[10px] font-bold backdrop-blur-xs transition-colors cursor-pointer shadow-sm"
+                  >
+                    ✕ Eliminar
+                  </button>
+                </div>
+              </div>
+
+              {/* Controls Bar: Zoom Slider & Recenter */}
+              <div className="space-y-2 max-w-[260px] mx-auto">
+                <div className="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  <span>🔍 Zoom / Tamaño:</span>
+                  <span className="font-mono text-[#1a80ff] font-bold">
+                    {Math.round(scale * 100)}%
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setScale((s) => Math.max(0.2, s - 0.1))}
+                    className="rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2 py-1 text-xs font-extrabold hover:bg-slate-100 cursor-pointer"
+                  >
+                    ➖
+                  </button>
+                  <input
+                    type="range"
+                    min="0.2"
+                    max="3.0"
+                    step="0.05"
+                    value={scale}
+                    onChange={(e) => setScale(parseFloat(e.target.value))}
+                    className="flex-1 accent-[#1a80ff] cursor-pointer"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setScale((s) => Math.min(3.0, s + 0.1))}
+                    className="rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2 py-1 text-xs font-extrabold hover:bg-slate-100 cursor-pointer"
+                  >
+                    ➕
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-2 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      resetFraming();
+                      setIsEditingFrame(false);
+                    }}
+                    className="flex-1 rounded-xl border border-slate-300 bg-white py-1.5 text-[11px] font-bold text-slate-700 transition-colors hover:bg-slate-100"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="button"
+                    onClick={resetFraming}
+                    className="flex-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 py-1.5 text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  >
+                    🎯 Recentrar Posición
+                  </button>
+                  <button
+                    type="button"
+                    onClick={applyCanvasCrop}
+                    className="flex-1 rounded-xl bg-[#1a80ff] py-1.5 text-[11px] font-bold text-white shadow-xs hover:bg-[#0066e6] transition-colors cursor-pointer"
+                  >
+                    {isFramed ? "✅ Encuadre Aplicado" : "✨ Fijar Encuadre"}
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       )}
     </div>
   );
 }
-
