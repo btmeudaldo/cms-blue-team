@@ -137,20 +137,35 @@ export async function getResilientCourses(userId: string, isAdmin: boolean) {
 
     const result: any = await queryPromise;
     if (result && !result.error && result.data && result.data.length > 0) {
+      const rawCourses = isAdmin
+        ? result.data || []
+        : result.data.map((e: any) => e.courses).filter(Boolean);
+
+      const mockCourses = mockStore.getCourses();
+      const mockMap = new Map(mockCourses.map((mc) => [mc.id, mc]));
+
+      const finalCourses = rawCourses.map((c: any) => {
+        const mc = mockMap.get(c.id) || mockMap.get(c.slug);
+        const dbLessons = c.lessons || [];
+        const mockLessons = mc?.lessons || [];
+        const mergedLessons =
+          dbLessons.length >= mockLessons.length ? dbLessons : mockLessons;
+        return {
+          ...c,
+          lessons: mergedLessons,
+        };
+      });
+
       if (isAdmin) {
-        const dbCourses = result.data || [];
-        const mockCourses = mockStore.getCourses();
-        const existingIds = new Set(dbCourses.map((c: any) => c.id));
-        const merged = [...dbCourses];
+        const existingIds = new Set(finalCourses.map((c: any) => c.id));
         for (const mc of mockCourses) {
           if (!existingIds.has(mc.id)) {
-            merged.push(mc);
+            finalCourses.push(mc);
           }
         }
-        return merged;
       }
-      const courses = result.data.map((e: any) => e.courses).filter(Boolean);
-      if (courses.length > 0) return courses;
+
+      if (finalCourses.length > 0) return finalCourses;
     }
   } catch (err) {}
 
@@ -205,6 +220,12 @@ export async function getResilientCourseDetail(courseId: string) {
         if (directLessons && directLessons.length > 0) {
           result.data.lessons = directLessons;
         }
+      }
+
+      // Fallback merge: if mockStore has more lessons for this course ID/slug, use mockStore lessons
+      const mockC = mockStore.getCourseById(result.data.id) || mockStore.getCourseById(result.data.slug);
+      if (mockC && mockC.lessons && mockC.lessons.length > (result.data.lessons?.length || 0)) {
+        result.data.lessons = mockC.lessons;
       }
 
       return result.data;
