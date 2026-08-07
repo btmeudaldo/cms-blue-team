@@ -94,7 +94,7 @@ export function CourseImageUploader({
     setIsDragging(false);
   }
 
-  // Export current visually centered & zoomed image to Data URL using Canvas safely
+  // Export current visually centered & zoomed image to Data URL using Canvas safely (Full-Bleed 100% Crop)
   function applyCanvasCrop() {
     if (!previewUrl) return;
 
@@ -109,30 +109,32 @@ export function CourseImageUploader({
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-        // Fill background
-        ctx.fillStyle = "#0f172a";
-        ctx.fillRect(0, 0, size, size);
-
         const containerWidth = containerRef.current?.clientWidth || 260;
-        const ratio = size / containerWidth;
 
-        // Base aspect cover dimensions in DOM container
-        const coverRatio = Math.max(
-          containerWidth / img.width,
-          containerWidth / img.height,
-        );
-        const baseW = img.width * coverRatio;
-        const baseH = img.height * coverRatio;
+        // Base crop size in original image coordinates
+        const baseCropSize = Math.min(img.width, img.height);
+        const cropSize = Math.max(10, baseCropSize / Math.max(0.1, scale));
 
-        // Scaled dimensions on Canvas
-        const scaledW = baseW * scale * ratio;
-        const scaledH = baseH * scale * ratio;
+        // Drag offset factor relative to container width
+        const dragFactor = cropSize / containerWidth;
+        const centerX = img.width / 2 - position.x * dragFactor;
+        const centerY = img.height / 2 - position.y * dragFactor;
 
-        // Center position + drag offset
-        const drawX = (size - scaledW) / 2 + position.x * ratio;
-        const drawY = (size - scaledH) / 2 + position.y * ratio;
+        // Calculate source sub-rectangle (sx, sy, sw, sh)
+        let sx = centerX - cropSize / 2;
+        let sy = centerY - cropSize / 2;
 
-        ctx.drawImage(img, drawX, drawY, scaledW, scaledH);
+        // Clamp crop window to valid image bounds
+        const maxSx = Math.max(0, img.width - cropSize);
+        const maxSy = Math.max(0, img.height - cropSize);
+        sx = Math.max(0, Math.min(maxSx, sx));
+        sy = Math.max(0, Math.min(maxSy, sy));
+
+        const sw = Math.min(cropSize, img.width - sx);
+        const sh = Math.min(cropSize, img.height - sy);
+
+        // Draw sub-rectangle to fill 100% of the square canvas without black margins
+        ctx.drawImage(img, sx, sy, sw, sh, 0, 0, size, size);
 
         const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.85);
         if (croppedDataUrl && croppedDataUrl.startsWith("data:image/")) {
@@ -140,7 +142,7 @@ export function CourseImageUploader({
           setIsFramed(true);
         }
       } catch (err) {
-        // Safe fallback for CORS-protected external web images: mark as framed without breaking preview
+        // Safe fallback for CORS-protected external web images
         setIsFramed(true);
       }
     };
