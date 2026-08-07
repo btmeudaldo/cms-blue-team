@@ -1,3 +1,8 @@
+drop policy if exists "staff can create owned courses" on public.courses;
+drop policy if exists "staff can update owned courses" on public.courses;
+drop policy if exists "staff can delete owned courses" on public.courses;
+drop policy if exists "staff can manage lessons in owned courses" on public.lessons;
+
 create policy "staff can create owned courses"
 on public.courses for insert to authenticated
 with check (public.is_staff() and created_by = auth.uid());

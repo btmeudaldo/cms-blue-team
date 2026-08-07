@@ -1,6 +1,13 @@
 drop policy if exists "staff can manage all lessons" on public.lessons;
 drop policy if exists "staff can manage all courses" on public.courses;
 drop policy if exists "authenticated can read lessons" on public.lessons;
+drop policy if exists "staff can read all courses" on public.courses;
+drop policy if exists "staff can manage enrollments" on public.course_enrollments;
+drop policy if exists "staff can read all lessons" on public.lessons;
+drop policy if exists "admins manage course editor assignments" on public.course_editors;
+drop policy if exists "staff can read course editor assignments" on public.course_editors;
+drop policy if exists "assigned instructors can update courses" on public.courses;
+drop policy if exists "assigned instructors can manage lessons" on public.lessons;
 
 create table if not exists public.course_editors (
   course_id uuid not null references public.courses (id) on delete cascade,
