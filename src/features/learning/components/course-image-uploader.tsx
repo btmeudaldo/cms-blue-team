@@ -137,9 +137,6 @@ export function CourseImageUploader({
         const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.85);
         if (croppedDataUrl && croppedDataUrl.startsWith("data:image/")) {
           setImageUrl(croppedDataUrl);
-          setPreviewUrl(croppedDataUrl);
-          setScale(1);
-          setPosition({ x: 0, y: 0 });
           setIsFramed(true);
         }
       } catch (err) {
