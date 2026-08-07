@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 type CourseImageUploaderProps = {
   defaultImageUrl?: string | null;
@@ -14,6 +14,23 @@ export function CourseImageUploader({
   const [imageUrl, setImageUrl] = useState(initialUrl);
   const [previewUrl, setPreviewUrl] = useState(initialUrl);
   const [fileName, setFileName] = useState<string | null>(null);
+
+  // Interactive framing states: zoom, position X/Y, dragging
+  const [scale, setScale] = useState(1);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [isFramed, setIsFramed] = useState(false);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    // Reset framing controls when image URL changes
+    setScale(1);
+    setPosition({ x: 0, y: 0 });
+    setIsFramed(false);
+  }, [previewUrl]);
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -34,10 +51,105 @@ export function CourseImageUploader({
     setPreviewUrl(val);
   }
 
+  // Mouse Drag Events
+  function handleMouseDown(e: React.MouseEvent) {
+    e.preventDefault();
+    setIsDragging(true);
+    setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+  }
+
+  function handleMouseMove(e: React.MouseEvent) {
+    if (!isDragging) return;
+    e.preventDefault();
+    setPosition({
+      x: e.clientX - dragStart.x,
+      y: e.clientY - dragStart.y,
+    });
+  }
+
+  function handleMouseUp() {
+    setIsDragging(false);
+  }
+
+  // Touch Drag Events (Mobile)
+  function handleTouchStart(e: React.TouchEvent) {
+    if (e.touches.length === 1) {
+      setIsDragging(true);
+      setDragStart({
+        x: e.touches[0].clientX - position.x,
+        y: e.touches[0].clientY - position.y,
+      });
+    }
+  }
+
+  function handleTouchMove(e: React.TouchEvent) {
+    if (!isDragging || e.touches.length !== 1) return;
+    setPosition({
+      x: e.touches[0].clientX - dragStart.x,
+      y: e.touches[0].clientY - dragStart.y,
+    });
+  }
+
+  function handleTouchEnd() {
+    setIsDragging(false);
+  }
+
+  // Export current visually centered & zoomed image to Data URL using Canvas
+  function applyCanvasCrop() {
+    if (!previewUrl) return;
+
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      const size = 600; // High resolution square canvas
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      // Fill background
+      ctx.fillStyle = "#0f172a";
+      ctx.fillRect(0, 0, size, size);
+
+      const containerWidth = containerRef.current?.clientWidth || 280;
+
+      // Ratio of canvas size to DOM container size
+      const ratio = size / containerWidth;
+
+      // Draw image with scale and offset
+      const drawWidth = img.width * scale * ratio * (containerWidth / img.width);
+      const drawHeight = img.height * scale * ratio * (containerWidth / img.height);
+      
+      // Calculate centered aspect cover
+      const coverRatio = Math.max(size / img.width, size / img.height);
+      const scaledW = img.width * coverRatio * scale;
+      const scaledH = img.height * coverRatio * scale;
+
+      const drawX = (size - scaledW) / 2 + position.x * ratio;
+      const drawY = (size - scaledH) / 2 + position.y * ratio;
+
+      ctx.drawImage(img, drawX, drawY, scaledW, scaledH);
+
+      const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.92);
+      setImageUrl(croppedDataUrl);
+      setPreviewUrl(croppedDataUrl);
+      setScale(1);
+      setPosition({ x: 0, y: 0 });
+      setIsFramed(true);
+    };
+    img.src = previewUrl;
+  }
+
+  function resetFraming() {
+    setScale(1);
+    setPosition({ x: 0, y: 0 });
+  }
+
   const safeUrl = imageUrl || "";
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-4">
       <input type="hidden" name="imageUrl" value={safeUrl} />
 
       <div className="flex items-center justify-between">
@@ -104,34 +216,128 @@ export function CourseImageUploader({
         </div>
       )}
 
-      {/* Square Image Thumbnail Preview (1:1 Aspect Ratio) */}
+      {/* Interactive Visual Framer Box (Drag, Zoom & Center) */}
       {previewUrl && (
-        <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 aspect-square w-full max-w-[280px] mx-auto bg-slate-900 shadow-md group my-2">
-          <img
-            src={previewUrl}
-            alt="Vista previa de portada"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute top-2 right-2 z-10">
-            <button
-              type="button"
-              onClick={() => {
-                setImageUrl("");
-                setPreviewUrl("");
-                setFileName(null);
-              }}
-              className="rounded-lg bg-slate-900/85 hover:bg-rose-600 text-white px-2.5 py-1 text-[11px] font-bold backdrop-blur-xs transition-colors cursor-pointer shadow-sm"
-            >
-              ✕ Eliminar
-            </button>
-          </div>
-          <div className="absolute bottom-2 left-2 right-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1.5 rounded-xl border border-white/10 text-center">
-            <span className="text-[10px] font-bold text-slate-200 flex items-center justify-center gap-1">
-              <span>📷</span> Vista Previa Cuadrada (1:1)
+        <div className="space-y-3 p-4 rounded-3xl border border-blue-200 dark:border-blue-900/40 bg-blue-50/50 dark:bg-blue-950/20">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+              <span>🎯</span> Encuadre Visual Cuadrado (1:1)
             </span>
+            <span className="text-[10px] text-slate-500 font-semibold">
+              💡 Arrastra la foto con el ratón para centrarla
+            </span>
+          </div>
+
+          {/* Interactive Square Container */}
+          <div
+            ref={containerRef}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className={`relative rounded-2xl overflow-hidden border-2 border-dashed border-[#1a80ff]/50 aspect-square w-full max-w-[260px] mx-auto bg-slate-950 shadow-lg select-none touch-none ${
+              isDragging ? "cursor-grabbing" : "cursor-grab"
+            }`}
+          >
+            <img
+              ref={imageRef}
+              src={previewUrl}
+              alt="Portada interactiva"
+              style={{
+                transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+                transition: isDragging ? "none" : "transform 0.1s ease-out",
+              }}
+              className="w-full h-full object-cover pointer-events-none select-none"
+            />
+
+            {/* Grid Overlay Guide Lines */}
+            <div className="absolute inset-0 border border-white/20 pointer-events-none grid grid-cols-3 grid-rows-3">
+              <div className="border-r border-b border-white/10"></div>
+              <div className="border-r border-b border-white/10"></div>
+              <div className="border-b border-white/10"></div>
+              <div className="border-r border-b border-white/10"></div>
+              <div className="border-r border-b border-white/10"></div>
+              <div className="border-b border-white/10"></div>
+              <div className="border-r border-white/10"></div>
+              <div className="border-r border-white/10"></div>
+              <div></div>
+            </div>
+
+            {/* Delete Button */}
+            <div className="absolute top-2 right-2 z-20">
+              <button
+                type="button"
+                onClick={() => {
+                  setImageUrl("");
+                  setPreviewUrl("");
+                  setFileName(null);
+                  setIsFramed(false);
+                }}
+                className="rounded-lg bg-slate-900/85 hover:bg-rose-600 text-white px-2 py-1 text-[10px] font-bold backdrop-blur-xs transition-colors cursor-pointer shadow-sm"
+              >
+                ✕ Eliminar
+              </button>
+            </div>
+          </div>
+
+          {/* Controls Bar: Zoom Slider & Recenter */}
+          <div className="space-y-2 max-w-[260px] mx-auto">
+            <div className="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <span>🔍 Zoom / Tamaño:</span>
+              <span className="font-mono text-[#1a80ff] font-bold">
+                {Math.round(scale * 100)}%
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setScale((s) => Math.max(0.8, s - 0.1))}
+                className="rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2 py-1 text-xs font-extrabold hover:bg-slate-100 cursor-pointer"
+              >
+                ➖
+              </button>
+              <input
+                type="range"
+                min="0.8"
+                max="2.5"
+                step="0.05"
+                value={scale}
+                onChange={(e) => setScale(parseFloat(e.target.value))}
+                className="flex-1 accent-[#1a80ff] cursor-pointer"
+              />
+              <button
+                type="button"
+                onClick={() => setScale((s) => Math.min(2.5, s + 0.1))}
+                className="rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2 py-1 text-xs font-extrabold hover:bg-slate-100 cursor-pointer"
+              >
+                ➕
+              </button>
+            </div>
+
+            <div className="flex items-center gap-2 pt-1">
+              <button
+                type="button"
+                onClick={resetFraming}
+                className="flex-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 py-1.5 text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              >
+                🎯 Recentar Posición
+              </button>
+              <button
+                type="button"
+                onClick={applyCanvasCrop}
+                className="flex-1 rounded-xl bg-[#1a80ff] py-1.5 text-[11px] font-bold text-white shadow-xs hover:bg-[#0066e6] transition-colors cursor-pointer"
+              >
+                {isFramed ? "✅ Encuadre Aplicado" : "✨ Fijar Encuadre"}
+              </button>
+            </div>
           </div>
         </div>
       )}
     </div>
   );
 }
+
