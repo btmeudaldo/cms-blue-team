@@ -112,20 +112,22 @@ export function CourseImageUploader({
       ctx.fillStyle = "#0f172a";
       ctx.fillRect(0, 0, size, size);
 
-      const containerWidth = containerRef.current?.clientWidth || 280;
-
-      // Ratio of canvas size to DOM container size
+      const containerWidth = containerRef.current?.clientWidth || 260;
       const ratio = size / containerWidth;
 
-      // Draw image with scale and offset
-      const drawWidth = img.width * scale * ratio * (containerWidth / img.width);
-      const drawHeight = img.height * scale * ratio * (containerWidth / img.height);
-      
-      // Calculate centered aspect cover
-      const coverRatio = Math.max(size / img.width, size / img.height);
-      const scaledW = img.width * coverRatio * scale;
-      const scaledH = img.height * coverRatio * scale;
+      // Base aspect cover dimensions in DOM container
+      const coverRatio = Math.max(
+        containerWidth / img.width,
+        containerWidth / img.height,
+      );
+      const baseW = img.width * coverRatio;
+      const baseH = img.height * coverRatio;
 
+      // Scaled dimensions on Canvas
+      const scaledW = baseW * scale * ratio;
+      const scaledH = baseH * scale * ratio;
+
+      // Center position + drag offset
       const drawX = (size - scaledW) / 2 + position.x * ratio;
       const drawY = (size - scaledH) / 2 + position.y * ratio;
 
@@ -224,7 +226,7 @@ export function CourseImageUploader({
               <span>🎯</span> Encuadre Visual Cuadrado (1:1)
             </span>
             <span className="text-[10px] text-slate-500 font-semibold">
-              💡 Arrastra la foto con el ratón para centrarla
+              💡 Arrastra la foto completa para centrarla
             </span>
           </div>
 
@@ -247,10 +249,10 @@ export function CourseImageUploader({
               src={previewUrl}
               alt="Portada interactiva"
               style={{
-                transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+                transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) scale(${scale})`,
                 transition: isDragging ? "none" : "transform 0.1s ease-out",
               }}
-              className="w-full h-full object-cover pointer-events-none select-none"
+              className="absolute top-1/2 left-1/2 min-w-full min-h-full max-w-none max-h-none object-cover pointer-events-none select-none"
             />
 
             {/* Grid Overlay Guide Lines */}
