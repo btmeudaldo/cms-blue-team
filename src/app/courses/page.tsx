@@ -81,15 +81,19 @@ export default async function CoursesPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <SeedDemoButton label="Generar Cursos Demo" variant="secondary" />
-
             {isAdmin && (
-              <Link
-                href="/admin/courses"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#1a80ff] px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-[#0066e6] transition-colors"
-              >
-                Panel de Administración &rarr;
-              </Link>
+              <>
+                <SeedDemoButton
+                  label="Generar Cursos Demo"
+                  variant="secondary"
+                />
+                <Link
+                  href="/admin/courses"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#1a80ff] px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-[#0066e6] transition-colors"
+                >
+                  Panel de Administración &rarr;
+                </Link>
+              </>
             )}
           </div>
         </div>
@@ -104,16 +108,18 @@ export default async function CoursesPage() {
               No tienes cursos asignados aún
             </h3>
             <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">
-              Puedes hacer clic en el botón de abajo &quot;Cargar Curso Demo
-              Ahora&quot; para generar e inscribirte instantáneamente en módulos
-              con lecciones teóricas y temporizadores anticheat.
+              {isAdmin
+                ? 'Puedes hacer clic en el botón de abajo "Cargar Curso Demo Ahora" para generar e inscribirte instantáneamente en módulos de prueba.'
+                : "Ponte en contacto con tu instructor o administrador para que te matricule en tus módulos de formación."}
             </p>
-            <div className="mt-6">
-              <SeedDemoButton
-                label="Cargar Curso Demo Ahora"
-                variant="primary"
-              />
-            </div>
+            {isAdmin && (
+              <div className="mt-6">
+                <SeedDemoButton
+                  label="Cargar Curso Demo Ahora"
+                  variant="primary"
+                />
+              </div>
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

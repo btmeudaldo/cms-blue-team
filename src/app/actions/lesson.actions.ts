@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 
 import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
 import { calculateReadingTime } from "@/features/learning/domain/reading-time";
+import { getNextLessonOrder } from "@/features/learning/domain/lesson-order";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 
 export async function createLessonAction(courseId: string, formData: FormData) {
@@ -14,7 +15,6 @@ export async function createLessonAction(courseId: string, formData: FormData) {
   const contentHtml = sanitizeLessonHtml(
     String(formData.get("contentHtml") ?? "").trim(),
   );
-  const sequenceOrder = Number(formData.get("sequenceOrder") ?? 1);
   const customMinSeconds = formData.get("minSeconds");
 
   if (!title || !slug || !contentHtml) {
@@ -29,6 +29,17 @@ export async function createLessonAction(courseId: string, formData: FormData) {
       : calculatedSeconds;
 
   const supabase = await createSupabaseServerClient();
+  const { data: existingLessons, error: existingLessonsError } = await supabase
+    .from("lessons")
+    .select("lesson_order")
+    .eq("course_id", courseId);
+
+  if (existingLessonsError) throw new Error(existingLessonsError.message);
+
+  const sequenceOrder = getNextLessonOrder(
+    (existingLessons ?? []).map((lesson) => lesson.lesson_order),
+  );
+
   const { error } = await supabase.from("lessons").insert({
     course_id: courseId,
     title,
