@@ -101,43 +101,48 @@ export function CourseImageUploader({
     const img = new Image();
     img.crossOrigin = "anonymous";
     img.onload = () => {
-      const canvas = document.createElement("canvas");
-      const size = 600; // High resolution square canvas
-      canvas.width = size;
-      canvas.height = size;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
+      try {
+        const canvas = document.createElement("canvas");
+        const size = 600; // High resolution square canvas
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
 
-      // Fill background
-      ctx.fillStyle = "#0f172a";
-      ctx.fillRect(0, 0, size, size);
+        // Fill background
+        ctx.fillStyle = "#0f172a";
+        ctx.fillRect(0, 0, size, size);
 
-      const containerWidth = containerRef.current?.clientWidth || 260;
-      const ratio = size / containerWidth;
+        const containerWidth = containerRef.current?.clientWidth || 260;
+        const ratio = size / containerWidth;
 
-      // Base aspect cover dimensions in DOM container
-      const coverRatio = Math.max(
-        containerWidth / img.width,
-        containerWidth / img.height,
-      );
-      const baseW = img.width * coverRatio;
-      const baseH = img.height * coverRatio;
+        // Base aspect cover dimensions in DOM container
+        const coverRatio = Math.max(
+          containerWidth / img.width,
+          containerWidth / img.height,
+        );
+        const baseW = img.width * coverRatio;
+        const baseH = img.height * coverRatio;
 
-      // Scaled dimensions on Canvas
-      const scaledW = baseW * scale * ratio;
-      const scaledH = baseH * scale * ratio;
+        // Scaled dimensions on Canvas
+        const scaledW = baseW * scale * ratio;
+        const scaledH = baseH * scale * ratio;
 
-      // Center position + drag offset
-      const drawX = (size - scaledW) / 2 + position.x * ratio;
-      const drawY = (size - scaledH) / 2 + position.y * ratio;
+        // Center position + drag offset
+        const drawX = (size - scaledW) / 2 + position.x * ratio;
+        const drawY = (size - scaledH) / 2 + position.y * ratio;
 
-      ctx.drawImage(img, drawX, drawY, scaledW, scaledH);
+        ctx.drawImage(img, drawX, drawY, scaledW, scaledH);
 
-      const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.92);
-      setImageUrl(croppedDataUrl);
-      setPreviewUrl(croppedDataUrl);
-      setScale(1);
-      setPosition({ x: 0, y: 0 });
+        const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.92);
+        setImageUrl(croppedDataUrl);
+        setIsFramed(true);
+      } catch (err) {
+        // Fallback for CORS images: set position as framed
+        setIsFramed(true);
+      }
+    };
+    img.onerror = () => {
       setIsFramed(true);
     };
     img.src = previewUrl;
@@ -146,6 +151,7 @@ export function CourseImageUploader({
   function resetFraming() {
     setScale(1);
     setPosition({ x: 0, y: 0 });
+    setIsFramed(false);
   }
 
   const safeUrl = imageUrl || "";
@@ -326,7 +332,7 @@ export function CourseImageUploader({
                 onClick={resetFraming}
                 className="flex-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 py-1.5 text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
-                🎯 Recentar Posición
+                🎯 Recentrar Posición
               </button>
               <button
                 type="button"
