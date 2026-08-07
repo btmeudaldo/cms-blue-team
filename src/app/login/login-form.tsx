@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   demoLoginAction,
   signInAction,
@@ -8,6 +9,7 @@ import {
 } from "@/app/actions/auth.actions";
 
 export function LoginForm() {
+  const router = useRouter();
   const [isSignUp, setIsSignUp] = useState(false);
   const [loadingDemo, setLoadingDemo] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -18,9 +20,12 @@ export function LoginForm() {
     setFormError(null);
     try {
       const res = (await demoLoginAction(role)) as
-        { error?: string } | undefined;
+        { error?: string; redirectTo?: string } | undefined;
       if (res?.error) {
         setFormError(res.error);
+      } else if (res?.redirectTo) {
+        router.replace(res.redirectTo);
+        router.refresh();
       }
     } catch (err) {
       setFormError((err as Error).message);

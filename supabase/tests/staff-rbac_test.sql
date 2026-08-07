@@ -1,6 +1,6 @@
 begin;
 
-select plan(3);
+select plan(4);
 
 insert into auth.users (id, instance_id, aud, role, email, encrypted_password, email_confirmed_at, raw_app_meta_data, raw_user_meta_data, created_at, updated_at)
 values
@@ -25,6 +25,11 @@ select lives_ok(
 select lives_ok(
   $$insert into public.course_enrollments (course_id, user_id) values ('00000000-0000-0000-0000-000000000501', '00000000-0000-0000-0000-000000000402')$$,
   'an instructor can enroll a student in an owned course'
+);
+
+select lives_ok(
+  $$insert into public.course_enrollments (course_id, user_id) values ('00000000-0000-0000-0000-000000000501', '00000000-0000-0000-0000-000000000402') on conflict (user_id, course_id) do update set enrolled_at = excluded.enrolled_at$$,
+  'an instructor can update an existing enrollment in an owned course'
 );
 
 select * from finish();

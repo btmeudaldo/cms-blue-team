@@ -13,6 +13,7 @@ import {
 } from "@/app/actions/progress.actions";
 import { Header } from "@/shared/components/header";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
+import { getNextAdvanceButtonPosition } from "@/features/learning/domain/advance-button-position";
 
 type LessonPlayerProps = {
   contentHtml: string;
@@ -58,6 +59,7 @@ export function LessonPlayer({
     useState(isAlreadyCompleted);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [hasServerStarted, setHasServerStarted] = useState(isAlreadyCompleted);
+  const [isAdvanceArmed, setIsAdvanceArmed] = useState(isAlreadyCompleted);
 
   // Focus & Visibility state: timer ticks ONLY when window/tab is actively focused
   const [isWindowFocused, setIsWindowFocused] = useState(true);
@@ -122,9 +124,9 @@ export function LessonPlayer({
     };
   }, [hasServerStarted, isAlreadyCompleted, lessonId]);
 
+  const requirementsMet = remainingSeconds === 0 && reachedScrollThreshold;
   const canAdvance =
-    (remainingSeconds === 0 && reachedScrollThreshold && !isCompleting) ||
-    isAlreadyCompleted;
+    (requirementsMet && isAdvanceArmed && !isCompleting) || isAlreadyCompleted;
 
   // Initialize progress on server
   useEffect(() => {
@@ -160,6 +162,26 @@ export function LessonPlayer({
 
     return () => window.clearInterval(heartbeat);
   }, [hasServerStarted, isCompletedSuccess, isWindowFocused, lessonId]);
+
+  useEffect(() => {
+    if (!requirementsMet || isAlreadyCompleted) return;
+
+    const array = new Uint32Array(1);
+    crypto.getRandomValues(array);
+    let armTimer: number | undefined;
+    const movementFrame = window.requestAnimationFrame(() => {
+      setHorizontalPosition((currentPosition) =>
+        getNextAdvanceButtonPosition(currentPosition, array[0]),
+      );
+      setIsAdvanceArmed(false);
+      armTimer = window.setTimeout(() => setIsAdvanceArmed(true), 850);
+    });
+
+    return () => {
+      window.cancelAnimationFrame(movementFrame);
+      if (armTimer) window.clearTimeout(armTimer);
+    };
+  }, [isAlreadyCompleted, requirementsMet]);
 
   // Scroll listener
   useEffect(() => {

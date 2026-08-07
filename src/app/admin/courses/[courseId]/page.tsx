@@ -41,7 +41,7 @@ export default async function AdminCourseDetailPage({
       />
 
       <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* Navigation Breadcrumb */}
+        {/* Navigation Breadcrumb & Primary Action Buttons */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">
@@ -68,12 +68,21 @@ export default async function AdminCourseDetailPage({
             </h1>
           </div>
 
-          <Link
-            href="/admin/courses"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
-          >
-            &larr; Volver a Lista de Cursos
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href={`/admin/courses/${course.id}/lessons/new`}
+              className="inline-flex items-center gap-2 rounded-xl bg-[#1a80ff] px-4 py-2 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all cursor-pointer"
+            >
+              + Nueva Lección
+            </Link>
+
+            <Link
+              href="/admin/courses"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            >
+              &larr; Volver a Cursos
+            </Link>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -84,14 +93,14 @@ export default async function AdminCourseDetailPage({
                 Ajustes del Curso
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Modifica los metadatos generales.
+                Modifica los metadatos generales del módulo.
               </p>
             </div>
 
             <form action={updateThisCourse} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  Título
+                  Título del Curso
                 </label>
                 <input
                   name="title"
@@ -151,30 +160,35 @@ export default async function AdminCourseDetailPage({
 
               <Link
                 href={`/admin/courses/${course.id}/lessons/new`}
-                className="inline-flex items-center gap-2 rounded-xl bg-[#1a80ff] px-4 py-2 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#1a80ff] px-4 py-2 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all cursor-pointer"
               >
                 + Nueva Lección
               </Link>
             </div>
 
             {lessons.length === 0 ? (
-              <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-12 text-center shadow-xs">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] text-xl mb-3">
+              <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-10 text-center shadow-xs space-y-4">
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] text-2xl shadow-xs">
                   📝
                 </div>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                  Este curso no tiene lecciones creadas
-                </h3>
-                <p className="mt-1 text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
-                  Agrega la primera lección para incluir contenido enriquecido
-                  con imágenes y texto anticheat.
-                </p>
-                <Link
-                  href={`/admin/courses/${course.id}/lessons/new`}
-                  className="mt-4 inline-flex items-center gap-2 rounded-xl bg-[#1a80ff] px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-[#0066e6] transition-colors"
-                >
-                  + Agregar primera lección
-                </Link>
+                <div>
+                  <h3 className="text-base font-extrabold text-slate-900 dark:text-white">
+                    Este curso no tiene lecciones creadas todavía
+                  </h3>
+                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto leading-relaxed">
+                    Haz clic en el botón a continuación para crear la primera
+                    lección e incluir contenido enriquecido con texto, formato e
+                    imágenes.
+                  </p>
+                </div>
+                <div>
+                  <Link
+                    href={`/admin/courses/${course.id}/lessons/new`}
+                    className="inline-flex items-center gap-2 rounded-xl bg-[#1a80ff] px-5 py-3 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all cursor-pointer"
+                  >
+                    + Agregar primera lección
+                  </Link>
+                </div>
               </div>
             ) : (
               <div className="space-y-3">

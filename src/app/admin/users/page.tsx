@@ -34,6 +34,11 @@ export default async function AdminUsersPage() {
     getResilientCourses(user.id, true),
     getResilientEnrollments(),
   ]);
+  const manageableProfiles = isFullAdmin
+    ? profiles
+    : profiles.filter(
+        (profile: { role: string }) => profile.role === "student",
+      );
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
@@ -168,7 +173,7 @@ export default async function AdminUsersPage() {
           <div className="lg:col-span-2 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
             <div className="border-b border-slate-100 dark:border-slate-800 p-6">
               <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-                Usuarios Registrados ({profiles?.length || 0})
+                Usuarios Registrados ({manageableProfiles.length})
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 {isFullAdmin
@@ -177,7 +182,7 @@ export default async function AdminUsersPage() {
               </p>
             </div>
 
-            {!profiles || profiles.length === 0 ? (
+            {manageableProfiles.length === 0 ? (
               <div className="p-8 text-center text-sm text-slate-500 dark:text-slate-400">
                 No hay usuarios registrados en el sistema.
               </div>
@@ -194,7 +199,7 @@ export default async function AdminUsersPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                    {profiles.map((u: any) => {
+                    {manageableProfiles.map((u: any) => {
                       // Get initial enrolled course IDs for this student
                       const enrolledCourseIds = enrollments
                         .filter((enrollment) => enrollment.user_id === u.id)

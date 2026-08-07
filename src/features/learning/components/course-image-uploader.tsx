@@ -3,15 +3,16 @@
 import { useState } from "react";
 
 type CourseImageUploaderProps = {
-  defaultImageUrl?: string;
+  defaultImageUrl?: string | null;
 };
 
 export function CourseImageUploader({
   defaultImageUrl = "",
 }: CourseImageUploaderProps) {
+  const initialUrl = defaultImageUrl || "";
   const [mode, setMode] = useState<"url" | "file">("url");
-  const [imageUrl, setImageUrl] = useState(defaultImageUrl);
-  const [previewUrl, setPreviewUrl] = useState(defaultImageUrl);
+  const [imageUrl, setImageUrl] = useState(initialUrl);
+  const [previewUrl, setPreviewUrl] = useState(initialUrl);
   const [fileName, setFileName] = useState<string | null>(null);
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -21,7 +22,7 @@ export function CourseImageUploader({
     setFileName(file.name);
     const reader = new FileReader();
     reader.onload = (e) => {
-      const dataUrl = e.target?.result as string;
+      const dataUrl = (e.target?.result as string) || "";
       setImageUrl(dataUrl);
       setPreviewUrl(dataUrl);
     };
@@ -33,9 +34,11 @@ export function CourseImageUploader({
     setPreviewUrl(val);
   }
 
+  const safeUrl = imageUrl || "";
+
   return (
     <div className="space-y-3">
-      <input type="hidden" name="imageUrl" value={imageUrl} />
+      <input type="hidden" name="imageUrl" value={safeUrl} />
 
       <div className="flex items-center justify-between">
         <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">
@@ -72,7 +75,7 @@ export function CourseImageUploader({
       {mode === "url" ? (
         <input
           type="url"
-          value={imageUrl.startsWith("data:") ? "" : imageUrl}
+          value={safeUrl.startsWith("data:") ? "" : safeUrl}
           onChange={(e) => handleUrlChange(e.target.value)}
           placeholder="https://images.unsplash.com/photo-..."
           className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:border-[#1a80ff] focus:outline-hidden focus:ring-2 focus:ring-blue-100 transition-all"

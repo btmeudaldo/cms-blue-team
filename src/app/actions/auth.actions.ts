@@ -76,7 +76,7 @@ export async function demoLoginAction(targetRole: DemoRole) {
   if (error)
     return { error: "La cuenta de demostración local no está disponible." };
 
-  redirect(targetRole === "student" ? "/courses" : "/admin");
+  return { redirectTo: targetRole === "student" ? "/courses" : "/admin" };
 }
 
 export async function signOutAction() {

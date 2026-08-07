@@ -14,14 +14,14 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
     role === "instructor"
       ? "Instructor"
       : role === "admin"
-        ? "Admin"
-        : "Estudiante";
+        ? "Director / Admin"
+        : "Piloto Alumno";
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 dark:border-slate-800/80 dark:bg-slate-900/90 backdrop-blur-md shadow-xs transition-all">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
         {/* Brand Logo & Navigation */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 sm:gap-6 min-w-0">
           <Link
             href="/courses"
             className="flex items-center gap-2.5 group shrink-0"
@@ -46,13 +46,13 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
                 BLUE<span className="text-[#1a80ff]">TEAM</span>
               </span>
               <span className="text-[9px] uppercase font-bold tracking-widest text-slate-400 dark:text-slate-500">
-                CMS Formación
+                Escuela de Aviación
               </span>
             </div>
           </Link>
 
-          {/* Navigation Links with Compact Spacing */}
-          <nav className="hidden md:flex items-center gap-1 text-xs sm:text-sm font-semibold">
+          {/* Navigation Links with Non-Overlapping Spacing */}
+          <nav className="flex items-center gap-1 text-xs sm:text-sm font-semibold">
             <Link
               href="/courses"
               className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors"
@@ -70,13 +70,13 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
                 </Link>
                 <Link
                   href="/admin/users"
-                  className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors"
+                  className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors hidden sm:inline-block"
                 >
                   Matrículas
                 </Link>
                 <Link
                   href="/admin/progress"
-                  className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors"
+                  className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors hidden lg:inline-block"
                 >
                   Auditoría
                 </Link>
@@ -91,7 +91,7 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
 
           {userEmail ? (
             <div className="flex items-center gap-3">
-              {/* Compact User Name and Specific Role Badge */}
+              {/* Compact User Name and Role Badge */}
               <div className="hidden sm:flex flex-col items-end leading-tight max-w-[140px] sm:max-w-[160px]">
                 <span className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate w-full text-right">
                   {userName || userEmail.split("@")[0]}
