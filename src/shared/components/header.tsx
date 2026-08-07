@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { signOutAction } from "@/app/actions/auth.actions";
 import { ThemeToggle } from "./theme-toggle";
+import { CloudStatusBanner } from "./cloud-status-banner";
 
 type HeaderProps = {
   userEmail?: string;
@@ -18,7 +19,9 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
         : "Piloto Alumno";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 dark:border-slate-800/80 dark:bg-slate-900/90 backdrop-blur-md shadow-xs transition-all">
+    <>
+      <CloudStatusBanner />
+      <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 dark:border-slate-800/80 dark:bg-slate-900/90 backdrop-blur-md shadow-xs transition-all">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
         {/* Brand Logo & Navigation */}
         <div className="flex items-center gap-3 sm:gap-6 min-w-0">
@@ -141,5 +144,6 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
         </div>
       </div>
     </header>
+    </>
   );
 }
