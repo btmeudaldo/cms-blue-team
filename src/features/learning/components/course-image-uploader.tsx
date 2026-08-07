@@ -94,7 +94,7 @@ export function CourseImageUploader({
     setIsDragging(false);
   }
 
-  // Export current visually centered & zoomed image to Data URL using Canvas
+  // Export current visually centered & zoomed image to Data URL using Canvas safely
   function applyCanvasCrop() {
     if (!previewUrl) return;
 
@@ -134,11 +134,16 @@ export function CourseImageUploader({
 
         ctx.drawImage(img, drawX, drawY, scaledW, scaledH);
 
-        const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.92);
-        setImageUrl(croppedDataUrl);
-        setIsFramed(true);
+        const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.85);
+        if (croppedDataUrl && croppedDataUrl.startsWith("data:image/")) {
+          setImageUrl(croppedDataUrl);
+          setPreviewUrl(croppedDataUrl);
+          setScale(1);
+          setPosition({ x: 0, y: 0 });
+          setIsFramed(true);
+        }
       } catch (err) {
-        // Fallback for CORS images: set position as framed
+        // Safe fallback for CORS-protected external web images: mark as framed without breaking preview
         setIsFramed(true);
       }
     };
