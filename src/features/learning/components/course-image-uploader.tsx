@@ -297,15 +297,15 @@ export function CourseImageUploader({
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={() => setScale((s) => Math.max(0.8, s - 0.1))}
+                onClick={() => setScale((s) => Math.max(0.2, s - 0.1))}
                 className="rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2 py-1 text-xs font-extrabold hover:bg-slate-100 cursor-pointer"
               >
                 ➖
               </button>
               <input
                 type="range"
-                min="0.8"
-                max="2.5"
+                min="0.2"
+                max="3.0"
                 step="0.05"
                 value={scale}
                 onChange={(e) => setScale(parseFloat(e.target.value))}
@@ -313,7 +313,7 @@ export function CourseImageUploader({
               />
               <button
                 type="button"
-                onClick={() => setScale((s) => Math.min(2.5, s + 0.1))}
+                onClick={() => setScale((s) => Math.min(3.0, s + 0.1))}
                 className="rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2 py-1 text-xs font-extrabold hover:bg-slate-100 cursor-pointer"
               >
                 ➕
