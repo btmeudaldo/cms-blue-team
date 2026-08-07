@@ -22,23 +22,23 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
     <>
       <CloudStatusBanner />
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 dark:border-slate-800/80 dark:bg-slate-900/90 backdrop-blur-md shadow-xs transition-all">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 h-20">
         {/* Brand Logo & Navigation */}
         <div className="flex items-center gap-3 sm:gap-6 min-w-0">
           <Link
             href="/courses"
-            className="flex items-center gap-2.5 group shrink-0"
+            className="flex items-center gap-3 group shrink-0"
           >
             <img
               src="/logo.jpg"
               alt="BLUE TEAM Flight School"
-              className="h-10 w-10 rounded-xl object-cover shadow-xs border border-blue-200 dark:border-blue-800 group-hover:scale-105 transition-transform"
+              className="h-12 w-12 sm:h-14 sm:w-14 rounded-2xl object-cover shadow-sm border border-blue-200 dark:border-blue-800 group-hover:scale-105 transition-transform"
             />
             <div className="flex flex-col">
-              <span className="font-extrabold text-base sm:text-lg leading-tight tracking-tight text-slate-900 dark:text-white">
+              <span className="font-black text-lg sm:text-xl leading-none tracking-tight text-slate-900 dark:text-white">
                 BLUE<span className="text-[#1a80ff]">TEAM</span>
               </span>
-              <span className="text-[9px] uppercase font-bold tracking-widest text-slate-400 dark:text-slate-500">
+              <span className="text-[10px] uppercase font-extrabold tracking-widest text-slate-400 dark:text-slate-500 mt-1">
                 Flight School
               </span>
             </div>
