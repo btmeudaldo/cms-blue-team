@@ -104,15 +104,15 @@ export function CourseImageUploader({
         </div>
       )}
 
-      {/* Image Thumbnail Preview */}
+      {/* Square Image Thumbnail Preview (1:1 Aspect Ratio) */}
       {previewUrl && (
-        <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 h-36 bg-slate-900 group">
+        <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 aspect-square w-full max-w-[280px] mx-auto bg-slate-900 shadow-md group my-2">
           <img
             src={previewUrl}
             alt="Vista previa de portada"
             className="w-full h-full object-cover"
           />
-          <div className="absolute top-2 right-2">
+          <div className="absolute top-2 right-2 z-10">
             <button
               type="button"
               onClick={() => {
@@ -120,10 +120,15 @@ export function CourseImageUploader({
                 setPreviewUrl("");
                 setFileName(null);
               }}
-              className="rounded-lg bg-slate-900/80 hover:bg-rose-600 text-white px-2 py-1 text-[10px] font-bold backdrop-blur-xs transition-colors cursor-pointer"
+              className="rounded-lg bg-slate-900/85 hover:bg-rose-600 text-white px-2.5 py-1 text-[11px] font-bold backdrop-blur-xs transition-colors cursor-pointer shadow-sm"
             >
               ✕ Eliminar
             </button>
+          </div>
+          <div className="absolute bottom-2 left-2 right-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1.5 rounded-xl border border-white/10 text-center">
+            <span className="text-[10px] font-bold text-slate-200 flex items-center justify-center gap-1">
+              <span>📷</span> Vista Previa Cuadrada (1:1)
+            </span>
           </div>
         </div>
       )}
