@@ -136,7 +136,7 @@ export async function getResilientCourses(userId: string, isAdmin: boolean) {
     }
 
     const result: any = await queryPromise;
-    if (result && !result.error && result.data && result.data.length > 0) {
+    if (result && !result.error && result.data) {
       const rawCourses = isAdmin
         ? result.data || []
         : result.data.map((e: any) => e.courses).filter(Boolean);
@@ -163,13 +163,26 @@ export async function getResilientCourses(userId: string, isAdmin: boolean) {
             finalCourses.push(mc);
           }
         }
+        return finalCourses;
       }
 
-      if (finalCourses.length > 0) return finalCourses;
+      // If student and DB query returned enrolled courses list
+      if (!isAdmin) {
+        // If DB returned courses, return them
+        if (finalCourses.length > 0) return finalCourses;
+
+        // Fallback to mockStore student enrolled courses ONLY
+        const enrolledMockCourses = mockStore.getStudentCourses(userId);
+        return enrolledMockCourses;
+      }
     }
   } catch (err) {}
 
-  return mockStore.getCourses();
+  if (isAdmin) {
+    return mockStore.getCourses();
+  }
+
+  return mockStore.getStudentCourses(userId);
 }
 
 export async function getResilientCourseDetail(courseId: string) {

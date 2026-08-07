@@ -647,6 +647,16 @@ export const mockStore = {
     });
     return list;
   },
+  getStudentCourses(userId: string) {
+    const enrolledSet = new Set(
+      this.getEnrollments()
+        .filter((e) => e.user_id === userId)
+        .map((e) => e.course_id),
+    );
+    return mockCourses.filter(
+      (c) => enrolledSet.has(c.id) || enrolledSet.has(c.slug),
+    );
+  },
   startLesson(userId: string, lessonId: string) {
     let existing = mockProgressRecords.find((p) => p.lesson_id === lessonId);
     if (!existing) {
