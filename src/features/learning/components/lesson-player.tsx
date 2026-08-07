@@ -14,6 +14,7 @@ import {
 import { Header } from "@/shared/components/header";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 import { getNextAdvanceButtonPosition } from "@/features/learning/domain/advance-button-position";
+import { getLessonScrollProgress } from "@/features/learning/domain/lesson-scroll-progress";
 
 type LessonPlayerProps = {
   contentHtml: string;
@@ -47,6 +48,7 @@ export function LessonPlayer({
   const safeContentHtml = sanitizeLessonHtml(contentHtml);
   const contentRef = useRef<HTMLDivElement>(null);
   const hasStartedRef = useRef(isAlreadyCompleted);
+  const hasUserScrolledRef = useRef(isAlreadyCompleted);
 
   const [remainingSeconds, setRemainingSeconds] = useState(
     isAlreadyCompleted ? 0 : minSeconds,
@@ -188,24 +190,20 @@ export function LessonPlayer({
     function handleWindowScroll() {
       const article = contentRef.current;
       if (!article) return;
+      hasUserScrolledRef.current = true;
       const bounds = article.getBoundingClientRect();
-      if (bounds.height <= window.innerHeight) {
-        setScrollProgress(100);
-        setReachedScrollThreshold(true);
-        return;
-      }
-      const traversedPixels = window.innerHeight - bounds.top;
-      const pct = Math.min(
-        100,
-        Math.max(0, Math.round((traversedPixels / bounds.height) * 100)),
-      );
+      const pct = getLessonScrollProgress({
+        articleHeight: bounds.height,
+        articleTop: bounds.top,
+        hasUserScrolled: hasUserScrolledRef.current,
+        viewportHeight: window.innerHeight,
+      });
       setScrollProgress(pct);
       if (pct >= 90) {
         setReachedScrollThreshold(true);
       }
     }
 
-    handleWindowScroll(); // Initial check
     window.addEventListener("scroll", handleWindowScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleWindowScroll);
   }, []);
@@ -359,7 +357,7 @@ export function LessonPlayer({
         {/* Content Article Container with clear top spacing */}
         <article
           ref={contentRef}
-          className="prose prose-slate dark:prose-invert max-w-none rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 shadow-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-4"
+          className="prose prose-slate dark:prose-invert min-h-screen max-w-none rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 shadow-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-4"
           dangerouslySetInnerHTML={{ __html: safeContentHtml }}
         />
       </main>
