@@ -44,32 +44,222 @@ export function LessonEditorToolbar({
   const [fileName, setFileName] = useState<string | null>(null);
   const [showCodeMode, setShowCodeMode] = useState(false);
 
+const FALLBACK_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="%230f172a"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%2338bdf8" font-family="sans-serif" font-size="22" font-weight="bold">✈️ Recurso Gráfico Aeronáutico</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2394a3b8" font-family="sans-serif" font-size="13">Imagen de lección adjunta</text></svg>`;
+
+const DEFAULT_PLACEHOLDER_TEXT =
+  "Escribe aquí el contenido de la lección para los alumnos de aviación...";
+
+  function clearPlaceholderIfPresent() {
+    if (editorRef.current) {
+      const text = editorRef.current.textContent?.trim() || "";
+      if (
+        text === DEFAULT_PLACEHOLDER_TEXT ||
+        editorRef.current.innerHTML.includes("placeholder-text")
+      ) {
+        editorRef.current.innerHTML = "<p><br></p>";
+        onChangeContentHtml("");
+      }
+    }
+  }
+
+  // Helper to attach controls to all image wrappers in the DOM
+  function attachImageControlsToDom(container: HTMLElement) {
+    const images = container.querySelectorAll("img");
+    images.forEach((img) => {
+      // Ensure fallback if image fails to load
+      img.onerror = function () {
+        const el = this as HTMLImageElement;
+        if (el.src !== FALLBACK_SVG) {
+          el.src = FALLBACK_SVG;
+        }
+      };
+
+      // Ensure all images in the editor have aspect-ratio 1 / 1 by default if not set
+      if (!img.style.aspectRatio) {
+        img.style.aspectRatio = "1 / 1";
+        img.style.objectFit = img.style.objectFit || "cover";
+      }
+
+      let wrapper = img.closest(".lesson-img-wrapper");
+      if (!wrapper) {
+        const parentDiv = img.closest("div");
+        if (parentDiv && parentDiv !== container) {
+          wrapper = parentDiv;
+          wrapper.classList.add("lesson-img-wrapper");
+        } else {
+          wrapper = document.createElement("div");
+          wrapper.className =
+            "lesson-img-wrapper my-6 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-lg max-w-xl mx-auto text-center relative group";
+          img.parentNode?.insertBefore(wrapper, img);
+          wrapper.appendChild(img);
+        }
+      }
+
+      if (!wrapper.querySelector(".img-editor-controls")) {
+        const controls = document.createElement("div");
+        controls.className =
+          "img-editor-controls flex items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-100 dark:border-slate-800 select-none";
+        controls.setAttribute("contenteditable", "false");
+        controls.innerHTML = `
+          <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 flex items-center gap-1">
+            🖼️ Formato Cuadrado (1:1)
+          </span>
+          <div class="flex flex-wrap items-center gap-1.5">
+            <button type="button" class="img-btn-fit px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 text-[#1a80ff] text-[11px] font-bold rounded-lg border border-blue-200 dark:border-blue-800 transition-colors cursor-pointer" title="Ver imagen completa sin recortar (contain/cover)">
+              🎯 Ver Completa / Llenar
+            </button>
+            <button type="button" class="img-btn-pos px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover enfoque vertical (Arriba / Centro / Abajo)">
+              ↕️ Posición Vertical
+            </button>
+            <button type="button" class="img-btn-shrink px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Reducir tamaño del cuadro cuadrado">
+              🔍- Reducir
+            </button>
+            <button type="button" class="img-btn-enlarge px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Agrandar tamaño del cuadro cuadrado">
+              🔍+ Agrandar
+            </button>
+            <button type="button" class="img-btn-up px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover la imagen arriba de la lección">
+              ⬆️ Arriba
+            </button>
+            <button type="button" class="img-btn-down px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover la imagen abajo de la lección">
+              ⬇️ Abajo
+            </button>
+            <button type="button" class="img-btn-remove px-2.5 py-1 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 dark:hover:bg-rose-900 text-rose-600 dark:text-rose-400 text-[11px] font-bold rounded-lg border border-rose-200 dark:border-rose-800 transition-colors cursor-pointer" title="Eliminar esta imagen">
+              🗑️ Quitar
+            </button>
+          </div>
+        `;
+        wrapper.insertBefore(controls, wrapper.firstChild);
+      }
+    });
+  }
+
+  // Helper to extract clean HTML without editor controls or placeholders
+  function getCleanHtml(): string {
+    if (!editorRef.current) return "";
+    const clone = editorRef.current.cloneNode(true) as HTMLElement;
+    const controls = clone.querySelectorAll(".img-editor-controls");
+    controls.forEach((c) => c.remove());
+    const placeholders = clone.querySelectorAll(".placeholder-text");
+    placeholders.forEach((p) => p.remove());
+    return clone.innerHTML;
+  }
+
   // Constant mount dependency array [] to prevent React Hook render size mismatch
   useEffect(() => {
     if (editorRef.current) {
-      editorRef.current.innerHTML =
-        initialContentHtmlRef.current ||
-        "<p>Escribe aquí el contenido de la lección para los alumnos de aviación...</p>";
+      const initial = initialContentHtmlRef.current?.trim();
+      if (!initial) {
+        editorRef.current.innerHTML = `<p class="placeholder-text text-slate-400 dark:text-slate-500 italic">${DEFAULT_PLACEHOLDER_TEXT}</p>`;
+      } else {
+        editorRef.current.innerHTML = initial;
+      }
+      attachImageControlsToDom(editorRef.current);
+      onChangeContentHtml(getCleanHtml());
     }
   }, []);
 
   function handleVisualInput() {
     if (editorRef.current) {
-      onChangeContentHtml(editorRef.current.innerHTML);
+      attachImageControlsToDom(editorRef.current);
+      onChangeContentHtml(getCleanHtml());
+    }
+  }
+
+  function handleCanvasClick(e: React.MouseEvent<HTMLDivElement>) {
+    clearPlaceholderIfPresent();
+    const target = e.target as HTMLElement;
+
+    const btnUp = target.closest(".img-btn-up");
+    const btnDown = target.closest(".img-btn-down");
+    const btnRemove = target.closest(".img-btn-remove");
+    const btnEnlarge = target.closest(".img-btn-enlarge");
+    const btnShrink = target.closest(".img-btn-shrink");
+    const btnFit = target.closest(".img-btn-fit");
+    const btnPos = target.closest(".img-btn-pos");
+
+    if (btnUp || btnDown || btnRemove || btnEnlarge || btnShrink || btnFit || btnPos) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const wrapper = target.closest(".lesson-img-wrapper");
+      if (!wrapper) return;
+      const parent = wrapper.parentNode;
+      if (!parent) return;
+
+      try {
+        if (btnRemove) {
+          wrapper.remove();
+        } else if (btnUp) {
+          const prev = wrapper.previousElementSibling;
+          if (prev) {
+            parent.insertBefore(wrapper, prev);
+          }
+        } else if (btnDown) {
+          const next = wrapper.nextElementSibling;
+          if (next) {
+            parent.insertBefore(wrapper, next.nextElementSibling);
+          }
+        } else if (btnEnlarge || btnShrink) {
+          const img = wrapper.querySelector("img");
+          if (img) {
+            const currentWidth = img.offsetWidth || 320;
+            let newWidth = currentWidth;
+            if (btnEnlarge) {
+              newWidth = Math.min(750, currentWidth + 70);
+            } else if (btnShrink) {
+              newWidth = Math.max(160, currentWidth - 70);
+            }
+            img.style.width = `${newWidth}px`;
+            img.style.maxWidth = "100%";
+            img.style.height = "auto";
+            img.style.aspectRatio = "1 / 1";
+          }
+        } else if (btnFit) {
+          const img = wrapper.querySelector("img");
+          if (img) {
+            const currentFit = img.style.objectFit || "cover";
+            if (currentFit === "contain") {
+              img.style.objectFit = "cover";
+              (img as HTMLElement).style.backgroundColor = "transparent";
+            } else {
+              img.style.objectFit = "contain";
+              (img as HTMLElement).style.backgroundColor = "#0b1120";
+            }
+          }
+        } else if (btnPos) {
+          const img = wrapper.querySelector("img");
+          if (img) {
+            const currentPos = img.style.objectPosition || "center";
+            if (currentPos === "center" || currentPos === "50% 50%") {
+              img.style.objectPosition = "top";
+            } else if (currentPos === "top") {
+              img.style.objectPosition = "bottom";
+            } else {
+              img.style.objectPosition = "center";
+            }
+          }
+        }
+      } catch (err) {
+        console.warn("No se pudo reordenar o ajustar la imagen en el DOM:", err);
+      }
+
+      handleVisualInput();
     }
   }
 
   function toggleCodeMode() {
     if (!showCodeMode && editorRef.current) {
-      // Switching from Visual to HTML Code mode -> save visual HTML to state
-      onChangeContentHtml(editorRef.current.innerHTML);
+      onChangeContentHtml(getCleanHtml());
     } else if (showCodeMode) {
-      // Switching back from Code mode to Visual -> populate innerHTML after render
       setTimeout(() => {
         if (editorRef.current) {
-          editorRef.current.innerHTML =
-            contentHtml ||
-            "<p>Escribe aquí el contenido de la lección para los alumnos de aviación...</p>";
+          const content = contentHtml?.trim();
+          if (!content) {
+            editorRef.current.innerHTML = `<p class="placeholder-text text-slate-400 dark:text-slate-500 italic">${DEFAULT_PLACEHOLDER_TEXT}</p>`;
+          } else {
+            editorRef.current.innerHTML = content;
+          }
+          attachImageControlsToDom(editorRef.current);
         }
       }, 0);
     }
@@ -198,15 +388,21 @@ export function LessonEditorToolbar({
 
   function handleInsertImage(url: string, captionText: string) {
     if (!url) return;
+    const finalUrl = url.trim() || FALLBACK_SVG;
+
     const imgHtml = `
-<div class="my-6 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-lg">
-  <img src="${url}" alt="${captionText || "Imagen aeronáutica"}" class="w-full h-64 object-cover rounded-xl my-2" />
+<div class="lesson-img-wrapper my-6 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-lg max-w-xl mx-auto text-center">
+  <img src="${finalUrl}" alt="${captionText || "Imagen aeronáutica"}" class="w-full max-w-md aspect-square object-cover rounded-xl mx-auto my-2 shadow-xs" onerror="if (this.src !== '${FALLBACK_SVG}') this.src='${FALLBACK_SVG}';" style="aspect-ratio: 1 / 1; object-fit: cover;" />
   ${captionText ? `<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 text-center italic">${captionText}</p>` : ""}
 </div>
 <p><br></p>
 `.trim();
 
     insertBlockSnippet(imgHtml);
+    if (editorRef.current) {
+      attachImageControlsToDom(editorRef.current);
+    }
+    handleVisualInput();
     setShowImageModal(false);
     setCustomImageUrl("");
     setCustomCaption("");
@@ -394,8 +590,10 @@ export function LessonEditorToolbar({
           <div
             ref={editorRef}
             contentEditable
+            onFocus={clearPlaceholderIfPresent}
             onInput={handleVisualInput}
             onBlur={handleVisualInput}
+            onClick={handleCanvasClick}
             className="visual-canvas min-h-[340px] max-h-[600px] overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6 sm:p-8 text-slate-900 dark:text-slate-100 text-sm leading-relaxed focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 prose prose-slate dark:prose-invert max-w-none shadow-xs"
           />
           <div className="absolute bottom-3 right-4 text-[10px] font-bold text-slate-400 dark:text-slate-500 pointer-events-none">
@@ -452,17 +650,6 @@ export function LessonEditorToolbar({
                 }`}
               >
                 🔗 URL Directa
-              </button>
-              <button
-                type="button"
-                onClick={() => setImageTab("presets")}
-                className={`pb-2 px-3 transition-colors border-b-2 ${
-                  imageTab === "presets"
-                    ? "border-[#1a80ff] text-[#1a80ff]"
-                    : "border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300"
-                }`}
-              >
-                ✈️ Diagramas Aeronáuticos
               </button>
             </div>
 
@@ -548,34 +735,6 @@ export function LessonEditorToolbar({
                     Insertar Imagen desde URL
                   </button>
                 )}
-              </div>
-            )}
-
-            {/* Tab 3: Preset Diagram Choices */}
-            {imageTab === "presets" && (
-              <div className="grid grid-cols-2 gap-3 max-h-56 overflow-y-auto p-1">
-                {PRESET_IMAGES.map((preset, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() =>
-                      handleInsertImage(preset.url, preset.caption)
-                    }
-                    className="flex flex-col text-left rounded-xl border border-slate-200 dark:border-slate-800 p-2.5 bg-slate-50 dark:bg-slate-950 hover:border-[#1a80ff] hover:bg-blue-50/50 dark:hover:bg-blue-950/40 transition-all group cursor-pointer"
-                  >
-                    <img
-                      src={preset.url}
-                      alt={preset.title}
-                      className="w-full h-20 object-cover rounded-lg mb-1.5"
-                    />
-                    <span className="text-[11px] font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff]">
-                      {preset.title}
-                    </span>
-                    <span className="text-[9px] text-slate-400 line-clamp-1">
-                      {preset.caption}
-                    </span>
-                  </button>
-                ))}
               </div>
             )}
           </div>

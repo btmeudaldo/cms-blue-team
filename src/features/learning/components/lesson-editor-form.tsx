@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { LessonEditorToolbar } from "./lesson-editor-toolbar";
 
 type LessonEditorFormProps = {
@@ -25,6 +26,7 @@ export function LessonEditorForm({
   defaultContentHtml = "",
   isEditing = false,
 }: LessonEditorFormProps) {
+  const router = useRouter();
   const [contentHtml, setContentHtml] = useState(defaultContentHtml);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -39,9 +41,11 @@ export function LessonEditorForm({
 
     try {
       await action(formData);
+      router.push(`/admin/courses/${courseId}`);
+      router.refresh();
     } catch (err) {
+      console.error("Error al guardar lección:", err);
       setErrorMessage((err as Error).message);
-    } finally {
       setIsSubmitting(false);
     }
   }

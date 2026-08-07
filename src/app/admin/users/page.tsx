@@ -127,6 +127,7 @@ export default async function AdminUsersPage() {
                   <input
                     name="password"
                     type="password"
+                    defaultValue="blueteam"
                     placeholder="••••••••"
                     required
                     className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden transition-all"
@@ -202,8 +203,8 @@ export default async function AdminUsersPage() {
                     {manageableProfiles.map((u: any) => {
                       // Get initial enrolled course IDs for this student
                       const enrolledCourseIds = enrollments
-                        .filter((enrollment) => enrollment.user_id === u.id)
-                        .map((enrollment) => enrollment.course_id);
+                        .filter((enrollment: any) => enrollment.user_id === u.id)
+                        .map((enrollment: any) => enrollment.course_id);
 
                       return (
                         <tr

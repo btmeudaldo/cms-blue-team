@@ -168,6 +168,86 @@ const mockProfiles: MockUser[] = [
     full_name: "Director de Escuela BlueTeam",
     role: "admin",
   },
+  // 3 Instructores más
+  {
+    id: "instructor-2",
+    email: "inst.martinez@blueteam.com",
+    full_name: "Capt. Roberto Martínez (Instructor PPL/CPL)",
+    role: "instructor",
+  },
+  {
+    id: "instructor-3",
+    email: "inst.alvarez@blueteam.com",
+    full_name: "Capt. Laura Álvarez (Instructora IFR/Navegación)",
+    role: "instructor",
+  },
+  {
+    id: "instructor-4",
+    email: "inst.reyes@blueteam.com",
+    full_name: "Capt. Fernando Reyes (Instructor Ciberseguridad & Avionica)",
+    role: "instructor",
+  },
+  // 10 Alumnos de prueba
+  {
+    id: "student-1",
+    email: "alumno1@blueteam.com",
+    full_name: "Carlos Mendoza (Alumno PPL)",
+    role: "student",
+  },
+  {
+    id: "student-2",
+    email: "alumno2@blueteam.com",
+    full_name: "Sofía Rodríguez (Alumno CPL)",
+    role: "student",
+  },
+  {
+    id: "student-3",
+    email: "alumno3@blueteam.com",
+    full_name: "Alejandro Gómez (Alumno ATPL)",
+    role: "student",
+  },
+  {
+    id: "student-4",
+    email: "alumno4@blueteam.com",
+    full_name: "Lucía Fernández (Alumno VFR)",
+    role: "student",
+  },
+  {
+    id: "student-5",
+    email: "alumno5@blueteam.com",
+    full_name: "Mateo Navas (Alumno IFR)",
+    role: "student",
+  },
+  {
+    id: "student-6",
+    email: "alumno6@blueteam.com",
+    full_name: "Elena Benítez (Alumno PPL)",
+    role: "student",
+  },
+  {
+    id: "student-7",
+    email: "alumno7@blueteam.com",
+    full_name: "Javier Morales (Alumno CPL)",
+    role: "student",
+  },
+  {
+    id: "student-8",
+    email: "alumno8@blueteam.com",
+    full_name: "Valeria Torres (Alumno ATPL)",
+    role: "student",
+  },
+  {
+    id: "student-9",
+    email: "alumno9@blueteam.com",
+    full_name: "Daniel Castillo (Alumno VFR)",
+    role: "student",
+  },
+  {
+    id: "student-10",
+    email: "alumno10@blueteam.com",
+    full_name: "Paula Gutiérrez (Alumno IFR)",
+    role: "student",
+  },
 ];
 
 const mockEnrollments: Set<string> = new Set([
@@ -177,13 +257,28 @@ const mockEnrollments: Set<string> = new Set([
   "instructor-123_course-demo-2",
   "admin-123_course-demo-1",
   "admin-123_course-demo-2",
+  "instructor-2_course-demo-1",
+  "instructor-3_course-demo-1",
+  "instructor-4_course-demo-2",
+  "student-1_course-demo-1",
+  "student-2_course-demo-1",
+  "student-3_course-demo-1",
+  "student-4_course-demo-1",
+  "student-5_course-demo-2",
+  "student-6_course-demo-2",
+  "student-7_course-demo-1",
+  "student-8_course-demo-2",
+  "student-9_course-demo-1",
+  "student-10_course-demo-2",
 ]);
 
 const nowTime = new Date();
-const start1 = new Date(nowTime.getTime() - 1000 * 60 * 30).toISOString();
-const end1 = new Date(nowTime.getTime() - 1000 * 60 * 29).toISOString();
-const start2 = new Date(nowTime.getTime() - 1000 * 60 * 15).toISOString();
-const end2 = new Date(nowTime.getTime() - 1000 * 60 * 14).toISOString();
+const start1 = new Date(nowTime.getTime() - 1000 * 60 * 120).toISOString();
+const end1 = new Date(nowTime.getTime() - 1000 * 60 * 118).toISOString();
+const start2 = new Date(nowTime.getTime() - 1000 * 60 * 60).toISOString();
+const end2 = new Date(nowTime.getTime() - 1000 * 60 * 58).toISOString();
+const start3 = new Date(nowTime.getTime() - 1000 * 60 * 30).toISOString();
+const end3 = new Date(nowTime.getTime() - 1000 * 60 * 28).toISOString();
 
 const mockProgressRecords: MockProgress[] = [
   {
@@ -200,6 +295,86 @@ const mockProgressRecords: MockProgress[] = [
     started_at: start2,
     completed_at: end2,
     elapsed_seconds: 65,
+    is_completed: true,
+  },
+  {
+    user_id: "student-1",
+    lesson_id: "lesson-1-1",
+    started_at: start1,
+    completed_at: end1,
+    elapsed_seconds: 75,
+    is_completed: true,
+  },
+  {
+    user_id: "student-2",
+    lesson_id: "lesson-1-1",
+    started_at: start2,
+    completed_at: end2,
+    elapsed_seconds: 80,
+    is_completed: true,
+  },
+  {
+    user_id: "student-3",
+    lesson_id: "lesson-1-2",
+    started_at: start3,
+    completed_at: end3,
+    elapsed_seconds: 45,
+    is_completed: true,
+  },
+  {
+    user_id: "student-4",
+    lesson_id: "lesson-1-1",
+    started_at: start3,
+    completed_at: end3,
+    elapsed_seconds: 90,
+    is_completed: true,
+  },
+  {
+    user_id: "student-5",
+    lesson_id: "lesson-2-1",
+    started_at: start1,
+    completed_at: end1,
+    elapsed_seconds: 110,
+    is_completed: true,
+  },
+  {
+    user_id: "student-6",
+    lesson_id: "lesson-2-1",
+    started_at: start2,
+    completed_at: end2,
+    elapsed_seconds: 95,
+    is_completed: true,
+  },
+  {
+    user_id: "student-7",
+    lesson_id: "lesson-1-1",
+    started_at: start2,
+    completed_at: end2,
+    elapsed_seconds: 60,
+    is_completed: true,
+  },
+  {
+    user_id: "student-8",
+    lesson_id: "lesson-2-1",
+    started_at: start3,
+    completed_at: end3,
+    elapsed_seconds: 120,
+    is_completed: true,
+  },
+  {
+    user_id: "student-9",
+    lesson_id: "lesson-1-1",
+    started_at: start1,
+    completed_at: end1,
+    elapsed_seconds: 50,
+    is_completed: true,
+  },
+  {
+    user_id: "student-10",
+    lesson_id: "lesson-2-1",
+    started_at: start2,
+    completed_at: end2,
+    elapsed_seconds: 130,
     is_completed: true,
   },
 ];
@@ -236,6 +411,33 @@ export const mockStore = {
     course.lessons.push(newLesson);
     return newLesson;
   },
+  updateLesson(
+    lessonId: string,
+    data: {
+      title: string;
+      slug: string;
+      content_html: string;
+      sequence_order: number;
+      word_count: number;
+      min_seconds: number;
+    },
+  ) {
+    for (const course of mockCourses) {
+      const lesson = course.lessons.find(
+        (l) => l.id === lessonId || l.slug === lessonId,
+      );
+      if (lesson) {
+        lesson.title = data.title;
+        lesson.slug = data.slug;
+        lesson.content_html = data.content_html;
+        lesson.sequence_order = data.sequence_order;
+        lesson.word_count = data.word_count;
+        lesson.min_seconds = data.min_seconds;
+        return lesson;
+      }
+    }
+    return null;
+  },
   getProfiles() {
     return mockProfiles;
   },
@@ -267,10 +469,27 @@ export const mockStore = {
     return mockEnrollments.has(`${userId}_${courseId}`);
   },
   getUserProgress(userId: string) {
-    return mockProgressRecords;
+    return mockProgressRecords.filter(
+      (p) => p.user_id === userId || userId === "all",
+    );
+  },
+  getProgressByUserId(userId: string) {
+    return mockProgressRecords.filter(
+      (p) => p.user_id === userId || userId === "all",
+    );
   },
   getAllProgress() {
     return mockProgressRecords;
+  },
+  getEnrollments() {
+    const list: { user_id: string; course_id: string }[] = [];
+    mockEnrollments.forEach((entry) => {
+      const parts = entry.split("_");
+      if (parts.length >= 2) {
+        list.push({ user_id: parts[0], course_id: parts.slice(1).join("_") });
+      }
+    });
+    return list;
   },
   startLesson(userId: string, lessonId: string) {
     let existing = mockProgressRecords.find((p) => p.lesson_id === lessonId);

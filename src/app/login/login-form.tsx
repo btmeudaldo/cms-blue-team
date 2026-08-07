@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   demoLoginAction,
+  demoUserSelectLoginAction,
   signInAction,
   signUpAction,
 } from "@/app/actions/auth.actions";
@@ -14,13 +15,18 @@ export function LoginForm() {
   const [loadingDemo, setLoadingDemo] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
 
-  async function handleDemo(role: "student" | "instructor" | "admin") {
-    setLoadingDemo(role);
+  const [selectedStudentEmail, setSelectedStudentEmail] = useState("student@blueteam.com");
+  const [selectedInstructorEmail, setSelectedInstructorEmail] = useState("instructor@blueteam.com");
+
+  async function handleSelectDemoUser(email: string, role: string) {
+    setLoadingDemo(email);
     setFormError(null);
     try {
-      const res = (await demoLoginAction(role)) as
-        { error?: string; redirectTo?: string } | undefined;
+      const res = (await demoUserSelectLoginAction(email, role)) as
+        | { error?: string; redirectTo?: string }
+        | undefined;
       if (res?.error) {
         setFormError(res.error);
       } else if (res?.redirectTo) {
@@ -59,8 +65,8 @@ export function LoginForm() {
 
   return (
     <div className="w-full max-w-md space-y-6">
-      {/* Quick Demo Login Card with 3 Dedicated Roles */}
-      <div className="rounded-2xl border border-blue-100 dark:border-blue-900/50 bg-gradient-to-br from-blue-50/90 to-indigo-50/50 dark:from-blue-950/40 dark:to-indigo-950/20 p-5 shadow-sm space-y-3">
+      {/* Quick Demo Login Card with Selectable Dropdowns */}
+      <div className="rounded-2xl border border-blue-100 dark:border-blue-900/50 bg-gradient-to-br from-blue-50/90 to-indigo-50/50 dark:from-blue-950/40 dark:to-indigo-950/20 p-5 shadow-sm space-y-4">
         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1a80ff]">
           <svg
             className="w-4 h-4"
@@ -75,60 +81,75 @@ export function LoginForm() {
               d="M13 10V3L4 14h7v7l9-11h-7z"
             />
           </svg>
-          Prueba Rápida de 1-Clic (Demo)
+          Acceso Rápido de Prueba (Sin Contraseña)
         </div>
-        <p className="text-xs text-slate-600 dark:text-slate-300">
-          Explora los distintos roles del sistema inmediatamente sin ingresar
-          contraseña:
-        </p>
 
-        <div className="grid grid-cols-3 gap-2">
-          {/* Demo Alumno */}
+        <div className="space-y-4">
+          {/* Student Dropdown & Login */}
+          <div className="space-y-1.5">
+            <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300">
+              🎓 Seleccionar Alumno de Prueba:
+            </label>
+            <select
+              value={selectedStudentEmail}
+              onChange={(e) => setSelectedStudentEmail(e.target.value)}
+              className="w-full truncate rounded-xl border border-blue-200 dark:border-blue-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-xs font-semibold text-slate-900 dark:text-white focus:border-[#1a80ff] cursor-pointer"
+            >
+              <option value="student@blueteam.com">🎓 Piloto Alumno BlueTeam (student@blueteam.com)</option>
+              <option value="alumno1@blueteam.com">👤 Carlos Mendoza - Alumno PPL (alumno1@blueteam.com)</option>
+              <option value="alumno2@blueteam.com">👤 Sofía Rodríguez - Alumno CPL (alumno2@blueteam.com)</option>
+              <option value="alumno3@blueteam.com">👤 Alejandro Gómez - Alumno ATPL (alumno3@blueteam.com)</option>
+              <option value="alumno4@blueteam.com">👤 Lucía Fernández - Alumno VFR (alumno4@blueteam.com)</option>
+              <option value="alumno5@blueteam.com">👤 Mateo Navas - Alumno IFR (alumno5@blueteam.com)</option>
+              <option value="alumno6@blueteam.com">👤 Elena Benítez - Alumno PPL (alumno6@blueteam.com)</option>
+              <option value="alumno7@blueteam.com">👤 Javier Morales - Alumno CPL (alumno7@blueteam.com)</option>
+              <option value="alumno8@blueteam.com">👤 Valeria Torres - Alumno ATPL (alumno8@blueteam.com)</option>
+              <option value="alumno9@blueteam.com">👤 Daniel Castillo - Alumno VFR (alumno9@blueteam.com)</option>
+              <option value="alumno10@blueteam.com">👤 Paula Gutiérrez - Alumno IFR (alumno10@blueteam.com)</option>
+            </select>
+            <button
+              type="button"
+              disabled={loadingDemo !== null}
+              onClick={() => handleSelectDemoUser(selectedStudentEmail, "student")}
+              className="w-full rounded-xl bg-[#1a80ff] py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all cursor-pointer shadow-xs"
+            >
+              {loadingDemo === selectedStudentEmail ? "Entrando..." : "Entrar como Alumno Seleccionado"}
+            </button>
+          </div>
+
+          {/* Instructor Dropdown & Login */}
+          <div className="space-y-1.5">
+            <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300">
+              👨‍🏫 Seleccionar Instructor de Prueba:
+            </label>
+            <select
+              value={selectedInstructorEmail}
+              onChange={(e) => setSelectedInstructorEmail(e.target.value)}
+              className="w-full truncate rounded-xl border border-blue-200 dark:border-blue-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-xs font-semibold text-slate-900 dark:text-white focus:border-[#1a80ff] cursor-pointer"
+            >
+              <option value="instructor@blueteam.com">👨‍🏫 Instructor de Vuelo BlueTeam (instructor@blueteam.com)</option>
+              <option value="inst.martinez@blueteam.com">✈️ Capt. Roberto Martínez - PPL/CPL (inst.martinez@blueteam.com)</option>
+              <option value="inst.alvarez@blueteam.com">✈️ Capt. Laura Álvarez - IFR (inst.alvarez@blueteam.com)</option>
+              <option value="inst.reyes@blueteam.com">✈️ Capt. Fernando Reyes - Avionica (inst.reyes@blueteam.com)</option>
+            </select>
+            <button
+              type="button"
+              disabled={loadingDemo !== null}
+              onClick={() => handleSelectDemoUser(selectedInstructorEmail, "instructor")}
+              className="w-full rounded-xl bg-indigo-600 py-2.5 text-xs font-bold text-white hover:bg-indigo-700 transition-all cursor-pointer shadow-xs"
+            >
+              {loadingDemo === selectedInstructorEmail ? "Entrando..." : "Entrar como Instructor Seleccionado"}
+            </button>
+          </div>
+
+          {/* Admin Direct Button */}
           <button
             type="button"
-            disabled={loadingDemo !== null || isSubmitting}
-            onClick={() => handleDemo("student")}
-            className="flex flex-col items-center justify-center gap-1.5 rounded-xl border border-blue-200 dark:border-blue-800 bg-white dark:bg-slate-900 p-2.5 text-center shadow-xs hover:border-[#1a80ff] hover:bg-blue-50/80 dark:hover:bg-blue-950/60 transition-all group disabled:opacity-50 cursor-pointer"
+            disabled={loadingDemo !== null}
+            onClick={() => handleSelectDemoUser("admin@blueteam.com", "admin")}
+            className="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 py-2.5 text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-xs"
           >
-            <span className="text-xl">🎓</span>
-            <span className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff]">
-              {loadingDemo === "student" ? "Cargando..." : "Alumno"}
-            </span>
-            <span className="text-[9px] text-slate-500 dark:text-slate-400">
-              Ver cursos
-            </span>
-          </button>
-
-          {/* Demo Instructor */}
-          <button
-            type="button"
-            disabled={loadingDemo !== null || isSubmitting}
-            onClick={() => handleDemo("instructor")}
-            className="flex flex-col items-center justify-center gap-1.5 rounded-xl border border-blue-200 dark:border-blue-800 bg-white dark:bg-slate-900 p-2.5 text-center shadow-xs hover:border-[#1a80ff] hover:bg-blue-50/80 dark:hover:bg-blue-950/60 transition-all group disabled:opacity-50 cursor-pointer"
-          >
-            <span className="text-xl">👨‍🏫</span>
-            <span className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff]">
-              {loadingDemo === "instructor" ? "Cargando..." : "Instructor"}
-            </span>
-            <span className="text-[9px] text-slate-500 dark:text-slate-400">
-              Crear y asignar
-            </span>
-          </button>
-
-          {/* Demo Admin */}
-          <button
-            type="button"
-            disabled={loadingDemo !== null || isSubmitting}
-            onClick={() => handleDemo("admin")}
-            className="flex flex-col items-center justify-center gap-1.5 rounded-xl border border-blue-200 dark:border-blue-800 bg-white dark:bg-slate-900 p-2.5 text-center shadow-xs hover:border-[#1a80ff] hover:bg-blue-50/80 dark:hover:bg-blue-950/60 transition-all group disabled:opacity-50 cursor-pointer"
-          >
-            <span className="text-xl">⚙️</span>
-            <span className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff]">
-              {loadingDemo === "admin" ? "Cargando..." : "Admin"}
-            </span>
-            <span className="text-[9px] text-slate-500 dark:text-slate-400">
-              Control total
-            </span>
+            <span>⚙️</span> Entrar como Director de Escuela / Administrador
           </button>
         </div>
       </div>
@@ -157,13 +178,6 @@ export function LoginForm() {
             <div className="font-bold flex items-center gap-1">
               <span>⚠</span> {formError}
             </div>
-            {!isSignUp && (
-              <p className="text-[11px] opacity-90">
-                Tip: Si es tu primera vez, puedes hacer clic en{" "}
-                <strong>Registrar nuevo usuario</strong> arriba o usar los
-                botones de <strong>Prueba Rápida Demo</strong>.
-              </p>
-            )}
           </div>
         )}
 
@@ -200,13 +214,24 @@ export function LoginForm() {
             <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
               Contraseña
             </label>
-            <input
-              name="password"
-              type="password"
-              placeholder="••••••••"
-              required
-              className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:border-[#1a80ff] focus:outline-hidden focus:ring-2 focus:ring-blue-100 transition-all"
-            />
+            <div className="relative">
+              <input
+                name="password"
+                type={showPassword ? "text" : "password"}
+                defaultValue="blueteam"
+                placeholder="••••••••"
+                required
+                className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 pl-3.5 pr-10 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:border-[#1a80ff] focus:outline-hidden focus:ring-2 focus:ring-blue-100 transition-all"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm p-1 rounded-md cursor-pointer select-none"
+                title={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+              >
+                {showPassword ? "🙈" : "👁️"}
+              </button>
+            </div>
           </div>
 
           {isSignUp && (
