@@ -12,7 +12,7 @@ import {
   getResilientProfiles,
   getResilientUser,
 } from "@/shared/lib/supabase/resilient";
-import { StudentEnrollmentManager } from "@/features/learning/components/student-enrollment-manager";
+import { AdminUsersTable } from "@/features/learning/components/admin-users-table";
 
 export default async function AdminUsersPage() {
   const { user, profile: currentProfile } = await getResilientUser();
@@ -34,6 +34,7 @@ export default async function AdminUsersPage() {
     getResilientCourses(user.id, true),
     getResilientEnrollments(),
   ]);
+
   const manageableProfiles = isFullAdmin
     ? profiles
     : profiles.filter(
@@ -170,124 +171,14 @@ export default async function AdminUsersPage() {
             </div>
           )}
 
-          {/* Users Table */}
-          <div className="lg:col-span-2 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
-            <div className="border-b border-slate-100 dark:border-slate-800 p-6">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">
-                Usuarios Registrados ({manageableProfiles.length})
-              </h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                {isFullAdmin
-                  ? "Modifica permisos de roles y gestiona las matrículas aeronáuticas de cada alumno."
-                  : "Asigna o revoca matrículas en los módulos de aviación."}
-              </p>
-            </div>
-
-            {manageableProfiles.length === 0 ? (
-              <div className="p-8 text-center text-sm text-slate-500 dark:text-slate-400">
-                No hay usuarios registrados en el sistema.
-              </div>
-            ) : (
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs text-slate-700 dark:text-slate-300">
-                  <thead className="bg-slate-50 dark:bg-slate-800/60 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-200 dark:border-slate-800">
-                    <tr>
-                      <th className="px-6 py-4">Usuario</th>
-                      <th className="px-6 py-4">Rol en Escuela</th>
-                      <th className="px-6 py-4">
-                        Matrículas Asignadas (Desplegable Escalable)
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                    {manageableProfiles.map((u: any) => {
-                      // Get initial enrolled course IDs for this student
-                      const enrolledCourseIds = enrollments
-                        .filter((enrollment: any) => enrollment.user_id === u.id)
-                        .map((enrollment: any) => enrollment.course_id);
-
-                      return (
-                        <tr
-                          key={u.id}
-                          className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors"
-                        >
-                          <td className="px-6 py-4">
-                            <div className="font-bold text-slate-900 dark:text-white text-sm">
-                              {u.full_name || u.email?.split("@")[0]}
-                            </div>
-                            <div className="text-slate-400 dark:text-slate-500 font-mono text-[11px]">
-                              {u.email}
-                            </div>
-                          </td>
-
-                          <td className="px-6 py-4">
-                            {isFullAdmin ? (
-                              <form
-                                action={async (formData: FormData) => {
-                                  "use server";
-                                  const newRole = String(
-                                    formData.get("role") ?? "student",
-                                  ) as any;
-                                  await updateUserRoleAction(u.id, newRole);
-                                }}
-                                className="flex items-center gap-2"
-                              >
-                                <select
-                                  name="role"
-                                  defaultValue={u.role || "student"}
-                                  className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:border-[#1a80ff]"
-                                >
-                                  <option value="student">Piloto Alumno</option>
-                                  <option value="instructor">
-                                    Instructor de Vuelo
-                                  </option>
-                                  <option value="admin">
-                                    Director / Admin
-                                  </option>
-                                </select>
-                                <button
-                                  type="submit"
-                                  className="rounded-lg bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-950 hover:text-[#1a80ff] transition-colors cursor-pointer"
-                                >
-                                  Guardar
-                                </button>
-                              </form>
-                            ) : (
-                              <span
-                                className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${
-                                  u.role === "admin"
-                                    ? "bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800"
-                                    : u.role === "instructor"
-                                      ? "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] border border-blue-200 dark:border-blue-800"
-                                      : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
-                                }`}
-                              >
-                                {u.role === "admin"
-                                  ? "Director / Admin"
-                                  : u.role === "instructor"
-                                    ? "Instructor de Vuelo"
-                                    : "Piloto Alumno"}
-                              </span>
-                            )}
-                          </td>
-
-                          <td className="px-6 py-4">
-                            {/* Scalable Multi-Select Component for 50-100+ Courses */}
-                            <StudentEnrollmentManager
-                              userId={u.id}
-                              userName={u.full_name || u.email?.split("@")[0]}
-                              courses={courses || []}
-                              initialEnrolledCourseIds={enrolledCourseIds}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </div>
+          {/* Interactive Users & Enrollments Table with Real-Time Search */}
+          <AdminUsersTable
+            manageableProfiles={manageableProfiles}
+            courses={courses || []}
+            enrollments={enrollments || []}
+            isFullAdmin={isFullAdmin}
+            updateUserRoleAction={updateUserRoleAction}
+          />
         </div>
       </main>
     </div>

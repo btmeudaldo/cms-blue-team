@@ -147,6 +147,72 @@ const mockCourses: MockCourse[] = [
       },
     ],
   },
+  {
+    id: "course-demo-3",
+    title: "Navegación Instrumental IFR & Radioayudas (VOR/ILS)",
+    slug: "navegacion-instrumental-ifr-radioayudas",
+    description:
+      "Procedimientos IFR de precisión y no precisión, interpretación de cartas de aproximación Jeppesen, VOR, DME e ILS Cat I/II.",
+    image_url:
+      "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80",
+    created_at: new Date().toISOString(),
+    lessons: [
+      {
+        id: "lesson-3-1",
+        course_id: "course-demo-3",
+        title: "1. Principios de Aproximación por Instrumentos ILS",
+        slug: "principios-aproximacion-ils",
+        content_html: content2,
+        sequence_order: 1,
+        word_count: words2,
+        min_seconds: calculateMinimumReadingSeconds(words2),
+      },
+    ],
+  },
+  {
+    id: "course-demo-4",
+    title: "Sistemas de Aeronaves C172/PA28 & Grupo Motopropulsor",
+    slug: "sistemas-aeronaves-c172-pa28",
+    description:
+      "Estudio de motores de pistón alternativos, sistemas de combustible, electricidad de abordo, paso variable y emergencias del sistema.",
+    image_url:
+      "https://images.unsplash.com/photo-1519074069444-1ba4e69c1040?auto=format&fit=crop&w=800&q=80",
+    created_at: new Date().toISOString(),
+    lessons: [
+      {
+        id: "lesson-4-1",
+        course_id: "course-demo-4",
+        title: "1. Componentes del Motor Lycoming O-360 y Combustible",
+        slug: "componentes-motor-lycoming",
+        content_html: content1,
+        sequence_order: 1,
+        word_count: words1,
+        min_seconds: calculateMinimumReadingSeconds(words1),
+      },
+    ],
+  },
+  {
+    id: "course-demo-5",
+    title: "Ciberseguridad en Sistemas Aviónicos & Redes de Cabina (Blue Team)",
+    slug: "ciberseguridad-avonica-redes-cabina",
+    description:
+      "Protección de buses de datos ARINC 429, sistemas de gestión de vuelo (FMS), ADS-B y prevención de interferencias GPS/Spoofing.",
+    image_url:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80",
+    created_at: new Date().toISOString(),
+    lessons: [
+      {
+        id: "lesson-5-1",
+        course_id: "course-demo-5",
+        title: "1. Fundamentos de Ciberseguridad en Buses ARINC 429",
+        slug: "fundamentos-ciberseguridad-arinc429",
+        content_html: content1,
+        sequence_order: 1,
+        word_count: words1,
+        min_seconds: calculateMinimumReadingSeconds(words1),
+      },
+    ],
+  },
 ];
 
 const mockProfiles: MockUser[] = [
