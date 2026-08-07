@@ -246,6 +246,42 @@ export async function seedDemoCoursesAction() {
         },
       ],
     },
+    {
+      title: "Navegación Instrumental IFR & Radioayudas (VOR/ILS)",
+      slug: "navegacion-instrumental-ifr-radioayudas",
+      description:
+        "Procedimientos IFR de precisión y no precisión, interpretación de cartas de aproximación Jeppesen, VOR, DME e ILS Cat I/II.",
+      image_url:
+        "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80",
+      lessons: [
+        {
+          title: "1. Principios de Aproximación por Instrumentos ILS",
+          slug: "principios-aproximacion-ils",
+          content_html: `
+            <h2>1. Fundamentos de Intercepción de Localizador y Senda de Planeo</h2>
+            <p>La aproximación ILS (Instrument Landing System) proporciona guía lateral de centro de pista (Localizer) y guía vertical de descenso (Glide Path).</p>
+          `.trim(),
+        },
+      ],
+    },
+    {
+      title: "Sistemas de Aeronaves C172/PA28 & Grupo Motopropulsor",
+      slug: "sistemas-aeronaves-c172-pa28",
+      description:
+        "Estudio de motores de pistón alternativos, sistemas de combustible, electricidad de abordo, paso variable y emergencias del sistema.",
+      image_url:
+        "https://images.unsplash.com/photo-1519074069444-1ba4e69c1040?auto=format&fit=crop&w=800&q=80",
+      lessons: [
+        {
+          title: "1. Componentes del Motor Lycoming O-360 y Combustible",
+          slug: "componentes-motor-lycoming",
+          content_html: `
+            <h2>1. Arquitectura de Motor Horizontalmente Opuesto</h2>
+            <p>Análisis de los 4 cilindros, magnetos de encendido independiente, carburador e inyección directa.</p>
+          `.trim(),
+        },
+      ],
+    },
   ];
 
   for (const cData of DEMO_COURSES) {

@@ -534,6 +534,16 @@ export const mockStore = {
   isEnrolled(userId: string, courseId: string) {
     return mockEnrollments.has(`${userId}_${courseId}`);
   },
+  setStudentEnrollments(userId: string, enrolledCourseIds: string[]) {
+    for (const key of Array.from(mockEnrollments)) {
+      if (key.startsWith(`${userId}_`)) {
+        mockEnrollments.delete(key);
+      }
+    }
+    for (const courseId of enrolledCourseIds) {
+      mockEnrollments.add(`${userId}_${courseId}`);
+    }
+  },
   getUserProgress(userId: string) {
     return mockProgressRecords.filter(
       (p) => p.user_id === userId || userId === "all",

@@ -137,7 +137,18 @@ export async function getResilientCourses(userId: string, isAdmin: boolean) {
 
     const result: any = await queryPromise;
     if (result && !result.error && result.data && result.data.length > 0) {
-      if (isAdmin) return result.data || [];
+      if (isAdmin) {
+        const dbCourses = result.data || [];
+        const mockCourses = mockStore.getCourses();
+        const existingIds = new Set(dbCourses.map((c: any) => c.id));
+        const merged = [...dbCourses];
+        for (const mc of mockCourses) {
+          if (!existingIds.has(mc.id)) {
+            merged.push(mc);
+          }
+        }
+        return merged;
+      }
       const courses = result.data.map((e: any) => e.courses).filter(Boolean);
       if (courses.length > 0) return courses;
     }

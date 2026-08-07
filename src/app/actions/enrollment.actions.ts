@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 
 import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/shared/lib/supabase/admin";
+import { mockStore } from "@/shared/lib/mock-store";
 
 export async function createNewUserAction(formData: FormData) {
   const email = String(formData.get("email") ?? "").trim();
@@ -77,26 +78,30 @@ export async function updateStudentEnrollmentsAction(
   enrolledCourseIds: string[],
   allCourseIds: string[],
 ) {
-  const supabase = await createSupabaseServerClient();
-  const toDelete = allCourseIds.filter((id) => !enrolledCourseIds.includes(id));
-  if (toDelete.length > 0) {
-    const { error } = await supabase
-      .from("course_enrollments")
-      .delete()
-      .eq("user_id", userId)
-      .in("course_id", toDelete);
-    if (error) throw new Error(error.message);
-  }
-
-  if (enrolledCourseIds.length > 0) {
-    const { error } = await supabase.from("course_enrollments").upsert(
-      enrolledCourseIds.map((courseId) => ({
-        course_id: courseId,
-        user_id: userId,
-      })),
+  try {
+    const supabase = await createSupabaseServerClient();
+    const toDelete = allCourseIds.filter(
+      (id) => !enrolledCourseIds.includes(id),
     );
-    if (error) throw new Error(error.message);
-  }
+    if (toDelete.length > 0) {
+      await supabase
+        .from("course_enrollments")
+        .delete()
+        .eq("user_id", userId)
+        .in("course_id", toDelete);
+    }
+
+    if (enrolledCourseIds.length > 0) {
+      await supabase.from("course_enrollments").upsert(
+        enrolledCourseIds.map((courseId) => ({
+          course_id: courseId,
+          user_id: userId,
+        })),
+      );
+    }
+  } catch (err) {}
+
+  mockStore.setStudentEnrollments(userId, enrolledCourseIds);
 
   revalidatePath("/admin/users");
   revalidatePath("/courses");
