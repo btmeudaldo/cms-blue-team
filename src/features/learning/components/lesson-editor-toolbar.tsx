@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { getNextImageFrameWidth } from "../domain/image-frame-size";
+
 type LessonEditorToolbarProps = {
   contentHtml: string;
   onChangeContentHtml: (val: string) => void;
@@ -44,10 +46,10 @@ export function LessonEditorToolbar({
   const [fileName, setFileName] = useState<string | null>(null);
   const [showCodeMode, setShowCodeMode] = useState(false);
 
-const FALLBACK_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="%230f172a"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%2338bdf8" font-family="sans-serif" font-size="22" font-weight="bold">✈️ Recurso Gráfico Aeronáutico</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2394a3b8" font-family="sans-serif" font-size="13">Imagen de lección adjunta</text></svg>`;
+  const FALLBACK_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="%230f172a"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%2338bdf8" font-family="sans-serif" font-size="22" font-weight="bold">✈️ Recurso Gráfico Aeronáutico</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2394a3b8" font-family="sans-serif" font-size="13">Imagen de lección adjunta</text></svg>`;
 
-const DEFAULT_PLACEHOLDER_TEXT =
-  "Escribe aquí el contenido de la lección para los alumnos de aviación...";
+  const DEFAULT_PLACEHOLDER_TEXT =
+    "Escribe aquí el contenido de la lección para los alumnos de aviación...";
 
   function clearPlaceholderIfPresent() {
     if (editorRef.current) {
@@ -111,11 +113,11 @@ const DEFAULT_PLACEHOLDER_TEXT =
             <button type="button" class="img-btn-pos px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover enfoque vertical (Arriba / Centro / Abajo)">
               ↕️ Posición Vertical
             </button>
-            <button type="button" class="img-btn-shrink px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Reducir tamaño del cuadro cuadrado">
-              🔍- Reducir
+            <button type="button" class="img-btn-shrink px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Reducir el cuadro completo de la imagen">
+              🔍- Cuadro
             </button>
-            <button type="button" class="img-btn-enlarge px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Agrandar tamaño del cuadro cuadrado">
-              🔍+ Agrandar
+            <button type="button" class="img-btn-enlarge px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Agrandar el cuadro completo de la imagen">
+              🔍+ Cuadro
             </button>
             <button type="button" class="img-btn-up px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover la imagen arriba de la lección">
               ⬆️ Arriba
@@ -177,7 +179,15 @@ const DEFAULT_PLACEHOLDER_TEXT =
     const btnFit = target.closest(".img-btn-fit");
     const btnPos = target.closest(".img-btn-pos");
 
-    if (btnUp || btnDown || btnRemove || btnEnlarge || btnShrink || btnFit || btnPos) {
+    if (
+      btnUp ||
+      btnDown ||
+      btnRemove ||
+      btnEnlarge ||
+      btnShrink ||
+      btnFit ||
+      btnPos
+    ) {
       e.preventDefault();
       e.stopPropagation();
 
@@ -202,14 +212,17 @@ const DEFAULT_PLACEHOLDER_TEXT =
         } else if (btnEnlarge || btnShrink) {
           const img = wrapper.querySelector("img");
           if (img) {
-            const currentWidth = img.offsetWidth || 320;
-            let newWidth = currentWidth;
-            if (btnEnlarge) {
-              newWidth = Math.min(750, currentWidth + 70);
-            } else if (btnShrink) {
-              newWidth = Math.max(160, currentWidth - 70);
-            }
-            img.style.width = `${newWidth}px`;
+            const currentWidth = wrapper.getBoundingClientRect().width || 480;
+            const newWidth = getNextImageFrameWidth(
+              currentWidth,
+              btnEnlarge ? "enlarge" : "shrink",
+            );
+
+            wrapper.setAttribute(
+              "style",
+              `width: ${newWidth}px; max-width: 100%;`,
+            );
+            img.style.width = "100%";
             img.style.maxWidth = "100%";
             img.style.height = "auto";
             img.style.aspectRatio = "1 / 1";
@@ -240,7 +253,10 @@ const DEFAULT_PLACEHOLDER_TEXT =
           }
         }
       } catch (err) {
-        console.warn("No se pudo reordenar o ajustar la imagen en el DOM:", err);
+        console.warn(
+          "No se pudo reordenar o ajustar la imagen en el DOM:",
+          err,
+        );
       }
 
       handleVisualInput();

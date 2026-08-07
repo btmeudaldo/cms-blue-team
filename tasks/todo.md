@@ -49,3 +49,10 @@ Pendiente de ejecución.
 - [x] GREEN: rechazar rutas de lección desconocidas y separar progreso real del simulado.
 - [x] RED/GREEN: impedir la ejecución de RPC de progreso por `anon`.
 - [ ] Verificar pruebas, tipos, lint, formato y advisors de Supabase.
+
+## Corrección: tamaño de imágenes en lecciones (en curso)
+
+- [x] Diagnosticar: los controles actuales solo redimensionan la etiqueta de imagen.
+- [x] RED: definir y probar los límites de tamaño del cuadro completo.
+- [x] GREEN: redimensionar y persistir el contenedor de cada imagen desde el editor.
+- [x] Verificar pruebas, tipos, lint y formato (formato global pendiente por archivos ajenos).
