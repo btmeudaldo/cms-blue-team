@@ -1,6 +1,6 @@
 begin;
 
-select plan(5);
+select plan(7);
 
 insert into auth.users (id, instance_id, aud, role, email, encrypted_password, email_confirmed_at, raw_app_meta_data, raw_user_meta_data, created_at, updated_at)
 values ('00000000-0000-0000-0000-000000000101', '00000000-0000-0000-0000-000000000000', 'authenticated', 'authenticated', 'student@example.test', '', now(), '{}', '{}', now(), now());
@@ -24,6 +24,9 @@ reset role;
 update public.user_lesson_progress set active_seconds = 2, is_active = false;
 set local role authenticated;
 select lives_ok('select public.complete_lesson(''00000000-0000-0000-0000-000000000301''::uuid)', 'completion succeeds after the minimum');
+
+select ok(not has_function_privilege('anon', 'public.start_lesson(uuid)', 'execute'), 'anon cannot start lessons');
+select ok(not has_function_privilege('anon', 'public.complete_lesson(uuid)', 'execute'), 'anon cannot complete lessons');
 
 select * from finish();
 rollback;

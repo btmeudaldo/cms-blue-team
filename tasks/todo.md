@@ -41,3 +41,11 @@
 ## Revisión
 
 Pendiente de ejecución.
+
+## Corrección: progreso persistente (en curso)
+
+- [x] Documentar el diagnóstico y el alcance: no crear matrículas implícitas.
+- [x] RED/GREEN: cubrir resolución de UUID/slug y prioridad de Supabase sobre mocks.
+- [x] GREEN: rechazar rutas de lección desconocidas y separar progreso real del simulado.
+- [x] RED/GREEN: impedir la ejecución de RPC de progreso por `anon`.
+- [ ] Verificar pruebas, tipos, lint, formato y advisors de Supabase.

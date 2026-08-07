@@ -9,15 +9,15 @@ import {
 } from "@/shared/lib/supabase/resilient";
 
 export default async function CoursesPage() {
-  const { user, profile } = await getResilientUser();
+  const { user, profile, isDemo } = await getResilientUser();
   const role = profile?.role ?? "student";
   const isAdmin = role === "admin" || role === "instructor";
 
   // Fetch courses with resilient fallback
-  const coursesData = await getResilientCourses(user.id, isAdmin);
+  const coursesData = await getResilientCourses(user.id, isAdmin, isDemo);
 
   // Fetch user progress with resilient fallback
-  const userProgress = await getResilientUserProgress(user.id);
+  const userProgress = await getResilientUserProgress(user.id, isDemo);
   const completedLessonIds = new Set(
     userProgress
       ?.filter((p: any) => p.is_completed)

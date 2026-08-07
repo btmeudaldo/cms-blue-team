@@ -1,6 +1,16 @@
 // Resilient Mock Store for offline / local dev when Supabase CLI is not running
+// NOTE: mockProgressRecords and mockEnrollments are stored on `global` so they
+// survive Next.js hot-module-reloads in dev mode. This makes lesson progress
+// persist within a single server process session.
 
 import { calculateMinimumReadingSeconds } from "@/features/learning/domain/reading-time";
+
+// Extend Node.js global type for the mock state
+declare global {
+  var __mockProgressRecords: MockProgress[] | undefined;
+
+  var __mockEnrollments: Set<string> | undefined;
+}
 
 export type MockCourse = {
   id: string;
@@ -396,7 +406,7 @@ const mockProfiles: MockUser[] = [
   },
 ];
 
-const mockEnrollments: Set<string> = new Set([
+const defaultEnrollments = new Set<string>([
   "student-123_course-demo-1",
   "student-123_course-demo-2",
   "instructor-123_course-demo-1",
@@ -418,6 +428,10 @@ const mockEnrollments: Set<string> = new Set([
   "student-10_course-demo-2",
 ]);
 
+// Persist across HMR reloads in dev — global survives hot-module-replacement
+const mockEnrollments: Set<string> =
+  global.__mockEnrollments ?? (global.__mockEnrollments = defaultEnrollments);
+
 const nowTime = new Date();
 const start1 = new Date(nowTime.getTime() - 1000 * 60 * 120).toISOString();
 const end1 = new Date(nowTime.getTime() - 1000 * 60 * 118).toISOString();
@@ -426,7 +440,7 @@ const end2 = new Date(nowTime.getTime() - 1000 * 60 * 58).toISOString();
 const start3 = new Date(nowTime.getTime() - 1000 * 60 * 30).toISOString();
 const end3 = new Date(nowTime.getTime() - 1000 * 60 * 28).toISOString();
 
-const mockProgressRecords: MockProgress[] = [
+const defaultProgressRecords: MockProgress[] = [
   {
     user_id: "student-123",
     lesson_id: "lesson-1-1",
@@ -524,6 +538,12 @@ const mockProgressRecords: MockProgress[] = [
     is_completed: true,
   },
 ];
+
+// Persist across HMR reloads in dev — global survives hot-module-replacement.
+// This ensures lesson progress is not lost when Next.js reloads the module.
+const mockProgressRecords: MockProgress[] =
+  global.__mockProgressRecords ??
+  (global.__mockProgressRecords = defaultProgressRecords);
 
 export const mockStore = {
   getCourses() {

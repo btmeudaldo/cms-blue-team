@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { Header } from "@/shared/components/header";
 import {
@@ -13,11 +14,12 @@ export default async function StudentCourseDetailPage({
   params: Promise<{ courseId: string }>;
 }) {
   const { courseId } = await params;
-  const { user, profile } = await getResilientUser();
+  const { user, profile, isDemo } = await getResilientUser();
   const role = profile?.role ?? "student";
 
   // Fetch course with lessons ordered using resilient fallback
-  const course = await getResilientCourseDetail(courseId);
+  const course = await getResilientCourseDetail(courseId, isDemo);
+  if (!course) notFound();
 
   // Sort lessons
   const lessons = (course.lessons || []).sort(
@@ -25,7 +27,7 @@ export default async function StudentCourseDetailPage({
   );
 
   // Fetch progress for this user using resilient fallback
-  const userProgress = await getResilientUserProgress(user.id);
+  const userProgress = await getResilientUserProgress(user.id, isDemo);
   const progressMap = new Map(
     userProgress?.map((p: any) => [p.lesson_id, p]) || [],
   );

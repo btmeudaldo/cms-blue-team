@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { createSupabaseServerClient } from "./server";
 import { redirect } from "next/navigation";
 import { mockStore } from "@/shared/lib/mock-store";
+import { preferPersistedProgress } from "@/features/learning/domain/progress-source";
 
 export async function getResilientUser() {
   const cookieStore = await cookies();
@@ -29,6 +30,7 @@ export async function getResilientUser() {
           : "student");
 
     return {
+      isDemo: false,
       user: {
         id: user.id,
         email: user.email,
@@ -52,10 +54,13 @@ export async function getResilientUser() {
   const mockProfiles = mockStore.getProfiles();
   if (demoEmailCookie) {
     const found = mockProfiles.find(
-      (p) => p.email.toLowerCase() === demoEmailCookie.toLowerCase() || p.id === demoEmailCookie,
+      (p) =>
+        p.email.toLowerCase() === demoEmailCookie.toLowerCase() ||
+        p.id === demoEmailCookie,
     );
     if (found) {
       return {
+        isDemo: true,
         user: {
           id: found.id,
           email: found.email,
@@ -71,6 +76,7 @@ export async function getResilientUser() {
 
   if (demoRoleCookie === "instructor") {
     return {
+      isDemo: true,
       user: {
         id: "instructor-123",
         email: "instructor@blueteam.com",
@@ -85,6 +91,7 @@ export async function getResilientUser() {
 
   if (demoRoleCookie === "admin") {
     return {
+      isDemo: true,
       user: {
         id: "admin-123",
         email: "admin@blueteam.com",
@@ -99,6 +106,7 @@ export async function getResilientUser() {
 
   if (demoRoleCookie === "student") {
     return {
+      isDemo: true,
       user: {
         id: "student-123",
         email: "student@blueteam.com",
@@ -114,7 +122,11 @@ export async function getResilientUser() {
   redirect("/login");
 }
 
-export async function getResilientCourses(userId: string, isAdmin: boolean) {
+export async function getResilientCourses(
+  userId: string,
+  isAdmin: boolean,
+  allowMockFallback = true,
+) {
   try {
     const supabase = await createSupabaseServerClient();
 
@@ -140,6 +152,8 @@ export async function getResilientCourses(userId: string, isAdmin: boolean) {
       const rawCourses = isAdmin
         ? result.data || []
         : result.data.map((e: any) => e.courses).filter(Boolean);
+
+      if (!allowMockFallback) return rawCourses;
 
       const mockCourses = mockStore.getCourses();
       const mockMap = new Map(mockCourses.map((mc) => [mc.id, mc]));
@@ -178,14 +192,17 @@ export async function getResilientCourses(userId: string, isAdmin: boolean) {
     }
   } catch (err) {}
 
-  if (isAdmin) {
+  if (allowMockFallback && isAdmin) {
     return mockStore.getCourses();
   }
 
-  return mockStore.getStudentCourses(userId);
+  return allowMockFallback ? mockStore.getStudentCourses(userId) : [];
 }
 
-export async function getResilientCourseDetail(courseId: string) {
+export async function getResilientCourseDetail(
+  courseId: string,
+  allowMockFallback = true,
+) {
   try {
     const supabase = await createSupabaseServerClient();
     const isUuid =
@@ -236,8 +253,14 @@ export async function getResilientCourseDetail(courseId: string) {
       }
 
       // Fallback merge: if mockStore has more lessons for this course ID/slug, use mockStore lessons
-      const mockC = mockStore.getCourseById(result.data.id) || mockStore.getCourseById(result.data.slug);
-      if (mockC && mockC.lessons && mockC.lessons.length > (result.data.lessons?.length || 0)) {
+      const mockC =
+        mockStore.getCourseById(result.data.id) ||
+        mockStore.getCourseById(result.data.slug);
+      if (
+        mockC &&
+        mockC.lessons &&
+        mockC.lessons.length > (result.data.lessons?.length || 0)
+      ) {
         result.data.lessons = mockC.lessons;
       }
 
@@ -245,7 +268,7 @@ export async function getResilientCourseDetail(courseId: string) {
     }
   } catch (err) {}
 
-  return mockStore.getCourseById(courseId);
+  return allowMockFallback ? mockStore.getCourseById(courseId) : null;
 }
 
 export async function getResilientProfiles() {
@@ -264,7 +287,12 @@ export async function getResilientProfiles() {
   return mockStore.getProfiles();
 }
 
-export async function getResilientUserProgress(userId: string) {
+export async function getResilientUserProgress(
+  userId: string,
+  allowMockFallback = true,
+) {
+  const mockProgress = mockStore.getUserProgress(userId);
+
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await supabase
@@ -275,11 +303,11 @@ export async function getResilientUserProgress(userId: string) {
       .eq("user_id", userId);
 
     if (result && !result.error && result.data) {
-      return result.data;
+      return preferPersistedProgress(result.data, mockProgress);
     }
   } catch (err) {}
 
-  return mockStore.getUserProgress(userId);
+  return allowMockFallback ? mockProgress : [];
 }
 
 export async function getResilientAllProgress() {

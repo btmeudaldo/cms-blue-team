@@ -1,6 +1,8 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
+
+import { getDefaultImageFrame } from "@/features/learning/domain/image-framing";
 
 type CourseImageUploaderProps = {
   defaultImageUrl?: string | null;
@@ -16,26 +18,27 @@ export function CourseImageUploader({
   const [fileName, setFileName] = useState<string | null>(null);
 
   // Interactive framing states: zoom, position X/Y, dragging
-  const [scale, setScale] = useState(1);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [scale, setScale] = useState(getDefaultImageFrame().scale);
+  const [position, setPosition] = useState(getDefaultImageFrame().position);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const [isFramed, setIsFramed] = useState(false);
+  const [isFramed, setIsFramed] = useState(getDefaultImageFrame().isFramed);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
-  useEffect(() => {
-    // Reset framing controls when image URL changes
-    setScale(1);
-    setPosition({ x: 0, y: 0 });
-    setIsFramed(false);
-  }, [previewUrl]);
+  function resetFraming() {
+    const frame = getDefaultImageFrame();
+    setScale(frame.scale);
+    setPosition(frame.position);
+    setIsFramed(frame.isFramed);
+  }
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
 
+    resetFraming();
     setFileName(file.name);
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -47,6 +50,7 @@ export function CourseImageUploader({
   }
 
   function handleUrlChange(val: string) {
+    resetFraming();
     setImageUrl(val);
     setPreviewUrl(val);
   }
@@ -152,12 +156,6 @@ export function CourseImageUploader({
       setIsFramed(true);
     };
     img.src = previewUrl;
-  }
-
-  function resetFraming() {
-    setScale(1);
-    setPosition({ x: 0, y: 0 });
-    setIsFramed(false);
   }
 
   const safeUrl = imageUrl || "";

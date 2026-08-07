@@ -8,7 +8,7 @@ export function sanitizeLessonHtml(html: string): string {
     .replace(/<(script|style|iframe|object|embed)\b[^>]*\/?\s*>/gi, "")
     .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
     .replace(
-      /\s(href|src)\s*=\s*(?:("|')\s*(?:javascript|vbscript|data:(?!image\/)):[\s\S]*?\2|(?:javascript|vbscript|data:(?!image\/)):[^\s>]*)/gi,
+      /\s(href|src)\s*=\s*(?:("|')\s*(?:javascript|vbscript|data:(?!image\/))[^"']*\2|(?:javascript|vbscript|data:(?!image\/))[^\s>]*)/gi,
       "",
     );
 }
