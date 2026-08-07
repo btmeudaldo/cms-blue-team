@@ -7,6 +7,10 @@ describe("getImageFrameAlignment", () => {
     expect(getImageFrameAlignment("left")).toEqual({
       classes: ["mr-auto"],
       label: "Izquierda",
+      marginLeft: "0",
+      marginRight: "auto",
+      preservesCurrentWidth: true,
+      maximumWidth: 560,
     });
   });
 
@@ -14,6 +18,10 @@ describe("getImageFrameAlignment", () => {
     expect(getImageFrameAlignment("center")).toEqual({
       classes: ["mx-auto"],
       label: "Centro",
+      marginLeft: "auto",
+      marginRight: "auto",
+      preservesCurrentWidth: true,
+      maximumWidth: 560,
     });
   });
 
@@ -21,6 +29,10 @@ describe("getImageFrameAlignment", () => {
     expect(getImageFrameAlignment("right")).toEqual({
       classes: ["ml-auto"],
       label: "Derecha",
+      marginLeft: "auto",
+      marginRight: "0",
+      preservesCurrentWidth: true,
+      maximumWidth: 560,
     });
   });
 });

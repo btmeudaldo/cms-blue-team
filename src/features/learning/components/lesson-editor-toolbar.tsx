@@ -216,7 +216,9 @@ export function LessonEditorToolbar({
       e.preventDefault();
       e.stopPropagation();
 
-      const wrapper = target.closest(".lesson-img-wrapper");
+      const wrapper = target.closest(
+        ".lesson-img-wrapper",
+      ) as HTMLElement | null;
       if (!wrapper) return;
       const parent = wrapper.parentNode;
       if (!parent) return;
@@ -243,10 +245,8 @@ export function LessonEditorToolbar({
               btnEnlarge ? "enlarge" : "shrink",
             );
 
-            wrapper.setAttribute(
-              "style",
-              `width: ${newWidth}px; max-width: 100%;`,
-            );
+            wrapper.style.width = `${newWidth}px`;
+            wrapper.style.maxWidth = "100%";
             img.style.width = "100%";
             img.style.maxWidth = "100%";
             img.style.height = "auto";
@@ -259,8 +259,16 @@ export function LessonEditorToolbar({
               ? "right"
               : "center";
 
+          const alignmentConfig = getImageFrameAlignment(alignment);
+          if (alignmentConfig.preservesCurrentWidth) {
+            const currentWidth = wrapper.getBoundingClientRect().width;
+            wrapper.style.width = `${Math.min(currentWidth, alignmentConfig.maximumWidth)}px`;
+            wrapper.style.maxWidth = "100%";
+          }
           wrapper.classList.remove("mx-auto", "ml-auto", "mr-auto");
-          wrapper.classList.add(...getImageFrameAlignment(alignment).classes);
+          wrapper.classList.add(...alignmentConfig.classes);
+          wrapper.style.marginLeft = alignmentConfig.marginLeft;
+          wrapper.style.marginRight = alignmentConfig.marginRight;
         } else if (btnFit) {
           const img = wrapper.querySelector("img");
           if (img) {
