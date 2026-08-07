@@ -7,10 +7,12 @@ export default function LoginPage() {
     <main className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col justify-between transition-colors">
       {/* Mini top bar */}
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#1a80ff] text-white font-bold text-lg">
-            BT
-          </div>
+        <Link href="/" className="flex items-center gap-2.5">
+          <img
+            src="/logo.png"
+            alt="BLUE TEAM Escuela de Aviación"
+            className="h-10 w-auto object-contain"
+          />
           <span className="font-extrabold text-xl text-slate-900 dark:text-white">
             BLUE<span className="text-[#1a80ff]">TEAM</span>
           </span>
