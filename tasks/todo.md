@@ -56,3 +56,10 @@ Pendiente de ejecución.
 - [x] RED: definir y probar los límites de tamaño del cuadro completo.
 - [x] GREEN: redimensionar y persistir el contenedor de cada imagen desde el editor.
 - [x] Verificar pruebas, tipos, lint y formato (formato global pendiente por archivos ajenos).
+
+## Corrección: alineación de imágenes en lecciones (en curso)
+
+- [x] Diagnosticar el contenedor persistente que controla la posición horizontal.
+- [x] RED: definir las clases de alineación izquierda, centro y derecha.
+- [x] GREEN: añadir controles y persistir la alineación elegida en cada cuadro.
+- [x] Verificar pruebas, tipos, lint y formato.

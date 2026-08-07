@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { getImageFrameAlignmentClasses } from "../domain/image-frame-alignment";
 import { getNextImageFrameWidth } from "../domain/image-frame-size";
 
 type LessonEditorToolbarProps = {
@@ -119,6 +120,15 @@ export function LessonEditorToolbar({
             <button type="button" class="img-btn-enlarge px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Agrandar el cuadro completo de la imagen">
               🔍+ Cuadro
             </button>
+            <button type="button" class="img-btn-align-left px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Alinear el cuadro de imagen a la izquierda">
+              ⬅️ Izquierda
+            </button>
+            <button type="button" class="img-btn-align-center px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Centrar el cuadro de imagen">
+              ↔️ Centro
+            </button>
+            <button type="button" class="img-btn-align-right px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Alinear el cuadro de imagen a la derecha">
+              ➡️ Derecha
+            </button>
             <button type="button" class="img-btn-up px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover la imagen arriba de la lección">
               ⬆️ Arriba
             </button>
@@ -178,6 +188,9 @@ export function LessonEditorToolbar({
     const btnShrink = target.closest(".img-btn-shrink");
     const btnFit = target.closest(".img-btn-fit");
     const btnPos = target.closest(".img-btn-pos");
+    const btnAlignLeft = target.closest(".img-btn-align-left");
+    const btnAlignCenter = target.closest(".img-btn-align-center");
+    const btnAlignRight = target.closest(".img-btn-align-right");
 
     if (
       btnUp ||
@@ -186,7 +199,10 @@ export function LessonEditorToolbar({
       btnEnlarge ||
       btnShrink ||
       btnFit ||
-      btnPos
+      btnPos ||
+      btnAlignLeft ||
+      btnAlignCenter ||
+      btnAlignRight
     ) {
       e.preventDefault();
       e.stopPropagation();
@@ -227,6 +243,15 @@ export function LessonEditorToolbar({
             img.style.height = "auto";
             img.style.aspectRatio = "1 / 1";
           }
+        } else if (btnAlignLeft || btnAlignCenter || btnAlignRight) {
+          const alignment = btnAlignLeft
+            ? "left"
+            : btnAlignRight
+              ? "right"
+              : "center";
+
+          wrapper.classList.remove("mx-auto", "ml-auto", "mr-auto");
+          wrapper.classList.add(...getImageFrameAlignmentClasses(alignment));
         } else if (btnFit) {
           const img = wrapper.querySelector("img");
           if (img) {
