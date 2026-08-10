@@ -88,8 +88,9 @@ export function LessonPlayer({
   const [isIndexOpen, setIsIndexOpen] = useState(true);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
-  // Hydration-safe random horizontal & bounded vertical position for anti-cheating button
+  // Hydration-safe random horizontal & vertical position for anti-cheating button
   const [horizontalPosition, setHorizontalPosition] = useState(50);
+  const [verticalPosition, setVerticalPosition] = useState(50);
   const [verticalOffset, setVerticalOffset] = useState(0);
 
   const completedLessonSet = new Set(completedLessonIds);
@@ -129,9 +130,11 @@ export function LessonPlayer({
     const array = new Uint32Array(2);
     crypto.getRandomValues(array);
     const randomPos = 10 + (array[0] % 80);
+    const randomVertPct = 25 + (array[1] % 51);
     const randomVert = (array[1] % 21) - 10;
     const frame = window.requestAnimationFrame(() => {
       setHorizontalPosition(randomPos);
+      setVerticalPosition(randomVertPct);
       setVerticalOffset(randomVert);
     });
     return () => window.cancelAnimationFrame(frame);
@@ -233,6 +236,8 @@ export function LessonPlayer({
       setHorizontalPosition((currentPosition) =>
         getNextAdvanceButtonPosition(currentPosition, array[0]),
       );
+      const randomVertPct = 25 + (array[1] % 51);
+      setVerticalPosition(randomVertPct);
       setVerticalOffset((array[1] % 21) - 10);
       setIsAdvanceArmed(false);
       armTimer = window.setTimeout(() => setIsAdvanceArmed(true), 850);
@@ -512,7 +517,7 @@ export function LessonPlayer({
               <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
                 <button
                   onClick={() => toggleLayoutMode("top-header")}
-                  title="Header Superior Estándar con Índice Flotante"
+                  title="Header Superior Estándar con Índice y Dock Flotantes"
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     layoutMode === "top-header"
                       ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-xs"
@@ -686,9 +691,91 @@ export function LessonPlayer({
           </aside>
         )}
 
+        {/* Floating Right Action & Progress Dock Panel for TOP HEADER Mode (Matching Left Index height, with Vertical anti-cheat button) */}
+        {layoutMode === "top-header" && (
+          <aside className="hidden lg:flex flex-col fixed right-6 top-[240px] z-30 w-80 h-[340px] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-right-4 duration-200">
+            <div className="border-b border-slate-100 dark:border-slate-800 pb-3">
+              <span className="text-[10px] font-extrabold uppercase text-[#1a80ff] tracking-wider">
+                Verificación de Avance
+              </span>
+              <h3 className="text-xs font-bold text-slate-900 dark:text-white">
+                Estado de la Lección
+              </h3>
+            </div>
+
+            {/* Requirements checklist items */}
+            <div className="space-y-2 text-xs">
+              <div
+                className={`p-2.5 rounded-2xl flex items-center justify-between font-semibold border ${
+                  remainingSeconds === 0
+                    ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300"
+                    : !isWindowFocused
+                      ? "bg-rose-50 dark:bg-rose-950/40 border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 animate-pulse"
+                      : "bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300"
+                }`}
+              >
+                <span className="text-[11px]">⏱ Tiempo mínimo</span>
+                <span className="font-extrabold text-xs">
+                  {remainingSeconds === 0
+                    ? "✓ Cumplido"
+                    : !isWindowFocused
+                      ? "⏸ Pausado"
+                      : `${remainingSeconds}s`}
+                </span>
+              </div>
+
+              <div
+                className={`p-2.5 rounded-2xl flex items-center justify-between font-semibold border ${
+                  reachedScrollThreshold
+                    ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300"
+                    : "bg-amber-50 dark:bg-amber-950/40 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300"
+                }`}
+              >
+                <span className="text-[11px]">📜 Lectura 90%</span>
+                <span className="font-extrabold text-xs">
+                  {reachedScrollThreshold
+                    ? "✓ Alcanzado"
+                    : `${scrollProgress}%`}
+                </span>
+              </div>
+            </div>
+
+            {/* Anti-cheat Bounded Vertical Action Area */}
+            <div className="relative flex-1 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 overflow-hidden">
+              <div
+                style={{
+                  top: `${verticalPosition}%`,
+                  transform: "translate(-50%, -50%)",
+                }}
+                className="absolute left-1/2 transition-all duration-300 w-11/12 text-center"
+              >
+                <button
+                  disabled={!canAdvance}
+                  onClick={handleComplete}
+                  className={`w-full inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xs font-extrabold text-white shadow-lg transition-all ${
+                    canAdvance
+                      ? "bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
+                      : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
+                  }`}
+                >
+                  {isCompleting
+                    ? "Verificando..."
+                    : isCompletedSuccess
+                      ? nextLessonId
+                        ? "✓ Completada"
+                        : "✓ Finalizado"
+                      : nextLessonId
+                        ? "Completar y Avanzar"
+                        : "Finalizar"}
+                </button>
+              </div>
+            </div>
+          </aside>
+        )}
+
         {/* Main Article Container Area: Maintains FULL wide reading width in all modes */}
         <div className="flex-1 w-full mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-8 pb-40">
-          <main className="w-full max-w-6xl mx-auto space-y-6">
+          <main className="w-full max-w-5xl mx-auto space-y-6">
             {errorMessage && (
               <div className="rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 p-4 text-xs font-semibold text-rose-700 dark:text-rose-300">
                 ⚠ Error al completar la lección: {errorMessage}
@@ -714,9 +801,9 @@ export function LessonPlayer({
           </main>
         </div>
 
-        {/* Requirements Checklist Floating Capsule */}
+        {/* Requirements Checklist Floating Capsule for Mobile */}
         {!canAdvance && (
-          <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 dark:bg-slate-900/95 text-white backdrop-blur-xl px-5 py-2.5 rounded-full shadow-2xl border border-slate-700/80 text-xs font-semibold flex items-center gap-2.5 whitespace-nowrap pointer-events-none max-w-[95vw] overflow-x-auto">
+          <div className="lg:hidden fixed bottom-28 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 dark:bg-slate-900/95 text-white backdrop-blur-xl px-5 py-2.5 rounded-full shadow-2xl border border-slate-700/80 text-xs font-semibold flex items-center gap-2.5 whitespace-nowrap pointer-events-none max-w-[95vw] overflow-x-auto">
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
                 remainingSeconds === 0
@@ -747,10 +834,12 @@ export function LessonPlayer({
           </div>
         )}
 
-        {/* Bottom Anti-Cheat Button Dock */}
+        {/* Bottom Horizontal Action Dock for Mobile or Left Navbar Mode */}
         <section
           aria-label="Avance de lección"
-          className="fixed bottom-0 left-0 right-0 z-40 h-24 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-2xl flex items-center px-4 sm:px-8"
+          className={`${
+            layoutMode === "top-header" ? "lg:hidden" : ""
+          } fixed bottom-0 left-0 right-0 z-40 h-24 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-2xl flex items-center px-4 sm:px-8`}
         >
           <div className="relative w-full mx-auto max-w-[1400px] h-full flex items-center">
             <div
