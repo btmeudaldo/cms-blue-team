@@ -106,7 +106,10 @@ export async function updateCourseAction(courseId: string, formData: FormData) {
 export async function deleteCourseAction(courseId: string) {
   try {
     const supabase = await createSupabaseServerClient();
-    const { error } = await supabase.from("courses").delete().eq("id", courseId);
+    const { error } = await supabase
+      .from("courses")
+      .delete()
+      .eq("id", courseId);
     if (!error) {
       revalidatePath("/admin/courses");
       revalidatePath("/courses");

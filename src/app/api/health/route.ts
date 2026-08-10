@@ -4,7 +4,10 @@ import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
 export async function GET() {
   try {
     const supabase = await createSupabaseServerClient();
-    const { data, error } = await supabase.from("courses").select("id").limit(1);
+    const { data, error } = await supabase
+      .from("courses")
+      .select("id")
+      .limit(1);
 
     if (!error) {
       return NextResponse.json({ status: "online", source: "supabase" });

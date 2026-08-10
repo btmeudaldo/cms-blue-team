@@ -55,7 +55,9 @@ export function AuditFilterTable({
     return (progressRecords || []).filter((item: any) => {
       const prof =
         profileMap.get(item.user_id) ||
-        profiles.find((p: any) => p.id === item.user_id || p.email === item.user_id) ||
+        profiles.find(
+          (p: any) => p.id === item.user_id || p.email === item.user_id,
+        ) ||
         profiles[0];
       const les = lessonMap.get(item.lesson_id) || {
         title: item.lesson_id,
@@ -167,7 +169,8 @@ export function AuditFilterTable({
               Tiempo Total Registrado
             </span>
             <div className="text-2xl font-extrabold text-[#1a80ff] mt-1">
-              {Math.floor(totalSecondsStudied / 60)} min {totalSecondsStudied % 60}s
+              {Math.floor(totalSecondsStudied / 60)} min{" "}
+              {totalSecondsStudied % 60}s
             </div>
           </div>
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] text-xl font-bold">
@@ -189,7 +192,9 @@ export function AuditFilterTable({
               onChange={(e) => setSelectedStudentId(e.target.value)}
               className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-xs font-semibold text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden cursor-pointer"
             >
-              <option value="all">👥 Todos los Alumnos ({studentList.length})</option>
+              <option value="all">
+                👥 Todos los Alumnos ({studentList.length})
+              </option>
               {studentList.map((st: any) => (
                 <option key={st.id || st.email} value={st.id || st.email}>
                   👤 {st.full_name || st.email} ({st.email})
@@ -208,7 +213,9 @@ export function AuditFilterTable({
               onChange={(e) => setSelectedCourseId(e.target.value)}
               className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-xs font-semibold text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden cursor-pointer"
             >
-              <option value="all">📚 Todos los Cursos ({courses.length})</option>
+              <option value="all">
+                📚 Todos los Cursos ({courses.length})
+              </option>
               {courses.map((c: any) => (
                 <option key={c.id} value={c.id}>
                   📘 {c.title}
@@ -263,7 +270,8 @@ export function AuditFilterTable({
               Historial de Auditoría de Tiempos ({filteredRecords.length})
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-              Marcas de tiempo atómicas derivadas directamente en PostgreSQL / Servidor.
+              Marcas de tiempo atómicas derivadas directamente en PostgreSQL /
+              Servidor.
             </p>
           </div>
         </div>
@@ -296,7 +304,8 @@ export function AuditFilterTable({
                   const prof =
                     profileMap.get(item.user_id) ||
                     profiles.find(
-                      (p: any) => p.id === item.user_id || p.email === item.user_id,
+                      (p: any) =>
+                        p.id === item.user_id || p.email === item.user_id,
                     ) ||
                     profiles[0];
                   const les = lessonMap.get(item.lesson_id) || {

@@ -9,6 +9,7 @@ Documentación oficial y planificación técnica para la arquitectura de acceso 
 Para permitir que los alumnos de aviación puedan estudiar los cursos teóricos del avión desde casa y acudir presencialmente únicamente a los exámenes finales:
 
 ### Infraestructura Recomendada:
+
 - **Hosting del Frontend & Servidor SSR:** **Vercel** (Edge Network global con CDN integrada para imágenes y activos).
 - **Base de Datos & Autenticación:** **Supabase Cloud (PostgreSQL)** con backups automatizados, replicación y políticas RLS.
 - **Verificación Anticheating Remota:** La validación de tiempo mínimo exigido se realiza de forma atómica en el servidor PostgreSQL (marcas de tiempo de inicio/fin no manipulables por el cliente).
@@ -86,5 +87,6 @@ CREATE TABLE IF NOT EXISTS student_test_attempts (
 ---
 
 ## 🚦 Estado del Documento
+
 - **Estado:** Planificado y documentado para integración futura.
 - **Acción requerida:** Ninguna en esta fase. El código actual del CMS se mantiene estable y listo para la extensión cuando el equipo lo requiera.

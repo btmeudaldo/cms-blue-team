@@ -17,16 +17,19 @@ export function LoginForm() {
   const [formError, setFormError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
 
-  const [selectedStudentEmail, setSelectedStudentEmail] = useState("student@blueteam.com");
-  const [selectedInstructorEmail, setSelectedInstructorEmail] = useState("instructor@blueteam.com");
+  const [selectedStudentEmail, setSelectedStudentEmail] = useState(
+    "student@blueteam.com",
+  );
+  const [selectedInstructorEmail, setSelectedInstructorEmail] = useState(
+    "instructor@blueteam.com",
+  );
 
   async function handleSelectDemoUser(email: string, role: string) {
     setLoadingDemo(email);
     setFormError(null);
     try {
       const res = (await demoUserSelectLoginAction(email, role)) as
-        | { error?: string; redirectTo?: string }
-        | undefined;
+        { error?: string; redirectTo?: string } | undefined;
       if (res?.error) {
         setFormError(res.error);
       } else if (res?.redirectTo) {
@@ -95,25 +98,51 @@ export function LoginForm() {
               onChange={(e) => setSelectedStudentEmail(e.target.value)}
               className="w-full truncate rounded-xl border border-blue-200 dark:border-blue-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-xs font-semibold text-slate-900 dark:text-white focus:border-[#1a80ff] cursor-pointer"
             >
-              <option value="student@blueteam.com">🎓 Piloto Alumno BlueTeam (student@blueteam.com)</option>
-              <option value="alumno1@blueteam.com">👤 Carlos Mendoza - Alumno PPL (alumno1@blueteam.com)</option>
-              <option value="alumno2@blueteam.com">👤 Sofía Rodríguez - Alumno CPL (alumno2@blueteam.com)</option>
-              <option value="alumno3@blueteam.com">👤 Alejandro Gómez - Alumno ATPL (alumno3@blueteam.com)</option>
-              <option value="alumno4@blueteam.com">👤 Lucía Fernández - Alumno VFR (alumno4@blueteam.com)</option>
-              <option value="alumno5@blueteam.com">👤 Mateo Navas - Alumno IFR (alumno5@blueteam.com)</option>
-              <option value="alumno6@blueteam.com">👤 Elena Benítez - Alumno PPL (alumno6@blueteam.com)</option>
-              <option value="alumno7@blueteam.com">👤 Javier Morales - Alumno CPL (alumno7@blueteam.com)</option>
-              <option value="alumno8@blueteam.com">👤 Valeria Torres - Alumno ATPL (alumno8@blueteam.com)</option>
-              <option value="alumno9@blueteam.com">👤 Daniel Castillo - Alumno VFR (alumno9@blueteam.com)</option>
-              <option value="alumno10@blueteam.com">👤 Paula Gutiérrez - Alumno IFR (alumno10@blueteam.com)</option>
+              <option value="student@blueteam.com">
+                🎓 Piloto Alumno BlueTeam (student@blueteam.com)
+              </option>
+              <option value="alumno1@blueteam.com">
+                👤 Carlos Mendoza - Alumno PPL (alumno1@blueteam.com)
+              </option>
+              <option value="alumno2@blueteam.com">
+                👤 Sofía Rodríguez - Alumno CPL (alumno2@blueteam.com)
+              </option>
+              <option value="alumno3@blueteam.com">
+                👤 Alejandro Gómez - Alumno ATPL (alumno3@blueteam.com)
+              </option>
+              <option value="alumno4@blueteam.com">
+                👤 Lucía Fernández - Alumno VFR (alumno4@blueteam.com)
+              </option>
+              <option value="alumno5@blueteam.com">
+                👤 Mateo Navas - Alumno IFR (alumno5@blueteam.com)
+              </option>
+              <option value="alumno6@blueteam.com">
+                👤 Elena Benítez - Alumno PPL (alumno6@blueteam.com)
+              </option>
+              <option value="alumno7@blueteam.com">
+                👤 Javier Morales - Alumno CPL (alumno7@blueteam.com)
+              </option>
+              <option value="alumno8@blueteam.com">
+                👤 Valeria Torres - Alumno ATPL (alumno8@blueteam.com)
+              </option>
+              <option value="alumno9@blueteam.com">
+                👤 Daniel Castillo - Alumno VFR (alumno9@blueteam.com)
+              </option>
+              <option value="alumno10@blueteam.com">
+                👤 Paula Gutiérrez - Alumno IFR (alumno10@blueteam.com)
+              </option>
             </select>
             <button
               type="button"
               disabled={loadingDemo !== null}
-              onClick={() => handleSelectDemoUser(selectedStudentEmail, "student")}
+              onClick={() =>
+                handleSelectDemoUser(selectedStudentEmail, "student")
+              }
               className="w-full rounded-xl bg-[#1a80ff] py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all cursor-pointer shadow-xs"
             >
-              {loadingDemo === selectedStudentEmail ? "Entrando..." : "Entrar como Alumno Seleccionado"}
+              {loadingDemo === selectedStudentEmail
+                ? "Entrando..."
+                : "Entrar como Alumno Seleccionado"}
             </button>
           </div>
 
@@ -127,18 +156,30 @@ export function LoginForm() {
               onChange={(e) => setSelectedInstructorEmail(e.target.value)}
               className="w-full truncate rounded-xl border border-blue-200 dark:border-blue-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-xs font-semibold text-slate-900 dark:text-white focus:border-[#1a80ff] cursor-pointer"
             >
-              <option value="instructor@blueteam.com">👨‍🏫 Instructor de Vuelo BlueTeam (instructor@blueteam.com)</option>
-              <option value="inst.martinez@blueteam.com">✈️ Capt. Roberto Martínez - PPL/CPL (inst.martinez@blueteam.com)</option>
-              <option value="inst.alvarez@blueteam.com">✈️ Capt. Laura Álvarez - IFR (inst.alvarez@blueteam.com)</option>
-              <option value="inst.reyes@blueteam.com">✈️ Capt. Fernando Reyes - Avionica (inst.reyes@blueteam.com)</option>
+              <option value="instructor@blueteam.com">
+                👨‍🏫 Instructor de Vuelo BlueTeam (instructor@blueteam.com)
+              </option>
+              <option value="inst.martinez@blueteam.com">
+                ✈️ Capt. Roberto Martínez - PPL/CPL (inst.martinez@blueteam.com)
+              </option>
+              <option value="inst.alvarez@blueteam.com">
+                ✈️ Capt. Laura Álvarez - IFR (inst.alvarez@blueteam.com)
+              </option>
+              <option value="inst.reyes@blueteam.com">
+                ✈️ Capt. Fernando Reyes - Avionica (inst.reyes@blueteam.com)
+              </option>
             </select>
             <button
               type="button"
               disabled={loadingDemo !== null}
-              onClick={() => handleSelectDemoUser(selectedInstructorEmail, "instructor")}
+              onClick={() =>
+                handleSelectDemoUser(selectedInstructorEmail, "instructor")
+              }
               className="w-full rounded-xl bg-indigo-600 py-2.5 text-xs font-bold text-white hover:bg-indigo-700 transition-all cursor-pointer shadow-xs"
             >
-              {loadingDemo === selectedInstructorEmail ? "Entrando..." : "Entrar como Instructor Seleccionado"}
+              {loadingDemo === selectedInstructorEmail
+                ? "Entrando..."
+                : "Entrar como Instructor Seleccionado"}
             </button>
           </div>
 
@@ -227,7 +268,9 @@ export function LoginForm() {
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm p-1 rounded-md cursor-pointer select-none"
-                title={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+                title={
+                  showPassword ? "Ocultar contraseña" : "Mostrar contraseña"
+                }
               >
                 {showPassword ? "🙈" : "👁️"}
               </button>

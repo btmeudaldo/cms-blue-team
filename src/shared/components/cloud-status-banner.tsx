@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 
 export function CloudStatusBanner() {
-  const [status, setStatus] = useState<"checking" | "online" | "offline">("checking");
+  const [status, setStatus] = useState<"checking" | "online" | "offline">(
+    "checking",
+  );
 
   useEffect(() => {
     async function checkHealth() {
@@ -30,7 +32,8 @@ export function CloudStatusBanner() {
     <div className="bg-amber-500 dark:bg-amber-600 text-slate-950 dark:text-white px-4 py-2 text-xs font-extrabold text-center flex items-center justify-center gap-2 shadow-md animate-in slide-in-from-top duration-200 border-b border-amber-600">
       <span className="text-sm">⚠️</span>
       <span>
-        Aviso: Sin conexión con Supabase Cloud. La plataforma está operando en Modo Resiliente Local con datos guardados.
+        Aviso: Sin conexión con Supabase Cloud. La plataforma está operando en
+        Modo Resiliente Local con datos guardados.
       </span>
       <button
         type="button"

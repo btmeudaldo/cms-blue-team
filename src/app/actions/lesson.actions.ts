@@ -31,10 +31,11 @@ export async function createLessonAction(courseId: string, formData: FormData) {
 
   try {
     const supabase = await createSupabaseServerClient();
-    const { data: existingLessons, error: existingLessonsError } = await supabase
-      .from("lessons")
-      .select("lesson_order")
-      .eq("course_id", courseId);
+    const { data: existingLessons, error: existingLessonsError } =
+      await supabase
+        .from("lessons")
+        .select("lesson_order")
+        .eq("course_id", courseId);
 
     if (existingLessonsError) throw new Error(existingLessonsError.message);
 
@@ -55,7 +56,10 @@ export async function createLessonAction(courseId: string, formData: FormData) {
 
     if (error) throw new Error(error.message);
   } catch (err) {
-    console.warn("Creando lección en mock-store local debido a fallo de Supabase:", err);
+    console.warn(
+      "Creando lección en mock-store local debido a fallo de Supabase:",
+      err,
+    );
     mockStore.addLesson(courseId, {
       title,
       slug,
@@ -113,7 +117,10 @@ export async function updateLessonAction(
 
     if (error) throw new Error(error.message);
   } catch (err) {
-    console.warn("Actualizando lección en mock-store local debido a fallo de Supabase:", err);
+    console.warn(
+      "Actualizando lección en mock-store local debido a fallo de Supabase:",
+      err,
+    );
     mockStore.updateLesson(lessonId, {
       title,
       slug,
