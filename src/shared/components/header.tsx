@@ -35,15 +35,14 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
                 width={800}
                 height={273}
                 style={{
-                  height: "clamp(100px, 10vw, 135px)",
+                  height: "clamp(70px, 7vw, 95px)",
                   width: "auto",
                   objectFit: "contain",
                   margin: 0,
                   padding: 0,
-                  display: "block",
                   imageRendering: "-webkit-optimize-contrast",
                 }}
-                className="dark:hidden group-hover:scale-105 transition-transform shrink-0"
+                className="block dark:hidden group-hover:scale-105 transition-transform shrink-0"
               />
               <img
                 src="/logo-largo-blanco.png"
@@ -51,12 +50,11 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
                 width={800}
                 height={273}
                 style={{
-                  height: "clamp(100px, 10vw, 135px)",
+                  height: "clamp(70px, 7vw, 95px)",
                   width: "auto",
                   objectFit: "contain",
                   margin: 0,
                   padding: 0,
-                  display: "block",
                   imageRendering: "-webkit-optimize-contrast",
                 }}
                 className="hidden dark:block group-hover:scale-105 transition-transform shrink-0"
