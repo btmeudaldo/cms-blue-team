@@ -16,10 +16,18 @@ import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 import { getNextAdvanceButtonPosition } from "@/features/learning/domain/advance-button-position";
 import { getLessonScrollProgress } from "@/features/learning/domain/lesson-scroll-progress";
 
+export type LessonSummary = {
+  id: string;
+  title: string;
+  sequence_order: number;
+  slug?: string;
+};
+
 type LessonPlayerProps = {
   contentHtml: string;
   lessonId: string;
   courseId: string;
+  courseTitle?: string;
   lessonTitle: string;
   minSeconds: number;
   pathToRevalidate: string;
@@ -29,12 +37,15 @@ type LessonPlayerProps = {
   userEmail?: string;
   userName?: string;
   role?: string;
+  lessonsSummary?: LessonSummary[];
+  completedLessonIds?: string[];
 };
 
 export function LessonPlayer({
   contentHtml,
   lessonId,
   courseId,
+  courseTitle = "Curso",
   lessonTitle,
   minSeconds,
   pathToRevalidate,
@@ -43,6 +54,8 @@ export function LessonPlayer({
   userEmail,
   userName,
   role = "student",
+  lessonsSummary = [],
+  completedLessonIds = [],
 }: LessonPlayerProps) {
   const router = useRouter();
   const safeContentHtml = sanitizeLessonHtml(contentHtml);
@@ -63,19 +76,64 @@ export function LessonPlayer({
   const [hasServerStarted, setHasServerStarted] = useState(isAlreadyCompleted);
   const [isAdvanceArmed, setIsAdvanceArmed] = useState(isAlreadyCompleted);
 
-  // Focus & Visibility state: timer ticks ONLY when window/tab is actively focused
+  // Focus & Visibility state
   const [isWindowFocused, setIsWindowFocused] = useState(true);
 
-  // Hydration-safe random horizontal position for anti-cheating button (between 8% and 92%)
+  // Layout & Index State
+  // layoutMode: "top-header" (Standard header on top) vs "vertical-left" (Navbar & panel integrated into left vertical column)
+  const [layoutMode, setLayoutMode] = useState<"top-header" | "vertical-left">(
+    "top-header",
+  );
+  // isIndexOpen: toggleable index visibility
+  const [isIndexOpen, setIsIndexOpen] = useState(true);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+  // Hydration-safe random horizontal & bounded vertical position for anti-cheating button
   const [horizontalPosition, setHorizontalPosition] = useState(50);
+  const [verticalOffset, setVerticalOffset] = useState(0);
+
+  const completedLessonSet = new Set(completedLessonIds);
+
+  // Load preferences from localStorage on mount
+  useEffect(() => {
+    try {
+      const savedLayout = localStorage.getItem("cms_lesson_layout_mode");
+      if (savedLayout === "top-header" || savedLayout === "vertical-left") {
+        setLayoutMode(savedLayout);
+      }
+      const savedIndexState = localStorage.getItem("cms_lesson_index_open");
+      if (savedIndexState !== null) {
+        setIsIndexOpen(savedIndexState === "true");
+      }
+    } catch (e) {}
+  }, []);
+
+  const toggleLayoutMode = (mode: "top-header" | "vertical-left") => {
+    setLayoutMode(mode);
+    try {
+      localStorage.setItem("cms_lesson_layout_mode", mode);
+    } catch (e) {}
+  };
+
+  const toggleIndexOpen = () => {
+    setIsIndexOpen((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem("cms_lesson_index_open", String(next));
+      } catch (e) {}
+      return next;
+    });
+  };
 
   useEffect(() => {
-    const array = new Uint32Array(1);
+    const array = new Uint32Array(2);
     crypto.getRandomValues(array);
-    const randomPos = 8 + (array[0] % 85);
-    const frame = window.requestAnimationFrame(() =>
-      setHorizontalPosition(randomPos),
-    );
+    const randomPos = 10 + (array[0] % 80);
+    const randomVert = (array[1] % 21) - 10;
+    const frame = window.requestAnimationFrame(() => {
+      setHorizontalPosition(randomPos);
+      setVerticalOffset(randomVert);
+    });
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
@@ -168,13 +226,14 @@ export function LessonPlayer({
   useEffect(() => {
     if (!requirementsMet || isAlreadyCompleted) return;
 
-    const array = new Uint32Array(1);
+    const array = new Uint32Array(2);
     crypto.getRandomValues(array);
     let armTimer: number | undefined;
     const movementFrame = window.requestAnimationFrame(() => {
       setHorizontalPosition((currentPosition) =>
         getNextAdvanceButtonPosition(currentPosition, array[0]),
       );
+      setVerticalOffset((array[1] % 21) - 10);
       setIsAdvanceArmed(false);
       armTimer = window.setTimeout(() => setIsAdvanceArmed(true), 850);
     });
@@ -222,7 +281,6 @@ export function LessonPlayer({
       await completeLessonAction(lessonId, pathToRevalidate);
       setIsCompletedSuccess(true);
 
-      // Auto-navigate to next lesson or course summary if last lesson
       if (nextLessonId) {
         setTimeout(() => {
           router.push(`/courses/${courseId}/lessons/${nextLessonId}`);
@@ -239,197 +297,492 @@ export function LessonPlayer({
     }
   }
 
-  // Timer circular percentage calculation
   const timerPct =
     minSeconds > 0
       ? Math.round(((minSeconds - remainingSeconds) / minSeconds) * 100)
       : 100;
 
-  return (
-    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 transition-colors">
-      {/* Global Brand Header */}
-      <Header userEmail={userEmail} userName={userName} role={role} />
+  // Render Lesson Navigation list component
+  const renderLessonsNav = () => (
+    <nav className="space-y-1.5">
+      {lessonsSummary.map((les, index) => {
+        const isCurrent = les.id === lessonId;
+        const isDone = completedLessonSet.has(les.id);
+        return (
+          <Link
+            key={les.id}
+            href={`/courses/${courseId}/lessons/${les.id}`}
+            onClick={() => setIsMobileSidebarOpen(false)}
+            className={`flex items-center gap-3 p-2.5 rounded-2xl text-xs font-semibold transition-colors ${
+              isCurrent
+                ? "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] border border-blue-200 dark:border-blue-900/40"
+                : isDone
+                  ? "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/60"
+                  : "text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60"
+            }`}
+          >
+            <span
+              className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-extrabold ${
+                isCurrent
+                  ? "bg-[#1a80ff] text-white"
+                  : isDone
+                    ? "bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-400"
+              }`}
+            >
+              {isDone ? "✓" : index + 1}
+            </span>
+            <span className="line-clamp-2 flex-1">{les.title}</span>
+          </Link>
+        );
+      })}
+    </nav>
+  );
 
-      {/* Sticky Control Header Widget attached right below main Header */}
-      <div className="sticky top-16 z-30 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs py-3 px-4 sm:px-6">
-        <div className="mx-auto max-w-5xl flex flex-wrap items-center justify-between gap-4">
-          {/* Navigation & Title */}
-          <div className="flex items-center gap-3">
+  return (
+    <div className="flex min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 transition-colors">
+      {/* ------------------------------------------------------------- */}
+      {/* MODE 1: LEFT VERTICAL NAVBAR (Navbar & Header on Left)       */}
+      {/* ------------------------------------------------------------- */}
+      {layoutMode === "vertical-left" && (
+        <aside
+          className={`hidden lg:flex flex-col shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-all duration-300 z-30 sticky top-0 h-screen overflow-y-auto ${
+            isIndexOpen ? "w-80 p-5 space-y-4" : "w-16 p-3 items-center"
+          }`}
+        >
+          {/* Top Bar inside Left Sidebar */}
+          <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3 w-full">
             <Link
               href={`/courses/${courseId}`}
-              className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0"
               title="Volver al curso"
             >
               &larr;
             </Link>
-            <div>
-              <h2 className="text-sm font-extrabold text-slate-900 dark:text-white line-clamp-1">
-                {lessonTitle}
-              </h2>
-              <p className="text-[11px] text-slate-400 dark:text-slate-500 font-medium">
-                Verificación Temporal Activa
-              </p>
-            </div>
+
+            {isIndexOpen && (
+              <span className="text-[11px] font-extrabold uppercase text-[#1a80ff] tracking-wider truncate px-2">
+                BLUE TEAM
+              </span>
+            )}
+
+            {/* Collapse/Expand Sidebar Toggle */}
+            <button
+              onClick={toggleIndexOpen}
+              className="h-8 w-8 rounded-lg flex items-center justify-center text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold transition-colors cursor-pointer shrink-0"
+              title={isIndexOpen ? "Ocultar Índice" : "Mostrar Índice"}
+            >
+              {isIndexOpen ? "◀" : "▶"}
+            </button>
           </div>
 
-          {/* Verification Status Monitors */}
-          <div className="flex items-center gap-4">
-            {/* Countdown Badge with Pause Status when tab is inactive */}
-            <div className="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 border border-slate-200 dark:border-slate-700">
-              <div className="relative flex h-5 w-5 items-center justify-center">
-                <svg
-                  className="w-5 h-5 -rotate-90 transform"
-                  viewBox="0 0 36 36"
-                >
-                  <path
-                    className="text-slate-200 dark:text-slate-700"
-                    strokeWidth="4"
-                    stroke="currentColor"
-                    fill="none"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path
-                    className={
-                      remainingSeconds === 0
-                        ? "text-emerald-500"
-                        : !isWindowFocused
-                          ? "text-rose-500 animate-pulse"
-                          : "text-[#1a80ff]"
-                    }
-                    strokeDasharray={`${timerPct}, 100`}
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    stroke="currentColor"
-                    fill="none"
-                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                </svg>
+          {/* Expanded Sidebar Content */}
+          {isIndexOpen ? (
+            <div className="space-y-4 flex-1">
+              {/* Course Title & Overall Progress */}
+              <div className="space-y-2 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <span className="text-[10px] font-extrabold uppercase text-slate-400 dark:text-slate-500 tracking-wider">
+                  Curso Actual
+                </span>
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white line-clamp-2">
+                  {courseTitle}
+                </h3>
+                <div className="mt-2 space-y-1">
+                  <div className="flex justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                    <span>Avance</span>
+                    <span>
+                      {lessonsSummary.length > 0
+                        ? Math.round(
+                            (completedLessonSet.size / lessonsSummary.length) *
+                              100,
+                          )
+                        : 0}
+                      %
+                    </span>
+                  </div>
+                  <div className="h-2 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                    <div
+                      className="h-full bg-[#1a80ff] transition-all duration-300"
+                      style={{
+                        width: `${
+                          lessonsSummary.length > 0
+                            ? Math.round(
+                                (completedLessonSet.size /
+                                  lessonsSummary.length) *
+                                  100,
+                              )
+                            : 0
+                        }%`,
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
-              <div className="flex flex-col leading-tight">
-                <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">
-                  Tiempo Exigido
+
+              {/* Lessons Index */}
+              <div className="space-y-2">
+                <span className="text-[10px] font-extrabold uppercase text-[#1a80ff] tracking-wider">
+                  Índice de Lecciones
                 </span>
-                <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
-                  {remainingSeconds === 0
-                    ? "✓ Cumplido"
-                    : !isWindowFocused
-                      ? "⏸ Pausado (Fuera de pestaña)"
-                      : "En proceso..."}
-                </span>
+                {renderLessonsNav()}
+              </div>
+            </div>
+          ) : (
+            /* Collapsed Icon Bar */
+            <div className="flex flex-col items-center gap-4 pt-4 flex-1">
+              <button
+                onClick={toggleIndexOpen}
+                className="p-2 rounded-xl bg-blue-50 dark:bg-blue-950 text-[#1a80ff] hover:scale-110 transition-transform cursor-pointer"
+                title="Abrir Índice de Lecciones"
+              >
+                📑
+              </button>
+            </div>
+          )}
+
+          {/* User profile footer at bottom of left bar */}
+          {isIndexOpen && (
+            <div className="border-t border-slate-100 dark:border-slate-800 pt-3 text-[11px] text-slate-400 dark:text-slate-500 font-medium">
+              <p className="truncate font-semibold text-slate-700 dark:text-slate-300">
+                {userName || userEmail || "Estudiante"}
+              </p>
+              <p className="text-[10px] uppercase tracking-wider text-[#1a80ff]">
+                Modo Navbar Izquierda
+              </p>
+            </div>
+          )}
+        </aside>
+      )}
+
+      {/* Main Content & Top Bar Area */}
+      <div className="flex-1 flex flex-col min-w-0 min-h-screen">
+        {/* MODE 2: TOP HEADER (if in top-header mode) */}
+        {layoutMode === "top-header" && (
+          <Header userEmail={userEmail} userName={userName} role={role} />
+        )}
+
+        {/* Sticky Control Bar */}
+        <div className="sticky top-0 lg:top-0 z-20 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs py-3 px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[1400px] flex flex-wrap items-center justify-between gap-4">
+            {/* Title & Index Toggle */}
+            <div className="flex items-center gap-3">
+              {layoutMode === "top-header" && (
+                <Link
+                  href={`/courses/${courseId}`}
+                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                  title="Volver al curso"
+                >
+                  &larr;
+                </Link>
+              )}
+
+              {/* Toggle Index Button (Works in both Modes) */}
+              <button
+                onClick={() => {
+                  if (window.innerWidth < 1024) {
+                    setIsMobileSidebarOpen(!isMobileSidebarOpen);
+                  } else {
+                    toggleIndexOpen();
+                  }
+                }}
+                className={`flex h-9 px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                  isIndexOpen
+                    ? "bg-[#1a80ff] text-white border-blue-600 shadow-xs"
+                    : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                }`}
+                title="Mostrar u Ocultar el Índice de lecciones"
+              >
+                <span>📑</span>
+                <span>{isIndexOpen ? "Ocultar Índice" : "Ver Índice"}</span>
+              </button>
+
+              <div>
+                <h2 className="text-sm font-extrabold text-slate-900 dark:text-white line-clamp-1">
+                  {lessonTitle}
+                </h2>
+                <p className="text-[11px] text-slate-400 dark:text-slate-500 font-medium">
+                  {courseTitle}
+                </p>
               </div>
             </div>
 
-            {/* Scroll Indicator Badge */}
-            <div className="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 border border-slate-200 dark:border-slate-700">
-              <div className="flex flex-col leading-tight text-right">
-                <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">
-                  Desplazamiento 90%
-                </span>
-                <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
-                  {reachedScrollThreshold
-                    ? "✓ Alcanzado"
-                    : `${scrollProgress}%`}
-                </span>
+            {/* Layout Mode Switcher & Monitor Badges */}
+            <div className="flex flex-wrap items-center gap-3">
+              {/* Layout Mode Switcher Pills */}
+              <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
+                <button
+                  onClick={() => toggleLayoutMode("top-header")}
+                  title="Header Superior Estándar con Índice Flotante"
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    layoutMode === "top-header"
+                      ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-xs"
+                      : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                >
+                  <span>⬆️</span>
+                  <span className="hidden sm:inline">Header Arriba</span>
+                </button>
+                <button
+                  onClick={() => toggleLayoutMode("vertical-left")}
+                  title="Navbar y Panel Completo a la Izquierda"
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    layoutMode === "vertical-left"
+                      ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-xs"
+                      : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                >
+                  <span>⬅️</span>
+                  <span className="hidden sm:inline">Navbar Izquierda</span>
+                </button>
+              </div>
+
+              {/* Timer Countdown Badge */}
+              <div className="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 border border-slate-200 dark:border-slate-700">
+                <div className="relative flex h-5 w-5 items-center justify-center">
+                  <svg
+                    className="w-5 h-5 -rotate-90 transform"
+                    viewBox="0 0 36 36"
+                  >
+                    <path
+                      className="text-slate-200 dark:text-slate-700"
+                      strokeWidth="4"
+                      stroke="currentColor"
+                      fill="none"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path
+                      className={
+                        remainingSeconds === 0
+                          ? "text-emerald-500"
+                          : !isWindowFocused
+                            ? "text-rose-500 animate-pulse"
+                            : "text-[#1a80ff]"
+                      }
+                      strokeDasharray={`${timerPct}, 100`}
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      stroke="currentColor"
+                      fill="none"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                  </svg>
+                </div>
+                <div className="flex flex-col leading-tight">
+                  <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">
+                    Tiempo Exigido
+                  </span>
+                  <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
+                    {remainingSeconds === 0
+                      ? "✓ Cumplido"
+                      : !isWindowFocused
+                        ? "⏸ Pausado"
+                        : "En proceso..."}
+                  </span>
+                </div>
+              </div>
+
+              {/* Scroll Badge */}
+              <div className="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 border border-slate-200 dark:border-slate-700">
+                <div className="flex flex-col leading-tight text-right">
+                  <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">
+                    Desplazamiento 90%
+                  </span>
+                  <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
+                    {reachedScrollThreshold
+                      ? "✓ Alcanzado"
+                      : `${scrollProgress}%`}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Main Lesson Content Area */}
-      <main className="flex-1 mx-auto w-full max-w-4xl px-4 sm:px-6 pt-8 pb-40 space-y-6">
-        {errorMessage && (
-          <div className="rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 p-4 text-xs font-semibold text-rose-700 dark:text-rose-300">
-            ⚠ Error al completar la lección: {errorMessage}
+        {/* Mobile Drawer Overlay */}
+        {isMobileSidebarOpen && (
+          <div
+            className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm lg:hidden"
+            onClick={() => setIsMobileSidebarOpen(false)}
+          >
+            <aside
+              className="absolute left-0 top-0 bottom-0 w-80 bg-white dark:bg-slate-900 p-6 shadow-2xl space-y-4 overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                <div>
+                  <span className="text-[10px] font-extrabold uppercase text-[#1a80ff] tracking-wider">
+                    Navegación del Curso
+                  </span>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white line-clamp-2">
+                    {courseTitle}
+                  </h3>
+                </div>
+                <button
+                  onClick={() => setIsMobileSidebarOpen(false)}
+                  className="text-slate-400 hover:text-slate-700 dark:hover:text-white text-lg font-bold p-1"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {renderLessonsNav()}
+            </aside>
           </div>
         )}
 
-        {isCompletedSuccess && (
-          <div className="rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 p-4 text-xs font-bold text-emerald-800 dark:text-emerald-300 flex items-center justify-between">
-            <span>
-              {nextLessonId
-                ? "🎉 ¡Lección completada con éxito! Redirigiendo a la siguiente lección..."
-                : "🎉 ¡Felicidades! Has completado la última lección del curso. Redirigiendo..."}
+        {/* Floating Side Index Panel for TOP HEADER Mode (Floating over left side WITHOUT shrinking article width!) */}
+        {layoutMode === "top-header" && isIndexOpen && (
+          <aside className="hidden lg:block fixed left-6 top-36 z-40 w-80 max-h-[calc(100vh-10rem)] overflow-y-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-left-4 duration-200">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+              <div>
+                <span className="text-[10px] font-extrabold uppercase text-[#1a80ff] tracking-wider">
+                  Navegación del Curso
+                </span>
+                <h3 className="text-xs font-bold text-slate-900 dark:text-white line-clamp-1">
+                  {courseTitle}
+                </h3>
+              </div>
+              <button
+                onClick={toggleIndexOpen}
+                className="h-7 w-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 font-bold transition-colors cursor-pointer"
+                title="Cerrar índice flotante"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="space-y-1 border-b border-slate-100 dark:border-slate-800 pb-3">
+              <div className="flex justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                <span>Avance General</span>
+                <span>
+                  {lessonsSummary.length > 0
+                    ? Math.round(
+                        (completedLessonSet.size / lessonsSummary.length) * 100,
+                      )
+                    : 0}
+                  %
+                </span>
+              </div>
+              <div className="h-2 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                <div
+                  className="h-full bg-[#1a80ff] transition-all duration-300"
+                  style={{
+                    width: `${
+                      lessonsSummary.length > 0
+                        ? Math.round(
+                            (completedLessonSet.size / lessonsSummary.length) *
+                              100,
+                          )
+                        : 0
+                    }%`,
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Lessons List */}
+            {renderLessonsNav()}
+          </aside>
+        )}
+
+        {/* Main Article Container Area: Maintains FULL reading width in all modes */}
+        <div className="flex-1 w-full mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-8 pb-40">
+          <main className="w-full max-w-4xl mx-auto space-y-6">
+            {errorMessage && (
+              <div className="rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 p-4 text-xs font-semibold text-rose-700 dark:text-rose-300">
+                ⚠ Error al completar la lección: {errorMessage}
+              </div>
+            )}
+
+            {isCompletedSuccess && (
+              <div className="rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 p-4 text-xs font-bold text-emerald-800 dark:text-emerald-300 flex items-center justify-between">
+                <span>
+                  {nextLessonId
+                    ? "🎉 ¡Lección completada con éxito! Redirigiendo a la siguiente lección..."
+                    : "🎉 ¡Felicidades! Has completado la última lección del curso. Redirigiendo..."}
+                </span>
+              </div>
+            )}
+
+            {/* Content Article Container: Full reading width preserved */}
+            <article
+              ref={contentRef}
+              className="prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert min-h-screen max-w-none rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 lg:p-12 shadow-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-6 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
+              dangerouslySetInnerHTML={{ __html: safeContentHtml }}
+            />
+          </main>
+        </div>
+
+        {/* Requirements Checklist Floating Capsule */}
+        {!canAdvance && (
+          <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 dark:bg-slate-900/95 text-white backdrop-blur-xl px-5 py-2.5 rounded-full shadow-2xl border border-slate-700/80 text-xs font-semibold flex items-center gap-2.5 whitespace-nowrap pointer-events-none max-w-[95vw] overflow-x-auto">
+            <span
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
+                remainingSeconds === 0
+                  ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                  : !isWindowFocused
+                    ? "bg-rose-500/20 text-rose-300 border border-rose-500/30 animate-pulse"
+                    : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
+              }`}
+            >
+              {remainingSeconds === 0
+                ? "✓ Tiempo cumplido"
+                : !isWindowFocused
+                  ? "⏸ Pausado (Selecciona esta ventana)"
+                  : "⏳ Tiempo en proceso"}
+            </span>
+
+            <span
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
+                reachedScrollThreshold
+                  ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                  : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
+              }`}
+            >
+              {reachedScrollThreshold
+                ? "✓ Desplazamiento cumplido"
+                : "📜 Desplazamiento al final"}
             </span>
           </div>
         )}
 
-        {/* Content Article Container with clear top spacing */}
-        <article
-          ref={contentRef}
-          className="prose prose-slate dark:prose-invert min-h-screen max-w-none rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 shadow-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-4"
-          dangerouslySetInnerHTML={{ __html: safeContentHtml }}
-        />
-      </main>
-
-      {/* Strict Single Line Floating Requirement Checklist Capsule Pill */}
-      {!canAdvance && (
-        <div className="fixed bottom-28 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 dark:bg-slate-900/95 text-white backdrop-blur-xl px-5 py-2.5 rounded-full shadow-2xl border border-slate-700/80 text-xs font-semibold flex items-center gap-2.5 whitespace-nowrap pointer-events-none max-w-[95vw] overflow-x-auto">
-          {/* Requirement 1: Time */}
-          <span
-            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
-              remainingSeconds === 0
-                ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-                : !isWindowFocused
-                  ? "bg-rose-500/20 text-rose-300 border border-rose-500/30 animate-pulse"
-                  : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
-            }`}
-          >
-            {remainingSeconds === 0
-              ? "✓ Tiempo cumplido"
-              : !isWindowFocused
-                ? "⏸ Pausado (Selecciona esta ventana)"
-                : "⏳ Tiempo en proceso"}
-          </span>
-
-          {/* Requirement 2: Scroll */}
-          <span
-            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
-              reachedScrollThreshold
-                ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-                : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
-            }`}
-          >
-            {reachedScrollThreshold
-              ? "✓ Desplazamiento cumplido"
-              : "📜 Desplazamiento al final"}
-          </span>
-        </div>
-      )}
-
-      {/* Reserved Bottom Dock for Anti-Cheat Horizontal Variable Button */}
-      <section
-        aria-label="Avance de lección"
-        className="fixed bottom-0 left-0 right-0 z-40 h-24 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-2xl flex items-center px-4 sm:px-8"
-      >
-        <div className="relative w-full max-w-5xl mx-auto h-full flex items-center">
-          {/* Anti-cheat Button placed at randomized stable horizontal percentage */}
-          <div
-            style={{ left: `${horizontalPosition}%` }}
-            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 transition-all duration-300"
-          >
-            <button
-              disabled={!canAdvance}
-              onClick={handleComplete}
-              className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-extrabold text-white shadow-lg transition-all whitespace-nowrap ${
-                canAdvance
-                  ? "bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
-                  : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
-              }`}
+        {/* Bottom Anti-Cheat Button Dock */}
+        <section
+          aria-label="Avance de lección"
+          className="fixed bottom-0 left-0 right-0 z-40 h-24 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-2xl flex items-center px-4 sm:px-8"
+        >
+          <div className="relative w-full mx-auto max-w-[1400px] h-full flex items-center">
+            <div
+              style={{
+                left: `${horizontalPosition}%`,
+                transform: `translate(-50%, calc(-50% + ${verticalOffset}px))`,
+              }}
+              className="absolute top-1/2 transition-all duration-300"
             >
-              {isCompleting
-                ? "Verificando en servidor..."
-                : isCompletedSuccess
-                  ? nextLessonId
-                    ? "✓ Completada"
-                    : "✓ Finalizado"
-                  : nextLessonId
-                    ? "Completar y Avanzar"
-                    : "Finalizar"}
-            </button>
+              <button
+                disabled={!canAdvance}
+                onClick={handleComplete}
+                className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-extrabold text-white shadow-lg transition-all whitespace-nowrap ${
+                  canAdvance
+                    ? "bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
+                    : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
+                }`}
+              >
+                {isCompleting
+                  ? "Verificando en servidor..."
+                  : isCompletedSuccess
+                    ? nextLessonId
+                      ? "✓ Completada"
+                      : "✓ Finalizado"
+                    : nextLessonId
+                      ? "Completar y Avanzar"
+                      : "Finalizar"}
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
