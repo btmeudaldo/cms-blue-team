@@ -630,9 +630,9 @@ export function LessonPlayer({
           </div>
         )}
 
-        {/* Floating Side Index Panel for TOP HEADER Mode (Floating over left side BELOW sticky control bar, WITHOUT shrinking article width!) */}
+        {/* Floating Side Index Panel for TOP HEADER Mode (Positioned completely below full navbar & sticky control bar) */}
         {layoutMode === "top-header" && isIndexOpen && (
-          <aside className="hidden lg:block fixed left-6 top-20 z-20 w-80 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-left-4 duration-200">
+          <aside className="hidden lg:block fixed left-6 top-[240px] z-30 w-80 max-h-[calc(100vh-17rem)] overflow-y-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-left-4 duration-200">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
               <div>
                 <span className="text-[10px] font-extrabold uppercase text-[#1a80ff] tracking-wider">
