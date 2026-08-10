@@ -462,7 +462,7 @@ export function LessonPlayer({
         )}
 
         {/* Sticky Control Bar */}
-        <div className="sticky top-0 lg:top-0 z-20 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs py-3 px-4 sm:px-6 lg:px-8">
+        <div className="sticky top-0 lg:top-0 z-30 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs py-3 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-[1400px] flex flex-wrap items-center justify-between gap-4">
             {/* Title & Index Toggle */}
             <div className="flex items-center gap-3">
@@ -630,9 +630,9 @@ export function LessonPlayer({
           </div>
         )}
 
-        {/* Floating Side Index Panel for TOP HEADER Mode (Floating over left side WITHOUT shrinking article width!) */}
+        {/* Floating Side Index Panel for TOP HEADER Mode (Floating over left side BELOW sticky control bar, WITHOUT shrinking article width!) */}
         {layoutMode === "top-header" && isIndexOpen && (
-          <aside className="hidden lg:block fixed left-6 top-36 z-40 w-80 max-h-[calc(100vh-10rem)] overflow-y-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-left-4 duration-200">
+          <aside className="hidden lg:block fixed left-6 top-20 z-20 w-80 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-left-4 duration-200">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
               <div>
                 <span className="text-[10px] font-extrabold uppercase text-[#1a80ff] tracking-wider">
@@ -686,9 +686,9 @@ export function LessonPlayer({
           </aside>
         )}
 
-        {/* Main Article Container Area: Maintains FULL reading width in all modes */}
-        <div className="flex-1 w-full mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8 py-8 pb-40">
-          <main className="w-full max-w-4xl mx-auto space-y-6">
+        {/* Main Article Container Area: Maintains FULL wide reading width in all modes */}
+        <div className="flex-1 w-full mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-8 py-8 pb-40">
+          <main className="w-full max-w-6xl mx-auto space-y-6">
             {errorMessage && (
               <div className="rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 p-4 text-xs font-semibold text-rose-700 dark:text-rose-300">
                 ⚠ Error al completar la lección: {errorMessage}
