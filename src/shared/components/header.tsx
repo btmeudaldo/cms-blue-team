@@ -35,7 +35,7 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
                 width={800}
                 height={273}
                 style={{
-                  height: "clamp(70px, 7vw, 95px)",
+                  height: "clamp(100px, 10vw, 135px)",
                   width: "auto",
                   objectFit: "contain",
                   margin: 0,
@@ -50,7 +50,7 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
                 width={800}
                 height={273}
                 style={{
-                  height: "clamp(70px, 7vw, 95px)",
+                  height: "clamp(100px, 10vw, 135px)",
                   width: "auto",
                   objectFit: "contain",
                   margin: 0,
