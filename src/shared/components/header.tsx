@@ -66,7 +66,7 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
             </Link>
 
             {/* Navigation Links with Non-Overlapping Spacing */}
-            <nav className="flex items-center gap-1 text-xs sm:text-sm font-semibold">
+            <nav className="flex items-center gap-1 text-xs sm:text-sm font-semibold shrink-0">
               <Link
                 href="/courses"
                 className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors"
