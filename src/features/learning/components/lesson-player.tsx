@@ -236,7 +236,7 @@ export function LessonPlayer({
       setHorizontalPosition((currentPosition) =>
         getNextAdvanceButtonPosition(currentPosition, array[0]),
       );
-      const randomVertPct = 25 + (array[1] % 51);
+      const randomVertPct = 15 + (array[1] % 71);
       setVerticalPosition(randomVertPct);
       setVerticalOffset((array[1] % 21) - 10);
       setIsAdvanceArmed(false);
@@ -691,9 +691,9 @@ export function LessonPlayer({
           </aside>
         )}
 
-        {/* Floating Right Action & Progress Dock Panel for TOP HEADER Mode (Matching Left Index height, with Vertical anti-cheat button) */}
+        {/* Floating Right Action & Progress Dock Panel for TOP HEADER Mode (Full available vertical height matching Left Index, with Vertical anti-cheat button) */}
         {layoutMode === "top-header" && (
-          <aside className="hidden lg:flex flex-col fixed right-6 top-[240px] z-30 w-80 h-[340px] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-right-4 duration-200">
+          <aside className="hidden lg:flex flex-col fixed right-6 top-[240px] z-30 w-80 h-[calc(100vh-17rem)] max-h-[calc(100vh-17rem)] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-right-4 duration-200">
             <div className="border-b border-slate-100 dark:border-slate-800 pb-3">
               <span className="text-[10px] font-extrabold uppercase text-[#1a80ff] tracking-wider">
                 Verificación de Avance
