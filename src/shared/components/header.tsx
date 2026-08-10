@@ -23,79 +23,77 @@ export function Header({ userEmail, userName, role }: HeaderProps) {
       <CloudStatusBanner />
       <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 dark:border-blue-900/40 dark:bg-[#050b18]/90 backdrop-blur-md shadow-xs transition-all p-0">
         <div className="mx-auto flex max-w-[1240px] items-center justify-between px-5 py-0">
-          {/* Brand Logo & Navigation */}
-          <div className="flex items-center gap-3 sm:gap-6 min-w-0">
+          {/* Brand Logo (Left) */}
+          <Link
+            href="/courses"
+            className="flex items-center group shrink-0 m-0 p-0"
+          >
+            <img
+              src="/logo-largo.png"
+              alt="BLUE TEAM Flight School"
+              width={800}
+              height={273}
+              style={{
+                height: "clamp(100px, 10vw, 135px)",
+                width: "auto",
+                objectFit: "contain",
+                margin: 0,
+                padding: 0,
+                imageRendering: "-webkit-optimize-contrast",
+              }}
+              className="block dark:hidden group-hover:scale-105 transition-transform shrink-0"
+            />
+            <img
+              src="/logo-largo-blanco.png"
+              alt="BLUE TEAM Flight School"
+              width={800}
+              height={273}
+              style={{
+                height: "clamp(100px, 10vw, 135px)",
+                width: "auto",
+                objectFit: "contain",
+                margin: 0,
+                padding: 0,
+                imageRendering: "-webkit-optimize-contrast",
+              }}
+              className="hidden dark:block group-hover:scale-105 transition-transform shrink-0"
+            />
+            <span className="sr-only">BLUE</span>
+            <span className="sr-only">FLIGHT SCHOOL</span>
+          </Link>
+
+          {/* Navigation Links Centered in Middle */}
+          <nav className="flex items-center justify-center gap-1.5 text-xs sm:text-sm font-semibold flex-1 mx-2 sm:mx-6 min-w-0">
             <Link
               href="/courses"
-              className="flex items-center group shrink-0 m-0 p-0"
+              className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors"
             >
-              <img
-                src="/logo-largo.png"
-                alt="BLUE TEAM Flight School"
-                width={800}
-                height={273}
-                style={{
-                  height: "clamp(100px, 10vw, 135px)",
-                  width: "auto",
-                  objectFit: "contain",
-                  margin: 0,
-                  padding: 0,
-                  imageRendering: "-webkit-optimize-contrast",
-                }}
-                className="block dark:hidden group-hover:scale-105 transition-transform shrink-0"
-              />
-              <img
-                src="/logo-largo-blanco.png"
-                alt="BLUE TEAM Flight School"
-                width={800}
-                height={273}
-                style={{
-                  height: "clamp(100px, 10vw, 135px)",
-                  width: "auto",
-                  objectFit: "contain",
-                  margin: 0,
-                  padding: 0,
-                  imageRendering: "-webkit-optimize-contrast",
-                }}
-                className="hidden dark:block group-hover:scale-105 transition-transform shrink-0"
-              />
-              <span className="sr-only">BLUE</span>
-              <span className="sr-only">FLIGHT SCHOOL</span>
+              Cursos
             </Link>
 
-            {/* Navigation Links with Non-Overlapping Spacing */}
-            <nav className="flex items-center gap-1 text-xs sm:text-sm font-semibold shrink-0">
-              <Link
-                href="/courses"
-                className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors"
-              >
-                Cursos
-              </Link>
-
-              {isAdmin && (
-                <>
-                  <Link
-                    href="/admin/courses"
-                    className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors"
-                  >
-                    Gestión
-                  </Link>
-                  <Link
-                    href="/admin/users"
-                    className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors hidden sm:inline-block"
-                  >
-                    Matrículas
-                  </Link>
-                  <Link
-                    href="/admin/progress"
-                    className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors hidden lg:inline-block"
-                  >
-                    Auditoría
-                  </Link>
-                </>
-              )}
-            </nav>
-          </div>
+            {isAdmin && (
+              <>
+                <Link
+                  href="/admin/courses"
+                  className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors"
+                >
+                  Gestión
+                </Link>
+                <Link
+                  href="/admin/users"
+                  className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors hidden sm:inline-block"
+                >
+                  Matrículas
+                </Link>
+                <Link
+                  href="/admin/progress"
+                  className="px-2.5 py-1.5 rounded-lg text-slate-700 hover:text-[#1a80ff] hover:bg-blue-50/60 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors hidden lg:inline-block"
+                >
+                  Auditoría
+                </Link>
+              </>
+            )}
+          </nav>
 
           {/* User Info & Actions */}
           <div className="flex items-center gap-3 shrink-0">
