@@ -314,6 +314,12 @@ export async function getResilientCourseDetail(
 }
 
 export async function getResilientProfiles() {
+  const mockProfiles = mockStore.getProfiles();
+  const map = new Map<string, any>();
+  for (const mp of mockProfiles) {
+    map.set(mp.id || mp.email, mp);
+  }
+
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
@@ -325,11 +331,13 @@ export async function getResilientProfiles() {
     );
 
     if (result && !result.error && result.data && result.data.length > 0) {
-      return result.data;
+      for (const dp of result.data) {
+        map.set(dp.id || dp.email, dp);
+      }
     }
   } catch (err) {}
 
-  return mockStore.getProfiles();
+  return Array.from(map.values());
 }
 
 export async function getResilientUserProgress(
@@ -351,7 +359,21 @@ export async function getResilientUserProgress(
     );
 
     if (result && !result.error && result.data) {
-      return getProgressForMode(result.data, mockProgress, allowMockFallback);
+      const map = new Map<string, any>();
+      for (const mp of mockProgress) {
+        map.set(mp.lesson_id, mp);
+      }
+      for (const dp of result.data) {
+        const existing = map.get(dp.lesson_id);
+        if (
+          !existing ||
+          dp.is_completed ||
+          (dp.elapsed_seconds || 0) > (existing.elapsed_seconds || 0)
+        ) {
+          map.set(dp.lesson_id, dp);
+        }
+      }
+      return Array.from(map.values());
     }
   } catch (err) {}
 
@@ -359,6 +381,14 @@ export async function getResilientUserProgress(
 }
 
 export async function getResilientAllProgress() {
+  const mockProgress = mockStore.getAllProgress();
+  const map = new Map<string, any>();
+
+  for (const mp of mockProgress) {
+    const key = `${mp.user_id}_${mp.lesson_id}`;
+    map.set(key, mp);
+  }
+
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
@@ -378,12 +408,22 @@ export async function getResilientAllProgress() {
       1500,
     );
 
-    if (result && !result.error && result.data && result.data.length > 0) {
-      return result.data;
+    if (result && !result.error && result.data) {
+      for (const dp of result.data) {
+        const key = `${dp.user_id}_${dp.lesson_id}`;
+        const existing = map.get(key);
+        if (
+          !existing ||
+          dp.is_completed ||
+          (dp.elapsed_seconds || 0) > (existing.elapsed_seconds || 0)
+        ) {
+          map.set(key, dp);
+        }
+      }
     }
   } catch (err) {}
 
-  return mockStore.getAllProgress();
+  return Array.from(map.values());
 }
 
 export async function getResilientEnrollments() {
