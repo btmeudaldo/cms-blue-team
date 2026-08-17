@@ -8,7 +8,7 @@ import {
   getResilientProfiles,
   getResilientUser,
 } from "@/shared/lib/supabase/resilient";
-import { AuditFilterTable } from "@/features/learning/components/audit-filter-table";
+import { StudentDossierView } from "@/features/learning/components/student-dossier-view";
 
 export default async function AdminProgressAuditPage() {
   const { user, profile: currentProfile } = await getResilientUser();
@@ -47,11 +47,11 @@ export default async function AdminProgressAuditPage() {
               </Link>
               <span>&rsaquo;</span>
               <span className="text-slate-900 dark:text-white">
-                Auditoría de Tiempos
+                Expedientes Académicos y Auditoría
               </span>
             </div>
             <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">
-              Registro de Tiempos Anticheating
+              Expedientes de Alumnos y Tiempos Anticheating
             </h1>
           </div>
 
@@ -63,8 +63,8 @@ export default async function AdminProgressAuditPage() {
           </Link>
         </div>
 
-        {/* Interactive Audit Table with Student & Course Filters */}
-        <AuditFilterTable
+        {/* Student Dossiers and Audit System */}
+        <StudentDossierView
           profiles={profiles}
           progressRecords={progressRecords}
           courses={courses}

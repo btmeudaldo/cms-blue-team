@@ -8,3 +8,5 @@ coverage
 debug.log
 test-results/
 
+
+.vercel

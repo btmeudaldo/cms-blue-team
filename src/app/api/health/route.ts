@@ -20,7 +20,9 @@ export async function GET() {
       signal: controller.signal,
     }).finally(() => clearTimeout(timeoutId));
 
-    if (response.ok) {
+    // A non-2xx response still proves that the Supabase endpoint is reachable.
+    // Authenticated requests may legitimately return 401/403 without a user session.
+    if (response.status < 500) {
       return NextResponse.json({ status: "online", source: "supabase" });
     }
 
