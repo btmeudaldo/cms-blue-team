@@ -8,8 +8,8 @@ import { calculateMinimumReadingSeconds } from "@/features/learning/domain/readi
 // Extend Node.js global type for the mock state
 declare global {
   var __mockProgressRecords: MockProgress[] | undefined;
-
   var __mockEnrollments: Set<string> | undefined;
+  var __mockQuizAttempts: any[] | undefined;
 }
 
 export type MockCourse = {
@@ -539,11 +539,152 @@ const defaultProgressRecords: MockProgress[] = [
   },
 ];
 
-// Persist across HMR reloads in dev — global survives hot-module-replacement.
-// This ensures lesson progress is not lost when Next.js reloads the module.
+const defaultQuizzes = [
+  {
+    id: "quiz-aerodinamica",
+    course_id: "course-1",
+    lesson_id: "lesson-1-1",
+    title: "Examen de Verificación: Aerodinámica y Sustentación",
+    description:
+      "Evaluación teórica oficial sobre las 4 fuerzas fundamentales de vuelo, teorema de Bernoulli y ángulo de ataque crítico.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q1-1",
+        question:
+          "¿Qué principio físico explica la generación de la fuerza de sustentación en un perfil alar por la diferencia de velocidades de aire?",
+        options: [
+          "Principio de Bernoulli",
+          "Tercera Ley de Kepler",
+          "Efecto Doppler de Frecuencia",
+          "Ley de Conservación de Masa de Pascal",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "El Principio de Bernoulli establece que al aumentar la velocidad de un fluido sobre la curvatura del extradós, su presión disminuye, generando la fuerza de sustentación hacia arriba.",
+      },
+      {
+        id: "q1-2",
+        question:
+          "¿Qué sucede cuando el ángulo de ataque de un perfil alar supera el ángulo límite crítico?",
+        options: [
+          "El avión aumenta la velocidad de ascenso automáticamente",
+          "Ocurre una Pérdida Aerodinámica (Stall) con desprendimiento del flujo de aire",
+          "La resistencia aerodinámica disminuye a cero",
+          "La sustentación se duplica instantáneamente",
+        ],
+        correctAnswerIndex: 1,
+        explanation:
+          "Al superar el ángulo de ataque crítico, el flujo de aire se desprende de forma turbulenta del extradós, provocando una caída drástica de sustentación (Stall).",
+      },
+      {
+        id: "q1-3",
+        question:
+          "¿Cuáles son las 4 fuerzas fundamentales que actúan sobre una aeronave en vuelo recto y nivelado?",
+        options: [
+          "Compresión, Expansión, Inercia y Fricción",
+          "Sustentación, Peso, Empuje y Resistencia",
+          "Presión, Temperatura, Altitud y Humedad",
+          "Gravedad, Fuerza Centrípeto, Torque y Guiñada",
+        ],
+        correctAnswerIndex: 1,
+        explanation:
+          "En vuelo equilibrado no acelerado, la Sustentación equivale al Peso (Lift = Weight) y el Empuje equivale a la Resistencia (Thrust = Drag).",
+      },
+    ],
+  },
+  {
+    id: "quiz-reglamentacion",
+    course_id: "course-1",
+    lesson_id: "lesson-1-2",
+    title: "Examen de Verificación: Reglamentación VFR / IFR y Espacios Aéreos",
+    description:
+      "Evaluación teórica de normativas ICAO/EASA, códigos de transpondedor y alturas mínimas de seguridad.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q2-1",
+        question:
+          "¿Qué código de transpondedor (Squawk) debe seleccionar un piloto en caso de emergencia general a bordo?",
+        options: ["7000", "7500", "7600", "7700"],
+        correctAnswerIndex: 3,
+        explanation:
+          "7700 indica emergencia general a control de tráfico aéreo. 7500 es para interferencia ilícita y 7600 para falla de radiocomunicaciones.",
+      },
+      {
+        id: "q2-2",
+        question:
+          "¿Cuál es la altitud mínima de seguridad para volar sobre zonas urbanas o aglomeraciones de personas?",
+        options: [
+          "300 pies sobre el obstáculo más alto",
+          "1.000 pies sobre el obstáculo más alto en un radio de 600 metros",
+          "500 pies sobre el suelo en cualquier dirección",
+          "Sin límite establecido en vuelo VFR",
+        ],
+        correctAnswerIndex: 1,
+        explanation:
+          "La normativa aeronáutica exige al menos 1.000 ft sobre el obstáculo más alto dentro de un radio de 600m en zonas pobladas.",
+      },
+    ],
+  },
+  {
+    id: "quiz-meteorologia",
+    course_id: "course-2",
+    lesson_id: "lesson-2-1",
+    title: "Examen de Verificación: Meteorología e Instrumentos Pitot-Estáticos",
+    description:
+      "Evaluación sobre altimetría, ajustes QNH/QFE y funcionamiento del sistema de tubos Pitot-Estático.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q3-1",
+        question:
+          "¿Qué instrumento de la cabina depende de la presión de impacto del tubo Pitot?",
+        options: [
+          "Altímetro",
+          "Variómetro (Indicador de velocidad vertical)",
+          "Anemómetro (Indicador de Velocidad del Aire / ASI)",
+          "Horizonte Artificial Giroscópico",
+        ],
+        correctAnswerIndex: 2,
+        explanation:
+          "El Anemómetro (ASI) compara la presión de impacto del tubo Pitot con la presión estática para medir la velocidad de la aeronave.",
+      },
+      {
+        id: "q3-2",
+        question:
+          "¿Qué ajuste altimétrico (QNH) hace que las agujas del altímetro indiquen la elevación real del aeródromo respecto al nivel del mar en tierra?",
+        options: ["QFE", "QNH", "QNE (1013.25 hPa)", "QFF"],
+        correctAnswerIndex: 1,
+        explanation:
+          "QNH es la presión reducida al nivel medio del mar (MSL) según la atmósfera estándar, indicando altitud verdadera sobre el nivel del mar.",
+      },
+    ],
+  },
+];
+
+// Default initial attempt for demo student
+const defaultQuizAttempts = [
+  {
+    id: "attempt-student-1",
+    user_id: "student@blueteam.com",
+    quiz_id: "quiz-aerodinamica",
+    score_percentage: 100,
+    correct_count: 3,
+    total_questions: 3,
+    passed: true,
+    completed_at: new Date().toISOString(),
+    elapsed_seconds: 45,
+  },
+];
+
 const mockProgressRecords: MockProgress[] =
   global.__mockProgressRecords ??
   (global.__mockProgressRecords = defaultProgressRecords);
+
+const mockQuizAttempts: any[] =
+  global.__mockQuizAttempts ??
+  (global.__mockQuizAttempts = defaultQuizAttempts);
 
 export const mockStore = {
   getCourses() {
@@ -725,5 +866,67 @@ export const mockStore = {
     if (existing) {
       existing.elapsed_seconds = (existing.elapsed_seconds || 0) + 10;
     }
+  },
+  getQuizzes() {
+    return defaultQuizzes;
+  },
+  getQuizById(quizId: string) {
+    return defaultQuizzes.find((q) => q.id === quizId || q.lesson_id === quizId);
+  },
+  getQuizByLessonId(lessonId: string) {
+    return defaultQuizzes.find((q) => q.lesson_id === lessonId || q.id === lessonId);
+  },
+  getQuizAttempts(userId?: string) {
+    if (!userId || userId === "all") return mockQuizAttempts;
+    return mockQuizAttempts.filter(
+      (a) => a.user_id === userId || a.user_id?.includes("student"),
+    );
+  },
+  getLatestQuizAttempt(userId: string, quizId: string) {
+    const attempts = mockQuizAttempts.filter(
+      (a) =>
+        (a.user_id === userId || a.user_id === "student@blueteam.com") &&
+        a.quiz_id === quizId,
+    );
+    if (attempts.length === 0) return null;
+    return attempts[attempts.length - 1];
+  },
+  submitQuizAttempt(
+    userId: string,
+    quizId: string,
+    answers: Record<string, number>,
+    elapsedSeconds: number,
+  ) {
+    const quiz = this.getQuizById(quizId);
+    if (!quiz) return null;
+
+    let correctCount = 0;
+    for (const q of quiz.questions) {
+      if (answers[q.id] === q.correctAnswerIndex) {
+        correctCount++;
+      }
+    }
+
+    const totalQuestions = quiz.questions.length;
+    const scorePercentage =
+      totalQuestions > 0
+        ? Math.round((correctCount / totalQuestions) * 100)
+        : 0;
+    const passed = scorePercentage >= (quiz.minPassScorePercentage || 70);
+
+    const attempt = {
+      id: `attempt-${Date.now()}`,
+      user_id: userId,
+      quiz_id: quiz.id,
+      score_percentage: scorePercentage,
+      correct_count: correctCount,
+      total_questions: totalQuestions,
+      passed,
+      completed_at: new Date().toISOString(),
+      elapsed_seconds: elapsedSeconds,
+    };
+
+    mockQuizAttempts.push(attempt);
+    return attempt;
   },
 };

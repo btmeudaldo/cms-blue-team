@@ -3,16 +3,22 @@
 import { useMemo, useState } from "react";
 import { AuditFilterTable } from "./audit-filter-table";
 
+import { evaluateLessonCompletion } from "../domain/quiz-evaluation";
+
 type StudentDossierViewProps = {
   profiles: any[];
   progressRecords: any[];
   courses: any[];
+  quizzes?: any[];
+  quizAttempts?: any[];
 };
 
 export function StudentDossierView({
   profiles,
   progressRecords,
   courses,
+  quizzes = [],
+  quizAttempts = [],
 }: StudentDossierViewProps) {
   const [activeTab, setActiveTab] = useState<"dossiers" | "table">("dossiers");
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(
@@ -329,7 +335,30 @@ export function StudentDossierView({
                         const minSecs = les?.min_seconds || 30;
                         const elapsed = item.elapsed_seconds || 0;
                         const isCompleted = item.is_completed;
-                        const isCompliant = elapsed >= minSecs && isCompleted;
+
+                        const quiz = (quizzes || []).find(
+                          (q: any) =>
+                            q.lesson_id === item.lesson_id ||
+                            q.id === item.lesson_id,
+                        );
+
+                        const userAttempts = (quizAttempts || []).filter(
+                          (qa: any) =>
+                            qa.user_id === item.user_id &&
+                            (quiz ? qa.quiz_id === quiz.id : false),
+                        );
+                        const latestAttempt =
+                          userAttempts.length > 0
+                            ? userAttempts[userAttempts.length - 1]
+                            : null;
+
+                        const evaluation = evaluateLessonCompletion(
+                          elapsed,
+                          minSecs,
+                          isCompleted,
+                          quiz || null,
+                          latestAttempt || null,
+                        );
 
                         return (
                           <tr
@@ -371,17 +400,21 @@ export function StudentDossierView({
                             </td>
 
                             <td className="px-6 py-4">
-                              {isCompliant ? (
+                              {evaluation.statusBadgeVariant === "success" ? (
                                 <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                                  ✓ Verificado ({elapsed}s &ge; {minSecs}s)
+                                  {evaluation.statusLabel}
                                 </span>
-                              ) : isCompleted ? (
+                              ) : evaluation.statusBadgeVariant === "error" ? (
+                                <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 dark:bg-rose-950/60 px-2.5 py-1 text-xs font-bold text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
+                                  {evaluation.statusLabel}
+                                </span>
+                              ) : evaluation.statusBadgeVariant === "warning" ? (
                                 <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 dark:bg-amber-950/60 px-2.5 py-1 text-xs font-bold text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
-                                  ⚠️ Incompleto ({elapsed}s)
+                                  {evaluation.statusLabel}
                                 </span>
                               ) : (
                                 <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-1 text-xs font-bold text-[#1a80ff]">
-                                  ⏳ En progreso
+                                  {evaluation.statusLabel}
                                 </span>
                               )}
                             </td>

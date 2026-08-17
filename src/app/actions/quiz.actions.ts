@@ -1,0 +1,87 @@
+"use server";
+
+import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
+import { getResilientUser } from "@/shared/lib/supabase/resilient";
+import { mockStore } from "@/shared/lib/mock-store";
+
+function withTimeout<T>(promise: PromiseLike<T> | Promise<T>, ms = 1500): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error(`Timeout of ${ms}ms exceeded`));
+    }, ms);
+
+    Promise.resolve(promise)
+      .then((res) => {
+        clearTimeout(timer);
+        resolve(res);
+      })
+      .catch((err) => {
+        clearTimeout(timer);
+        reject(err);
+      });
+  });
+}
+
+export async function submitQuizAttemptAction(
+  quizId: string,
+  answers: Record<string, number>,
+  elapsedSeconds: number,
+) {
+  const { user } = await getResilientUser();
+  if (!user) {
+    return { error: "Debes iniciar sesión para realizar la evaluación." };
+  }
+
+  const quiz = mockStore.getQuizById(quizId);
+  if (!quiz) {
+    return { error: "Examen no encontrado." };
+  }
+
+  let correctCount = 0;
+  for (const q of quiz.questions) {
+    if (answers[q.id] === q.correctAnswerIndex) {
+      correctCount++;
+    }
+  }
+
+  const totalQuestions = quiz.questions.length;
+  const scorePercentage =
+    totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+  const minScore = quiz.minPassScorePercentage || 70;
+  const passed = scorePercentage >= minScore;
+
+  try {
+    const supabase = await createSupabaseServerClient();
+    await withTimeout(
+      supabase.from("quiz_attempts").insert({
+        user_id: user.id,
+        quiz_id: quiz.id,
+        score_percentage: scorePercentage,
+        correct_count: correctCount,
+        total_questions: totalQuestions,
+        passed,
+        elapsed_seconds: elapsedSeconds,
+        completed_at: new Date().toISOString(),
+      }),
+      1500,
+    ).catch(() => null);
+  } catch (err) {}
+
+  // Save to mock store for resilient mode
+  const attempt = mockStore.submitQuizAttempt(
+    user.id,
+    quiz.id,
+    answers,
+    elapsedSeconds,
+  );
+
+  return {
+    success: true,
+    scorePercentage,
+    correctCount,
+    totalQuestions,
+    passed,
+    minScore,
+    attempt,
+  };
+}

@@ -6,6 +6,8 @@ import {
   getResilientAllProgress,
   getResilientCourses,
   getResilientProfiles,
+  getResilientQuizAttempts,
+  getResilientQuizzes,
   getResilientUser,
 } from "@/shared/lib/supabase/resilient";
 import { StudentDossierView } from "@/features/learning/components/student-dossier-view";
@@ -20,11 +22,14 @@ export default async function AdminProgressAuditPage() {
     redirect("/courses");
   }
 
-  const [profiles, progressRecords, courses] = await Promise.all([
-    getResilientProfiles(),
-    getResilientAllProgress(),
-    getResilientCourses(user.id, true),
-  ]);
+  const [profiles, progressRecords, courses, quizzes, quizAttempts] =
+    await Promise.all([
+      getResilientProfiles(),
+      getResilientAllProgress(),
+      getResilientCourses(user.id, true),
+      getResilientQuizzes(),
+      getResilientQuizAttempts("all"),
+    ]);
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
@@ -68,6 +73,8 @@ export default async function AdminProgressAuditPage() {
           profiles={profiles}
           progressRecords={progressRecords}
           courses={courses}
+          quizzes={quizzes}
+          quizAttempts={quizAttempts}
         />
       </main>
     </div>

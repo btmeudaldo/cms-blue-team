@@ -406,3 +406,61 @@ export async function getResilientEnrollments() {
 
   return Array.from(map.values());
 }
+
+export async function getResilientQuizzes() {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const result: any = await withTimeout(
+      supabase.from("quizzes").select("*"),
+      1500,
+    );
+    if (result && !result.error && result.data && result.data.length > 0) {
+      return result.data;
+    }
+  } catch (err) {}
+  return mockStore.getQuizzes();
+}
+
+export async function getResilientQuiz(quizId: string) {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const result: any = await withTimeout(
+      supabase.from("quizzes").select("*").eq("id", quizId).maybeSingle(),
+      1500,
+    );
+    if (result && !result.error && result.data) {
+      return result.data;
+    }
+  } catch (err) {}
+  return mockStore.getQuizById(quizId);
+}
+
+export async function getResilientQuizForLesson(lessonId: string) {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const result: any = await withTimeout(
+      supabase.from("quizzes").select("*").eq("lesson_id", lessonId).maybeSingle(),
+      1500,
+    );
+    if (result && !result.error && result.data) {
+      return result.data;
+    }
+  } catch (err) {}
+  return mockStore.getQuizByLessonId(lessonId);
+}
+
+export async function getResilientQuizAttempts(userId?: string) {
+  try {
+    const supabase = await createSupabaseServerClient();
+    let query = supabase.from("quiz_attempts").select("*");
+    if (userId && userId !== "all") {
+      query = query.eq("user_id", userId);
+    }
+    const result: any = await withTimeout(query, 1500);
+    if (result && !result.error && result.data) {
+      return result.data;
+    }
+  } catch (err) {}
+  return mockStore.getQuizAttempts(userId);
+}
+

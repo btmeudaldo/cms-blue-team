@@ -116,6 +116,14 @@ export function Header({
               Cursos
             </Link>
 
+            <Link
+              href="/quizzes"
+              onClick={() => setIsMenuOpen(false)}
+              className="whitespace-nowrap px-0 py-1.5 text-[0.95rem] font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
+            >
+              Evaluaciones
+            </Link>
+
             {isAdmin && (
               <>
                 <Link
