@@ -544,6 +544,7 @@ const defaultQuizzes = [
     id: "quiz-aerodinamica",
     course_id: "course-1",
     lesson_id: "lesson-1-1",
+    lesson_slug: "principios-aerodinamica-sustentacion",
     title: "Examen de Verificación: Aerodinámica y Sustentación",
     description:
       "Evaluación teórica oficial sobre las 4 fuerzas fundamentales de vuelo, teorema de Bernoulli y ángulo de ataque crítico.",
@@ -594,36 +595,56 @@ const defaultQuizzes = [
     ],
   },
   {
-    id: "quiz-reglamentacion",
+    id: "quiz-sixpack",
     course_id: "course-1",
     lesson_id: "lesson-1-2",
-    title: "Examen de Verificación: Reglamentación VFR / IFR y Espacios Aéreos",
+    lesson_slug: "instrumentacion-cabina-sixpack",
+    title: "Examen de Verificación: Instrumentación Six-Pack y Variómetros",
     description:
-      "Evaluación teórica de normativas ICAO/EASA, códigos de transpondedor y alturas mínimas de seguridad.",
+      "Evaluación teórica sobre relojería básica de cabina, alimentación Pitot-Estática e instrumentos giroscópicos.",
     minPassScorePercentage: 70,
     questions: [
       {
         id: "q2-1",
         question:
-          "¿Qué código de transpondedor (Squawk) debe seleccionar un piloto en caso de emergencia general a bordo?",
-        options: ["7000", "7500", "7600", "7700"],
-        correctAnswerIndex: 3,
+          "¿Cuáles son los 3 instrumentos primarios alimentados por el sistema de presión Pitot-Estática?",
+        options: [
+          "Horizonte Artificial, Indicador de Rumbo y Coordinador de Viraje",
+          "Anemómetro (ASI), Altímetro y Variómetro (VSI)",
+          "Tacómetro, Indicador de Presión de Aceite y Voltímetro",
+          "Transpondedor, Radio VOR y Marcador Marker Beacon",
+        ],
+        correctAnswerIndex: 1,
         explanation:
-          "7700 indica emergencia general a control de tráfico aéreo. 7500 es para interferencia ilícita y 7600 para falla de radiocomunicaciones.",
+          "El anemómetro utiliza presión Pitot y estática. El altímetro y el variómetro operan exclusivamente con la presión estática atmosférica.",
       },
       {
         id: "q2-2",
         question:
-          "¿Cuál es la altitud mínima de seguridad para volar sobre zonas urbanas o aglomeraciones de personas?",
+          "¿Qué instrumento giroscópico proporciona la indicación de la actitud de cabeceo y alabeo del avión respecto al horizonte?",
         options: [
-          "300 pies sobre el obstáculo más alto",
-          "1.000 pies sobre el obstáculo más alto en un radio de 600 metros",
-          "500 pies sobre el suelo en cualquier dirección",
-          "Sin límite establecido en vuelo VFR",
+          "Horizonte Artificial (Indicador de Actitud)",
+          "Altímetro Barométrico",
+          "Variómetro Vertical",
+          "Indicador de Rumbo Giroscópico",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "El Horizonte Artificial muestra mediante una representación de cielo/tierra los ángulos de alabeo y cabeceo instantáneos de la aeronave.",
+      },
+      {
+        id: "q2-3",
+        question:
+          "¿Qué lectura indica la aguja del Variómetro (VSI) cuando el avión mantiene un vuelo nivelado constante a 3.000 pies?",
+        options: [
+          "Marca 3.000 pies por minuto",
+          "Marca cero pies por minuto (0 fpm)",
+          "Marca 1.013 hPa",
+          "Oscila entre 500 y 1.000 fpm",
         ],
         correctAnswerIndex: 1,
         explanation:
-          "La normativa aeronáutica exige al menos 1.000 ft sobre el obstáculo más alto dentro de un radio de 600m en zonas pobladas.",
+          "El Variómetro mide la tasa de variación de presión estática. Si no hay ascenso ni descenso, marca exactamente 0 fpm.",
       },
     ],
   },
@@ -631,33 +652,219 @@ const defaultQuizzes = [
     id: "quiz-meteorologia",
     course_id: "course-2",
     lesson_id: "lesson-2-1",
-    title: "Examen de Verificación: Meteorología e Instrumentos Pitot-Estáticos",
+    lesson_slug: "capas-atmosfericas-frentes-vientos",
+    title: "Examen de Verificación: Capas Atmosféricas, Frentes Térmicos y Vientos",
     description:
-      "Evaluación sobre altimetría, ajustes QNH/QFE y funcionamiento del sistema de tubos Pitot-Estático.",
+      "Evaluación sobre estructura atmosférica, nubes peligrosas de desarrollo vertical y fenómenos frontales.",
     minPassScorePercentage: 70,
     questions: [
       {
         id: "q3-1",
         question:
-          "¿Qué instrumento de la cabina depende de la presión de impacto del tubo Pitot?",
-        options: [
-          "Altímetro",
-          "Variómetro (Indicador de velocidad vertical)",
-          "Anemómetro (Indicador de Velocidad del Aire / ASI)",
-          "Horizonte Artificial Giroscópico",
-        ],
-        correctAnswerIndex: 2,
+          "¿En qué capa atmosférica se desarrolla la mayor parte del vuelo VFR de instrucción y los fenómenos meteorológicos?",
+        options: ["Troposfera", "Estratosfera", "Mesosfera", "Termosfera"],
+        correctAnswerIndex: 0,
         explanation:
-          "El Anemómetro (ASI) compara la presión de impacto del tubo Pitot con la presión estática para medir la velocidad de la aeronave.",
+          "La Troposfera comprende desde la superficie hasta aproximadamente 36.000 pies y contiene el 99% del vapor de agua y clima atmosférico.",
       },
       {
         id: "q3-2",
         question:
-          "¿Qué ajuste altimétrico (QNH) hace que las agujas del altímetro indiquen la elevación real del aeródromo respecto al nivel del mar en tierra?",
-        options: ["QFE", "QNH", "QNE (1013.25 hPa)", "QFF"],
+          "¿Qué tipo de nubes de gran desarrollo vertical representan el mayor riesgo de turbulencia severa, cizalladura (windshear) y granizo?",
+        options: ["Cirrus (CI)", "Cumulonimbus (CB)", "Stratus (ST)", "Altocumulus (AC)"],
         correctAnswerIndex: 1,
         explanation:
-          "QNH es la presión reducida al nivel medio del mar (MSL) según la atmósfera estándar, indicando altitud verdadera sobre el nivel del mar.",
+          "Los Cumulonimbus (CB) generan tormentas severas con fuertísimas corrientes ascendentes y descendentes peligrosas para el vuelo.",
+      },
+    ],
+  },
+  {
+    id: "quiz-metar-taf",
+    course_id: "course-2",
+    lesson_id: "lesson-2-2",
+    lesson_slug: "decodificacion-reportes-metar-taf",
+    title: "Examen de Verificación: Decodificación de Reportes METAR y Pronósticos TAF",
+    description:
+      "Evaluación teórica sobre lectura rápida de claves meteorológicas aeronáuticas METAR y TAF.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q4-1",
+        question:
+          "En el grupo de viento METAR '24012KT', ¿qué representan estos valores?",
+        options: [
+          "Viento procedente del rumbo 240° geográfico a 12 nudos de intensidad",
+          "Temperatura de 24°C e intensidad de 12 nudos",
+          "Presión barométrica de 240 hPa a 12 km de visibilidad",
+          "Viento del rumbo 120° a 24 nudos",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "Los tres primeros dígitos (240) expresan la dirección de donde proviene el viento en grados magnéticos/geográficos y los últimos (12KT) la velocidad en nudos.",
+      },
+      {
+        id: "q4-2",
+        question:
+          "En la codificación METAR europea, ¿qué visibilidad horizontal representa la cifra '9999'?",
+        options: [
+          "Visibilidad ilimitada superior a 10 kilómetros",
+          "Visibilidad reducida a 999 metros",
+          "Niebla densa en pista",
+          "Visibilidad de 9.999 pies",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "El valor 9999 indica visibilidad excelente igual o mayor a 10.000 metros (10 km).",
+      },
+    ],
+  },
+  {
+    id: "quiz-prevuelo",
+    course_id: "course-3",
+    lesson_id: "lesson-3-1",
+    lesson_slug: "inspeccion-prevuelo-checklist-rampa",
+    title: "Examen de Verificación: Inspección Pre-Vuelo y Checklist de Rampa",
+    description:
+      "Evaluación sobre la rutina Walk-Around, verificación de mandos de vuelo y purga de combustible.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q5-1",
+        question:
+          "¿En qué sentido estandarizado se debe realizar la inspección exterior del avión (Walk-Around) en rampa?",
+        options: [
+          "En el sentido de las agujas del reloj rodeando la aeronave",
+          "Únicamente revisando el motor",
+          "De atrás hacia adelante por el fuselaje central",
+          "Sin un orden definido",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "La rutina de inspección prevuelo exige seguir un circuito ordenado en sentido horario comenzando por la cabina y el ala izquierda.",
+      },
+      {
+        id: "q5-2",
+        question:
+          "¿Por qué es crítico extraer muestras de los drenajes de combustible antes del primer vuelo del día?",
+        options: [
+          "Para verificar la ausencia de agua decantada en el fondo y partículas contaminantes",
+          "Para medir el nivel de octanaje exacto",
+          "Para calentar el tanque",
+          "Para reducir el peso de despegue",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "El agua es más densa que la gasolina de aviación (AVGAS) y se deposita en el fondo de las purgas. Si no se elimina, puede causar parada de motor.",
+      },
+    ],
+  },
+  {
+    id: "quiz-emergencias",
+    course_id: "course-3",
+    lesson_id: "lesson-3-2",
+    lesson_slug: "gestion-fallas-motor-aterrizajes-emergencia",
+    title: "Examen de Verificación: Gestión de Fallas de Motor y Aterrizajes forzosos",
+    description:
+      "Evaluación teórica sobre protocolo ABCD ante falla de motor, velocidades de planeo y llamadas de socorro.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q6-1",
+        question:
+          "Ante una pérdida repentina de potencia del motor en vuelo de crucero, ¿cuál es la primera acción obligatoria del protocolo ABCD?",
+        options: [
+          "A (Airspeed): Ajustar la actitud para volar a la velocidad de mejor planeo (Best Glide)",
+          "D (Declare): Gritar en la cabina",
+          "C (Checklist): Leer el manual completo",
+          "B (Best Field): Aterrizar inmediatamente en cualquier sitio sin controlar la velocidad",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "Lo primero es volar el avión y establecer la velocidad de mejor planeo (Airspeed) para maximizar la distancia y el tiempo disponible.",
+      },
+      {
+        id: "q6-2",
+        question:
+          "¿Qué código de transpondedor debe seleccionar el piloto al declarar situación de emergencia grave a bordo?",
+        options: ["7700", "7500", "7600", "7000"],
+        correctAnswerIndex: 0,
+        explanation:
+          "7700 activa la alerta de emergencia en las pantallas del control de tráfico aéreo radar.",
+      },
+    ],
+  },
+  {
+    id: "quiz-ils-vor",
+    course_id: "course-4",
+    lesson_id: "lesson-4-1",
+    lesson_slug: "principios-aproximacion-ils",
+    title: "Examen de Verificación: Navegación IFR e Aproximaciones ILS/VOR",
+    description:
+      "Evaluación teórica sobre guía lateral de Localizador y guía vertical de Senda de Planeo ILS.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q7-1",
+        question:
+          "En un sistema de aterrizaje por instrumentos (ILS), ¿qué componente proporciona la guía de alineación lateral con el eje central de la pista?",
+        options: [
+          "Localizador (LOC)",
+          "Senda de Planeo (Glide Path / GP)",
+          "Marker Beacon Exterior",
+          "DME de Distancia",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "El Localizador (LOC) emite señales de radio que guían al piloto horizontalmente hacia el eje exacto de la pista de aterrizaje.",
+      },
+      {
+        id: "q7-2",
+        question:
+          "¿Qué ángulo estándar de descenso vertical sobre el terreno suele proporcionar la Senda de Planeo (Glide Path) en un procedimiento ILS Cat I?",
+        options: ["3,0 grados", "10,0 grados", "1,5 grados", "45,0 grados"],
+        correctAnswerIndex: 0,
+        explanation:
+          "El ángulo estándar de senda de planeo óptimo en aviación comercial e instrumental es de 3,0° respecto al plano horizontal de la pista.",
+      },
+    ],
+  },
+  {
+    id: "quiz-sistemas-motor",
+    course_id: "course-5",
+    lesson_id: "lesson-5-1",
+    lesson_slug: "componentes-motor-lycoming",
+    title: "Examen de Verificación: Grupo Motopropulsor Lycoming O-360 y Sistemas",
+    description:
+      "Evaluación teórica sobre arquitectura de motor aeronáutico de 4 cilindros y sistema de encendido doble por magnetos.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q8-1",
+        question:
+          "¿Por qué los motores de aviación de pistón cuentan con un sistema de encendido doble con dos magnetos independientes?",
+        options: [
+          "Por redundancia de seguridad en vuelo y mejora en la eficiencia de combustión en la cámara",
+          "Para gastar más combustible",
+          "Porque una magneto se apaga automáticamente al despegar",
+          "Para alimentar las luces de la cabina",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "Cada cilindro tiene 2 bujías alimentadas por magnetos separadas. Si una magneto o bujía falla en vuelo, el motor sigue funcionando de forma segura.",
+      },
+      {
+        id: "q8-2",
+        question:
+          "¿Qué síntoma primario advierte al piloto de la formación de hielo en el carburador en motores de aspiración?",
+        options: [
+          "Caída gradual de las RPM del motor (o caída de la presión de admisión)",
+          "Aumento de la velocidad del avión",
+          "Encendido de las luces de navegación",
+          "Aumento inmediato de la temperatura del aceite",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "El hielo obstruye la garganta del carburador reduciendo el paso de mezcla aire/combustible, manifestándose con una pérdida constante de RPM.",
       },
     ],
   },
@@ -871,10 +1078,22 @@ export const mockStore = {
     return defaultQuizzes;
   },
   getQuizById(quizId: string) {
-    return defaultQuizzes.find((q) => q.id === quizId || q.lesson_id === quizId);
+    return defaultQuizzes.find(
+      (q) =>
+        q.id === quizId ||
+        q.lesson_id === quizId ||
+        (q as any).lesson_slug === quizId,
+    );
   },
   getQuizByLessonId(lessonId: string) {
-    return defaultQuizzes.find((q) => q.lesson_id === lessonId || q.id === lessonId);
+    return defaultQuizzes.find(
+      (q) =>
+        q.lesson_id === lessonId ||
+        q.id === lessonId ||
+        (q as any).lesson_slug === lessonId ||
+        (Boolean((q as any).lesson_slug) &&
+          lessonId.includes((q as any).lesson_slug)),
+    );
   },
   getQuizAttempts(userId?: string) {
     if (!userId || userId === "all") return mockQuizAttempts;
