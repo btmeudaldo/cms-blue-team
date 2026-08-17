@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { exportGlobalAuditCSV } from "../domain/dossier-export";
 
 type AuditFilterTableProps = {
   profiles: any[];
@@ -264,7 +265,7 @@ export function AuditFilterTable({
 
       {/* Main Audit Table */}
       <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
-        <div className="border-b border-slate-100 dark:border-slate-800 p-6 flex items-center justify-between">
+        <div className="border-b border-slate-100 dark:border-slate-800 p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h2 className="text-lg font-bold text-slate-900 dark:text-white">
               Historial de Auditoría de Tiempos ({filteredRecords.length})
@@ -274,6 +275,22 @@ export function AuditFilterTable({
               Servidor.
             </p>
           </div>
+
+          <button
+            type="button"
+            onClick={() =>
+              exportGlobalAuditCSV(
+                filteredRecords,
+                profileMap,
+                lessonMap,
+                profiles,
+              )
+            }
+            className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 px-4 py-2 text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all cursor-pointer flex items-center gap-2 shrink-0 w-fit"
+          >
+            <span>📊</span>
+            <span>Exportar Registro de Auditoría CSV</span>
+          </button>
         </div>
 
         {filteredRecords.length === 0 ? (

@@ -2,8 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { AuditFilterTable } from "./audit-filter-table";
-
 import { evaluateLessonCompletion } from "../domain/quiz-evaluation";
+import { exportDossierCSV, exportDossierPDF } from "../domain/dossier-export";
 
 type StudentDossierViewProps = {
   profiles: any[];
@@ -227,22 +227,58 @@ export function StudentDossierView({
                 </div>
               </div>
 
-              {/* Dossier Quick Select Dropdown */}
-              <div className="flex items-center gap-3">
-                <label className="text-xs font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                  Cambiar Expediente:
-                </label>
-                <select
-                  value={selectedStudent.id || selectedStudent.email}
-                  onChange={(e) => setSelectedStudentId(e.target.value)}
-                  className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3.5 py-2 text-xs font-bold text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden cursor-pointer"
+              {/* Dossier Quick Select Dropdown & Export Action Buttons */}
+              <div className="flex flex-wrap items-center gap-2.5">
+                <button
+                  type="button"
+                  onClick={() =>
+                    exportDossierPDF(
+                      selectedStudent,
+                      studentProgressRecords,
+                      lessonMap,
+                      quizzes,
+                      quizAttempts,
+                    )
+                  }
+                  className="rounded-xl bg-[#1a80ff] px-3.5 py-2 text-xs font-bold text-white shadow-xs hover:bg-[#0066e6] transition-all cursor-pointer flex items-center gap-1.5"
                 >
-                  {studentList.map((s: any) => (
-                    <option key={s.id || s.email} value={s.id || s.email}>
-                      👤 {s.full_name || s.email}
-                    </option>
-                  ))}
-                </select>
+                  <span>📄</span>
+                  <span>Exportar PDF Oficial</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    exportDossierCSV(
+                      selectedStudent,
+                      studentProgressRecords,
+                      lessonMap,
+                      quizzes,
+                      quizAttempts,
+                    )
+                  }
+                  className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 px-3.5 py-2 text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <span>📊</span>
+                  <span>CSV</span>
+                </button>
+
+                <div className="flex items-center gap-2 border-l border-slate-200 dark:border-slate-800 pl-3 ml-1">
+                  <label className="text-xs font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap hidden lg:inline">
+                    Expediente:
+                  </label>
+                  <select
+                    value={selectedStudent.id || selectedStudent.email}
+                    onChange={(e) => setSelectedStudentId(e.target.value)}
+                    className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2 text-xs font-bold text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden cursor-pointer"
+                  >
+                    {studentList.map((s: any) => (
+                      <option key={s.id || s.email} value={s.id || s.email}>
+                        👤 {s.full_name || s.email}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
 

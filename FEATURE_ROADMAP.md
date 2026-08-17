@@ -10,8 +10,8 @@ Documento de seguimiento para la planificación e implementación progresiva de 
 |---|---|---|---|
 | **1** | Certificados Digitales en PDF de Horas Teóricas | 🔴 Descartado por el usuario | — |
 | **2** | **Módulo de Evaluaciones y Quizzes Teóricos de Aviación** | ✅ **Completado & Desplegado** | **ALTA** |
-| **3** | **Exportación de Expedientes Académicos a PDF/CSV para Inspecciones** | ⏳ **Pendiente** | **MEDIA-ALTA** |
-| **4** | **Soporte PWA / Modo Lectura sin Conexión (Móvil/Tablet)** | ⏳ **Pendiente** | **MEDIA** |
+| **3** | **Exportación de Expedientes Académicos a PDF/CSV para Inspecciones** | ✅ **Completado & Desplegado** | **MEDIA-ALTA** |
+| **4** | **Soporte PWA / Modo Lectura sin Conexión (Móvil/Tablet)** | ⏳ **Pendiente (Próximo)** | **MEDIA** |
 | **5** | **Notificaciones y Alertas de Avance/Inactividad para Alumnos** | ⏳ **Pendiente** | **MEDIA** |
 | **6** | **Panel Estadístico de Analítica Académica (Dashboard Director)** | ⏳ **Pendiente** | **MEDIA-BAJA** |
 
