@@ -34,13 +34,17 @@ export default async function StudentCourseDetailPage({
     (a: any, b: any) => a.sequence_order - b.sequence_order,
   );
 
-  const progressMap = new Map(
-    userProgress?.map((p: any) => [p.lesson_id, p]) || [],
-  );
+  const progressMap = new Map<string, any>();
+  for (const p of userProgress || []) {
+    progressMap.set(p.lesson_id, p);
+  }
 
-  const quizzesByLessonMap = new Map<string, any>(
-    (quizzes || []).map((q: any) => [q.lesson_id || q.id, q]),
-  );
+  const quizzesByLessonMap = new Map<string, any>();
+  for (const q of quizzes || []) {
+    if (q.lesson_id) quizzesByLessonMap.set(q.lesson_id, q);
+    if ((q as any).lesson_slug) quizzesByLessonMap.set((q as any).lesson_slug, q);
+    quizzesByLessonMap.set(q.id, q);
+  }
 
   const attemptsByQuizMap = new Map<string, any>();
   for (const att of quizAttempts || []) {
@@ -48,7 +52,9 @@ export default async function StudentCourseDetailPage({
   }
 
   const completedCount = lessons.filter(
-    (l: any) => (progressMap.get(l.id) as any)?.is_completed,
+    (l: any) =>
+      (progressMap.get(l.id) as any)?.is_completed ||
+      (progressMap.get(l.slug) as any)?.is_completed,
   ).length;
   const progressPercent =
     lessons.length > 0
@@ -155,10 +161,10 @@ export default async function StudentCourseDetailPage({
           ) : (
             <div className="space-y-4">
               {lessons.map((lesson: any, index: number) => {
-                const prog = progressMap.get(lesson.id) as any;
+                const prog = (progressMap.get(lesson.id) || progressMap.get(lesson.slug)) as any;
                 const isCompleted = prog?.is_completed;
 
-                const quiz = quizzesByLessonMap.get(lesson.id);
+                const quiz = quizzesByLessonMap.get(lesson.id) || quizzesByLessonMap.get(lesson.slug);
                 const quizAttempt = quiz
                   ? attemptsByQuizMap.get(quiz.id)
                   : null;
