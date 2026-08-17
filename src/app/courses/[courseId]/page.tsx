@@ -190,7 +190,7 @@ export default async function StudentCourseDetailPage({
 
                     <div className="flex items-center gap-3">
                       <span className="hidden sm:inline-block text-xs font-bold text-[#1a80ff] opacity-0 group-hover:opacity-100 transition-opacity">
-                        Estudiar lección &rarr;
+                        Estudiar lección
                       </span>
                       <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:bg-blue-50 dark:group-hover:bg-slate-700 group-hover:text-[#1a80ff] transition-colors">
                         &rarr;
