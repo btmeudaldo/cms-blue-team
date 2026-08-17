@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
 import { getResilientUser } from "@/shared/lib/supabase/resilient";
 import { mockStore } from "@/shared/lib/mock-store";
@@ -74,6 +75,18 @@ export async function submitQuizAttemptAction(
     answers,
     elapsedSeconds,
   );
+
+  // Revalidate caches across all student and admin routes
+  revalidatePath("/admin/progress");
+  revalidatePath("/quizzes");
+  revalidatePath(`/quizzes/${quiz.id}`);
+  if (quiz.course_id) {
+    revalidatePath(`/courses/${quiz.course_id}`);
+    revalidatePath(`/admin/courses/${quiz.course_id}`);
+  }
+  if (quiz.lesson_id) {
+    revalidatePath(`/courses/${quiz.course_id}/lessons/${quiz.lesson_id}`);
+  }
 
   return {
     success: true,

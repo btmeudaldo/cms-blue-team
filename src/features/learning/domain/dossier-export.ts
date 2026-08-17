@@ -32,15 +32,47 @@ export function exportDossierCSV(
     const isCompleted = item.is_completed;
 
     const quiz = (quizzes || []).find(
-      (q: any) => q.lesson_id === item.lesson_id || q.id === item.lesson_id,
+      (q: any) =>
+        q.lesson_id === item.lesson_id ||
+        q.lesson_slug === item.lesson_id ||
+        q.id === item.lesson_id ||
+        q.id === `quiz-${item.lesson_id}` ||
+        (les?.id && q.lesson_id === les.id) ||
+        (les?.slug && q.lesson_slug === les.slug),
     );
 
-    const userAttempts = (quizAttempts || []).filter(
-      (qa: any) =>
-        qa.user_id === item.user_id && (quiz ? qa.quiz_id === quiz.id : false),
-    );
+    const userAttempts = (quizAttempts || []).filter((qa: any) => {
+      const userMatch =
+        qa.user_id === item.user_id ||
+        qa.user_id === student?.email ||
+        qa.user_id === student?.id;
+
+      if (!userMatch) return false;
+
+      if (quiz) {
+        return (
+          qa.quiz_id === quiz.id ||
+          qa.quiz_id === quiz.lesson_id ||
+          qa.quiz_id === quiz.lesson_slug ||
+          qa.lesson_id === item.lesson_id ||
+          qa.lesson_slug === item.lesson_id ||
+          (les?.id && qa.lesson_id === les.id) ||
+          (les?.slug && qa.lesson_slug === les.slug)
+        );
+      }
+      return (
+        qa.quiz_id === item.lesson_id ||
+        qa.lesson_id === item.lesson_id ||
+        qa.lesson_slug === item.lesson_id ||
+        (les?.id && qa.lesson_id === les.id) ||
+        (les?.slug && qa.lesson_slug === les.slug)
+      );
+    });
+
+    const passedAttempt = userAttempts.find((qa: any) => qa.passed);
     const latestAttempt =
-      userAttempts.length > 0 ? userAttempts[userAttempts.length - 1] : null;
+      passedAttempt ||
+      (userAttempts.length > 0 ? userAttempts[userAttempts.length - 1] : null);
 
     const evaluation = evaluateLessonCompletion(
       elapsed,
@@ -197,18 +229,49 @@ export function exportDossierPDF(
       const isCompleted = item.is_completed;
 
       const quiz = (quizzes || []).find(
-        (q: any) => q.lesson_id === item.lesson_id || q.id === item.lesson_id,
+        (q: any) =>
+          q.lesson_id === item.lesson_id ||
+          q.lesson_slug === item.lesson_id ||
+          q.id === item.lesson_id ||
+          q.id === `quiz-${item.lesson_id}` ||
+          (les?.id && q.lesson_id === les.id) ||
+          (les?.slug && q.lesson_slug === les.slug),
       );
 
-      const userAttempts = (quizAttempts || []).filter(
-        (qa: any) =>
-          qa.user_id === item.user_id &&
-          (quiz ? qa.quiz_id === quiz.id : false),
-      );
+      const userAttempts = (quizAttempts || []).filter((qa: any) => {
+        const userMatch =
+          qa.user_id === item.user_id ||
+          qa.user_id === student?.email ||
+          qa.user_id === student?.id;
+
+        if (!userMatch) return false;
+
+        if (quiz) {
+          return (
+            qa.quiz_id === quiz.id ||
+            qa.quiz_id === quiz.lesson_id ||
+            qa.quiz_id === quiz.lesson_slug ||
+            qa.lesson_id === item.lesson_id ||
+            qa.lesson_slug === item.lesson_id ||
+            (les?.id && qa.lesson_id === les.id) ||
+            (les?.slug && qa.lesson_slug === les.slug)
+          );
+        }
+        return (
+          qa.quiz_id === item.lesson_id ||
+          qa.lesson_id === item.lesson_id ||
+          qa.lesson_slug === item.lesson_id ||
+          (les?.id && qa.lesson_id === les.id) ||
+          (les?.slug && qa.lesson_slug === les.slug)
+        );
+      });
+
+      const passedAttempt = userAttempts.find((qa: any) => qa.passed);
       const latestAttempt =
-        userAttempts.length > 0
+        passedAttempt ||
+        (userAttempts.length > 0
           ? userAttempts[userAttempts.length - 1]
-          : null;
+          : null);
 
       const evaluation = evaluateLessonCompletion(
         elapsed,

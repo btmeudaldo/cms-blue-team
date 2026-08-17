@@ -1137,6 +1137,8 @@ export const mockStore = {
       id: `attempt-${Date.now()}`,
       user_id: userId,
       quiz_id: quiz.id,
+      lesson_id: quiz.lesson_id,
+      lesson_slug: (quiz as any).lesson_slug,
       score_percentage: scorePercentage,
       correct_count: correctCount,
       total_questions: totalQuestions,
