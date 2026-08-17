@@ -85,3 +85,37 @@ export async function submitQuizAttemptAction(
     attempt,
   };
 }
+
+export async function saveQuizAction(
+  courseId: string,
+  lessonId: string,
+  quizData: any,
+) {
+  const { user } = await getResilientUser();
+  if (!user) {
+    throw new Error("Debes iniciar sesión con rol de administrador o instructor.");
+  }
+
+  const updatedQuiz = mockStore.saveQuiz(courseId, lessonId, quizData);
+  if (!updatedQuiz) {
+    throw new Error("No se pudo guardar el cuestionario.");
+  }
+
+  try {
+    const supabase = await createSupabaseServerClient();
+    await withTimeout(
+      supabase.from("quizzes").upsert({
+        id: updatedQuiz.id,
+        course_id: courseId,
+        lesson_id: lessonId,
+        title: updatedQuiz.title,
+        description: updatedQuiz.description,
+        min_pass_score_percentage: updatedQuiz.minPassScorePercentage,
+        questions: updatedQuiz.questions,
+      }),
+      1500,
+    ).catch(() => null);
+  } catch (err) {}
+
+  return updatedQuiz;
+}

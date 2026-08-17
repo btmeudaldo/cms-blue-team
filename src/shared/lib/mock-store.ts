@@ -1148,4 +1148,30 @@ export const mockStore = {
     mockQuizAttempts.push(attempt);
     return attempt;
   },
+  saveQuiz(courseId: string, lessonId: string, quizData: any) {
+    let existing = defaultQuizzes.find(
+      (q) => q.lesson_id === lessonId || q.id === quizData.id || q.id === `quiz-${lessonId}`,
+    );
+
+    if (existing) {
+      existing.title = quizData.title;
+      existing.description = quizData.description;
+      existing.minPassScorePercentage = Number(quizData.minPassScorePercentage) || 70;
+      existing.questions = quizData.questions;
+      return existing;
+    } else {
+      const newQuiz = {
+        id: quizData.id || `quiz-${lessonId}`,
+        course_id: courseId,
+        lesson_id: lessonId,
+        lesson_slug: quizData.lesson_slug || lessonId,
+        title: quizData.title,
+        description: quizData.description,
+        minPassScorePercentage: Number(quizData.minPassScorePercentage) || 70,
+        questions: quizData.questions,
+      };
+      defaultQuizzes.push(newQuiz);
+      return newQuiz;
+    }
+  },
 };

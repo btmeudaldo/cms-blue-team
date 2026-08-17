@@ -5,9 +5,11 @@ import { Header } from "@/shared/components/header";
 import { updateLessonAction } from "@/app/actions/lesson.actions";
 import {
   getResilientCourseDetail,
+  getResilientQuizForLesson,
   getResilientUser,
 } from "@/shared/lib/supabase/resilient";
 import { LessonEditorForm } from "@/features/learning/components/lesson-editor-form";
+import { QuizEditor } from "@/features/learning/components/quiz-editor";
 
 export default async function EditLessonPage({
   params,
@@ -31,6 +33,8 @@ export default async function EditLessonPage({
   if (!lesson) notFound();
 
   const updateThisLesson = updateLessonAction.bind(null, lesson.id, courseId);
+
+  const quiz = await getResilientQuizForLesson(lesson.id);
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
@@ -89,6 +93,13 @@ export default async function EditLessonPage({
             isEditing={true}
           />
         </div>
+
+        {/* Quiz & Question Editor for Instructors */}
+        <QuizEditor
+          courseId={courseId}
+          lessonId={lesson.id}
+          initialQuiz={quiz}
+        />
       </main>
     </div>
   );
