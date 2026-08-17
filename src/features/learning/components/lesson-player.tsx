@@ -15,6 +15,7 @@ import { Header } from "@/shared/components/header";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 import { getNextAdvanceButtonPosition } from "@/features/learning/domain/advance-button-position";
 import { getLessonScrollProgress } from "@/features/learning/domain/lesson-scroll-progress";
+import { getLessonLayoutClasses } from "@/features/learning/domain/lesson-layout";
 
 export type LessonSummary = {
   id: string;
@@ -87,6 +88,7 @@ export function LessonPlayer({
   // isIndexOpen: toggleable index visibility
   const [isIndexOpen, setIsIndexOpen] = useState(true);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const [isSiteHeaderHidden, setIsSiteHeaderHidden] = useState(false);
 
   // Hydration-safe random horizontal & vertical position for anti-cheating button
   const [horizontalPosition, setHorizontalPosition] = useState(50);
@@ -94,6 +96,21 @@ export function LessonPlayer({
   const [verticalOffset, setVerticalOffset] = useState(0);
 
   const completedLessonSet = new Set(completedLessonIds);
+  const lessonLayoutClasses = getLessonLayoutClasses(isIndexOpen);
+
+  useEffect(() => {
+    function handleHeaderVisibility(event: Event) {
+      const customEvent = event as CustomEvent<{ hidden?: boolean }>;
+      setIsSiteHeaderHidden(customEvent.detail?.hidden === true);
+    }
+
+    window.addEventListener("lesson-header-visibility", handleHeaderVisibility);
+    return () =>
+      window.removeEventListener(
+        "lesson-header-visibility",
+        handleHeaderVisibility,
+      );
+  }, []);
 
   // Load preferences from localStorage on mount
   useEffect(() => {
@@ -463,11 +480,27 @@ export function LessonPlayer({
       <div className="flex-1 flex flex-col min-w-0 min-h-screen">
         {/* MODE 2: TOP HEADER (if in top-header mode) */}
         {layoutMode === "top-header" && (
-          <Header userEmail={userEmail} userName={userName} role={role} />
+          <Header
+            userEmail={userEmail}
+            userName={userName}
+            role={role}
+            autoHideOnScroll
+          />
         )}
 
         {/* Sticky Control Bar */}
-        <div className="sticky top-0 lg:top-0 z-30 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs py-3 px-4 sm:px-6 lg:px-8">
+        <div
+          className={`sticky z-50 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs py-3 px-4 sm:px-6 lg:px-8 transition-transform duration-300 ease-out ${
+            layoutMode === "top-header" ? "top-[112px]" : "top-0"
+          }`}
+          style={
+            layoutMode === "top-header" && isSiteHeaderHidden
+              ? {
+                  transform: "translateY(-112px)",
+                }
+              : undefined
+          }
+        >
           <div className="mx-auto max-w-[1400px] flex flex-wrap items-center justify-between gap-4">
             {/* Title & Index Toggle */}
             <div className="flex items-center gap-3">
@@ -484,7 +517,7 @@ export function LessonPlayer({
               {/* Toggle Index Button (Works in both Modes) */}
               <button
                 onClick={() => {
-                  if (window.innerWidth < 1024) {
+                  if (window.innerWidth < 1280) {
                     setIsMobileSidebarOpen(!isMobileSidebarOpen);
                   } else {
                     toggleIndexOpen();
@@ -511,36 +544,8 @@ export function LessonPlayer({
               </div>
             </div>
 
-            {/* Layout Mode Switcher & Monitor Badges */}
+            {/* Monitor Badges */}
             <div className="flex flex-wrap items-center gap-3">
-              {/* Layout Mode Switcher Pills */}
-              <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
-                <button
-                  onClick={() => toggleLayoutMode("top-header")}
-                  title="Header Superior Estándar con Índice y Dock Flotantes"
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    layoutMode === "top-header"
-                      ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-xs"
-                      : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
-                  }`}
-                >
-                  <span>⬆️</span>
-                  <span className="hidden sm:inline">Header Arriba</span>
-                </button>
-                <button
-                  onClick={() => toggleLayoutMode("vertical-left")}
-                  title="Navbar y Panel Completo a la Izquierda"
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    layoutMode === "vertical-left"
-                      ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-xs"
-                      : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
-                  }`}
-                >
-                  <span>⬅️</span>
-                  <span className="hidden sm:inline">Navbar Izquierda</span>
-                </button>
-              </div>
-
               {/* Timer Countdown Badge */}
               <div className="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 border border-slate-200 dark:border-slate-700">
                 <div className="relative flex h-5 w-5 items-center justify-center">
@@ -606,7 +611,7 @@ export function LessonPlayer({
         {/* Mobile Drawer Overlay */}
         {isMobileSidebarOpen && (
           <div
-            className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm min-[1280px]:hidden"
             onClick={() => setIsMobileSidebarOpen(false)}
           >
             <aside
@@ -635,110 +640,67 @@ export function LessonPlayer({
           </div>
         )}
 
-        {/* Floating Side Index Panel for TOP HEADER Mode (Only visible on ultra-wide screens min-[1650px] where side margins guarantee 0 overlap) */}
-        {layoutMode === "top-header" && isIndexOpen && (
-          <aside className="hidden min-[1650px]:block fixed left-6 top-[240px] z-30 w-80 max-h-[calc(100vh-17rem)] overflow-y-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-left-4 duration-200">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
-              <div>
-                <span className="text-[10px] font-extrabold uppercase text-[#1a80ff] tracking-wider">
-                  Navegación del Curso
-                </span>
-                <h3 className="text-xs font-bold text-slate-900 dark:text-white line-clamp-1">
-                  {courseTitle}
-                </h3>
-              </div>
-              <button
-                onClick={toggleIndexOpen}
-                className="h-7 w-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 font-bold transition-colors cursor-pointer"
-                title="Cerrar índice flotante"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Progress Bar */}
-            <div className="space-y-1 border-b border-slate-100 dark:border-slate-800 pb-3">
-              <div className="flex justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400">
-                <span>Avance General</span>
-                <span>
-                  {lessonsSummary.length > 0
-                    ? Math.round(
-                        (completedLessonSet.size / lessonsSummary.length) * 100,
-                      )
-                    : 0}
-                  %
-                </span>
-              </div>
-              <div className="h-2 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
-                <div
-                  className="h-full bg-[#1a80ff] transition-all duration-300"
-                  style={{
-                    width: `${
-                      lessonsSummary.length > 0
-                        ? Math.round(
-                            (completedLessonSet.size / lessonsSummary.length) *
-                              100,
-                          )
-                        : 0
-                    }%`,
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* Lessons List */}
-            {renderLessonsNav()}
-          </aside>
-        )}
-
-        {/* Floating Right Action Dock Panel for TOP HEADER Mode (Only visible on ultra-wide screens min-[1650px] where side margins guarantee 0 overlap) */}
-        {layoutMode === "top-header" && (
-          <aside className="hidden min-[1650px]:flex flex-col fixed right-6 top-[240px] z-30 w-80 h-[calc(100vh-17rem)] max-h-[calc(100vh-17rem)] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-right-4 duration-200">
-            <div className="border-b border-slate-100 dark:border-slate-800 pb-3">
-              <span className="text-[10px] font-extrabold uppercase text-[#1a80ff] tracking-wider">
-                Control de Lección
-              </span>
-              <h3 className="text-xs font-bold text-slate-900 dark:text-white">
-                Avance de Lección
-              </h3>
-            </div>
-
-            {/* Anti-cheat Bounded Vertical Action Area */}
-            <div className="relative flex-1 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 overflow-hidden">
-              <div
-                style={{
-                  top: `${verticalPosition}%`,
-                  transform: "translate(-50%, -50%)",
-                }}
-                className="absolute left-1/2 transition-all duration-300 w-11/12 text-center"
-              >
+        {/* Panoramic layout: the index reserves space and aligns with the lesson card. */}
+        <div className={lessonLayoutClasses.outer}>
+          {layoutMode === "top-header" && isIndexOpen && (
+            <aside className="hidden min-[1280px]:block w-full max-h-[calc(100vh-18rem)] overflow-y-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl p-5 shadow-2xl space-y-4 animate-in fade-in slide-in-from-left-4 duration-200">
+              <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                <div>
+                  <span className="text-[10px] font-extrabold uppercase text-[#1a80ff] tracking-wider">
+                    Navegación del Curso
+                  </span>
+                  <h3 className="text-xs font-bold text-slate-900 dark:text-white line-clamp-1">
+                    {courseTitle}
+                  </h3>
+                </div>
                 <button
-                  disabled={!canAdvance}
-                  onClick={handleComplete}
-                  className={`w-full inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3.5 text-xs font-extrabold text-white shadow-lg transition-all ${
-                    canAdvance
-                      ? "bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
-                      : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
-                  }`}
+                  onClick={toggleIndexOpen}
+                  className="h-7 w-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 font-bold transition-colors cursor-pointer"
+                  title="Cerrar índice flotante"
                 >
-                  {isCompleting
-                    ? "Verificando..."
-                    : isCompletedSuccess
-                      ? nextLessonId
-                        ? "✓ Completada"
-                        : "✓ Finalizado"
-                      : nextLessonId
-                        ? "Completar y Avanzar"
-                        : "Finalizar"}
+                  ✕
                 </button>
               </div>
-            </div>
-          </aside>
-        )}
 
-        {/* Main Article Container Area: Expanded intermediate reading width with clean side margins */}
-        <div className="flex-1 w-full mx-auto max-w-[1620px] px-4 sm:px-6 lg:px-8 py-8 pb-40">
-          <main className="w-full max-w-6xl mx-auto space-y-6">
+              {/* Progress Bar */}
+              <div className="space-y-1 border-b border-slate-100 dark:border-slate-800 pb-3">
+                <div className="flex justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                  <span>Avance General</span>
+                  <span>
+                    {lessonsSummary.length > 0
+                      ? Math.round(
+                          (completedLessonSet.size / lessonsSummary.length) *
+                            100,
+                        )
+                      : 0}
+                    %
+                  </span>
+                </div>
+                <div className="h-2 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                  <div
+                    className="h-full bg-[#1a80ff] transition-all duration-300"
+                    style={{
+                      width: `${
+                        lessonsSummary.length > 0
+                          ? Math.round(
+                              (completedLessonSet.size /
+                                lessonsSummary.length) *
+                                100,
+                            )
+                          : 0
+                      }%`,
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Lessons List */}
+              {renderLessonsNav()}
+            </aside>
+          )}
+
+          {/* Main Article Container Area: adapts to the available viewport width. */}
+          <main className={lessonLayoutClasses.main}>
             {errorMessage && (
               <div className="rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 p-4 text-xs font-semibold text-rose-700 dark:text-rose-300">
                 ⚠ Error al completar la lección: {errorMessage}
@@ -764,9 +726,9 @@ export function LessonPlayer({
           </main>
         </div>
 
-        {/* Requirements Checklist Floating Capsule for Mobile / Narrower screens */}
+        {/* Requirements Checklist Floating Capsule for Mobile Screens */}
         {!canAdvance && (
-          <div className="min-[1650px]:hidden fixed bottom-28 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 dark:bg-slate-900/95 text-white backdrop-blur-xl px-5 py-2.5 rounded-full shadow-2xl border border-slate-700/80 text-xs font-semibold flex items-center gap-2.5 whitespace-nowrap pointer-events-none max-w-[95vw] overflow-x-auto">
+          <div className="lg:hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 dark:bg-slate-900/95 text-white backdrop-blur-xl px-5 py-2 rounded-full shadow-2xl border border-slate-700/80 text-xs font-semibold flex items-center gap-2.5 whitespace-nowrap pointer-events-none max-w-[95vw] overflow-x-auto">
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
                 remainingSeconds === 0
@@ -797,25 +759,23 @@ export function LessonPlayer({
           </div>
         )}
 
-        {/* Bottom Horizontal Action Dock for Screens < 1650px or Left Navbar Mode */}
+        {/* Permanent Bottom Horizontal Action Dock Bar */}
         <section
           aria-label="Avance de lección"
-          className={`${
-            layoutMode === "top-header" ? "min-[1650px]:hidden" : ""
-          } fixed bottom-0 left-0 right-0 z-40 h-24 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-2xl flex items-center px-4 sm:px-8`}
+          className="fixed bottom-0 left-0 right-0 z-40 h-16 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-2xl flex items-center px-4 sm:px-8"
         >
           <div className="relative w-full mx-auto max-w-[1400px] h-full flex items-center">
             <div
               style={{
                 left: `${horizontalPosition}%`,
-                transform: `translate(-50%, calc(-50% + ${verticalOffset}px))`,
+                transform: "translate(-50%, -50%)",
               }}
               className="absolute top-1/2 transition-all duration-300"
             >
               <button
                 disabled={!canAdvance}
                 onClick={handleComplete}
-                className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-extrabold text-white shadow-lg transition-all whitespace-nowrap ${
+                className={`inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-2.5 text-xs font-extrabold text-white shadow-lg transition-all whitespace-nowrap ${
                   canAdvance
                     ? "bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
                     : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"

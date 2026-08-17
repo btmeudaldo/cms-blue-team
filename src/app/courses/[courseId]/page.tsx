@@ -17,8 +17,11 @@ export default async function StudentCourseDetailPage({
   const { user, profile, isDemo } = await getResilientUser();
   const role = profile?.role ?? "student";
 
-  // Fetch course with lessons ordered using resilient fallback
-  const course = await getResilientCourseDetail(courseId, isDemo);
+  // Fetch course and progress concurrently with resilient fallback
+  const [course, userProgress] = await Promise.all([
+    getResilientCourseDetail(courseId, isDemo),
+    getResilientUserProgress(user.id, isDemo),
+  ]);
   if (!course) notFound();
 
   // Sort lessons
@@ -26,8 +29,6 @@ export default async function StudentCourseDetailPage({
     (a: any, b: any) => a.sequence_order - b.sequence_order,
   );
 
-  // Fetch progress for this user using resilient fallback
-  const userProgress = await getResilientUserProgress(user.id, isDemo);
   const progressMap = new Map(
     userProgress?.map((p: any) => [p.lesson_id, p]) || [],
   );

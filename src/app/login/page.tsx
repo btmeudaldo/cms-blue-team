@@ -1,41 +1,10 @@
-import Link from "next/link";
 import { LoginForm } from "./login-form";
-import { ThemeToggle } from "@/shared/components/theme-toggle";
+import { Header } from "@/shared/components/header";
 
 export default function LoginPage() {
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col justify-between transition-colors">
-      {/* Mini top bar */}
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6">
-        <Link href="/" className="flex items-center">
-          <img
-            src="/logo-largo.png"
-            alt="BLUE TEAM Flight School"
-            width={800}
-            height={273}
-            style={{ imageRendering: "-webkit-optimize-contrast" }}
-            className="h-20 sm:h-28 w-auto object-contain dark:hidden"
-          />
-          <img
-            src="/logo-largo-blanco.png"
-            alt="BLUE TEAM Flight School"
-            width={800}
-            height={273}
-            style={{ imageRendering: "-webkit-optimize-contrast" }}
-            className="h-20 sm:h-28 w-auto object-contain hidden dark:block"
-          />
-        </Link>
-
-        <div className="flex items-center gap-3">
-          <ThemeToggle />
-          <Link
-            href="/"
-            className="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
-          >
-            &larr; Volver al inicio
-          </Link>
-        </div>
-      </div>
+      <Header isLoginPage />
 
       {/* Center login form */}
       <div className="flex flex-1 items-center justify-center px-4 py-8">

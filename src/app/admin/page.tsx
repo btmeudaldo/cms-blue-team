@@ -17,9 +17,9 @@ export default async function AdminDashboardPage() {
     redirect("/courses");
   }
 
-  const courses = await getResilientCourses(user.id, true);
-  const profiles = await getResilientProfiles();
-  const [progressList, enrollments] = await Promise.all([
+  const [courses, profiles, progressList, enrollments] = await Promise.all([
+    getResilientCourses(user.id, true),
+    getResilientProfiles(),
     getResilientAllProgress(),
     getResilientEnrollments(),
   ]);

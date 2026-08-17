@@ -13,11 +13,11 @@ export default async function CoursesPage() {
   const role = profile?.role ?? "student";
   const isAdmin = role === "admin" || role === "instructor";
 
-  // Fetch courses with resilient fallback
-  const coursesData = await getResilientCourses(user.id, isAdmin, isDemo);
-
-  // Fetch user progress with resilient fallback
-  const userProgress = await getResilientUserProgress(user.id, isDemo);
+  // Fetch courses and user progress concurrently with resilient fallback
+  const [coursesData, userProgress] = await Promise.all([
+    getResilientCourses(user.id, isAdmin, isDemo),
+    getResilientUserProgress(user.id, isDemo),
+  ]);
   const completedLessonIds = new Set(
     userProgress
       ?.filter((p: any) => p.is_completed)
@@ -25,7 +25,7 @@ export default async function CoursesPage() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0a2d5c] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
       <Header
         userEmail={user.email}
         userName={profile?.full_name}

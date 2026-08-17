@@ -1,21 +1,54 @@
 import { NextResponse } from "next/server";
-import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
+import dns from "node:dns";
+import { getSupabasePublicEnv } from "@/shared/lib/supabase/env";
+
+try {
+  dns.setDefaultResultOrder("ipv4first");
+} catch {}
 
 export async function GET() {
   try {
-    const supabase = await createSupabaseServerClient();
-    const { data, error } = await supabase
-      .from("courses")
-      .select("id")
-      .limit(1);
+    const { url, publishableKey } = getSupabasePublicEnv();
+    const baseUrl = url.replace(/\/+$/, "");
 
-    if (!error) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+    const response = await fetch(`${baseUrl}/auth/v1/health`, {
+      headers: { apikey: publishableKey },
+      cache: "no-store",
+      signal: controller.signal,
+    }).finally(() => clearTimeout(timeoutId));
+
+    if (response.ok) {
       return NextResponse.json({ status: "online", source: "supabase" });
     }
-  } catch (err) {}
 
-  return NextResponse.json(
-    { status: "offline", source: "local_resilient" },
-    { status: 503 },
-  );
+    return NextResponse.json(
+      {
+        status: "offline",
+        source: "supabase",
+        error: `Supabase Auth respondió HTTP ${response.status}`,
+      },
+      { status: 503 },
+    );
+  } catch (error: any) {
+    console.error(
+      "[health] Supabase is unreachable:",
+      error,
+      "Cause:",
+      error?.cause,
+    );
+    return NextResponse.json(
+      {
+        status: "offline",
+        source: "supabase",
+        error:
+          error instanceof Error
+            ? `${error.message} (${error.cause ?? "no cause"})`
+            : "Error desconocido",
+      },
+      { status: 503 },
+    );
+  }
 }

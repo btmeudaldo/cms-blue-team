@@ -26,11 +26,9 @@ export default async function AdminUsersPage() {
 
   const isFullAdmin = currentProfile?.role === "admin";
 
-  // Fetch all profiles resiliently
-  const profiles = await getResilientProfiles();
-
-  // Fetch all courses resiliently
-  const [courses, enrollments] = await Promise.all([
+  // Fetch profiles, courses, and enrollments concurrently
+  const [profiles, courses, enrollments] = await Promise.all([
+    getResilientProfiles(),
     getResilientCourses(user.id, true),
     getResilientEnrollments(),
   ]);

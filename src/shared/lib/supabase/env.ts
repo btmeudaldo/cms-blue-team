@@ -1,3 +1,9 @@
+import dns from "node:dns";
+
+try {
+  dns.setDefaultResultOrder("ipv4first");
+} catch {}
+
 export function getSupabasePublicEnv() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const publishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;

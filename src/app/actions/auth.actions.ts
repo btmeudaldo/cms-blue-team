@@ -32,10 +32,11 @@ export async function signInAction(formData: FormData) {
     if (!error) {
       const cookieStore = await cookies();
       cookieStore.set("demo_email", email, { path: "/" });
+      cookieStore.set("demo_role", "", { path: "/", expires: new Date(0) });
       redirect("/courses");
     }
   } catch (err) {
-    // Supabase offline or mock mode fallback
+    console.error("[signInAction] Supabase login failed", err);
   }
 
   if (!isValidPassword) {

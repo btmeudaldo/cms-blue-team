@@ -678,7 +678,9 @@ export const mockStore = {
     );
   },
   startLesson(userId: string, lessonId: string) {
-    let existing = mockProgressRecords.find((p) => p.lesson_id === lessonId);
+    let existing = mockProgressRecords.find(
+      (p) => p.user_id === userId && p.lesson_id === lessonId,
+    );
     if (!existing) {
       existing = {
         user_id: userId,
@@ -693,7 +695,9 @@ export const mockStore = {
     return existing;
   },
   completeLesson(userId: string, lessonId: string) {
-    let existing = mockProgressRecords.find((p) => p.lesson_id === lessonId);
+    let existing = mockProgressRecords.find(
+      (p) => p.user_id === userId && p.lesson_id === lessonId,
+    );
     const now = new Date();
     if (!existing) {
       existing = {

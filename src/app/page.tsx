@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { ThemeToggle } from "@/shared/components/theme-toggle";
+import { Header } from "@/shared/components/header";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white flex flex-col justify-between selection:bg-[#1a80ff] selection:text-white transition-colors duration-200">
-      {/* Header Bar */}
-      <header className="border-b border-slate-200/80 bg-white/80 dark:border-slate-800/80 dark:bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 transition-colors">
+      <Header />
+      {/*
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2.5">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#1a80ff] text-white font-extrabold text-xl shadow-lg shadow-blue-500/30">
@@ -26,7 +26,7 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-      </header>
+      */}
 
       {/* Hero Section */}
       <main className="flex-1 mx-auto w-full max-w-7xl px-6 py-16 lg:py-24 flex flex-col items-center text-center justify-center space-y-12">

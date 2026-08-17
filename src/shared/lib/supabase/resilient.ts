@@ -2,53 +2,86 @@ import { cookies } from "next/headers";
 import { createSupabaseServerClient } from "./server";
 import { redirect } from "next/navigation";
 import { mockStore } from "@/shared/lib/mock-store";
-import { preferPersistedProgress } from "@/features/learning/domain/progress-source";
+import { getProgressForMode } from "@/features/learning/domain/progress-source";
+import { cache } from "react";
 
-export async function getResilientUser() {
+function withTimeout<T>(
+  promise: PromiseLike<T> | Promise<T>,
+  ms = 1500,
+): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error(`Timeout of ${ms}ms exceeded`));
+    }, ms);
+
+    Promise.resolve(promise)
+      .then((res) => {
+        clearTimeout(timer);
+        resolve(res);
+      })
+      .catch((err) => {
+        clearTimeout(timer);
+        reject(err);
+      });
+  });
+}
+
+export const getResilientUser = cache(async function getResilientUser() {
   const cookieStore = await cookies();
   const demoRoleCookie = cookieStore.get("demo_role")?.value;
   const demoEmailCookie = cookieStore.get("demo_email")?.value;
 
-  const supabase = await createSupabaseServerClient();
-  const result: any = await supabase.auth.getUser();
-  if (result?.data?.user) {
-    const user = result.data.user;
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role, full_name, email")
-      .eq("id", user.id)
-      .maybeSingle();
+  try {
+    const supabase = await createSupabaseServerClient();
+    const result: any = await withTimeout(
+      supabase.auth.getUser(),
+      1500,
+    ).catch(() => null);
 
-    const userRole =
-      demoRoleCookie ||
-      profile?.role ||
-      user.user_metadata?.role ||
-      (user.email?.includes("admin")
-        ? "admin"
-        : user.email?.includes("instructor")
-          ? "instructor"
-          : "student");
+    if (result?.data?.user) {
+      const user = result.data.user;
+      const profileResult: any = await withTimeout(
+        supabase
+          .from("profiles")
+          .select("role, full_name, email")
+          .eq("id", user.id)
+          .maybeSingle(),
+        1500,
+      ).catch(() => ({ data: null }));
 
-    return {
-      isDemo: false,
-      user: {
-        id: user.id,
-        email: user.email,
-      },
-      profile: {
-        role: userRole,
-        full_name:
-          profile?.full_name ??
-          user.user_metadata?.full_name ??
-          (userRole === "admin"
-            ? "Director / Administrador"
-            : userRole === "instructor"
-              ? "Instructor de Vuelo"
-              : "Piloto Alumno"),
-        email: user.email,
-      },
-    };
-  }
+      const profile = profileResult?.data;
+
+      const userRole =
+        profile?.role ||
+        demoRoleCookie ||
+        user.user_metadata?.role ||
+        (user.email?.includes("admin")
+          ? "admin"
+          : user.email?.includes("instructor")
+            ? "instructor"
+            : "student");
+
+      return {
+        isDemo: false,
+        user: {
+          id: user.id,
+          email: user.email,
+        },
+        profile: {
+          role: userRole,
+          full_name:
+            profile?.full_name ??
+            user.user_metadata?.full_name ??
+            (userRole === "admin"
+              ? "Director / Administrador"
+              : userRole === "instructor"
+                ? "Instructor de Vuelo"
+                : "Piloto Alumno"),
+          email: user.email,
+        },
+      };
+    }
+  } catch (err) {}
 
   // Fallback to active mock user based on demo_email or demo_role cookie
   const mockProfiles = mockStore.getProfiles();
@@ -120,7 +153,7 @@ export async function getResilientUser() {
   }
 
   redirect("/login");
-}
+});
 
 export async function getResilientCourses(
   userId: string,
@@ -147,7 +180,7 @@ export async function getResilientCourses(
         .eq("user_id", userId);
     }
 
-    const result: any = await queryPromise;
+    const result: any = await withTimeout<any>(queryPromise, 1500);
     if (result && !result.error && result.data) {
       const rawCourses = isAdmin
         ? result.data || []
@@ -235,17 +268,22 @@ export async function getResilientCourseDetail(
       query = query.eq("slug", courseId);
     }
 
-    const result: any = await query.maybeSingle();
+    const result: any = await withTimeout(query.maybeSingle(), 1500);
 
     if (result && !result.error && result.data) {
       if (!result.data.lessons || result.data.lessons.length === 0) {
-        const { data: directLessons } = await supabase
-          .from("lessons")
-          .select(
-            "id, title, slug, sequence_order, word_count, min_seconds, content_html",
-          )
-          .eq("course_id", result.data.id)
-          .order("sequence_order", { ascending: true });
+        const directLessonsResult: any = await withTimeout(
+          supabase
+            .from("lessons")
+            .select(
+              "id, title, slug, sequence_order, word_count, min_seconds, content_html",
+            )
+            .eq("course_id", result.data.id)
+            .order("sequence_order", { ascending: true }),
+          1500,
+        ).catch(() => ({ data: null }));
+
+        const directLessons = directLessonsResult?.data;
 
         if (directLessons && directLessons.length > 0) {
           result.data.lessons = directLessons;
@@ -274,10 +312,13 @@ export async function getResilientCourseDetail(
 export async function getResilientProfiles() {
   try {
     const supabase = await createSupabaseServerClient();
-    const result: any = await supabase
-      .from("profiles")
-      .select("id, email, full_name, role, created_at")
-      .order("created_at", { ascending: false });
+    const result: any = await withTimeout(
+      supabase
+        .from("profiles")
+        .select("id, email, full_name, role, created_at")
+        .order("created_at", { ascending: false }),
+      1500,
+    );
 
     if (result && !result.error && result.data && result.data.length > 0) {
       return result.data;
@@ -295,15 +336,18 @@ export async function getResilientUserProgress(
 
   try {
     const supabase = await createSupabaseServerClient();
-    const result: any = await supabase
-      .from("user_lesson_progress")
-      .select(
-        "lesson_id, is_completed, started_at, completed_at, elapsed_seconds",
-      )
-      .eq("user_id", userId);
+    const result: any = await withTimeout(
+      supabase
+        .from("user_lesson_progress")
+        .select(
+          "lesson_id, is_completed, started_at, completed_at, elapsed_seconds",
+        )
+        .eq("user_id", userId),
+      1500,
+    );
 
     if (result && !result.error && result.data) {
-      return preferPersistedProgress(result.data, mockProgress);
+      return getProgressForMode(result.data, mockProgress, allowMockFallback);
     }
   } catch (err) {}
 
@@ -313,10 +357,11 @@ export async function getResilientUserProgress(
 export async function getResilientAllProgress() {
   try {
     const supabase = await createSupabaseServerClient();
-    const result: any = await supabase
-      .from("user_lesson_progress")
-      .select(
-        `
+    const result: any = await withTimeout(
+      supabase
+        .from("user_lesson_progress")
+        .select(
+          `
           user_id,
           lesson_id,
           started_at,
@@ -324,8 +369,10 @@ export async function getResilientAllProgress() {
           elapsed_seconds,
           is_completed
         `,
-      )
-      .order("started_at", { ascending: false });
+        )
+        .order("started_at", { ascending: false }),
+      1500,
+    );
 
     if (result && !result.error && result.data && result.data.length > 0) {
       return result.data;
@@ -345,12 +392,13 @@ export async function getResilientEnrollments() {
 
   try {
     const supabase = await createSupabaseServerClient();
-    const { data, error } = await supabase
-      .from("course_enrollments")
-      .select("user_id, course_id");
+    const result: any = await withTimeout(
+      supabase.from("course_enrollments").select("user_id, course_id"),
+      1500,
+    );
 
-    if (!error && data) {
-      for (const de of data) {
+    if (result && !result.error && result.data) {
+      for (const de of result.data) {
         map.set(`${de.user_id}_${de.course_id}`, de);
       }
     }

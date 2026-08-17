@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { preferPersistedProgress } from "./progress-source";
+import { getProgressForMode, preferPersistedProgress } from "./progress-source";
 
 describe("preferPersistedProgress", () => {
   it("uses Supabase progress as the source of truth when it is available", () => {
@@ -14,5 +14,12 @@ describe("preferPersistedProgress", () => {
     const simulated = [{ lesson_id: "lesson-1", is_completed: true }];
 
     expect(preferPersistedProgress(null, simulated)).toEqual(simulated);
+  });
+
+  it("keeps demo progress when Supabase is reachable but not its source", () => {
+    const persisted: { lesson_id: string; is_completed: boolean }[] = [];
+    const simulated = [{ lesson_id: "lesson-1", is_completed: true }];
+
+    expect(getProgressForMode(persisted, simulated, true)).toEqual(simulated);
   });
 });
