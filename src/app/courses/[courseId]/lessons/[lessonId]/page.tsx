@@ -4,6 +4,8 @@ import { resolveLessonByIdentifier } from "@/features/learning/domain/lesson-rou
 import { notFound } from "next/navigation";
 import {
   getResilientCourseDetail,
+  getResilientQuizAttempts,
+  getResilientQuizForLesson,
   getResilientUser,
   getResilientUserProgress,
 } from "@/shared/lib/supabase/resilient";
@@ -16,7 +18,7 @@ export default async function StudentLessonPage({
   const { courseId, lessonId } = await params;
   const { user, profile, isDemo } = await getResilientUser();
 
-  // Fetch course detail and user progress concurrently with resilient fallback
+  // Fetch course detail, user progress, quiz for current lesson, and quiz attempts
   const [course, userProgress] = await Promise.all([
     getResilientCourseDetail(courseId, isDemo),
     getResilientUserProgress(user.id, isDemo),
@@ -30,6 +32,15 @@ export default async function StudentLessonPage({
   const currentLesson = resolveLessonByIdentifier<any>(lessons, lessonId);
   if (!currentLesson) notFound();
   const currentIndex = lessons.indexOf(currentLesson);
+
+  const [quiz, quizAttempts] = await Promise.all([
+    getResilientQuizForLesson(currentLesson.id),
+    getResilientQuizAttempts(user.id),
+  ]);
+
+  const quizAttempt = quiz
+    ? (quizAttempts || []).find((a: any) => a.quiz_id === quiz.id)
+    : null;
 
   const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
   const nextLesson =
@@ -74,6 +85,8 @@ export default async function StudentLessonPage({
       role={profile?.role}
       lessonsSummary={lessonsSummary}
       completedLessonIds={completedLessonIds}
+      quiz={quiz}
+      quizAttempt={quizAttempt}
     />
   );
 }

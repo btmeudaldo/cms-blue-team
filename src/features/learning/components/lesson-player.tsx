@@ -40,6 +40,8 @@ type LessonPlayerProps = {
   role?: string;
   lessonsSummary?: LessonSummary[];
   completedLessonIds?: string[];
+  quiz?: any;
+  quizAttempt?: any;
 };
 
 export function LessonPlayer({
@@ -51,12 +53,15 @@ export function LessonPlayer({
   minSeconds,
   pathToRevalidate,
   nextLessonId,
+  prevLessonId,
   isAlreadyCompleted = false,
-  userEmail,
-  userName,
+  userEmail = "",
+  userName = "",
   role = "student",
   lessonsSummary = [],
   completedLessonIds = [],
+  quiz,
+  quizAttempt,
 }: LessonPlayerProps) {
   const router = useRouter();
   const safeContentHtml = sanitizeLessonHtml(contentHtml);
@@ -723,6 +728,70 @@ export function LessonPlayer({
               className="prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert min-h-screen max-w-none rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 lg:p-12 shadow-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-6 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
               dangerouslySetInnerHTML={{ __html: safeContentHtml }}
             />
+
+            {/* End of Lesson Quiz Action Banner */}
+            {quiz && (
+              <div className="mt-8 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-md space-y-4">
+                {quizAttempt?.passed ? (
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div className="space-y-1 text-center sm:text-left">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950 px-3 py-1 text-xs font-extrabold text-emerald-700 dark:text-emerald-300">
+                        🏆 Examen Aprobado ({quizAttempt.score_percentage}%)
+                      </span>
+                      <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
+                        {quiz.title}
+                      </h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                        Has completado con éxito la evaluación teórica de esta lección.
+                      </p>
+                    </div>
+                    <Link
+                      href={`/quizzes/${quiz.id}`}
+                      className="rounded-2xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/60 px-5 py-2.5 text-xs font-bold text-emerald-800 dark:text-emerald-200 hover:bg-emerald-100 transition-all shrink-0"
+                    >
+                      Revisar o Volver a Rendir Examen &rarr;
+                    </Link>
+                  </div>
+                ) : (canAdvance || isAlreadyCompleted) ? (
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div className="space-y-1 text-center sm:text-left">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 dark:bg-blue-950 px-3 py-1 text-xs font-extrabold text-[#1a80ff]">
+                        ✨ Examen Teórico Habilitado
+                      </span>
+                      <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
+                        {quiz.title}
+                      </h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                        ¡Excelente! Has cumplido la lectura obligatoria. Realiza el examen para obtener la aprobación total.
+                      </p>
+                    </div>
+                    <Link
+                      href={`/quizzes/${quiz.id}`}
+                      className="rounded-2xl bg-[#1a80ff] px-6 py-3 text-xs font-extrabold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all shrink-0 animate-pulse"
+                    >
+                      Realizar Examen Teórico Ahora &rarr;
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4 opacity-75">
+                    <div className="space-y-1 text-center sm:text-left">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 dark:bg-amber-950 px-3 py-1 text-xs font-extrabold text-amber-800 dark:text-amber-300">
+                        🔒 Examen Bloqueado
+                      </span>
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                        {quiz.title}
+                      </h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                        Debes cumplir el tiempo mínimo de lectura obligatoria ({remainingSeconds}s restantes) para habilitar la evaluación.
+                      </p>
+                    </div>
+                    <div className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-5 py-2.5 text-xs font-bold text-slate-400 cursor-not-allowed">
+                      🔒 Bloqueado en Lectura
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </main>
         </div>
 
