@@ -10,6 +10,24 @@ import {
 } from "@/features/learning/domain/demo-account";
 import { mockStore } from "@/shared/lib/mock-store";
 
+function withTimeout<T>(promise: Promise<T>, ms = 1500): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error(`Timeout of ${ms}ms exceeded`));
+    }, ms);
+
+    promise
+      .then((res) => {
+        clearTimeout(timer);
+        resolve(res);
+      })
+      .catch((err) => {
+        clearTimeout(timer);
+        reject(err);
+      });
+  });
+}
+
 export async function signInAction(formData: FormData) {
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "").trim();
@@ -25,18 +43,23 @@ export async function signInAction(formData: FormData) {
 
   try {
     const supabase = await createSupabaseServerClient();
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-    if (!error) {
+    const res: any = await withTimeout(
+      supabase.auth.signInWithPassword({
+        email,
+        password,
+      }),
+      1500,
+    ).catch(() => ({ data: null, error: true }));
+
+    if (!res.error && res.data?.user) {
       const cookieStore = await cookies();
       cookieStore.set("demo_email", email, { path: "/" });
       cookieStore.set("demo_role", "", { path: "/", expires: new Date(0) });
       redirect("/courses");
     }
-  } catch (err) {
-    console.error("[signInAction] Supabase login failed", err);
+  } catch (err: any) {
+    if (err?.digest?.startsWith("NEXT_REDIRECT")) throw err;
+    console.error("[signInAction] Supabase login failed or timed out", err);
   }
 
   if (!isValidPassword) {
@@ -76,23 +99,26 @@ export async function signUpAction(formData: FormData) {
 
   try {
     const supabase = await createSupabaseServerClient();
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: { full_name: fullName },
-      },
-    });
+    const res: any = await withTimeout(
+      supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { full_name: fullName },
+        },
+      }),
+      1500,
+    ).catch(() => ({ data: null, error: true }));
 
-    if (error) {
-      // Fallback
-    } else if (data.user) {
+    if (!res.error && res.data?.user) {
       const cookieStore = await cookies();
       cookieStore.set("demo_email", email, { path: "/" });
       cookieStore.set("demo_role", "student", { path: "/" });
       redirect("/courses");
     }
-  } catch (err) {}
+  } catch (err: any) {
+    if (err?.digest?.startsWith("NEXT_REDIRECT")) throw err;
+  }
 
   const cookieStore = await cookies();
   cookieStore.set("demo_email", email, { path: "/" });
@@ -127,8 +153,10 @@ export async function demoLoginAction(targetRole: DemoRole) {
 export async function signOutAction() {
   try {
     const supabase = await createSupabaseServerClient();
-    await supabase.auth.signOut();
-  } catch (err) {}
+    await withTimeout(supabase.auth.signOut(), 1000).catch(() => null);
+  } catch (err: any) {
+    if (err?.digest?.startsWith("NEXT_REDIRECT")) throw err;
+  }
 
   const cookieStore = await cookies();
   cookieStore.set("demo_email", "", { path: "/", expires: new Date(0) });
