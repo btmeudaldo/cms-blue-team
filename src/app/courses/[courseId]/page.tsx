@@ -48,7 +48,14 @@ export default async function StudentCourseDetailPage({
 
   const attemptsByQuizMap = new Map<string, any>();
   for (const att of quizAttempts || []) {
-    attemptsByQuizMap.set(att.quiz_id, att);
+    const existing = attemptsByQuizMap.get(att.quiz_id);
+    if (
+      !existing ||
+      att.passed ||
+      (att.score_percentage || 0) > (existing.score_percentage || 0)
+    ) {
+      attemptsByQuizMap.set(att.quiz_id, att);
+    }
   }
 
   const completedCount = lessons.filter(

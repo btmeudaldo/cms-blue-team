@@ -16,7 +16,14 @@ export default async function QuizzesListPage() {
 
   const attemptsMap = new Map();
   for (const att of attempts || []) {
-    attemptsMap.set(att.quiz_id, att);
+    const existing = attemptsMap.get(att.quiz_id);
+    if (
+      !existing ||
+      att.passed ||
+      (att.score_percentage || 0) > (existing.score_percentage || 0)
+    ) {
+      attemptsMap.set(att.quiz_id, att);
+    }
   }
 
   return (

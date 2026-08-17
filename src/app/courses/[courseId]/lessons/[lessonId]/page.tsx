@@ -38,9 +38,15 @@ export default async function StudentLessonPage({
     getResilientQuizAttempts(user.id),
   ]);
 
-  const quizAttempt = quiz
-    ? (quizAttempts || []).find((a: any) => a.quiz_id === quiz.id)
-    : null;
+  const userQuizAttempts = (quizAttempts || []).filter(
+    (a: any) => a.quiz_id === quiz?.id,
+  );
+  const passedAttempt = userQuizAttempts.find((a: any) => a.passed);
+  const latestAttempt =
+    userQuizAttempts.length > 0
+      ? userQuizAttempts[userQuizAttempts.length - 1]
+      : null;
+  const quizAttempt = passedAttempt || latestAttempt;
 
   const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
   const nextLesson =

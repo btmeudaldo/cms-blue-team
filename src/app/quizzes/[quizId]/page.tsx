@@ -24,9 +24,15 @@ export default async function StandaloneQuizPage({
 
   if (!quiz) notFound();
 
-  const previousAttempt = (attempts || []).find(
+  const userQuizAttempts = (attempts || []).filter(
     (a: any) => a.quiz_id === quiz.id,
   );
+  const passedAttempt = userQuizAttempts.find((a: any) => a.passed);
+  const latestAttempt =
+    userQuizAttempts.length > 0
+      ? userQuizAttempts[userQuizAttempts.length - 1]
+      : null;
+  const previousAttempt = passedAttempt || latestAttempt;
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
