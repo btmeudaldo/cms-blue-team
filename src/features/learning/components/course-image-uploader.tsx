@@ -36,6 +36,48 @@ export function CourseImageUploader({
     setIsFramed(frame.isFramed);
   }
 
+  function compressAndSetImage(rawUrl: string, autoFramed = false) {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      try {
+        const canvas = document.createElement("canvas");
+        const maxDim = 500;
+        let w = img.width;
+        let h = img.height;
+        if (w > maxDim || h > maxDim) {
+          if (w > h) {
+            h = Math.round((h * maxDim) / w);
+            w = maxDim;
+          } else {
+            w = Math.round((w * maxDim) / h);
+            h = maxDim;
+          }
+        }
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          ctx.drawImage(img, 0, 0, w, h);
+          const compressed = canvas.toDataURL("image/jpeg", 0.75);
+          setImageUrl(compressed);
+          setPreviewUrl(compressed);
+          if (autoFramed) setIsFramed(true);
+          return;
+        }
+      } catch (e) {}
+      setImageUrl(rawUrl);
+      setPreviewUrl(rawUrl);
+      if (autoFramed) setIsFramed(true);
+    };
+    img.onerror = () => {
+      setImageUrl(rawUrl);
+      setPreviewUrl(rawUrl);
+      if (autoFramed) setIsFramed(true);
+    };
+    img.src = rawUrl;
+  }
+
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -46,8 +88,7 @@ export function CourseImageUploader({
     const reader = new FileReader();
     reader.onload = (e) => {
       const dataUrl = (e.target?.result as string) || "";
-      setImageUrl(dataUrl);
-      setPreviewUrl(dataUrl);
+      compressAndSetImage(dataUrl);
     };
     reader.readAsDataURL(file);
   }
@@ -102,7 +143,7 @@ export function CourseImageUploader({
     setIsDragging(false);
   }
 
-  // Export current visually centered & zoomed image to Data URL using Canvas (100% Full-Bleed, Zero Black Margins, Zero Distortion)
+  // Export current visually centered & zoomed image to Data URL using Canvas
   function applyCanvasCrop() {
     if (!previewUrl) return;
 
@@ -111,7 +152,7 @@ export function CourseImageUploader({
     img.onload = () => {
       try {
         const canvas = document.createElement("canvas");
-        const size = 600; // High resolution 1:1 square canvas
+        const size = 500; // Optimized resolution for cover thumbnail
         canvas.width = size;
         canvas.height = size;
         const ctx = canvas.getContext("2d");
@@ -119,35 +160,29 @@ export function CourseImageUploader({
 
         const C = containerRef.current?.clientWidth || 260;
 
-        // Effective DOM scale of cover image inside square container C x C
         const baseCoverScale = Math.max(C / img.width, C / img.height);
         const effectiveScale = baseCoverScale * Math.max(0.1, scale);
 
         const domW = img.width * effectiveScale;
         const domH = img.height * effectiveScale;
 
-        // Center of square container in original image coordinates
         const origCenterX = (domW / 2 - position.x) / effectiveScale;
         const origCenterY = (domH / 2 - position.y) / effectiveScale;
 
-        // Size of 1:1 square crop in original image coordinates
         const origCropSize = Math.min(
           img.width,
           img.height,
           C / effectiveScale,
         );
 
-        // Top-left corner of crop window (sx, sy)
         let sx = origCenterX - origCropSize / 2;
         let sy = origCenterY - origCropSize / 2;
 
-        // Clamp sx and sy so the crop window stays 100% inside the photo bounds (zero black margins)
         const maxSx = Math.max(0, img.width - origCropSize);
         const maxSy = Math.max(0, img.height - origCropSize);
         sx = Math.max(0, Math.min(maxSx, sx));
         sy = Math.max(0, Math.min(maxSy, sy));
 
-        // Draw exact 1:1 square sub-rectangle to fill 100% of 600x600 canvas
         ctx.drawImage(
           img,
           sx,
@@ -160,7 +195,7 @@ export function CourseImageUploader({
           size,
         );
 
-        const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.88);
+        const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.75);
         if (croppedDataUrl && croppedDataUrl.startsWith("data:image/")) {
           setImageUrl(croppedDataUrl);
           setIsFramed(true);
@@ -168,10 +203,13 @@ export function CourseImageUploader({
         }
       } catch (err) {
         // Safe fallback for CORS-protected external web images
+        setImageUrl(previewUrl);
         setIsFramed(true);
+        setIsEditingFrame(false);
       }
     };
     img.onerror = () => {
+      setImageUrl(previewUrl);
       setIsFramed(true);
       setIsEditingFrame(false);
     };

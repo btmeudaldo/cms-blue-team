@@ -79,7 +79,17 @@ export async function updateCourseAction(courseId: string, formData: FormData) {
       .from("courses")
       .update({ title, slug, description, image_url: imageUrl || null })
       .eq("id", courseId);
+
     if (!error) {
+      // Sync mockStore so resilient local reads stay synchronized
+      const mockCourse = mockStore.getCourseById(courseId);
+      if (mockCourse) {
+        mockCourse.title = title;
+        mockCourse.slug = slug;
+        mockCourse.description = description;
+        mockCourse.image_url = imageUrl || undefined;
+      }
+
       revalidatePath(`/admin/courses/${courseId}`);
       revalidatePath("/admin/courses");
       revalidatePath("/courses");
@@ -94,7 +104,7 @@ export async function updateCourseAction(courseId: string, formData: FormData) {
     course.title = title;
     course.slug = slug;
     course.description = description;
-    if (imageUrl) course.image_url = imageUrl;
+    course.image_url = imageUrl || undefined;
   }
 
   revalidatePath(`/admin/courses/${courseId}`);
