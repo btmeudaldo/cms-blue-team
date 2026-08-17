@@ -578,17 +578,57 @@ export function StudentDossierView({
                       </div>
                     </div>
 
-                    {/* Action Button */}
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setSelectedStudentId(st.id || st.email || null)
-                      }
-                      className="w-full flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2.5 text-xs font-bold group-hover:bg-[#1a80ff] transition-colors cursor-pointer shadow-xs"
-                    >
-                      <span>Abrir Expediente Académico</span>
-                      <span>&rarr;</span>
-                    </button>
+                    {/* Action Buttons: Direct PDF, CSV & Detail View */}
+                    <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+                      <div className="grid grid-cols-2 gap-2">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            exportDossierPDF(
+                              st,
+                              stRecords,
+                              lessonMap,
+                              quizzes,
+                              quizAttempts,
+                            )
+                          }
+                          className="flex items-center justify-center gap-1 rounded-xl bg-[#1a80ff] text-white py-2 text-xs font-bold hover:bg-[#0066e6] transition-colors cursor-pointer shadow-xs"
+                          title="Descargar Expediente Oficial en PDF"
+                        >
+                          <span>📄</span>
+                          <span>Exportar PDF</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() =>
+                            exportDossierCSV(
+                              st,
+                              stRecords,
+                              lessonMap,
+                              quizzes,
+                              quizAttempts,
+                            )
+                          }
+                          className="flex items-center justify-center gap-1 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 py-2 text-xs font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                          title="Descargar Excel / CSV"
+                        >
+                          <span>📊</span>
+                          <span>CSV</span>
+                        </button>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setSelectedStudentId(st.id || st.email || null)
+                        }
+                        className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2 text-xs font-bold group-hover:bg-[#1a80ff] transition-colors cursor-pointer"
+                      >
+                        <span>Ver Expediente Completo</span>
+                        <span>&rarr;</span>
+                      </button>
+                    </div>
                   </div>
                 );
               })}
