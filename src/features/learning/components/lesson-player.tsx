@@ -308,14 +308,18 @@ export function LessonPlayer({
       await completeLessonAction(lessonId, pathToRevalidate);
       setIsCompletedSuccess(true);
 
-      if (nextLessonId) {
-        setTimeout(() => {
-          router.push(`/courses/${courseId}/lessons/${nextLessonId}`);
-        }, 1200);
-      } else {
-        setTimeout(() => {
-          router.push(`/courses/${courseId}`);
-        }, 1500);
+      // If lesson does NOT have a quiz, auto-navigate to next lesson.
+      // If lesson HAS a quiz, stay on page to allow taking the quiz!
+      if (!quiz) {
+        if (nextLessonId) {
+          setTimeout(() => {
+            router.push(`/courses/${courseId}/lessons/${nextLessonId}`);
+          }, 1200);
+        } else {
+          setTimeout(() => {
+            router.push(`/courses/${courseId}`);
+          }, 1500);
+        }
       }
     } catch (err) {
       setErrorMessage((err as Error).message);
@@ -729,7 +733,7 @@ export function LessonPlayer({
               dangerouslySetInnerHTML={{ __html: safeContentHtml }}
             />
 
-            {/* End of Lesson Quiz Action Banner */}
+            {/* End of Lesson Quiz Action Banner (Unlocked ONLY after clicking anticheat button) */}
             {quiz && (
               <div className="mt-8 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-md space-y-4">
                 {quizAttempt?.passed ? (
@@ -742,35 +746,59 @@ export function LessonPlayer({
                         {quiz.title}
                       </h3>
                       <p className="text-xs text-slate-500 dark:text-slate-400">
-                        Has completado con éxito la evaluación teórica de esta lección.
+                        Lección 100% verificada e integrada en tu expediente académico.
                       </p>
                     </div>
-                    <Link
-                      href={`/quizzes/${quiz.id}`}
-                      className="rounded-2xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/60 px-5 py-2.5 text-xs font-bold text-emerald-800 dark:text-emerald-200 hover:bg-emerald-100 transition-all shrink-0"
-                    >
-                      Revisar o Volver a Rendir Examen &rarr;
-                    </Link>
+                    <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto">
+                      <Link
+                        href={`/quizzes/${quiz.id}`}
+                        className="w-full sm:w-auto rounded-2xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/60 px-5 py-2.5 text-xs font-bold text-emerald-800 dark:text-emerald-200 hover:bg-emerald-100 transition-all text-center"
+                      >
+                        Revisar Examen
+                      </Link>
+                      {nextLessonId && (
+                        <Link
+                          href={`/courses/${courseId}/lessons/${nextLessonId}`}
+                          className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all text-center shadow-xs"
+                        >
+                          Siguiente Lección &rarr;
+                        </Link>
+                      )}
+                    </div>
                   </div>
-                ) : (canAdvance || isAlreadyCompleted) ? (
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div className="space-y-1 text-center sm:text-left">
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 dark:bg-blue-950 px-3 py-1 text-xs font-extrabold text-[#1a80ff]">
-                        ✨ Examen Teórico Habilitado
-                      </span>
-                      <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
-                        {quiz.title}
-                      </h3>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">
-                        ¡Excelente! Has cumplido la lectura obligatoria. Realiza el examen para obtener la aprobación total.
-                      </p>
+                ) : (isAlreadyCompleted || isCompletedSuccess) ? (
+                  <div className="space-y-4">
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
+                      <div className="space-y-1 text-center sm:text-left">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 dark:bg-blue-950 px-3 py-1 text-xs font-extrabold text-[#1a80ff]">
+                          ✨ Lectura Verificada — Examen Activado
+                        </span>
+                        <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
+                          {quiz.title}
+                        </h3>
+                        <p className="text-xs text-slate-600 dark:text-slate-400">
+                          Has pulsado el botón de avance y la lectura fue verificada en el servidor. Selecciona una opción:
+                        </p>
+                      </div>
                     </div>
-                    <Link
-                      href={`/quizzes/${quiz.id}`}
-                      className="rounded-2xl bg-[#1a80ff] px-6 py-3 text-xs font-extrabold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all shrink-0 animate-pulse"
-                    >
-                      Realizar Examen Teórico Ahora &rarr;
-                    </Link>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-end gap-3">
+                      {nextLessonId && (
+                        <Link
+                          href={`/courses/${courseId}/lessons/${nextLessonId}`}
+                          className="w-full sm:w-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center"
+                        >
+                          Ir a la Siguiente Lección
+                        </Link>
+                      )}
+
+                      <Link
+                        href={`/quizzes/${quiz.id}`}
+                        className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-6 py-3 text-xs font-extrabold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all text-center animate-pulse"
+                      >
+                        📝 Realizar Examen Teórico Ahora &rarr;
+                      </Link>
+                    </div>
                   </div>
                 ) : (
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-4 opacity-75">
@@ -782,7 +810,7 @@ export function LessonPlayer({
                         {quiz.title}
                       </h3>
                       <p className="text-xs text-slate-500 dark:text-slate-400">
-                        Debes cumplir el tiempo mínimo de lectura obligatoria ({remainingSeconds}s restantes) para habilitar la evaluación.
+                        Completa la lectura y pulsa el botón dinámico de avance (Anticheating) en la barra inferior para habilitar este examen.
                       </p>
                     </div>
                     <div className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-5 py-2.5 text-xs font-bold text-slate-400 cursor-not-allowed">
