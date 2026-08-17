@@ -290,16 +290,20 @@ export async function getResilientCourseDetail(
         }
       }
 
-      // Fallback merge: if mockStore has more lessons for this course ID/slug, use mockStore lessons
+      // Fallback merge: if mockStore has image_url or more lessons, merge them
       const mockC =
         mockStore.getCourseById(result.data.id) ||
         mockStore.getCourseById(result.data.slug);
-      if (
-        mockC &&
-        mockC.lessons &&
-        mockC.lessons.length > (result.data.lessons?.length || 0)
-      ) {
-        result.data.lessons = mockC.lessons;
+      if (mockC) {
+        if (!result.data.image_url && mockC.image_url) {
+          result.data.image_url = mockC.image_url;
+        }
+        if (
+          mockC.lessons &&
+          mockC.lessons.length > (result.data.lessons?.length || 0)
+        ) {
+          result.data.lessons = mockC.lessons;
+        }
       }
 
       return result.data;

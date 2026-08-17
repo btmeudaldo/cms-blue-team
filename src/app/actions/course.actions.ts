@@ -73,43 +73,33 @@ export async function updateCourseAction(courseId: string, formData: FormData) {
 
   if (!title || !slug) throw new Error("Título y slug son obligatorios.");
 
+  // 1. ALWAYS update mockStore first so resilient local reads reflect the updated image
+  const mockCourse =
+    mockStore.getCourseById(courseId) || mockStore.getCourseById(slug);
+  if (mockCourse) {
+    mockCourse.title = title;
+    mockCourse.slug = slug;
+    mockCourse.description = description;
+    if (imageUrl) {
+      mockCourse.image_url = imageUrl;
+    }
+  }
+
+  // 2. Persist in Supabase DB
   try {
     const supabase = await createSupabaseServerClient();
-    const { error } = await supabase
+    await supabase
       .from("courses")
       .update({ title, slug, description, image_url: imageUrl || null })
       .eq("id", courseId);
-
-    if (!error) {
-      // Sync mockStore so resilient local reads stay synchronized
-      const mockCourse = mockStore.getCourseById(courseId);
-      if (mockCourse) {
-        mockCourse.title = title;
-        mockCourse.slug = slug;
-        mockCourse.description = description;
-        mockCourse.image_url = imageUrl || undefined;
-      }
-
-      revalidatePath(`/admin/courses/${courseId}`);
-      revalidatePath("/admin/courses");
-      revalidatePath("/courses");
-      revalidatePath("/admin/users");
-      return;
-    }
   } catch (err) {}
 
-  // Fallback to mockStore
-  const course = mockStore.getCourseById(courseId);
-  if (course) {
-    course.title = title;
-    course.slug = slug;
-    course.description = description;
-    course.image_url = imageUrl || undefined;
-  }
-
+  // 3. Revalidate Next.js page cache across all routes
   revalidatePath(`/admin/courses/${courseId}`);
   revalidatePath("/admin/courses");
   revalidatePath("/courses");
+  revalidatePath(`/courses/${courseId}`);
+  revalidatePath(`/courses/${slug}`);
   revalidatePath("/admin/users");
 }
 

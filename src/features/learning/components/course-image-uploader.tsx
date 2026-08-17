@@ -42,7 +42,7 @@ export function CourseImageUploader({
     img.onload = () => {
       try {
         const canvas = document.createElement("canvas");
-        const maxDim = 500;
+        const maxDim = 320;
         let w = img.width;
         let h = img.height;
         if (w > maxDim || h > maxDim) {
@@ -59,7 +59,7 @@ export function CourseImageUploader({
         const ctx = canvas.getContext("2d");
         if (ctx) {
           ctx.drawImage(img, 0, 0, w, h);
-          const compressed = canvas.toDataURL("image/jpeg", 0.75);
+          const compressed = canvas.toDataURL("image/jpeg", 0.60);
           setImageUrl(compressed);
           setPreviewUrl(compressed);
           if (autoFramed) setIsFramed(true);
@@ -152,7 +152,7 @@ export function CourseImageUploader({
     img.onload = () => {
       try {
         const canvas = document.createElement("canvas");
-        const size = 500; // Optimized resolution for cover thumbnail
+        const size = 320; // 320x320 resolution (<25KB)
         canvas.width = size;
         canvas.height = size;
         const ctx = canvas.getContext("2d");
@@ -195,14 +195,16 @@ export function CourseImageUploader({
           size,
         );
 
-        const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.75);
+        const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.60);
         if (croppedDataUrl && croppedDataUrl.startsWith("data:image/")) {
           setImageUrl(croppedDataUrl);
+          setPreviewUrl(croppedDataUrl);
           setIsFramed(true);
           setIsEditingFrame(false);
+          return;
         }
       } catch (err) {
-        // Safe fallback for CORS-protected external web images
+        // Safe fallback
         setImageUrl(previewUrl);
         setIsFramed(true);
         setIsEditingFrame(false);
