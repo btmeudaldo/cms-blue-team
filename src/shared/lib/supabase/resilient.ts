@@ -408,6 +408,12 @@ export async function getResilientEnrollments() {
 }
 
 export async function getResilientQuizzes() {
+  const mockQuizzes = mockStore.getQuizzes();
+  const map = new Map<string, any>();
+  for (const q of mockQuizzes) {
+    map.set(q.id, q);
+  }
+
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
@@ -415,13 +421,17 @@ export async function getResilientQuizzes() {
       1500,
     );
     if (result && !result.error && result.data && result.data.length > 0) {
-      return result.data;
+      for (const dq of result.data) {
+        map.set(dq.id, dq);
+      }
     }
   } catch (err) {}
-  return mockStore.getQuizzes();
+
+  return Array.from(map.values());
 }
 
 export async function getResilientQuiz(quizId: string) {
+  const mockQuiz = mockStore.getQuizById(quizId);
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
@@ -432,10 +442,11 @@ export async function getResilientQuiz(quizId: string) {
       return result.data;
     }
   } catch (err) {}
-  return mockStore.getQuizById(quizId);
+  return mockQuiz;
 }
 
 export async function getResilientQuizForLesson(lessonId: string) {
+  const mockQuiz = mockStore.getQuizByLessonId(lessonId);
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
@@ -446,7 +457,7 @@ export async function getResilientQuizForLesson(lessonId: string) {
       return result.data;
     }
   } catch (err) {}
-  return mockStore.getQuizByLessonId(lessonId);
+  return mockQuiz;
 }
 
 export async function getResilientQuizAttempts(userId?: string) {
