@@ -1,18 +1,42 @@
 import Link from "next/link";
 import { Header } from "@/shared/components/header";
 import {
+  getResilientCourses,
   getResilientQuizzes,
   getResilientQuizAttempts,
   getResilientUser,
 } from "@/shared/lib/supabase/resilient";
 
 export default async function QuizzesListPage() {
-  const { user, profile } = await getResilientUser();
+  const { user, profile, isDemo } = await getResilientUser();
+  const role = profile?.role ?? "student";
+  const isAdmin = role === "admin" || role === "instructor";
 
-  const [quizzes, attempts] = await Promise.all([
+  const [allQuizzes, attempts, courses] = await Promise.all([
     getResilientQuizzes(),
     getResilientQuizAttempts(user.id),
+    getResilientCourses(user.id, isAdmin, isDemo),
   ]);
+
+  // Build lesson to course lookup map
+  const lessonInfoMap = new Map<string, { courseTitle: string; courseId: string; lessonTitle: string }>();
+  const enrolledLessonIds = new Set<string>();
+
+  for (const course of courses || []) {
+    for (const lesson of course.lessons || []) {
+      enrolledLessonIds.add(lesson.id);
+      lessonInfoMap.set(lesson.id, {
+        courseTitle: course.title,
+        courseId: course.id,
+        lessonTitle: lesson.title,
+      });
+    }
+  }
+
+  // For students, only show quizzes for courses they are enrolled in
+  const quizzes = isAdmin
+    ? allQuizzes
+    : allQuizzes.filter((q: any) => enrolledLessonIds.has(q.lesson_id));
 
   const attemptsMap = new Map();
   for (const att of attempts || []) {
@@ -46,9 +70,9 @@ export default async function QuizzesListPage() {
               Exámenes y Quizzes de Aviación
             </h1>
             <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed">
-              Pon a prueba tus conocimientos en Aerodinámica, Reglamentación
-              VFR/IFR, Meteorología e Instrumentos con evaluación inmediata de
-              nota (mín. 70%).
+              {isAdmin
+                ? "Directorio global de todas las evaluaciones del sistema teórico aeronáutico."
+                : "Evaluaciones teóricas correspondientes a tus cursos matriculados (nota mínima aprobatoria 80%)."}
             </p>
           </div>
         </div>
@@ -56,9 +80,18 @@ export default async function QuizzesListPage() {
         {/* Quizzes List Grid */}
         <div className="space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
-            <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
-              Evaluaciones Disponibles ({quizzes.length})
-            </h2>
+            <div>
+              <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
+                {isAdmin
+                  ? `Todas las Evaluaciones (${quizzes.length})`
+                  : `Mis Evaluaciones Asignadas (${quizzes.length})`}
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                {isAdmin
+                  ? "Vista de administración general"
+                  : `Mostrando ${quizzes.length} exámenes de tus ${courses.length} cursos matriculados`}
+              </p>
+            </div>
             <Link
               href="/courses"
               className="text-xs font-bold text-[#1a80ff] hover:underline"
@@ -67,64 +100,83 @@ export default async function QuizzesListPage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {quizzes.map((quiz: any) => {
-              const attempt = attemptsMap.get(quiz.id);
-              const passed = attempt?.passed;
-              const score = attempt?.score_percentage;
+          {quizzes.length === 0 ? (
+            <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-12 text-center text-slate-500 dark:text-slate-400 space-y-2">
+              <div className="text-3xl">📝</div>
+              <p className="font-bold text-slate-700 dark:text-slate-300">
+                No tienes evaluaciones asignadas actualmente.
+              </p>
+              <p className="text-xs text-slate-400 max-w-md mx-auto">
+                Las evaluaciones se activarán a medida que te matricules en cursos con contenido evaluable.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {quizzes.map((quiz: any) => {
+                const attempt = attemptsMap.get(quiz.id);
+                const passed = attempt?.passed;
+                const score = attempt?.score_percentage;
+                const lessonInfo = lessonInfoMap.get(quiz.lesson_id);
 
-              return (
-                <div
-                  key={quiz.id}
-                  className="group rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-xs card-hover transition-all flex flex-col justify-between space-y-4"
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 text-xs font-bold text-[#1a80ff]">
-                        {quiz.questions?.length || 0} Preguntas
-                      </span>
-
-                      {attempt ? (
-                        passed ? (
-                          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
-                            ✓ Aprobado ({score}%)
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 dark:bg-rose-950/60 px-2 py-0.5 text-[11px] font-bold text-rose-600 dark:text-rose-400">
-                            ⚠️ Reprobado ({score}%)
-                          </span>
-                        )
-                      ) : (
-                        <span className="text-xs font-semibold text-slate-400">
-                          Sin Rendir
+                return (
+                  <div
+                    key={quiz.id}
+                    className="group rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-xs card-hover transition-all flex flex-col justify-between space-y-4"
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 text-xs font-bold text-[#1a80ff]">
+                          {quiz.questions?.length || 0} Preguntas
                         </span>
+
+                        {attempt ? (
+                          passed ? (
+                            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                              ✓ Aprobado ({score}%)
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 dark:bg-rose-950/60 px-2 py-0.5 text-[11px] font-bold text-rose-600 dark:text-rose-400">
+                              ⚠️ Reprobado ({score}%)
+                            </span>
+                          )
+                        ) : (
+                          <span className="text-xs font-semibold text-slate-400">
+                            Sin Rendir
+                          </span>
+                        )}
+                      </div>
+
+                      {lessonInfo && (
+                        <div className="text-[11px] font-bold text-[#1a80ff] uppercase tracking-wider">
+                          {lessonInfo.courseTitle}
+                        </div>
                       )}
+
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors leading-snug">
+                        {quiz.title}
+                      </h3>
+
+                      <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                        {quiz.description}
+                      </p>
                     </div>
 
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors leading-snug">
-                      {quiz.title}
-                    </h3>
-
-                    <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
-                      {quiz.description}
-                    </p>
+                    <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
+                      <Link
+                        href={`/quizzes/${quiz.id}`}
+                        className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2.5 text-xs font-bold shadow-xs group-hover:bg-[#1a80ff] transition-colors"
+                      >
+                        <span>
+                          {attempt ? "Reintentar Examen" : "Iniciar Examen"}
+                        </span>
+                        <span>&rarr;</span>
+                      </Link>
+                    </div>
                   </div>
-
-                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
-                    <Link
-                      href={`/quizzes/${quiz.id}`}
-                      className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2.5 text-xs font-bold shadow-xs group-hover:bg-[#1a80ff] transition-colors"
-                    >
-                      <span>
-                        {attempt ? "Reintentar Examen" : "Iniciar Examen"}
-                      </span>
-                      <span>&rarr;</span>
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </main>
     </div>

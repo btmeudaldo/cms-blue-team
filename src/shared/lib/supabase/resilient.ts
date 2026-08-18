@@ -457,7 +457,6 @@ export async function getResilientQuiz(quizId: string) {
 }
 
 export async function getResilientQuizForLesson(lessonId: string) {
-  const mockQuiz = mockStore.getQuizByLessonId(lessonId);
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
@@ -471,9 +470,8 @@ export async function getResilientQuizForLesson(lessonId: string) {
     if (result && !result.error && result.data) {
       return normalizeQuiz(result.data);
     }
-    if (result && !result.error) return null;
   } catch (err) {}
-  return mockQuiz;
+  return null;
 }
 
 export async function getResilientQuizAttempts(userId?: string) {
