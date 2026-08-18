@@ -42,6 +42,13 @@
 
 Pendiente de ejecución.
 
+## Corrección: persistencia de portadas de cursos (en curso)
+
+- [x] Diagnosticar: las imágenes locales se codifican como `data:` en la columna del curso y los fallos de persistencia se silencian.
+- [x] RED/GREEN: definir y validar tipo y tamaño para archivos de portada.
+- [x] GREEN: guardar las portadas en Supabase Storage y persistir su URL pública estable.
+- [ ] Verificar pruebas, tipos, lint, formato y subida real de una portada.
+
 ## Corrección: progreso persistente (en curso)
 
 - [x] Documentar el diagnóstico y el alcance: no crear matrículas implícitas.

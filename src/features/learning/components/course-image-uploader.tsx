@@ -2,8 +2,10 @@
 
 import { useRef, useState } from "react";
 
+import { getCourseCoverUploadError } from "@/features/learning/domain/course-cover-upload";
 import { getDefaultImageFrame } from "@/features/learning/domain/image-framing";
 import { shouldShowImageFrameEditor } from "@/features/learning/domain/image-frame-editor";
+import { createSupabaseBrowserClient } from "@/shared/lib/supabase/browser";
 
 type CourseImageUploaderProps = {
   defaultImageUrl?: string | null;
@@ -18,6 +20,8 @@ export function CourseImageUploader({
   const [previewUrl, setPreviewUrl] = useState(initialUrl);
   const [fileName, setFileName] = useState<string | null>(null);
   const [isEditingFrame, setIsEditingFrame] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   // Interactive framing states: zoom, position X/Y, dragging
   const [scale, setScale] = useState(getDefaultImageFrame().scale);
@@ -59,7 +63,7 @@ export function CourseImageUploader({
         const ctx = canvas.getContext("2d");
         if (ctx) {
           ctx.drawImage(img, 0, 0, w, h);
-          const compressed = canvas.toDataURL("image/jpeg", 0.60);
+          const compressed = canvas.toDataURL("image/jpeg", 0.6);
           setImageUrl(compressed);
           setPreviewUrl(compressed);
           if (autoFramed) setIsFramed(true);
@@ -78,24 +82,64 @@ export function CourseImageUploader({
     img.src = rawUrl;
   }
 
-  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+  async function uploadCourseCover(file: Blob) {
+    const extension = file.type.split("/")[1] || "jpg";
+    const supabase = createSupabaseBrowserClient();
+    const { data: auth, error: authError } = await supabase.auth.getUser();
+
+    if (authError || !auth.user) {
+      throw new Error("Tu sesión ha caducado. Vuelve a iniciar sesión.");
+    }
+
+    const objectPath = `${auth.user.id}/${crypto.randomUUID()}.${extension}`;
+    const { error: uploadError } = await supabase.storage
+      .from("course-covers")
+      .upload(objectPath, file, { contentType: file.type, upsert: false });
+
+    if (uploadError) throw uploadError;
+
+    return supabase.storage.from("course-covers").getPublicUrl(objectPath).data
+      .publicUrl;
+  }
+
+  async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
+
+    const validationError = getCourseCoverUploadError(file);
+    if (validationError) {
+      setUploadError(validationError);
+      event.target.value = "";
+      return;
+    }
 
     resetFraming();
     setIsEditingFrame(true);
     setFileName(file.name);
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const dataUrl = (e.target?.result as string) || "";
-      compressAndSetImage(dataUrl);
-    };
-    reader.readAsDataURL(file);
+    setUploadError(null);
+    setIsUploading(true);
+
+    try {
+      const publicUrl = await uploadCourseCover(file);
+      setImageUrl(publicUrl);
+      setPreviewUrl(publicUrl);
+    } catch (error) {
+      setImageUrl("");
+      setPreviewUrl("");
+      setUploadError(
+        error instanceof Error
+          ? error.message
+          : "No se pudo subir la imagen. Inténtalo de nuevo.",
+      );
+    } finally {
+      setIsUploading(false);
+    }
   }
 
   function handleUrlChange(val: string) {
     resetFraming();
     setIsEditingFrame(true);
+    setUploadError(null);
     setImageUrl(val);
     setPreviewUrl(val);
   }
@@ -143,7 +187,7 @@ export function CourseImageUploader({
     setIsDragging(false);
   }
 
-  // Export current visually centered & zoomed image to Data URL using Canvas
+  // Export the selected framing to a persistent Storage object.
   function applyCanvasCrop() {
     if (!previewUrl) return;
 
@@ -195,14 +239,31 @@ export function CourseImageUploader({
           size,
         );
 
-        const croppedDataUrl = canvas.toDataURL("image/jpeg", 0.60);
-        if (croppedDataUrl && croppedDataUrl.startsWith("data:image/")) {
-          setImageUrl(croppedDataUrl);
-          setPreviewUrl(croppedDataUrl);
-          setIsFramed(true);
-          setIsEditingFrame(false);
-          return;
-        }
+        canvas.toBlob(
+          async (croppedImage) => {
+            if (!croppedImage) return;
+
+            setUploadError(null);
+            setIsUploading(true);
+            try {
+              const publicUrl = await uploadCourseCover(croppedImage);
+              setImageUrl(publicUrl);
+              setPreviewUrl(publicUrl);
+              setIsFramed(true);
+              setIsEditingFrame(false);
+            } catch (error) {
+              setUploadError(
+                error instanceof Error
+                  ? error.message
+                  : "No se pudo guardar el encuadre. Inténtalo de nuevo.",
+              );
+            } finally {
+              setIsUploading(false);
+            }
+          },
+          "image/jpeg",
+          0.6,
+        );
       } catch (err) {
         // Safe fallback
         setImageUrl(previewUrl);
@@ -268,7 +329,7 @@ export function CourseImageUploader({
         <div className="relative border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-[#1a80ff] dark:hover:border-[#1a80ff] rounded-2xl p-4 text-center bg-slate-50 dark:bg-slate-950/50 transition-all group">
           <input
             type="file"
-            accept="image/png, image/jpeg, image/webp, image/svg+xml, image/gif"
+            accept="image/png, image/jpeg, image/webp, image/gif"
             onChange={handleFileChange}
             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
           />
@@ -282,10 +343,22 @@ export function CourseImageUploader({
                 : "Haz clic para seleccionar imagen de tu equipo"}
             </span>
             <span className="text-[10px] text-slate-400">
-              PNG, JPG, WEBP o SVG (Se guardará codificada en BD)
+              PNG, JPG, WEBP o GIF (máximo 5 MB; se guardará de forma segura)
             </span>
           </div>
         </div>
+      )}
+
+      {isUploading && (
+        <p className="text-xs font-semibold text-[#1a80ff]" role="status">
+          Subiendo imagen…
+        </p>
+      )}
+
+      {uploadError && (
+        <p className="text-xs font-semibold text-rose-600" role="alert">
+          {uploadError}
+        </p>
       )}
 
       {/* Interactive Visual Framer Box (Drag, Zoom & Center) */}
