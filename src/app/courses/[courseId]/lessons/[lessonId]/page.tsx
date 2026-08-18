@@ -70,9 +70,9 @@ export default async function StudentLessonPage({
     slug: l.slug,
   }));
 
-  const completedLessonIds = Array.from(progressMap.entries())
-    .filter(([_, p]: [string, any]) => p?.is_completed)
-    .map(([id]) => id);
+  const completedLessonIds: string[] = (userProgress || [])
+    .filter((p: any) => p?.is_completed)
+    .map((p: any) => String(p.lesson_id));
 
   return (
     <LessonPlayer

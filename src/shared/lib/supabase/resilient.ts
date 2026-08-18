@@ -326,12 +326,6 @@ export async function getResilientCourseDetail(
 }
 
 export async function getResilientProfiles() {
-  const mockProfiles = mockStore.getProfiles();
-  const map = new Map<string, any>();
-  for (const mp of mockProfiles) {
-    map.set(mp.id || mp.email, mp);
-  }
-
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
@@ -343,21 +337,17 @@ export async function getResilientProfiles() {
     );
 
     if (result && !result.error && result.data && result.data.length > 0) {
-      for (const dp of result.data) {
-        map.set(dp.id || dp.email, dp);
-      }
+      return result.data;
     }
   } catch (err) {}
 
-  return Array.from(map.values());
+  return mockStore.getProfiles();
 }
 
 export async function getResilientUserProgress(
   userId: string,
   allowMockFallback = true,
 ) {
-  const mockProgress = mockStore.getUserProgress(userId);
-
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
@@ -371,36 +361,14 @@ export async function getResilientUserProgress(
     );
 
     if (result && !result.error && result.data) {
-      const map = new Map<string, any>();
-      for (const mp of mockProgress) {
-        map.set(mp.lesson_id, mp);
-      }
-      for (const dp of result.data) {
-        const existing = map.get(dp.lesson_id);
-        if (
-          !existing ||
-          dp.is_completed ||
-          (dp.elapsed_seconds || 0) > (existing.elapsed_seconds || 0)
-        ) {
-          map.set(dp.lesson_id, dp);
-        }
-      }
-      return Array.from(map.values());
+      return result.data;
     }
   } catch (err) {}
 
-  return allowMockFallback ? mockProgress : [];
+  return allowMockFallback ? mockStore.getUserProgress(userId) : [];
 }
 
 export async function getResilientAllProgress() {
-  const mockProgress = mockStore.getAllProgress();
-  const map = new Map<string, any>();
-
-  for (const mp of mockProgress) {
-    const key = `${mp.user_id}_${mp.lesson_id}`;
-    map.set(key, mp);
-  }
-
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
@@ -421,21 +389,11 @@ export async function getResilientAllProgress() {
     );
 
     if (result && !result.error && result.data) {
-      for (const dp of result.data) {
-        const key = `${dp.user_id}_${dp.lesson_id}`;
-        const existing = map.get(key);
-        if (
-          !existing ||
-          dp.is_completed ||
-          (dp.elapsed_seconds || 0) > (existing.elapsed_seconds || 0)
-        ) {
-          map.set(key, dp);
-        }
-      }
+      return result.data;
     }
   } catch (err) {}
 
-  return Array.from(map.values());
+  return mockStore.getAllProgress();
 }
 
 export async function getResilientEnrollments() {
