@@ -491,17 +491,17 @@ export async function getResilientQuizAttempts(userId?: string) {
     const result: any = await withTimeout(
       query.order("completed_at", { ascending: true }),
       1500,
-    );
-    if (result && !result.error && result.data && result.data.length > 0) {
-      const map = new Map<string, any>();
-      for (const ma of mockAttempts) {
-        map.set(ma.id || `${ma.user_id}_${ma.quiz_id}_${ma.completed_at}`, ma);
-      }
-      for (const da of result.data) {
-        map.set(da.id || `${da.user_id}_${da.quiz_id}_${da.completed_at}`, da);
-      }
-      return Array.from(map.values());
+    ).catch(() => null);
+
+    const dbData = result && !result.error && result.data ? result.data : [];
+    const map = new Map<string, any>();
+    for (const ma of mockAttempts) {
+      map.set(ma.id || `${ma.user_id}_${ma.quiz_id}_${ma.completed_at}`, ma);
     }
+    for (const da of dbData) {
+      map.set(da.id || `${da.user_id}_${da.quiz_id}_${da.completed_at}`, da);
+    }
+    return Array.from(map.values());
   } catch (err) {}
   return mockAttempts;
 }

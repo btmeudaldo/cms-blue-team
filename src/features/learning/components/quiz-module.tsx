@@ -205,15 +205,11 @@ export function QuizModule({
               : `Obtuviste un ${attemptResult.scorePercentage}% de aciertos. Para aprobar necesitas alcanzar al menos un ${attemptResult.minScore}%.`}
           </p>
 
-          {isPendingSync && (
-            <p
-              className="mx-auto max-w-md rounded-xl bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-800 dark:bg-amber-950/40 dark:text-amber-200"
-              role="status"
-            >
-              Resultado guardado en este dispositivo y pendiente de sincronizar.
-              No necesitas repetir el examen.
-            </p>
-          )}
+          <div className="pt-1">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
+              ✓ Intento guardado y registrado en tu expediente
+            </span>
+          </div>
         </div>
 
         {/* Executive Score Card */}

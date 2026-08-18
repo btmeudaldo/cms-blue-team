@@ -1322,14 +1322,15 @@ export const mockStore = {
   getQuizAttempts(userId?: string) {
     if (!userId || userId === "all") return mockQuizAttempts;
     return mockQuizAttempts.filter(
-      (a) => a.user_id === userId || a.user_id?.includes("student"),
+      (a) =>
+        a.user_id === userId ||
+        a.user_id === "student@blueteam.com" ||
+        (userId.includes("student") && a.user_id?.includes("student")),
     );
   },
   getLatestQuizAttempt(userId: string, quizId: string) {
-    const attempts = mockQuizAttempts.filter(
-      (a) =>
-        (a.user_id === userId || a.user_id === "student@blueteam.com") &&
-        a.quiz_id === quizId,
+    const attempts = this.getQuizAttempts(userId).filter(
+      (a) => a.quiz_id === quizId || a.lesson_id === quizId,
     );
     if (attempts.length === 0) return null;
     return attempts[attempts.length - 1];
@@ -1340,7 +1341,8 @@ export const mockStore = {
     answers: Record<string, number>,
     elapsedSeconds: number,
   ) {
-    const quiz = this.getQuizById(quizId);
+    const quiz =
+      this.getQuizById(quizId) || this.getQuizByLessonId(quizId);
     if (!quiz) return null;
 
     let correctCount = 0;
@@ -1370,6 +1372,16 @@ export const mockStore = {
       completed_at: new Date().toISOString(),
       elapsed_seconds: elapsedSeconds,
     };
+
+    // Remove older attempts for this user and quiz
+    const existingIdx = mockQuizAttempts.findIndex(
+      (a) =>
+        (a.user_id === userId || a.user_id === "student@blueteam.com") &&
+        (a.quiz_id === quiz.id || a.quiz_id === quizId),
+    );
+    if (existingIdx !== -1) {
+      mockQuizAttempts.splice(existingIdx, 1);
+    }
 
     mockQuizAttempts.push(attempt);
     return attempt;
