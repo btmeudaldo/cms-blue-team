@@ -242,9 +242,23 @@ export async function getResilientCourseDetail(
 ) {
   try {
     const supabase = await createSupabaseServerClient();
+    const legacyMap: Record<string, string> = {
+      "course-1": "11111111-1111-1111-1111-111111111101",
+      "course-demo-1": "11111111-1111-1111-1111-111111111101",
+      "course-2": "22222222-2222-2222-2222-222222222202",
+      "course-demo-2": "22222222-2222-2222-2222-222222222202",
+      "course-3": "33333333-3333-3333-3333-333333333303",
+      "course-demo-3": "33333333-3333-3333-3333-333333333303",
+      "course-4": "44444444-4444-4444-4444-444444444404",
+      "course-demo-4": "44444444-4444-4444-4444-444444444404",
+      "course-5": "55555555-5555-5555-5555-555555555505",
+      "course-demo-5": "55555555-5555-5555-5555-555555555505",
+    };
+
+    const targetCourseId = legacyMap[courseId] || courseId;
     const isUuid =
       /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
-        courseId,
+        targetCourseId,
       );
 
     let query = supabase.from("courses").select(
@@ -267,9 +281,9 @@ export async function getResilientCourseDetail(
     );
 
     if (isUuid) {
-      query = query.eq("id", courseId);
+      query = query.eq("id", targetCourseId);
     } else {
-      query = query.eq("slug", courseId);
+      query = query.eq("slug", targetCourseId);
     }
 
     const result: any = await withTimeout(query.maybeSingle(), 1500);

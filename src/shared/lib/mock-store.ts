@@ -104,7 +104,7 @@ const words3 = content3.split(/\s+/).filter(Boolean).length;
 
 const mockCourses: MockCourse[] = [
   {
-    id: "course-demo-1",
+    id: "11111111-1111-1111-1111-111111111101",
     title: "Fundamentos de Pilotaje Privado & Aerodinámica (PPL)",
     slug: "fundamentos-pilotaje-privado-ppl",
     description:
@@ -114,8 +114,8 @@ const mockCourses: MockCourse[] = [
     created_at: new Date().toISOString(),
     lessons: [
       {
-        id: "lesson-1-1",
-        course_id: "course-demo-1",
+        id: "11111111-1111-1111-1111-000000000001",
+        course_id: "11111111-1111-1111-1111-111111111101",
         title: "1. Principios de Aerodinámica y Sustentación",
         slug: "principios-aerodinamica-sustentacion",
         content_html: content1,
@@ -124,8 +124,8 @@ const mockCourses: MockCourse[] = [
         min_seconds: calculateMinimumReadingSeconds(words1),
       },
       {
-        id: "lesson-1-2",
-        course_id: "course-demo-1",
+        id: "11111111-1111-1111-1111-000000000002",
+        course_id: "11111111-1111-1111-1111-111111111101",
         title: "2. Instrumentos de Cabina y Sistemas Altimétricos",
         slug: "instrumentos-cabina-altimetria",
         content_html: content2,
@@ -133,10 +133,30 @@ const mockCourses: MockCourse[] = [
         word_count: words2,
         min_seconds: calculateMinimumReadingSeconds(words2),
       },
+      {
+        id: "11111111-1111-1111-1111-000000000003",
+        course_id: "11111111-1111-1111-1111-111111111101",
+        title: "3. Maniobras VFR, Virajes de Escarpado y Pérdidas",
+        slug: "maniobras-vfr-virajes-perdidas",
+        content_html: content1,
+        sequence_order: 3,
+        word_count: words1,
+        min_seconds: calculateMinimumReadingSeconds(words1),
+      },
+      {
+        id: "11111111-1111-1111-1111-000000000004",
+        course_id: "11111111-1111-1111-1111-111111111101",
+        title: "4. Patrones de Tráfico en Aeródromo y Comunicaciones",
+        slug: "patrones-trafico-comunicaciones",
+        content_html: content2,
+        sequence_order: 4,
+        word_count: words2,
+        min_seconds: calculateMinimumReadingSeconds(words2),
+      },
     ],
   },
   {
-    id: "course-demo-2",
+    id: "22222222-2222-2222-2222-222222222202",
     title: "Procedimientos de Seguridad & Meteorología Aeronáutica",
     slug: "seguridad-meteorologia-aeronaval",
     description:
@@ -146,8 +166,8 @@ const mockCourses: MockCourse[] = [
     created_at: new Date().toISOString(),
     lessons: [
       {
-        id: "lesson-2-1",
-        course_id: "course-demo-2",
+        id: "22222222-2222-2222-2222-000000000001",
+        course_id: "22222222-2222-2222-2222-222222222202",
         title: "1. Interpretación de Informes Meteorológicos METAR y TAF",
         slug: "interpretacion-metar-taf",
         content_html: content3,
@@ -156,8 +176,8 @@ const mockCourses: MockCourse[] = [
         min_seconds: calculateMinimumReadingSeconds(words3),
       },
       {
-        id: "lesson-2-2",
-        course_id: "course-demo-2",
+        id: "22222222-2222-2222-2222-000000000002",
+        course_id: "22222222-2222-2222-2222-222222222202",
         title: "2. Gestión de Recursos en Cabina (CRM) y Factor Humano",
         slug: "gestion-recursos-cabina-crm",
         content_html: content1,
@@ -166,8 +186,8 @@ const mockCourses: MockCourse[] = [
         min_seconds: calculateMinimumReadingSeconds(words1),
       },
       {
-        id: "lesson-2-3",
-        course_id: "course-demo-2",
+        id: "22222222-2222-2222-2222-000000000003",
+        course_id: "22222222-2222-2222-2222-222222222202",
         title: "3. Procedimientos de Emergencia y Cizalladura de Viento",
         slug: "procedimientos-emergencia-cizalladura",
         content_html: content2,
@@ -178,7 +198,7 @@ const mockCourses: MockCourse[] = [
     ],
   },
   {
-    id: "course-demo-3",
+    id: "33333333-3333-3333-3333-333333333303",
     title: "Navegación Instrumental IFR & Radioayudas (VOR/ILS)",
     slug: "navegacion-instrumental-ifr-radioayudas",
     description:
@@ -188,8 +208,8 @@ const mockCourses: MockCourse[] = [
     created_at: new Date().toISOString(),
     lessons: [
       {
-        id: "lesson-3-1",
-        course_id: "course-demo-3",
+        id: "33333333-3333-3333-3333-000000000001",
+        course_id: "33333333-3333-3333-3333-333333333303",
         title: "1. Principios de Aproximación por Instrumentos ILS Cat I/II",
         slug: "principios-aproximacion-ils",
         content_html: content2,
@@ -198,8 +218,8 @@ const mockCourses: MockCourse[] = [
         min_seconds: calculateMinimumReadingSeconds(words2),
       },
       {
-        id: "lesson-3-2",
-        course_id: "course-demo-3",
+        id: "33333333-3333-3333-3333-000000000002",
+        course_id: "33333333-3333-3333-3333-333333333303",
         title: "2. Radioayudas VOR, DME y Arcos de Radiales",
         slug: "radioayudas-vor-dme-arcos",
         content_html: content1,
@@ -208,8 +228,8 @@ const mockCourses: MockCourse[] = [
         min_seconds: calculateMinimumReadingSeconds(words1),
       },
       {
-        id: "lesson-3-3",
-        course_id: "course-demo-3",
+        id: "33333333-3333-3333-3333-000000000003",
+        course_id: "33333333-3333-3333-3333-333333333303",
         title: "3. Interpretación de Cartas Instrumentales Jeppesen",
         slug: "interpretacion-cartas-jeppesen",
         content_html: content3,
@@ -220,7 +240,7 @@ const mockCourses: MockCourse[] = [
     ],
   },
   {
-    id: "course-demo-4",
+    id: "44444444-4444-4444-4444-444444444404",
     title: "Sistemas de Aeronaves C172/PA28 & Grupo Motopropulsor",
     slug: "sistemas-aeronaves-c172-pa28",
     description:
@@ -230,8 +250,8 @@ const mockCourses: MockCourse[] = [
     created_at: new Date().toISOString(),
     lessons: [
       {
-        id: "lesson-4-1",
-        course_id: "course-demo-4",
+        id: "44444444-4444-4444-4444-000000000001",
+        course_id: "44444444-4444-4444-4444-444444444404",
         title: "1. Componentes del Motor Lycoming O-360 y Combustible",
         slug: "componentes-motor-lycoming",
         content_html: content1,
@@ -240,8 +260,8 @@ const mockCourses: MockCourse[] = [
         min_seconds: calculateMinimumReadingSeconds(words1),
       },
       {
-        id: "lesson-4-2",
-        course_id: "course-demo-4",
+        id: "44444444-4444-4444-4444-000000000002",
+        course_id: "44444444-4444-4444-4444-444444444404",
         title: "2. Sistema Eléctrico de Abordo y Alternadores",
         slug: "sistema-electrico-abordo-alternadores",
         content_html: content2,
@@ -250,8 +270,8 @@ const mockCourses: MockCourse[] = [
         min_seconds: calculateMinimumReadingSeconds(words2),
       },
       {
-        id: "lesson-4-3",
-        course_id: "course-demo-4",
+        id: "44444444-4444-4444-4444-000000000003",
+        course_id: "44444444-4444-4444-4444-444444444404",
         title: "3. Hélices de Paso Variable y Rendimiento de Potencia",
         slug: "helices-paso-variable-rendimiento",
         content_html: content3,
@@ -262,7 +282,7 @@ const mockCourses: MockCourse[] = [
     ],
   },
   {
-    id: "course-demo-5",
+    id: "55555555-5555-5555-5555-555555555505",
     title: "Ciberseguridad en Sistemas Aviónicos & Redes de Cabina (Blue Team)",
     slug: "ciberseguridad-avonica-redes-cabina",
     description:
@@ -272,8 +292,8 @@ const mockCourses: MockCourse[] = [
     created_at: new Date().toISOString(),
     lessons: [
       {
-        id: "lesson-5-1",
-        course_id: "course-demo-5",
+        id: "55555555-5555-5555-5555-000000000001",
+        course_id: "55555555-5555-5555-5555-555555555505",
         title: "1. Fundamentos de Ciberseguridad en Buses ARINC 429",
         slug: "fundamentos-ciberseguridad-arinc429",
         content_html: content1,
@@ -282,8 +302,8 @@ const mockCourses: MockCourse[] = [
         min_seconds: calculateMinimumReadingSeconds(words1),
       },
       {
-        id: "lesson-5-2",
-        course_id: "course-demo-5",
+        id: "55555555-5555-5555-5555-000000000002",
+        course_id: "55555555-5555-5555-5555-555555555505",
         title: "2. Protección de Sistemas FMS y Protocolos ADS-B",
         slug: "proteccion-sistemas-fms-ads-b",
         content_html: content2,
@@ -292,8 +312,8 @@ const mockCourses: MockCourse[] = [
         min_seconds: calculateMinimumReadingSeconds(words2),
       },
       {
-        id: "lesson-5-3",
-        course_id: "course-demo-5",
+        id: "55555555-5555-5555-5555-000000000003",
+        course_id: "55555555-5555-5555-5555-555555555505",
         title: "3. Prevención de Interferencia GPS y Jamming Aeronáutico",
         slug: "prevencion-interferencia-gps-jamming",
         content_html: content3,

@@ -136,12 +136,20 @@ export async function updateLessonAction(
 }
 
 export async function deleteLessonAction(lessonId: string, courseId: string) {
+  const isUuid =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      lessonId,
+    );
+
   try {
     const supabase = await createSupabaseServerClient();
-    const { error } = await supabase
-      .from("lessons")
-      .delete()
-      .eq("id", lessonId);
+    let query = supabase.from("lessons").delete();
+    if (isUuid) {
+      query = query.eq("id", lessonId);
+    } else {
+      query = query.eq("slug", lessonId);
+    }
+    const { error } = await query;
 
     if (error) {
       const { createSupabaseAdminClient } = await import(
@@ -149,7 +157,13 @@ export async function deleteLessonAction(lessonId: string, courseId: string) {
       );
       const adminClient = createSupabaseAdminClient();
       if (adminClient) {
-        await adminClient.from("lessons").delete().eq("id", lessonId);
+        let adminQuery = adminClient.from("lessons").delete();
+        if (isUuid) {
+          adminQuery = adminQuery.eq("id", lessonId);
+        } else {
+          adminQuery = adminQuery.eq("slug", lessonId);
+        }
+        await adminQuery;
       }
     }
   } catch (err) {}
