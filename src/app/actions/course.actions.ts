@@ -95,7 +95,6 @@ export async function updateCourseAction(courseId: string, formData: FormData) {
   revalidatePath(`/courses/${slug}`);
   revalidatePath("/admin/users");
 
-  return { success: true, imageUrl: updatedCourse.image_url };
 }
 
 export async function deleteCourseAction(courseId: string) {
