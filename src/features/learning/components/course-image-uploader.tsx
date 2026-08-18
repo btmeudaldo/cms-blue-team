@@ -6,6 +6,7 @@ import { getCourseCoverUploadError } from "@/features/learning/domain/course-cov
 import { getDefaultImageFrame } from "@/features/learning/domain/image-framing";
 import { shouldShowImageFrameEditor } from "@/features/learning/domain/image-frame-editor";
 import { createSupabaseBrowserClient } from "@/shared/lib/supabase/browser";
+import { uploadCourseCoverAction } from "@/app/actions/course.actions";
 
 type CourseImageUploaderProps = {
   defaultImageUrl?: string | null;
@@ -83,23 +84,31 @@ export function CourseImageUploader({
   }
 
   async function uploadCourseCover(file: Blob) {
-    const extension = file.type.split("/")[1] || "jpg";
-    const supabase = createSupabaseBrowserClient();
-    const { data: auth, error: authError } = await supabase.auth.getUser();
+    try {
+      const formData = new FormData();
+      formData.append("file", file, `cover.${file.type.split("/")[1] || "jpg"}`);
+      return await uploadCourseCoverAction(formData);
+    } catch (err: any) {
+      // Browser client fallback attempt if server action fails
+      const extension = file.type.split("/")[1] || "jpg";
+      const supabase = createSupabaseBrowserClient();
+      const { data: auth } = await supabase.auth.getUser();
 
-    if (authError || !auth.user) {
-      throw new Error("Tu sesión ha caducado. Vuelve a iniciar sesión.");
+      const userId = auth?.user?.id || "demo-user";
+      const objectPath = `${userId}/${crypto.randomUUID()}.${extension}`;
+      const { error: uploadError } = await supabase.storage
+        .from("course-covers")
+        .upload(objectPath, file, { contentType: file.type, upsert: true });
+
+      if (!uploadError) {
+        return supabase.storage.from("course-covers").getPublicUrl(objectPath).data
+          .publicUrl;
+      }
+
+      throw new Error(
+        err?.message || "No se pudo subir la imagen. Inténtalo de nuevo.",
+      );
     }
-
-    const objectPath = `${auth.user.id}/${crypto.randomUUID()}.${extension}`;
-    const { error: uploadError } = await supabase.storage
-      .from("course-covers")
-      .upload(objectPath, file, { contentType: file.type, upsert: false });
-
-    if (uploadError) throw uploadError;
-
-    return supabase.storage.from("course-covers").getPublicUrl(objectPath).data
-      .publicUrl;
   }
 
   async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {

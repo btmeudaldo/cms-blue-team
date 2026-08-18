@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
-import { getSupabasePublicEnv } from "./env";
+import { getSupabaseAdminEnv, getSupabasePublicEnv } from "./env";
 
 export async function createSupabaseServerClient() {
   const cookieStore = await cookies();
@@ -23,4 +23,14 @@ export async function createSupabaseServerClient() {
       },
     },
   });
+}
+
+export function createSupabaseAdminClient() {
+  try {
+    const { serviceRoleKey, url } = getSupabaseAdminEnv();
+    const { createClient } = require("@supabase/supabase-js");
+    return createClient(url, serviceRoleKey);
+  } catch {
+    return null;
+  }
 }

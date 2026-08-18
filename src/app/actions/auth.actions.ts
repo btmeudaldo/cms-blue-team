@@ -130,6 +130,26 @@ export async function signUpAction(formData: FormData) {
 }
 
 export async function demoUserSelectLoginAction(email: string, role: string) {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const res = await withTimeout(
+      supabase.auth.signInWithPassword({
+        email,
+        password: "blueteam",
+      }),
+      1500,
+    ).catch(() => ({ data: null, error: true }));
+
+    if (!res.error && res.data?.user) {
+      const cookieStore = await cookies();
+      cookieStore.set("demo_email", "", { path: "/", expires: new Date(0) });
+      cookieStore.set("demo_role", "", { path: "/", expires: new Date(0) });
+      return { redirectTo: role === "student" ? "/courses" : "/admin" };
+    }
+  } catch (err: any) {
+    if (err?.digest?.startsWith("NEXT_REDIRECT")) throw err;
+  }
+
   const cookieStore = await cookies();
   cookieStore.set("demo_email", email, { path: "/" });
   cookieStore.set("demo_role", role, { path: "/" });

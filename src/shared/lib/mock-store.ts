@@ -919,6 +919,17 @@ export const mockStore = {
     mockCourses.push(newCourse);
     return newCourse;
   },
+  updateCourse(courseId: string, data: Partial<MockCourse>) {
+    const course = this.getCourseById(courseId);
+    if (course) {
+      if (data.title !== undefined) course.title = data.title;
+      if (data.slug !== undefined) course.slug = data.slug;
+      if (data.description !== undefined) course.description = data.description;
+      if (data.image_url !== undefined) course.image_url = data.image_url;
+      return course;
+    }
+    return null;
+  },
   deleteCourse(courseId: string) {
     const index = mockCourses.findIndex((c) => c.id === courseId);
     if (index !== -1) mockCourses.splice(index, 1);
