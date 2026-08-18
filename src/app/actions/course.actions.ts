@@ -73,26 +73,19 @@ export async function updateCourseAction(courseId: string, formData: FormData) {
 
   if (!title || !slug) throw new Error("Título y slug son obligatorios.");
 
-  // 1. ALWAYS update mockStore first so resilient local reads reflect the updated image
-  const mockCourse =
-    mockStore.getCourseById(courseId) || mockStore.getCourseById(slug);
-  if (mockCourse) {
-    mockCourse.title = title;
-    mockCourse.slug = slug;
-    mockCourse.description = description;
-    if (imageUrl) {
-      mockCourse.image_url = imageUrl;
-    }
-  }
+  const supabase = await createSupabaseServerClient();
+  const { data: updatedCourse, error } = await supabase
+    .from("courses")
+    .update({ title, slug, description, image_url: imageUrl || null })
+    .eq("id", courseId)
+    .select("id, image_url")
+    .single();
 
-  // 2. Persist in Supabase DB
-  try {
-    const supabase = await createSupabaseServerClient();
-    await supabase
-      .from("courses")
-      .update({ title, slug, description, image_url: imageUrl || null })
-      .eq("id", courseId);
-  } catch (err) {}
+  if (error || !updatedCourse) {
+    throw new Error(
+      `No se pudo guardar el curso${error?.message ? `: ${error.message}` : "."}`,
+    );
+  }
 
   // 3. Revalidate Next.js page cache across all routes
   revalidatePath(`/admin/courses/${courseId}`);
@@ -101,6 +94,8 @@ export async function updateCourseAction(courseId: string, formData: FormData) {
   revalidatePath(`/courses/${courseId}`);
   revalidatePath(`/courses/${slug}`);
   revalidatePath("/admin/users");
+
+  return { success: true, imageUrl: updatedCourse.image_url };
 }
 
 export async function deleteCourseAction(courseId: string) {
