@@ -246,7 +246,7 @@ const mockCourses: MockCourse[] = [
     description:
       "Estudio de motores de pistón alternativos, sistemas de combustible, electricidad de abordo, paso variable y emergencias del sistema.",
     image_url:
-      "https://images.unsplash.com/photo-1519074069444-1ba4e69c1040?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1559628233-eb1b1a45564b?auto=format&fit=crop&w=800&q=80",
     created_at: new Date().toISOString(),
     lessons: [
       {
