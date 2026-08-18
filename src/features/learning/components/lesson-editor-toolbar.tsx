@@ -65,7 +65,18 @@ export function LessonEditorToolbar({
     }
   }
 
-  // Helper to attach controls to all image wrappers in the DOM
+  // State for active image resizing
+  const resizingStateRef = useRef<{
+    wrapper: HTMLElement;
+    img: HTMLImageElement;
+    startX: number;
+    startY: number;
+    startWidth: number;
+    handle: "nw" | "ne" | "se" | "sw";
+    badgeEl: HTMLElement | null;
+  } | null>(null);
+
+  // Helper to attach controls & interactive handles to all image wrappers in the DOM
   function attachImageControlsToDom(container: HTMLElement) {
     const images = container.querySelectorAll("img");
     images.forEach((img) => {
@@ -83,7 +94,7 @@ export function LessonEditorToolbar({
         img.style.objectFit = img.style.objectFit || "cover";
       }
 
-      let wrapper = img.closest(".lesson-img-wrapper");
+      let wrapper = img.closest(".lesson-img-wrapper") as HTMLElement | null;
       if (!wrapper) {
         const parentDiv = img.closest("div");
         if (parentDiv && parentDiv !== container) {
@@ -98,72 +109,168 @@ export function LessonEditorToolbar({
         }
       }
 
+      wrapper.style.position = "relative";
+      wrapper.setAttribute("draggable", "false");
+
+      // Add Top Floating Quick Bar if not present
       if (!wrapper.querySelector(".img-editor-controls")) {
         const controls = document.createElement("div");
         controls.className =
-          "img-editor-controls mb-3 space-y-2 rounded-xl border border-blue-100 bg-blue-50/50 p-3 dark:border-blue-900/60 dark:bg-blue-950/20 select-none";
+          "img-editor-controls mb-3 space-y-2 rounded-xl border border-blue-100 bg-blue-50/70 p-2.5 dark:border-blue-900/60 dark:bg-blue-950/30 select-none shadow-2xs";
         controls.setAttribute("contenteditable", "false");
         const leftAlignment = getImageFrameAlignment("left");
         const centerAlignment = getImageFrameAlignment("center");
         const rightAlignment = getImageFrameAlignment("right");
         controls.innerHTML = `
-          <div class="flex items-center justify-between gap-2">
-            <span class="text-[11px] font-bold text-blue-700 dark:text-blue-300 flex items-center gap-1">
-              🖼️ Controles de esta imagen
+          <div class="flex items-center justify-between gap-2 border-b border-blue-200/50 dark:border-blue-800/40 pb-1.5">
+            <span class="text-[11px] font-extrabold text-blue-700 dark:text-blue-300 flex items-center gap-1.5">
+              <span>🖼️</span>
+              <span>Imagen Interactiva</span>
+              <span class="text-[10px] font-normal text-slate-500 dark:text-slate-400">· Arrastra las esquinas ⚪ para cambiar tamaño</span>
             </span>
-            <span class="text-[10px] font-medium text-slate-400 dark:text-slate-500">Formato cuadrado (1:1)</span>
+            <div class="img-drag-handle flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-600 text-white text-[10px] font-extrabold cursor-grab active:cursor-grabbing hover:bg-blue-700 transition-colors shadow-2xs" draggable="true" title="Haz clic y arrastra para mover la imagen a cualquier párrafo">
+              <span>✥</span>
+              <span>Arrastrar</span>
+            </div>
           </div>
-          <div class="flex flex-wrap items-center gap-1.5">
-            <button type="button" class="img-btn-fit px-2.5 py-1 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 text-[#1a80ff] text-[11px] font-bold rounded-lg border border-blue-200 dark:border-blue-800 transition-colors cursor-pointer" title="Ver imagen completa sin recortar (contain/cover)">
-              🎯 Ver Completa / Llenar
+          <div class="flex flex-wrap items-center gap-1.5 pt-1">
+            <button type="button" class="img-btn-fit px-2 py-1 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Ver imagen completa sin recortar (contain / cover)">
+              🎯 Ajuste
             </button>
-            <button type="button" class="img-btn-pos px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover enfoque vertical (Arriba / Centro / Abajo)">
-              ↕️ Posición Vertical
+            <button type="button" class="img-btn-pos px-2 py-1 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover enfoque vertical (Arriba / Centro / Abajo)">
+              ↕️ Enfoque
             </button>
-            <button type="button" class="img-btn-shrink px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Reducir el cuadro completo de la imagen">
-              🔍- Cuadro
-            </button>
-            <button type="button" class="img-btn-enlarge px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Agrandar el cuadro completo de la imagen">
-              🔍+ Cuadro
-            </button>
-            <div class="flex flex-wrap items-center gap-1 rounded-lg border border-blue-200 bg-white p-1 dark:border-blue-800 dark:bg-slate-900" role="group" aria-label="Alineación de esta imagen">
-              <span class="px-1 text-[10px] font-bold text-blue-700 dark:text-blue-300">Alinear imagen:</span>
-              <button type="button" class="img-btn-align-left px-2 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg transition-colors cursor-pointer" title="Alinear el cuadro de imagen a la izquierda">
-                ⬅️ ${leftAlignment.label}
+            <div class="flex items-center gap-0.5 rounded-lg border border-slate-200 bg-white p-0.5 dark:border-slate-700 dark:bg-slate-800">
+              <button type="button" class="img-btn-align-left px-2 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer" title="Alinear a la izquierda">
+                ⬅️ Izq
               </button>
-              <button type="button" class="img-btn-align-center px-2 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg transition-colors cursor-pointer" title="Centrar el cuadro de imagen">
-                ↔️ ${centerAlignment.label}
+              <button type="button" class="img-btn-align-center px-2 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer" title="Centrar">
+                ↔️ Centro
               </button>
-              <button type="button" class="img-btn-align-right px-2 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg transition-colors cursor-pointer" title="Alinear el cuadro de imagen a la derecha">
-                ➡️ ${rightAlignment.label}
+              <button type="button" class="img-btn-align-right px-2 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer" title="Alinear a la derecha">
+                ➡️ Der
               </button>
             </div>
-            <button type="button" class="img-btn-up px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover la imagen arriba de la lección">
-              ⬆️ Arriba
+            <button type="button" class="img-btn-up px-2 py-1 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Subir un bloque">
+              ▲ Subir
             </button>
-            <button type="button" class="img-btn-down px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover la imagen abajo de la lección">
-              ⬇️ Abajo
+            <button type="button" class="img-btn-down px-2 py-1 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Bajar un bloque">
+              ▼ Bajar
             </button>
-            <button type="button" class="img-btn-remove px-2.5 py-1 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 dark:hover:bg-rose-900 text-rose-600 dark:text-rose-400 text-[11px] font-bold rounded-lg border border-rose-200 dark:border-rose-800 transition-colors cursor-pointer" title="Eliminar esta imagen">
-              🗑️ Quitar
+            <button type="button" class="img-btn-remove px-2 py-1 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 text-rose-600 dark:text-rose-400 text-[11px] font-bold rounded-lg border border-rose-200 dark:border-rose-800 transition-colors cursor-pointer ml-auto" title="Eliminar imagen">
+              🗑️
             </button>
           </div>
         `;
         wrapper.insertBefore(controls, wrapper.firstChild);
       }
+
+      // Add Corner Interactive Resize Handles if not present
+      if (!wrapper.querySelector(".img-resize-handle")) {
+        const handleNW = document.createElement("div");
+        handleNW.className =
+          "img-resize-handle img-resize-handle-nw absolute -top-1.5 -left-1.5 w-3.5 h-3.5 bg-white dark:bg-slate-900 border-2 border-[#1a80ff] rounded-full shadow-md cursor-nwse-resize select-none hover:scale-125 transition-transform z-20";
+        handleNW.setAttribute("contenteditable", "false");
+        handleNW.setAttribute("data-handle", "nw");
+
+        const handleNE = document.createElement("div");
+        handleNE.className =
+          "img-resize-handle img-resize-handle-ne absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-white dark:bg-slate-900 border-2 border-[#1a80ff] rounded-full shadow-md cursor-nesw-resize select-none hover:scale-125 transition-transform z-20";
+        handleNE.setAttribute("contenteditable", "false");
+        handleNE.setAttribute("data-handle", "ne");
+
+        const handleSE = document.createElement("div");
+        handleSE.className =
+          "img-resize-handle img-resize-handle-se absolute -bottom-1.5 -right-1.5 w-3.5 h-3.5 bg-white dark:bg-slate-900 border-2 border-[#1a80ff] rounded-full shadow-md cursor-nwse-resize select-none hover:scale-125 transition-transform z-20";
+        handleSE.setAttribute("contenteditable", "false");
+        handleSE.setAttribute("data-handle", "se");
+
+        const handleSW = document.createElement("div");
+        handleSW.className =
+          "img-resize-handle img-resize-handle-sw absolute -bottom-1.5 -left-1.5 w-3.5 h-3.5 bg-white dark:bg-slate-900 border-2 border-[#1a80ff] rounded-full shadow-md cursor-nesw-resize select-none hover:scale-125 transition-transform z-20";
+        handleSW.setAttribute("contenteditable", "false");
+        handleSW.setAttribute("data-handle", "sw");
+
+        wrapper.appendChild(handleNW);
+        wrapper.appendChild(handleNE);
+        wrapper.appendChild(handleSE);
+        wrapper.appendChild(handleSW);
+      }
     });
   }
 
-  // Helper to extract clean HTML without editor controls or placeholders
+  // Helper to extract clean HTML without editor controls, resize handles or placeholders
   function getCleanHtml(): string {
     if (!editorRef.current) return "";
     const clone = editorRef.current.cloneNode(true) as HTMLElement;
     const controls = clone.querySelectorAll(".img-editor-controls");
     controls.forEach((c) => c.remove());
+    const handles = clone.querySelectorAll(".img-resize-handle");
+    handles.forEach((h) => h.remove());
+    const badges = clone.querySelectorAll(".img-dimension-badge");
+    badges.forEach((b) => b.remove());
     const placeholders = clone.querySelectorAll(".placeholder-text");
     placeholders.forEach((p) => p.remove());
     return clone.innerHTML;
   }
+
+  // Handle global mouse move & mouse up during interactive resize
+  useEffect(() => {
+    function handleGlobalMouseMove(e: MouseEvent) {
+      if (!resizingStateRef.current) return;
+      e.preventDefault();
+
+      const { wrapper, startX, startWidth, handle, badgeEl } =
+        resizingStateRef.current;
+      const deltaX = e.clientX - startX;
+
+      let newWidth = startWidth;
+      if (handle === "se" || handle === "ne") {
+        newWidth = startWidth + deltaX;
+      } else {
+        newWidth = startWidth - deltaX;
+      }
+
+      // Constrain boundaries: 160px to container maxWidth
+      const containerWidth = editorRef.current?.getBoundingClientRect().width || 700;
+      newWidth = Math.max(160, Math.min(containerWidth, newWidth));
+
+      wrapper.style.width = `${Math.round(newWidth)}px`;
+      wrapper.style.maxWidth = "100%";
+
+      const img = wrapper.querySelector("img");
+      if (img) {
+        img.style.width = "100%";
+        img.style.maxWidth = "100%";
+        img.style.height = "auto";
+        img.style.aspectRatio = "1 / 1";
+      }
+
+      if (badgeEl) {
+        badgeEl.textContent = `📐 ${Math.round(newWidth)}px`;
+      }
+    }
+
+    function handleGlobalMouseUp() {
+      if (!resizingStateRef.current) return;
+      const { badgeEl } = resizingStateRef.current;
+      if (badgeEl) badgeEl.remove();
+
+      resizingStateRef.current = null;
+      document.body.style.cursor = "";
+      document.body.style.userSelect = "";
+
+      handleVisualInput();
+    }
+
+    window.addEventListener("mousemove", handleGlobalMouseMove);
+    window.addEventListener("mouseup", handleGlobalMouseUp);
+
+    return () => {
+      window.removeEventListener("mousemove", handleGlobalMouseMove);
+      window.removeEventListener("mouseup", handleGlobalMouseUp);
+    };
+  }, []);
 
   // Constant mount dependency array [] to prevent React Hook render size mismatch
   useEffect(() => {
@@ -186,6 +293,99 @@ export function LessonEditorToolbar({
     }
   }
 
+  // Handle Drag & Drop repositioning of image wrappers
+  const draggedWrapperRef = useRef<HTMLElement | null>(null);
+
+  function handleCanvasMouseDown(e: React.MouseEvent<HTMLDivElement>) {
+    const target = e.target as HTMLElement;
+    const resizeHandle = target.closest(".img-resize-handle") as HTMLElement | null;
+
+    if (resizeHandle) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const wrapper = resizeHandle.closest(".lesson-img-wrapper") as HTMLElement | null;
+      const img = wrapper?.querySelector("img") as HTMLImageElement | null;
+      if (!wrapper || !img) return;
+
+      const handleType = (resizeHandle.getAttribute("data-handle") || "se") as "nw" | "ne" | "se" | "sw";
+      const startWidth = wrapper.getBoundingClientRect().width;
+
+      // Create floating dimension badge
+      let badgeEl = wrapper.querySelector(".img-dimension-badge") as HTMLElement | null;
+      if (!badgeEl) {
+        badgeEl = document.createElement("div");
+        badgeEl.className =
+          "img-dimension-badge absolute -bottom-7 left-1/2 -translate-x-1/2 rounded-full bg-slate-900 text-white px-2.5 py-0.5 text-[10px] font-mono font-bold shadow-md z-30 pointer-events-none";
+        badgeEl.setAttribute("contenteditable", "false");
+        wrapper.appendChild(badgeEl);
+      }
+      badgeEl.textContent = `📐 ${Math.round(startWidth)}px`;
+
+      document.body.style.cursor =
+        handleType === "nw" || handleType === "se"
+          ? "nwse-resize"
+          : "nesw-resize";
+      document.body.style.userSelect = "none";
+
+      resizingStateRef.current = {
+        wrapper,
+        img,
+        startX: e.clientX,
+        startY: e.clientY,
+        startWidth,
+        handle: handleType,
+        badgeEl,
+      };
+    }
+  }
+
+  function handleDragStart(e: React.DragEvent<HTMLDivElement>) {
+    const target = e.target as HTMLElement;
+    const dragHandle = target.closest(".img-drag-handle");
+    const wrapper = target.closest(".lesson-img-wrapper") as HTMLElement | null;
+
+    if (dragHandle && wrapper) {
+      draggedWrapperRef.current = wrapper;
+      e.dataTransfer.setData("text/plain", "lesson-img-wrapper");
+      e.dataTransfer.effectAllowed = "move";
+      wrapper.style.opacity = "0.5";
+    }
+  }
+
+  function handleDragOver(e: React.DragEvent<HTMLDivElement>) {
+    if (!draggedWrapperRef.current) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+  }
+
+  function handleDrop(e: React.DragEvent<HTMLDivElement>) {
+    if (!draggedWrapperRef.current || !editorRef.current) return;
+    e.preventDefault();
+
+    const wrapper = draggedWrapperRef.current;
+    wrapper.style.opacity = "1";
+
+    const target = e.target as HTMLElement;
+    const dropTarget = target.closest("p, h2, h3, ul, blockquote, div") as HTMLElement | null;
+
+    if (dropTarget && dropTarget !== wrapper && editorRef.current.contains(dropTarget)) {
+      editorRef.current.insertBefore(wrapper, dropTarget);
+    } else {
+      editorRef.current.appendChild(wrapper);
+    }
+
+    draggedWrapperRef.current = null;
+    handleVisualInput();
+  }
+
+  function handleDragEnd() {
+    if (draggedWrapperRef.current) {
+      draggedWrapperRef.current.style.opacity = "1";
+      draggedWrapperRef.current = null;
+    }
+  }
+
   function handleCanvasClick(e: React.MouseEvent<HTMLDivElement>) {
     clearPlaceholderIfPresent();
     const target = e.target as HTMLElement;
@@ -193,8 +393,6 @@ export function LessonEditorToolbar({
     const btnUp = target.closest(".img-btn-up");
     const btnDown = target.closest(".img-btn-down");
     const btnRemove = target.closest(".img-btn-remove");
-    const btnEnlarge = target.closest(".img-btn-enlarge");
-    const btnShrink = target.closest(".img-btn-shrink");
     const btnFit = target.closest(".img-btn-fit");
     const btnPos = target.closest(".img-btn-pos");
     const btnAlignLeft = target.closest(".img-btn-align-left");
@@ -205,8 +403,6 @@ export function LessonEditorToolbar({
       btnUp ||
       btnDown ||
       btnRemove ||
-      btnEnlarge ||
-      btnShrink ||
       btnFit ||
       btnPos ||
       btnAlignLeft ||
@@ -235,22 +431,6 @@ export function LessonEditorToolbar({
           const next = wrapper.nextElementSibling;
           if (next) {
             parent.insertBefore(wrapper, next.nextElementSibling);
-          }
-        } else if (btnEnlarge || btnShrink) {
-          const img = wrapper.querySelector("img");
-          if (img) {
-            const currentWidth = wrapper.getBoundingClientRect().width || 480;
-            const newWidth = getNextImageFrameWidth(
-              currentWidth,
-              btnEnlarge ? "enlarge" : "shrink",
-            );
-
-            wrapper.style.width = `${newWidth}px`;
-            wrapper.style.maxWidth = "100%";
-            img.style.width = "100%";
-            img.style.maxWidth = "100%";
-            img.style.height = "auto";
-            img.style.aspectRatio = "1 / 1";
           }
         } else if (btnAlignLeft || btnAlignCenter || btnAlignRight) {
           const alignment = btnAlignLeft
@@ -644,6 +824,26 @@ export function LessonEditorToolbar({
             .visual-canvas li {
               margin-bottom: 0.25rem !important;
             }
+            .lesson-img-wrapper {
+              transition: outline 0.15s ease, box-shadow 0.15s ease;
+              user-select: none;
+            }
+            .lesson-img-wrapper:hover {
+              outline: 2px dashed #1a80ff;
+              outline-offset: 4px;
+            }
+            .img-resize-handle {
+              opacity: 0.7;
+              transition: opacity 0.2s ease, transform 0.15s ease;
+            }
+            .lesson-img-wrapper:hover .img-resize-handle {
+              opacity: 1;
+            }
+            .img-resize-handle:hover {
+              transform: scale(1.35);
+              background-color: #1a80ff !important;
+              border-color: #ffffff !important;
+            }
           `}</style>
           <div
             ref={editorRef}
@@ -652,6 +852,11 @@ export function LessonEditorToolbar({
             onInput={handleVisualInput}
             onBlur={handleVisualInput}
             onClick={handleCanvasClick}
+            onMouseDown={handleCanvasMouseDown}
+            onDragStart={handleDragStart}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+            onDragEnd={handleDragEnd}
             className="visual-canvas min-h-[340px] max-h-[600px] overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6 sm:p-8 text-slate-900 dark:text-slate-100 text-sm leading-relaxed focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 prose prose-slate dark:prose-invert max-w-none shadow-xs"
           />
           <div className="absolute bottom-3 right-4 text-[10px] font-bold text-slate-400 dark:text-slate-500 pointer-events-none">
