@@ -200,13 +200,10 @@ export async function getResilientCourses(
 
       const finalCourses = rawCourses.map((c: any) => {
         const mc = mockMap.get(c.id) || mockMap.get(c.slug);
-        const dbLessons = c.lessons || [];
-        const mockLessons = mc?.lessons || [];
-        const mergedLessons =
-          dbLessons.length >= mockLessons.length ? dbLessons : mockLessons;
         return {
           ...c,
-          lessons: mergedLessons,
+          image_url: c.image_url || mc?.image_url || null,
+          lessons: c.lessons || [],
         };
       });
 
@@ -304,12 +301,6 @@ export async function getResilientCourseDetail(
       if (mockC) {
         if (!result.data.image_url && mockC.image_url) {
           result.data.image_url = mockC.image_url;
-        }
-        if (
-          mockC.lessons &&
-          mockC.lessons.length > (result.data.lessons?.length || 0)
-        ) {
-          result.data.lessons = mockC.lessons;
         }
       }
 

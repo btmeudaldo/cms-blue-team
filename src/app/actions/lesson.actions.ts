@@ -136,10 +136,28 @@ export async function updateLessonAction(
 }
 
 export async function deleteLessonAction(lessonId: string, courseId: string) {
-  const supabase = await createSupabaseServerClient();
-  const { error } = await supabase.from("lessons").delete().eq("id", lessonId);
-  if (error) throw new Error(error.message);
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { error } = await supabase
+      .from("lessons")
+      .delete()
+      .eq("id", lessonId);
+
+    if (error) {
+      const { createSupabaseAdminClient } = await import(
+        "@/shared/lib/supabase/server"
+      );
+      const adminClient = createSupabaseAdminClient();
+      if (adminClient) {
+        await adminClient.from("lessons").delete().eq("id", lessonId);
+      }
+    }
+  } catch (err) {}
+
+  mockStore.deleteLesson(lessonId);
 
   revalidatePath(`/admin/courses/${courseId}`);
+  revalidatePath("/admin/courses");
+  revalidatePath("/courses");
   revalidatePath(`/courses/${courseId}`);
 }

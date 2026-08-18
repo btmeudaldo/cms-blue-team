@@ -934,6 +934,18 @@ export const mockStore = {
     const index = mockCourses.findIndex((c) => c.id === courseId);
     if (index !== -1) mockCourses.splice(index, 1);
   },
+  deleteLesson(lessonId: string) {
+    for (const course of mockCourses) {
+      const idx = course.lessons.findIndex(
+        (l) => l.id === lessonId || l.slug === lessonId,
+      );
+      if (idx !== -1) {
+        course.lessons.splice(idx, 1);
+        return true;
+      }
+    }
+    return false;
+  },
   addLesson(courseId: string, lesson: Omit<MockLesson, "id" | "course_id">) {
     const course = this.getCourseById(courseId);
     if (!course) return null;
