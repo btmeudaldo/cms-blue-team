@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { createSupabaseServerClient } from "./server";
+import { createSupabaseServerClient, createSupabaseAdminClient } from "./server";
 import { redirect } from "next/navigation";
 import { mockStore } from "@/shared/lib/mock-store";
 import { getProgressForMode } from "@/features/learning/domain/progress-source";
@@ -326,22 +326,35 @@ export async function getResilientCourseDetail(
 }
 
 export async function getResilientProfiles() {
+  const map = new Map<string, any>();
+
   try {
-    const supabase = await createSupabaseServerClient();
+    const adminClient = createSupabaseAdminClient();
+    const client = adminClient || (await createSupabaseServerClient());
     const result: any = await withTimeout(
-      supabase
+      client
         .from("profiles")
         .select("id, email, full_name, role, created_at")
         .order("created_at", { ascending: false }),
-      1500,
+      2000,
     );
 
     if (result && !result.error && result.data && result.data.length > 0) {
-      return result.data;
+      for (const p of result.data) {
+        map.set(p.id, p);
+        if (p.email) map.set(p.email, p);
+      }
     }
   } catch (err) {}
 
-  return mockStore.getProfiles();
+  const mockProfiles = mockStore.getProfiles();
+  for (const mp of mockProfiles) {
+    if (!map.has(mp.id) && (!mp.email || !map.has(mp.email))) {
+      map.set(mp.id, mp);
+    }
+  }
+
+  return Array.from(new Set(map.values()));
 }
 
 export async function getResilientUserProgress(
@@ -349,15 +362,16 @@ export async function getResilientUserProgress(
   allowMockFallback = true,
 ) {
   try {
-    const supabase = await createSupabaseServerClient();
+    const adminClient = createSupabaseAdminClient();
+    const client = adminClient || (await createSupabaseServerClient());
     const result: any = await withTimeout(
-      supabase
+      client
         .from("user_lesson_progress")
         .select(
           "lesson_id, is_completed, started_at, completed_at, elapsed_seconds",
         )
         .eq("user_id", userId),
-      1500,
+      2000,
     );
 
     if (result && !result.error && result.data) {
@@ -369,10 +383,13 @@ export async function getResilientUserProgress(
 }
 
 export async function getResilientAllProgress() {
+  const map = new Map<string, any>();
+
   try {
-    const supabase = await createSupabaseServerClient();
+    const adminClient = createSupabaseAdminClient();
+    const client = adminClient || (await createSupabaseServerClient());
     const result: any = await withTimeout(
-      supabase
+      client
         .from("user_lesson_progress")
         .select(
           `
@@ -385,38 +402,51 @@ export async function getResilientAllProgress() {
         `,
         )
         .order("started_at", { ascending: false }),
-      1500,
+      2000,
     );
 
-    if (result && !result.error && result.data) {
-      return result.data;
+    if (result && !result.error && result.data && result.data.length > 0) {
+      for (const p of result.data) {
+        map.set(`${p.user_id}_${p.lesson_id}`, p);
+      }
     }
   } catch (err) {}
 
-  return mockStore.getAllProgress();
+  const mockProgress = mockStore.getAllProgress();
+  for (const mp of mockProgress) {
+    const key = `${mp.user_id}_${mp.lesson_id}`;
+    if (!map.has(key)) {
+      map.set(key, mp);
+    }
+  }
+
+  return Array.from(map.values());
 }
 
 export async function getResilientEnrollments() {
   const map = new Map<string, { user_id: string; course_id: string }>();
 
   try {
-    const supabase = await createSupabaseServerClient();
+    const adminClient = createSupabaseAdminClient();
+    const client = adminClient || (await createSupabaseServerClient());
     const result: any = await withTimeout(
-      supabase.from("course_enrollments").select("user_id, course_id"),
-      1500,
+      client.from("course_enrollments").select("user_id, course_id"),
+      2000,
     );
 
     if (result && !result.error && result.data && result.data.length > 0) {
       for (const de of result.data) {
         map.set(`${de.user_id}_${de.course_id}`, de);
       }
-      return Array.from(map.values());
     }
   } catch (err) {}
 
   const mockEnrollments = mockStore.getEnrollments();
   for (const me of mockEnrollments) {
-    map.set(`${me.user_id}_${me.course_id}`, me);
+    const key = `${me.user_id}_${me.course_id}`;
+    if (!map.has(key)) {
+      map.set(key, me);
+    }
   }
 
   return Array.from(map.values());
@@ -426,10 +456,11 @@ export async function getResilientQuizzes() {
   const map = new Map<string, any>();
   
   try {
-    const supabase = await createSupabaseServerClient();
+    const adminClient = createSupabaseAdminClient();
+    const client = adminClient || (await createSupabaseServerClient());
     const result: any = await withTimeout(
-      supabase.from("quizzes").select("*"),
-      1500,
+      client.from("quizzes").select("*"),
+      2000,
     );
     if (result && !result.error && result.data && result.data.length > 0) {
       for (const dq of result.data) {
@@ -443,10 +474,11 @@ export async function getResilientQuizzes() {
 
 export async function getResilientQuiz(quizId: string) {
   try {
-    const supabase = await createSupabaseServerClient();
+    const adminClient = createSupabaseAdminClient();
+    const client = adminClient || (await createSupabaseServerClient());
     const result: any = await withTimeout(
-      supabase.from("quizzes").select("*").eq("id", quizId).maybeSingle(),
-      1500,
+      client.from("quizzes").select("*").eq("id", quizId).maybeSingle(),
+      2000,
     );
     if (result && !result.error && result.data) {
       return normalizeQuiz(result.data);
@@ -458,14 +490,15 @@ export async function getResilientQuiz(quizId: string) {
 
 export async function getResilientQuizForLesson(lessonId: string) {
   try {
-    const supabase = await createSupabaseServerClient();
+    const adminClient = createSupabaseAdminClient();
+    const client = adminClient || (await createSupabaseServerClient());
     const result: any = await withTimeout(
-      supabase
+      client
         .from("quizzes")
         .select("*")
         .eq("lesson_id", lessonId)
         .maybeSingle(),
-      1500,
+      2000,
     );
     if (result && !result.error && result.data) {
       return normalizeQuiz(result.data);
@@ -475,20 +508,34 @@ export async function getResilientQuizForLesson(lessonId: string) {
 }
 
 export async function getResilientQuizAttempts(userId?: string) {
+  const map = new Map<string, any>();
+
   try {
-    const supabase = await createSupabaseServerClient();
-    let query = supabase.from("quiz_attempts").select("*");
+    const adminClient = createSupabaseAdminClient();
+    const client = adminClient || (await createSupabaseServerClient());
+    let query = client.from("quiz_attempts").select("*");
     if (userId && userId !== "all") {
       query = query.eq("user_id", userId);
     }
     const result: any = await withTimeout(
       query.order("completed_at", { ascending: true }),
-      1500,
+      2000,
     ).catch(() => null);
 
-    if (result && !result.error && result.data) {
-      return result.data;
+    if (result && !result.error && result.data && result.data.length > 0) {
+      for (const a of result.data) {
+        map.set(a.id || `${a.user_id}_${a.quiz_id}_${a.completed_at}`, a);
+      }
     }
   } catch (err) {}
-  return [];
+
+  const mockAttempts = mockStore.getQuizAttempts(userId === "all" ? undefined : userId);
+  for (const ma of mockAttempts) {
+    const key = ma.id || `${ma.user_id}_${ma.quiz_id}_${ma.completed_at}`;
+    if (!map.has(key)) {
+      map.set(key, ma);
+    }
+  }
+
+  return Array.from(map.values());
 }

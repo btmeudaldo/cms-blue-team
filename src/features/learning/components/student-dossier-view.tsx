@@ -99,7 +99,9 @@ export function StudentDossierView({
       (pr: any) =>
         pr.user_id === targetId ||
         pr.user_id === targetEmail ||
-        profileMap.get(pr.user_id)?.email === targetEmail,
+        profileMap.get(pr.user_id)?.email === targetEmail ||
+        (targetEmail === "student@blueteam.com" &&
+          (pr.user_id === "student-123" || pr.user_id === "student")),
     );
   }, [selectedStudent, progressRecords, profileMap]);
 
@@ -390,7 +392,9 @@ export function StudentDossierView({
                               qa.user_id === selectedStudent?.email ||
                               qa.user_id === selectedStudent?.id ||
                               profileMap.get(qa.user_id)?.email ===
-                                selectedStudent?.email;
+                                selectedStudent?.email ||
+                              (selectedStudent?.email === "student@blueteam.com" &&
+                                (qa.user_id === "student-123" || qa.user_id === "student"));
 
                             if (!userMatch) return false;
 
@@ -555,7 +559,9 @@ export function StudentDossierView({
                   (pr: any) =>
                     pr.user_id === targetId ||
                     pr.user_id === targetEmail ||
-                    profileMap.get(pr.user_id)?.email === targetEmail,
+                    profileMap.get(pr.user_id)?.email === targetEmail ||
+                    (targetEmail === "student@blueteam.com" &&
+                      (pr.user_id === "student-123" || pr.user_id === "student")),
                 );
 
                 const totalSecs = stRecords.reduce(
