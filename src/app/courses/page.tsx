@@ -27,11 +27,14 @@ export default async function CoursesPage() {
       ?.filter((p: any) => p.is_completed)
       .map((p: any) => p.lesson_id) || [],
   );
-  const passedQuizIds = new Set(
-    quizAttempts
-      ?.filter((a: any) => a.passed)
-      .map((a: any) => a.quiz_id) || [],
-  );
+  const passedQuizIds = new Set<string>();
+  for (const a of quizAttempts || []) {
+    if (a.passed) {
+      if (a.quiz_id) passedQuizIds.add(a.quiz_id);
+      if (a.lesson_id) passedQuizIds.add(a.lesson_id);
+      if (a.lesson_slug) passedQuizIds.add(a.lesson_slug);
+    }
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0a2d5c] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
@@ -147,8 +150,11 @@ export default async function CoursesPage() {
                 ),
               );
               const totalQuizzes = courseQuizzes.length;
-              const passedQuizzesCount = courseQuizzes.filter((q: any) =>
-                passedQuizIds.has(q.id),
+              const passedQuizzesCount = courseQuizzes.filter(
+                (q: any) =>
+                  passedQuizIds.has(q.id) ||
+                  (q.lesson_id && passedQuizIds.has(q.lesson_id)) ||
+                  (q.lesson_slug && passedQuizIds.has(q.lesson_slug)),
               ).length;
 
               const totalItems = totalLessons + totalQuizzes;

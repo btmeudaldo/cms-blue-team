@@ -49,21 +49,24 @@ export default async function StudentCourseDetailPage({
 
   const attemptsByQuizMap = new Map<string, any>();
   for (const att of quizAttempts || []) {
-    const existing = attemptsByQuizMap.get(att.quiz_id);
-    if (
-      !existing ||
-      att.passed ||
-      (att.score_percentage || 0) > (existing.score_percentage || 0)
-    ) {
-      attemptsByQuizMap.set(att.quiz_id, att);
+    const keys = [att.quiz_id, att.lesson_id, att.lesson_slug].filter(Boolean);
+    for (const key of keys) {
+      const existing = attemptsByQuizMap.get(key);
+      if (
+        !existing ||
+        att.passed ||
+        (att.score_percentage || 0) > (existing.score_percentage || 0)
+      ) {
+        attemptsByQuizMap.set(key, att);
+      }
     }
   }
 
-  const completedLessonsCount = lessons.filter(
-    (l: any) =>
-      (progressMap.get(l.id) as any)?.is_completed ||
-      (progressMap.get(l.slug) as any)?.is_completed,
-  ).length;
+  const completedLessonsCount = lessons.filter((l: any) => {
+    const p = (progressMap.get(l.id) || progressMap.get(l.slug)) as any;
+    const qAtt = attemptsByQuizMap.get(l.id) || attemptsByQuizMap.get(l.slug);
+    return Boolean(p?.is_completed || qAtt?.passed);
+  }).length;
 
   const courseQuizzes = (quizzes || []).filter((q: any) =>
     lessons.some(
@@ -188,17 +191,21 @@ export default async function StudentCourseDetailPage({
           ) : (
             <div className="space-y-4">
               {lessons.map((lesson: any, index: number) => {
-                const prog = (progressMap.get(lesson.id) ||
-                  progressMap.get(lesson.slug)) as any;
-                const isCompleted = prog?.is_completed;
-
                 const quiz =
                   quizzesByLessonMap.get(lesson.id) ||
                   quizzesByLessonMap.get(lesson.slug);
                 const quizAttempt = quiz
-                  ? attemptsByQuizMap.get(quiz.id)
-                  : null;
+                  ? attemptsByQuizMap.get(quiz.id) ||
+                    (quiz.lesson_id && attemptsByQuizMap.get(quiz.lesson_id)) ||
+                    (quiz.lesson_slug && attemptsByQuizMap.get(quiz.lesson_slug)) ||
+                    attemptsByQuizMap.get(lesson.id) ||
+                    attemptsByQuizMap.get(lesson.slug)
+                  : attemptsByQuizMap.get(lesson.id) ||
+                    attemptsByQuizMap.get(lesson.slug);
                 const quizPassed = quizAttempt?.passed;
+                const prog = (progressMap.get(lesson.id) ||
+                  progressMap.get(lesson.slug)) as any;
+                const isCompleted = Boolean(prog?.is_completed || quizPassed);
 
                 return (
                   <div key={lesson.id} className="space-y-2">
