@@ -553,8 +553,8 @@ const defaultProgressRecords: MockProgress[] = [
 const defaultQuizzes = [
   {
     id: "quiz-aerodinamica",
-    course_id: "course-1",
-    lesson_id: "lesson-1-1",
+    course_id: "11111111-1111-1111-1111-111111111101",
+    lesson_id: "11111111-1111-1111-1111-000000000001",
     lesson_slug: "principios-aerodinamica-sustentacion",
     title: "Examen de Verificación: Aerodinámica y Sustentación",
     description:
@@ -607,9 +607,9 @@ const defaultQuizzes = [
   },
   {
     id: "quiz-sixpack",
-    course_id: "course-1",
-    lesson_id: "lesson-1-2",
-    lesson_slug: "instrumentacion-cabina-sixpack",
+    course_id: "11111111-1111-1111-1111-111111111101",
+    lesson_id: "11111111-1111-1111-1111-000000000002",
+    lesson_slug: "instrumentos-cabina-altimetria",
     title: "Examen de Verificación: Instrumentación Six-Pack y Variómetros",
     description:
       "Evaluación teórica sobre relojería básica de cabina, alimentación Pitot-Estática e instrumentos giroscópicos.",
@@ -660,170 +660,184 @@ const defaultQuizzes = [
     ],
   },
   {
-    id: "quiz-meteorologia",
-    course_id: "course-2",
-    lesson_id: "lesson-2-1",
-    lesson_slug: "capas-atmosfericas-frentes-vientos",
-    title:
-      "Examen de Verificación: Capas Atmosféricas, Frentes Térmicos y Vientos",
+    id: "quiz-maniobras-vfr",
+    course_id: "11111111-1111-1111-1111-111111111101",
+    lesson_id: "11111111-1111-1111-1111-000000000003",
+    lesson_slug: "maniobras-vfr-virajes-perdidas",
+    title: "Examen de Verificación: Maniobras VFR y Virajes de Escarpado",
     description:
-      "Evaluación sobre estructura atmosférica, nubes peligrosas de desarrollo vertical y fenómenos frontales.",
+      "Evaluación sobre virajes ladeados de 45° a 60°, factor de carga y recuperación de pérdidas.",
     minPassScorePercentage: 70,
     questions: [
       {
         id: "q3-1",
         question:
-          "¿En qué capa atmosférica se desarrolla la mayor parte del vuelo VFR de instrucción y los fenómenos meteorológicos?",
-        options: ["Troposfera", "Estratosfera", "Mesosfera", "Termosfera"],
-        correctAnswerIndex: 0,
+          "¿Qué sucede con el factor de carga (G) sobre la estructura del avión durante un viraje escarpado nivelado de 60° de inclinación?",
+        options: [
+          "Permanece en 1.0 G",
+          "Se duplica alcanzando 2.0 G",
+          "Disminuye a 0.5 G",
+          "Se triplica alcanzando 3.0 G",
+        ],
+        correctAnswerIndex: 1,
         explanation:
-          "La Troposfera comprende desde la superficie hasta aproximadamente 36.000 pies y contiene el 99% del vapor de agua y clima atmosférico.",
+          "En un viraje nivelado de 60° de alabeo, la fuerza centrífuga eleva el factor de carga resultante a exactamente 2.0 G.",
       },
       {
         id: "q3-2",
         question:
-          "¿Qué tipo de nubes de gran desarrollo vertical representan el mayor riesgo de turbulencia severa, cizalladura (windshear) y granizo?",
+          "¿Cuál es el primer paso prioritario para recuperar una aeronave de una situación de pérdida aerodinámica (Stall)?",
         options: [
-          "Cirrus (CI)",
-          "Cumulonimbus (CB)",
-          "Stratus (ST)",
-          "Altocumulus (AC)",
+          "Reducir el ángulo de ataque disminuyendo la presión hacia atrás sobre la palanca de mandos",
+          "Desplegar los flaps al máximo inmediatamente",
+          "Poner el motor al ralentí",
+          "Girar el timón de dirección abruptamente",
         ],
-        correctAnswerIndex: 1,
+        correctAnswerIndex: 0,
         explanation:
-          "Los Cumulonimbus (CB) generan tormentas severas con fuertísimas corrientes ascendentes y descendentes peligrosas para el vuelo.",
+          "La prioridad absoluta ante una pérdida es bajar el morro para reducir el ángulo de ataque por debajo del valor crítico y restablecer el flujo laminar sobre el ala.",
       },
     ],
   },
   {
-    id: "quiz-metar-taf",
-    course_id: "course-2",
-    lesson_id: "lesson-2-2",
-    lesson_slug: "decodificacion-reportes-metar-taf",
-    title:
-      "Examen de Verificación: Decodificación de Reportes METAR y Pronósticos TAF",
+    id: "quiz-patrones-trafico",
+    course_id: "11111111-1111-1111-1111-111111111101",
+    lesson_id: "11111111-1111-1111-1111-000000000004",
+    lesson_slug: "patrones-trafico-comunicaciones",
+    title: "Examen de Verificación: Patrón de Tráfico y Comunicaciones VFR",
     description:
-      "Evaluación teórica sobre lectura rápida de claves meteorológicas aeronáuticas METAR y TAF.",
+      "Evaluación teórica sobre circuito de aeródromo, tramos de viento en cola, base y final.",
     minPassScorePercentage: 70,
     questions: [
       {
         id: "q4-1",
         question:
-          "En el grupo de viento METAR '24012KT', ¿qué representan estos valores?",
-        options: [
-          "Viento procedente del rumbo 240° geográfico a 12 nudos de intensidad",
-          "Temperatura de 24°C e intensidad de 12 nudos",
-          "Presión barométrica de 240 hPa a 12 km de visibilidad",
-          "Viento del rumbo 120° a 24 nudos",
-        ],
+          "¿Cuál es la altitud estándar de circuito de tránsito de aeródromo para aeronaves de aviación general sobre el terreno (AGL)?",
+        options: ["1.000 pies AGL", "500 pies AGL", "3.000 pies AGL", "2.500 pies AGL"],
         correctAnswerIndex: 0,
         explanation:
-          "Los tres primeros dígitos (240) expresan la dirección de donde proviene el viento en grados magnéticos/geográficos y los últimos (12KT) la velocidad en nudos.",
+          "La altitud estándar recomendada en aviación general para el circuito de aeródromo VFR es 1.000 pies sobre el nivel del terreno (AGL).",
       },
       {
         id: "q4-2",
         question:
-          "En la codificación METAR europea, ¿qué visibilidad horizontal representa la cifra '9999'?",
+          "¿En qué tramo del patrón de tráfico el avión vuela paralelo a la pista en sentido opuesto al aterrizaje?",
         options: [
-          "Visibilidad ilimitada superior a 10 kilómetros",
-          "Visibilidad reducida a 999 metros",
-          "Niebla densa en pista",
-          "Visibilidad de 9.999 pies",
+          "Tramo Viento en Cola (Downwind)",
+          "Tramo Base",
+          "Tramo Final",
+          "Tramo Viento Cruzado (Crosswind)",
         ],
         correctAnswerIndex: 0,
         explanation:
-          "El valor 9999 indica visibilidad excelente igual o mayor a 10.000 metros (10 km).",
+          "El tramo Viento en Cola (Downwind) se vuela de forma paralela a la pista activa en el sentido del viento predominante.",
       },
     ],
   },
   {
-    id: "quiz-prevuelo",
-    course_id: "course-3",
-    lesson_id: "lesson-3-1",
-    lesson_slug: "inspeccion-prevuelo-checklist-rampa",
-    title: "Examen de Verificación: Inspección Pre-Vuelo y Checklist de Rampa",
+    id: "quiz-metar-taf",
+    course_id: "22222222-2222-2222-2222-222222222202",
+    lesson_id: "22222222-2222-2222-2222-000000000001",
+    lesson_slug: "interpretacion-metar-taf",
+    title: "Examen de Verificación: Interpretación de METAR y TAF",
     description:
-      "Evaluación sobre la rutina Walk-Around, verificación de mandos de vuelo y purga de combustible.",
+      "Evaluación teórica sobre decodificación de reportes METAR y pronósticos de terminal TAF.",
     minPassScorePercentage: 70,
     questions: [
       {
         id: "q5-1",
         question:
-          "¿En qué sentido estandarizado se debe realizar la inspección exterior del avión (Walk-Around) en rampa?",
+          "En la codificación METAR europea, ¿qué representa la clave '24015KT'?",
         options: [
-          "En el sentido de las agujas del reloj rodeando la aeronave",
-          "Únicamente revisando el motor",
-          "De atrás hacia adelante por el fuselaje central",
-          "Sin un orden definido",
+          "Viento procedente de 240° a 15 nudos",
+          "Temperatura de 24°C con visibilidad de 15 km",
+          "Presión de 1024 hPa a 15 nudos",
+          "Visibilidad de 2400 metros a 15 nudos",
         ],
         correctAnswerIndex: 0,
         explanation:
-          "La rutina de inspección prevuelo exige seguir un circuito ordenado en sentido horario comenzando por la cabina y el ala izquierda.",
+          "Los 3 primeros dígitos (240) representan la dirección en grados y los siguientes (15KT) la velocidad del viento en nudos.",
       },
       {
         id: "q5-2",
         question:
-          "¿Por qué es crítico extraer muestras de los drenajes de combustible antes del primer vuelo del día?",
+          "¿Qué visibilidad horizontal representa la clave METAR '9999'?",
         options: [
-          "Para verificar la ausencia de agua decantada en el fondo y partículas contaminantes",
-          "Para medir el nivel de octanaje exacto",
-          "Para calentar el tanque",
-          "Para reducir el peso de despegue",
+          "Visibilidad excelente de 10 kilómetros o superior",
+          "Visibilidad reducida a 999 metros",
+          "Niebla densa en rampa",
+          "Techo de nubes a 9.999 pies",
         ],
         correctAnswerIndex: 0,
         explanation:
-          "El agua es más densa que la gasolina de aviación (AVGAS) y se deposita en el fondo de las purgas. Si no se elimina, puede causar parada de motor.",
+          "9999 indica visibilidad despejada igual o superior a 10 km.",
       },
     ],
   },
   {
-    id: "quiz-emergencias",
-    course_id: "course-3",
-    lesson_id: "lesson-3-2",
-    lesson_slug: "gestion-fallas-motor-aterrizajes-emergencia",
-    title:
-      "Examen de Verificación: Gestión de Fallas de Motor y Aterrizajes forzosos",
+    id: "quiz-crm-factor-humano",
+    course_id: "22222222-2222-2222-2222-222222222202",
+    lesson_id: "22222222-2222-2222-2222-000000000002",
+    lesson_slug: "gestion-recursos-cabina-crm",
+    title: "Examen de Verificación: Gestión de Recursos en Cabina (CRM)",
     description:
-      "Evaluación teórica sobre protocolo ABCD ante falla de motor, velocidades de planeo y llamadas de socorro.",
+      "Evaluación sobre liderazgo en vuelo, conciencia situacional y trabajo en equipo.",
     minPassScorePercentage: 70,
     questions: [
       {
         id: "q6-1",
         question:
-          "Ante una pérdida repentina de potencia del motor en vuelo de crucero, ¿cuál es la primera acción obligatoria del protocolo ABCD?",
+          "¿Cuál es el objetivo principal del Crew Resource Management (CRM) en aviación?",
         options: [
-          "A (Airspeed): Ajustar la actitud para volar a la velocidad de mejor planeo (Best Glide)",
-          "D (Declare): Gritar en la cabina",
-          "C (Checklist): Leer el manual completo",
-          "B (Best Field): Aterrizar inmediatamente en cualquier sitio sin controlar la velocidad",
+          "Optimizar el uso de todos los recursos disponibles (humanos, equipo e información) para mitigar el error operativo",
+          "Aumentar la velocidad de crucero del avión",
+          "Reducir el consumo de combustible en rampa",
+          "Eliminar el uso de listas de chequeo",
         ],
         correctAnswerIndex: 0,
         explanation:
-          "Lo primero es volar el avión y establecer la velocidad de mejor planeo (Airspeed) para maximizar la distancia y el tiempo disponible.",
-      },
-      {
-        id: "q6-2",
-        question:
-          "¿Qué código de transpondedor debe seleccionar el piloto al declarar situación de emergencia grave a bordo?",
-        options: ["7700", "7500", "7600", "7000"],
-        correctAnswerIndex: 0,
-        explanation:
-          "7700 activa la alerta de emergencia en las pantallas del control de tráfico aéreo radar.",
+          "El CRM busca maximizar la seguridad operativa mediante la comunicación fluida, toma de decisiones y prevención del error humano.",
       },
     ],
   },
   {
-    id: "quiz-ils-vor",
-    course_id: "course-4",
-    lesson_id: "lesson-4-1",
-    lesson_slug: "principios-aproximacion-ils",
-    title: "Examen de Verificación: Navegación IFR e Aproximaciones ILS/VOR",
+    id: "quiz-emergencia-windshear",
+    course_id: "22222222-2222-2222-2222-222222222202",
+    lesson_id: "22222222-2222-2222-2222-000000000003",
+    lesson_slug: "procedimientos-emergencia-cizalladura",
+    title: "Examen de Verificación: Procedimientos de Emergencia y Windshear",
     description:
-      "Evaluación teórica sobre guía lateral de Localizador y guía vertical de Senda de Planeo ILS.",
+      "Evaluación sobre maniobras de escape ante cizalladura de viento y fallas críticas.",
     minPassScorePercentage: 70,
     questions: [
       {
         id: "q7-1",
+        question:
+          "Ante la advertencia de cizalladura de viento (Windshear) en despegue o aproximación, ¿cuál es la maniobra de escape obligatoria?",
+        options: [
+          "Aplicar máxima potencia disponible inmediatamente y mantener cabeceo de ascenso alto sin cambiar configuración",
+          "Reducir motores al ralentí y picar el avión",
+          "Girar 90° a la izquierda sin aplicar potencia",
+          "Desplegar el tren de aterrizaje",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "La maniobra de escape exige potencia máxima y elevación del morro hasta el límite de pérdida para salir de la microrráfaga.",
+      },
+    ],
+  },
+  {
+    id: "quiz-ils-cat",
+    course_id: "33333333-3333-3333-3333-333333333303",
+    lesson_id: "33333333-3333-3333-3333-000000000001",
+    lesson_slug: "principios-aproximacion-ils",
+    title: "Examen de Verificación: Aproximación por Instrumentos ILS Cat I/II",
+    description:
+      "Evaluación teórica sobre Localizador, Senda de Planeo (Glide Path) y mínimos de decisión DH.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q8-1",
         question:
           "En un sistema de aterrizaje por instrumentos (ILS), ¿qué componente proporciona la guía de alineación lateral con el eje central de la pista?",
         options: [
@@ -834,57 +848,224 @@ const defaultQuizzes = [
         ],
         correctAnswerIndex: 0,
         explanation:
-          "El Localizador (LOC) emite señales de radio que guían al piloto horizontalmente hacia el eje exacto de la pista de aterrizaje.",
-      },
-      {
-        id: "q7-2",
-        question:
-          "¿Qué ángulo estándar de descenso vertical sobre el terreno suele proporcionar la Senda de Planeo (Glide Path) en un procedimiento ILS Cat I?",
-        options: ["3,0 grados", "10,0 grados", "1,5 grados", "45,0 grados"],
-        correctAnswerIndex: 0,
-        explanation:
-          "El ángulo estándar de senda de planeo óptimo en aviación comercial e instrumental es de 3,0° respecto al plano horizontal de la pista.",
-      },
-    ],
-  },
-  {
-    id: "quiz-sistemas-motor",
-    course_id: "course-5",
-    lesson_id: "lesson-5-1",
-    lesson_slug: "componentes-motor-lycoming",
-    title:
-      "Examen de Verificación: Grupo Motopropulsor Lycoming O-360 y Sistemas",
-    description:
-      "Evaluación teórica sobre arquitectura de motor aeronáutico de 4 cilindros y sistema de encendido doble por magnetos.",
-    minPassScorePercentage: 70,
-    questions: [
-      {
-        id: "q8-1",
-        question:
-          "¿Por qué los motores de aviación de pistón cuentan con un sistema de encendido doble con dos magnetos independientes?",
-        options: [
-          "Por redundancia de seguridad en vuelo y mejora en la eficiencia de combustión en la cámara",
-          "Para gastar más combustible",
-          "Porque una magneto se apaga automáticamente al despegar",
-          "Para alimentar las luces de la cabina",
-        ],
-        correctAnswerIndex: 0,
-        explanation:
-          "Cada cilindro tiene 2 bujías alimentadas por magnetos separadas. Si una magneto o bujía falla en vuelo, el motor sigue funcionando de forma segura.",
+          "El Localizador (LOC) emite señales que guían la alineación lateral con el eje de pista.",
       },
       {
         id: "q8-2",
         question:
-          "¿Qué síntoma primario advierte al piloto de la formación de hielo en el carburador en motores de aspiración?",
+          "¿Qué ángulo estándar de descenso proporciona la Senda de Planeo (Glide Path) en un ILS Cat I?",
+        options: ["3,0 grados", "10,0 grados", "1,5 grados", "5,0 grados"],
+        correctAnswerIndex: 0,
+        explanation:
+          "El ángulo estándar de senda de planeo óptimo en procedimientos de precisión ILS es de 3,0°.",
+      },
+    ],
+  },
+  {
+    id: "quiz-radioayudas-vor",
+    course_id: "33333333-3333-3333-3333-333333333303",
+    lesson_id: "33333333-3333-3333-3333-000000000002",
+    lesson_slug: "radioayudas-vor-dme-arcos",
+    title: "Examen de Verificación: Radioayudas VOR, DME y Arcos de Radiales",
+    description:
+      "Evaluación sobre navegación omnidireccional VHF, medición DME y arcos de radiales.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q9-1",
+        question:
+          "¿Qué mide el equipo medidor de distancia DME instalado a bordo de la aeronave?",
         options: [
-          "Caída gradual de las RPM del motor (o caída de la presión de admisión)",
-          "Aumento de la velocidad del avión",
-          "Encendido de las luces de navegación",
-          "Aumento inmediato de la temperatura del aceite",
+          "La distancia inclinada (Slant Range) en millas náuticas hacia la estación en tierra",
+          "La altitud barométrica sobre el mar",
+          "La velocidad indicada de impacto de aire",
+          "El ángulo de alabeo de las alas",
         ],
         correctAnswerIndex: 0,
         explanation:
-          "El hielo obstruye la garganta del carburador reduciendo el paso de mezcla aire/combustible, manifestándose con una pérdida constante de RPM.",
+          "El equipo DME mide la distancia inclinada directa en millas náuticas (NM) entre la aeronave y el transmisor en tierra.",
+      },
+    ],
+  },
+  {
+    id: "quiz-cartas-jeppesen",
+    course_id: "33333333-3333-3333-3333-333333333303",
+    lesson_id: "33333333-3333-3333-3333-000000000003",
+    lesson_slug: "interpretacion-cartas-jeppesen",
+    title: "Examen de Verificación: Interpretación de Cartas Jeppesen",
+    description:
+      "Evaluación sobre fichas SID, STAR y perfiles de altitud mínima de sector (MSA).",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q10-1",
+        question:
+          "En las cartas Jeppesen de aproximación IFR, ¿qué representa la Altitud Mínima de Sector (MSA)?",
+        options: [
+          "Altitud que garantiza un franqueamiento de obstáculos mínimo de 1.000 pies dentro de un radio de 25 NM de la radioayuda",
+          "Altitud máxima de despegue",
+          "Altitud de crucero económica",
+          "Velocidad de decisión de frenado",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "La MSA asegura un margen de seguridad de 1.000 pies sobre cualquier terreno en un radio de 25 millas náuticas.",
+      },
+    ],
+  },
+  {
+    id: "quiz-motor-lycoming",
+    course_id: "44444444-4444-4444-4444-444444444404",
+    lesson_id: "44444444-4444-4444-4444-000000000001",
+    lesson_slug: "componentes-motor-lycoming",
+    title: "Examen de Verificación: Motor Lycoming O-360 y Sistemas",
+    description:
+      "Evaluación sobre arquitectura de motor aeronáutico de 4 cilindros y encendido doble por magnetos.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q11-1",
+        question:
+          "¿Por qué los motores de aviación de pistón cuentan con un sistema de encendido doble con dos magnetos independientes?",
+        options: [
+          "Por redundancia de seguridad en vuelo y mejora en la eficiencia de combustión",
+          "Para gastar más combustible",
+          "Porque una magneto se apaga automáticamente al despegar",
+          "Para alimentar las luces de navegación",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "Las magnetos dobles garantizan que si una falla, el motor continúa funcionando de forma segura con la segunda unidad.",
+      },
+    ],
+  },
+  {
+    id: "quiz-sistema-electrico",
+    course_id: "44444444-4444-4444-4444-444444444404",
+    lesson_id: "44444444-4444-4444-4444-000000000002",
+    lesson_slug: "sistema-electrico-abordo-alternadores",
+    title: "Examen de Verificación: Sistema Eléctrico de Abordo",
+    description:
+      "Evaluación sobre alternadores de aviación, disyuntores térmicos (Circuit Breakers) y batería principal.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q12-1",
+        question:
+          "En caso de falla total del alternador principal en vuelo IFR nocturno, ¿cuál es la acción prioritaria recomendada?",
+        options: [
+          "Desconectar las cargas eléctricas no esenciales (Essential Bus Only) para preservar la batería de a bordo",
+          "Aumentar las RPM del motor al máximo",
+          "Apagar las magnetos de encendido",
+          "Reiniciar el transpondedor continuamente",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "Se deben apagar los equipos secundarios para extender la autonomía de la batería a los instrumentos esenciales de vuelo.",
+      },
+    ],
+  },
+  {
+    id: "quiz-paso-variable",
+    course_id: "44444444-4444-4444-4444-444444444404",
+    lesson_id: "44444444-4444-4444-4444-000000000003",
+    lesson_slug: "helices-paso-variable-rendimiento",
+    title: "Examen de Verificación: Hélices de Paso Variable",
+    description:
+      "Evaluación sobre gobernador hidráulico de hélice, presión de admisión (Manifold Pressure) y RPM.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q13-1",
+        question:
+          "¿Qué ventaja proporciona una hélice de velocidad constante y paso variable frente a una de paso fijo?",
+        options: [
+          "Permite mantener las RPM óptimas del motor tanto en ascenso de alta potencia como en crucero de alta velocidad",
+          "Reduce el peso total del motor en un 50%",
+          "Elimina la necesidad de utilizar combustible de aviación",
+          "Evita las pérdidas aerodinámicas del ala",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "El gobernador ajusta el ángulo de las palas para mantener la hélice en su régimen de eficiencia máxima en todas las fases de vuelo.",
+      },
+    ],
+  },
+  {
+    id: "quiz-arinc429",
+    course_id: "55555555-5555-5555-5555-555555555505",
+    lesson_id: "55555555-5555-5555-5555-000000000001",
+    lesson_slug: "fundamentos-ciberseguridad-arinc429",
+    title: "Examen de Verificación: Ciberseguridad en Buses ARINC 429",
+    description:
+      "Evaluación sobre topología de buses de datos de aviónica, trazabilidad de etiquetas y protección Blue Team.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q14-1",
+        question:
+          "¿Cuál es la característica principal de transmisión física del bus de datos serie de aviación ARINC 429?",
+        options: [
+          "Transmisión unidireccional por par trenzado apantallado con un único emisor por bus",
+          "Conexión Wi-Fi bidireccional no encriptada",
+          "Bus paralelo de 64 bits",
+          "Transmisión de fibra óptica monomodo sin etiquetas",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "ARINC 429 es un estándar serie unidireccional de un solo transmisor (Simplex) que evita colisiones en la red de aviónica.",
+      },
+    ],
+  },
+  {
+    id: "quiz-fms-adsb",
+    course_id: "55555555-5555-5555-5555-555555555505",
+    lesson_id: "55555555-5555-5555-5555-000000000002",
+    lesson_slug: "proteccion-sistemas-fms-ads-b",
+    title: "Examen de Verificación: Protección de FMS y Protocolos ADS-B",
+    description:
+      "Evaluación sobre validación de bases de datos NavData y mitigación de ADS-B Spoofing.",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q15-1",
+        question:
+          "¿Qué riesgo de ciberseguridad representa la falta de cifrado o autenticación en las emisiones de ADS-B Out?",
+        options: [
+          "Vulnerabilidad a ataques de suplantación de señal (ADS-B Spoofing) creando aeronaves fantasma en las pantallas TCAS",
+          "Aumento involuntario de la velocidad de vuelo",
+          "Apagado repentino del motor principal",
+          "Bloqueo hidráulico de los flaps",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "Sin autenticación, un atacante puede emitir tramas ADS-B falsas para proyectar tráfico inexistente en los sistemas de vigilancia de a bordo.",
+      },
+    ],
+  },
+  {
+    id: "quiz-gps-jamming",
+    course_id: "55555555-5555-5555-5555-555555555505",
+    lesson_id: "55555555-5555-5555-5555-000000000003",
+    lesson_slug: "prevencion-interferencia-gps-jamming",
+    title: "Examen de Verificación: Prevención de Interferencia GPS y Jamming",
+    description:
+      "Evaluación sobre interferencias de radiofrecuencia GNSS, receptores RAIM y conmutación inercial (IRS).",
+    minPassScorePercentage: 70,
+    questions: [
+      {
+        id: "q16-1",
+        question:
+          "¿Qué tecnología de a bordo permite a la aeronave continuar con una navegación de alta precisión cuando las señales GPS sufren inhibición (Jamming)?",
+        options: [
+          "Sistemas de Referencia Inercial (IRS / INS) acoplados con filtrado Kalman",
+          "Radio comercial AM/FM",
+          "Brújula de pie de rampa",
+          "BOCINA de alerta audible exterior",
+        ],
+        correctAnswerIndex: 0,
+        explanation:
+          "Los giróscopos láser y acelerómetros de las plataformas inerciales (IRS) mantienen la posición sin depender de señales de satélite externas.",
       },
     ],
   },
