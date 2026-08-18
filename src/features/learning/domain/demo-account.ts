@@ -23,3 +23,7 @@ const demoAccounts: Record<DemoRole, DemoAccount> = {
 export function getDemoAccount(role: DemoRole): DemoAccount {
   return demoAccounts[role];
 }
+
+export function getDemoRedirectPath(role: DemoRole): "/courses" | "/admin" {
+  return role === "student" ? "/courses" : "/admin";
+}

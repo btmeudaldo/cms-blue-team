@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
 import {
   getDemoAccount,
+  getDemoRedirectPath,
   type DemoRole,
 } from "@/features/learning/domain/demo-account";
 import { mockStore } from "@/shared/lib/mock-store";
@@ -39,6 +40,7 @@ export async function signInAction(formData: FormData) {
   const isValidPassword =
     password === "blueteam" ||
     password === process.env.DEMO_STUDENT_PASSWORD ||
+    password === process.env.DEMO_INSTRUCTOR_PASSWORD ||
     password === process.env.DEMO_ADMIN_PASSWORD;
 
   try {
@@ -136,18 +138,30 @@ export async function demoUserSelectLoginAction(email: string, role: string) {
 }
 
 export async function demoLoginAction(targetRole: DemoRole) {
-  const cookieStore = await cookies();
-  const email =
-    targetRole === "admin"
-      ? "admin@blueteam.com"
-      : targetRole === "instructor"
-        ? "instructor@blueteam.com"
-        : "student@blueteam.com";
+  const demoAccount = getDemoAccount(targetRole);
+  const redirectTo = getDemoRedirectPath(targetRole);
 
-  cookieStore.set("demo_email", email, { path: "/" });
+  try {
+    const supabase = await createSupabaseServerClient();
+    const result = await withTimeout(
+      supabase.auth.signInWithPassword(demoAccount),
+    );
+
+    if (!result.error && result.data.user) {
+      const cookieStore = await cookies();
+      cookieStore.set("demo_email", "", { path: "/", expires: new Date(0) });
+      cookieStore.set("demo_role", "", { path: "/", expires: new Date(0) });
+      return { redirectTo };
+    }
+  } catch {
+    // The demo fallback below keeps the application usable when Auth is offline.
+  }
+
+  const cookieStore = await cookies();
+  cookieStore.set("demo_email", demoAccount.email, { path: "/" });
   cookieStore.set("demo_role", targetRole, { path: "/" });
 
-  return { redirectTo: targetRole === "student" ? "/courses" : "/admin" };
+  return { redirectTo };
 }
 
 export async function signOutAction() {
