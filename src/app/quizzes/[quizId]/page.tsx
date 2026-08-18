@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/shared/components/header";
 import { QuizModule } from "@/features/learning/components/quiz-module";
 import {
+  getResilientCourseDetail,
   getResilientQuiz,
   getResilientQuizAttempts,
   getResilientUser,
@@ -15,7 +16,7 @@ export default async function StandaloneQuizPage({
   params: Promise<{ quizId: string }>;
 }) {
   const { quizId } = await params;
-  const { user, profile } = await getResilientUser();
+  const { user, profile, isDemo } = await getResilientUser();
 
   const [quiz, attempts] = await Promise.all([
     getResilientQuiz(quizId),
@@ -23,6 +24,36 @@ export default async function StandaloneQuizPage({
   ]);
 
   if (!quiz) notFound();
+
+  let nextLessonUrl: string | null = null;
+  let nextLessonTitle: string | null = null;
+
+  if (quiz.course_id) {
+    try {
+      const course = await getResilientCourseDetail(quiz.course_id, isDemo);
+      if (course && course.lessons && course.lessons.length > 0) {
+        const lessons = [...course.lessons].sort(
+          (a: any, b: any) => (a.sequence_order || 0) - (b.sequence_order || 0),
+        );
+        const currentIndex = lessons.findIndex(
+          (l: any) =>
+            l.id === quiz.lesson_id || l.slug === (quiz as any).lesson_slug,
+        );
+
+        if (currentIndex !== -1 && currentIndex < lessons.length - 1) {
+          const nextLesson = lessons[currentIndex + 1];
+          nextLessonUrl = `/courses/${course.id}/lessons/${nextLesson.id}`;
+          nextLessonTitle = nextLesson.title;
+        } else if (currentIndex === lessons.length - 1) {
+          nextLessonUrl = `/courses/${course.id}`;
+          nextLessonTitle = "Volver al Curso";
+        } else {
+          nextLessonUrl = `/courses/${course.id}`;
+          nextLessonTitle = "Volver al Curso";
+        }
+      }
+    } catch {}
+  }
 
   const userQuizAttempts = (attempts || []).filter(
     (a: any) => a.quiz_id === quiz.id,
@@ -67,7 +98,12 @@ export default async function StandaloneQuizPage({
         </div>
 
         {/* Interactive Standalone Quiz Module */}
-        <QuizModule quiz={quiz} previousAttempt={previousAttempt} />
+        <QuizModule
+          quiz={quiz}
+          previousAttempt={previousAttempt}
+          nextLessonUrl={nextLessonUrl}
+          nextLessonTitle={nextLessonTitle}
+        />
       </main>
     </div>
   );

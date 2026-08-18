@@ -423,12 +423,8 @@ export async function getResilientEnrollments() {
 }
 
 export async function getResilientQuizzes() {
-  const mockQuizzes = mockStore.getQuizzes();
   const map = new Map<string, any>();
-  for (const q of mockQuizzes) {
-    map.set(q.id, q);
-  }
-
+  
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
@@ -446,7 +442,6 @@ export async function getResilientQuizzes() {
 }
 
 export async function getResilientQuiz(quizId: string) {
-  const mockQuiz = mockStore.getQuizById(quizId);
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
@@ -456,8 +451,9 @@ export async function getResilientQuiz(quizId: string) {
     if (result && !result.error && result.data) {
       return normalizeQuiz(result.data);
     }
+    if (result && !result.error) return null;
   } catch (err) {}
-  return mockQuiz;
+  return null;
 }
 
 export async function getResilientQuizForLesson(lessonId: string) {
@@ -481,7 +477,6 @@ export async function getResilientQuizForLesson(lessonId: string) {
 }
 
 export async function getResilientQuizAttempts(userId?: string) {
-  const mockAttempts = mockStore.getQuizAttempts(userId);
   try {
     const supabase = await createSupabaseServerClient();
     let query = supabase.from("quiz_attempts").select("*");
@@ -493,15 +488,9 @@ export async function getResilientQuizAttempts(userId?: string) {
       1500,
     ).catch(() => null);
 
-    const dbData = result && !result.error && result.data ? result.data : [];
-    const map = new Map<string, any>();
-    for (const ma of mockAttempts) {
-      map.set(ma.id || `${ma.user_id}_${ma.quiz_id}_${ma.completed_at}`, ma);
+    if (result && !result.error && result.data) {
+      return result.data;
     }
-    for (const da of dbData) {
-      map.set(da.id || `${da.user_id}_${da.quiz_id}_${da.completed_at}`, da);
-    }
-    return Array.from(map.values());
   } catch (err) {}
-  return mockAttempts;
+  return [];
 }

@@ -30,6 +30,8 @@ type QuizModuleProps = {
   previousAttempt?: QuizAttemptResult | null;
   isEmbedded?: boolean;
   onComplete?: (result: any) => void;
+  nextLessonUrl?: string | null;
+  nextLessonTitle?: string | null;
 };
 
 export function QuizModule({
@@ -37,6 +39,8 @@ export function QuizModule({
   previousAttempt = null,
   isEmbedded = false,
   onComplete,
+  nextLessonUrl = null,
+  nextLessonTitle = null,
 }: QuizModuleProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<
@@ -253,25 +257,31 @@ export function QuizModule({
           <button
             type="button"
             onClick={() => setShowReviewMode(true)}
-            className="w-full sm:w-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer shadow-xs"
+            className="w-full sm:w-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer shadow-xs inline-flex items-center justify-center gap-1.5"
           >
-            🔍 Revisar Explicaciones
+            <span>🔍</span>
+            <span>Revisar Explicaciones</span>
           </button>
 
           <button
             type="button"
             onClick={handleRetake}
-            className="w-full sm:w-auto rounded-xl bg-indigo-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-indigo-700 transition-all cursor-pointer shadow-xs"
+            className="w-full sm:w-auto rounded-xl bg-indigo-600 dark:bg-indigo-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-indigo-700 dark:hover:bg-indigo-700 transition-all cursor-pointer shadow-xs inline-flex items-center justify-center gap-1.5"
           >
-            🔄 Reintentar Examen
+            <span>🔄</span>
+            <span>Reintentar Examen</span>
           </button>
 
           {!isEmbedded && (
             <Link
-              href="/quizzes"
-              className="w-full sm:w-auto rounded-xl bg-[#1a80ff] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all text-center shadow-xs"
+              href={
+                nextLessonUrl ||
+                (quiz.course_id ? `/courses/${quiz.course_id}` : "/courses")
+              }
+              className="w-full sm:w-auto rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] px-5 py-2.5 text-xs font-bold text-white transition-all text-center shadow-xs inline-flex items-center justify-center gap-1.5"
             >
-              Ver Más Evaluaciones &rarr;
+              <span>{nextLessonTitle ? "Siguiente Lección" : "Siguiente Lección"}</span>
+              <span>&rarr;</span>
             </Link>
           )}
         </div>
@@ -306,6 +316,15 @@ export function QuizModule({
         </div>
 
         <div className="flex items-center gap-3">
+          {showReviewMode && (
+            <button
+              type="button"
+              onClick={() => setShowReviewMode(false)}
+              className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer"
+            >
+              &larr; Ver Calificación
+            </button>
+          )}
           <div className="flex items-center gap-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 text-xs font-mono font-bold text-slate-700 dark:text-slate-300">
             <span>⏱️</span>
             <span>
@@ -420,10 +439,30 @@ export function QuizModule({
           >
             Siguiente &rarr;
           </button>
+        ) : showReviewMode ? (
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setShowReviewMode(false)}
+              className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 px-4 py-2 text-xs font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer"
+            >
+              Ver Resumen
+            </button>
+            <Link
+              href={
+                nextLessonUrl ||
+                (quiz.course_id ? `/courses/${quiz.course_id}` : "/courses")
+              }
+              className="rounded-xl bg-[#1a80ff] px-5 py-2 text-xs font-bold text-white hover:bg-[#0066e6] transition-all shadow-sm inline-flex items-center gap-1"
+            >
+              <span>Siguiente Lección</span>
+              <span>&rarr;</span>
+            </Link>
+          </div>
         ) : (
           <button
             type="button"
-            disabled={isSubmitting || (!allAnswered && !showReviewMode)}
+            disabled={isSubmitting || !allAnswered}
             onClick={handleSubmitQuiz}
             className="rounded-xl bg-[#1a80ff] px-6 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] disabled:opacity-50 transition-all shadow-sm cursor-pointer"
           >

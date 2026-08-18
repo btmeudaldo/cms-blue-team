@@ -58,46 +58,36 @@ export async function submitQuizAttemptAction(
   const minScore = quiz?.minPassScorePercentage || 70;
   const passed = scorePercentage >= minScore;
 
-  // 3. Immediately store attempt in resilient store
-  const mockAttempt = mockStore.submitQuizAttempt(
-    user.id,
-    quiz?.id || quizId,
-    answers,
-    elapsedSeconds,
-  );
+  // 3. Attempt persistent database save
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { error } = await supabase
+      .from("quiz_attempts")
+      .upsert(
+        {
+          id: attemptId,
+          user_id: user.id,
+          quiz_id: quiz?.id || quizId,
+          score_percentage: scorePercentage,
+          correct_count: correctCount,
+          total_questions: totalQuestions,
+          passed,
+          elapsed_seconds: elapsedSeconds,
+          completed_at: completedAt,
+        },
+        { onConflict: "id" },
+      );
 
-  // 4. Attempt persistent database save if user is logged into Supabase
-  if (!session.isDemo) {
-    try {
-      const supabase = await createSupabaseServerClient();
-      await withTimeout(
-        supabase
-          .from("quiz_attempts")
-          .upsert(
-            {
-              id: attemptId,
-              user_id: user.id,
-              quiz_id: quiz?.id || quizId,
-              score_percentage: scorePercentage,
-              correct_count: correctCount,
-              total_questions: totalQuestions,
-              passed,
-              elapsed_seconds: elapsedSeconds,
-              completed_at: completedAt,
-            },
-            { onConflict: "id" },
-          ),
-        1500,
-      ).catch((err) => {
-        console.warn("Supabase quiz_attempts upsert fallback:", err?.message || err);
-        return null;
-      });
-    } catch (err) {
-      console.warn("Supabase client error in quiz submission:", err);
+    if (error) {
+      console.warn("Supabase quiz_attempts upsert failed:", error.message);
+      return { error: "No se pudo guardar el examen en la base de datos." };
     }
+  } catch (err: any) {
+    console.warn("Supabase client error in quiz submission:", err);
+    return { error: "Ocurrió un error al contactar la base de datos." };
   }
 
-  // 5. Revalidate Next.js caches for instant UI updates
+  // 4. Revalidate Next.js caches for instant UI updates
   revalidatePath("/courses");
   revalidatePath("/quizzes");
   revalidatePath("/admin/progress");
@@ -111,14 +101,8 @@ export async function submitQuizAttemptAction(
 
   return {
     success: true,
-    scorePercentage,
-    correctCount,
-    totalQuestions,
-    passed,
-    minScore,
-    attempt: mockAttempt || {
+    attempt: {
       id: attemptId,
-      user_id: user.id,
       quiz_id: quiz?.id || quizId,
       score_percentage: scorePercentage,
       correct_count: correctCount,
