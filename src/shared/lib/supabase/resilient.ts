@@ -26,6 +26,14 @@ function withTimeout<T>(
   });
 }
 
+function normalizeQuiz(quiz: any) {
+  return {
+    ...quiz,
+    minPassScorePercentage:
+      quiz.minPassScorePercentage ?? quiz.min_pass_score_percentage ?? 70,
+  };
+}
+
 export const getResilientUser = cache(async function getResilientUser() {
   const cookieStore = await cookies();
   const demoRoleCookie = cookieStore.get("demo_role")?.value;
@@ -33,10 +41,9 @@ export const getResilientUser = cache(async function getResilientUser() {
 
   try {
     const supabase = await createSupabaseServerClient();
-    const result: any = await withTimeout(
-      supabase.auth.getUser(),
-      1500,
-    ).catch(() => null);
+    const result: any = await withTimeout(supabase.auth.getUser(), 1500).catch(
+      () => null,
+    );
 
     if (result?.data?.user) {
       const user = result.data.user;
@@ -466,7 +473,7 @@ export async function getResilientQuizzes() {
     );
     if (result && !result.error && result.data && result.data.length > 0) {
       for (const dq of result.data) {
-        map.set(dq.id, dq);
+        map.set(dq.id, normalizeQuiz(dq));
       }
     }
   } catch (err) {}
@@ -483,7 +490,7 @@ export async function getResilientQuiz(quizId: string) {
       1500,
     );
     if (result && !result.error && result.data) {
-      return result.data;
+      return normalizeQuiz(result.data);
     }
   } catch (err) {}
   return mockQuiz;
@@ -494,12 +501,17 @@ export async function getResilientQuizForLesson(lessonId: string) {
   try {
     const supabase = await createSupabaseServerClient();
     const result: any = await withTimeout(
-      supabase.from("quizzes").select("*").eq("lesson_id", lessonId).maybeSingle(),
+      supabase
+        .from("quizzes")
+        .select("*")
+        .eq("lesson_id", lessonId)
+        .maybeSingle(),
       1500,
     );
     if (result && !result.error && result.data) {
-      return result.data;
+      return normalizeQuiz(result.data);
     }
+    if (result && !result.error) return null;
   } catch (err) {}
   return mockQuiz;
 }
@@ -529,4 +541,3 @@ export async function getResilientQuizAttempts(userId?: string) {
   } catch (err) {}
   return mockAttempts;
 }
-

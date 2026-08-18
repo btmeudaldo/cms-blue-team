@@ -201,7 +201,8 @@ export function StudentDossierView({
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-100 dark:border-slate-800 pb-6">
               <div className="flex items-center gap-4">
                 <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1a80ff] to-[#004fc2] text-white font-extrabold text-2xl shadow-md">
-                  {(selectedStudent.full_name || selectedStudent.email)[0].toUpperCase()}
+                  {(selectedStudent.full_name ||
+                    selectedStudent.email)[0].toUpperCase()}
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
@@ -479,7 +480,8 @@ export function StudentDossierView({
                                 <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 dark:bg-rose-950/60 px-2.5 py-1 text-xs font-bold text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
                                   {evaluation.statusLabel}
                                 </span>
-                              ) : evaluation.statusBadgeVariant === "warning" ? (
+                              ) : evaluation.statusBadgeVariant ===
+                                "warning" ? (
                                 <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 dark:bg-amber-950/60 px-2.5 py-1 text-xs font-bold text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
                                   {evaluation.statusLabel}
                                 </span>

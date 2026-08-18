@@ -46,8 +46,9 @@ export default async function QuizzesListPage() {
               Exámenes y Quizzes de Aviación
             </h1>
             <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed">
-              Pon a prueba tus conocimientos en Aerodinámica, Reglamentación VFR/IFR,
-              Meteorología e Instrumentos con evaluación inmediata de nota (mín. 70%).
+              Pon a prueba tus conocimientos en Aerodinámica, Reglamentación
+              VFR/IFR, Meteorología e Instrumentos con evaluación inmediata de
+              nota (mín. 70%).
             </p>
           </div>
         </div>
@@ -114,7 +115,9 @@ export default async function QuizzesListPage() {
                       href={`/quizzes/${quiz.id}`}
                       className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2.5 text-xs font-bold shadow-xs group-hover:bg-[#1a80ff] transition-colors"
                     >
-                      <span>{attempt ? "Reintentar Examen" : "Iniciar Examen"}</span>
+                      <span>
+                        {attempt ? "Reintentar Examen" : "Iniciar Examen"}
+                      </span>
                       <span>&rarr;</span>
                     </Link>
                   </div>

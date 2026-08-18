@@ -3,7 +3,27 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { submitQuizAttemptAction } from "@/app/actions/quiz.actions";
+import {
+  addPendingQuizAttempt,
+  removePendingQuizAttempt,
+  type PendingQuizAttempt,
+} from "../domain/quiz-attempt-queue";
 import type { Quiz, QuizAttemptResult } from "../domain/quiz-types";
+
+const PENDING_ATTEMPTS_STORAGE_KEY = "cms.pending-quiz-attempts";
+
+function readPendingAttempts(): PendingQuizAttempt[] {
+  try {
+    const storedAttempts = localStorage.getItem(PENDING_ATTEMPTS_STORAGE_KEY);
+    return storedAttempts ? JSON.parse(storedAttempts) : [];
+  } catch {
+    return [];
+  }
+}
+
+function writePendingAttempts(attempts: PendingQuizAttempt[]) {
+  localStorage.setItem(PENDING_ATTEMPTS_STORAGE_KEY, JSON.stringify(attempts));
+}
 
 type QuizModuleProps = {
   quiz: Quiz;
@@ -19,7 +39,9 @@ export function QuizModule({
   onComplete,
 }: QuizModuleProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
+  const [selectedAnswers, setSelectedAnswers] = useState<
+    Record<string, number>
+  >({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [attemptResult, setAttemptResult] = useState<{
     scorePercentage: number;
@@ -41,6 +63,43 @@ export function QuizModule({
 
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [showReviewMode, setShowReviewMode] = useState(false);
+  const [isPendingSync, setIsPendingSync] = useState(false);
+
+  async function syncAttempt(attempt: PendingQuizAttempt) {
+    const response = await submitQuizAttemptAction(
+      attempt.quizId,
+      attempt.answers,
+      attempt.elapsedSeconds,
+      attempt.id,
+      attempt.completedAt,
+    );
+
+    if (response.success) {
+      writePendingAttempts(
+        removePendingQuizAttempt(readPendingAttempts(), attempt.id),
+      );
+      setIsPendingSync(false);
+      return response;
+    }
+
+    setIsPendingSync(true);
+    return response;
+  }
+
+  useEffect(() => {
+    const syncPendingAttempts = async () => {
+      const pendingAttempts = readPendingAttempts().filter(
+        (attempt) => attempt.quizId === quiz.id,
+      );
+      for (const pendingAttempt of pendingAttempts) {
+        await syncAttempt(pendingAttempt);
+      }
+    };
+
+    void syncPendingAttempts();
+    window.addEventListener("online", syncPendingAttempts);
+    return () => window.removeEventListener("online", syncPendingAttempts);
+  }, [quiz.id]);
 
   useEffect(() => {
     if (attemptResult && !showReviewMode) return;
@@ -66,25 +125,39 @@ export function QuizModule({
 
   async function handleSubmitQuiz() {
     setIsSubmitting(true);
+    const correctCount = questions.filter(
+      (question) =>
+        selectedAnswers[question.id] === question.correctAnswerIndex,
+    ).length;
+    const scorePercentage = Math.round((correctCount / questions.length) * 100);
+    const minScore = quiz.minPassScorePercentage || 70;
+    const pendingAttempt: PendingQuizAttempt = {
+      id: crypto.randomUUID(),
+      quizId: quiz.id,
+      answers: selectedAnswers,
+      elapsedSeconds,
+      completedAt: new Date().toISOString(),
+    };
+
+    writePendingAttempts(
+      addPendingQuizAttempt(readPendingAttempts(), pendingAttempt),
+    );
+    setAttemptResult({
+      scorePercentage,
+      correctCount,
+      totalQuestions: questions.length,
+      passed: scorePercentage >= minScore,
+      minScore,
+    });
+
     try {
-      const res = await submitQuizAttemptAction(
-        quiz.id,
-        selectedAnswers,
-        elapsedSeconds,
-      );
+      const res = await syncAttempt(pendingAttempt);
 
       if (res.success) {
-        setAttemptResult({
-          scorePercentage: res.scorePercentage,
-          correctCount: res.correctCount,
-          totalQuestions: res.totalQuestions,
-          passed: res.passed,
-          minScore: res.minScore,
-        });
         if (onComplete) onComplete(res);
       }
     } catch (err) {
-      console.error("[QuizModule] submission error:", err);
+      setIsPendingSync(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -131,6 +204,16 @@ export function QuizModule({
               ? `Has obtenido un ${attemptResult.scorePercentage}% de aciertos, superando la nota mínima exigida del ${attemptResult.minScore}%.`
               : `Obtuviste un ${attemptResult.scorePercentage}% de aciertos. Para aprobar necesitas alcanzar al menos un ${attemptResult.minScore}%.`}
           </p>
+
+          {isPendingSync && (
+            <p
+              className="mx-auto max-w-md rounded-xl bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-800 dark:bg-amber-950/40 dark:text-amber-200"
+              role="status"
+            >
+              Resultado guardado en este dispositivo y pendiente de sincronizar.
+              No necesitas repetir el examen.
+            </p>
+          )}
         </div>
 
         {/* Executive Score Card */}
@@ -267,8 +350,7 @@ export function QuizModule({
         {/* Options List */}
         <div className="space-y-3">
           {currentQuestion.options.map((option, optIdx) => {
-            const isSelected =
-              selectedAnswers[currentQuestion.id] === optIdx;
+            const isSelected = selectedAnswers[currentQuestion.id] === optIdx;
 
             return (
               <button

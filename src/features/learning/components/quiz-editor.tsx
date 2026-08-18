@@ -45,7 +45,8 @@ export function QuizEditor({
       : [
           {
             id: `q-${Date.now()}-1`,
-            question: "¿Cuál es el concepto principal expuesto en esta lección?",
+            question:
+              "¿Cuál es el concepto principal expuesto en esta lección?",
             options: [
               "Opción A: Concepto o procedimiento correcto",
               "Opción B: Alternativa incorrecta 1",
@@ -69,12 +70,7 @@ export function QuizEditor({
     const newQ: Question = {
       id: `q-${Date.now()}-${questions.length + 1}`,
       question: "Nueva pregunta teórica...",
-      options: [
-        "Opción A",
-        "Opción B",
-        "Opción C",
-        "Opción D",
-      ],
+      options: ["Opción A", "Opción B", "Opción C", "Opción D"],
       correctAnswerIndex: 0,
       explanation: "Explicación de la respuesta...",
     };
@@ -101,11 +97,7 @@ export function QuizEditor({
     setQuestions(updated);
   }
 
-  function handleOptionChange(
-    qIndex: number,
-    oIndex: number,
-    value: string,
-  ) {
+  function handleOptionChange(qIndex: number, oIndex: number, value: string) {
     const updated = [...questions];
     const newOptions = [...updated[qIndex].options];
     newOptions[oIndex] = value;
@@ -149,7 +141,8 @@ export function QuizEditor({
             Preguntas y Opciones de Evaluación
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            Define las preguntas de opción múltiple, alternativas y explicaciones pedagógicas para esta lección.
+            Define las preguntas de opción múltiple, alternativas y
+            explicaciones pedagógicas para esta lección.
           </p>
         </div>
 
@@ -216,7 +209,8 @@ export function QuizEditor({
             className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-sm font-bold text-slate-900 dark:text-white"
           />
           <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-1">
-            Porcentaje necesario para aprobar el examen (estándar aviación: 70%).
+            Porcentaje necesario para aprobar el examen (estándar aviación:
+            70%).
           </p>
         </div>
       </div>

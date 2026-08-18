@@ -40,7 +40,7 @@ export async function completeLessonAction(
   try {
     const supabase = await createSupabaseServerClient();
     const now = new Date().toISOString();
-    
+
     // Direct upsert to user_lesson_progress table
     const { error: upsertErr } = await supabase
       .from("user_lesson_progress")

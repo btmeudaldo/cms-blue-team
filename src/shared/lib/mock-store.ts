@@ -653,7 +653,8 @@ const defaultQuizzes = [
     course_id: "course-2",
     lesson_id: "lesson-2-1",
     lesson_slug: "capas-atmosfericas-frentes-vientos",
-    title: "Examen de Verificación: Capas Atmosféricas, Frentes Térmicos y Vientos",
+    title:
+      "Examen de Verificación: Capas Atmosféricas, Frentes Térmicos y Vientos",
     description:
       "Evaluación sobre estructura atmosférica, nubes peligrosas de desarrollo vertical y fenómenos frontales.",
     minPassScorePercentage: 70,
@@ -671,7 +672,12 @@ const defaultQuizzes = [
         id: "q3-2",
         question:
           "¿Qué tipo de nubes de gran desarrollo vertical representan el mayor riesgo de turbulencia severa, cizalladura (windshear) y granizo?",
-        options: ["Cirrus (CI)", "Cumulonimbus (CB)", "Stratus (ST)", "Altocumulus (AC)"],
+        options: [
+          "Cirrus (CI)",
+          "Cumulonimbus (CB)",
+          "Stratus (ST)",
+          "Altocumulus (AC)",
+        ],
         correctAnswerIndex: 1,
         explanation:
           "Los Cumulonimbus (CB) generan tormentas severas con fuertísimas corrientes ascendentes y descendentes peligrosas para el vuelo.",
@@ -683,7 +689,8 @@ const defaultQuizzes = [
     course_id: "course-2",
     lesson_id: "lesson-2-2",
     lesson_slug: "decodificacion-reportes-metar-taf",
-    title: "Examen de Verificación: Decodificación de Reportes METAR y Pronósticos TAF",
+    title:
+      "Examen de Verificación: Decodificación de Reportes METAR y Pronósticos TAF",
     description:
       "Evaluación teórica sobre lectura rápida de claves meteorológicas aeronáuticas METAR y TAF.",
     minPassScorePercentage: 70,
@@ -763,7 +770,8 @@ const defaultQuizzes = [
     course_id: "course-3",
     lesson_id: "lesson-3-2",
     lesson_slug: "gestion-fallas-motor-aterrizajes-emergencia",
-    title: "Examen de Verificación: Gestión de Fallas de Motor y Aterrizajes forzosos",
+    title:
+      "Examen de Verificación: Gestión de Fallas de Motor y Aterrizajes forzosos",
     description:
       "Evaluación teórica sobre protocolo ABCD ante falla de motor, velocidades de planeo y llamadas de socorro.",
     minPassScorePercentage: 70,
@@ -833,7 +841,8 @@ const defaultQuizzes = [
     course_id: "course-5",
     lesson_id: "lesson-5-1",
     lesson_slug: "componentes-motor-lycoming",
-    title: "Examen de Verificación: Grupo Motopropulsor Lycoming O-360 y Sistemas",
+    title:
+      "Examen de Verificación: Grupo Motopropulsor Lycoming O-360 y Sistemas",
     description:
       "Evaluación teórica sobre arquitectura de motor aeronáutico de 4 cilindros y sistema de encendido doble por magnetos.",
     minPassScorePercentage: 70,
@@ -1152,13 +1161,17 @@ export const mockStore = {
   },
   saveQuiz(courseId: string, lessonId: string, quizData: any) {
     let existing = defaultQuizzes.find(
-      (q) => q.lesson_id === lessonId || q.id === quizData.id || q.id === `quiz-${lessonId}`,
+      (q) =>
+        q.lesson_id === lessonId ||
+        q.id === quizData.id ||
+        q.id === `quiz-${lessonId}`,
     );
 
     if (existing) {
       existing.title = quizData.title;
       existing.description = quizData.description;
-      existing.minPassScorePercentage = Number(quizData.minPassScorePercentage) || 70;
+      existing.minPassScorePercentage =
+        Number(quizData.minPassScorePercentage) || 70;
       existing.questions = quizData.questions;
       return existing;
     } else {

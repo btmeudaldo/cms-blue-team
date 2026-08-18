@@ -42,7 +42,8 @@ export default async function StudentCourseDetailPage({
   const quizzesByLessonMap = new Map<string, any>();
   for (const q of quizzes || []) {
     if (q.lesson_id) quizzesByLessonMap.set(q.lesson_id, q);
-    if ((q as any).lesson_slug) quizzesByLessonMap.set((q as any).lesson_slug, q);
+    if ((q as any).lesson_slug)
+      quizzesByLessonMap.set((q as any).lesson_slug, q);
     quizzesByLessonMap.set(q.id, q);
   }
 
@@ -168,10 +169,13 @@ export default async function StudentCourseDetailPage({
           ) : (
             <div className="space-y-4">
               {lessons.map((lesson: any, index: number) => {
-                const prog = (progressMap.get(lesson.id) || progressMap.get(lesson.slug)) as any;
+                const prog = (progressMap.get(lesson.id) ||
+                  progressMap.get(lesson.slug)) as any;
                 const isCompleted = prog?.is_completed;
 
-                const quiz = quizzesByLessonMap.get(lesson.id) || quizzesByLessonMap.get(lesson.slug);
+                const quiz =
+                  quizzesByLessonMap.get(lesson.id) ||
+                  quizzesByLessonMap.get(lesson.slug);
                 const quizAttempt = quiz
                   ? attemptsByQuizMap.get(quiz.id)
                   : null;
@@ -207,8 +211,8 @@ export default async function StudentCourseDetailPage({
                             )}
                           </div>
                           <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                            {lesson.word_count || 0} palabras &middot; Tiempo mín.
-                            exigido: {lesson.min_seconds}s
+                            {lesson.word_count || 0} palabras &middot; Tiempo
+                            mín. exigido: {lesson.min_seconds}s
                           </p>
                         </div>
                       </div>
@@ -235,7 +239,8 @@ export default async function StudentCourseDetailPage({
                               <span>📝</span>
                               <span>{quiz.title}</span>
                               <span className="rounded-full bg-emerald-200 dark:bg-emerald-900 px-2 py-0.5 text-[10px] font-black text-emerald-900 dark:text-emerald-200">
-                                ✓ Examen Aprobado ({quizAttempt.score_percentage}%)
+                                ✓ Examen Aprobado (
+                                {quizAttempt.score_percentage}%)
                               </span>
                             </div>
                             <span className="font-bold text-emerald-700 dark:text-emerald-400 hover:underline">

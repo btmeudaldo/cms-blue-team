@@ -1,7 +1,4 @@
-import type {
-  LessonCombinedStatus,
-  QuizAttemptResult,
-} from "./quiz-types";
+import type { LessonCombinedStatus, QuizAttemptResult } from "./quiz-types";
 
 export function evaluateLessonCompletion(
   readingElapsedSeconds: number,
