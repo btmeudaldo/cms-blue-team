@@ -4,6 +4,8 @@ import { Header } from "@/shared/components/header";
 import { SeedDemoButton } from "@/shared/components/seed-demo-button";
 import {
   getResilientCourses,
+  getResilientQuizAttempts,
+  getResilientQuizzes,
   getResilientUser,
   getResilientUserProgress,
 } from "@/shared/lib/supabase/resilient";
@@ -13,15 +15,22 @@ export default async function CoursesPage() {
   const role = profile?.role ?? "student";
   const isAdmin = role === "admin" || role === "instructor";
 
-  // Fetch courses and user progress concurrently with resilient fallback
-  const [coursesData, userProgress] = await Promise.all([
+  // Fetch courses, user progress, quizzes, and quiz attempts concurrently
+  const [coursesData, userProgress, quizzes, quizAttempts] = await Promise.all([
     getResilientCourses(user.id, isAdmin, isDemo),
     getResilientUserProgress(user.id, isDemo),
+    getResilientQuizzes(),
+    getResilientQuizAttempts(user.id),
   ]);
   const completedLessonIds = new Set(
     userProgress
       ?.filter((p: any) => p.is_completed)
       .map((p: any) => p.lesson_id) || [],
+  );
+  const passedQuizIds = new Set(
+    quizAttempts
+      ?.filter((a: any) => a.passed)
+      .map((a: any) => a.quiz_id) || [],
   );
 
   return (
@@ -126,13 +135,34 @@ export default async function CoursesPage() {
             {coursesData.map((course: any) => {
               const lessons = course.lessons || [];
               const totalLessons = lessons.length;
-              const completedCount = lessons.filter((l: any) =>
-                completedLessonIds.has(l.id),
+              const completedLessonsCount = lessons.filter(
+                (l: any) =>
+                  completedLessonIds.has(l.id) ||
+                  completedLessonIds.has(l.slug),
               ).length;
+
+              const courseQuizzes = (quizzes || []).filter((q: any) =>
+                lessons.some(
+                  (l: any) => l.id === q.lesson_id || l.slug === q.lesson_slug,
+                ),
+              );
+              const totalQuizzes = courseQuizzes.length;
+              const passedQuizzesCount = courseQuizzes.filter((q: any) =>
+                passedQuizIds.has(q.id),
+              ).length;
+
+              const totalItems = totalLessons + totalQuizzes;
+              const completedItems = completedLessonsCount + passedQuizzesCount;
               const progressPercentage =
-                totalLessons > 0
-                  ? Math.round((completedCount / totalLessons) * 100)
+                totalItems > 0
+                  ? Math.round((completedItems / totalItems) * 100)
                   : 0;
+
+              const isFullyCompleted =
+                totalItems > 0 && completedItems === totalItems;
+              const hasPendingQuizzes =
+                completedLessonsCount === totalLessons &&
+                passedQuizzesCount < totalQuizzes;
 
               return (
                 <div
@@ -150,14 +180,18 @@ export default async function CoursesPage() {
                       </div>
                     )}
 
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-1 flex-wrap">
                       <span className="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 text-xs font-bold text-[#1a80ff]">
                         {totalLessons}{" "}
                         {totalLessons === 1 ? "Lección" : "Lecciones"}
                       </span>
-                      {progressPercentage === 100 ? (
-                        <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-full">
+                      {isFullyCompleted ? (
+                        <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
                           ✓ Completado
+                        </span>
+                      ) : hasPendingQuizzes ? (
+                        <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-full border border-amber-200 dark:border-amber-800">
+                          📝 Exámenes Pendientes ({progressPercentage}%)
                         </span>
                       ) : progressPercentage > 0 ? (
                         <span className="text-xs font-bold text-[#1a80ff]">
@@ -182,13 +216,19 @@ export default async function CoursesPage() {
                     <div className="pt-2 space-y-1">
                       <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                         <div
-                          className="h-full bg-[#1a80ff] transition-all duration-500 rounded-full"
+                          className={`h-full transition-all duration-500 rounded-full ${
+                            isFullyCompleted
+                              ? "bg-emerald-500"
+                              : hasPendingQuizzes
+                                ? "bg-amber-500"
+                                : "bg-[#1a80ff]"
+                          }`}
                           style={{ width: `${progressPercentage}%` }}
                         ></div>
                       </div>
                       <div className="flex justify-between text-[11px] font-medium text-slate-400 dark:text-slate-500">
                         <span>
-                          {completedCount} de {totalLessons} completadas
+                          {completedLessonsCount}/{totalLessons} lecciones &middot; {passedQuizzesCount}/{totalQuizzes} exámenes
                         </span>
                         <span>{progressPercentage}%</span>
                       </div>

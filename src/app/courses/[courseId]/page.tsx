@@ -59,15 +59,29 @@ export default async function StudentCourseDetailPage({
     }
   }
 
-  const completedCount = lessons.filter(
+  const completedLessonsCount = lessons.filter(
     (l: any) =>
       (progressMap.get(l.id) as any)?.is_completed ||
       (progressMap.get(l.slug) as any)?.is_completed,
   ).length;
+
+  const courseQuizzes = (quizzes || []).filter((q: any) =>
+    lessons.some(
+      (l: any) => l.id === q.lesson_id || l.slug === q.lesson_slug,
+    ),
+  );
+  const passedQuizzesCount = courseQuizzes.filter(
+    (q: any) => (attemptsByQuizMap.get(q.id) as any)?.passed,
+  ).length;
+
+  const totalItems = lessons.length + courseQuizzes.length;
+  const completedItems = completedLessonsCount + passedQuizzesCount;
   const progressPercent =
-    lessons.length > 0
-      ? Math.round((completedCount / lessons.length) * 100)
-      : 0;
+    totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+  const isFullyCompleted = totalItems > 0 && completedItems === totalItems;
+  const hasPendingQuizzes =
+    completedLessonsCount === lessons.length &&
+    passedQuizzesCount < courseQuizzes.length;
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
@@ -114,7 +128,7 @@ export default async function StudentCourseDetailPage({
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#1a80ff] px-6 py-3 text-sm font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all shrink-0"
               >
                 <span>
-                  {completedCount > 0
+                  {completedLessonsCount > 0
                     ? "Continuar Aprendizaje"
                     : "Comenzar Curso"}
                 </span>
@@ -138,15 +152,20 @@ export default async function StudentCourseDetailPage({
           {/* Progress Bar */}
           <div className="space-y-2 pt-4 border-t border-slate-100 dark:border-slate-800">
             <div className="flex justify-between text-xs font-bold text-slate-600 dark:text-slate-400">
-              <span>Progreso del Alumno</span>
+              <span>Progreso Global del Alumno</span>
               <span>
-                {completedCount} de {lessons.length} temas completados (
-                {progressPercent}%)
+                {completedLessonsCount}/{lessons.length} lecciones &middot; {passedQuizzesCount}/{courseQuizzes.length} exámenes ({progressPercent}%)
               </span>
             </div>
             <div className="h-2.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
               <div
-                className="h-full bg-[#1a80ff] transition-all duration-300 rounded-full"
+                className={`h-full transition-all duration-300 rounded-full ${
+                  isFullyCompleted
+                    ? "bg-emerald-500"
+                    : hasPendingQuizzes
+                      ? "bg-amber-500"
+                      : "bg-[#1a80ff]"
+                }`}
                 style={{ width: `${progressPercent}%` }}
               ></div>
             </div>
