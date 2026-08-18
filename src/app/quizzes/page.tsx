@@ -160,7 +160,7 @@ export default async function QuizzesListPage() {
                     </div>
 
                     <Link
-                      href={`/courses/${course.id}`}
+                      href={`/courses/${course.slug || course.id}`}
                       className="text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-[#1a80ff] transition-colors shrink-0"
                     >
                       Ir al Curso &rarr;

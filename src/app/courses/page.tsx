@@ -269,7 +269,7 @@ export default async function CoursesPage() {
 
                   <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
                     <Link
-                      href={`/courses/${course.id}`}
+                      href={`/courses/${course.slug || course.id}`}
                       className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2.5 text-xs font-bold shadow-xs group-hover:bg-[#1a80ff] transition-colors"
                     >
                       <span>{isAdmin ? "Supervisar / Entrar al Curso" : "Entrar al Curso"}</span>

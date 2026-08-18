@@ -128,7 +128,7 @@ export default async function StudentCourseDetailPage({
 
             {lessons.length > 0 && (
               <Link
-                href={`/courses/${course.id}/lessons/${lessons[0].id}`}
+                href={`/courses/${course.slug || course.id}/lessons/${lessons[0].slug || lessons[0].id}`}
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#1a80ff] px-6 py-3 text-sm font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all shrink-0"
               >
                 <span>
@@ -245,7 +245,7 @@ export default async function StudentCourseDetailPage({
                   <div key={lesson.id} className="space-y-2">
                     {/* Lesson Main Row */}
                     <Link
-                      href={`/courses/${course.id}/lessons/${lesson.id}`}
+                      href={`/courses/${course.slug || course.id}/lessons/${lesson.slug || lesson.id}`}
                       className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-xs card-hover transition-all group"
                     >
                       <div className="flex items-center gap-4">

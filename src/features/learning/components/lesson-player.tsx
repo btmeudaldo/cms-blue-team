@@ -337,12 +337,12 @@ export function LessonPlayer({
   const renderLessonsNav = () => (
     <nav className="space-y-1.5">
       {lessonsSummary.map((les, index) => {
-        const isCurrent = les.id === lessonId;
+        const isCurrent = les.id === lessonId || les.slug === lessonId;
         const isDone = completedLessonSet.has(les.id);
         return (
           <Link
             key={les.id}
-            href={`/courses/${courseId}/lessons/${les.id}`}
+            href={`/courses/${courseId}/lessons/${les.slug || les.id}`}
             onClick={() => setIsMobileSidebarOpen(false)}
             className={`flex items-center gap-3 p-2.5 rounded-2xl text-xs font-semibold transition-colors ${
               isCurrent

@@ -78,13 +78,13 @@ export default async function StudentLessonPage({
     <LessonPlayer
       contentHtml={currentLesson.content_html}
       lessonId={currentLesson.id}
-      courseId={course.id}
+      courseId={course.slug || course.id}
       courseTitle={course.title}
       lessonTitle={currentLesson.title}
       minSeconds={computedMinSeconds}
-      pathToRevalidate={`/courses/${course.id}`}
-      nextLessonId={nextLesson?.id}
-      prevLessonId={prevLesson?.id}
+      pathToRevalidate={`/courses/${course.slug || course.id}`}
+      nextLessonId={nextLesson?.slug || nextLesson?.id}
+      prevLessonId={prevLesson?.slug || prevLesson?.id}
       isAlreadyCompleted={isAlreadyCompleted}
       userEmail={user.email}
       userName={profile?.full_name}
