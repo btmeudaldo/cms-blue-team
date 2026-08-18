@@ -92,14 +92,51 @@ export async function updateStudentEnrollmentsAction(
     }
 
     if (enrolledCourseIds.length > 0) {
-      await supabase.from("course_enrollments").upsert(
+      const { error } = await supabase.from("course_enrollments").upsert(
+        enrolledCourseIds.map((courseId) => ({
+          course_id: courseId,
+          user_id: userId,
+        })),
+      );
+
+      if (error) {
+        const adminClient = createSupabaseAdminClient();
+        if (toDelete.length > 0) {
+          await adminClient
+            .from("course_enrollments")
+            .delete()
+            .eq("user_id", userId)
+            .in("course_id", toDelete);
+        }
+        await adminClient.from("course_enrollments").upsert(
+          enrolledCourseIds.map((courseId) => ({
+            course_id: courseId,
+            user_id: userId,
+          })),
+        );
+      }
+    }
+  } catch (err) {
+    const adminClient = createSupabaseAdminClient();
+    const toDelete = allCourseIds.filter(
+      (id) => !enrolledCourseIds.includes(id),
+    );
+    if (toDelete.length > 0) {
+      await adminClient
+        .from("course_enrollments")
+        .delete()
+        .eq("user_id", userId)
+        .in("course_id", toDelete);
+    }
+    if (enrolledCourseIds.length > 0) {
+      await adminClient.from("course_enrollments").upsert(
         enrolledCourseIds.map((courseId) => ({
           course_id: courseId,
           user_id: userId,
         })),
       );
     }
-  } catch (err) {}
+  }
 
   mockStore.setStudentEnrollments(userId, enrolledCourseIds);
 

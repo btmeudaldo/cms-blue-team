@@ -427,30 +427,21 @@ const mockProfiles: MockUser[] = [
 ];
 
 const defaultEnrollments = new Set<string>([
-  "student-123_course-demo-1",
-  "student-123_course-demo-2",
-  "instructor-123_course-demo-1",
-  "instructor-123_course-demo-2",
-  "admin-123_course-demo-1",
-  "admin-123_course-demo-2",
-  "instructor-2_course-demo-1",
-  "instructor-3_course-demo-1",
-  "instructor-4_course-demo-2",
-  "student-1_course-demo-1",
-  "student-2_course-demo-1",
-  "student-3_course-demo-1",
-  "student-4_course-demo-1",
-  "student-5_course-demo-2",
-  "student-6_course-demo-2",
-  "student-7_course-demo-1",
-  "student-8_course-demo-2",
-  "student-9_course-demo-1",
-  "student-10_course-demo-2",
+  "student@blueteam.com_11111111-1111-1111-1111-111111111101",
+  "student@blueteam.com_22222222-2222-2222-2222-222222222202",
+  "instructor@blueteam.com_11111111-1111-1111-1111-111111111101",
+  "instructor@blueteam.com_22222222-2222-2222-2222-222222222202",
+  "admin@blueteam.com_11111111-1111-1111-1111-111111111101",
+  "admin@blueteam.com_22222222-2222-2222-2222-222222222202",
+  "alumno1@blueteam.com_11111111-1111-1111-1111-111111111101",
+  "alumno1@blueteam.com_22222222-2222-2222-2222-222222222202",
+  "alumno2@blueteam.com_11111111-1111-1111-1111-111111111101",
+  "alumno2@blueteam.com_22222222-2222-2222-2222-222222222202",
 ]);
 
 // Persist across HMR reloads in dev — global survives hot-module-replacement
 const mockEnrollments: Set<string> =
-  global.__mockEnrollments ?? (global.__mockEnrollments = defaultEnrollments);
+  global.__mockEnrollments = defaultEnrollments;
 
 const nowTime = new Date();
 const start1 = new Date(nowTime.getTime() - 1000 * 60 * 120).toISOString();

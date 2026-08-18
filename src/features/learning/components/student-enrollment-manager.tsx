@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useMemo, useState, useTransition } from "react";
 import { updateStudentEnrollmentsAction } from "@/app/actions/enrollment.actions";
 
 type CourseItem = {
@@ -33,8 +33,16 @@ export function StudentEnrollmentManager({
   );
   const [isPending, startTransition] = useTransition();
 
+  const validCourseIds = useMemo(
+    () => new Set(courses.map((c) => c.id)),
+    [courses],
+  );
+  const validSelectedCourseIds = useMemo(
+    () => selectedCourseIds.filter((id) => validCourseIds.has(id)),
+    [selectedCourseIds, validCourseIds],
+  );
   const allCourseIds = courses.map((c) => c.id);
-  const enrolledCount = selectedCourseIds.length;
+  const enrolledCount = validSelectedCourseIds.length;
 
   function toggleCourse(courseId: string) {
     if (selectedCourseIds.includes(courseId)) {
@@ -56,7 +64,7 @@ export function StudentEnrollmentManager({
     startTransition(async () => {
       await updateStudentEnrollmentsAction(
         userId,
-        selectedCourseIds,
+        validSelectedCourseIds,
         allCourseIds,
       );
       setIsOpen(false);

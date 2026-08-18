@@ -439,12 +439,7 @@ export async function getResilientAllProgress() {
 }
 
 export async function getResilientEnrollments() {
-  const mockEnrollments = mockStore.getEnrollments();
   const map = new Map<string, { user_id: string; course_id: string }>();
-
-  for (const me of mockEnrollments) {
-    map.set(`${me.user_id}_${me.course_id}`, me);
-  }
 
   try {
     const supabase = await createSupabaseServerClient();
@@ -453,12 +448,18 @@ export async function getResilientEnrollments() {
       1500,
     );
 
-    if (result && !result.error && result.data) {
+    if (result && !result.error && result.data && result.data.length > 0) {
       for (const de of result.data) {
         map.set(`${de.user_id}_${de.course_id}`, de);
       }
+      return Array.from(map.values());
     }
   } catch (err) {}
+
+  const mockEnrollments = mockStore.getEnrollments();
+  for (const me of mockEnrollments) {
+    map.set(`${me.user_id}_${me.course_id}`, me);
+  }
 
   return Array.from(map.values());
 }
