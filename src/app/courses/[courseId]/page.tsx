@@ -18,6 +18,7 @@ export default async function StudentCourseDetailPage({
   const { courseId } = await params;
   const { user, profile, isDemo } = await getResilientUser();
   const role = profile?.role ?? "student";
+  const isAdmin = role === "admin" || role === "instructor";
 
   // Fetch course, progress, quizzes and quiz attempts concurrently
   const [course, userProgress, quizzes, quizAttempts] = await Promise.all([
@@ -152,27 +153,60 @@ export default async function StudentCourseDetailPage({
             )}
           </div>
 
-          {/* Progress Bar */}
-          <div className="space-y-2 pt-4 border-t border-slate-100 dark:border-slate-800">
-            <div className="flex justify-between text-xs font-bold text-slate-600 dark:text-slate-400">
-              <span>Progreso Global del Alumno</span>
-              <span>
-                {completedLessonsCount}/{lessons.length} lecciones &middot; {passedQuizzesCount}/{courseQuizzes.length} exámenes ({progressPercent}%)
-              </span>
+          {/* Progress Bar (Student) vs Instructor Supervision Bar (Admin/Instructor) */}
+          {isAdmin ? (
+            <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-blue-50/50 dark:bg-blue-950/20 rounded-2xl p-4 border border-blue-100 dark:border-blue-900/40">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#1a80ff] text-white font-bold text-base">
+                  👨‍🏫
+                </div>
+                <div>
+                  <h4 className="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
+                    Supervisión Docente y Control Académico
+                  </h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                    {lessons.length} lecciones con control de lectura y {courseQuizzes.length} evaluaciones teóricas activas.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 shrink-0">
+                <Link
+                  href="/admin/progress"
+                  className="rounded-xl bg-[#1a80ff] px-3.5 py-2 text-xs font-bold text-white shadow-xs hover:bg-[#0066e6] transition-colors"
+                >
+                  <span>📊 Ver Expedientes de Alumnos</span>
+                </Link>
+                <Link
+                  href="/admin/courses"
+                  className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                >
+                  <span>✏️ Gestionar Cursos</span>
+                </Link>
+              </div>
             </div>
-            <div className="h-2.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
-              <div
-                className={`h-full transition-all duration-300 rounded-full ${
-                  isFullyCompleted
-                    ? "bg-emerald-500"
-                    : hasPendingQuizzes
-                      ? "bg-amber-500"
-                      : "bg-[#1a80ff]"
-                }`}
-                style={{ width: `${progressPercent}%` }}
-              ></div>
+          ) : (
+            <div className="space-y-2 pt-4 border-t border-slate-100 dark:border-slate-800">
+              <div className="flex justify-between text-xs font-bold text-slate-600 dark:text-slate-400">
+                <span>Mi Progreso en el Curso</span>
+                <span>
+                  {completedLessonsCount}/{lessons.length} lecciones &middot; {passedQuizzesCount}/{courseQuizzes.length} exámenes ({progressPercent}%)
+                </span>
+              </div>
+              <div className="h-2.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                <div
+                  className={`h-full transition-all duration-300 rounded-full ${
+                    isFullyCompleted
+                      ? "bg-emerald-500"
+                      : hasPendingQuizzes
+                        ? "bg-amber-500"
+                        : "bg-[#1a80ff]"
+                  }`}
+                  style={{ width: `${progressPercent}%` }}
+                ></div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Syllabus / Lessons & Quizzes List */}

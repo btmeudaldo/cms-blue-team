@@ -4,6 +4,7 @@ import { Header } from "@/shared/components/header";
 import { SeedDemoButton } from "@/shared/components/seed-demo-button";
 import {
   getResilientCourses,
+  getResilientEnrollments,
   getResilientQuizAttempts,
   getResilientQuizzes,
   getResilientUser,
@@ -15,13 +16,16 @@ export default async function CoursesPage() {
   const role = profile?.role ?? "student";
   const isAdmin = role === "admin" || role === "instructor";
 
-  // Fetch courses, user progress, quizzes, and quiz attempts concurrently
-  const [coursesData, userProgress, quizzes, quizAttempts] = await Promise.all([
-    getResilientCourses(user.id, isAdmin, isDemo),
-    getResilientUserProgress(user.id, isDemo),
-    getResilientQuizzes(),
-    getResilientQuizAttempts(user.id),
-  ]);
+  // Fetch courses, user progress, quizzes, quiz attempts, and enrollments concurrently
+  const [coursesData, userProgress, quizzes, quizAttempts, enrollments] =
+    await Promise.all([
+      getResilientCourses(user.id, isAdmin, isDemo),
+      getResilientUserProgress(user.id, isDemo),
+      getResilientQuizzes(),
+      getResilientQuizAttempts(user.id),
+      getResilientEnrollments(),
+    ]);
+
   const completedLessonIds = new Set(
     userProgress
       ?.filter((p: any) => p.is_completed)
@@ -34,6 +38,15 @@ export default async function CoursesPage() {
       if (a.lesson_id) passedQuizIds.add(a.lesson_id);
       if (a.lesson_slug) passedQuizIds.add(a.lesson_slug);
     }
+  }
+
+  // Count enrollments per course
+  const enrollmentCountByCourse = new Map<string, number>();
+  for (const e of enrollments || []) {
+    enrollmentCountByCourse.set(
+      e.course_id,
+      (enrollmentCountByCourse.get(e.course_id) || 0) + 1,
+    );
   }
 
   return (
@@ -50,14 +63,15 @@ export default async function CoursesPage() {
           <div className="relative z-10 max-w-2xl space-y-3">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-3 py-1 text-xs font-semibold tracking-wide text-blue-100">
               <span className="h-2 w-2 rounded-full bg-[#1a80ff] animate-pulse"></span>
-              Blue Team CMS &middot; Anticheating Temporal
+              {isAdmin ? "Portal de Instructor / Docencia" : "Portal del Alumno · Anticheating Temporal"}
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
               Bienvenido, {profile?.full_name || user.email?.split("@")[0]}
             </h1>
             <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed">
-              Explora tus cursos asignados, completa lecciones verificadas por
-              el servidor y haz seguimiento a tu avance en tiempo real.
+              {isAdmin
+                ? "Supervisa los cursos de la academia, audita el cumplimiento anticheating y gestiona el contenido de formación."
+                : "Explora tus cursos asignados, completa lecciones verificadas por el servidor y haz seguimiento a tu avance en tiempo real."}
             </p>
           </div>
 
@@ -82,7 +96,7 @@ export default async function CoursesPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
           <div>
             <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
-              Mis Cursos
+              {isAdmin ? "Cursos Disponibles en Academia" : "Mis Cursos"}
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               {coursesData.length}{" "}
@@ -95,15 +109,18 @@ export default async function CoursesPage() {
           <div className="flex items-center gap-3">
             {isAdmin && (
               <>
-                <SeedDemoButton
-                  label="Generar Cursos Demo"
-                  variant="secondary"
-                />
+                <Link
+                  href="/admin/progress"
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                >
+                  <span>📊</span>
+                  <span>Expedientes de Alumnos</span>
+                </Link>
                 <Link
                   href="/admin/courses"
                   className="inline-flex items-center gap-2 rounded-xl bg-[#1a80ff] px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-[#0066e6] transition-colors"
                 >
-                  Panel de Administración &rarr;
+                  <span>Panel de Administración &rarr;</span>
                 </Link>
               </>
             )}
@@ -117,21 +134,13 @@ export default async function CoursesPage() {
               📚
             </div>
             <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-              No tienes cursos asignados aún
+              No hay cursos asignados aún
             </h3>
             <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto">
               {isAdmin
-                ? 'Puedes hacer clic en el botón de abajo "Cargar Curso Demo Ahora" para generar e inscribirte instantáneamente en módulos de prueba.'
+                ? "Puedes crear nuevos cursos desde el panel de administración."
                 : "Ponte en contacto con tu instructor o administrador para que te matricule en tus módulos de formación."}
             </p>
-            {isAdmin && (
-              <div className="mt-6">
-                <SeedDemoButton
-                  label="Cargar Curso Demo Ahora"
-                  variant="primary"
-                />
-              </div>
-            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -170,6 +179,9 @@ export default async function CoursesPage() {
                 completedLessonsCount === totalLessons &&
                 passedQuizzesCount < totalQuizzes;
 
+              const enrolledStudents =
+                enrollmentCountByCourse.get(course.id) || 0;
+
               return (
                 <div
                   key={course.id}
@@ -191,7 +203,12 @@ export default async function CoursesPage() {
                         {totalLessons}{" "}
                         {totalLessons === 1 ? "Lección" : "Lecciones"}
                       </span>
-                      {isFullyCompleted ? (
+
+                      {isAdmin ? (
+                        <span className="inline-flex items-center gap-1 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-full border border-slate-200 dark:border-slate-700">
+                          👥 {enrolledStudents} {enrolledStudents === 1 ? "alumno" : "alumnos"}
+                        </span>
+                      ) : isFullyCompleted ? (
                         <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
                           ✓ Completado
                         </span>
@@ -218,27 +235,36 @@ export default async function CoursesPage() {
                       {course.description || "Sin descripción disponible."}
                     </p>
 
-                    {/* Progress Bar */}
-                    <div className="pt-2 space-y-1">
-                      <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
-                        <div
-                          className={`h-full transition-all duration-500 rounded-full ${
-                            isFullyCompleted
-                              ? "bg-emerald-500"
-                              : hasPendingQuizzes
-                                ? "bg-amber-500"
-                                : "bg-[#1a80ff]"
-                          }`}
-                          style={{ width: `${progressPercentage}%` }}
-                        ></div>
+                    {/* Progress Bar (Student) vs Management Summary (Admin/Instructor) */}
+                    {isAdmin ? (
+                      <div className="pt-2">
+                        <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-2.5 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-800">
+                          <span>{totalQuizzes} exámenes teóricos</span>
+                          <span className="font-bold text-[#1a80ff]">Supervisión Docente</span>
+                        </div>
                       </div>
-                      <div className="flex justify-between text-[11px] font-medium text-slate-400 dark:text-slate-500">
-                        <span>
-                          {completedLessonsCount}/{totalLessons} lecciones &middot; {passedQuizzesCount}/{totalQuizzes} exámenes
-                        </span>
-                        <span>{progressPercentage}%</span>
+                    ) : (
+                      <div className="pt-2 space-y-1">
+                        <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                          <div
+                            className={`h-full transition-all duration-500 rounded-full ${
+                              isFullyCompleted
+                                ? "bg-emerald-500"
+                                : hasPendingQuizzes
+                                  ? "bg-amber-500"
+                                  : "bg-[#1a80ff]"
+                            }`}
+                            style={{ width: `${progressPercentage}%` }}
+                          ></div>
+                        </div>
+                        <div className="flex justify-between text-[11px] font-medium text-slate-400 dark:text-slate-500">
+                          <span>
+                            {completedLessonsCount}/{totalLessons} lecciones &middot; {passedQuizzesCount}/{totalQuizzes} exámenes
+                          </span>
+                          <span>{progressPercentage}%</span>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
@@ -246,7 +272,7 @@ export default async function CoursesPage() {
                       href={`/courses/${course.id}`}
                       className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2.5 text-xs font-bold shadow-xs group-hover:bg-[#1a80ff] transition-colors"
                     >
-                      <span>Entrar al Curso</span>
+                      <span>{isAdmin ? "Supervisar / Entrar al Curso" : "Entrar al Curso"}</span>
                       <svg
                         className="w-4 h-4"
                         fill="none"
