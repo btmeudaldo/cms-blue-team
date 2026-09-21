@@ -73,7 +73,7 @@ function setup(
     "delete",
   ] as const)
     query[key].mockReturnValue(query);
-  const client = { from: vi.fn().mockReturnValue(query) };
+  const client = { from: vi.fn().mockReturnValue(query), rpc: vi.fn().mockResolvedValue({ data: null, error }) };
   mocks.server.mockResolvedValue(client);
   mocks.session.mockResolvedValue({
     client,
@@ -116,12 +116,14 @@ describe("verified administrative mutations", () => {
     expect(mocks.admin).not.toHaveBeenCalled();
     expect(mocks.mock.setStudentEnrollments).not.toHaveBeenCalled();
   });
-  it("stops enrollment changes when removal fails", async () => {
-    const { query } = setup("admin", { message: "delete denied" });
+  it("rejects an atomic enrollment failure without separate table mutations", async () => {
+    const { query, client } = setup("admin", { message: "delete denied" });
     await expect(
       updateStudentEnrollmentsAction("student", ["new"], ["old"]),
     ).rejects.toThrow("delete denied");
     expect(query.upsert).not.toHaveBeenCalled();
+    expect(client.from).not.toHaveBeenCalled();
+    expect(mocks.revalidate).not.toHaveBeenCalled();
   });
   it.each([
     () => updateLessonAction("lesson", "course", form()),
@@ -142,11 +144,12 @@ describe("verified administrative mutations", () => {
     expect(query.eq).toHaveBeenCalledWith("course_id", "course");
   });
   it("allows verified admin enrollment through normal client", async () => {
-    const { query } = setup();
+    const { client } = setup();
     await updateStudentEnrollmentsAction("student", ["course"], []);
-    expect(query.upsert).toHaveBeenCalledWith([
-      { course_id: "course", user_id: "student" },
-    ]);
+    expect(client.rpc).toHaveBeenCalledWith("set_student_enrollments", {
+      p_user_id: "student", p_enrolled_course_ids: ["course"], p_scope_course_ids: ["course"],
+    });
+    expect(client.from).not.toHaveBeenCalled();
     expect(mocks.admin).not.toHaveBeenCalled();
   });
   it.each([
@@ -178,6 +181,28 @@ describe("verified administrative mutations", () => {
     mocks.courseEditor.mockRejectedValue(new Error("Course access denied"));
     await expect(action()).rejects.toThrow("Course access denied");
     expect(mocks.courseEditor).toHaveBeenCalledWith("other-course");
+    expect(client.from).not.toHaveBeenCalled();
+  });
+});
+
+describe("atomic enrollment commands", () => {
+  it("validates a complete deduplicated scope in one database call", async () => {
+    const { client } = setup("instructor");
+    await updateStudentEnrollmentsAction("student", ["new", "new"], ["old", "new"]);
+    expect(client.rpc).toHaveBeenCalledExactlyOnceWith("set_student_enrollments", {
+      p_user_id: "student", p_enrolled_course_ids: ["new"], p_scope_course_ids: ["old", "new"],
+    });
+    expect(client.from).not.toHaveBeenCalled();
+  });
+  it.each([
+    [enrollStudentAction, ["course"]],
+    [unenrollStudentAction, []],
+  ] as const)("uses the atomic command for a single enrollment change", async (action, desired) => {
+    const { client } = setup("instructor");
+    await action("course", "student");
+    expect(client.rpc).toHaveBeenCalledWith("set_student_enrollments", {
+      p_user_id: "student", p_enrolled_course_ids: desired, p_scope_course_ids: ["course"],
+    });
     expect(client.from).not.toHaveBeenCalled();
   });
 });

@@ -1,5 +1,7 @@
 # Lecciones operativas
 
+- Mientras el usuario mantenga el CMS en pruebas privadas, tratar Vercel como entorno de pruebas publicado. Posponer SSO y unificación del login hasta que lo solicite; continuar con integridad académica y funcionalidades del CMS.
+
 - Cuando un bloqueo provenga de una CLI, iniciar su flujo de autenticación específico y verificarlo con la propia CLI; el login de la web no sustituye esa sesión.
 - Con la CLI Vercel autenticada, usar sus comprobaciones de despliegue y continuar el trabajo autorizado; la protección SSO del navegador no implica que falte acceso operativo ni requiere repetir el login.
 

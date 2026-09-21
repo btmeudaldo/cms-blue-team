@@ -1,5 +1,21 @@
 # Backlog de implementación
 
+## Auditoría ATO: fase 6 — cursos y matrículas
+
+- [x] Confirmar repositorio Blue Team y auditar políticas antiguas; plan/spec en specs/008-scoped-enrollment-management.
+- [ ] RED: permisos cruzados, titularidad y guardado parcial.
+- [ ] GREEN: permisos delimitados, guardado atómico y ámbito editable en pantalla.
+- [ ] Validar pruebas y recorrido integrado; documentar evidencia.
+- [ ] Commit, push y preview Blue Team.
+
+## Pendientes posteriores del CMS
+
+- [ ] Exclusión de tiempo simultáneo entre lecciones/dispositivos.
+- [ ] Registro auditable de eventos y cambios administrativos.
+- [ ] Versionado de contenido/requisitos y exportación de expedientes.
+- [ ] Completar revisión funcional y accesibilidad de las pantallas.
+- Login/SSO: aplazado expresamente por el usuario mientras el CMS sigue en pruebas privadas.
+
 ## Auditoría ATO: fase 5 — progreso temporal verificado
 
 - [x] Inspeccionar RPC y consumidores; especificar contrato y plan en specs/007-verified-lesson-timing.
