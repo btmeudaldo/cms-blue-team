@@ -3,9 +3,9 @@
 ## Auditoría ATO: fase 5 — progreso temporal verificado
 
 - [x] Inspeccionar RPC y consumidores; especificar contrato y plan en specs/007-verified-lesson-timing.
-- [ ] RED: reproducir finalización mutable, matrícula revocada y éxito simulado.
-- [ ] GREEN: RPC temporales autorizadas e idempotentes, acciones verificadas y UI sincronizada.
-- [ ] Validar SQL, Auth/REST, recorrido de alumno, regresiones y calidad; registrar evidencia.
+- [x] RED: reproducir finalización mutable, matrícula revocada y éxito simulado.
+- [x] GREEN: RPC temporales autorizadas e idempotentes, acciones verificadas y UI sincronizada.
+- [x] Validar SQL, Auth/REST, recorrido de alumno, regresiones y calidad; 56 SQL, 6 API, 4 E2E, 187 unitarias y TypeScript correctos. Límites de lint en review.md.
 - [ ] Commit, push y preview; autorización live específica pendiente.
 
 ## Auditoría ATO: fase 4 — conservación de expedientes

@@ -235,3 +235,76 @@ test("completion credits at most 15 seconds then stores a final paused record", 
     assert.deepEqual(await rpc("complete_lesson"), result);
   }));
 
+test("private transition rejects a missing authenticated subject", () =>
+  isolated(async () => {
+    await actor(null);
+    await assert.rejects(
+      db.query("select learning_private.record_lesson_activity($1,'start')", [
+        ids.lesson,
+      ]),
+      { code: "42501" },
+    );
+  }));
+test("private transition still checks enrollment when called directly", () =>
+  isolated(async () => {
+    await db.query(
+      "delete from public.course_enrollments where user_id=$1 and course_id=$2",
+      [ids.student, ids.course],
+    );
+    await actor();
+    await assert.rejects(
+      db.query("select learning_private.record_lesson_activity($1,'start')", [
+        ids.lesson,
+      ]),
+      { code: "42501" },
+    );
+  }));
+for (const operation of [null, "", "erase", "COMPLETE"])
+  test(`private transition rejects invalid operation ${JSON.stringify(operation)}`, () =>
+    isolated(async () => {
+      await actor();
+      await assert.rejects(
+        db.query("select learning_private.record_lesson_activity($1,$2)", [
+          ids.lesson,
+          operation,
+        ]),
+        { code: "22023" },
+      );
+    }));
+test("private transition has an empty search path and no anonymous execution", async () => {
+  const result = await db.query(
+    "select prosecdef,proconfig,has_function_privilege('anon',oid,'EXECUTE') as anonymous_execute from pg_proc where oid='learning_private.record_lesson_activity(uuid,text)'::regprocedure",
+  );
+  assert.equal(result.rows[0].prosecdef, true);
+  assert.ok(result.rows[0].proconfig.includes('search_path=""'));
+  assert.equal(result.rows[0].anonymous_execute, false);
+});
+for (const name of operations.filter((name) => name !== "start_lesson"))
+  test(`${name} refuses to create progress without a prior start`, () =>
+    isolated(async () => {
+      await actor();
+      await assert.rejects(rpc(name), { code: "22023" });
+    }));
+
+for (const name of operations)
+  test(`${name} never adopts another user's progress`, () =>
+    isolated(async () => {
+      await seed();
+      const original = await progress();
+      await db.query(
+        "insert into public.course_enrollments(user_id,course_id) values($1,$2)",
+        [ids.owner, ids.course],
+      );
+      await actor(ids.owner);
+      if (name === "start_lesson") {
+        const created = await rpc(name);
+        assert.equal(created.user_id, ids.owner);
+        assert.equal(created.active_seconds, 0);
+      } else {
+        await db.query("savepoint other_user_call");
+        await assert.rejects(rpc(name), { code: "22023" });
+        await db.query("rollback to savepoint other_user_call");
+      }
+      await db.query("reset role");
+      assert.deepEqual(await progress(), original);
+    }));

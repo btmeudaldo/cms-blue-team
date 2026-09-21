@@ -11,6 +11,12 @@ import {
   resumeLessonAction,
   startLessonAction,
 } from "@/app/actions/progress.actions";
+import {
+  canCompleteLesson,
+  remainingLessonSeconds,
+  type LessonProgress,
+  type ProgressResult,
+} from "@/features/learning/domain/lesson-progress";
 import { Header } from "@/shared/components/header";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 import { getNextAdvanceButtonPosition } from "@/features/learning/domain/advance-button-position";
@@ -66,12 +72,16 @@ export function LessonPlayer({
   const router = useRouter();
   const safeContentHtml = sanitizeLessonHtml(contentHtml);
   const contentRef = useRef<HTMLDivElement>(null);
-  const hasStartedRef = useRef(isAlreadyCompleted);
+  const progressQueue = useRef(Promise.resolve());
+  const completingRef = useRef(false);
   const hasUserScrolledRef = useRef(isAlreadyCompleted);
 
-  const [remainingSeconds, setRemainingSeconds] = useState(
-    isAlreadyCompleted ? 0 : minSeconds,
+  const [serverProgress, setServerProgress] = useState<LessonProgress | null>(
+    null,
   );
+  const remainingSeconds = isAlreadyCompleted
+    ? 0
+    : remainingLessonSeconds(minSeconds, serverProgress);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [reachedScrollThreshold, setReachedScrollThreshold] =
     useState(isAlreadyCompleted);
@@ -79,7 +89,7 @@ export function LessonPlayer({
   const [isCompletedSuccess, setIsCompletedSuccess] =
     useState(isAlreadyCompleted);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [hasServerStarted, setHasServerStarted] = useState(isAlreadyCompleted);
+  const [retryVersion, setRetryVersion] = useState(0);
   const [isAdvanceArmed, setIsAdvanceArmed] = useState(isAlreadyCompleted);
 
   // Focus & Visibility state
@@ -163,90 +173,126 @@ export function LessonPlayer({
   }, []);
 
   useEffect(() => {
-    if (isAlreadyCompleted) return;
-
-    let isMounted = true;
-    hasStartedRef.current = true;
-    startLessonAction(lessonId)
-      .then(() => {
-        hasStartedRef.current = true;
-        if (isMounted) setHasServerStarted(true);
-      })
-      .catch((err) => {
-        hasStartedRef.current = false;
-        if (isMounted) setErrorMessage((err as Error).message);
-      });
-
-    return () => {
-      isMounted = false;
+    if (isAlreadyCompleted || isCompletedSuccess) return;
+    let mounted = true;
+    let started = false;
+    let activityConfirmed = false;
+    let pendingHeartbeat = false;
+    const focused = () =>
+      document.visibilityState === "visible" && document.hasFocus();
+    const acknowledge = (result: ProgressResult) => {
+      if ("error" in result) {
+        activityConfirmed = false;
+        if (mounted) setErrorMessage(result.error);
+        return false;
+      }
+      activityConfirmed = true;
+      if (mounted) {
+        setServerProgress(result.progress);
+        setErrorMessage(null);
+      }
+      return true;
     };
-  }, [isAlreadyCompleted, lessonId]);
-
-  // Track window focus and document visibility
-  useEffect(() => {
+    const enqueue = (
+      operation: () => Promise<ProgressResult>,
+      requiresConfirmation = false,
+    ) => {
+      progressQueue.current = progressQueue.current.then(async () => {
+        if (
+          requiresConfirmation &&
+          (!activityConfirmed || !mounted || !focused())
+        ) {
+          pendingHeartbeat = false;
+          return;
+        }
+        try {
+          acknowledge(await operation());
+        } catch {
+          activityConfirmed = false;
+          if (mounted)
+            setErrorMessage(
+              "No se pudo confirmar el progreso. Comprueba tu conexión.",
+            );
+        }
+      });
+    };
+    progressQueue.current = progressQueue.current.then(async () => {
+      if (mounted) setIsWindowFocused(focused());
+      try {
+        started = acknowledge(await startLessonAction(lessonId));
+        if (started)
+          acknowledge(
+            await (focused() && mounted
+              ? resumeLessonAction(lessonId)
+              : pauseLessonAction(lessonId)),
+          );
+      } catch {
+        activityConfirmed = false;
+        if (mounted)
+          setErrorMessage(
+            "No se pudo iniciar el registro. Comprueba tu conexión y reintenta.",
+          );
+      }
+    });
     function updateFocusState() {
-      const isVisible = document.visibilityState === "visible";
-      const hasFocus = document.hasFocus();
-      setIsWindowFocused(isVisible && hasFocus);
-      if (!hasStartedRef.current || isAlreadyCompleted) return;
-      void (isVisible && hasFocus
-        ? resumeLessonAction(lessonId)
-        : pauseLessonAction(lessonId));
+      if (completingRef.current) return;
+      const isFocused = focused();
+      setIsWindowFocused(isFocused);
+      enqueue(async () => {
+        if (!started)
+          return {
+            error: "No se pudo iniciar el registro. Reintenta la conexión.",
+          };
+        return isFocused && mounted
+          ? resumeLessonAction(lessonId)
+          : pauseLessonAction(lessonId);
+      });
     }
-
-    updateFocusState();
-
     window.addEventListener("focus", updateFocusState);
     window.addEventListener("blur", updateFocusState);
     document.addEventListener("visibilitychange", updateFocusState);
-
+    const heartbeat = window.setInterval(() => {
+      if (
+        !started ||
+        !activityConfirmed ||
+        !focused() ||
+        pendingHeartbeat ||
+        completingRef.current
+      )
+        return;
+      pendingHeartbeat = true;
+      enqueue(async () => {
+        try {
+          return await heartbeatLessonAction(lessonId);
+        } finally {
+          pendingHeartbeat = false;
+        }
+      }, true);
+    }, 10_000);
     return () => {
+      mounted = false;
+      window.clearInterval(heartbeat);
       window.removeEventListener("focus", updateFocusState);
       window.removeEventListener("blur", updateFocusState);
       document.removeEventListener("visibilitychange", updateFocusState);
-      if (hasStartedRef.current && !isAlreadyCompleted)
-        void pauseLessonAction(lessonId);
+      enqueue(async () =>
+        started
+          ? pauseLessonAction(lessonId)
+          : { error: "Registro no iniciado" },
+      );
     };
-  }, [hasServerStarted, isAlreadyCompleted, lessonId]);
+  }, [isAlreadyCompleted, isCompletedSuccess, lessonId, retryVersion]);
 
   const requirementsMet = remainingSeconds === 0 && reachedScrollThreshold;
   const canAdvance =
-    (requirementsMet && isAdvanceArmed && !isCompleting) || isAlreadyCompleted;
-
-  // Initialize progress on server
-  useEffect(() => {
-    if (hasStartedRef.current) return;
-    let isMounted = true;
-    startLessonAction(lessonId).catch((err) => {
-      if (isMounted) console.error("Error al iniciar lección:", err);
-    });
-    return () => {
-      isMounted = false;
-    };
-  }, [lessonId]);
-
-  // Countdown timer (ticks ONLY when window is active & focused)
-  useEffect(() => {
-    if (remainingSeconds <= 0 || !isWindowFocused) return;
-
-    const timer = window.setInterval(() => {
-      setRemainingSeconds((prev) => Math.max(0, prev - 1));
-    }, 1000);
-
-    return () => window.clearInterval(timer);
-  }, [remainingSeconds, isWindowFocused]);
-
-  useEffect(() => {
-    if (!hasServerStarted || !isWindowFocused || isCompletedSuccess) return;
-
-    const heartbeat = window.setInterval(() => {
-      void heartbeatLessonAction(lessonId).catch((err) => {
-        setErrorMessage((err as Error).message);
-      });
-    }, 10_000);
-
-    return () => window.clearInterval(heartbeat);
-  }, [hasServerStarted, isCompletedSuccess, isWindowFocused, lessonId]);
+    isAlreadyCompleted ||
+    canCompleteLesson(
+      serverProgress,
+      minSeconds,
+      reachedScrollThreshold,
+      isAdvanceArmed,
+      isCompleting || Boolean(errorMessage) || !isWindowFocused,
+    );
 
   useEffect(() => {
     if (!requirementsMet || isAlreadyCompleted) return;
@@ -301,11 +347,18 @@ export function LessonPlayer({
     }
     if (!canAdvance) return;
 
+    completingRef.current = true;
     setIsCompleting(true);
     setErrorMessage(null);
 
     try {
-      await completeLessonAction(lessonId, pathToRevalidate);
+      await progressQueue.current;
+      const result = await completeLessonAction(lessonId, pathToRevalidate);
+      if ("error" in result) {
+        setErrorMessage(result.error);
+        return;
+      }
+      setServerProgress(result.progress);
       setIsCompletedSuccess(true);
 
       // If lesson does NOT have a quiz, auto-navigate to next lesson.
@@ -324,6 +377,7 @@ export function LessonPlayer({
     } catch (err) {
       setErrorMessage((err as Error).message);
     } finally {
+      completingRef.current = false;
       setIsCompleting(false);
     }
   }
@@ -711,8 +765,18 @@ export function LessonPlayer({
           {/* Main Article Container Area: adapts to the available viewport width. */}
           <main className={lessonLayoutClasses.main}>
             {errorMessage && (
-              <div className="rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 p-4 text-xs font-semibold text-rose-700 dark:text-rose-300">
-                ⚠ Error al completar la lección: {errorMessage}
+              <div
+                role="alert"
+                className="rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 p-4 text-xs font-semibold text-rose-700 dark:text-rose-300"
+              >
+                ⚠ {errorMessage}
+                <button
+                  type="button"
+                  className="ml-3 underline"
+                  onClick={() => setRetryVersion((version) => version + 1)}
+                >
+                  Reintentar conexión
+                </button>
               </div>
             )}
 

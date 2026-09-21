@@ -1,5 +1,4 @@
 import { LessonPlayer } from "@/features/learning/components/lesson-player";
-import { calculateMinimumReadingSeconds } from "@/features/learning/domain/reading-time";
 import { resolveLessonByIdentifier } from "@/features/learning/domain/lesson-route";
 import { notFound } from "next/navigation";
 import {
@@ -58,10 +57,6 @@ export default async function StudentLessonPage({
 
   const isAlreadyCompleted =
     (progressMap.get(currentLesson.id) as any)?.is_completed ?? false;
-  const computedMinSeconds =
-    currentLesson.min_seconds && currentLesson.min_seconds >= 30
-      ? currentLesson.min_seconds
-      : calculateMinimumReadingSeconds(currentLesson.word_count || 100);
 
   const lessonsSummary = lessons.map((l: any) => ({
     id: l.id,
@@ -70,18 +65,20 @@ export default async function StudentLessonPage({
     slug: l.slug,
   }));
 
+  const courseLessonIds = new Set(lessons.map((lesson: any) => lesson.id));
   const completedLessonIds: string[] = (userProgress || [])
-    .filter((p: any) => p?.is_completed)
+    .filter((p: any) => p?.is_completed && courseLessonIds.has(p.lesson_id))
     .map((p: any) => String(p.lesson_id));
 
   return (
     <LessonPlayer
+      key={currentLesson.id}
       contentHtml={currentLesson.content_html}
       lessonId={currentLesson.id}
       courseId={course.slug || course.id}
       courseTitle={course.title}
       lessonTitle={currentLesson.title}
-      minSeconds={computedMinSeconds}
+      minSeconds={currentLesson.min_seconds}
       pathToRevalidate={`/courses/${course.slug || course.id}`}
       nextLessonId={nextLesson?.slug || nextLesson?.id}
       prevLessonId={prevLesson?.slug || prevLesson?.id}
