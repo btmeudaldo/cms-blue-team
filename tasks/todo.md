@@ -3,9 +3,9 @@
 ## Auditoría ATO: fase 3 — aislamiento de cursos
 
 - [x] Verificar catálogo remoto y documentar contrato/plan en specs/005-course-data-isolation.
-- [ ] RED: reproducir lectura/escritura cruzada, falta de acceso del editor al progreso y grants masivos.
-- [ ] GREEN: migración de políticas y helper de autorización con privilegios mínimos.
-- [ ] Validar roles reales, regresión de exámenes, advisors, tipos y calidad.
+- [x] RED: reproducir lectura/escritura cruzada, falta de acceso del editor al progreso y grants masivos.
+- [x] GREEN: migración de políticas y helper de autorización con privilegios mínimos.
+- [x] Validar roles reales, regresión de exámenes, advisors, tipos y calidad; 25 SQL, 12 API, 13 de regresión y 150 unitarias correctas.
 - [ ] Commit, push, preview y revisión con evidencia; nueva migración pendiente de autorización live específica.
 
 ## Auditoría ATO: fase 2 — exámenes y notas

@@ -8,6 +8,6 @@
 
 ## Archivos
 
-- Nuevos: especificación/plan/review bajo `specs/005-course-data-isolation`, runner de integración y migración generada con CLI.
+- Nuevos: especificación/plan/review bajo `specs/005-course-data-isolation`, runners `scripts/course-isolation.integration.mjs` y `scripts/course-isolation-api.mjs`, y migración generada con CLI.
 - Actualizados: `tasks/todo.md`, `tasks/lessons.md`.
 - Condicional: pruebas SQL heredadas de privilegios si su expectativa de helper definer deja de aplicar al wrapper invoker.
