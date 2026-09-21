@@ -28,11 +28,21 @@ Servidor de desarrollo detenido y Supabase local aislado cerrado conservando el 
 
 ## Despliegue y límites
 
-- Migración: `20260921150713_enforce_single_active_lesson.sql`, aplicada únicamente en Supabase local aislado `quiz-validation`.
+- Migración: `20260921150713_enforce_single_active_lesson.sql`, validada en Supabase local aislado `quiz-validation` y aplicada tras autorización a `wkxylgsauhruoopclfwm` como versión remota `20260921142012`.
 - La migración pausa actividad incompleta existente (`is_active=false`, `last_resumed_at=null`). Conserva segundos confirmados y registros completados. Tras aplicarla, cada alumno puede reanudar su lectura.
 - Una misma lección abierta en varios dispositivos comparte un único contador; cualquiera puede pausarla. Esta entrega garantiza exclusión del crédito temporal, no identifica el dispositivo físico ni demuestra atención humana.
 - El examen sigue siendo accesible según sus permisos actuales; aprobarlo no exime del requisito de lectura ni acredita tiempo. No se añade un nuevo requisito de acceso a exámenes en esta entrega.
 - Preview Ready: https://cms-blue-team-923cjx8t4-blue-team13.vercel.app (deployment `dpl_2iAza4ngNzH7njbAn8Th2Z2iyxWu`, código `f02791f`, rama `codex/single-active-lesson`). Compilación Next.js y TypeScript correctos en Vercel. CLI autenticada confirma health online/Supabase y login HTTP 200 con formulario esperado.
-- Los recorridos funcionales se validaron contra Supabase local. La preview conserva la configuración remota existente; la exclusión en ella y en la web publicada requiere aplicar esta migración. Ninguna base remota se ha modificado.
+- Los recorridos funcionales se validaron contra Supabase local. Tras autorización, se aplicó exactamente el archivo de migración validado y se verificaron índice único, bloqueo transaccional por alumno, ausencia de actividad duplicada y ejecución denegada a anon.
 - Persiste el desbordamiento anterior de la cabecera móvil (captura de 432 px para viewport de 390 px); queda para la revisión funcional y de accesibilidad pendiente.
-- Publicar en la URL principal requiere autorización específica conforme a las instrucciones del repositorio.
+- Publicación autorizada y completada: https://cms-blue-team-six.vercel.app resuelve al deployment Ready `dpl_C95EgMdFjc6rgJH1BVSoUqKLaXFM`, URL inmutable https://cms-blue-team-irch7b6xz-blue-team13.vercel.app. Build y TypeScript correctos; health online/Supabase y login HTTP 200 con formulario esperado comprobados mediante CLI autenticada.
+
+## Conservación al publicar
+
+Se compararon conteos y hashes antes/después: cursos 5, matrículas 17, editores 0, lecciones 16, perfiles 11, intentos 6, registros de lectura 7 y lecturas completadas 5. Todos coinciden. Para lectura se compararon todos los campos de evidencia excluyendo únicamente `is_active` y `last_resumed_at`; los registros completados se compararon íntegros. No había actividad incompleta activa que pausar.
+
+- Evidencia de lectura: `4218a3769cb0a579ae2d62ff8c06e0d2` antes y después.
+- Registros completados íntegros: `761838407ebdc55b7d8f8ea38a2995d3` antes y después.
+- Intentos/notas: `b0680bd5aed20fed50a3755ccfaefc4c` antes y después.
+
+Login y SSO no se han modificado. La comprobación remota fue de estructura, integridad y disponibilidad; no se generaron expedientes de prueba en la base publicada.

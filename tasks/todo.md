@@ -6,7 +6,7 @@
 - [x] RED: reproducir actividad simultánea y etiquetas de lectura derivadas del examen.
 - [x] GREEN: exclusión temporal en PostgreSQL, feedback de pausa y proyecciones visuales separadas.
 - [x] Validar SQL, Auth/REST, navegador, regresiones y calidad; evidencia en specs/009-single-active-lesson/review.md.
-- [x] Commit, push y preview Ready; migración publicada pendiente de autorización específica. Registro en specs/009-single-active-lesson/review.md.
+- [x] Commit, push y preview Ready; migración y frontend publicados tras autorización específica. Registro en specs/009-single-active-lesson/review.md.
 
 ## Auditoría ATO: fase 6 — cursos y matrículas
 
@@ -19,7 +19,7 @@
 
 ## Pendientes posteriores del CMS
 
-- [ ] Activar en la web publicada la exclusión de tiempo simultáneo ya validada en 009 (pendiente de autorización específica).
+- [x] Activar en la web publicada la exclusión de tiempo simultáneo validada en 009; integridad y despliegue verificados.
 - [ ] Registro auditable de eventos y cambios administrativos.
 - [ ] Versionado de contenido/requisitos y exportación de expedientes.
 - [ ] Completar revisión funcional y accesibilidad de las pantallas.

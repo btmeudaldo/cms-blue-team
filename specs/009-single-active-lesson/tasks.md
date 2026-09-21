@@ -5,4 +5,4 @@
 - [x] Validar Auth/REST y E2E con Supabase local aislado; capturas.
 - [x] Ejecutar regresiones, TypeScript, lint y formato; documentar límites existentes.
 - [x] Commit, push y preview verificada; URL y evidencia en review.md.
-- [ ] Migración publicada y promoción: pendiente de autorización específica posterior.
+- [x] Migración publicada y promoción tras autorización específica; integridad y URL principal verificadas.
