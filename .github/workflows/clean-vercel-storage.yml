@@ -1,0 +1,39 @@
+name: Clean Vercel Storage (Retention Policy)
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_name:
+        description: 'Nombre del proyecto en Vercel (o "all" para todos)'
+        required: false
+        default: 'cms-blue-team'
+        type: string
+      dry_run:
+        description: 'Simular sin borrar (Dry Run)'
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    # Se ejecuta todos los domingos a las 03:00 AM UTC (04:00 / 05:00 España)
+    - cron: '0 3 * * 0'
+
+jobs:
+  clean-deployments:
+    name: 🧹 Purgar Despliegues Obsoletos de Vercel (CMS)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout código
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 🚀 Ejecutar política de retención de Vercel (2 Prod, 1 Preview)
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_NAME: ${{ github.event.inputs.project_name || 'cms-blue-team' }}
+          VERCEL_TEAM_ID: 'team_N2yQOBjjUNNmxUbs4jeK0vWY'
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+        run: node scripts/clean-vercel-deployments.mjs

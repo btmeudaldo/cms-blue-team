@@ -14,8 +14,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier . --write",
-    "format:check": "prettier . --check",
-    "test:db": "supabase test db --local supabase/tests"
+    "format:check": "prettier --check .",
+    "test:db": "supabase test db --local supabase/tests",
+    "clean:vercel": "node scripts/clean-vercel-deployments.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
