@@ -1,5 +1,13 @@
 # Backlog de implementación
 
+## Auditoría ATO: fase 8 — historial de cambios e incidencias
+
+- [x] Inventario y contrato en specs/010-academic-audit; login/SSO fuera de alcance.
+- [ ] RED SQL y aplicación: captura, atribución, permisos, conservación y errores.
+- [ ] GREEN: eventos transaccionales y registro de incidencias; consulta administrativa paginada.
+- [ ] Validar SQL/API/E2E, regresiones y calidad; documentar evidencia.
+- [ ] Commit, push y preview; publicación remota requiere autorización específica posterior.
+
 ## Auditoría ATO: fase 7 — actividad única y evidencias separadas
 
 - [x] Especificar contrato y plan en specs/009-single-active-lesson; login/SSO aplazados.
