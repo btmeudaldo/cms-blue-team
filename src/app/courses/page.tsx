@@ -30,12 +30,33 @@ export default async function CoursesPage() {
       ?.filter((p: any) => p.is_completed)
       .map((p: any) => p.lesson_id) || [],
   );
+
+  const quizzesByLessonMap = new Map<string, any>();
+  for (const q of quizzes || []) {
+    if (q.lesson_id) quizzesByLessonMap.set(q.lesson_id, q);
+    if ((q as any).lesson_slug)
+      quizzesByLessonMap.set((q as any).lesson_slug, q);
+    quizzesByLessonMap.set(q.id, q);
+  }
+
+  const attemptsByQuizMap = new Map<string, any>();
   const passedQuizIds = new Set<string>();
   for (const a of quizAttempts || []) {
     if (a.passed) {
       if (a.quiz_id) passedQuizIds.add(a.quiz_id);
       if (a.lesson_id) passedQuizIds.add(a.lesson_id);
       if (a.lesson_slug) passedQuizIds.add(a.lesson_slug);
+    }
+    const keys = [a.quiz_id, a.lesson_id, a.lesson_slug].filter(Boolean);
+    for (const key of keys) {
+      const existing = attemptsByQuizMap.get(key);
+      if (
+        !existing ||
+        a.passed ||
+        (a.score_percentage || 0) > (existing.score_percentage || 0)
+      ) {
+        attemptsByQuizMap.set(key, a);
+      }
     }
   }
 
@@ -148,11 +169,20 @@ export default async function CoursesPage() {
             {coursesData.map((course: any) => {
               const lessons = course.lessons || [];
               const totalLessons = lessons.length;
-              const completedLessonsCount = lessons.filter(
-                (l: any) =>
+              const completedLessonsCount = lessons.filter((l: any) => {
+                const isProgCompleted =
                   completedLessonIds.has(l.id) ||
-                  completedLessonIds.has(l.slug),
-              ).length;
+                  (l.slug && completedLessonIds.has(l.slug));
+                const quiz =
+                  quizzesByLessonMap.get(l.id) ||
+                  (l.slug && quizzesByLessonMap.get(l.slug));
+                const qAtt = quiz
+                  ? attemptsByQuizMap.get(quiz.id) ||
+                    (quiz.lesson_id && attemptsByQuizMap.get(quiz.lesson_id))
+                  : attemptsByQuizMap.get(l.id) ||
+                    (l.slug && attemptsByQuizMap.get(l.slug));
+                return Boolean(isProgCompleted || qAtt?.passed);
+              }).length;
 
               const courseQuizzes = (quizzes || []).filter((q: any) =>
                 (q.course_id && (q.course_id === course.id || q.course_id === course.slug)) ||
