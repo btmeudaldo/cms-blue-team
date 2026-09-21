@@ -1,5 +1,8 @@
 import { redirect } from "next/navigation";
 import { AuthenticationRequiredError, requireVerifiedSession } from "./session";
+import { requireCourseEditor } from "@/features/learning/application/course-authorization";
+import type { StudentQuiz } from "@/features/learning/domain/quiz-types";
+import { toStudentQuiz } from "@/features/learning/domain/student-quiz";
 
 async function readData<T>(
   query: PromiseLike<{ data: T; error: unknown }>,
@@ -142,24 +145,42 @@ export async function getResilientEnrollments() {
 }
 
 export async function getResilientQuizzes() {
-  const { client } = await requireVerifiedSession();
-  return ((await readData(client.from("quizzes").select("*"))) ?? []).map(
-    normalizeQuiz,
-  );
+  return readAvailableQuizzes({});
 }
 
 export async function getResilientQuiz(quizId: string) {
-  const { client } = await requireVerifiedSession();
-  const quiz = await readData(
-    client.from("quizzes").select("*").eq("id", quizId).maybeSingle(),
-  );
-  return quiz ? normalizeQuiz(quiz) : null;
+  const quizzes = await readAvailableQuizzes({ p_quiz_id: quizId });
+  return quizzes[0] ?? null;
 }
 
 export async function getResilientQuizForLesson(lessonId: string) {
+  const quizzes = await readAvailableQuizzes({ p_lesson_id: lessonId });
+  return quizzes[0] ?? null;
+}
+
+async function readAvailableQuizzes(filters: {
+  p_quiz_id?: string;
+  p_lesson_id?: string;
+}): Promise<StudentQuiz[]> {
   const { client } = await requireVerifiedSession();
+  const quizzes = await readData(client.rpc("list_available_quizzes", filters));
+  if (!Array.isArray(quizzes))
+    throw new Error("No se pudieron cargar los cuestionarios.");
+  return quizzes.map(toStudentQuiz);
+}
+
+export async function getEditableQuizForLesson(
+  courseId: string,
+  lessonId: string,
+) {
+  const { client } = await requireCourseEditor(courseId);
   const quiz = await readData(
-    client.from("quizzes").select("*").eq("lesson_id", lessonId).maybeSingle(),
+    client
+      .from("quizzes")
+      .select("*")
+      .eq("course_id", courseId)
+      .eq("lesson_id", lessonId)
+      .maybeSingle(),
   );
   return quiz ? normalizeQuiz(quiz) : null;
 }

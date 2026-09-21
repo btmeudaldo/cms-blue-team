@@ -1,0 +1,40 @@
+# Revisión de exámenes y resultados
+
+## Implementación
+
+- Banco de respuestas accesible solo a administradores y docentes propietarios/asignados. Alumnos matriculados usan RPC con lista explícita de campos sin solucionario ni explicaciones.
+- PostgreSQL inicia el intento, conserva copia privada del banco y umbral, calcula nota y tiempo y registra atómicamente. Envíos idénticos son idempotentes; respuestas diferentes de un intento cerrado se rechazan.
+- API sin escritura directa de notas. Lectura de registros limitada al alumno y docentes del curso. Se bloquean borrado en cascada desde el examen/lección y traslado de un examen entre cursos.
+- Interfaz sin calificación local, éxito simulado ni sincronización de la antigua cola localStorage. Un fallo mantiene intento/respuestas en memoria, bloqueados, para reenviar. Recargar antes de confirmar pierde ese estado local; no se afirma recuperación offline.
+- Edición de cuestionarios conserva lectura autorizada separada y aporta ID/slug al insertar. Estado de aprobado histórico usa el resultado persistido, no el umbral actual.
+- Registros antiguos se conservan con `grading_version = NULL`; no se recalifican ni se certifica su integridad retrospectiva. Los nuevos usan `server-v1`.
+
+## Evidencia
+
+- RED inicial ejecutado: 14 fallos SQL; reproducción efectiva de lectura anónima del solucionario e inserción/actualización de nota propia. RED de acciones/lecturas/UI previo a GREEN, commit `67fb468`.
+- Revisión independiente detectó borrado por cascada y traslado de registros; ambos fallos reproducidos por separado y corregidos.
+- 150 pruebas unitarias correctas. `npx tsc --noEmit` y build Next.js correctos.
+- 19 pruebas SQL correctas en PostgreSQL 17.11 local, roles anon/authenticated y fixtures sintéticos, incluidos bancos inválidos y entregas concurrentes distintas. Advisors de seguridad locales: sin incidencias.
+- Chromium: 7 E2E correctas; 1 omitida por falta de credenciales reales de alumno. Comprobados portada, login y rechazo de cookies falsificadas en rutas protegidas.
+- Lint global ejecutado: quedan los 4 errores previos (comillas JSX en admin-courses-client-view, setState en lesson-player y Date.now en quiz-editor). Formato global ejecutado; formato ajeno retirado tras comprobar igualdad con Prettier y guardar copia.
+- Revisión visual aislada de inicio, error y resultado, escritorio 1280 y móvil 390; CSS compilado real, acciones sintéticas, sin desbordamiento horizontal. No sustituye prueba integrada de Auth/REST remoto.
+
+## Ejecución reproducible SQL
+
+Usar una instancia PostgreSQL 17 desechable, fuera de `test-results` (Playwright borra su directorio de salida). Crear `quiz_security_test` y conectar como propietario local.
+
+```powershell
+$env:QUIZ_TEST_DATABASE_URL='postgresql://postgres@127.0.0.1:55439/quiz_security_test'
+$env:QUIZ_MIGRATION='supabase/migrations/20260921091612_secure_quiz_results.sql'
+node --test scripts/quiz-security.integration.mjs
+```
+
+El runner rechaza hosts no locales y nombres de base diferentes. Reinicia únicamente los esquemas sintéticos de esa base. Omitir `QUIZ_MIGRATION` reproduce RED sobre el esquema vulnerable.
+
+## Despliegue y límites
+
+La migración **no se ha aplicado a producción**. El historial previo diverge del esquema remoto: no ejecutar `supabase db push` indiscriminadamente. La entrega debe aplicar esta migración revisada sobre un entorno que reproduzca el esquema remoto y luego verificar Auth/PostgREST con cuentas reales antes de live.
+
+La preview de código requiere esas RPC en su backend. Apuntarla al Supabase de producción sin migrar provoca rechazo explícito de la carga de cuestionarios; no se restaura acceso inseguro como fallback. No hay rama Supabase de pruebas disponible al inicio de esta entrega. Para validación alojada completa se necesita un proyecto de staging o una rama de base de datos autorizada.
+
+Retención completa, borrado de cuentas, límites de intentos, políticas de lecciones y garantías de exportación siguen pendientes. No se afirma cumplimiento AESA con este cambio.

@@ -12,14 +12,12 @@ export function evaluateLessonCompletion(
     isReadingCompleted && readingElapsedSeconds >= minSecs;
 
   const hasQuiz = Boolean(quiz);
-  const minScore = quiz?.minPassScorePercentage ?? 70;
+  const minScore = latestQuizAttempt?.min_pass_score_percentage;
 
   const quizScorePercentage = latestQuizAttempt
     ? latestQuizAttempt.score_percentage
     : null;
-  const quizPassed = latestQuizAttempt
-    ? latestQuizAttempt.score_percentage >= minScore
-    : false;
+  const quizPassed = latestQuizAttempt?.passed ?? false;
 
   let isFullyApproved = false;
   let statusLabel = "";
@@ -47,7 +45,10 @@ export function evaluateLessonCompletion(
       statusLabel = "⚠️ Lectura OK - Falta Presentar Quiz";
       statusBadgeVariant = "warning";
     } else if (readingCompliant && !quizPassed) {
-      statusLabel = `⚠️ Quiz Reprobado (${quizScorePercentage}% < ${minScore}%)`;
+      statusLabel =
+        minScore == null
+          ? `⚠️ Quiz Reprobado (${quizScorePercentage}%)`
+          : `⚠️ Quiz Reprobado (${quizScorePercentage}% < ${minScore}%)`;
       statusBadgeVariant = "error";
     } else if (!readingCompliant && quizPassed) {
       statusLabel = "⚠️ Quiz Aprobado - Falta Tiempo Lectura";

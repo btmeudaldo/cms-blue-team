@@ -27,6 +27,20 @@ create table public.quiz_attempts (
 );
 grant usage on schema public, auth to anon, authenticated;
 grant all on all tables in schema public to anon, authenticated;
+-- Supporting tables use reduced SELECT-only scope; no test role may change identity/enrollment.
+alter table public.profiles enable row level security;
+alter table public.courses enable row level security;
+alter table public.lessons enable row level security;
+alter table public.course_enrollments enable row level security;
+alter table public.course_editors enable row level security;
+create policy own_profile on public.profiles for select to authenticated using (id = (select auth.uid()));
+create policy readable_courses on public.courses for select to authenticated using (
+  created_by = (select auth.uid()) or exists(select 1 from public.profiles p where p.id=auth.uid() and p.role in ('admin','instructor'))
+  or exists(select 1 from public.course_enrollments e where e.user_id=auth.uid() and e.course_id=courses.id)
+);
+create policy readable_lessons on public.lessons for select to authenticated using (exists(select 1 from public.courses c where c.id=lessons.course_id));
+create policy own_enrollments on public.course_enrollments for select to authenticated using (user_id=(select auth.uid()));
+create policy staff_assignments on public.course_editors for select to authenticated using (exists(select 1 from public.profiles p where p.id=auth.uid() and p.role in ('admin','instructor')));
 alter table public.quizzes enable row level security;
 alter table public.quiz_attempts enable row level security;
 create policy "Quizzes are viewable by everyone" on public.quizzes for select using (true);

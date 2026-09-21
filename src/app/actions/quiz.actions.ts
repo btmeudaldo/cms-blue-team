@@ -1,9 +1,12 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
-import { getResilientUser } from "@/shared/lib/supabase/resilient";
-import { mockStore } from "@/shared/lib/mock-store";
+import { requireVerifiedSession } from "@/shared/lib/supabase/session";
+import type {
+  QuizAttemptResult,
+  StartedQuizAttempt,
+} from "@/features/learning/domain/quiz-types";
+import { toStudentQuiz } from "@/features/learning/domain/student-quiz";
 import { requireCourseEditor } from "@/features/learning/application/course-authorization";
 
 function withTimeout<T>(
@@ -27,90 +30,59 @@ function withTimeout<T>(
   });
 }
 
-export async function submitQuizAttemptAction(
+export async function startQuizAttemptAction(
   quizId: string,
-  answers: Record<string, number>,
-  elapsedSeconds: number,
-  attemptId = crypto.randomUUID(),
-  completedAt = new Date().toISOString(),
-) {
-  const session = await getResilientUser();
-  const { user } = session;
-  if (!user) {
-    return { error: "Debes iniciar sesión para realizar la evaluación." };
-  }
-
-  // 1. Resolve quiz from store (supports lookup by quizId, lessonId, or slug)
-  const quiz =
-    mockStore.getQuizById(quizId) || mockStore.getQuizByLessonId(quizId);
-
-  // 2. Evaluate answers
-  const questions = quiz ? quiz.questions || [] : [];
-  let correctCount = 0;
-  for (const q of questions) {
-    if (answers[q.id] === q.correctAnswerIndex) {
-      correctCount++;
-    }
-  }
-
-  const totalQuestions = questions.length;
-  const scorePercentage =
-    totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
-  const minScore = quiz?.minPassScorePercentage || 70;
-  const passed = scorePercentage >= minScore;
-
-  // 3. Attempt persistent database save
+): Promise<{ success: true; attempt: StartedQuizAttempt } | { error: string }> {
   try {
-    const supabase = await createSupabaseServerClient();
-    const { error } = await supabase.from("quiz_attempts").upsert(
-      {
-        id: attemptId,
-        user_id: user.id,
-        quiz_id: quiz?.id || quizId,
-        score_percentage: scorePercentage,
-        correct_count: correctCount,
-        total_questions: totalQuestions,
-        passed,
-        elapsed_seconds: elapsedSeconds,
-        completed_at: completedAt,
+    const { client } = await requireVerifiedSession();
+    const { data, error } = await client.rpc("start_quiz_attempt", {
+      p_quiz_id: quizId,
+    });
+    if (error || !data)
+      return {
+        error:
+          "No se pudo iniciar el examen. Comprueba tu acceso e inténtalo de nuevo.",
+      };
+    return {
+      success: true,
+      attempt: {
+        attempt_id: data.attempt_id,
+        started_at: data.started_at,
+        quiz: toStudentQuiz(data.quiz),
       },
-      { onConflict: "id" },
-    );
-
-    if (error) {
-      console.warn("Supabase quiz_attempts upsert failed:", error.message);
-      return { error: "No se pudo guardar el examen en la base de datos." };
-    }
-  } catch (err: any) {
-    console.warn("Supabase client error in quiz submission:", err);
-    return { error: "Ocurrió un error al contactar la base de datos." };
+    };
+  } catch {
+    return {
+      error: "No se pudo iniciar el examen. Comprueba tu sesión y conexión.",
+    };
   }
+}
 
-  // 4. Revalidate Next.js caches for instant UI updates
-  revalidatePath("/courses");
-  revalidatePath("/quizzes");
-  revalidatePath("/admin/progress");
-  if (quiz?.course_id) {
-    revalidatePath(`/courses/${quiz.course_id}`);
-    revalidatePath(`/admin/courses/${quiz.course_id}`);
+export async function submitQuizAttemptAction(
+  attemptId: string,
+  answers: Record<string, number>,
+): Promise<{ success: true; attempt: QuizAttemptResult } | { error: string }> {
+  try {
+    const { client } = await requireVerifiedSession();
+    const { data, error } = await client.rpc("submit_quiz_attempt", {
+      p_attempt_id: attemptId,
+      p_answers: answers,
+    });
+    if (error || !data)
+      return {
+        error:
+          "No se pudo confirmar el resultado. Reintenta el envío de este intento.",
+      };
+    revalidatePath("/courses", "layout");
+    revalidatePath("/quizzes", "layout");
+    revalidatePath("/admin/progress");
+    return { success: true, attempt: data as QuizAttemptResult };
+  } catch {
+    return {
+      error:
+        "No se pudo confirmar el resultado. Comprueba tu sesión y conexión y reintenta el envío.",
+    };
   }
-  if (quiz?.lesson_id) {
-    revalidatePath(`/courses/${quiz.course_id}/lessons/${quiz.lesson_id}`);
-  }
-
-  return {
-    success: true,
-    attempt: {
-      id: attemptId,
-      quiz_id: quiz?.id || quizId,
-      score_percentage: scorePercentage,
-      correct_count: correctCount,
-      total_questions: totalQuestions,
-      passed,
-      elapsed_seconds: elapsedSeconds,
-      completed_at: completedAt,
-    },
-  };
 }
 
 export async function saveQuizAction(
@@ -121,7 +93,7 @@ export async function saveQuizAction(
   const { client: supabase } = await requireCourseEditor(courseId);
   const { data: lesson, error: lessonError } = await supabase
     .from("lessons")
-    .select("id")
+    .select("id, slug")
     .eq("id", lessonId)
     .eq("course_id", courseId)
     .maybeSingle();
@@ -131,6 +103,7 @@ export async function saveQuizAction(
   const quizRecord = {
     course_id: courseId,
     lesson_id: lessonId,
+    lesson_slug: lesson.slug,
     title: quizData.title,
     description: quizData.description,
     min_pass_score_percentage: Number(quizData.minPassScorePercentage) || 70,
@@ -154,7 +127,9 @@ export async function saveQuizAction(
         .eq("id", existingQuiz.id)
         .eq("course_id", courseId)
         .eq("lesson_id", lessonId)
-    : supabase.from("quizzes").insert(quizRecord);
+    : supabase
+        .from("quizzes")
+        .insert({ ...quizRecord, id: crypto.randomUUID() });
   const { data: savedQuiz, error: writeError } = await withTimeout(
     writeQuery.select().single(),
   );

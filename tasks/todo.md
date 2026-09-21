@@ -3,10 +3,10 @@
 ## Auditoría ATO: fase 2 — exámenes y notas
 
 - [x] Inspeccionar esquema remoto y especificar contrato seguro en specs/004-secure-quiz-results.
-- [ ] RED: reproducir exposición y manipulación en PostgreSQL aislado y acciones.
-- [ ] GREEN: políticas mínimas y RPC de inicio/calificación idempotente con snapshot.
-- [ ] GREEN: DTO seguro, editor autorizado y UI sin notas locales.
-- [ ] Verificar SQL, unitarias, tipos, lint, formato, build y UI.
+- [x] RED: reproducir exposición y manipulación en PostgreSQL aislado y acciones.
+- [x] GREEN: políticas mínimas y RPC de inicio/calificación idempotente con snapshot.
+- [x] GREEN: DTO seguro, editor autorizado y UI sin notas locales.
+- [x] Verificar SQL, unitarias, tipos, lint, formato, build y UI; límites en review.md.
 - [ ] Commit, push, preview y registro de límites; no producción.
 
 ## Auditoría ATO: fase 1 — acceso verificado (2026-09-21)

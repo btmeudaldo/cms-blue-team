@@ -3,10 +3,31 @@ import { evaluateLessonCompletion } from "./quiz-evaluation";
 import type { QuizAttemptResult } from "./quiz-types";
 
 describe("evaluateLessonCompletion", () => {
-  it.each([true, false])("preserves the recorded pass decision when thresholds change: %s", (passed) => {
-    const attempt: QuizAttemptResult = { id: "a", user_id: "u", quiz_id: "q", score_percentage: passed ? 70 : 80, correct_count: 7, total_questions: 10, passed, completed_at: "now", elapsed_seconds: 40 };
-    expect(evaluateLessonCompletion(45, 30, true, { minPassScorePercentage: passed ? 90 : 60 }, attempt).quizPassed).toBe(passed);
-  });
+  it.each([true, false])(
+    "preserves the recorded pass decision when thresholds change: %s",
+    (passed) => {
+      const attempt: QuizAttemptResult = {
+        id: "a",
+        user_id: "u",
+        quiz_id: "q",
+        score_percentage: passed ? 70 : 80,
+        correct_count: 7,
+        total_questions: 10,
+        passed,
+        completed_at: "now",
+        elapsed_seconds: 40,
+      };
+      expect(
+        evaluateLessonCompletion(
+          45,
+          30,
+          true,
+          { minPassScorePercentage: passed ? 90 : 60 },
+          attempt,
+        ).quizPassed,
+      ).toBe(passed);
+    },
+  );
   it("approves lesson without quiz if reading time is compliant", () => {
     const result = evaluateLessonCompletion(45, 30, true, null, null);
     expect(result.isFullyApproved).toBe(true);

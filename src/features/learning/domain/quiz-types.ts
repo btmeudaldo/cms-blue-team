@@ -16,6 +16,21 @@ export type Quiz = {
   questions: QuizQuestion[];
 };
 
+export type StudentQuizQuestion = Pick<
+  QuizQuestion,
+  "id" | "question" | "options"
+>;
+
+export type StudentQuiz = Omit<Quiz, "questions"> & {
+  questions: StudentQuizQuestion[];
+};
+
+export type StartedQuizAttempt = {
+  attempt_id: string;
+  started_at: string;
+  quiz: StudentQuiz;
+};
+
 export type QuizAttemptResult = {
   id: string;
   user_id: string;
@@ -26,6 +41,7 @@ export type QuizAttemptResult = {
   passed: boolean;
   completed_at: string;
   elapsed_seconds: number;
+  min_pass_score_percentage?: number | null;
 };
 
 export type LessonCombinedStatus = {

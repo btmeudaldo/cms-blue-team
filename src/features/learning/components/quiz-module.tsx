@@ -1,35 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { submitQuizAttemptAction } from "@/app/actions/quiz.actions";
 import {
-  addPendingQuizAttempt,
-  removePendingQuizAttempt,
-  type PendingQuizAttempt,
-} from "../domain/quiz-attempt-queue";
-import type { Quiz, QuizAttemptResult } from "../domain/quiz-types";
-
-const PENDING_ATTEMPTS_STORAGE_KEY = "cms.pending-quiz-attempts";
-
-function readPendingAttempts(): PendingQuizAttempt[] {
-  try {
-    const storedAttempts = localStorage.getItem(PENDING_ATTEMPTS_STORAGE_KEY);
-    return storedAttempts ? JSON.parse(storedAttempts) : [];
-  } catch {
-    return [];
-  }
-}
-
-function writePendingAttempts(attempts: PendingQuizAttempt[]) {
-  localStorage.setItem(PENDING_ATTEMPTS_STORAGE_KEY, JSON.stringify(attempts));
-}
+  startTransition,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
+import Link from "next/link";
+import {
+  startQuizAttemptAction,
+  submitQuizAttemptAction,
+} from "@/app/actions/quiz.actions";
+import {
+  initialQuizSubmission,
+  quizSubmissionReducer,
+} from "../domain/quiz-submission-state";
+import type {
+  StudentQuiz,
+  StartedQuizAttempt,
+  QuizAttemptResult,
+} from "../domain/quiz-types";
 
 type QuizModuleProps = {
-  quiz: Quiz;
+  quiz: StudentQuiz;
   previousAttempt?: QuizAttemptResult | null;
   isEmbedded?: boolean;
-  onComplete?: (result: any) => void;
+  onComplete?: (result: { success: true; attempt: QuizAttemptResult }) => void;
   nextLessonUrl?: string | null;
   nextLessonTitle?: string | null;
 };
@@ -42,141 +39,117 @@ export function QuizModule({
   nextLessonUrl = null,
   nextLessonTitle = null,
 }: QuizModuleProps) {
+  const [state, dispatch] = useReducer(quizSubmissionReducer, {
+    ...initialQuizSubmission,
+    result: previousAttempt,
+  });
+  const [startedAttempt, setStartedAttempt] =
+    useState<StartedQuizAttempt | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<
-    Record<string, number>
-  >({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [attemptResult, setAttemptResult] = useState<{
-    scorePercentage: number;
-    correctCount: number;
-    totalQuestions: number;
-    passed: boolean;
-    minScore: number;
-  } | null>(
-    previousAttempt
-      ? {
-          scorePercentage: previousAttempt.score_percentage,
-          correctCount: previousAttempt.correct_count,
-          totalQuestions: previousAttempt.total_questions,
-          passed: previousAttempt.passed,
-          minScore: quiz.minPassScorePercentage || 70,
-        }
-      : null,
-  );
-
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
-  const [showReviewMode, setShowReviewMode] = useState(false);
-  const [isPendingSync, setIsPendingSync] = useState(false);
-
-  async function syncAttempt(attempt: PendingQuizAttempt) {
-    const response = await submitQuizAttemptAction(
-      attempt.quizId,
-      attempt.answers,
-      attempt.elapsedSeconds,
-      attempt.id,
-      attempt.completedAt,
-    );
-
-    if (response.success) {
-      writePendingAttempts(
-        removePendingQuizAttempt(readPendingAttempts(), attempt.id),
-      );
-      setIsPendingSync(false);
-      return response;
-    }
-
-    setIsPendingSync(true);
-    return response;
-  }
-
-  useEffect(() => {
-    const syncPendingAttempts = async () => {
-      const pendingAttempts = readPendingAttempts().filter(
-        (attempt) => attempt.quizId === quiz.id,
-      );
-      for (const pendingAttempt of pendingAttempts) {
-        await syncAttempt(pendingAttempt);
-      }
-    };
-
-    void syncPendingAttempts();
-    window.addEventListener("online", syncPendingAttempts);
-    return () => window.removeEventListener("online", syncPendingAttempts);
-  }, [quiz.id]);
-
-  useEffect(() => {
-    if (attemptResult && !showReviewMode) return;
-    const timer = setInterval(() => {
-      setElapsedSeconds((prev) => prev + 1);
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [attemptResult, showReviewMode]);
-
-  const questions = quiz.questions || [];
+  const [isStarting, setIsStarting] = useState(false);
+  const requestInFlight = useRef(false);
+  const attemptResult = state.result;
+  const selectedAnswers = state.answers;
+  const questions = startedAttempt?.quiz.questions ?? [];
   const currentQuestion = questions[currentQuestionIndex];
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
   const answeredCount = Object.keys(selectedAnswers).length;
-  const allAnswered = answeredCount === questions.length;
+  const allAnswered =
+    questions.length > 0 &&
+    questions.every((question) =>
+      Number.isInteger(selectedAnswers[question.id]),
+    );
+
+  useEffect(() => {
+    if (!startedAttempt || attemptResult) return;
+    const timer = setInterval(
+      () => setElapsedSeconds((previous) => previous + 1),
+      1000,
+    );
+    return () => clearInterval(timer);
+  }, [startedAttempt, attemptResult]);
+
+  function handleStart() {
+    if (requestInFlight.current) return;
+    requestInFlight.current = true;
+    setIsStarting(true);
+    startTransition(async () => {
+      try {
+        const response = await startQuizAttemptAction(quiz.id);
+        if ("error" in response) {
+          dispatch({ type: "failed", error: response.error });
+          return;
+        }
+        setStartedAttempt(response.attempt);
+        dispatch({ type: "started", attemptId: response.attempt.attempt_id });
+        setCurrentQuestionIndex(0);
+        setElapsedSeconds(0);
+      } catch {
+        dispatch({
+          type: "failed",
+          error:
+            "No se ha podido iniciar el examen. Comprueba la conexión e inténtalo de nuevo.",
+        });
+      } finally {
+        requestInFlight.current = false;
+        setIsStarting(false);
+      }
+    });
+  }
 
   function handleSelectOption(optionIndex: number) {
-    if (!currentQuestion) return;
-    setSelectedAnswers((prev) => ({
-      ...prev,
-      [currentQuestion.id]: optionIndex,
-    }));
+    if (currentQuestion && !requestInFlight.current)
+      dispatch({
+        type: "answer",
+        questionId: currentQuestion.id,
+        option: optionIndex,
+      });
   }
 
-  async function handleSubmitQuiz() {
-    setIsSubmitting(true);
-    const correctCount = questions.filter(
-      (question) =>
-        selectedAnswers[question.id] === question.correctAnswerIndex,
-    ).length;
-    const scorePercentage = Math.round((correctCount / questions.length) * 100);
-    const minScore = quiz.minPassScorePercentage || 70;
-    const pendingAttempt: PendingQuizAttempt = {
-      id: crypto.randomUUID(),
-      quizId: quiz.id,
-      answers: selectedAnswers,
-      elapsedSeconds,
-      completedAt: new Date().toISOString(),
-    };
-
-    writePendingAttempts(
-      addPendingQuizAttempt(readPendingAttempts(), pendingAttempt),
-    );
-    setAttemptResult({
-      scorePercentage,
-      correctCount,
-      totalQuestions: questions.length,
-      passed: scorePercentage >= minScore,
-      minScore,
-    });
-
-    try {
-      const res = await syncAttempt(pendingAttempt);
-
-      if (res.success) {
-        if (onComplete) onComplete(res);
+  function handleSubmitQuiz() {
+    if (
+      !state.attemptId ||
+      !allAnswered ||
+      requestInFlight.current ||
+      attemptResult
+    )
+      return;
+    requestInFlight.current = true;
+    const attemptId = state.attemptId;
+    const answers = { ...state.answers };
+    dispatch({ type: "submit" });
+    startTransition(async () => {
+      try {
+        const response = await submitQuizAttemptAction(attemptId, answers);
+        if ("error" in response) {
+          dispatch({ type: "failed", error: response.error });
+          return;
+        }
+        if (response.attempt.id !== attemptId) {
+          dispatch({
+            type: "failed",
+            error:
+              "No se ha podido confirmar este intento. Reenvía las mismas respuestas.",
+          });
+          return;
+        }
+        dispatch({ type: "confirmed", result: response.attempt });
+        onComplete?.({ success: true, attempt: response.attempt });
+      } catch {
+        dispatch({
+          type: "failed",
+          error:
+            "No se ha recibido confirmación del resultado. Comprueba la conexión y reenvía las mismas respuestas.",
+        });
+      } finally {
+        requestInFlight.current = false;
       }
-    } catch (err) {
-      setIsPendingSync(true);
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
-
-  function handleRetake() {
-    setSelectedAnswers({});
-    setCurrentQuestionIndex(0);
-    setAttemptResult(null);
-    setElapsedSeconds(0);
-    setShowReviewMode(false);
+    });
   }
 
   // --- RESULT VIEW ---
-  if (attemptResult && !showReviewMode) {
+  if (attemptResult) {
     const passed = attemptResult.passed;
     return (
       <div
@@ -204,9 +177,9 @@ export function QuizModule({
           </h2>
 
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
-            {passed
-              ? `Has obtenido un ${attemptResult.scorePercentage}% de aciertos, superando la nota mínima exigida del ${attemptResult.minScore}%.`
-              : `Obtuviste un ${attemptResult.scorePercentage}% de aciertos. Para aprobar necesitas alcanzar al menos un ${attemptResult.minScore}%.`}
+            {`Has obtenido un ${attemptResult.score_percentage}% de aciertos.`}
+            {attemptResult.min_pass_score_percentage != null &&
+              ` La nota mínima de este intento es ${attemptResult.min_pass_score_percentage}%.`}
           </p>
 
           <div className="pt-1">
@@ -229,7 +202,7 @@ export function QuizModule({
                   : "text-rose-600 dark:text-rose-400"
               }`}
             >
-              {attemptResult.scorePercentage}%
+              {attemptResult.score_percentage}%
             </div>
           </div>
 
@@ -238,7 +211,7 @@ export function QuizModule({
               Aciertos Totales
             </span>
             <div className="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
-              {attemptResult.correctCount} / {attemptResult.totalQuestions}
+              {attemptResult.correct_count} / {attemptResult.total_questions}
             </div>
           </div>
 
@@ -247,29 +220,26 @@ export function QuizModule({
               Tiempo Empleado
             </span>
             <div className="text-3xl font-extrabold text-[#1a80ff] mt-1">
-              {Math.floor(elapsedSeconds / 60)}m {elapsedSeconds % 60}s
+              {`${Math.floor(attemptResult.elapsed_seconds / 60)}m ${attemptResult.elapsed_seconds % 60}s`}
             </div>
           </div>
         </div>
 
+        {state.error && (
+          <p role="alert" className="text-sm text-rose-700 dark:text-rose-300">
+            {state.error}
+          </p>
+        )}
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
           <button
             type="button"
-            onClick={() => setShowReviewMode(true)}
-            className="w-full sm:w-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer shadow-xs inline-flex items-center justify-center gap-1.5"
-          >
-            <span>🔍</span>
-            <span>Revisar Explicaciones</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={handleRetake}
+            onClick={handleStart}
+            disabled={isStarting}
             className="w-full sm:w-auto rounded-xl bg-indigo-600 dark:bg-indigo-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-indigo-700 dark:hover:bg-indigo-700 transition-all cursor-pointer shadow-xs inline-flex items-center justify-center gap-1.5"
           >
             <span>🔄</span>
-            <span>Reintentar Examen</span>
+            <span>{isStarting ? "Iniciando..." : "Reintentar Examen"}</span>
           </button>
 
           {!isEmbedded && (
@@ -280,12 +250,38 @@ export function QuizModule({
               }
               className="w-full sm:w-auto rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] px-5 py-2.5 text-xs font-bold text-white transition-all text-center shadow-xs inline-flex items-center justify-center gap-1.5"
             >
-              <span>{nextLessonTitle ? "Siguiente Lección" : "Siguiente Lección"}</span>
+              <span>{nextLessonTitle || "Volver al curso"}</span>
               <span>&rarr;</span>
             </Link>
           )}
         </div>
       </div>
+    );
+  }
+
+  if (!startedAttempt) {
+    return (
+      <section className="mx-auto max-w-3xl space-y-4 rounded-3xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+        <h2 className="text-xl font-bold">{quiz.title}</h2>
+        <p>{quiz.description}</p>
+        <p className="text-sm">
+          El examen comienza al pulsar iniciar. La nota se mostrará cuando el
+          servidor confirme el resultado.
+        </p>
+        {state.error && (
+          <p role="alert" className="text-sm text-rose-700 dark:text-rose-300">
+            {state.error}
+          </p>
+        )}
+        <button
+          type="button"
+          disabled={isStarting}
+          onClick={handleStart}
+          className="rounded-xl bg-blue-700 px-5 py-3 font-bold text-white disabled:opacity-50"
+        >
+          {isStarting ? "Iniciando..." : "Iniciar examen"}
+        </button>
+      </section>
     );
   }
 
@@ -311,20 +307,11 @@ export function QuizModule({
             Examen Teórico Aeronáutico
           </span>
           <h2 className="text-lg font-extrabold text-slate-900 dark:text-white mt-1">
-            {quiz.title}
+            {startedAttempt?.quiz.title ?? quiz.title}
           </h2>
         </div>
 
         <div className="flex items-center gap-3">
-          {showReviewMode && (
-            <button
-              type="button"
-              onClick={() => setShowReviewMode(false)}
-              className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer"
-            >
-              &larr; Ver Calificación
-            </button>
-          )}
           <div className="flex items-center gap-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 text-xs font-mono font-bold text-slate-700 dark:text-slate-300">
             <span>⏱️</span>
             <span>
@@ -372,6 +359,8 @@ export function QuizModule({
                 key={optIdx}
                 type="button"
                 onClick={() => handleSelectOption(optIdx)}
+                disabled={state.locked}
+                aria-pressed={isSelected}
                 className={`w-full text-left flex items-center justify-between rounded-2xl border p-4 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                   isSelected
                     ? "border-[#1a80ff] bg-blue-50/80 dark:bg-blue-950/40 text-[#1a80ff] shadow-sm font-bold"
@@ -406,20 +395,17 @@ export function QuizModule({
             );
           })}
         </div>
-
-        {/* Educational Explanation in Review Mode */}
-        {showReviewMode && (
-          <div className="mt-4 rounded-2xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 p-4 text-xs space-y-1">
-            <div className="font-bold text-[#1a80ff]">
-              💡 Explicación Técnica Aeronáutica:
-            </div>
-            <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
-              {currentQuestion.explanation}
-            </p>
-          </div>
-        )}
       </div>
 
+      {state.error && (
+        <div
+          role="alert"
+          className="rounded-xl border border-rose-300 p-4 text-sm text-rose-700 dark:text-rose-300"
+        >
+          {state.error} Las respuestas quedan bloqueadas para reenviar este
+          mismo intento.
+        </div>
+      )}
       {/* Navigation Buttons */}
       <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
         <button
@@ -439,37 +425,19 @@ export function QuizModule({
           >
             Siguiente &rarr;
           </button>
-        ) : showReviewMode ? (
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setShowReviewMode(false)}
-              className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 px-4 py-2 text-xs font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer"
-            >
-              Ver Resumen
-            </button>
-            <Link
-              href={
-                nextLessonUrl ||
-                (quiz.course_id ? `/courses/${quiz.course_id}` : "/courses")
-              }
-              className="rounded-xl bg-[#1a80ff] px-5 py-2 text-xs font-bold text-white hover:bg-[#0066e6] transition-all shadow-sm inline-flex items-center gap-1"
-            >
-              <span>Siguiente Lección</span>
-              <span>&rarr;</span>
-            </Link>
-          </div>
         ) : (
           <button
             type="button"
-            disabled={isSubmitting || !allAnswered}
+            disabled={state.submitting || !allAnswered}
             onClick={handleSubmitQuiz}
             className="rounded-xl bg-[#1a80ff] px-6 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] disabled:opacity-50 transition-all shadow-sm cursor-pointer"
           >
-            {isSubmitting
+            {state.submitting
               ? "Evaluando..."
               : allAnswered
-                ? "Finalizar Examen y Enviar"
+                ? state.locked
+                  ? "Reenviar respuestas"
+                  : "Finalizar Examen y Enviar"
                 : "Responde todas para enviar"}
           </button>
         )}
