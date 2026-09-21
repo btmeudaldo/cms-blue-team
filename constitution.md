@@ -20,6 +20,9 @@ Construir un CMS de e-learning ligero que gestione cursos, lecciones y progreso 
 5. El HTML del editor se sanea antes de persistirse y antes de renderizarse.
 6. Scroll, `event.isTrusted`, cuenta atrás y posición variable del botón son fricción de interfaz; no controles de seguridad.
 7. La posición aleatoria se calcula una vez por carga de lección dentro de una franja inferior reservada; nunca tapa el contenido ni cambia mientras el alumno puede interactuar.
+8. La identidad se verifica con Supabase Auth y el rol se obtiene exclusivamente del perfil persistido; cookies demo, correo y metadatos editables no conceden permisos.
+9. Las operaciones de usuario respetan RLS. Un rechazo o fallo no se reintenta con service_role ni se convierte en éxito simulado.
+10. La aplicación académica no permite accesos sin contraseña ni incorpora datos de demostración en consultas reales.
 
 ## Arquitectura
 

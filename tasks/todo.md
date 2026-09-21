@@ -1,5 +1,15 @@
 # Backlog de implementación
 
+## Auditoría ATO: fase 1 — acceso verificado (2026-09-21)
+
+- [x] Leer código y documentar especificación/plan en specs/003-verified-access.
+- [ ] RED: reproducir cookies demo, roles editables, login fallido, mezcla de mocks y escaladas de privilegios.
+- [ ] GREEN: sesión verificada, consultas RLS y acciones sin fallback privilegiado.
+- [ ] GREEN: retirar controles demo y contraseña precargada; probar rutas protegidas.
+- [ ] Verificar tests, tipos, lint, formato, build y estado remoto RLS de exámenes.
+- [ ] Commit, push y preview; verificar versión y acceso.
+- [ ] Revisión: registrar resultado y siguientes prioridades (exámenes, progreso, conservación, exportación).
+
 ## Preparación
 
 - [x] Confirmar el alcance de primera entrega: registro temporal verificable y botón de posición variable.
