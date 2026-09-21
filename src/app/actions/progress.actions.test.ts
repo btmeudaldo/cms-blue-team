@@ -34,6 +34,7 @@ const progress = {
   active_seconds: 40,
   elapsed_seconds: 40,
   is_completed: false,
+  is_active: true,
 };
 const operations = [
   ["start_lesson", () => actions.startLessonAction("lesson")],
@@ -84,6 +85,8 @@ describe("verified lesson progress", () => {
     {},
     { ...progress, user_id: "other" },
     { ...progress, active_seconds: -1 },
+    { ...progress, is_active: undefined },
+    { ...progress, is_active: "true" },
   ])("rejects invalid acknowledgement %j", async (data) => {
     mocks.rpc.mockResolvedValue({ data, error: null });
     expect(await actions.startLessonAction("lesson")).toHaveProperty("error");
