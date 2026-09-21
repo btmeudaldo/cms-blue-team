@@ -53,7 +53,7 @@ export async function getResilientCourses(
         client
           .from("courses")
           .select(
-            "id, title, slug, description, image_url, created_at, lessons(id, title, sequence_order)",
+            "id, title, slug, description, image_url, created_at, lessons(id, title, slug, sequence_order)",
           )
           .order("created_at", { ascending: false }),
       )) ?? []
@@ -65,7 +65,7 @@ export async function getResilientCourses(
     client
       .from("course_enrollments")
       .select(
-        "courses(id, title, slug, description, image_url, created_at, lessons(id, title, sequence_order))",
+        "courses(id, title, slug, description, image_url, created_at, lessons(id, title, slug, sequence_order))",
       )
       .eq("user_id", user.id),
   );

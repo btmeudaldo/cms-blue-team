@@ -70,8 +70,11 @@ export default async function StudentCourseDetailPage({
   }).length;
 
   const courseQuizzes = (quizzes || []).filter((q: any) =>
+    (q.course_id && (q.course_id === course.id || q.course_id === course.slug)) ||
     lessons.some(
-      (l: any) => l.id === q.lesson_id || l.slug === q.lesson_slug,
+      (l: any) =>
+        (Boolean(q.lesson_id) && l.id === q.lesson_id) ||
+        (Boolean(l.slug) && Boolean(q.lesson_slug) && l.slug === q.lesson_slug),
     ),
   );
   const passedQuizzesCount = courseQuizzes.filter(

@@ -155,16 +155,19 @@ export default async function CoursesPage() {
               ).length;
 
               const courseQuizzes = (quizzes || []).filter((q: any) =>
+                (q.course_id && (q.course_id === course.id || q.course_id === course.slug)) ||
                 lessons.some(
-                  (l: any) => l.id === q.lesson_id || l.slug === q.lesson_slug,
+                  (l: any) =>
+                    (Boolean(q.lesson_id) && l.id === q.lesson_id) ||
+                    (Boolean(l.slug) && Boolean(q.lesson_slug) && l.slug === q.lesson_slug),
                 ),
               );
               const totalQuizzes = courseQuizzes.length;
               const passedQuizzesCount = courseQuizzes.filter(
                 (q: any) =>
                   passedQuizIds.has(q.id) ||
-                  (q.lesson_id && passedQuizIds.has(q.lesson_id)) ||
-                  (q.lesson_slug && passedQuizIds.has(q.lesson_slug)),
+                  (Boolean(q.lesson_id) && passedQuizIds.has(q.lesson_id)) ||
+                  (Boolean(q.lesson_slug) && passedQuizIds.has(q.lesson_slug)),
               ).length;
 
               const totalItems = totalLessons + totalQuizzes;

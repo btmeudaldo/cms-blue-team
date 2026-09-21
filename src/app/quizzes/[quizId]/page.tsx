@@ -37,7 +37,8 @@ export default async function StandaloneQuizPage({
         );
         const currentIndex = lessons.findIndex(
           (l: any) =>
-            l.id === quiz.lesson_id || l.slug === (quiz as any).lesson_slug,
+            (Boolean(quiz.lesson_id) && l.id === quiz.lesson_id) ||
+            (Boolean(l.slug) && Boolean((quiz as any).lesson_slug) && l.slug === (quiz as any).lesson_slug),
         );
 
         if (currentIndex !== -1 && currentIndex < lessons.length - 1) {
