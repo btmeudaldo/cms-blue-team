@@ -14,6 +14,7 @@
 - TDD: fallos RED reproducidos en acceso, acciones, login y autorización por curso antes de corregir.
 - 130 pruebas unitarias correctas; TypeScript y build de producción correctos.
 - Chromium: 9 E2E correctas; 4 omitidas por falta de cuentas E2E reales configuradas. Se comprueba login y rechazo de cookies falsificadas en cinco rutas.
+- Viewport móvil: 6 E2E de acceso correctas. La revisión visual detecta desbordamiento previo del encabezado en móvil; queda fuera de la corrección de autorización.
 - Captura local revisada: `test-results/preview_screenshot-login.png`.
 - ESLint dirigido a archivos de código/test de la corrección correcto.
 - `npm run lint:fix` global ejecutado: permanecen 4 errores y 9 advertencias preexistentes, en componentes ajenos al cierre de acceso.
@@ -31,4 +32,10 @@ El proyecto remoto coincide con el enlazado local. No se ha modificado su esquem
 
 ## Entrega
 
-Rama `codex/verified-access`, sin merge a main ni despliegue live. Preview y comprobación remota pendientes de completar.
+Rama `codex/verified-access`, sin merge a main ni despliegue live. Commits de código: `a7df990` (RED) y `a88fc78` (GREEN).
+
+Vercel confirma despliegue Preview correcto de `a88fc789a3d4d6520c6511d482409cf3c0005151` (deployment GitHub `6563746921`):
+
+https://cms-blue-team-ojaxpu5ar-eudaldocal-8684s-projects.vercel.app
+
+La protección SSO de Vercel redirige el navegador y las pruebas remotas a su login. No se ha desactivado esa protección. Las comprobaciones de UI remotas quedan bloqueadas hasta disponer de sesión Vercel autorizada; no equivalen a un fallo de acceso del CMS. La captura revisada corresponde al entorno local, no a la preview remota.

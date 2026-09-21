@@ -7,8 +7,9 @@
 - [x] GREEN: sesión verificada, consultas RLS y acciones sin fallback privilegiado.
 - [x] GREEN: retirar controles demo y contraseña precargada; probar rutas protegidas.
 - [x] Verificar tests, tipos, lint, formato, build y estado remoto RLS de exámenes (limitaciones documentadas en review.md).
-- [ ] Commit, push y preview; verificar versión y acceso.
-- [ ] Revisión: registrar resultado y siguientes prioridades (exámenes, progreso, conservación, exportación).
+- [x] Commit, push y preview Vercel desde rama de corrección.
+- [ ] Verificar acceso en preview con sesión Vercel (protección SSO impide pruebas remotas anónimas).
+- [x] Revisión: registrar resultado y siguientes prioridades (exámenes, progreso, conservación, exportación).
 
 ## Preparación
 
