@@ -114,6 +114,12 @@ export async function deleteLessonAction(lessonId: string, courseId: string) {
   let query = supabase.from("lessons").delete().eq("course_id", courseId);
   query = isUuid ? query.eq("id", lessonId) : query.eq("slug", lessonId);
   const { data, error } = await query.select("id").single();
+  if (error?.code === "23503") {
+    return {
+      error:
+        "No se puede eliminar porque existen registros académicos que deben conservarse.",
+    };
+  }
   if (error) throw new Error(error.message);
   if (!data) throw new Error("Lección no encontrada o no autorizada.");
 

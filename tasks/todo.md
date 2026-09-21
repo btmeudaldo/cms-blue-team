@@ -3,9 +3,9 @@
 ## Auditoría ATO: fase 4 — conservación de expedientes
 
 - [x] Inspeccionar FK y rutas de borrado; documentar alcance y plan en specs/006-academic-record-preservation.
-- [ ] RED: reproducir pérdidas por cascada y errores de interfaz.
-- [ ] GREEN: restricciones referenciales, ámbito inmutable de lección y feedback de conservación.
-- [ ] Validar SQL, API, UI y regresiones; registrar límites.
+- [x] RED: reproducir pérdidas por cascada y errores de interfaz.
+- [x] GREEN: restricciones referenciales, ámbito inmutable de lección y feedback de conservación.
+- [x] Validar SQL, API, UI y regresiones; 21 pruebas de conservación, 2 E2E y 158 unitarias correctas; límites en review.md.
 - [ ] Commit, push y preview; solicitar autorización específica antes de producción.
 
 ## Auditoría ATO: fase 3 — aislamiento de cursos

@@ -61,12 +61,15 @@ async function actor(user, operation, role = "authenticated") {
 async function rows(user, sql, params = []) {
   return actor(user, async () => (await db.query(sql, params)).rows);
 }
-async function denied(user, sql, params = []) {
+async function denied(user, sql, params = [], expectedCodes = ["42501"]) {
   let result;
   try {
     result = await rows(user, sql, params);
   } catch (error) {
-    assert.equal(error.code, "42501");
+    assert.ok(
+      expectedCodes.includes(error.code),
+      `Unexpected SQLSTATE: ${error.code}`,
+    );
     return;
   }
   assert.equal(
@@ -181,7 +184,13 @@ for (const [name, sql, params] of [
     [ids.la, ids.b],
   ],
 ])
-  test(`assigned editor cannot ${name}`, () => denied(ids.editor, sql, params));
+  test(`assigned editor cannot ${name}`, () =>
+    denied(
+      ids.editor,
+      sql,
+      params,
+      name === "move A to B" ? ["42501", "22023"] : ["42501"],
+    ));
 for (const lesson of ["la", "lc"])
   test(`student with historical ownership/assignment cannot edit ${lesson}`, () =>
     denied(

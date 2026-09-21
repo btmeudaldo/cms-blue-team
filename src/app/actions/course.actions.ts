@@ -100,6 +100,12 @@ export async function deleteCourseAction(courseId: string) {
     .eq("id", courseId)
     .select("id")
     .maybeSingle();
+  if (error?.code === "23503") {
+    return {
+      error:
+        "No se puede eliminar porque existen registros académicos que deben conservarse.",
+    };
+  }
   if (error) throw new Error(`No se pudo eliminar el curso: ${error.message}`);
   if (!data)
     throw new Error("Curso no encontrado o sin permiso para eliminarlo.");

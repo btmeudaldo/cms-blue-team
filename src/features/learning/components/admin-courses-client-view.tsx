@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CourseImageUploader } from "./course-image-uploader";
+import { AcademicDeleteForm } from "./academic-delete-form";
 
 type AdminCoursesClientViewProps = {
   courses: any[];
   createCourseAction: (formData: FormData) => Promise<void>;
-  deleteCourseAction: (courseId: string) => Promise<void>;
+  deleteCourseAction: (courseId: string) => Promise<void | { error: string }>;
 };
 
 export function AdminCoursesClientView({
@@ -173,7 +174,8 @@ export function AdminCoursesClientView({
               No hay cursos creados todavía.
             </p>
             <p className="text-xs text-slate-400">
-              Haz clic en el botón superior "+ Crear Nuevo Curso" para registrar tu primer módulo.
+              Haz clic en el botón superior "+ Crear Nuevo Curso" para registrar
+              tu primer módulo.
             </p>
             <button
               type="button"
@@ -187,10 +189,7 @@ export function AdminCoursesClientView({
           <div className="space-y-4">
             {courses.map((course: any) => {
               const lessonCount = course.lessons?.length || 0;
-              const deleteThisCourse = deleteCourseAction.bind(
-                null,
-                course.id,
-              );
+              const deleteThisCourse = deleteCourseAction.bind(null, course.id);
 
               return (
                 <div
@@ -233,27 +232,10 @@ export function AdminCoursesClientView({
                       <span>&rsaquo;</span>
                     </Link>
 
-                    <form action={deleteThisCourse}>
-                      <button
-                        type="submit"
-                        title="Eliminar curso"
-                        className="rounded-xl border border-slate-200 dark:border-slate-800 p-2 text-slate-400 hover:border-rose-200 hover:bg-rose-50 dark:hover:bg-rose-950/40 hover:text-rose-600 transition-colors cursor-pointer"
-                      >
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                          />
-                        </svg>
-                      </button>
-                    </form>
+                    <AcademicDeleteForm
+                      action={deleteThisCourse}
+                      label="Eliminar curso"
+                    />
                   </div>
                 </div>
               );

@@ -3,12 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { CourseImageUploader } from "./course-image-uploader";
+import { AcademicDeleteForm } from "./academic-delete-form";
 
 type AdminCourseDetailClientViewProps = {
   course: any;
   lessons: any[];
   updateThisCourse: (formData: FormData) => Promise<void>;
-  deleteLessonAction: (lessonId: string, courseId: string) => Promise<void>;
+  deleteLessonAction: (
+    lessonId: string,
+    courseId: string,
+  ) => Promise<void | { error: string }>;
 };
 
 export function AdminCourseDetailClientView({
@@ -55,7 +59,9 @@ export function AdminCourseDetailClientView({
             className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             <span>⚙️</span>
-            <span>{showSettings ? "Ocultar Ajustes" : "Ajustes del Curso"}</span>
+            <span>
+              {showSettings ? "Ocultar Ajustes" : "Ajustes del Curso"}
+            </span>
           </button>
 
           <Link
@@ -223,8 +229,8 @@ export function AdminCourseDetailClientView({
                         {lesson.title}
                       </h3>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                        {lesson.word_count || 0} palabras &middot; Tiempo
-                        mín. exigido:{" "}
+                        {lesson.word_count || 0} palabras &middot; Tiempo mín.
+                        exigido:{" "}
                         <span className="font-bold text-[#1a80ff]">
                           {lesson.min_seconds}s
                         </span>
@@ -240,27 +246,10 @@ export function AdminCourseDetailClientView({
                       Editar Contenido
                     </Link>
 
-                    <form action={deleteThisLesson}>
-                      <button
-                        type="submit"
-                        title="Eliminar lección"
-                        className="rounded-xl border border-slate-200 dark:border-slate-800 p-2 text-slate-400 hover:border-rose-200 hover:bg-rose-50 dark:hover:bg-rose-950/40 hover:text-rose-600 transition-colors cursor-pointer"
-                      >
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                          />
-                        </svg>
-                      </button>
-                    </form>
+                    <AcademicDeleteForm
+                      action={deleteThisLesson}
+                      label="Eliminar lección"
+                    />
                   </div>
                 </div>
               );
