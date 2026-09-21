@@ -39,9 +39,9 @@ https://cms-blue-team-kbrlig4vq-eudaldocal-8684s-projects.vercel.app
 
 Login remoto verificado por CLI autenticada: HTTP 200 y formulario real. La CLI generó un token de bypass de protección para la comprobación autorizada; no se desactivó la protección SSO. Capturas sintéticas conservadas en `test-results/visual-quiz/preview_screenshot-quiz-{start,error,result}-{desktop,mobile}.png`.
 
-La migración **no se ha aplicado a producción**. El historial previo diverge del esquema remoto: no ejecutar `supabase db push` indiscriminadamente. La entrega debe aplicar esta migración revisada sobre un entorno que reproduzca el esquema remoto y luego verificar Auth/PostgREST con cuentas reales antes de live.
+En la primera preview, la migración todavía no se había aplicado a producción. El historial previo diverge del esquema remoto: no ejecutar `supabase db push` indiscriminadamente. La validación integrada y aplicación posterior se documentan abajo.
 
-La preview de código requiere esas RPC en su backend. Apuntarla al Supabase de producción sin migrar provoca rechazo explícito de la carga de cuestionarios; no se restaura acceso inseguro como fallback. No hay rama Supabase de pruebas disponible al inicio de esta entrega. Para validación alojada completa se necesita un proyecto de staging o una rama de base de datos autorizada.
+La preview de código requiere esas RPC en su backend. Antes de migrar, la carga de cuestionarios fallaba explícitamente; no se restauraba acceso inseguro como fallback. La validación integrada se completó después mediante Supabase local aislado, sin crear rama de pago.
 
 Retención completa, borrado de cuentas, límites de intentos, políticas de lecciones y garantías de exportación siguen pendientes. No se afirma cumplimiento AESA con este cambio.
 
@@ -57,4 +57,15 @@ Docker recuperado conservando y regenerando las carpetas que contenían únicame
 
 Supabase aislado `quiz-validation` operativo en puertos 55321/55322, fuera de `test-results`. Importador exige marcador, puerto local y esquema público vacío; no reinicia bases existentes. Restaurada estructura y grants remotos y aplicada exactamente la migración candidata. `scripts/quiz-staging-api.mjs` crea cinco cuentas sintéticas y valida **13 comprobaciones correctas** con Auth/PostgREST reales: aislamiento, ausencia de solucionario, rechazo de escritura directa, snapshot, idempotencia y concurrencia. Credenciales y fixtures solo en `.vercel/`, ignorado. Advisors de seguridad locales: **0 incidencias**. Unitarias repetidas: **150 correctas**.
 
-Siguiente paso autorizado: preparar frontend compatible sin promoción automática, aplicar únicamente la migración revisada y promover después; verificar conservación de históricos y permisos. No ejecutar el historial divergente completo.
+## Entrega autorizada completada (2026-09-21)
+
+- Código y pruebas registrados en `9d41c86`, rama `codex/secure-quiz-results`, subidos a GitHub. Preview Ready: https://cms-blue-team-prsghmdx5-eudaldocal-8684s-projects.vercel.app. Login comprobado HTTP 200 con formulario real.
+- Frontend compilado con configuración de producción mediante `--prod --skip-domain`, build y TypeScript correctos; promovido después de aplicar la migración. Deployment `dpl_FENjQgZTKoCZQcEfjtTk9XmQdyzJ`, estado Ready.
+- Producción: https://cms-blue-team-eudaldocal-8684s-projects.vercel.app. `/api/health` devuelve `online/supabase`; `/quizzes` sin sesión devuelve 307 a `/login`.
+- Aplicado únicamente el SQL revisado `20260921091612_secure_quiz_results.sql` mediante MCP. Historial remoto confirma `20260921090542 / secure_quiz_results` (el servicio asigna su versión al aplicarla); no se ejecutó el historial local divergente.
+- Conservación comprobada: 16 cuestionarios, 5 intentos históricos, todos con `grading_version = NULL`. Huella MD5 de todos los campos históricos ordenados por ID antes/después: `32d4ba1664407d36f45af5b4a4d90697`; igualdad exacta. Se usa como comprobación de conservación, no como firma de auditoría.
+- Verificación remota de privilegios: sin SELECT anónimo al banco; sin INSERT/UPDATE/DELETE autenticado a notas; sin SELECT autenticado a snapshots. Las tres RPC públicas son invoker y no ejecutables por anon. Solo política SELECT acotada en resultados.
+- Cinco comprobaciones REST negativas reales en producción: `quizzes`, `quiz_attempts` y las tres RPC rechazan anon con `42501`. No se crearon cuentas ni intentos de prueba en producción.
+- Advisors alojados: aviso `rls_enabled_no_policy` en `quiz_private.attempt_snapshots` es intencionado: tabla privada, no expuesta y sin privilegios de cliente; solo funciones internas controladas acceden. [Referencia del aviso](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy). Permanecen los avisos anteriores sobre [funciones públicas definer](https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable) y [protección de contraseñas filtradas](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection); no se afirma que toda la plataforma esté endurecida.
+
+El recorrido autenticado completo se verificó en Supabase local con estructura y grants remotos; las comprobaciones posteriores en producción fueron de lectura y denegación. Los límites de retención, lecciones y cumplimiento ATO indicados arriba siguen pendientes.

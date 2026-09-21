@@ -8,11 +8,11 @@
 - [x] GREEN: DTO seguro, editor autorizado y UI sin notas locales.
 - [x] Verificar SQL, unitarias, tipos, lint, formato, build y UI; límites en review.md.
 - [x] Commit, push, preview y registro de límites; no producción.
-- [ ] Validación integrada en Supabase de staging y aprobación específica de live.
+- [x] Validación integrada en Supabase local y autorización específica de migración posterior.
 - [x] Usuario autoriza validación integrada y posterior migración; prefiere Supabase local sin rama de pago.
 - [x] Recuperar Docker sin reset y levantar Supabase local aislado, conservando el stack existente.
 - [x] Restaurar estructura y grants sin expedientes; validar 13 comprobaciones Auth/REST y 2 recorridos reales desktop/móvil; advisors locales sin incidencias.
-- [ ] Preparar frontend compatible, aplicar migración autorizada y verificar conservación de históricos y permisos en producción.
+- [x] Preparar frontend compatible, aplicar migración autorizada y verificar conservación de históricos y permisos en producción; evidencia en specs/004-secure-quiz-results/review.md.
 
 ## Auditoría ATO: fase 1 — acceso verificado (2026-09-21)
 
@@ -22,7 +22,7 @@
 - [x] GREEN: retirar controles demo y contraseña precargada; probar rutas protegidas.
 - [x] Verificar tests, tipos, lint, formato, build y estado remoto RLS de exámenes (limitaciones documentadas en review.md).
 - [x] Commit, push y preview Vercel desde rama de corrección.
-- [ ] Verificar acceso en preview con sesión Vercel (protección SSO impide pruebas remotas anónimas).
+- [x] Verificar login en preview mediante CLI Vercel autenticada y rutas protegidas sin sesión.
 - [x] Revisión: registrar resultado y siguientes prioridades (exámenes, progreso, conservación, exportación).
 
 ## Preparación
