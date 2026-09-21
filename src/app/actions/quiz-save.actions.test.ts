@@ -74,6 +74,14 @@ function setup(role = "instructor") {
 }
 beforeEach(() => vi.resetAllMocks());
 describe("quiz editor authorization", () => {
+  it("supplies the real lesson slug and a new ID when inserting a quiz", async () => {
+    const { lessons, quizzes } = setup();
+    lessons.maybeSingle.mockResolvedValue({ data: { id: "lesson", slug: "real-lesson" }, error: null });
+    quizzes.maybeSingle.mockResolvedValue({ data: null, error: null });
+    await saveQuizAction("course", "lesson", payload);
+    expect(lessons.select).toHaveBeenCalledWith("id, slug");
+    expect(quizzes.insert).toHaveBeenCalledWith(expect.objectContaining({ id: expect.any(String), lesson_slug: "real-lesson" }));
+  });
   it("requires a verified session", async () => {
     const { client } = setup();
     mocks.session.mockRejectedValue(new Error("Unauthenticated"));

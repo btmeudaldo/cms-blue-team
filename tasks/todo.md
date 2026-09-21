@@ -1,5 +1,14 @@
 # Backlog de implementación
 
+## Auditoría ATO: fase 2 — exámenes y notas
+
+- [x] Inspeccionar esquema remoto y especificar contrato seguro en specs/004-secure-quiz-results.
+- [ ] RED: reproducir exposición y manipulación en PostgreSQL aislado y acciones.
+- [ ] GREEN: políticas mínimas y RPC de inicio/calificación idempotente con snapshot.
+- [ ] GREEN: DTO seguro, editor autorizado y UI sin notas locales.
+- [ ] Verificar SQL, unitarias, tipos, lint, formato, build y UI.
+- [ ] Commit, push, preview y registro de límites; no producción.
+
 ## Auditoría ATO: fase 1 — acceso verificado (2026-09-21)
 
 - [x] Leer código y documentar especificación/plan en specs/003-verified-access.
