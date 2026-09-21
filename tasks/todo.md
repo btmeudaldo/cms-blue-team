@@ -7,7 +7,7 @@
 - [x] GREEN: restricciones referenciales, ámbito inmutable de lección y feedback de conservación.
 - [x] Validar SQL, API, UI y regresiones; 21 pruebas de conservación, 2 E2E y 158 unitarias correctas; límites en review.md.
 - [x] Commit, push y preview Ready; evidencia en specs/006-academic-record-preservation/review.md.
-- [ ] Aplicar migración y publicar frontend tras autorización específica de producción.
+- [x] Aplicar migración y publicar frontend tras autorización específica de producción; seis tablas sin cambios de datos, restricciones activas y web online. Evidencia en specs/006-academic-record-preservation/review.md.
 
 ## Auditoría ATO: fase 3 — aislamiento de cursos
 

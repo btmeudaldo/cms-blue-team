@@ -23,11 +23,24 @@ Las acciones de borrado devuelven un error esperado ante `23503`, sin revalidar 
 
 ## Operación y límites
 
-La migración se ha aplicado únicamente en Supabase local `quiz-validation` (55321/55322). Credenciales/fixtures permanecen en `.vercel/`, ignorado. No se han intentado borrados ni creado cuentas en producción.
+La migración se validó en Supabase local `quiz-validation` (55321/55322) y se aplicó en producción el 2026-09-21, tras autorización específica del usuario. Versión remota `20260921095855`, nombre `preserve_academic_records`. Credenciales/fixtures permanecen en `.vercel/`, ignorado. No se han intentado borrados ni creado cuentas en producción.
 
-Antes de migrar producción, verificar nuevamente que `quiz_private.attempt_snapshots.user_id` no tenga huérfanos; el preflight remoto actual devuelve cero. Comparar recuentos/huellas de progreso, resultados, snapshots y contenidos antes/después. Aplicar solo esta migración, no el historial local divergente.
+El preflight remoto confirmó cero snapshots huérfanos. Se aplicó exclusivamente esta migración mediante MCP, sin sincronizar el historial local divergente. Recuentos y huellas MD5 de filas completas idénticos antes/después:
 
-Esta entrega requiere migración y frontend para el mensaje de conservación. **Pendiente de autorización específica de producción**.
+| Tabla                | Filas | Huella                           |
+| -------------------- | ----: | -------------------------------- |
+| courses              |     5 | 49bf7204c159021715d9025275180b47 |
+| lessons              |    16 | 81f583c1a4abe2755c82025bd639cb7b |
+| profiles             |     9 | bb98686ca865b92f359a63626f5cd919 |
+| user_lesson_progress |     6 | e85741c4acc660accce92d082c8e97aa |
+| quiz_attempts        |     5 | dbcab8e5c83c0874dffb39580798e3f7 |
+| attempt_snapshots    |     0 | d41d8cd98f00b204e9800998ecf8427e |
+
+Las cuatro FK nuevas están validadas con DELETE RESTRICT. Trigger `keep_lesson_course` habilitado, función invoker sin EXECUTE para anon/authenticated y cero grants TRUNCATE/REFERENCES/TRIGGER de cursos/perfiles para clientes.
+
+Frontend publicado y promovido: [producción](https://cms-blue-team-eudaldocal-8684s-projects.vercel.app), deployment `dpl_FFvgThsh84NmjXFrEyDoZm4CVBFQ`, URL inmutable https://cms-blue-team-kawdc13ul-eudaldocal-8684s-projects.vercel.app. Build y TypeScript correctos; `inspect` confirma Ready y alias correcto. CLI autenticada confirma login HTTP 200 con formulario y `/api/health` devuelve `online`, fuente `supabase`. Los borrados se probaron en local; la verificación remota fue de solo lectura.
+
+Advisors alojados mantienen los avisos previos, sin nuevos hallazgos atribuibles a esta migración: snapshots privados con RLS sin políticas (intencional), funciones SECURITY DEFINER antiguas ejecutables por [anon](https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable) (4) y [authenticated](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable) (9), y [protección de contraseñas filtradas deshabilitada](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection). Siguen pendientes de revisión separada.
 
 Rama `codex/preserve-academic-records`, GREEN `45fe4a2`, subida a GitHub. Preview Ready con build y TypeScript correctos: https://cms-blue-team-ag3ulgkm4-eudaldocal-8684s-projects.vercel.app (deployment `dpl_5iakSdYEuwhJQBF1iNvDuBSWeig3`). CLI autenticada verifica login HTTP 200 con formulario. Esta preview usa el backend alojado aún sin la nueva migración; los rechazos y capturas integradas se verificaron en Supabase local aislado. Entorno de pruebas detenido conservando datos/migraciones; Docker y el stack previo permanecen activos.
 
