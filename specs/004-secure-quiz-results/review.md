@@ -44,3 +44,15 @@ La migración **no se ha aplicado a producción**. El historial previo diverge d
 La preview de código requiere esas RPC en su backend. Apuntarla al Supabase de producción sin migrar provoca rechazo explícito de la carga de cuestionarios; no se restaura acceso inseguro como fallback. No hay rama Supabase de pruebas disponible al inicio de esta entrega. Para validación alojada completa se necesita un proyecto de staging o una rama de base de datos autorizada.
 
 Retención completa, borrado de cuentas, límites de intentos, políticas de lecciones y garantías de exportación siguen pendientes. No se afirma cumplimiento AESA con este cambio.
+
+## Continuación: validación integrada y migración autorizadas
+
+El usuario autoriza validar el recorrido completo y después aplicar la migración. Prefiere evitar la rama de pago: no se ha creado ningún recurso facturable. Se utilizará Supabase local completo, con Auth, REST y PostgreSQL y datos sintéticos.
+
+Preflight remoto: migración todavía ausente, 16 cuestionarios y 5 intentos históricos. Se preparó una exportación de catálogo solo de estructura en `.vercel/staging-schema.sql` (ignorada, pendiente completar grants antes de restaurar). No se copiaron expedientes.
+
+Prueba integrada preparada en `e2e/quiz-staging.e2e.ts`, configuración separada `playwright.staging.config.ts`: login real, inicio, respuestas, 50 %, persistencia tras recarga y ausencia de solucionario. Discovery desktop/móvil y TypeScript correctos; ejecución real pendiente.
+
+Bloqueo local: Docker Desktop no arranca por reparsepoint `dockerInference`, Windows error 1920. Se cerró Docker y terminó únicamente su distribución WSL; inspección, renombrado y eliminación puntual del socket siguieron fallando. No se modificaron contenedores, volúmenes ni archivos Docker. Se necesita reiniciar Windows y volver a comprobar el engine; no restaurar a fábrica.
+
+Después del reinicio: arrancar Supabase aislado fuera de `test-results`, completar/importar estructura y grants, aplicar migración local, crear cuentas/curso sintéticos, ejecutar API negativas y recorrido UI real. Solo tras éxito aplicar la migración remota autorizada y publicar el frontend compatible, verificando conservación de históricos y permisos. No ejecutar el historial divergente completo.

@@ -9,6 +9,8 @@
 - [x] Verificar SQL, unitarias, tipos, lint, formato, build y UI; límites en review.md.
 - [x] Commit, push, preview y registro de límites; no producción.
 - [ ] Validación integrada en Supabase de staging y aprobación específica de live.
+- [x] Usuario autoriza validación integrada y posterior migración; prefiere Supabase local sin rama de pago.
+- [ ] Reiniciar Windows para desbloquear Docker, levantar Supabase local y ejecutar pruebas integradas preparadas.
 
 ## Auditoría ATO: fase 1 — acceso verificado (2026-09-21)
 
