@@ -6,7 +6,8 @@
 - [x] RED: reproducir lectura/escritura cruzada, falta de acceso del editor al progreso y grants masivos.
 - [x] GREEN: migración de políticas y helper de autorización con privilegios mínimos.
 - [x] Validar roles reales, regresión de exámenes, advisors, tipos y calidad; 25 SQL, 12 API, 13 de regresión y 150 unitarias correctas.
-- [ ] Commit, push, preview y revisión con evidencia; nueva migración pendiente de autorización live específica.
+- [x] Commit, push, preview Ready y revisión con evidencia en specs/005-course-data-isolation/review.md.
+- [ ] Aplicar nueva migración en producción tras autorización live específica de esta entrega.
 
 ## Auditoría ATO: fase 2 — exámenes y notas
 
