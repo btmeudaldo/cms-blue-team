@@ -27,6 +27,8 @@ La migración se ha aplicado únicamente en Supabase local `quiz-validation` (55
 
 Antes de migrar producción, verificar nuevamente que `quiz_private.attempt_snapshots.user_id` no tenga huérfanos; el preflight remoto actual devuelve cero. Comparar recuentos/huellas de progreso, resultados, snapshots y contenidos antes/después. Aplicar solo esta migración, no el historial local divergente.
 
-Esta entrega requiere migración y frontend para el mensaje de conservación. **Pendiente de autorización específica de producción**; primero preview.
+Esta entrega requiere migración y frontend para el mensaje de conservación. **Pendiente de autorización específica de producción**.
+
+Rama `codex/preserve-academic-records`, GREEN `45fe4a2`, subida a GitHub. Preview Ready con build y TypeScript correctos: https://cms-blue-team-ag3ulgkm4-eudaldocal-8684s-projects.vercel.app (deployment `dpl_5iakSdYEuwhJQBF1iNvDuBSWeig3`). CLI autenticada verifica login HTTP 200 con formulario. Esta preview usa el backend alojado aún sin la nueva migración; los rechazos y capturas integradas se verificaron en Supabase local aislado. Entorno de pruebas detenido conservando datos/migraciones; Docker y el stack previo permanecen activos.
 
 No hay archivado ni plazos legales definidos, purga o anonimización. No se congelan contenido, títulos ni mínimos históricos; tampoco se corrige aún la repetición de finalizaciones de progreso. Un administrador de base de datos puede modificar el esquema o borrar registros directamente. Continúan pendientes las políticas antiguas de cursos/matrículas y el versionado/exportación del expediente; no se afirma conformidad AESA.

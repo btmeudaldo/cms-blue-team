@@ -6,7 +6,8 @@
 - [x] RED: reproducir pérdidas por cascada y errores de interfaz.
 - [x] GREEN: restricciones referenciales, ámbito inmutable de lección y feedback de conservación.
 - [x] Validar SQL, API, UI y regresiones; 21 pruebas de conservación, 2 E2E y 158 unitarias correctas; límites en review.md.
-- [ ] Commit, push y preview; solicitar autorización específica antes de producción.
+- [x] Commit, push y preview Ready; evidencia en specs/006-academic-record-preservation/review.md.
+- [ ] Aplicar migración y publicar frontend tras autorización específica de producción.
 
 ## Auditoría ATO: fase 3 — aislamiento de cursos
 
