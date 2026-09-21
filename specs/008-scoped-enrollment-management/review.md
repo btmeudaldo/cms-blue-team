@@ -23,4 +23,6 @@ La página calcula cursos gestionables desde la sesión verificada. El modal mue
 
 Esta entrega se valida en Supabase aislado quiz-validation (55321/55322). El proyecto alojado wkxylgsauhruoopclfwm solo se consultó; la migración nueva no se ha aplicado allí. Repo actual btmeudaldo/cms-blue-team y Vercel Blue Team verificados. Login/SSO y contraseñas no se modifican.
 
+Rama `codex/scoped-enrollment-management`, GREEN `7d79285`, subida al repositorio oficial. [Preview Ready](https://cms-blue-team-5l473cntb-blue-team13.vercel.app) del equipo `blue-team13`, deployment `dpl_5D7ifA1vP8cyTk2Fzc2t8ZQDTkMh`; build/TypeScript correctos y login HTTP 200 con formulario mediante CLI autenticada. La preview comparte el backend alojado aún sin la nueva RPC: el flujo de guardado completo se validó en local con la migración. Pendiente autorización específica para publicar migración e interfaz en la URL principal de pruebas. Dev server detenido y Supabase aislado parado conservando backup; stack original intacto.
+
 No se incorpora histórico de altas/bajas, ni control de versiones de selecciones simultáneas: los guardados se serializan y prevalece el último dentro de su ámbito. No se afirma conformidad AESA. El resto del plan del CMS figura en tasks/todo.md.
