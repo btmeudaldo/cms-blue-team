@@ -7,7 +7,7 @@
 - [x] GREEN: RPC temporales autorizadas e idempotentes, acciones verificadas y UI sincronizada.
 - [x] Validar SQL, Auth/REST, recorrido de alumno, regresiones y calidad; 56 SQL, 6 API, 4 E2E, 187 unitarias y TypeScript correctos. Límites de lint en review.md.
 - [x] Commit, push y preview Ready; evidencia en specs/007-verified-lesson-timing/review.md.
-- [ ] Aplicar migración temporal y frontend tras autorización live específica de esta entrega.
+- [x] Aplicar migración temporal y frontend tras autorización live específica; seis tablas intactas, privilegios remotos verificados y web online. Evidencia en specs/007-verified-lesson-timing/review.md.
 
 ## Auditoría ATO: fase 4 — conservación de expedientes
 

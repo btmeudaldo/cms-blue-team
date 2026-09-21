@@ -23,7 +23,13 @@ Las acciones y el reproductor se actualizan para trabajar con confirmaciones per
 
 ## Operación y límites
 
-SQL aplicado únicamente en Supabase local `quiz-validation` (55321/55322), sin reset. Producción solo se consultó para comprobar definiciones. La entrega necesita aplicar migración y frontend juntos tras autorización específica live, que todavía no se ha solicitado.
+SQL validado en Supabase local `quiz-validation` (55321/55322), sin reset, y aplicado en producción tras autorización específica del usuario el 2026-09-21. Migración remota `20260921102110`, nombre `verify_lesson_timing`; se aplicó exclusivamente el archivo validado, sin sincronizar el historial local divergente.
+
+Frontend publicado en [producción](https://cms-blue-team-eudaldocal-8684s-projects.vercel.app), deployment `dpl_H7kTDHz3grmG9gEL8Dn2W6gViyg1`, URL inmutable https://cms-blue-team-r0dz2vnw5-eudaldocal-8684s-projects.vercel.app. Build/TypeScript correctos; inspect confirma Ready y alias. Login HTTP 200 con formulario y health `online`, fuente `supabase`.
+
+Recuentos y huellas MD5 de filas completas idénticos antes/después: courses 5 (`49bf7204c159021715d9025275180b47`), lessons 16 (`81f583c1a4abe2755c82025bd639cb7b`), profiles 9 (`bb98686ca865b92f359a63626f5cd919`), progreso 6 (`e85741c4acc660accce92d082c8e97aa`), intentos 5 (`dbcab8e5c83c0874dffb39580798e3f7`), snapshots 0 (`d41d8cd98f00b204e9800998ecf8427e`). No se crearon cuentas ni alteraron expedientes para pruebas en producción.
+
+Catálogo remoto confirma cinco wrappers invoker, función privada definer, search_path vacío y EXECUTE denegado a anon/concedido a authenticated en las seis funciones. Advisors reduce de 9 a 4 las [funciones públicas definer accesibles a usuarios](https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable); continúan los cuatro avisos anon previos, snapshots privados sin políticas y protección de contraseñas filtradas deshabilitada. Sin hallazgos nuevos atribuibles a esta entrega.
 
 Rama `codex/verified-lesson-timing`, GREEN `34c54b2`, subida a GitHub. [Preview Ready](https://cms-blue-team-mefwyjfxg-eudaldocal-8684s-projects.vercel.app), deployment `dpl_HoAGmV7s3qiVuWFKVbAUi4eQkZ6d`: build/TypeScript correctos y login HTTP 200 con formulario mediante CLI autenticada. La preview usa el backend alojado sin la migración nueva; la validación integrada y las capturas corresponden al entorno local completo. Supabase de pruebas detenido con backup, sin tocar el stack original.
 
