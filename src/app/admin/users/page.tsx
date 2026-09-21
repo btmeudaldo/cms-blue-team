@@ -7,12 +7,12 @@ import {
   updateUserRoleAction,
 } from "@/app/actions/enrollment.actions";
 import {
-  getResilientCourses,
   getResilientEnrollments,
   getResilientProfiles,
   getResilientUser,
 } from "@/shared/lib/supabase/resilient";
 import { AdminUsersTable } from "@/features/learning/components/admin-users-table";
+import { getManageableEnrollmentCourses } from "@/features/learning/infrastructure/manageable-enrollment-courses";
 
 export default async function AdminUsersPage() {
   const { user, profile: currentProfile } = await getResilientUser();
@@ -29,7 +29,7 @@ export default async function AdminUsersPage() {
   // Fetch profiles, courses, and enrollments concurrently
   const [profiles, courses, enrollments] = await Promise.all([
     getResilientProfiles(),
-    getResilientCourses(user.id, true),
+    getManageableEnrollmentCourses(),
     getResilientEnrollments(),
   ]);
 
@@ -162,8 +162,9 @@ export default async function AdminUsersPage() {
               </div>
               <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 Como <strong>Instructor de Vuelo</strong> puedes matricular y
-                asignar cursos a los alumnos. La creación de usuarios y cambio
-                de roles de sistema es de gestión exclusiva del{" "}
+                asignar a los alumnos los cursos que has creado o tienes
+                asignados. La creación de usuarios y cambio de roles de sistema
+                es de gestión exclusiva del{" "}
                 <strong>Director de la Escuela</strong>.
               </p>
             </div>

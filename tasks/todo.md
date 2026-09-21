@@ -3,9 +3,9 @@
 ## Auditoría ATO: fase 6 — cursos y matrículas
 
 - [x] Confirmar repositorio Blue Team y auditar políticas antiguas; plan/spec en specs/008-scoped-enrollment-management.
-- [ ] RED: permisos cruzados, titularidad y guardado parcial.
-- [ ] GREEN: permisos delimitados, guardado atómico y ámbito editable en pantalla.
-- [ ] Validar pruebas y recorrido integrado; documentar evidencia.
+- [x] RED: permisos cruzados, titularidad y guardado parcial.
+- [x] GREEN: permisos delimitados, guardado atómico y ámbito editable en pantalla.
+- [x] Validar pruebas y recorrido integrado; 54 SQL, 6 API, 4 E2E, 201 unitarias y TypeScript correctos. Evidencia en specs/008-scoped-enrollment-management/review.md.
 - [ ] Commit, push y preview Blue Team.
 
 ## Pendientes posteriores del CMS

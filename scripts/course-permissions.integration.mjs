@@ -303,20 +303,24 @@ for (const who of ["student", "outsider", "demoted"])
   test(`bulk denies ${who}`, () =>
     denied(ids[who], setEnrollments, [ids.student, [], [ids.a]]));
 test("bulk rejects mixed unauthorized scope atomically", async () => {
-  await denied(ids.owner, setEnrollments, [
-    ids.student,
-    [ids.b],
-    [ids.a, ids.b],
-  ]);
-  assert.equal(
-    (
-      await db.query(
-        "select * from public.course_enrollments where user_id=$1 and course_id=$2",
-        [ids.student, ids.a],
-      )
-    ).rowCount,
-    1,
-  );
+  await actor(ids.owner, async () => {
+    await db.query("savepoint rejected_bulk");
+    await assert.rejects(
+      db.query(setEnrollments, [ids.student, [ids.b], [ids.a, ids.b]]),
+      { code: "42501" },
+    );
+    await db.query("rollback to savepoint rejected_bulk");
+    assert.equal(
+      (
+        await db.query(
+          "select * from public.course_enrollments where user_id=$1 and course_id=$2",
+          [ids.student, ids.a],
+        )
+      ).rowCount,
+      1,
+    );
+    await db.query("release savepoint rejected_bulk");
+  });
 });
 test("bulk rejects desired outside scope", () =>
   denied(
@@ -343,3 +347,102 @@ test("anon cannot call bulk RPC", () =>
     "anon",
   ));
 
+for (const who of ["student", "outsider", "demoted"])
+  test(`private RPC denies ${who}`, () =>
+    denied(ids[who], setEnrollments.replace("public.", "learning_private."), [
+      ids.student,
+      [],
+      [ids.a],
+    ]));
+test("private RPC rejects authenticated role without identity", () =>
+  denied(null, setEnrollments.replace("public.", "learning_private."), [
+    ids.student,
+    [],
+    [ids.a],
+  ]));
+test("bulk assignment works for assigned instructor", async () => {
+  await actor(ids.editor, async () => {
+    await db.query(setEnrollments, [ids.other, [ids.a], [ids.a]]);
+    assert.equal(
+      (
+        await db.query(
+          "select * from public.course_enrollments where user_id=$1 and course_id=$2",
+          [ids.other, ids.a],
+        )
+      ).rowCount,
+      1,
+    );
+  });
+});
+test("bulk de-duplicates desired courses", async () => {
+  await actor(ids.admin, async () => {
+    await db.query(setEnrollments, [ids.other, [ids.a, ids.a], [ids.a]]);
+    assert.equal(
+      (
+        await db.query(
+          "select * from public.course_enrollments where user_id=$1 and course_id=$2",
+          [ids.other, ids.a],
+        )
+      ).rowCount,
+      1,
+    );
+  });
+});
+test("bulk denies non-existent scope for admin", () =>
+  denied(ids.admin, setEnrollments, [ids.student, [], [randomUUID()]]));
+test("student cannot create course", () =>
+  denied(
+    ids.student,
+    "insert into public.courses(id,title,slug,created_by) values($1::uuid,'new',$1::text,$2) returning id",
+    [randomUUID(), ids.student],
+  ));
+test("instructor can create own course", async () =>
+  assert.equal(
+    (
+      await rows(
+        ids.owner,
+        "insert into public.courses(id,title,slug,created_by) values($1::uuid,'new',$1::text,$2) returning id",
+        [randomUUID(), ids.owner],
+      )
+    ).length,
+    1,
+  ));
+test("instructor cannot create course for another owner", () =>
+  denied(
+    ids.owner,
+    "insert into public.courses(id,title,slug,created_by) values($1::uuid,'new',$1::text,$2) returning id",
+    [randomUUID(), ids.outsider],
+  ));
+test("admin can create course for another owner", async () =>
+  assert.equal(
+    (
+      await rows(
+        ids.admin,
+        "insert into public.courses(id,title,slug,created_by) values($1::uuid,'new',$1::text,$2) returning id",
+        [randomUUID(), ids.outsider],
+      )
+    ).length,
+    1,
+  ));
+test("student reads enrolled courses only", async () =>
+  assert.deepEqual(
+    (
+      await rows(
+        ids.student,
+        "select id from public.courses where id=any($1::uuid[])",
+        [[ids.a, ids.b]],
+      )
+    ).map((r) => r.id),
+    [ids.a],
+  ));
+test("staff retain global course read", async () =>
+  assert.equal(
+    (
+      await rows(
+        ids.outsider,
+        "select id from public.courses where id=any($1::uuid[])",
+        [[ids.a, ids.b]],
+      )
+    ).length,
+    2,
+  ));

@@ -63,25 +63,11 @@ export async function createNewUserAction(formData: FormData) {
 }
 
 export async function enrollStudentAction(courseId: string, userId: string) {
-  const supabase = await requireEnrollmentStaff();
-  const { error } = await supabase
-    .from("course_enrollments")
-    .upsert({ course_id: courseId, user_id: userId });
-  if (error) throw new Error(error.message);
-  revalidatePath("/admin/users");
-  revalidatePath("/courses");
+  return updateStudentEnrollmentsAction(userId, [courseId], [courseId]);
 }
 
 export async function unenrollStudentAction(courseId: string, userId: string) {
-  const supabase = await requireEnrollmentStaff();
-  const { error } = await supabase
-    .from("course_enrollments")
-    .delete()
-    .eq("course_id", courseId)
-    .eq("user_id", userId);
-  if (error) throw new Error(error.message);
-  revalidatePath("/admin/users");
-  revalidatePath("/courses");
+  return updateStudentEnrollmentsAction(userId, [], [courseId]);
 }
 
 export async function updateStudentEnrollmentsAction(
@@ -90,24 +76,12 @@ export async function updateStudentEnrollmentsAction(
   allCourseIds: string[],
 ) {
   const supabase = await requireEnrollmentStaff();
-  const toDelete = allCourseIds.filter((id) => !enrolledCourseIds.includes(id));
-  if (toDelete.length > 0) {
-    const { error } = await supabase
-      .from("course_enrollments")
-      .delete()
-      .eq("user_id", userId)
-      .in("course_id", toDelete);
-    if (error) throw new Error(error.message);
-  }
-  if (enrolledCourseIds.length > 0) {
-    const { error } = await supabase.from("course_enrollments").upsert(
-      enrolledCourseIds.map((courseId) => ({
-        course_id: courseId,
-        user_id: userId,
-      })),
-    );
-    if (error) throw new Error(error.message);
-  }
+  const { error } = await supabase.rpc("set_student_enrollments", {
+    p_user_id: userId,
+    p_enrolled_course_ids: [...new Set(enrolledCourseIds)],
+    p_scope_course_ids: [...new Set([...allCourseIds, ...enrolledCourseIds])],
+  });
+  if (error) throw new Error(error.message);
 
   revalidatePath("/admin/users");
   revalidatePath("/courses");

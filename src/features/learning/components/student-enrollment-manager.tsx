@@ -32,6 +32,10 @@ export function StudentEnrollmentManager({
     initialEnrolledCourseIds,
   );
   const [isPending, startTransition] = useTransition();
+  const [saveError, setSaveError] = useState<string | null>(null);
+  const [confirmedCourseIds, setConfirmedCourseIds] = useState<string[]>(
+    initialEnrolledCourseIds,
+  );
 
   const validCourseIds = useMemo(
     () => new Set(courses.map((c) => c.id)),
@@ -42,7 +46,15 @@ export function StudentEnrollmentManager({
     [selectedCourseIds, validCourseIds],
   );
   const allCourseIds = courses.map((c) => c.id);
-  const enrolledCount = validSelectedCourseIds.length;
+  const enrolledCount = confirmedCourseIds.filter((id) =>
+    validCourseIds.has(id),
+  ).length;
+
+  function closeEditor() {
+    setSelectedCourseIds(confirmedCourseIds);
+    setSaveError(null);
+    setIsOpen(false);
+  }
 
   function toggleCourse(courseId: string) {
     if (selectedCourseIds.includes(courseId)) {
@@ -62,12 +74,20 @@ export function StudentEnrollmentManager({
 
   function handleSaveChanges() {
     startTransition(async () => {
-      await updateStudentEnrollmentsAction(
-        userId,
-        validSelectedCourseIds,
-        allCourseIds,
-      );
-      setIsOpen(false);
+      setSaveError(null);
+      try {
+        await updateStudentEnrollmentsAction(
+          userId,
+          validSelectedCourseIds,
+          allCourseIds,
+        );
+        setConfirmedCourseIds(validSelectedCourseIds);
+        setIsOpen(false);
+      } catch {
+        setSaveError(
+          "No se pudieron guardar las matrículas. Revisa tus permisos e inténtalo de nuevo.",
+        );
+      }
     });
   }
 
@@ -91,7 +111,11 @@ export function StudentEnrollmentManager({
       <div className="flex flex-wrap items-center gap-2">
         <button
           type="button"
-          onClick={() => setIsOpen(true)}
+          onClick={() => {
+            setSelectedCourseIds(confirmedCourseIds);
+            setSaveError(null);
+            setIsOpen(true);
+          }}
           className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all cursor-pointer border ${
             enrolledCount > 0
               ? "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] border-blue-200 dark:border-blue-800 hover:bg-[#1a80ff] hover:text-white"
@@ -111,11 +135,19 @@ export function StudentEnrollmentManager({
       {/* Scalable Multi-Select Modal with Real-time Search */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4">
-          <div className="w-full max-w-2xl rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in duration-150">
+          <div
+            role="dialog"
+            aria-modal={true}
+            aria-labelledby={`enrollment-title-${userId}`}
+            className="w-full max-w-2xl rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-2xl space-y-5 animate-in fade-in zoom-in duration-150"
+          >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
               <div>
-                <h3 className="text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                <h3
+                  id={`enrollment-title-${userId}`}
+                  className="text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2"
+                >
                   <span>🎓</span> Gestión de Matrículas Aeronáuticas
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -123,13 +155,15 @@ export function StudentEnrollmentManager({
                   <strong className="text-slate-800 dark:text-slate-200">
                     {userName}
                   </strong>{" "}
-                  &middot; ({selectedCourseIds.length} seleccionados)
+                  &middot; ({validSelectedCourseIds.length} seleccionados)
                 </p>
               </div>
 
               <button
                 type="button"
-                onClick={() => setIsOpen(false)}
+                onClick={closeEditor}
+                aria-label="Cerrar matrículas"
+                disabled={isPending}
                 className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-bold cursor-pointer"
               >
                 ✕
@@ -179,7 +213,7 @@ export function StudentEnrollmentManager({
                       : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                   }`}
                 >
-                  Matriculados ({selectedCourseIds.length})
+                  Matriculados ({validSelectedCourseIds.length})
                 </button>
                 <button
                   type="button"
@@ -190,7 +224,8 @@ export function StudentEnrollmentManager({
                       : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                   }`}
                 >
-                  Sin Matricular ({courses.length - selectedCourseIds.length})
+                  Sin Matricular (
+                  {courses.length - validSelectedCourseIds.length})
                 </button>
               </div>
 
@@ -271,18 +306,30 @@ export function StudentEnrollmentManager({
             </div>
 
             {/* Footer Action Bar */}
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Solo se muestran y modifican los cursos que puedes gestionar.
+            </p>
+            {saveError && (
+              <p
+                role="alert"
+                className="text-xs text-red-600 dark:text-red-400"
+              >
+                {saveError}
+              </p>
+            )}
             <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
               <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
                 Total a guardar:{" "}
                 <strong className="text-[#1a80ff]">
-                  {selectedCourseIds.length} cursos
+                  {validSelectedCourseIds.length} cursos
                 </strong>
               </span>
 
               <div className="flex items-center gap-3">
                 <button
                   type="button"
-                  onClick={() => setIsOpen(false)}
+                  onClick={closeEditor}
+                  disabled={isPending}
                   className="rounded-xl border border-slate-200 dark:border-slate-800 px-4 py-2 text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                 >
                   Cancelar
@@ -290,7 +337,7 @@ export function StudentEnrollmentManager({
                 <button
                   type="button"
                   onClick={handleSaveChanges}
-                  disabled={isPending}
+                  disabled={isPending || courses.length === 0}
                   className="rounded-xl bg-[#1a80ff] px-5 py-2 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all disabled:opacity-50 cursor-pointer"
                 >
                   {isPending ? "Guardando..." : "Guardar Matrículas"}
