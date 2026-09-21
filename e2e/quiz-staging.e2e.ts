@@ -21,6 +21,8 @@ test("staging: califica y conserva un intento real sin exponer el solucionario",
   const payloadChecks: Promise<{
     body: string;
     method: string;
+    url: string;
+    status: number;
     error?: string;
   }>[] = [];
   page.on("response", (response) => {
@@ -34,11 +36,18 @@ test("staging: califica y conserva un intento real sin exponer el solucionario",
       return;
     payloadChecks.push(
       response.text().then(
-        (body) => ({ body, method: request.method() }),
-        () => ({
+        (body) => ({
+          body,
+          method: request.method(),
+          url: response.url(),
+          status: response.status(),
+        }),
+        (error: Error) => ({
           body: "",
           method: request.method(),
-          error: "No se pudo leer la respuesta",
+          url: response.url(),
+          status: response.status(),
+          error: error.message,
         }),
       ),
     );
@@ -49,6 +58,7 @@ test("staging: califica y conserva un intento real sin exponer el solucionario",
   await page.locator('input[name="password"]').fill(password);
   await page.getByRole("button", { name: /ingresar a la plataforma/i }).click();
   await expect(page).toHaveURL(/\/courses$/);
+  await Promise.all(payloadChecks);
   await page.goto(`/quizzes/${encodeURIComponent(quizId)}`);
   // A rerun creates another legitimate attempt, without deleting audit records.
   await page
@@ -81,6 +91,9 @@ test("staging: califica y conserva un intento real sin exponer el solucionario",
   await expect(page.getByText("1 / 2", { exact: true })).toBeVisible();
   const elapsed = await page.getByText(/^\d+m \d+s$/).innerText();
   expect(elapsed).toMatch(/^\d+m \d+s$/);
+  // React can paint a result while its streamed action response is still open.
+  // Drain it before navigation discards Chromium's response body.
+  await Promise.all(payloadChecks);
   await page.reload();
   await expect(saved).toBeVisible();
   await expect(
@@ -95,7 +108,10 @@ test("staging: califica y conserva un intento real sin exponer el solucionario",
   const payloads = await Promise.all(payloadChecks);
   expect(payloads.length).toBeGreaterThanOrEqual(3);
   for (const payload of payloads) {
-    expect(payload.error).toBeUndefined();
+    expect(
+      payload.error,
+      `${payload.method} ${payload.url} status=${payload.status}`,
+    ).toBeUndefined();
     expect(
       payload.body,
       `Respuesta sin solucionario: ${payload.method}`,
