@@ -25,4 +25,6 @@ Las acciones y el reproductor se actualizan para trabajar con confirmaciones per
 
 SQL aplicado únicamente en Supabase local `quiz-validation` (55321/55322), sin reset. Producción solo se consultó para comprobar definiciones. La entrega necesita aplicar migración y frontend juntos tras autorización específica live, que todavía no se ha solicitado.
 
+Rama `codex/verified-lesson-timing`, GREEN `34c54b2`, subida a GitHub. [Preview Ready](https://cms-blue-team-mefwyjfxg-eudaldocal-8684s-projects.vercel.app), deployment `dpl_HoAGmV7s3qiVuWFKVbAUi4eQkZ6d`: build/TypeScript correctos y login HTTP 200 con formulario mediante CLI autenticada. La preview usa el backend alojado sin la migración nueva; la validación integrada y las capturas corresponden al entorno local completo. Supabase de pruebas detenido con backup, sin tocar el stack original.
+
 El contador muestra tiempo acreditado por el servidor en actualizaciones periódicas. El sistema no demuestra atención humana ni impide automatizar heartbeats. Exclusión entre lecciones/dispositivos, eventos auditables, versionado de requisitos/contenido y cierre de políticas antiguas de cursos/matrículas continúan pendientes. No se afirma conformidad AESA.

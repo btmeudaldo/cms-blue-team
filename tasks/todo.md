@@ -6,7 +6,8 @@
 - [x] RED: reproducir finalización mutable, matrícula revocada y éxito simulado.
 - [x] GREEN: RPC temporales autorizadas e idempotentes, acciones verificadas y UI sincronizada.
 - [x] Validar SQL, Auth/REST, recorrido de alumno, regresiones y calidad; 56 SQL, 6 API, 4 E2E, 187 unitarias y TypeScript correctos. Límites de lint en review.md.
-- [ ] Commit, push y preview; autorización live específica pendiente.
+- [x] Commit, push y preview Ready; evidencia en specs/007-verified-lesson-timing/review.md.
+- [ ] Aplicar migración temporal y frontend tras autorización live específica de esta entrega.
 
 ## Auditoría ATO: fase 4 — conservación de expedientes
 
