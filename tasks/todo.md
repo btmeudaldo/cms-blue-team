@@ -1,5 +1,13 @@
 # Backlog de implementación
 
+## Auditoría ATO: fase 3 — aislamiento de cursos
+
+- [x] Verificar catálogo remoto y documentar contrato/plan en specs/005-course-data-isolation.
+- [ ] RED: reproducir lectura/escritura cruzada, falta de acceso del editor al progreso y grants masivos.
+- [ ] GREEN: migración de políticas y helper de autorización con privilegios mínimos.
+- [ ] Validar roles reales, regresión de exámenes, advisors, tipos y calidad.
+- [ ] Commit, push, preview y revisión con evidencia; nueva migración pendiente de autorización live específica.
+
 ## Auditoría ATO: fase 2 — exámenes y notas
 
 - [x] Inspeccionar esquema remoto y especificar contrato seguro en specs/004-secure-quiz-results.
