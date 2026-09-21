@@ -3,6 +3,7 @@ export type LessonProgress = {
   lesson_id: string;
   active_seconds: number;
   is_completed: boolean;
+  is_active: boolean;
 };
 export type ProgressResult =
   { success: true; progress: LessonProgress } | { error: string };

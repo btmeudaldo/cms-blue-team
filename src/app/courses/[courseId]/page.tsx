@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { summarizeCourseProgress } from "@/features/learning/domain/course-progress";
 import { notFound } from "next/navigation";
 
 import { Header } from "@/shared/components/header";
@@ -35,60 +36,18 @@ export default async function StudentCourseDetailPage({
     (a: any, b: any) => a.sequence_order - b.sequence_order,
   );
 
-  const progressMap = new Map<string, any>();
-  for (const p of userProgress || []) {
-    progressMap.set(p.lesson_id, p);
-  }
-
-  const quizzesByLessonMap = new Map<string, any>();
-  for (const q of quizzes || []) {
-    if (q.lesson_id) quizzesByLessonMap.set(q.lesson_id, q);
-    if ((q as any).lesson_slug)
-      quizzesByLessonMap.set((q as any).lesson_slug, q);
-    quizzesByLessonMap.set(q.id, q);
-  }
-
-  const attemptsByQuizMap = new Map<string, any>();
-  for (const att of quizAttempts || []) {
-    const keys = [att.quiz_id, att.lesson_id, att.lesson_slug].filter(Boolean);
-    for (const key of keys) {
-      const existing = attemptsByQuizMap.get(key);
-      if (
-        !existing ||
-        att.passed ||
-        (att.score_percentage || 0) > (existing.score_percentage || 0)
-      ) {
-        attemptsByQuizMap.set(key, att);
-      }
-    }
-  }
-
-  const completedLessonsCount = lessons.filter((l: any) => {
-    const p = (progressMap.get(l.id) || progressMap.get(l.slug)) as any;
-    const qAtt = attemptsByQuizMap.get(l.id) || attemptsByQuizMap.get(l.slug);
-    return Boolean(p?.is_completed || qAtt?.passed);
-  }).length;
-
-  const courseQuizzes = (quizzes || []).filter((q: any) =>
-    (q.course_id && (q.course_id === course.id || q.course_id === course.slug)) ||
-    lessons.some(
-      (l: any) =>
-        (Boolean(q.lesson_id) && l.id === q.lesson_id) ||
-        (Boolean(l.slug) && Boolean(q.lesson_slug) && l.slug === q.lesson_slug),
-    ),
+  const summary = summarizeCourseProgress(
+    { id: course.id, lessons },
+    userProgress ?? [],
+    quizzes ?? [],
+    quizAttempts ?? [],
   );
-  const passedQuizzesCount = courseQuizzes.filter(
-    (q: any) => (attemptsByQuizMap.get(q.id) as any)?.passed,
-  ).length;
-
-  const totalItems = lessons.length + courseQuizzes.length;
-  const completedItems = completedLessonsCount + passedQuizzesCount;
-  const progressPercent =
-    totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
-  const isFullyCompleted = totalItems > 0 && completedItems === totalItems;
-  const hasPendingQuizzes =
-    completedLessonsCount === lessons.length &&
-    passedQuizzesCount < courseQuizzes.length;
+  const completedLessonsCount = summary.advancedLessonsCount;
+  const courseQuizzes = summary.quizzes;
+  const passedQuizzesCount = summary.passedQuizzesCount;
+  const progressPercent = summary.progressPercent;
+  const isFullyCompleted = summary.isFullyAdvanced;
+  const hasPendingQuizzes = summary.hasPendingQuizzes;
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
@@ -168,7 +127,8 @@ export default async function StudentCourseDetailPage({
                     Supervisión Docente y Control Académico
                   </h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    {lessons.length} lecciones con control de lectura y {courseQuizzes.length} evaluaciones teóricas activas.
+                    {lessons.length} lecciones con control de lectura y{" "}
+                    {courseQuizzes.length} evaluaciones teóricas activas.
                   </p>
                 </div>
               </div>
@@ -191,11 +151,14 @@ export default async function StudentCourseDetailPage({
           ) : (
             <div className="space-y-2 pt-4 border-t border-slate-100 dark:border-slate-800">
               <div className="flex justify-between text-xs font-bold text-slate-600 dark:text-slate-400">
-                <span>Mi Progreso en el Curso</span>
+                <span>Mi avance en el curso</span>
                 <span>
-                  {completedLessonsCount}/{lessons.length} lecciones &middot; {passedQuizzesCount}/{courseQuizzes.length} exámenes ({progressPercent}%)
+                  {completedLessonsCount}/{lessons.length} lecciones &middot;{" "}
+                  {passedQuizzesCount}/{courseQuizzes.length} exámenes (
+                  {progressPercent}%)
                 </span>
               </div>
+              <p className="text-xs text-slate-500 dark:text-slate-400">{`Lecturas verificadas: ${summary.readLessonsCount}/${lessons.length}`}</p>
               <div className="h-2.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                 <div
                   className={`h-full transition-all duration-300 rounded-full ${
@@ -228,21 +191,13 @@ export default async function StudentCourseDetailPage({
           ) : (
             <div className="space-y-4">
               {lessons.map((lesson: any, index: number) => {
-                const quiz =
-                  quizzesByLessonMap.get(lesson.id) ||
-                  quizzesByLessonMap.get(lesson.slug);
-                const quizAttempt = quiz
-                  ? attemptsByQuizMap.get(quiz.id) ||
-                    (quiz.lesson_id && attemptsByQuizMap.get(quiz.lesson_id)) ||
-                    (quiz.lesson_slug && attemptsByQuizMap.get(quiz.lesson_slug)) ||
-                    attemptsByQuizMap.get(lesson.id) ||
-                    attemptsByQuizMap.get(lesson.slug)
-                  : attemptsByQuizMap.get(lesson.id) ||
-                    attemptsByQuizMap.get(lesson.slug);
-                const quizPassed = quizAttempt?.passed;
-                const prog = (progressMap.get(lesson.id) ||
-                  progressMap.get(lesson.slug)) as any;
-                const isCompleted = Boolean(prog?.is_completed || quizPassed);
+                const {
+                  quiz,
+                  attempt: quizAttempt,
+                  quizPassed,
+                  readingCompleted,
+                  advanced: isCompleted,
+                } = summary.lessons[index];
 
                 return (
                   <div key={lesson.id} className="space-y-2">
@@ -269,7 +224,9 @@ export default async function StudentCourseDetailPage({
                             </h3>
                             {isCompleted && (
                               <span className="rounded-full bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
-                                Lectura OK
+                                {readingCompleted
+                                  ? "Lectura OK"
+                                  : "Examen aprobado · Lectura pendiente"}
                               </span>
                             )}
                           </div>

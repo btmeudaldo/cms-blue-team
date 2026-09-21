@@ -325,3 +325,49 @@ test("student cannot bypass transitions by directly setting active progress", as
   );
 });
 
+test("migration pauses legacy active rows without rewriting academic evidence", async () => {
+  const migration = await readFile(
+    new URL(
+      "../supabase/migrations/20260921150713_enforce_single_active_lesson.sql",
+      import.meta.url,
+    ),
+    "utf8",
+  );
+  assert.ok(
+    migration.trim().startsWith("begin;") &&
+      migration.trim().endsWith("commit;"),
+  );
+  await control.query("begin");
+  try {
+    await control.query(
+      "drop index if exists public.user_lesson_progress_one_active_idx",
+    );
+    await seed("a");
+    await seed("b", { seconds: 17 });
+    await seed("c", { completed: true, seconds: 50 });
+    const before = [];
+    for (const lesson of ["a", "b", "c"]) before.push(await progress(lesson));
+    await control.query(
+      migration
+        .trim()
+        .replace(/^begin;/, "")
+        .replace(/commit;$/, ""),
+    );
+    const after = [];
+    for (const lesson of ["a", "b", "c"]) after.push(await progress(lesson));
+    assert.deepEqual(after[0], {
+      ...before[0],
+      is_active: false,
+      last_resumed_at: null,
+    });
+    assert.deepEqual(after[1], {
+      ...before[1],
+      is_active: false,
+      last_resumed_at: null,
+    });
+    assert.deepEqual(after[2], before[2]);
+    assert.equal(await activeCount(), 0);
+  } finally {
+    await control.query("rollback");
+  }
+});

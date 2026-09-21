@@ -89,6 +89,7 @@ export function LessonPlayer({
   const [isCompletedSuccess, setIsCompletedSuccess] =
     useState(isAlreadyCompleted);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isActivityPaused, setIsActivityPaused] = useState(false);
   const [retryVersion, setRetryVersion] = useState(0);
   const [isAdvanceArmed, setIsAdvanceArmed] = useState(isAlreadyCompleted);
 
@@ -180,22 +181,35 @@ export function LessonPlayer({
     let pendingHeartbeat = false;
     const focused = () =>
       document.visibilityState === "visible" && document.hasFocus();
-    const acknowledge = (result: ProgressResult) => {
+    const acknowledge = (result: ProgressResult, expectsActive = false) => {
       if ("error" in result) {
         activityConfirmed = false;
-        if (mounted) setErrorMessage(result.error);
+        if (mounted) {
+          setErrorMessage(result.error);
+          setIsActivityPaused(false);
+        }
         return false;
       }
-      activityConfirmed = true;
+      const paused =
+        expectsActive &&
+        !result.progress.is_active &&
+        !result.progress.is_completed;
+      activityConfirmed = result.progress.is_active;
       if (mounted) {
         setServerProgress(result.progress);
-        setErrorMessage(null);
+        setIsActivityPaused(paused);
+        setErrorMessage(
+          paused
+            ? "Registro pausado. Otra lección puede estar activa. Reanuda esta lectura para seguir registrando tiempo."
+            : null,
+        );
       }
       return true;
     };
     const enqueue = (
       operation: () => Promise<ProgressResult>,
       requiresConfirmation = false,
+      expectsActive = false,
     ) => {
       progressQueue.current = progressQueue.current.then(async () => {
         if (
@@ -206,7 +220,7 @@ export function LessonPlayer({
           return;
         }
         try {
-          acknowledge(await operation());
+          acknowledge(await operation(), expectsActive);
         } catch {
           activityConfirmed = false;
           if (mounted)
@@ -220,12 +234,15 @@ export function LessonPlayer({
       if (mounted) setIsWindowFocused(focused());
       try {
         started = acknowledge(await startLessonAction(lessonId));
-        if (started)
+        if (started) {
+          const shouldResume = focused() && mounted;
           acknowledge(
-            await (focused() && mounted
+            await (shouldResume
               ? resumeLessonAction(lessonId)
               : pauseLessonAction(lessonId)),
+            shouldResume,
           );
+        }
       } catch {
         activityConfirmed = false;
         if (mounted)
@@ -238,15 +255,19 @@ export function LessonPlayer({
       if (completingRef.current) return;
       const isFocused = focused();
       setIsWindowFocused(isFocused);
-      enqueue(async () => {
-        if (!started)
-          return {
-            error: "No se pudo iniciar el registro. Reintenta la conexión.",
-          };
-        return isFocused && mounted
-          ? resumeLessonAction(lessonId)
-          : pauseLessonAction(lessonId);
-      });
+      enqueue(
+        async () => {
+          if (!started)
+            return {
+              error: "No se pudo iniciar el registro. Reintenta la conexión.",
+            };
+          return isFocused && mounted
+            ? resumeLessonAction(lessonId)
+            : pauseLessonAction(lessonId);
+        },
+        false,
+        isFocused,
+      );
     }
     window.addEventListener("focus", updateFocusState);
     window.addEventListener("blur", updateFocusState);
@@ -261,13 +282,17 @@ export function LessonPlayer({
       )
         return;
       pendingHeartbeat = true;
-      enqueue(async () => {
-        try {
-          return await heartbeatLessonAction(lessonId);
-        } finally {
-          pendingHeartbeat = false;
-        }
-      }, true);
+      enqueue(
+        async () => {
+          try {
+            return await heartbeatLessonAction(lessonId);
+          } finally {
+            pendingHeartbeat = false;
+          }
+        },
+        true,
+        true,
+      );
     }, 10_000);
     return () => {
       mounted = false;
@@ -627,7 +652,7 @@ export function LessonPlayer({
                       className={
                         remainingSeconds === 0
                           ? "text-emerald-500"
-                          : !isWindowFocused
+                          : isActivityPaused || !isWindowFocused
                             ? "text-rose-500 animate-pulse"
                             : "text-[#1a80ff]"
                       }
@@ -647,7 +672,7 @@ export function LessonPlayer({
                   <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
                     {remainingSeconds === 0
                       ? "✓ Cumplido"
-                      : !isWindowFocused
+                      : isActivityPaused || !isWindowFocused
                         ? "⏸ Pausado"
                         : "En proceso..."}
                   </span>
@@ -775,7 +800,9 @@ export function LessonPlayer({
                   className="ml-3 underline"
                   onClick={() => setRetryVersion((version) => version + 1)}
                 >
-                  Reintentar conexión
+                  {isActivityPaused
+                    ? "Reanudar lectura"
+                    : "Reintentar conexión"}
                 </button>
               </div>
             )}
@@ -810,8 +837,9 @@ export function LessonPlayer({
                         {quiz.title}
                       </h3>
                       <p className="text-xs text-slate-500 dark:text-slate-400">
-                        Lección 100% verificada e integrada en tu expediente
-                        académico.
+                        {isAlreadyCompleted || isCompletedSuccess
+                          ? "Lectura verificada y examen aprobado registrados."
+                          : "Examen aprobado. La lectura verificada sigue pendiente."}
                       </p>
                     </div>
                     <div className="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto">
@@ -898,15 +926,17 @@ export function LessonPlayer({
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
                 remainingSeconds === 0
                   ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-                  : !isWindowFocused
+                  : isActivityPaused || !isWindowFocused
                     ? "bg-rose-500/20 text-rose-300 border border-rose-500/30 animate-pulse"
                     : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
               }`}
             >
               {remainingSeconds === 0
                 ? "✓ Tiempo cumplido"
-                : !isWindowFocused
-                  ? "⏸ Pausado (Selecciona esta ventana)"
+                : isActivityPaused || !isWindowFocused
+                  ? isActivityPaused
+                    ? "⏸ Pausado (Reanuda esta lectura)"
+                    : "⏸ Pausado (Selecciona esta ventana)"
                   : "⏳ Tiempo en proceso"}
             </span>
 

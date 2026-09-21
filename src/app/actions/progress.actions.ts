@@ -25,6 +25,7 @@ async function callProgressRpc(
       !Number.isInteger(data.active_seconds) ||
       data.active_seconds < 0 ||
       typeof data.is_completed !== "boolean" ||
+      typeof data.is_active !== "boolean" ||
       (functionName === "complete_lesson" && !data.is_completed)
     ) {
       return {

@@ -1,4 +1,5 @@
 import { beforeEach, expect, it, vi } from "vitest";
+import { isValidElement, type ReactNode } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 const harness = vi.hoisted(() => ({
   values: [] as unknown[],
@@ -177,43 +178,118 @@ it("discards a queued heartbeat when a delayed resume fails", async () => {
 });
 
 function pulse() {
-  for (const [callback] of vi.mocked(window.setInterval).mock.calls) if (typeof callback === "function") callback();
+  for (const [callback] of vi.mocked(window.setInterval).mock.calls)
+    if (typeof callback === "function") callback();
 }
 it("stops heartbeats and offers explicit resume when another lesson paused this record", async () => {
   harness.start.mockResolvedValue({ success: true, progress });
-  harness.heartbeat.mockResolvedValue({ success: true, progress: { ...progress, is_active: false } });
-  render(); for (const effect of harness.effects) effect(); await flush();
-  pulse(); await flush();
+  harness.heartbeat.mockResolvedValue({
+    success: true,
+    progress: { ...progress, is_active: false },
+  });
+  render();
+  for (const effect of harness.effects) effect();
+  await flush();
+  pulse();
+  await flush();
   const html = renderToStaticMarkup(render());
   expect(html).toContain('role="alert"');
   expect(html).toContain("Registro pausado");
   expect(html).toContain("Reanudar lectura");
-  pulse(); await flush();
+  expect(html).toContain("⏸ Pausado (Reanuda esta lectura)");
+  expect(html).not.toContain("En proceso...");
+  expect(html).not.toContain("Tiempo en proceso");
+  pulse();
+  await flush();
   expect(harness.heartbeat).toHaveBeenCalledTimes(1);
   expect(harness.resume).toHaveBeenCalledTimes(1);
 });
 it("does not treat a normal blur pause as a competing lesson error", async () => {
   harness.start.mockResolvedValue({ success: true, progress });
-  harness.pause.mockResolvedValue({ success: true, progress: { ...progress, is_active: false } });
-  render(); for (const effect of harness.effects) effect(); await flush();
+  harness.pause.mockResolvedValue({
+    success: true,
+    progress: { ...progress, is_active: false },
+  });
+  render();
+  for (const effect of harness.effects) effect();
+  await flush();
   vi.mocked(document.hasFocus).mockReturnValue(false);
-  const blur = vi.mocked(window.addEventListener).mock.calls.find(([event]) => event === "blur")![1] as () => void;
-  blur(); await flush();
+  const blur = vi
+    .mocked(window.addEventListener)
+    .mock.calls.find(([event]) => event === "blur")![1] as () => void;
+  blur();
+  await flush();
   expect(renderToStaticMarkup(render())).not.toContain("Registro pausado");
 });
 it("reports inactive resume acknowledgements without sending automatic heartbeats", async () => {
   harness.start.mockResolvedValue({ success: true, progress });
-  harness.resume.mockResolvedValue({ success: true, progress: { ...progress, is_active: false } });
-  render(); for (const effect of harness.effects) effect(); await flush();
+  harness.resume.mockResolvedValue({
+    success: true,
+    progress: { ...progress, is_active: false },
+  });
+  render();
+  for (const effect of harness.effects) effect();
+  await flush();
   expect(renderToStaticMarkup(render())).toContain("Reanudar lectura");
-  pulse(); await flush(); expect(harness.heartbeat).not.toHaveBeenCalled();
+  pulse();
+  await flush();
+  expect(harness.heartbeat).not.toHaveBeenCalled();
 });
 it("does not describe a passed quiz as verified reading without its own record", () => {
-  const html = renderToStaticMarkup(render({ quiz: { id: "q", title: "Quiz" }, quizAttempt: { passed: true, score_percentage: 100 } }));
-  expect(html).toContain("Examen aprobado. La lectura verificada sigue pendiente.");
+  const html = renderToStaticMarkup(
+    render({
+      quiz: { id: "q", title: "Quiz" },
+      quizAttempt: { passed: true, score_percentage: 100 },
+    }),
+  );
+  expect(html).toContain(
+    "Examen aprobado. La lectura verificada sigue pendiente.",
+  );
   expect(html).not.toContain("Lección 100% verificada");
 });
 it("describes both records only when reading and quiz are confirmed", () => {
-  const html = renderToStaticMarkup(render({ isAlreadyCompleted: true, quiz: { id: "q", title: "Quiz" }, quizAttempt: { passed: true, score_percentage: 100 } }));
+  const html = renderToStaticMarkup(
+    render({
+      isAlreadyCompleted: true,
+      quiz: { id: "q", title: "Quiz" },
+      quizAttempt: { passed: true, score_percentage: 100 },
+    }),
+  );
   expect(html).toContain("Lectura verificada y examen aprobado registrados.");
+});
+
+function findResume(node: ReactNode): (() => void) | undefined {
+  if (!isValidElement<{ children?: ReactNode; onClick?: () => void }>(node))
+    return;
+  if (node.type === "button" && node.props.children === "Reanudar lectura")
+    return node.props.onClick;
+  for (const child of [node.props.children].flat()) {
+    const result = findResume(child);
+    if (result) return result;
+  }
+}
+it("resumes a paused record only after explicit retry and restores confirmed heartbeats", async () => {
+  harness.start.mockResolvedValue({ success: true, progress });
+  harness.heartbeat
+    .mockResolvedValueOnce({
+      success: true,
+      progress: { ...progress, is_active: false },
+    })
+    .mockResolvedValue({ success: true, progress });
+  render();
+  const cleanups = harness.effects.map((effect) => effect());
+  await flush();
+  pulse();
+  await flush();
+  findResume(render())!();
+  for (const cleanup of cleanups) if (typeof cleanup === "function") cleanup();
+  render();
+  for (const effect of harness.effects) effect();
+  await flush();
+  expect(harness.resume).toHaveBeenCalledTimes(2);
+  expect(renderToStaticMarkup(render())).not.toContain("Registro pausado");
+  const callback = vi.mocked(window.setInterval).mock.calls.at(-1)![0];
+  if (typeof callback === "function") callback();
+  await flush();
+  expect(harness.heartbeat).toHaveBeenCalledTimes(2);
 });

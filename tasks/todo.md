@@ -3,9 +3,9 @@
 ## Auditoría ATO: fase 7 — actividad única y evidencias separadas
 
 - [x] Especificar contrato y plan en specs/009-single-active-lesson; login/SSO aplazados.
-- [ ] RED: reproducir actividad simultánea y etiquetas de lectura derivadas del examen.
-- [ ] GREEN: exclusión temporal en PostgreSQL, feedback de pausa y proyecciones visuales separadas.
-- [ ] Validar SQL, Auth/REST, navegador, regresiones y calidad.
+- [x] RED: reproducir actividad simultánea y etiquetas de lectura derivadas del examen.
+- [x] GREEN: exclusión temporal en PostgreSQL, feedback de pausa y proyecciones visuales separadas.
+- [x] Validar SQL, Auth/REST, navegador, regresiones y calidad; evidencia en specs/009-single-active-lesson/review.md.
 - [ ] Commit, push y preview; migración publicada pendiente de autorización específica.
 
 ## Auditoría ATO: fase 6 — cursos y matrículas

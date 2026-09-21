@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { summarizeCourseProgress } from "@/features/learning/domain/course-progress";
 
 import { Header } from "@/shared/components/header";
 import {
@@ -24,41 +25,6 @@ export default async function CoursesPage() {
       getResilientQuizAttempts(user.id),
       getResilientEnrollments(),
     ]);
-
-  const completedLessonIds = new Set(
-    userProgress
-      ?.filter((p: any) => p.is_completed)
-      .map((p: any) => p.lesson_id) || [],
-  );
-
-  const quizzesByLessonMap = new Map<string, any>();
-  for (const q of quizzes || []) {
-    if (q.lesson_id) quizzesByLessonMap.set(q.lesson_id, q);
-    if ((q as any).lesson_slug)
-      quizzesByLessonMap.set((q as any).lesson_slug, q);
-    quizzesByLessonMap.set(q.id, q);
-  }
-
-  const attemptsByQuizMap = new Map<string, any>();
-  const passedQuizIds = new Set<string>();
-  for (const a of quizAttempts || []) {
-    if (a.passed) {
-      if (a.quiz_id) passedQuizIds.add(a.quiz_id);
-      if (a.lesson_id) passedQuizIds.add(a.lesson_id);
-      if (a.lesson_slug) passedQuizIds.add(a.lesson_slug);
-    }
-    const keys = [a.quiz_id, a.lesson_id, a.lesson_slug].filter(Boolean);
-    for (const key of keys) {
-      const existing = attemptsByQuizMap.get(key);
-      if (
-        !existing ||
-        a.passed ||
-        (a.score_percentage || 0) > (existing.score_percentage || 0)
-      ) {
-        attemptsByQuizMap.set(key, a);
-      }
-    }
-  }
 
   // Count enrollments per course
   const enrollmentCountByCourse = new Map<string, number>();
@@ -169,49 +135,18 @@ export default async function CoursesPage() {
             {coursesData.map((course: any) => {
               const lessons = course.lessons || [];
               const totalLessons = lessons.length;
-              const completedLessonsCount = lessons.filter((l: any) => {
-                const isProgCompleted =
-                  completedLessonIds.has(l.id) ||
-                  (l.slug && completedLessonIds.has(l.slug));
-                const quiz =
-                  quizzesByLessonMap.get(l.id) ||
-                  (l.slug && quizzesByLessonMap.get(l.slug));
-                const qAtt = quiz
-                  ? attemptsByQuizMap.get(quiz.id) ||
-                    (quiz.lesson_id && attemptsByQuizMap.get(quiz.lesson_id))
-                  : attemptsByQuizMap.get(l.id) ||
-                    (l.slug && attemptsByQuizMap.get(l.slug));
-                return Boolean(isProgCompleted || qAtt?.passed);
-              }).length;
-
-              const courseQuizzes = (quizzes || []).filter((q: any) =>
-                (q.course_id && (q.course_id === course.id || q.course_id === course.slug)) ||
-                lessons.some(
-                  (l: any) =>
-                    (Boolean(q.lesson_id) && l.id === q.lesson_id) ||
-                    (Boolean(l.slug) && Boolean(q.lesson_slug) && l.slug === q.lesson_slug),
-                ),
+              const summary = summarizeCourseProgress(
+                { id: course.id, lessons },
+                userProgress ?? [],
+                quizzes ?? [],
+                quizAttempts ?? [],
               );
-              const totalQuizzes = courseQuizzes.length;
-              const passedQuizzesCount = courseQuizzes.filter(
-                (q: any) =>
-                  passedQuizIds.has(q.id) ||
-                  (Boolean(q.lesson_id) && passedQuizIds.has(q.lesson_id)) ||
-                  (Boolean(q.lesson_slug) && passedQuizIds.has(q.lesson_slug)),
-              ).length;
-
-              const totalItems = totalLessons + totalQuizzes;
-              const completedItems = completedLessonsCount + passedQuizzesCount;
-              const progressPercentage =
-                totalItems > 0
-                  ? Math.round((completedItems / totalItems) * 100)
-                  : 0;
-
-              const isFullyCompleted =
-                totalItems > 0 && completedItems === totalItems;
-              const hasPendingQuizzes =
-                completedLessonsCount === totalLessons &&
-                passedQuizzesCount < totalQuizzes;
+              const completedLessonsCount = summary.advancedLessonsCount;
+              const totalQuizzes = summary.quizzes.length;
+              const passedQuizzesCount = summary.passedQuizzesCount;
+              const progressPercentage = summary.progressPercent;
+              const isFullyCompleted = summary.isFullyAdvanced;
+              const hasPendingQuizzes = summary.hasPendingQuizzes;
 
               const enrolledStudents =
                 enrollmentCountByCourse.get(course.id) || 0;
@@ -245,7 +180,7 @@ export default async function CoursesPage() {
                         </span>
                       ) : isFullyCompleted ? (
                         <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
-                          ✓ Completado
+                          ✓ Avance completado
                         </span>
                       ) : hasPendingQuizzes ? (
                         <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-full border border-amber-200 dark:border-amber-800">
@@ -253,7 +188,7 @@ export default async function CoursesPage() {
                         </span>
                       ) : progressPercentage > 0 ? (
                         <span className="text-xs font-bold text-[#1a80ff]">
-                          {progressPercentage}% Completado
+                          {progressPercentage}% de avance
                         </span>
                       ) : (
                         <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">
@@ -302,6 +237,9 @@ export default async function CoursesPage() {
                           </span>
                           <span>{progressPercentage}%</span>
                         </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                          {`Lecturas verificadas: ${summary.readLessonsCount}/${totalLessons}`}
+                        </p>
                       </div>
                     )}
                   </div>
