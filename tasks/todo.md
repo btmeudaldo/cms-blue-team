@@ -7,7 +7,8 @@
 - [x] GREEN: políticas mínimas y RPC de inicio/calificación idempotente con snapshot.
 - [x] GREEN: DTO seguro, editor autorizado y UI sin notas locales.
 - [x] Verificar SQL, unitarias, tipos, lint, formato, build y UI; límites en review.md.
-- [ ] Commit, push, preview y registro de límites; no producción.
+- [x] Commit, push, preview y registro de límites; no producción.
+- [ ] Validación integrada en Supabase de staging y aprobación específica de live.
 
 ## Auditoría ATO: fase 1 — acceso verificado (2026-09-21)
 

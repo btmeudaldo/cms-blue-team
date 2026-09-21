@@ -33,6 +33,12 @@ El runner rechaza hosts no locales y nombres de base diferentes. Reinicia única
 
 ## Despliegue y límites
 
+Rama `codex/secure-quiz-results`, commit GREEN `245e367`, subida a GitHub. Vercel confirma target `preview` y estado `Ready`:
+
+https://cms-blue-team-kbrlig4vq-eudaldocal-8684s-projects.vercel.app
+
+Login remoto verificado por CLI autenticada: HTTP 200 y formulario real. La CLI generó un token de bypass de protección para la comprobación autorizada; no se desactivó la protección SSO. Capturas sintéticas conservadas en `test-results/visual-quiz/preview_screenshot-quiz-{start,error,result}-{desktop,mobile}.png`.
+
 La migración **no se ha aplicado a producción**. El historial previo diverge del esquema remoto: no ejecutar `supabase db push` indiscriminadamente. La entrega debe aplicar esta migración revisada sobre un entorno que reproduzca el esquema remoto y luego verificar Auth/PostgREST con cuentas reales antes de live.
 
 La preview de código requiere esas RPC en su backend. Apuntarla al Supabase de producción sin migrar provoca rechazo explícito de la carga de cuestionarios; no se restaura acceso inseguro como fallback. No hay rama Supabase de pruebas disponible al inicio de esta entrega. Para validación alojada completa se necesita un proyecto de staging o una rama de base de datos autorizada.
