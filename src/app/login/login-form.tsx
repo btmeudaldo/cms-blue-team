@@ -28,6 +28,14 @@ export function LoginForm() {
         setFormMessage(res.message);
       }
     } catch (err) {
+      const message = (err as Error)?.message ?? "";
+      const digest = (err as { digest?: string })?.digest ?? "";
+      if (
+        message.includes("NEXT_REDIRECT") ||
+        digest.includes("NEXT_REDIRECT")
+      ) {
+        return;
+      }
       setFormError(
         (err as Error).message || "Ocurrió un error inesperado al autenticar.",
       );
