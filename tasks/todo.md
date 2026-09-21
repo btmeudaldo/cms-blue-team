@@ -1,5 +1,13 @@
 # Backlog de implementación
 
+## Auditoría ATO: fase 5 — progreso temporal verificado
+
+- [x] Inspeccionar RPC y consumidores; especificar contrato y plan en specs/007-verified-lesson-timing.
+- [ ] RED: reproducir finalización mutable, matrícula revocada y éxito simulado.
+- [ ] GREEN: RPC temporales autorizadas e idempotentes, acciones verificadas y UI sincronizada.
+- [ ] Validar SQL, Auth/REST, recorrido de alumno, regresiones y calidad; registrar evidencia.
+- [ ] Commit, push y preview; autorización live específica pendiente.
+
 ## Auditoría ATO: fase 4 — conservación de expedientes
 
 - [x] Inspeccionar FK y rutas de borrado; documentar alcance y plan en specs/006-academic-record-preservation.

@@ -24,6 +24,7 @@ Construir un CMS de e-learning ligero que gestione cursos, lecciones y progreso 
 9. Las operaciones de usuario respetan RLS. Un rechazo o fallo no se reintenta con service_role ni se convierte en éxito simulado.
 10. La aplicación académica no permite accesos sin contraseña ni incorpora datos de demostración en consultas reales.
 11. Los solucionarios no se envían a alumnos. PostgreSQL calcula resultados sobre una copia del examen al inicio; el cliente no escribe notas ni fechas acreditadas.
+12. Las operaciones de progreso verifican matrícula vigente y preservan la primera finalización. La interfaz solo confirma escrituras aceptadas por el servidor.
 
 ## Arquitectura
 
