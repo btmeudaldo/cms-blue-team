@@ -32,5 +32,7 @@ Servidor de desarrollo detenido y Supabase local aislado cerrado conservando el 
 - La migración pausa actividad incompleta existente (`is_active=false`, `last_resumed_at=null`). Conserva segundos confirmados y registros completados. Tras aplicarla, cada alumno puede reanudar su lectura.
 - Una misma lección abierta en varios dispositivos comparte un único contador; cualquiera puede pausarla. Esta entrega garantiza exclusión del crédito temporal, no identifica el dispositivo físico ni demuestra atención humana.
 - El examen sigue siendo accesible según sus permisos actuales; aprobarlo no exime del requisito de lectura ni acredita tiempo. No se añade un nuevo requisito de acceso a exámenes en esta entrega.
-- Preview y comprobación final pendientes al redactar este registro. La exclusión en la web publicada requiere aplicar esta migración; ninguna base remota se ha modificado.
+- Preview Ready: https://cms-blue-team-923cjx8t4-blue-team13.vercel.app (deployment `dpl_2iAza4ngNzH7njbAn8Th2Z2iyxWu`, código `f02791f`, rama `codex/single-active-lesson`). Compilación Next.js y TypeScript correctos en Vercel. CLI autenticada confirma health online/Supabase y login HTTP 200 con formulario esperado.
+- Los recorridos funcionales se validaron contra Supabase local. La preview conserva la configuración remota existente; la exclusión en ella y en la web publicada requiere aplicar esta migración. Ninguna base remota se ha modificado.
+- Persiste el desbordamiento anterior de la cabecera móvil (captura de 432 px para viewport de 390 px); queda para la revisión funcional y de accesibilidad pendiente.
 - Publicar en la URL principal requiere autorización específica conforme a las instrucciones del repositorio.
