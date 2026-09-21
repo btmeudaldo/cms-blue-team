@@ -4,7 +4,18 @@ import { revalidatePath } from "next/cache";
 
 import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/shared/lib/supabase/admin";
-import { mockStore } from "@/shared/lib/mock-store";
+import { requireVerifiedSession } from "@/shared/lib/supabase/session";
+
+async function requireEnrollmentStaff() {
+  const session = await requireVerifiedSession();
+  if (
+    session.profile.role !== "admin" &&
+    session.profile.role !== "instructor"
+  ) {
+    throw new Error("No autorizado para gestionar matrículas.");
+  }
+  return session.client;
+}
 
 export async function createNewUserAction(formData: FormData) {
   const email = String(formData.get("email") ?? "").trim();
@@ -52,7 +63,7 @@ export async function createNewUserAction(formData: FormData) {
 }
 
 export async function enrollStudentAction(courseId: string, userId: string) {
-  const supabase = await createSupabaseServerClient();
+  const supabase = await requireEnrollmentStaff();
   const { error } = await supabase
     .from("course_enrollments")
     .upsert({ course_id: courseId, user_id: userId });
@@ -62,7 +73,7 @@ export async function enrollStudentAction(courseId: string, userId: string) {
 }
 
 export async function unenrollStudentAction(courseId: string, userId: string) {
-  const supabase = await createSupabaseServerClient();
+  const supabase = await requireEnrollmentStaff();
   const { error } = await supabase
     .from("course_enrollments")
     .delete()
@@ -78,67 +89,25 @@ export async function updateStudentEnrollmentsAction(
   enrolledCourseIds: string[],
   allCourseIds: string[],
 ) {
-  try {
-    const supabase = await createSupabaseServerClient();
-    const toDelete = allCourseIds.filter(
-      (id) => !enrolledCourseIds.includes(id),
-    );
-    if (toDelete.length > 0) {
-      await supabase
-        .from("course_enrollments")
-        .delete()
-        .eq("user_id", userId)
-        .in("course_id", toDelete);
-    }
-
-    if (enrolledCourseIds.length > 0) {
-      const { error } = await supabase.from("course_enrollments").upsert(
-        enrolledCourseIds.map((courseId) => ({
-          course_id: courseId,
-          user_id: userId,
-        })),
-      );
-
-      if (error) {
-        const adminClient = createSupabaseAdminClient();
-        if (toDelete.length > 0) {
-          await adminClient
-            .from("course_enrollments")
-            .delete()
-            .eq("user_id", userId)
-            .in("course_id", toDelete);
-        }
-        await adminClient.from("course_enrollments").upsert(
-          enrolledCourseIds.map((courseId) => ({
-            course_id: courseId,
-            user_id: userId,
-          })),
-        );
-      }
-    }
-  } catch (err) {
-    const adminClient = createSupabaseAdminClient();
-    const toDelete = allCourseIds.filter(
-      (id) => !enrolledCourseIds.includes(id),
-    );
-    if (toDelete.length > 0) {
-      await adminClient
-        .from("course_enrollments")
-        .delete()
-        .eq("user_id", userId)
-        .in("course_id", toDelete);
-    }
-    if (enrolledCourseIds.length > 0) {
-      await adminClient.from("course_enrollments").upsert(
-        enrolledCourseIds.map((courseId) => ({
-          course_id: courseId,
-          user_id: userId,
-        })),
-      );
-    }
+  const supabase = await requireEnrollmentStaff();
+  const toDelete = allCourseIds.filter((id) => !enrolledCourseIds.includes(id));
+  if (toDelete.length > 0) {
+    const { error } = await supabase
+      .from("course_enrollments")
+      .delete()
+      .eq("user_id", userId)
+      .in("course_id", toDelete);
+    if (error) throw new Error(error.message);
   }
-
-  mockStore.setStudentEnrollments(userId, enrolledCourseIds);
+  if (enrolledCourseIds.length > 0) {
+    const { error } = await supabase.from("course_enrollments").upsert(
+      enrolledCourseIds.map((courseId) => ({
+        course_id: courseId,
+        user_id: userId,
+      })),
+    );
+    if (error) throw new Error(error.message);
+  }
 
   revalidatePath("/admin/users");
   revalidatePath("/courses");
@@ -148,7 +117,9 @@ export async function updateUserRoleAction(
   userId: string,
   newRole: "student" | "admin" | "instructor",
 ) {
-  const supabase = await createSupabaseServerClient();
+  const { client: supabase, profile } = await requireVerifiedSession();
+  if (profile.role !== "admin")
+    throw new Error("Solo un administrador puede cambiar roles.");
   const { error } = await supabase
     .from("profiles")
     .update({ role: newRole })

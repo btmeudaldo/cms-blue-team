@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { signInTestUser } from "./auth-helpers";
 
 test("rechaza credenciales inválidas sin abandonar el login", async ({
   page,
@@ -12,21 +13,13 @@ test("rechaza credenciales inválidas sin abandonar el login", async ({
 });
 
 test("un alumno no puede acceder al panel administrativo", async ({ page }) => {
-  await page.goto("/login");
-  await page
-    .getByRole("button", { name: /entrar como alumno seleccionado/i })
-    .click();
-  await expect(page).toHaveURL(/\/courses$/);
+  await signInTestUser(page, "student");
   await page.goto("/admin/courses");
   await expect(page).toHaveURL(/\/courses$/);
 });
 
 test("el alumno puede cerrar sesión y vuelve al login", async ({ page }) => {
-  await page.goto("/login");
-  await page
-    .getByRole("button", { name: /entrar como alumno seleccionado/i })
-    .click();
-  await expect(page).toHaveURL(/\/courses$/);
+  await signInTestUser(page, "student");
   await page.getByTitle("Cerrar sesión").click();
   await expect(page).toHaveURL(/\/login$/);
 });
@@ -34,9 +27,7 @@ test("el alumno puede cerrar sesión y vuelve al login", async ({ page }) => {
 test("el formulario de curso aplica validación HTML obligatoria", async ({
   page,
 }) => {
-  await page.goto("/login");
-  await page.getByRole("button", { name: /director de escuela/i }).click();
-  await expect(page).toHaveURL(/\/admin$/);
+  await signInTestUser(page, "admin");
   await page.goto("/admin/courses");
   await expect(page.locator('input[name="title"]')).toHaveAttribute(
     "required",

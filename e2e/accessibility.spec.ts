@@ -1,11 +1,8 @@
 import { expect, test } from "@playwright/test";
+import { signInTestUser } from "./auth-helpers";
 
 test("el menú móvil es accesible por teclado", async ({ page }) => {
-  await page.goto("/login");
-  await page
-    .getByRole("button", { name: /entrar como alumno seleccionado/i })
-    .click();
-  await expect(page).toHaveURL(/\/courses$/);
+  await signInTestUser(page, "student");
   if (!(page.viewportSize()?.width && page.viewportSize()!.width < 640)) return;
 
   const menuButton = page.getByRole("button", { name: /abrir menú/i });

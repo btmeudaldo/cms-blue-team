@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
 import { getResilientUser } from "@/shared/lib/supabase/resilient";
 import { mockStore } from "@/shared/lib/mock-store";
+import { requireCourseEditor } from "@/features/learning/application/course-authorization";
 
 function withTimeout<T>(
   promise: PromiseLike<T> | Promise<T>,
@@ -61,22 +62,20 @@ export async function submitQuizAttemptAction(
   // 3. Attempt persistent database save
   try {
     const supabase = await createSupabaseServerClient();
-    const { error } = await supabase
-      .from("quiz_attempts")
-      .upsert(
-        {
-          id: attemptId,
-          user_id: user.id,
-          quiz_id: quiz?.id || quizId,
-          score_percentage: scorePercentage,
-          correct_count: correctCount,
-          total_questions: totalQuestions,
-          passed,
-          elapsed_seconds: elapsedSeconds,
-          completed_at: completedAt,
-        },
-        { onConflict: "id" },
-      );
+    const { error } = await supabase.from("quiz_attempts").upsert(
+      {
+        id: attemptId,
+        user_id: user.id,
+        quiz_id: quiz?.id || quizId,
+        score_percentage: scorePercentage,
+        correct_count: correctCount,
+        total_questions: totalQuestions,
+        passed,
+        elapsed_seconds: elapsedSeconds,
+        completed_at: completedAt,
+      },
+      { onConflict: "id" },
+    );
 
     if (error) {
       console.warn("Supabase quiz_attempts upsert failed:", error.message);
@@ -119,21 +118,16 @@ export async function saveQuizAction(
   lessonId: string,
   quizData: any,
 ) {
-  const session = await getResilientUser();
-  const { user } = session;
-  if (!user) {
-    throw new Error(
-      "Debes iniciar sesión con rol de administrador o instructor.",
-    );
+  const { client: supabase } = await requireCourseEditor(courseId);
+  const { data: lesson, error: lessonError } = await supabase
+    .from("lessons")
+    .select("id")
+    .eq("id", lessonId)
+    .eq("course_id", courseId)
+    .maybeSingle();
+  if (lessonError || !lesson) {
+    throw new Error("No se pudo verificar la lección del curso.");
   }
-
-  if (session.isDemo) {
-    const updatedQuiz = mockStore.saveQuiz(courseId, lessonId, quizData);
-    if (!updatedQuiz) throw new Error("No se pudo guardar el cuestionario.");
-    return updatedQuiz;
-  }
-
-  const supabase = await createSupabaseServerClient();
   const quizRecord = {
     course_id: courseId,
     lesson_id: lessonId,
@@ -146,6 +140,7 @@ export async function saveQuizAction(
     supabase
       .from("quizzes")
       .select("id")
+      .eq("course_id", courseId)
       .eq("lesson_id", lessonId)
       .maybeSingle(),
   );
@@ -153,7 +148,12 @@ export async function saveQuizAction(
     throw new Error("No se pudo comprobar el cuestionario existente.");
 
   const writeQuery = existingQuiz
-    ? supabase.from("quizzes").update(quizRecord).eq("id", existingQuiz.id)
+    ? supabase
+        .from("quizzes")
+        .update(quizRecord)
+        .eq("id", existingQuiz.id)
+        .eq("course_id", courseId)
+        .eq("lesson_id", lessonId)
     : supabase.from("quizzes").insert(quizRecord);
   const { data: savedQuiz, error: writeError } = await withTimeout(
     writeQuery.select().single(),

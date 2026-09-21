@@ -1,13 +1,10 @@
 import { expect, test } from "@playwright/test";
+import { signInTestUser } from "./auth-helpers";
 
 test("el menú móvil no desborda la ventana y abre sus enlaces", async ({
   page,
 }) => {
-  await page.goto("/login");
-  await page
-    .getByRole("button", { name: /entrar como alumno seleccionado/i })
-    .click();
-  await expect(page).toHaveURL(/\/courses$/);
+  await signInTestUser(page, "student");
 
   const viewport = page.viewportSize();
   expect(viewport).not.toBeNull();

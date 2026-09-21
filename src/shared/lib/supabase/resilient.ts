@@ -1,29 +1,15 @@
-import { cookies } from "next/headers";
-import { createSupabaseServerClient, createSupabaseAdminClient } from "./server";
 import { redirect } from "next/navigation";
-import { mockStore } from "@/shared/lib/mock-store";
-import { getProgressForMode } from "@/features/learning/domain/progress-source";
-import { cache } from "react";
+import { AuthenticationRequiredError, requireVerifiedSession } from "./session";
 
-function withTimeout<T>(
-  promise: PromiseLike<T> | Promise<T>,
-  ms = 1500,
+async function readData<T>(
+  query: PromiseLike<{ data: T; error: unknown }>,
 ): Promise<T> {
-  return new Promise<T>((resolve, reject) => {
-    const timer = setTimeout(() => {
-      reject(new Error(`Timeout of ${ms}ms exceeded`));
-    }, ms);
-
-    Promise.resolve(promise)
-      .then((res) => {
-        clearTimeout(timer);
-        resolve(res);
-      })
-      .catch((err) => {
-        clearTimeout(timer);
-        reject(err);
-      });
-  });
+  const { data, error } = await query;
+  if (error)
+    throw new Error(
+      "No se pudieron cargar los datos académicos. Inténtalo de nuevo.",
+    );
+  return data;
 }
 
 function normalizeQuiz(quiz: any) {
@@ -34,508 +20,157 @@ function normalizeQuiz(quiz: any) {
   };
 }
 
-export const getResilientUser = cache(async function getResilientUser() {
-  const cookieStore = await cookies();
-  const demoRoleCookie = cookieStore.get("demo_role")?.value;
-  const demoEmailCookie = cookieStore.get("demo_email")?.value;
-
+export async function getResilientUser() {
   try {
-    const supabase = await createSupabaseServerClient();
-    const result: any = await withTimeout(supabase.auth.getUser(), 1500).catch(
-      () => null,
-    );
-
-    if (result?.data?.user) {
-      const user = result.data.user;
-      const profileResult: any = await withTimeout(
-        supabase
-          .from("profiles")
-          .select("role, full_name, email")
-          .eq("id", user.id)
-          .maybeSingle(),
-        1500,
-      ).catch(() => ({ data: null }));
-
-      const profile = profileResult?.data;
-
-      const userRole =
-        profile?.role ||
-        demoRoleCookie ||
-        user.user_metadata?.role ||
-        (user.email?.includes("admin")
-          ? "admin"
-          : user.email?.includes("instructor")
-            ? "instructor"
-            : "student");
-
-      return {
-        isDemo: false,
-        user: {
-          id: user.id,
-          email: user.email,
-        },
-        profile: {
-          role: userRole,
-          full_name:
-            profile?.full_name ??
-            user.user_metadata?.full_name ??
-            (userRole === "admin"
-              ? "Director / Administrador"
-              : userRole === "instructor"
-                ? "Instructor de Vuelo"
-                : "Piloto Alumno"),
-          email: user.email,
-        },
-      };
-    }
-  } catch (err) {}
-
-  // Fallback to active mock user based on demo_email or demo_role cookie
-  const mockProfiles = mockStore.getProfiles();
-  if (demoEmailCookie) {
-    const found = mockProfiles.find(
-      (p) =>
-        p.email.toLowerCase() === demoEmailCookie.toLowerCase() ||
-        p.id === demoEmailCookie,
-    );
-    if (found) {
-      return {
-        isDemo: true,
-        user: {
-          id: found.id,
-          email: found.email,
-        },
-        profile: {
-          role: found.role,
-          full_name: found.full_name,
-          email: found.email,
-        },
-      };
-    }
+    const { user, profile } = await requireVerifiedSession();
+    return { isDemo: false, user: { id: user.id, email: user.email }, profile };
+  } catch (error) {
+    if (error instanceof AuthenticationRequiredError) redirect("/login");
+    throw error;
   }
+}
 
-  if (demoRoleCookie === "instructor") {
-    return {
-      isDemo: true,
-      user: {
-        id: "instructor-123",
-        email: "instructor@blueteam.com",
-      },
-      profile: {
-        role: "instructor" as const,
-        full_name: "Instructor de Vuelo BlueTeam",
-        email: "instructor@blueteam.com",
-      },
-    };
-  }
+async function requireStaffSession() {
+  const session = await requireVerifiedSession();
+  if (session.profile.role === "student")
+    throw new Error("No tienes permisos para consultar estos registros.");
+  return session;
+}
 
-  if (demoRoleCookie === "admin") {
-    return {
-      isDemo: true,
-      user: {
-        id: "admin-123",
-        email: "admin@blueteam.com",
-      },
-      profile: {
-        role: "admin" as const,
-        full_name: "Director / Administrador BlueTeam",
-        email: "admin@blueteam.com",
-      },
-    };
-  }
-
-  if (demoRoleCookie === "student") {
-    return {
-      isDemo: true,
-      user: {
-        id: "student-123",
-        email: "student@blueteam.com",
-      },
-      profile: {
-        role: "student" as const,
-        full_name: "Piloto Alumno BlueTeam",
-        email: "student@blueteam.com",
-      },
-    };
-  }
-
-  redirect("/login");
-});
-
+// Legacy mode arguments are ignored: academic reads never substitute simulated records.
 export async function getResilientCourses(
   userId: string,
-  isAdmin: boolean,
-  allowMockFallback = true,
+  _isAdmin: boolean,
+  _allowMockFallback = false,
 ) {
-  try {
-    const supabase = await createSupabaseServerClient();
-
-    let queryPromise;
-    if (isAdmin) {
-      queryPromise = supabase
-        .from("courses")
-        .select(
-          "id, title, slug, description, image_url, created_at, lessons(id, title, sequence_order)",
-        )
-        .order("created_at", { ascending: false });
-    } else {
-      queryPromise = supabase
-        .from("course_enrollments")
-        .select(
-          "courses(id, title, slug, description, image_url, created_at, lessons(id, title, sequence_order))",
-        )
-        .eq("user_id", userId);
-    }
-
-    const result: any = await withTimeout<any>(queryPromise, 1500);
-    if (result && !result.error && result.data) {
-      const rawCourses = isAdmin
-        ? result.data || []
-        : result.data.map((e: any) => e.courses).filter(Boolean);
-
-      if (!allowMockFallback) return rawCourses;
-
-      const mockCourses = mockStore.getCourses();
-      const mockMap = new Map(mockCourses.map((mc) => [mc.id, mc]));
-
-      const finalCourses = rawCourses.map((c: any) => {
-        const mc = mockMap.get(c.id) || mockMap.get(c.slug);
-        return {
-          ...c,
-          image_url: c.image_url || mc?.image_url || null,
-          lessons: c.lessons || [],
-        };
-      });
-
-      if (isAdmin) {
-        const existingIds = new Set(finalCourses.map((c: any) => c.id));
-        for (const mc of mockCourses) {
-          if (!existingIds.has(mc.id)) {
-            finalCourses.push(mc);
-          }
-        }
-        return finalCourses;
-      }
-
-      // If student and DB query returned enrolled courses list
-      if (!isAdmin) {
-        // If DB returned courses, return them
-        if (finalCourses.length > 0) return finalCourses;
-
-        // Fallback to mockStore student enrolled courses ONLY
-        const enrolledMockCourses = mockStore.getStudentCourses(userId);
-        return enrolledMockCourses;
-      }
-    }
-  } catch (err) {}
-
-  if (allowMockFallback && isAdmin) {
-    return mockStore.getCourses();
+  const { client, user, profile } = await requireVerifiedSession();
+  if (profile.role !== "student") {
+    return (
+      (await readData(
+        client
+          .from("courses")
+          .select(
+            "id, title, slug, description, image_url, created_at, lessons(id, title, sequence_order)",
+          )
+          .order("created_at", { ascending: false }),
+      )) ?? []
+    );
   }
-
-  return allowMockFallback ? mockStore.getStudentCourses(userId) : [];
+  if (userId !== user.id)
+    throw new Error("No tienes permisos para consultar estos cursos.");
+  const enrollments = await readData(
+    client
+      .from("course_enrollments")
+      .select(
+        "courses(id, title, slug, description, image_url, created_at, lessons(id, title, sequence_order))",
+      )
+      .eq("user_id", user.id),
+  );
+  return (enrollments ?? []).map((entry: any) => entry.courses).filter(Boolean);
 }
 
 export async function getResilientCourseDetail(
   courseId: string,
-  allowMockFallback = true,
+  _allowMockFallback = false,
 ) {
-  try {
-    const supabase = await createSupabaseServerClient();
-    const legacyMap: Record<string, string> = {
-      "course-1": "11111111-1111-1111-1111-111111111101",
-      "course-demo-1": "11111111-1111-1111-1111-111111111101",
-      "course-2": "22222222-2222-2222-2222-222222222202",
-      "course-demo-2": "22222222-2222-2222-2222-222222222202",
-      "course-3": "33333333-3333-3333-3333-333333333303",
-      "course-demo-3": "33333333-3333-3333-3333-333333333303",
-      "course-4": "44444444-4444-4444-4444-444444444404",
-      "course-demo-4": "44444444-4444-4444-4444-444444444404",
-      "course-5": "55555555-5555-5555-5555-555555555505",
-      "course-demo-5": "55555555-5555-5555-5555-555555555505",
-    };
-
-    const targetCourseId = legacyMap[courseId] || courseId;
-    const isUuid =
-      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
-        targetCourseId,
-      );
-
-    let query = supabase.from("courses").select(
-      `
-          id,
-          title,
-          slug,
-          description,
-          image_url,
-          lessons (
-            id,
-            title,
-            slug,
-            sequence_order,
-            word_count,
-            min_seconds,
-            content_html
-          )
-        `,
+  const { client } = await requireVerifiedSession();
+  const isUuid =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      courseId,
     );
-
-    if (isUuid) {
-      query = query.eq("id", targetCourseId);
-    } else {
-      query = query.eq("slug", targetCourseId);
-    }
-
-    const result: any = await withTimeout(query.maybeSingle(), 1500);
-
-    if (result && !result.error && result.data) {
-      if (!result.data.lessons || result.data.lessons.length === 0) {
-        const directLessonsResult: any = await withTimeout(
-          supabase
-            .from("lessons")
-            .select(
-              "id, title, slug, sequence_order, word_count, min_seconds, content_html",
-            )
-            .eq("course_id", result.data.id)
-            .order("sequence_order", { ascending: true }),
-          1500,
-        ).catch(() => ({ data: null }));
-
-        const directLessons = directLessonsResult?.data;
-
-        if (directLessons && directLessons.length > 0) {
-          result.data.lessons = directLessons;
-        }
-      }
-
-      // Fallback merge: if mockStore has image_url or more lessons, merge them
-      const mockC =
-        mockStore.getCourseById(result.data.id) ||
-        mockStore.getCourseById(result.data.slug);
-      if (mockC) {
-        if (!result.data.image_url && mockC.image_url) {
-          result.data.image_url = mockC.image_url;
-        }
-      }
-
-      return result.data;
-    }
-  } catch (err) {}
-
-  return allowMockFallback ? mockStore.getCourseById(courseId) : null;
+  return readData(
+    client
+      .from("courses")
+      .select(
+        "id, title, slug, description, image_url, lessons(id, title, slug, sequence_order, word_count, min_seconds, content_html)",
+      )
+      .eq(isUuid ? "id" : "slug", courseId)
+      .maybeSingle(),
+  );
 }
 
 export async function getResilientProfiles() {
-  const map = new Map<string, any>();
-
-  try {
-    const adminClient = createSupabaseAdminClient();
-    const client = adminClient || (await createSupabaseServerClient());
-    const result: any = await withTimeout(
+  const { client } = await requireStaffSession();
+  return (
+    (await readData(
       client
         .from("profiles")
         .select("id, email, full_name, role, created_at")
         .order("created_at", { ascending: false }),
-      2000,
-    );
-
-    if (result && !result.error && result.data && result.data.length > 0) {
-      for (const p of result.data) {
-        map.set(p.id, p);
-        if (p.email) map.set(p.email, p);
-      }
-    }
-  } catch (err) {}
-
-  const mockProfiles = mockStore.getProfiles();
-  for (const mp of mockProfiles) {
-    if (!map.has(mp.id) && (!mp.email || !map.has(mp.email))) {
-      map.set(mp.id, mp);
-    }
-  }
-
-  return Array.from(new Set(map.values()));
+    )) ?? []
+  );
 }
 
 export async function getResilientUserProgress(
   userId: string,
-  allowMockFallback = true,
+  _allowMockFallback = false,
 ) {
-  try {
-    const adminClient = createSupabaseAdminClient();
-    const client = adminClient || (await createSupabaseServerClient());
-    const result: any = await withTimeout(
+  const { client, user, profile } = await requireVerifiedSession();
+  if (profile.role === "student" && user.id !== userId)
+    throw new Error("No tienes permisos para consultar este progreso.");
+  return (
+    (await readData(
       client
         .from("user_lesson_progress")
         .select(
           "lesson_id, is_completed, started_at, completed_at, elapsed_seconds",
         )
         .eq("user_id", userId),
-      2000,
-    );
-
-    if (result && !result.error && result.data) {
-      return result.data;
-    }
-  } catch (err) {}
-
-  return allowMockFallback ? mockStore.getUserProgress(userId) : [];
+    )) ?? []
+  );
 }
 
 export async function getResilientAllProgress() {
-  const map = new Map<string, any>();
-
-  try {
-    const adminClient = createSupabaseAdminClient();
-    const client = adminClient || (await createSupabaseServerClient());
-    const result: any = await withTimeout(
+  const { client } = await requireStaffSession();
+  return (
+    (await readData(
       client
         .from("user_lesson_progress")
         .select(
-          `
-          user_id,
-          lesson_id,
-          started_at,
-          completed_at,
-          elapsed_seconds,
-          is_completed
-        `,
+          "user_id, lesson_id, started_at, completed_at, elapsed_seconds, is_completed",
         )
         .order("started_at", { ascending: false }),
-      2000,
-    );
-
-    if (result && !result.error && result.data && result.data.length > 0) {
-      for (const p of result.data) {
-        map.set(`${p.user_id}_${p.lesson_id}`, p);
-      }
-    }
-  } catch (err) {}
-
-  const mockProgress = mockStore.getAllProgress();
-  for (const mp of mockProgress) {
-    const key = `${mp.user_id}_${mp.lesson_id}`;
-    if (!map.has(key)) {
-      map.set(key, mp);
-    }
-  }
-
-  return Array.from(map.values());
+    )) ?? []
+  );
 }
 
 export async function getResilientEnrollments() {
-  const map = new Map<string, { user_id: string; course_id: string }>();
-
-  try {
-    const adminClient = createSupabaseAdminClient();
-    const client = adminClient || (await createSupabaseServerClient());
-    const result: any = await withTimeout(
-      client.from("course_enrollments").select("user_id, course_id"),
-      2000,
-    );
-
-    if (result && !result.error && result.data && result.data.length > 0) {
-      for (const de of result.data) {
-        map.set(`${de.user_id}_${de.course_id}`, de);
-      }
-    }
-  } catch (err) {}
-
-  const mockEnrollments = mockStore.getEnrollments();
-  for (const me of mockEnrollments) {
-    const key = `${me.user_id}_${me.course_id}`;
-    if (!map.has(key)) {
-      map.set(key, me);
-    }
-  }
-
-  return Array.from(map.values());
+  const { client, user, profile } = await requireVerifiedSession();
+  let query = client.from("course_enrollments").select("user_id, course_id");
+  if (profile.role === "student") query = query.eq("user_id", user.id);
+  return (await readData(query)) ?? [];
 }
 
 export async function getResilientQuizzes() {
-  const map = new Map<string, any>();
-  
-  try {
-    const adminClient = createSupabaseAdminClient();
-    const client = adminClient || (await createSupabaseServerClient());
-    const result: any = await withTimeout(
-      client.from("quizzes").select("*"),
-      2000,
-    );
-    if (result && !result.error && result.data && result.data.length > 0) {
-      for (const dq of result.data) {
-        map.set(dq.id, normalizeQuiz(dq));
-      }
-    }
-  } catch (err) {}
-
-  return Array.from(map.values());
+  const { client } = await requireVerifiedSession();
+  return ((await readData(client.from("quizzes").select("*"))) ?? []).map(
+    normalizeQuiz,
+  );
 }
 
 export async function getResilientQuiz(quizId: string) {
-  try {
-    const adminClient = createSupabaseAdminClient();
-    const client = adminClient || (await createSupabaseServerClient());
-    const result: any = await withTimeout(
-      client.from("quizzes").select("*").eq("id", quizId).maybeSingle(),
-      2000,
-    );
-    if (result && !result.error && result.data) {
-      return normalizeQuiz(result.data);
-    }
-    if (result && !result.error) return null;
-  } catch (err) {}
-  return null;
+  const { client } = await requireVerifiedSession();
+  const quiz = await readData(
+    client.from("quizzes").select("*").eq("id", quizId).maybeSingle(),
+  );
+  return quiz ? normalizeQuiz(quiz) : null;
 }
 
 export async function getResilientQuizForLesson(lessonId: string) {
-  try {
-    const adminClient = createSupabaseAdminClient();
-    const client = adminClient || (await createSupabaseServerClient());
-    const result: any = await withTimeout(
-      client
-        .from("quizzes")
-        .select("*")
-        .eq("lesson_id", lessonId)
-        .maybeSingle(),
-      2000,
-    );
-    if (result && !result.error && result.data) {
-      return normalizeQuiz(result.data);
-    }
-  } catch (err) {}
-  return null;
+  const { client } = await requireVerifiedSession();
+  const quiz = await readData(
+    client.from("quizzes").select("*").eq("lesson_id", lessonId).maybeSingle(),
+  );
+  return quiz ? normalizeQuiz(quiz) : null;
 }
 
 export async function getResilientQuizAttempts(userId?: string) {
-  const map = new Map<string, any>();
-
-  try {
-    const adminClient = createSupabaseAdminClient();
-    const client = adminClient || (await createSupabaseServerClient());
-    let query = client.from("quiz_attempts").select("*");
-    if (userId && userId !== "all") {
-      query = query.eq("user_id", userId);
-    }
-    const result: any = await withTimeout(
-      query.order("completed_at", { ascending: true }),
-      2000,
-    ).catch(() => null);
-
-    if (result && !result.error && result.data && result.data.length > 0) {
-      for (const a of result.data) {
-        map.set(a.id || `${a.user_id}_${a.quiz_id}_${a.completed_at}`, a);
-      }
-    }
-  } catch (err) {}
-
-  const mockAttempts = mockStore.getQuizAttempts(userId === "all" ? undefined : userId);
-  for (const ma of mockAttempts) {
-    const key = ma.id || `${ma.user_id}_${ma.quiz_id}_${ma.completed_at}`;
-    if (!map.has(key)) {
-      map.set(key, ma);
-    }
-  }
-
-  return Array.from(map.values());
+  const { client, user, profile } = await requireVerifiedSession();
+  if (profile.role === "student" && userId !== user.id)
+    throw new Error("No tienes permisos para consultar estos intentos.");
+  let query = client.from("quiz_attempts").select("*");
+  if (userId && userId !== "all") query = query.eq("user_id", userId);
+  return (
+    (await readData(query.order("completed_at", { ascending: true }))) ?? []
+  );
 }

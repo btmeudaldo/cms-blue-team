@@ -60,11 +60,9 @@ function setup(
     query[name].mockReturnValue(query);
   const storage = {
     upload: vi.fn().mockResolvedValue({ error }),
-    getPublicUrl: vi
-      .fn()
-      .mockReturnValue({
-        data: { publicUrl: "https://example.com/cover.png" },
-      }),
+    getPublicUrl: vi.fn().mockReturnValue({
+      data: { publicUrl: "https://example.com/cover.png" },
+    }),
   };
   const client = {
     from: vi.fn().mockReturnValue(query),

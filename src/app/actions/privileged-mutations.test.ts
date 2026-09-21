@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
   session: vi.fn(),
+  courseEditor: vi.fn(),
   server: vi.fn(),
   admin: vi.fn(),
   revalidate: vi.fn(),
@@ -13,6 +14,9 @@ const mocks = vi.hoisted(() => ({
 }));
 vi.mock("@/shared/lib/supabase/session", () => ({
   requireVerifiedSession: mocks.session,
+}));
+vi.mock("@/features/learning/application/course-authorization", () => ({
+  requireCourseEditor: mocks.courseEditor,
 }));
 vi.mock("@/shared/lib/supabase/server", () => ({
   createSupabaseServerClient: mocks.server,
@@ -76,6 +80,7 @@ function setup(
     user: { id: "actor" },
     profile: { role },
   });
+  mocks.courseEditor.mockImplementation(() => mocks.session());
   mocks.admin.mockReturnValue(client);
   return { query, client };
 }
@@ -96,16 +101,13 @@ describe("verified administrative mutations", () => {
     expect(client.from).not.toHaveBeenCalled();
     expect(mocks.admin).not.toHaveBeenCalled();
   });
-  it.each(["student", "instructor"])(
-    "rejects enrollment management by %s",
-    async (role) => {
-      const { client } = setup(role);
-      await expect(
-        updateStudentEnrollmentsAction("student", ["course"], []),
-      ).rejects.toThrow();
-      expect(client.from).not.toHaveBeenCalled();
-    },
-  );
+  it.each(["student"])("rejects enrollment management by %s", async (role) => {
+    const { client } = setup(role);
+    await expect(
+      updateStudentEnrollmentsAction("student", ["course"], []),
+    ).rejects.toThrow();
+    expect(client.from).not.toHaveBeenCalled();
+  });
   it("propagates enrollment denial without privileged retries", async () => {
     setup("admin", { message: "RLS denied" });
     await expect(
@@ -146,5 +148,36 @@ describe("verified administrative mutations", () => {
       { course_id: "course", user_id: "student" },
     ]);
     expect(mocks.admin).not.toHaveBeenCalled();
+  });
+  it.each([
+    () => enrollStudentAction("course", "student"),
+    () => unenrollStudentAction("course", "student"),
+    () => updateStudentEnrollmentsAction("student", ["course"], []),
+  ])(
+    "allows instructors to manage enrollments without elevated clients",
+    async (action) => {
+      setup("instructor");
+      await expect(action()).resolves.toBeUndefined();
+      expect(mocks.admin).not.toHaveBeenCalled();
+    },
+  );
+  it.each(["student", "instructor"])(
+    "rejects role changes by %s",
+    async (role) => {
+      const { client } = setup(role);
+      await expect(updateUserRoleAction("student", "admin")).rejects.toThrow();
+      expect(client.from).not.toHaveBeenCalled();
+    },
+  );
+  it.each([
+    () => createLessonAction("other-course", form()),
+    () => updateLessonAction("lesson", "other-course", form()),
+    () => deleteLessonAction("lesson", "other-course"),
+  ])("rejects instructors outside their authorized course", async (action) => {
+    const { client } = setup("instructor");
+    mocks.courseEditor.mockRejectedValue(new Error("Course access denied"));
+    await expect(action()).rejects.toThrow("Course access denied");
+    expect(mocks.courseEditor).toHaveBeenCalledWith("other-course");
+    expect(client.from).not.toHaveBeenCalled();
   });
 });

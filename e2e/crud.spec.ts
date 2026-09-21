@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { signInTestUser } from "./auth-helpers";
 
 test("administrador puede crear, leer, actualizar y eliminar un curso", async ({
   page,
@@ -8,9 +9,7 @@ test("administrador puede crear, leer, actualizar y eliminar un curso", async ({
   const updatedTitle = `E2E Curso Actualizado ${suffix}`;
   const slug = `e2e-curso-${suffix}`;
 
-  await page.goto("/login");
-  await page.getByRole("button", { name: /director de escuela/i }).click();
-  await expect(page).toHaveURL(/\/admin$/);
+  await signInTestUser(page, "admin");
   await page.goto("/admin/courses");
   await page.locator('input[name="title"]').fill(originalTitle);
   await page.locator('input[name="slug"]').fill(slug);

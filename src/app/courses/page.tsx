@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { Header } from "@/shared/components/header";
-import { SeedDemoButton } from "@/shared/components/seed-demo-button";
 import {
   getResilientCourses,
   getResilientEnrollments,
@@ -63,7 +62,9 @@ export default async function CoursesPage() {
           <div className="relative z-10 max-w-2xl space-y-3">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-3 py-1 text-xs font-semibold tracking-wide text-blue-100">
               <span className="h-2 w-2 rounded-full bg-[#1a80ff] animate-pulse"></span>
-              {isAdmin ? "Portal de Instructor / Docencia" : "Portal del Alumno · Anticheating Temporal"}
+              {isAdmin
+                ? "Portal de Instructor / Docencia"
+                : "Portal del Alumno · Anticheating Temporal"}
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
               Bienvenido, {profile?.full_name || user.email?.split("@")[0]}
@@ -206,7 +207,8 @@ export default async function CoursesPage() {
 
                       {isAdmin ? (
                         <span className="inline-flex items-center gap-1 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-full border border-slate-200 dark:border-slate-700">
-                          👥 {enrolledStudents} {enrolledStudents === 1 ? "alumno" : "alumnos"}
+                          👥 {enrolledStudents}{" "}
+                          {enrolledStudents === 1 ? "alumno" : "alumnos"}
                         </span>
                       ) : isFullyCompleted ? (
                         <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
@@ -240,7 +242,9 @@ export default async function CoursesPage() {
                       <div className="pt-2">
                         <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-2.5 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-800">
                           <span>{totalQuizzes} exámenes teóricos</span>
-                          <span className="font-bold text-[#1a80ff]">Supervisión Docente</span>
+                          <span className="font-bold text-[#1a80ff]">
+                            Supervisión Docente
+                          </span>
                         </div>
                       </div>
                     ) : (
@@ -259,7 +263,9 @@ export default async function CoursesPage() {
                         </div>
                         <div className="flex justify-between text-[11px] font-medium text-slate-400 dark:text-slate-500">
                           <span>
-                            {completedLessonsCount}/{totalLessons} lecciones &middot; {passedQuizzesCount}/{totalQuizzes} exámenes
+                            {completedLessonsCount}/{totalLessons} lecciones
+                            &middot; {passedQuizzesCount}/{totalQuizzes}{" "}
+                            exámenes
                           </span>
                           <span>{progressPercentage}%</span>
                         </div>
@@ -272,7 +278,11 @@ export default async function CoursesPage() {
                       href={`/courses/${course.slug || course.id}`}
                       className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2.5 text-xs font-bold shadow-xs group-hover:bg-[#1a80ff] transition-colors"
                     >
-                      <span>{isAdmin ? "Supervisar / Entrar al Curso" : "Entrar al Curso"}</span>
+                      <span>
+                        {isAdmin
+                          ? "Supervisar / Entrar al Curso"
+                          : "Entrar al Curso"}
+                      </span>
                       <svg
                         className="w-4 h-4"
                         fill="none"
