@@ -7,7 +7,7 @@
 - [x] GREEN: permisos delimitados, guardado atómico y ámbito editable en pantalla.
 - [x] Validar pruebas y recorrido integrado; 54 SQL, 6 API, 4 E2E, 201 unitarias y TypeScript correctos. Evidencia en specs/008-scoped-enrollment-management/review.md.
 - [x] Commit, push y preview Blue Team Ready; registro en specs/008-scoped-enrollment-management/review.md.
-- [ ] Aplicar migración e interfaz en URL principal de pruebas tras autorización específica de esta entrega.
+- [x] Aplicar migración e interfaz en URL principal de pruebas tras autorización específica; ocho tablas intactas, políticas/RPC verificadas y web online. Evidencia en specs/008-scoped-enrollment-management/review.md.
 
 ## Pendientes posteriores del CMS
 
