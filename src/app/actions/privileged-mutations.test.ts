@@ -47,7 +47,7 @@ function form() {
 }
 function setup(
   role = "admin",
-  error: { message: string } | null = null,
+  error: { message: string; code?: string } | null = null,
   data: unknown = { id: "lesson" },
 ) {
   const query = {
@@ -179,5 +179,23 @@ describe("verified administrative mutations", () => {
     await expect(action()).rejects.toThrow("Course access denied");
     expect(mocks.courseEditor).toHaveBeenCalledWith("other-course");
     expect(client.from).not.toHaveBeenCalled();
+  });
+});
+
+describe("academic lesson retention", () => {
+  it("returns a conservation error for FK rejection without revalidation", async () => {
+    setup("admin", { message: "private constraint details", code: "23503" });
+    await expect(deleteLessonAction("lesson", "course")).resolves.toEqual({
+      error:
+        "No se puede eliminar porque existen registros académicos que deben conservarse.",
+    });
+    expect(mocks.revalidate).not.toHaveBeenCalled();
+  });
+  it("still deletes an unreferenced lesson and revalidates", async () => {
+    setup();
+    await expect(
+      deleteLessonAction("lesson", "course"),
+    ).resolves.toBeUndefined();
+    expect(mocks.revalidate).toHaveBeenCalledWith("/admin/courses/course");
   });
 });

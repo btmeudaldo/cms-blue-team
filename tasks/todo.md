@@ -1,5 +1,13 @@
 # Backlog de implementación
 
+## Auditoría ATO: fase 4 — conservación de expedientes
+
+- [x] Inspeccionar FK y rutas de borrado; documentar alcance y plan en specs/006-academic-record-preservation.
+- [ ] RED: reproducir pérdidas por cascada y errores de interfaz.
+- [ ] GREEN: restricciones referenciales, ámbito inmutable de lección y feedback de conservación.
+- [ ] Validar SQL, API, UI y regresiones; registrar límites.
+- [ ] Commit, push y preview; solicitar autorización específica antes de producción.
+
 ## Auditoría ATO: fase 3 — aislamiento de cursos
 
 - [x] Verificar catálogo remoto y documentar contrato/plan en specs/005-course-data-isolation.
