@@ -31,10 +31,19 @@ Aplicar la nueva migración únicamente a ese entorno local antes de GREEN. La s
 
 ## Límites y entrega
 
-**La nueva migración no se ha aplicado a producción.** El historial local y remoto previo diverge: aplicar solo esta migración revisada cuando se autorice esta entrega; no usar `db push` indiscriminadamente.
+**Migración aplicada a producción tras autorización específica del usuario.** El historial local y remoto previo diverge: se aplicó únicamente esta migración revisada mediante MCP, sin `db push`.
 
 Este bloque cierra acceso directo a lecciones/progreso. Permanecen pendientes las políticas de `courses` por propietario sin validar rol, borrados indirectos por cascada y conservación de expedientes, permisos globales de matrículas y semántica temporal/idempotencia de las RPC. No se afirma aislamiento completo de toda la plataforma ni conformidad AESA.
 
 El test SQL heredado `security_definer_function_privileges_test.sql` exige revocar helpers públicos todavía usados por políticas, cuyos permisos siguen concedidos en el catálogo remoto observado. No se ha ejecutado esa suite heredada en esta entrega. La nueva suite verifica los privilegios efectivos del helper de esta entrega y las operaciones reales bajo `authenticated`; no se modifica ese test ajeno ni se presenta toda la suite heredada como aprobada.
 
-Rama `codex/course-data-isolation`, commit GREEN `d984b17`, subida a GitHub. Preview Ready con build/TypeScript correctos: https://cms-blue-team-py2tft3o7-eudaldocal-8684s-projects.vercel.app (deployment `dpl_BDERuwY8Z3pRxK9ED75X4zyJJBMx`). Login verificado por CLI autenticada: HTTP 200 y formulario. Esta preview usa el backend alojado actual; la evidencia de las políticas nuevas corresponde al entorno local aislado, pendiente de aplicar la nueva migración remota.
+Rama `codex/course-data-isolation`, commit GREEN `d984b17`, subida a GitHub. Preview Ready con build/TypeScript correctos: https://cms-blue-team-py2tft3o7-eudaldocal-8684s-projects.vercel.app (deployment `dpl_BDERuwY8Z3pRxK9ED75X4zyJJBMx`). Login verificado por CLI autenticada: HTTP 200 y formulario. No hay cambios de frontend que requieran sustituir el despliegue de producción existente.
+
+## Verificación de producción (2026-09-21)
+
+- MCP confirma aplicación correcta de `isolate_course_lessons_and_progress`.
+- Comparación antes/después: **16 lecciones**, huella `81f583c1a4abe2755c82025bd639cb7b`; **6 progresos**, `e85741c4acc660accce92d082c8e97aa`; **5 intentos**, `dbcab8e5c83c0874dffb39580798e3f7`. Huellas idénticas de todos los campos ordenados por clave; comprobación de conservación, no firma de auditoría.
+- Catálogo remoto confirma únicamente las cuatro políticas nuevas de lecciones y SELECT acotado de progreso. Cero grants anónimos o masivos indebidos y cero escritura directa autenticada de progreso; wrapper invoker, ejecutable solo por authenticated entre los roles cliente.
+- REST real deniega con `42501` la lectura anónima de ambas tablas y la ejecución anónima del helper. No se crearon cuentas ni registros de prueba en producción.
+- La web publicada devuelve `online/supabase` mediante la CLI Vercel autenticada.
+- Advisors alojados no añaden incidencias: desaparece `can_manage_course` de los avisos definer. Continúan avisos previos de [otras funciones públicas](https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable), [protección de contraseñas](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection) y la [tabla privada de snapshots sin políticas](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy), intencionalmente inaccesible a clientes.

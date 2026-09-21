@@ -7,7 +7,7 @@
 - [x] GREEN: migración de políticas y helper de autorización con privilegios mínimos.
 - [x] Validar roles reales, regresión de exámenes, advisors, tipos y calidad; 25 SQL, 12 API, 13 de regresión y 150 unitarias correctas.
 - [x] Commit, push, preview Ready y revisión con evidencia en specs/005-course-data-isolation/review.md.
-- [ ] Aplicar nueva migración en producción tras autorización live específica de esta entrega.
+- [x] Aplicar nueva migración en producción tras autorización específica; conservación exacta de datos y permisos remotos verificados.
 
 ## Auditoría ATO: fase 2 — exámenes y notas
 
