@@ -441,6 +441,105 @@ test("deleting empty course retains its own and cascaded lesson history", async 
   }
 });
 
-beforeEach(async()=>{await db.query('savepoint audit_test');});
-afterEach(async()=>{await db.query('rollback to savepoint audit_test');await db.query('release savepoint audit_test');});
+beforeEach(async () => {
+  await db.query("savepoint audit_test");
+});
+afterEach(async () => {
+  await db.query("rollback to savepoint audit_test");
+  await db.query("release savepoint audit_test");
+});
 
+test("quiz bank changes and grading omit questions answers and snapshots", async () => {
+  const quiz = randomUUID(),
+    attempt = randomUUID();
+  const questions = JSON.stringify([
+    {
+      id: "secret-question",
+      question: "SECRET_QUESTION",
+      options: ["SECRET_OPTION"],
+      correctAnswerIndex: 0,
+    },
+  ]);
+  await db.query(
+    "insert into public.quizzes(id,course_id,lesson_id,lesson_slug,title,questions) values($1,$2,$3,$4,'Secret quiz',$5)",
+    [quiz, ids.a, ids.la, ids.la, questions],
+  );
+  let row = await latest("quizzes", quiz);
+  assert.equal(row.after_data.question_count, 1);
+  assert.ok(!JSON.stringify(row).includes("SECRET_"));
+  assert.ok(!JSON.stringify(row).includes("correctAnswerIndex"));
+  await db.query("update public.quizzes set questions=$1 where id=$2", [
+    JSON.stringify([
+      {
+        id: "q",
+        question: "OTHER_SECRET",
+        options: ["A"],
+        correctAnswerIndex: 0,
+      },
+    ]),
+    quiz,
+  ]);
+  row = await latest("quizzes", quiz);
+  assert.equal(row.after_data.questions_changed, true);
+  assert.ok(!JSON.stringify(row).includes("OTHER_SECRET"));
+  await db.query(
+    "insert into quiz_private.attempt_snapshots(id,user_id,quiz_id,course_id,bank) values($1,$2,$3,$4,$5)",
+    [
+      attempt,
+      ids.student,
+      quiz,
+      ids.a,
+      JSON.stringify({ secret: "SECRET_BANK" }),
+    ],
+  );
+  row = await latest("attempt_snapshots", attempt);
+  assert.equal(row.subject_id, ids.student);
+  assert.ok(!JSON.stringify(row).includes("SECRET_BANK"));
+  await db.query(
+    "insert into public.quiz_attempts(id,user_id,quiz_id,score_percentage,correct_count,total_questions,passed,elapsed_seconds,answers) values($1,$2,$3,100,1,1,true,5,$4)",
+    [attempt, ids.student, quiz, JSON.stringify({ SECRET_ANSWER: 0 })],
+  );
+  row = await latest("quiz_attempts", attempt);
+  assert.equal(row.after_data.score_percentage, 100);
+  assert.equal(row.after_data.passed, true);
+  assert.equal(row.course_id, ids.a);
+  assert.ok(!JSON.stringify(row).includes("SECRET_ANSWER"));
+  assert.ok(!Object.hasOwn(row.after_data, "answers"));
+});
+test("enrollment and editor assignments capture composite identity and scope", async () => {
+  await actor(ids.admin, async () => {
+    await db.query(
+      "insert into public.course_enrollments(user_id,course_id) values($1,$2)",
+      [ids.other, ids.a],
+    );
+    let row = await latest("course_enrollments", `${ids.other}:${ids.a}`);
+    assert.equal(row.actor_id, ids.admin);
+    assert.equal(row.course_id, ids.a);
+    assert.equal(row.subject_id, ids.other);
+    await db.query(
+      "insert into public.course_editors(course_id,user_id,assigned_by) values($1,$2,$3)",
+      [ids.b, ids.owner, ids.admin],
+    );
+    row = await latest("course_editors", `${ids.b}:${ids.owner}`);
+    assert.equal(row.after_data.assigned_by, ids.admin);
+    assert.equal(row.subject_id, ids.owner);
+  });
+});
+for (const [course, category, description] of [
+  [null, "other", "text"],
+  ["a", null, "text"],
+  ["a", "other", null],
+])
+  test(`null incident parameter ${course}/${category}/${description} rejects`, () =>
+    denied(
+      ids.admin,
+      report,
+      [course ? ids[course] : null, category, description, randomUUID()],
+      [course === null ? "42501" : "22023"],
+    ));
+test("trigger implementation cannot be executed directly by authenticated", () =>
+  actor(ids.admin, async () => {
+    await assert.rejects(db.query("select academic_private.capture_change()"), {
+      code: "42501",
+    });
+  }));

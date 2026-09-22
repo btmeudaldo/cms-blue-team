@@ -1,0 +1,14 @@
+import { renderToStaticMarkup } from "react-dom/server";
+import { beforeEach, expect, it, vi } from "vitest";
+const mock = vi.hoisted(() => ({ session: vi.fn(), read: vi.fn(), courses: vi.fn() }));
+vi.mock("@/shared/lib/supabase/session", () => ({ requireVerifiedSession: mock.session, AuthenticationRequiredError: class extends Error {} }));
+vi.mock("next/navigation", () => ({ redirect: (url: string) => { throw new Error(`redirect:${url}`); } }));
+vi.mock("@/shared/components/header", () => ({ Header: () => null }));
+vi.mock("@/features/audit/infrastructure/audit-events", () => ({ readAuditEvents: mock.read, readIncidentCourses: mock.courses }));
+vi.mock("@/features/audit/components/incident-form", () => ({ IncidentForm: () => null }));
+import AuditPage from "./page";
+beforeEach(() => { vi.resetAllMocks(); mock.session.mockResolvedValue({ user: { email: "a" }, profile: { role: "admin" } }); mock.read.mockResolvedValue({ events: [], nextBefore: null }); mock.courses.mockResolvedValue([]); });
+it.each(["student", "instructor"])("redirects %s before reading history", async (role) => { mock.session.mockResolvedValue({ profile: { role } }); await expect(AuditPage({ searchParams: Promise.resolve({}) })).rejects.toThrow("redirect:/courses"); expect(mock.read).not.toHaveBeenCalled(); });
+it("shows a failed query instead of a false empty history", async () => { mock.read.mockRejectedValue(new Error("No se pudo cargar el historial académico.")); const html = renderToStaticMarkup(await AuditPage({ searchParams: Promise.resolve({}) })); expect(html).toContain('role="alert"'); expect(html).not.toContain("No hay registros"); });
+it("rejects malformed filters without broadening the query", async () => { const html = renderToStaticMarkup(await AuditPage({ searchParams: Promise.resolve({ course_id: "bad" }) })); expect(html).toContain('role="alert"'); expect(mock.read).not.toHaveBeenCalled(); });
+it("escapes event data, formats UTC, and preserves filters when paging", async () => { mock.read.mockResolvedValue({ events: [{ id: 52, occurred_at: "2026-09-21T12:00:00Z", actor_id: "actor", actor_role: "admin", origin: "authenticated", entity_type: "lessons", operation: "UPDATE", entity_id: "lesson", before_data: { title: "<script>bad</script>" }, after_data: { min_seconds: 45 } }], nextBefore: 52 }); const html = renderToStaticMarkup(await AuditPage({ searchParams: Promise.resolve({ entity_type: "lessons" }) })); expect(html).toContain("UTC"); expect(html).toContain("&lt;script&gt;"); expect(html).not.toContain("<script>bad"); expect(html).toContain("before=52"); expect(html).toContain("entity_type=lessons"); expect(html).toContain("desde la activación"); });

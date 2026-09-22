@@ -1,0 +1,11 @@
+import { beforeEach, expect, it, vi } from "vitest";
+const mock = vi.hoisted(() => ({ session: vi.fn(), rpc: vi.fn(), revalidate: vi.fn() }));
+vi.mock("@/shared/lib/supabase/session", () => ({ requireVerifiedSession: mock.session }));
+vi.mock("next/cache", () => ({ revalidatePath: mock.revalidate }));
+import { reportAcademicIncidentAction } from "./audit.actions";
+const input = { courseId: "11111111-1111-4111-8111-111111111111", requestId: "22222222-2222-4222-8222-222222222222", category: "technical", description: "Failure" };
+beforeEach(() => { vi.resetAllMocks(); mock.session.mockResolvedValue({ client: { rpc: mock.rpc }, profile: { role: "admin" } }); mock.rpc.mockResolvedValue({ data: 42, error: null }); });
+it("reports an incident with its stable request id and without client actor claims", async () => { expect(await reportAcademicIncidentAction(input)).toEqual({ success: true, eventId: 42 }); expect(mock.rpc).toHaveBeenCalledWith("report_academic_incident", { p_course_id: input.courseId, p_request_id: input.requestId, p_category: "technical", p_description: "Failure" }); });
+it("rejects a student", async () => { mock.session.mockResolvedValue({ profile: { role: "student" } }); expect(await reportAcademicIncidentAction(input)).toHaveProperty("error"); expect(mock.rpc).not.toHaveBeenCalled(); });
+it("rejects invalid payload before RPC", async () => { expect(await reportAcademicIncidentAction({ ...input, description: "" })).toHaveProperty("error"); expect(mock.rpc).not.toHaveBeenCalled(); });
+it("does not report success or revalidate on database failure", async () => { mock.rpc.mockResolvedValue({ data: null, error: { message: "denied" } }); expect(await reportAcademicIncidentAction(input)).toHaveProperty("error"); expect(mock.revalidate).not.toHaveBeenCalled(); });

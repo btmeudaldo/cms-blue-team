@@ -46,8 +46,9 @@ export function AdminUsersTable({
         const q = searchQuery.toLowerCase().trim();
         const name = (u.full_name || "").toLowerCase();
         const email = (u.email || "").toLowerCase();
+        const dni = (u.dni_nie || "").toLowerCase();
 
-        if (!name.includes(q) && !email.includes(q)) {
+        if (!name.includes(q) && !email.includes(q) && !dni.includes(q)) {
           return false;
         }
       }
@@ -154,6 +155,11 @@ export function AdminUsersTable({
                       <div className="text-slate-400 dark:text-slate-500 font-mono text-[11px]">
                         {u.email}
                       </div>
+                      {u.dni_nie && (
+                        <div className="mt-0.5 inline-flex items-center gap-1 rounded-md bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 font-mono text-[10px] text-slate-600 dark:text-slate-300">
+                          <span className="font-bold text-slate-400">DNI:</span> {u.dni_nie}
+                        </div>
+                      )}
                     </td>
 
                     <td className="px-6 py-4">

@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { AuditFilterTable } from "./audit-filter-table";
 import { evaluateLessonCompletion } from "../domain/quiz-evaluation";
 import { exportDossierCSV, exportDossierPDF } from "../domain/dossier-export";
+import { updateUserDniAction } from "@/app/actions/enrollment.actions";
 
 type StudentDossierViewProps = {
   profiles: any[];
@@ -20,6 +21,7 @@ export function StudentDossierView({
   quizzes = [],
   quizAttempts = [],
 }: StudentDossierViewProps) {
+  const [profilesList, setProfilesList] = useState<any[]>(profiles);
   const [activeTab, setActiveTab] = useState<"dossiers" | "table">("dossiers");
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(
     null,
@@ -27,10 +29,14 @@ export function StudentDossierView({
   const [dossierSearchQuery, setDossierSearchQuery] = useState("");
   const [courseFilter, setCourseFilter] = useState("all");
 
+  const [isEditingDni, setIsEditingDni] = useState(false);
+  const [dniInput, setDniInput] = useState("");
+  const [isSavingDni, setIsSavingDni] = useState(false);
+
   // Create Lookup Maps
   const profileMap = useMemo(
-    () => new Map(profiles.map((p: any) => [p.id, p])),
-    [profiles],
+    () => new Map(profilesList.map((p: any) => [p.id, p])),
+    [profilesList],
   );
 
   const lessonMap = useMemo(() => {
@@ -64,7 +70,7 @@ export function StudentDossierView({
         p.email?.includes("alumno")
       );
     });
-  }, [profiles]);
+  }, [profilesList]);
 
   // Filtered Student Roster based on Search
   const filteredStudents = useMemo(() => {
@@ -73,7 +79,8 @@ export function StudentDossierView({
     return studentList.filter((s: any) => {
       const name = (s.full_name || "").toLowerCase();
       const email = (s.email || "").toLowerCase();
-      return name.includes(q) || email.includes(q);
+      const dni = (s.dni_nie || "").toLowerCase();
+      return name.includes(q) || email.includes(q) || dni.includes(q);
     });
   }, [studentList, dossierSearchQuery]);
 
@@ -227,6 +234,73 @@ export function StudentDossierView({
                   <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">
                     {selectedStudent.email}
                   </p>
+
+                  <div className="mt-2.5 flex flex-wrap items-center gap-2">
+                    <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                      DNI / NIE / Pasaporte:
+                    </span>
+                    {isEditingDni ? (
+                      <div className="flex items-center gap-1.5">
+                        <input
+                          type="text"
+                          value={dniInput}
+                          onChange={(e) => setDniInput(e.target.value)}
+                          placeholder="Ej. 12345678Z"
+                          className="rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 px-2 py-0.5 text-xs font-mono font-bold text-slate-900 dark:text-white focus:outline-hidden focus:border-[#1a80ff]"
+                          autoFocus
+                        />
+                        <button
+                          type="button"
+                          onClick={async () => {
+                            if (!selectedStudent) return;
+                            setIsSavingDni(true);
+                            try {
+                              await updateUserDniAction(selectedStudent.id, dniInput);
+                              setProfilesList((prev) =>
+                                prev.map((p) =>
+                                  p.id === selectedStudent.id
+                                    ? { ...p, dni_nie: dniInput.trim() }
+                                    : p,
+                                ),
+                              );
+                              setIsEditingDni(false);
+                            } catch (err: any) {
+                              alert(err.message || "Error al actualizar DNI");
+                            } finally {
+                              setIsSavingDni(false);
+                            }
+                          }}
+                          disabled={isSavingDni}
+                          className="rounded-lg bg-[#1a80ff] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[#0066e6] transition-colors cursor-pointer"
+                        >
+                          {isSavingDni ? "..." : "Guardar"}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setIsEditingDni(false)}
+                          className="rounded-lg bg-slate-200 dark:bg-slate-700 px-2 py-1 text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-300 cursor-pointer"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono text-xs font-bold text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-md border border-slate-200 dark:border-slate-700">
+                          {selectedStudent.dni_nie || "Sin registrar"}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setDniInput(selectedStudent.dni_nie || "");
+                            setIsEditingDni(true);
+                          }}
+                          className="text-[11px] text-[#1a80ff] hover:underline font-bold cursor-pointer"
+                        >
+                          {selectedStudent.dni_nie ? "Editar" : "+ Asignar DNI (AESA)"}
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -590,6 +664,9 @@ export function StudentDossierView({
                             </h4>
                             <p className="text-[11px] text-slate-400 dark:text-slate-500 font-mono truncate max-w-[180px]">
                               {st.email}
+                            </p>
+                            <p className="text-[10px] text-slate-500 dark:text-slate-400 font-mono mt-0.5">
+                              DNI: <span className="font-bold text-slate-700 dark:text-slate-300">{st.dni_nie || "—"}</span>
                             </p>
                           </div>
                         </div>

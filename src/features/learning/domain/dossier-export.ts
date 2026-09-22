@@ -9,6 +9,7 @@ export function exportDossierCSV(
 ) {
   const headers = [
     "Alumno",
+    "DNI/NIE",
     "Correo",
     "Curso",
     "Lección",
@@ -16,8 +17,8 @@ export function exportDossierCSV(
     "Marca Fin Servidor",
     "Tiempo Registrado (s)",
     "Tiempo Mínimo Exigido (s)",
-    "Examen Asociado",
-    "Nota Examen (%)",
+    "Test de Aprendizaje",
+    "Nota Test (%)",
     "Dictamen de Verificación",
   ];
 
@@ -84,6 +85,7 @@ export function exportDossierCSV(
 
     return [
       `"${(student.full_name || "Piloto Alumno").replace(/"/g, '""')}"`,
+      `"${(student.dni_nie || "No especificado").replace(/"/g, '""')}"`,
       `"${(student.email || "").replace(/"/g, '""')}"`,
       `"${(les.courseTitle || "Curso").replace(/"/g, '""')}"`,
       `"${(les.title || item.lesson_id).replace(/"/g, '""')}"`,
@@ -91,7 +93,7 @@ export function exportDossierCSV(
       `"${item.completed_at ? new Date(item.completed_at).toLocaleString("es-ES") : "—"}"`,
       elapsed,
       minSecs,
-      `"${(quiz ? quiz.title : "Sin Examen").replace(/"/g, '""')}"`,
+      `"${(quiz ? quiz.title : "Sin Test").replace(/"/g, '""')}"`,
       latestAttempt ? `${latestAttempt.score_percentage}%` : "—",
       `"${evaluation.statusLabel.replace(/"/g, '""')}"`,
     ].join(",");
@@ -118,6 +120,7 @@ export function exportGlobalAuditCSV(
   const headers = [
     "ID Usuario",
     "Estudiante",
+    "DNI/NIE",
     "Correo",
     "Curso",
     "Lección",
@@ -154,6 +157,7 @@ export function exportGlobalAuditCSV(
     return [
       `"${item.user_id}"`,
       `"${(prof?.full_name || "Estudiante").replace(/"/g, '""')}"`,
+      `"${(prof?.dni_nie || "No especificado").replace(/"/g, '""')}"`,
       `"${(prof?.email || "").replace(/"/g, '""')}"`,
       `"${(les.courseTitle || "Curso").replace(/"/g, '""')}"`,
       `"${(les.title || item.lesson_id).replace(/"/g, '""')}"`,
@@ -297,6 +301,14 @@ export function exportDossierPDF(
             <strong>${isCompleted ? `${elapsed}s` : "En curso..."}</strong><br/>
             <span style="font-size: 10px; color: #64748b;">Mín. ${minSecs}s</span>
           </td>
+          <td style="padding: 10px 12px; font-size: 11px;">
+            ${
+              quiz
+                ? `<div style="font-weight: 600; color: #334155;">${quiz.title}</div>
+                   <div style="font-size: 10px; color: #64748b;">${latestAttempt ? `Nota: <strong>${latestAttempt.score_percentage}%</strong>` : "Sin realizar"}</div>`
+                : `<span style="color: #94a3b8; font-size: 10px;">—</span>`
+            }
+          </td>
           <td style="padding: 10px 12px;">
             <span style="display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: bold; ${
               evaluation.statusBadgeVariant === "success"
@@ -322,27 +334,30 @@ export function exportDossierPDF(
       <meta charset="UTF-8" />
       <title>Expediente_Academico_${(student.full_name || "Alumno").replace(/\s+/g, "_")}</title>
       <style>
-        @page { size: A4 portrait; margin: 15mm; }
-        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #0f172a; margin: 0; padding: 20px; font-size: 13px; line-height: 1.5; }
-        .header { display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #1a80ff; padding-bottom: 15px; margin-bottom: 20px; }
+        @page { size: A4 portrait; margin: 12mm; }
+        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #0f172a; margin: 0; padding: 15px; font-size: 12px; line-height: 1.4; }
+        .header { display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid #1a80ff; padding-bottom: 12px; margin-bottom: 16px; }
         .logo-title { font-size: 20px; font-weight: 900; color: #1a80ff; letter-spacing: -0.5px; }
-        .sub-title { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .audit-badge { background: #0f172a; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 11px; font-weight: 800; font-family: monospace; }
+        .sub-title { font-size: 10px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+        .audit-badge { background: #0f172a; color: #fff; padding: 5px 12px; border-radius: 6px; font-size: 10px; font-weight: 800; font-family: monospace; }
         
-        .student-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 20px; margin-bottom: 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 15px; }
-        .student-name { font-size: 18px; font-weight: 800; color: #0f172a; margin: 0; }
-        .student-email { font-size: 12px; color: #475569; font-family: monospace; margin-top: 2px; }
+        .student-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 18px; margin-bottom: 16px; display: grid; grid-template-columns: 2.2fr 1fr; gap: 15px; }
+        .student-name { font-size: 17px; font-weight: 800; color: #0f172a; margin: 0; }
+        .student-meta { font-size: 11px; color: #475569; margin-top: 4px; line-height: 1.5; }
         
-        .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px; }
-        .metric-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; text-align: center; }
-        .metric-val { font-size: 18px; font-weight: 900; color: #1a80ff; margin-top: 4px; }
-        .metric-lbl { font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+        .metric-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; text-align: center; }
+        .metric-val { font-size: 16px; font-weight: 900; color: #1a80ff; margin-top: 2px; }
+        .metric-lbl { font-size: 9px; font-weight: 700; color: #64748b; text-transform: uppercase; }
 
-        table { width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 12px; }
-        th { background: #f1f5f9; text-align: left; padding: 10px 12px; font-size: 10px; text-transform: uppercase; font-weight: 800; color: #475569; border-bottom: 2px solid #cbd5e1; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 11px; }
+        th { background: #f1f5f9; text-align: left; padding: 8px 10px; font-size: 9px; text-transform: uppercase; font-weight: 800; color: #475569; border-bottom: 2px solid #cbd5e1; }
         
-        .footer-signatures { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; page-break-inside: avoid; }
-        .sig-line { border-top: 1px dashed #94a3b8; margin-top: 40px; text-align: center; font-size: 11px; font-weight: 700; color: #334155; padding-top: 6px; }
+        .paper-exam-card { background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 12px 16px; margin-bottom: 25px; page-break-inside: avoid; }
+        .paper-exam-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-bottom: 10px; }
+
+        .footer-signatures { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 25px; padding-top: 15px; border-top: 1px solid #e2e8f0; page-break-inside: avoid; }
+        .sig-line { border-top: 1px dashed #94a3b8; margin-top: 35px; text-align: center; font-size: 10px; font-weight: 700; color: #334155; padding-top: 4px; }
 
         @media print {
           body { padding: 0; }
@@ -354,30 +369,37 @@ export function exportDossierPDF(
       <div class="header">
         <div>
           <div class="logo-title">✈️ ESCUELA DE AVIACIÓN BLUE TEAM</div>
-          <div class="sub-title">Expediente Académico e Inspección de Auditoría (DGAC / EASA / FAA)</div>
+          <div class="sub-title">Control de Formación Teórica Online y Expediente de Alumno (AESA / EASA)</div>
         </div>
         <div style="text-align: right;">
           <div class="audit-badge">${certHash}</div>
-          <div style="font-size: 10px; color: #64748b; margin-top: 4px;">Emisión: ${nowStr}</div>
+          <div style="font-size: 9px; color: #64748b; margin-top: 3px;">Emisión: ${nowStr}</div>
         </div>
       </div>
 
       <div class="student-box">
         <div>
-          <div style="font-size: 10px; font-weight: 800; color: #1a80ff; text-transform: uppercase;">Piloto Alumno Registrado</div>
+          <div style="font-size: 9px; font-weight: 800; color: #1a80ff; text-transform: uppercase; letter-spacing: 0.5px;">Piloto Alumno Registrado</div>
           <h1 class="student-name">${student.full_name || "Piloto Alumno"}</h1>
-          <div class="student-email">${student.email}</div>
+          <div class="student-meta">
+            <strong>DNI / NIE / Pasaporte:</strong> <span style="font-family: monospace; font-weight: 800; color: #0f172a; background: #e2e8f0; padding: 1px 6px; border-radius: 4px;">${student.dni_nie || "No especificado"}</span><br/>
+            <strong>Correo Electrónico:</strong> <span style="font-family: monospace;">${student.email}</span> &nbsp;|&nbsp; 
+            <strong>Centro:</strong> ATO Blue Team Aviation
+          </div>
         </div>
         <div style="text-align: right; justify-self: end; align-self: center;">
-          <span style="background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; padding: 6px 12px; border-radius: 999px; font-size: 11px; font-weight: 800;">
-            ✓ Cumplimiento: ${complianceRate}%
+          <span style="display: block; background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; padding: 6px 12px; border-radius: 999px; font-size: 11px; font-weight: 800; text-align: center;">
+            ✓ Cumplimiento Horas: ${complianceRate}%
+          </span>
+          <span style="font-size: 9px; color: #16a34a; font-weight: 700; display: block; margin-top: 4px; text-align: center;">
+            Fase Teórica Online Completada
           </span>
         </div>
       </div>
 
       <div class="metrics-grid">
         <div class="metric-card">
-          <div class="metric-lbl">Tiempo Estudio Acumulado</div>
+          <div class="metric-lbl">Tiempo de Estudio Online Computado</div>
           <div class="metric-val">${Math.floor(totalSecs / 60)}m ${totalSecs % 60}s</div>
         </div>
         <div class="metric-card">
@@ -385,12 +407,12 @@ export function exportDossierPDF(
           <div class="metric-val" style="color: #0f172a;">${completedCount}</div>
         </div>
         <div class="metric-card">
-          <div class="metric-lbl">Verificación Servidor</div>
-          <div class="metric-val" style="color: #16a34a;">${compliantCount} / ${completedCount}</div>
+          <div class="metric-lbl">Verificación Servidor PostgreSQL</div>
+          <div class="metric-val" style="color: #16a34a;">${compliantCount} / ${completedCount} Acreditadas</div>
         </div>
       </div>
 
-      <h3 style="font-size: 14px; font-weight: 800; margin-bottom: 10px; color: #0f172a;">Historial Atómico de Tiempos y Evaluaciones Teóricas</h3>
+      <h3 style="font-size: 12px; font-weight: 800; margin-bottom: 8px; color: #0f172a;">Historial de Tiempos en Servidor y Tests de Aprendizaje</h3>
       <table>
         <thead>
           <tr>
@@ -398,6 +420,7 @@ export function exportDossierPDF(
             <th>Inicio Servidor</th>
             <th>Fin Servidor</th>
             <th>Tiempo Registrado</th>
+            <th>Test Aprendizaje</th>
             <th>Estado Verificación</th>
           </tr>
         </thead>
@@ -406,17 +429,53 @@ export function exportDossierPDF(
         </tbody>
       </table>
 
+      <!-- Acta Oficial de Evaluación Presencial en Papel (Exigida por AESA) -->
+      <div class="paper-exam-card">
+        <div class="paper-exam-header">
+          <strong style="font-size: 11px; text-transform: uppercase; color: #0f172a; letter-spacing: 0.5px;">
+            📝 Acta de Evaluación Presencial en Papel (Examen de Progreso / Final de Curso)
+          </strong>
+          <span style="font-size: 9px; color: #64748b; font-weight: 600;">Cumplimentar por el Instructor Evaluador</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; font-size: 11px; align-items: center;">
+          <div>
+            <strong>Materia / Curso de Vuelo:</strong> ___________________________________
+          </div>
+          <div>
+            <strong>Calificación:</strong> [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ] %
+          </div>
+          <div>
+            <strong>Dictamen:</strong> &nbsp; [ &nbsp; ] APTO &nbsp;&nbsp; [ &nbsp; ] NO APTO
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 12px; font-size: 11px; margin-top: 8px;">
+          <div>
+            <strong>Observaciones / Incidencias:</strong> ________________________________________________
+          </div>
+          <div>
+            <strong>Fecha Examen Presencial:</strong> _____ / _____ / 202___
+          </div>
+        </div>
+      </div>
+
+      <!-- Firmas Oficiales -->
       <div class="footer-signatures">
         <div>
           <div class="sig-line">
-            Director de Instrucción de Vuelo<br/>
-            <span style="font-size: 10px; font-weight: normal; color: #64748b;">Escuela de Aviación Blue Team</span>
+            Instructor Responsable de Formación<br/>
+            <span style="font-size: 9px; font-weight: normal; color: #64748b;">Firma y Nº Licencia</span>
           </div>
         </div>
         <div>
           <div class="sig-line">
-            Inspector de Seguridad Operacional<br/>
-            <span style="font-size: 10px; font-weight: normal; color: #64748b;">Auditoría Técnica Certificada</span>
+            Firma de Conformidad del Alumno<br/>
+            <span style="font-size: 9px; font-weight: normal; color: #64748b;">Nombre y DNI / NIE</span>
+          </div>
+        </div>
+        <div>
+          <div class="sig-line">
+            Jefe de Enseñanza / Dirección ATO<br/>
+            <span style="font-size: 9px; font-weight: normal; color: #64748b;">Escuela de Aviación Blue Team</span>
           </div>
         </div>
       </div>

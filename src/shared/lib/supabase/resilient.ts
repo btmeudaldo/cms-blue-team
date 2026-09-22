@@ -98,7 +98,7 @@ export async function getResilientProfiles() {
     (await readData(
       client
         .from("profiles")
-        .select("id, email, full_name, role, created_at")
+        .select("id, email, full_name, role, created_at, dni_nie")
         .order("created_at", { ascending: false }),
     )) ?? []
   );
