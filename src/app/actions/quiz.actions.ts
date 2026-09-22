@@ -106,7 +106,7 @@ export async function saveQuizAction(
     lesson_slug: lesson.slug,
     title: quizData.title,
     description: quizData.description,
-    min_pass_score_percentage: Number(quizData.minPassScorePercentage) || 70,
+    min_pass_score_percentage: Number(quizData.minPassScorePercentage) || 75,
     questions: quizData.questions,
   };
   const { data: existingQuiz, error: lookupError } = await withTimeout(

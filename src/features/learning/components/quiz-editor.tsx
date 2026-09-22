@@ -36,7 +36,7 @@ export function QuizEditor({
       "Evaluación teórica de opción múltiple para validar los conocimientos adquiridos en la lección.",
   );
   const [minPassScore, setMinPassScore] = useState(
-    initialQuiz?.minPassScorePercentage || 70,
+    initialQuiz?.minPassScorePercentage || 75,
   );
 
   const [questions, setQuestions] = useState<Question[]>(
@@ -209,8 +209,8 @@ export function QuizEditor({
             className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-sm font-bold text-slate-900 dark:text-white"
           />
           <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-1">
-            Porcentaje necesario para aprobar el examen (estándar aviación:
-            70%).
+            Porcentaje necesario para aprobar el examen (estándar aviación AESA / EASA:
+            75%).
           </p>
         </div>
       </div>

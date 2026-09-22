@@ -559,7 +559,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Aerodinámica y Sustentación",
     description:
       "Evaluación teórica oficial sobre las 4 fuerzas fundamentales de vuelo, teorema de Bernoulli y ángulo de ataque crítico.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q1-1",
@@ -613,7 +613,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Instrumentación Six-Pack y Variómetros",
     description:
       "Evaluación teórica sobre relojería básica de cabina, alimentación Pitot-Estática e instrumentos giroscópicos.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q2-1",
@@ -667,7 +667,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Maniobras VFR y Virajes de Escarpado",
     description:
       "Evaluación sobre virajes ladeados de 45° a 60°, factor de carga y recuperación de pérdidas.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q3-1",
@@ -707,7 +707,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Patrón de Tráfico y Comunicaciones VFR",
     description:
       "Evaluación teórica sobre circuito de aeródromo, tramos de viento en cola, base y final.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q4-1",
@@ -742,7 +742,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Interpretación de METAR y TAF",
     description:
       "Evaluación teórica sobre decodificación de reportes METAR y pronósticos de terminal TAF.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q5-1",
@@ -782,7 +782,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Gestión de Recursos en Cabina (CRM)",
     description:
       "Evaluación sobre liderazgo en vuelo, conciencia situacional y trabajo en equipo.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q6-1",
@@ -808,7 +808,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Procedimientos de Emergencia y Windshear",
     description:
       "Evaluación sobre maniobras de escape ante cizalladura de viento y fallas críticas.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q7-1",
@@ -834,7 +834,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Aproximación por Instrumentos ILS Cat I/II",
     description:
       "Evaluación teórica sobre Localizador, Senda de Planeo (Glide Path) y mínimos de decisión DH.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q8-1",
@@ -869,7 +869,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Radioayudas VOR, DME y Arcos de Radiales",
     description:
       "Evaluación sobre navegación omnidireccional VHF, medición DME y arcos de radiales.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q9-1",
@@ -895,7 +895,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Interpretación de Cartas Jeppesen",
     description:
       "Evaluación sobre fichas SID, STAR y perfiles de altitud mínima de sector (MSA).",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q10-1",
@@ -921,7 +921,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Motor Lycoming O-360 y Sistemas",
     description:
       "Evaluación sobre arquitectura de motor aeronáutico de 4 cilindros y encendido doble por magnetos.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q11-1",
@@ -947,7 +947,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Sistema Eléctrico de Abordo",
     description:
       "Evaluación sobre alternadores de aviación, disyuntores térmicos (Circuit Breakers) y batería principal.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q12-1",
@@ -973,7 +973,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Hélices de Paso Variable",
     description:
       "Evaluación sobre gobernador hidráulico de hélice, presión de admisión (Manifold Pressure) y RPM.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q13-1",
@@ -999,7 +999,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Ciberseguridad en Buses ARINC 429",
     description:
       "Evaluación sobre topología de buses de datos de aviónica, trazabilidad de etiquetas y protección Blue Team.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q14-1",
@@ -1025,7 +1025,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Protección de FMS y Protocolos ADS-B",
     description:
       "Evaluación sobre validación de bases de datos NavData y mitigación de ADS-B Spoofing.",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q15-1",
@@ -1051,7 +1051,7 @@ const defaultQuizzes = [
     title: "Examen de Verificación: Prevención de Interferencia GPS y Jamming",
     description:
       "Evaluación sobre interferencias de radiofrecuencia GNSS, receptores RAIM y conmutación inercial (IRS).",
-    minPassScorePercentage: 70,
+    minPassScorePercentage: 75,
     questions: [
       {
         id: "q16-1",

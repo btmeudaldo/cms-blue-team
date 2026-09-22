@@ -219,10 +219,18 @@ export default async function QuizzesListPage() {
                             <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800">
                               <Link
                                 href={`/quizzes/${quiz.id}`}
-                                className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2 text-xs font-bold shadow-xs group-hover:bg-[#1a80ff] transition-colors"
+                                className={`flex items-center justify-center gap-2 rounded-xl py-2 text-xs font-bold shadow-xs transition-colors ${
+                                  attempt?.passed
+                                    ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/50"
+                                    : "bg-slate-900 dark:bg-slate-800 text-white group-hover:bg-[#1a80ff]"
+                                }`}
                               >
                                 <span>
-                                  {attempt ? "Reintentar Examen" : "Iniciar Examen"}
+                                  {attempt?.passed
+                                    ? "Ver Resultado / Repasar"
+                                    : attempt
+                                      ? "Reintentar Examen"
+                                      : "Iniciar Examen"}
                                 </span>
                                 <span>&rarr;</span>
                               </Link>

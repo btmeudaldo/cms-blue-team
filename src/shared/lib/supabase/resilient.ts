@@ -19,7 +19,7 @@ function normalizeQuiz(quiz: any) {
   return {
     ...quiz,
     minPassScorePercentage:
-      quiz.minPassScorePercentage ?? quiz.min_pass_score_percentage ?? 70,
+      quiz.minPassScorePercentage ?? quiz.min_pass_score_percentage ?? 75,
   };
 }
 

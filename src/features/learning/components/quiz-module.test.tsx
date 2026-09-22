@@ -50,4 +50,50 @@ describe("quiz confirmed results UI", () => {
     expect(html).toContain("1m 33s");
     expect(html).not.toContain("Revisar Explicaciones");
   });
+
+  it("shows congratulations and review action instead of Reintentar Examen when passed with 100%", () => {
+    const html = renderToStaticMarkup(
+      createElement(QuizModule, {
+        quiz,
+        previousAttempt: {
+          id: "a-100",
+          user_id: "u",
+          quiz_id: "q",
+          score_percentage: 100,
+          correct_count: 5,
+          total_questions: 5,
+          passed: true,
+          elapsed_seconds: 60,
+          completed_at: "2026-09-22",
+        },
+      }),
+    );
+    expect(html).toContain("¡Puntuación Perfecta (100%)!");
+    expect(html).toContain("Evaluación Superada");
+    expect(html).toContain("Repetir cuestionario (Repaso)");
+    expect(html).not.toContain("Reintentar Examen");
+  });
+
+  it("shows Reintentar Examen and not passing state when exam was failed", () => {
+    const html = renderToStaticMarkup(
+      createElement(QuizModule, {
+        quiz,
+        previousAttempt: {
+          id: "a-fail",
+          user_id: "u",
+          quiz_id: "q",
+          score_percentage: 60,
+          correct_count: 3,
+          total_questions: 5,
+          passed: false,
+          elapsed_seconds: 45,
+          completed_at: "2026-09-22",
+        },
+      }),
+    );
+    expect(html).toContain("No has alcanzado la nota mínima");
+    expect(html).toContain("Evaluación No Superada");
+    expect(html).toContain("Reintentar Examen");
+    expect(html).not.toContain("Repetir cuestionario (Repaso)");
+  });
 });

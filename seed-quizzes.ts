@@ -32,7 +32,7 @@ async function seedQuizzes() {
         lesson_slug: (q as any).lesson_slug,
         title: q.title,
         description: q.description || null,
-        min_pass_score_percentage: q.minPassScorePercentage || 70,
+        min_pass_score_percentage: q.minPassScorePercentage || 75,
         questions: q.questions,
       },
       { onConflict: "id" }

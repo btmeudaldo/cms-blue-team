@@ -12,7 +12,7 @@ export type Quiz = {
   lesson_id?: string;
   title: string;
   description: string;
-  minPassScorePercentage: number; // default 70
+  minPassScorePercentage: number; // default 75
   questions: QuizQuestion[];
 };
 
