@@ -13,7 +13,7 @@ export const requireVerifiedSession = cache(async () => {
   if (authError || !auth.user) throw new AuthenticationRequiredError();
   const { data: profile, error } = await client
     .from("profiles")
-    .select("role, full_name, email")
+    .select("role, full_name, email, dni_nie")
     .eq("id", auth.user.id)
     .maybeSingle();
 
@@ -35,6 +35,7 @@ export const requireVerifiedSession = cache(async () => {
       role,
       full_name: String(profile.full_name ?? ""),
       email: String(profile.email ?? auth.user.email ?? ""),
+      dni_nie: profile.dni_nie ? String(profile.dni_nie) : undefined,
     },
   };
 });

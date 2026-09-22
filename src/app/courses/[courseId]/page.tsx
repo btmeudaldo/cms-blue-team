@@ -5,11 +5,14 @@ import { notFound } from "next/navigation";
 import { Header } from "@/shared/components/header";
 import {
   getResilientCourseDetail,
+  getResilientInPersonExams,
   getResilientQuizAttempts,
   getResilientQuizzes,
   getResilientUser,
   getResilientUserProgress,
 } from "@/shared/lib/supabase/resilient";
+import { checkCourseCertificateEligibility } from "@/features/learning/domain/course-completion";
+import { CourseCertificateCard } from "@/features/learning/components/course-certificate-card";
 
 export default async function StudentCourseDetailPage({
   params,
@@ -21,12 +24,13 @@ export default async function StudentCourseDetailPage({
   const role = profile?.role ?? "student";
   const isAdmin = role === "admin" || role === "instructor";
 
-  // Fetch course, progress, quizzes and quiz attempts concurrently
-  const [course, userProgress, quizzes, quizAttempts] = await Promise.all([
+  // Fetch course, progress, quizzes, quiz attempts and in-person exams concurrently
+  const [course, userProgress, quizzes, quizAttempts, inPersonExams] = await Promise.all([
     getResilientCourseDetail(courseId, isDemo),
     getResilientUserProgress(user.id, isDemo),
     getResilientQuizzes(),
     getResilientQuizAttempts(user.id),
+    getResilientInPersonExams(user.id),
   ]);
 
   if (!course) notFound();
@@ -48,6 +52,14 @@ export default async function StudentCourseDetailPage({
   const progressPercent = summary.progressPercent;
   const isFullyCompleted = summary.isFullyAdvanced;
   const hasPendingQuizzes = summary.hasPendingQuizzes;
+
+  const certificateEligibility = checkCourseCertificateEligibility(
+    course,
+    userProgress ?? [],
+    inPersonExams ?? [],
+    quizAttempts ?? [],
+    user.id,
+  );
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
@@ -174,6 +186,18 @@ export default async function StudentCourseDetailPage({
             </div>
           )}
         </div>
+
+        {/* Official Course Certificate Status & Download */}
+        <CourseCertificateCard
+          course={course}
+          student={{
+            id: user.id,
+            full_name: profile?.full_name,
+            email: user.email || "",
+            dni_nie: profile?.dni_nie,
+          }}
+          eligibility={certificateEligibility}
+        />
 
         {/* Syllabus / Lessons & Quizzes List */}
         <div className="space-y-4">

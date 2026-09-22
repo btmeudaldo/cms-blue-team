@@ -26,6 +26,7 @@ vi.mock("@/shared/lib/supabase/resilient", () => ({
     { quiz_id: "quiz", passed: true, score_percentage: 100 },
   ],
   getResilientEnrollments: async () => [],
+  getResilientInPersonExams: async () => [],
 }));
 import CoursesPage from "./page";
 import CourseDetailPage from "./[courseId]/page";

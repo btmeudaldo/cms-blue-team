@@ -5,6 +5,7 @@ import { Header } from "@/shared/components/header";
 import {
   getResilientAllProgress,
   getResilientCourses,
+  getResilientInPersonExams,
   getResilientProfiles,
   getResilientQuizAttempts,
   getResilientQuizzes,
@@ -22,13 +23,14 @@ export default async function AdminProgressAuditPage() {
     redirect("/courses");
   }
 
-  const [profiles, progressRecords, courses, quizzes, quizAttempts] =
+  const [profiles, progressRecords, courses, quizzes, quizAttempts, inPersonExams] =
     await Promise.all([
       getResilientProfiles(),
       getResilientAllProgress(),
       getResilientCourses(user.id, true),
       getResilientQuizzes(),
       getResilientQuizAttempts("all"),
+      getResilientInPersonExams(),
     ]);
 
   return (
@@ -75,6 +77,7 @@ export default async function AdminProgressAuditPage() {
           courses={courses}
           quizzes={quizzes}
           quizAttempts={quizAttempts}
+          inPersonExams={inPersonExams}
         />
       </main>
     </div>

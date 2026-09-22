@@ -195,3 +195,27 @@ export async function getResilientQuizAttempts(userId?: string) {
     (await readData(query.order("completed_at", { ascending: true }))) ?? []
   );
 }
+
+export async function getResilientInPersonExams(userId?: string, courseId?: string) {
+  try {
+    const { client, user, profile } = await requireVerifiedSession();
+    if (profile.role === "student" && userId && userId !== user.id) {
+      throw new Error("No tienes permisos para consultar estos exámenes presenciales.");
+    }
+    let query = client.from("in_person_exam_records").select("*");
+    if (profile.role === "student") {
+      query = query.eq("user_id", user.id);
+    } else if (userId && userId !== "all") {
+      query = query.eq("user_id", userId);
+    }
+    if (courseId && courseId !== "all") {
+      query = query.eq("course_id", courseId);
+    }
+    const data = await readData(query.order("exam_date", { ascending: false }));
+    return data ?? [];
+  } catch {
+    const { mockStore } = await import("@/shared/lib/mock-store");
+    return mockStore.getInPersonExams(userId, courseId);
+  }
+}
+

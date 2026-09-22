@@ -1357,7 +1357,7 @@ export const mockStore = {
       totalQuestions > 0
         ? Math.round((correctCount / totalQuestions) * 100)
         : 0;
-    const passed = scorePercentage >= (quiz.minPassScorePercentage || 70);
+    const passed = scorePercentage >= (quiz.minPassScorePercentage || 75);
 
     const attempt = {
       id: `attempt-${Date.now()}`,
@@ -1398,7 +1398,7 @@ export const mockStore = {
       existing.title = quizData.title;
       existing.description = quizData.description;
       existing.minPassScorePercentage =
-        Number(quizData.minPassScorePercentage) || 70;
+        Number(quizData.minPassScorePercentage) || 75;
       existing.questions = quizData.questions;
       return existing;
     } else {
@@ -1409,11 +1409,47 @@ export const mockStore = {
         lesson_slug: quizData.lesson_slug || lessonId,
         title: quizData.title,
         description: quizData.description,
-        minPassScorePercentage: Number(quizData.minPassScorePercentage) || 70,
+        minPassScorePercentage: Number(quizData.minPassScorePercentage) || 75,
         questions: quizData.questions,
       };
       defaultQuizzes.push(newQuiz);
       return newQuiz;
     }
+  },
+  getInPersonExams(userId?: string, courseId?: string) {
+    const list: any[] = (global as any).__mockInPersonExams ?? ((global as any).__mockInPersonExams = []);
+    return list.filter((e) => {
+      if (userId && e.user_id !== userId) return false;
+      if (courseId && e.course_id !== courseId) return false;
+      return true;
+    });
+  },
+  saveInPersonExam(record: any) {
+    const list: any[] = (global as any).__mockInPersonExams ?? ((global as any).__mockInPersonExams = []);
+    const score = Number(record.score_percentage) || 0;
+    const passed = score >= 75;
+    const examItem = {
+      ...record,
+      id: record.id || `ipe-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+      score_percentage: score,
+      passed,
+      created_at: record.created_at || new Date().toISOString(),
+    };
+    const existingIdx = list.findIndex((e) => e.id === examItem.id);
+    if (existingIdx !== -1) {
+      list[existingIdx] = examItem;
+    } else {
+      list.push(examItem);
+    }
+    return examItem;
+  },
+  deleteInPersonExam(id: string) {
+    const list: any[] = (global as any).__mockInPersonExams ?? ((global as any).__mockInPersonExams = []);
+    const idx = list.findIndex((e) => e.id === id);
+    if (idx !== -1) {
+      list.splice(idx, 1);
+      return true;
+    }
+    return false;
   },
 };
