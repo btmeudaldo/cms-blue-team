@@ -260,15 +260,12 @@ export function QuizModule({
                 <span>&rarr;</span>
               </Link>
 
-              <button
-                type="button"
-                onClick={handleStart}
-                disabled={isStarting}
-                className="w-full sm:w-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700/60 px-4 py-2.5 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-all cursor-pointer shadow-xs inline-flex items-center justify-center gap-1.5"
+              <Link
+                href="/quizzes"
+                className="w-full sm:w-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 px-4 py-2.5 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-all text-center shadow-xs inline-flex items-center justify-center gap-1.5"
               >
-                <span>🔄</span>
-                <span>{isStarting ? "Iniciando..." : "Repetir cuestionario (Repaso)"}</span>
-              </button>
+                <span>Volver a Evaluaciones</span>
+              </Link>
             </>
           ) : (
             <>

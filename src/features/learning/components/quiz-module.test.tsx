@@ -70,8 +70,9 @@ describe("quiz confirmed results UI", () => {
     );
     expect(html).toContain("¡Puntuación Perfecta (100%)!");
     expect(html).toContain("Evaluación Superada");
-    expect(html).toContain("Repetir cuestionario (Repaso)");
+    expect(html).toContain("Volver a Evaluaciones");
     expect(html).not.toContain("Reintentar Examen");
+    expect(html).not.toContain("Repetir");
   });
 
   it("shows Reintentar Examen and not passing state when exam was failed", () => {
