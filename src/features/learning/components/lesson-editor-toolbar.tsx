@@ -913,40 +913,87 @@ export function LessonEditorToolbar({
     }
   }
 
-  function handleKeyUp(e: React.KeyboardEvent<HTMLDivElement>) {
-    if (["ArrowDown", "ArrowUp", "Enter", "Escape"].includes(e.key) && showSlashMenu) {
-      return;
+  function getCaretCoordinates(): { top: number; left: number } | null {
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0) return null;
+    const range = sel.getRangeAt(0);
+
+    // 1. Try getClientRects first (reliable for collapsed carets in Blink/WebKit)
+    const rects = range.getClientRects();
+    if (rects.length > 0 && (rects[0].top !== 0 || rects[0].bottom !== 0)) {
+      return { top: rects[0].bottom, left: rects[0].left };
     }
 
-    const sel = window.getSelection();
-    if (sel && sel.rangeCount > 0) {
-      const range = sel.getRangeAt(0);
-      const text = range.startContainer.textContent || "";
-      const textUpToCaret = text.slice(0, range.startOffset);
-      const lastSlashIdx = textUpToCaret.lastIndexOf("/");
+    // 2. Try getBoundingClientRect
+    const rect = range.getBoundingClientRect();
+    if (rect && (rect.top !== 0 || rect.bottom !== 0)) {
+      return { top: rect.bottom, left: rect.left };
+    }
 
-      if (lastSlashIdx !== -1 && (lastSlashIdx === 0 || /\s/.test(textUpToCaret[lastSlashIdx - 1]))) {
-        const query = textUpToCaret.slice(lastSlashIdx + 1);
+    // 3. Fallback: inspect startContainer's element
+    const el =
+      range.startContainer.nodeType === Node.ELEMENT_NODE
+        ? (range.startContainer as HTMLElement)
+        : range.startContainer.parentElement;
+
+    if (el) {
+      const elRect = el.getBoundingClientRect();
+      return { top: elRect.bottom, left: elRect.left };
+    }
+
+    // 4. Fallback to editor container
+    if (editorRef.current) {
+      const edRect = editorRef.current.getBoundingClientRect();
+      return { top: edRect.top + 60, left: edRect.left + 24 };
+    }
+
+    return null;
+  }
+
+  function checkSlashTrigger() {
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0) return;
+    const range = sel.getRangeAt(0);
+
+    let textBeforeCaret = "";
+    if (range.startContainer.nodeType === Node.TEXT_NODE) {
+      textBeforeCaret = (range.startContainer.textContent || "").slice(0, range.startOffset);
+    } else {
+      const el = range.startContainer as HTMLElement;
+      textBeforeCaret = (el.textContent || "").slice(0, range.startOffset);
+    }
+
+    const slashIdx = textBeforeCaret.lastIndexOf("/");
+    if (slashIdx !== -1) {
+      const charBeforeSlash = slashIdx > 0 ? textBeforeCaret[slashIdx - 1] : " ";
+      if (/\s/.test(charBeforeSlash) || charBeforeSlash === "\n" || slashIdx === 0) {
+        const query = textBeforeCaret.slice(slashIdx + 1);
         if (!/\s/.test(query)) {
-          const rect = range.getBoundingClientRect();
-          const editorRect = editorRef.current?.getBoundingClientRect();
-          if (editorRect) {
-            setSlashPosition({
-              top: Math.max(10, rect.bottom - editorRect.top + 8),
-              left: Math.max(10, Math.min(rect.left - editorRect.left, editorRect.width - 320)),
-            });
+          const coords = getCaretCoordinates();
+          if (coords) {
+            const menuHeight = 320;
+            const menuWidth = 288;
+            const spaceBelow = window.innerHeight - coords.top;
+            const top = spaceBelow < menuHeight ? coords.top - menuHeight - 12 : coords.top + 8;
+            const left = Math.min(coords.left, Math.max(10, window.innerWidth - menuWidth - 20));
+
+            setSlashPosition({ top: Math.max(10, top), left: Math.max(10, left) });
+            setSlashQuery(query);
+            setShowSlashMenu(true);
+            return;
           }
-          setSlashQuery(query);
-          setSlashSelectedIndex(0);
-          setShowSlashMenu(true);
-          return;
         }
       }
     }
 
-    if (showSlashMenu) {
-      setShowSlashMenu(false);
+    setShowSlashMenu(false);
+  }
+
+  function handleKeyUp(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (["ArrowDown", "ArrowUp", "Enter", "Escape"].includes(e.key) && showSlashMenu) {
+      return;
     }
+    checkSlashTrigger();
   }
 
   async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -1215,6 +1262,27 @@ export function LessonEditorToolbar({
 
             <button
               type="button"
+              onClick={() => {
+                if (editorRef.current) {
+                  editorRef.current.focus();
+                  const edRect = editorRef.current.getBoundingClientRect();
+                  setSlashPosition({
+                    top: Math.max(10, edRect.top + 60),
+                    left: Math.max(10, edRect.left + 24),
+                  });
+                  setSlashQuery("");
+                  setSlashSelectedIndex(0);
+                  setShowSlashMenu(!showSlashMenu);
+                }
+              }}
+              className="h-9 px-3 flex items-center justify-center rounded-xl bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800 text-xs font-bold text-purple-700 dark:text-purple-300 hover:bg-purple-600 hover:text-white transition-all cursor-pointer gap-1 shadow-2xs"
+              title="Abrir Menú de Comandos Rápidos (/)"
+            >
+              ⚡ / Comandos
+            </button>
+
+            <button
+              type="button"
               onClick={() => insertBlockSnippet(generateAviationTableSnippet())}
               className="h-9 px-3 flex items-center justify-center rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-xs font-bold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-500 hover:text-white transition-all cursor-pointer gap-1 shadow-2xs"
               title="Insertar Tabla de Parámetros y V-Speeds"
@@ -1339,13 +1407,24 @@ export function LessonEditorToolbar({
 
           {/* Floating Slash Command Palette */}
           {showSlashMenu && (
-            <div
-              style={{
-                top: `${slashPosition.top}px`,
-                left: `${slashPosition.left}px`,
-              }}
-              className="absolute z-40 w-72 max-h-80 overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl p-2 animate-in fade-in zoom-in-95 duration-100"
-            >
+            <>
+              {/* Transparent backdrop to close on outside click */}
+              <div
+                className="fixed inset-0 z-[9998] bg-transparent"
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  setShowSlashMenu(false);
+                }}
+              />
+              <div
+                style={{
+                  position: "fixed",
+                  top: `${slashPosition.top}px`,
+                  left: `${slashPosition.left}px`,
+                  zIndex: 9999,
+                }}
+                className="w-72 max-h-80 overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl p-2 animate-in fade-in zoom-in-95 duration-100"
+              >
               <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800/60 mb-1 flex items-center justify-between">
                 <span>Comandos Rápidos</span>
                 <span className="font-mono text-[9px] lowercase text-[#1a80ff]">
@@ -1389,7 +1468,8 @@ export function LessonEditorToolbar({
                 })
               )}
             </div>
-          )}
+          </>
+        )}
 
           <div className="absolute bottom-3 right-4 text-[10px] font-bold text-slate-400 dark:text-slate-500 pointer-events-none">
             ✍️ Editor Visual Activo · Escribe / para comandos o atajos Markdown (#, ##, -, 1.)
