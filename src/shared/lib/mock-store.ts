@@ -4,6 +4,14 @@
 // persist within a single server process session.
 
 import { calculateMinimumReadingSeconds } from "@/features/learning/domain/reading-time";
+import {
+  C172_COURSE_ID,
+  C172_COURSE_SLUG,
+  C172_COURSE_TITLE,
+  C172_COURSE_DESCRIPTION,
+  C172_COURSE_IMAGE_URL,
+  C172_LESSON_1,
+} from "@/features/learning/content/c172-course-data";
 
 // Extend Node.js global type for the mock state
 declare global {
@@ -320,6 +328,26 @@ const mockCourses: MockCourse[] = [
         sequence_order: 3,
         word_count: words3,
         min_seconds: calculateMinimumReadingSeconds(words3),
+      },
+    ],
+  },
+  {
+    id: C172_COURSE_ID,
+    title: C172_COURSE_TITLE,
+    slug: C172_COURSE_SLUG,
+    description: C172_COURSE_DESCRIPTION,
+    image_url: C172_COURSE_IMAGE_URL,
+    created_at: new Date().toISOString(),
+    lessons: [
+      {
+        id: C172_LESSON_1.id,
+        course_id: C172_LESSON_1.course_id,
+        title: C172_LESSON_1.title,
+        slug: C172_LESSON_1.slug,
+        content_html: C172_LESSON_1.content_html,
+        sequence_order: C172_LESSON_1.sequence_order,
+        word_count: C172_LESSON_1.content_html.split(/\s+/).filter(Boolean).length,
+        min_seconds: C172_LESSON_1.min_seconds,
       },
     ],
   },
