@@ -4,6 +4,11 @@ import { useEffect, useRef, useState } from "react";
 
 import { getImageFrameAlignment } from "../domain/image-frame-alignment";
 import { getNextImageFrameWidth } from "../domain/image-frame-size";
+import {
+  getImageWidthFromPreset,
+  ImageWidthPreset,
+} from "../domain/image-size-presets";
+import { uploadLessonImageAction } from "@/app/actions/lesson.actions";
 
 type LessonEditorToolbarProps = {
   contentHtml: string;
@@ -46,11 +51,62 @@ export function LessonEditorToolbar({
   const [fileDataUrl, setFileDataUrl] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [showCodeMode, setShowCodeMode] = useState(false);
+  const [isUploadingMedia, setIsUploadingMedia] = useState(false);
+  const [uploadStatusMessage, setUploadStatusMessage] = useState<string | null>(null);
 
   const FALLBACK_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="%230f172a"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%2338bdf8" font-family="sans-serif" font-size="22" font-weight="bold">✈️ Recurso Gráfico Aeronáutico</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2394a3b8" font-family="sans-serif" font-size="13">Imagen de lección adjunta</text></svg>`;
 
   const DEFAULT_PLACEHOLDER_TEXT =
     "Escribe aquí el contenido de la lección para los alumnos de aviación...";
+
+  async function uploadOrCompressImageFile(file: File): Promise<string> {
+    try {
+      setUploadStatusMessage("Subiendo recurso a almacenamiento seguro...");
+      const formData = new FormData();
+      formData.append("file", file);
+      return await uploadLessonImageAction(formData);
+    } catch (err) {
+      console.warn("Server storage upload failed, falling back to compressed local data URL:", err);
+      setUploadStatusMessage("Optimizando imagen localmente...");
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const raw = e.target?.result as string;
+          const img = new Image();
+          img.onload = () => {
+            try {
+              const canvas = document.createElement("canvas");
+              const maxDim = 1280;
+              let w = img.width;
+              let h = img.height;
+              if (w > maxDim || h > maxDim) {
+                if (w > h) {
+                  h = Math.round((h * maxDim) / w);
+                  w = maxDim;
+                } else {
+                  w = Math.round((w * maxDim) / h);
+                  h = maxDim;
+                }
+              }
+              canvas.width = w;
+              canvas.height = h;
+              const ctx = canvas.getContext("2d");
+              if (ctx) {
+                ctx.drawImage(img, 0, 0, w, h);
+                resolve(canvas.toDataURL("image/jpeg", 0.8));
+                return;
+              }
+            } catch (e) {}
+            resolve(raw);
+          };
+          img.onerror = () => resolve(raw);
+          img.src = raw;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+  }
 
   function clearPlaceholderIfPresent() {
     if (editorRef.current) {
@@ -88,11 +144,15 @@ export function LessonEditorToolbar({
         }
       };
 
-      // Ensure all images in the editor have aspect-ratio 1 / 1 by default if not set
+      // Default to natural aspect ratio (auto) with responsive containment
       if (!img.style.aspectRatio) {
-        img.style.aspectRatio = "1 / 1";
-        img.style.objectFit = img.style.objectFit || "cover";
+        img.style.aspectRatio = "auto";
       }
+      if (!img.style.objectFit) {
+        img.style.objectFit = "contain";
+      }
+      img.style.maxWidth = "100%";
+      img.style.height = "auto";
 
       let wrapper = img.closest(".lesson-img-wrapper") as HTMLElement | null;
       if (!wrapper) {
@@ -118,22 +178,31 @@ export function LessonEditorToolbar({
         controls.className =
           "img-editor-controls mb-3 space-y-2 rounded-xl border border-blue-100 bg-blue-50/70 p-2.5 dark:border-blue-900/60 dark:bg-blue-950/30 select-none shadow-2xs";
         controls.setAttribute("contenteditable", "false");
-        const leftAlignment = getImageFrameAlignment("left");
-        const centerAlignment = getImageFrameAlignment("center");
-        const rightAlignment = getImageFrameAlignment("right");
         controls.innerHTML = `
-          <div class="flex items-center justify-between gap-2 border-b border-blue-200/50 dark:border-blue-800/40 pb-1.5">
-            <span class="text-[11px] font-extrabold text-blue-700 dark:text-blue-300 flex items-center gap-1.5">
-              <span>🖼️</span>
-              <span>Imagen Interactiva</span>
-              <span class="text-[10px] font-normal text-slate-500 dark:text-slate-400">· Arrastra las esquinas ⚪ para cambiar tamaño</span>
-            </span>
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-blue-200/50 dark:border-blue-800/40 pb-1.5">
+            <div class="flex items-center gap-1.5">
+              <span class="text-[11px] font-extrabold text-blue-700 dark:text-blue-300 flex items-center gap-1">
+                <span>🖼️</span>
+                <span>Diagrama</span>
+              </span>
+              <div class="flex items-center gap-0.5 rounded-lg border border-blue-200/80 bg-white p-0.5 dark:border-blue-800/80 dark:bg-slate-900 shadow-2xs">
+                <span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase px-1">Ancho:</span>
+                <button type="button" class="img-btn-size-25 px-1.5 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] hover:bg-blue-50 dark:hover:bg-blue-950 text-[10px] font-bold rounded cursor-pointer transition-colors" title="25% del ancho">25%</button>
+                <button type="button" class="img-btn-size-50 px-1.5 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] hover:bg-blue-50 dark:hover:bg-blue-950 text-[10px] font-bold rounded cursor-pointer transition-colors" title="50% del ancho">50%</button>
+                <button type="button" class="img-btn-size-75 px-1.5 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] hover:bg-blue-50 dark:hover:bg-blue-950 text-[10px] font-bold rounded cursor-pointer transition-colors" title="75% del ancho">75%</button>
+                <button type="button" class="img-btn-size-100 px-1.5 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] hover:bg-blue-50 dark:hover:bg-blue-950 text-[10px] font-bold rounded cursor-pointer transition-colors" title="100% (Ancho completo)">100%</button>
+                <button type="button" class="img-btn-size-auto px-1.5 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] hover:bg-blue-50 dark:hover:bg-blue-950 text-[10px] font-bold rounded cursor-pointer transition-colors" title="Tamaño original / Ajuste natural">Auto</button>
+              </div>
+            </div>
             <div class="img-drag-handle flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-600 text-white text-[10px] font-extrabold cursor-grab active:cursor-grabbing hover:bg-blue-700 transition-colors shadow-2xs" draggable="true" title="Haz clic y arrastra para mover la imagen a cualquier párrafo">
               <span>✥</span>
-              <span>Arrastrar</span>
+              <span>Mover</span>
             </div>
           </div>
           <div class="flex flex-wrap items-center gap-1.5 pt-1">
+            <button type="button" class="img-btn-aspect px-2 py-1 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Cambiar relación de aspecto (Auto / 16:9 / 1:1 / 4:3)">
+              📐 Proporción
+            </button>
             <button type="button" class="img-btn-fit px-2 py-1 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Ver imagen completa sin recortar (contain / cover)">
               🎯 Ajuste
             </button>
@@ -243,11 +312,14 @@ export function LessonEditorToolbar({
         img.style.width = "100%";
         img.style.maxWidth = "100%";
         img.style.height = "auto";
-        img.style.aspectRatio = "1 / 1";
+        if (!img.style.aspectRatio) {
+          img.style.aspectRatio = "auto";
+        }
       }
 
       if (badgeEl) {
-        badgeEl.textContent = `📐 ${Math.round(newWidth)}px`;
+        const pct = Math.round((newWidth / containerWidth) * 100);
+        badgeEl.textContent = `📐 ${Math.round(newWidth)}px (${pct}%)`;
       }
     }
 
@@ -320,7 +392,9 @@ export function LessonEditorToolbar({
         badgeEl.setAttribute("contenteditable", "false");
         wrapper.appendChild(badgeEl);
       }
-      badgeEl.textContent = `📐 ${Math.round(startWidth)}px`;
+      const containerW = editorRef.current?.getBoundingClientRect().width || 700;
+      const initialPct = Math.round((startWidth / containerW) * 100);
+      badgeEl.textContent = `📐 ${Math.round(startWidth)}px (${initialPct}%)`;
 
       document.body.style.cursor =
         handleType === "nw" || handleType === "se"
@@ -359,7 +433,27 @@ export function LessonEditorToolbar({
     e.dataTransfer.dropEffect = "move";
   }
 
-  function handleDrop(e: React.DragEvent<HTMLDivElement>) {
+  async function handleDrop(e: React.DragEvent<HTMLDivElement>) {
+    // If external image files are dropped directly onto the canvas
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const file = e.dataTransfer.files[0];
+      if (file.type.startsWith("image/")) {
+        e.preventDefault();
+        clearPlaceholderIfPresent();
+        setIsUploadingMedia(true);
+        try {
+          const url = await uploadOrCompressImageFile(file);
+          handleInsertImage(url, file.name.replace(/\.[^/.]+$/, ""));
+        } catch (err) {
+          console.error("Drop image upload failed:", err);
+        } finally {
+          setIsUploadingMedia(false);
+          setUploadStatusMessage(null);
+        }
+        return;
+      }
+    }
+
     if (!draggedWrapperRef.current || !editorRef.current) return;
     e.preventDefault();
 
@@ -386,6 +480,33 @@ export function LessonEditorToolbar({
     }
   }
 
+  async function handleCanvasPaste(e: React.ClipboardEvent<HTMLDivElement>) {
+    const items = e.clipboardData?.items;
+    if (!items) return;
+
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (item.type.startsWith("image/")) {
+        e.preventDefault();
+        const file = item.getAsFile();
+        if (!file) continue;
+
+        clearPlaceholderIfPresent();
+        setIsUploadingMedia(true);
+        try {
+          const url = await uploadOrCompressImageFile(file);
+          handleInsertImage(url, "Captura pegada");
+        } catch (err) {
+          console.error("Paste image failed:", err);
+        } finally {
+          setIsUploadingMedia(false);
+          setUploadStatusMessage(null);
+        }
+        return;
+      }
+    }
+  }
+
   function handleCanvasClick(e: React.MouseEvent<HTMLDivElement>) {
     clearPlaceholderIfPresent();
     const target = e.target as HTMLElement;
@@ -398,6 +519,12 @@ export function LessonEditorToolbar({
     const btnAlignLeft = target.closest(".img-btn-align-left");
     const btnAlignCenter = target.closest(".img-btn-align-center");
     const btnAlignRight = target.closest(".img-btn-align-right");
+    const btnSize25 = target.closest(".img-btn-size-25");
+    const btnSize50 = target.closest(".img-btn-size-50");
+    const btnSize75 = target.closest(".img-btn-size-75");
+    const btnSize100 = target.closest(".img-btn-size-100");
+    const btnSizeAuto = target.closest(".img-btn-size-auto");
+    const btnAspect = target.closest(".img-btn-aspect");
 
     if (
       btnUp ||
@@ -407,7 +534,13 @@ export function LessonEditorToolbar({
       btnPos ||
       btnAlignLeft ||
       btnAlignCenter ||
-      btnAlignRight
+      btnAlignRight ||
+      btnSize25 ||
+      btnSize50 ||
+      btnSize75 ||
+      btnSize100 ||
+      btnSizeAuto ||
+      btnAspect
     ) {
       e.preventDefault();
       e.stopPropagation();
@@ -422,6 +555,53 @@ export function LessonEditorToolbar({
       try {
         if (btnRemove) {
           wrapper.remove();
+        } else if (btnSize25 || btnSize50 || btnSize75 || btnSize100 || btnSizeAuto) {
+          let preset: ImageWidthPreset = "reset";
+          if (btnSize25) preset = "25%";
+          else if (btnSize50) preset = "50%";
+          else if (btnSize75) preset = "75%";
+          else if (btnSize100) preset = "100%";
+
+          const containerW =
+            editorRef.current?.getBoundingClientRect().width || 720;
+          const { widthPx } = getImageWidthFromPreset(preset, containerW);
+
+          if (preset === "reset") {
+            wrapper.style.width = "auto";
+            wrapper.style.maxWidth = "100%";
+          } else {
+            wrapper.style.width = `${widthPx}px`;
+            wrapper.style.maxWidth = "100%";
+          }
+
+          const img = wrapper.querySelector("img");
+          if (img) {
+            img.style.width = "100%";
+            img.style.maxWidth = "100%";
+            img.style.height = "auto";
+          }
+        } else if (btnAspect) {
+          const img = wrapper.querySelector("img");
+          if (img) {
+            const current = (img.style.aspectRatio || "auto").replace(/\s+/g, "");
+            let nextRatio = "auto";
+            let nextFit: "contain" | "cover" = "contain";
+            if (current === "auto") {
+              nextRatio = "16 / 9";
+              nextFit = "cover";
+            } else if (current === "16/9") {
+              nextRatio = "1 / 1";
+              nextFit = "cover";
+            } else if (current === "1/1") {
+              nextRatio = "4 / 3";
+              nextFit = "cover";
+            } else {
+              nextRatio = "auto";
+              nextFit = "contain";
+            }
+            img.style.aspectRatio = nextRatio;
+            img.style.objectFit = nextFit;
+          }
         } else if (btnUp) {
           const prev = wrapper.previousElementSibling;
           if (prev) {
@@ -612,25 +792,30 @@ export function LessonEditorToolbar({
     }
   }
 
-  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+  async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
 
     setFileName(file.name);
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setFileDataUrl(e.target?.result as string);
-    };
-    reader.readAsDataURL(file);
+    setIsUploadingMedia(true);
+    try {
+      const url = await uploadOrCompressImageFile(file);
+      setFileDataUrl(url);
+    } catch (err) {
+      console.error("Modal file upload error:", err);
+    } finally {
+      setIsUploadingMedia(false);
+      setUploadStatusMessage(null);
+    }
   }
 
-  function handleInsertImage(url: string, captionText: string) {
+  function handleInsertImage(url: string, captionText: string = "") {
     if (!url) return;
     const finalUrl = url.trim() || FALLBACK_SVG;
 
     const imgHtml = `
-<div class="lesson-img-wrapper my-6 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-lg max-w-xl mx-auto text-center">
-  <img src="${finalUrl}" alt="${captionText || "Imagen aeronáutica"}" class="w-full max-w-md aspect-square object-cover rounded-xl mx-auto my-2 shadow-xs" onerror="if (this.src !== '${FALLBACK_SVG}') this.src='${FALLBACK_SVG}';" style="aspect-ratio: 1 / 1; object-fit: cover;" />
+<div class="lesson-img-wrapper my-6 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-lg max-w-xl mx-auto text-center" style="width: auto; max-width: 100%;">
+  <img src="${finalUrl}" alt="${captionText || "Diagrama aeronáutico"}" class="w-full max-w-full rounded-xl mx-auto my-2 shadow-xs" onerror="if (this.src !== '${FALLBACK_SVG}') this.src='${FALLBACK_SVG}';" style="aspect-ratio: auto; object-fit: contain; width: 100%; height: auto;" />
   ${captionText ? `<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 text-center italic">${captionText}</p>` : ""}
 </div>
 <p><br></p>
@@ -845,6 +1030,12 @@ export function LessonEditorToolbar({
               border-color: #ffffff !important;
             }
           `}</style>
+          {isUploadingMedia && (
+            <div className="mb-3 flex items-center gap-2 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 px-4 py-2.5 text-xs font-semibold text-[#1a80ff] shadow-xs animate-pulse">
+              <span className="inline-block animate-spin">⏳</span>
+              <span>{uploadStatusMessage || "Optimizando y subiendo imagen..."}</span>
+            </div>
+          )}
           <div
             ref={editorRef}
             contentEditable
@@ -857,10 +1048,11 @@ export function LessonEditorToolbar({
             onDragOver={handleDragOver}
             onDrop={handleDrop}
             onDragEnd={handleDragEnd}
+            onPaste={handleCanvasPaste}
             className="visual-canvas min-h-[340px] max-h-[600px] overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6 sm:p-8 text-slate-900 dark:text-slate-100 text-sm leading-relaxed focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 prose prose-slate dark:prose-invert max-w-none shadow-xs"
           />
           <div className="absolute bottom-3 right-4 text-[10px] font-bold text-slate-400 dark:text-slate-500 pointer-events-none">
-            ✍️ Editor Visual Activo (Lo que ves es lo que verá el alumno)
+            ✍️ Editor Visual Activo · Puedes pegar capturas (Ctrl+V) o arrastrar imágenes
           </div>
         </div>
       ) : (
@@ -936,10 +1128,17 @@ export function LessonEditorToolbar({
                         : "Haz clic para elegir imagen de tu equipo"}
                     </span>
                     <span className="text-[10px] text-slate-400">
-                      Archivos PNG, JPG, WEBP o SVG
+                      Archivos PNG, JPG, WEBP o SVG (máx. 5 MB)
                     </span>
                   </div>
                 </div>
+
+                {isUploadingMedia && (
+                  <div className="flex items-center justify-center gap-2 py-1 text-xs font-semibold text-[#1a80ff] animate-pulse">
+                    <span className="inline-block animate-spin">⏳</span>
+                    <span>{uploadStatusMessage || "Subiendo imagen..."}</span>
+                  </div>
+                )}
 
                 <input
                   type="text"
@@ -954,7 +1153,7 @@ export function LessonEditorToolbar({
                     <img
                       src={fileDataUrl}
                       alt="Vista previa"
-                      className="w-full h-32 object-cover rounded-xl border border-slate-200 dark:border-slate-800"
+                      className="w-full max-h-48 object-contain rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-950/5"
                     />
                     <button
                       type="button"

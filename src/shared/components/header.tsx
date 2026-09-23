@@ -63,7 +63,7 @@ export function Header({
           autoHideOnScroll && isHidden ? "-translate-y-full" : "translate-y-0"
         }`}
       >
-        <div className="mx-auto flex min-h-[112px] max-w-[1540px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-12">
+        <div className="mx-auto flex min-h-[72px] sm:min-h-[112px] max-w-[1540px] items-center justify-between gap-2 sm:gap-6 px-3 sm:px-8 lg:px-12">
           {/* Brand Logo (Left) */}
           <Link
             href={isLoginPage ? "/" : "/courses"}
@@ -76,7 +76,7 @@ export function Header({
               width={720}
               height={180}
               style={{
-                width: "clamp(220px, 35vw, 480px)",
+                width: "clamp(130px, 32vw, 480px)",
                 height: "auto",
                 maxHeight: "108px",
                 objectFit: "contain",
@@ -91,7 +91,7 @@ export function Header({
               width={720}
               height={180}
               style={{
-                width: "clamp(220px, 35vw, 480px)",
+                width: "clamp(130px, 32vw, 480px)",
                 height: "auto",
                 maxHeight: "108px",
                 objectFit: "contain",

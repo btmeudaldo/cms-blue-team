@@ -29,6 +29,10 @@ test("el formulario de curso aplica validación HTML obligatoria", async ({
 }) => {
   await signInTestUser(page, "admin");
   await page.goto("/admin/courses");
+  const openFormButton = page.getByRole("button", { name: /crear nuevo curso/i });
+  if (await openFormButton.isVisible()) {
+    await openFormButton.click();
+  }
   await expect(page.locator('input[name="title"]')).toHaveAttribute(
     "required",
     "",

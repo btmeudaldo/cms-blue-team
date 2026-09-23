@@ -3,9 +3,54 @@
 import { revalidatePath } from "next/cache";
 
 import { requireCourseEditor } from "@/features/learning/application/course-authorization";
+import { requireVerifiedSession } from "@/shared/lib/supabase/session";
 import { calculateReadingTime } from "@/features/learning/domain/reading-time";
 import { getNextLessonOrder } from "@/features/learning/domain/lesson-order";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
+
+export async function uploadLessonImageAction(formData: FormData): Promise<string> {
+  const session = await requireVerifiedSession();
+  if (
+    session.profile.role !== "admin" &&
+    session.profile.role !== "instructor"
+  ) {
+    throw new Error("Forbidden");
+  }
+  const file = formData.get("file");
+  if (!(file instanceof File)) {
+    throw new Error("No image file was selected.");
+  }
+  const maxBytes = 5 * 1024 * 1024;
+  if (file.size > maxBytes) {
+    throw new Error("The image file exceeds the 5 MB limit.");
+  }
+  const allowed = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "image/gif",
+    "image/svg+xml",
+  ];
+  if (!allowed.includes(file.type)) {
+    throw new Error("Unsupported image format. Allowed: PNG, JPG, WEBP, GIF, SVG.");
+  }
+
+  const { client, user } = session;
+  const buffer = Buffer.from(await file.arrayBuffer());
+  const ext = file.type === "image/svg+xml" ? "svg" : file.type.split("/")[1] || "jpg";
+  const objectPath = `${user.id}/lessons/${crypto.randomUUID()}.${ext}`;
+
+  const { error } = await client.storage
+    .from("course-covers")
+    .upload(objectPath, buffer, { contentType: file.type, upsert: false });
+
+  if (error) {
+    throw new Error(`Failed to upload image: ${error.message}`);
+  }
+
+  return client.storage.from("course-covers").getPublicUrl(objectPath).data.publicUrl;
+}
+
 export async function createLessonAction(courseId: string, formData: FormData) {
   const title = String(formData.get("title") ?? "").trim();
   const slug = String(formData.get("slug") ?? "")
