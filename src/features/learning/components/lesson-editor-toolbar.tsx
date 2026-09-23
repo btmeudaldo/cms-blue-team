@@ -10,6 +10,12 @@ import {
 } from "../domain/image-size-presets";
 import { uploadLessonImageAction } from "@/app/actions/lesson.actions";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
+import {
+  detectMarkdownPrefix,
+  filterSlashCommands,
+  generateAviationTableSnippet,
+  SlashCommandItem,
+} from "../domain/editor-keyboard-shortcuts";
 
 type LessonEditorToolbarProps = {
   contentHtml: string;
@@ -56,6 +62,10 @@ export function LessonEditorToolbar({
   const [showBlocksMenu, setShowBlocksMenu] = useState(false);
   const [isUploadingMedia, setIsUploadingMedia] = useState(false);
   const [uploadStatusMessage, setUploadStatusMessage] = useState<string | null>(null);
+  const [showSlashMenu, setShowSlashMenu] = useState(false);
+  const [slashQuery, setSlashQuery] = useState("");
+  const [slashSelectedIndex, setSlashSelectedIndex] = useState(0);
+  const [slashPosition, setSlashPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
 
   const FALLBACK_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="%230f172a"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%2338bdf8" font-family="sans-serif" font-size="22" font-weight="bold">✈️ Recurso Gráfico Aeronáutico</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2394a3b8" font-family="sans-serif" font-size="13">Imagen de lección adjunta</text></svg>`;
 
@@ -795,6 +805,150 @@ export function LessonEditorToolbar({
     }
   }
 
+  function executeSlashCommand(cmd: SlashCommandItem) {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount > 0) {
+      const range = sel.getRangeAt(0);
+      const node = range.startContainer;
+      if (node.nodeType === Node.TEXT_NODE && node.textContent) {
+        const text = node.textContent;
+        const offset = range.startOffset;
+        const slashIdx = text.slice(0, offset).lastIndexOf("/");
+        if (slashIdx !== -1) {
+          node.textContent = text.slice(0, slashIdx) + text.slice(offset);
+          const newRange = document.createRange();
+          newRange.setStart(node, slashIdx);
+          newRange.collapse(true);
+          sel.removeAllRanges();
+          sel.addRange(newRange);
+        }
+      }
+    }
+
+    setShowSlashMenu(false);
+
+    if (cmd.action === "image") {
+      setShowImageModal(true);
+    } else if (cmd.action === "table") {
+      insertBlockSnippet(generateAviationTableSnippet());
+    } else if (cmd.action === "video") {
+      const videoUrl = window.prompt("Introduce la URL del video (YouTube o enlace directo MP4):");
+      if (videoUrl) {
+        let embedUrl = videoUrl.trim();
+        if (embedUrl.includes("watch?v=")) {
+          embedUrl = embedUrl.replace("watch?v=", "embed/");
+        } else if (embedUrl.includes("youtu.be/")) {
+          embedUrl = embedUrl.replace("youtu.be/", "www.youtube-nocookie.com/embed/");
+        }
+        insertBlockSnippet(
+          `<div class="my-5 aspect-video w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md">\n  <iframe class="w-full h-full" src="${embedUrl}" title="Video de instrucción aeronáutica" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div><p><br></p>`,
+        );
+      }
+    } else if (cmd.snippet) {
+      insertBlockSnippet(cmd.snippet);
+    }
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (showSlashMenu) {
+      const filtered = filterSlashCommands(slashQuery);
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setSlashSelectedIndex((prev) => (filtered.length ? (prev + 1) % filtered.length : 0));
+        return;
+      }
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setSlashSelectedIndex((prev) => (filtered.length ? (prev - 1 + filtered.length) % filtered.length : 0));
+        return;
+      }
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (filtered[slashSelectedIndex]) {
+          executeSlashCommand(filtered[slashSelectedIndex]);
+        }
+        return;
+      }
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setShowSlashMenu(false);
+        return;
+      }
+    }
+
+    // Markdown prefix auto-formatting triggered when typing space
+    if (e.key === " ") {
+      const sel = window.getSelection();
+      if (sel && sel.rangeCount > 0) {
+        const range = sel.getRangeAt(0);
+        const node = range.startContainer;
+        if (node.nodeType === Node.TEXT_NODE && node.textContent) {
+          const textBeforeCaret = node.textContent.slice(0, range.startOffset);
+          const match = detectMarkdownPrefix(textBeforeCaret);
+          if (match) {
+            e.preventDefault();
+            node.textContent = node.textContent.slice(match.prefix.length);
+            if (match.type === "h1") {
+              document.execCommand("formatBlock", false, "<h1>");
+            } else if (match.type === "h2") {
+              document.execCommand("formatBlock", false, "<h2>");
+            } else if (match.type === "h3") {
+              document.execCommand("formatBlock", false, "<h3>");
+            } else if (match.type === "bullet-list") {
+              document.execCommand("insertUnorderedList", false, "");
+            } else if (match.type === "numbered-list") {
+              document.execCommand("insertOrderedList", false, "");
+            } else if (match.type === "quote") {
+              document.execCommand("formatBlock", false, "<blockquote>");
+            } else if (match.type === "checklist") {
+              insertBlockSnippet(
+                '<div class="flex items-center gap-2 text-slate-700 dark:text-slate-300"><span>☑️</span> <span>Elemento de chequeo</span></div><p><br></p>',
+              );
+            }
+            handleVisualInput();
+            return;
+          }
+        }
+      }
+    }
+  }
+
+  function handleKeyUp(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (["ArrowDown", "ArrowUp", "Enter", "Escape"].includes(e.key) && showSlashMenu) {
+      return;
+    }
+
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount > 0) {
+      const range = sel.getRangeAt(0);
+      const text = range.startContainer.textContent || "";
+      const textUpToCaret = text.slice(0, range.startOffset);
+      const lastSlashIdx = textUpToCaret.lastIndexOf("/");
+
+      if (lastSlashIdx !== -1 && (lastSlashIdx === 0 || /\s/.test(textUpToCaret[lastSlashIdx - 1]))) {
+        const query = textUpToCaret.slice(lastSlashIdx + 1);
+        if (!/\s/.test(query)) {
+          const rect = range.getBoundingClientRect();
+          const editorRect = editorRef.current?.getBoundingClientRect();
+          if (editorRect) {
+            setSlashPosition({
+              top: Math.max(10, rect.bottom - editorRect.top + 8),
+              left: Math.max(10, Math.min(rect.left - editorRect.left, editorRect.width - 320)),
+            });
+          }
+          setSlashQuery(query);
+          setSlashSelectedIndex(0);
+          setShowSlashMenu(true);
+          return;
+        }
+      }
+    }
+
+    if (showSlashMenu) {
+      setShowSlashMenu(false);
+    }
+  }
+
   async function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -1061,6 +1215,15 @@ export function LessonEditorToolbar({
 
             <button
               type="button"
+              onClick={() => insertBlockSnippet(generateAviationTableSnippet())}
+              className="h-9 px-3 flex items-center justify-center rounded-xl bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-xs font-bold text-indigo-700 dark:text-indigo-300 hover:bg-indigo-500 hover:text-white transition-all cursor-pointer gap-1 shadow-2xs"
+              title="Insertar Tabla de Parámetros y V-Speeds"
+            >
+              📊 Tabla V-Speeds
+            </button>
+
+            <button
+              type="button"
               onClick={() => setShowImageModal(true)}
               className="h-9 px-3 flex items-center justify-center rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-xs font-bold text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500 hover:text-white transition-all cursor-pointer gap-1 shadow-2xs"
               title="Insertar Imagen desde Ordenador o Galería"
@@ -1118,6 +1281,17 @@ export function LessonEditorToolbar({
             .visual-canvas li {
               margin-bottom: 0.25rem !important;
             }
+            .visual-canvas table {
+              width: 100% !important;
+              border-collapse: collapse !important;
+              margin: 1.25rem 0 !important;
+            }
+            .visual-canvas blockquote {
+              border-left: 4px solid #1a80ff !important;
+              padding-left: 1rem !important;
+              margin: 1rem 0 !important;
+              font-style: italic !important;
+            }
             .lesson-img-wrapper {
               transition: outline 0.15s ease, box-shadow 0.15s ease;
               user-select: none;
@@ -1151,6 +1325,8 @@ export function LessonEditorToolbar({
             onFocus={clearPlaceholderIfPresent}
             onInput={handleVisualInput}
             onBlur={handleVisualInput}
+            onKeyDown={handleKeyDown}
+            onKeyUp={handleKeyUp}
             onClick={handleCanvasClick}
             onMouseDown={handleCanvasMouseDown}
             onDragStart={handleDragStart}
@@ -1160,8 +1336,63 @@ export function LessonEditorToolbar({
             onPaste={handleCanvasPaste}
             className="visual-canvas min-h-[340px] max-h-[600px] overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6 sm:p-8 text-slate-900 dark:text-slate-100 text-sm leading-relaxed focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 prose prose-slate dark:prose-invert max-w-none shadow-xs"
           />
+
+          {/* Floating Slash Command Palette */}
+          {showSlashMenu && (
+            <div
+              style={{
+                top: `${slashPosition.top}px`,
+                left: `${slashPosition.left}px`,
+              }}
+              className="absolute z-40 w-72 max-h-80 overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl p-2 animate-in fade-in zoom-in-95 duration-100"
+            >
+              <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800/60 mb-1 flex items-center justify-between">
+                <span>Comandos Rápidos</span>
+                <span className="font-mono text-[9px] lowercase text-[#1a80ff]">
+                  {slashQuery ? `/${slashQuery}` : "Escribe para filtrar"}
+                </span>
+              </div>
+              {filterSlashCommands(slashQuery).length === 0 ? (
+                <div className="p-3 text-center text-xs text-slate-400">
+                  No se encontraron comandos para &quot;{slashQuery}&quot;
+                </div>
+              ) : (
+                filterSlashCommands(slashQuery).map((cmd, idx) => {
+                  const isSelected = idx === slashSelectedIndex;
+                  return (
+                    <button
+                      key={cmd.id}
+                      type="button"
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        executeSlashCommand(cmd);
+                      }}
+                      className={`w-full text-left px-2.5 py-2 rounded-xl text-xs flex items-center gap-2.5 transition-colors cursor-pointer ${
+                        isSelected
+                          ? "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff]"
+                          : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                      }`}
+                    >
+                      <span className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-sm shrink-0">
+                        {cmd.icon}
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-bold truncate text-slate-900 dark:text-white">
+                          {cmd.label}
+                        </div>
+                        <div className="text-[10px] text-slate-400 truncate">
+                          {cmd.description}
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })
+              )}
+            </div>
+          )}
+
           <div className="absolute bottom-3 right-4 text-[10px] font-bold text-slate-400 dark:text-slate-500 pointer-events-none">
-            ✍️ Editor Visual Activo · Puedes pegar capturas (Ctrl+V) o arrastrar imágenes
+            ✍️ Editor Visual Activo · Escribe / para comandos o atajos Markdown (#, ##, -, 1.)
           </div>
         </div>
       ) : (
