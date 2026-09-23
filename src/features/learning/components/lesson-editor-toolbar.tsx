@@ -9,6 +9,7 @@ import {
   ImageWidthPreset,
 } from "../domain/image-size-presets";
 import { uploadLessonImageAction } from "@/app/actions/lesson.actions";
+import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 
 type LessonEditorToolbarProps = {
   contentHtml: string;
@@ -51,6 +52,8 @@ export function LessonEditorToolbar({
   const [fileDataUrl, setFileDataUrl] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [showCodeMode, setShowCodeMode] = useState(false);
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
+  const [showBlocksMenu, setShowBlocksMenu] = useState(false);
   const [isUploadingMedia, setIsUploadingMedia] = useState(false);
   const [uploadStatusMessage, setUploadStatusMessage] = useState<string | null>(null);
 
@@ -937,7 +940,7 @@ export function LessonEditorToolbar({
             </button>
           </div>
 
-          {/* Section 5: Lists, Callout Box & Images */}
+          {/* Section 5: Lists, Aviation Blocks & Images */}
           <div className="flex items-center gap-1.5">
             <button
               type="button"
@@ -948,18 +951,113 @@ export function LessonEditorToolbar({
               📋 Lista
             </button>
 
-            <button
-              type="button"
-              onClick={() =>
-                insertBlockSnippet(
-                  '<div class="my-4 rounded-2xl bg-sky-50 dark:bg-sky-950/50 border border-sky-200 dark:border-sky-800 p-4 text-xs text-sky-900 dark:text-sky-200 font-semibold">\n  <strong>✈️ Nota de Vuelo:</strong> Comprueba siempre la lista de verificación antes del despegue.\n</div><p><br></p>',
-                )
-              }
-              className="h-9 px-3 flex items-center justify-center rounded-xl bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 text-xs font-bold text-[#1a80ff] hover:bg-[#1a80ff] hover:text-white transition-all cursor-pointer shadow-2xs"
-              title="Insertar Nota / Alerta Aeronáutica"
-            >
-              ✈️ Nota Alerta
-            </button>
+            {/* Aviation Blocks Dropdown */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setShowBlocksMenu(!showBlocksMenu)}
+                className="h-9 px-3 flex items-center justify-center rounded-xl bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 text-xs font-bold text-[#1a80ff] hover:bg-[#1a80ff] hover:text-white transition-all cursor-pointer shadow-2xs gap-1.5"
+                title="Insertar bloques de contenido especializado"
+              >
+                <span>🧩</span>
+                <span>Bloques</span>
+                <span className="text-[9px]">▼</span>
+              </button>
+
+              {showBlocksMenu && (
+                <div className="absolute top-11 left-0 z-40 w-64 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 shadow-2xl space-y-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      insertBlockSnippet(
+                        '<div class="my-4 rounded-2xl bg-sky-50 dark:bg-sky-950/50 border border-sky-200 dark:border-sky-800 p-4 text-xs text-sky-900 dark:text-sky-200 font-semibold">\n  <strong>✈️ Procedimiento de Vuelo:</strong> Comprueba siempre la lista de verificación antes del despegue.\n</div><p><br></p>',
+                      );
+                      setShowBlocksMenu(false);
+                    }}
+                    className="w-full text-left px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-950/50 hover:text-[#1a80ff] transition-colors flex items-center gap-2.5 cursor-pointer"
+                  >
+                    <span className="text-base">✈️</span>
+                    <div>
+                      <div className="font-bold text-slate-900 dark:text-white">Procedimiento de Vuelo</div>
+                      <div className="text-[10px] text-slate-400">Cuadro informativo azul</div>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      insertBlockSnippet(
+                        '<div class="my-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700 p-4 text-xs text-amber-900 dark:text-amber-200 font-semibold shadow-2xs">\n  <strong>⚠️ ATENCIÓN / PRECAUCIÓN:</strong> Compruebe siempre las presiones y temperaturas antes de aplicar potencia de despegue.\n</div><p><br></p>',
+                      );
+                      setShowBlocksMenu(false);
+                    }}
+                    className="w-full text-left px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-200 hover:bg-amber-50 dark:hover:bg-amber-950/50 hover:text-amber-600 transition-colors flex items-center gap-2.5 cursor-pointer"
+                  >
+                    <span className="text-base">⚠️</span>
+                    <div>
+                      <div className="font-bold text-slate-900 dark:text-white">Alerta / Precaución</div>
+                      <div className="text-[10px] text-slate-400">Cuadro de advertencia ámbar</div>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      insertBlockSnippet(
+                        '<div class="my-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 text-xs text-slate-800 dark:text-slate-200 shadow-2xs">\n  <div class="font-bold text-[#1a80ff] mb-2">📋 LISTA DE CHEQUEO PRE-VUELO</div>\n  <ul style="list-style-type: none; padding-left: 0; margin: 0;">\n    <li style="margin-bottom: 0.35rem;">☑️ Interruptores maestros — CONECTADOS</li>\n    <li style="margin-bottom: 0.35rem;">☑️ Cantidad de combustible — VERIFICADA</li>\n    <li style="margin-bottom: 0.35rem;">☑️ Mandos de vuelo — LIBRES Y CORRECTOS</li>\n    <li style="margin-bottom: 0.35rem;">☑️ Altímetro — CALIBRADO CON QNH LOCAL</li>\n  </ul>\n</div><p><br></p>',
+                      );
+                      setShowBlocksMenu(false);
+                    }}
+                    className="w-full text-left px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#1a80ff] transition-colors flex items-center gap-2.5 cursor-pointer"
+                  >
+                    <span className="text-base">📋</span>
+                    <div>
+                      <div className="font-bold text-slate-900 dark:text-white">Lista de Chequeo</div>
+                      <div className="text-[10px] text-slate-400">Verificaciones previas con casillas</div>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      insertBlockSnippet(
+                        '<div class="my-5 grid grid-cols-1 md:grid-cols-2 gap-4 items-center rounded-2xl border border-slate-200 dark:border-slate-800 p-4 bg-slate-50/50 dark:bg-slate-900/50 shadow-2xs">\n  <div>\n    <p class="font-bold text-slate-900 dark:text-white mb-1">📘 Descripción del Sistema</p>\n    <p class="text-xs text-slate-600 dark:text-slate-300">Explica aquí los componentes principales del diagrama adjunto y sus funciones críticas durante las distintas fases de vuelo.</p>\n  </div>\n  <div>\n    <div class="rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 p-6 text-center text-xs text-slate-400">🖼️ Arrastra o pega un diagrama aquí</div>\n  </div>\n</div><p><br></p>',
+                      );
+                      setShowBlocksMenu(false);
+                    }}
+                    className="w-full text-left px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#1a80ff] transition-colors flex items-center gap-2.5 cursor-pointer"
+                  >
+                    <span className="text-base">🔀</span>
+                    <div>
+                      <div className="font-bold text-slate-900 dark:text-white">Doble Columna</div>
+                      <div className="text-[10px] text-slate-400">Texto explicativo + Recurso gráfico</div>
+                    </div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const videoUrl = window.prompt("Introduce la URL del video (YouTube o enlace directo MP4):");
+                      if (videoUrl) {
+                        let embedUrl = videoUrl.trim();
+                        if (embedUrl.includes("watch?v=")) {
+                          embedUrl = embedUrl.replace("watch?v=", "embed/");
+                        } else if (embedUrl.includes("youtu.be/")) {
+                          embedUrl = embedUrl.replace("youtu.be/", "www.youtube-nocookie.com/embed/");
+                        }
+                        insertBlockSnippet(
+                          `<div class="my-5 aspect-video w-full rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md">\n  <iframe class="w-full h-full" src="${embedUrl}" title="Video de instrucción aeronáutica" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\n</div><p><br></p>`,
+                        );
+                      }
+                      setShowBlocksMenu(false);
+                    }}
+                    className="w-full text-left px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#1a80ff] transition-colors flex items-center gap-2.5 cursor-pointer"
+                  >
+                    <span className="text-base">🎥</span>
+                    <div>
+                      <div className="font-bold text-slate-900 dark:text-white">Video Incrustado</div>
+                      <div className="text-[10px] text-slate-400">Reproductor YouTube o video MP4</div>
+                    </div>
+                  </button>
+                </div>
+              )}
+            </div>
 
             <button
               type="button"
@@ -972,14 +1070,25 @@ export function LessonEditorToolbar({
           </div>
         </div>
 
-        {/* Code Toggle Mode (For Power Users) */}
-        <button
-          type="button"
-          onClick={toggleCodeMode}
-          className="text-[11px] font-bold text-slate-500 dark:text-slate-400 hover:text-[#1a80ff] transition-colors cursor-pointer shrink-0"
-        >
-          {showCodeMode ? "👁️ Ver Editor Visual" : "⚙️ Modo Avanzado (HTML)"}
-        </button>
+        {/* Right Action Buttons: Student Preview & Code Mode */}
+        <div className="flex items-center gap-2.5 shrink-0">
+          <button
+            type="button"
+            onClick={() => setShowPreviewModal(true)}
+            className="h-9 px-3.5 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-xs font-bold text-[#1a80ff] hover:bg-[#1a80ff] hover:text-white transition-all cursor-pointer shadow-2xs flex items-center gap-1.5"
+            title="Previsualizar cómo verá el alumno esta lección"
+          >
+            <span>👁️</span>
+            <span>Vista Previa Alumno</span>
+          </button>
+          <button
+            type="button"
+            onClick={toggleCodeMode}
+            className="text-[11px] font-bold text-slate-500 dark:text-slate-400 hover:text-[#1a80ff] transition-colors cursor-pointer px-1 py-1"
+          >
+            {showCodeMode ? "👁️ Editor Visual" : "⚙️ HTML"}
+          </button>
+        </div>
       </div>
 
       {/* Main Interactive Visual Canvas (WYSIWYG) */}
@@ -1199,6 +1308,57 @@ export function LessonEditorToolbar({
                 )}
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {/* Student Preview Modal */}
+      {showPreviewModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/75 backdrop-blur-xs p-4 sm:p-6 animate-in fade-in duration-150">
+          <div className="w-full max-w-4xl max-h-[90vh] flex flex-col rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0b1120] shadow-2xl overflow-hidden">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 py-4 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-sm">
+              <div className="flex items-center gap-2.5">
+                <span className="text-xl">👁️</span>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                    Vista Previa de Alumno (Simulación en Vivo)
+                  </h3>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    Así es exactamente como se renderizará el contenido en el visor de estudio de los alumnos
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowPreviewModal(false)}
+                className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+              >
+                ✕ Cerrar
+              </button>
+            </div>
+
+            {/* Modal Content - Exact Mirror of Lesson Player */}
+            <div className="flex-1 overflow-y-auto p-6 sm:p-10 space-y-6">
+              <div
+                className="prose prose-slate dark:prose-invert max-w-none text-slate-900 dark:text-slate-100 text-sm leading-relaxed"
+                dangerouslySetInnerHTML={{
+                  __html: sanitizeLessonHtml(getCleanHtml()),
+                }}
+              />
+            </div>
+
+            {/* Modal Footer */}
+            <div className="border-t border-slate-200 dark:border-slate-800 px-6 py-3 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+              <span>💡 Tip: Comprueba la legibilidad y proporciones de tus diagramas</span>
+              <button
+                type="button"
+                onClick={() => setShowPreviewModal(false)}
+                className="rounded-xl bg-[#1a80ff] px-4 py-1.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-colors cursor-pointer"
+              >
+                Volver al Editor
+              </button>
+            </div>
           </div>
         </div>
       )}

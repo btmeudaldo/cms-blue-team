@@ -1,9 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LessonEditorToolbar } from "./lesson-editor-toolbar";
+import { calculateReadingTime } from "../domain/reading-time";
+import {
+  clearLessonDraft,
+  hasUnsavedDraftDifference,
+  loadLessonDraft,
+  saveLessonDraft,
+} from "../domain/lesson-draft-storage";
 
 type LessonEditorFormProps = {
   action: (formData: FormData) => Promise<void>;
@@ -31,6 +38,48 @@ export function LessonEditorForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const draftIdentifier = defaultSlug || "new";
+  const [draftSavedAt, setDraftSavedAt] = useState<string | null>(null);
+  const [recoveredDraft, setRecoveredDraft] = useState<string | null>(null);
+
+  // Check for unsaved local draft on mount
+  useEffect(() => {
+    const existing = loadLessonDraft(courseId, draftIdentifier);
+    if (
+      existing &&
+      hasUnsavedDraftDifference(defaultContentHtml, existing.contentHtml)
+    ) {
+      setRecoveredDraft(existing.contentHtml);
+    }
+  }, [courseId, draftIdentifier, defaultContentHtml]);
+
+  // Debounced auto-save to localStorage
+  useEffect(() => {
+    if (!contentHtml || contentHtml === defaultContentHtml) return;
+    const timer = setTimeout(() => {
+      saveLessonDraft(courseId, draftIdentifier, contentHtml);
+      const now = new Date();
+      setDraftSavedAt(
+        now.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        }),
+      );
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [contentHtml, courseId, draftIdentifier, defaultContentHtml]);
+
+  const wordCount = contentHtml
+    .replace(/<[^>]*>/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
+  const calculatedReadingSeconds = calculateReadingTime(contentHtml);
+  const formattedReadingTime =
+    calculatedReadingSeconds >= 60
+      ? `${Math.floor(calculatedReadingSeconds / 60)}m ${calculatedReadingSeconds % 60}s`
+      : `${calculatedReadingSeconds}s`;
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsSubmitting(true);
@@ -41,6 +90,7 @@ export function LessonEditorForm({
 
     try {
       await action(formData);
+      clearLessonDraft(courseId, draftIdentifier);
       router.push(`/admin/courses/${courseId}`);
       router.refresh();
     } catch (err) {
@@ -55,6 +105,39 @@ export function LessonEditorForm({
       {errorMessage && (
         <div className="rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 p-4 text-xs font-semibold text-rose-700 dark:text-rose-300">
           ⚠ Error: {errorMessage}
+        </div>
+      )}
+
+      {recoveredDraft && (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-300 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 p-4 text-xs font-semibold text-amber-900 dark:text-amber-200 shadow-xs">
+          <div className="flex items-center gap-2">
+            <span className="text-base">⚠️</span>
+            <span>
+              Se ha detectado un borrador local no guardado para esta lección.
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                setContentHtml(recoveredDraft);
+                setRecoveredDraft(null);
+              }}
+              className="rounded-xl bg-amber-600 hover:bg-amber-700 text-white px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer"
+            >
+              Restaurar Borrador
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                clearLessonDraft(courseId, draftIdentifier);
+                setRecoveredDraft(null);
+              }}
+              className="rounded-xl border border-amber-300 dark:border-amber-700 px-3 py-1.5 text-xs font-bold hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-colors cursor-pointer"
+            >
+              Descartar
+            </button>
+          </div>
         </div>
       )}
 
@@ -121,9 +204,24 @@ export function LessonEditorForm({
       </div>
 
       <div>
-        <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">
-          Contenido Enriquecido con Texto e Imágenes
-        </label>
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
+            Contenido Enriquecido con Texto e Imágenes
+          </label>
+          <div className="flex items-center gap-2.5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+            {draftSavedAt && (
+              <span className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-bold">
+                <span>💾</span>
+                <span>Borrador: {draftSavedAt}</span>
+              </span>
+            )}
+            <span className="inline-flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 font-mono text-[10px]">
+              <span>📊 {wordCount} palabras</span>
+              <span>·</span>
+              <span>⏱ ~{calculatedReadingSeconds}s lectura ({formattedReadingTime})</span>
+            </span>
+          </div>
+        </div>
         <LessonEditorToolbar
           contentHtml={contentHtml}
           onChangeContentHtml={setContentHtml}
