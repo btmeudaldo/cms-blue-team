@@ -24,6 +24,22 @@ export default async function StudentLessonPage({
   ]);
   if (!course) notFound();
 
+  // If viewing as staff/admin, ensure enrollment exists so student progress RPC works smoothly
+  if (profile?.role === "admin" || profile?.role === "instructor") {
+    try {
+      const { createSupabaseServerClient } = await import(
+        "@/shared/lib/supabase/server"
+      );
+      const client = await createSupabaseServerClient();
+      await client
+        .from("course_enrollments")
+        .upsert(
+          { user_id: user.id, course_id: course.id },
+          { onConflict: "user_id,course_id", ignoreDuplicates: true },
+        );
+    } catch {}
+  }
+
   const lessons = (course.lessons || []).sort(
     (a: any, b: any) => a.sequence_order - b.sequence_order,
   );

@@ -382,18 +382,16 @@ export function LessonPlayer({
       setServerProgress(result.progress);
       setIsCompletedSuccess(true);
 
-      // If lesson does NOT have a quiz, auto-navigate to next lesson.
-      // If lesson HAS a quiz, stay on page to allow taking the quiz!
-      if (!quiz) {
-        if (nextLessonId) {
-          setTimeout(() => {
-            router.push(`/courses/${courseId}/lessons/${nextLessonId}`);
-          }, 1200);
-        } else {
-          setTimeout(() => {
-            router.push(`/courses/${courseId}`);
-          }, 1500);
-        }
+      // Advance to next page/lesson when available.
+      // If all pages are completed and quiz exists, stay to offer taking the quiz!
+      if (nextLessonId) {
+        setTimeout(() => {
+          router.push(`/courses/${courseId}/lessons/${nextLessonId}`);
+        }, 1200);
+      } else if (!quiz) {
+        setTimeout(() => {
+          router.push(`/courses/${courseId}`);
+        }, 1500);
       }
     } catch (err) {
       setErrorMessage((err as Error).message);
@@ -788,12 +786,15 @@ export function LessonPlayer({
             {errorMessage && (
               <div
                 role="alert"
-                className="rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 p-4 text-xs font-semibold text-rose-700 dark:text-rose-300"
+                className="rounded-xl bg-rose-50/90 dark:bg-rose-950/40 border border-rose-200/80 dark:border-rose-800/80 px-3 py-1.5 text-xs font-semibold text-rose-700 dark:text-rose-300 flex items-center justify-between gap-2 shadow-2xs"
               >
-                ⚠ {errorMessage}
+                <div className="flex items-center gap-1.5 truncate">
+                  <span>⚠</span>
+                  <span className="truncate">{errorMessage}</span>
+                </div>
                 <button
                   type="button"
-                  className="ml-3 underline"
+                  className="shrink-0 underline font-bold cursor-pointer hover:text-rose-900 dark:hover:text-rose-100"
                   onClick={() => setRetryVersion((version) => version + 1)}
                 >
                   {isActivityPaused
@@ -820,9 +821,9 @@ export function LessonPlayer({
               dangerouslySetInnerHTML={{ __html: safeContentHtml }}
             />
 
-            {/* End of Lesson Quiz Action Banner (Unlocked ONLY after clicking anticheat button) */}
-            {quiz && (
-              <div className="mt-8 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-md space-y-4">
+            {/* End of Lesson Quiz Action Banner (Shown ONLY when quiz is unlocked / ready, never while reading) */}
+            {quiz && (isAlreadyCompleted || isCompletedSuccess || quizAttempt?.passed) && (
+              <div className="mt-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-md space-y-4 animate-in fade-in duration-300">
                 {quizAttempt?.passed ? (
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div className="space-y-1 text-center sm:text-left">
@@ -855,7 +856,7 @@ export function LessonPlayer({
                       )}
                     </div>
                   </div>
-                ) : isAlreadyCompleted || isCompletedSuccess ? (
+                ) : (
                   <div className="space-y-4">
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-4">
                       <div className="space-y-1 text-center sm:text-left">
@@ -866,8 +867,7 @@ export function LessonPlayer({
                           {quiz.title}
                         </h3>
                         <p className="text-xs text-slate-600 dark:text-slate-400">
-                          Has pulsado el botón de avance y la lectura fue
-                          verificada en el servidor. Selecciona una opción:
+                          Has completado la lectura. ¿Deseas realizar el examen teórico ahora?
                         </p>
                       </div>
                     </div>
@@ -884,29 +884,10 @@ export function LessonPlayer({
 
                       <Link
                         href={`/quizzes/${quiz.id}`}
-                        className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-6 py-3 text-xs font-extrabold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all text-center animate-pulse"
+                        className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-6 py-3 text-xs font-extrabold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all text-center"
                       >
                         📝 Realizar Examen Teórico Ahora &rarr;
                       </Link>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4 opacity-75">
-                    <div className="space-y-1 text-center sm:text-left">
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 dark:bg-amber-950 px-3 py-1 text-xs font-extrabold text-amber-800 dark:text-amber-300">
-                        🔒 Examen Bloqueado
-                      </span>
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                        {quiz.title}
-                      </h3>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">
-                        Completa la lectura y pulsa el botón dinámico de avance
-                        (Anticheating) en la barra inferior para habilitar este
-                        examen.
-                      </p>
-                    </div>
-                    <div className="rounded-2xl bg-slate-100 dark:bg-slate-800 px-5 py-2.5 text-xs font-bold text-slate-400 cursor-not-allowed">
-                      🔒 Bloqueado en Lectura
                     </div>
                   </div>
                 )}

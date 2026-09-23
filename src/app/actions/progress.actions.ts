@@ -13,10 +13,35 @@ async function callProgressRpc(
   lessonId: string,
 ): Promise<ProgressResult> {
   try {
-    const { client, user } = await requireVerifiedSession();
-    const { data, error } = await client.rpc(functionName, {
+    const { client, user, profile } = await requireVerifiedSession();
+    let { data, error } = await client.rpc(functionName, {
       p_lesson_id: lessonId,
     });
+
+    // Auto-enroll staff/admin previewing a lesson if enrollment is missing
+    if (
+      error &&
+      (profile?.role === "admin" || profile?.role === "instructor")
+    ) {
+      try {
+        const { data: lesson } = await client
+          .from("lessons")
+          .select("course_id")
+          .eq("id", lessonId)
+          .maybeSingle();
+        if (lesson?.course_id) {
+          await client.from("course_enrollments").upsert(
+            { user_id: user.id, course_id: lesson.course_id },
+            { onConflict: "user_id,course_id", ignoreDuplicates: true },
+          );
+          const retry = await client.rpc(functionName, {
+            p_lesson_id: lessonId,
+          });
+          data = retry.data;
+          error = retry.error;
+        }
+      } catch {}
+    }
     if (
       error ||
       !data ||
