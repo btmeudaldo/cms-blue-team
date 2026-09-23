@@ -74,7 +74,7 @@ export function LessonPlayer({
   const contentRef = useRef<HTMLDivElement>(null);
   const progressQueue = useRef(Promise.resolve());
   const completingRef = useRef(false);
-  const hasUserScrolledRef = useRef(isAlreadyCompleted);
+  const hasUserScrolledRef = useRef(true);
 
   const [serverProgress, setServerProgress] = useState<LessonProgress | null>(
     null,
@@ -84,7 +84,7 @@ export function LessonPlayer({
     : remainingLessonSeconds(minSeconds, serverProgress);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [reachedScrollThreshold, setReachedScrollThreshold] =
-    useState(isAlreadyCompleted);
+    useState(true);
   const [isCompleting, setIsCompleting] = useState(false);
   const [isCompletedSuccess, setIsCompletedSuccess] =
     useState(isAlreadyCompleted);
@@ -101,8 +101,8 @@ export function LessonPlayer({
   const [layoutMode, setLayoutMode] = useState<"top-header" | "vertical-left">(
     "top-header",
   );
-  // isIndexOpen: toggleable index visibility
-  const [isIndexOpen, setIsIndexOpen] = useState(true);
+  // isIndexOpen: toggleable index visibility (default false for clean AVSEC slide view)
+  const [isIndexOpen, setIsIndexOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [isSiteHeaderHidden, setIsSiteHeaderHidden] = useState(false);
 
@@ -134,10 +134,6 @@ export function LessonPlayer({
       const savedLayout = localStorage.getItem("cms_lesson_layout_mode");
       if (savedLayout === "top-header" || savedLayout === "vertical-left") {
         setLayoutMode(savedLayout);
-      }
-      const savedIndexState = localStorage.getItem("cms_lesson_index_open");
-      if (savedIndexState !== null) {
-        setIsIndexOpen(savedIndexState === "true");
       }
     } catch (e) {}
   }, []);
@@ -612,14 +608,14 @@ export function LessonPlayer({
                   }
                 }}
                 className={`flex h-9 px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
-                  isIndexOpen
+                  isIndexOpen || isMobileSidebarOpen
                     ? "bg-[#1a80ff] text-white border-blue-600 shadow-xs"
                     : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                 }`}
-                title="Mostrar u Ocultar el Índice de lecciones"
+                title="Mostrar u Ocultar el Temario de lecciones"
               >
                 <span>📑</span>
-                <span>{isIndexOpen ? "Ocultar Índice" : "Ver Índice"}</span>
+                <span>{isIndexOpen || isMobileSidebarOpen ? "Ocultar Temario" : "Temario"}</span>
               </button>
 
               <div>
@@ -817,10 +813,10 @@ export function LessonPlayer({
               </div>
             )}
 
-            {/* Content Article Container: Full reading width preserved */}
+            {/* Content Article Container: Full reading width preserved without forced screen scroll */}
             <article
               ref={contentRef}
-              className="prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert min-h-screen max-w-none rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 lg:p-12 shadow-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-6 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
+              className="prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 lg:p-12 shadow-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-6 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
               dangerouslySetInnerHTML={{ __html: safeContentHtml }}
             />
 
@@ -954,41 +950,43 @@ export function LessonPlayer({
           </div>
         )}
 
-        {/* Permanent Bottom Horizontal Action Dock Bar */}
-        <section
-          aria-label="Avance de lección"
-          className="fixed bottom-0 left-0 right-0 z-40 h-16 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-2xl flex items-center px-4 sm:px-8"
-        >
-          <div className="relative w-full mx-auto max-w-[1400px] h-full flex items-center">
-            <div
-              style={{
-                left: `${horizontalPosition}%`,
-                transform: "translate(-50%, -50%)",
-              }}
-              className="absolute top-1/2 transition-all duration-300"
-            >
-              <button
-                disabled={!canAdvance}
-                onClick={handleComplete}
-                className={`inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-2.5 text-xs font-extrabold text-white shadow-lg transition-all whitespace-nowrap ${
-                  canAdvance
-                    ? "bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
-                    : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
-                }`}
+        {/* Bottom Horizontal Action Dock Bar - Appears ONLY when required anticheat time has passed */}
+        {(remainingSeconds === 0 || isAlreadyCompleted || isCompletedSuccess) && (
+          <section
+            aria-label="Avance de lección"
+            className="fixed bottom-0 left-0 right-0 z-40 h-16 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-2xl flex items-center px-4 sm:px-8 animate-in fade-in slide-in-from-bottom duration-300"
+          >
+            <div className="relative w-full mx-auto max-w-[1400px] h-full flex items-center">
+              <div
+                style={{
+                  left: `${horizontalPosition}%`,
+                  transform: "translate(-50%, -50%)",
+                }}
+                className="absolute top-1/2 transition-all duration-300"
               >
-                {isCompleting
-                  ? "Verificando en servidor..."
-                  : isCompletedSuccess
-                    ? nextLessonId
-                      ? "✓ Completada"
-                      : "✓ Finalizado"
-                    : nextLessonId
-                      ? "Completar y Avanzar"
-                      : "Finalizar"}
-              </button>
+                <button
+                  disabled={!canAdvance}
+                  onClick={handleComplete}
+                  className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold text-white shadow-lg transition-all whitespace-nowrap ${
+                    canAdvance
+                      ? "bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
+                      : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
+                  }`}
+                >
+                  {isCompleting
+                    ? "Verificando en servidor..."
+                    : isCompletedSuccess
+                      ? nextLessonId
+                        ? "✓ Completada"
+                        : "✓ Finalizado"
+                      : nextLessonId
+                        ? "Completar y Avanzar ➔"
+                        : "Finalizar"}
+                </button>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </div>
     </div>
   );

@@ -293,3 +293,26 @@ it("resumes a paused record only after explicit retry and restores confirmed hea
   await flush();
   expect(harness.heartbeat).toHaveBeenCalledTimes(2);
 });
+
+it("starts with the course temario hidden by default with a toggle button", () => {
+  const html = renderToStaticMarkup(render());
+  // The Temario button is present to toggle navigation
+  expect(html).toContain("Temario");
+  // Default desktop aside is NOT rendered when isIndexOpen is false
+  expect(html).not.toContain("Cerrar índice flotante");
+});
+
+it("hides the bottom action footer dock while required anticheat timer is counting down", () => {
+  const html = renderToStaticMarkup(render({ minSeconds: 60, isAlreadyCompleted: false }));
+  // Footer dock is not rendered while reading
+  expect(html).not.toContain('aria-label="Avance de lección"');
+  expect(html).not.toContain("Completar y Avanzar");
+});
+
+it("reveals the bottom action footer dock when the lesson is completed", () => {
+  const html = renderToStaticMarkup(render({ minSeconds: 60, isAlreadyCompleted: true }));
+  // Footer dock is rendered once requirements or completion are met
+  expect(html).toContain('aria-label="Avance de lección"');
+  expect(html).toContain("✓ Finalizado");
+});
+

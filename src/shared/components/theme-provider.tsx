@@ -23,17 +23,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Read stored theme or system preference
+    // Read stored theme preference (default is strictly "light")
     const stored = localStorage.getItem("blueteam-theme") as Theme | null;
     let initialTheme: Theme = "light";
 
     if (stored === "light" || stored === "dark") {
       initialTheme = stored;
-    } else if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      initialTheme = "dark";
     }
 
     if (initialTheme === "dark") {
