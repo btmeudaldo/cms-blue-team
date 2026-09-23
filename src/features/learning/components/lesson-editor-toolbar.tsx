@@ -593,6 +593,17 @@ export function LessonEditorToolbar({
             img.style.maxWidth = "100%";
             img.style.height = "auto";
           }
+          if (preset === "100%") {
+            wrapper.style.float = "none";
+            wrapper.style.clear = "both";
+            wrapper.classList.remove(
+              "float-left",
+              "float-right",
+              "img-align-left",
+              "img-align-right",
+            );
+            wrapper.classList.add("mx-auto", "img-align-center");
+          }
         } else if (btnAspect) {
           const img = wrapper.querySelector("img");
           if (img) {
@@ -633,15 +644,56 @@ export function LessonEditorToolbar({
               : "center";
 
           const alignmentConfig = getImageFrameAlignment(alignment);
-          if (alignmentConfig.preservesCurrentWidth) {
-            const currentWidth = wrapper.getBoundingClientRect().width;
+          const parentWidth =
+            editorRef.current?.getBoundingClientRect().width || 720;
+          const currentWidth = wrapper.getBoundingClientRect().width;
+
+          // If aligning left or right and currently taking almost full width (>60%),
+          // scale width to 48% so text immediately flows around it into the available space!
+          if (alignment !== "center" && currentWidth > parentWidth * 0.6) {
+            const wrapWidth = Math.round(parentWidth * 0.48);
+            wrapper.style.width = `${wrapWidth}px`;
+            wrapper.style.maxWidth = "50%";
+          } else if (alignmentConfig.preservesCurrentWidth) {
             wrapper.style.width = `${Math.min(currentWidth, alignmentConfig.maximumWidth)}px`;
             wrapper.style.maxWidth = "100%";
           }
-          wrapper.classList.remove("mx-auto", "ml-auto", "mr-auto");
+
+          wrapper.classList.remove(
+            "mx-auto",
+            "ml-auto",
+            "mr-auto",
+            "float-left",
+            "float-right",
+            "img-align-left",
+            "img-align-right",
+            "img-align-center",
+          );
           wrapper.classList.add(...alignmentConfig.classes);
-          wrapper.style.marginLeft = alignmentConfig.marginLeft;
-          wrapper.style.marginRight = alignmentConfig.marginRight;
+
+          if (alignment === "right") {
+            wrapper.style.float = "right";
+            wrapper.style.marginLeft = "1.5rem";
+            wrapper.style.marginRight = "0";
+            wrapper.style.marginTop = "0.5rem";
+            wrapper.style.marginBottom = "1.25rem";
+            wrapper.style.clear = "right";
+          } else if (alignment === "left") {
+            wrapper.style.float = "left";
+            wrapper.style.marginLeft = "0";
+            wrapper.style.marginRight = "1.5rem";
+            wrapper.style.marginTop = "0.5rem";
+            wrapper.style.marginBottom = "1.25rem";
+            wrapper.style.clear = "left";
+          } else {
+            wrapper.style.float = "none";
+            wrapper.style.marginLeft = "auto";
+            wrapper.style.marginRight = "auto";
+            wrapper.style.marginTop = "1.5rem";
+            wrapper.style.marginBottom = "1.5rem";
+            wrapper.style.clear = "both";
+            wrapper.style.display = "block";
+          }
         } else if (btnFit) {
           const img = wrapper.querySelector("img");
           if (img) {

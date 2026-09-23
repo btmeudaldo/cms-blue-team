@@ -140,3 +140,40 @@ body {
 .dark ::-webkit-scrollbar-thumb {
   background: #1a80ff;
 }
+
+/* Image Text-Wrapping & Float Layout */
+.lesson-img-wrapper.img-align-right,
+.lesson-img-wrapper.float-right,
+.img-align-right,
+img[style*="float: right"],
+img[style*="float:right"] {
+  float: right !important;
+  margin: 0.5rem 0 1.25rem 1.5rem !important;
+  clear: right;
+}
+
+.lesson-img-wrapper.img-align-left,
+.lesson-img-wrapper.float-left,
+.img-align-left,
+img[style*="float: left"],
+img[style*="float:left"] {
+  float: left !important;
+  margin: 0.5rem 1.5rem 1.25rem 0 !important;
+  clear: left;
+}
+
+.lesson-img-wrapper.img-align-center {
+  float: none !important;
+  margin: 1.5rem auto !important;
+  clear: both !important;
+  display: block !important;
+}
+
+/* Clearfix for articles so text wrapping completes cleanly */
+article::after,
+.prose::after,
+.lesson-editor-content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
