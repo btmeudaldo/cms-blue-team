@@ -43,6 +43,21 @@ export const C172_LESSON_1 = {
       </span>
     </div>
 
+    <!-- Guía de Navegación Estructural según Manual -->
+    <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-800 dark:text-amber-300">
+      <span class="font-bold flex items-center gap-1.5 mb-1">
+        <span>⚠️</span> <span>Estructura y Orden Interno de los Manuales de Flota:</span>
+      </span>
+      <p class="leading-relaxed">
+        Los cuatro manuales <strong>no siguen el mismo orden ni paginación</strong> debido a su historial de certificación:
+        en <strong>EC-NNA</strong> el POH base de Cessna figura al inicio (págs. 1-73) y el Suplemento Diésel al final (págs. 74-237);
+        en <strong>EC-OXV</strong> el Suplemento Diésel está al principio (págs. 1-74) y el manual F172K a continuación (págs. 75-100+);
+        en <strong>EC-OXT</strong> los Suplementos Diésel se encuentran en un volumen específico independiente;
+        y en <strong>EC-NNX</strong> el manual Reims precede a los suplementos (pág. 30 en adelante).
+        <em>Las referencias y enlaces de esta lección apuntan a la página exacta de cada documento para consulta inmediata.</em>
+      </p>
+    </div>
+
     <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
       <a href="/manuals/cessna/poh-ec-nna.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-white dark:bg-slate-900 text-sky-600 dark:text-sky-400 border border-sky-300 dark:border-sky-700 hover:border-sky-500 hover:shadow-md transition">
         <span>📘 EC-NNA (POH C172N + CD-155)</span>
@@ -79,16 +94,179 @@ export const C172_LESSON_1 = {
       1.1 Flota Cessna 172 Blue Team y Especificaciones por Matrícula
     </h2>
     
-    <!-- Imagen Flota con float / wrap -->
-    <div class="sm:float-right sm:ml-6 mb-4 sm:mb-2 sm:w-80 rounded-xl overflow-hidden border border-sky-500/30 bg-sky-950/20 p-3 shadow-md">
-      <div class="aspect-video w-full rounded-lg bg-slate-200 dark:bg-slate-800 flex flex-col items-center justify-center p-3 text-center border border-dashed border-sky-400/40">
-        <span class="text-2xl mb-1">📸</span>
-        <span class="text-xs font-bold text-sky-600 dark:text-sky-300">[FOTO-01: Flota Blue Team en Plataforma]</span>
-        <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">EC-OXT, EC-OXV, EC-NNA y EC-NNX alineados frente al hangar</span>
+    <!-- Diagrama Técnico 1.1: Geometría Tres Vistas y Dimensiones Principales (POH C172N Fig. 1-1) -->
+    <div class="my-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-sky-500/30 shadow-md">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 gap-2">
+        <div class="flex items-center gap-2">
+          <span class="p-1.5 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 font-mono text-xs font-bold">FIG. 1-1</span>
+          <div>
+            <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Diagrama Oficial: Geometría y Dimensiones Principales C172</h3>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Datos certificados POH Cessna 172N / Reims F172 (Escala técnica proporcional)</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+            Envergadura: 10.97 m (36' 0")
+          </span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+            Longitud: 8.20 m (26' 11")
+          </span>
+        </div>
       </div>
-      <p class="text-[11px] text-slate-500 dark:text-slate-400 text-center mt-2 italic">
-        Figura 1.1: Aeronaves C172 modernizadas con planta motriz Continental CD-135 / CD-155.
-      </p>
+
+      <!-- SVG Tres Vistas -->
+      <div class="w-full py-2 overflow-x-auto">
+        <svg viewBox="0 0 900 360" class="w-full min-w-[700px] h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#0284c7" />
+            </marker>
+            <marker id="arrow-amber" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#d97706" />
+            </marker>
+            <linearGradient id="planeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0284c7" stop-opacity="0.15" />
+              <stop offset="100%" stop-color="#0369a1" stop-opacity="0.25" />
+            </linearGradient>
+          </defs>
+
+          <!-- Cuadrícula técnica sutil de fondo -->
+          <pattern id="grid1" width="30" height="30" patternUnits="userSpaceOnUse">
+            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="currentColor" stroke-opacity="0.04" stroke-width="1" />
+          </pattern>
+          <rect width="900" height="360" fill="url(#grid1)" />
+
+          <!-- ================= VISTA PLANTA (SUPERIOR) ================= -->
+          <g transform="translate(10, 20)">
+            <text x="210" y="22" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[11px] font-bold uppercase tracking-wider">Vista en Planta (Top View)</text>
+            
+            <!-- Alas -->
+            <polygon points="190,55 230,55 385,82 385,115 230,110 190,110 35,115 35,82" fill="url(#planeGrad)" stroke="#0284c7" stroke-width="2" stroke-linejoin="round"/>
+            <!-- Líneas de flaps y alerones -->
+            <line x1="85" y1="108" x2="190" y2="108" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,2" />
+            <line x1="230" y1="108" x2="335" y2="108" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,2" />
+            <line x1="35" y1="105" x2="85" y2="105" stroke="#0284c7" stroke-width="1.5" />
+            <line x1="335" y1="105" x2="385" y2="105" stroke="#0284c7" stroke-width="1.5" />
+            <text x="137" y="124" text-anchor="middle" class="fill-sky-600 dark:fill-sky-400 text-[9px] font-semibold">Flap Izq</text>
+            <text x="282" y="124" text-anchor="middle" class="fill-sky-600 dark:fill-sky-400 text-[9px] font-semibold">Flap Der</text>
+            <text x="60" y="124" text-anchor="middle" class="fill-slate-500 text-[9px]">Alerón L</text>
+            <text x="360" y="124" text-anchor="middle" class="fill-slate-500 text-[9px]">Alerón R</text>
+
+            <!-- Fuselaje -->
+            <path d="M 210,38 C 218,38 226,60 226,105 L 223,240 C 223,260 216,285 210,290 C 204,285 197,260 197,240 L 194,105 C 194,60 202,38 210,38 Z" fill="url(#planeGrad)" stroke="#0284c7" stroke-width="2" />
+            <!-- Cabina parabrisas -->
+            <polygon points="200,85 220,85 223,120 197,120" fill="#38bdf8" fill-opacity="0.3" stroke="#0284c7" stroke-width="1" />
+            <!-- Hélice Tripala MT-Propeller -->
+            <ellipse cx="210" cy="38" rx="8" ry="4" fill="#0f172a" />
+            <line x1="210" y1="38" x2="210" y2="12" stroke="#d97706" stroke-width="3" stroke-linecap="round" />
+            <line x1="210" y1="38" x2="187" y2="51" stroke="#d97706" stroke-width="3" stroke-linecap="round" />
+            <line x1="210" y1="38" x2="233" y2="51" stroke="#d97706" stroke-width="3" stroke-linecap="round" />
+            <circle cx="210" cy="38" r="3" fill="#fbbf24" />
+
+            <!-- Estabilizador Horizontal y Timón Profundidad -->
+            <polygon points="160,270 260,270 270,292 150,292" fill="url(#planeGrad)" stroke="#0284c7" stroke-width="2" stroke-linejoin="round" />
+            <line x1="152" y1="285" x2="268" y2="285" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,2" />
+
+            <!-- Cota Envergadura Alar -->
+            <line x1="35" y1="42" x2="385" y2="42" stroke="#0284c7" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)" />
+            <line x1="35" y1="48" x2="35" y2="36" stroke="#0284c7" stroke-width="1" />
+            <line x1="385" y1="48" x2="385" y2="36" stroke="#0284c7" stroke-width="1" />
+            <rect x="155" y="32" width="110" height="18" rx="4" class="fill-white dark:fill-slate-900" stroke="#0284c7" stroke-width="1" />
+            <text x="210" y="45" text-anchor="middle" class="fill-sky-600 dark:fill-sky-400 text-[10px] font-bold">36' 0" (10.97 m)</text>
+
+            <!-- Cota Longitud Total -->
+            <line x1="15" y1="12" x2="15" y2="290" stroke="#0284c7" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)" />
+            <line x1="10" y1="12" x2="25" y2="12" stroke="#0284c7" stroke-width="1" />
+            <line x1="10" y1="290" x2="25" y2="290" stroke="#0284c7" stroke-width="1" />
+            <g transform="translate(10, 150) rotate(-90)">
+              <rect x="-55" y="-10" width="110" height="18" rx="4" class="fill-white dark:fill-slate-900" stroke="#0284c7" stroke-width="1" />
+              <text x="0" y="3" text-anchor="middle" class="fill-sky-600 dark:fill-sky-400 text-[10px] font-bold">26' 11" (8.20 m)</text>
+            </g>
+
+            <!-- Ancho Estabilizador Cota -->
+            <line x1="150" y1="310" x2="270" y2="310" stroke="#0284c7" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)" />
+            <text x="210" y="325" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[9px]">Estabilizador: 11' 4" (3.45 m)</text>
+          </g>
+
+          <!-- ================= VISTA PERFIL (LATERAL) ================= -->
+          <g transform="translate(450, 20)">
+            <text x="210" y="22" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[11px] font-bold uppercase tracking-wider">Vista Lateral (Side View)</text>
+            
+            <!-- Fuselaje Perfil -->
+            <path d="M 40,118 C 55,108 80,105 110,105 L 170,105 C 190,80 230,80 270,105 L 340,115 C 365,120 375,123 385,125 L 385,115 L 375,65 C 372,55 365,55 358,55 L 345,75 L 340,125 L 110,135 C 75,135 50,130 40,118 Z" fill="url(#planeGrad)" stroke="#0284c7" stroke-width="2" stroke-linejoin="round" />
+            
+            <!-- Cabina Cristal lateral -->
+            <path d="M 125,105 L 165,88 L 220,88 L 210,118 L 125,118 Z" fill="#38bdf8" fill-opacity="0.3" stroke="#0284c7" stroke-width="1" />
+            <line x1="165" y1="88" x2="165" y2="118" stroke="#0284c7" stroke-width="1" />
+
+            <!-- Ala Perfil montada alta -->
+            <path d="M 130,85 C 145,78 200,80 235,90 L 130,85 Z" fill="#0284c7" fill-opacity="0.4" stroke="#0284c7" stroke-width="1.5" />
+            <!-- Montante alar (Wing Strut) -->
+            <line x1="180" y1="88" x2="185" y2="132" stroke="#0369a1" stroke-width="2.5" stroke-linecap="round" />
+            <text x="215" y="102" class="fill-sky-700 dark:fill-sky-300 text-[9px] font-semibold">Montante Alar</text>
+
+            <!-- Tren de Aterrizaje -->
+            <!-- Tren Principal de ballesta de acero -->
+            <line x1="190" y1="133" x2="198" y2="168" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+            <circle cx="199" cy="172" r="8" fill="#1e293b" stroke="#64748b" stroke-width="2" />
+            <text x="212" y="172" class="fill-slate-600 dark:fill-slate-300 text-[9px] font-bold">Tren Principal</text>
+
+            <!-- Tren de Morro Oleoneumático -->
+            <line x1="72" y1="128" x2="75" y2="168" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+            <!-- Vástago cromado visible -->
+            <line x1="74" y1="152" x2="74.5" y2="161" stroke="#38bdf8" stroke-width="2" />
+            <circle cx="76" cy="172" r="7" fill="#1e293b" stroke="#64748b" stroke-width="2" />
+            <text x="50" y="195" text-anchor="middle" class="fill-amber-600 dark:fill-amber-400 text-[9px] font-bold">Puntal Morro</text>
+
+            <!-- Hélice Frontal Perfil -->
+            <line x1="36" y1="80" x2="36" y2="155" stroke="#d97706" stroke-width="3" stroke-linecap="round" />
+            <circle cx="38" cy="118" r="5" fill="#0f172a" />
+            
+            <!-- Cota de Altura Total -->
+            <line x1="410" y1="55" x2="410" y2="180" stroke="#0284c7" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)" />
+            <line x1="400" y1="55" x2="415" y2="55" stroke="#0284c7" stroke-width="1" />
+            <line x1="400" y1="180" x2="415" y2="180" stroke="#0284c7" stroke-width="1" />
+            <g transform="translate(425, 118) rotate(90)">
+              <rect x="-45" y="-10" width="90" height="18" rx="4" class="fill-white dark:fill-slate-900" stroke="#0284c7" stroke-width="1" />
+              <text x="0" y="3" text-anchor="middle" class="fill-sky-600 dark:fill-sky-400 text-[10px] font-bold">8' 9.5" (2.68 m)</text>
+            </g>
+
+            <!-- Distancia entre Ejes (Wheelbase) -->
+            <line x1="76" y1="183" x2="199" y2="183" stroke="#d97706" stroke-width="1.5" marker-start="url(#arrow-amber)" marker-end="url(#arrow-amber)" />
+            <text x="137" y="197" text-anchor="middle" class="fill-amber-600 dark:fill-amber-400 text-[9px] font-bold">Batalla: 5' 5" (1.65 m)</text>
+
+            <!-- ================= VISTA FRONTAL (ESQUEMA TREN Y VÍA) ================= -->
+            <g transform="translate(30, 220)">
+              <text x="180" y="15" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[10px] font-bold uppercase tracking-wider">Vía del Tren Principal (Front View)</text>
+              <!-- Arco fuselaje frontal -->
+              <ellipse cx="180" cy="50" rx="30" ry="24" fill="url(#planeGrad)" stroke="#0284c7" stroke-width="1.5" />
+              <!-- Alas frontales con diedro 1°30' -->
+              <line x1="60" y1="36" x2="180" y2="40" stroke="#0284c7" stroke-width="2.5" />
+              <line x1="180" y1="40" x2="300" y2="36" stroke="#0284c7" stroke-width="2.5" />
+              <!-- Montantes -->
+              <line x1="100" y1="38" x2="165" y2="58" stroke="#0369a1" stroke-width="2" />
+              <line x1="260" y1="38" x2="195" y2="58" stroke="#0369a1" stroke-width="2" />
+              <!-- Patas de tren principal -->
+              <line x1="165" y1="60" x2="130" y2="92" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+              <line x1="195" y1="60" x2="230" y2="92" stroke="#334155" stroke-width="3" stroke-linecap="round" />
+              <circle cx="128" cy="94" r="6" fill="#1e293b" />
+              <circle cx="232" cy="94" r="6" fill="#1e293b" />
+              <!-- Rueda morro central -->
+              <line x1="180" y1="65" x2="180" y2="90" stroke="#64748b" stroke-width="2" />
+              <circle cx="180" cy="94" r="5" fill="#1e293b" />
+              <!-- Cota de Vía (Wheel Track) -->
+              <line x1="128" y1="106" x2="232" y2="106" stroke="#0284c7" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)" />
+              <rect x="140" y="112" width="80" height="16" rx="3" class="fill-white dark:fill-slate-900" stroke="#0284c7" stroke-width="1" />
+              <text x="180" y="123" text-anchor="middle" class="fill-sky-600 dark:fill-sky-400 text-[9px] font-bold">Vía: 8' 4" (2.54 m)</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+        <span>Fuente: POH Cessna 172N Sección 1 (Pág. 4, Figura 1-1 "Principal Dimensions").</span>
+        <span class="font-medium text-sky-600 dark:text-sky-400">Hélice Tripala MT-Propeller: Diámetro 1.87 m (MTV-6-A-187-129)</span>
+      </div>
     </div>
 
     <p class="text-sm leading-relaxed mb-3">
@@ -250,6 +428,125 @@ export const C172_LESSON_1 = {
       </div>
     </div>
 
+    <!-- Diagrama Técnico 1.2: Perfil Aerodinámico y Cinemática de Flaps Ranurados (Slotted Flaps) -->
+    <div class="mt-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-sky-500/30 shadow-md">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 gap-2">
+        <div class="flex items-center gap-2">
+          <span class="p-1.5 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 font-mono text-xs font-bold">FIG. 7-3</span>
+          <div>
+            <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Diagrama Oficial: Cinemática y Deflexión de Flaps Ranurados</h3>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Efecto slot de alta energía y comparativa angular: 0°-30° (EC-NNA) vs 0°-40° (EC-OXV / EC-OXT / EC-NNX)</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+            NNA: Máx 30°
+          </span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+            OXV/OXT/NNX: Máx 40°
+          </span>
+        </div>
+      </div>
+
+      <div class="w-full py-2 overflow-x-auto">
+        <svg viewBox="0 0 850 280" class="w-full min-w-[650px] h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow-flow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+              <path d="M 0 2 L 8 5 L 0 8 z" fill="#38bdf8" />
+            </marker>
+            <linearGradient id="airfoilGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0284c7" stop-opacity="0.25" />
+              <stop offset="100%" stop-color="#0284c7" stop-opacity="0.08" />
+            </linearGradient>
+            <linearGradient id="slotFlowGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+              <stop offset="100%" stop-color="#0284c7" stop-opacity="0.3" />
+            </linearGradient>
+          </defs>
+
+          <!-- ================= PANEL IZQUIERDO: AERODINÁMICA DEL FLAP RANURADO (SLOT) ================= -->
+          <g transform="translate(10, 15)">
+            <text x="210" y="20" text-anchor="middle" class="fill-slate-600 dark:fill-slate-300 text-[11px] font-bold uppercase tracking-wider">Principio Aerodinámico — Flap Ranurado (Slotted Airfoil)</text>
+            
+            <!-- Perfil Principal del Ala (Corte Transversal NACA 2412) -->
+            <path d="M 50,110 C 60,65 140,55 240,65 C 290,70 320,82 340,95 C 330,115 315,120 295,125 C 220,130 110,135 50,110 Z" fill="url(#airfoilGrad)" stroke="#0284c7" stroke-width="2" />
+            <text x="170" y="98" text-anchor="middle" class="fill-sky-800 dark:fill-sky-200 text-xs font-bold">Semiala C172 (NACA 2412)</text>
+            
+            <!-- Flap Ranurado en posición desplegada (20°) -->
+            <path d="M 330,105 C 342,98 360,98 395,115 L 430,155 C 410,162 385,155 355,145 C 335,138 322,125 330,105 Z" fill="#0284c7" fill-opacity="0.3" stroke="#0284c7" stroke-width="2" />
+            <text x="395" y="142" text-anchor="middle" class="fill-sky-700 dark:fill-sky-300 text-[10px] font-bold">Flap Ranurado</text>
+
+            <!-- Ranura (Slot) señalizada -->
+            <path d="M 305,135 C 320,128 328,112 340,100" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow-flow)" />
+            <path d="M 290,140 C 315,135 330,118 355,108 C 375,105 405,120 425,145" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrow-flow)" />
+            
+            <!-- Callout Ranura de Alta Energía -->
+            <rect x="220" y="155" width="140" height="34" rx="6" class="fill-sky-50 dark:fill-slate-800" stroke="#0284c7" stroke-width="1" />
+            <text x="290" y="169" text-anchor="middle" class="fill-sky-700 dark:fill-sky-300 text-[10px] font-bold">Ranura (Slot) de Alta Presión</text>
+            <text x="290" y="181" text-anchor="middle" class="fill-slate-500 dark:fill-slate-400 text-[9px]">Retarda desprendimiento de capa límite</text>
+
+            <!-- Flechas de flujo de aire superior e inferior -->
+            <path d="M 30,85 C 80,48 180,40 280,50 C 340,58 390,85 435,130" fill="none" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrow-flow)" />
+            <path d="M 30,125 C 100,140 200,142 280,142" fill="none" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="5,3" />
+            
+            <text x="210" y="225" text-anchor="middle" class="fill-slate-600 dark:fill-slate-400 text-[10px]">
+              Al extenderse, abre una tobera convergente que canaliza aire de alta energía desde el intradós hacia el extradós.
+            </text>
+          </g>
+
+          <!-- Divisor Vertical -->
+          <line x1="475" y1="20" x2="475" y2="245" stroke="#cbd5e1" stroke-dasharray="4,4" class="dark:stroke-slate-800" stroke-width="1.5" />
+
+          <!-- ================= PANEL DERECHO: COMPARATIVA DE DEFLEXIÓN ANGULAR ================= -->
+          <g transform="translate(490, 15)">
+            <text x="175" y="20" text-anchor="middle" class="fill-slate-600 dark:fill-slate-300 text-[11px] font-bold uppercase tracking-wider">Cinemática y Recorrido de Flaps en Flota</text>
+
+            <!-- Eje Pivote -->
+            <circle cx="90" cy="110" r="6" fill="#0284c7" stroke="#0369a1" stroke-width="2" />
+            <text x="90" y="95" text-anchor="middle" class="fill-slate-500 text-[9px] font-bold">Eje de Giro</text>
+
+            <!-- Posición Flap 0° (Línea de cuerda neutra) -->
+            <line x1="90" y1="110" x2="270" y2="110" stroke="#64748b" stroke-width="2" stroke-dasharray="4,4" />
+            <text x="285" y="113" class="fill-slate-500 font-mono text-[10px] font-bold">0° (UP)</text>
+
+            <!-- Posición 10° -->
+            <line x1="90" y1="110" x2="265" y2="140" stroke="#0ea5e9" stroke-width="2" />
+            <circle cx="265" cy="140" r="3" fill="#0ea5e9" />
+            <text x="280" y="143" class="fill-sky-600 dark:fill-sky-400 font-mono text-[10px] font-bold">10° <tspan class="text-[9px] font-normal text-slate-500">(110 kt NNA / 85 kt OXV)</tspan></text>
+
+            <!-- Posición 20° -->
+            <line x1="90" y1="110" x2="250" y2="170" stroke="#0284c7" stroke-width="2" />
+            <circle cx="250" cy="170" r="3" fill="#0284c7" />
+            <text x="265" y="173" class="fill-sky-700 dark:fill-sky-300 font-mono text-[10px] font-bold">20° <tspan class="text-[9px] font-normal text-slate-500">(Aprox / Campo Corto)</tspan></text>
+
+            <!-- Posición 30° (LÍMITE EC-NNA) -->
+            <line x1="90" y1="110" x2="225" y2="198" stroke="#d97706" stroke-width="2.5" />
+            <circle cx="225" cy="198" r="4" fill="#d97706" />
+            <rect x="238" y="190" width="105" height="17" rx="3" class="fill-amber-50 dark:fill-amber-950/40" stroke="#d97706" stroke-width="1" />
+            <text x="290" y="202" text-anchor="middle" class="fill-amber-600 dark:fill-amber-400 font-mono text-[10px] font-bold">30° (MÁX EC-NNA)</text>
+
+            <!-- Posición 40° (LÍMITE EC-OXV, EC-OXT, EC-NNX) -->
+            <line x1="90" y1="110" x2="195" y2="220" stroke="#0284c7" stroke-width="2.5" />
+            <circle cx="195" cy="220" r="4" fill="#0284c7" />
+            <rect x="208" y="215" width="135" height="17" rx="3" class="fill-sky-50 dark:fill-sky-950/40" stroke="#0284c7" stroke-width="1" />
+            <text x="275" y="227" text-anchor="middle" class="fill-sky-600 dark:fill-sky-400 font-mono text-[10px] font-bold">40° (OXV · OXT · NNX)</text>
+
+            <!-- Sector de Ángulo -->
+            <path d="M 230,110 A 140 140 0 0 1 180,205" fill="none" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="2,2" />
+
+            <text x="175" y="255" text-anchor="middle" class="fill-slate-500 text-[10px]">
+              Motor eléctrico con eje sinfín en semiala derecha accionado por switch selector de consola.
+            </text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+        <span>Fuente: POH Cessna 172N / Reims F172 Sección 7 ("Wing Flap System & Kinematics").</span>
+        <span class="font-medium text-amber-600 dark:text-amber-400">Vfe: 85 KIAS (Flap Completo) · EC-NNA Flap 10° autorizado hasta 110 KIAS</span>
+      </div>
+    </div>
+
     <!-- Recuadro Comparativo Flota 1.2 -->
     <div class="mt-4 p-3.5 rounded-xl bg-gradient-to-r from-sky-500/10 via-sky-500/5 to-transparent border border-sky-500/20 text-xs space-y-2">
       <div class="flex items-center gap-2 font-bold text-sky-700 dark:text-sky-300">
@@ -286,15 +583,166 @@ export const C172_LESSON_1 = {
       1.3 Tren de Aterrizaje, Dirección de Morro y Sistema de Frenos
     </h2>
 
-    <div class="sm:float-right sm:ml-6 mb-4 sm:mb-2 sm:w-72 rounded-xl overflow-hidden border border-amber-500/30 bg-amber-950/20 p-3 shadow-md">
-      <div class="aspect-square w-full rounded-lg bg-slate-200 dark:bg-slate-800 flex flex-col items-center justify-center p-3 text-center border border-dashed border-amber-400/40">
-        <span class="text-2xl mb-1">📸</span>
-        <span class="text-xs font-bold text-amber-600 dark:text-amber-300">[FOTO-02: Tren de Morro C172]</span>
-        <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Puntal oleoneumático (2-3 dedos de extensión), tijera de dirección y shimmy damper</span>
+    <!-- Diagrama Técnico 1.3: Tren de Morro Oleoneumático, Amortiguador de Bamboleo y Cinemática de Dirección -->
+    <div class="my-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-amber-500/30 shadow-md">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 gap-2">
+        <div class="flex items-center gap-2">
+          <span class="p-1.5 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 font-mono text-xs font-bold">FIG. 7-4</span>
+          <div>
+            <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Diagrama Oficial: Esquema Funcional del Tren de Morro y Dirección</h3>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Puntal oleoneumático (MIL-H-5606), amortiguador de bamboleo (shimmy damper) y ángulos de giro</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+            Extensión: 2-3 Dedos (~5 cm)
+          </span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+            Giro: 10° Pedales / 30° Frenos
+          </span>
+        </div>
       </div>
-      <p class="text-[11px] text-slate-500 dark:text-slate-400 text-center mt-2 italic">
-        Figura 1.2: Inspección exterior del tren de morro en prevuelo.
-      </p>
+
+      <div class="w-full py-2 overflow-x-auto">
+        <svg viewBox="0 0 860 320" class="w-full min-w-[700px] h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow-amber2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#d97706" />
+            </marker>
+            <marker id="arrow-sky2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#0284c7" />
+            </marker>
+            <linearGradient id="chromeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#94a3b8" />
+              <stop offset="30%" stop-color="#f8fafc" />
+              <stop offset="70%" stop-color="#cbd5e1" />
+              <stop offset="100%" stop-color="#64748b" />
+            </linearGradient>
+            <linearGradient id="fluidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ef4444" stop-opacity="0.8" />
+              <stop offset="100%" stop-color="#b91c1c" stop-opacity="0.9" />
+            </linearGradient>
+          </defs>
+
+          <!-- ================= PANEL IZQUIERDO: SECCIÓN DEL PUNTAL OLEONEUMÁTICO ================= -->
+          <g transform="translate(20, 15)">
+            <text x="170" y="18" text-anchor="middle" class="fill-slate-600 dark:fill-slate-300 text-[11px] font-bold uppercase tracking-wider">Corte Técnico — Puntal Telescópico Oleoneumático</text>
+
+            <!-- Soporte Superior al Cortafuegos -->
+            <rect x="130" y="32" width="80" height="14" rx="3" fill="#334155" />
+            <text x="170" y="42" text-anchor="middle" class="fill-slate-200 text-[9px] font-semibold">Anclaje Cortafuegos</text>
+
+            <!-- Cilindro Exterior (Barril) -->
+            <rect x="145" y="46" width="50" height="95" rx="4" fill="#475569" stroke="#1e293b" stroke-width="2" />
+            
+            <!-- Cámara de Nitrógeno / Aire a Presión -->
+            <rect x="150" y="52" width="40" height="35" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3,2" />
+            <text x="170" y="73" text-anchor="middle" class="fill-sky-700 dark:fill-sky-300 text-[9px] font-bold">Aire / N₂ Presión</text>
+
+            <!-- Cámara de Fluido Hidráulico MIL-H-5606 (Líquido Rojo) -->
+            <rect x="150" y="87" width="40" height="48" fill="url(#fluidGrad)" />
+            <text x="170" y="112" text-anchor="middle" class="fill-white text-[9px] font-black tracking-tight">MIL-H-5606</text>
+            <text x="170" y="123" text-anchor="middle" class="fill-rose-100 text-[8px] font-medium">(Líquido Rojo)</text>
+
+            <!-- Válvula de Orificio Dosificador (Metering Pin) -->
+            <line x1="150" y1="87" x2="165" y2="87" stroke="#0f172a" stroke-width="2" />
+            <line x1="175" y1="87" x2="190" y2="87" stroke="#0f172a" stroke-width="2" />
+            <circle cx="170" cy="87" r="2.5" fill="#f8fafc" />
+
+            <!-- Vástago Cromado Inferior Móvil (Piston Tube) -->
+            <rect x="155" y="141" width="30" height="52" fill="url(#chromeGrad)" stroke="#475569" stroke-width="1.5" />
+
+            <!-- Cota de Extensión en Prevuelo (2-3 Dedos) -->
+            <line x1="200" y1="141" x2="200" y2="193" stroke="#d97706" stroke-width="2" marker-start="url(#arrow-amber2)" marker-end="url(#arrow-amber2)" />
+            <line x1="188" y1="141" x2="206" y2="141" stroke="#d97706" stroke-width="1" />
+            <line x1="188" y1="193" x2="206" y2="193" stroke="#d97706" stroke-width="1" />
+            <rect x="210" y="155" width="125" height="24" rx="4" class="fill-amber-50 dark:fill-amber-950/60" stroke="#d97706" stroke-width="1" />
+            <text x="272" y="167" text-anchor="middle" class="fill-amber-700 dark:fill-amber-300 text-[10px] font-bold">2 - 3 DEDOS (~5 cm)</text>
+            <text x="272" y="176" text-anchor="middle" class="fill-slate-500 text-[8px]">Comprobación obligatoria prevuelo</text>
+
+            <!-- Tijera de Torsión (Torque Links) que mantiene la rueda alineada -->
+            <polyline points="145,120 120,145 155,170" fill="none" stroke="#64748b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="145" cy="120" r="3" fill="#0f172a" />
+            <circle cx="120" cy="145" r="3" fill="#0f172a" />
+            <circle cx="155" cy="170" r="3" fill="#0f172a" />
+            <text x="110" y="148" text-anchor="end" class="fill-slate-500 text-[9px] font-semibold">Tijera de Torsión</text>
+
+            <!-- Horquilla Inferior y Rueda -->
+            <path d="M 155,193 L 155,225 L 140,245 L 200,245 L 185,225 L 185,193 Z" fill="#475569" stroke="#1e293b" stroke-width="1.5" />
+            <!-- Neumático de Morro -->
+            <ellipse cx="170" cy="255" rx="30" ry="18" fill="#1e293b" stroke="#0f172a" stroke-width="2" />
+            <circle cx="170" cy="255" r="9" fill="#94a3b8" stroke="#334155" stroke-width="2" />
+            <text x="170" y="290" text-anchor="middle" class="fill-slate-500 text-[9px]">Presión: 26 - 31 PSI</text>
+          </g>
+
+          <!-- Divisor Vertical -->
+          <line x1="380" y1="20" x2="380" y2="295" stroke="#cbd5e1" stroke-dasharray="4,4" class="dark:stroke-slate-800" stroke-width="1.5" />
+
+          <!-- ================= PANEL DERECHO: SHIMMY DAMPER Y ÁNGULOS DE DIRECCIÓN ================= -->
+          <g transform="translate(410, 15)">
+            <text x="210" y="18" text-anchor="middle" class="fill-slate-600 dark:fill-slate-300 text-[11px] font-bold uppercase tracking-wider">Shimmy Damper y Cinemática de Giro</text>
+
+            <!-- Subdiagrama A: Shimmy Damper Hidráulico -->
+            <g transform="translate(20, 32)">
+              <rect x="30" y="8" width="130" height="28" rx="4" fill="#334155" stroke="#1e293b" stroke-width="1.5" />
+              <!-- Fluido interno amortiguador -->
+              <rect x="40" y="12" width="110" height="20" fill="url(#fluidGrad)" />
+              <!-- Pistón con orificio calibrado -->
+              <rect x="90" y="10" width="8" height="24" fill="#cbd5e1" stroke="#475569" stroke-width="1" />
+              <line x1="30" y1="22" x2="20" y2="22" stroke="#64748b" stroke-width="3" />
+              <line x1="98" y1="22" x2="185" y2="22" stroke="#64748b" stroke-width="3" />
+              <circle cx="18" cy="22" r="3" fill="#0f172a" />
+              <circle cx="187" cy="22" r="3" fill="#0f172a" />
+              <text x="95" y="47" text-anchor="middle" class="fill-sky-700 dark:fill-sky-300 text-[9px] font-bold">Amortiguador de Bamboleo (Shimmy Damper)</text>
+              <text x="95" y="58" text-anchor="middle" class="fill-slate-500 text-[8px]">Previene oscilaciones violentas de alta frecuencia en despegue/toma</text>
+            </g>
+
+            <!-- Subdiagrama B: Cinemática de Dirección y Pedales -->
+            <g transform="translate(20, 105)">
+              <text x="200" y="15" text-anchor="middle" class="fill-slate-500 text-[10px] font-bold uppercase">Límites de Giro de la Rueda de Morro</text>
+
+              <!-- Eje Central Neutro -->
+              <line x1="200" y1="120" x2="200" y2="20" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,4" />
+              <circle cx="200" cy="120" r="6" fill="#0284c7" />
+
+              <!-- Giro solo con Pedales (+/- 10°) -->
+              <path d="M 200,120 L 175,35" stroke="#0ea5e9" stroke-width="2.5" />
+              <path d="M 200,120 L 225,35" stroke="#0ea5e9" stroke-width="2.5" />
+              <!-- Arco 10° -->
+              <path d="M 183,55 A 70 70 0 0 1 217,55" fill="none" stroke="#0ea5e9" stroke-width="2" />
+              <rect x="155" y="65" width="90" height="18" rx="3" class="fill-sky-50 dark:fill-sky-950/60" stroke="#0ea5e9" stroke-width="1" />
+              <text x="200" y="77" text-anchor="middle" class="fill-sky-700 dark:fill-sky-300 font-mono text-[9px] font-bold">± 10° (Solo Pedales)</text>
+
+              <!-- Giro con Frenado Diferencial (+/- 30°) -->
+              <path d="M 200,120 L 135,45" stroke="#d97706" stroke-width="2" stroke-dasharray="3,2" />
+              <path d="M 200,120 L 265,45" stroke="#d97706" stroke-width="2" stroke-dasharray="3,2" />
+              <!-- Arco 30° -->
+              <path d="M 155,50 A 100 100 0 0 1 245,50" fill="none" stroke="#d97706" stroke-width="2" />
+              <rect x="135" y="22" width="130" height="18" rx="3" class="fill-amber-50 dark:fill-amber-950/60" stroke="#d97706" stroke-width="1" />
+              <text x="200" y="34" text-anchor="middle" class="fill-amber-700 dark:fill-amber-300 font-mono text-[9px] font-bold">± 30° (Frenado Diferencial)</text>
+
+              <!-- Varillaje elástico con muelles (Steering Bungee) -->
+              <g transform="translate(10, 115)">
+                <rect x="0" y="0" width="120" height="22" rx="4" class="fill-slate-100 dark:fill-slate-800" stroke="#94a3b8" stroke-width="1" />
+                <text x="60" y="14" text-anchor="middle" class="fill-slate-600 dark:fill-slate-300 text-[9px] font-semibold">Varilla Elástica con Resortes</text>
+              </g>
+              <g transform="translate(270, 115)">
+                <rect x="0" y="0" width="120" height="22" rx="4" class="fill-slate-100 dark:fill-slate-800" stroke="#94a3b8" stroke-width="1" />
+                <text x="60" y="14" text-anchor="middle" class="fill-slate-600 dark:fill-slate-300 text-[9px] font-semibold">Desconexión en Vuelo (Aire)</text>
+              </g>
+
+              <text x="200" y="155" text-anchor="middle" class="fill-slate-500 text-[9px]">
+                En vuelo, el puntal se extiende completamente y desacopla el varillaje de dirección para reducir la resistencia aerodinámica de los pedales.
+              </text>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+        <span>Fuente: POH Cessna 172N / Reims F172 Sección 7 ("Nose Gear Strut & Steering System").</span>
+        <span class="font-medium text-amber-600 dark:text-amber-400">Inspección Prevuelo: Comprobar vástago limpio sin película de aceite ni mellas</span>
+      </div>
     </div>
 
     <div class="space-y-3 text-sm leading-relaxed">
@@ -357,16 +805,178 @@ export const C172_LESSON_1 = {
       </span>
     </div>
 
-    <!-- Anemómetro Float / Wrap -->
-    <div class="sm:float-right sm:ml-6 mb-4 sm:mb-2 sm:w-72 rounded-xl overflow-hidden border border-red-500/30 bg-red-950/20 p-3 shadow-md">
-      <div class="aspect-square w-full rounded-lg bg-slate-200 dark:bg-slate-800 flex flex-col items-center justify-center p-3 text-center border border-dashed border-red-400/40">
-        <span class="text-2xl mb-1">⏱️</span>
-        <span class="text-xs font-bold text-red-600 dark:text-red-300">[FOTO-03: Anemómetro de Cabina]</span>
-        <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Arcos blanco (41-85), verde (47-128), amarillo (128-160) y línea roja (160 KIAS)</span>
+    <!-- Diagrama Técnico 1.4: Dial Oficial del Anemómetro y Arcos de Velocidad (POH Sec. 2) -->
+    <div class="my-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-red-500/30 shadow-md">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 gap-2">
+        <div class="flex items-center gap-2">
+          <span class="p-1.5 rounded-lg bg-red-500/10 text-red-600 dark:text-red-400 font-mono text-xs font-bold">SEC. 2</span>
+          <div>
+            <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Diagrama Oficial: Dial del Anemómetro y Código de Colores Reglamentario</h3>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Calibración en KIAS (Nudos Indicados) conforme a EASA CS-23 y POH C172</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20">
+            Vne: 160 KIAS (Línea Roja)
+          </span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+            Arco Blanco: 41 - 85 KIAS
+          </span>
+        </div>
       </div>
-      <p class="text-[11px] text-slate-500 dark:text-slate-400 text-center mt-2 italic">
-        Figura 1.3: Marcación oficial de velocidades aerodinámicas.
-      </p>
+
+      <div class="w-full py-2 overflow-x-auto">
+        <svg viewBox="0 0 860 380" class="w-full min-w-[720px] h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="dialShadow" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3" />
+            </filter>
+            <radialGradient id="bezelGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="85%" stop-color="#1e293b" />
+              <stop offset="96%" stop-color="#334155" />
+              <stop offset="100%" stop-color="#0f172a" />
+            </radialGradient>
+          </defs>
+
+          <!-- ================= PANEL IZQUIERDO: DIAL ANALÓGICO CIRCULAR DEL ANEMÓMETRO ================= -->
+          <g transform="translate(190, 190)">
+            <!-- Bisel exterior -->
+            <circle cx="0" cy="0" r="160" fill="url(#bezelGrad)" stroke="#475569" stroke-width="4" filter="url(#dialShadow)" />
+            <!-- Tornillos de fijación instrumental en panel -->
+            <circle cx="-142" cy="-142" r="4" fill="#64748b" stroke="#0f172a" stroke-width="1" />
+            <circle cx="142" cy="-142" r="4" fill="#64748b" stroke="#0f172a" stroke-width="1" />
+            <circle cx="-142" cy="142" r="4" fill="#64748b" stroke="#0f172a" stroke-width="1" />
+            <circle cx="142" cy="142" r="4" fill="#64748b" stroke="#0f172a" stroke-width="1" />
+
+            <!-- Fondo negro de la esfera -->
+            <circle cx="0" cy="0" r="140" fill="#090d16" stroke="#1e293b" stroke-width="2" />
+
+            <!-- ================= ARCOS DE COLOR (ESCALA: 0kt = 220°, 40kt = 150°, 85kt = 40°, 128kt = -60°, 160kt = -135°) ================= -->
+            
+            <!-- ARCO BLANCO: 41 a 85 KIAS (Flap Operating Range) -->
+            <!-- Radio 124, desde ~150° hasta ~40° -->
+            <path d="M -107,62 A 124 124 0 0 1 95,79" fill="none" stroke="#f8fafc" stroke-width="10" stroke-linecap="round" />
+            
+            <!-- ARCO VERDE: 47 a 128 KIAS (Normal Operating Range) -->
+            <!-- Radio 112, desde ~138° hasta ~ -60° -->
+            <path d="M -83,75 A 112 112 0 1 1 56,-97" fill="none" stroke="#22c55e" stroke-width="9" />
+
+            <!-- ARCO AMARILLO: 128 a 160 KIAS (Caution Range - Smooth Air Only) -->
+            <!-- Radio 112, desde ~ -60° hasta ~ -135° -->
+            <path d="M 56,-97 A 112 112 0 0 1 -79,-79" fill="none" stroke="#eab308" stroke-width="9" />
+
+            <!-- LÍNEA ROJA RADIAL: 160 KIAS (Vne - Never Exceed Speed) -->
+            <line x1="-80" y1="-80" x2="-130" y2="-130" stroke="#ef4444" stroke-width="6" stroke-linecap="round" />
+
+            <!-- MARCAS Y NÚMEROS DE VELOCIDAD -->
+            <!-- 40 KIAS -->
+            <line x1="-115" y1="66" x2="-130" y2="75" stroke="#f8fafc" stroke-width="2.5" />
+            <text x="-100" y="60" text-anchor="middle" class="fill-white font-mono text-[11px] font-bold">40</text>
+
+            <!-- 60 KIAS -->
+            <line x1="-35" y1="125" x2="-40" y2="135" stroke="#f8fafc" stroke-width="2.5" />
+            <text x="-30" y="112" text-anchor="middle" class="fill-white font-mono text-[11px] font-bold">60</text>
+
+            <!-- 80 KIAS -->
+            <line x1="68" y1="105" x2="78" y2="120" stroke="#f8fafc" stroke-width="2.5" />
+            <text x="60" y="94" text-anchor="middle" class="fill-white font-mono text-[11px] font-bold">80</text>
+
+            <!-- 100 KIAS -->
+            <line x1="125" y1="10" x2="137" y2="10" stroke="#f8fafc" stroke-width="2.5" />
+            <text x="105" y="14" text-anchor="middle" class="fill-white font-mono text-[11px] font-bold">100</text>
+
+            <!-- 120 KIAS -->
+            <line x1="95" y1="-80" x2="105" y2="-88" stroke="#f8fafc" stroke-width="2.5" />
+            <text x="80" y="-68" text-anchor="middle" class="fill-white font-mono text-[11px] font-bold">120</text>
+
+            <!-- 140 KIAS -->
+            <line x1="0" y1="-125" x2="0" y2="-138" stroke="#f8fafc" stroke-width="2.5" />
+            <text x="0" y="-105" text-anchor="middle" class="fill-white font-mono text-[11px] font-bold">140</text>
+
+            <!-- 160 KIAS -->
+            <text x="-80" y="-95" text-anchor="middle" class="fill-red-400 font-mono text-[12px] font-black">160</text>
+
+            <!-- Texto Central en Dial -->
+            <text x="0" y="-30" text-anchor="middle" class="fill-slate-400 font-mono text-[9px] font-bold tracking-widest">AIRSPEED</text>
+            <text x="0" y="-18" text-anchor="middle" class="fill-sky-400 font-mono text-[12px] font-black tracking-widest">KNOTS</text>
+            <text x="0" y="45" text-anchor="middle" class="fill-slate-500 font-mono text-[8px]">C172 / EASA CS-23</text>
+
+            <!-- Aguja Analógica indicando 105 KIAS (Crucero típico) -->
+            <g transform="rotate(78)">
+              <polygon points="-4,20 0,-120 4,20" fill="#f8fafc" stroke="#0f172a" stroke-width="1" />
+              <polygon points="-2,15 0,-115 2,15" fill="#f8fafc" />
+              <circle cx="0" cy="0" r="16" fill="#1e293b" stroke="#475569" stroke-width="3" />
+              <circle cx="0" cy="0" r="6" fill="#0f172a" />
+            </g>
+          </g>
+
+          <!-- ================= PANEL DERECHO: LEYENDA TÉCNICA Y PREGUNTAS DE EXAMEN ================= -->
+          <g transform="translate(390, 25)">
+            <text x="0" y="16" class="fill-slate-900 dark:fill-white text-xs font-bold uppercase tracking-wider">
+              Marcación Oficial de Velocidades y Criterios EASA (POH Sec. 2)
+            </text>
+
+            <!-- Ítem 1: Vne Línea Roja -->
+            <g transform="translate(0, 30)">
+              <rect x="0" y="0" width="440" height="48" rx="8" class="fill-red-50 dark:fill-red-950/40" stroke="#ef4444" stroke-width="1.5" />
+              <circle cx="18" cy="24" r="8" fill="#ef4444" />
+              <text x="18" y="28" text-anchor="middle" class="fill-white font-mono text-[10px] font-black">!</text>
+              <text x="36" y="19" class="fill-red-700 dark:fill-red-300 font-bold text-xs">Vne — 160 KIAS (Línea Roja Radial) · [Preguntas 7 y 8]</text>
+              <text x="36" y="36" class="fill-slate-600 dark:fill-slate-300 text-[10px]">
+                <em>"Velocidad que no se puede exceder bajo ninguna condición de vuelo"</em> (165 KCAS).
+              </text>
+            </g>
+
+            <!-- Ítem 2: Arco Amarillo -->
+            <g transform="translate(0, 86)">
+              <rect x="0" y="0" width="440" height="48" rx="8" class="fill-amber-50 dark:fill-amber-950/40" stroke="#eab308" stroke-width="1.5" />
+              <circle cx="18" cy="24" r="8" fill="#eab308" />
+              <text x="36" y="19" class="fill-amber-700 dark:fill-amber-300 font-bold text-xs">Arco Amarillo — 128 a 160 KIAS (Vno a Vne)</text>
+              <text x="36" y="36" class="fill-slate-600 dark:fill-slate-300 text-[10px]">
+                Rango de precaución. Operar solo en aire completamente calmo (<em>smooth air</em>).
+              </text>
+            </g>
+
+            <!-- Ítem 3: Arco Verde -->
+            <g transform="translate(0, 142)">
+              <rect x="0" y="0" width="440" height="48" rx="8" class="fill-emerald-50 dark:fill-emerald-950/40" stroke="#22c55e" stroke-width="1.5" />
+              <circle cx="18" cy="24" r="8" fill="#22c55e" />
+              <text x="36" y="19" class="fill-emerald-700 dark:fill-emerald-300 font-bold text-xs">Arco Verde — 47 a 128 KIAS (Vs1 a Vno)</text>
+              <text x="36" y="36" class="fill-slate-600 dark:fill-slate-300 text-[10px]">
+                Rango normal de operación estructural. <strong>Vs1 = 47 KIAS</strong> (pérdida limpia MTOW).
+              </text>
+            </g>
+
+            <!-- Ítem 4: Arco Blanco -->
+            <g transform="translate(0, 198)">
+              <rect x="0" y="0" width="440" height="58" rx="8" class="fill-sky-50 dark:fill-sky-950/40" stroke="#0284c7" stroke-width="1.5" />
+              <circle cx="18" cy="29" r="8" fill="#0284c7" />
+              <text x="36" y="19" class="fill-sky-700 dark:fill-sky-300 font-bold text-xs">Arco Blanco — 41 a 85 KIAS (Vso a Vfe) · [Pregunta 9]</text>
+              <text x="36" y="34" class="fill-slate-600 dark:fill-slate-300 text-[10px]">
+                Rango con flaps extendidos. <strong>Vso = 41 KIAS</strong> (pérdida flaps 40° al ralentí).
+              </text>
+              <text x="36" y="48" class="fill-amber-600 dark:fill-amber-400 font-semibold text-[10px]">
+                ★ Particularidad EC-NNA: Flap 10° autorizado hasta 110 KIAS (POH C172N Sec. 2).
+              </text>
+            </g>
+
+            <!-- Ítem 5: Va Velocidad de Maniobra -->
+            <g transform="translate(0, 264)">
+              <rect x="0" y="0" width="440" height="48" rx="8" class="fill-purple-50 dark:fill-purple-950/40" stroke="#a855f7" stroke-width="1.5" />
+              <circle cx="18" cy="24" r="8" fill="#a855f7" />
+              <text x="36" y="19" class="fill-purple-700 dark:fill-purple-300 font-bold text-xs">Va — Velocidad de Maniobra (No figura en el dial)</text>
+              <text x="36" y="36" class="fill-slate-600 dark:fill-slate-300 text-[10px]">
+                <strong>97 KIAS</strong> (a 2300 lb) / <strong>89 KIAS</strong> (a 1950 lb) / <strong>80 KIAS</strong> (a 1600 lb). Varia con el peso real.
+              </text>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+        <span>Fuente: POH Cessna 172N / Reims F172 Sección 2 ("Airspeed Limitations & Airspeed Indicator Markings").</span>
+        <span class="font-bold text-red-600 dark:text-red-400">Preguntas 7, 8 y 9 del Examen Oficial de Blue Team</span>
+      </div>
     </div>
 
     <p class="text-sm leading-relaxed mb-3">
@@ -524,6 +1134,234 @@ export const C172_LESSON_1 = {
         <div class="p-2 rounded bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-[11px]">
           ⚠️ <strong>Límite Combinado:</strong> La carga total combinada entre Área 1 y Área 2 nunca puede superar los <strong>120 lb (54.4 kg)</strong> y debe afianzarse siempre con la red de sujeción.
         </div>
+      </div>
+    </div>
+
+    <!-- Diagrama Técnico 1.5A: Diagrama V-n Oficial de Factores de Carga y Envolvente de Vuelo (POH Sec. 2) -->
+    <div class="mt-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-emerald-500/30 shadow-md">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 gap-2">
+        <div class="flex items-center gap-2">
+          <span class="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono text-xs font-bold">FIG. 2-1</span>
+          <div>
+            <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Diagrama Oficial: Envolvente de Vuelo V-n (Flight Load Factor Envelope)</h3>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Límites estructurales de G en Categoría Normal (+3.8/-1.52g) vs Utilitaria (+4.4/-1.76g) y Flaps Down (+3.0g)</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            Normal: +3.8g / -1.52g
+          </span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+            🚫 Prohibición Barrena
+          </span>
+        </div>
+      </div>
+
+      <div class="w-full py-2 overflow-x-auto">
+        <svg viewBox="0 0 860 360" class="w-full min-w-[700px] h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="utilityGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#0284c7" stop-opacity="0.18" />
+              <stop offset="100%" stop-color="#0284c7" stop-opacity="0.05" />
+            </linearGradient>
+            <linearGradient id="normalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#10b981" stop-opacity="0.22" />
+              <stop offset="100%" stop-color="#10b981" stop-opacity="0.05" />
+            </linearGradient>
+            <linearGradient id="flapsGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25" />
+              <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.05" />
+            </linearGradient>
+          </defs>
+
+          <!-- Cuadrícula de fondo -->
+          <pattern id="gridVn" width="40" height="30" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 30" fill="none" stroke="currentColor" stroke-opacity="0.05" stroke-width="1" />
+          </pattern>
+          <rect x="70" y="20" width="750" height="280" fill="url(#gridVn)" />
+
+          <!-- Eje Horizontal: Velocidad KIAS (0 a 180 kt) -->
+          <!-- Escala X: X = 70 + (KIAS * 4.1) -->
+          <!-- 0kt=70, 40kt=234, 47kt=262, 85kt=418, 97kt=467, 128kt=594, 160kt=726 -->
+          <line x1="70" y1="210" x2="820" y2="210" stroke="#64748b" stroke-width="1.5" />
+          <text x="820" y="228" text-anchor="end" class="fill-slate-500 font-mono text-[10px] font-bold">KIAS →</text>
+
+          <!-- Eje Vertical: Factor de Carga G (-2.0 a +5.0) -->
+          <!-- Escala Y: G=0 es Y=210. 1g = 35px. +1g=175, +2g=140, +3g=105, +3.8g=77, +4.4g=56, -1g=245, -1.52g=263, -1.76g=272 -->
+          <line x1="70" y1="20" x2="70" y2="300" stroke="#64748b" stroke-width="1.5" />
+          <text x="65" y="30" text-anchor="end" class="fill-slate-500 font-mono text-[10px] font-bold">+g ↑</text>
+          
+          <!-- Marcas Eje G -->
+          <line x1="65" y1="210" x2="70" y2="210" stroke="#64748b" stroke-width="1.5" />
+          <text x="60" y="214" text-anchor="end" class="fill-slate-500 font-mono text-[9px]">0 g</text>
+          
+          <line x1="65" y1="175" x2="70" y2="175" stroke="#64748b" stroke-width="1.5" />
+          <text x="60" y="179" text-anchor="end" class="fill-slate-500 font-mono text-[9px]">+1.0 g</text>
+          
+          <line x1="65" y1="105" x2="70" y2="105" stroke="#d97706" stroke-width="1.5" />
+          <text x="60" y="109" text-anchor="end" class="fill-amber-600 font-mono text-[9px] font-bold">+3.0 g</text>
+
+          <line x1="65" y1="77" x2="70" y2="77" stroke="#10b981" stroke-width="1.5" />
+          <text x="60" y="81" text-anchor="end" class="fill-emerald-600 font-mono text-[9px] font-bold">+3.8 g</text>
+
+          <line x1="65" y1="56" x2="70" y2="56" stroke="#0284c7" stroke-width="1.5" />
+          <text x="60" y="60" text-anchor="end" class="fill-sky-600 font-mono text-[9px] font-bold">+4.4 g</text>
+
+          <line x1="65" y1="263" x2="70" y2="263" stroke="#10b981" stroke-width="1.5" />
+          <text x="60" y="267" text-anchor="end" class="fill-emerald-600 font-mono text-[9px] font-bold">-1.52 g</text>
+
+          <line x1="65" y1="272" x2="70" y2="272" stroke="#0284c7" stroke-width="1.5" />
+          <text x="60" y="276" text-anchor="end" class="fill-sky-600 font-mono text-[9px] font-bold">-1.76 g</text>
+
+          <!-- ================= POLÍGONO ENVOLVENTE CATEGORÍA UTILITARIA (+4.4g / -1.76g) ================= -->
+          <!-- Curva de pérdida positiva: desde (47kt, 1g) sube parabólicamente hasta (97kt, 4.4g) -> recta hasta (160kt, 4.4g) -> baja a (160kt, 0g) -> (128kt, -1.76g) -> curva pérdida neg -->
+          <path d="M 262,175 C 320,150 400,90 467,56 L 726,56 L 726,210 L 594,272 L 467,272 C 380,265 320,230 262,210 Z" fill="url(#utilityGrad)" stroke="#0284c7" stroke-width="2" stroke-dasharray="5,3" />
+
+          <!-- ================= POLÍGONO ENVOLVENTE CATEGORÍA NORMAL (+3.8g / -1.52g) ================= -->
+          <!-- Curva pérdida positiva: desde (47kt, 1g) sube hasta (92kt, 3.8g) -> recta hasta 128kt (Vno) -> decrece a 160kt (+3.0g) -> 160kt (0g) -> 128kt (-1.52g) -> curva pérdida neg -->
+          <path d="M 262,175 C 310,155 380,105 447,77 L 594,77 L 726,105 L 726,210 L 594,263 L 447,263 C 370,255 310,225 262,210 Z" fill="url(#normalGrad)" stroke="#10b981" stroke-width="2.5" />
+
+          <!-- ================= ENVOLVENTE CON FLAPS EXTENDIDOS (Vfe = 85 KIAS / +3.0g / 0g) ================= -->
+          <path d="M 238,175 C 290,140 360,110 418,105 L 418,210 L 238,210 Z" fill="url(#flapsGrad)" stroke="#d97706" stroke-width="2" stroke-linecap="round" />
+          <text x="330" y="150" text-anchor="middle" class="fill-amber-700 dark:fill-amber-300 font-bold text-[9px]">Flaps Down (+3.0 g / Vfe 85kt)</text>
+
+          <!-- LÍNEAS DE VELOCIDAD VERTICALES -->
+          <!-- Vs1 = 47 KIAS -->
+          <line x1="262" y1="20" x2="262" y2="295" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3" />
+          <text x="262" y="310" text-anchor="middle" class="fill-slate-600 dark:fill-slate-300 font-mono text-[9px] font-bold">Vs1</text>
+          <text x="262" y="322" text-anchor="middle" class="fill-slate-500 font-mono text-[8px]">47 kt</text>
+
+          <!-- Vfe = 85 KIAS -->
+          <line x1="418" y1="20" x2="418" y2="295" stroke="#d97706" stroke-width="1" stroke-dasharray="3,3" />
+          <text x="418" y="310" text-anchor="middle" class="fill-amber-600 font-mono text-[9px] font-bold">Vfe</text>
+          <text x="418" y="322" text-anchor="middle" class="fill-slate-500 font-mono text-[8px]">85 kt</text>
+
+          <!-- Va = 97 KIAS (a 2300 lb) -->
+          <line x1="467" y1="20" x2="467" y2="295" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="4,3" />
+          <text x="467" y="310" text-anchor="middle" class="fill-purple-600 font-mono text-[9px] font-bold">Va</text>
+          <text x="467" y="322" text-anchor="middle" class="fill-slate-500 font-mono text-[8px]">97 kt</text>
+
+          <!-- Vno = 128 KIAS -->
+          <line x1="594" y1="20" x2="594" y2="295" stroke="#eab308" stroke-width="1" stroke-dasharray="3,3" />
+          <text x="594" y="310" text-anchor="middle" class="fill-amber-600 font-mono text-[9px] font-bold">Vno</text>
+          <text x="594" y="322" text-anchor="middle" class="fill-slate-500 font-mono text-[8px]">128 kt</text>
+
+          <!-- Vne = 160 KIAS -->
+          <line x1="726" y1="20" x2="726" y2="295" stroke="#ef4444" stroke-width="2" />
+          <text x="726" y="310" text-anchor="middle" class="fill-red-600 font-mono text-[10px] font-black">Vne (Línea Roja)</text>
+          <text x="726" y="322" text-anchor="middle" class="fill-red-600 font-mono text-[9px] font-bold">160 kt</text>
+
+          <!-- Labels de Áreas -->
+          <rect x="490" y="85" width="130" height="22" rx="4" class="fill-emerald-100/90 dark:fill-emerald-950/80" stroke="#10b981" stroke-width="1" />
+          <text x="555" y="99" text-anchor="middle" class="fill-emerald-800 dark:fill-emerald-300 font-bold text-[10px]">Normal: +3.8 g / -1.52 g</text>
+
+          <rect x="490" y="35" width="130" height="20" rx="4" class="fill-sky-100/90 dark:fill-sky-950/80" stroke="#0284c7" stroke-width="1" />
+          <text x="555" y="48" text-anchor="middle" class="fill-sky-800 dark:fill-sky-300 font-bold text-[9px]">Utility: +4.4 g / -1.76 g</text>
+
+          <!-- Cartel Destacado de Prohibición de Barrena por STC Diésel -->
+          <g transform="translate(620, 240)">
+            <rect x="0" y="0" width="190" height="52" rx="6" class="fill-rose-50 dark:fill-rose-950/90" stroke="#ef4444" stroke-width="1.5" />
+            <text x="95" y="16" text-anchor="middle" class="fill-rose-700 dark:fill-rose-300 font-bold text-[10px]">⛔ LIMITACIÓN STC DIÉSEL</text>
+            <text x="95" y="30" text-anchor="middle" class="fill-slate-700 dark:fill-slate-200 text-[8px] font-semibold">"Intentionally initiating spins"</text>
+            <text x="95" y="42" text-anchor="middle" class="fill-rose-600 dark:fill-rose-400 font-bold text-[9px]">TOTALMENTE PROHIBIDO</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+        <span>Fuente: POH Cessna 172N Sección 2 (Pág. 13, Figura 2-1 "Flight Load Factor Envelope").</span>
+        <span class="font-bold text-emerald-600 dark:text-emerald-400">Pregunta 12 del Examen Oficial de Blue Team (+3.8 g / -1.52 g)</span>
+      </div>
+    </div>
+
+    <!-- Diagrama Técnico 1.5B: Distribución de Carga en Bodega y Brazos de Estación (POH Fig. 6-1) -->
+    <div class="mt-4 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-sky-500/30 shadow-md">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 gap-2">
+        <div class="flex items-center gap-2">
+          <span class="p-1.5 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 font-mono text-xs font-bold">FIG. 6-1</span>
+          <div>
+            <h3 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">Diagrama Oficial: Compartimento de Carga y Estaciones de Fuselaje</h3>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400">Límites estructurales de peso y brazo (Arm / Station) según POH C172N y Hojas F.OPS.04</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+            Área 1: 120 lb (54.4 kg)
+          </span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+            Combinado: 120 lb máx
+          </span>
+        </div>
+      </div>
+
+      <div class="w-full py-2 overflow-x-auto">
+        <svg viewBox="0 0 860 250" class="w-full min-w-[700px] h-auto font-sans" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow-sta" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#0284c7" />
+            </marker>
+          </defs>
+
+          <!-- Perfil esquemático de cabina y bodega -->
+          <g transform="translate(30, 20)">
+            <text x="400" y="15" text-anchor="middle" class="fill-slate-600 dark:fill-slate-300 text-[11px] font-bold uppercase tracking-wider">
+              Distribución Longitudinal de Carga en Fuselaje (Datum Línea Cortafuegos = Estación 0.0)
+            </text>
+
+            <!-- Contorno de cabina y fuselaje -->
+            <path d="M 50,140 L 100,50 L 320,50 L 520,70 L 740,110 L 740,140 L 50,140 Z" fill="#0284c7" fill-opacity="0.06" stroke="#0284c7" stroke-width="1.5" />
+
+            <!-- Asientos Delanteros (Piloto y Copiloto - Brazo 37.0 in / 0.94 m) -->
+            <rect x="180" y="70" width="40" height="55" rx="5" fill="#334155" stroke="#1e293b" stroke-width="1.5" />
+            <text x="200" y="95" text-anchor="middle" class="fill-white text-[9px] font-bold">Pilotos</text>
+            <text x="200" y="106" text-anchor="middle" class="fill-slate-300 text-[8px]">Sta 37"</text>
+
+            <!-- Asientos Traseros (Pasajeros - Brazo 73.0 in / 1.85 m) -->
+            <rect x="330" y="70" width="40" height="55" rx="5" fill="#475569" stroke="#1e293b" stroke-width="1.5" />
+            <text x="350" y="95" text-anchor="middle" class="fill-white text-[9px] font-bold">Pax Tras.</text>
+            <text x="350" y="106" text-anchor="middle" class="fill-slate-300 text-[8px]">Sta 73"</text>
+
+            <!-- Mamparo divisorio asientos / bodega -->
+            <line x1="380" y1="52" x2="380" y2="140" stroke="#0f172a" stroke-width="2" stroke-dasharray="3,2" />
+
+            <!-- ================= BAGGAGE AREA 1 (Brazo 95.0 in / 2.41 m) ================= -->
+            <rect x="390" y="65" width="130" height="70" rx="6" class="fill-sky-100/80 dark:fill-sky-950/70" stroke="#0284c7" stroke-width="2" />
+            <text x="455" y="85" text-anchor="middle" class="fill-sky-800 dark:fill-sky-200 text-xs font-black">BAGGAGE AREA 1</text>
+            <text x="455" y="102" text-anchor="middle" class="fill-sky-600 dark:fill-sky-400 font-mono text-sm font-black">120 lb (54.4 kg)</text>
+            <text x="455" y="118" text-anchor="middle" class="fill-slate-600 dark:fill-slate-300 text-[9px]">Brazo / Station: 95.0 in (2.41 m)</text>
+            <text x="455" y="129" text-anchor="middle" class="fill-slate-500 text-[8px] font-semibold">Examen Oficial [Pregunta 6]</text>
+
+            <!-- Mamparo posterior inter-bodega -->
+            <line x1="530" y1="71" x2="530" y2="140" stroke="#64748b" stroke-width="2" stroke-dasharray="3,2" />
+
+            <!-- ================= BAGGAGE AREA 2 (Brazo 123.0 in / 3.12 m) ================= -->
+            <rect x="540" y="75" width="120" height="60" rx="6" class="fill-amber-100/80 dark:fill-amber-950/70" stroke="#d97706" stroke-width="2" />
+            <text x="600" y="93" text-anchor="middle" class="fill-amber-800 dark:fill-amber-200 text-xs font-black">BAGGAGE AREA 2</text>
+            <text x="600" y="108" text-anchor="middle" class="fill-amber-600 dark:fill-amber-400 font-mono text-xs font-bold">50 lb (22.7 kg)</text>
+            <text x="600" y="123" text-anchor="middle" class="fill-slate-600 dark:fill-slate-300 text-[9px]">Brazo / Station: 123.0 in (3.12 m)</text>
+
+            <!-- Cota de Carga Combinada Máxima -->
+            <line x1="390" y1="150" x2="660" y2="150" stroke="#0f172a" stroke-width="2" marker-start="url(#arrow-sta)" marker-end="url(#arrow-sta)" />
+            <rect x="460" y="158" width="160" height="24" rx="4" class="fill-slate-900" />
+            <text x="540" y="174" text-anchor="middle" class="fill-white font-mono text-xs font-bold">MÁXIMO COMBINADO: 120 lb (54.4 kg)</text>
+
+            <!-- Datum Referencia Cortafuegos -->
+            <line x1="50" y1="35" x2="50" y2="190" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,2" />
+            <text x="50" y="205" text-anchor="middle" class="fill-red-600 font-mono text-[9px] font-bold">DATUM (Sta 0.0)</text>
+
+            <!-- Cotas de Brazo desde Datum -->
+            <line x1="50" y1="185" x2="455" y2="185" stroke="#0284c7" stroke-width="1" marker-end="url(#arrow-sta)" />
+            <text x="250" y="180" text-anchor="middle" class="fill-sky-700 dark:fill-sky-300 font-mono text-[9px]">Brazo Área 1 = 95.0"</text>
+
+            <line x1="50" y1="218" x2="600" y2="218" stroke="#d97706" stroke-width="1" marker-end="url(#arrow-sta)" />
+            <text x="320" y="213" text-anchor="middle" class="fill-amber-700 dark:fill-amber-300 font-mono text-[9px]">Brazo Área 2 = 123.0"</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="mt-2 pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+        <span>Fuente: POH Cessna 172N Sección 6 (Figura 6-1 "Loading Arrangements").</span>
+        <span class="font-bold text-sky-600 dark:text-sky-400">Pregunta 6 del Examen Oficial de Blue Team (120 lb máx en Área 1)</span>
       </div>
     </div>
 
