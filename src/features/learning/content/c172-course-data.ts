@@ -28,62 +28,82 @@ export const C172_LESSON_1 = {
     </p>
   </div>
 
-  <!-- Barra de Consulta Rápida POH & Documentación Técnica Oficial -->
+  <!-- Barra de Consulta Rápida POH & Secciones Técnicas Oficiales -->
   <div class="p-3.5 rounded-2xl bg-slate-100/90 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/80 shadow-sm space-y-2.5">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
       <div class="flex items-center gap-2">
         <span class="text-lg">📑</span>
         <div>
-          <span class="font-bold text-xs uppercase tracking-wider text-slate-900 dark:text-white block">Documentación POH Oficial de Flota</span>
-          <span class="text-[11px] text-slate-500 dark:text-slate-400">Consulta directa en PDF con marcación por página según EASA Part-FCL</span>
+          <span class="font-bold text-xs uppercase tracking-wider text-slate-900 dark:text-white block">Documentación POH Oficial de Flota — Organizada por Secciones</span>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400">Consulta directa por sección técnica o manual completo según EASA Part-FCL</span>
         </div>
       </div>
       <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 self-start sm:self-center">
-        ● Manuales Digitalizados Activos
+        ● 45 Secciones Modulares Disponibles
       </span>
     </div>
 
     <!-- Guía de Navegación Estructural según Manual -->
-    <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-800 dark:text-amber-300">
+    <div class="p-2.5 rounded-xl bg-sky-500/10 border border-sky-500/20 text-[11px] text-sky-800 dark:text-sky-300">
       <span class="font-bold flex items-center gap-1.5 mb-1">
-        <span>⚠️</span> <span>Estructura y Orden Interno de los Manuales de Flota:</span>
+        <span>📂</span> <span>Organización Modular de la Flota:</span>
       </span>
       <p class="leading-relaxed">
-        Los cuatro manuales <strong>no siguen el mismo orden ni paginación</strong> debido a su historial de certificación:
-        en <strong>EC-NNA</strong> el POH base de Cessna figura al inicio (págs. 1-73) y el Suplemento Diésel al final (págs. 74-237);
-        en <strong>EC-OXV</strong> el Suplemento Diésel está al principio (págs. 1-74) y el manual F172K a continuación (págs. 75-100+);
-        en <strong>EC-OXT</strong> los Suplementos Diésel se encuentran en un volumen específico independiente;
-        y en <strong>EC-NNX</strong> el manual Reims precede a los suplementos (pág. 30 en adelante).
-        <em>Las referencias y enlaces de esta lección apuntan a la página exacta de cada documento para consulta inmediata.</em>
+        Los manuales han sido segmentados en secciones independientes por matrícula (<strong>EC-NNA</strong>, <strong>EC-OXV</strong>, <strong>EC-NNX</strong> y <strong>EC-OXT</strong>). Cada botón abre directamente el PDF oficial de la sección técnica correspondiente (General, Limitaciones, Flaps/Sistemas, Rendimiento o Suplemento Diésel), facilitando una consulta ágil sin necesidad de navegar por cientos de páginas.
       </p>
     </div>
 
-    <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
-      <a href="/manuals/cessna/poh-ec-nna.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-white dark:bg-slate-900 text-sky-600 dark:text-sky-400 border border-sky-300 dark:border-sky-700 hover:border-sky-500 hover:shadow-md transition">
-        <span>📘 EC-NNA (POH C172N + CD-155)</span>
-        <span class="text-[10px] opacity-70">↗</span>
-      </a>
-      <a href="/manuals/cessna/poh-ec-oxv.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 hover:shadow-md transition">
-        <span>📗 EC-OXV (POH F172K + Supl.)</span>
-        <span class="text-[10px] opacity-70">↗</span>
-      </a>
-      <a href="/manuals/cessna/suplementos-ec-oxt.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 hover:shadow-md transition">
-        <span>📙 EC-OXT (Suplementos CD-155)</span>
-        <span class="text-[10px] opacity-70">↗</span>
-      </a>
-      <a href="/manuals/cessna/poh-ec-nnx.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 hover:shadow-md transition">
-        <span>📕 EC-NNX (POH F172 F-M + Supl.)</span>
-        <span class="text-[10px] opacity-70">↗</span>
-      </a>
-      <div class="h-4 w-px bg-slate-300 dark:bg-slate-700 hidden sm:block mx-1"></div>
-      <a href="/manuals/cessna/loadsheet-ec-nna.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[11px] font-medium bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:border-slate-400 transition">
-        <span>⚖️ F.OPS.04.NNA</span>
-        <span class="text-[9px] opacity-70">↗</span>
-      </a>
-      <a href="/manuals/cessna/loadsheet-ec-nnx.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[11px] font-medium bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:border-slate-400 transition">
-        <span>⚖️ F.OPS.04.NNX</span>
-        <span class="text-[9px] opacity-70">↗</span>
-      </a>
+    <!-- Accesos Directos a Secciones Clave de esta Lección -->
+    <div class="space-y-1.5 pt-1 text-xs">
+      <div class="text-[11px] font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">
+        <span>🔍 Secciones Técnicas Directas de esta Lección (Célula, Limitaciones y Mandos):</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_POH-SEC01_General_y_Dimensiones.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-white dark:bg-slate-900 text-sky-600 dark:text-sky-400 border border-sky-300 dark:border-sky-700 hover:border-sky-500 hover:shadow-md transition">
+          <span>📘 NNA Sec. 1 (General y Dimensiones)</span>
+          <span class="text-[10px] opacity-70">↗</span>
+        </a>
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_POH-SEC02_Limitaciones_Operacionales.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-white dark:bg-slate-900 text-sky-600 dark:text-sky-400 border border-sky-300 dark:border-sky-700 hover:border-sky-500 hover:shadow-md transition">
+          <span>📘 NNA Sec. 2 (Limitaciones y Flaps 30°)</span>
+          <span class="text-[10px] opacity-70">↗</span>
+        </a>
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_POH-SEC07_Descripcion_de_Sistemas_Celula_y_Flaps.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-white dark:bg-slate-900 text-sky-600 dark:text-sky-400 border border-sky-300 dark:border-sky-700 hover:border-sky-500 hover:shadow-md transition">
+          <span>📘 NNA Sec. 7 (Sistemas, Flaps y Tren)</span>
+          <span class="text-[10px] opacity-70">↗</span>
+        </a>
+        <a href="/manuals/cessna/secciones/EC-OXV/EC-OXV_POH-SEC02_Descripcion_y_Flaps_40_Grados.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 hover:shadow-md transition">
+          <span>📗 OXV Sec. 2 (Flaps 40°)</span>
+          <span class="text-[10px] opacity-70">↗</span>
+        </a>
+        <a href="/manuals/cessna/secciones/EC-OXV/EC-OXV_POH-SEC04_Limitaciones_Operacionales.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 hover:shadow-md transition">
+          <span>📗 OXV Sec. 4 (Limitaciones)</span>
+          <span class="text-[10px] opacity-70">↗</span>
+        </a>
+        <a href="/manuals/cessna/secciones/EC-OXT/EC-OXT_SUPL-TAE-SEC02_Limitaciones_Motor_y_Prohibicion_Barrenas.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium bg-white dark:bg-slate-900 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-800 hover:border-rose-500 hover:shadow-md transition">
+          <span>📙 OXT Supl. Sec. 2 (Prohibición Barrena)</span>
+          <span class="text-[10px] opacity-70">↗</span>
+        </a>
+        <a href="/manuals/cessna/secciones/EC-NNX/EC-NNX_SUPL-TAE-SEC02_Limitaciones_Motor_y_Prohibicion_Barrenas.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium bg-white dark:bg-slate-900 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-800 hover:border-rose-500 hover:shadow-md transition">
+          <span>📕 NNX Supl. Sec. 2 (Prohibición Barrena)</span>
+          <span class="text-[10px] opacity-70">↗</span>
+        </a>
+      </div>
+
+      <!-- Enlaces a Manuales Completos & Hojas de Carga -->
+      <div class="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-200 dark:border-slate-700/60 text-[11px]">
+        <span class="text-slate-500 dark:text-slate-400 font-semibold">Tomos completos:</span>
+        <a href="/manuals/cessna/poh-ec-nna.pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 underline hover:text-sky-500">POH NNA Completo ↗</a>
+        <span class="text-slate-300 dark:text-slate-600">•</span>
+        <a href="/manuals/cessna/poh-ec-oxv.pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 underline hover:text-sky-500">POH OXV Completo ↗</a>
+        <span class="text-slate-300 dark:text-slate-600">•</span>
+        <a href="/manuals/cessna/poh-ec-nnx.pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 underline hover:text-sky-500">POH NNX Completo ↗</a>
+        <span class="text-slate-300 dark:text-slate-600">•</span>
+        <a href="/manuals/cessna/suplementos-ec-oxt.pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 underline hover:text-sky-500">Supl. OXT Completo ↗</a>
+        <span class="text-slate-300 dark:text-slate-600">•</span>
+        <a href="/manuals/cessna/loadsheet-ec-nna.pdf" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-300 underline hover:text-sky-500">⚖️ F.OPS.04.NNA ↗</a>
+        <span class="text-slate-300 dark:text-slate-600">•</span>
+        <a href="/manuals/cessna/loadsheet-ec-nnx.pdf" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-300 underline hover:text-sky-500">⚖️ F.OPS.04.NNX ↗</a>
+      </div>
     </div>
   </div>
 
@@ -359,14 +379,17 @@ export const C172_LESSON_1 = {
       </div>
       <!-- Referencias al Manual -->
       <div class="pt-2 border-t border-sky-500/20 flex flex-wrap items-center gap-2 text-[11px]">
-        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH:</span>
-        <a href="/manuals/cessna/poh-ec-nna.pdf#page=4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
-          <span>POH C172N Sec. 1 (Pág. 4: General y Dimensiones)</span>
+        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH (Sección directa):</span>
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_POH-SEC01_General_y_Dimensiones.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>POH C172N Sec. 1 (General y Dimensiones)</span>
           <span class="text-[10px]">↗</span>
         </a>
-        <a href="/manuals/cessna/poh-ec-nna.pdf#page=82" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
-          <span>Supl. TAE 125 Sec. 1 (Pág. 82: Planta Motriz)</span>
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_SUPL-TAE-SEC01_General_Motor_Diesel.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>Supl. TAE 125 Sec. 1 (Planta Motriz)</span>
           <span class="text-[10px]">↗</span>
+        </a>
+        <a href="/manuals/cessna/poh-ec-nna.pdf#page=4" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-sky-600 underline text-[10px] ml-1">
+          (Ver en manual completo)
         </a>
       </div>
     </div>
@@ -559,17 +582,17 @@ export const C172_LESSON_1 = {
       </div>
       <!-- Referencias al Manual -->
       <div class="pt-2 border-t border-sky-500/20 flex flex-wrap items-center gap-2 text-[11px]">
-        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH:</span>
-        <a href="/manuals/cessna/poh-ec-nna.pdf#page=58" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
-          <span>General: POH C172N Sec. 7 (Pág. 58: Flight Controls & Flaps)</span>
+        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH (Sección directa):</span>
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_POH-SEC07_Descripcion_de_Sistemas_Celula_y_Flaps.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>General: POH C172N Sec. 7 (Flight Controls & Flaps)</span>
           <span class="text-[10px]">↗</span>
         </a>
-        <a href="/manuals/cessna/poh-ec-nna.pdf#page=11" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-800/60 hover:bg-amber-100 transition shadow-sm">
-          <span>EC-NNA: POH Sec. 2 (Pág. 11: Flaps 30° y 110 KIAS)</span>
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_POH-SEC02_Limitaciones_Operacionales.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-800/60 hover:bg-amber-100 transition shadow-sm">
+          <span>EC-NNA: POH Sec. 2 (Flaps 30° y 110 KIAS)</span>
           <span class="text-[10px]">↗</span>
         </a>
-        <a href="/manuals/cessna/poh-ec-oxv.pdf#page=82" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 transition shadow-sm">
-          <span>EC-OXV: POH F172K Sec. 2 (Pág. 82: Flaps 40°)</span>
+        <a href="/manuals/cessna/secciones/EC-OXV/EC-OXV_POH-SEC02_Descripcion_y_Flaps_40_Grados.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 transition shadow-sm">
+          <span>EC-OXV: POH F172K Sec. 2 (Flaps 40°)</span>
           <span class="text-[10px]">↗</span>
         </a>
       </div>
@@ -780,13 +803,13 @@ export const C172_LESSON_1 = {
       </div>
       <!-- Referencias al Manual -->
       <div class="pt-2 border-t border-sky-500/20 flex flex-wrap items-center gap-2 text-[11px]">
-        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH:</span>
-        <a href="/manuals/cessna/poh-ec-nna.pdf#page=59" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
-          <span>General: POH C172N Sec. 7 (Pág. 59: Landing Gear & Brakes)</span>
+        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH (Sección directa):</span>
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_POH-SEC07_Descripcion_de_Sistemas_Celula_y_Flaps.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>General: POH C172N Sec. 7 (Landing Gear & Brakes)</span>
           <span class="text-[10px]">↗</span>
         </a>
-        <a href="/manuals/cessna/poh-ec-nna.pdf#page=22" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 transition shadow-sm">
-          <span>Inspección Prevuelo: POH C172N Sec. 4 (Pág. 22: Nose Gear & Strut)</span>
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_POH-SEC04_Procedimientos_Normales_Prevuelo.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 transition shadow-sm">
+          <span>Inspección Prevuelo: POH C172N Sec. 4 (Nose Gear & Strut)</span>
           <span class="text-[10px]">↗</span>
         </a>
       </div>
@@ -1048,13 +1071,13 @@ export const C172_LESSON_1 = {
       </div>
       <!-- Referencias al Manual -->
       <div class="pt-2 border-t border-sky-500/20 flex flex-wrap items-center gap-2 text-[11px]">
-        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH:</span>
-        <a href="/manuals/cessna/poh-ec-nna.pdf#page=11" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
-          <span>General: POH C172N Sec. 2 (Pág. 11: Airspeed Limitations & Markings)</span>
+        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH (Sección directa):</span>
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_POH-SEC02_Limitaciones_Operacionales.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>General: POH C172N Sec. 2 (Airspeed Limitations & Markings)</span>
           <span class="text-[10px]">↗</span>
         </a>
-        <a href="/manuals/cessna/poh-ec-oxv.pdf#page=93" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 transition shadow-sm">
-          <span>EC-OXV: POH F172K Sec. 4 (Pág. 93: Airspeed Limits)</span>
+        <a href="/manuals/cessna/secciones/EC-OXV/EC-OXV_POH-SEC04_Limitaciones_Operacionales.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 transition shadow-sm">
+          <span>EC-OXV: POH F172K Sec. 4 (Airspeed Limits)</span>
           <span class="text-[10px]">↗</span>
         </a>
       </div>
@@ -1377,25 +1400,25 @@ export const C172_LESSON_1 = {
       </div>
       <!-- Referencias al Manual -->
       <div class="pt-2 border-t border-sky-500/20 flex flex-wrap items-center gap-2 text-[11px]">
-        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH:</span>
-        <a href="/manuals/cessna/poh-ec-nna.pdf#page=12" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
-          <span>General: POH C172N Sec. 2 (Pág. 12-13: Pesos, Cargas y Bodega)</span>
+        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH (Sección directa):</span>
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_POH-SEC02_Limitaciones_Operacionales.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>General: POH C172N Sec. 2 (Pesos, Cargas y Bodega)</span>
           <span class="text-[10px]">↗</span>
         </a>
-        <a href="/manuals/cessna/poh-ec-nna.pdf#page=103" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
-          <span>EC-NNA: Supl. TAE 125 Sec. 2 (Pág. 103: Prohibición Barrena)</span>
+        <a href="/manuals/cessna/secciones/EC-NNA/EC-NNA_SUPL-TAE-SEC02_Limitaciones_Motor_y_Prohibicion_Barrenas.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
+          <span>EC-NNA: Supl. Sec. 2 (Prohibición Barrena)</span>
           <span class="text-[10px]">↗</span>
         </a>
-        <a href="/manuals/cessna/poh-ec-oxv.pdf#page=16" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
-          <span>EC-OXV: Supl. TAE 125 Sec. 2 (Pág. 16: Prohibición Barrena)</span>
+        <a href="/manuals/cessna/secciones/EC-OXV/EC-OXV_SUPL-TAE-SEC02_Limitaciones_Motor_y_Prohibicion_Barrenas.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
+          <span>EC-OXV: Supl. Sec. 2 (Prohibición Barrena)</span>
           <span class="text-[10px]">↗</span>
         </a>
-        <a href="/manuals/cessna/suplementos-ec-oxt.pdf#page=33" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
-          <span>EC-OXT: Supl. TAE 125 Sec. 2 (Pág. 33: Prohibición Barrena)</span>
+        <a href="/manuals/cessna/secciones/EC-OXT/EC-OXT_SUPL-TAE-SEC02_Limitaciones_Motor_y_Prohibicion_Barrenas.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
+          <span>EC-OXT: Supl. Sec. 2 (Prohibición Barrena)</span>
           <span class="text-[10px]">↗</span>
         </a>
-        <a href="/manuals/cessna/poh-ec-nnx.pdf#page=63" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
-          <span>EC-NNX: Supl. TAE 125 Sec. 2 (Pág. 63: Prohibición Barrena)</span>
+        <a href="/manuals/cessna/secciones/EC-NNX/EC-NNX_SUPL-TAE-SEC02_Limitaciones_Motor_y_Prohibicion_Barrenas.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
+          <span>EC-NNX: Supl. Sec. 2 (Prohibición Barrena)</span>
           <span class="text-[10px]">↗</span>
         </a>
       </div>
