@@ -160,7 +160,15 @@ export default async function CoursesPage() {
                     {course.image_url && (
                       <div className="relative rounded-xl overflow-hidden aspect-square w-full bg-slate-900 border border-slate-200 dark:border-slate-800 mb-1">
                         <img
-                          src={course.image_url}
+                          src={
+                            course.image_url.includes("/storage/v1/object/") &&
+                            !course.image_url.includes("/storage/v1/object/public/")
+                              ? course.image_url.replace(
+                                  "/storage/v1/object/",
+                                  "/storage/v1/object/public/",
+                                )
+                              : course.image_url
+                          }
                           alt={course.title}
                           className="w-full h-full object-cover"
                         />

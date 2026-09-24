@@ -8,10 +8,12 @@ async function readData<T>(
   query: PromiseLike<{ data: T; error: unknown }>,
 ): Promise<T> {
   const { data, error } = await query;
-  if (error)
+  if (error) {
+    console.error("Supabase query error in readData:", error);
     throw new Error(
       "No se pudieron cargar los datos académicos. Inténtalo de nuevo.",
     );
+  }
   return data;
 }
 

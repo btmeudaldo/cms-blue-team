@@ -42,6 +42,11 @@ export function CourseImageUploader({
   }
 
   function compressAndSetImage(rawUrl: string, autoFramed = false) {
+    const normalized =
+      rawUrl.includes("/storage/v1/object/") &&
+      !rawUrl.includes("/storage/v1/object/public/")
+        ? rawUrl.replace("/storage/v1/object/", "/storage/v1/object/public/")
+        : rawUrl;
     const img = new Image();
     img.crossOrigin = "anonymous";
     img.onload = () => {
@@ -71,16 +76,16 @@ export function CourseImageUploader({
           return;
         }
       } catch (e) {}
-      setImageUrl(rawUrl);
-      setPreviewUrl(rawUrl);
+      setImageUrl(normalized);
+      setPreviewUrl(normalized);
       if (autoFramed) setIsFramed(true);
     };
     img.onerror = () => {
-      setImageUrl(rawUrl);
-      setPreviewUrl(rawUrl);
+      setImageUrl(normalized);
+      setPreviewUrl(normalized);
       if (autoFramed) setIsFramed(true);
     };
-    img.src = rawUrl;
+    img.src = normalized;
   }
 
   async function uploadCourseCover(file: Blob) {
@@ -146,11 +151,16 @@ export function CourseImageUploader({
   }
 
   function handleUrlChange(val: string) {
+    const normalized =
+      val.includes("/storage/v1/object/") &&
+      !val.includes("/storage/v1/object/public/")
+        ? val.replace("/storage/v1/object/", "/storage/v1/object/public/")
+        : val;
     resetFraming();
     setIsEditingFrame(true);
     setUploadError(null);
-    setImageUrl(val);
-    setPreviewUrl(val);
+    setImageUrl(normalized);
+    setPreviewUrl(normalized);
   }
 
   // Mouse Drag Events

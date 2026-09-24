@@ -28,6 +28,50 @@ export const C172_LESSON_1 = {
     </p>
   </div>
 
+  <!-- Barra de Consulta Rápida POH & Documentación Técnica Oficial -->
+  <div class="p-3.5 rounded-2xl bg-slate-100/90 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/80 shadow-sm space-y-2.5">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="text-lg">📑</span>
+        <div>
+          <span class="font-bold text-xs uppercase tracking-wider text-slate-900 dark:text-white block">Documentación POH Oficial de Flota</span>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400">Consulta directa en PDF con marcación por página según EASA Part-FCL</span>
+        </div>
+      </div>
+      <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 self-start sm:self-center">
+        ● Manuales Digitalizados Activos
+      </span>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+      <a href="/manuals/cessna/poh-ec-nna.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold bg-white dark:bg-slate-900 text-sky-600 dark:text-sky-400 border border-sky-300 dark:border-sky-700 hover:border-sky-500 hover:shadow-md transition">
+        <span>📘 EC-NNA (POH C172N + CD-155)</span>
+        <span class="text-[10px] opacity-70">↗</span>
+      </a>
+      <a href="/manuals/cessna/poh-ec-oxv.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 hover:shadow-md transition">
+        <span>📗 EC-OXV (POH F172K + Supl.)</span>
+        <span class="text-[10px] opacity-70">↗</span>
+      </a>
+      <a href="/manuals/cessna/suplementos-ec-oxt.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 hover:shadow-md transition">
+        <span>📙 EC-OXT (Suplementos CD-155)</span>
+        <span class="text-[10px] opacity-70">↗</span>
+      </a>
+      <a href="/manuals/cessna/poh-ec-nnx.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-medium bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 hover:shadow-md transition">
+        <span>📕 EC-NNX (POH F172 F-M + Supl.)</span>
+        <span class="text-[10px] opacity-70">↗</span>
+      </a>
+      <div class="h-4 w-px bg-slate-300 dark:bg-slate-700 hidden sm:block mx-1"></div>
+      <a href="/manuals/cessna/loadsheet-ec-nna.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[11px] font-medium bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:border-slate-400 transition">
+        <span>⚖️ F.OPS.04.NNA</span>
+        <span class="text-[9px] opacity-70">↗</span>
+      </a>
+      <a href="/manuals/cessna/loadsheet-ec-nnx.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[11px] font-medium bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:border-slate-400 transition">
+        <span>⚖️ F.OPS.04.NNX</span>
+        <span class="text-[9px] opacity-70">↗</span>
+      </a>
+    </div>
+  </div>
+
   <!-- Bloque 1: Identificación y Matrículas de la Flota -->
   <section class="bg-slate-50 dark:bg-slate-900/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
     <h2 class="text-lg font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
@@ -48,56 +92,105 @@ export const C172_LESSON_1 = {
     </div>
 
     <p class="text-sm leading-relaxed mb-3">
-      Toda la flota de Cessna 172 de <strong>Blue Team Flight School</strong> está compuesta por células de tipo <strong>Reims/Cessna F172</strong> certificadas bajo normativa EASA, propulsadas exclusivamente por motores <strong>Continental Turbo Diésel common rail (CD-135 y CD-155)</strong> con combustible <strong>JET A-1</strong>. Cada aeronave cuenta con sus características operacionales y datos de centrado reflejados en sus respectivas hojas de carga:
+      Toda la flota de Cessna 172 de <strong>Blue Team Flight School</strong> está compuesta por aeronaves certificadas bajo normativa EASA y propulsadas exclusivamente por motores <strong>Continental Turbo Diésel common rail (CD-135 y CD-155)</strong> con combustible <strong>JET A-1</strong> y hélice monomando tripala <strong>MT-Propeller</strong> de paso variable gobernada por FADEC dual.
     </p>
 
+    <!-- Tabla Comparativa Oficial de la Flota (4 Manuales POH / Suplementos) -->
     <div class="overflow-x-auto my-3">
       <table class="w-full text-xs text-left border-collapse border border-slate-200 dark:border-slate-700 rounded-lg">
         <thead class="bg-slate-100 dark:bg-slate-800/80 text-slate-900 dark:text-slate-200 uppercase font-semibold">
           <tr>
             <th class="p-2.5 border border-slate-200 dark:border-slate-700">Matrícula</th>
-            <th class="p-2.5 border border-slate-200 dark:border-slate-700">Modelo Célula</th>
-            <th class="p-2.5 border border-slate-200 dark:border-slate-700">Motor Continental</th>
-            <th class="p-2.5 border border-slate-200 dark:border-slate-700">Peso Vacío (BEW)</th>
-            <th class="p-2.5 border border-slate-200 dark:border-slate-700">Brazo / Momento Vacío</th>
-            <th class="p-2.5 border border-slate-200 dark:border-slate-700">Hélice y Cabina</th>
+            <th class="p-2.5 border border-slate-200 dark:border-slate-700">Modelo Célula POH</th>
+            <th class="p-2.5 border border-slate-200 dark:border-slate-700">Motor Diésel / Suplemento</th>
+            <th class="p-2.5 border border-slate-200 dark:border-slate-700">Recorrido Flaps</th>
+            <th class="p-2.5 border border-slate-200 dark:border-slate-700">Masa y Centrado (W&B)</th>
+            <th class="p-2.5 border border-slate-200 dark:border-slate-700">Hélice y FADEC</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
           <tr class="hover:bg-sky-500/5">
             <td class="p-2.5 font-bold text-sky-600 dark:text-sky-400">EC-OXT</td>
-            <td class="p-2.5">Reims F172M (F172-1095)</td>
-            <td class="p-2.5">CD-155 (155 HP TAE 125-02-99)</td>
-            <td class="p-2.5 font-mono">Según W&B vigente</td>
-            <td class="p-2.5 font-mono">FADEC dual / Jet A-1</td>
-            <td class="p-2.5">Monomando, MT-Propeller tripala, AED/CED</td>
+            <td class="p-2.5">Reims/Cessna F172M (s/n 1095)</td>
+            <td class="p-2.5">CD-155 (155 HP / TAE 125-02-99)</td>
+            <td class="p-2.5 font-mono font-bold text-sky-600 dark:text-sky-400">0° - 40° (4 pos.)</td>
+            <td class="p-2.5">Hoja F.OPS.04 vigente</td>
+            <td class="p-2.5">MT-Propeller tripala / FADEC dual</td>
           </tr>
           <tr class="hover:bg-sky-500/5">
             <td class="p-2.5 font-bold text-sky-600 dark:text-sky-400">EC-OXV</td>
-            <td class="p-2.5">Reims F172K (F172-0740)</td>
-            <td class="p-2.5">CD-135 (135 HP TAE 125-01)</td>
-            <td class="p-2.5 font-mono">Según W&B vigente</td>
-            <td class="p-2.5 font-mono">FADEC dual / Jet A-1</td>
-            <td class="p-2.5">Monomando, MT-Propeller tripala, AED/CED</td>
+            <td class="p-2.5">Reims/Cessna F172K (s/n 0740)</td>
+            <td class="p-2.5">CD-135 / CD-155 (TAE 125-02-114)</td>
+            <td class="p-2.5 font-mono font-bold text-sky-600 dark:text-sky-400">0° - 40° (4 pos.)</td>
+            <td class="p-2.5">Hoja F.OPS.04 vigente</td>
+            <td class="p-2.5">MT-Propeller tripala / FADEC dual</td>
           </tr>
           <tr class="hover:bg-sky-500/5">
             <td class="p-2.5 font-bold text-sky-600 dark:text-sky-400">EC-NNA</td>
-            <td class="p-2.5">Reims-Cessna 172</td>
-            <td class="p-2.5">CD-135 / CD-155</td>
-            <td class="p-2.5 font-mono font-bold text-emerald-600 dark:text-emerald-400">755.44 kg</td>
-            <td class="p-2.5 font-mono">1.042 m (787.23 kg·m)</td>
-            <td class="p-2.5">Hoja de carga oficial F.OPS.04.NNA</td>
+            <td class="p-2.5">Cessna 172N (Reims F172N)</td>
+            <td class="p-2.5">CD-155 (155 HP / TAE 125-02-114)</td>
+            <td class="p-2.5 font-mono font-bold text-amber-500">0° - 30° (3 pos.)</td>
+            <td class="p-2.5">
+              <a href="/manuals/cessna/loadsheet-ec-nna.pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 font-semibold underline hover:text-sky-500">
+                F.OPS.04.NNA ↗
+              </a>
+            </td>
+            <td class="p-2.5">MT-Propeller tripala / FADEC dual</td>
           </tr>
           <tr class="hover:bg-sky-500/5">
             <td class="p-2.5 font-bold text-sky-600 dark:text-sky-400">EC-NNX</td>
-            <td class="p-2.5">Reims-Cessna 172</td>
-            <td class="p-2.5">CD-135 / CD-155</td>
-            <td class="p-2.5 font-mono font-bold text-emerald-600 dark:text-emerald-400">795.83 kg</td>
-            <td class="p-2.5 font-mono">1.026 m (816.05 kg·m)</td>
-            <td class="p-2.5">Hoja de carga oficial F.OPS.04.NNX</td>
+            <td class="p-2.5">Reims/Cessna F172 (Serie F-M)</td>
+            <td class="p-2.5">CD-135 (TAE 125-01) / CD-155</td>
+            <td class="p-2.5 font-mono font-bold text-sky-600 dark:text-sky-400">0° - 40° (4 pos.)</td>
+            <td class="p-2.5">
+              <a href="/manuals/cessna/loadsheet-ec-nnx.pdf" target="_blank" rel="noopener noreferrer" class="text-sky-600 dark:text-sky-400 font-semibold underline hover:text-sky-500">
+                F.OPS.04.NNX ↗
+              </a>
+            </td>
+            <td class="p-2.5">MT-Propeller tripala / FADEC dual</td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Aclaración Operacional sobre Hojas de Carga y Centrado -->
+    <div class="p-3 rounded-xl bg-blue-50/60 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900/40 text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
+      <div class="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+        <span>⚖️</span>
+        <span>Aclaración Operacional — Masa y Centrado Individual (W&B)</span>
+      </div>
+      <p class="leading-relaxed">
+        Los pesos en vacío (<strong>BEW</strong>) y sus brazos de palanca <strong>no constituyen una diferencia fija de modelo o tipo</strong>; son datos propios y exclusivos de cada célula concreta, determinados individualmente en pesaje oficial de taller y plasmados en su respectiva hoja de carga <strong>F.OPS.04</strong>.
+      </p>
+      <p class="leading-relaxed text-[11px] text-slate-500 dark:text-slate-400">
+        <em>Ejemplos reales de la flota Blue Team:</em> la hoja <a href="/manuals/cessna/loadsheet-ec-nna.pdf" target="_blank" rel="noopener noreferrer" class="font-semibold underline text-sky-600 dark:text-sky-400"><code>F.OPS.04.NNA</code> ↗</a> (EC-NNA) registra un BEW de <strong>755.44 kg</strong> con brazo de <strong>1.042 m</strong> (momento 787.23 kg·m), mientras que la <a href="/manuals/cessna/loadsheet-ec-nnx.pdf" target="_blank" rel="noopener noreferrer" class="font-semibold underline text-sky-600 dark:text-sky-400"><code>F.OPS.04.NNX</code> ↗</a> (EC-NNX) registra un BEW de <strong>795.83 kg</strong> con brazo de <strong>1.026 m</strong> (momento 816.05 kg·m). En cada vuelo el alumno o tripulante al mando debe consultar la hoja F.OPS.04 específica de la aeronave asignada.
+      </p>
+    </div>
+
+    <!-- Recuadro Comparativo Flota 1.1 -->
+    <div class="mt-3 p-3.5 rounded-xl bg-gradient-to-r from-sky-500/10 via-sky-500/5 to-transparent border border-sky-500/20 text-xs space-y-2">
+      <div class="flex items-center gap-2 font-bold text-sky-700 dark:text-sky-300">
+        <span>✈️</span>
+        <span class="uppercase tracking-wider">Particularidades de Flota — Célula y Modelos (EC-OXT · EC-OXV · EC-NNA · EC-NNX)</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+        <div>• <strong>EC-OXT:</strong> Reims F172M (1974). Célula europea construida bajo licencia Reims Aviation, fuselaje semimonocasco con protección anticorrosión integral.</div>
+        <div>• <strong>EC-OXV:</strong> Reims F172K (1970). Célula clásica Reims con tren principal tubular de acero y bancada motor adaptada para STC TAE 125.</div>
+        <div>• <strong>EC-NNA:</strong> Cessna 172N (1978). Variante 172N de Wichita con sistema eléctrico base de 28V y pre-instalación de fábrica para menor arrastre inducido.</div>
+        <div>• <strong>EC-NNX:</strong> Reims F172 (Serie F-M). Homologada con STC Continental CD-135 / CD-155 y hélice tripala MT-Propeller MTV-6-A-187-129.</div>
+      </div>
+      <!-- Referencias al Manual -->
+      <div class="pt-2 border-t border-sky-500/20 flex flex-wrap items-center gap-2 text-[11px]">
+        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH:</span>
+        <a href="/manuals/cessna/poh-ec-nna.pdf#page=4" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>POH C172N Sec. 1 (Pág. 4: General y Dimensiones)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+        <a href="/manuals/cessna/poh-ec-nna.pdf#page=82" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>Supl. TAE 125 Sec. 1 (Pág. 82: Planta Motriz)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -122,35 +215,66 @@ export const C172_LESSON_1 = {
         </ul>
       </div>
 
-      <div class="bg-white dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
-        <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2 text-xs uppercase tracking-wider text-sky-600 dark:text-sky-400">
-          <span>📐 Flaps Ranurados Eléctricos (Slotted)</span>
-        </h3>
-        <p class="text-xs text-slate-600 dark:text-slate-300 mb-2">
-          Los flaps son de tipo ranurado (<em>slotted</em>), accionados por un motor eléctrico con eje sinfín situado en la semiala derecha. Permiten incrementar la sustentación a baja velocidad y añadir resistencia parásita para aproximaciones pronunciadas.
+      <div class="bg-white dark:bg-slate-800/80 p-4 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2 text-xs uppercase tracking-wider text-sky-600 dark:text-sky-400">
+            <span>📐 Flaps Ranurados Eléctricos (Slotted)</span>
+          </h3>
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+            Diferencia entre Modelos
+          </span>
+        </div>
+        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+          Los flaps son de tipo ranurado (<em>slotted</em>), accionados por un motor eléctrico con eje sinfín situado en la semiala derecha. Permiten incrementar la sustentación a baja velocidad y añadir resistencia parásita en aproximación.
         </p>
-        <div class="grid grid-cols-4 gap-2 text-center text-xs font-bold pt-1">
-          <div class="bg-slate-100 dark:bg-slate-700 p-2 rounded-lg border border-slate-200 dark:border-slate-600">
-            <span class="block text-slate-400 text-[10px]">Posición 1</span>
-            <span class="text-sky-500 font-mono text-sm">10°</span>
-            <span class="block text-[9px] text-slate-500">Campo Corto / Blando</span>
+
+        <!-- Comparativa de Flaps entre Modelos de la Flota -->
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600">
+            <span class="font-bold text-sky-600 dark:text-sky-400 block text-[11px]">EC-OXV, EC-OXT, EC-NNX</span>
+            <span class="text-[10px] text-slate-500 block">Modelos F172K / F172M:</span>
+            <span class="font-mono font-bold text-slate-800 dark:text-slate-200 text-xs mt-1 block">4 pos: 10°, 20°, 30°, 40°</span>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Máxima resistencia con 40° para aterrizajes en campos cortos.</p>
           </div>
-          <div class="bg-slate-100 dark:bg-slate-700 p-2 rounded-lg border border-slate-200 dark:border-slate-600">
-            <span class="block text-slate-400 text-[10px]">Posición 2</span>
-            <span class="text-sky-500 font-mono text-sm">20°</span>
-            <span class="block text-[9px] text-slate-500">Aproximación Base</span>
-          </div>
-          <div class="bg-slate-100 dark:bg-slate-700 p-2 rounded-lg border border-slate-200 dark:border-slate-600">
-            <span class="block text-slate-400 text-[10px]">Posición 3</span>
-            <span class="text-sky-500 font-mono text-sm">30°</span>
-            <span class="block text-[9px] text-slate-500">Aterrizaje Normal</span>
-          </div>
-          <div class="bg-slate-100 dark:bg-slate-700 p-2 rounded-lg border border-slate-200 dark:border-slate-600">
-            <span class="block text-slate-400 text-[10px]">Posición 4</span>
-            <span class="text-sky-500 font-mono text-sm">40°</span>
-            <span class="block text-[9px] text-slate-500">Campo Corto / Max Drag</span>
+          <div class="p-2.5 rounded-lg bg-amber-50/50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50">
+            <span class="font-bold text-amber-600 dark:text-amber-400 block text-[11px]">EC-NNA</span>
+            <span class="text-[10px] text-slate-500 block">Modelo 172N:</span>
+            <span class="font-mono font-bold text-amber-600 dark:text-amber-300 text-xs mt-1 block">3 pos: 10°, 20°, 30°</span>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Deflexión limitada a 30° de fábrica para optimizar el ascenso en frustrada.</p>
           </div>
         </div>
+
+        <div class="p-2 rounded bg-slate-100 dark:bg-slate-700/40 text-[11px] text-slate-600 dark:text-slate-300">
+          ℹ️ <strong>Rango de velocidades de flaps:</strong> En toda la flota el flap completo está limitado a <strong>85 KIAS</strong> (Vfe). En <strong>EC-NNA</strong>, el primer punto de flap (10°) está homologado para extenderse hasta <strong>110 KIAS</strong>, facilitando la desaceleración previa al circuito de tránsito.
+        </div>
+      </div>
+    </div>
+
+    <!-- Recuadro Comparativo Flota 1.2 -->
+    <div class="mt-4 p-3.5 rounded-xl bg-gradient-to-r from-sky-500/10 via-sky-500/5 to-transparent border border-sky-500/20 text-xs space-y-2">
+      <div class="flex items-center gap-2 font-bold text-sky-700 dark:text-sky-300">
+        <span>✈️</span>
+        <span class="uppercase tracking-wider">Particularidades de Flota — Mandos de Vuelo y Flaps (EC-OXT · EC-OXV · EC-NNA · EC-NNX)</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+        <div>• <strong>EC-OXT, EC-OXV, EC-NNX (4 posiciones):</strong> Flaps con selector de 4 muescas mecánicas (10°, 20°, 30°, 40°). Vfe = 85 KIAS aplicable a cualquier grado de extensión. La posición de 40° aporta un gran coeficiente de resistencia para descensos pronunciados sin incremento de velocidad.</div>
+        <div>• <strong>EC-NNA (3 posiciones):</strong> Flaps con recorrido limitado a 30° (10°, 20°, 30°). Vfe = 110 KIAS para flap 10° y 85 KIAS para 20°-30°. La ausencia de 40° previene pérdidas excesivas de gradiente de ascenso ante frustradas inadvertidas.</div>
+      </div>
+      <!-- Referencias al Manual -->
+      <div class="pt-2 border-t border-sky-500/20 flex flex-wrap items-center gap-2 text-[11px]">
+        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH:</span>
+        <a href="/manuals/cessna/poh-ec-nna.pdf#page=58" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>General: POH C172N Sec. 7 (Pág. 58: Flight Controls & Flaps)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+        <a href="/manuals/cessna/poh-ec-nna.pdf#page=11" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-800/60 hover:bg-amber-100 transition shadow-sm">
+          <span>EC-NNA: POH Sec. 2 (Pág. 11: Flaps 30° y 110 KIAS)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+        <a href="/manuals/cessna/poh-ec-oxv.pdf#page=82" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 transition shadow-sm">
+          <span>EC-OXV: POH F172K Sec. 2 (Pág. 82: Flaps 40°)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
       </div>
     </div>
   </section>
@@ -194,6 +318,30 @@ export const C172_LESSON_1 = {
           <strong>Frenos Hidráulicos de Disco:</strong> Sistema hidráulico independiente para cada rueda principal, alimentado desde un depósito de líquido en el cortafuegos. Se accionan presionando con las puntas de los pies en la parte superior de los pedales.
         </li>
       </ul>
+    </div>
+
+    <!-- Recuadro Comparativo Flota 1.3 -->
+    <div class="mt-4 p-3.5 rounded-xl bg-gradient-to-r from-sky-500/10 via-sky-500/5 to-transparent border border-sky-500/20 text-xs space-y-2">
+      <div class="flex items-center gap-2 font-bold text-sky-700 dark:text-sky-300">
+        <span>✈️</span>
+        <span class="uppercase tracking-wider">Particularidades de Flota — Tren de Aterrizaje y Frenos (EC-OXT · EC-OXV · EC-NNA · EC-NNX)</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+        <div>• <strong>Comunalidad Total en Amortiguación:</strong> Las cuatro aeronaves comparten el mismo tren principal de acero cónico tubular sin fluido y puntal oleoneumático de morro con líquido <strong>MIL-H-5606</strong>. Comprobación obligatoria en prevuelo de ausencia de fugas y vástago limpio de 2 a 3 dedos.</div>
+        <div>• <strong>Presiones y Carenados (Wheel Pants):</strong> Presión nominal: morro 26-31 PSI / principales 29-38 PSI. En las cuatro aeronaves los carenados de ruedas pueden instalarse para crucero o retirarse para operaciones de escuela en pista no asfaltada según orden técnica de mantenimiento.</div>
+      </div>
+      <!-- Referencias al Manual -->
+      <div class="pt-2 border-t border-sky-500/20 flex flex-wrap items-center gap-2 text-[11px]">
+        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH:</span>
+        <a href="/manuals/cessna/poh-ec-nna.pdf#page=59" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>General: POH C172N Sec. 7 (Pág. 59: Landing Gear & Brakes)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+        <a href="/manuals/cessna/poh-ec-nna.pdf#page=22" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 transition shadow-sm">
+          <span>Inspección Prevuelo: POH C172N Sec. 4 (Pág. 22: Nose Gear & Strut)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -277,6 +425,30 @@ export const C172_LESSON_1 = {
         </p>
       </div>
     </div>
+
+    <!-- Recuadro Comparativo Flota 1.4 -->
+    <div class="mt-4 p-3.5 rounded-xl bg-gradient-to-r from-sky-500/10 via-sky-500/5 to-transparent border border-sky-500/20 text-xs space-y-2">
+      <div class="flex items-center gap-2 font-bold text-sky-700 dark:text-sky-300">
+        <span>✈️</span>
+        <span class="uppercase tracking-wider">Particularidades de Flota — Anemómetro y Velocidades Operacionales (EC-OXT · EC-OXV · EC-NNA · EC-NNX)</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+        <div>• <strong>Velocidades Estructurales Comunes:</strong> Vne (160 KIAS), Vno (128 KIAS), Vs1 (47 KIAS) y factores Va calculados según MTOW aplican idénticamente a las 4 aeronaves.</div>
+        <div>• <strong>Diferencia Operativa de Flaps:</strong> En EC-OXT, EC-OXV y EC-NNX nunca superar 85 KIAS al extender cualquier punto de flaps. En EC-NNA, se autoriza la extensión de 10° de flaps hasta 110 KIAS para desaceleración en descenso o incorporación a circuito.</div>
+      </div>
+      <!-- Referencias al Manual -->
+      <div class="pt-2 border-t border-sky-500/20 flex flex-wrap items-center gap-2 text-[11px]">
+        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH:</span>
+        <a href="/manuals/cessna/poh-ec-nna.pdf#page=11" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>General: POH C172N Sec. 2 (Pág. 11: Airspeed Limitations & Markings)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+        <a href="/manuals/cessna/poh-ec-oxv.pdf#page=93" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-sky-500 transition shadow-sm">
+          <span>EC-OXV: POH F172K Sec. 4 (Pág. 93: Airspeed Limits)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- Bloque 5: Factores de Carga, Pesos y Límites de Bodega -->
@@ -305,12 +477,23 @@ export const C172_LESSON_1 = {
             <em>Maniobras acrobáticas y barrenas (spins) estrictamente prohibidas.</em>
           </p>
         </div>
-        <div class="p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-slate-600">
-          <span class="font-bold text-slate-900 dark:text-white block text-sm">Categoría Utilitaria (MTOW: 2000 lb / 907 kg)</span>
-          <p class="text-slate-600 dark:text-slate-300 mt-1">
+        <div class="p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg border border-slate-200 dark:border-slate-600 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-slate-900 dark:text-white block text-sm">Categoría Utilitaria (MTOW: 2000 lb / 907 kg)</span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+              ⛔ Barrenas Prohibidas
+            </span>
+          </div>
+          <p class="text-slate-600 dark:text-slate-300">
             <strong>Flaps ARRIBA:</strong> <span class="font-mono font-bold text-sky-600 dark:text-sky-400">+4.4 g / -1.76 g</span><br/>
-            <em>Autorizados virajes escarpados (&gt;60°), ochos perezosos, chandelles y barrenas voluntarias. Prohibido ocupar asientos traseros o cargar equipaje.</em>
+            <strong>Requisitos de cabina:</strong> Asientos traseros completamente desocupados y prohibición absoluta de equipaje en bodega.<br/>
+            <strong>Maniobras autorizadas:</strong> Virajes escarpados con alabeo superior a 60°, ochos perezosos (lazy eights), chandelles y pérdidas de sustentación reglamentarias.
           </p>
+          <div class="p-2.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/60 text-rose-700 dark:text-rose-300 text-[11px] leading-relaxed">
+            <strong>🚫 LIMITACIÓN TAXATIVA DEL SUPLEMENTO DIESEL (POH Sec. 2):</strong><br/>
+            <em>"Utility Category: Intentionally initiating spins is prohibited"</em> — Las <strong>barrenas voluntarias están TOTALMENTE PROHIBIDAS</strong> en toda la flota Cessna 172 Turbo Diésel de Blue Team, incluso en categoría utilitaria (a diferencia del modelo clásico avgas).<br/>
+            Asimismo, se prohíben expresamente las <strong>maniobras con G negativa intencionada</strong> (<em>"Intentionally initiating negative G maneuvers is prohibited"</em>) y las cargas G negativas prolongadas, las cuales provocan descebe de aceite y graves problemas de control de paso en la hélice monomando y motor.
+          </div>
         </div>
       </div>
 
@@ -343,11 +526,47 @@ export const C172_LESSON_1 = {
         </div>
       </div>
     </div>
+
+    <!-- Recuadro Comparativo Flota 1.5 -->
+    <div class="mt-4 p-3.5 rounded-xl bg-gradient-to-r from-sky-500/10 via-sky-500/5 to-transparent border border-sky-500/20 text-xs space-y-2">
+      <div class="flex items-center gap-2 font-bold text-sky-700 dark:text-sky-300">
+        <span>✈️</span>
+        <span class="uppercase tracking-wider">Particularidades de Flota — Categorías, Pesos y Prohibición de Barrenas (EC-OXT · EC-OXV · EC-NNA · EC-NNX)</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-600 dark:text-slate-300">
+        <div>• <strong>Envolventes y Cargas Estándar:</strong> MTOW común (1043 kg / 2300 lb Normal y 907 kg / 2000 lb Utilitaria). Capacidades idénticas de bodega (120 lb máx) y factores +3.8g / -1.52g (Normal) y +4.4g / -1.76g (Utilitaria).</div>
+        <div>• <strong>Unificación Restrictiva por STC Diésel:</strong> En las cuatro aeronaves rige sin excepción la prohibición de barrenas intencionadas y maniobras con Gs negativas forzadas, debiendo anular cualquier indicación previa del manual base avgas.</div>
+      </div>
+      <!-- Referencias al Manual -->
+      <div class="pt-2 border-t border-sky-500/20 flex flex-wrap items-center gap-2 text-[11px]">
+        <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1">📖 Referencias POH:</span>
+        <a href="/manuals/cessna/poh-ec-nna.pdf#page=12" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-semibold bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-800/60 hover:bg-sky-100 transition shadow-sm">
+          <span>General: POH C172N Sec. 2 (Pág. 12-13: Pesos, Cargas y Bodega)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+        <a href="/manuals/cessna/poh-ec-nna.pdf#page=103" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
+          <span>EC-NNA: Supl. TAE 125 Sec. 2 (Pág. 103: Prohibición Barrena)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+        <a href="/manuals/cessna/poh-ec-oxv.pdf#page=16" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
+          <span>EC-OXV: Supl. TAE 125 Sec. 2 (Pág. 16: Prohibición Barrena)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+        <a href="/manuals/cessna/suplementos-ec-oxt.pdf#page=33" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
+          <span>EC-OXT: Supl. TAE 125 Sec. 2 (Pág. 33: Prohibición Barrena)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+        <a href="/manuals/cessna/poh-ec-nnx.pdf#page=63" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-bold bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-800/60 hover:bg-rose-100 transition shadow-sm">
+          <span>EC-NNX: Supl. TAE 125 Sec. 2 (Pág. 63: Prohibición Barrena)</span>
+          <span class="text-[10px]">↗</span>
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- Resumen de Preparación para el Examen Oficial -->
   <div class="p-4 rounded-2xl bg-gradient-to-r from-sky-500/10 via-blue-500/10 to-indigo-500/10 border border-sky-500/30 text-xs text-slate-700 dark:text-slate-200">
-    <span class="font-bold text-sky-600 dark:text-sky-400 block mb-1 text-sm">📋 Resumen Rápido — Preguntas Oficiales de Examen Cubiertas en esta Lección:</span>
+    <span class="font-bold text-sky-600 dark:text-sky-400 block mb-1 text-sm">📋 Resumen Rápido — Preguntas Oficiales de Examen y Criterios Operacionales:</span>
     <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
       <li>✅ <strong>Pregunta 5:</strong> MTOW = 2300 lb (Normal) / 2000 lb (Utility).</li>
       <li>✅ <strong>Pregunta 6:</strong> Carga máxima Baggage Area 1 = 120 lb (54.4 kg).</li>
@@ -355,6 +574,8 @@ export const C172_LESSON_1 = {
       <li>✅ <strong>Pregunta 8:</strong> Valor Vne = 160 KIAS (165 KCAS).</li>
       <li>✅ <strong>Pregunta 9:</strong> Arco blanco = 41 a 85 KIAS (Vso a Vfe).</li>
       <li>✅ <strong>Pregunta 12:</strong> Factores de carga Normal = +3.8 g / -1.52 g.</li>
+      <li>⛔ <strong>Seguridad Operacional (POH Supl. Sec 2):</strong> Barrenas (spins) = <em>Estrictamente prohibidas en toda la flota C172 Diésel, incluso en categoría utilitaria</em>.</li>
+      <li>📐 <strong>Diferencia de Flaps:</strong> EC-NNA tiene deflexión máxima de 30° (0°-30°), mientras que OXV, OXT y NNX alcanzan hasta 40° (0°-40°).</li>
     </ul>
   </div>
 
