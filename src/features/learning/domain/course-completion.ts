@@ -14,7 +14,8 @@ export type CourseCertificateEligibility = {
   readLessonsCount: number;
   isReadingComplete: boolean;
   isAllLessonsRead: boolean;
-  examStatus: "in_person_passed" | "online_passed" | "failed" | "not_taken";
+  examStatus: "in_person_passed" | "online_passed" | "failed" | "not_taken" | "not_applicable";
+  isExamApplicable: boolean;
   qualifyingExam: {
     type: "in_person" | "online";
     title: string;
@@ -38,7 +39,14 @@ export type CourseCertificateEligibility = {
 };
 
 export function checkCourseCertificateEligibility(
-  course: { id: string; slug?: string; title: string; lessons?: any[] },
+  course: {
+    id: string;
+    slug?: string;
+    title: string;
+    lessons?: any[];
+    requires_exam?: boolean;
+    has_exam?: boolean;
+  },
   userProgress: any[] = [],
   inPersonExams: any[] = [],
   quizAttempts: any[] = [],
@@ -138,17 +146,26 @@ export function checkCourseCertificateEligibility(
       .map((q) => q.id),
   );
 
+  for (const l of lessons) {
+    if (l.quiz_id) courseQuizIds.add(l.quiz_id);
+  }
+  for (const q of quizzes) {
+    if (q.lesson_id && lessons.some((l) => l.id === q.lesson_id || l.slug === q.lesson_id)) {
+      courseQuizIds.add(q.id);
+    }
+  }
+
   const courseQuizAttempts = filteredQuizAttempts.filter(
     (qa) =>
       courseQuizIds.has(qa.quiz_id) ||
       lessons.some(
         (l) =>
+          (l.quiz_id && l.quiz_id === qa.quiz_id) ||
           l.id === qa.lesson_id ||
           l.id === qa.quiz_id ||
           l.slug === qa.lesson_id ||
           l.slug === qa.quiz_id,
-      ) ||
-      courseQuizIds.size === 0, // if quizzes array empty, consider all course attempts
+      ),
   );
 
   const passedQuizAttempt = courseQuizAttempts.find(
@@ -156,10 +173,26 @@ export function checkCourseCertificateEligibility(
   );
   const latestQuizAttempt = courseQuizAttempts[0] || null;
 
+  // Determine whether this course has an exam requirement
+  const hasQuizzesListPassed =
+    Array.isArray(userIdOrQuizzes) || Array.isArray(quizzesList);
+
+  const isExamApplicable =
+    course.requires_exam !== undefined
+      ? Boolean(course.requires_exam)
+      : course.has_exam !== undefined
+        ? Boolean(course.has_exam)
+        : hasQuizzesListPassed
+          ? courseQuizIds.size > 0 || courseInPersonExams.length > 0
+          : true;
+
   let examStatus: CourseCertificateEligibility["examStatus"] = "not_taken";
   let qualifyingExam: CourseCertificateEligibility["qualifyingExam"] = null;
 
-  if (passedInPersonExam) {
+  if (!isExamApplicable) {
+    examStatus = "not_applicable";
+    qualifyingExam = null;
+  } else if (passedInPersonExam) {
     examStatus = "in_person_passed";
     qualifyingExam = {
       type: "in_person",
@@ -224,7 +257,9 @@ export function checkCourseCertificateEligibility(
     );
   }
 
-  const isEligible = isAllLessonsRead && Boolean(qualifyingExam?.passed);
+  const isEligible = isExamApplicable
+    ? isAllLessonsRead && Boolean(qualifyingExam?.passed)
+    : isAllLessonsRead;
 
   const stats = {
     totalLessons: effectiveTotalLessons,
@@ -245,6 +280,7 @@ export function checkCourseCertificateEligibility(
     isReadingComplete: isAllLessonsRead,
     isAllLessonsRead,
     examStatus,
+    isExamApplicable,
     qualifyingExam,
     accreditedExam: qualifyingExam,
   };

@@ -192,6 +192,74 @@ describe("course-completion domain", () => {
     expect(eligibility.qualifyingExam?.score).toBe(92);
   });
 
+  it("approves course without exam when 100% lessons are read, showing examStatus 'not_applicable'", () => {
+    const courseWithoutExam = {
+      id: "c172-course",
+      slug: "cessna-172-continental-diesel",
+      title: "Cessna 172 Differences",
+      requires_exam: false,
+      lessons: [{ id: "c172-les-1", min_seconds: 50 }],
+    };
+
+    const progressRecords = [
+      { lesson_id: "c172-les-1", elapsed_seconds: 60, is_completed: true, user_id: "u-1" },
+    ];
+
+    const eligibility = checkCourseCertificateEligibility(
+      courseWithoutExam,
+      progressRecords,
+      [],
+      [],
+      "u-1",
+      [],
+    );
+
+    expect(eligibility.isEligible).toBe(true);
+    expect(eligibility.examStatus).toBe("not_applicable");
+    expect(eligibility.isExamApplicable).toBe(false);
+    expect(eligibility.qualifyingExam).toBeNull();
+    expect(eligibility.missingRequirements).toHaveLength(0);
+  });
+
+  it("does not leak unrelated quiz attempts from other courses into a course without quizzes", () => {
+    const courseWithoutExam = {
+      id: "c172-course",
+      slug: "cessna-172-continental-diesel",
+      title: "Cessna 172 Differences",
+      lessons: [{ id: "c172-les-1", min_seconds: 50 }],
+    };
+
+    // User has an attempt from PPL aerodynamics exam (100%)
+    const otherCourseQuizAttempts = [
+      {
+        id: "attempt-aerodinamica",
+        user_id: "u-1",
+        quiz_id: "quiz-aerodinamica",
+        score_percentage: 100,
+        passed: true,
+        completed_at: "2026-09-20T10:00:00Z",
+      },
+    ];
+
+    const allQuizzes = [
+      { id: "quiz-aerodinamica", course_id: "ppl-course", lesson_id: "les-ppl-1" },
+    ];
+
+    const eligibility = checkCourseCertificateEligibility(
+      courseWithoutExam,
+      [],
+      [],
+      otherCourseQuizAttempts,
+      "u-1",
+      allQuizzes,
+    );
+
+    // Should NOT mark the C172 course exam as passed with 100% from PPL
+    expect(eligibility.examStatus).toBe("not_applicable");
+    expect(eligibility.isExamApplicable).toBe(false);
+    expect(eligibility.qualifyingExam).toBeNull();
+  });
+
   it("generates deterministic certificate verification code", () => {
     const code1 = generateCertificateVerificationCode("12345678Z", "PPL(A)", "2026-09-22");
     const code2 = generateCertificateVerificationCode("12345678Z", "PPL(A)", "2026-09-22");

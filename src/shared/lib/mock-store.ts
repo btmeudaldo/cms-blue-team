@@ -26,6 +26,7 @@ export type MockCourse = {
   slug: string;
   description: string;
   image_url?: string;
+  requires_exam?: boolean;
   created_at: string;
   lessons: MockLesson[];
 };
@@ -337,6 +338,7 @@ const mockCourses: MockCourse[] = [
     slug: C172_COURSE_SLUG,
     description: C172_COURSE_DESCRIPTION,
     image_url: C172_COURSE_IMAGE_URL,
+    requires_exam: false,
     created_at: new Date().toISOString(),
     lessons: C172_LESSONS.map((l) => ({
       id: l.id,

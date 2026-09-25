@@ -7,7 +7,7 @@ export type CertificateData = {
   courseTitle: string;
   courseCode?: string;
   accreditedHours?: number;
-  examType: "in_person" | "online";
+  examType: "in_person" | "online" | "none";
   examTitle: string;
   examDate: string;
   examScore: number;
@@ -361,10 +361,20 @@ export function exportOfficialCertificatePDF(data: CertificateData) {
 
       <div class="exam-verification-strip">
         <div><strong>Horas Lectivas Acreditadas:</strong> ${hours} h</div>
-        <div><strong>Tipo de Evaluación:</strong> ${data.examType === "in_person" ? "Examen Presencial en Papel" : "Evaluación Teórica"}</div>
-        <div><strong>Calificación:</strong> ${data.examScore}% (Apto &ge; 75%)</div>
-        <div><strong>Fecha Examen:</strong> ${examDateFormatted}</div>
-        ${data.examinerName ? `<div><strong>Examinador:</strong> ${data.examinerName}</div>` : ""}
+        <div><strong>Tipo de Evaluación:</strong> ${
+          data.examType === "none"
+            ? "Acreditación por Cumplimiento de Lectura (Examen no aplica)"
+            : data.examType === "in_person"
+              ? "Examen Presencial en Papel"
+              : "Evaluación Teórica"
+        }</div>
+        <div><strong>Calificación:</strong> ${
+          data.examType === "none"
+            ? "Acreditado 100% Lectura"
+            : `${data.examScore}% (Apto &ge; 75%)`
+        }</div>
+        <div><strong>Fecha:</strong> ${examDateFormatted}</div>
+        ${data.examinerName ? `<div><strong>Supervisor / Examinador:</strong> ${data.examinerName}</div>` : ""}
       </div>
     </div>
 

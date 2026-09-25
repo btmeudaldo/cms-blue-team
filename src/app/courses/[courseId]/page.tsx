@@ -59,6 +59,7 @@ export default async function StudentCourseDetailPage({
     inPersonExams ?? [],
     quizAttempts ?? [],
     user.id,
+    quizzes ?? [],
   );
 
   return (
@@ -140,7 +141,9 @@ export default async function StudentCourseDetailPage({
                   </h4>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                     {lessons.length} lecciones con control de lectura y{" "}
-                    {courseQuizzes.length} evaluaciones teóricas activas.
+                    {courseQuizzes.length > 0
+                      ? `${courseQuizzes.length} evaluaciones teóricas activas.`
+                      : "sin evaluaciones teóricas requeridas (acreditación por lectura)."}
                   </p>
                 </div>
               </div>
@@ -166,8 +169,11 @@ export default async function StudentCourseDetailPage({
                 <span>Mi avance en el curso</span>
                 <span>
                   {completedLessonsCount}/{lessons.length} lecciones &middot;{" "}
-                  {passedQuizzesCount}/{courseQuizzes.length} exámenes (
-                  {progressPercent}%)
+                  {courseQuizzes.length > 0 ? (
+                    `${passedQuizzesCount}/${courseQuizzes.length} exámenes (${progressPercent}%)`
+                  ) : (
+                    `Examen: No aplica (${progressPercent}%)`
+                  )}
                 </span>
               </div>
               <p className="text-xs text-slate-500 dark:text-slate-400">{`Lecturas verificadas: ${summary.readLessonsCount}/${lessons.length}`}</p>
@@ -250,13 +256,25 @@ export default async function StudentCourseDetailPage({
                               <span className="rounded-full bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
                                 {readingCompleted
                                   ? "Lectura OK"
-                                  : "Examen aprobado · Lectura pendiente"}
+                                  : quizPassed
+                                    ? "Examen aprobado · Lectura pendiente"
+                                    : "Completada"}
                               </span>
                             )}
                           </div>
-                          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                            {lesson.word_count || 0} palabras &middot; Tiempo
-                            mín. exigido: {lesson.min_seconds}s
+                          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 flex items-center gap-2 flex-wrap">
+                            <span>{lesson.word_count || 0} palabras</span>
+                            <span>&middot;</span>
+                            <span>Tiempo mín. exigido: {lesson.min_seconds}s</span>
+                            {!quiz && (
+                              <>
+                                <span>&middot;</span>
+                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-400 dark:text-slate-500">
+                                  <span>⚪</span>
+                                  <span>Examen: No aplica</span>
+                                </span>
+                              </>
+                            )}
                           </p>
                         </div>
                       </div>

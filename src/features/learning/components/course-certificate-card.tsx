@@ -1,6 +1,7 @@
 "use client";
 
 import { exportOfficialCertificatePDF } from "../domain/certificate-export";
+import type { CourseCertificateEligibility } from "../domain/course-completion";
 
 type CourseCertificateCardProps = {
   course: {
@@ -15,25 +16,7 @@ type CourseCertificateCardProps = {
     email: string;
     dni_nie?: string;
   };
-  eligibility: {
-    isEligible: boolean;
-    reasons: string[];
-    stats: {
-      totalLessons: number;
-      completedLessonsCount: number;
-      readLessonsCount: number;
-      isAllLessonsRead: boolean;
-    };
-    qualifyingExam: {
-      type: "in_person" | "online";
-      score: number;
-      passed: boolean;
-      examDate: string;
-      examinerName?: string;
-      classroom?: string;
-      documentUrl?: string;
-    } | null;
-  };
+  eligibility: CourseCertificateEligibility;
 };
 
 export function CourseCertificateCard({
@@ -53,15 +36,17 @@ export function CourseCertificateCard({
       courseTitle: course.title,
       courseCode: course.slug || course.id,
       accreditedHours: course.theory_hours || 25,
-      examType: qualifyingExam.type,
+      examType: (qualifyingExam?.type as any) || "none",
       examTitle:
-        qualifyingExam.type === "in_person"
+        qualifyingExam?.type === "in_person"
           ? "Examen Presencial en Papel"
-          : "Evaluación Teórica",
-      examDate: qualifyingExam.examDate,
-      examScore: qualifyingExam.score,
-      examinerName: qualifyingExam.examinerName || "Instructor Examinador",
-      classroom: qualifyingExam.classroom || "Aula Teórica Principal",
+          : qualifyingExam?.type === "online"
+            ? "Evaluación Teórica"
+            : "Formación Teórica Acreditada por Lectura",
+      examDate: qualifyingExam?.examDate || new Date().toISOString(),
+      examScore: qualifyingExam?.score ?? 100,
+      examinerName: qualifyingExam?.examinerName || "Instructor Examinador",
+      classroom: qualifyingExam?.classroom || "Aula Teórica Principal",
       issueDate: new Date().toISOString(),
     });
   }
@@ -101,7 +86,9 @@ export function CourseCertificateCard({
           </div>
 
           <p className="text-xs sm:text-sm text-slate-200/90 leading-relaxed max-w-3xl">
-            Has completado satisfactoriamente el 100% de las lecciones con sus tiempos mínimos de lectura acreditados y has aprobado la prueba oficial con corte reglamentario (&ge; 75%).
+            {eligibility.examStatus === "not_applicable"
+              ? "Has completado satisfactoriamente el 100% de las lecciones con sus tiempos mínimos de lectura reglamentarios acreditados. Este curso no requiere examen oficial para la obtención del diploma."
+              : "Has completado satisfactoriamente el 100% de las lecciones con sus tiempos mínimos de lectura acreditados y has aprobado la prueba oficial con corte reglamentario (≥ 75%)."}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-white/10 text-xs">
@@ -116,10 +103,14 @@ export function CourseCertificateCard({
 
             <div className="rounded-xl bg-white/5 p-3">
               <span className="text-[10px] uppercase font-bold text-slate-400 block">
-                Examen Acreditado
+                {eligibility.examStatus === "not_applicable"
+                  ? "Examen Teórico"
+                  : "Examen Acreditado"}
               </span>
               <strong className="text-sm font-extrabold text-emerald-300">
-                {qualifyingExam?.score}% · {qualifyingExam?.type === "in_person" ? "Presencial en Papel" : "Cuestionario"}
+                {eligibility.examStatus === "not_applicable"
+                  ? "No aplica"
+                  : `${qualifyingExam?.score}% · ${qualifyingExam?.type === "in_person" ? "Presencial en Papel" : "Cuestionario"}`}
               </strong>
             </div>
 
@@ -178,32 +169,49 @@ export function CourseCertificateCard({
           </p>
         </div>
 
-        <div className={`rounded-2xl border p-4 space-y-1.5 ${
-          qualifyingExam?.passed
-            ? "border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/40 dark:bg-emerald-950/20"
-            : "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40"
-        }`}>
-          <div className="flex items-center justify-between">
-            <span className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-              <span>{qualifyingExam?.passed ? "✅" : "⏳"}</span>
-              <span>Examen Aprobado (&ge; 75%)</span>
-            </span>
-            <span className="font-bold">
-              {qualifyingExam ? (
-                <span className={qualifyingExam.passed ? "text-emerald-600 dark:text-emerald-400" : "text-rose-500"}>
-                  {qualifyingExam.score}%
-                </span>
-              ) : (
-                <span className="text-slate-400">Pendiente</span>
-              )}
-            </span>
+        {eligibility.examStatus === "not_applicable" ? (
+          <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/20 p-4 space-y-1.5 opacity-80">
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                <span>⚪</span>
+                <span>Examen Teórico</span>
+              </span>
+              <span className="rounded-full bg-slate-200 dark:bg-slate-700 px-2.5 py-0.5 text-[11px] font-bold text-slate-600 dark:text-slate-300">
+                No aplica
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+              Esta formación no requiere examen teórico; la acreditación se obtiene al completar el 100% de la lectura reglamentaria.
+            </p>
           </div>
-          <p className="text-[11px] text-slate-500 dark:text-slate-400">
-            {qualifyingExam?.type === "in_person"
-              ? "Examen físico en papel custodiado por instructor."
-              : "Examen presencial en papel o cuestionario oficial del programa."}
-          </p>
-        </div>
+        ) : (
+          <div className={`rounded-2xl border p-4 space-y-1.5 ${
+            qualifyingExam?.passed
+              ? "border-emerald-200 dark:border-emerald-900/60 bg-emerald-50/40 dark:bg-emerald-950/20"
+              : "border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40"
+          }`}>
+            <div className="flex items-center justify-between">
+              <span className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                <span>{qualifyingExam?.passed ? "✅" : "⏳"}</span>
+                <span>Examen Aprobado (&ge; 75%)</span>
+              </span>
+              <span className="font-bold">
+                {qualifyingExam ? (
+                  <span className={qualifyingExam.passed ? "text-emerald-600 dark:text-emerald-400" : "text-rose-500"}>
+                    {qualifyingExam.score}%
+                  </span>
+                ) : (
+                  <span className="text-slate-400">Pendiente</span>
+                )}
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400">
+              {qualifyingExam?.type === "in_person"
+                ? "Examen físico en papel custodiado por instructor."
+                : "Examen presencial en papel o cuestionario oficial del programa."}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

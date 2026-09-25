@@ -11,6 +11,7 @@ export const C172_COURSE_SLUG = "cessna-172-continental-diesel";
 export const C172_COURSE_TITLE = "Curso de Familiarización y Diferencias Cessna 172 (Continental CD-135 / CD-155)";
 export const C172_COURSE_DESCRIPTION = "Curso oficial de familiarización de tipo, diferencias técnicas y procedimientos de emergencia para la flota Cessna 172 con motores Continental CD-135 y CD-155 Turbo Diésel (EC-OXT, EC-OXV, EC-NNA, EC-NNX) de Blue Team Flight School, conforme a EASA Part-FCL.710.";
 export const C172_COURSE_IMAGE_URL = "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80";
+export const C172_COURSE_REQUIRES_EXAM = false;
 
 export const C172_DOCUMENTATION: CourseDocumentationItem[] = [
   // Manuales Completos Oficiales

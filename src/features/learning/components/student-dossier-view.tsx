@@ -148,6 +148,7 @@ export function StudentDossierView({
         studentInPersonExams,
         quizAttempts,
         selectedStudent.id,
+        quizzes,
       );
       return {
         course,
@@ -876,10 +877,14 @@ export function StudentDossierView({
 
                       <div className="flex items-center justify-between">
                         <span className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
-                          {exam?.passed ? "✅" : "⏳"} Examen Oficial Aprobado (&ge; 75%):
+                          {eligibility.examStatus === "not_applicable"
+                            ? "⚪ Examen Oficial:"
+                            : `${exam?.passed ? "✅" : "⏳"} Examen Oficial Aprobado (≥ 75%):`}
                         </span>
                         <span className="font-bold text-slate-900 dark:text-white">
-                          {exam ? (
+                          {eligibility.examStatus === "not_applicable" ? (
+                            <span className="text-slate-500 dark:text-slate-400 font-semibold">No aplica</span>
+                          ) : exam ? (
                             <span className={exam.passed ? "text-emerald-600 dark:text-emerald-400" : "text-rose-500"}>
                               {exam.score}% ({exam.type === "in_person" ? "Presencial" : "Online"})
                             </span>
@@ -903,12 +908,14 @@ export function StudentDossierView({
                               courseTitle: course.title,
                               courseCode: course.slug || course.id,
                               accreditedHours: course.theory_hours || 25,
-                              examType: exam.type === "in_person" ? "in_person" : "online",
-                              examTitle: exam.type === "in_person" ? "Examen Presencial en Papel" : "Evaluación Teórica",
-                              examDate: exam.examDate,
-                              examScore: exam.score,
-                              examinerName: exam.examinerName || "Instructor Examinador",
-                              classroom: exam.classroom || "Aula Principal",
+                              examType: (exam?.type as any) || "none",
+                              examTitle: exam
+                                ? (exam.type === "in_person" ? "Examen Presencial en Papel" : "Evaluación Teórica")
+                                : "Formación Teórica Acreditada por Lectura",
+                              examDate: exam?.examDate || new Date().toISOString(),
+                              examScore: exam?.score ?? 100,
+                              examinerName: exam?.examinerName || "Instructor Examinador",
+                              classroom: exam?.classroom || "Aula Principal",
                               issueDate: new Date().toISOString(),
                             });
                           }}

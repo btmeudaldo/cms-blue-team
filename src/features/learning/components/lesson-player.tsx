@@ -1255,6 +1255,33 @@ export function LessonPlayer({
                 )}
               </div>
             )}
+
+            {/* End of Lesson Banner when no quiz exists */}
+            {!quiz && (isAlreadyCompleted || isCompletedSuccess) && (
+              <div className="mt-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-md space-y-4 animate-in fade-in duration-300">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="space-y-1 text-center sm:text-left">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-xs font-extrabold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                      ⚪ Examen: No aplica
+                    </span>
+                    <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
+                      Lectura Verificada Acreditada
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      Esta lección no requiere examen; el aprovechamiento queda acreditado con el cumplimiento del tiempo reglamentario de lectura.
+                    </p>
+                  </div>
+                  {nextLessonId && (
+                    <Link
+                      href={`/courses/${courseId}/lessons/${nextLessonId}`}
+                      className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all text-center shadow-xs"
+                    >
+                      Siguiente Lección &rarr;
+                    </Link>
+                  )}
+                </div>
+              </div>
+            )}
           </main>
         </div>
 
