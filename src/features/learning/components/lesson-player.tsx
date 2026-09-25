@@ -81,6 +81,12 @@ export function LessonPlayer({
   const router = useRouter();
   const lessonPages = splitLessonPages(contentHtml);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const [pageSecondsElapsed, setPageSecondsElapsed] = useState<
+    Record<number, number>
+  >({});
+  const [completedPages, setCompletedPages] = useState<Record<number, boolean>>(
+    {},
+  );
   const totalLessonPages = lessonPages.length;
   const currentSlideHtml =
     lessonPages[currentPageIndex] ?? lessonPages[0] ?? "";
@@ -96,6 +102,7 @@ export function LessonPlayer({
   const remainingSeconds = isAlreadyCompleted
     ? 0
     : remainingLessonSeconds(minSeconds, serverProgress);
+
   const [scrollProgress, setScrollProgress] = useState(0);
   const [reachedScrollThreshold, setReachedScrollThreshold] =
     useState(true);
@@ -106,6 +113,21 @@ export function LessonPlayer({
   const [isActivityPaused, setIsActivityPaused] = useState(false);
   const [retryVersion, setRetryVersion] = useState(0);
   const [isAdvanceArmed, setIsAdvanceArmed] = useState(isAlreadyCompleted);
+
+  const minSecondsPerPage =
+    totalLessonPages > 1
+      ? Math.max(1, Math.ceil(minSeconds / totalLessonPages))
+      : minSeconds;
+  const isCurrentPageDone =
+    isAlreadyCompleted ||
+    isCompletedSuccess ||
+    Boolean(completedPages[currentPageIndex]);
+  const elapsedOnCurrentPage = pageSecondsElapsed[currentPageIndex] ?? 0;
+  const currentPageRemainingSeconds = isCurrentPageDone
+    ? 0
+    : Math.max(0, minSecondsPerPage - elapsedOnCurrentPage);
+  const activeRemainingSeconds =
+    totalLessonPages > 1 ? currentPageRemainingSeconds : remainingSeconds;
 
   // Focus & Visibility state
   const [isWindowFocused, setIsWindowFocused] = useState(true);
@@ -189,6 +211,43 @@ export function LessonPlayer({
     });
     return () => window.cancelAnimationFrame(frame);
   }, []);
+
+  // Per-slide countdown timer when lesson has multiple pages
+  useEffect(() => {
+    if (totalLessonPages <= 1) return;
+    if (isAlreadyCompleted || isCompletedSuccess || isCurrentPageDone) return;
+    if (
+      !isWindowFocused ||
+      isActivityPaused ||
+      Boolean(errorMessage) ||
+      isCompleting
+    )
+      return;
+
+    const timer = window.setInterval(() => {
+      setPageSecondsElapsed((prev) => {
+        const current = prev[currentPageIndex] ?? 0;
+        if (current >= minSecondsPerPage) return prev;
+        return {
+          ...prev,
+          [currentPageIndex]: current + 1,
+        };
+      });
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, [
+    totalLessonPages,
+    isAlreadyCompleted,
+    isCompletedSuccess,
+    isCurrentPageDone,
+    isWindowFocused,
+    isActivityPaused,
+    errorMessage,
+    isCompleting,
+    currentPageIndex,
+    minSecondsPerPage,
+  ]);
 
   useEffect(() => {
     if (isAlreadyCompleted || isCompletedSuccess) return;
@@ -325,7 +384,10 @@ export function LessonPlayer({
     };
   }, [isAlreadyCompleted, isCompletedSuccess, lessonId, retryVersion]);
 
-  const requirementsMet = remainingSeconds === 0 && reachedScrollThreshold;
+  const requirementsMet =
+    (totalLessonPages > 1
+      ? currentPageRemainingSeconds === 0
+      : remainingSeconds === 0) && reachedScrollThreshold;
   const canAdvance =
     isAlreadyCompleted ||
     canCompleteLesson(
@@ -335,6 +397,31 @@ export function LessonPlayer({
       isAdvanceArmed,
       isCompleting || Boolean(errorMessage) || !isWindowFocused,
     );
+  const isBottomBarVisible =
+    isAlreadyCompleted ||
+    isCompletedSuccess ||
+    (totalLessonPages > 1
+      ? isCurrentPageDone || currentPageRemainingSeconds === 0
+      : remainingSeconds === 0);
+
+  const handleAdvanceSlide = () => {
+    setCompletedPages((prev) => ({
+      ...prev,
+      [currentPageIndex]: true,
+    }));
+
+    const array = new Uint32Array(2);
+    crypto.getRandomValues(array);
+    const randomPos = 10 + (array[0] % 80);
+    const randomVertPct = 15 + (array[1] % 71);
+    const randomVert = (array[1] % 21) - 10;
+    setHorizontalPosition(randomPos);
+    setVerticalPosition(randomVertPct);
+    setVerticalOffset(randomVert);
+
+    setCurrentPageIndex((prev) => Math.min(totalLessonPages - 1, prev + 1));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     if (!requirementsMet || isAlreadyCompleted) return;
@@ -423,9 +510,20 @@ export function LessonPlayer({
   }
 
   const timerPct =
-    minSeconds > 0
-      ? Math.round(((minSeconds - remainingSeconds) / minSeconds) * 100)
-      : 100;
+    totalLessonPages > 1
+      ? minSecondsPerPage > 0
+        ? Math.min(
+            100,
+            Math.round(
+              ((minSecondsPerPage - currentPageRemainingSeconds) /
+                minSecondsPerPage) *
+                100,
+            ),
+          )
+        : 100
+      : minSeconds > 0
+        ? Math.round(((minSeconds - remainingSeconds) / minSeconds) * 100)
+        : 100;
 
   // Render Lesson Navigation list component
   const renderLessonsNav = () => (
@@ -684,7 +782,7 @@ export function LessonPlayer({
                     />
                     <path
                       className={
-                        remainingSeconds === 0
+                        activeRemainingSeconds === 0
                           ? "text-emerald-500"
                           : isActivityPaused || !isWindowFocused
                             ? "text-rose-500 animate-pulse"
@@ -701,10 +799,12 @@ export function LessonPlayer({
                 </div>
                 <div className="flex flex-col leading-tight">
                   <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">
-                    Tiempo Exigido
+                    {totalLessonPages > 1
+                      ? `Tiempo Diapositiva ${activeRemainingSeconds > 0 ? `(${activeRemainingSeconds}s)` : ""}`
+                      : "Tiempo Exigido"}
                   </span>
                   <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
-                    {remainingSeconds === 0
+                    {activeRemainingSeconds === 0
                       ? "✓ Cumplido"
                       : isActivityPaused || !isWindowFocused
                         ? "⏸ Pausado"
@@ -985,44 +1085,65 @@ export function LessonPlayer({
                     Diapositiva {currentPageIndex + 1} de {totalLessonPages}
                   </span>
                   <div className="flex items-center gap-1">
-                    {lessonPages.map((_, idx) => (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={() => {
-                          setCurrentPageIndex(idx);
-                          window.scrollTo({ top: 0, behavior: "smooth" });
-                        }}
-                        className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                          idx === currentPageIndex
-                            ? "w-6 bg-[#1a80ff]"
-                            : "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
-                        }`}
-                        title={`Ir a Diapositiva ${idx + 1}`}
-                      />
-                    ))}
+                    {lessonPages.map((_, idx) => {
+                      const isClickable =
+                        idx <= currentPageIndex ||
+                        isAlreadyCompleted ||
+                        isCompletedSuccess ||
+                        Boolean(completedPages[idx]);
+                      return (
+                        <button
+                          key={idx}
+                          type="button"
+                          disabled={!isClickable}
+                          onClick={() => {
+                            if (isClickable) {
+                              setCurrentPageIndex(idx);
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }
+                          }}
+                          className={`h-2.5 rounded-full transition-all ${
+                            idx === currentPageIndex
+                              ? "w-6 bg-[#1a80ff]"
+                              : isClickable
+                                ? "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 cursor-pointer"
+                                : "w-2.5 bg-slate-200 dark:bg-slate-800 opacity-40 cursor-not-allowed"
+                          }`}
+                          title={
+                            isClickable
+                              ? `Ir a Diapositiva ${idx + 1}`
+                              : `Diapositiva ${idx + 1} bloqueada (completa el tiempo de las anteriores)`
+                          }
+                        />
+                      );
+                    })}
                   </div>
                 </div>
 
-                <button
-                  type="button"
-                  disabled={currentPageIndex === totalLessonPages - 1}
-                  onClick={() => {
-                    setCurrentPageIndex((prev) =>
-                      Math.min(totalLessonPages - 1, prev + 1),
-                    );
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                    currentPageIndex === totalLessonPages - 1
-                      ? "opacity-30 cursor-not-allowed text-slate-400"
-                      : "bg-[#1a80ff] text-white hover:bg-[#0066e6] shadow-2xs cursor-pointer"
-                  }`}
-                  title="Diapositiva siguiente"
-                >
-                  <span className="hidden sm:inline">Siguiente</span>
-                  <span>&rarr;</span>
-                </button>
+                {currentPageIndex < totalLessonPages - 1 && (
+                  <button
+                    type="button"
+                    disabled={!isCurrentPageDone && currentPageRemainingSeconds > 0}
+                    onClick={() => {
+                      if (isCurrentPageDone || currentPageRemainingSeconds === 0) {
+                        handleAdvanceSlide();
+                      }
+                    }}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                      !isCurrentPageDone && currentPageRemainingSeconds > 0
+                        ? "opacity-30 cursor-not-allowed text-slate-400"
+                        : "bg-[#1a80ff] text-white hover:bg-[#0066e6] shadow-2xs cursor-pointer"
+                    }`}
+                    title={
+                      !isCurrentPageDone && currentPageRemainingSeconds > 0
+                        ? `Espera a cumplir el tiempo (${currentPageRemainingSeconds}s)`
+                        : "Diapositiva siguiente"
+                    }
+                  >
+                    <span className="hidden sm:inline">Siguiente</span>
+                    <span>&rarr;</span>
+                  </button>
+                )}
               </nav>
             )}
 
@@ -1033,7 +1154,7 @@ export function LessonPlayer({
               dangerouslySetInnerHTML={{ __html: safeContentHtml }}
             />
 
-            {/* Bottom Slide Navigator (Quick jump to next slide) */}
+            {/* Bottom Slide Status */}
             {totalLessonPages > 1 && (
               <div className="flex items-center justify-between gap-3 px-4 py-2 rounded-2xl bg-white/70 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 text-xs">
                 <span className="text-[11px] text-slate-500 font-medium">
@@ -1050,18 +1171,6 @@ export function LessonPlayer({
                       className="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-600 transition cursor-pointer"
                     >
                       &larr; Diapositiva Anterior
-                    </button>
-                  )}
-                  {currentPageIndex < totalLessonPages - 1 && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setCurrentPageIndex((prev) => prev + 1);
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }}
-                      className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#1a80ff] text-white hover:bg-[#0066e6] transition shadow-2xs cursor-pointer"
-                    >
-                      Siguiente Diapositiva &rarr;
                     </button>
                   )}
                 </div>
@@ -1148,14 +1257,14 @@ export function LessonPlayer({
           <div className="lg:hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 dark:bg-slate-900/95 text-white backdrop-blur-xl px-5 py-2 rounded-full shadow-2xl border border-slate-700/80 text-xs font-semibold flex items-center gap-2.5 whitespace-nowrap pointer-events-none max-w-[95vw] overflow-x-auto">
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
-                remainingSeconds === 0
+                activeRemainingSeconds === 0
                   ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
                   : isActivityPaused || !isWindowFocused
                     ? "bg-rose-500/20 text-rose-300 border border-rose-500/30 animate-pulse"
                     : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
               }`}
             >
-              {remainingSeconds === 0
+              {activeRemainingSeconds === 0
                 ? "✓ Tiempo cumplido"
                 : isActivityPaused || !isWindowFocused
                   ? isActivityPaused
@@ -1178,8 +1287,8 @@ export function LessonPlayer({
           </div>
         )}
 
-        {/* Bottom Horizontal Action Dock Bar - Appears ONLY when required anticheat time has passed */}
-        {(remainingSeconds === 0 || isAlreadyCompleted || isCompletedSuccess) && (
+        {/* Bottom Horizontal Action Dock Bar - Appears ONLY when required anticheat time has passed for current page */}
+        {isBottomBarVisible && (
           <section
             aria-label="Avance de lección"
             className="fixed bottom-0 left-0 right-0 z-40 h-16 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-2xl flex items-center px-4 sm:px-8 animate-in fade-in slide-in-from-bottom duration-300"
@@ -1192,25 +1301,36 @@ export function LessonPlayer({
                 }}
                 className="absolute top-1/2 transition-all duration-300"
               >
-                <button
-                  disabled={!canAdvance}
-                  onClick={handleComplete}
-                  className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold text-white shadow-lg transition-all whitespace-nowrap ${
-                    canAdvance
-                      ? "bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
-                      : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
-                  }`}
-                >
-                  {isCompleting
-                    ? "Verificando en servidor..."
-                    : isCompletedSuccess
-                      ? nextLessonId
-                        ? "✓ Completada"
-                        : "✓ Finalizado"
-                      : nextLessonId
-                        ? "Completar y Avanzar ➔"
-                        : "Finalizar"}
-                </button>
+                {currentPageIndex < totalLessonPages - 1 ? (
+                  <button
+                    type="button"
+                    onClick={handleAdvanceSlide}
+                    className="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold text-white shadow-lg bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer transition-all whitespace-nowrap"
+                  >
+                    <span>Siguiente Diapositiva ({currentPageIndex + 2}/{totalLessonPages})</span>
+                    <span>➔</span>
+                  </button>
+                ) : (
+                  <button
+                    disabled={!canAdvance}
+                    onClick={handleComplete}
+                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold text-white shadow-lg transition-all whitespace-nowrap ${
+                      canAdvance
+                        ? "bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
+                        : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
+                    }`}
+                  >
+                    {isCompleting
+                      ? "Verificando en servidor..."
+                      : isCompletedSuccess
+                        ? nextLessonId
+                          ? "✓ Completada"
+                          : "✓ Finalizado"
+                        : nextLessonId
+                          ? "Completar y Avanzar ➔"
+                          : "Finalizar"}
+                  </button>
+                )}
               </div>
             </div>
           </section>

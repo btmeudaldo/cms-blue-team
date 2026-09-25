@@ -340,4 +340,41 @@ it("renders slide pagination when content contains pagebreaks", () => {
   expect(html).not.toContain("Slide Dos");
 });
 
+it("controls time per slide, hiding bottom dock bar until slide time is fulfilled and displaying Siguiente Diapositiva", () => {
+  // Initial render: slide 1 of 2 with 10s total (5s per slide)
+  const initialHtml = renderToStaticMarkup(
+    render({
+      contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+      minSeconds: 10,
+      isAlreadyCompleted: false,
+    }),
+  );
+  // Bottom dock bar must be hidden while slide timer is active
+  expect(initialHtml).not.toContain('aria-label="Avance de lección"');
+  expect(initialHtml).toContain("Tiempo Diapositiva (5s)");
+
+  // Run effects to register intervals
+  for (const effect of harness.effects) effect();
+
+  // Find the slide timer interval callback (first setInterval call when totalLessonPages > 1)
+  const slideTimerCallback = vi.mocked(window.setInterval).mock.calls[0][0];
+
+  // Tick 5 times to fulfill the 5s requirement of slide 1
+  for (let i = 0; i < 5; i++) {
+    if (typeof slideTimerCallback === "function") slideTimerCallback();
+  }
+
+  // Re-render: bottom dock bar must now appear with "Siguiente Diapositiva (2/2)"
+  const fulfilledHtml = renderToStaticMarkup(
+    render({
+      contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+      minSeconds: 10,
+      isAlreadyCompleted: false,
+    }),
+  );
+  expect(fulfilledHtml).toContain('aria-label="Avance de lección"');
+  expect(fulfilledHtml).toContain("Siguiente Diapositiva (2/2)");
+});
+
+
 
