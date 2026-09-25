@@ -351,7 +351,7 @@ it("controls time per slide, hiding bottom dock bar until slide time is fulfille
   );
   // Bottom dock bar must be hidden while slide timer is active
   expect(initialHtml).not.toContain('aria-label="Avance de lección"');
-  expect(initialHtml).toContain("Tiempo Diapositiva (5s)");
+  expect(initialHtml).toContain("Tiempo Diapositiva (10s)");
 
   // Run effects to register intervals
   for (const effect of harness.effects) effect();
@@ -359,8 +359,8 @@ it("controls time per slide, hiding bottom dock bar until slide time is fulfille
   // Find the slide timer interval callback (first setInterval call when totalLessonPages > 1)
   const slideTimerCallback = vi.mocked(window.setInterval).mock.calls[0][0];
 
-  // Tick 5 times to fulfill the 5s requirement of slide 1
-  for (let i = 0; i < 5; i++) {
+  // Tick 10 times to fulfill the 10s requirement of slide 1
+  for (let i = 0; i < 10; i++) {
     if (typeof slideTimerCallback === "function") slideTimerCallback();
   }
 

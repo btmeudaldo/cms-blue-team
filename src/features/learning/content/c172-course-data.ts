@@ -151,7 +151,7 @@ export const C172_LESSON_1 = {
   slug: "celula-mandos-limitaciones-flota",
   sequence_order: 1,
   lesson_order: 1,
-  min_seconds: 2700, // 45 minutos oficiales
+  min_seconds: 50, // 10 segundos por diapositiva para pruebas (5 diapositivas = 50s)
   content_html: `
 <!-- DIAPOSITIVA 1: Flota C172 Blue Team y Especificaciones por Matrícula -->
 <div class="lesson-slide-container space-y-3.5 text-slate-800 dark:text-slate-100">

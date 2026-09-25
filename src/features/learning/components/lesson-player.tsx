@@ -114,10 +114,13 @@ export function LessonPlayer({
   const [retryVersion, setRetryVersion] = useState(0);
   const [isAdvanceArmed, setIsAdvanceArmed] = useState(isAlreadyCompleted);
 
+  // 10 seconds per page for multi-page lessons as requested
   const minSecondsPerPage =
     totalLessonPages > 1
-      ? Math.max(1, Math.ceil(minSeconds / totalLessonPages))
+      ? 10
       : minSeconds;
+  const effectiveMinSeconds =
+    totalLessonPages > 1 ? minSecondsPerPage * totalLessonPages : minSeconds;
   const isCurrentPageDone =
     isAlreadyCompleted ||
     isCompletedSuccess ||
@@ -392,7 +395,7 @@ export function LessonPlayer({
     isAlreadyCompleted ||
     canCompleteLesson(
       serverProgress,
-      minSeconds,
+      effectiveMinSeconds,
       reachedScrollThreshold,
       isAdvanceArmed,
       isCompleting || Boolean(errorMessage) || !isWindowFocused,
