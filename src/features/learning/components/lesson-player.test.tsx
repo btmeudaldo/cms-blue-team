@@ -31,6 +31,7 @@ vi.mock("react", async (original) => ({
   useEffect: (effect: () => void) => {
     harness.effects.push(effect);
   },
+  useMemo: (fn: () => unknown) => fn(),
 }));
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
 vi.mock("next/link", () => ({ default: "a" }));
@@ -327,4 +328,16 @@ it("shows the lateral documentation toggle button for C172 courses and keeps dra
   // Lateral drawer is hidden by default
   expect(html).not.toContain("Biblioteca Oficial de Flota");
 });
+
+it("renders slide pagination when content contains pagebreaks", () => {
+  const html = renderToStaticMarkup(
+    render({
+      contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    }),
+  );
+  expect(html).toContain("Diapositiva 1 de 2");
+  expect(html).toContain("Slide Uno");
+  expect(html).not.toContain("Slide Dos");
+});
+
 

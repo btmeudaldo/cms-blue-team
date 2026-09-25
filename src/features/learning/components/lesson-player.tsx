@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { splitLessonPages } from "@/features/learning/domain/lesson-pages";
 
 import {
   completeLessonAction,
@@ -78,7 +79,12 @@ export function LessonPlayer({
   courseDocs,
 }: LessonPlayerProps) {
   const router = useRouter();
-  const safeContentHtml = sanitizeLessonHtml(contentHtml);
+  const lessonPages = splitLessonPages(contentHtml);
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const totalLessonPages = lessonPages.length;
+  const currentSlideHtml =
+    lessonPages[currentPageIndex] ?? lessonPages[0] ?? "";
+  const safeContentHtml = sanitizeLessonHtml(currentSlideHtml);
   const contentRef = useRef<HTMLDivElement>(null);
   const progressQueue = useRef(Promise.resolve());
   const completingRef = useRef(false);
@@ -707,6 +713,18 @@ export function LessonPlayer({
                 </div>
               </div>
 
+              {/* Slide Counter Badge */}
+              {totalLessonPages > 1 && (
+                <div className="flex items-center gap-1.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 px-3 py-1.5 border border-sky-200 dark:border-sky-800">
+                  <span className="text-[10px] font-bold uppercase text-sky-600 dark:text-sky-400">
+                    Diapositiva
+                  </span>
+                  <span className="text-xs font-extrabold text-sky-800 dark:text-sky-200 font-mono">
+                    {currentPageIndex + 1}/{totalLessonPages}
+                  </span>
+                </div>
+              )}
+
               {/* Scroll Badge */}
               <div className="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 border border-slate-200 dark:border-slate-700">
                 <div className="flex flex-col leading-tight text-right">
@@ -937,12 +955,118 @@ export function LessonPlayer({
               </div>
             )}
 
+            {/* Top Slide / Page Navigator Bar (Shown when lesson has multiple slides) */}
+            {totalLessonPages > 1 && (
+              <nav
+                aria-label="Navegación de diapositivas"
+                className="flex items-center justify-between gap-3 px-4 py-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-2xs backdrop-blur-sm"
+              >
+                <button
+                  type="button"
+                  disabled={currentPageIndex === 0}
+                  onClick={() => {
+                    setCurrentPageIndex((prev) => Math.max(0, prev - 1));
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    currentPageIndex === 0
+                      ? "opacity-30 cursor-not-allowed text-slate-400"
+                      : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-950/40 hover:text-sky-600 cursor-pointer border border-slate-200 dark:border-slate-700"
+                  }`}
+                  title="Diapositiva anterior"
+                >
+                  <span>&larr;</span>
+                  <span className="hidden sm:inline">Anterior</span>
+                </button>
+
+                {/* Dots / Page Indicator */}
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300">
+                    Diapositiva {currentPageIndex + 1} de {totalLessonPages}
+                  </span>
+                  <div className="flex items-center gap-1">
+                    {lessonPages.map((_, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => {
+                          setCurrentPageIndex(idx);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                          idx === currentPageIndex
+                            ? "w-6 bg-[#1a80ff]"
+                            : "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
+                        }`}
+                        title={`Ir a Diapositiva ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  disabled={currentPageIndex === totalLessonPages - 1}
+                  onClick={() => {
+                    setCurrentPageIndex((prev) =>
+                      Math.min(totalLessonPages - 1, prev + 1),
+                    );
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    currentPageIndex === totalLessonPages - 1
+                      ? "opacity-30 cursor-not-allowed text-slate-400"
+                      : "bg-[#1a80ff] text-white hover:bg-[#0066e6] shadow-2xs cursor-pointer"
+                  }`}
+                  title="Diapositiva siguiente"
+                >
+                  <span className="hidden sm:inline">Siguiente</span>
+                  <span>&rarr;</span>
+                </button>
+              </nav>
+            )}
+
             {/* Content Article Container: Full reading width preserved without forced screen scroll */}
             <article
               ref={contentRef}
-              className="prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 lg:p-12 shadow-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-6 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
+              className="prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
               dangerouslySetInnerHTML={{ __html: safeContentHtml }}
             />
+
+            {/* Bottom Slide Navigator (Quick jump to next slide) */}
+            {totalLessonPages > 1 && (
+              <div className="flex items-center justify-between gap-3 px-4 py-2 rounded-2xl bg-white/70 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 text-xs">
+                <span className="text-[11px] text-slate-500 font-medium">
+                  Diapositiva {currentPageIndex + 1} de {totalLessonPages}
+                </span>
+                <div className="flex items-center gap-2">
+                  {currentPageIndex > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCurrentPageIndex((prev) => prev - 1);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      className="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-600 transition cursor-pointer"
+                    >
+                      &larr; Diapositiva Anterior
+                    </button>
+                  )}
+                  {currentPageIndex < totalLessonPages - 1 && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCurrentPageIndex((prev) => prev + 1);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-[#1a80ff] text-white hover:bg-[#0066e6] transition shadow-2xs cursor-pointer"
+                    >
+                      Siguiente Diapositiva &rarr;
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
 
             {/* End of Lesson Quiz Action Banner (Shown ONLY when quiz is unlocked / ready, never while reading) */}
             {quiz && (isAlreadyCompleted || isCompletedSuccess || quizAttempt?.passed) && (
