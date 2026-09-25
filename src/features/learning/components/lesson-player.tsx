@@ -106,6 +106,7 @@ export function LessonPlayer({
   const [scrollProgress, setScrollProgress] = useState(0);
   const [reachedScrollThreshold, setReachedScrollThreshold] =
     useState(true);
+  const showScrollIndicator = false; // Desplazamiento ocultado a petición del usuario
   const [isCompleting, setIsCompleting] = useState(false);
   const [isCompletedSuccess, setIsCompletedSuccess] =
     useState(isAlreadyCompleted);
@@ -828,19 +829,21 @@ export function LessonPlayer({
                 </div>
               )}
 
-              {/* Scroll Badge */}
-              <div className="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 border border-slate-200 dark:border-slate-700">
-                <div className="flex flex-col leading-tight text-right">
-                  <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">
-                    Desplazamiento 90%
-                  </span>
-                  <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
-                    {reachedScrollThreshold
-                      ? "✓ Alcanzado"
-                      : `${scrollProgress}%`}
-                  </span>
+              {/* Scroll Badge (Oculto a petición del usuario) */}
+              {showScrollIndicator && (
+                <div className="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 border border-slate-200 dark:border-slate-700">
+                  <div className="flex flex-col leading-tight text-right">
+                    <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">
+                      Desplazamiento 90%
+                    </span>
+                    <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
+                      {reachedScrollThreshold
+                        ? "✓ Alcanzado"
+                        : `${scrollProgress}%`}
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -1276,17 +1279,19 @@ export function LessonPlayer({
                   : "⏳ Tiempo en proceso"}
             </span>
 
-            <span
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
-                reachedScrollThreshold
-                  ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-                  : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
-              }`}
-            >
-              {reachedScrollThreshold
-                ? "✓ Desplazamiento cumplido"
-                : "📜 Desplazamiento al final"}
-            </span>
+            {showScrollIndicator && (
+              <span
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
+                  reachedScrollThreshold
+                    ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                    : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
+                }`}
+              >
+                {reachedScrollThreshold
+                  ? "✓ Desplazamiento cumplido"
+                  : "📜 Desplazamiento al final"}
+              </span>
+            )}
           </div>
         )}
 
