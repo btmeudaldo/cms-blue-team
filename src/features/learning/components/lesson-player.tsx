@@ -22,6 +22,12 @@ import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 import { getNextAdvanceButtonPosition } from "@/features/learning/domain/advance-button-position";
 import { getLessonScrollProgress } from "@/features/learning/domain/lesson-scroll-progress";
 import { getLessonLayoutClasses } from "@/features/learning/domain/lesson-layout";
+import {
+  C172_COURSE_ID,
+  C172_COURSE_SLUG,
+  C172_DOCUMENTATION,
+  type CourseDocumentationItem,
+} from "@/features/learning/content/c172-course-data";
 
 export type LessonSummary = {
   id: string;
@@ -48,6 +54,7 @@ type LessonPlayerProps = {
   completedLessonIds?: string[];
   quiz?: any;
   quizAttempt?: any;
+  courseDocs?: CourseDocumentationItem[];
 };
 
 export function LessonPlayer({
@@ -68,6 +75,7 @@ export function LessonPlayer({
   completedLessonIds = [],
   quiz,
   quizAttempt,
+  courseDocs,
 }: LessonPlayerProps) {
   const router = useRouter();
   const safeContentHtml = sanitizeLessonHtml(contentHtml);
@@ -105,6 +113,13 @@ export function LessonPlayer({
   const [isIndexOpen, setIsIndexOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [isSiteHeaderHidden, setIsSiteHeaderHidden] = useState(false);
+
+  // Documentation Drawer State (POH & flight manuals)
+  const isC172Course =
+    courseId === C172_COURSE_SLUG || courseId === C172_COURSE_ID;
+  const activeDocs =
+    courseDocs ?? (isC172Course ? C172_DOCUMENTATION : undefined);
+  const [isDocsOpen, setIsDocsOpen] = useState(false);
 
   // Hydration-safe random horizontal & vertical position for anti-cheating button
   const [horizontalPosition, setHorizontalPosition] = useState(50);
@@ -605,7 +620,7 @@ export function LessonPlayer({
                     toggleIndexOpen();
                   }
                 }}
-                className={`flex h-9 px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                className={`flex h-9 px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
                   isIndexOpen || isMobileSidebarOpen
                     ? "bg-[#1a80ff] text-white border-blue-600 shadow-xs"
                     : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
@@ -613,8 +628,27 @@ export function LessonPlayer({
                 title="Mostrar u Ocultar el Temario de lecciones"
               >
                 <span>📑</span>
-                <span>{isIndexOpen || isMobileSidebarOpen ? "Ocultar Temario" : "Temario"}</span>
+                <span className="hidden sm:inline">{isIndexOpen || isMobileSidebarOpen ? "Ocultar Temario" : "Temario"}</span>
+                <span className="sm:hidden">Temario</span>
               </button>
+
+              {/* Toggle Documentation Drawer Button */}
+              {activeDocs && activeDocs.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setIsDocsOpen((prev) => !prev)}
+                  className={`flex h-9 px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
+                    isDocsOpen
+                      ? "bg-sky-600 text-white border-sky-600 shadow-xs"
+                      : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
+                  title="Mostrar u Ocultar Documentación y Manuales POH"
+                >
+                  <span>📚</span>
+                  <span className="hidden sm:inline">{isDocsOpen ? "Ocultar Docs" : "Documentación POH"}</span>
+                  <span className="sm:hidden">Docs</span>
+                </button>
+              )}
 
               <div>
                 <h2 className="text-sm font-extrabold text-slate-900 dark:text-white line-clamp-1">
@@ -718,6 +752,95 @@ export function LessonPlayer({
               </div>
 
               {renderLessonsNav()}
+            </aside>
+          </div>
+        )}
+
+        {/* Lateral Documentation Drawer (Hidden by default, slides out when toggled) */}
+        {isDocsOpen && activeDocs && activeDocs.length > 0 && (
+          <div
+            className="fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-sm animate-in fade-in duration-200"
+            onClick={() => setIsDocsOpen(false)}
+          >
+            <aside
+              className="absolute right-0 top-0 bottom-0 w-full max-w-lg bg-white dark:bg-slate-900 p-6 shadow-2xl space-y-4 overflow-y-auto border-l border-slate-200 dark:border-slate-800 animate-in slide-in-from-right duration-200"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-2xl">📚</span>
+                  <div>
+                    <span className="text-[10px] font-extrabold uppercase text-[#1a80ff] tracking-wider block">
+                      Biblioteca Oficial de Flota
+                    </span>
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                      Documentación POH y Hojas de Carga
+                    </h3>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsDocsOpen(false)}
+                  className="h-8 w-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 font-bold transition-colors cursor-pointer"
+                  title="Cerrar documentación"
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="p-3 rounded-xl bg-sky-500/10 border border-sky-500/20 text-xs text-sky-800 dark:text-sky-300 leading-relaxed">
+                Manuales de vuelo oficiales (POH), suplementos diésel y hojas de masa y centrado (F.OPS.04) segmentados por aeronave conforme a EASA Part-FCL.710.
+              </div>
+
+              {/* Group items by category */}
+              <div className="space-y-4 pt-1">
+                {Array.from(new Set(activeDocs.map((d) => d.category))).map(
+                  (category) => {
+                    const items = activeDocs.filter(
+                      (d) => d.category === category,
+                    );
+                    return (
+                      <div key={category} className="space-y-2">
+                        <span className="text-[11px] font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400 block border-b border-slate-100 dark:border-slate-800 pb-1">
+                          {category}
+                        </span>
+                        <div className="grid grid-cols-1 gap-2">
+                          {items.map((doc, idx) => (
+                            <a
+                              key={idx}
+                              href={doc.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group flex items-center justify-between p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-sky-500 bg-white dark:bg-slate-800/80 hover:bg-sky-50/50 dark:hover:bg-sky-950/30 transition shadow-2xs"
+                            >
+                              <div className="space-y-0.5 pr-2">
+                                <div className="flex items-center gap-1.5">
+                                  {doc.badge && (
+                                    <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+                                      {doc.badge}
+                                    </span>
+                                  )}
+                                  <span className="text-xs font-bold text-slate-800 dark:text-slate-200 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                                    {doc.title}
+                                  </span>
+                                </div>
+                                {doc.registration && (
+                                  <span className="text-[10px] text-slate-400 font-mono">
+                                    Matrícula: {doc.registration}
+                                  </span>
+                                )}
+                              </div>
+                              <span className="text-slate-400 group-hover:text-sky-600 text-xs shrink-0 font-bold">
+                                ↗
+                              </span>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  },
+                )}
+              </div>
             </aside>
           </div>
         )}

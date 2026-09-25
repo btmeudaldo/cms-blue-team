@@ -316,3 +316,15 @@ it("reveals the bottom action footer dock when the lesson is completed", () => {
   expect(html).toContain("✓ Finalizado");
 });
 
+it("shows the lateral documentation toggle button for C172 courses and keeps drawer hidden by default", () => {
+  const html = renderToStaticMarkup(
+    render({
+      courseId: "cessna-172-continental-diesel",
+    }),
+  );
+  // Button is present in header
+  expect(html).toContain("Documentación POH");
+  // Lateral drawer is hidden by default
+  expect(html).not.toContain("Biblioteca Oficial de Flota");
+});
+

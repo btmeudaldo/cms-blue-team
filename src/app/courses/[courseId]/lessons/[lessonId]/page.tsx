@@ -2,6 +2,11 @@ import { LessonPlayer } from "@/features/learning/components/lesson-player";
 import { resolveLessonByIdentifier } from "@/features/learning/domain/lesson-route";
 import { notFound } from "next/navigation";
 import {
+  C172_COURSE_ID,
+  C172_COURSE_SLUG,
+  C172_DOCUMENTATION,
+} from "@/features/learning/content/c172-course-data";
+import {
   getResilientCourseDetail,
   getResilientQuizAttempts,
   getResilientQuizForLesson,
@@ -86,6 +91,9 @@ export default async function StudentLessonPage({
     .filter((p: any) => p?.is_completed && courseLessonIds.has(p.lesson_id))
     .map((p: any) => String(p.lesson_id));
 
+  const isC172 =
+    course.slug === C172_COURSE_SLUG || course.id === C172_COURSE_ID;
+
   return (
     <LessonPlayer
       key={currentLesson.id}
@@ -106,6 +114,7 @@ export default async function StudentLessonPage({
       completedLessonIds={completedLessonIds}
       quiz={quiz}
       quizAttempt={quizAttempt}
+      courseDocs={isC172 ? C172_DOCUMENTATION : undefined}
     />
   );
 }
