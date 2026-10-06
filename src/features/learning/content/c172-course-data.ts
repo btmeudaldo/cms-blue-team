@@ -422,98 +422,188 @@ export const C172_LESSON_1 = {
 
 <!-- DIAPOSITIVA 1.3: Pesos Máximos y Distribución de Carga -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-      1.3 Pesos Máximos Estructurales y Distribución de Carga Útil
-    </h1>
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
+    <div class="flex items-center gap-3">
+      <span class="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30">
+        ✈️ Diapositiva 3 de 5
+      </span>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+        1.3 Pesos Máximos Estructurales y Distribución de Carga Útil
+      </h1>
+    </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
-      POH Sección 2 & Hojas Oficiales F.OPS.04
+      POH Sección 2 (Limitaciones) &amp; Hojas Oficiales ATO F.OPS.04
     </span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch flex-1 min-h-0 py-2" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr; grid-template-columns: minmax(0, 50fr) minmax(0, 50fr);">
-    <!-- Columna Izquierda (6 cols): Esquema de Estaciones de Carga -->
-    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
-      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
-        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
-            ⚖️ ESTACIONES DE CARGA (POH FIG. 6-5)
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch flex-1 min-h-0 py-1.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr; grid-template-columns: minmax(0, 50fr) minmax(0, 50fr);">
+    <!-- Columna Izquierda (6 cols): Esquema de Estaciones de Carga y Principio de Momentos -->
+    <div class="lg:col-span-6 flex flex-col min-h-0">
+      <div class="flex-1 flex flex-col justify-between p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+            ⚖️ ESTACIONES DE CARGA (POH SECC. 6 &amp; F.OPS.04)
           </span>
-          <span class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">
+          <span class="text-[11px] font-mono font-bold text-slate-500 dark:text-slate-400">
             Datum: Frontal Cortafuegos (FS 0.0)
           </span>
         </div>
 
-        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
-          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 text-sm">Distribución Longitudinal de Masas:</strong>
-            Cada elemento a bordo ejerce un momento respecto al cortafuegos. El piloto al mando es responsable de no superar los límites en ninguna fase del vuelo.
+        <div class="flex-1 flex flex-col justify-between py-1.5 gap-2 text-xs">
+          <!-- Fundamento Didáctico: Datum y Ley del Momento -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs leading-snug">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 text-xs sm:text-[13px]">
+              📐 Principio Físico del Momento (Momento = Masa × Brazo):
+            </strong>
+            <p class="text-slate-600 dark:text-slate-300 text-[11px] sm:text-xs">
+              Todas las distancias longitudinales se miden en metros o pulgadas hacia atrás desde la <strong>cara anterior del parallamas (Datum = 0.0)</strong>. Cuanto mayor sea el brazo de palanca de un objeto o pasajero, mayor será su efecto multiplicador sobre la posición final del Centro de Gravedad (CG).
+            </p>
           </div>
 
-          <!-- Cuadros separados solo para las 2 columnas de estaciones -->
-          <div class="grid grid-cols-2 gap-2 text-xs">
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
-              <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">PILOTO Y COPILOTO</span>
-              <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Estación 37.0" (0.94 m)</span>
+          <!-- Cuadrícula 2x2 de Estaciones Oficiales ATO / POH -->
+          <div class="grid grid-cols-2 gap-2">
+            <!-- Pilotos -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-xs">Piloto y Copiloto</span>
+                <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Asientos Del.</span>
+              </div>
+              <div class="font-mono font-bold text-sky-700 dark:text-sky-300 text-[11px] mt-0.5">
+                Brazo: 0,940 m · 37.0"
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
+                Rango ajustable sobre raíles: 0,86 m a 1,17 m (34" a 46").
+              </p>
             </div>
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
-              <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">PASAJEROS TRASEROS</span>
-              <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Estación 73.0" (1.85 m)</span>
+
+            <!-- Pasajeros Traseros -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-xs">Pasajeros Traseros</span>
+                <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300">Doble Brazo</span>
+              </div>
+              <div class="font-mono font-bold text-amber-700 dark:text-amber-400 text-[11px] mt-0.5">
+                Brazo: 1,854 m · 73.0"
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
+                ¡Casi el doble de brazo que delante! Mucho más efecto en el CG.
+              </p>
             </div>
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
-              <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">DEPÓSITOS DE COMBUSTIBLE</span>
-              <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Estación 47.9" (1.22 m)</span>
+
+            <!-- Combustible Alar -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-xs">Combustible (Fuel)</span>
+                <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Depósitos Alas</span>
+              </div>
+              <div class="font-mono font-bold text-sky-700 dark:text-sky-300 text-[11px] mt-0.5">
+                Brazo: 1,168 m · 46.0"
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
+                Situado cerca del CG medio (1,04 m). Poco influye al consumirse.
+              </p>
             </div>
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
-              <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">EQUIPAJE 1 / EQUIPAJE 2</span>
-              <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Est. 95.0" / Est. 123.0"</span>
+
+            <!-- Equipajes 1 y 2 -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-xs">Equipaje 1 / 2</span>
+                <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-rose-100 dark:bg-rose-950/60 text-rose-800 dark:text-rose-300">Cola</span>
+              </div>
+              <div class="font-mono font-bold text-rose-700 dark:text-rose-400 text-[11px] mt-0.5">
+                Brazo 1: 2,413 m (95") · 2: 3,124 m (123")
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-tight mt-0.5">
+                Brazos extremos en el fuselaje trasero. Desplazan el CG atrás.
+              </p>
             </div>
+          </div>
+
+          <!-- Cuadro de Explicación Práctica de Vuelo para el Alumno -->
+          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-500/50 dark:border-amber-500/50 shadow-2xs leading-snug">
+            <span class="font-bold text-amber-900 dark:text-amber-200 block text-xs mb-0.5">
+              💡 Lección Práctica para el Piloto (Efecto Palanca hacia la Cola):
+            </span>
+            <p class="text-amber-950/90 dark:text-amber-200/90 text-[11px]">
+              Una maleta de 20 kg en el Área 2 (brazo 3,12 m) genera <strong>62,5 kg·m</strong> de momento hacia atrás, mientras que en el asiento del copiloto apenas generaría <strong>18,8 kg·m</strong>. La carga trasera no asegurada o excesiva desplaza el CG hacia atrás, reduciendo la estabilidad longitudinal y provocando entradas en pérdida difíciles de recuperar.
+            </p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (6 cols): Tabla de Pesos Límite -->
-    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
-      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
-        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
-            🏋️ TABLA DE PESOS LÍMITE
+    <!-- Columna Derecha (6 cols): Tabla de Pesos Límite, Regla del Equipaje y Combustible JET A-1 -->
+    <div class="lg:col-span-6 flex flex-col min-h-0">
+      <div class="flex-1 flex flex-col justify-between p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+            🏋️ PESOS LÍMITE Y CARGA ÚTIL OPERACIONAL
           </span>
-          <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">
-            Límites Estructurales
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
+            Límites Certificados POH Secc. 2
           </span>
         </div>
 
-        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
-          <!-- Un solo cuadro unificado para los pesos -->
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 text-xs sm:text-sm">
-            <div class="flex justify-between items-center">
+        <div class="flex-1 flex flex-col justify-between py-1.5 gap-2 text-xs">
+          <!-- Tabla Oficial de Pesos Estructurales -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <div class="flex justify-between items-center text-xs">
               <span class="font-semibold text-slate-800 dark:text-slate-200">Peso Máximo al Despegue (MTOW)</span>
-              <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">2.300 lb / 1.043 kg</span>
+              <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-xs sm:text-[13px]">1.043 kg / 2.300 lb</span>
             </div>
-            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 flex justify-between items-center">
-              <span class="font-semibold text-slate-800 dark:text-slate-200">Peso Máximo al Aterrizaje (MLW)</span>
-              <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">2.300 lb / 1.043 kg</span>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-1 flex justify-between items-center text-xs">
+              <div class="flex items-center gap-1.5">
+                <span class="font-semibold text-slate-800 dark:text-slate-200">Peso Máximo al Aterrizaje (MLW)</span>
+                <span class="text-[10px] font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-1 rounded">= MTOW</span>
+              </div>
+              <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-xs sm:text-[13px]">1.043 kg / 2.300 lb</span>
             </div>
-            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 flex justify-between items-center">
-              <span class="font-semibold text-slate-800 dark:text-slate-200">Compartimento de Equipaje Área 1</span>
-              <span class="font-mono font-bold text-amber-700 dark:text-amber-400">Máx. 120 lb (54.4 kg)</span>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-1 flex justify-between items-center text-xs">
+              <span class="text-slate-600 dark:text-slate-400">Peso Máximo en Rampa (Ramp Weight)</span>
+              <span class="font-mono font-semibold text-slate-700 dark:text-slate-300">1.044 kg / 2.302 lb (+1 kg rodaje)</span>
             </div>
-            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 flex justify-between items-center">
-              <span class="font-semibold text-slate-800 dark:text-slate-200">Compartimento de Equipaje Área 2</span>
-              <span class="font-mono font-bold text-amber-700 dark:text-amber-400">Máx. 50 lb (22.7 kg)</span>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-1 flex justify-between items-center text-xs">
+              <span class="text-slate-600 dark:text-slate-400">Peso en Vacío Básico (BEW) Flota Real</span>
+              <span class="font-mono font-semibold text-slate-700 dark:text-slate-300">NNA: 755 kg · NNX: 796 kg</span>
+            </div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-1 flex justify-between items-center text-xs">
+              <span class="font-semibold text-[#0B2E59] dark:text-sky-300">Carga Útil Típica (Useful Load = MTOW - BEW)</span>
+              <span class="font-mono font-bold text-emerald-700 dark:text-emerald-400">~247 kg a 287 kg</span>
             </div>
           </div>
 
-          <!-- Total combinado resaltado en amber -->
-          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-500/60 dark:border-amber-500/60 shadow-2xs flex justify-between items-center text-xs sm:text-sm">
-            <span class="font-semibold text-amber-900 dark:text-amber-200">Total Combinado Equipaje (Área 1 + 2)</span>
-            <span class="font-mono font-black text-amber-800 dark:text-amber-300">Máx. 120 lb (54.4 kg)</span>
+          <!-- Cuadro de Explicación Didáctica: ¿Por qué MTOW = MLW? -->
+          <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-[11px] leading-snug">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">
+              🤔 ¿Por qué en la C172 el MTOW y el MLW son exactamente iguales?
+            </strong>
+            <span class="text-slate-600 dark:text-slate-300">
+              A diferencia de aviones comerciales o bimotores donde el tren no tolera aterrizar a peso máximo, en la C172 los trenes principales de acero tubular y la bancada están certificados para absorber el impacto a 2.300 lb. Esto permite retornar y tomar inmediatamente en caso de emergencia tras despegar sin quemar combustible.
+            </span>
           </div>
 
-          <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-xs sm:text-sm text-sky-900 dark:text-sky-200 leading-relaxed shadow-2xs">
-            📋 <strong>Densidad de Combustible:</strong> El combustible JET A-1 tiene una densidad aproximada de <strong>0.80 - 0.82 kg/L</strong> (6.7 lb/US Gal), notablemente más pesado que la gasolina de aviación AVGAS 100LL (0.72 kg/L). Debe tenerse en cuenta siempre al calcular la masa total de combustible.
+          <!-- Regla de Oro del Equipaje Combinado (Área 1 + 2) -->
+          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-500/60 dark:border-amber-500/60 shadow-2xs leading-snug">
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-amber-900 dark:text-amber-200 text-xs">
+                🧳 Regla de Oro del Equipaje (Área 1 + Área 2)
+              </span>
+              <span class="font-mono font-black text-amber-800 dark:text-amber-300 text-xs sm:text-[13px]">
+                Máx. Combinado: 54 kg (120 lb)
+              </span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 mt-1 text-[11px] text-amber-900/90 dark:text-amber-200/90 border-t border-amber-200 dark:border-amber-800/60 pt-1">
+              <div>• <strong>Área 1 (Brazo 2,41 m):</strong> Máx. 54 kg (120 lb)</div>
+              <div>• <strong>Área 2 (Brazo 3,12 m):</strong> Máx. 23 kg (50 lb)</div>
+            </div>
+            <p class="text-[10.5px] text-amber-800 dark:text-amber-300 mt-1 italic leading-tight">
+              ⚠️ Aunque cargues 23 kg en Área 2, en Área 1 solo podrás meter hasta 31 kg para no sobrepasar los 54 kg combinados por resistencia del suelo de cabina.
+            </p>
+          </div>
+
+          <!-- Cuadro de Combustible JET A-1 según F.OPS.04 -->
+          <div class="p-2 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-[11px] leading-snug">
+            ⛽ <strong>Combustible JET A-1 (Densidad Oficial 0,84 kg/L):</strong> En la hoja de carga F.OPS.04 de Blue Team se calcula con 0,84 kg/L (~17% más denso que el AVGAS a 0,72 kg/L). Los 127,4 L utilizables pesan <strong>107 kg</strong>. Con ~770 kg de avión en vacío y 107 kg de combustible, solo quedan <strong>166 kg de carga de pago</strong> para ocupantes.
           </div>
         </div>
       </div>
@@ -526,82 +616,92 @@ export const C172_LESSON_1 = {
 <!-- DIAPOSITIVA 1.4: Factores de Carga y Maniobras Permitidas -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-      1.4 Factores de Carga Estructural y Maniobras Autorizadas
-    </h1>
+    <div class="flex items-center gap-3">
+      <span class="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30">
+        ✈️ Diapositiva 4 de 5
+      </span>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+        1.4 Factores de Carga Estructural y Maniobras Autorizadas
+      </h1>
+    </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
-      POH Sección 2 · Envolvente Estructural V-n &amp; Suplemento Continental
+      POH Sección 2 (Limitaciones) &amp; Suplemento Motor TAE 125
     </span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch flex-1 min-h-0 py-1.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr; grid-template-columns: minmax(0, 50fr) minmax(0, 50fr);">
-    <!-- Columna Izquierda (6 cols / 50%): Diagrama V-n y Física del Factor de Carga -->
+    <!-- Columna Izquierda (6 cols / 50%): Diagrama V-n, Física del Factor de Carga y Explicación de VA -->
     <div class="lg:col-span-6 flex flex-col min-h-0">
-      <div class="flex-1 flex flex-col justify-between p-3 sm:p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex-1 flex flex-col justify-between p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
-            📊 DIAGRAMA V-n Y FACTORES DE CARGA
+            📊 DIAGRAMA V-n Y FÍSICA DEL FACTOR DE CARGA
           </span>
           <span class="text-[11px] font-mono font-bold text-slate-500 dark:text-slate-400">
-            POH Sec. 2 &amp; Sec. 4
+            POH Secc. 2 &amp; Secc. 4
           </span>
         </div>
 
-        <div class="flex-1 flex flex-col justify-between py-1 gap-1.5 text-xs leading-snug">
-          <!-- Bloque 1: Definición y Factores en Viraje -->
-          <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+        <div class="flex-1 flex flex-col justify-between py-1.5 gap-2 text-xs leading-snug">
+          <!-- Bloque 1: Definición y Factores en Viraje con Incremento de Vs -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <div class="flex items-center justify-between">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-xs sm:text-[13px]">
-                📐 Factor de Carga en Vuelo (n = L / W)
+                📐 Factor de Carga (n = Sustentación / Peso)
               </span>
               <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 dark:bg-sky-950/60 text-sky-800 dark:text-sky-300 font-mono">
-                Sustentación / Peso
+                n = L / W
               </span>
             </div>
             <p class="text-slate-600 dark:text-slate-300 text-[11px] sm:text-xs">
-              Relación entre la sustentación de las alas (L) y el peso del avión (W). En vuelo recto y nivelado n = 1.0 G.
+              En vuelo recto y nivelado n = 1.0 G. En viraje coordinado, el ala debe generar sustentación extra para equilibrar el peso y la fuerza centrífuga: <strong>n = 1 / cos(alabeo)</strong>.
             </p>
             <!-- Cuadrícula de virajes coordinados -->
             <div class="grid grid-cols-4 gap-1 pt-0.5 text-center font-mono text-[10px] sm:text-[11px]">
               <div class="p-1 rounded-lg bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600">
                 <span class="text-slate-400 block text-[9px] uppercase">Alabeo 0°</span>
                 <strong class="text-slate-700 dark:text-slate-200">1.0 G</strong>
+                <span class="text-[9px] text-slate-400 block">Vs: 47 kt</span>
               </div>
               <div class="p-1 rounded-lg bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600">
                 <span class="text-slate-400 block text-[9px] uppercase">Alabeo 45°</span>
                 <strong class="text-slate-700 dark:text-slate-200">1.41 G</strong>
+                <span class="text-[9px] text-slate-400 block">Vs: 56 kt</span>
               </div>
               <div class="p-1 rounded-lg bg-sky-50 dark:bg-sky-950/50 border border-sky-300 dark:border-sky-700">
                 <span class="text-sky-600 dark:text-sky-400 block text-[9px] font-bold uppercase">Viraje 60°</span>
                 <strong class="text-sky-700 dark:text-sky-300">2.00 G</strong>
+                <span class="text-[9px] text-sky-600 dark:text-sky-400 font-bold block">Vs: 66 kt (+41%)</span>
               </div>
               <div class="p-1 rounded-lg bg-amber-50 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-700">
                 <span class="text-amber-600 dark:text-amber-400 block text-[9px] font-bold uppercase">Alabeo 75°</span>
                 <strong class="text-amber-700 dark:text-amber-300">3.86 G ⚠️</strong>
+                <span class="text-[9px] text-amber-700 dark:text-amber-300 font-bold block">Vs: 92 kt (+96%)</span>
               </div>
             </div>
-            <div class="text-[10px] text-slate-500 dark:text-slate-400 pt-0.5 leading-tight">
-              • <strong>Viraje escarpado (60°):</strong> El peso aparente se duplica y la velocidad de pérdida aumenta un +41% (Vs acelerada = Vs × √n).<br/>
-              • <strong>Margen de Rotura POH:</strong> Los factores de carga de diseño estructural son el <strong>150%</strong> de los límites publicados.
+            <div class="text-[10.5px] text-slate-500 dark:text-slate-400 pt-0.5 leading-tight">
+              • <strong>Fórmula de Pérdida Acelerada:</strong> <code>Vs(acel) = Vs × √n</code>. En un viraje escarpado a 60°, el avión pesa el doble y entrará en pérdida si cae por debajo de 66 KIAS aunque vuele muy por encima de los 47 KIAS habituales.<br/>
+              • <strong>Factor de Seguridad (150%):</strong> Los componentes estructurales resisten hasta 1.5 veces el límite antes de romperse (+5.7 G), pero a partir de +3.8 G se produce <strong>deformación permanente irreparable</strong>.
             </div>
           </div>
 
-          <!-- Bloque 2: Velocidad de Maniobra VA como Protección Estructural -->
-          <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <!-- Bloque 2: Velocidad de Maniobra VA como Fusible Estructural -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <div class="flex items-center justify-between">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-xs sm:text-[13px]">
-                🛡️ Velocidad de Maniobra (VA)
+                🛡️ Velocidad de Maniobra (VA) — El Fusible Aerodinámico
               </span>
-              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300">
-                No marcada en velocímetro
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 font-mono">
+                No señalizada en anemómetro
               </span>
             </div>
             <p class="text-slate-600 dark:text-slate-300 text-[11px] sm:text-xs">
-              <strong>Definición oficial POH:</strong> <em>«Velocidad máxima a la que se puede aplicar deflexión total y brusca de mandos sin exceder el factor de carga especificado»</em>. Por debajo de VA, el ala entra en pérdida aerodinámica antes de sufrir daño estructural (el stall actúa como fusible de seguridad).
+              <strong>Definición oficial POH:</strong> Velocidad máxima a la que se puede aplicar deflexión total y brusca de un mando sin dañar la estructura. Por debajo de VA, el ala entra en pérdida aerodinámica antes de alcanzar la sobrecarga límite.
             </p>
-            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-1 text-[11px] text-slate-600 dark:text-slate-300 space-y-0.5">
-              <div>• <strong>Variación con el Peso (POH):</strong> A 2.300 lb = <strong>97 KIAS</strong> (99 KIAS en 172P a 2.400 lb); a 1.950 lb = <strong>89 KIAS</strong>; a 1.600 lb = <strong>80 KIAS</strong> (a menor peso el avión tiene menos inercia y VA disminuye).</div>
-              <div>• <strong>Regla Operacional:</strong> Por encima de VA, están prohibidas las deflexiones completas o bruscas de mandos.</div>
+            <div class="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-700 text-[11px] text-amber-950 dark:text-amber-200 leading-snug">
+              <strong>💡 La paradoja del peso (¿Por qué VA baja con menos peso?):</strong><br/>
+              A 2.300 lb = <strong>97 KIAS</strong> · A 1.950 lb = <strong>89 KIAS</strong> · A 1.600 lb = <strong>80 KIAS</strong>.<br/>
+              Un avión más ligero tiene menos inercia y se acelera mucho más rápido ante una ráfaga vertical o un tirón de palanca. Reducir la velocidad garantiza que el ala entre en pérdida y descargue la fuerza antes de sobrepasar los +3.8 G.
             </div>
           </div>
         </div>
@@ -610,39 +710,69 @@ export const C172_LESSON_1 = {
 
     <!-- Columna Derecha (6 cols / 50%): Límites por Categoría, Flaps y Prohibiciones -->
     <div class="lg:col-span-6 flex flex-col min-h-0">
-      <div class="flex-1 flex flex-col justify-between p-3 sm:p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex-1 flex flex-col justify-between p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
-            ⚖️ LÍMITES POR CATEGORÍA, FLAPS Y PROHIBICIONES
+            ⚖️ CATEGORÍAS, FLAPS Y PROHIBICIONES OPERACIONALES
           </span>
           <span class="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
-            POH Sec. 4 &amp; Sup. TAE 125
+            POH Secc. 2 &amp; Sup. TAE 125
           </span>
         </div>
 
-        <div class="flex-1 flex flex-col justify-between py-1 gap-1.5 text-xs leading-snug">
+        <div class="flex-1 flex flex-col justify-between py-1.5 gap-2 text-xs leading-snug">
           <!-- Comparativa Categorías Normal vs Utility -->
           <div class="grid grid-cols-2 gap-2">
             <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
               <span class="font-bold text-sky-800 dark:text-sky-300 block text-xs uppercase">Categoría Normal</span>
               <div class="text-sm sm:text-base font-black text-[#0B2E59] dark:text-sky-200 font-mono">+3.8 G / -1.52 G</div>
-              <p class="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-400">MTOW 2.300 lb (1.043 kg) / 2.400 lb en 172P. Flaps arriba. Vuelo comercial y escuela básica. Virajes escarpados hasta 60°.</p>
+              <p class="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-400">
+                MTOW 2.300 lb (1.043 kg). Flaps arriba. Maniobras no acrobáticas y virajes escarpados con alabeo de hasta 60°.
+              </p>
             </div>
 
             <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
               <span class="font-bold text-indigo-800 dark:text-indigo-300 block text-xs uppercase">Categoría Utility</span>
               <div class="text-sm sm:text-base font-black text-indigo-900 dark:text-indigo-200 font-mono">+4.4 G / -1.76 G</div>
-              <p class="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-400">Peso ≤ 2.000 lb (907 kg). <strong>Asientos traseros y equipaje VACÍOS</strong>. Velocidad máx. entrada (POH): Chandelles, Lazy Eights y Virajes > 60° a <strong>106 KIAS</strong>.</p>
+              <p class="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-400">
+                Peso ≤ 2.000 lb (907 kg). <strong>Asientos traseros y equipaje VACÍOS</strong>. Para mantener el CG adelantado y máxima respuesta.
+              </p>
             </div>
           </div>
 
-          <!-- Cuadro de Flaps Extendidos -->
+          <!-- Maniobras Autorizadas en Utility con Velocidades Oficiales POH -->
+          <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-xs">
+                ✈️ Maniobras Autorizadas en Utility y Velocidades de Entrada (POH):
+              </span>
+              <span class="text-[10px] font-mono font-bold text-slate-500 dark:text-slate-400">POH Secc. 4</span>
+            </div>
+            <div class="grid grid-cols-3 gap-1 text-center font-mono text-[10px]">
+              <div class="p-1 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+                <span class="text-slate-500 block text-[9px]">Chandelles</span>
+                <strong class="text-indigo-700 dark:text-indigo-300">106 KIAS</strong>
+              </div>
+              <div class="p-1 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+                <span class="text-slate-500 block text-[9px]">Lazy Eights</span>
+                <strong class="text-indigo-700 dark:text-indigo-300">106 KIAS</strong>
+              </div>
+              <div class="p-1 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700">
+                <span class="text-slate-500 block text-[9px]">Steep Turns &gt;60°</span>
+                <strong class="text-indigo-700 dark:text-indigo-300">97 KIAS</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cuadro de Flaps Extendidos con Explicación de Torsión -->
           <div class="p-2 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-300/80 dark:border-amber-700/60 shadow-2xs flex items-center justify-between gap-2">
             <div class="flex items-center gap-1.5">
               <span class="text-base shrink-0">⚠️</span>
               <div>
-                <strong class="text-amber-900 dark:text-amber-300 text-xs block">Límite Estructural con Flaps Extendidos (10° a 40°):</strong>
-                <span class="text-[10px] sm:text-[11px] text-amber-800 dark:text-amber-400">Límite positivo reducido a <strong>+3.0 G</strong> y <strong>0.0 G</strong> negativo (no tolera cargas negativas ni ráfagas severas).</span>
+                <strong class="text-amber-900 dark:text-amber-300 text-xs block">Límite con Flaps Extendidos (10° a 40°): +3.0 G / 0.0 G</strong>
+                <span class="text-[10px] sm:text-[11px] text-amber-800 dark:text-amber-400">
+                  Al deflactar flaps, el centro de presiones retrocede y genera un fuerte momento de torsión alar. Las superficies hipersustentadoras no toleran aceleración negativa (0 G).
+                </span>
               </div>
             </div>
             <div class="font-mono font-black text-amber-900 dark:text-amber-200 text-xs sm:text-sm shrink-0 px-2 py-0.5 rounded-lg bg-amber-100 dark:bg-amber-900/60 border border-amber-300 dark:border-amber-700">
@@ -650,19 +780,19 @@ export const C172_LESSON_1 = {
             </div>
           </div>
 
-          <!-- Cuadro de prohibiciones resaltado -->
+          <!-- Cuadro de Prohibiciones Oficiales Suplemento Motor TAE 125 -->
           <div class="p-2 sm:p-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/30 border-2 border-rose-500/60 dark:border-rose-500/60 shadow-2xs space-y-0.5 text-slate-800 dark:text-slate-200">
             <div class="flex items-center justify-between">
               <span class="font-bold text-rose-700 dark:text-rose-400 text-xs uppercase flex items-center gap-1">
                 <span>⛔</span>
-                <span>Prohibiciones POH &amp; Suplemento Motor Continental</span>
+                <span>Prohibiciones POH &amp; Suplemento Motor Continental TAE 125</span>
               </span>
-              <span class="text-[10px] font-bold text-rose-600 dark:text-rose-400 font-mono">Sec. 2 Pág. 2-1</span>
+              <span class="text-[10px] font-bold text-rose-600 dark:text-rose-400 font-mono">Sec. 2 Pág. 2-2</span>
             </div>
             <ul class="list-disc pl-4 space-y-0.5 text-[10px] sm:text-[11px] text-rose-950 dark:text-rose-200">
-              <li><strong>Barrenas intencionadas (Spins):</strong> Terminantemente prohibidas en la flota diésel Continental CD-135/155 (<em>«Intentionally initiating spins is prohibited»</em>).</li>
-              <li><strong>G Negativas intencionadas o prolongadas:</strong> Prohibido iniciar G negativas y evitar duración prolongada (<em>«can cause propeller control and engine problems»</em> por riesgo de descebado de lubricación y paso de hélice).</li>
-              <li><strong>Acrobacia:</strong> Prohibidos loopings, toneles, caídas de ala y vuelo invertido.</li>
+              <li><strong>Barrenas intencionadas (Spins):</strong> Terminantemente prohibidas en la flota diésel (<em>«Intentionally initiating spins is prohibited»</em>) por la inercia del grupo motor y hélice tripala de composite con gobernador FADEC.</li>
+              <li><strong>G Negativas intencionadas:</strong> Prohibidas estrictamente. La falta de bomba invertida acrobática puede provocar descebado de lubricación y combustible (<em>«can cause propeller control and engine problems»</em>).</li>
+              <li><strong>Acrobacia aérea:</strong> Prohibidos loopings, toneles, caídas de ala y vuelo invertido.</li>
             </ul>
           </div>
         </div>
