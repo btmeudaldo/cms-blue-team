@@ -51,7 +51,10 @@ export async function uploadLessonImageAction(formData: FormData): Promise<strin
   return client.storage.from("course-covers").getPublicUrl(objectPath).data.publicUrl;
 }
 
-export async function createLessonAction(courseId: string, formData: FormData) {
+export async function createLessonAction(
+  courseId: string,
+  formData: FormData,
+) {
   const title = String(formData.get("title") ?? "").trim();
   const slug = String(formData.get("slug") ?? "")
     .trim()
@@ -145,6 +148,7 @@ export async function updateLessonAction(
 
   if (error) throw new Error(error.message);
   if (!data) throw new Error("Lección no encontrada o no autorizada.");
+
   revalidatePath(`/admin/courses/${courseId}`);
   revalidatePath(`/courses/${courseId}`);
 }

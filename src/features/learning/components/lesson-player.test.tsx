@@ -376,7 +376,7 @@ it("controls time per slide, hiding bottom dock bar until slide time is fulfille
   expect(fulfilledHtml).toContain("Siguiente Diapositiva (2/2)");
 });
 
-it("keeps top bar Siguiente button strictly disabled and locked until anti-cheat button is clicked", () => {
+it("ensures top bar has no Siguiente button, advancing exclusively via anti-cheat dock", () => {
   const html = renderToStaticMarkup(
     render({
       contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
@@ -384,18 +384,7 @@ it("keeps top bar Siguiente button strictly disabled and locked until anti-cheat
       isAlreadyCompleted: false,
     }),
   );
-  // Top bar Siguiente button must be disabled with lock icon when page hasn't been passed via anti-cheat
-  expect(html).toContain("Bloqueado: Debes completar el tiempo reglamentario y pulsar el botón anti-cheat inferior");
-  expect(html).toContain("🔒");
-
-  // When course is already completed, the top bar Siguiente button is unlocked
-  const completedHtml = renderToStaticMarkup(
-    render({
-      contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
-      minSeconds: 10,
-      isAlreadyCompleted: true,
-    }),
-  );
-  expect(completedHtml).not.toContain("Bloqueado: Debes completar el tiempo reglamentario y pulsar el botón anti-cheat inferior");
-  expect(completedHtml).toContain("Diapositiva siguiente");
+  // Top nav bar must NOT have a Siguiente button
+  expect(html).not.toContain("Diapositiva siguiente");
+  expect(html).toContain('aria-label="Navegación de diapositivas"');
 });

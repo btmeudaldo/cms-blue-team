@@ -32,7 +32,7 @@ export default async function EditLessonPage({
 
   if (!lesson) notFound();
 
-  const updateThisLesson = updateLessonAction.bind(null, lesson.id, courseId);
+  const updateThisLesson = updateLessonAction.bind(null, lesson.id, course.id);
 
   const quiz = await getEditableQuizForLesson(course.id, lesson.id);
 
@@ -44,7 +44,7 @@ export default async function EditLessonPage({
         role={profile?.role}
       />
 
-      <main className="flex-1 mx-auto w-full max-w-4xl px-4 sm:px-6 py-8 space-y-8">
+      <main className="flex-1 mx-auto w-full max-w-[1700px] px-3 sm:px-6 lg:px-8 py-6 pb-20 space-y-6">
         {/* Navigation */}
         <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
           <div>
@@ -81,7 +81,7 @@ export default async function EditLessonPage({
         </div>
 
         {/* Lesson Editor Card with Multimedia & Live Preview Toolbar */}
-        <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-sm">
+        <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 lg:p-8 shadow-sm">
           <LessonEditorForm
             action={updateThisLesson}
             courseId={courseId}

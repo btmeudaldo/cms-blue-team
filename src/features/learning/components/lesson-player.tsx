@@ -1087,29 +1087,32 @@ export function LessonPlayer({
             {totalLessonPages > 1 && (
               <nav
                 aria-label="Navegación de diapositivas"
-                className="flex items-center justify-between gap-3 px-4 py-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-2xs backdrop-blur-sm"
+                className="relative flex items-center justify-between gap-3 px-4 py-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-2xs backdrop-blur-sm min-h-[44px]"
               >
-                <button
-                  type="button"
-                  disabled={currentPageIndex === 0}
-                  onClick={() => {
-                    setCurrentPageIndex((prev) => Math.max(0, prev - 1));
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                    currentPageIndex === 0
-                      ? "opacity-30 cursor-not-allowed text-slate-400"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-950/40 hover:text-sky-600 cursor-pointer border border-slate-200 dark:border-slate-700"
-                  }`}
-                  title="Diapositiva anterior"
-                >
-                  <span>&larr;</span>
-                  <span className="hidden sm:inline">Anterior</span>
-                </button>
+                {/* Left: Previous Button */}
+                <div className="flex items-center">
+                  <button
+                    type="button"
+                    disabled={currentPageIndex === 0}
+                    onClick={() => {
+                      setCurrentPageIndex((prev) => Math.max(0, prev - 1));
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                      currentPageIndex === 0
+                        ? "opacity-30 cursor-not-allowed text-slate-400"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-950/40 hover:text-sky-600 cursor-pointer border border-slate-200 dark:border-slate-700"
+                    }`}
+                    title="Diapositiva anterior"
+                  >
+                    <span>&larr;</span>
+                    <span className="hidden sm:inline">Anterior</span>
+                  </button>
+                </div>
 
-                {/* Dots / Page Indicator */}
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300">
+                {/* Center: Slide Indicator strictly centered */}
+                <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-auto">
+                  <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300 whitespace-nowrap">
                     Diapositiva {currentPageIndex + 1} de {totalLessonPages}
                   </span>
                   <div className="flex items-center gap-1">
@@ -1148,32 +1151,8 @@ export function LessonPlayer({
                   </div>
                 </div>
 
-                {currentPageIndex < totalLessonPages - 1 && (
-                  <button
-                    type="button"
-                    disabled={!isCurrentPageDone}
-                    onClick={() => {
-                      if (isCurrentPageDone) {
-                        setCurrentPageIndex((prev) => Math.min(totalLessonPages - 1, prev + 1));
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      }
-                    }}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      !isCurrentPageDone
-                        ? "opacity-40 cursor-not-allowed bg-slate-100 dark:bg-slate-800 text-slate-400 border border-slate-200 dark:border-slate-700"
-                        : "bg-[#1a80ff] text-white hover:bg-[#0066e6] shadow-2xs cursor-pointer"
-                    }`}
-                    title={
-                      !isCurrentPageDone
-                        ? "Bloqueado: Debes completar el tiempo reglamentario y pulsar el botón anti-cheat inferior para avanzar"
-                        : "Diapositiva siguiente"
-                    }
-                  >
-                    {!isCurrentPageDone && <span className="text-[10px]">🔒</span>}
-                    <span className="hidden sm:inline">Siguiente</span>
-                    <span>&rarr;</span>
-                  </button>
-                )}
+                {/* Right: Balance spacer */}
+                <div className="w-16 hidden sm:block pointer-events-none" />
               </nav>
             )}
 
@@ -1182,9 +1161,8 @@ export function LessonPlayer({
               ref={contentRef}
               className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 ${
                 isSlideMode
-                  ? "flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col justify-start my-auto [&_.lesson-slide-container]:min-h-full"
+                  ? "flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
                   : "prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
-
               }`}
               dangerouslySetInnerHTML={{ __html: safeContentHtml }}
             />

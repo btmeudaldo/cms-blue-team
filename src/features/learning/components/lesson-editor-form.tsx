@@ -38,6 +38,10 @@ export function LessonEditorForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  const [saveSuccessMessage, setSaveSuccessMessage] = useState<string | null>(
+    null,
+  );
+
   const draftIdentifier = defaultSlug || "new";
   const [draftSavedAt, setDraftSavedAt] = useState<string | null>(null);
   const [recoveredDraft, setRecoveredDraft] = useState<string | null>(null);
@@ -80,31 +84,63 @@ export function LessonEditorForm({
       ? `${Math.floor(calculatedReadingSeconds / 60)}m ${calculatedReadingSeconds % 60}s`
       : `${calculatedReadingSeconds}s`;
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  async function executeSave(stayOnPage: boolean, formEl?: HTMLFormElement | null) {
     setIsSubmitting(true);
     setErrorMessage(null);
+    setSaveSuccessMessage(null);
 
-    const formData = new FormData(event.currentTarget);
+    const form = formEl || (document.querySelector("form.lesson-editor-form") as HTMLFormElement);
+    const formData = form ? new FormData(form) : new FormData();
     formData.set("contentHtml", contentHtml);
 
     try {
       await action(formData);
       clearLessonDraft(courseId, draftIdentifier);
-      router.push(`/admin/courses/${courseId}`);
-      router.refresh();
+      const timeStr = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+      setSaveSuccessMessage(
+        `✅ Lección sincronizada y guardada en la base de datos a las ${timeStr}`,
+      );
+      if (!stayOnPage) {
+        router.push(`/admin/courses/${courseId}`);
+        router.refresh();
+      } else {
+        router.refresh();
+      }
     } catch (err) {
       console.error("Error al guardar lección:", err);
       setErrorMessage((err as Error).message);
+    } finally {
       setIsSubmitting(false);
     }
   }
 
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    await executeSave(false, event.currentTarget);
+  }
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="lesson-editor-form space-y-6">
       {errorMessage && (
         <div className="rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 p-4 text-xs font-semibold text-rose-700 dark:text-rose-300">
-          ⚠ Error: {errorMessage}
+          ⚠️ Error al sincronizar con la base de datos: {errorMessage}
+        </div>
+      )}
+
+      {saveSuccessMessage && (
+        <div className="rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 p-4 text-xs font-bold text-emerald-800 dark:text-emerald-300 shadow-xs flex items-center justify-between">
+          <span>{saveSuccessMessage}</span>
+          <button
+            type="button"
+            onClick={() => setSaveSuccessMessage(null)}
+            className="text-xs text-emerald-600 hover:text-emerald-900 cursor-pointer"
+          >
+            ✕
+          </button>
         </div>
       )}
 
@@ -210,11 +246,21 @@ export function LessonEditorForm({
           </label>
           <div className="flex items-center gap-2.5 text-[11px] font-semibold text-slate-500 dark:text-slate-400">
             {draftSavedAt && (
-              <span className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-bold">
-                <span>💾</span>
-                <span>Borrador: {draftSavedAt}</span>
+              <span className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 font-medium">
+                <span>📝</span>
+                <span>Borrador local: {draftSavedAt}</span>
               </span>
             )}
+            <button
+              type="button"
+              onClick={() => executeSave(true)}
+              disabled={isSubmitting}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition-all cursor-pointer disabled:opacity-50"
+              title="Guarda directamente en la base de datos Supabase sin salir de la página"
+            >
+              <span>💾</span>
+              <span>Guardar en Base de Datos</span>
+            </button>
             <span className="inline-flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 font-mono text-[10px]">
               <span>📊 {wordCount} palabras</span>
               <span>·</span>
@@ -228,24 +274,35 @@ export function LessonEditorForm({
         />
       </div>
 
-      <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100 dark:border-slate-800">
         <Link
           href={`/admin/courses/${courseId}`}
           className="rounded-xl border border-slate-200 dark:border-slate-800 px-5 py-2.5 text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
         >
           Cancelar
         </Link>
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="rounded-xl bg-[#1a80ff] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all disabled:opacity-50 cursor-pointer"
-        >
-          {isSubmitting
-            ? "Guardando..."
-            : isEditing
-              ? "Guardar Cambios"
-              : "Guardar Lección"}
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => executeSave(true)}
+            disabled={isSubmitting}
+            className="rounded-xl border border-emerald-600 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 px-5 py-2.5 text-xs font-bold transition-all disabled:opacity-50 cursor-pointer flex items-center gap-1.5"
+          >
+            <span>💾</span>
+            <span>Guardar y Seguir Editando</span>
+          </button>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="rounded-xl bg-[#1a80ff] px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all disabled:opacity-50 cursor-pointer flex items-center gap-1.5"
+          >
+            {isSubmitting
+              ? "Guardando..."
+              : isEditing
+                ? "Guardar y Salir"
+                : "Guardar Lección"}
+          </button>
+        </div>
       </div>
     </form>
   );

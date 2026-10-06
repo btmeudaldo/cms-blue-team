@@ -16,6 +16,14 @@ import {
   generateAviationTableSnippet,
   SlashCommandItem,
 } from "../domain/editor-keyboard-shortcuts";
+import { splitLessonPages } from "../domain/lesson-pages";
+import {
+  clampGridColumnSpan,
+  getComplementaryGridColumnSpan,
+  getGridColumnPercentages,
+  getNextGridColumnSpan,
+  getSpanFromPercentage,
+} from "../domain/grid-column-spans";
 
 type LessonEditorToolbarProps = {
   contentHtml: string;
@@ -66,6 +74,23 @@ export function LessonEditorToolbar({
   const [slashQuery, setSlashQuery] = useState("");
   const [slashSelectedIndex, setSlashSelectedIndex] = useState(0);
   const [slashPosition, setSlashPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
+  const [showWidthMenu, setShowWidthMenu] = useState(false);
+  const [currentGridLeftSpan, setCurrentGridLeftSpan] = useState(5);
+  const [currentGridLeftPct, setCurrentGridLeftPct] = useState(42);
+
+  // Per-slide state for parity with the lesson presentation player
+  const [slides, setSlides] = useState<string[]>(() => {
+    const parsed = splitLessonPages(contentHtml);
+    return parsed.length > 0 ? parsed : [""];
+  });
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [viewMode, setViewMode] = useState<"slide" | "all">("slide");
+  const [previewSlideIndex, setPreviewSlideIndex] = useState(0);
+
+  const slidesRef = useRef<string[]>(slides);
+  slidesRef.current = slides;
+  const currentSlideIndexRef = useRef(currentSlideIndex);
+  currentSlideIndexRef.current = currentSlideIndex;
 
   const FALLBACK_SVG = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="%230f172a"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="%2338bdf8" font-family="sans-serif" font-size="22" font-weight="bold">✈️ Recurso Gráfico Aeronáutico</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%2394a3b8" font-family="sans-serif" font-size="13">Imagen de lección adjunta</text></svg>`;
 
@@ -281,7 +306,191 @@ export function LessonEditorToolbar({
     });
   }
 
-  // Helper to extract clean HTML without editor controls, resize handles or placeholders
+  // Helper to locate a two-column grid layout within the active slide DOM
+  function findSlideTwoColumnGrid(container: HTMLElement): {
+    gridEl: HTMLElement;
+    col1: HTMLElement;
+    col2: HTMLElement;
+    pct1: number;
+    pct2: number;
+    span1: number;
+    span2: number;
+  } | null {
+    const grids = container.querySelectorAll(".grid");
+    for (let i = 0; i < grids.length; i++) {
+      const grid = grids[i] as HTMLElement;
+      const children = Array.from(grid.children).filter(
+        (el) => el.tagName === "DIV" && !el.classList.contains("col-resize-controls")
+      ) as HTMLElement[];
+      if (children.length === 2) {
+        const col1 = children[0];
+        const col2 = children[1];
+
+        const savedAttr = grid.getAttribute("data-left-pct");
+        let pct1 = savedAttr ? parseInt(savedAttr, 10) : 0;
+
+        const match1 = col1.className.match(/(?:lg:)?col-span-(\d+)/);
+        const match2 = col2.className.match(/(?:lg:)?col-span-(\d+)/);
+
+        let span1 = match1 ? parseInt(match1[1], 10) : 6;
+        let span2 = match2 ? parseInt(match2[1], 10) : 6;
+
+        if (!pct1 || isNaN(pct1)) {
+          pct1 = Math.round((span1 / 12) * 100);
+        }
+        pct1 = Math.max(15, Math.min(85, pct1));
+        const pct2 = 100 - pct1;
+
+        return { gridEl: grid, col1, col2, pct1, pct2, span1, span2 };
+      }
+    }
+    return null;
+  }
+
+  // Set exact percentage width for the 2 columns in the active slide DOM
+  function setGridPercentage(leftPct: number) {
+    if (!editorRef.current) return;
+    const gridInfo = findSlideTwoColumnGrid(editorRef.current);
+    if (!gridInfo) return;
+
+    const clampedPct = Math.max(15, Math.min(85, Math.round(leftPct)));
+    const rightPct = 100 - clampedPct;
+    const { gridEl, col1, col2 } = gridInfo;
+
+    // Apply continuous percentage attributes and inline CSS styles
+    gridEl.setAttribute("data-left-pct", String(clampedPct));
+    gridEl.style.setProperty("--col-left", `${clampedPct}fr`);
+    gridEl.style.setProperty("--col-right", `${rightPct}fr`);
+    gridEl.style.setProperty(
+      "grid-template-columns",
+      `minmax(0, ${clampedPct}fr) minmax(0, ${rightPct}fr)`,
+      "important",
+    );
+
+    // Neutralize child column overrides so they respect the 2 custom tracks
+    col1.style.setProperty("grid-column", "auto", "important");
+    col2.style.setProperty("grid-column", "auto", "important");
+
+    // Set fallback Tailwind classes
+    const span1 = getSpanFromPercentage(clampedPct);
+    const span2 = getComplementaryGridColumnSpan(span1);
+    col1.className = (
+      col1.className.replace(/(?:lg:)?col-span-\d+/g, "").trim().replace(/\s+/g, " ") +
+      ` lg:col-span-${span1}`
+    ).trim();
+
+    col2.className = (
+      col2.className.replace(/(?:lg:)?col-span-\d+/g, "").trim().replace(/\s+/g, " ") +
+      ` lg:col-span-${span2}`
+    ).trim();
+
+    setCurrentGridLeftPct(clampedPct);
+    setCurrentGridLeftSpan(span1);
+
+    // Update input values in canvas without destroying active DOM nodes
+    const inputIzq = editorRef.current.querySelector('.col-pct-input[data-side="izq"]') as HTMLInputElement | null;
+    const inputDer = editorRef.current.querySelector('.col-pct-input[data-side="der"]') as HTMLInputElement | null;
+    if (inputIzq && document.activeElement !== inputIzq) {
+      inputIzq.value = String(clampedPct);
+    }
+    if (inputDer && document.activeElement !== inputDer) {
+      inputDer.value = String(rightPct);
+    }
+
+    syncCurrentSlideToState();
+  }
+
+  // Backward compatible adapter for span-based changes
+  function setGridColumnSpans(newSpan1: number) {
+    const clampedSpan = clampGridColumnSpan(newSpan1);
+    const pct = Math.round((clampedSpan / 12) * 100);
+    setGridPercentage(pct);
+  }
+
+  function applyManualPercentageFromInput(input: HTMLInputElement) {
+    const val = parseInt(input.value, 10);
+    if (isNaN(val) || val < 10 || val > 90) return;
+    const side = (input.getAttribute("data-side") || "izq") as "izq" | "der";
+    const leftPct = side === "izq" ? val : 100 - val;
+    setGridPercentage(leftPct);
+  }
+
+  // Attach interactive floating badges to the two columns in the editor canvas
+  function attachGridControlsToDom(container: HTMLElement) {
+    const gridInfo = findSlideTwoColumnGrid(container);
+    if (!gridInfo) {
+      container.querySelectorAll(".col-resize-controls").forEach((el) => el.remove());
+      return;
+    }
+
+    const { col1, col2, pct1, pct2, gridEl } = gridInfo;
+    setCurrentGridLeftPct(pct1);
+    setCurrentGridLeftSpan(gridInfo.span1);
+
+    // Apply continuous percentage styles if not already set
+    if (!gridEl.getAttribute("data-left-pct")) {
+      gridEl.setAttribute("data-left-pct", String(pct1));
+      gridEl.style.setProperty("--col-left", `${pct1}fr`);
+      gridEl.style.setProperty("--col-right", `${pct2}fr`);
+      gridEl.style.setProperty(
+        "grid-template-columns",
+        `minmax(0, ${pct1}fr) minmax(0, ${pct2}fr)`,
+        "important",
+      );
+      col1.style.setProperty("grid-column", "auto", "important");
+      col2.style.setProperty("grid-column", "auto", "important");
+    }
+
+    [
+      { col: col1, pct: pct1, side: "izq", label: "Cuadro Izquierdo" },
+      { col: col2, pct: pct2, side: "der", label: "Cuadro Derecho" },
+    ].forEach(({ col, pct, side, label }) => {
+      let controls = col.querySelector(":scope > .col-resize-controls") as HTMLElement | null;
+      if (!controls) {
+        controls = document.createElement("div");
+        controls.className =
+          "col-resize-controls mb-2.5 flex items-center justify-between gap-2 px-3 py-1.5 rounded-xl bg-slate-900/95 text-white dark:bg-slate-800/95 dark:text-slate-100 text-[11px] font-sans shadow-md border border-slate-700/80 select-none z-20 backdrop-blur-xs transition-opacity";
+        controls.setAttribute("contenteditable", "false");
+        controls.innerHTML = `
+          <div class="flex items-center gap-1.5 font-bold">
+            <span class="text-sky-400">📐</span>
+            <span class="font-medium text-slate-200">${label}:</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <div class="flex items-center bg-slate-800 dark:bg-slate-700/80 rounded-lg px-2 py-0.5 border border-slate-600 focus-within:border-sky-400 focus-within:ring-1 focus-within:ring-sky-400">
+              <input
+                type="number"
+                min="15"
+                max="85"
+                step="1"
+                value="${pct}"
+                data-side="${side}"
+                class="col-pct-input w-12 bg-transparent text-sky-300 font-extrabold font-mono text-xs text-right outline-none"
+                title="Escribe aquí el porcentaje exacto (ej. 42)"
+              />
+              <span class="text-slate-400 text-xs font-bold ml-1">%</span>
+            </div>
+            <button
+              type="button"
+              class="col-btn-equal px-2 py-1 rounded-lg bg-slate-800 hover:bg-sky-600 text-white text-[10px] font-bold cursor-pointer transition-colors shadow-2xs"
+              data-side="${side}"
+              title="Restablecer al 50% / 50%"
+            >
+              50/50
+            </button>
+          </div>
+        `;
+        col.insertBefore(controls, col.firstChild);
+      } else {
+        const input = controls.querySelector(".col-pct-input") as HTMLInputElement | null;
+        if (input && document.activeElement !== input) {
+          input.value = String(pct);
+        }
+      }
+    });
+  }
+
+  // Helper to extract clean HTML without editor controls, resize handles, column widgets or placeholders
   function getCleanHtml(): string {
     if (!editorRef.current) return "";
     const clone = editorRef.current.cloneNode(true) as HTMLElement;
@@ -293,6 +502,8 @@ export function LessonEditorToolbar({
     badges.forEach((b) => b.remove());
     const placeholders = clone.querySelectorAll(".placeholder-text");
     placeholders.forEach((p) => p.remove());
+    const colControls = clone.querySelectorAll(".col-resize-controls");
+    colControls.forEach((c) => c.remove());
     return clone.innerHTML;
   }
 
@@ -357,25 +568,182 @@ export function LessonEditorToolbar({
     };
   }, []);
 
+  // Synchronize current active slide's clean HTML into state and notify parent
+  function syncCurrentSlideToState(): string {
+    if (!editorRef.current) {
+      return slidesRef.current[currentSlideIndexRef.current] || "";
+    }
+    const cleanHtml = getCleanHtml();
+    const updated = [...slidesRef.current];
+    updated[currentSlideIndexRef.current] = cleanHtml;
+    slidesRef.current = updated;
+    setSlides(updated);
+    onChangeContentHtml(updated.join("\n\n<!-- pagebreak -->\n\n"));
+    return cleanHtml;
+  }
+
   // Constant mount dependency array [] to prevent React Hook render size mismatch
   useEffect(() => {
     if (editorRef.current) {
-      const initial = initialContentHtmlRef.current?.trim();
-      if (!initial) {
+      const initialPages = splitLessonPages(initialContentHtmlRef.current || "");
+      const initialSlideContent = initialPages[0]?.trim();
+      if (!initialSlideContent) {
         editorRef.current.innerHTML = `<p class="placeholder-text text-slate-400 dark:text-slate-500 italic">${DEFAULT_PLACEHOLDER_TEXT}</p>`;
       } else {
-        editorRef.current.innerHTML = initial;
+        editorRef.current.innerHTML = initialSlideContent;
       }
       attachImageControlsToDom(editorRef.current);
-      onChangeContentHtml(getCleanHtml());
+      attachGridControlsToDom(editorRef.current);
+      setSlides(initialPages.length > 0 ? initialPages : [""]);
+      slidesRef.current = initialPages.length > 0 ? initialPages : [""];
+      onChangeContentHtml(initialContentHtmlRef.current || "");
     }
   }, []);
 
-  function handleVisualInput() {
+  function handleVisualInput(e?: React.FormEvent<HTMLDivElement>) {
     if (editorRef.current) {
+      if (e) {
+        const target = e.target as HTMLElement;
+        const colInput = target.closest(".col-pct-input") as HTMLInputElement | null;
+        if (colInput) {
+          const val = parseInt(colInput.value, 10);
+          const side = (colInput.getAttribute("data-side") || "izq") as "izq" | "der";
+          if (!isNaN(val) && val >= 15 && val <= 85) {
+            const leftPct = side === "izq" ? val : 100 - val;
+            setGridPercentage(leftPct);
+          } else if (e.type === "blur") {
+            const currentAttr = editorRef.current.querySelector("[data-left-pct]")?.getAttribute("data-left-pct");
+            const fallback = currentAttr ? parseInt(currentAttr, 10) : 42;
+            const clamped = isNaN(val) ? fallback : Math.max(15, Math.min(85, val));
+            colInput.value = String(side === "izq" ? clamped : 100 - clamped);
+            const leftPct = side === "izq" ? clamped : 100 - clamped;
+            setGridPercentage(leftPct);
+          }
+          return;
+        }
+      }
       attachImageControlsToDom(editorRef.current);
-      onChangeContentHtml(getCleanHtml());
+      attachGridControlsToDom(editorRef.current);
+      syncCurrentSlideToState();
     }
+  }
+
+  function handleCanvasChange(e: React.FormEvent<HTMLDivElement>) {
+    const target = e.target as HTMLElement;
+    const colInput = target.closest(".col-pct-input") as HTMLInputElement | null;
+    if (colInput) {
+      const val = parseInt(colInput.value, 10);
+      if (!isNaN(val) && val >= 15 && val <= 85) {
+        const side = (colInput.getAttribute("data-side") || "izq") as "izq" | "der";
+        const leftPct = side === "izq" ? val : 100 - val;
+        setGridPercentage(leftPct);
+      }
+    }
+  }
+
+  function goToSlide(targetIndex: number) {
+    if (
+      targetIndex < 0 ||
+      targetIndex >= slidesRef.current.length ||
+      targetIndex === currentSlideIndexRef.current
+    )
+      return;
+
+    // 1. Capture and save current slide
+    const cleanHtml = getCleanHtml();
+    const updated = [...slidesRef.current];
+    updated[currentSlideIndexRef.current] = cleanHtml;
+    slidesRef.current = updated;
+    setSlides(updated);
+    onChangeContentHtml(updated.join("\n\n<!-- pagebreak -->\n\n"));
+
+    // 2. Set new index
+    setCurrentSlideIndex(targetIndex);
+    currentSlideIndexRef.current = targetIndex;
+
+    // 3. Load target slide into editor DOM
+    if (editorRef.current) {
+      const content = updated[targetIndex]?.trim();
+      if (!content) {
+        editorRef.current.innerHTML = `<p class="placeholder-text text-slate-400 dark:text-slate-500 italic">${DEFAULT_PLACEHOLDER_TEXT}</p>`;
+      } else {
+        editorRef.current.innerHTML = content;
+      }
+      attachImageControlsToDom(editorRef.current);
+      attachGridControlsToDom(editorRef.current);
+      editorRef.current.scrollTop = 0;
+    }
+  }
+
+  function handleAddNewSlide() {
+    syncCurrentSlideToState();
+    const newSlideHtml = `<div class="lesson-slide-container space-y-4">\n  <div class="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6 shadow-xs">\n    <h2 class="text-xl font-bold text-slate-900 mb-2">Nueva Diapositiva</h2>\n    <p class="text-slate-700">Escribe aquí el contenido de la diapositiva...</p>\n  </div>\n</div>`;
+
+    const updated = [...slidesRef.current];
+    const insertIndex = currentSlideIndexRef.current + 1;
+    updated.splice(insertIndex, 0, newSlideHtml);
+    slidesRef.current = updated;
+    setSlides(updated);
+    setCurrentSlideIndex(insertIndex);
+    currentSlideIndexRef.current = insertIndex;
+
+    if (editorRef.current) {
+      editorRef.current.innerHTML = newSlideHtml;
+      attachImageControlsToDom(editorRef.current);
+      attachGridControlsToDom(editorRef.current);
+    }
+    onChangeContentHtml(updated.join("\n\n<!-- pagebreak -->\n\n"));
+  }
+
+  function handleDeleteSlide(indexToDelete: number) {
+    if (slidesRef.current.length <= 1) {
+      alert("La lección debe contener al menos una diapositiva.");
+      return;
+    }
+    if (
+      !window.confirm(
+        `¿Deseas eliminar la Diapositiva ${indexToDelete + 1}?`,
+      )
+    ) {
+      return;
+    }
+    const updated = slidesRef.current.filter((_, idx) => idx !== indexToDelete);
+    const newIndex = Math.min(indexToDelete, updated.length - 1);
+    slidesRef.current = updated;
+    setSlides(updated);
+    setCurrentSlideIndex(newIndex);
+    currentSlideIndexRef.current = newIndex;
+
+    if (editorRef.current) {
+      const content = updated[newIndex]?.trim();
+      if (!content) {
+        editorRef.current.innerHTML = `<p class="placeholder-text text-slate-400 dark:text-slate-500 italic">${DEFAULT_PLACEHOLDER_TEXT}</p>`;
+      } else {
+        editorRef.current.innerHTML = content;
+      }
+      attachImageControlsToDom(editorRef.current);
+      attachGridControlsToDom(editorRef.current);
+    }
+    onChangeContentHtml(updated.join("\n\n<!-- pagebreak -->\n\n"));
+  }
+
+  function handleDuplicateSlide(indexToDuplicate: number) {
+    syncCurrentSlideToState();
+    const source = slidesRef.current[indexToDuplicate] || "";
+    const updated = [...slidesRef.current];
+    const insertIndex = indexToDuplicate + 1;
+    updated.splice(insertIndex, 0, source);
+    slidesRef.current = updated;
+    setSlides(updated);
+    setCurrentSlideIndex(insertIndex);
+    currentSlideIndexRef.current = insertIndex;
+
+    if (editorRef.current) {
+      editorRef.current.innerHTML = source;
+      attachImageControlsToDom(editorRef.current);
+      attachGridControlsToDom(editorRef.current);
+    }
+    onChangeContentHtml(updated.join("\n\n<!-- pagebreak -->\n\n"));
   }
 
   // Handle Drag & Drop repositioning of image wrappers
@@ -523,6 +891,15 @@ export function LessonEditorToolbar({
   function handleCanvasClick(e: React.MouseEvent<HTMLDivElement>) {
     clearPlaceholderIfPresent();
     const target = e.target as HTMLElement;
+
+    // Column 50/50 symmetry quick button
+    const btnColEqual = target.closest(".col-btn-equal") as HTMLElement | null;
+    if (btnColEqual) {
+      e.preventDefault();
+      e.stopPropagation();
+      setGridPercentage(50);
+      return;
+    }
 
     const btnUp = target.closest(".img-btn-up");
     const btnDown = target.closest(".img-btn-down");
@@ -732,11 +1109,21 @@ export function LessonEditorToolbar({
 
   function toggleCodeMode() {
     if (!showCodeMode && editorRef.current) {
-      onChangeContentHtml(getCleanHtml());
+      syncCurrentSlideToState();
     } else if (showCodeMode) {
       setTimeout(() => {
+        const parsed = splitLessonPages(contentHtml);
+        const newSlides = parsed.length > 0 ? parsed : [""];
+        setSlides(newSlides);
+        slidesRef.current = newSlides;
+        const targetIdx = Math.min(
+          currentSlideIndexRef.current,
+          newSlides.length - 1,
+        );
+        setCurrentSlideIndex(targetIdx);
+        currentSlideIndexRef.current = targetIdx;
         if (editorRef.current) {
-          const content = contentHtml?.trim();
+          const content = newSlides[targetIdx]?.trim();
           if (!content) {
             editorRef.current.innerHTML = `<p class="placeholder-text text-slate-400 dark:text-slate-500 italic">${DEFAULT_PLACEHOLDER_TEXT}</p>`;
           } else {
@@ -879,7 +1266,9 @@ export function LessonEditorToolbar({
 
     setShowSlashMenu(false);
 
-    if (cmd.action === "image") {
+    if (cmd.id === "slide-break") {
+      handleAddNewSlide();
+    } else if (cmd.action === "image") {
       setShowImageModal(true);
     } else if (cmd.action === "table") {
       insertBlockSnippet(generateAviationTableSnippet());
@@ -902,6 +1291,26 @@ export function LessonEditorToolbar({
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    // Percentage input handling inside slide canvas
+    const colInput = (e.target as HTMLElement).closest(".col-pct-input") as HTMLInputElement | null;
+    if (colInput) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const val = parseInt(colInput.value, 10);
+        if (!isNaN(val)) {
+          const side = (colInput.getAttribute("data-side") || "izq") as "izq" | "der";
+          const clamped = Math.max(15, Math.min(85, val));
+          colInput.value = String(side === "izq" ? clamped : 100 - clamped);
+          const leftPct = side === "izq" ? clamped : 100 - clamped;
+          setGridPercentage(leftPct);
+          colInput.blur();
+        }
+        return;
+      }
+      e.stopPropagation();
+      return;
+    }
+
     if (showSlashMenu) {
       const filtered = filterSlashCommands(slashQuery);
       if (e.key === "ArrowDown") {
@@ -1308,6 +1717,20 @@ export function LessonEditorToolbar({
                       <div className="text-[10px] text-slate-400">Reproductor YouTube o video MP4</div>
                     </div>
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      handleAddNewSlide();
+                      setShowBlocksMenu(false);
+                    }}
+                    className="w-full text-left px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-950/50 hover:text-[#1a80ff] transition-colors flex items-center gap-2.5 cursor-pointer border-t border-slate-100 dark:border-slate-800 pt-2"
+                  >
+                    <span className="text-base">📑</span>
+                    <div>
+                      <div className="font-bold text-slate-900 dark:text-white">Nueva Diapositiva</div>
+                      <div className="text-[10px] text-slate-400">Salto de página independiente</div>
+                    </div>
+                  </button>
                 </div>
               )}
             </div>
@@ -1350,6 +1773,252 @@ export function LessonEditorToolbar({
             >
               🖼️ Insertar Imagen
             </button>
+
+            {/* Column & Box Width Visual Resizer Controller */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => {
+                  if (editorRef.current) {
+                    const grid = findSlideTwoColumnGrid(editorRef.current);
+                    if (grid) {
+                      setCurrentGridLeftSpan(grid.span1);
+                    }
+                  }
+                  setShowWidthMenu(!showWidthMenu);
+                }}
+                className="h-9 px-3 flex items-center justify-center rounded-xl bg-teal-50 dark:bg-teal-950/60 border border-teal-200 dark:border-teal-800 text-xs font-bold text-teal-700 dark:text-teal-300 hover:bg-teal-500 hover:text-white transition-all cursor-pointer gap-1.5 shadow-2xs"
+                title="Ajustar ancho de los cuadros y columnas de la diapositiva"
+              >
+                <span>📐</span>
+                <span>Ancho Cuadros</span>
+                <span className="text-[9px]">▼</span>
+              </button>
+
+              {showWidthMenu && (
+                <div className="absolute top-11 left-0 z-40 w-84 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-2xl space-y-3.5">
+                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-base">📐</span>
+                      <span className="text-xs font-bold text-slate-900 dark:text-white">
+                        Ancho de Cuadros y Columnas
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setShowWidthMenu(false)}
+                      className="text-slate-400 hover:text-slate-600 text-xs font-bold p-1 cursor-pointer"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  {!editorRef.current || !findSlideTwoColumnGrid(editorRef.current) ? (
+                    <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-xs text-amber-800 dark:text-amber-200 space-y-2">
+                      <p className="font-semibold">
+                        ℹ️ No se detecta una división de 2 cuadros en esta diapositiva.
+                      </p>
+                      <p className="text-[11px] text-amber-700 dark:text-amber-300">
+                        Puedes insertar una estructura de 2 columnas haciendo clic a continuación:
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          insertBlockSnippet(
+                            '<div class="my-5 grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">\n  <div class="lg:col-span-6 flex flex-col p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs">\n    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Cuadro Izquierdo</h3>\n    <p class="text-xs text-slate-600 dark:text-slate-300">Contenido del cuadro izquierdo...</p>\n  </div>\n  <div class="lg:col-span-6 flex flex-col p-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xs">\n    <h3 class="font-bold text-slate-900 dark:text-white mb-2">Cuadro Derecho</h3>\n    <p class="text-xs text-slate-600 dark:text-slate-300">Contenido del cuadro derecho...</p>\n  </div>\n</div><p><br></p>',
+                          );
+                          setShowWidthMenu(false);
+                        }}
+                        className="w-full py-1.5 px-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-bold transition-colors cursor-pointer text-center"
+                      >
+                        ➕ Insertar Doble Columna (50/50)
+                      </button>
+                    </div>
+                  ) : (
+                    <>
+                      {/* Visual Live Distribution Bar */}
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between text-[11px] font-bold">
+                          <span className="text-sky-600 dark:text-sky-400">
+                            Cuadro Izq: {currentGridLeftPct}%
+                          </span>
+                          <span className="text-indigo-600 dark:text-indigo-400">
+                            Cuadro Der: {100 - currentGridLeftPct}%
+                          </span>
+                        </div>
+                        <div className="h-4 w-full flex rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shadow-inner">
+                          <div
+                            className="h-full bg-sky-500 flex items-center justify-center text-[9px] font-extrabold text-white transition-all duration-150"
+                            style={{ width: `${currentGridLeftPct}%` }}
+                          >
+                            {currentGridLeftPct}%
+                          </div>
+                          <div
+                            className="h-full bg-indigo-500 flex items-center justify-center text-[9px] font-extrabold text-white transition-all duration-150"
+                            style={{ width: `${100 - currentGridLeftPct}%` }}
+                          >
+                            {100 - currentGridLeftPct}%
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Direct Numeric Percentage Inputs */}
+                      <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-100 dark:border-slate-800">
+                        <div className="space-y-1">
+                          <label className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 block tracking-wider">
+                            % Cuadro Izq:
+                          </label>
+                          <div className="flex items-center bg-slate-50 dark:bg-slate-800 rounded-xl px-2.5 py-1 border border-slate-200 dark:border-slate-700 focus-within:border-sky-500">
+                            <input
+                              type="number"
+                              min="15"
+                              max="85"
+                              value={currentGridLeftPct}
+                              onChange={(e) => {
+                                const val = parseInt(e.target.value, 10);
+                                if (!isNaN(val)) {
+                                  setGridPercentage(val);
+                                }
+                              }}
+                              className="w-full bg-transparent text-sm font-extrabold text-sky-600 dark:text-sky-400 font-mono outline-none"
+                            />
+                            <span className="text-xs font-bold text-slate-400 ml-1">%</span>
+                          </div>
+                        </div>
+                        <div className="space-y-1">
+                          <label className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 block tracking-wider">
+                            % Cuadro Der:
+                          </label>
+                          <div className="flex items-center bg-slate-50 dark:bg-slate-800 rounded-xl px-2.5 py-1 border border-slate-200 dark:border-slate-700 focus-within:border-indigo-500">
+                            <input
+                              type="number"
+                              min="15"
+                              max="85"
+                              value={100 - currentGridLeftPct}
+                              onChange={(e) => {
+                                const val = parseInt(e.target.value, 10);
+                                if (!isNaN(val)) {
+                                  setGridPercentage(100 - val);
+                                }
+                              }}
+                              className="w-full bg-transparent text-sm font-extrabold text-indigo-600 dark:text-indigo-400 font-mono outline-none"
+                            />
+                            <span className="text-xs font-bold text-slate-400 ml-1">%</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Continuous Range Slider */}
+                      <div className="space-y-1 pt-1">
+                        <label className="text-[10px] font-bold uppercase text-slate-400 block tracking-wider">
+                          Deslizador Continuo (%):
+                        </label>
+                        <input
+                          type="range"
+                          min="15"
+                          max="85"
+                          step="1"
+                          value={currentGridLeftPct}
+                          onChange={(e) => {
+                            const val = parseInt(e.target.value, 10);
+                            setGridPercentage(val);
+                          }}
+                          className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-sky-500"
+                        />
+                        <div className="flex justify-between text-[9px] font-mono text-slate-400">
+                          <span>25%</span>
+                          <span>33%</span>
+                          <span className="font-bold text-sky-600">42%</span>
+                          <span>50%</span>
+                          <span>58%</span>
+                          <span>67%</span>
+                          <span>75%</span>
+                        </div>
+                      </div>
+
+                      {/* Quick Preset Buttons */}
+                      <div className="space-y-1.5 pt-1 border-t border-slate-100 dark:border-slate-800">
+                        <span className="text-[10px] font-bold uppercase text-slate-400 block tracking-wider">
+                          Ajustes Rápidos Predefinidos:
+                        </span>
+                        <div className="grid grid-cols-2 gap-1.5">
+                          <button
+                            type="button"
+                            onClick={() => setGridPercentage(33)}
+                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${
+                              currentGridLeftPct === 33
+                                ? "bg-sky-50 dark:bg-sky-950 border-sky-400 text-sky-700 dark:text-sky-300"
+                                : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+                            }`}
+                          >
+                            <div className="font-extrabold">33% / 67%</div>
+                            <div className="text-[9px] text-slate-400 font-normal">Izq estrecho</div>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setGridPercentage(42)}
+                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${
+                              currentGridLeftPct === 42
+                                ? "bg-sky-50 dark:bg-sky-950 border-sky-400 text-sky-700 dark:text-sky-300"
+                                : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+                            }`}
+                          >
+                            <div className="font-extrabold">42% / 58%</div>
+                            <div className="text-[9px] text-slate-400 font-normal">Equilibrado (Recomendado)</div>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setGridPercentage(50)}
+                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left col-span-2 ${
+                              currentGridLeftPct === 50
+                                ? "bg-sky-50 dark:bg-sky-950 border-sky-400 text-sky-700 dark:text-sky-300"
+                                : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+                            }`}
+                          >
+                            <div className="font-extrabold">50% / 50% (Mitad y Mitad)</div>
+                            <div className="text-[9px] text-slate-400 font-normal">Columnas simétricas</div>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setGridPercentage(58)}
+                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${
+                              currentGridLeftPct === 58
+                                ? "bg-sky-50 dark:bg-sky-950 border-sky-400 text-sky-700 dark:text-sky-300"
+                                : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+                            }`}
+                          >
+                            <div className="font-extrabold">58% / 42%</div>
+                            <div className="text-[9px] text-slate-400 font-normal">Der ligero</div>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setGridPercentage(67)}
+                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${
+                              currentGridLeftPct === 67
+                                ? "bg-sky-50 dark:bg-sky-950 border-sky-400 text-sky-700 dark:text-sky-300"
+                                : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+                            }`}
+                          >
+                            <div className="font-extrabold">67% / 33%</div>
+                            <div className="text-[9px] text-slate-400 font-normal">Der estrecho</div>
+                          </button>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+
+            <button
+              type="button"
+              onClick={handleAddNewSlide}
+              className="h-9 px-3 flex items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-xs font-bold text-[#1a80ff] hover:bg-[#1a80ff] hover:text-white transition-all cursor-pointer gap-1 shadow-2xs"
+              title="Añadir una nueva diapositiva a la lección"
+            >
+              <span>➕</span>
+              <span className="hidden sm:inline">Nueva Diapositiva</span>
+            </button>
           </div>
         </div>
 
@@ -1373,6 +2042,159 @@ export function LessonEditorToolbar({
           </button>
         </div>
       </div>
+
+      {/* Top Slide Navigator Bar - Identical Aesthetics to Lesson Player */}
+      {!showCodeMode && (
+        <div className="space-y-2">
+          <nav
+            aria-label="Navegación de diapositivas en edición"
+            className="relative flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800 shadow-2xs backdrop-blur-sm min-h-[46px]"
+          >
+            {/* Left: Previous Button */}
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                disabled={currentSlideIndex === 0}
+                onClick={() => goToSlide(currentSlideIndex - 1)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                  currentSlideIndex === 0
+                    ? "opacity-30 cursor-not-allowed text-slate-400"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-950/40 hover:text-sky-600 cursor-pointer border border-slate-200 dark:border-slate-700"
+                }`}
+                title="Diapositiva anterior"
+              >
+                <span>&larr;</span>
+                <span className="hidden sm:inline">Anterior</span>
+              </button>
+            </div>
+
+            {/* Center: Slide Indicator strictly centered (Mirroring Student Player) */}
+            <div className="flex items-center gap-2 pointer-events-auto">
+              <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200 whitespace-nowrap">
+                Diapositiva {currentSlideIndex + 1} de {slides.length}
+              </span>
+              <div className="flex items-center gap-1">
+                {slides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => goToSlide(idx)}
+                    className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                      idx === currentSlideIndex
+                        ? "w-6 bg-[#1a80ff]"
+                        : "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
+                    }`}
+                    title={`Ir a Diapositiva ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Next Button & Slide Actions */}
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                disabled={currentSlideIndex === slides.length - 1}
+                onClick={() => goToSlide(currentSlideIndex + 1)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                  currentSlideIndex === slides.length - 1
+                    ? "opacity-30 cursor-not-allowed text-slate-400"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-950/40 hover:text-sky-600 cursor-pointer border border-slate-200 dark:border-slate-700"
+                }`}
+                title="Diapositiva siguiente"
+              >
+                <span className="hidden sm:inline">Siguiente</span>
+                <span>&rarr;</span>
+              </button>
+
+              <div className="h-4 w-px bg-slate-200 dark:bg-slate-700 mx-1 hidden sm:block" />
+
+              <button
+                type="button"
+                onClick={handleAddNewSlide}
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-[#1a80ff] border border-blue-200 dark:border-blue-800 text-xs font-bold hover:bg-[#1a80ff] hover:text-white transition-all cursor-pointer"
+                title="Añadir una nueva diapositiva"
+              >
+                <span>➕</span>
+                <span className="hidden md:inline">Nueva Diapositiva</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleDuplicateSlide(currentSlideIndex)}
+                className="p-1.5 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer text-xs"
+                title="Duplicar esta diapositiva"
+              >
+                📋
+              </button>
+
+              {slides.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => handleDeleteSlide(currentSlideIndex)}
+                  className="p-1.5 rounded-xl text-rose-500 hover:bg-rose-50 dark:hover:bg-rose-950/40 border border-transparent hover:border-rose-200 transition-colors cursor-pointer text-xs"
+                  title="Eliminar diapositiva actual"
+                >
+                  🗑️
+                </button>
+              )}
+
+              <div className="flex items-center gap-1 rounded-xl bg-slate-100 dark:bg-slate-800 p-0.5 border border-slate-200 dark:border-slate-700 ml-1">
+                <button
+                  type="button"
+                  onClick={() => setViewMode("slide")}
+                  className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                    viewMode === "slide"
+                      ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-2xs"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+                  }`}
+                  title="Ver y editar por diapositiva individual (estilo curso)"
+                >
+                  Por Diapositiva
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    syncCurrentSlideToState();
+                    setViewMode("all");
+                  }}
+                  className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                    viewMode === "all"
+                      ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-2xs"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+                  }`}
+                  title="Ver todas las diapositivas ordenadas"
+                >
+                  Todas ({slides.length})
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          {/* Slide Pill Tabs for Instant Jumping */}
+          {slides.length > 1 && viewMode === "slide" && (
+            <div className="flex items-center gap-1.5 overflow-x-auto py-1 px-1">
+              <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500 shrink-0 mr-1">
+                Diapositivas:
+              </span>
+              {slides.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => goToSlide(idx)}
+                  className={`px-3 py-1 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
+                    idx === currentSlideIndex
+                      ? "bg-[#1a80ff] text-white shadow-xs"
+                      : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-400 hover:text-[#1a80ff]"
+                  }`}
+                >
+                  Diapositiva {idx + 1}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Main Interactive Visual Canvas (WYSIWYG) */}
       {!showCodeMode ? (
@@ -1432,6 +2254,29 @@ export function LessonEditorToolbar({
               background-color: #1a80ff !important;
               border-color: #ffffff !important;
             }
+            .col-resize-controls {
+              opacity: 0.88;
+              transition: opacity 0.2s ease, transform 0.15s ease;
+            }
+            .col-resize-controls:hover {
+              opacity: 1;
+            }
+            @media (min-width: 1024px) {
+              [data-left-pct] {
+                display: grid !important;
+                grid-template-columns: minmax(0, var(--col-left, 50fr)) minmax(0, var(--col-right, 50fr)) !important;
+              }
+              [data-left-pct] > div:not(.col-resize-controls) {
+                grid-column: auto !important;
+              }
+            }
+            .visual-canvas [data-left-pct] {
+              display: grid !important;
+              grid-template-columns: minmax(0, var(--col-left, 50fr)) minmax(0, var(--col-right, 50fr)) !important;
+            }
+            .visual-canvas [data-left-pct] > div:not(.col-resize-controls) {
+              grid-column: auto !important;
+            }
           `}</style>
           {isUploadingMedia && (
             <div className="mb-3 flex items-center gap-2 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 px-4 py-2.5 text-xs font-semibold text-[#1a80ff] shadow-xs animate-pulse">
@@ -1439,23 +2284,59 @@ export function LessonEditorToolbar({
               <span>{uploadStatusMessage || "Optimizando y subiendo imagen..."}</span>
             </div>
           )}
-          <div
-            ref={editorRef}
-            contentEditable
-            onFocus={clearPlaceholderIfPresent}
-            onInput={handleVisualInput}
-            onBlur={handleVisualInput}
-            onKeyDown={handleKeyDown}
-            onKeyUp={handleKeyUp}
-            onClick={handleCanvasClick}
-            onMouseDown={handleCanvasMouseDown}
-            onDragStart={handleDragStart}
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-            onDragEnd={handleDragEnd}
-            onPaste={handleCanvasPaste}
-            className="visual-canvas min-h-[340px] max-h-[600px] overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 p-6 sm:p-8 text-slate-900 dark:text-slate-100 text-sm leading-relaxed focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 prose prose-slate dark:prose-invert max-w-none shadow-xs"
-          />
+          {viewMode === "slide" ? (
+            <div
+              ref={editorRef}
+              contentEditable
+              onFocus={clearPlaceholderIfPresent}
+              onInput={handleVisualInput}
+              onChange={handleCanvasChange}
+              onBlur={handleVisualInput}
+              onKeyDown={handleKeyDown}
+              onKeyUp={handleKeyUp}
+              onClick={handleCanvasClick}
+              onMouseDown={handleCanvasMouseDown}
+              onDragStart={handleDragStart}
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
+              onDragEnd={handleDragEnd}
+              onPaste={handleCanvasPaste}
+              className="visual-canvas lesson-slide-container w-full max-w-[1550px] mx-auto min-h-[620px] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 lg:p-10 text-slate-900 dark:text-slate-100 text-sm leading-relaxed focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm"
+            />
+          ) : (
+            <div className="space-y-6 max-w-[1550px] mx-auto">
+              {slides.map((slideContent, idx) => (
+                <div
+                  key={idx}
+                  className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-sm space-y-3"
+                >
+                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="rounded-xl bg-sky-100 dark:bg-sky-950/60 px-3 py-1 text-xs font-bold text-sky-800 dark:text-sky-300 font-mono">
+                        Diapositiva {idx + 1} de {slides.length}
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        goToSlide(idx);
+                        setViewMode("slide");
+                      }}
+                      className="px-3 py-1.5 rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] text-white text-xs font-bold transition-all cursor-pointer shadow-xs"
+                    >
+                      ✏️ Editar Diapositiva {idx + 1}
+                    </button>
+                  </div>
+                  <div
+                    className="lesson-slide-container text-slate-800 dark:text-slate-200"
+                    dangerouslySetInnerHTML={{
+                      __html: sanitizeLessonHtml(slideContent),
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Floating Slash Command Palette */}
           {showSlashMenu && (
@@ -1677,18 +2558,18 @@ export function LessonEditorToolbar({
 
       {/* Student Preview Modal */}
       {showPreviewModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/75 backdrop-blur-xs p-4 sm:p-6 animate-in fade-in duration-150">
-          <div className="w-full max-w-4xl max-h-[90vh] flex flex-col rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0b1120] shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-xs p-2 sm:p-4 lg:p-6 animate-in fade-in duration-150">
+          <div className="w-full max-w-[1650px] h-[92vh] flex flex-col rounded-3xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#0b1120] shadow-2xl overflow-hidden">
             {/* Modal Header */}
-            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 py-4 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-sm">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 py-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm">
               <div className="flex items-center gap-2.5">
                 <span className="text-xl">👁️</span>
                 <div>
                   <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                    Vista Previa de Alumno (Simulación en Vivo)
+                    Vista Previa de Alumno (Simulación en Vivo de Diapositivas)
                   </h3>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                    Así es exactamente como se renderizará el contenido en el visor de estudio de los alumnos
+                    Así es exactamente como se renderizará cada diapositiva en el visor de estudio de los alumnos
                   </p>
                 </div>
               </div>
@@ -1701,19 +2582,78 @@ export function LessonEditorToolbar({
               </button>
             </div>
 
+            {/* Modal Slide Navigator Bar */}
+            {slides.length > 1 && (
+              <div className="px-6 pt-3 pb-1">
+                <div className="flex items-center justify-between gap-3 px-4 py-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xs">
+                  <button
+                    type="button"
+                    disabled={previewSlideIndex === 0}
+                    onClick={() =>
+                      setPreviewSlideIndex((p) => Math.max(0, p - 1))
+                    }
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold ${
+                      previewSlideIndex === 0
+                        ? "opacity-30 cursor-not-allowed text-slate-400"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-600 cursor-pointer"
+                    }`}
+                  >
+                    &larr; Anterior
+                  </button>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
+                      Diapositiva {previewSlideIndex + 1} de {slides.length}
+                    </span>
+                    <div className="flex items-center gap-1">
+                      {slides.map((_, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setPreviewSlideIndex(idx)}
+                          className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                            idx === previewSlideIndex
+                              ? "w-6 bg-[#1a80ff]"
+                              : "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    disabled={previewSlideIndex === slides.length - 1}
+                    onClick={() =>
+                      setPreviewSlideIndex((p) =>
+                        Math.min(slides.length - 1, p + 1),
+                      )
+                    }
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold ${
+                      previewSlideIndex === slides.length - 1
+                        ? "opacity-30 cursor-not-allowed text-slate-400"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-600 cursor-pointer"
+                    }`}
+                  >
+                    Siguiente &rarr;
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Modal Content - Exact Mirror of Lesson Player */}
-            <div className="flex-1 overflow-y-auto p-6 sm:p-10 space-y-6">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col items-center">
               <div
-                className="prose prose-slate dark:prose-invert max-w-none text-slate-900 dark:text-slate-100 text-sm leading-relaxed"
+                className="lesson-slide-container w-full max-w-[1550px] mx-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 lg:p-10 shadow-sm text-slate-800 dark:text-slate-200"
                 dangerouslySetInnerHTML={{
-                  __html: sanitizeLessonHtml(getCleanHtml()),
+                  __html: sanitizeLessonHtml(
+                    slides[previewSlideIndex] || slides[0] || "",
+                  ),
                 }}
               />
             </div>
 
             {/* Modal Footer */}
-            <div className="border-t border-slate-200 dark:border-slate-800 px-6 py-3 bg-slate-50 dark:bg-slate-900/50 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-              <span>💡 Tip: Comprueba la legibilidad y proporciones de tus diagramas</span>
+            <div className="border-t border-slate-200 dark:border-slate-800 px-6 py-3 bg-white dark:bg-slate-900/50 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+              <span>💡 Simulación panorámica (1550px) idéntica al reproductor del curso</span>
               <button
                 type="button"
                 onClick={() => setShowPreviewModal(false)}

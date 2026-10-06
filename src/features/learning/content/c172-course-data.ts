@@ -107,102 +107,136 @@ export const C172_LESSON_1 = {
   lesson_order: 1,
   min_seconds: 60,
   content_html: `
-<!-- DIAPOSITIVA 1.1: Flota C172 Blue Team y Especificaciones por Matrícula -->
+<!-- DIAPOSITIVA 1.1: Flota C172 Blue Team: Especificaciones Generales y Fundamentos Tecnológicos -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 1 de 8
-      </span>
-      <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-        1.1 Flota Cessna 172 Blue Team y Especificaciones por Matrícula
-      </h1>
-    </div>
-    <span class="text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
-      EASA Part-FCL.710 · Familiarización de Tipo
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+      1.1 Flota Cessna 172: Especificaciones Generales y Fundamentos Tecnológicos
+    </h1>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
+      EASA Part-FCL.710 · Blue Team Flight School
     </span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center flex-1 my-auto py-2">
-    <!-- Columna Izquierda: Imagen / Diagrama Recomendado -->
-    <div class="h-full flex flex-col justify-center">
-      <div class="p-5 rounded-2xl bg-[#F1F4F8] dark:bg-slate-900/90 border-2 border-[#D98A1E]/40 dark:border-[#D98A1E]/50 space-y-3 shadow-xs">
-        <div class="flex items-center justify-between">
-          <span class="inline-flex items-center gap-2 font-black text-[#D98A1E] dark:text-amber-400 uppercase tracking-wider text-xs">
-            <span>🖼️ DIAGRAMA / ESQUEMA DE FLOTA</span>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch flex-1 min-h-0 py-2" data-left-pct="42" style="--col-left: 42fr; --col-right: 58fr; grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);">
+    <!-- Columna Izquierda (5 cols / 42%): Más estrecha y perfectamente equilibrada -->
+    <div class="lg:col-span-5 flex flex-col min-h-0">
+      <div class="flex-1 flex flex-col justify-between p-3 sm:p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+            📋 ESPECIFICACIONES
           </span>
-          <span class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-[#DCE4EE] dark:bg-slate-800 text-[#0B2E59] dark:text-sky-300">
-            Ref: Ficha Operativa Blue Team
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
+            Flota C172
           </span>
         </div>
-        <div class="text-base sm:text-lg font-bold text-[#0B2E59] dark:text-slate-100 leading-snug">
-          <strong>Aeronaves de la Flota:</strong> Cuatro Cessna 172 equipadas con plantas motrices Continental Turbo Diésel de última generación y hélices tripala de paso variable MT-Propeller.
-        </div>
-        <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700 text-xs space-y-1.5 text-slate-700 dark:text-slate-300">
-          <div class="font-bold text-[#0B2E59] dark:text-sky-400">Puntos Clave de Estandarización de Flota:</div>
-          <div>• Todas las aeronaves de la escuela son operativamente <strong>Cessna 172</strong>.</div>
-          <div>• Mando monopalanca de potencia (Single Lever Power Control FADEC).</div>
-          <div>• Posiciones de flaps unificadas: <strong>10°, 20°, 30° y 40°</strong> en toda la flota.</div>
-          <div>• Combustible exclusivo: <strong>JET A-1</strong> o Diésel automoción <strong>EN 590</strong>. Prohibido AVGAS.</div>
+
+        <div class="flex-1 flex flex-col justify-between py-1.5 gap-2">
+          <!-- Un solo cuadro unificado para las especificaciones generales -->
+          <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-xs leading-snug">
+            <div class="flex items-start gap-1.5">
+              <span class="text-sm shrink-0 mt-0.5">🛩️</span>
+              <div>
+                <strong class="text-[#0B2E59] dark:text-sky-300">Aeronave:</strong> Cessna 172 monomotor de ala alta, 4 plazas, tren de aterrizaje triciclo fijo con amortiguación oleoneumática en morro y ballestas tubulares de acero en principales.
+              </div>
+            </div>
+
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-1 flex items-start gap-1.5">
+              <span class="text-sm shrink-0 mt-0.5">🔧</span>
+              <div>
+                <strong class="text-[#0B2E59] dark:text-sky-300">Planta Motriz:</strong> Continental CD-135/CD-155 (familia TAE 125 / Centurion 2.0/2.0S), con 4 cilindros en línea, ciclo diésel 4 tiempos (1991 cm³), refrigeración líquida, inyección directa Common Rail y turbo con intercooler.
+                <div class="mt-0.5 font-mono text-slate-600 dark:text-slate-300 text-[11px]">
+                  • CD-135: 135 HP (99 kW) a 2300 RPM de hélice<br/>
+                  • CD-155: 155 HP (114 kW) a 2300 RPM de hélice
+                </div>
+              </div>
+            </div>
+
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-1 flex items-start gap-1.5">
+              <span class="text-sm shrink-0 mt-0.5">⚙️</span>
+              <div>
+                <strong class="text-[#0B2E59] dark:text-sky-300">Hélice Tripala de Paso Variable:</strong> MT-Propeller MTV-6-A/187-129 composite, (diámetro 1,87 m) de velocidad constante con gobernador electrohidráulico controlado por el FADEC.
+              </div>
+            </div>
+
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-1 flex items-start gap-1.5">
+              <span class="text-sm shrink-0 mt-0.5">🕹️</span>
+              <div>
+                <strong class="text-[#0B2E59] dark:text-sky-300">Mando Monopalanca (Single Lever):</strong> Palanca de potencia para gobernar aceleración, inyección y paso de hélice 0% a 100%. Sin palancas mecánicas de mezcla ni paso.
+              </div>
+            </div>
+          </div>
+
+          <!-- Cuadros en 2 columnas inferiores compactos -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs leading-snug">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 text-xs">Mandos de vuelo:</strong>
+              Superficies de control primarias convencionales accionadas por cables y poleas; flaps de accionamiento eléctrico 10°, 20°, 30° y 40°.
+            </div>
+            <div class="p-2 sm:p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-500/60 dark:border-amber-500/60 shadow-2xs leading-snug">
+              <strong class="text-amber-800 dark:text-amber-300 block mb-0.5 text-xs">Combustible Exclusivo:</strong>
+              <strong>JET A-1</strong> exclusivamente. Prohibido AVGAS. No utiliza ni tolera mezclas con AVGAS (destruiría los componentes de alta presión).
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha: Especificaciones de Flota -->
-    <div class="space-y-3">
-      <div class="grid grid-cols-2 gap-3">
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-[#DCE4EE] dark:border-slate-700 shadow-xs space-y-1">
-          <div class="flex items-center justify-between">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-base">EC-NNA</span>
-            <span class="px-2 py-0.5 rounded text-xs font-bold bg-sky-500/10 text-sky-600">C172N</span>
-          </div>
-          <p class="text-base text-[#233043] dark:text-slate-200 font-medium">Continental CD-135 (TAE 125-01)</p>
-          <div class="text-xs font-mono text-slate-500 pt-1 border-t border-slate-100 dark:border-slate-700">
-            <div>Potencia: 135 CV (99 kW)</div>
-            <div class="text-sky-600 dark:text-sky-400 font-bold">Flaps: 10°, 20°, 30°, 40°</div>
-          </div>
+    <!-- Columna Derecha (7 cols): Conceptos Clave y Tecnologías del Sistema -->
+    <div class="lg:col-span-7 flex flex-col min-h-0">
+      <div class="flex-1 flex flex-col justify-between p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+            💡 TECNOLOGÍAS DEL SISTEMA
+          </span>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
+            Conceptos Clave
+          </span>
         </div>
 
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-emerald-500/30 shadow-xs space-y-1">
-          <div class="flex items-center justify-between">
-            <span class="font-black text-emerald-600 dark:text-emerald-400 text-base">EC-OXV</span>
-            <span class="px-2 py-0.5 rounded text-xs font-bold bg-emerald-500/10 text-emerald-600">C172K</span>
+        <div class="flex-1 flex flex-col justify-between py-1.5 gap-2">
+          <!-- Un solo cuadro unificado para FADEC y Common Rail -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 text-xs sm:text-[13px] leading-snug">
+            <!-- FADEC -->
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300">🧠 FADEC (Full Authority Digital Engine Control)</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-600">Doble Canal (A / B)</span>
+              </div>
+              <p class="text-slate-600 dark:text-slate-300 mt-1 leading-snug text-xs sm:text-[12px]">
+                Es el cerebro informático del motor. Monitoriza continuamente parámetros presiones, temperaturas, RPM y posición de palanca de gases, gestiona de forma automática y optimiza la dosificación de combustible, la presión del turbo y el paso de la hélice. Elimina el riesgo de sobrerrégimen y la necesidad de ajustar la mezcla manualmente a distintas altitudes o fases de vuelo. Al no usar magnetos convencionales, una <strong>Batería de Respaldo FADEC</strong> garantiza el suministro eléctrico para que el motor siga funcionando ante fallo eléctrico del avión durante un máximo de 30 minutos a través del canal A (no forzar canal B).
+              </p>
+            </div>
+
+            <!-- Common Rail -->
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300">💉 Common Rail e Inyección Directa</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-600">&gt;1350 bar</span>
+              </div>
+              <p class="text-slate-600 dark:text-slate-300 mt-1 leading-snug text-xs sm:text-[12px]">
+                Una bomba mecánica presuriza el combustible JET A-1 a alta presión en un conducto común (rail) y los inyectores lo pulverizan directamente en la cámara de combustión. Las bujías de precalentamiento Glow Plugs preparan el motor para el arranque elevando la temperatura, sin necesidad de cebador manual (primer) ni riesgo de ahogo.
+              </p>
+            </div>
           </div>
-          <p class="text-base text-[#233043] dark:text-slate-200 font-medium">Continental CD-135 (TAE 125-02-99)</p>
-          <div class="text-xs font-mono text-slate-500 pt-1 border-t border-slate-100 dark:border-slate-700">
-            <div>Potencia: 135 CV (99 kW)</div>
-            <div class="text-emerald-600 dark:text-emerald-400 font-bold">Flaps: 10°, 20°, 30°, 40°</div>
+
+          <!-- Cuadros inferiores Turbo y Gearbox -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 block mb-0.5">🌪️ Turbo e Intercooler</span>
+              <p class="text-slate-600 dark:text-slate-300 text-[11px] sm:text-xs">
+                El turbo aprovecha los gases de escape para mantener la presión de admisión en altitud evitando la pérdida de potencia de motores atmosféricos. El intercooler enfría el aire comprimido para aumentar su densidad de oxígeno.
+              </p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 block mb-0.5">⚙️ Gearbox</span>
+              <p class="text-slate-600 dark:text-slate-300 text-[11px] sm:text-xs">
+                El motor gira a un régimen máximo continuo de ~3900 RPM, y mediante una relación de reducción, las revoluciones se desmultiplican a un régimen máximo de hélice de 2300 RPM. Entre el cigüeñal y la caja reductora se incorpora un embrague de fricción amortiguador para mitigar las vibraciones.
+              </p>
+            </div>
           </div>
         </div>
-
-        <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-indigo-500/30 shadow-xs space-y-1">
-          <div class="flex items-center justify-between">
-            <span class="font-bold text-indigo-600 dark:text-indigo-400 text-base">EC-NNX</span>
-            <span class="px-2 py-0.5 rounded text-xs font-bold bg-indigo-500/10 text-indigo-600">C172</span>
-          </div>
-          <p class="text-base text-[#233043] dark:text-slate-200 font-medium">Continental CD-135 (TAE 125-02-99)</p>
-          <div class="text-xs font-mono text-slate-500 pt-1 border-t border-slate-100 dark:border-slate-700">
-            <div>Potencia: 135 CV (99 kW)</div>
-            <div class="text-indigo-600 dark:text-indigo-400 font-bold">Flaps: 10°, 20°, 30°, 40°</div>
-          </div>
-        </div>
-
-        <div class="p-3 rounded-2xl bg-amber-50/50 dark:bg-amber-950/20 border-2 border-[#D98A1E] shadow-xs space-y-1">
-          <div class="flex items-center justify-between">
-            <span class="font-black text-[#D98A1E] dark:text-amber-400 text-base">EC-OXT</span>
-            <span class="px-2 py-0.5 rounded text-xs font-bold bg-[#D98A1E]/20 text-[#D98A1E]">C172M · 155 CV</span>
-          </div>
-          <p class="text-sm text-amber-900 dark:text-amber-200 font-bold">Continental CD-155 (TAE 125-02-114)</p>
-          <div class="text-xs font-mono text-amber-800 dark:text-amber-300 pt-1 border-t border-amber-200 dark:border-amber-800/50">
-            <div>Potencia: 155 CV (114 kW)</div>
-            <div class="text-[#D98A1E] font-bold">Flaps: 10°, 20°, 30°, 40°</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-[#DCE4EE] dark:border-slate-700 text-sm text-[#6A7686] dark:text-slate-300 flex items-center justify-between">
-        <span>⚙️ Tipo de Hélice: <strong>MT-Propeller MTV-6-A/187-129</strong> tripala composite</span>
-        <span class="font-semibold text-[#0B2E59] dark:text-sky-300">Regulador electrohidráulico FADEC</span>
       </div>
     </div>
   </div>
@@ -212,70 +246,173 @@ export const C172_LESSON_1 = {
 
 <!-- DIAPOSITIVA 1.2: Velocidades Notables (V-Speeds) y Anemómetro TAS -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 2 de 8
-      </span>
-      <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-        1.2 Velocidades Notables de Operación (V-Speeds) y Anemómetro TAS
-      </h1>
-    </div>
-    <span class="text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
-      POH Sección 2 (Limitaciones) & Suplemento Continental
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+      1.2 Velocidades Notables de Operación (V-Speeds) y Anemómetro TAS
+    </h1>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
+      POH Sección 2 (Limitaciones) &amp; Suplemento Continental
     </span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center flex-1 my-auto py-2">
-    <!-- Columna Izquierda: Imagen Real Anemómetro C172 con TAS -->
-    <div class="h-full flex flex-col justify-center items-center">
-      <div class="p-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-[#D98A1E]/40 shadow-md flex flex-col items-center max-w-sm w-full">
-        <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro Cessna 172 con TAS" class="w-full max-h-[290px] object-contain rounded-xl shadow-inner bg-black/5" />
-        <div class="mt-2 text-center">
-          <span class="text-sm font-mono font-bold text-[#0B2E59] dark:text-sky-300 block">Anemómetro Cessna 172 con Calculador TAS y Código de Colores</span>
-          <span class="text-sm text-slate-500 dark:text-slate-400">Arco Blanco: 41-85 KIAS · Arco Verde: 47-128 KIAS · Arco Amarillo: 128-160 KIAS · Línea Roja: 160 KIAS</span>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch flex-1 min-h-0 py-2" data-left-pct="33" style="--col-left: 33fr; --col-right: 67fr; grid-template-columns: minmax(0, 33fr) minmax(0, 67fr);">
+    <!-- Columna Izquierda (4 cols / 33%): Anemómetro C172 con TAS (Cuadro 100% Cuadrado) -->
+    <div class="lg:col-span-4 flex flex-col min-h-0">
+      <div class="flex-1 flex flex-col justify-between p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+            🧭 ANEMÓMETRO C172
+          </span>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
+            Código Colores
+          </span>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-around py-1 gap-2">
+          <!-- Cuadro estrictamente CUADRADO (1:1) sin bandas laterales -->
+          <div class="w-full aspect-square max-w-[205px] sm:max-w-[215px] mx-auto p-1 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-center overflow-hidden" style="aspect-ratio: 1 / 1;">
+            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro Cessna 172 con TAS" class="w-full h-full object-cover rounded-xl shadow-inner" style="aspect-ratio: 1 / 1; width: 100%; height: 100%; object-fit: cover;">
+          </div>
+
+          <!-- Arcos de Color en una sola columna vertical separados y perfectamente alineados -->
+          <div class="flex flex-col gap-1.5 p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs text-[11px] sm:text-xs">
+            <div class="flex items-center justify-between py-0.5 border-b border-slate-100 dark:border-slate-700/50">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
+                <span>⚪</span> <span>Blanco:</span>
+              </span>
+              <span class="font-mono font-semibold text-slate-700 dark:text-slate-200">
+                41-85 kt <span class="text-slate-400 font-sans text-[10px]">(Flaps)</span>
+              </span>
+            </div>
+            <div class="flex items-center justify-between py-0.5 border-b border-slate-100 dark:border-slate-700/50">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
+                <span>🟢</span> <span>Verde:</span>
+              </span>
+              <span class="font-mono font-semibold text-slate-700 dark:text-slate-200">
+                47-128 kt <span class="text-slate-400 font-sans text-[10px]">(Normal)</span>
+              </span>
+            </div>
+            <div class="flex items-center justify-between py-0.5 border-b border-slate-100 dark:border-slate-700/50">
+              <span class="font-bold text-amber-700 dark:text-amber-400 flex items-center gap-1.5">
+                <span>🟡</span> <span>Amarillo:</span>
+              </span>
+              <span class="font-mono font-semibold text-slate-700 dark:text-slate-200">
+                128-160 kt <span class="text-slate-400 font-sans text-[10px]">(Calma)</span>
+              </span>
+            </div>
+            <div class="flex items-center justify-between py-0.5">
+              <span class="font-bold text-rose-700 dark:text-rose-400 flex items-center gap-1.5">
+                <span>🔴</span> <span>Rojo:</span>
+              </span>
+              <span class="font-mono font-semibold text-slate-700 dark:text-slate-200">
+                160 kt <span class="text-slate-400 font-sans text-[10px] font-normal">(Vne)</span>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha: Tabla Completa de Velocidades Notables -->
-    <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-[#DCE4EE] dark:border-slate-700 shadow-sm space-y-2.5">
-      <div class="grid grid-cols-2 gap-2 text-xs">
-        <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700 flex justify-between items-center">
-          <div><span class="font-mono font-black text-rose-600 dark:text-rose-400 text-sm">Vso</span> <span class="text-slate-600 dark:text-slate-300 font-medium">Pérdida en config. aterrizaje</span></div>
-          <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">41 KIAS</span>
+    <!-- Columna Derecha (8 cols): Espaciosa para las 8 V-Speeds + Vglide -->
+    <div class="lg:col-span-8 flex flex-col min-h-0">
+      <div class="flex-1 flex flex-col justify-between p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+            ⚡ TABLA DE VELOCIDADES NOTABLES Y USO OPERACIONAL
+          </span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">
+            Valores Certificados KIAS
+          </span>
         </div>
-        <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700 flex justify-between items-center">
-          <div><span class="font-mono font-black text-slate-700 dark:text-slate-200 text-sm">Vs</span> <span class="text-slate-600 dark:text-slate-300 font-medium">Pérdida en limpio (flaps 0°)</span></div>
-          <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">47 KIAS</span>
+
+        <div class="flex-1 flex flex-col justify-between py-1.5 gap-1.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs">
+            <!-- Vso -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-black text-rose-600 dark:text-rose-400 text-xs sm:text-sm">Vso · 41 KIAS</span>
+                <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400">Flaps 40°</span>
+              </div>
+              <div class="font-bold text-slate-800 dark:text-slate-200 text-[11px]">Pérdida en Aterrizaje</div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-tight mt-0.5">Velocidad con flaps 40° y motor al ralentí. Base para aproximación final (1.3 Vso ≈ 60-65 KIAS).</p>
+            </div>
+
+            <!-- Vs -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-black text-slate-800 dark:text-slate-200 text-xs sm:text-sm">Vs · 47 KIAS</span>
+                <span class="text-[10px] font-bold text-slate-500 dark:text-slate-400">Flaps 0°</span>
+              </div>
+              <div class="font-bold text-slate-800 dark:text-slate-200 text-[11px]">Pérdida en Limpio</div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-tight mt-0.5">Límite inferior del arco verde. Margen mínimo de seguridad en despegues y virajes en limpio.</p>
+            </div>
+
+            <!-- Vx -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-black text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm">Vx · 59 KIAS</span>
+                <span class="text-[10px] font-bold text-emerald-700 dark:text-emerald-400">Obstáculos</span>
+              </div>
+              <div class="font-bold text-slate-800 dark:text-slate-200 text-[11px]">Mejor Ángulo de Ascenso</div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-tight mt-0.5">Mayor ganancia de altitud en la menor distancia recorrida. Imprescindible en pistas cortas.</p>
+            </div>
+
+            <!-- Vy -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-black text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm">Vy · 73 KIAS</span>
+                <span class="text-[10px] font-bold text-emerald-700 dark:text-emerald-400">Ruta</span>
+              </div>
+              <div class="font-bold text-slate-800 dark:text-slate-200 text-[11px]">Mejor Régimen de Ascenso</div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-tight mt-0.5">Máxima altitud en el menor tiempo. Ascenso estándar en ruta con óptima refrigeración motor.</p>
+            </div>
+
+            <!-- Vfe -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-black text-sky-600 dark:text-sky-400 text-xs sm:text-sm">Vfe · 85 / 110 KIAS</span>
+                <span class="text-[10px] font-bold text-sky-700 dark:text-sky-400">Flaps</span>
+              </div>
+              <div class="font-bold text-slate-800 dark:text-slate-200 text-[11px]">Máx. con Flaps Extendidos</div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-tight mt-0.5">Tope arco blanco (85 kt para 20°-40°) y límite primer punto 10° (110 kt). Evita daños estructurales.</p>
+            </div>
+
+            <!-- Va -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-black text-amber-600 dark:text-amber-400 text-xs sm:text-sm">Va · 97 KIAS</span>
+                <span class="text-[10px] font-bold text-amber-700 dark:text-amber-400">Turbulencia</span>
+              </div>
+              <div class="font-bold text-slate-800 dark:text-slate-200 text-[11px]">Velocidad de Maniobra</div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-tight mt-0.5">Velocidad obligatoria con turbulencia severa. Permite deflexión completa de un mando sin deformación.</p>
+            </div>
+
+            <!-- Vno -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-black text-amber-600 dark:text-amber-400 text-xs sm:text-sm">Vno · 128 KIAS</span>
+                <span class="text-[10px] font-bold text-amber-700 dark:text-amber-400">Crucero</span>
+              </div>
+              <div class="font-bold text-slate-800 dark:text-slate-200 text-[11px]">Máx. Crucero Estructural</div>
+              <p class="text-[11px] text-slate-600 dark:text-slate-400 leading-tight mt-0.5">Límite superior arco verde. Por encima (128-160 KIAS, arco amarillo) solo en aire totalmente en calma.</p>
+            </div>
+
+            <!-- Vne -->
+            <div class="p-2 rounded-xl bg-rose-50 dark:bg-rose-950/30 border-2 border-rose-500/60 dark:border-rose-500/60 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-black text-rose-600 dark:text-rose-400 text-xs sm:text-sm">Vne · 160 KIAS</span>
+                <span class="text-[10px] font-black text-rose-600 dark:text-rose-400 uppercase">Línea Roja</span>
+              </div>
+              <div class="font-bold text-rose-900 dark:text-rose-200 text-[11px]">Velocidad de Nunca Exceder</div>
+              <p class="text-[11px] text-rose-800 dark:text-rose-300 leading-tight mt-0.5">Línea roja terminal. Jamás debe rebasarse por riesgo inminente de flutter o rotura estructural.</p>
+            </div>
+          </div>
+
+          <!-- Vglide Banner compacto -->
+          <div class="p-2 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-xs text-sky-900 dark:text-sky-200 shadow-2xs leading-snug">
+            💡 <strong>Velocidad de Mejor Planeo (Vglide = 65 KIAS):</strong> Ante parada de motor con flaps 0° y hélice en molinete. Ratio óptimo de <strong>9:1</strong> (~1.5 NM horizontal por cada 1.000 ft de altitud perdida).
+          </div>
         </div>
-        <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700 flex justify-between items-center">
-          <div><span class="font-mono font-black text-emerald-600 dark:text-emerald-400 text-sm">Vx</span> <span class="text-slate-600 dark:text-slate-300 font-medium">Mejor ángulo de ascenso</span></div>
-          <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">59 KIAS</span>
-        </div>
-        <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700 flex justify-between items-center">
-          <div><span class="font-mono font-black text-emerald-600 dark:text-emerald-400 text-sm">Vy</span> <span class="text-slate-600 dark:text-slate-300 font-medium">Mejor régimen de ascenso</span></div>
-          <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">73 KIAS</span>
-        </div>
-        <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700 flex justify-between items-center">
-          <div><span class="font-mono font-black text-sky-600 dark:text-sky-400 text-sm">Vfe</span> <span class="text-slate-600 dark:text-slate-300 font-medium">Máx flaps extendidos</span></div>
-          <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-xs">85 kt (20°-40°) / 110 kt (10°)</span>
-        </div>
-        <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700 flex justify-between items-center">
-          <div><span class="font-mono font-black text-amber-600 dark:text-amber-400 text-sm">Va</span> <span class="text-slate-600 dark:text-slate-300 font-medium">Velocidad de maniobra</span></div>
-          <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">97 KIAS</span>
-        </div>
-        <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700 flex justify-between items-center">
-          <div><span class="font-mono font-black text-amber-600 dark:text-amber-400 text-sm">Vno</span> <span class="text-slate-600 dark:text-slate-300 font-medium">Máx crucero estructural</span></div>
-          <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">128 KIAS</span>
-        </div>
-        <div class="p-2 rounded-xl bg-rose-50 dark:bg-rose-950/30 border border-rose-300 dark:border-rose-800 flex justify-between items-center">
-          <div><span class="font-mono font-black text-rose-600 dark:text-rose-400 text-sm">Vne</span> <span class="text-rose-700 dark:text-rose-300 font-medium">Velocidad de nunca exceder</span></div>
-          <span class="font-mono font-black text-rose-600 dark:text-rose-400 text-sm">160 KIAS</span>
-        </div>
-      </div>
-      <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-sm text-sky-900 dark:text-sky-200">
-        💡 <strong>Velocidad de Mejor Planeo (Vglide):</strong> <strong>65 KIAS</strong> con hélice en molinete y flaps 0°. Permite una relación de planeo teórica de 9:1 (1.5 NM por cada 1.000 ft de altitud perdida).
       </div>
     </div>
   </div>
@@ -283,152 +420,102 @@ export const C172_LESSON_1 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 1.3: Factores de Carga y Maniobras Permitidas -->
+<!-- DIAPOSITIVA 1.3: Pesos Máximos y Distribución de Carga -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 3 de 8
-      </span>
-      <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-        1.3 Factores de Carga Estructural y Maniobras Autorizadas
-      </h1>
-    </div>
-    <span class="text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
-      POH Sección 2 · Envolvente Estructural V-n
-    </span>
-  </div>
-
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center flex-1 my-auto py-2">
-    <!-- Columna Izquierda: Diagrama Envolvente de Carga -->
-    <div class="h-full flex flex-col justify-center space-y-3">
-      <div class="p-5 rounded-2xl bg-[#F1F4F8] dark:bg-slate-900/90 border-2 border-[#D98A1E]/40 dark:border-[#D98A1E]/50 space-y-2.5 shadow-xs">
-        <div class="flex items-center justify-between">
-          <span class="inline-flex items-center gap-2 font-black text-[#D98A1E] dark:text-amber-400 uppercase tracking-wider text-xs">
-            <span>📊 DIAGRAMA DE MANIOBRA V-n</span>
-          </span>
-          <span class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-[#DCE4EE] dark:bg-slate-800 text-[#0B2E59] dark:text-sky-300">
-            Ref: POH Sec. 2 Pág. 2-11
-          </span>
-        </div>
-        <div class="text-base sm:text-lg font-bold text-[#0B2E59] dark:text-slate-100 leading-snug">
-          <strong>Límites Estructurales del Diagrama de Vuelo:</strong> La aeronave está certificada en dos categorías estructurales distintas según el peso y centro de gravedad cargados.
-        </div>
-        <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700 text-xs space-y-1.5 text-slate-700 dark:text-slate-300">
-          <div>• <strong>Categoría Normal:</strong> Vuelo no acrobático, ochos perezosos, virajes escarpados hasta 60° de alabeo.</div>
-          <div>• <strong>Categoría Utilitaria:</strong> Peso reducido (≤ 2.000 lb / 907 kg), asientos traseros y compartimento de equipaje vacíos.</div>
-          <div>• <strong>Con Flaps Extendidos (Cualquier posición):</strong> Límite positivo reducido a <strong>+3.0 G</strong> y 0.0 G negativo.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Columna Derecha: Comparativa de Límites y Prohibiciones -->
-    <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-[#DCE4EE] dark:border-slate-700 shadow-sm space-y-3 text-xs sm:text-sm">
-      <div class="grid grid-cols-2 gap-3">
-        <div class="p-3 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 space-y-1">
-          <span class="font-bold text-sky-800 dark:text-sky-300 block text-xs uppercase">Categoría Normal (MTOW 2300 lb)</span>
-          <div class="text-base font-black text-[#0B2E59] dark:text-sky-200">+3.8 G / -1.52 G</div>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Flaps Arriba. Vuelo comercial y escuela básico.</p>
-        </div>
-        <div class="p-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-800 space-y-1">
-          <span class="font-bold text-indigo-800 dark:text-indigo-300 block text-xs uppercase">Categoría Utility (≤ 2000 lb)</span>
-          <div class="text-base font-black text-indigo-900 dark:text-indigo-200">+4.4 G / -1.76 G</div>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Maniobras de entrenamiento avanzado autorizadas.</p>
-        </div>
-      </div>
-
-      <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/30 border-2 border-rose-300 dark:border-rose-800 space-y-1 text-slate-700 dark:text-slate-300">
-        <span class="font-bold text-rose-700 dark:text-rose-400 block text-xs uppercase">⛔ Maniobras Expresamente Prohibidas</span>
-        <ul class="list-disc pl-4 space-y-0.5 text-sm text-rose-900 dark:text-rose-200">
-          <li><strong>Barrenas intencionadas (Spins):</strong> Terminantemente prohibidas con motor diésel y hélice MT-Propeller instalados.</li>
-          <li>Acrobacia aérea de cualquier tipo (loopings, toneles, caídas de ala, vuelo invertido).</li>
-          <li>Maniobras bruscas por encima de la velocidad de maniobra $V_A = 97$ KIAS.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- pagebreak -->
-
-<!-- DIAPOSITIVA 1.4: Pesos Máximos y Distribución de Carga -->
-<div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 4 de 8
-      </span>
-      <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-        1.4 Pesos Máximos Estructurales y Distribución de Carga Útil
-      </h1>
-    </div>
-    <span class="text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
+    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+      1.3 Pesos Máximos Estructurales y Distribución de Carga Útil
+    </h1>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
       POH Sección 2 & Hojas Oficiales F.OPS.04
     </span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center flex-1 my-auto py-2">
-    <!-- Columna Izquierda: Esquema de Estaciones de Carga -->
-    <div class="h-full flex flex-col justify-center space-y-3">
-      <div class="p-5 rounded-2xl bg-[#F1F4F8] dark:bg-slate-900/90 border-2 border-[#D98A1E]/40 dark:border-[#D98A1E]/50 space-y-2.5 shadow-xs">
-        <div class="flex items-center justify-between">
-          <span class="inline-flex items-center gap-2 font-black text-[#D98A1E] dark:text-amber-400 uppercase tracking-wider text-xs">
-            <span>⚖️ ESTACIONES DE CARGA (POH FIG. 6-5)</span>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch flex-1 min-h-0 py-2" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr; grid-template-columns: minmax(0, 50fr) minmax(0, 50fr);">
+    <!-- Columna Izquierda (6 cols): Esquema de Estaciones de Carga -->
+    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
+      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
+            ⚖️ ESTACIONES DE CARGA (POH FIG. 6-5)
           </span>
-          <span class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-[#DCE4EE] dark:bg-slate-800 text-[#0B2E59] dark:text-sky-300">
+          <span class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">
             Datum: Frontal Cortafuegos (FS 0.0)
           </span>
         </div>
-        <div class="text-base sm:text-lg font-bold text-[#0B2E59] dark:text-slate-100 leading-snug">
-          <strong>Distribución Longitudinal de Masas:</strong> Cada elemento a bordo ejerce un momento respecto al cortafuegos. El piloto al mando es responsable de no superar los límites en ninguna fase del vuelo.
-        </div>
-        <div class="grid grid-cols-2 gap-2 text-xs">
-          <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-            <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">PILOTO Y COPILOTO</span>
-            <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Estación 37.0" (0.94 m)</span>
+
+        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 text-sm">Distribución Longitudinal de Masas:</strong>
+            Cada elemento a bordo ejerce un momento respecto al cortafuegos. El piloto al mando es responsable de no superar los límites en ninguna fase del vuelo.
           </div>
-          <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-            <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">PASAJEROS TRASEROS</span>
-            <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Estación 73.0" (1.85 m)</span>
-          </div>
-          <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-            <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">DEPÓSITOS DE COMBUSTIBLE</span>
-            <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Estación 47.9" (1.22 m)</span>
-          </div>
-          <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-            <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">EQUIPAJE 1 / EQUIPAJE 2</span>
-            <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Est. 95.0" / Est. 123.0"</span>
+
+          <!-- Cuadros separados solo para las 2 columnas de estaciones -->
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">PILOTO Y COPILOTO</span>
+              <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Estación 37.0" (0.94 m)</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">PASAJEROS TRASEROS</span>
+              <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Estación 73.0" (1.85 m)</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">DEPÓSITOS DE COMBUSTIBLE</span>
+              <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Estación 47.9" (1.22 m)</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <span class="font-bold text-slate-600 dark:text-slate-400 block text-xs">EQUIPAJE 1 / EQUIPAJE 2</span>
+              <span class="font-mono font-bold text-[#0B2E59] dark:text-sky-300">Est. 95.0" / Est. 123.0"</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha: Tabla de Pesos Límite -->
-    <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-[#DCE4EE] dark:border-slate-700 shadow-sm space-y-3 text-xs sm:text-sm">
-      <div class="space-y-2">
-        <div class="flex justify-between items-center p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700">
-          <span class="font-semibold text-slate-700 dark:text-slate-300">Peso Máximo al Despegue (MTOW)</span>
-          <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">2.300 lb / 1.043 kg</span>
+    <!-- Columna Derecha (6 cols): Tabla de Pesos Límite -->
+    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
+      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
+            🏋️ TABLA DE PESOS LÍMITE
+          </span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">
+            Límites Estructurales
+          </span>
         </div>
-        <div class="flex justify-between items-center p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700">
-          <span class="font-semibold text-slate-700 dark:text-slate-300">Peso Máximo al Aterrizaje (MLW)</span>
-          <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">2.300 lb / 1.043 kg</span>
+
+        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
+          <!-- Un solo cuadro unificado para los pesos -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 text-xs sm:text-sm">
+            <div class="flex justify-between items-center">
+              <span class="font-semibold text-slate-800 dark:text-slate-200">Peso Máximo al Despegue (MTOW)</span>
+              <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">2.300 lb / 1.043 kg</span>
+            </div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 flex justify-between items-center">
+              <span class="font-semibold text-slate-800 dark:text-slate-200">Peso Máximo al Aterrizaje (MLW)</span>
+              <span class="font-mono font-black text-[#0B2E59] dark:text-sky-300 text-sm">2.300 lb / 1.043 kg</span>
+            </div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 flex justify-between items-center">
+              <span class="font-semibold text-slate-800 dark:text-slate-200">Compartimento de Equipaje Área 1</span>
+              <span class="font-mono font-bold text-amber-700 dark:text-amber-400">Máx. 120 lb (54.4 kg)</span>
+            </div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 flex justify-between items-center">
+              <span class="font-semibold text-slate-800 dark:text-slate-200">Compartimento de Equipaje Área 2</span>
+              <span class="font-mono font-bold text-amber-700 dark:text-amber-400">Máx. 50 lb (22.7 kg)</span>
+            </div>
+          </div>
+
+          <!-- Total combinado resaltado en amber -->
+          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-500/60 dark:border-amber-500/60 shadow-2xs flex justify-between items-center text-xs sm:text-sm">
+            <span class="font-semibold text-amber-900 dark:text-amber-200">Total Combinado Equipaje (Área 1 + 2)</span>
+            <span class="font-mono font-black text-amber-800 dark:text-amber-300">Máx. 120 lb (54.4 kg)</span>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-xs sm:text-sm text-sky-900 dark:text-sky-200 leading-relaxed shadow-2xs">
+            📋 <strong>Densidad de Combustible:</strong> El combustible JET A-1 tiene una densidad aproximada de <strong>0.80 - 0.82 kg/L</strong> (6.7 lb/US Gal), notablemente más pesado que la gasolina de aviación AVGAS 100LL (0.72 kg/L). Debe tenerse en cuenta siempre al calcular la masa total de combustible.
+          </div>
         </div>
-        <div class="flex justify-between items-center p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700">
-          <span class="font-semibold text-slate-700 dark:text-slate-300">Compartimento de Equipaje Área 1</span>
-          <span class="font-mono font-bold text-amber-600 dark:text-amber-400">Máx. 120 lb (54.4 kg)</span>
-        </div>
-        <div class="flex justify-between items-center p-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-[#DCE4EE] dark:border-slate-700">
-          <span class="font-semibold text-slate-700 dark:text-slate-300">Compartimento de Equipaje Área 2</span>
-          <span class="font-mono font-bold text-amber-600 dark:text-amber-400">Máx. 50 lb (22.7 kg)</span>
-        </div>
-        <div class="flex justify-between items-center p-2 rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-300 dark:border-amber-800">
-          <span class="font-semibold text-amber-900 dark:text-amber-200">Total Combinado Equipaje (Área 1 + 2)</span>
-          <span class="font-mono font-black text-amber-700 dark:text-amber-300">Máx. 120 lb (54.4 kg)</span>
-        </div>
-      </div>
-      <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-sm text-sky-900 dark:text-sky-200 leading-relaxed">
-        📋 <strong>Densidad de Combustible:</strong> El combustible JET A-1 tiene una densidad aproximada de <strong>0.80 - 0.82 kg/L</strong> (6.7 lb/US Gal), notablemente más pesado que la gasolina de aviación AVGAS 100LL (0.72 kg/L). Debe tenerse en cuenta siempre al calcular la masa total de combustible.
       </div>
     </div>
   </div>
@@ -436,71 +523,230 @@ export const C172_LESSON_1 = {
 
 <!-- pagebreak -->
 
+<!-- DIAPOSITIVA 1.4: Factores de Carga y Maniobras Permitidas -->
+<div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
+    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+      1.4 Factores de Carga Estructural y Maniobras Autorizadas
+    </h1>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
+      POH Sección 2 · Envolvente Estructural V-n &amp; Suplemento Continental
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch flex-1 min-h-0 py-1.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr; grid-template-columns: minmax(0, 50fr) minmax(0, 50fr);">
+    <!-- Columna Izquierda (6 cols / 50%): Diagrama V-n y Física del Factor de Carga -->
+    <div class="lg:col-span-6 flex flex-col min-h-0">
+      <div class="flex-1 flex flex-col justify-between p-3 sm:p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+            📊 DIAGRAMA V-n Y FACTORES DE CARGA
+          </span>
+          <span class="text-[11px] font-mono font-bold text-slate-500 dark:text-slate-400">
+            POH Sec. 2 &amp; Sec. 4
+          </span>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-between py-1 gap-1.5 text-xs leading-snug">
+          <!-- Bloque 1: Definición y Factores en Viraje -->
+          <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-xs sm:text-[13px]">
+                📐 Factor de Carga en Vuelo (n = L / W)
+              </span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 dark:bg-sky-950/60 text-sky-800 dark:text-sky-300 font-mono">
+                Sustentación / Peso
+              </span>
+            </div>
+            <p class="text-slate-600 dark:text-slate-300 text-[11px] sm:text-xs">
+              Relación entre la sustentación de las alas (L) y el peso del avión (W). En vuelo recto y nivelado n = 1.0 G.
+            </p>
+            <!-- Cuadrícula de virajes coordinados -->
+            <div class="grid grid-cols-4 gap-1 pt-0.5 text-center font-mono text-[10px] sm:text-[11px]">
+              <div class="p-1 rounded-lg bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600">
+                <span class="text-slate-400 block text-[9px] uppercase">Alabeo 0°</span>
+                <strong class="text-slate-700 dark:text-slate-200">1.0 G</strong>
+              </div>
+              <div class="p-1 rounded-lg bg-slate-50 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-600">
+                <span class="text-slate-400 block text-[9px] uppercase">Alabeo 45°</span>
+                <strong class="text-slate-700 dark:text-slate-200">1.41 G</strong>
+              </div>
+              <div class="p-1 rounded-lg bg-sky-50 dark:bg-sky-950/50 border border-sky-300 dark:border-sky-700">
+                <span class="text-sky-600 dark:text-sky-400 block text-[9px] font-bold uppercase">Viraje 60°</span>
+                <strong class="text-sky-700 dark:text-sky-300">2.00 G</strong>
+              </div>
+              <div class="p-1 rounded-lg bg-amber-50 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-700">
+                <span class="text-amber-600 dark:text-amber-400 block text-[9px] font-bold uppercase">Alabeo 75°</span>
+                <strong class="text-amber-700 dark:text-amber-300">3.86 G ⚠️</strong>
+              </div>
+            </div>
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 pt-0.5 leading-tight">
+              • <strong>Viraje escarpado (60°):</strong> El peso aparente se duplica y la velocidad de pérdida aumenta un +41% (Vs acelerada = Vs × √n).<br/>
+              • <strong>Margen de Rotura POH:</strong> Los factores de carga de diseño estructural son el <strong>150%</strong> de los límites publicados.
+            </div>
+          </div>
+
+          <!-- Bloque 2: Velocidad de Maniobra VA como Protección Estructural -->
+          <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-xs sm:text-[13px]">
+                🛡️ Velocidad de Maniobra (VA)
+              </span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300">
+                No marcada en velocímetro
+              </span>
+            </div>
+            <p class="text-slate-600 dark:text-slate-300 text-[11px] sm:text-xs">
+              <strong>Definición oficial POH:</strong> <em>«Velocidad máxima a la que se puede aplicar deflexión total y brusca de mandos sin exceder el factor de carga especificado»</em>. Por debajo de VA, el ala entra en pérdida aerodinámica antes de sufrir daño estructural (el stall actúa como fusible de seguridad).
+            </p>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-1 text-[11px] text-slate-600 dark:text-slate-300 space-y-0.5">
+              <div>• <strong>Variación con el Peso (POH):</strong> A 2.300 lb = <strong>97 KIAS</strong> (99 KIAS en 172P a 2.400 lb); a 1.950 lb = <strong>89 KIAS</strong>; a 1.600 lb = <strong>80 KIAS</strong> (a menor peso el avión tiene menos inercia y VA disminuye).</div>
+              <div>• <strong>Regla Operacional:</strong> Por encima de VA, están prohibidas las deflexiones completas o bruscas de mandos.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (6 cols / 50%): Límites por Categoría, Flaps y Prohibiciones -->
+    <div class="lg:col-span-6 flex flex-col min-h-0">
+      <div class="flex-1 flex flex-col justify-between p-3 sm:p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+            ⚖️ LÍMITES POR CATEGORÍA, FLAPS Y PROHIBICIONES
+          </span>
+          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
+            POH Sec. 4 &amp; Sup. TAE 125
+          </span>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-between py-1 gap-1.5 text-xs leading-snug">
+          <!-- Comparativa Categorías Normal vs Utility -->
+          <div class="grid grid-cols-2 gap-2">
+            <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+              <span class="font-bold text-sky-800 dark:text-sky-300 block text-xs uppercase">Categoría Normal</span>
+              <div class="text-sm sm:text-base font-black text-[#0B2E59] dark:text-sky-200 font-mono">+3.8 G / -1.52 G</div>
+              <p class="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-400">MTOW 2.300 lb (1.043 kg) / 2.400 lb en 172P. Flaps arriba. Vuelo comercial y escuela básica. Virajes escarpados hasta 60°.</p>
+            </div>
+
+            <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+              <span class="font-bold text-indigo-800 dark:text-indigo-300 block text-xs uppercase">Categoría Utility</span>
+              <div class="text-sm sm:text-base font-black text-indigo-900 dark:text-indigo-200 font-mono">+4.4 G / -1.76 G</div>
+              <p class="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-400">Peso ≤ 2.000 lb (907 kg). <strong>Asientos traseros y equipaje VACÍOS</strong>. Velocidad máx. entrada (POH): Chandelles, Lazy Eights y Virajes > 60° a <strong>106 KIAS</strong>.</p>
+            </div>
+          </div>
+
+          <!-- Cuadro de Flaps Extendidos -->
+          <div class="p-2 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-300/80 dark:border-amber-700/60 shadow-2xs flex items-center justify-between gap-2">
+            <div class="flex items-center gap-1.5">
+              <span class="text-base shrink-0">⚠️</span>
+              <div>
+                <strong class="text-amber-900 dark:text-amber-300 text-xs block">Límite Estructural con Flaps Extendidos (10° a 40°):</strong>
+                <span class="text-[10px] sm:text-[11px] text-amber-800 dark:text-amber-400">Límite positivo reducido a <strong>+3.0 G</strong> y <strong>0.0 G</strong> negativo (no tolera cargas negativas ni ráfagas severas).</span>
+              </div>
+            </div>
+            <div class="font-mono font-black text-amber-900 dark:text-amber-200 text-xs sm:text-sm shrink-0 px-2 py-0.5 rounded-lg bg-amber-100 dark:bg-amber-900/60 border border-amber-300 dark:border-amber-700">
+              +3.0 G / 0 G
+            </div>
+          </div>
+
+          <!-- Cuadro de prohibiciones resaltado -->
+          <div class="p-2 sm:p-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/30 border-2 border-rose-500/60 dark:border-rose-500/60 shadow-2xs space-y-0.5 text-slate-800 dark:text-slate-200">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-rose-700 dark:text-rose-400 text-xs uppercase flex items-center gap-1">
+                <span>⛔</span>
+                <span>Prohibiciones POH &amp; Suplemento Motor Continental</span>
+              </span>
+              <span class="text-[10px] font-bold text-rose-600 dark:text-rose-400 font-mono">Sec. 2 Pág. 2-1</span>
+            </div>
+            <ul class="list-disc pl-4 space-y-0.5 text-[10px] sm:text-[11px] text-rose-950 dark:text-rose-200">
+              <li><strong>Barrenas intencionadas (Spins):</strong> Terminantemente prohibidas en la flota diésel Continental CD-135/155 (<em>«Intentionally initiating spins is prohibited»</em>).</li>
+              <li><strong>G Negativas intencionadas o prolongadas:</strong> Prohibido iniciar G negativas y evitar duración prolongada (<em>«can cause propeller control and engine problems»</em> por riesgo de descebado de lubricación y paso de hélice).</li>
+              <li><strong>Acrobacia:</strong> Prohibidos loopings, toneles, caídas de ala y vuelo invertido.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- pagebreak -->
+
 <!-- DIAPOSITIVA 1.5: Envolvente de Centro de Gravedad y Hoja F.OPS.04 -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 5 de 8
-      </span>
-      <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-        1.5 Envolvente de Centro de Gravedad (CG) y Hoja F.OPS.04
-      </h1>
-    </div>
-    <span class="text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
+    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+      1.5 Envolvente de Centro de Gravedad (CG) y Hoja F.OPS.04
+    </h1>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
       Procedimiento Operacional Blue Team F.OPS.04
     </span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center flex-1 my-auto py-2">
-    <!-- Columna Izquierda: Diagrama Envolvente CG -->
-    <div class="h-full flex flex-col justify-center space-y-3">
-      <div class="p-5 rounded-2xl bg-[#F1F4F8] dark:bg-slate-900/90 border-2 border-[#D98A1E]/40 dark:border-[#D98A1E]/50 space-y-2.5 shadow-xs">
-        <div class="flex items-center justify-between">
-          <span class="inline-flex items-center gap-2 font-black text-[#D98A1E] dark:text-amber-400 uppercase tracking-wider text-xs">
-            <span>📈 ENVOLVENTE DE CENTRADO (POH SEC. 6)</span>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch flex-1 min-h-0 py-3">
+    <!-- Columna Izquierda (6 cols): Diagrama Envolvente CG -->
+    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
+      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
+            📈 ENVOLVENTE DE CENTRADO (POH SEC. 6)
           </span>
-          <span class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-[#DCE4EE] dark:bg-slate-800 text-[#0B2E59] dark:text-sky-300">
+          <span class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">
             Límites: 35.0" a 47.3"
           </span>
         </div>
-        <div class="text-base sm:text-lg font-bold text-[#0B2E59] dark:text-slate-100 leading-snug">
-          <strong>Límites Delantero y Trasero:</strong>
-        </div>
-        <div class="space-y-1.5 text-base text-slate-700 dark:text-slate-300">
-          <div>• <strong>Límite Delantero:</strong> 35.0" a 1.950 lb o menos, variando linealmente hasta 38.5" a 2.300 lb.</div>
-          <div>• <strong>Límite Trasero:</strong> 47.3" constante en todo el rango de peso hasta 2.300 lb.</div>
-          <div>• <strong>Peligro de CG Adelantado:</strong> Fuerzas excesivas de palanca en la rotación y recogida de aterrizaje; riesgo de golpear la pata de morro.</div>
-          <div>• <strong>Peligro de CG Retrasado:</strong> Inestabilidad longitudinal, pérdida de autoridad de timón de profundidad para picar, tendencia a entrar en pérdida irrecuperable.</div>
+
+        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
+          <!-- Un solo cuadro unificado para límites de CG -->
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-sm">Límites Delantero y Trasero:</strong>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 space-y-1.5">
+              <div>• <strong>Límite Delantero:</strong> 35.0" a 1.950 lb o menos, variando linealmente hasta 38.5" a 2.300 lb.</div>
+              <div>• <strong>Límite Trasero:</strong> 47.3" constante en todo el rango de peso hasta 2.300 lb.</div>
+              <div>• <strong>Peligro de CG Adelantado:</strong> Fuerzas excesivas de palanca en la rotación y recogida de aterrizaje; riesgo de golpear la pata de morro.</div>
+              <div>• <strong>Peligro de CG Retrasado:</strong> Inestabilidad longitudinal, pérdida de autoridad de timón de profundidad para picar, tendencia a entrar en pérdida irrecuperable.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha: Datos de Masa en Vacío de la Flota -->
-    <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-[#DCE4EE] dark:border-slate-700 shadow-sm space-y-3 text-xs sm:text-sm">
-      <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-xs uppercase">Datos Reales de Pesada (Hoja Oficial F.OPS.04)</span>
-      
-      <div class="space-y-2 font-mono text-xs">
-        <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex justify-between items-center">
-          <div><strong class="text-sky-700 dark:text-sky-300">EC-NNA:</strong> BEW 755.44 kg (1.665.4 lb)</div>
-          <span class="text-slate-600 dark:text-slate-400">Brazo: 1.042 m (41.02")</span>
+    <!-- Columna Derecha (6 cols): Datos de Masa en Vacío de la Flota -->
+    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
+      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
+            📋 DATOS REALES DE PESADA (F.OPS.04)
+          </span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">
+            Flota C172 Blue Team
+          </span>
         </div>
-        <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex justify-between items-center">
-          <div><strong class="text-emerald-700 dark:text-emerald-300">EC-OXV:</strong> BEW 778.20 kg (1.715.6 lb)</div>
-          <span class="text-slate-600 dark:text-slate-400">Brazo: 1.038 m (40.87")</span>
-        </div>
-        <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex justify-between items-center">
-          <div><strong class="text-indigo-700 dark:text-indigo-300">EC-NNX:</strong> BEW 795.83 kg (1.754.5 lb)</div>
-          <span class="text-slate-600 dark:text-slate-400">Brazo: 1.026 m (40.39")</span>
-        </div>
-        <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-300 dark:border-amber-800 flex justify-between items-center">
-          <div><strong class="text-[#D98A1E] dark:text-amber-300">EC-OXT:</strong> BEW 785.00 kg (1.730.6 lb)</div>
-          <span class="text-amber-800 dark:text-amber-300">Brazo: 1.035 m (40.75")</span>
-        </div>
-      </div>
 
-      <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-sm text-slate-600 dark:text-slate-300 leading-snug">
-        ⚠️ <strong>Obligatoriedad de Despacho:</strong> Antes de cada vuelo debe cumplimentarse la hoja física o digital F.OPS.04 con las firmas del PIC, masa de despegue y aterrizaje calculadas, y centro de gravedad dentro de la envolvente.
+        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
+          <!-- Un solo cuadro unificado para las 4 aeronaves -->
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 font-mono text-xs">
+            <div class="flex justify-between items-center">
+              <div><strong class="text-sky-700 dark:text-sky-300">EC-NNA:</strong> BEW 755.44 kg (1.665.4 lb)</div>
+              <span class="text-slate-600 dark:text-slate-400">Brazo: 1.042 m (41.02")</span>
+            </div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 flex justify-between items-center">
+              <div><strong class="text-emerald-700 dark:text-emerald-300">EC-OXV:</strong> BEW 778.20 kg (1.715.6 lb)</div>
+              <span class="text-slate-600 dark:text-slate-400">Brazo: 1.038 m (40.87")</span>
+            </div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 flex justify-between items-center">
+              <div><strong class="text-indigo-700 dark:text-indigo-300">EC-NNX:</strong> BEW 795.83 kg (1.754.5 lb)</div>
+              <span class="text-slate-600 dark:text-slate-400">Brazo: 1.026 m (40.39")</span>
+            </div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 flex justify-between items-center">
+              <div><strong class="text-[#D98A1E] dark:text-amber-400">EC-OXT:</strong> BEW 785.00 kg (1.730.6 lb)</div>
+              <span class="text-slate-600 dark:text-slate-400">Brazo: 1.035 m (40.75")</span>
+            </div>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-500/60 dark:border-amber-500/60 shadow-2xs text-xs sm:text-sm text-amber-900 dark:text-amber-200 leading-snug">
+            ⚠️ <strong>Obligatoriedad de Despacho:</strong> Antes de cada vuelo debe cumplimentarse la hoja física o digital F.OPS.04 con las firmas del PIC, masa de despegue y aterrizaje calculadas, y centro de gravedad dentro de la envolvente.
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -511,68 +757,83 @@ export const C172_LESSON_1 = {
 <!-- DIAPOSITIVA 1.6: Combustibles Aprobados y Temperaturas Límite -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 6 de 8
-      </span>
-      <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-        1.6 Combustibles Autorizados y Temperaturas Límite
-      </h1>
-    </div>
-    <span class="text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
+    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+      1.6 Combustibles Autorizados y Temperaturas Límite
+    </h1>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
       AFM Suplemento Continental TAE 125 Sección 2
     </span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center flex-1 my-auto py-2">
-    <!-- Columna Izquierda: Especificaciones Técnicas de Combustibles -->
-    <div class="h-full flex flex-col justify-center space-y-3">
-      <div class="p-5 rounded-2xl bg-[#F1F4F8] dark:bg-slate-900/90 border-2 border-[#D98A1E]/40 dark:border-[#D98A1E]/50 space-y-2.5 shadow-xs">
-        <div class="flex items-center justify-between">
-          <span class="inline-flex items-center gap-2 font-black text-[#D98A1E] dark:text-amber-400 uppercase tracking-wider text-xs">
-            <span>⛽ COMBUSTIBLES DE AVIACIÓN Y AUTOMOCIÓN</span>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch flex-1 min-h-0 py-3">
+    <!-- Columna Izquierda (6 cols): Especificaciones Técnicas de Combustibles -->
+    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
+      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
+            ⛽ COMBUSTIBLES DE AVIACIÓN Y AUTOMOCIÓN
           </span>
-          <span class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-[#DCE4EE] dark:bg-slate-800 text-[#0B2E59] dark:text-sky-300">
+          <span class="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">
             Kerosén / Diésel
           </span>
         </div>
-        <div class="text-base sm:text-lg font-bold text-[#0B2E59] dark:text-slate-100 leading-snug">
-          <strong>Combustibles Homologados por EASA y Continental:</strong>
-        </div>
-        <div class="space-y-2 text-base text-slate-700 dark:text-slate-300">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-400 block text-xs">1. JET A-1 / JET A (ASTM D 1655):</strong>
-            <div>Combustible estándar de turbina. Temperatura mínima operacional de combustible: <strong>-30°C</strong>. Máxima: <strong>+55°C</strong>.</div>
-          </div>
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-400 block text-xs">2. Diésel de Automoción EN 590:</strong>
-            <div>Totalmente certificado. Temperatura mínima operacional de combustible: <strong>-5°C</strong> (por riesgo de cristalización de parafinas).</div>
+
+        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
+          <!-- Un solo cuadro unificado para los combustibles aprobados -->
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-sm">Combustibles Homologados por EASA y Continental:</strong>
+
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-400 block text-xs">1. JET A-1 / JET A (ASTM D 1655):</strong>
+              <div>Combustible estándar de turbina. Temperatura mínima operacional de combustible: <strong>-30°C</strong>. Máxima: <strong>+55°C</strong>.</div>
+            </div>
+
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2 space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-400 block text-xs">2. Diésel de Automoción EN 590:</strong>
+              <div>Totalmente certificado. Temperatura mínima operacional de combustible: <strong>-5°C</strong> (por riesgo de cristalización de parafinas).</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha: Prohibiciones y Capacidad de Depósitos -->
-    <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-[#DCE4EE] dark:border-slate-700 shadow-sm space-y-3 text-xs sm:text-sm">
-      <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/30 border-2 border-rose-400 space-y-1 text-slate-800 dark:text-slate-200">
-        <strong class="text-rose-600 dark:text-rose-400 font-bold block text-xs uppercase">🚫 PROHIBICIÓN ABSOLUTA DE GASOLINA (AVGAS)</strong>
-        <p class="text-xs">
-          <strong>JAMÁS repostar AVGAS 100LL ni ninguna gasolina aeronáutica o de automoción.</strong> La inyección de gasolina destruiría inmediatamente la bomba de alta presión de 1.600 bar y provocaría autodetonación descontrolada con fallo catastrófico del motor.
-        </p>
-      </div>
-
-      <div class="p-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-1.5 text-base text-slate-700 dark:text-slate-300">
-        <strong class="text-[#0B2E59] dark:text-sky-400 block text-xs uppercase">Capacidades de Depósito (2 tanques alares):</strong>
-        <div class="grid grid-cols-2 gap-2 font-mono">
-          <div>• Capacidad Total: <strong>42.0 US Gal (159 L)</strong></div>
-          <div>• Combustible Útil: <strong>40.0 US Gal (151 L)</strong></div>
-          <div>• No Utilizable: <strong>2.0 US Gal (7.6 L)</strong></div>
-          <div>• Colector / Sump: <strong>0.5 US Gal (1.9 L)</strong></div>
+    <!-- Columna Derecha (6 cols): Prohibiciones y Capacidad de Depósitos -->
+    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
+      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
+            ⚠️ CAPACIDADES Y RESTRICCIONES CRÍTICAS
+          </span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">
+            Límites Operacionales
+          </span>
         </div>
-      </div>
 
-      <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-300 text-sm text-amber-900 dark:text-amber-200">
-        ⚠️ <strong>Comprobación de Temperatura Previa al Vuelo:</strong> En invierno, si se utiliza diésel EN 590 y la temperatura en plataforma o en nivel de crucero desciende de -5°C, no se puede iniciar el vuelo a menos que el combustible sea JET A-1.
+        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
+          <!-- Prohibición AVGAS -->
+          <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/30 border-2 border-rose-500/60 dark:border-rose-500/60 shadow-2xs space-y-1 text-slate-800 dark:text-slate-200 text-xs">
+            <strong class="text-rose-700 dark:text-rose-400 font-bold block text-xs uppercase">🚫 PROHIBICIÓN ABSOLUTA DE GASOLINA (AVGAS)</strong>
+            <p>
+              <strong>JAMÁS repostar AVGAS 100LL ni ninguna gasolina aeronáutica o de automoción.</strong> La inyección de gasolina destruiría inmediatamente la bomba de alta presión de 1.600 bar y provocaría autodetonación descontrolada con fallo catastrófico del motor.
+            </p>
+          </div>
+
+          <!-- Capacidad de Depósito -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+            <strong class="text-[#0B2E59] dark:text-sky-400 block text-xs uppercase">Capacidades de Depósito (2 tanques alares):</strong>
+            <div class="grid grid-cols-2 gap-2 font-mono">
+              <div>• Capacidad Total: <strong>42.0 US Gal (159 L)</strong></div>
+              <div>• Combustible Útil: <strong>40.0 US Gal (151 L)</strong></div>
+              <div>• No Utilizable: <strong>2.0 US Gal (7.6 L)</strong></div>
+              <div>• Colector / Sump: <strong>0.5 US Gal (1.9 L)</strong></div>
+            </div>
+          </div>
+
+          <!-- Comprobación previa -->
+          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-500/60 dark:border-amber-500/60 shadow-2xs text-xs sm:text-sm text-amber-900 dark:text-amber-200 leading-snug">
+            ⚠️ <strong>Comprobación de Temperatura Previa al Vuelo:</strong> En invierno, si se utiliza diésel EN 590 y la temperatura en plataforma o en nivel de crucero desciende de -5°C, no se puede iniciar el vuelo a menos que el combustible sea JET A-1.
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -583,52 +844,69 @@ export const C172_LESSON_1 = {
 <!-- DIAPOSITIVA 1.7: Aceites Aprobados y Niveles -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 7 de 8
-      </span>
-      <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-        1.7 Lubricantes Aprobados de Motor y Caja Reductora
-      </h1>
-    </div>
-    <span class="text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
+    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+      1.7 Lubricantes Aprobados de Motor y Caja Reductora
+    </h1>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
       Manual de Mantenimiento TAE 125 & Suplemento POH
     </span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center flex-1 my-auto py-2">
-    <!-- Columna Izquierda: Aceite de Motor Continental -->
-    <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-[#DCE4EE] dark:border-slate-700 shadow-sm space-y-3">
-      <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-2">
-        <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-sm">🛢️ Aceite de Motor Diésel</span>
-        <span class="px-2 py-0.5 rounded text-xs font-bold bg-sky-500/10 text-sky-600">Carter Húmedo</span>
-      </div>
-      <div class="space-y-2 text-base text-slate-700 dark:text-slate-300">
-        <div>• <strong>Tipo Aprobado:</strong> <em>AeroShell Oil Diesel Ultra 15W-40</em> o totalmente sintético según especificación MB 229.5 / MB 229.51.</div>
-        <div>• <strong>Capacidad Total del Cárter:</strong> 6.0 Litros.</div>
-        <div>• <strong>Nivel Mínimo Operacional:</strong> <strong>4.5 Litros</strong> (marcado estricto en la varilla).</div>
-        <div>• <strong>Nivel Máximo Recomendado:</strong> <strong>6.0 Litros</strong>.</div>
-        <div>• <strong>Consumo Máximo Aceptable:</strong> 0.1 Litros por hora de vuelo.</div>
-      </div>
-      <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-300 text-sm text-amber-900 dark:text-amber-200">
-        ⚠️ <strong>Medición Correcta:</strong> Esperar al menos 5 minutos tras parar el motor para permitir el retorno del aceite al cárter antes de medir con la varilla.
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch flex-1 min-h-0 py-3">
+    <!-- Columna Izquierda (6 cols): Aceite de Motor Continental -->
+    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
+      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
+            🛢️ ACEITE DE MOTOR DIÉSEL
+          </span>
+          <span class="text-xs font-bold text-sky-700 dark:text-sky-300">
+            Cárter Húmedo
+          </span>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
+          <!-- Un solo cuadro unificado para aceite de motor -->
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            <div>• <strong>Tipo Aprobado:</strong> <em>AeroShell Oil Diesel Ultra 15W-40</em> o totalmente sintético según especificación MB 229.5 / MB 229.51.</div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2">• <strong>Capacidad Total del Cárter:</strong> 6.0 Litros.</div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2">• <strong>Nivel Mínimo Operacional:</strong> <strong>4.5 Litros</strong> (marcado estricto en la varilla).</div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2">• <strong>Nivel Máximo Recomendado:</strong> <strong>6.0 Litros</strong>.</div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2">• <strong>Consumo Máximo Aceptable:</strong> 0.1 Litros por hora de vuelo.</div>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-500/60 dark:border-amber-500/60 shadow-2xs text-xs sm:text-sm text-amber-900 dark:text-amber-200 leading-snug">
+            ⚠️ <strong>Medición Correcta:</strong> Esperar al menos 5 minutos tras parar el motor para permitir el retorno del aceite al cárter antes de medir con la varilla.
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Columna Derecha: Aceite de Caja Reductora (Gearbox) -->
-    <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-[#DCE4EE] dark:border-slate-700 shadow-sm space-y-3">
-      <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-2">
-        <span class="font-bold text-[#0B2E59] dark:text-sky-300 text-sm">⚙️ Aceite de Caja Reductora (Gearbox)</span>
-        <span class="px-2 py-0.5 rounded text-xs font-bold bg-amber-500/10 text-amber-600">Circuito Independiente</span>
-      </div>
-      <div class="space-y-2 text-base text-slate-700 dark:text-slate-300">
-        <div>• <strong>Tipo Aprobado:</strong> Fluido ATF sintético <em>Titan EG 5005 Plus</em> o <em>Shell Spirax S4 ATF HDX</em>.</div>
-        <div>• <strong>Capacidad del Circuito:</strong> <strong>1.0 Litro</strong> aproximado.</div>
-        <div>• <strong>Verificación Prevuelo:</strong> Mirilla visual en el lado frontal derecho del reductor. El nivel debe situarse en la mitad del visor óptico con el avión nivelado.</div>
-        <div>• <strong>Función Crucial:</strong> Lubrica los engranajes de reducción y alimenta el actuador hidráulico del gobernador de la hélice MT-Propeller.</div>
-      </div>
-      <div class="p-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/30 border border-rose-300 text-sm text-rose-900 dark:text-rose-200">
-        🚨 <strong>Pérdida de Aceite de Reductora:</strong> Si se pierde presión en la reductora, los contrapesos y muelles llevarán la hélice automáticamente a <strong>paso grueso</strong> para reducir la resistencia aerodinámica.
+    <!-- Columna Derecha (6 cols): Aceite de Caja Reductora (Gearbox) -->
+    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
+      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
+            ⚙️ ACEITE DE CAJA REDUCTORA (GEARBOX)
+          </span>
+          <span class="text-xs font-bold text-amber-700 dark:text-amber-400">
+            Circuito Independiente
+          </span>
+        </div>
+
+        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
+          <!-- Un solo cuadro unificado para caja reductora -->
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            <div>• <strong>Tipo Aprobado:</strong> Fluido ATF sintético <em>Titan EG 5005 Plus</em> o <em>Shell Spirax S4 ATF HDX</em>.</div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2">• <strong>Capacidad del Circuito:</strong> <strong>1.0 Litro</strong> aproximado.</div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2">• <strong>Verificación Prevuelo:</strong> Mirilla visual en el lado frontal derecho del reductor. El nivel debe situarse en la mitad del visor óptico con el avión nivelado.</div>
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2">• <strong>Función Crucial:</strong> Lubrica los engranajes de reducción y alimenta el actuador hidráulico del gobernador de la hélice MT-Propeller.</div>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/30 border-2 border-rose-500/60 dark:border-rose-500/60 shadow-2xs text-xs sm:text-sm text-rose-900 dark:text-rose-200 leading-snug">
+            🚨 <strong>Pérdida de Aceite de Reductora:</strong> Si se pierde presión en la reductora, los contrapesos y muelles llevarán la hélice automáticamente a <strong>paso grueso</strong> para reducir la resistencia aerodinámica.
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -639,52 +917,74 @@ export const C172_LESSON_1 = {
 <!-- DIAPOSITIVA 1.8: Techo de Servicio, Viento Cruzado y Meteorología -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 8 de 8
-      </span>
-      <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-        1.8 Techo de Servicio, Viento Cruzado y Límites Meteorológicos
-      </h1>
-    </div>
-    <span class="text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
+    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+      1.8 Techo de Servicio, Viento Cruzado y Límites Meteorológicos
+    </h1>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
       POH Sección 2 & Manual de Operaciones Blue Team
     </span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center flex-1 my-auto py-2">
-    <!-- Columna Izquierda: Techo y Rendimiento en Altura -->
-    <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-[#DCE4EE] dark:border-slate-700 shadow-sm space-y-3">
-      <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-xs uppercase">🏔️ Techo Operacional y Altitud</span>
-      <div class="space-y-2 text-base text-slate-700 dark:text-slate-300">
-        <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-          <strong>Techo Máximo Certificado:</strong>
-          <div class="font-mono font-bold text-sm text-[#0B2E59] dark:text-sky-300 mt-0.5">14.200 ft (CD-135) / 17.500 ft (CD-155)</div>
-          <span class="text-sm text-slate-500">Mantiene el 100% de potencia hasta aprox. 6.000 - 8.000 ft gracias al turbocompresor de geometría variable.</span>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch flex-1 min-h-0 py-3">
+    <!-- Columna Izquierda (6 cols): Techo y Rendimiento en Altura -->
+    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
+      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
+            🏔️ TECHO OPERACIONAL Y ALTITUD
+          </span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">
+            Rendimiento en Altura
+          </span>
         </div>
-        <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-          <strong>Uso de Oxígeno Suplementario (Part-NCO):</strong>
-          <span class="block text-sm text-slate-600 dark:text-slate-400 mt-0.5">Obligatorio para la tripulación en vuelos continuados de más de 30 min entre FL100 y FL130, y en todo momento por encima de FL130.</span>
+
+        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
+          <!-- Un solo cuadro unificado para Techo y Oxígeno -->
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+            <div>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">Techo Máximo Certificado:</strong>
+              <div class="font-mono font-bold text-sm text-[#0B2E59] dark:text-sky-300">14.200 ft (CD-135) / 17.500 ft (CD-155)</div>
+              <span class="text-slate-600 dark:text-slate-400 text-xs block mt-1">Mantiene el 100% de potencia hasta aprox. 6.000 - 8.000 ft gracias al turbocompresor de geometría variable.</span>
+            </div>
+
+            <div class="border-t border-slate-100 dark:border-slate-700/60 pt-2.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">Uso de Oxígeno Suplementario (Part-NCO):</strong>
+              <span class="text-slate-600 dark:text-slate-400 text-xs block">Obligatorio para la tripulación en vuelos continuados de más de 30 min entre FL100 y FL130, y en todo momento por encima de FL130.</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha: Viento Cruzado y Meteorología -->
-    <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-[#DCE4EE] dark:border-slate-700 shadow-sm space-y-3">
-      <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-xs uppercase">💨 Viento Cruzado y Condiciones Adversas</span>
-      <div class="space-y-2 text-base text-slate-700 dark:text-slate-300">
-        <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 flex justify-between items-center">
-          <div>
-            <strong>Viento Cruzado Máximo Demostrado:</strong>
-            <span class="block text-sm text-slate-500">Componente perpendicular a la pista</span>
-          </div>
-          <span class="font-mono font-black text-base text-[#0B2E59] dark:text-sky-300">15 Nudos</span>
+    <!-- Columna Derecha (6 cols): Viento Cruzado y Meteorología -->
+    <div class="lg:col-span-6 h-full flex flex-col min-h-0">
+      <div class="h-full flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-2 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-sm">
+            💨 VIENTO CRUZADO Y CONDICIONES ADVERSAS
+          </span>
+          <span class="text-xs text-slate-500 dark:text-slate-400 font-semibold">
+            Límites Ambientales
+          </span>
         </div>
-        <div class="p-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-800 space-y-1">
-          <strong class="text-rose-700 dark:text-rose-400">Prohibición de Vuelo en Condiciones de Engelamiento (FIKI):</strong>
-          <p class="text-sm text-rose-900 dark:text-rose-200">
-            La aeronave NO está certificada para vuelo en condiciones de hielo conocidas (Flight Into Known Icing). En caso de encuentro inadvertido con engelamiento, abandonar la zona de inmediato cambiando de altitud o rumbo.
-          </p>
+
+        <div class="flex-1 flex flex-col justify-between py-2 space-y-2.5">
+          <!-- Viento Cruzado -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex justify-between items-center text-xs sm:text-sm">
+            <div>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block">Viento Cruzado Máximo Demostrado:</strong>
+              <span class="text-slate-600 dark:text-slate-400 text-xs">Componente perpendicular a la pista</span>
+            </div>
+            <span class="font-mono font-black text-base text-[#0B2E59] dark:text-sky-300">15 Nudos</span>
+          </div>
+
+          <!-- Prohibición de Engelamiento (FIKI) -->
+          <div class="p-3 rounded-xl bg-rose-50 dark:bg-rose-950/30 border-2 border-rose-500/60 dark:border-rose-500/60 shadow-2xs space-y-1 text-xs text-slate-800 dark:text-slate-200">
+            <strong class="text-rose-700 dark:text-rose-400 block text-xs uppercase">Prohibición de Vuelo en Condiciones de Engelamiento (FIKI):</strong>
+            <p>
+              La aeronave NO está certificada para vuelo en condiciones de hielo conocidas (Flight Into Known Icing). En caso de encuentro inadvertido con engelamiento, abandonar la zona de inmediato cambiando de altitud o rumbo.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -709,9 +1009,6 @@ export const C172_LESSON_2 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 1 de 8
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         2.1 Arquitectura del Motor Diésel Common Rail (TAE 125)
       </h1>
@@ -777,9 +1074,6 @@ export const C172_LESSON_2 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 2 de 8
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         2.2 Sobrealimentación: Turbocompresor VNT e Intercooler
       </h1>
@@ -837,9 +1131,6 @@ export const C172_LESSON_2 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 3 de 8
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         2.3 Sistema de Refrigeración Líquida y Calefacción de Cabina
       </h1>
@@ -894,9 +1185,6 @@ export const C172_LESSON_2 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 4 de 8
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         2.4 Arquitectura FADEC Dual y Conmutación Automática
       </h1>
@@ -958,9 +1246,6 @@ export const C172_LESSON_2 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 5 de 8
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         2.5 Hélice MT-Propeller MTV-6 Tripala de Paso Variable
       </h1>
@@ -1020,9 +1305,6 @@ export const C172_LESSON_2 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 6 de 8
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         2.6 Sistema Eléctrico y Batería de Respaldo FADEC Backup
       </h1>
@@ -1082,9 +1364,6 @@ export const C172_LESSON_2 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 7 de 8
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         2.7 Sistema de Combustible: Depósitos, Bombas y Retorno Caliente
       </h1>
@@ -1143,9 +1422,6 @@ export const C172_LESSON_2 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 8 de 8
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         2.8 Instrumentación Digital del Motor: Indicadores CED 125 y SED 125
       </h1>
@@ -1207,9 +1483,6 @@ export const C172_LESSON_3 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 1 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         3.1 Inspección Exterior (Walkaround) I: Cabina de Mando y Empenaje
       </h1>
@@ -1258,9 +1531,6 @@ export const C172_LESSON_3 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 2 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         3.2 Inspección Exterior II: Semialas, Flaps 10°-40° y Tomas Pitot-Estática
       </h1>
@@ -1300,9 +1570,6 @@ export const C172_LESSON_3 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 3 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         3.3 Inspección Exterior III: Planta Motriz, Hélice MT y Niveles de Fluidos
       </h1>
@@ -1351,9 +1618,6 @@ export const C172_LESSON_3 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 4 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         3.4 Puesta en Marcha: Calentadores (Glow Plugs) y Arranque
       </h1>
@@ -1407,9 +1671,6 @@ export const C172_LESSON_3 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 5 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         3.5 Rodaje en Tierra y Temperatura Mínima Operacional
       </h1>
@@ -1455,9 +1716,6 @@ export const C172_LESSON_3 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 6 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         3.6 Prueba de Motor (Run-Up) y Test Automático FADEC
       </h1>
@@ -1508,9 +1766,6 @@ export const C172_LESSON_3 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 7 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         3.7 Técnicas de Despegue: Normal y Campo Corto (Short Field)
       </h1>
@@ -1559,9 +1814,6 @@ export const C172_LESSON_3 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 8 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         3.8 Ascenso, Crucero y Prevención de Enfriamiento Rápido en Descenso
       </h1>
@@ -1618,9 +1870,6 @@ export const C172_LESSON_3 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#D98A1E]/15 text-[#D98A1E] dark:text-amber-400 border border-[#D98A1E]/30">
-        ✈️ Diapositiva 9 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         3.9 Circuito, Aterrizaje con Flaps 30°-40°, Frustrada y Parada
       </h1>
@@ -1683,9 +1932,6 @@ export const C172_LESSON_4 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
-        ✈️ Diapositiva 1 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         4.1 Fallo de Motor en Despegue: En Pista y a Baja Cota (&lt;800 ft AGL)
       </h1>
@@ -1737,9 +1983,6 @@ export const C172_LESSON_4 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
-        ✈️ Diapositiva 2 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         4.2 Fallo de Motor en Crucero: Velocidad de Planeo (Vglide) y Reencendido
       </h1>
@@ -1788,9 +2031,6 @@ export const C172_LESSON_4 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
-        ✈️ Diapositiva 3 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         4.3 Avisos Luminosos FADEC: Parpadeo, Fijo y Conmutador FORCE B
       </h1>
@@ -1838,9 +2078,6 @@ export const C172_LESSON_4 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
-        ✈️ Diapositiva 4 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         4.4 Fallo del Alternador y Gestión de Batería FADEC Backup (30 Min)
       </h1>
@@ -1885,9 +2122,6 @@ export const C172_LESSON_4 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
-        ✈️ Diapositiva 5 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         4.5 Sobretemperatura de Refrigerante (&gt;105°C) y Caja Reductora (&gt;115°C)
       </h1>
@@ -1933,9 +2167,6 @@ export const C172_LESSON_4 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
-        ✈️ Diapositiva 6 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         4.6 Baja Presión de Aceite de Motor: Diagnóstico y Acción
       </h1>
@@ -1980,9 +2211,6 @@ export const C172_LESSON_4 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
-        ✈️ Diapositiva 7 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         4.7 Alarma Water in Fuel y Contaminación de Combustible
       </h1>
@@ -2024,9 +2252,6 @@ export const C172_LESSON_4 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
-        ✈️ Diapositiva 8 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         4.8 Entrada Inadvertida en Barrena: Mnemotécnica P.A.R.E.
       </h1>
@@ -2084,9 +2309,6 @@ export const C172_LESSON_4 = {
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
     <div class="flex items-center gap-3">
-      <span class="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30">
-        ✈️ Diapositiva 9 de 9
-      </span>
       <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
         4.9 Amerizaje Forzoso (Ditching) y Protocolo de Evacuación
       </h1>

@@ -178,48 +178,97 @@ article::after,
   clear: both;
 }
 
-/* Presentation Slide Mode Styling (matching CTKI Calibri typography & palette with generous readability) */
+/* Presentation Slide Mode Styling (matching CTKI Calibri typography with uniform body text & high contrast) */
 .lesson-slide-container {
   font-family: "Calibri", "Candara", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   letter-spacing: -0.01em;
-  font-size: 1.0625rem; /* ~17px readable base */
-  line-height: 1.55;
+  font-size: 0.9375rem; /* 15px uniform base */
+  line-height: 1.45;
+  color: #000000;
 }
 
 .lesson-slide-container h1 {
-  font-size: 1.625rem !important; /* ~26px */
+  font-size: 1.375rem !important; /* ~22px */
   line-height: 1.25 !important;
+  font-weight: 700;
+  color: #0B2E59 !important;
 }
 
 @media (min-width: 768px) {
   .lesson-slide-container h1 {
-    font-size: 1.875rem !important; /* ~30px */
+    font-size: 1.5rem !important; /* ~24px */
   }
 }
 
-/* Ensure text elements in slides are comfortably readable and never tiny */
-.lesson-slide-container .text-xs {
-  font-size: 0.9375rem !important; /* 15px instead of 12px */
-  line-height: 1.45rem !important;
+.dark .lesson-slide-container h1 {
+  color: #7dd3fc !important;
 }
 
+/* Ensure ALL body text elements in slides maintain strict uniform size and pure black high contrast */
+.lesson-slide-container p,
+.lesson-slide-container li,
+.lesson-slide-container .slide-body,
+.lesson-slide-container .text-xs,
 .lesson-slide-container .text-\[10px\],
-.lesson-slide-container .text-\[11px\] {
-  font-size: 0.875rem !important; /* 14px instead of 10/11px */
-  line-height: 1.35rem !important;
+.lesson-slide-container .text-\[11px\],
+.lesson-slide-container .text-sm,
+.lesson-slide-container .text-base,
+.lesson-slide-container .text-slate-500,
+.lesson-slide-container .text-slate-600,
+.lesson-slide-container .text-slate-700,
+.lesson-slide-container .text-slate-800 {
+  font-size: 0.9375rem !important; /* 15px uniform body text */
+  line-height: 1.45 !important;
+  color: #000000 !important;
 }
 
-.lesson-slide-container .text-sm {
-  font-size: 1.0625rem !important; /* 17px instead of 14px */
-  line-height: 1.55rem !important;
-}
-
-.lesson-slide-container .text-base {
-  font-size: 1.1875rem !important; /* 19px instead of 16px */
-  line-height: 1.65rem !important;
-}
-
-.lesson-slide-container strong {
+.lesson-slide-container strong,
+.lesson-slide-container b {
   font-weight: 700;
+  color: #000000 !important;
 }
+
+/* Dark mode high-contrast support for prolonged reading */
+.dark .lesson-slide-container p,
+.dark .lesson-slide-container li,
+.dark .lesson-slide-container .slide-body,
+.dark .lesson-slide-container .text-xs,
+.dark .lesson-slide-container .text-\[10px\],
+.dark .lesson-slide-container .text-\[11px\],
+.dark .lesson-slide-container .text-sm,
+.dark .lesson-slide-container .text-base,
+.dark .lesson-slide-container .text-slate-500,
+.dark .lesson-slide-container .text-slate-600,
+.dark .lesson-slide-container .text-slate-700,
+.dark .lesson-slide-container .text-slate-800 {
+  color: #F8FAFC !important;
+}
+
+.dark .lesson-slide-container strong,
+.dark .lesson-slide-container b {
+  color: #FFFFFF !important;
+}
+
+/* Dynamic continuous percentage column layouts */
+[data-left-pct] {
+  --col-left: 50fr;
+  --col-right: 50fr;
+}
+@media (min-width: 1024px) {
+  [data-left-pct] {
+    display: grid !important;
+    grid-template-columns: minmax(0, var(--col-left, 50fr)) minmax(0, var(--col-right, 50fr)) !important;
+  }
+  [data-left-pct] > div:not(.col-resize-controls) {
+    grid-column: auto !important;
+  }
+}
+.visual-canvas [data-left-pct] {
+  display: grid !important;
+  grid-template-columns: minmax(0, var(--col-left, 50fr)) minmax(0, var(--col-right, 50fr)) !important;
+}
+.visual-canvas [data-left-pct] > div:not(.col-resize-controls) {
+  grid-column: auto !important;
+}
+
 

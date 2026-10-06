@@ -118,6 +118,14 @@ export const SLASH_COMMANDS: SlashCommandItem[] = [
     keywords: ["video", "youtube", "vimeo", "mp4", "maniobra"],
     action: "video",
   },
+  {
+    id: "slide-break",
+    label: "Nueva Diapositiva (Salto)",
+    description: "Crea una nueva diapositiva independiente para esta lección",
+    icon: "📑",
+    category: "layout",
+    keywords: ["diapositiva", "slide", "pagebreak", "salto", "nueva diapositiva", "pagina"],
+  },
 ];
 
 export function filterSlashCommands(query: string): SlashCommandItem[] {
