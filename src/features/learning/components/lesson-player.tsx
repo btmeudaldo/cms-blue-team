@@ -110,6 +110,7 @@ export function LessonPlayer({
   const [isCompleting, setIsCompleting] = useState(false);
   const [isCompletedSuccess, setIsCompletedSuccess] =
     useState(isAlreadyCompleted);
+  const [showCompletionToast, setShowCompletionToast] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isActivityPaused, setIsActivityPaused] = useState(false);
   const [retryVersion, setRetryVersion] = useState(0);
@@ -159,7 +160,8 @@ export function LessonPlayer({
   const [verticalOffset, setVerticalOffset] = useState(0);
 
   const completedLessonSet = new Set(completedLessonIds);
-  const lessonLayoutClasses = getLessonLayoutClasses(isIndexOpen);
+  const isSlideMode = totalLessonPages > 1;
+  const lessonLayoutClasses = getLessonLayoutClasses(isIndexOpen, isSlideMode);
 
   useEffect(() => {
     function handleHeaderVisibility(event: Event) {
@@ -493,6 +495,7 @@ export function LessonPlayer({
       }
       setServerProgress(result.progress);
       setIsCompletedSuccess(true);
+      setShowCompletionToast(true);
 
       // Advance to next page/lesson when available.
       // If all pages are completed and quiz exists, stay to offer taking the quiz!
@@ -512,6 +515,14 @@ export function LessonPlayer({
       setIsCompleting(false);
     }
   }
+
+  useEffect(() => {
+    if (!showCompletionToast) return;
+    const timer = window.setTimeout(() => {
+      setShowCompletionToast(false);
+    }, 3500);
+    return () => window.clearTimeout(timer);
+  }, [showCompletionToast]);
 
   const timerPct =
     totalLessonPages > 1
@@ -567,7 +578,11 @@ export function LessonPlayer({
   );
 
   return (
-    <div className="flex min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 transition-colors">
+    <div
+      className={`flex ${
+        isSlideMode ? "h-screen max-h-screen overflow-hidden" : "min-h-screen"
+      } bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 transition-colors`}
+    >
       {/* ------------------------------------------------------------- */}
       {/* MODE 1: LEFT VERTICAL NAVBAR (Navbar & Header on Left)       */}
       {/* ------------------------------------------------------------- */}
@@ -682,7 +697,11 @@ export function LessonPlayer({
       )}
 
       {/* Main Content & Top Bar Area */}
-      <div className="flex-1 flex flex-col min-w-0 min-h-screen">
+      <div
+        className={`flex-1 flex flex-col min-w-0 ${
+          isSlideMode ? "h-screen max-h-screen overflow-hidden" : "min-h-screen"
+        }`}
+      >
         {/* MODE 2: TOP HEADER (if in top-header mode) */}
         {layoutMode === "top-header" && (
           <Header
@@ -695,7 +714,9 @@ export function LessonPlayer({
 
         {/* Sticky Control Bar */}
         <div
-          className={`sticky z-50 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs py-3 px-4 sm:px-6 lg:px-8 transition-transform duration-300 ease-out ${
+          className={`sticky z-50 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs ${
+            isSlideMode ? "py-1.5 sm:py-2" : "py-3"
+          } px-4 sm:px-6 lg:px-8 transition-transform duration-300 ease-out ${
             layoutMode === "top-header" ? "top-[112px]" : "top-0"
           }`}
           style={
@@ -1051,12 +1072,13 @@ export function LessonPlayer({
               </div>
             )}
 
-            {isCompletedSuccess && (
-              <div className="rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 p-4 text-xs font-bold text-emerald-800 dark:text-emerald-300 flex items-center justify-between">
+            {showCompletionToast && (
+              <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 rounded-2xl bg-emerald-600/95 text-white shadow-2xl backdrop-blur-md px-6 py-3 text-xs sm:text-sm font-bold flex items-center gap-2.5 animate-in fade-in slide-in-from-top-4 duration-300 pointer-events-none">
+                <span>🎉</span>
                 <span>
                   {nextLessonId
-                    ? "🎉 ¡Lección completada con éxito! Redirigiendo a la siguiente lección..."
-                    : "🎉 ¡Felicidades! Has completado la última lección del curso. Redirigiendo..."}
+                    ? "¡Lección completada con éxito! Redirigiendo a la siguiente lección..."
+                    : "¡Felicidades! Has completado la última lección del curso. Redirigiendo..."}
                 </span>
               </div>
             )}
@@ -1129,23 +1151,25 @@ export function LessonPlayer({
                 {currentPageIndex < totalLessonPages - 1 && (
                   <button
                     type="button"
-                    disabled={!isCurrentPageDone && currentPageRemainingSeconds > 0}
+                    disabled={!isCurrentPageDone}
                     onClick={() => {
-                      if (isCurrentPageDone || currentPageRemainingSeconds === 0) {
-                        handleAdvanceSlide();
+                      if (isCurrentPageDone) {
+                        setCurrentPageIndex((prev) => Math.min(totalLessonPages - 1, prev + 1));
+                        window.scrollTo({ top: 0, behavior: "smooth" });
                       }
                     }}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      !isCurrentPageDone && currentPageRemainingSeconds > 0
-                        ? "opacity-30 cursor-not-allowed text-slate-400"
+                      !isCurrentPageDone
+                        ? "opacity-40 cursor-not-allowed bg-slate-100 dark:bg-slate-800 text-slate-400 border border-slate-200 dark:border-slate-700"
                         : "bg-[#1a80ff] text-white hover:bg-[#0066e6] shadow-2xs cursor-pointer"
                     }`}
                     title={
-                      !isCurrentPageDone && currentPageRemainingSeconds > 0
-                        ? `Espera a cumplir el tiempo (${currentPageRemainingSeconds}s)`
+                      !isCurrentPageDone
+                        ? "Bloqueado: Debes completar el tiempo reglamentario y pulsar el botón anti-cheat inferior para avanzar"
                         : "Diapositiva siguiente"
                     }
                   >
+                    {!isCurrentPageDone && <span className="text-[10px]">🔒</span>}
                     <span className="hidden sm:inline">Siguiente</span>
                     <span>&rarr;</span>
                   </button>
@@ -1156,12 +1180,17 @@ export function LessonPlayer({
             {/* Content Article Container: Full reading width preserved without forced screen scroll */}
             <article
               ref={contentRef}
-              className="prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
+              className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 ${
+                isSlideMode
+                  ? "flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col justify-start my-auto [&_.lesson-slide-container]:min-h-full"
+                  : "prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
+
+              }`}
               dangerouslySetInnerHTML={{ __html: safeContentHtml }}
             />
 
-            {/* Bottom Slide Status */}
-            {totalLessonPages > 1 && (
+            {/* Bottom Slide Status (Shown only when not in slide mode) */}
+            {!isSlideMode && totalLessonPages > 1 && (
               <div className="flex items-center justify-between gap-3 px-4 py-2 rounded-2xl bg-white/70 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 text-xs">
                 <span className="text-[11px] text-slate-500 font-medium">
                   Diapositiva {currentPageIndex + 1} de {totalLessonPages}
@@ -1256,32 +1285,6 @@ export function LessonPlayer({
               </div>
             )}
 
-            {/* End of Lesson Banner when no quiz exists */}
-            {!quiz && (isAlreadyCompleted || isCompletedSuccess) && (
-              <div className="mt-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-md space-y-4 animate-in fade-in duration-300">
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="space-y-1 text-center sm:text-left">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-xs font-extrabold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                      ⚪ Examen: No aplica
-                    </span>
-                    <h3 className="text-lg font-extrabold text-slate-900 dark:text-white">
-                      Lectura Verificada Acreditada
-                    </h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">
-                      Esta lección no requiere examen; el aprovechamiento queda acreditado con el cumplimiento del tiempo reglamentario de lectura.
-                    </p>
-                  </div>
-                  {nextLessonId && (
-                    <Link
-                      href={`/courses/${courseId}/lessons/${nextLessonId}`}
-                      className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all text-center shadow-xs"
-                    >
-                      Siguiente Lección &rarr;
-                    </Link>
-                  )}
-                </div>
-              </div>
-            )}
           </main>
         </div>
 

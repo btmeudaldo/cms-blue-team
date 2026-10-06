@@ -177,3 +177,49 @@ article::after,
   display: table;
   clear: both;
 }
+
+/* Presentation Slide Mode Styling (matching CTKI Calibri typography & palette with generous readability) */
+.lesson-slide-container {
+  font-family: "Calibri", "Candara", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  letter-spacing: -0.01em;
+  font-size: 1.0625rem; /* ~17px readable base */
+  line-height: 1.55;
+}
+
+.lesson-slide-container h1 {
+  font-size: 1.625rem !important; /* ~26px */
+  line-height: 1.25 !important;
+}
+
+@media (min-width: 768px) {
+  .lesson-slide-container h1 {
+    font-size: 1.875rem !important; /* ~30px */
+  }
+}
+
+/* Ensure text elements in slides are comfortably readable and never tiny */
+.lesson-slide-container .text-xs {
+  font-size: 0.9375rem !important; /* 15px instead of 12px */
+  line-height: 1.45rem !important;
+}
+
+.lesson-slide-container .text-\[10px\],
+.lesson-slide-container .text-\[11px\] {
+  font-size: 0.875rem !important; /* 14px instead of 10/11px */
+  line-height: 1.35rem !important;
+}
+
+.lesson-slide-container .text-sm {
+  font-size: 1.0625rem !important; /* 17px instead of 14px */
+  line-height: 1.55rem !important;
+}
+
+.lesson-slide-container .text-base {
+  font-size: 1.1875rem !important; /* 19px instead of 16px */
+  line-height: 1.65rem !important;
+}
+
+.lesson-slide-container strong {
+  font-weight: 700;
+}
+
