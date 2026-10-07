@@ -41,8 +41,20 @@ async function main() {
   }
   console.log("Course successfully upserted:", C172_COURSE_ID);
 
-  // 2. Upsert each of the 4 official lessons
+  // 2. Safe upsert of each of the 4 official lessons (NEVER overwrite existing content_html without --force-overwrite)
+  const allowForce = process.argv.includes("--force-overwrite");
   for (const lesson of C172_LESSONS) {
+    const { data: existing } = await supabase
+      .from("lessons")
+      .select("id, content_html")
+      .eq("id", lesson.id)
+      .maybeSingle();
+
+    if (existing && !allowForce) {
+      console.log(`🛡️ Lesson ${lesson.lesson_order} (${lesson.title}) ya existe en Supabase. PROTEGIDA: No se sobrescribe content_html para preservar las ediciones hechas desde el editor web.`);
+      continue;
+    }
+
     const wordCount = lesson.content_html.split(/\s+/).filter(Boolean).length;
     const { error: lessonError } = await supabase.from("lessons").upsert(
       {

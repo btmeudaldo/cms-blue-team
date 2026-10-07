@@ -23,7 +23,8 @@
     "format": "prettier . --write",
     "format:check": "prettier --check .",
     "test:db": "supabase test db --local supabase/tests",
-    "clean:vercel": "node scripts/clean-vercel-deployments.mjs"
+    "clean:vercel": "node scripts/clean-vercel-deployments.mjs",
+    "db:backup": "node scripts/pull_c172_from_db.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
