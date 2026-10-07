@@ -88,3 +88,59 @@ export function hasUnsavedDraftDifference(
 
   return normDraft.length > 0 && normServer !== normDraft;
 }
+
+export function getLessonHistoryStorageKey(
+  courseId: string,
+  identifier: string,
+): string {
+  const safeIdentifier = identifier || "new";
+  return `cms_lesson_history_${courseId}_${safeIdentifier}`;
+}
+
+export function saveLessonRevision(
+  courseId: string,
+  identifier: string,
+  contentHtml: string,
+): void {
+  const storage = getStorage();
+  if (!storage || !contentHtml) return;
+  try {
+    const key = getLessonHistoryStorageKey(courseId, identifier);
+    const existingRaw = storage.getItem(key);
+    let revisions: LessonDraft[] = [];
+    if (existingRaw) {
+      try {
+        revisions = JSON.parse(existingRaw) as LessonDraft[];
+      } catch {}
+    }
+    if (revisions.length > 0 && revisions[0].contentHtml === contentHtml) {
+      return;
+    }
+    const newRevision: LessonDraft = {
+      contentHtml,
+      savedAt: new Date().toISOString(),
+    };
+    const updated = [newRevision, ...revisions].slice(0, 20);
+    storage.setItem(key, JSON.stringify(updated));
+  } catch (e) {
+    console.warn("Failed to save lesson revision history:", e);
+  }
+}
+
+export function loadLessonRevisions(
+  courseId: string,
+  identifier: string,
+): LessonDraft[] {
+  const storage = getStorage();
+  if (!storage) return [];
+  try {
+    const key = getLessonHistoryStorageKey(courseId, identifier);
+    const raw = storage.getItem(key);
+    if (!raw) return [];
+    return JSON.parse(raw) as LessonDraft[];
+  } catch (e) {
+    console.warn("Failed to load lesson revisions:", e);
+  }
+  return [];
+}
+
