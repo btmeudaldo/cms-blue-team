@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Header } from "@/shared/components/header";
 import { LessonPlayer } from "@/features/learning/components/lesson-player";
 import { resolveLessonByIdentifier } from "@/features/learning/domain/lesson-route";
+import { splitLessonPages } from "@/features/learning/domain/lesson-pages";
 import { notFound } from "next/navigation";
 import {
   C172_COURSE_ID,
@@ -151,10 +152,19 @@ export default async function StudentLessonPage({
   const isC172 =
     course.slug === C172_COURSE_SLUG || course.id === C172_COURSE_ID;
 
+  // Para usuarios regulares (Joseba, instructores, alumnos), publicar únicamente
+  // las 4 diapositivas iniciales y verificadas de la Lección 1.
+  // El superadmin (btmeudaldo@gmail.com) tiene acceso a todas las diapositivas para revisarlas.
+  let lessonContentHtml = currentLesson.content_html;
+  if (!isSuperAdmin && (currentLesson.sequence_order === 1 || currentIndex === 0)) {
+    const pages = splitLessonPages(currentLesson.content_html);
+    lessonContentHtml = pages.slice(0, 4).join("\n<!-- pagebreak -->\n");
+  }
+
   return (
     <LessonPlayer
       key={currentLesson.id}
-      contentHtml={currentLesson.content_html}
+      contentHtml={lessonContentHtml}
       lessonId={currentLesson.id}
       courseId={course.slug || course.id}
       courseTitle={course.title}
@@ -172,6 +182,7 @@ export default async function StudentLessonPage({
       quiz={quiz}
       quizAttempt={quizAttempt}
       courseDocs={isC172 ? C172_DOCUMENTATION : undefined}
+      isSuperAdmin={isSuperAdmin}
     />
   );
 }

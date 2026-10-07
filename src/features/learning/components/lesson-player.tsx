@@ -56,6 +56,7 @@ type LessonPlayerProps = {
   quiz?: any;
   quizAttempt?: any;
   courseDocs?: CourseDocumentationItem[];
+  isSuperAdmin?: boolean;
 };
 
 export function LessonPlayer({
@@ -77,6 +78,7 @@ export function LessonPlayer({
   quiz,
   quizAttempt,
   courseDocs,
+  isSuperAdmin = false,
 }: LessonPlayerProps) {
   const router = useRouter();
   const lessonPages = splitLessonPages(contentHtml);
@@ -840,13 +842,28 @@ export function LessonPlayer({
 
               {/* Slide Counter Badge */}
               {totalLessonPages > 1 && (
-                <div className="flex items-center gap-1.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 px-3 py-1.5 border border-sky-200 dark:border-sky-800">
-                  <span className="text-[10px] font-bold uppercase text-sky-600 dark:text-sky-400">
-                    Diapositiva
-                  </span>
-                  <span className="text-xs font-extrabold text-sky-800 dark:text-sky-200 font-mono">
-                    {currentPageIndex + 1}/{totalLessonPages}
-                  </span>
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 px-3 py-1.5 border border-sky-200 dark:border-sky-800">
+                    <span className="text-[10px] font-bold uppercase text-sky-600 dark:text-sky-400">
+                      Diapositiva
+                    </span>
+                    <span className="text-xs font-extrabold text-sky-800 dark:text-sky-200 font-mono">
+                      {currentPageIndex + 1}/{totalLessonPages}
+                    </span>
+                  </div>
+                  {isSuperAdmin && totalLessonPages > 4 && (
+                    <span
+                      className={`hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[10px] font-black uppercase tracking-wide border ${
+                        currentPageIndex >= 4
+                          ? "bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-700"
+                          : "bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-700"
+                      }`}
+                    >
+                      {currentPageIndex >= 4
+                        ? "🔒 Borrador Superadmin (Oculto a alumnos)"
+                        : "✓ Publicada (Alumnos ven 1-4)"}
+                    </span>
+                  )}
                 </div>
               )}
 
@@ -1115,6 +1132,11 @@ export function LessonPlayer({
                   <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300 whitespace-nowrap">
                     Diapositiva {currentPageIndex + 1} de {totalLessonPages}
                   </span>
+                  {isSuperAdmin && totalLessonPages > 4 && currentPageIndex >= 4 && (
+                    <span className="hidden md:inline-block px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700">
+                      Borrador
+                    </span>
+                  )}
                   <div className="flex items-center gap-1">
                     {lessonPages.map((_, idx) => {
                       const isClickable =

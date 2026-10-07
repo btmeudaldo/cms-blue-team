@@ -423,14 +423,9 @@ export const C172_LESSON_1 = {
 <!-- DIAPOSITIVA 1.3: Pesos Máximos y Distribución de Carga -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <div class="flex items-center gap-3">
-      <span class="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30">
-        ✈️ Diapositiva 3 de 5
-      </span>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-        1.3 Pesos Máximos Estructurales y Distribución de Carga Útil
-      </h1>
-    </div>
+    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+      1.3 Pesos Máximos Estructurales y Distribución de Carga Útil
+    </h1>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
       POH Sección 2 (Limitaciones) &amp; Hojas Oficiales ATO F.OPS.04
     </span>
@@ -616,14 +611,9 @@ export const C172_LESSON_1 = {
 <!-- DIAPOSITIVA 1.4: Factores de Carga y Maniobras Permitidas -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <div class="flex items-center gap-3">
-      <span class="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30">
-        ✈️ Diapositiva 4 de 5
-      </span>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-        1.4 Factores de Carga Estructural y Maniobras Autorizadas
-      </h1>
-    </div>
+    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+      1.4 Factores de Carga Estructural y Maniobras Autorizadas
+    </h1>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
       POH Sección 2 (Limitaciones) &amp; Suplemento Motor TAE 125
     </span>
