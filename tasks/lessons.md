@@ -8,3 +8,4 @@
 - Mantener las garantías de seguridad en servidor y PostgreSQL; los controles del navegador son únicamente experiencia de usuario y fricción.
 - Para ajustes visuales persistentes de imágenes, aplicar los cambios sobre `.lesson-img-wrapper`, que es el contenedor serializado al guardar, no solamente sobre la etiqueta `img`.
 - Separar visual y semánticamente la barra general de formato de texto de los controles locales de cada imagen.
+- En el curso del suplemento EC-NNA, conservar las acciones de las checklists en inglés y traducir WARNING/CAUTION a ADVERTENCIA/PRECAUCIÓN en español. Mantener cifras, condiciones, gravedad, posición y original inglés para cotejo editorial.

@@ -12,9 +12,9 @@ Estado: borrador para decidir el alcance con el usuario. Fecha: 2026-10-07.
 
 ## Reglas editoriales
 
-1. Conservar literalmente las listas, su numeración, orden, valores, unidades, condiciones, WARNING, CAUTION y Note asociados.
+1. Conservar literalmente en inglés las listas de acciones, su numeración, orden, valores, unidades y condiciones. Traducir los WARNING y CAUTION a español, sin resumir ni cambiar su alcance, y conservar el original en el registro editorial local para cotejo.
 2. Revisar cada transcripción contra la página renderizada: la extracción de texto altera el orden de algunos avisos y contiene cortes de palabras. Una diferencia aparente se registra para revisión, sin corregir silenciosamente el documento.
-3. Decisión confirmada: checklists originales en inglés; las explicaciones didácticas, cuando se incluyan, estarán en español.
+3. Decisión confirmada: listas de acciones originales en inglés; avisos ADVERTENCIA (WARNING), PRECAUCIÓN (CAUTION) y explicaciones didácticas en español.
 4. Referenciar cada diapositiva por documento, sección y página impresa; añadir también la página del PDF al registro editorial.
 5. Separar el procedimiento literal de la explicación. Toda explicación técnica debe tener una referencia en el suplemento o, cuando se acuerde, en el POH base.
 6. Una o dos imágenes por diapositiva. Priorizar figuras del suplemento y recortes legibles de ellas; conservar los rótulos relevantes. Un recorte de la checklist es válido para cotejo documental, pero no sustituye una ilustración útil del procedimiento.
@@ -68,7 +68,7 @@ Las imágenes de panel e inspección se han revisado visualmente. Los otros diag
 
 ## Decisiones solicitadas al usuario
 
-- Idioma confirmado: listas literales en inglés y explicaciones en español.
+- Idioma confirmado: listas de acciones literales en inglés; advertencias, precauciones y explicaciones en español.
 - Prevuelo confirmado: incluir completo dentro de la primera lección.
 - Elevación por encima de 5.500 ft: solo mención y referencia a 4-10 a 4-14, por decisión del usuario. No incluir la secuencia detallada.
 - Pista corta y frío/calor: solo mención y referencia a sus páginas, por decisión del usuario. Esta selección no elimina notas ni advertencias que forman parte de las checklists normales incluidas.
@@ -93,6 +93,6 @@ Las imágenes de panel e inspección se han revisado visualmente. Los otros diag
 
 Curso nuevo creado: `85579dd2-2450-48d4-a1f9-bb9da7257a76`, slug `c172-suplemento-tae125-ec-nna`. Lección de muestra: `d2131c35-2d9f-4626-a37a-954178c8c045`, con tres diapositivas y tres imágenes. No se han modificado los cursos anteriores ni matriculado alumnos. El curso usa la cuenta administradora titular de los cursos C172 existentes.
 
-El contenido guardado coincide byte a byte con el HTML local (MD5 `da19dc4b7e4f2610581ec98d9a6229b8`). Las imágenes están integradas en la lección, protegida por RLS, sin privilegio SELECT para anon. La revisión automática rechazó subir las figuras a un bucket público. El repositorio es público: los fragmentos literales, recortes y vista local se conservan en `scratch/c172-course-samples/`, excluido de Git, mientras se decide si se autoriza su publicación pública. No se incluye ese material en un despliegue público.
+El contenido guardado coincide byte a byte con el HTML local (MD5 `1b9fc620c932081d93bf4b23fefa9010`). Las imágenes están integradas en la lección, protegida por RLS, sin privilegio SELECT para anon. La revisión automática rechazó subir las figuras a un bucket público. El repositorio es público: los fragmentos literales, recortes y vista local se conservan en `scratch/c172-course-samples/`, excluido de Git, mientras se decide si se autoriza su publicación pública. No se incluye ese material en un despliegue público.
 
 Están confirmados idioma, prevuelo completo y tratamiento mediante referencias de elevaciones superiores a 5.500 ft, pista corta y frío/calor. El siguiente paso editorial es revisar con el usuario las tres muestras antes de desarrollar la secuencia completa.
