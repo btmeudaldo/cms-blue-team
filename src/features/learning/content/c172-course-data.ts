@@ -175,7 +175,7 @@ export const C172_LESSON_1 = {
             </div>
             <div class="p-2 sm:p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-500/60 dark:border-amber-500/60 shadow-2xs leading-snug">
               <strong class="text-amber-800 dark:text-amber-300 block mb-0.5 text-xs">Combustible Exclusivo:</strong>
-              <strong>JET A-1</strong> exclusivamente. Prohibido AVGAS. No utiliza ni tolera mezclas con AVGAS (destruiría los componentes de alta presión).
+              <strong>JET A-1</strong> exclusivamente. Prohibido AVGAS. No utiliza ni tolera mezclas con AVGAS.
             </div>
           </div>
         </div>
