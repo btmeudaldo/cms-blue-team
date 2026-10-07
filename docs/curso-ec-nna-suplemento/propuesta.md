@@ -18,7 +18,7 @@ Estado: borrador para decidir el alcance con el usuario. Fecha: 2026-10-07.
 4. Referenciar cada diapositiva por documento, sección y página impresa en el registro interno; añadir también la página del PDF. No mostrar fuentes, revisiones ni mensajes de fragmentos en las diapositivas, por decisión del usuario.
 5. Separar el procedimiento literal de la explicación. Toda explicación técnica debe tener una referencia en el suplemento o, cuando se acuerde, en el POH base.
 6. Una o dos imágenes por diapositiva. Priorizar figuras del suplemento y recortes legibles de ellas; conservar los rótulos relevantes. Un recorte de la checklist es válido para cotejo documental, pero no sustituye una ilustración útil del procedimiento.
-7. Usar el lienzo máximo de 600 px como restricción del diseño actual. El contenido debe caber sin scroll y sin recorte: dividir diapositivas cuando haga falta, sin reducir la letra hasta hacerla ilegible.
+7. Usar la altura útil del navegador en 1920 × 1080, descontando cabeceras y controles mediante el layout flexible. El anterior límite de 600 px queda sustituido por esta decisión del usuario. El contenido debe caber sin scroll y sin recorte; reunir notas y listas relacionadas aprovechando el espacio disponible.
 8. Una checklist larga puede ocupar varias diapositivas consecutivas, con título de continuación y numeración original. Los avisos acompañarán los pasos a los que afectan.
 9. Aplazar vídeos hasta completar y revisar la versión con imágenes.
 
@@ -126,3 +126,13 @@ La distribución actual consta de 17 diapositivas. La inspección exterior ocupa
 No se modificó ninguna acción, cifra, condición, aviso o traducción existente. La secuencia de bloques originales se comparó exactamente contra el guion completo previo; se mantienen todos en el mismo orden. Solo se cambia la paginación, los encabezados de presentación y la distribución de las figuras originales, utilizando una o dos por página (25 figuras en total).
 
 Verificación local: las 17 páginas caben en 600 px en ventanas de 1100, 1280 y 1440 px; todas las figuras cargan. Capturas revisadas de inspección exterior y crucero. Contenido protegido guardado igual al local: MD5 `3a0c6b88cb110fbf6b5ad35eff227d76`. Copia anterior de 25 páginas en `scratch/c172-course-samples/previous-lesson-25.json`. No se cambió código de aplicación ni esquema de datos; continúa pendiente la revisión en el reproductor autenticado.
+
+## Altura útil del navegador — 2026-10-07
+
+El usuario sustituye la restricción de 600 px por el espacio útil de una ventana en pantalla de 1920 × 1080. La muestra utiliza un layout flex con altura de viewport dinámica: cabecera y controles ocupan su tamaño real, y el artículo recibe toda la altura restante. En un viewport de 1920 × 1080 el artículo mide 970 px; en 1920 × 960 mide 850 px; en 1920 × 900 mide 790 px. La barra del navegador se excluye automáticamente del viewport, sin restar una cantidad fija por segunda vez.
+
+Se retira `max-height:600px` del HTML de esta lección. El contenido ocupa el 100% de la altura asignada por su contenedor y adapta tipografía e imágenes a ese espacio. La nota inicial se reúne con cabina, la inspección exterior ocupa dos páginas, y arranque/calentamiento y antes del despegue caben en una página cada uno. La lección queda en 12 diapositivas con 17 figuras originales. Antes del despegue usa tres columnas de texto, con lectura de arriba abajo y de izquierda a derecha; las listas restantes usan una o dos columnas.
+
+Verificación de las 12 páginas locales en los tres viewports anteriores: sin scroll de documento, sin desbordamiento de bloques y con todas las figuras cargadas. Las acciones y avisos originales se compararon exactamente y siguen idénticos, en el mismo orden. Capturas en `scratch/manual-normal-review/viewport-*.png`. Contenido almacenado igual al local: MD5 `63ca8025e66f8446aea6b0512d9dcb16`. Copia reversible de la versión de 17 páginas en `scratch/c172-course-samples/previous-lesson-17.json`.
+
+No se modifica el código del reproductor CMS: su layout ya proporciona altura flexible. El reproductor mantiene restricciones de ancho propias; la revisión y el ajuste dentro del CMS autenticado siguen pendientes. La verificación indicada corresponde a la muestra local de 1920 px solicitada por el usuario.

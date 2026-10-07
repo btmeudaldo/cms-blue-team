@@ -220,3 +220,17 @@ Alcance autorizado: solo distribución del contenido existente. No se resume, el
 17 diapositivas y 25 figuras (una o dos por página). La inspección exterior ocupa cuatro páginas consecutivas, frente a siete páginas de zonas independientes en la versión anterior. Se conserva la numeración reiniciada de cada zona y su encabezado original. Cabina y crucero caben en una página; arranque/calentamiento y despegue/ascenso aprovechan páginas compartidas. Los cortes responden al tamaño íntegro de los bloques, sin partir los párrafos largos de drenaje.
 
 Se comprobó igualdad exacta y orden de todos los bloques de acciones y avisos respecto al guion de 48 páginas. Solo cambian agrupación, encabezados y distribución de figuras originales. Verificación local de las 17 páginas a 1100, 1280 y 1440 px: todas las figuras cargan y ningún bloque desborda el lienzo de 600 px. Capturas `scratch/manual-normal-review/continuous-*.png`. HTML guardado igual al local: MD5 `3a0c6b88cb110fbf6b5ad35eff227d76`. La comprobación en el reproductor autenticado continúa pendiente.
+
+## Lienzo con altura útil del navegador
+
+- [x] Sustituir la altura fija de 600 px de la muestra por el espacio disponible después de cabecera y navegación.
+- [x] Retirar el límite de 600 px del HTML de esta lección; conservar el layout flexible del reproductor existente.
+- [x] Reunir la nota inicial con cabina y aprovechar el nuevo tamaño para agrupar listas completas.
+- [x] Comparar todos los bloques originales y medir la presentación en 1920 × 1080 y alturas menores que representan el espacio ocupado por el navegador.
+- [x] Guardar la lección protegida y registrar el resultado.
+
+Solo se modifica la presentación del contenido de esta lección y su muestra local; no se modifica el código del reproductor. El navegador ya entrega una altura de viewport que excluye su propia barra.
+
+### Revisión del lienzo flexible
+
+12 diapositivas y 17 figuras originales; la nota y cabina comparten la primera página y la inspección exterior ocupa dos. Artículo de muestra: 970 px en viewport 1920 × 1080, 850 px en 1920 × 960 y 790 px en 1920 × 900. Las 12 páginas se comprobaron en esos tamaños sin scroll ni desbordamientos. Todos los bloques de acciones y avisos siguen idénticos y en orden. MD5 almacenado `63ca8025e66f8446aea6b0512d9dcb16`, igual al local. Pendiente revisar el contenido dentro del CMS autenticado, cuyo ancho se controla por el reproductor y difiere de la muestra local.
