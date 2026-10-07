@@ -92,7 +92,10 @@ export default async function StudentLessonPage({
     .map((p: any) => String(p.lesson_id));
 
   const isC172 =
-    course.slug === C172_COURSE_SLUG || course.id === C172_COURSE_ID;
+    course.slug === C172_COURSE_SLUG ||
+    course.id === C172_COURSE_ID ||
+    course.slug === "c172-manual-poh" ||
+    course.id === "17200000-0000-0000-0000-000000000272";
 
   return (
     <LessonPlayer
