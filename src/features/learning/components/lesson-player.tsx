@@ -1161,7 +1161,7 @@ export function LessonPlayer({
               ref={contentRef}
               className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 ${
                 isSlideMode
-                  ? "flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
+                  ? "flex-1 min-h-0 max-h-full overflow-hidden p-3 sm:p-5 lg:p-6 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 [&_.lesson-slide-container]:overflow-hidden"
                   : "prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
               }`}
               dangerouslySetInnerHTML={{ __html: safeContentHtml }}

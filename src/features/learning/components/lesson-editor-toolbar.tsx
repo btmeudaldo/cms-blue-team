@@ -445,6 +445,18 @@ export function LessonEditorToolbar({
       { col: col1, pct: pct1, side: "izq", label: "Cuadro Izquierdo" },
       { col: col2, pct: pct2, side: "der", label: "Cuadro Derecho" },
     ].forEach(({ col, pct, side, label }) => {
+      // Bloquear altura vertical del cuadro para que no se estire indefinidamente hacia abajo
+      col.style.setProperty("max-height", "100%");
+      col.style.setProperty("overflow", "hidden");
+      col.style.setProperty("min-height", "0");
+
+      const innerCard = col.querySelector(":scope > div:not(.col-resize-controls)") as HTMLElement | null;
+      if (innerCard) {
+        innerCard.style.setProperty("max-height", "100%");
+        innerCard.style.setProperty("overflow", "hidden");
+        innerCard.style.setProperty("min-height", "0");
+      }
+
       let controls = col.querySelector(":scope > .col-resize-controls") as HTMLElement | null;
       if (!controls) {
         controls = document.createElement("div");
@@ -455,6 +467,9 @@ export function LessonEditorToolbar({
           <div class="flex items-center gap-1.5 font-bold">
             <span class="text-sky-400">📐</span>
             <span class="font-medium text-slate-200">${label}:</span>
+            <span class="inline-flex items-center gap-0.5 text-[9.5px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono" title="Tamaño vertical bloqueado: entra lo que entra y nunca supera el límite">
+              🔒 Alto Bloqueado
+            </span>
           </div>
           <div class="flex items-center gap-1.5">
             <div class="flex items-center bg-slate-800 dark:bg-slate-700/80 rounded-lg px-2 py-0.5 border border-slate-600 focus-within:border-sky-400 focus-within:ring-1 focus-within:ring-sky-400">
@@ -2301,7 +2316,7 @@ export function LessonEditorToolbar({
               onDrop={handleDrop}
               onDragEnd={handleDragEnd}
               onPaste={handleCanvasPaste}
-              className="visual-canvas lesson-slide-container w-full max-w-[1550px] mx-auto min-h-[620px] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 lg:p-10 text-slate-900 dark:text-slate-100 text-sm leading-relaxed focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm"
+              className="visual-canvas lesson-slide-container w-full max-w-[1550px] mx-auto h-[600px] max-h-[600px] overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 text-slate-900 dark:text-slate-100 text-sm leading-relaxed focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 [&_.lesson-slide-container]:overflow-hidden"
             />
           ) : (
             <div className="space-y-6 max-w-[1550px] mx-auto">
