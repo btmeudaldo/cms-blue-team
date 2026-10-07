@@ -21,6 +21,7 @@ export default async function StudentCourseDetailPage({
 }) {
   const { courseId } = await params;
   const { user, profile, isDemo } = await getResilientUser();
+  const isSuperAdmin = user?.email === "btmeudaldo@gmail.com";
   const role = profile?.role ?? "student";
   const isAdmin = role === "admin" || role === "instructor";
 
@@ -229,65 +230,104 @@ export default async function StudentCourseDetailPage({
                   advanced: isCompleted,
                 } = summary.lessons[index];
 
+                const isComingSoon =
+                  !isSuperAdmin && (lesson.sequence_order > 1 || index > 0);
+
                 return (
                   <div key={lesson.id} className="space-y-2">
                     {/* Lesson Main Row */}
-                    <Link
-                      href={`/courses/${course.slug || course.id}/lessons/${lesson.slug || lesson.id}`}
-                      className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-xs card-hover transition-all group"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div
-                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-bold text-sm transition-colors ${
-                            isCompleted
-                              ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
-                              : "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] border border-blue-100 dark:border-blue-900 group-hover:bg-[#1a80ff] group-hover:text-white"
-                          }`}
-                        >
-                          {isCompleted ? "✓" : index + 1}
-                        </div>
-
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors">
-                              {lesson.title}
-                            </h3>
-                            {isCompleted && (
-                              <span className="rounded-full bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
-                                {readingCompleted
-                                  ? "Lectura OK"
-                                  : quizPassed
-                                    ? "Examen aprobado · Lectura pendiente"
-                                    : "Completada"}
-                              </span>
-                            )}
+                    {isComingSoon ? (
+                      <div className="flex items-center justify-between rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40 p-5 opacity-75">
+                        <div className="flex items-center gap-4">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-bold text-sm bg-slate-100 dark:bg-slate-800 text-slate-400 border border-slate-200 dark:border-slate-700">
+                            🔒
                           </div>
-                          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 flex items-center gap-2 flex-wrap">
-                            <span>{lesson.word_count || 0} palabras</span>
-                            <span>&middot;</span>
-                            <span>Tiempo mín. exigido: {lesson.min_seconds}s</span>
-                            {!quiz && (
-                              <>
-                                <span>&middot;</span>
-                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-400 dark:text-slate-500">
-                                  <span>⚪</span>
-                                  <span>Examen: No aplica</span>
-                                </span>
-                              </>
-                            )}
-                          </p>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <h3 className="text-base font-bold text-slate-600 dark:text-slate-400">
+                                {lesson.title}
+                              </h3>
+                              <span className="rounded-full bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800/60 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-amber-700 dark:text-amber-300">
+                                ⏳ Próximamente
+                              </span>
+                            </div>
+                            <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+                              Módulo en fase de revisión pedagógica y técnica por Jefatura de Estudios
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-semibold text-slate-400 italic hidden sm:inline">
+                            En preparación
+                          </span>
+                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-300 dark:text-slate-600">
+                            🔒
+                          </div>
                         </div>
                       </div>
+                    ) : (
+                      <Link
+                        href={`/courses/${course.slug || course.id}/lessons/${lesson.slug || lesson.id}`}
+                        className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-xs card-hover transition-all group"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div
+                            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-bold text-sm transition-colors ${
+                              isCompleted
+                                ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
+                                : "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] border border-blue-100 dark:border-blue-900 group-hover:bg-[#1a80ff] group-hover:text-white"
+                            }`}
+                          >
+                            {isCompleted ? "✓" : index + 1}
+                          </div>
 
-                      <div className="flex items-center gap-3">
-                        <span className="hidden sm:inline-block text-xs font-bold text-[#1a80ff] opacity-0 group-hover:opacity-100 transition-opacity">
-                          Estudiar lección
-                        </span>
-                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:bg-blue-50 dark:group-hover:bg-slate-700 group-hover:text-[#1a80ff] transition-colors">
-                          &rarr;
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors">
+                                {lesson.title}
+                              </h3>
+                              {isSuperAdmin && lesson.sequence_order > 1 && (
+                                <span className="rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 px-2 py-0.5 text-[10px] font-bold text-indigo-600 dark:text-indigo-400">
+                                  🛠️ Borrador (Solo tú)
+                                </span>
+                              )}
+                              {isCompleted && (
+                                <span className="rounded-full bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                                  {readingCompleted
+                                    ? "Lectura OK"
+                                    : quizPassed
+                                      ? "Examen aprobado · Lectura pendiente"
+                                      : "Completada"}
+                                </span>
+                              )}
+                            </div>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 flex items-center gap-2 flex-wrap">
+                              <span>{lesson.word_count || 0} palabras</span>
+                              <span>&middot;</span>
+                              <span>Tiempo mín. exigido: {lesson.min_seconds}s</span>
+                              {!quiz && (
+                                <>
+                                  <span>&middot;</span>
+                                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-400 dark:text-slate-500">
+                                    <span>⚪</span>
+                                    <span>Examen: No aplica</span>
+                                  </span>
+                                </>
+                              )}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </Link>
+
+                        <div className="flex items-center gap-3">
+                          <span className="hidden sm:inline-block text-xs font-bold text-[#1a80ff] opacity-0 group-hover:opacity-100 transition-opacity">
+                            Estudiar lección
+                          </span>
+                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:bg-blue-50 dark:group-hover:bg-slate-700 group-hover:text-[#1a80ff] transition-colors">
+                            &rarr;
+                          </div>
+                        </div>
+                      </Link>
+                    )}
 
                     {/* Associated Quiz Row (Displayed underneath lesson if available) */}
                     {quiz && (

@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Header } from "@/shared/components/header";
 import { LessonPlayer } from "@/features/learning/components/lesson-player";
 import { resolveLessonByIdentifier } from "@/features/learning/domain/lesson-route";
 import { notFound } from "next/navigation";
@@ -53,6 +55,54 @@ export default async function StudentLessonPage({
   if (!currentLesson) notFound();
   const currentIndex = lessons.indexOf(currentLesson);
 
+  const isSuperAdmin = user?.email === "btmeudaldo@gmail.com";
+  const isDraftLesson = currentLesson.sequence_order > 1;
+
+  if (!isSuperAdmin && isDraftLesson) {
+    return (
+      <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col">
+        <Header
+          userEmail={user.email}
+          userName={profile?.full_name}
+          role={profile?.role}
+        />
+        <main className="flex-1 flex items-center justify-center p-6">
+          <div className="max-w-md w-full rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center space-y-5 shadow-xl">
+            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 text-3xl">
+              🔒
+            </div>
+            <div className="space-y-2">
+              <span className="inline-block rounded-full bg-amber-100 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 px-3 py-1 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-300">
+                Módulo en Preparación
+              </span>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">
+                {currentLesson.title}
+              </h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Esta lección se encuentra actualmente en fase de revisión pedagógica y técnica por Jefatura de Estudios / Blue Team.
+                Estará disponible en la plataforma próximamente.
+              </p>
+            </div>
+            <div className="pt-2 flex flex-col sm:flex-row gap-3">
+              <Link
+                href={`/courses/${course.slug || course.id}/lessons/${lessons[0]?.slug || lessons[0]?.id}`}
+                className="flex-1 rounded-xl bg-[#1a80ff] px-4 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-colors"
+              >
+                Ir a la Lección 1
+              </Link>
+              <Link
+                href={`/courses/${course.slug || course.id}`}
+                className="flex-1 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 px-4 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              >
+                Volver al Curso
+              </Link>
+            </div>
+          </div>
+        </main>
+      </div>
+    );
+  }
+
   const [quiz, quizAttempts] = await Promise.all([
     getResilientQuizForLesson(currentLesson.id),
     getResilientQuizAttempts(user.id),
@@ -71,6 +121,10 @@ export default async function StudentLessonPage({
   const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
   const nextLesson =
     currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
+  const safeNextLessonId =
+    !isSuperAdmin && nextLesson && nextLesson.sequence_order > 1
+      ? null
+      : nextLesson?.slug || nextLesson?.id;
 
   const progressMap = new Map(
     userProgress?.map((p: any) => [p.lesson_id, p]) || [],
@@ -81,7 +135,10 @@ export default async function StudentLessonPage({
 
   const lessonsSummary = lessons.map((l: any) => ({
     id: l.id,
-    title: l.title,
+    title:
+      !isSuperAdmin && l.sequence_order > 1
+        ? `${l.title} (🔒 Próximamente)`
+        : l.title,
     sequence_order: l.sequence_order,
     slug: l.slug,
   }));
@@ -104,7 +161,7 @@ export default async function StudentLessonPage({
       lessonTitle={currentLesson.title}
       minSeconds={currentLesson.min_seconds}
       pathToRevalidate={`/courses/${course.slug || course.id}`}
-      nextLessonId={nextLesson?.slug || nextLesson?.id}
+      nextLessonId={safeNextLessonId}
       prevLessonId={prevLesson?.slug || prevLesson?.id}
       isAlreadyCompleted={isAlreadyCompleted}
       userEmail={user.email}
