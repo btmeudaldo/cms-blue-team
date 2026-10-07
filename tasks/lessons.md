@@ -11,3 +11,4 @@
 - En el curso del suplemento EC-NNA, conservar las acciones de las checklists en inglés y traducir WARNING/CAUTION a ADVERTENCIA/PRECAUCIÓN en español. Mantener cifras, condiciones, gravedad, posición y original inglés para cotejo editorial.
 - En las diapositivas de este curso, usar CD135 / CD155 como rótulo visible, traducir los subtítulos de procedimiento y mantener fuentes, revisiones y trazabilidad solo en el registro interno. Retirar mensajes de muestra al completar la lección.
 - Conservar los títulos de las lecciones pendientes del curso nuevo; elaborar su contenido desde el manual antes de incorporarlo, según la decisión editorial del usuario.
+- Organizar las diapositivas por checklist completa, procurando una o dos por lista. Juntar fragmentos cortos del mismo procedimiento antes de crear páginas adicionales; conservar juntos pasos y avisos, con separación visible entre procedimientos distintos.

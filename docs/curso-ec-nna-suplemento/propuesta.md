@@ -108,3 +108,11 @@ Se retiraron todos los pies de fuente y los textos de muestra o fragmento. Se co
 Erratas conservadas del original: CABIN (7) muestra un paréntesis sin cierre; NORMAL LANDING (2), página 4-17, muestra `10°-below 85 KIAS/98 mph` sin extremo superior. No se completaron cifras ni se corrigieron silenciosamente esas acciones. La advertencia de contaminación se repite junto al ala izquierda para acompañar su referencia a la advertencia previa.
 
 Verificación: 48 diapositivas y 48 imágenes cargadas; medición de todos los bloques en navegador local a 1440 × 900, sin sobrepasar el lienzo de 600 px; capturas de diapositivas 1, 6, 22, 33, 45 y 48. HTML almacenado igual al local, MD5 `1a63b4166b521a67d2dc3cbb79d916f3`. La comprobación dentro del reproductor del CMS con sesión autorizada sigue pendiente. No se cambió código de aplicación ni esquema de datos.
+
+## Reorganización por checklist — 2026-10-07
+
+Por petición del usuario se sustituye la distribución de 48 diapositivas por 25. Cada checklist ocupa una o dos páginas. Se mantienen los pasos íntegros, sin partir un bloque de acción entre diapositivas, y los avisos conservan su orden. Cabina, morro, arranque, antes del despegue y crucero utilizan dos páginas. Las fases cortas relacionadas se agrupan con encabezados propios; los procedimientos diferentes mantienen una separación explícita.
+
+Se amplía el espacio de texto y se usan dos columnas en cuatro páginas densas. Tamaños: acciones de 18 px en una columna y 17 px en dos; avisos de 17 px. Se conserva una figura del manual por página. La agrupación verifica igualdad exacta de todos los bloques originales y su secuencia, exceptuando únicamente los encabezados añadidos para separar listas.
+
+Las 25 páginas se midieron en navegador local a 1100, 1280 y 1440 px de ancho, sin desbordamientos del lienzo de 600 px y con todas las imágenes cargadas. Se revisaron capturas, incluidas las páginas de arranque y prueba FADEC. Contenido protegido almacenado igual al local: MD5 `5dfb720cc1277264f2d823b725c7b40f`. Se conserva la versión anterior en `scratch/c172-course-samples/previous-lesson-48.json`. La verificación en el reproductor autenticado sigue pendiente.

@@ -187,3 +187,20 @@ Curso: `85579dd2-2450-48d4-a1f9-bb9da7257a76`. Lección: `d2131c35-2d9f-4626-a37
 ### Revisión de la lección completa
 
 Lección 3: 48 diapositivas, HTML MD5 `1a63b4166b521a67d2dc3cbb79d916f3`. Evidencia local: `scratch/manual-normal-review/complete-*.png` y `scratch/c172-course-samples/layout-report.json` (sin incidencias). No se modificó código de aplicación ni se publicaron los recortes del manual. Las lecciones 1, 2 y 4 contienen solo un aviso de elaboración pendiente. El curso anterior permanece intacto.
+
+## Reorganización editorial por checklist
+
+- [x] Agrupar los fragmentos de una misma checklist, procurando una o dos diapositivas por lista.
+- [x] Mantener íntegros los pasos y su orden, con los avisos asociados; evitar mezclar procedimientos distintos.
+- [x] Ajustar la distribución de texto e imagen y medir todas las diapositivas en el lienzo de 600 px.
+- [x] Comparar secuencia de bloques con la versión anterior para asegurar que no se pierde contenido.
+- [x] Guardar y verificar el contenido protegido; registrar cambios.
+- [ ] Subir commit y comprobar preview.
+
+Alcance: edición de contenido y maquetación de la lección 3; sin cambios de código de aplicación ni esquema de datos. La agrupación se valida antes de sustituir la versión guardada.
+
+### Revisión de la reorganización
+
+25 diapositivas y 25 imágenes, frente a las 48 anteriores. Cabina, morro, arranque, antes del despegue y crucero quedan en dos diapositivas; las otras listas, en una. Se agrupan fases consecutivas relacionadas con encabezados propios: bordes del ala izquierda, después del despegue/ascenso, descenso/antes del aterrizaje y después del aterrizaje/aseguramiento. En las cuatro páginas más densas, dos columnas de texto preservan la lectura de arriba abajo y de izquierda a derecha.
+
+La secuencia completa de bloques coincide con la anterior; solo se añaden encabezados separadores y se sustituyen títulos repetidos. Verificación local en anchos de 1100, 1280 y 1440 px: todas las imágenes cargan y ningún bloque rebasa el lienzo de 600 px. HTML guardado coincide byte a byte: MD5 `5dfb720cc1277264f2d823b725c7b40f`. Copia reversible de la versión de 48 páginas y capturas en `scratch/`, sin publicar material del manual en el repositorio.
