@@ -42,6 +42,22 @@ async function requireStaffSession() {
   return session;
 }
 
+export const LEGACY_TEST_COURSE_IDS = new Set([
+  "11111111-1111-1111-1111-111111111101",
+  "22222222-2222-2222-2222-222222222202",
+  "33333333-3333-3333-3333-333333333303",
+  "44444444-4444-4444-4444-444444444404",
+  "55555555-5555-5555-5555-555555555505",
+]);
+
+export const LEGACY_TEST_COURSE_SLUGS = new Set([
+  "fundamentos-pilotaje-privado-ppl",
+  "seguridad-meteorologia-aeronaval",
+  "navegacion-instrumental-ifr-radioayudas",
+  "sistemas-aeronaves-c172-pa28",
+  "ciberseguridad-avonica-redes-cabina",
+]);
+
 // Legacy mode arguments are ignored: academic reads never substitute simulated records.
 export async function getResilientCourses(
   userId: string,
@@ -50,7 +66,7 @@ export async function getResilientCourses(
 ) {
   const { client, user, profile } = await requireVerifiedSession();
   if (profile.role !== "student") {
-    return (
+    const courses =
       (await readData(
         client
           .from("courses")
@@ -58,8 +74,8 @@ export async function getResilientCourses(
             "id, title, slug, description, image_url, created_at, lessons(id, title, slug, sequence_order)",
           )
           .order("created_at", { ascending: false }),
-      )) ?? []
-    );
+      )) ?? [];
+    return courses.filter((c: any) => !LEGACY_TEST_COURSE_IDS.has(c.id));
   }
   if (userId !== user.id)
     throw new Error("No tienes permisos para consultar estos cursos.");
@@ -71,13 +87,21 @@ export async function getResilientCourses(
       )
       .eq("user_id", user.id),
   );
-  return (enrollments ?? []).map((entry: any) => entry.courses).filter(Boolean);
+  return (enrollments ?? [])
+    .map((entry: any) => entry.courses)
+    .filter((c: any) => c && !LEGACY_TEST_COURSE_IDS.has(c.id));
 }
 
 export async function getResilientCourseDetail(
   courseId: string,
   _allowMockFallback = false,
 ) {
+  if (
+    LEGACY_TEST_COURSE_IDS.has(courseId) ||
+    LEGACY_TEST_COURSE_SLUGS.has(courseId)
+  ) {
+    return null;
+  }
   const { client } = await requireVerifiedSession();
   const isUuid =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
@@ -143,7 +167,8 @@ export async function getResilientEnrollments() {
   const { client, user, profile } = await requireVerifiedSession();
   let query = client.from("course_enrollments").select("user_id, course_id");
   if (profile.role === "student") query = query.eq("user_id", user.id);
-  return (await readData(query)) ?? [];
+  const data = (await readData(query)) ?? [];
+  return data.filter((e: any) => !LEGACY_TEST_COURSE_IDS.has(e.course_id));
 }
 
 export async function getResilientQuizzes() {
