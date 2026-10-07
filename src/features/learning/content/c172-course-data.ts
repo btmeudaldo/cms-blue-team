@@ -175,7 +175,7 @@ export const C172_LESSON_1 = {
             </div>
             <div class="p-2 sm:p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-500/60 dark:border-amber-500/60 shadow-2xs leading-snug">
               <strong class="text-amber-800 dark:text-amber-300 block mb-0.5 text-xs">Combustible Exclusivo:</strong>
-              <strong>JET A-1</strong> exclusivamente. Prohibido AVGAS. No utiliza ni tolera mezclas con AVGAS.
+              <strong>JET A-1</strong> exclusivamente. Prohibido AVGAS. No utiliza ni tolera mezclas con AVGAS (destruiría los componentes de alta presión).
             </div>
           </div>
         </div>
@@ -255,57 +255,57 @@ export const C172_LESSON_1 = {
     </span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch flex-1 min-h-0 py-2" data-left-pct="42" style="--col-left: 42fr; --col-right: 58fr; grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);">
-    <!-- Columna Izquierda (5 cols / 42%): Anemómetro C172 con TAS más grande y legible -->
-    <div class="lg:col-span-5 flex flex-col min-h-0">
-      <div class="flex-1 flex flex-col justify-between p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch flex-1 min-h-0 py-2" data-left-pct="33" style="--col-left: 33fr; --col-right: 67fr; grid-template-columns: minmax(0, 33fr) minmax(0, 67fr);">
+    <!-- Columna Izquierda (4 cols / 33%): Anemómetro C172 con TAS (Cuadro 100% Cuadrado) -->
+    <div class="lg:col-span-4 flex flex-col min-h-0">
+      <div class="flex-1 flex flex-col justify-between p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
             🧭 ANEMÓMETRO C172
           </span>
           <span class="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
-            Código de Colores TAS
+            Código Colores
           </span>
         </div>
 
-        <div class="flex-1 flex flex-col justify-around py-1 gap-2.5">
-          <!-- Cuadro de Anemómetro ampliado y nítido -->
-          <div class="w-full aspect-square max-w-[250px] sm:max-w-[275px] mx-auto p-1.5 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-center overflow-hidden" style="aspect-ratio: 1 / 1;">
+        <div class="flex-1 flex flex-col justify-around py-1 gap-2">
+          <!-- Cuadro estrictamente CUADRADO (1:1) sin bandas laterales -->
+          <div class="w-full aspect-square max-w-[205px] sm:max-w-[215px] mx-auto p-1 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-center overflow-hidden" style="aspect-ratio: 1 / 1;">
             <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro Cessna 172 con TAS" class="w-full h-full object-cover rounded-xl shadow-inner" style="aspect-ratio: 1 / 1; width: 100%; height: 100%; object-fit: cover;">
           </div>
 
-          <!-- Arcos de Color claros, legibles y destacados -->
-          <div class="flex flex-col gap-1.5 p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs text-xs sm:text-sm">
-            <div class="flex items-center justify-between py-1 border-b border-slate-100 dark:border-slate-700/50">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-2">
-                <span class="text-sm">⚪</span> <span>Blanco:</span>
+          <!-- Arcos de Color en una sola columna vertical separados y perfectamente alineados -->
+          <div class="flex flex-col gap-1.5 p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs text-[11px] sm:text-xs">
+            <div class="flex items-center justify-between py-0.5 border-b border-slate-100 dark:border-slate-700/50">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
+                <span>⚪</span> <span>Blanco:</span>
               </span>
-              <span class="font-mono font-bold text-slate-800 dark:text-slate-200">
-                41-85 kt <span class="text-slate-500 dark:text-slate-400 font-sans font-medium text-xs">(Flaps)</span>
-              </span>
-            </div>
-            <div class="flex items-center justify-between py-1 border-b border-slate-100 dark:border-slate-700/50">
-              <span class="font-bold text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
-                <span class="text-sm">🟢</span> <span>Verde:</span>
-              </span>
-              <span class="font-mono font-bold text-slate-800 dark:text-slate-200">
-                47-128 kt <span class="text-slate-500 dark:text-slate-400 font-sans font-medium text-xs">(Normal)</span>
+              <span class="font-mono font-semibold text-slate-700 dark:text-slate-200">
+                41-85 kt <span class="text-slate-400 font-sans text-[10px]">(Flaps)</span>
               </span>
             </div>
-            <div class="flex items-center justify-between py-1 border-b border-slate-100 dark:border-slate-700/50">
-              <span class="font-bold text-amber-700 dark:text-amber-400 flex items-center gap-2">
-                <span class="text-sm">🟡</span> <span>Amarillo:</span>
+            <div class="flex items-center justify-between py-0.5 border-b border-slate-100 dark:border-slate-700/50">
+              <span class="font-bold text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
+                <span>🟢</span> <span>Verde:</span>
               </span>
-              <span class="font-mono font-bold text-slate-800 dark:text-slate-200">
-                128-160 kt <span class="text-slate-500 dark:text-slate-400 font-sans font-medium text-xs">(Calma)</span>
+              <span class="font-mono font-semibold text-slate-700 dark:text-slate-200">
+                47-128 kt <span class="text-slate-400 font-sans text-[10px]">(Normal)</span>
               </span>
             </div>
-            <div class="flex items-center justify-between py-1">
-              <span class="font-bold text-rose-700 dark:text-rose-400 flex items-center gap-2">
-                <span class="text-sm">🔴</span> <span>Rojo:</span>
+            <div class="flex items-center justify-between py-0.5 border-b border-slate-100 dark:border-slate-700/50">
+              <span class="font-bold text-amber-700 dark:text-amber-400 flex items-center gap-1.5">
+                <span>🟡</span> <span>Amarillo:</span>
               </span>
-              <span class="font-mono font-bold text-rose-600 dark:text-rose-400">
-                160 kt <span class="text-slate-500 dark:text-slate-400 font-sans font-medium text-xs">(Vne)</span>
+              <span class="font-mono font-semibold text-slate-700 dark:text-slate-200">
+                128-160 kt <span class="text-slate-400 font-sans text-[10px]">(Calma)</span>
+              </span>
+            </div>
+            <div class="flex items-center justify-between py-0.5">
+              <span class="font-bold text-rose-700 dark:text-rose-400 flex items-center gap-1.5">
+                <span>🔴</span> <span>Rojo:</span>
+              </span>
+              <span class="font-mono font-semibold text-slate-700 dark:text-slate-200">
+                160 kt <span class="text-slate-400 font-sans text-[10px] font-normal">(Vne)</span>
               </span>
             </div>
           </div>
@@ -313,8 +313,8 @@ export const C172_LESSON_1 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (7 cols / 58%): Espaciosa para las 8 V-Speeds + Vglide -->
-    <div class="lg:col-span-7 flex flex-col min-h-0">
+    <!-- Columna Derecha (8 cols): Espaciosa para las 8 V-Speeds + Vglide -->
+    <div class="lg:col-span-8 flex flex-col min-h-0">
       <div class="flex-1 flex flex-col justify-between p-3.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
@@ -423,9 +423,14 @@ export const C172_LESSON_1 = {
 <!-- DIAPOSITIVA 1.3: Pesos Máximos y Distribución de Carga -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-      1.3 Pesos Máximos Estructurales y Distribución de Carga Útil
-    </h1>
+    <div class="flex items-center gap-3">
+      <span class="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30">
+        ✈️ Diapositiva 3 de 5
+      </span>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+        1.3 Pesos Máximos Estructurales y Distribución de Carga Útil
+      </h1>
+    </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
       POH Sección 2 (Limitaciones) &amp; Hojas Oficiales ATO F.OPS.04
     </span>
@@ -611,9 +616,14 @@ export const C172_LESSON_1 = {
 <!-- DIAPOSITIVA 1.4: Factores de Carga y Maniobras Permitidas -->
 <div class="lesson-slide-container h-full flex flex-col justify-between text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 shrink-0">
-    <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
-      1.4 Factores de Carga Estructural y Maniobras Autorizadas
-    </h1>
+    <div class="flex items-center gap-3">
+      <span class="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-sky-500/15 text-sky-600 dark:text-sky-400 border border-sky-500/30">
+        ✈️ Diapositiva 4 de 5
+      </span>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight">
+        1.4 Factores de Carga Estructural y Maniobras Autorizadas
+      </h1>
+    </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">
       POH Sección 2 (Limitaciones) &amp; Suplemento Motor TAE 125
     </span>
