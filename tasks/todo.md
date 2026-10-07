@@ -155,3 +155,19 @@ Pendiente de ejecución.
 - [x] RED: definir las clases de alineación izquierda, centro y derecha.
 - [x] GREEN: añadir controles y persistir la alineación elegida en cada cuadro.
 - [x] Verificar pruebas, tipos, lint y formato.
+
+## Curso nuevo C172: suplemento EC-NNA y muestra
+
+- [x] Confirmar alcance: prevuelo completo, listas en inglés, explicación en español y referencias a procedimientos especiales.
+- [x] Crear rama `codex/c172-suplemento-ec-nna` desde `desarrollo-c172`.
+- [x] Cotejar las páginas 4-6, 4-7, 4-8 y 4-9 y las figuras de 1-5 y 1-6 con el PDF renderizado.
+- [x] Preparar tres fragmentos de muestra y revisar las capturas locales a 1440 × 900.
+- [x] Crear curso independiente y lección de muestra en el CMS, sin matrícula de alumnos.
+- [x] Verificar tres diapositivas, tres imágenes y coincidencia del HTML local con el almacenado.
+- [x] Conservar imágenes y fragmentos fuera del repositorio público, en scratch, e integrarlos dentro de la lección protegida por RLS.
+- [ ] Revisar la muestra dentro del reproductor del CMS con sesión autorizada.
+- [ ] Validación editorial del usuario antes de ampliar la secuencia completa.
+
+### Revisión de la muestra
+
+Curso: `85579dd2-2450-48d4-a1f9-bb9da7257a76`. Lección: `d2131c35-2d9f-4626-a37a-954178c8c045`. Detalle y alcance en `docs/curso-ec-nna-suplemento/propuesta.md`. La vista local de las tres muestras usa un lienzo de 600 px. No se han cambiado código de aplicación ni esquemas de base de datos. La revisión automática rechazó subir recortes a almacenamiento público; las imágenes permanecen integradas en las lecciones con acceso autorizado.
