@@ -1,4 +1,4 @@
-# Propuesta de curso: Cessna 172 con TAE 125-02-114
+# Curso Cessna 172 — CD135 / CD155: registro editorial interno
 
 Estado: borrador para decidir el alcance con el usuario. Fecha: 2026-10-07.
 
@@ -15,7 +15,7 @@ Estado: borrador para decidir el alcance con el usuario. Fecha: 2026-10-07.
 1. Conservar literalmente en inglés las listas de acciones, su numeración, orden, valores, unidades y condiciones. Traducir los WARNING y CAUTION a español, sin resumir ni cambiar su alcance, y conservar el original en el registro editorial local para cotejo.
 2. Revisar cada transcripción contra la página renderizada: la extracción de texto altera el orden de algunos avisos y contiene cortes de palabras. Una diferencia aparente se registra para revisión, sin corregir silenciosamente el documento.
 3. Decisión confirmada: listas de acciones originales en inglés; avisos ADVERTENCIA (WARNING), PRECAUCIÓN (CAUTION) y explicaciones didácticas en español.
-4. Referenciar cada diapositiva por documento, sección y página impresa; añadir también la página del PDF al registro editorial.
+4. Referenciar cada diapositiva por documento, sección y página impresa en el registro interno; añadir también la página del PDF. No mostrar fuentes, revisiones ni mensajes de fragmentos en las diapositivas, por decisión del usuario.
 5. Separar el procedimiento literal de la explicación. Toda explicación técnica debe tener una referencia en el suplemento o, cuando se acuerde, en el POH base.
 6. Una o dos imágenes por diapositiva. Priorizar figuras del suplemento y recortes legibles de ellas; conservar los rótulos relevantes. Un recorte de la checklist es válido para cotejo documental, pero no sustituye una ilustración útil del procedimiento.
 7. Usar el lienzo máximo de 600 px como restricción del diseño actual. El contenido debe caber sin scroll y sin recorte: dividir diapositivas cuando haga falta, sin reducir la letra hasta hacerla ilegible.
@@ -96,3 +96,15 @@ Curso nuevo creado: `85579dd2-2450-48d4-a1f9-bb9da7257a76`, slug `c172-suplement
 El contenido guardado coincide byte a byte con el HTML local (MD5 `1b9fc620c932081d93bf4b23fefa9010`). Las imágenes están integradas en la lección, protegida por RLS, sin privilegio SELECT para anon. La revisión automática rechazó subir las figuras a un bucket público. El repositorio es público: los fragmentos literales, recortes y vista local se conservan en `scratch/c172-course-samples/`, excluido de Git, mientras se decide si se autoriza su publicación pública. No se incluye ese material en un despliegue público.
 
 Están confirmados idioma, prevuelo completo y tratamiento mediante referencias de elevaciones superiores a 5.500 ft, pista corta y frío/calor. El siguiente paso editorial es revisar con el usuario las tres muestras antes de desarrollar la secuencia completa.
+
+## Entrega de la lección 3 completa — 2026-10-07
+
+El usuario autorizó completar la muestra y confirmó conservar únicamente los títulos de las otras tres lecciones, cuyo contenido se rehacerá desde el manual. La estructura queda: 1. Limitaciones; 2. Sistemas; 3. Procedimientos normales; 4. Emergencias. El orden de elaboración empieza por la lección 3.
+
+La lección 3 reúne 48 diapositivas: 19 de prevuelo; 9 de preparación, arranque y calentamiento; 7 de comprobaciones antes del despegue; 12 desde despegue normal hasta aseguramiento; una de referencias a procedimientos especiales. Se mantienen acciones inglesas, avisos/notas españoles y rótulo visible CD135 / CD155. La denominación del rótulo no amplía por sí misma la aplicabilidad documental del suplemento a otras instalaciones.
+
+Se retiraron todos los pies de fuente y los textos de muestra o fragmento. Se conserva el cotejo por página y el original de las traducciones en JSON local, excluido del repositorio público. Las figuras originales de inspección, combustible, instrumentos y panel de luces se integran en la lección protegida; no se han publicado en almacenamiento público.
+
+Erratas conservadas del original: CABIN (7) muestra un paréntesis sin cierre; NORMAL LANDING (2), página 4-17, muestra `10°-below 85 KIAS/98 mph` sin extremo superior. No se completaron cifras ni se corrigieron silenciosamente esas acciones. La advertencia de contaminación se repite junto al ala izquierda para acompañar su referencia a la advertencia previa.
+
+Verificación: 48 diapositivas y 48 imágenes cargadas; medición de todos los bloques en navegador local a 1440 × 900, sin sobrepasar el lienzo de 600 px; capturas de diapositivas 1, 6, 22, 33, 45 y 48. HTML almacenado igual al local, MD5 `1a63b4166b521a67d2dc3cbb79d916f3`. La comprobación dentro del reproductor del CMS con sesión autorizada sigue pendiente. No se cambió código de aplicación ni esquema de datos.

@@ -166,8 +166,24 @@ Pendiente de ejecución.
 - [x] Verificar tres diapositivas, tres imágenes y coincidencia del HTML local con el almacenado.
 - [x] Conservar imágenes y fragmentos fuera del repositorio público, en scratch, e integrarlos dentro de la lección protegida por RLS.
 - [ ] Revisar la muestra dentro del reproductor del CMS con sesión autorizada.
-- [ ] Validación editorial del usuario antes de ampliar la secuencia completa.
+- [x] Validación editorial del usuario antes de ampliar la secuencia completa.
 
 ### Revisión de la muestra
 
 Curso: `85579dd2-2450-48d4-a1f9-bb9da7257a76`. Lección: `d2131c35-2d9f-4626-a37a-954178c8c045`. Detalle y alcance en `docs/curso-ec-nna-suplemento/propuesta.md`. La vista local de las tres muestras usa un lienzo de 600 px. No se han cambiado código de aplicación ni esquemas de base de datos. La revisión automática rechazó subir recortes a almacenamiento público; las imágenes permanecen integradas en las lecciones con acceso autorizado.
+
+## Lección 3: procedimientos normales completos
+
+- [x] Completar prevuelo, preparación, arranque, calentamiento, comprobaciones antes del despegue y secuencia normal hasta el aseguramiento.
+- [x] Cotejar las listas y avisos con las páginas renderizadas; registrar internamente las erratas del original sin inventar cifras.
+- [x] Retirar fuentes visibles, mensajes de fragmentos y denominación TAE de las diapositivas; utilizar CD135 / CD155.
+- [x] Mantener las acciones en inglés y los avisos y subtítulos en español.
+- [x] Añadir únicamente referencias para altitud elevada, pista corta y frío/calor.
+- [x] Conservar títulos de lecciones 1, 2 y 4 pendientes de rehacer desde el manual, por decisión explícita del usuario.
+- [x] Revisar 48 diapositivas locales a 1440 × 900: cero desbordamientos en lienzo de 600 px y una imagen cargada en cada una.
+- [x] Guardar la lección protegida y comprobar coincidencia byte a byte del contenido almacenado.
+- [ ] Revisar el resultado dentro del reproductor autenticado del CMS.
+
+### Revisión de la lección completa
+
+Lección 3: 48 diapositivas, HTML MD5 `1a63b4166b521a67d2dc3cbb79d916f3`. Evidencia local: `scratch/manual-normal-review/complete-*.png` y `scratch/c172-course-samples/layout-report.json` (sin incidencias). No se modificó código de aplicación ni se publicaron los recortes del manual. Las lecciones 1, 2 y 4 contienen solo un aviso de elaboración pendiente. El curso anterior permanece intacto.
