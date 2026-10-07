@@ -233,4 +233,6 @@ Solo se modifica la presentación del contenido de esta lección y su muestra lo
 
 ### Revisión del lienzo flexible
 
+Actualización posterior: reservar 24 px de margen vertical, compactar ligeramente el espaciado y limitar la letra de la diapositiva 2 a 20 px. Las 12 páginas conservan todos los bloques idénticos y se verifican sin scroll ni desbordamientos en 1920 × 1080, 1920 × 960, 1920 × 900, 1600 × 900 y 1536 × 800. HTML guardado igual al local: MD5 `e5601adb779a6e43e4f5deb91d5a0585`. Copia previa en `scratch/c172-course-samples/previous-lesson-12-v4.json`.
+
 12 diapositivas y 17 figuras originales; la nota y cabina comparten la primera página y la inspección exterior ocupa dos. Artículo de muestra: 970 px en viewport 1920 × 1080, 850 px en 1920 × 960 y 790 px en 1920 × 900. Las 12 páginas se comprobaron en esos tamaños sin scroll ni desbordamientos. Todos los bloques de acciones y avisos siguen idénticos y en orden. MD5 almacenado `63ca8025e66f8446aea6b0512d9dcb16`, igual al local. Pendiente revisar el contenido dentro del CMS autenticado, cuyo ancho se controla por el reproductor y difiere de la muestra local.

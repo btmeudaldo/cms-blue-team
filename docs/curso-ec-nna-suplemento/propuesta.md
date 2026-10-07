@@ -136,3 +136,7 @@ Se retira `max-height:600px` del HTML de esta lección. El contenido ocupa el 10
 Verificación de las 12 páginas locales en los tres viewports anteriores: sin scroll de documento, sin desbordamiento de bloques y con todas las figuras cargadas. Las acciones y avisos originales se compararon exactamente y siguen idénticos, en el mismo orden. Capturas en `scratch/manual-normal-review/viewport-*.png`. Contenido almacenado igual al local: MD5 `63ca8025e66f8446aea6b0512d9dcb16`. Copia reversible de la versión de 17 páginas en `scratch/c172-course-samples/previous-lesson-17.json`.
 
 No se modifica el código del reproductor CMS: su layout ya proporciona altura flexible. El reproductor mantiene restricciones de ancho propias; la revisión y el ajuste dentro del CMS autenticado siguen pendientes. La verificación indicada corresponde a la muestra local de 1920 px solicitada por el usuario.
+
+## Margen de seguridad por scroll observado — 2026-10-07
+
+Se reservan 24 px de altura en el contenido y se reduce ligeramente el espaciado. La diapositiva 2 usa tipografía adaptable entre 16 y 20 px, para dar margen sin cambiar ningún bloque. Las 12 páginas se comprobaron sin scroll ni desbordamientos en viewports 1920 × 1080, 1920 × 960, 1920 × 900, 1600 × 900 y 1536 × 800. Se mantienen 12 diapositivas, 17 figuras y todos los textos en el mismo orden. MD5 guardado `e5601adb779a6e43e4f5deb91d5a0585`, idéntico al HTML local. La vista local actualizada utiliza `v=5` para recargar la revisión.
