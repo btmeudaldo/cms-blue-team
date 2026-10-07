@@ -195,7 +195,7 @@ Lección 3: 48 diapositivas, HTML MD5 `1a63b4166b521a67d2dc3cbb79d916f3`. Eviden
 - [x] Ajustar la distribución de texto e imagen y medir todas las diapositivas en el lienzo de 600 px.
 - [x] Comparar secuencia de bloques con la versión anterior para asegurar que no se pierde contenido.
 - [x] Guardar y verificar el contenido protegido; registrar cambios.
-- [ ] Subir commit y comprobar preview.
+- [x] Subir commit y comprobar preview.
 
 Alcance: edición de contenido y maquetación de la lección 3; sin cambios de código de aplicación ni esquema de datos. La agrupación se valida antes de sustituir la versión guardada.
 
@@ -204,3 +204,19 @@ Alcance: edición de contenido y maquetación de la lección 3; sin cambios de c
 25 diapositivas y 25 imágenes, frente a las 48 anteriores. Cabina, morro, arranque, antes del despegue y crucero quedan en dos diapositivas; las otras listas, en una. Se agrupan fases consecutivas relacionadas con encabezados propios: bordes del ala izquierda, después del despegue/ascenso, descenso/antes del aterrizaje y después del aterrizaje/aseguramiento. En las cuatro páginas más densas, dos columnas de texto preservan la lectura de arriba abajo y de izquierda a derecha.
 
 La secuencia completa de bloques coincide con la anterior; solo se añaden encabezados separadores y se sustituyen títulos repetidos. Verificación local en anchos de 1100, 1280 y 1440 px: todas las imágenes cargan y ningún bloque rebasa el lienzo de 600 px. HTML guardado coincide byte a byte: MD5 `5dfb720cc1277264f2d823b725c7b40f`. Copia reversible de la versión de 48 páginas y capturas en `scratch/`, sin publicar material del manual en el repositorio.
+
+## Aprovechamiento del espacio por lista continua
+
+- [x] Unificar la inspección exterior sin separar automáticamente por zona del avión.
+- [x] Reunir otros fragmentos cortos de la misma fase y mostrar las figuras necesarias, hasta dos por página.
+- [x] Mantener idénticos y en el mismo orden todos los bloques de acciones y avisos; conservar subtítulos de zona.
+- [x] Medir las páginas completas sin scroll ni recortes y revisar capturas.
+- [x] Guardar la lección protegida y documentar el resultado.
+
+Alcance autorizado: solo distribución del contenido existente. No se resume, elimina ni modifica ninguna acción o aviso.
+
+### Revisión de la distribución continua
+
+17 diapositivas y 25 figuras (una o dos por página). La inspección exterior ocupa cuatro páginas consecutivas, frente a siete páginas de zonas independientes en la versión anterior. Se conserva la numeración reiniciada de cada zona y su encabezado original. Cabina y crucero caben en una página; arranque/calentamiento y despegue/ascenso aprovechan páginas compartidas. Los cortes responden al tamaño íntegro de los bloques, sin partir los párrafos largos de drenaje.
+
+Se comprobó igualdad exacta y orden de todos los bloques de acciones y avisos respecto al guion de 48 páginas. Solo cambian agrupación, encabezados y distribución de figuras originales. Verificación local de las 17 páginas a 1100, 1280 y 1440 px: todas las figuras cargan y ningún bloque desborda el lienzo de 600 px. Capturas `scratch/manual-normal-review/continuous-*.png`. HTML guardado igual al local: MD5 `3a0c6b88cb110fbf6b5ad35eff227d76`. La comprobación en el reproductor autenticado continúa pendiente.

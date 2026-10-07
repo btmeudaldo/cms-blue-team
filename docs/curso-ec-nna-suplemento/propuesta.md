@@ -116,3 +116,13 @@ Por petición del usuario se sustituye la distribución de 48 diapositivas por 2
 Se amplía el espacio de texto y se usan dos columnas en cuatro páginas densas. Tamaños: acciones de 18 px en una columna y 17 px en dos; avisos de 17 px. Se conserva una figura del manual por página. La agrupación verifica igualdad exacta de todos los bloques originales y su secuencia, exceptuando únicamente los encabezados añadidos para separar listas.
 
 Las 25 páginas se midieron en navegador local a 1100, 1280 y 1440 px de ancho, sin desbordamientos del lienzo de 600 px y con todas las imágenes cargadas. Se revisaron capturas, incluidas las páginas de arranque y prueba FADEC. Contenido protegido almacenado igual al local: MD5 `5dfb720cc1277264f2d823b725c7b40f`. Se conserva la versión anterior en `scratch/c172-course-samples/previous-lesson-48.json`. La verificación en el reproductor autenticado sigue pendiente.
+
+## Distribución continua, sin cambios de procedimiento — 2026-10-07
+
+Corrección editorial del usuario: la inspección exterior constituye una lista continua, aunque cambie la zona del avión. Una zona de dos o tres pasos no debe generar una diapositiva independiente si hay espacio y se utiliza la misma figura. Se conservan los títulos de zona para que los reinicios de numeración sean inequívocos.
+
+La distribución actual consta de 17 diapositivas. La inspección exterior ocupa las páginas 3–6: empenaje/ala derecha; ala derecha/morro y combustible; morro/ala izquierda; ala izquierda/bordes de ataque y salida. Sus bloques largos de drenaje se mantienen enteros. Cabina y crucero se reúnen en una página cada uno; calentamiento comparte la segunda página del arranque; despegue, después del despegue y ascenso comparten página; descenso, preparación y aterrizaje normal se reúnen con sus encabezados originales.
+
+No se modificó ninguna acción, cifra, condición, aviso o traducción existente. La secuencia de bloques originales se comparó exactamente contra el guion completo previo; se mantienen todos en el mismo orden. Solo se cambia la paginación, los encabezados de presentación y la distribución de las figuras originales, utilizando una o dos por página (25 figuras en total).
+
+Verificación local: las 17 páginas caben en 600 px en ventanas de 1100, 1280 y 1440 px; todas las figuras cargan. Capturas revisadas de inspección exterior y crucero. Contenido protegido guardado igual al local: MD5 `3a0c6b88cb110fbf6b5ad35eff227d76`. Copia anterior de 25 páginas en `scratch/c172-course-samples/previous-lesson-25.json`. No se cambió código de aplicación ni esquema de datos; continúa pendiente la revisión en el reproductor autenticado.
