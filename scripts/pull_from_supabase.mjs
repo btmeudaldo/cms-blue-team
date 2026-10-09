@@ -39,7 +39,7 @@ async function pull() {
   for (const dbLesson of dbLessons) {
     const seq = dbLesson.sequence_order;
     const lessonMarker = `export const C172_LESSON_${seq} = {`;
-    const nextLessonMarker = seq < 4 ? `export const C172_LESSON_${seq + 1} = {` : `export const C172_LESSONS = [`;
+    const nextLessonMarker = seq < 5 ? `export const C172_LESSON_${seq + 1} = {` : `export const C172_LESSONS = [`;
 
     const startIdx = content.indexOf(lessonMarker);
     const endIdx = content.indexOf(nextLessonMarker);

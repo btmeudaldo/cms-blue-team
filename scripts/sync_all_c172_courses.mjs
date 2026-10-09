@@ -77,16 +77,28 @@ async function sync() {
       .select("id, sequence_order, slug, title")
       .eq("course_id", c.id)
       .order("sequence_order");
+    // Shift existing lesson_order temporarily to avoid unique constraint collisions
+    for (let i = 0; i < (existingLessons || []).length; i++) {
+      const el = existingLessons[i];
+      await supabase
+        .from("lessons")
+        .update({ lesson_order: 100 + i, sequence_order: 100 + i })
+        .eq("id", el.id);
+    }
 
     for (const sourceLesson of C172_LESSONS) {
-      // Find matching lesson by sequence_order or slug
+      // Find matching lesson by slug first, then by id
       const target = (existingLessons || []).find(
-        (l) =>
-          l.sequence_order === sourceLesson.sequence_order ||
-          l.slug === sourceLesson.slug
+        (l) => l.slug === sourceLesson.slug || l.id === sourceLesson.id
       );
 
-      const lessonId = target ? target.id : sourceLesson.id;
+      // Generate deterministic or target id for new lesson
+      let lessonId = target ? target.id : sourceLesson.id;
+      if (!target && c.id === "17200000-0000-0000-0000-000000000272") {
+        lessonId = "17200000-0000-0000-0000-000000000110";
+      } else if (!target && c.id === "85579dd2-2450-48d4-a1f9-bb9da7257a76") {
+        lessonId = "a1100000-0000-0000-0000-000000000001";
+      }
       const wordCount = sourceLesson.content_html
         .replace(/<[^>]*>/g, " ")
         .split(/\s+/)

@@ -98,20 +98,607 @@ export const C172_DOCUMENTATION: CourseDocumentationItem[] = [
 // ============================================================================
 // LECCIÓN 1: LIMITACIONES OPERACIONALES Y FLOTA POH (8 DIAPOSITIVAS)
 // ============================================================================
+// ============================================================================
+// LECCIÓN 1: GENERALIDADES Y ESPECIFICACIONES (6 DIAPOSITIVAS)
+// ============================================================================
 export const C172_LESSON_1 = {
-  id: "17200000-0000-0000-0000-000000000001",
+  id: "17200000-0000-0000-0000-000000000010",
   course_id: C172_COURSE_ID,
-  title: "1. Limitaciones Operacionales y Flota POH",
-  slug: "limitaciones-operacionales-poh",
+  title: "1. Generalidades y Especificaciones del Avión",
+  slug: "generalidades-especificaciones-c172",
   sequence_order: 1,
   lesson_order: 1,
   min_seconds: 60,
-  content_html: `<!-- DIAPOSITIVA 1.1: 1.1 Límites de Peso Estructural (Weight Limits) -->
+  content_html: `<!-- DIAPOSITIVA 1.1: 1.1 Objeto del Suplemento POH y Simbología de Seguridad -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.1 Objeto del Suplemento POH y Simbología de Seguridad</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Suplemento Oficial de Vuelo · POH Sección 1 (General)</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 574px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📘 OBJETO Y SIMBOLOGÍA DE SEGURIDAD (SECCIÓN 1)</span>
+        </div>
+        <div class="space-y-1.5 py-0.5 text-xs">
+          <!-- Objeto del Suplemento -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">OBJETO DEL SUPLEMENTO</strong>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
+              Este Suplemento Oficial al Manual de Operación de la Aeronave (POH) contiene la información técnica, limitaciones y procedimientos necesarios para la operación segura de los aviones Cessna 172 equipados con motores Continental CD-135 y CD-155.
+            </p>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
+              La información contenida en este suplemento complementa o sustituye a la del POH básico de Cessna en todo lo relativo a la planta de potencia y sus sistemas asociados.
+            </p>
+          </div>
+
+          <!-- Simbología de Seguridad POH -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">SIMBOLOGÍA OFICIAL DE SEGURIDAD POH</strong>
+            
+            <div class="flex items-start gap-2 text-[11px] leading-tight">
+              <span class="font-bold text-red-600 dark:text-red-400 shrink-0 uppercase tracking-wide min-w-[70px]">WARNING:</span>
+              <span class="text-slate-800 dark:text-slate-200">El incumplimiento de estas normas de seguridad puede provocar lesiones graves o incluso la muerte.</span>
+            </div>
+
+            <div class="flex items-start gap-2 text-[11px] leading-tight">
+              <span class="font-bold text-amber-600 dark:text-amber-400 shrink-0 uppercase tracking-wide min-w-[70px]">CAUTION:</span>
+              <span class="text-slate-800 dark:text-slate-200">El incumplimiento de estas notas y medidas de seguridad especiales puede causar daños al motor o a otros componentes.</span>
+            </div>
+
+            <div class="flex items-start gap-2 text-[11px] leading-tight">
+              <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0 uppercase tracking-wide min-w-[70px]">NOTE:</span>
+              <span class="text-slate-800 dark:text-slate-200">Información técnica añadida para una mejor comprensión y ejecución de una instrucción.</span>
+            </div>
+          </div>
+
+          <!-- Advertencia POH Actualización -->
+          <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200">
+            <span class="text-base shrink-0">⚠️</span>
+            <span><strong>WARNING (POH):</strong> La operación segura solo está asegurada con un suplemento POH actualizado. Las revisiones y enmiendas oficiales se publican mediante Service Bulletin TM TAE 000-0004.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Nota del Instructor y Gráfico (Altura Fija 574px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💡 NOTA DEL INSTRUCTOR Y GRÁFICO REQUERIDO</span>
+        </div>
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-3">
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-3">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>👨‍✈️</span> ORIENTACIÓN DOCENTE
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de captura
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Explicación del Instructor:</span>
+              <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+                "Este curso no sustituye al POH básico de Cessna; define exclusivamente las diferencias y procedimientos del motor diésel y sus sistemas para operar con seguridad."
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Gráfico / Captura a incorporar:</span>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                Fotografía exterior de un Cessna 172 en rampa y carátula oficial del Suplemento POH Continental.
+              </p>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+              Ref. POH: Suplemento Sección 1 (General · Pág. 1-1)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 1.2: 1.2 Especificaciones del Motor Continental CD-135 / CD-155 -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.2 Especificaciones del Motor Continental CD-135 / CD-155</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Arquitectura de Motor Diésel Turboalimentado (POH Pág. 1-2)</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 574px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚙️ ESPECIFICACIONES DE PLANTA DE POTENCIA (ENGINE)</span>
+        </div>
+        <div class="space-y-1.5 py-0.5 text-xs">
+          <!-- Datos técnicos del motor -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">MOTOR CONTINENTAL CD-135 Y CD-155</strong>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
+              Motor de 4 cilindros en línea, cuatro tiempos, refrigeración líquida, doble árbol de levas en cabeza (DOHC), inyección directa Common-Rail y turboalimentado con intercooler. Cilindrada total: 1.991 cm³ (121.5 in³).
+            </p>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
+              Controlado íntegramente por sistema electrónico FADEC. La hélice es accionada mediante caja reductora integrada (relación $i = 1.69$) con amortiguador mecánico de vibraciones y embrague de sobrecarga. Cuenta con motor de arranque y alternador integrados.
+            </p>
+          </div>
+
+          <!-- Sistemas convencionales que no aplican -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">SISTEMAS CONVENCIONALES ELIMINADOS</strong>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-tight">
+              Debido a las características específicas de esta planta motriz, toda la información del POH original queda sin efecto en lo relativo a:
+            </p>
+            <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-0.5 pt-0.5">
+              <li class="flex items-start gap-1.5">• <span>Carburador y sistema de calefacción de carburador.</span></li>
+              <li class="flex items-start gap-1.5">• <span>Magnetos de encendido y bujías convencionales.</span></li>
+              <li class="flex items-start gap-1.5">• <span>Mando de mezcla y sistema de cebado (*primer*).</span></li>
+            </ul>
+          </div>
+
+          <!-- Warning eléctrico POH -->
+          <div class="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200">
+            <span class="text-base shrink-0">🚨</span>
+            <span><strong>WARNING (POH):</strong> El motor requiere energía eléctrica continua para operar. Si fallan batería y alternador, el motor solo operará durante un máximo de **30 minutos** con la batería de reserva FADEC. Prestar máxima atención a las indicaciones de fallo del alternador.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Nota del Instructor y Gráfico (Altura Fija 574px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💡 NOTA DEL INSTRUCTOR Y GRÁFICO REQUERIDO</span>
+        </div>
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-3">
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-3">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>👨‍✈️</span> ORIENTACIÓN DOCENTE
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de captura
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Explicación del Instructor:</span>
+              <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+                "Olvídate de buscar magnetos, palanca de mezcla roja o calefacción de carburador; el motor se gestiona por FADEC, pero depende críticamente de la energía eléctrica."
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Gráfico / Captura a incorporar:</span>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                Fotografía del bloque motor bajo el capó mostrando el turbocompresor, common-rail y la caja reductora frontal.
+              </p>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+              Ref. POH: Suplemento Sección 1 (General · Pág. 1-2)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 1.3: 1.3 Hélice MT-Propeller Tripala de Paso Constante -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.3 Hélice MT-Propeller Tripala de Paso Constante</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Gobernador Hidráulico y Velocidad Constante (POH Pág. 1-3)</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 574px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🌀 ESPECIFICACIONES DE HÉLICE (PROPELLER)</span>
+        </div>
+        <div class="space-y-1.5 py-0.5 text-xs">
+          <!-- Datos MT-Propeller -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CARACTERÍSTICAS DE LA HÉLICE</strong>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 pt-0.5">
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 space-y-0.5">
+                <span class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase">Fabricante</span>
+                <p class="font-bold text-[#0B2E59] dark:text-sky-200 text-xs">MT-Propeller Entwicklung GmbH</p>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 space-y-0.5">
+                <span class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase">Modelos Aprobados</span>
+                <p class="font-bold text-[#0B2E59] dark:text-sky-200 text-xs">MTV-6-A/187-129 / MTV-6-A/190-69</p>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 space-y-0.5">
+                <span class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase">Número de Palas</span>
+                <p class="font-bold text-[#0B2E59] dark:text-sky-200 text-xs">3 palas (material compuesto)</p>
+              </div>
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 space-y-0.5">
+                <span class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase">Diámetro</span>
+                <p class="font-bold text-[#0B2E59] dark:text-sky-200 text-xs">1.87 m (MTV-6-A/187) o 1.90 m (MTV-6-A/190)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Principio de Funcionamiento -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FUNCIONAMIENTO CONSTANT SPEED</strong>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
+              La hélice es de velocidad constante (*constant speed*). El paso de las palas se ajusta hidráulicamente mediante presión de aceite suministrada por el motor y gestionada directamente por el sistema FADEC.
+            </p>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
+              El piloto no dispone de palanca mecánica de paso de hélice en cabina: al mover la palanca monomando de empuje (*Thrust Lever*), la ECU del FADEC determina y comanda el paso óptimo para mantener 2.300 RPM en despegue y crucero continuo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Nota del Instructor y Gráfico (Altura Fija 574px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💡 NOTA DEL INSTRUCTOR Y GRÁFICO REQUERIDO</span>
+        </div>
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-3">
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-3">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>👨‍✈️</span> ORIENTACIÓN DOCENTE
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de captura
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Explicación del Instructor:</span>
+              <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+                "No existe palanca azul de paso de hélice en cabina; el FADEC regula automáticamente el gobernador hidráulico a 2.300 RPM según la posición de la palanca monomando."
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Gráfico / Captura a incorporar:</span>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                Vista frontal en detalle de las tres palas de material compuesto y cono de la hélice MT-Propeller instalada en el Cessna 172.
+              </p>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+              Ref. POH: Suplemento Sección 1 (General · Pág. 1-3)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 1.4: 1.4 Combustibles Autorizados y Diferencias de Densidad -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.4 Combustibles Autorizados y Diferencias de Densidad</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">JET A-1, Diésel EN 590 y Prohibición de AVGAS (POH Pág. 1-3 y 1-7)</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 574px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⛽ COMBUSTIBLES Y FLUIDOS (FUELS AND LIQUIDS)</span>
+        </div>
+        <div class="space-y-1.5 py-0.5 text-xs">
+          <!-- Tipos de combustible aprobados -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">COMBUSTIBLES AUTORIZADOS</strong>
+            <div class="space-y-1 text-[11px] text-slate-700 dark:text-slate-200">
+              <p>• <strong>Queroseno de aviación:</strong> JET A-1 (ASTM 1655), JET A (ASTM 1655), Jet Fuel No.3 (GB 6537-2006), JP-8 (MIL-DTL-83133E), TS-1 (GOST 10227-86).</p>
+              <p>• <strong>Alternativo de automoción:</strong> Diésel (DIN EN 590), SASOL GTL Diesel.</p>
+            </div>
+          </div>
+
+          <!-- Densidad y carga alar -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">DIFERENCIA DE DENSIDAD CON AVGAS</strong>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
+              Dado que la densidad del combustible diésel y queroseno JET A-1 (<strong>0.84 kg/l</strong>) es sensiblemente mayor que la de la gasolina de aviación AVGAS (<strong>0.715 kg/l</strong>), la capacidad utilizable se redujo mediante los cuellos de llenado para garantizar que la aeronave no exceda la carga alar autorizada.
+            </p>
+          </div>
+
+          <!-- Caution POH Combustibles No Autorizados -->
+          <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200">
+            <span class="text-base shrink-0">⚠️</span>
+            <span><strong>CAUTION (POH):</strong> El uso de combustibles no aprobados provocará daños en el motor y en los componentes del sistema de combustible, pudiendo provocar una parada de motor en vuelo. **AVGAS 100LL está terminantemente prohibido.**</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Nota del Instructor y Gráfico (Altura Fija 574px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💡 NOTA DEL INSTRUCTOR Y GRÁFICO REQUERIDO</span>
+        </div>
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-3">
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-3">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>👨‍✈️</span> ORIENTACIÓN DOCENTE
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de captura
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Explicación del Instructor:</span>
+              <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+                "Verifica siempre el combustible en el repostaje: repostar AVGAS 100LL destruye el sistema de inyección de alta presión. Además, ten en cuenta en el centrado que el queroseno es más pesado que la gasolina."
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Gráfico / Captura a incorporar:</span>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                Foto en detalle del rótulo 'JET FUEL ONLY' junto a la boca de llenado de combustible en el plano del Cessna 172.
+              </p>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+              Ref. POH: Suplemento Sección 1 (General · Pág. 1-3 y 1-7)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 1.5: 1.5 Fluidos de Servicio: Aceite, Reductora y Refrigerante -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.5 Fluidos de Servicio: Aceite, Reductora y Refrigerante</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Fluidos de Motor, Caja Reductora y Sistema de Refrigeración (POH Pág. 1-4)</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 574px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛢️ LUBRICACIÓN Y REFRIGERACIÓN (LIQUIDS SPECIFICATION)</span>
+        </div>
+        <div class="space-y-1.5 py-0.5 text-xs">
+          <!-- Fluidos específicos -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 pt-0.5">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[10px] uppercase tracking-wide border-b border-slate-100 dark:border-slate-700 pb-0.5">Aceite de Motor</strong>
+              <p class="text-[10px] text-slate-700 dark:text-slate-300 leading-tight">• AeroShell Oil Diesel Ultra</p>
+              <p class="text-[10px] text-slate-700 dark:text-slate-300 leading-tight">• AeroShell Oil Diesel 10W-40</p>
+              <p class="text-[10px] text-slate-700 dark:text-slate-300 leading-tight">• Shell Helix Ultra 5W-30 / 5W-40</p>
+            </div>
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[10px] uppercase tracking-wide border-b border-slate-100 dark:border-slate-700 pb-0.5">Aceite Reductora</strong>
+              <p class="text-[10px] text-slate-700 dark:text-slate-300 leading-tight">• Centurion Gearbox Oil N1</p>
+              <p class="text-[10px] text-slate-700 dark:text-slate-300 leading-tight">• Shell Spirax S6 ATF ZM</p>
+              <p class="text-[10px] text-slate-700 dark:text-slate-300 leading-tight">• Shell Spirax S4 G 75W-90</p>
+            </div>
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[10px] uppercase tracking-wide border-b border-slate-100 dark:border-slate-700 pb-0.5">Refrigerante (Coolant)</strong>
+              <p class="text-[10px] text-slate-700 dark:text-slate-300 leading-tight">Proporción 50:50 Agua / Anticongelante</p>
+              <p class="text-[10px] text-slate-700 dark:text-slate-300 leading-tight">• BASF Glysantin Protect Plus / G48</p>
+              <p class="text-[10px] text-slate-700 dark:text-slate-300 leading-tight">• Mobil Antifreeze Extra (G48)</p>
+            </div>
+          </div>
+
+          <!-- Datos técnicos complementarios -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">NOTAS Y ADITIVOS OFICIALES</strong>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
+              • <strong>Punto de congelación del refrigerante:</strong> -36 °C (-33 °F).
+            </p>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
+              • <strong>Aditivo fungicida:</strong> El aditivo líquido Biobor JF puede emplearse en sistemas de combustible jet y diésel para eliminar la formación de hongos y bacterias.
+            </p>
+          </div>
+
+          <!-- Warning POH Niveles de Fluido -->
+          <div class="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200">
+            <span class="text-base shrink-0">🚨</span>
+            <span><strong>WARNING (POH):</strong> El motor no debe arrancarse bajo ninguna circunstancia si el nivel de cualquiera de los fluidos es inferior al mínimo admisible.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Nota del Instructor y Gráfico (Altura Fija 574px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💡 NOTA DEL INSTRUCTOR Y GRÁFICO REQUERIDO</span>
+        </div>
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-3">
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-3">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>👨‍✈️</span> ORIENTACIÓN DOCENTE
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de captura
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Explicación del Instructor:</span>
+              <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+                "En la inspección prevuelo supervisamos tres fluidos independientes: nivel de aceite motor en la varilla, líquido refrigerante en el vaso de expansión y nivel en la mirilla de la reductora."
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Gráfico / Captura a incorporar:</span>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                Infografía con los envases oficiales de AeroShell Diesel Ultra y Glysantin G48 junto con la mirilla de nivel de la reductora.
+              </p>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+              Ref. POH: Suplemento Sección 1 (General · Pág. 1-4)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 1.6: 1.6 Mandos e Instrumentación de Motor en Cabina -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.6 Mandos e Instrumentación de Motor en Cabina</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Disposición de Instrumentos y Panel Anunciador (POH Figuras 1-1 y 1-2)</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 574px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🎛️ INSTRUMENTACIÓN Y MANDOS EN CABINA (INSTRUMENT PANEL)</span>
+        </div>
+        <div class="space-y-1.5 py-0.5 text-xs">
+          <!-- Mandos e interruptores -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">MANDOS E INTERRUPTORES ESPECÍFICOS</strong>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-[11px] text-slate-700 dark:text-slate-300">
+              <p>• <strong>Alt. Air Door:</strong> Mando de aire alternativo de motor.</p>
+              <p>• <strong>Starter:</strong> Pulsador de arranque eléctrico.</p>
+              <p>• <strong>BAT / MAIN / ALT:</strong> Interruptores de batería, barra y alternador.</p>
+              <p>• <strong>Engine Master:</strong> Interruptor que alimenta eléctricamente la ECU FADEC.</p>
+              <p>• <strong>Fuel Pump:</strong> Interruptor de la bomba eléctrica auxiliar.</p>
+              <p>• <strong>Force B:</strong> Conmutador para forzar manualmente el canal B.</p>
+            </div>
+          </div>
+
+          <!-- Instrumentos y avisadores -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">DISPLAYS E INDICADORES CED 125 / AED 125</strong>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-tight">
+              • <strong>CED 125:</strong> Display compacto de motor con RPM de hélice, presión de aceite, temperatura de aceite, temperatura de refrigerante, temperatura de reductora y carga (%).
+            </p>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-tight">
+              • <strong>AED 125:</strong> Voltímetro, amperímetro, temperatura de depósitos y luz Water Level.
+            </p>
+            <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-tight">
+              • <strong>Lightpanel (Avisadores):</strong> Pulsador FADEC Test, luces rojas FADEC A y B, luz Alt, y luces ámbar AED/CED Caution y Glow.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Nota del Instructor y Gráfico (Altura Fija 574px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💡 NOTA DEL INSTRUCTOR Y GRÁFICO REQUERIDO</span>
+        </div>
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-3">
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-3">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>👨‍✈️</span> ORIENTACIÓN DOCENTE
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de captura
+              </span>
+            </div>
+
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Explicación del Instructor:</span>
+              <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+                "Familiarízate con la disposición de mandos: el interruptor Engine Master es el control vital del FADEC, y el pulsador FADEC Test se utiliza para la prueba automática de canales en tierra."
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Gráfico / Captura a incorporar:</span>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                Fotografía del panel de instrumentos del Cessna 172 señalando la hilera de interruptores, el display CED 125 y el panel anunciador.
+              </p>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+              Ref. POH: Suplemento Sección 1 (General · Pág. 1-5 y 1-6)
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+};
+
+// ============================================================================
+// LECCIÓN 2: LIMITACIONES OPERACIONALES POH (10 DIAPOSITIVAS)
+// ============================================================================
+export const C172_LESSON_2 = {
+  id: "17200000-0000-0000-0000-000000000001",
+  course_id: C172_COURSE_ID,
+  title: "2. Limitaciones Operacionales POH",
+  slug: "limitaciones-operacionales-poh",
+  sequence_order: 2,
+  lesson_order: 2,
+  min_seconds: 60,
+  content_html: `<!-- DIAPOSITIVA 2.1: 1.1 Límites de Peso Estructural (Weight Limits) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.1 Límites de Peso Estructural (Weight Limits)</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.1 Límites de Peso Estructural (Weight Limits)</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pesos Máximos de Rampa, Despegue y Aterrizaje (C172 N, P y F-M)</span>
   </div>
@@ -257,12 +844,12 @@ export const C172_LESSON_1 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 1.2: 1.2 Límites de Maniobra y Factores de Carga -->
+<!-- DIAPOSITIVA 2.2: 1.2 Límites de Maniobra y Factores de Carga -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.2 Límites de Maniobra y Factores de Carga</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.2 Límites de Maniobra y Factores de Carga</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Maneuver Limits, Prohibición de Barrenas y Cargas G Negativas</span>
   </div>
@@ -395,12 +982,12 @@ export const C172_LESSON_1 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 1.3: 1.3 Límites de Motor: Potencia, RPM y Techo Operativo -->
+<!-- DIAPOSITIVA 2.3: 1.3 Límites de Motor: Potencia, RPM y Techo Operativo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.3 Límites de Motor: Potencia, RPM y Techo Operativo</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.3 Límites de Motor: Potencia, RPM y Techo Operativo</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Technify Motors TAE 125 (CD-135 vs CD-155), RPM y Techo Certificado</span>
   </div>
@@ -538,12 +1125,12 @@ export const C172_LESSON_1 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 1.4: 1.4 Límites Operacionales de Temperatura -->
+<!-- DIAPOSITIVA 2.4: 1.4 Límites Operacionales de Temperatura -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.4 Límites Operacionales de Temperatura</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.4 Límites Operacionales de Temperatura</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Límites de Aceite de Motor, Líquido Refrigerante y Caja Reductora</span>
   </div>
@@ -684,12 +1271,12 @@ export const C172_LESSON_1 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 1.5: 1.5 Límites de Presión y Consumo de Aceite -->
+<!-- DIAPOSITIVA 2.5: 1.5 Límites de Presión y Consumo de Aceite -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.5 Límites de Presión y Consumo de Aceite</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.5 Límites de Presión y Consumo de Aceite</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Presión Mínima (1.2 / 2.3 bar), Máxima (6.0 bar) y Consumo Máximo (0.1 l/h)</span>
   </div>
@@ -823,12 +1410,12 @@ export const C172_LESSON_1 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 1.6: 1.6 Límites Térmicos de Combustible en Depósito -->
+<!-- DIAPOSITIVA 2.6: 1.6 Límites Térmicos de Combustible en Depósito -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.6 Límites Térmicos de Combustible en Depósito</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.6 Límites Térmicos de Combustible en Depósito</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla 2-3a POH: Temperaturas Mínimas para JET A-1 (-30°C / -35°C) y Diésel (>0°C / -5°C)</span>
   </div>
@@ -969,12 +1556,12 @@ export const C172_LESSON_1 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 1.7: 1.7 Marcas de Instrumentos CED 125 (Motor y Reductora) -->
+<!-- DIAPOSITIVA 2.7: 1.7 Marcas de Instrumentos CED 125 (Motor y Reductora) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.7 Marcas de Instrumentos CED 125 (Motor y Reductora)</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.7 Marcas de Instrumentos CED 125 (Motor y Reductora)</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla 2-2 / 2-3b POH: Rangos Verde, Ámbar y Rojo en el Display Compacto</span>
   </div>
@@ -1104,12 +1691,12 @@ export const C172_LESSON_1 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 1.8: 1.8 Marcas de Instrumentos AED 125 y Botón Confirm/Test -->
+<!-- DIAPOSITIVA 2.8: 1.8 Marcas de Instrumentos AED 125 y Botón Confirm/Test -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.8 Marcas de Instrumentos AED 125 y Botón Confirm/Test</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.8 Marcas de Instrumentos AED 125 y Botón Confirm/Test</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Parámetros Eléctricos, Temperatura de Combustible y Lógica de Rearme de Alarmas</span>
   </div>
@@ -1247,12 +1834,12 @@ export const C172_LESSON_1 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 1.9: 1.9 Combustibles Autorizados y Capacidades de Depósitos -->
+<!-- DIAPOSITIVA 2.9: 1.9 Combustibles Autorizados y Capacidades de Depósitos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.9 Combustibles Autorizados y Capacidades de Depósitos</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.9 Combustibles Autorizados y Capacidades de Depósitos</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Grados JET/Diésel, Densidad (0.84 kg/l), Capacidades y Aviso Low Level (<10 l)</span>
   </div>
@@ -1390,12 +1977,12 @@ export const C172_LESSON_1 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 1.10: 1.10 Fluidos Autorizados y Placards Obligatorios -->
+<!-- DIAPOSITIVA 2.10: 1.10 Fluidos Autorizados y Placards Obligatorios -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.10 Fluidos Autorizados y Placards Obligatorios</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.10 Fluidos Autorizados y Placards Obligatorios</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aceites Aprobados, Refrigerante G48 y Letreros Mandatorios de Célula y Cabina</span>
   </div>
@@ -1522,18 +2109,18 @@ export const C172_LESSON_1 = {
     </div>
   </div>
 </div>`,
-};;
+};
 
 // ============================================================================
 // LECCIÓN 2: INGENIERÍA Y SISTEMAS CONTINENTAL DIESEL (8 DIAPOSITIVAS)
 // ============================================================================
-export const C172_LESSON_2 = {
+export const C172_LESSON_3 = {
   id: "17200000-0000-0000-0000-000000000002",
   course_id: C172_COURSE_ID,
-  title: "2. Ingeniería del Avión y Sistemas Continental CD-135 / CD-155",
+  title: "3. Ingeniería del Avión y Sistemas Continental CD-135 / CD-155",
   slug: "sistemas-continental-diesel",
-  sequence_order: 2,
-  lesson_order: 2,
+  sequence_order: 3,
+  lesson_order: 3,
   min_seconds: 60,
   content_html: `<!-- DIAPOSITIVA 2.1: 2.1 Motor Continental TAE 125: Arquitectura y Especificaciones -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2657,13 +3244,13 @@ export const C172_LESSON_2 = {
 // ============================================================================
 // LECCIÓN 3: PROCEDIMIENTOS NORMALES Y CHECKLISTS (9 DIAPOSITIVAS)
 // ============================================================================
-export const C172_LESSON_3 = {
+export const C172_LESSON_4 = {
   id: "17200000-0000-0000-0000-000000000003",
   course_id: C172_COURSE_ID,
-  title: "3. Procedimientos Normales y Operación Continental Diésel",
+  title: "4. Procedimientos Normales y Operación Continental Diésel",
   slug: "procedimientos-normales-c172",
-  sequence_order: 3,
-  lesson_order: 3,
+  sequence_order: 4,
+  lesson_order: 4,
   min_seconds: 60,
   content_html: `
 <!-- DIAPOSITIVA 3.1: 3.1 Inspección Prevuelo I: Cabina Inicial -->
@@ -4504,13 +5091,13 @@ export const C172_LESSON_3 = {
 // ============================================================================
 // LECCIÓN 4: PROCEDIMIENTOS DE EMERGENCIA (9 DIAPOSITIVAS)
 // ============================================================================
-export const C172_LESSON_4 = {
+export const C172_LESSON_5 = {
   id: "17200000-0000-0000-0000-000000000004",
   course_id: C172_COURSE_ID,
-  title: "4. Procedimientos de Emergencia y Casos Anómalos",
+  title: "5. Procedimientos de Emergencia y Casos Anómalos",
   slug: "procedimientos-emergencia-c172",
-  sequence_order: 4,
-  lesson_order: 4,
+  sequence_order: 5,
+  lesson_order: 5,
   min_seconds: 60,
   content_html: `
 <!-- DIAPOSITIVA 4.1: 4.1 Fallo de Motor en Despegue: En Pista y Tras el Despegue -->
@@ -5720,4 +6307,5 @@ export const C172_LESSONS = [
   C172_LESSON_2,
   C172_LESSON_3,
   C172_LESSON_4,
+  C172_LESSON_5,
 ];
