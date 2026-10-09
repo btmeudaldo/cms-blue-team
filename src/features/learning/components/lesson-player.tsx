@@ -202,13 +202,9 @@ export function LessonPlayer({
     }
   };
 
-  // 10 seconds per page for multi-page lessons as requested
-  const minSecondsPerPage =
-    totalLessonPages > 1
-      ? 10
-      : minSeconds;
-  const effectiveMinSeconds =
-    totalLessonPages > 1 ? minSecondsPerPage * totalLessonPages : minSeconds;
+  // 1 second per page for fast review as requested
+  const minSecondsPerPage = 1;
+  const effectiveMinSeconds = 1;
   const isCurrentPageDone =
     isAlreadyCompleted ||
     isCompletedSuccess ||
@@ -1178,6 +1174,7 @@ export function LessonPlayer({
                   <div className="flex items-center gap-1">
                     {lessonPages.map((slide, idx) => {
                       const isClickable =
+                        isStaff ||
                         idx <= effectivePageIndex ||
                         isAlreadyCompleted ||
                         isCompletedSuccess ||

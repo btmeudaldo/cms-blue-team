@@ -108,7 +108,7 @@ export const C172_LESSON_1 = {
   slug: "generalidades-especificaciones-c172",
   sequence_order: 1,
   lesson_order: 1,
-  min_seconds: 60,
+  min_seconds: 1,
   content_html: `<!-- DIAPOSITIVA 1.1: 1.1 Objeto del Suplemento POH y Simbología de Seguridad -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -692,7 +692,7 @@ export const C172_LESSON_2 = {
   slug: "limitaciones-operacionales-poh",
   sequence_order: 2,
   lesson_order: 2,
-  min_seconds: 60,
+  min_seconds: 1,
   content_html: `<!-- DIAPOSITIVA 2.1: 1.1 Límites de Peso Estructural (Weight Limits) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -2121,7 +2121,7 @@ export const C172_LESSON_3 = {
   slug: "sistemas-continental-diesel",
   sequence_order: 3,
   lesson_order: 3,
-  min_seconds: 60,
+  min_seconds: 1,
   content_html: `<!-- DIAPOSITIVA 2.1: 2.1 Motor Continental TAE 125: Arquitectura y Especificaciones -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -3251,7 +3251,7 @@ export const C172_LESSON_4 = {
   slug: "procedimientos-normales-c172",
   sequence_order: 4,
   lesson_order: 4,
-  min_seconds: 60,
+  min_seconds: 1,
   content_html: `
 <!-- DIAPOSITIVA 3.1: 3.1 Inspección Prevuelo I: Cabina Inicial -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5110,7 +5110,7 @@ export const C172_LESSON_5 = {
   slug: "procedimientos-emergencia-c172",
   sequence_order: 5,
   lesson_order: 5,
-  min_seconds: 60,
+  min_seconds: 1,
   content_html: `
 <!-- DIAPOSITIVA 4.1: 4.1 Fallo de Motor en Despegue: En Pista y Tras el Despegue -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
