@@ -198,13 +198,57 @@ export const C172_LESSON_1 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
         </div>
-        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
-          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/instrument-panel.png" alt="Panel de instrumentos e interruptor de batería" class="w-full max-h-[260px] object-contain rounded-lg" />
+        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
+          <!-- Marco Indicador de Imagen Requerida -->
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>⚖️</span> ILUSTRACIÓN TÉCNICA REQUERIDA
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de generación
+              </span>
+            </div>
+
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
+                Envolvente de Masa y Centrado (Weight & Balance Envelope)
+              </h4>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+                Diagrama oficial de carga y centrado correspondiente a la Sección 2 y Hoja F.OPS.04, vinculando los pesos estructurales con los límites de brazo del centro de gravedad.
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
+                Elementos que debe mostrar la ilustración:
+              </span>
+              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Categoría Normal:</strong> Límite de rampa 1044 kg (2302 lbs) y despegue/aterrizaje 1043 kg (2300 lbs) [1089 kg en C172 P].</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Categoría Utilitaria:</strong> Límite de rampa 908 kg (2002 lbs) y despegue/aterrizaje 907 kg (2000 lbs).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Compartimentos de equipaje:</strong> Brazos y cotas de Baggage Area 1 (54 kg máx) y Baggage Area 2 (23 kg máx).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Silueta C172:</strong> Posición del datum de referencia, brazos de asientos y centro de gravedad admisible.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
+              Ref. POH: Suplemento Sección 2 & POH Sección 6 / Hoja de Carga F.OPS.04
+            </div>
           </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-1 del POH: Disposición de interruptores BAT / STARTER y arquitectura eléctrica básica</figcaption>
         </div>
       </div>
     </div>
@@ -292,13 +336,57 @@ export const C172_LESSON_1 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
         </div>
-        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
-          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/procedures/preflight.png" alt="Inspección estructural de célula" class="w-full max-h-[260px] object-contain rounded-lg" />
+        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
+          <!-- Marco Indicador de Imagen Requerida -->
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>📈</span> ILUSTRACIÓN TÉCNICA REQUERIDA
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de generación
+              </span>
+            </div>
+
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
+                Diagrama de Maniobra V-n (Flight Load Factor Envelope)
+              </h4>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+                Gráfico cartesiano oficial de factor de carga "g" frente a la velocidad indicada (KIAS), mostrando los límites estructurales certificados y las envolventes operacionales.
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
+                Elementos que debe mostrar la ilustración:
+              </span>
+              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Categoría Normal:</strong> Envolvente entre +3.8g y -1.52g (Flaps UP) y límite de +3.0g (Flaps DOWN).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Categoría Utilitaria:</strong> Envolvente ampliada entre +4.4g y -1.76g (Flaps UP) y +3.0g (Flaps DOWN).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Velocidades de corte:</strong> Velocidad de maniobra V_A, velocidad nunca exceder V_NE y curva de pérdida acelerada.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Señalética de maniobras prohibidas:</strong> Prohibición explícita de barrenas (spins) y maniobras acrobáticas.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
+              Ref. POH: Suplemento Sección 2 · Flight Load Factors & Maneuver Limits
+            </div>
           </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Inspección prevuelo de superficies de control de vuelo, alas y anclajes estructurales</figcaption>
         </div>
       </div>
     </div>
@@ -391,13 +479,57 @@ export const C172_LESSON_1 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
         </div>
-        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
-          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/instrument-panel.png" alt="Panel con instrumentos CED 125 y Thrust Lever" class="w-full max-h-[260px] object-contain rounded-lg" />
+        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
+          <!-- Marco Indicador de Imagen Requerida -->
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>⚙️</span> ILUSTRACIÓN TÉCNICA REQUERIDA
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de generación
+              </span>
+            </div>
+
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
+                Régimen de Potencia vs Altitud y Monomando FADEC
+              </h4>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+                Gráfico comparativo de entrega de potencia y RPM de los motores Continental CD-135 vs CD-155 frente a la altitud, junto con el principio de control monomando.
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
+                Elementos que debe mostrar la ilustración:
+              </span>
+              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Curvas CD-135 vs CD-155:</strong> Potencia máx despegue (99 kW / 135 HP vs 114 kW / 155 HP a 2300 RPM hélice).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Techos de servicio operativos:</strong> Cota máxima de 17.500 ft (CD-135) y 18.000 ft (CD-155).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Altitud crítica turbo:</strong> Mantenimiento de potencia nominal constante hasta la altitud crítica del turbocompresor.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Esquema Thrust Lever:</strong> Palanca única de empuje sin palancas de mezcla ni paso de hélice gobernada por ECU.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
+              Ref. POH: Suplemento Continental Sección 2 & Sección 5 (Power Limits & Performance)
+            </div>
           </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-1 del POH: Disposición de tacómetro digital en CED 125 y palanca monomando de empuje</figcaption>
         </div>
       </div>
     </div>
@@ -493,13 +625,57 @@ export const C172_LESSON_1 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
         </div>
-        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
-          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/cooling-system-schematic.png" alt="Esquema de refrigeración líquida" class="w-full max-h-[260px] object-contain rounded-lg" />
+        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
+          <!-- Marco Indicador de Imagen Requerida -->
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>🌡️</span> ILUSTRACIÓN TÉCNICA REQUERIDA
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de generación
+              </span>
+            </div>
+
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
+                Diagrama Sinóptico Térmico y Sensores del Bloque Motor
+              </h4>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+                Esquema de ubicación de sensores térmicos en el motor Continental y termómetros de referencia con sus rangos mínimos, normales y máximos de operación.
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
+                Elementos que debe mostrar la ilustración:
+              </span>
+              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Refrigerante (Coolant):</strong> Mín. arranque -32ºC, mín. plena potencia +60ºC, máx. operativa +105ºC.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Aceite Motor (Engine Oil):</strong> Mín. arranque -32ºC, mín. plena potencia +50ºC, máx. permitida +140ºC.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Aceite de Reductora (Gearbox):</strong> Límite superior absoluto de +120ºC (sin mínimo de plena potencia).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Aire de Admisión (MAT):</strong> Sensor en colector post-intercooler con límite máx de +75ºC (CD-135) / +80ºC (CD-155).</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
+              Ref. POH: Suplemento Continental TAE 125 Sección 2 (Temperature Limits)
+            </div>
           </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-6 del POH: Termostato de 3 vías, radiador de refrigerante y sensor de culata</figcaption>
         </div>
       </div>
     </div>
@@ -588,13 +764,57 @@ export const C172_LESSON_1 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
         </div>
-        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
-          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/cooling-system-schematic.png" alt="Circuito de lubricación y refrigeración" class="w-full max-h-[260px] object-contain rounded-lg" />
+        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
+          <!-- Marco Indicador de Imagen Requerida -->
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>🛢️</span> ILUSTRACIÓN TÉCNICA REQUERIDA
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de generación
+              </span>
+            </div>
+
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
+                Circuito de Lubricación y Manómetro de Presión de Aceite
+              </h4>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+                Esquema funcional del circuito de engrase forzado del motor y caja reductora, con los límites y arcos de presión de aceite indicados en bar.
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
+                Elementos que debe mostrar la ilustración:
+              </span>
+              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Presiones de aceite motor:</strong> Mín. ralentí 1.2 bar, rango normal 2.3 a 6.0 bar y pico máx arranque frío 6.5 bar.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Circuito hidráulico:</strong> Cárter húmedo, bomba de engranajes, válvula de alivio bypass y filtro de aceite.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Intercambiador térmico:</strong> Radiador de aceite de reductora y enfriador agua-aceite del bloque.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Consumo y capacidad:</strong> Tasa máx de consumo (0.1 l/h) y comprobación de varilla (4.5 a 6.0 litros).</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
+              Ref. POH: Suplemento Continental Sección 2 & Sección 7 (Oil Pressure & Lubrication)
+            </div>
           </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-6 del POH: Intercambiador de aceite de reductora y circuito de lubricación del motor</figcaption>
         </div>
       </div>
     </div>
@@ -690,13 +910,57 @@ export const C172_LESSON_1 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
         </div>
-        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
-          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema del sistema de combustible" class="w-full max-h-[260px] object-contain rounded-lg" />
+        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
+          <!-- Marco Indicador de Imagen Requerida -->
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>⛽</span> ILUSTRACIÓN TÉCNICA REQUERIDA
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de generación
+              </span>
+            </div>
+
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
+                Sondas Térmicas en Depósitos y Circuito de Retorno
+              </h4>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+                Diagrama de los captadores térmicos en depósitos alares, circuito de recirculación caliente y límites operativos de temperatura según el tipo de combustible.
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
+                Elementos que debe mostrar la ilustración:
+              </span>
+              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Límites JET A-1:</strong> Mínima despegue -30ºC (-34ºC con aditivo), mínima en vuelo -35ºC.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Límites Diésel EN 590:</strong> Mínima despegue +5ºC / 0ºC y mínima en vuelo -5ºC (riesgo de cristalización de parafinas).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Límite superior crítico:</strong> Temperatura máxima en depósito de +54ºC / +55ºC (cavitación de bomba).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Líneas de retorno:</strong> Recirculación de combustible templado desde el common-rail a los tanques alares.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
+              Ref. POH: Suplemento Continental Sección 2 (Fuel Temperature Limitations)
+            </div>
           </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-4 del POH: Captadores de temperatura en depósitos y circuito de alimentación</figcaption>
         </div>
       </div>
     </div>
@@ -777,13 +1041,61 @@ export const C172_LESSON_1 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
         </div>
-        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
-          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/instrument-panel.png" alt="CED 125 en panel de instrumentos" class="w-full max-h-[260px] object-contain rounded-lg" />
+        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
+          <!-- Marco Indicador de Imagen Requerida -->
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>🖥️</span> ILUSTRACIÓN TÉCNICA REQUERIDA
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de generación
+              </span>
+            </div>
+
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
+                Carátula del Instrumento Digital CED 125 y Rangos de Color
+              </h4>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+                Recreación vectorial del Compact Engine Display (CED 125) detallando la disposición de los cuadrantes y la codificación de arcos verde, amarillo y rojo según POH.
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
+                Elementos que debe mostrar la ilustración:
+              </span>
+              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Tacómetro Hélice:</strong> Arco verde 1400 - 2300 RPM y línea roja en 2300 RPM (2500 transitorio máx 20s).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Carga Motor (% Load):</strong> Escala verde de 0% a 100% y línea roja para sobredemanda >100%.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Temperatura Refrigerante:</strong> Arco verde 60 - 105ºC y línea roja superior en 105ºC.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Temperatura y Presión de Aceite:</strong> Aceite 50-140ºC / Presión 2.3-6.0 bar (línea roja inf. 1.2 bar y sup. 6.5 bar).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Temperatura Caja Reductora:</strong> Arco verde 0 - 120ºC y línea roja en 120ºC.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
+              Ref. POH: Suplemento Continental TAE 125 Sección 2 (Instrument Markings - CED 125)
+            </div>
           </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-1 del POH: CED 125 (Compact Engine Display) integrado en el panel principal</figcaption>
         </div>
       </div>
     </div>
@@ -876,13 +1188,57 @@ export const C172_LESSON_1 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
         </div>
-        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
-          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/lightpanel.png" alt="Avisadores en Annunciator Lightpanel" class="w-full max-h-[260px] object-contain rounded-lg" />
+        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
+          <!-- Marco Indicador de Imagen Requerida -->
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>🔘</span> ILUSTRACIÓN TÉCNICA REQUERIDA
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de generación
+              </span>
+            </div>
+
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
+                Unidad AED 125, Annunciator Panel y Mando Confirm/Test
+              </h4>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+                Ilustración del display auxiliar AED 125, panel de luces de aviso en cabina y pulsador rotativo FADEC Test/Confirm Knob para la verificación prevuelo de canales ECU.
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
+                Elementos que debe mostrar la ilustración:
+              </span>
+              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Instrumento AED 125:</strong> Parámetros de voltaje (V), intensidad de alternador (A) y caudal de combustible (l/h).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Annunciator Lightpanel:</strong> Avisadores luminosos CED/AED Caution, Warning de motor y aviso de bujías (Glow).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Pulsador FADEC Test/Confirm:</strong> Mando en panel para ejecutar el auto-test de alternancia de ECU A/B en prevuelo.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Secuencia de comprobación:</strong> Procedimiento de pulsación mantenida y confirmación visual de caída/recuperación de RPM.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
+              Ref. POH: Suplemento Continental Sección 2 & Sección 7 (AED 125 & Caution System)
+            </div>
           </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-2 del POH: Luces AED/CED Caution y pulsador Test/Confirm Knob en cabina</figcaption>
         </div>
       </div>
     </div>
@@ -975,13 +1331,57 @@ export const C172_LESSON_1 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
         </div>
-        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
-          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema de combustible" class="w-full max-h-[260px] object-contain rounded-lg" />
+        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
+          <!-- Marco Indicador de Imagen Requerida -->
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>🛢️</span> ILUSTRACIÓN TÉCNICA REQUERIDA
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de generación
+              </span>
+            </div>
+
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
+                Esquema de Depósitos Alares, Capacidades y Selector
+              </h4>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+                Diagrama técnico de los tanques alares C172 con las capacidades totales y utilizables en litros/galones, selector de combustible y advertencias de combustible diésel.
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
+                Elementos que debe mostrar la ilustración:
+              </span>
+              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Capacidades depósitos estándar:</strong> 166 L (44 gal) total / 150 L (39.6 gal) utilizable [16 L no utilizables].</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Capacidades largo alcance:</strong> 212 L (56 gal) total / 201 L (53 gal) utilizable [11.4 L no utilizables].</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Válvula selectora:</strong> Posiciones Left, Right, Shut-Off y depósito colector intermedio (Header Tank).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Cartel de advertencia crítica:</strong> Rótulos "JET FUEL / DIESEL ONLY" y prohibición absoluta de AVGAS 100LL.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
+              Ref. POH: Suplemento Continental Sección 2 & Sección 7 (Fuel Specifications & Capacity)
+            </div>
           </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-4 del POH: Depósitos alares, selector de 3 vías, depósito nodriza y retorno</figcaption>
         </div>
       </div>
     </div>
@@ -1066,13 +1466,57 @@ export const C172_LESSON_1 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[574px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
         </div>
-        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
-          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/procedures/preflight.png" alt="Inspección de rótulos y accesos de fluidos" class="w-full max-h-[260px] object-contain rounded-lg" />
+        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
+          <!-- Marco Indicador de Imagen Requerida -->
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
+            <div class="flex items-center justify-between w-full">
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+                <span>🏷️</span> ILUSTRACIÓN TÉCNICA REQUERIDA
+              </span>
+              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
+                Pendiente de generación
+              </span>
+            </div>
+
+            <div>
+              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
+                Placards Obligatorios de Cabina y Accesos de Servicio
+              </h4>
+              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
+                Infografía oficial con los rótulos obligatorios exigidos por certificación en panel y fuselaje, así como los puntos de servicio de refrigerante, aceite de motor y reductora.
+              </p>
+            </div>
+
+            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
+                Elementos que debe mostrar la ilustración:
+              </span>
+              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Placard acrobático de panel:</strong> Texto literal POH de operaciones Normal/Utilitaria y prohibición de acrobacias.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Placards de combustible:</strong> Rótulos normalizados junto a las bocas de llenado de depósitos alares ("JET FUEL ONLY").</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Accesos en capó motor:</strong> Compuerta de varilla de aceite (AeroShell Diesel Ultra) y tapón presurizado de refrigerante (Glysantin G48).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
+                  <span><strong>Mirilla de reductora:</strong> Visor de nivel de líquido ATF Shell Spirax S4 en la caja reductora frontal.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
+              Ref. POH: Suplemento Continental TAE 125 Sección 2 (Placards and Markings)
+            </div>
           </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Inspección exterior prevuelo de bocas de combustible JET A-1 y compuerta de aceite</figcaption>
         </div>
       </div>
     </div>
