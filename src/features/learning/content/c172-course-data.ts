@@ -2122,12 +2122,12 @@ export const C172_LESSON_3 = {
   sequence_order: 3,
   lesson_order: 3,
   min_seconds: 1,
-  content_html: `<!-- DIAPOSITIVA 2.1: 2.1 Motor Continental TAE 125: Arquitectura y Especificaciones -->
+  content_html: `<!-- DIAPOSITIVA 3.1: 3.1 Motor Continental TAE 125: Arquitectura y Especificaciones -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.1 Motor Continental TAE 125: Arquitectura y Especificaciones</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.1 Motor Continental TAE 125: Arquitectura y Especificaciones</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Modelos CD-135 (TAE 125-02-99) y CD-155 (TAE 125-02-114)</span>
   </div>
@@ -2213,12 +2213,12 @@ export const C172_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.2: 2.2 Reductora Integrada y Hélice MT-Propeller -->
+<!-- DIAPOSITIVA 3.2: 3.2 Reductora Integrada y Hélice MT-Propeller -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.2 Reductora Integrada y Hélice MT-Propeller</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.2 Reductora Integrada y Hélice MT-Propeller</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Relación de Reducción i=1.69 y Paso Variable Constant Speed</span>
   </div>
@@ -2304,12 +2304,12 @@ export const C172_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.3: 2.3 Sistema FADEC: Control Digital y Redundancia Dual -->
+<!-- DIAPOSITIVA 3.3: 3.3 Sistema FADEC: Control Digital y Redundancia Dual -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.3 Sistema FADEC: Control Digital y Redundancia Dual</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.3 Sistema FADEC: Control Digital y Redundancia Dual</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Doble ECU (Canal A y B), Sensores Duplicados y Mando Único</span>
   </div>
@@ -2398,12 +2398,12 @@ export const C172_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.4: 2.4 Gestión FADEC: Autoprueba, Categorías de Fallo y FORCE B -->
+<!-- DIAPOSITIVA 3.4: 3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y FORCE B -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.4 Gestión FADEC: Autoprueba, Categorías de Fallo y FORCE B</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y FORCE B</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Lógica del Pulsador de Test (2s), Categorías Low/High y Mando FORCE B</span>
   </div>
@@ -2492,12 +2492,12 @@ export const C172_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.5: 2.5 Sistema Eléctrico I: Fuentes de Potencia y Alternador -->
+<!-- DIAPOSITIVA 3.5: 3.5 Sistema Eléctrico I: Fuentes de Potencia y Alternador -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.5 Sistema Eléctrico I: Fuentes de Potencia y Alternador</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.5 Sistema Eléctrico I: Fuentes de Potencia y Alternador</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Generación 14V/28V, Batería Principal y Batería de Excitación</span>
   </div>
@@ -2583,12 +2583,12 @@ export const C172_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.6: 2.6 Sistema Eléctrico II: FADEC Backup Battery y Main Bus -->
+<!-- DIAPOSITIVA 3.6: 3.6 Sistema Eléctrico II: FADEC Backup Battery y Main Bus -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.6 Sistema Eléctrico II: FADEC Backup Battery y Main Bus</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.6 Sistema Eléctrico II: FADEC Backup Battery y Main Bus</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Batería de Respaldo FADEC (30 Min) y Barra Eléctrica Principal</span>
   </div>
@@ -2677,12 +2677,12 @@ export const C172_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.7: 2.7 Sistema de Combustible I: Depósitos y Alimentación -->
+<!-- DIAPOSITIVA 3.7: 3.7 Sistema de Combustible I: Depósitos y Alimentación -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.7 Sistema de Combustible I: Depósitos y Alimentación</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.7 Sistema de Combustible I: Depósitos y Alimentación</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Capacidades de Depósitos, Densidad (0.84 kg/l), Válvulas y Reservoir Tank</span>
   </div>
@@ -2771,12 +2771,12 @@ export const C172_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.8: 2.8 Sistema de Combustible II: Bombas, Retorno y Enfriador -->
+<!-- DIAPOSITIVA 3.8: 3.8 Sistema de Combustible II: Bombas, Retorno y Enfriador -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.8 Sistema de Combustible II: Bombas, Retorno y Enfriador</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.8 Sistema de Combustible II: Bombas, Retorno y Enfriador</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Bomba Eléctrica, Bomba de Alta Presión, Retorno y Deflector Térmico (>20°C)</span>
   </div>
@@ -2862,12 +2862,12 @@ export const C172_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.9: 2.9 Sistema de Refrigeración Líquida (Cooling System) -->
+<!-- DIAPOSITIVA 3.9: 3.9 Sistema de Refrigeración Líquida (Cooling System) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.9 Sistema de Refrigeración Líquida (Cooling System)</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.9 Sistema de Refrigeración Líquida (Cooling System)</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Termostato de 3 Vías (<84°C, 84-94°C, >94°C), Radiador y Aviso Water Level</span>
   </div>
@@ -2953,12 +2953,12 @@ export const C172_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.10: 2.10 Sistemas de Lubricación: Motor y Caja Reductora -->
+<!-- DIAPOSITIVA 3.10: 3.10 Sistemas de Lubricación: Motor y Caja Reductora -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.10 Sistemas de Lubricación: Motor y Caja Reductora</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.10 Sistemas de Lubricación: Motor y Caja Reductora</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Circuitos Independientes de Aceite de Motor y Aceite de Caja Reductora</span>
   </div>
@@ -3044,12 +3044,12 @@ export const C172_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.11: 2.11 Instrumentación de Motor: CED 125 y AED 125 -->
+<!-- DIAPOSITIVA 3.11: 3.11 Instrumentación de Motor: CED 125 y AED 125 -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.11 Instrumentación de Motor: CED 125 y AED 125</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.11 Instrumentación de Motor: CED 125 y AED 125</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Indicación Digital Compacta de Parámetros de Motor y Datos Auxiliares</span>
   </div>
@@ -3143,12 +3143,12 @@ export const C172_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.12: 2.12 Panel de Alarmas (Lightpanel) y Mandos de Cabina -->
+<!-- DIAPOSITIVA 3.12: 3.12 Panel de Alarmas (Lightpanel) y Mandos de Cabina -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.12 Panel de Alarmas (Lightpanel) y Mandos de Cabina</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.12 Panel de Alarmas (Lightpanel) y Mandos de Cabina</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Luces Avisadoras de FADEC, Alternador, Nivel Bajo y Mandos de Motor</span>
   </div>
@@ -3253,12 +3253,12 @@ export const C172_LESSON_4 = {
   lesson_order: 4,
   min_seconds: 1,
   content_html: `
-<!-- DIAPOSITIVA 3.1: 3.1 Inspección Prevuelo I: Cabina Inicial -->
+<!-- DIAPOSITIVA 4.1: 4.1 Inspección Prevuelo I: Cabina Inicial -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.1 Inspección Prevuelo I: Cabina Inicial</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.1 Inspección Prevuelo I: Cabina Inicial</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Comprobación General y Cabina</span>
   </div>
@@ -3348,12 +3348,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.2: 3.2 Inspección de Cabina II: Combustible y Cierre -->
+<!-- DIAPOSITIVA 4.2: 4.2 Inspección de Cabina II: Combustible y Cierre -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.2 Inspección de Cabina II: Combustible y Cierre</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.2 Inspección de Cabina II: Combustible y Cierre</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Instrumentos de Combustible, Válvulas y Seguridad</span>
   </div>
@@ -3429,12 +3429,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.3: 3.3 Inspección Exterior I: Empenaje y Ala Derecha -->
+<!-- DIAPOSITIVA 4.3: 4.3 Inspección Exterior I: Empenaje y Ala Derecha -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.3 Inspección Exterior I: Empenaje y Ala Derecha</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.3 Inspección Exterior I: Empenaje y Ala Derecha</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Superficies de Mando y Borde de Salida</span>
   </div>
@@ -3506,12 +3506,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.4: 3.4 Inspección Exterior II: Combustible Ala Derecha -->
+<!-- DIAPOSITIVA 4.4: 4.4 Inspección Exterior II: Combustible Ala Derecha -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.4 Inspección Exterior II: Combustible Ala Derecha</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.4 Inspección Exterior II: Combustible Ala Derecha</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estación (4) RIGHT WING en Secuencia Completa</span>
   </div>
@@ -3590,12 +3590,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.5: 3.5 Inspección Exterior III: Drenajes de Reserva y Filtro -->
+<!-- DIAPOSITIVA 4.5: 4.5 Inspección Exterior III: Drenajes de Reserva y Filtro -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.5 Inspección Exterior III: Drenajes de Reserva y Filtro</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.5 Inspección Exterior III: Drenajes de Reserva y Filtro</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estación NOSE: Depósito de Reserva y Filtro</span>
   </div>
@@ -3662,12 +3662,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.6: 3.6 Inspección Exterior IV: Motor y Hélice -->
+<!-- DIAPOSITIVA 4.6: 4.6 Inspección Exterior IV: Motor y Hélice -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.6 Inspección Exterior IV: Motor y Hélice</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.6 Inspección Exterior IV: Motor y Hélice</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estación NOSE: Aceites, Reductora, Hélice y Tren</span>
   </div>
@@ -3751,103 +3751,67 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.7: 3.7 Inspección Exterior V: Semiala Izquierda -->
+<!-- DIAPOSITIVA 4.7: 4.7 Inspección Exterior V: Semiala Izquierda (Combustible y Tren) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.7 Inspección Exterior V: Semiala Izquierda</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.7 Inspección Exterior V: Semiala Izquierda (Combustible y Tren)</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Drenaje de Combustible, Pitot, Pérdida y Superficies de Control</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Drenaje de Combustible, Tapón y Tren Principal</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch py-1.5" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Inspección (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🔍 (6) LEFT WING & (7) LEADING EDGE</span>
+      <div class="h-[590px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🔍 (6) LEFT WING</span>
         </div>
-        <div class="space-y-0.5 py-0">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
-            <!-- (6) LEFT WING: Combustible y Tren -->
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(6) LEFT WING</strong>
-              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-[11.5px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">(1)</span>
-                <span class="text-slate-800 dark:text-slate-200">Fuel Quantity - CHECK VISUALLY for desired level not above marking in fuel filler</span>
-              </div>
-              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-[11.5px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">(2)</span>
-                <span class="text-slate-800 dark:text-slate-200">Fuel Filler Cap - SECURE</span>
-              </div>
-              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-[11.5px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">(3)</span>
-                <span class="text-slate-800 dark:text-slate-200">Fuel Tank Sump Quick Drain Valves - DRAIN at least a cupful of fuel (using sampler cup) from each sump location to check for water, sediment and the right type of fuel (Diesel or JET-A1) before each flight and after each refueling. If water is observed, take further samples until clear and then gently rock wings and lower tail to the ground to move any additional contaminants to the sampling points. Take repeated samples from all fuel drain points until all contamination has been removed. If contaminants are still present, refer to previous WARNING (see right wing) and do not fly airplane.</span>
-              </div>
-              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-[11.5px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">(4)</span>
-                <span class="text-slate-800 dark:text-slate-200">Main Wheel Tire - CHECK for proper inflation and general condition (weather checks, tread depth and wear, etc.)</span>
-              </div>
+        <div class="space-y-2 py-1 flex-1 flex flex-col justify-between">
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(6) LEFT WING</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel Quantity - CHECK VISUALLY for desired level not above marking in fuel filler</span>
             </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel Filler Cap - SECURE</span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(3)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel Tank Sump Quick Drain Valves - DRAIN at least a cupful of fuel (using sampler cup) from each sump location to check for water, sediment and the right type of fuel (Diesel or JET-A1) before each flight and after each refueling. If water is observed, take further samples until clear and then gently rock wings and lower tail to the ground to move any additional contaminants to the sampling points. Take repeated samples from all fuel drain points until all contamination has been removed. If contaminants are still present, refer to previous WARNING (see right wing) and do not fly airplane.</span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Main Wheel Tire - CHECK for proper inflation and general condition (weather checks, tread depth and wear, etc.)</span>
+            </div>
+          </div>
 
-            <!-- (7) LEADING EDGE -->
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(7) LEFT WING Leading Edge</strong>
-              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-[11.5px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">(1)</span>
-                <span class="text-slate-800 dark:text-slate-200">Pitot Tube Cover (if mounted) - REMOVE and CHECK for pitot blockage</span>
-              </div>
-              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-[11.5px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">(2)</span>
-                <span class="text-slate-800 dark:text-slate-200">Fuel Tank Vent Opening - CHECK for blockage</span>
-              </div>
-              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-[11.5px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">(3)</span>
-                <span class="text-slate-800 dark:text-slate-200">Stall Warning Opening - CHECK for blockage To check the system, place a clean handkerchief over the vent opening and apply suction; a sound from the warning horn will confirm system operation.</span>
-              </div>
-              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-[11.5px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">(4)</span>
-                <span class="text-slate-800 dark:text-slate-200">Wing Tie-Down - DISCONNECT</span>
-              </div>
-            </div>
+          <!-- WARNING en la izquierda con tipografía estándar -->
+          <div class="p-3 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>WARNING:</span>
+            </strong>
+            <div>Si, después de tomar muestras repetidamente, sigue habiendo indicios de contaminación, no debe volarse el avión. El personal de mantenimiento cualificado debe vaciar los depósitos y purgar el sistema. Debe eliminarse todo indicio de contaminación antes de volver a volar.</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Referencia POH (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Esquema POH -->
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA & (8) TRAILING EDGE</span>
+      <div class="h-[590px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-1.5 min-h-0 space-y-1.5">
-          <div class="w-full max-h-[140px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-1.5 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden shrink-0">
-            <img src="/images/c172/procedures/preflight.png" alt="Semiala izquierda" class="w-full max-h-[130px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-center p-2 min-h-0 space-y-3">
+          <div class="w-full max-h-[360px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/procedures/preflight.png" alt="Semiala izquierda" class="w-full max-h-[340px] object-contain rounded-lg" />
           </div>
-          <figcaption class="text-center text-[11px] text-slate-500 dark:text-slate-400 font-medium shrink-0">Tubo pitot, ventilación, bocina de pérdida y superficies</figcaption>
-
-          <!-- (8) LEFT WING Trailing Edge transferido limpiamente sin recortar nada -->
-          <div class="w-full p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 shrink-0">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(8) LEFT WING Trailing Edge</strong>
-            <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12.5px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(1)</span>
-              <span class="text-slate-800 dark:text-slate-200">Aileron - CHECK freedom of movement and security</span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12.5px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(2)</span>
-              <span class="text-slate-800 dark:text-slate-200">Flap - Check for security and conditions</span>
-            </div>
-          </div>
-
-          <div class="w-full p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs leading-snug shadow-2xs shrink-0">
-            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-xs shrink-0">
-              <span>⚠️</span>
-              <span>WARNING:</span>
-            </strong>
-            <div class="text-[11.5px]">Si, después de tomar muestras repetidamente, sigue habiendo indicios de contaminación, no debe volarse el avión. El personal de mantenimiento cualificado debe vaciar los depósitos y purgar el sistema. Debe eliminarse todo indicio de contaminación antes de volver a volar.</div>
-          </div>
+          <figcaption class="text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Inspección de combustible, tapón y comprobación de neumático de tren principal</figcaption>
         </div>
       </div>
     </div>
@@ -3856,12 +3820,88 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.8: 3.8 Antes del Arranque del Motor -->
+<!-- DIAPOSITIVA 4.8: 4.8 Inspección Exterior VI: Semiala Izquierda (Bordes de Ataque y Salida) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.8 Inspección Exterior VI: Semiala Izquierda (Bordes de Ataque y Salida)</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pitot, Bocina de Pérdida, Alerón y Flaps</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Leading Edge y Trailing Edge a 2 columnas -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🔍 (7) LEADING EDGE & (8) TRAILING EDGE</span>
+        </div>
+        <div class="space-y-2 py-1">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+            <!-- (7) LEFT WING Leading Edge -->
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(7) LEFT WING Leading Edge</strong>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
+                <span class="text-slate-800 dark:text-slate-200">Pitot Tube Cover (if mounted) - REMOVE and CHECK for pitot blockage</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel Tank Vent Opening - CHECK for blockage</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(3)</span>
+                <span class="text-slate-800 dark:text-slate-200">Stall Warning Opening - CHECK for blockage To check the system, place a clean handkerchief over the vent opening and apply suction; a sound from the warning horn will confirm system operation.</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(4)</span>
+                <span class="text-slate-800 dark:text-slate-200">Wing Tie-Down - DISCONNECT</span>
+              </div>
+            </div>
+
+            <!-- (8) LEFT WING Trailing Edge -->
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(8) LEFT WING Trailing Edge</strong>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
+                <span class="text-slate-800 dark:text-slate-200">Aileron - CHECK freedom of movement and security</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
+                <span class="text-slate-800 dark:text-slate-200">Flap - Check for security and conditions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema POH -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
+        </div>
+        <div class="flex-1 flex flex-col items-center justify-center p-2 min-h-0 space-y-3">
+          <div class="w-full max-h-[360px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/procedures/preflight.png" alt="Superficies de control" class="w-full max-h-[340px] object-contain rounded-lg" />
+          </div>
+          <figcaption class="text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Tubo pitot, toma de ventilación, bocina de pérdida con pañuelo limpio y alerón/flaps</figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.9: 4.9 Antes del Arranque del Motor -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.8 Antes del Arranque del Motor</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.9 Antes del Arranque del Motor</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Preparación Previa al Arranque</span>
   </div>
@@ -3974,12 +4014,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.9: 3.9 Puesta en Marcha: Procedimiento de Arranque -->
+<!-- DIAPOSITIVA 4.10: 4.10 Puesta en Marcha: Procedimiento de Arranque -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.9 Puesta en Marcha: Procedimiento de Arranque</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.10 Puesta en Marcha: Procedimiento de Arranque</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Arranque del Motor Continental Diésel</span>
   </div>
@@ -4088,12 +4128,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.10: 3.10 Calentamiento del Motor y Rodaje -->
+<!-- DIAPOSITIVA 4.11: 4.11 Calentamiento del Motor y Rodaje -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.10 Calentamiento del Motor y Rodaje</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.11 Calentamiento del Motor y Rodaje</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Comprobaciones Eléctricas, FADEC Backup y Calentamiento</span>
   </div>
@@ -4182,12 +4222,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.11: 3.11 Antes del Despegue I: Cabina y Mandos -->
+<!-- DIAPOSITIVA 4.12: 4.12 Antes del Despegue I: Cabina y Mandos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.11 Antes del Despegue I: Cabina y Mandos</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.12 Antes del Despegue I: Cabina y Mandos</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Chequeo de Cabina, Mandos y Ajustes Previos</span>
   </div>
@@ -4259,12 +4299,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.12: 3.12 Antes del Despegue II: Autoprueba FADEC -->
+<!-- DIAPOSITIVA 4.13: 4.13 Antes del Despegue II: Autoprueba FADEC -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.12 Antes del Despegue II: Autoprueba FADEC</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.13 Antes del Despegue II: Autoprueba FADEC</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Protocolo Secuencial de Autoprueba FADEC y Hélice</span>
   </div>
@@ -4356,12 +4396,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.13: 3.13 Antes del Despegue III: Force B y Criterios Críticos -->
+<!-- DIAPOSITIVA 4.14: 4.14 Antes del Despegue III: Force B y Criterios Críticos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.13 Antes del Despegue III: Force B y Criterios Críticos</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.14 Antes del Despegue III: Force B y Criterios Críticos</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Conmutador Force B y Limitaciones de Seguridad</span>
   </div>
@@ -4436,12 +4476,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.14: 3.14 Antes del Despegue IV: Potencia y Configuración Final -->
+<!-- DIAPOSITIVA 4.15: 4.15 Antes del Despegue IV: Potencia y Configuración Final -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.14 Antes del Despegue IV: Potencia y Configuración Final</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.15 Antes del Despegue IV: Potencia y Configuración Final</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Comprobación de Empuje 94% y Salida a Pista</span>
   </div>
@@ -4539,12 +4579,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.15: 3.15 Despegue y Ascenso -->
+<!-- DIAPOSITIVA 4.16: 4.16 Despegue y Ascenso -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.15 Despegue y Ascenso</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.16 Despegue y Ascenso</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Configuración de Despegue, Velocidades y Ascenso</span>
   </div>
@@ -4642,12 +4682,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.16: 3.16 Vuelo de Crucero y Gestión de Combustible -->
+<!-- DIAPOSITIVA 4.17: 4.17 Vuelo de Crucero y Gestión de Combustible -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.16 Vuelo de Crucero y Gestión de Combustible</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.17 Vuelo de Crucero y Gestión de Combustible</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Potencia, Compensación y Gestión de Combustible</span>
   </div>
@@ -4736,12 +4776,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.17: 3.17 Descenso y Aterrizaje Normal -->
+<!-- DIAPOSITIVA 4.18: 4.18 Descenso y Aterrizaje Normal -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.17 Descenso y Aterrizaje Normal</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.18 Descenso y Aterrizaje Normal</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimientos de Descenso, Aproximación y Toma</span>
   </div>
@@ -4849,12 +4889,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.18: 3.18 Maniobra de Escape: Aproximación Frustrada -->
+<!-- DIAPOSITIVA 4.19: 4.19 Maniobra de Escape: Aproximación Frustrada -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.18 Maniobra de Escape: Aproximación Frustrada</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.19 Maniobra de Escape: Aproximación Frustrada</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Maniobra de Motor y al Aire (Go-Around)</span>
   </div>
@@ -4923,12 +4963,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.19: 3.19 Tras el Aterrizaje y Parada de Motor -->
+<!-- DIAPOSITIVA 4.20: 4.20 Tras el Aterrizaje y Parada de Motor -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.19 Tras el Aterrizaje y Parada de Motor</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.20 Tras el Aterrizaje y Parada de Motor</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Configuración de Pista y Parada</span>
   </div>
@@ -5018,12 +5058,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.20: 3.20 Procedimientos Especiales -->
+<!-- DIAPOSITIVA 4.21: 4.21 Procedimientos Especiales -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">3.20 Procedimientos Especiales</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.21 Procedimientos Especiales</h1>
     </div>
     
   </div>
@@ -5112,12 +5152,12 @@ export const C172_LESSON_5 = {
   lesson_order: 5,
   min_seconds: 1,
   content_html: `
-<!-- DIAPOSITIVA 4.1: 4.1 Fallo de Motor en Despegue: En Pista y Tras el Despegue -->
+<!-- DIAPOSITIVA 5.1: 5.1 Fallo de Motor en Despegue: En Pista y Tras el Despegue -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.1 Fallo de Motor en Despegue: En Pista y Tras el Despegue</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.1 Fallo de Motor en Despegue: En Pista y Tras el Despegue</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Fallo en Carrera en Pista y Fallo Inmediato tras el Despegue</span>
   </div>
@@ -5212,12 +5252,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.2: 4.2 Fallo de Motor en Vuelo y Reencendido -->
+<!-- DIAPOSITIVA 5.2: 5.2 Fallo de Motor en Vuelo y Reencendido -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.2 Fallo de Motor en Vuelo y Reencendido</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.2 Fallo de Motor en Vuelo y Reencendido</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Gestión de Alimentación de Combustible y Protocolo de Reencendido</span>
   </div>
@@ -5325,12 +5365,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.3: 4.3 Avisos Luminosos FADEC en Vuelo -->
+<!-- DIAPOSITIVA 5.3: 5.3 Avisos Luminosos FADEC en Vuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.3 Avisos Luminosos FADEC en Vuelo</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.3 Avisos Luminosos FADEC en Vuelo</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Luces FADEC Parpadeantes o Fijas: Categorías Low y High</span>
   </div>
@@ -5415,12 +5455,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.4: 4.4 Comportamiento Anómalo del Motor y Force B -->
+<!-- DIAPOSITIVA 5.4: 5.4 Comportamiento Anómalo del Motor y Force B -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.4 Comportamiento Anómalo del Motor y Force B</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.4 Comportamiento Anómalo del Motor y Force B</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Conmutación Manual a Canal B y Prevención de Sobrerégimen de Hélice</span>
   </div>
@@ -5493,12 +5533,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.5: 4.5 Incendios: Motor en Tierra, en Vuelo y Eléctrico -->
+<!-- DIAPOSITIVA 5.5: 5.5 Incendios: Motor en Tierra, en Vuelo y Eléctrico -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.5 Incendios: Motor en Tierra, en Vuelo y Eléctrico</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.5 Incendios: Motor en Tierra, en Vuelo y Eléctrico</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Protocolo de Corte de Fuego, Extinción y Aislamiento Eléctrico</span>
   </div>
@@ -5621,12 +5661,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.6: 4.6 Parada de Motor en Vuelo y Aterrizaje Forzoso -->
+<!-- DIAPOSITIVA 5.6: 5.6 Parada de Motor en Vuelo y Aterrizaje Forzoso -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.6 Parada de Motor en Vuelo y Aterrizaje Forzoso</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.6 Parada de Motor en Vuelo y Aterrizaje Forzoso</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimiento de Corte Voluntario y Aterrizaje sin Motor (Engine Out)</span>
   </div>
@@ -5733,12 +5773,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.7: 4.7 Engelamiento Inadvertido y Recuperación de Barrena -->
+<!-- DIAPOSITIVA 5.7: 5.7 Engelamiento Inadvertido y Recuperación de Barrena -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.7 Engelamiento Inadvertido y Recuperación de Barrena</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.7 Engelamiento Inadvertido y Recuperación de Barrena</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Condiciones Meteorológicas Adversas y Salida de Espiral</span>
   </div>
@@ -5861,12 +5901,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.8: 4.8 Fallo del Alternador y Descarga de Batería -->
+<!-- DIAPOSITIVA 5.8: 5.8 Fallo del Alternador y Descarga de Batería -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.8 Fallo del Alternador y Descarga de Batería</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.8 Fallo del Alternador y Descarga de Batería</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Avisos Luminosos, Batería Principal y Protocolo de Deslastre Eléctrico</span>
   </div>
@@ -5963,12 +6003,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.9: 4.9 Fallo Eléctrico Total y Batería FADEC Backup -->
+<!-- DIAPOSITIVA 5.9: 5.9 Fallo Eléctrico Total y Batería FADEC Backup -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.9 Fallo Eléctrico Total y Batería FADEC Backup</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.9 Fallo Eléctrico Total y Batería FADEC Backup</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aislamiento de Equipos y Funcionamiento Autónomo del Motor (30 Minutos)</span>
   </div>
@@ -6031,12 +6071,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.10: 4.10 Anomalías de Aceite: Presión y Temperatura -->
+<!-- DIAPOSITIVA 5.10: 5.10 Anomalías de Aceite: Presión y Temperatura -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.10 Anomalías de Aceite: Presión y Temperatura</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.10 Anomalías de Aceite: Presión y Temperatura</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Presión de Aceite Baja (&lt; 2.3 bar / &lt; 1.2 bar) y Sobretemperatura de Aceite</span>
   </div>
@@ -6120,12 +6160,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.11: 4.11 Anomalías Térmicas: Refrigerante, Water Level y Reductora -->
+<!-- DIAPOSITIVA 5.11: 5.11 Anomalías Térmicas: Refrigerante, Water Level y Reductora -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.11 Anomalías Térmicas: Refrigerante, Water Level y Reductora</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.11 Anomalías Térmicas: Refrigerante, Water Level y Reductora</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Sobretemperatura de Refrigerante, Aviso Water Level y Temperatura de Reductora</span>
   </div>
@@ -6211,12 +6251,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.12: 4.12 Pérdida de Potencia, Combustible y Malfunciones de Hélice -->
+<!-- DIAPOSITIVA 5.12: 5.12 Pérdida de Potencia, Combustible y Malfunciones de Hélice -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">4.12 Pérdida de Potencia, Combustible y Malfunciones de Hélice</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">5.12 Pérdida de Potencia, Combustible y Malfunciones de Hélice</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Disminución de Potencia, Temperaturas Límite de Combustible y RPM de Hélice</span>
   </div>
