@@ -7,6 +7,8 @@ import { requireVerifiedSession } from "@/shared/lib/supabase/session";
 import { calculateReadingTime } from "@/features/learning/domain/reading-time";
 import { getNextLessonOrder } from "@/features/learning/domain/lesson-order";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
+import { splitLessonPages } from "@/features/learning/domain/lesson-pages";
+import { setSlideVisibility, type SlideVisibility } from "@/features/learning/domain/slide-visibility";
 
 export async function uploadLessonImageAction(formData: FormData): Promise<string> {
   const session = await requireVerifiedSession();
@@ -176,4 +178,54 @@ export async function deleteLessonAction(lessonId: string, courseId: string) {
   revalidatePath("/admin/courses");
   revalidatePath("/courses");
   revalidatePath(`/courses/${courseId}`);
+}
+
+export async function updateSlideVisibilityAction({
+  lessonId,
+  courseId,
+  slideIndex,
+  visibility,
+}: {
+  lessonId: string;
+  courseId: string;
+  slideIndex: number;
+  visibility: SlideVisibility;
+}): Promise<{ success: boolean; visibility: SlideVisibility }> {
+  const { client: supabase } = await requireCourseEditor(courseId);
+
+  const isUuid =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      lessonId,
+    );
+  let query = supabase
+    .from("lessons")
+    .select("id, content_html")
+    .eq("course_id", courseId);
+  query = isUuid ? query.eq("id", lessonId) : query.eq("slug", lessonId);
+  const { data: lesson, error: fetchErr } = await query.single();
+
+  if (fetchErr || !lesson) {
+    throw new Error("No se pudo encontrar la lección para actualizar visibilidad.");
+  }
+
+  const slides = splitLessonPages(lesson.content_html || "");
+  if (slideIndex < 0 || slideIndex >= slides.length) {
+    throw new Error("Índice de diapositiva no válido.");
+  }
+
+  slides[slideIndex] = setSlideVisibility(slides[slideIndex], visibility);
+  const newContentHtml = slides.join("\n\n<!-- pagebreak -->\n\n");
+
+  const { error: updateErr } = await supabase
+    .from("lessons")
+    .update({ content_html: newContentHtml })
+    .eq("id", lesson.id);
+
+  if (updateErr) throw new Error(updateErr.message);
+
+  revalidatePath(`/courses/${courseId}/lessons/${lessonId}`);
+  revalidatePath(`/courses/${courseId}`);
+  revalidatePath(`/admin/courses/${courseId}`);
+
+  return { success: true, visibility };
 }

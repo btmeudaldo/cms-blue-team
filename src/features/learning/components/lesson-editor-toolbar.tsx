@@ -18,6 +18,11 @@ import {
 } from "../domain/editor-keyboard-shortcuts";
 import { splitLessonPages } from "../domain/lesson-pages";
 import {
+  getSlideVisibility,
+  setSlideVisibility,
+  type SlideVisibility,
+} from "../domain/slide-visibility";
+import {
   clampGridColumnSpan,
   getComplementaryGridColumnSpan,
   getGridColumnPercentages,
@@ -740,6 +745,23 @@ export function LessonEditorToolbar({
 
     if (editorRef.current) {
       editorRef.current.innerHTML = source;
+      attachImageControlsToDom(editorRef.current);
+      attachGridControlsToDom(editorRef.current);
+    }
+    onChangeContentHtml(updated.join("\n\n<!-- pagebreak -->\n\n"));
+  }
+
+  function handleToggleSlideVisibility(newVisibility: SlideVisibility) {
+    const currentHtml = getCleanHtml();
+    const modifiedHtml = setSlideVisibility(currentHtml, newVisibility);
+
+    const updated = [...slidesRef.current];
+    updated[currentSlideIndexRef.current] = modifiedHtml;
+    slidesRef.current = updated;
+    setSlides(updated);
+
+    if (editorRef.current) {
+      editorRef.current.innerHTML = modifiedHtml;
       attachImageControlsToDom(editorRef.current);
       attachGridControlsToDom(editorRef.current);
     }
@@ -2074,20 +2096,59 @@ export function LessonEditorToolbar({
                 Diapositiva {currentSlideIndex + 1} de {slides.length}
               </span>
               <div className="flex items-center gap-1">
-                {slides.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => goToSlide(idx)}
-                    className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                      idx === currentSlideIndex
-                        ? "w-6 bg-[#1a80ff]"
-                        : "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
-                    }`}
-                    title={`Ir a Diapositiva ${idx + 1}`}
-                  />
-                ))}
+                {slides.map((slide, idx) => {
+                  const isPrivate = getSlideVisibility(slide) === "private";
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => goToSlide(idx)}
+                      className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                        idx === currentSlideIndex
+                          ? isPrivate
+                            ? "w-6 bg-amber-500"
+                            : "w-6 bg-[#1a80ff]"
+                          : isPrivate
+                            ? "w-2.5 bg-amber-400 dark:bg-amber-600 hover:bg-amber-500"
+                            : "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
+                      }`}
+                      title={`Ir a Diapositiva ${idx + 1} (${isPrivate ? "🔒 Solo visible para mí" : "🌐 Visible para todos"})`}
+                    />
+                  );
+                })}
               </div>
+            </div>
+
+            {/* Visibility Selector for Current Slide */}
+            <div className="flex items-center gap-1 rounded-xl bg-slate-100 dark:bg-slate-800 p-0.5 border border-slate-200 dark:border-slate-700">
+              <button
+                type="button"
+                onClick={() => handleToggleSlideVisibility("public")}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  getSlideVisibility(slides[currentSlideIndex] || "") === "public"
+                    ? "bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-2xs border border-emerald-200 dark:border-emerald-800"
+                    : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                }`}
+                title="Visible para todos los alumnos y personal"
+              >
+                <span>🌐</span>
+                <span className="hidden sm:inline">Visible para todos</span>
+                <span className="sm:hidden">Todos</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleToggleSlideVisibility("private")}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                  getSlideVisibility(slides[currentSlideIndex] || "") === "private"
+                    ? "bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 shadow-2xs border border-amber-300 dark:border-amber-700"
+                    : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                }`}
+                title="Solo a la vista para mí (Borrador de instructor)"
+              >
+                <span>🔒</span>
+                <span className="hidden sm:inline">Solo para mí</span>
+                <span className="sm:hidden">Solo yo</span>
+              </button>
             </div>
 
             {/* Right: Next Button & Slide Actions */}

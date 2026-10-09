@@ -4,6 +4,13 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { splitLessonPages } from "@/features/learning/domain/lesson-pages";
+import {
+  getSlideVisibility,
+  setSlideVisibility,
+  getVisibleSlidesForUser,
+  type SlideVisibility,
+} from "@/features/learning/domain/slide-visibility";
+import { updateSlideVisibilityAction } from "@/app/actions/lesson.actions";
 
 import {
   completeLessonAction,
@@ -79,7 +86,6 @@ export function LessonPlayer({
   courseDocs,
 }: LessonPlayerProps) {
   const router = useRouter();
-  const lessonPages = splitLessonPages(contentHtml);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [pageSecondsElapsed, setPageSecondsElapsed] = useState<
     Record<number, number>
@@ -87,10 +93,6 @@ export function LessonPlayer({
   const [completedPages, setCompletedPages] = useState<Record<number, boolean>>(
     {},
   );
-  const totalLessonPages = lessonPages.length;
-  const currentSlideHtml =
-    lessonPages[currentPageIndex] ?? lessonPages[0] ?? "";
-  const safeContentHtml = sanitizeLessonHtml(currentSlideHtml);
   const contentRef = useRef<HTMLDivElement>(null);
   const progressQueue = useRef(Promise.resolve());
   const completingRef = useRef(false);
@@ -116,24 +118,6 @@ export function LessonPlayer({
   const [retryVersion, setRetryVersion] = useState(0);
   const [isAdvanceArmed, setIsAdvanceArmed] = useState(isAlreadyCompleted);
 
-  // 10 seconds per page for multi-page lessons as requested
-  const minSecondsPerPage =
-    totalLessonPages > 1
-      ? 10
-      : minSeconds;
-  const effectiveMinSeconds =
-    totalLessonPages > 1 ? minSecondsPerPage * totalLessonPages : minSeconds;
-  const isCurrentPageDone =
-    isAlreadyCompleted ||
-    isCompletedSuccess ||
-    Boolean(completedPages[currentPageIndex]);
-  const elapsedOnCurrentPage = pageSecondsElapsed[currentPageIndex] ?? 0;
-  const currentPageRemainingSeconds = isCurrentPageDone
-    ? 0
-    : Math.max(0, minSecondsPerPage - elapsedOnCurrentPage);
-  const activeRemainingSeconds =
-    totalLessonPages > 1 ? currentPageRemainingSeconds : remainingSeconds;
-
   // Focus & Visibility state
   const [isWindowFocused, setIsWindowFocused] = useState(true);
 
@@ -158,6 +142,80 @@ export function LessonPlayer({
   const [horizontalPosition, setHorizontalPosition] = useState(50);
   const [verticalPosition, setVerticalPosition] = useState(50);
   const [verticalOffset, setVerticalOffset] = useState(0);
+  const [visibilityOverrides, setVisibilityOverrides] = useState<
+    Record<number, SlideVisibility>
+  >({});
+  const [isUpdatingVisibility, setIsUpdatingVisibility] = useState(false);
+
+  const rawLessonPages = useMemo(() => {
+    const pages = splitLessonPages(contentHtml);
+    return pages.map((slide, idx) =>
+      visibilityOverrides[idx]
+        ? setSlideVisibility(slide, visibilityOverrides[idx])
+        : slide,
+    );
+  }, [contentHtml, visibilityOverrides]);
+
+  const isStaff = role === "admin" || role === "instructor";
+  const { visibleSlides, visibleToOriginalIndexMap } = useMemo(
+    () => getVisibleSlidesForUser(rawLessonPages, role),
+    [rawLessonPages, role],
+  );
+  const lessonPages = isStaff ? rawLessonPages : visibleSlides;
+  const totalLessonPages = lessonPages.length;
+  const effectivePageIndex = Math.min(
+    currentPageIndex,
+    Math.max(0, totalLessonPages - 1),
+  );
+  const currentSlideHtml =
+    lessonPages[effectivePageIndex] ?? lessonPages[0] ?? "";
+  const safeContentHtml = sanitizeLessonHtml(currentSlideHtml);
+
+  const currentRawIndex = isStaff
+    ? effectivePageIndex
+    : (visibleToOriginalIndexMap[effectivePageIndex] ?? effectivePageIndex);
+  const currentSlideRaw = rawLessonPages[currentRawIndex] ?? "";
+  const currentSlideVisibility = getSlideVisibility(currentSlideRaw);
+
+  const handleLiveVisibilityChange = async (newVisibility: SlideVisibility) => {
+    if (!isStaff || isUpdatingVisibility) return;
+    setIsUpdatingVisibility(true);
+    setVisibilityOverrides((prev) => ({
+      ...prev,
+      [currentRawIndex]: newVisibility,
+    }));
+    try {
+      await updateSlideVisibilityAction({
+        lessonId,
+        courseId,
+        slideIndex: currentRawIndex,
+        visibility: newVisibility,
+      });
+      router.refresh();
+    } catch (err) {
+      console.error("Error al actualizar visibilidad de diapositiva:", err);
+    } finally {
+      setIsUpdatingVisibility(false);
+    }
+  };
+
+  // 10 seconds per page for multi-page lessons as requested
+  const minSecondsPerPage =
+    totalLessonPages > 1
+      ? 10
+      : minSeconds;
+  const effectiveMinSeconds =
+    totalLessonPages > 1 ? minSecondsPerPage * totalLessonPages : minSeconds;
+  const isCurrentPageDone =
+    isAlreadyCompleted ||
+    isCompletedSuccess ||
+    Boolean(completedPages[effectivePageIndex]);
+  const elapsedOnCurrentPage = pageSecondsElapsed[effectivePageIndex] ?? 0;
+  const currentPageRemainingSeconds = isCurrentPageDone
+    ? 0
+    : Math.max(0, minSecondsPerPage - elapsedOnCurrentPage);
+  const activeRemainingSeconds =
+    totalLessonPages > 1 ? currentPageRemainingSeconds : remainingSeconds;
 
   const completedLessonSet = new Set(completedLessonIds);
   const isSlideMode = totalLessonPages > 1;
@@ -1113,15 +1171,17 @@ export function LessonPlayer({
                 {/* Center: Slide Indicator strictly centered */}
                 <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-auto">
                   <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300 whitespace-nowrap">
-                    Diapositiva {currentPageIndex + 1} de {totalLessonPages}
+                    Diapositiva {effectivePageIndex + 1} de {totalLessonPages}
                   </span>
                   <div className="flex items-center gap-1">
-                    {lessonPages.map((_, idx) => {
+                    {lessonPages.map((slide, idx) => {
                       const isClickable =
-                        idx <= currentPageIndex ||
+                        idx <= effectivePageIndex ||
                         isAlreadyCompleted ||
                         isCompletedSuccess ||
                         Boolean(completedPages[idx]);
+                      const isPrivate =
+                        isStaff && getSlideVisibility(slide) === "private";
                       return (
                         <button
                           key={idx}
@@ -1134,16 +1194,22 @@ export function LessonPlayer({
                             }
                           }}
                           className={`h-2.5 rounded-full transition-all ${
-                            idx === currentPageIndex
-                              ? "w-6 bg-[#1a80ff]"
-                              : isClickable
-                                ? "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 cursor-pointer"
-                                : "w-2.5 bg-slate-200 dark:bg-slate-800 opacity-40 cursor-not-allowed"
+                            idx === effectivePageIndex
+                              ? isPrivate
+                                ? "w-6 bg-amber-500"
+                                : "w-6 bg-[#1a80ff]"
+                              : isPrivate
+                                ? "w-2.5 bg-amber-400 dark:bg-amber-600 hover:bg-amber-500 cursor-pointer"
+                                : isClickable
+                                  ? "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 cursor-pointer"
+                                  : "w-2.5 bg-slate-200 dark:bg-slate-800 opacity-40 cursor-not-allowed"
                           }`}
                           title={
-                            isClickable
-                              ? `Ir a Diapositiva ${idx + 1}`
-                              : `Diapositiva ${idx + 1} bloqueada (completa el tiempo de las anteriores)`
+                            isPrivate
+                              ? `Ir a Diapositiva ${idx + 1} (🔒 Solo visible para mí)`
+                              : isClickable
+                                ? `Ir a Diapositiva ${idx + 1}`
+                                : `Diapositiva ${idx + 1} bloqueada (completa el tiempo de las anteriores)`
                           }
                         />
                       );
@@ -1151,21 +1217,82 @@ export function LessonPlayer({
                   </div>
                 </div>
 
-                {/* Right: Balance spacer */}
-                <div className="w-16 hidden sm:block pointer-events-none" />
+                {/* Right: Staff Visibility Selector or Balance spacer */}
+                {isStaff ? (
+                  <div className="flex items-center gap-1 rounded-xl bg-slate-100 dark:bg-slate-800 p-0.5 border border-slate-200 dark:border-slate-700 pointer-events-auto">
+                    <button
+                      type="button"
+                      disabled={isUpdatingVisibility}
+                      onClick={() => handleLiveVisibilityChange("public")}
+                      className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        currentSlideVisibility === "public"
+                          ? "bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-2xs border border-emerald-200 dark:border-emerald-800"
+                          : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                      }`}
+                      title="Visible para todos los alumnos y personal"
+                    >
+                      <span>🌐</span>
+                      <span className="hidden sm:inline">Visible para todos</span>
+                      <span className="sm:hidden">Todos</span>
+                    </button>
+                    <button
+                      type="button"
+                      disabled={isUpdatingVisibility}
+                      onClick={() => handleLiveVisibilityChange("private")}
+                      className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        currentSlideVisibility === "private"
+                          ? "bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 shadow-2xs border border-amber-300 dark:border-amber-700"
+                          : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                      }`}
+                      title="Solo a la vista para mí (Borrador de instructor)"
+                    >
+                      <span>🔒</span>
+                      <span className="hidden sm:inline">Solo para mí</span>
+                      <span className="sm:hidden">Solo yo</span>
+                    </button>
+                  </div>
+                ) : (
+                  <div className="w-16 hidden sm:block pointer-events-none" />
+                )}
               </nav>
             )}
 
+            {/* Staff Private Slide Banner */}
+            {isStaff && currentSlideVisibility === "private" && (
+              <div className="flex items-center justify-between gap-3 px-4 py-2.5 rounded-2xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-300/80 dark:border-amber-700/80 text-xs text-amber-900 dark:text-amber-200 font-medium shadow-2xs">
+                <div className="flex items-center gap-2">
+                  <span className="text-base">🔒</span>
+                  <span>
+                    <strong>Modo Borrador:</strong> Esta diapositiva solo está a la vista para ti. Los alumnos no pueden verla hasta marcarla como <strong>"Visible para todos"</strong>.
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingVisibility}
+                  onClick={() => handleLiveVisibilityChange("public")}
+                  className="px-3 py-1 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs cursor-pointer transition-colors shrink-0 shadow-2xs"
+                >
+                  Hacer visible a todos
+                </button>
+              </div>
+            )}
+
             {/* Content Article Container: Full reading width preserved without forced screen scroll */}
-            <article
-              ref={contentRef}
-              className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 ${
-                isSlideMode
-                  ? "flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
-                  : "prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
-              }`}
-              dangerouslySetInnerHTML={{ __html: safeContentHtml }}
-            />
+            {totalLessonPages === 0 ? (
+              <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center text-slate-500 dark:text-slate-400 text-sm">
+                Esta lección está en preparación y estará disponible próximamente.
+              </div>
+            ) : (
+              <article
+                ref={contentRef}
+                className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 ${
+                  isSlideMode
+                    ? "flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
+                    : "prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
+                }`}
+                dangerouslySetInnerHTML={{ __html: safeContentHtml }}
+              />
+            )}
 
             {/* Bottom Slide Status (Shown only when not in slide mode) */}
             {!isSlideMode && totalLessonPages > 1 && (
