@@ -24,13 +24,16 @@ export function Header({
   const [isHidden, setIsHidden] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
-  const isAdmin = role === "admin" || role === "instructor";
+  const isAdmin =
+    role === "superadmin" || role === "admin" || role === "instructor";
   const roleLabel =
-    role === "instructor"
-      ? "Instructor"
-      : role === "admin"
-        ? "Director / Admin"
-        : "Piloto Alumno";
+    role === "superadmin"
+      ? "Superadmin"
+      : role === "instructor"
+        ? "Instructor"
+        : role === "admin"
+          ? "Director / Admin"
+          : "Piloto Alumno";
 
   useEffect(() => {
     if (!autoHideOnScroll) return;

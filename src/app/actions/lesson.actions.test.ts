@@ -2,15 +2,22 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   session: vi.fn(),
+  editor: vi.fn(),
   revalidate: vi.fn(),
 }));
 
 vi.mock("@/shared/lib/supabase/session", () => ({
   requireVerifiedSession: mocks.session,
 }));
+vi.mock("@/features/learning/application/course-authorization", () => ({
+  requireCourseEditor: mocks.editor,
+}));
 vi.mock("next/cache", () => ({ revalidatePath: mocks.revalidate }));
 
-import { uploadLessonImageAction } from "./lesson.actions";
+import {
+  uploadLessonImageAction,
+  updateSlideVisibilityAction,
+} from "./lesson.actions";
 
 describe("uploadLessonImageAction", () => {
   beforeEach(() => {
@@ -111,3 +118,114 @@ describe("uploadLessonImageAction", () => {
     );
   });
 });
+
+describe("updateSlideVisibilityAction", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("updates target slide visibility attribute and revalidates paths", async () => {
+    const singleMock = vi.fn().mockResolvedValue({
+      data: {
+        id: "lesson-uuid-1",
+        content_html:
+          '<div class="lesson-slide-container"><p>Slide 1</p></div>\n\n<!-- pagebreak -->\n\n<div class="lesson-slide-container"><p>Slide 2</p></div>',
+      },
+      error: null,
+    });
+    const updateEqMock = vi.fn().mockResolvedValue({ error: null });
+    const updateMock = vi.fn().mockReturnValue({ eq: updateEqMock });
+
+    const queryMock: any = {
+      eq: vi.fn(),
+      single: singleMock,
+    };
+    queryMock.eq.mockReturnValue(queryMock);
+
+    const clientMock = {
+      from: vi.fn((table: string) => {
+        if (table === "lessons") {
+          return {
+            select: vi.fn().mockReturnValue(queryMock),
+            update: updateMock,
+          };
+        }
+        return {};
+      }),
+    };
+
+    mocks.editor.mockResolvedValue({
+      client: clientMock,
+      profile: { role: "superadmin" },
+    });
+
+    const res = await updateSlideVisibilityAction({
+      lessonId: "lesson-uuid-1",
+      courseId: "course-1",
+      slideIndex: 1,
+      visibility: "private",
+    });
+
+    expect(res).toEqual({ success: true, visibility: "private" });
+    expect(updateMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        content_html: expect.stringContaining('data-slide-visibility="private"'),
+      }),
+    );
+    expect(mocks.revalidate).toHaveBeenCalledWith("/courses/course-1/lessons/lesson-uuid-1");
+  });
+
+  it("rejects non-superadmin users trying to change slide visibility", async () => {
+    mocks.editor.mockResolvedValue({
+      client: {},
+      profile: { role: "admin" },
+    });
+
+    await expect(
+      updateSlideVisibilityAction({
+        lessonId: "lesson-uuid-1",
+        courseId: "course-1",
+        slideIndex: 0,
+        visibility: "private",
+      }),
+    ).rejects.toThrow(
+      "Solo el superadministrador puede modificar la visibilidad de diapositivas.",
+    );
+  });
+
+  it("throws error if slideIndex is out of range", async () => {
+    const singleMock = vi.fn().mockResolvedValue({
+      data: {
+        id: "lesson-uuid-1",
+        content_html: '<div class="lesson-slide-container"><p>Single Slide</p></div>',
+      },
+      error: null,
+    });
+    const queryMock: any = {
+      eq: vi.fn(),
+      single: singleMock,
+    };
+    queryMock.eq.mockReturnValue(queryMock);
+
+    const clientMock = {
+      from: vi.fn(() => ({
+        select: vi.fn().mockReturnValue(queryMock),
+      })),
+    };
+
+    mocks.editor.mockResolvedValue({
+      client: clientMock,
+      profile: { role: "superadmin" },
+    });
+
+    await expect(
+      updateSlideVisibilityAction({
+        lessonId: "lesson-uuid-1",
+        courseId: "course-1",
+        slideIndex: 5,
+        visibility: "private",
+      }),
+    ).rejects.toThrow("Índice de diapositiva no válido.");
+  });
+});
+

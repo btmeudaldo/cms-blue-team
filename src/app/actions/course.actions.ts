@@ -3,11 +3,13 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireVerifiedSession } from "@/shared/lib/supabase/session";
+import { createSupabaseAdminClient } from "@/shared/lib/supabase/server";
 import { getCourseCoverUploadError } from "@/features/learning/domain/course-cover-upload";
 
 async function requireCourseStaff() {
   const session = await requireVerifiedSession();
   if (
+    session.profile.role !== "superadmin" &&
     session.profile.role !== "admin" &&
     session.profile.role !== "instructor"
   ) {
@@ -74,14 +76,29 @@ export async function uploadCourseCoverAction(formData: FormData) {
 }
 
 export async function updateCourseAction(courseId: string, formData: FormData) {
-  const { client } = await requireCourseStaff();
+  const { client, profile } = await requireCourseStaff();
   const fields = courseFields(formData);
-  const { data, error } = await client
+  let { data, error } = await client
     .from("courses")
     .update(fields)
     .eq("id", courseId)
     .select("id")
     .maybeSingle();
+
+  if (!data && (profile.role === "admin" || profile.role === "superadmin")) {
+    const adminClient = createSupabaseAdminClient();
+    if (adminClient) {
+      const adminResult = await adminClient
+        .from("courses")
+        .update(fields)
+        .eq("id", courseId)
+        .select("id")
+        .maybeSingle();
+      data = adminResult.data;
+      error = adminResult.error;
+    }
+  }
+
   if (error)
     throw new Error(`No se pudo actualizar el curso: ${error.message}`);
   if (!data)

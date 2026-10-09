@@ -18,13 +18,15 @@ export default async function AdminUsersPage() {
   const { user, profile: currentProfile } = await getResilientUser();
 
   if (
+    currentProfile?.role !== "superadmin" &&
     currentProfile?.role !== "admin" &&
     currentProfile?.role !== "instructor"
   ) {
     redirect("/courses");
   }
 
-  const isFullAdmin = currentProfile?.role === "admin";
+  const isFullAdmin =
+    currentProfile?.role === "admin" || currentProfile?.role === "superadmin";
 
   // Fetch profiles, courses, and enrollments concurrently
   const [profiles, courses, enrollments] = await Promise.all([

@@ -3,6 +3,23 @@ import { describe, expect, it } from "vitest";
 import { getLessonLayoutClasses } from "./lesson-layout";
 
 describe("getLessonLayoutClasses", () => {
+  it.each([false, true])(
+    "uses all available slide width with index open: %s",
+    (isIndexOpen) => {
+      const layout = getLessonLayoutClasses(isIndexOpen, true);
+
+      expect(layout.outer).not.toMatch(/max-w-\[/);
+      expect(layout.main).not.toMatch(/max-w-\[/);
+      expect(layout.outer).toContain("w-full");
+      expect(layout.main).toContain("w-full");
+      if (isIndexOpen) {
+        expect(layout.outer).toContain(
+          "min-[2000px]:grid-cols-[320px_minmax(0,1fr)]",
+        );
+      }
+    },
+  );
+
   it("expands the lesson area for panoramic desktop screens", () => {
     expect(getLessonLayoutClasses(true)).toEqual({
       outer:

@@ -17,7 +17,11 @@ export default async function CreateLessonPage({
   const { courseId } = await params;
   const { user, profile } = await getResilientUser();
 
-  if (profile?.role !== "admin" && profile?.role !== "instructor")
+  if (
+    profile?.role !== "superadmin" &&
+    profile?.role !== "admin" &&
+    profile?.role !== "instructor"
+  )
     redirect("/courses");
 
   const course = await getResilientCourseDetail(courseId);

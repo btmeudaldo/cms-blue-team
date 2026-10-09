@@ -4,6 +4,13 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { splitLessonPages } from "@/features/learning/domain/lesson-pages";
+import {
+  getSlideVisibility,
+  setSlideVisibility,
+  getVisibleSlidesForUser,
+  type SlideVisibility,
+} from "@/features/learning/domain/slide-visibility";
+import { updateSlideVisibilityAction } from "@/app/actions/lesson.actions";
 
 import {
   completeLessonAction,
@@ -81,7 +88,6 @@ export function LessonPlayer({
   isSuperAdmin = false,
 }: LessonPlayerProps) {
   const router = useRouter();
-  const lessonPages = splitLessonPages(contentHtml);
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [pageSecondsElapsed, setPageSecondsElapsed] = useState<
     Record<number, number>
@@ -89,10 +95,6 @@ export function LessonPlayer({
   const [completedPages, setCompletedPages] = useState<Record<number, boolean>>(
     {},
   );
-  const totalLessonPages = lessonPages.length;
-  const currentSlideHtml =
-    lessonPages[currentPageIndex] ?? lessonPages[0] ?? "";
-  const safeContentHtml = sanitizeLessonHtml(currentSlideHtml);
   const contentRef = useRef<HTMLDivElement>(null);
   const progressQueue = useRef(Promise.resolve());
   const completingRef = useRef(false);
@@ -113,28 +115,11 @@ export function LessonPlayer({
   const [isCompletedSuccess, setIsCompletedSuccess] =
     useState(isAlreadyCompleted);
   const [showCompletionToast, setShowCompletionToast] = useState(false);
+  const [showQuizPromptModal, setShowQuizPromptModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isActivityPaused, setIsActivityPaused] = useState(false);
   const [retryVersion, setRetryVersion] = useState(0);
   const [isAdvanceArmed, setIsAdvanceArmed] = useState(isAlreadyCompleted);
-
-  // 10 seconds per page for multi-page lessons as requested
-  const minSecondsPerPage =
-    totalLessonPages > 1
-      ? 10
-      : minSeconds;
-  const effectiveMinSeconds =
-    totalLessonPages > 1 ? minSecondsPerPage * totalLessonPages : minSeconds;
-  const isCurrentPageDone =
-    isAlreadyCompleted ||
-    isCompletedSuccess ||
-    Boolean(completedPages[currentPageIndex]);
-  const elapsedOnCurrentPage = pageSecondsElapsed[currentPageIndex] ?? 0;
-  const currentPageRemainingSeconds = isCurrentPageDone
-    ? 0
-    : Math.max(0, minSecondsPerPage - elapsedOnCurrentPage);
-  const activeRemainingSeconds =
-    totalLessonPages > 1 ? currentPageRemainingSeconds : remainingSeconds;
 
   // Focus & Visibility state
   const [isWindowFocused, setIsWindowFocused] = useState(true);
@@ -160,6 +145,78 @@ export function LessonPlayer({
   const [horizontalPosition, setHorizontalPosition] = useState(50);
   const [verticalPosition, setVerticalPosition] = useState(50);
   const [verticalOffset, setVerticalOffset] = useState(0);
+  const [visibilityOverrides, setVisibilityOverrides] = useState<
+    Record<number, SlideVisibility>
+  >({});
+  const [isUpdatingVisibility, setIsUpdatingVisibility] = useState(false);
+
+  const rawLessonPages = useMemo(() => {
+    const pages = splitLessonPages(contentHtml);
+    return pages.map((slide, idx) =>
+      visibilityOverrides[idx]
+        ? setSlideVisibility(slide, visibilityOverrides[idx])
+        : slide,
+    );
+  }, [contentHtml, visibilityOverrides]);
+
+  const isSuperAdmin = role === "superadmin";
+  const isStaff =
+    role === "superadmin" || role === "admin" || role === "instructor";
+  const { visibleSlides, visibleToOriginalIndexMap } = useMemo(
+    () => getVisibleSlidesForUser(rawLessonPages, role),
+    [rawLessonPages, role],
+  );
+  const lessonPages = isSuperAdmin ? rawLessonPages : visibleSlides;
+  const totalLessonPages = lessonPages.length;
+  const effectivePageIndex = Math.min(
+    currentPageIndex,
+    Math.max(0, totalLessonPages - 1),
+  );
+  const currentSlideHtml =
+    lessonPages[effectivePageIndex] ?? lessonPages[0] ?? "";
+  const safeContentHtml = sanitizeLessonHtml(currentSlideHtml);
+
+  const currentRawIndex = isSuperAdmin
+    ? effectivePageIndex
+    : (visibleToOriginalIndexMap[effectivePageIndex] ?? effectivePageIndex);
+  const currentSlideRaw = rawLessonPages[currentRawIndex] ?? "";
+  const currentSlideVisibility = getSlideVisibility(currentSlideRaw);
+
+  const handleLiveVisibilityChange = async (newVisibility: SlideVisibility) => {
+    if (!isSuperAdmin || isUpdatingVisibility) return;
+    setIsUpdatingVisibility(true);
+    setVisibilityOverrides((prev) => ({
+      ...prev,
+      [currentRawIndex]: newVisibility,
+    }));
+    try {
+      await updateSlideVisibilityAction({
+        lessonId,
+        courseId,
+        slideIndex: currentRawIndex,
+        visibility: newVisibility,
+      });
+      router.refresh();
+    } catch (err) {
+      console.error("Error al actualizar visibilidad de diapositiva:", err);
+    } finally {
+      setIsUpdatingVisibility(false);
+    }
+  };
+
+  // 1 second per page for fast review as requested
+  const minSecondsPerPage = 1;
+  const effectiveMinSeconds = 1;
+  const isCurrentPageDone =
+    isAlreadyCompleted ||
+    isCompletedSuccess ||
+    Boolean(completedPages[effectivePageIndex]);
+  const elapsedOnCurrentPage = pageSecondsElapsed[effectivePageIndex] ?? 0;
+  const currentPageRemainingSeconds = isCurrentPageDone
+    ? 0
+    : Math.max(0, minSecondsPerPage - elapsedOnCurrentPage);
+  const activeRemainingSeconds =
+    totalLessonPages > 1 ? currentPageRemainingSeconds : remainingSeconds;
 
   const completedLessonSet = new Set(completedLessonIds);
   const isSlideMode = totalLessonPages > 1;
@@ -499,13 +556,12 @@ export function LessonPlayer({
       setIsCompletedSuccess(true);
       setShowCompletionToast(true);
 
-      // Advance to next page/lesson when available.
-      // If all pages are completed and quiz exists, stay to offer taking the quiz!
-      if (nextLessonId) {
-        setTimeout(() => {
-          router.push(`/courses/${courseId}/lessons/${nextLessonId}`);
-        }, 1200);
-      } else if (!quiz) {
+      // When finishing a lesson:
+      // If quiz exists and has not been passed yet, ask the student if they want to take the exam now or return to syllabus
+      if (quiz && !quizAttempt?.passed) {
+        setShowQuizPromptModal(true);
+      } else {
+        // If there is no quiz (or it was already passed), return directly to the lesson selection panel
         setTimeout(() => {
           router.push(`/courses/${courseId}`);
         }, 1500);
@@ -1093,9 +1149,9 @@ export function LessonPlayer({
               <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 rounded-2xl bg-emerald-600/95 text-white shadow-2xl backdrop-blur-md px-6 py-3 text-xs sm:text-sm font-bold flex items-center gap-2.5 animate-in fade-in slide-in-from-top-4 duration-300 pointer-events-none">
                 <span>🎉</span>
                 <span>
-                  {nextLessonId
-                    ? "¡Lección completada con éxito! Redirigiendo a la siguiente lección..."
-                    : "¡Felicidades! Has completado la última lección del curso. Redirigiendo..."}
+                  {quiz && !quizAttempt?.passed
+                    ? "¡Lección completada con éxito! Esta lección incluye examen de evaluación."
+                    : "¡Lección completada con éxito! Volviendo al panel de lecciones..."}
                 </span>
               </div>
             )}
@@ -1130,7 +1186,7 @@ export function LessonPlayer({
                 {/* Center: Slide Indicator strictly centered */}
                 <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-auto">
                   <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300 whitespace-nowrap">
-                    Diapositiva {currentPageIndex + 1} de {totalLessonPages}
+                    Diapositiva {effectivePageIndex + 1} de {totalLessonPages}
                   </span>
                   {isSuperAdmin && totalLessonPages > 4 && currentPageIndex >= 4 && (
                     <span className="hidden md:inline-block px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700">
@@ -1138,12 +1194,15 @@ export function LessonPlayer({
                     </span>
                   )}
                   <div className="flex items-center gap-1">
-                    {lessonPages.map((_, idx) => {
+                    {lessonPages.map((slide, idx) => {
                       const isClickable =
-                        idx <= currentPageIndex ||
+                        isStaff ||
+                        idx <= effectivePageIndex ||
                         isAlreadyCompleted ||
                         isCompletedSuccess ||
                         Boolean(completedPages[idx]);
+                      const isPrivate =
+                        isStaff && getSlideVisibility(slide) === "private";
                       return (
                         <button
                           key={idx}
@@ -1156,16 +1215,22 @@ export function LessonPlayer({
                             }
                           }}
                           className={`h-2.5 rounded-full transition-all ${
-                            idx === currentPageIndex
-                              ? "w-6 bg-[#1a80ff]"
-                              : isClickable
-                                ? "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 cursor-pointer"
-                                : "w-2.5 bg-slate-200 dark:bg-slate-800 opacity-40 cursor-not-allowed"
+                            idx === effectivePageIndex
+                              ? isPrivate
+                                ? "w-6 bg-amber-500"
+                                : "w-6 bg-[#1a80ff]"
+                              : isPrivate
+                                ? "w-2.5 bg-amber-400 dark:bg-amber-600 hover:bg-amber-500 cursor-pointer"
+                                : isClickable
+                                  ? "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 cursor-pointer"
+                                  : "w-2.5 bg-slate-200 dark:bg-slate-800 opacity-40 cursor-not-allowed"
                           }`}
                           title={
-                            isClickable
-                              ? `Ir a Diapositiva ${idx + 1}`
-                              : `Diapositiva ${idx + 1} bloqueada (completa el tiempo de las anteriores)`
+                            isPrivate
+                              ? `Ir a Diapositiva ${idx + 1} (🔒 Solo visible para mí)`
+                              : isClickable
+                                ? `Ir a Diapositiva ${idx + 1}`
+                                : `Diapositiva ${idx + 1} bloqueada (completa el tiempo de las anteriores)`
                           }
                         />
                       );
@@ -1173,21 +1238,82 @@ export function LessonPlayer({
                   </div>
                 </div>
 
-                {/* Right: Balance spacer */}
-                <div className="w-16 hidden sm:block pointer-events-none" />
+                {/* Right: SuperAdmin Visibility Selector or Balance spacer */}
+                {isSuperAdmin ? (
+                  <div className="flex items-center gap-1 rounded-xl bg-slate-100 dark:bg-slate-800 p-0.5 border border-slate-200 dark:border-slate-700 pointer-events-auto">
+                    <button
+                      type="button"
+                      disabled={isUpdatingVisibility}
+                      onClick={() => handleLiveVisibilityChange("public")}
+                      className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        currentSlideVisibility === "public"
+                          ? "bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-2xs border border-emerald-200 dark:border-emerald-800"
+                          : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                      }`}
+                      title="Visible para todos los alumnos y personal"
+                    >
+                      <span>🌐</span>
+                      <span className="hidden sm:inline">Visible para todos</span>
+                      <span className="sm:hidden">Todos</span>
+                    </button>
+                    <button
+                      type="button"
+                      disabled={isUpdatingVisibility}
+                      onClick={() => handleLiveVisibilityChange("private")}
+                      className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                        currentSlideVisibility === "private"
+                          ? "bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 shadow-2xs border border-amber-300 dark:border-amber-700"
+                          : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                      }`}
+                      title="Solo a la vista para mí (Borrador de instructor)"
+                    >
+                      <span>🔒</span>
+                      <span className="hidden sm:inline">Solo para mí</span>
+                      <span className="sm:hidden">Solo yo</span>
+                    </button>
+                  </div>
+                ) : (
+                  <div className="w-16 hidden sm:block pointer-events-none" />
+                )}
               </nav>
             )}
 
+            {/* SuperAdmin Private Slide Banner */}
+            {isSuperAdmin && currentSlideVisibility === "private" && (
+              <div className="flex items-center justify-between gap-3 px-4 py-2.5 rounded-2xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-300/80 dark:border-amber-700/80 text-xs text-amber-900 dark:text-amber-200 font-medium shadow-2xs">
+                <div className="flex items-center gap-2">
+                  <span className="text-base">🔒</span>
+                  <span>
+                    <strong>Modo Borrador:</strong> Esta diapositiva solo está a la vista para ti. Los alumnos no pueden verla hasta marcarla como <strong>"Visible para todos"</strong>.
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  disabled={isUpdatingVisibility}
+                  onClick={() => handleLiveVisibilityChange("public")}
+                  className="px-3 py-1 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs cursor-pointer transition-colors shrink-0 shadow-2xs"
+                >
+                  Hacer visible a todos
+                </button>
+              </div>
+            )}
+
             {/* Content Article Container: Full reading width preserved without forced screen scroll */}
-            <article
-              ref={contentRef}
-              className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 ${
-                isSlideMode
-                  ? "flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
-                  : "prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
-              }`}
-              dangerouslySetInnerHTML={{ __html: safeContentHtml }}
-            />
+            {totalLessonPages === 0 ? (
+              <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center text-slate-500 dark:text-slate-400 text-sm">
+                Esta lección está en preparación y estará disponible próximamente.
+              </div>
+            ) : (
+              <article
+                ref={contentRef}
+                className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 ${
+                  isSlideMode
+                    ? "flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
+                    : "prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
+                }`}
+                dangerouslySetInnerHTML={{ __html: safeContentHtml }}
+              />
+            )}
 
             {/* Bottom Slide Status (Shown only when not in slide mode) */}
             {!isSlideMode && totalLessonPages > 1 && (
@@ -1237,14 +1363,12 @@ export function LessonPlayer({
                       >
                         Revisar Examen
                       </Link>
-                      {nextLessonId && (
-                        <Link
-                          href={`/courses/${courseId}/lessons/${nextLessonId}`}
-                          className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all text-center shadow-xs"
-                        >
-                          Siguiente Lección &rarr;
-                        </Link>
-                      )}
+                      <Link
+                        href={`/courses/${courseId}`}
+                        className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all text-center shadow-xs"
+                      >
+                        Volver al Panel de Lecciones &rarr;
+                      </Link>
                     </div>
                   </div>
                 ) : (
@@ -1264,14 +1388,12 @@ export function LessonPlayer({
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center justify-end gap-3">
-                      {nextLessonId && (
-                        <Link
-                          href={`/courses/${courseId}/lessons/${nextLessonId}`}
-                          className="w-full sm:w-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center"
-                        >
-                          Ir a la Siguiente Lección
-                        </Link>
-                      )}
+                      <Link
+                        href={`/courses/${courseId}`}
+                        className="w-full sm:w-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center"
+                      >
+                        Volver al Panel de Lecciones
+                      </Link>
 
                       <Link
                         href={`/quizzes/${quiz.id}`}
@@ -1282,6 +1404,52 @@ export function LessonPlayer({
                     </div>
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* Modal / Dialog when finishing a lesson that has an exam */}
+            {showQuizPromptModal && quiz && (
+              <div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="quiz-modal-title"
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 animate-in fade-in duration-200"
+              >
+                <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5 text-center">
+                  <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/50 text-[#1a80ff] flex items-center justify-center text-3xl mx-auto shadow-inner">
+                    📝
+                  </div>
+                  <div className="space-y-2">
+                    <h3 id="quiz-modal-title" className="text-xl font-black text-slate-900 dark:text-white">
+                      ¡Lección Completada!
+                    </h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                      Esta lección incluye un examen de evaluación: <strong className="text-slate-800 dark:text-slate-200">{quiz.title}</strong>. ¿Deseas realizar las preguntas del examen ahora?
+                    </p>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowQuizPromptModal(false);
+                        router.push(`/courses/${courseId}`);
+                      }}
+                      className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700/60 px-4 py-3 text-xs font-bold text-slate-700 dark:text-slate-300 transition-all cursor-pointer"
+                    >
+                      Volver al Panel de Lecciones
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowQuizPromptModal(false);
+                        router.push(`/quizzes/${quiz.id}`);
+                      }}
+                      className="flex-1 rounded-2xl bg-[#1a80ff] hover:bg-[#0066e6] px-4 py-3 text-xs font-extrabold text-white shadow-md shadow-blue-500/20 transition-all cursor-pointer"
+                    >
+                      Realizar Examen Ahora &rarr;
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
 
@@ -1360,13 +1528,11 @@ export function LessonPlayer({
                   >
                     {isCompleting
                       ? "Verificando en servidor..."
-                      : isCompletedSuccess
-                        ? nextLessonId
-                          ? "✓ Completada"
-                          : "✓ Finalizado"
-                        : nextLessonId
-                          ? "Completar y Avanzar ➔"
-                          : "Finalizar"}
+                      : isCompletedSuccess || isAlreadyCompleted
+                        ? "✓ Finalizado"
+                        : quiz && !quizAttempt?.passed
+                          ? "Completar y Ver Examen ➔"
+                          : "Completar y Salir ➔"}
                   </button>
                 )}
               </div>

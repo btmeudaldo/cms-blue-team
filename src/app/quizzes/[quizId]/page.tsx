@@ -31,27 +31,9 @@ export default async function StandaloneQuizPage({
   if (quiz.course_id) {
     try {
       const course = await getResilientCourseDetail(quiz.course_id, isDemo);
-      if (course && course.lessons && course.lessons.length > 0) {
-        const lessons = [...course.lessons].sort(
-          (a: any, b: any) => (a.sequence_order || 0) - (b.sequence_order || 0),
-        );
-        const currentIndex = lessons.findIndex(
-          (l: any) =>
-            (Boolean(quiz.lesson_id) && l.id === quiz.lesson_id) ||
-            (Boolean(l.slug) && Boolean((quiz as any).lesson_slug) && l.slug === (quiz as any).lesson_slug),
-        );
-
-        if (currentIndex !== -1 && currentIndex < lessons.length - 1) {
-          const nextLesson = lessons[currentIndex + 1];
-          nextLessonUrl = `/courses/${course.id}/lessons/${nextLesson.id}`;
-          nextLessonTitle = nextLesson.title;
-        } else if (currentIndex === lessons.length - 1) {
-          nextLessonUrl = `/courses/${course.id}`;
-          nextLessonTitle = "Volver al Curso";
-        } else {
-          nextLessonUrl = `/courses/${course.id}`;
-          nextLessonTitle = "Volver al Curso";
-        }
+      if (course) {
+        nextLessonUrl = `/courses/${course.id}`;
+        nextLessonTitle = "Volver al Panel de Lecciones";
       }
     } catch {}
   }
@@ -78,12 +60,21 @@ export default async function StandaloneQuizPage({
         {/* Breadcrumb Navigation */}
         <div className="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
           <div className="flex items-center gap-2">
-            <Link
-              href="/quizzes"
-              className="hover:text-[#1a80ff] transition-colors"
-            >
-              Evaluaciones
-            </Link>
+            {quiz.course_id ? (
+              <Link
+                href={`/courses/${quiz.course_id}`}
+                className="hover:text-[#1a80ff] transition-colors"
+              >
+                Panel de Lecciones
+              </Link>
+            ) : (
+              <Link
+                href="/quizzes"
+                className="hover:text-[#1a80ff] transition-colors"
+              >
+                Evaluaciones
+              </Link>
+            )}
             <span>&rsaquo;</span>
             <span className="text-slate-900 dark:text-white truncate max-w-xs">
               {quiz.title}
@@ -91,10 +82,10 @@ export default async function StandaloneQuizPage({
           </div>
 
           <Link
-            href="/quizzes"
+            href={quiz.course_id ? `/courses/${quiz.course_id}` : "/quizzes"}
             className="hover:text-[#1a80ff] transition-colors"
           >
-            &larr; Volver a la Lista
+            &larr; Volver al Panel de Lecciones
           </Link>
         </div>
 

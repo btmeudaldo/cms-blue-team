@@ -351,7 +351,7 @@ it("controls time per slide, hiding bottom dock bar until slide time is fulfille
   );
   // Bottom dock bar must be hidden while slide timer is active
   expect(initialHtml).not.toContain('aria-label="Avance de lección"');
-  expect(initialHtml).toContain("Tiempo Diapositiva (10s)");
+  expect(initialHtml).toContain("Tiempo Diapositiva (1s)");
 
   // Run effects to register intervals
   for (const effect of harness.effects) effect();
@@ -359,8 +359,8 @@ it("controls time per slide, hiding bottom dock bar until slide time is fulfille
   // Find the slide timer interval callback (first setInterval call when totalLessonPages > 1)
   const slideTimerCallback = vi.mocked(window.setInterval).mock.calls[0][0];
 
-  // Tick 10 times to fulfill the 10s requirement of slide 1
-  for (let i = 0; i < 10; i++) {
+  // Tick 1 time to fulfill the 1s requirement of slide 1
+  for (let i = 0; i < 1; i++) {
     if (typeof slideTimerCallback === "function") slideTimerCallback();
   }
 
@@ -388,3 +388,39 @@ it("ensures top bar has no Siguiente button, advancing exclusively via anti-chea
   expect(html).not.toContain("Diapositiva siguiente");
   expect(html).toContain('aria-label="Navegación de diapositivas"');
 });
+
+it("links to course lesson panel instead of jumping to next lesson when completing lesson with quiz", () => {
+  const html = renderToStaticMarkup(
+    render({
+      isAlreadyCompleted: true,
+      courseId: "cessna-172",
+      nextLessonId: "lesson-2",
+      quiz: { id: "quiz-1", title: "Examen Lección 1" },
+      quizAttempt: { passed: false, score_percentage: 0 },
+    }),
+  );
+  // Must offer returning to lesson panel
+  expect(html).toContain("Volver al Panel de Lecciones");
+  expect(html).toContain('href="/courses/cessna-172"');
+  // Must offer taking the quiz
+  expect(html).toContain("Realizar Examen Teórico Ahora");
+  expect(html).toContain('href="/quizzes/quiz-1"');
+  // Must NOT offer jumping directly to next lesson
+  expect(html).not.toContain('href="/courses/cessna-172/lessons/lesson-2"');
+});
+
+it("links to course lesson panel when quiz is already passed", () => {
+  const html = renderToStaticMarkup(
+    render({
+      isAlreadyCompleted: true,
+      courseId: "cessna-172",
+      nextLessonId: "lesson-2",
+      quiz: { id: "quiz-1", title: "Examen Lección 1" },
+      quizAttempt: { passed: true, score_percentage: 100 },
+    }),
+  );
+  expect(html).toContain("Volver al Panel de Lecciones");
+  expect(html).toContain('href="/courses/cessna-172"');
+  expect(html).not.toContain('href="/courses/cessna-172/lessons/lesson-2"');
+});
+

@@ -14,7 +14,11 @@ import { AdminCoursesClientView } from "@/features/learning/components/admin-cou
 export default async function AdminCoursesPage() {
   const { user, profile } = await getResilientUser();
 
-  if (profile?.role !== "admin" && profile?.role !== "instructor")
+  if (
+    profile?.role !== "superadmin" &&
+    profile?.role !== "admin" &&
+    profile?.role !== "instructor"
+  )
     redirect("/courses");
 
   // Fetch courses with resilient fallback

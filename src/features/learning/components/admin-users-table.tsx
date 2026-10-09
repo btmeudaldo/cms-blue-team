@@ -194,18 +194,22 @@ export function AdminUsersTable({
                       ) : (
                         <span
                           className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${
-                            u.role === "admin"
-                              ? "bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800"
-                              : u.role === "instructor"
-                                ? "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] border border-blue-200 dark:border-blue-800"
-                                : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                            u.role === "superadmin"
+                              ? "bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
+                              : u.role === "admin"
+                                ? "bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-200 dark:border-indigo-800"
+                                : u.role === "instructor"
+                                  ? "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] border border-blue-200 dark:border-blue-800"
+                                  : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
                           }`}
                         >
-                          {u.role === "admin"
-                            ? "Director / Admin"
-                            : u.role === "instructor"
-                              ? "Instructor de Vuelo"
-                              : "Piloto Alumno"}
+                          {u.role === "superadmin"
+                            ? "Superadmin"
+                            : u.role === "admin"
+                              ? "Director / Admin"
+                              : u.role === "instructor"
+                                ? "Instructor de Vuelo"
+                                : "Piloto Alumno"}
                         </span>
                       )}
                     </td>

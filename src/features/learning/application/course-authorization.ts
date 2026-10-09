@@ -3,7 +3,7 @@ import { requireVerifiedSession } from "@/shared/lib/supabase/session";
 export async function requireCourseEditor(courseId: string) {
   const session = await requireVerifiedSession();
   const { client, user, profile } = session;
-  if (profile.role === "admin") return session;
+  if (profile.role === "admin" || profile.role === "superadmin") return session;
   if (profile.role !== "instructor") throw new Error("Forbidden");
 
   const { data: course, error: courseError } = await client
