@@ -6334,6 +6334,7 @@ export const C172_LESSON_5 = {
         </div>
       </div>
     </div>
+    </div>
 
     <!-- Columna Derecha (lg:col-span-5): Referencia de Sistemas y Avisos (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
