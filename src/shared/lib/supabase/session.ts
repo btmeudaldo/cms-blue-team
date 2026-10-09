@@ -64,10 +64,23 @@ export const requireVerifiedSession = cache(async () => {
   }
 
   // User-editable metadata and legacy demo cookies cannot grant permissions.
-  const role = profile?.role as unknown;
+  let role = profile?.role as string | undefined;
+
+  // Dedicated superadmin role: exclusively for btmeudaldo@gmail.com or explicit superadmin role
+  if (
+    profile?.email === "btmeudaldo@gmail.com" ||
+    auth.user.email === "btmeudaldo@gmail.com" ||
+    role === "superadmin"
+  ) {
+    role = "superadmin";
+  }
+
   if (
     !profile ||
-    (role !== "admin" && role !== "instructor" && role !== "student")
+    (role !== "superadmin" &&
+      role !== "admin" &&
+      role !== "instructor" &&
+      role !== "student")
   ) {
     throw new AuthenticationRequiredError(
       "No se pudo verificar el perfil de acceso. Contacta con la escuela.",

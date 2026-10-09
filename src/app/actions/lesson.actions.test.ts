@@ -154,7 +154,10 @@ describe("updateSlideVisibilityAction", () => {
       }),
     };
 
-    mocks.editor.mockResolvedValue({ client: clientMock });
+    mocks.editor.mockResolvedValue({
+      client: clientMock,
+      profile: { role: "superadmin" },
+    });
 
     const res = await updateSlideVisibilityAction({
       lessonId: "lesson-uuid-1",
@@ -170,6 +173,24 @@ describe("updateSlideVisibilityAction", () => {
       }),
     );
     expect(mocks.revalidate).toHaveBeenCalledWith("/courses/course-1/lessons/lesson-uuid-1");
+  });
+
+  it("rejects non-superadmin users trying to change slide visibility", async () => {
+    mocks.editor.mockResolvedValue({
+      client: {},
+      profile: { role: "admin" },
+    });
+
+    await expect(
+      updateSlideVisibilityAction({
+        lessonId: "lesson-uuid-1",
+        courseId: "course-1",
+        slideIndex: 0,
+        visibility: "private",
+      }),
+    ).rejects.toThrow(
+      "Solo el superadministrador puede modificar la visibilidad de diapositivas.",
+    );
   });
 
   it("throws error if slideIndex is out of range", async () => {
@@ -192,7 +213,10 @@ describe("updateSlideVisibilityAction", () => {
       })),
     };
 
-    mocks.editor.mockResolvedValue({ client: clientMock });
+    mocks.editor.mockResolvedValue({
+      client: clientMock,
+      profile: { role: "superadmin" },
+    });
 
     await expect(
       updateSlideVisibilityAction({

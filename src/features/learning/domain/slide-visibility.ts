@@ -70,8 +70,7 @@ export function getVisibleSlidesForUser(
   slides: string[],
   role?: string
 ): { visibleSlides: string[]; visibleToOriginalIndexMap: number[] } {
-  const isStaff = role === "admin" || role === "instructor";
-  if (isStaff) {
+  if (role === "superadmin") {
     return {
       visibleSlides: slides,
       visibleToOriginalIndexMap: slides.map((_, i) => i),

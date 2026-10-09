@@ -60,17 +60,21 @@ describe("slide-visibility domain", () => {
       `<div class="lesson-slide-container">Slide 3 (default public)</div>`,
     ];
 
-    it("returns all slides for instructors and admins", () => {
-      const forAdmin = getVisibleSlidesForUser(slides, "admin");
-      expect(forAdmin.visibleSlides).toHaveLength(3);
-      expect(forAdmin.visibleToOriginalIndexMap).toEqual([0, 1, 2]);
-
-      const forInstructor = getVisibleSlidesForUser(slides, "instructor");
-      expect(forInstructor.visibleSlides).toHaveLength(3);
-      expect(forInstructor.visibleToOriginalIndexMap).toEqual([0, 1, 2]);
+    it("returns all slides only for superadmin", () => {
+      const forSuperAdmin = getVisibleSlidesForUser(slides, "superadmin");
+      expect(forSuperAdmin.visibleSlides).toHaveLength(3);
+      expect(forSuperAdmin.visibleToOriginalIndexMap).toEqual([0, 1, 2]);
     });
 
-    it("returns only public slides for students", () => {
+    it("returns only public slides for admins, instructors, and students", () => {
+      const forAdmin = getVisibleSlidesForUser(slides, "admin");
+      expect(forAdmin.visibleSlides).toHaveLength(2);
+      expect(forAdmin.visibleToOriginalIndexMap).toEqual([0, 2]);
+
+      const forInstructor = getVisibleSlidesForUser(slides, "instructor");
+      expect(forInstructor.visibleSlides).toHaveLength(2);
+      expect(forInstructor.visibleToOriginalIndexMap).toEqual([0, 2]);
+
       const forStudent = getVisibleSlidesForUser(slides, "student");
       expect(forStudent.visibleSlides).toHaveLength(2);
       expect(forStudent.visibleSlides[0]).toBe(slides[0]);

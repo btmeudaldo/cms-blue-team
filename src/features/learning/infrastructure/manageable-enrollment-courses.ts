@@ -3,7 +3,11 @@ import { LEGACY_TEST_COURSE_IDS } from "@/shared/lib/supabase/resilient";
 
 export async function getManageableEnrollmentCourses() {
   const { client, user, profile } = await requireVerifiedSession();
-  if (profile.role !== "admin" && profile.role !== "instructor") {
+  if (
+    profile.role !== "superadmin" &&
+    profile.role !== "admin" &&
+    profile.role !== "instructor"
+  ) {
     throw new Error("Forbidden");
   }
   const { data: rawCourses, error } = await client
@@ -14,7 +18,7 @@ export async function getManageableEnrollmentCourses() {
   const courses = (rawCourses ?? []).filter(
     (course) => !LEGACY_TEST_COURSE_IDS.has(course.id),
   );
-  if (profile.role === "admin") return courses;
+  if (profile.role === "admin" || profile.role === "superadmin") return courses;
   const { data: assignments, error: assignmentError } = await client
     .from("course_editors")
     .select("course_id")

@@ -8,6 +8,7 @@ import { getCourseCoverUploadError } from "@/features/learning/domain/course-cov
 async function requireCourseStaff() {
   const session = await requireVerifiedSession();
   if (
+    session.profile.role !== "superadmin" &&
     session.profile.role !== "admin" &&
     session.profile.role !== "instructor"
   ) {

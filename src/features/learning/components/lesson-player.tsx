@@ -156,12 +156,14 @@ export function LessonPlayer({
     );
   }, [contentHtml, visibilityOverrides]);
 
-  const isStaff = role === "admin" || role === "instructor";
+  const isSuperAdmin = role === "superadmin";
+  const isStaff =
+    role === "superadmin" || role === "admin" || role === "instructor";
   const { visibleSlides, visibleToOriginalIndexMap } = useMemo(
     () => getVisibleSlidesForUser(rawLessonPages, role),
     [rawLessonPages, role],
   );
-  const lessonPages = isStaff ? rawLessonPages : visibleSlides;
+  const lessonPages = isSuperAdmin ? rawLessonPages : visibleSlides;
   const totalLessonPages = lessonPages.length;
   const effectivePageIndex = Math.min(
     currentPageIndex,
@@ -171,14 +173,14 @@ export function LessonPlayer({
     lessonPages[effectivePageIndex] ?? lessonPages[0] ?? "";
   const safeContentHtml = sanitizeLessonHtml(currentSlideHtml);
 
-  const currentRawIndex = isStaff
+  const currentRawIndex = isSuperAdmin
     ? effectivePageIndex
     : (visibleToOriginalIndexMap[effectivePageIndex] ?? effectivePageIndex);
   const currentSlideRaw = rawLessonPages[currentRawIndex] ?? "";
   const currentSlideVisibility = getSlideVisibility(currentSlideRaw);
 
   const handleLiveVisibilityChange = async (newVisibility: SlideVisibility) => {
-    if (!isStaff || isUpdatingVisibility) return;
+    if (!isSuperAdmin || isUpdatingVisibility) return;
     setIsUpdatingVisibility(true);
     setVisibilityOverrides((prev) => ({
       ...prev,
@@ -1217,8 +1219,8 @@ export function LessonPlayer({
                   </div>
                 </div>
 
-                {/* Right: Staff Visibility Selector or Balance spacer */}
-                {isStaff ? (
+                {/* Right: SuperAdmin Visibility Selector or Balance spacer */}
+                {isSuperAdmin ? (
                   <div className="flex items-center gap-1 rounded-xl bg-slate-100 dark:bg-slate-800 p-0.5 border border-slate-200 dark:border-slate-700 pointer-events-auto">
                     <button
                       type="button"
@@ -1257,8 +1259,8 @@ export function LessonPlayer({
               </nav>
             )}
 
-            {/* Staff Private Slide Banner */}
-            {isStaff && currentSlideVisibility === "private" && (
+            {/* SuperAdmin Private Slide Banner */}
+            {isSuperAdmin && currentSlideVisibility === "private" && (
               <div className="flex items-center justify-between gap-3 px-4 py-2.5 rounded-2xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-300/80 dark:border-amber-700/80 text-xs text-amber-900 dark:text-amber-200 font-medium shadow-2xs">
                 <div className="flex items-center gap-2">
                   <span className="text-base">🔒</span>

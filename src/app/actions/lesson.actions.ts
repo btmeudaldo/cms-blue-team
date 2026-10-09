@@ -191,7 +191,12 @@ export async function updateSlideVisibilityAction({
   slideIndex: number;
   visibility: SlideVisibility;
 }): Promise<{ success: boolean; visibility: SlideVisibility }> {
-  const { client: supabase } = await requireCourseEditor(courseId);
+  const { client: supabase, profile } = await requireCourseEditor(courseId);
+  if (profile.role !== "superadmin") {
+    throw new Error(
+      "Solo el superadministrador puede modificar la visibilidad de diapositivas.",
+    );
+  }
 
   const isUuid =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
