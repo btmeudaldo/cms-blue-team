@@ -113,6 +113,7 @@ export function LessonPlayer({
   const [isCompletedSuccess, setIsCompletedSuccess] =
     useState(isAlreadyCompleted);
   const [showCompletionToast, setShowCompletionToast] = useState(false);
+  const [showQuizPromptModal, setShowQuizPromptModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isActivityPaused, setIsActivityPaused] = useState(false);
   const [retryVersion, setRetryVersion] = useState(0);
@@ -557,13 +558,12 @@ export function LessonPlayer({
       setIsCompletedSuccess(true);
       setShowCompletionToast(true);
 
-      // Advance to next page/lesson when available.
-      // If all pages are completed and quiz exists, stay to offer taking the quiz!
-      if (nextLessonId) {
-        setTimeout(() => {
-          router.push(`/courses/${courseId}/lessons/${nextLessonId}`);
-        }, 1200);
-      } else if (!quiz) {
+      // When finishing a lesson:
+      // If quiz exists and has not been passed yet, ask the student if they want to take the exam now or return to syllabus
+      if (quiz && !quizAttempt?.passed) {
+        setShowQuizPromptModal(true);
+      } else {
+        // If there is no quiz (or it was already passed), return directly to the lesson selection panel
         setTimeout(() => {
           router.push(`/courses/${courseId}`);
         }, 1500);
@@ -1136,9 +1136,9 @@ export function LessonPlayer({
               <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 rounded-2xl bg-emerald-600/95 text-white shadow-2xl backdrop-blur-md px-6 py-3 text-xs sm:text-sm font-bold flex items-center gap-2.5 animate-in fade-in slide-in-from-top-4 duration-300 pointer-events-none">
                 <span>🎉</span>
                 <span>
-                  {nextLessonId
-                    ? "¡Lección completada con éxito! Redirigiendo a la siguiente lección..."
-                    : "¡Felicidades! Has completado la última lección del curso. Redirigiendo..."}
+                  {quiz && !quizAttempt?.passed
+                    ? "¡Lección completada con éxito! Esta lección incluye examen de evaluación."
+                    : "¡Lección completada con éxito! Volviendo al panel de lecciones..."}
                 </span>
               </div>
             )}
@@ -1344,14 +1344,12 @@ export function LessonPlayer({
                       >
                         Revisar Examen
                       </Link>
-                      {nextLessonId && (
-                        <Link
-                          href={`/courses/${courseId}/lessons/${nextLessonId}`}
-                          className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all text-center shadow-xs"
-                        >
-                          Siguiente Lección &rarr;
-                        </Link>
-                      )}
+                      <Link
+                        href={`/courses/${courseId}`}
+                        className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-5 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all text-center shadow-xs"
+                      >
+                        Volver al Panel de Lecciones &rarr;
+                      </Link>
                     </div>
                   </div>
                 ) : (
@@ -1371,14 +1369,12 @@ export function LessonPlayer({
                     </div>
 
                     <div className="flex flex-col sm:flex-row items-center justify-end gap-3">
-                      {nextLessonId && (
-                        <Link
-                          href={`/courses/${courseId}/lessons/${nextLessonId}`}
-                          className="w-full sm:w-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center"
-                        >
-                          Ir a la Siguiente Lección
-                        </Link>
-                      )}
+                      <Link
+                        href={`/courses/${courseId}`}
+                        className="w-full sm:w-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center"
+                      >
+                        Volver al Panel de Lecciones
+                      </Link>
 
                       <Link
                         href={`/quizzes/${quiz.id}`}
@@ -1389,6 +1385,52 @@ export function LessonPlayer({
                     </div>
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* Modal / Dialog when finishing a lesson that has an exam */}
+            {showQuizPromptModal && quiz && (
+              <div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="quiz-modal-title"
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 animate-in fade-in duration-200"
+              >
+                <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5 text-center">
+                  <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-950/50 text-[#1a80ff] flex items-center justify-center text-3xl mx-auto shadow-inner">
+                    📝
+                  </div>
+                  <div className="space-y-2">
+                    <h3 id="quiz-modal-title" className="text-xl font-black text-slate-900 dark:text-white">
+                      ¡Lección Completada!
+                    </h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                      Esta lección incluye un examen de evaluación: <strong className="text-slate-800 dark:text-slate-200">{quiz.title}</strong>. ¿Deseas realizar las preguntas del examen ahora?
+                    </p>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowQuizPromptModal(false);
+                        router.push(`/courses/${courseId}`);
+                      }}
+                      className="flex-1 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700/60 px-4 py-3 text-xs font-bold text-slate-700 dark:text-slate-300 transition-all cursor-pointer"
+                    >
+                      Volver al Panel de Lecciones
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowQuizPromptModal(false);
+                        router.push(`/quizzes/${quiz.id}`);
+                      }}
+                      className="flex-1 rounded-2xl bg-[#1a80ff] hover:bg-[#0066e6] px-4 py-3 text-xs font-extrabold text-white shadow-md shadow-blue-500/20 transition-all cursor-pointer"
+                    >
+                      Realizar Examen Ahora &rarr;
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
 
@@ -1467,13 +1509,11 @@ export function LessonPlayer({
                   >
                     {isCompleting
                       ? "Verificando en servidor..."
-                      : isCompletedSuccess
-                        ? nextLessonId
-                          ? "✓ Completada"
-                          : "✓ Finalizado"
-                        : nextLessonId
-                          ? "Completar y Avanzar ➔"
-                          : "Finalizar"}
+                      : isCompletedSuccess || isAlreadyCompleted
+                        ? "✓ Finalizado"
+                        : quiz && !quizAttempt?.passed
+                          ? "Completar y Ver Examen ➔"
+                          : "Completar y Salir ➔"}
                   </button>
                 )}
               </div>
