@@ -6270,70 +6270,78 @@ export const C172_LESSON_5 = {
         </div>
         <div class="space-y-1.5 py-1">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
-            <!-- DECREASE IN POWER & FUEL TEMP -->
-            <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">DECREASE IN POWER & FUEL TEMP</strong>
-              <p class="text-[10px] sm:text-[11px] font-bold text-[#0B2E59] dark:text-sky-300">DECREASE IN POWER:</p>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
-              <span class="text-slate-800 dark:text-slate-200">Push Thrust Lever full forward (take-off position)</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
-              <span class="text-slate-800 dark:text-slate-200">Fuel Selector BOTH | (3) Fuel Pump ON</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(4)</span>
-              <span class="text-slate-800 dark:text-slate-200">Reduce airspeed to 65-85 KIAS (max 100 KIAS)</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(5)</span>
-              <span class="text-slate-800 dark:text-slate-200">Check parameters; if normal power not achieved, land ASAP</span>
-            </div>
-              <p class="text-[10px] sm:text-[11px] font-bold text-amber-600 dark:text-amber-400 pt-0.5">FUEL TEMPERATURE ANOMALIES:</p>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">High:</span>
-              <span class="text-slate-800 dark:text-slate-200">Switch to tank with lower temp, reduce power, land ASAP</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">Low:</span>
-              <span class="text-slate-800 dark:text-slate-200">Switch to tank with higher temp, change altitude, BOTH</span>
-            </div>
-            </div>
+              <!-- DECREASE IN POWER & FUEL TEMP -->
+              <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">DECREASE IN POWER & FUEL TEMP</strong>
+                <p class="text-[10px] sm:text-[11px] font-bold text-[#0B2E59] dark:text-sky-300">DECREASE IN POWER:</p>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
+                <span class="text-slate-800 dark:text-slate-200">Push Thrust Lever full forward (take-off position)</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel Selector BOTH | (3) Fuel Pump ON</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(4)</span>
+                <span class="text-slate-800 dark:text-slate-200">Reduce airspeed to 65-85 KIAS (max 100 KIAS)</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(5)</span>
+                <span class="text-slate-800 dark:text-slate-200">Check parameters; if normal power not achieved, land ASAP</span>
+              </div>
+                <p class="text-[10px] sm:text-[11px] font-bold text-amber-600 dark:text-amber-400 pt-0.5">FUEL TEMPERATURE ANOMALIES:</p>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">High:</span>
+                <span class="text-slate-800 dark:text-slate-200">Switch to tank with lower temp, reduce power, land ASAP</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">Low:</span>
+                <span class="text-slate-800 dark:text-slate-200">Switch to tank with higher temp, change altitude, BOTH</span>
+              </div>
+              </div>
 
-            <!-- PROPELLER RPM MALFUNCTIONS -->
-            <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">PROPELLER RPM MALFUNCTIONS</strong>
-              <p class="text-[10px] sm:text-[11px] font-bold text-rose-600 dark:text-rose-400">RPM TOO HIGH (&gt; 2500 RPM):</p>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
-              <span class="text-slate-800 dark:text-slate-200">Reduce power</span>
+              <!-- PROPELLER RPM MALFUNCTIONS -->
+              <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">PROPELLER RPM MALFUNCTIONS</strong>
+                <p class="text-[10px] sm:text-[11px] font-bold text-rose-600 dark:text-rose-400">RPM TOO HIGH (&gt; 2500 RPM):</p>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
+                <span class="text-slate-800 dark:text-slate-200">Reduce power</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
+                <span class="text-slate-800 dark:text-slate-200">Reduce airspeed below 100 KIAS to prevent overspeed</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(3)</span>
+                <span class="text-slate-800 dark:text-slate-200">Set power to maintain altitude and land as soon as possible</span>
+              </div>
+                <p class="text-[10px] sm:text-[11px] font-bold text-amber-600 dark:text-amber-400 pt-0.5">FLUCTUATIONS IN RPM (&gt; +/- 100 RPM):</p>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
+                <span class="text-slate-800 dark:text-slate-200">Change power setting to find position where RPM stabilizes</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
+                <span class="text-slate-800 dark:text-slate-200">If not resolved, set maximum power at airspeed &lt; 100 KIAS</span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(3)</span>
+                <span class="text-slate-800 dark:text-slate-200">Fly below 100 KIAS and land as soon as possible</span>
+              </div>
+              </div>
             </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
-              <span class="text-slate-800 dark:text-slate-200">Reduce airspeed below 100 KIAS to prevent overspeed</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(3)</span>
-              <span class="text-slate-800 dark:text-slate-200">Set power to maintain altitude and land as soon as possible</span>
-            </div>
-              <p class="text-[10px] sm:text-[11px] font-bold text-amber-600 dark:text-amber-400 pt-0.5">FLUCTUATIONS IN RPM (&gt; +/- 100 RPM):</p>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
-              <span class="text-slate-800 dark:text-slate-200">Change power setting to find position where RPM stabilizes</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
-              <span class="text-slate-800 dark:text-slate-200">If not resolved, set maximum power at airspeed &lt; 100 KIAS</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(3)</span>
-              <span class="text-slate-800 dark:text-slate-200">Fly below 100 KIAS and land as soon as possible</span>
-            </div>
-            </div>
+          </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0 flex flex-col justify-start mt-2">
+          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+            <span>⚠️</span>
+            <span>WARNING:</span>
+          </strong>
+          <div>La bomba de alta presión debe ser revisada por un centro de servicio autorizado antes del siguiente vuelo.</div>
         </div>
       </div>
-    </div>
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Referencia de Sistemas y Avisos (Altura Fija 590px) -->
@@ -6343,28 +6351,20 @@ export const C172_LESSON_5 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
         <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[170px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/procedures/instrument-panel.png" alt="Panel de instrumentos" class="w-full max-h-[150px] object-contain rounded-lg" />
+          <div class="w-full max-h-[190px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/procedures/instrument-panel.png" alt="Panel de instrumentos" class="w-full max-h-[170px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Control de potencias, limitación a 100 KIAS y control del paso de hélice</figcaption>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch mt-1">
-        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed  shadow-2xs shrink-0 h-full flex flex-col justify-start my-0">
-          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-            <span>⚠️</span>
-            <span>WARNING:</span>
-          </strong>
-          <div>La bomba de alta presión debe ser revisada por un centro de servicio autorizado antes del siguiente vuelo.</div>
-        </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed  shadow-2xs shrink-0 h-full flex flex-col justify-start my-0">
-          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-            <span>ℹ️</span>
-            <span>NOTE:</span>
-          </strong>
-          <ul class="list-disc pl-4 space-y-1 mt-0.5 text-xs sm:text-[13px] leading-snug">
-            <li class="pl-0.5">Si el control de revoluciones de la hélice falla, los ascensos se pueden realizar a 65 KIAS y 100% de potencia. En caso de sobrerrégimen, el FADEC reducirá la potencia a velocidades más altas para evitar superar 2.500 RPM.</li>
-            <li class="pl-0.5">Una baja temperatura de combustible puede producirse al volar en clima frío con el enfriador de combustible en funcionamiento (deflector desmontado).</li>
-          </ul>
-        </div>
+          
+          <div class="w-full p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0 flex flex-col justify-start mt-1">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <ul class="list-disc pl-4 space-y-1 mt-0.5 text-xs sm:text-[13px] leading-snug">
+              <li class="pl-0.5">Si el control de revoluciones de la hélice falla, los ascensos se pueden realizar a 65 KIAS y 100% de potencia. En caso de sobrerrégimen, el FADEC reducirá la potencia a velocidades más altas para evitar superar 2.500 RPM.</li>
+              <li class="pl-0.5">Una baja temperatura de combustible puede producirse al volar en clima frío con el enfriador de combustible en funcionamiento (deflector desmontado).</li>
+            </ul>
           </div>
         </div>
       </div>
