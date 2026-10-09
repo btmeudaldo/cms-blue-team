@@ -17,6 +17,7 @@ export default async function AdminProgressAuditPage() {
   const { user, profile: currentProfile } = await getResilientUser();
 
   if (
+    currentProfile?.role !== "superadmin" &&
     currentProfile?.role !== "admin" &&
     currentProfile?.role !== "instructor"
   ) {

@@ -1,14 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { CourseImageUploader } from "./course-image-uploader";
 import { AcademicDeleteForm } from "./academic-delete-form";
 
 type AdminCourseDetailClientViewProps = {
   course: any;
   lessons: any[];
-  updateThisCourse: (formData: FormData) => Promise<void>;
+  updateThisCourse: (formData: FormData) => Promise<any>;
   deleteLessonAction: (
     lessonId: string,
     courseId: string,
@@ -21,10 +22,60 @@ export function AdminCourseDetailClientView({
   updateThisCourse,
   deleteLessonAction,
 }: AdminCourseDetailClientViewProps) {
+  const router = useRouter();
   const [showSettings, setShowSettings] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
+
+  const [title, setTitle] = useState(course.title || "");
+  const [slug, setSlug] = useState(course.slug || "");
+  const [description, setDescription] = useState(course.description || "");
+
+  useEffect(() => {
+    setTitle(course.title || "");
+    setSlug(course.slug || "");
+    setDescription(course.description || "");
+  }, [course.title, course.slug, course.description]);
+
+  async function handleCourseSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsSaving(true);
+    setStatusMessage(null);
+    try {
+      const formData = new FormData(e.currentTarget);
+      const result = await updateThisCourse(formData);
+      if (result && typeof result === "object" && "error" in result && (result as any).error) {
+        setStatusMessage({ type: "error", text: (result as any).error });
+      } else {
+        setStatusMessage({
+          type: "success",
+          text: "¡Cambios del curso guardados con éxito!",
+        });
+        router.refresh();
+      }
+    } catch (err: any) {
+      setStatusMessage({
+        type: "error",
+        text: err.message || "Error al guardar los cambios del curso.",
+      });
+    } finally {
+      setIsSaving(false);
+    }
+  }
 
   return (
     <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      {/* Floating Success Toast */}
+      {statusMessage?.type === "success" && (
+        <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 rounded-2xl bg-emerald-600/95 text-white shadow-2xl backdrop-blur-md px-6 py-3 text-xs sm:text-sm font-bold flex items-center gap-2.5 animate-in fade-in slide-in-from-top-4 duration-300 pointer-events-none">
+          <span>✅</span>
+          <span>¡Cambios del curso guardados con éxito!</span>
+        </div>
+      )}
+
       {/* Navigation Breadcrumb & Primary Action Buttons */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
         <div>
@@ -44,7 +95,7 @@ export function AdminCourseDetailClientView({
             </Link>
             <span>&rsaquo;</span>
             <span className="text-slate-900 dark:text-white truncate">
-              {course.title}
+              {title || course.title}
             </span>
           </div>
           <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">
@@ -101,7 +152,24 @@ export function AdminCourseDetailClientView({
             </button>
           </div>
 
-          <form action={updateThisCourse} className="space-y-4">
+          <form onSubmit={handleCourseSubmit} className="space-y-4">
+            {/* Status Message Alert */}
+            {statusMessage && (
+              <div
+                role="alert"
+                className={`rounded-2xl border p-4 text-xs font-bold flex items-center gap-3 animate-in fade-in ${
+                  statusMessage.type === "success"
+                    ? "border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-200"
+                    : "border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/60 text-rose-800 dark:text-rose-200"
+                }`}
+              >
+                <span className="text-base">
+                  {statusMessage.type === "success" ? "✅" : "⚠️"}
+                </span>
+                <span>{statusMessage.text}</span>
+              </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
@@ -109,7 +177,8 @@ export function AdminCourseDetailClientView({
                 </label>
                 <input
                   name="title"
-                  defaultValue={course.title}
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                   required
                   className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden focus:ring-2 focus:ring-blue-100 transition-all"
                 />
@@ -121,7 +190,8 @@ export function AdminCourseDetailClientView({
                 </label>
                 <input
                   name="slug"
-                  defaultValue={course.slug}
+                  value={slug}
+                  onChange={(e) => setSlug(e.target.value)}
                   required
                   className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden focus:ring-2 focus:ring-blue-100 transition-all"
                 />
@@ -138,7 +208,8 @@ export function AdminCourseDetailClientView({
               <textarea
                 name="description"
                 rows={3}
-                defaultValue={course.description || ""}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden focus:ring-2 focus:ring-blue-100 transition-all"
               />
             </div>
@@ -146,9 +217,17 @@ export function AdminCourseDetailClientView({
             <div className="flex items-center gap-3 pt-2">
               <button
                 type="submit"
-                className="rounded-xl bg-[#1a80ff] px-6 py-3 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all cursor-pointer"
+                disabled={isSaving}
+                className="rounded-xl bg-[#1a80ff] px-6 py-3 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed inline-flex items-center gap-2"
               >
-                Guardar Cambios del Curso
+                {isSaving ? (
+                  <>
+                    <span className="text-sm animate-spin">⏳</span>
+                    <span>Guardando cambios...</span>
+                  </>
+                ) : (
+                  <span>Guardar Cambios del Curso</span>
+                )}
               </button>
               <button
                 type="button"

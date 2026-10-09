@@ -10,7 +10,7 @@ import { IncidentForm } from "@/features/audit/components/incident-form";
 export default async function AuditPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   let session;
   try { session = await requireVerifiedSession(); } catch (error) { if (error instanceof AuthenticationRequiredError) redirect("/login"); throw error; }
-  if (session.profile.role !== "admin") redirect("/courses");
+  if (session.profile.role !== "admin" && session.profile.role !== "superadmin") redirect("/courses");
   const raw = await searchParams;
   let history;
   let historyError: string | null = null;

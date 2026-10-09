@@ -13,6 +13,7 @@ import { setSlideVisibility, type SlideVisibility } from "@/features/learning/do
 export async function uploadLessonImageAction(formData: FormData): Promise<string> {
   const session = await requireVerifiedSession();
   if (
+    session.profile.role !== "superadmin" &&
     session.profile.role !== "admin" &&
     session.profile.role !== "instructor"
   ) {
