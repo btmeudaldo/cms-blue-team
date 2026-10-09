@@ -106,85 +106,84 @@ export const C172_LESSON_1 = {
   sequence_order: 1,
   lesson_order: 1,
   min_seconds: 60,
-  content_html: `
-<!-- DIAPOSITIVA 1.1: 1.1 Límites de Peso Estructural (Weight Limits) -->
+  content_html: `<!-- DIAPOSITIVA 1.1: 1.1 Límites de Peso Estructural (Weight Limits) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.1 Límites de Peso Estructural (Weight Limits)</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.1 Límites de Peso Estructural (Weight Limits)</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pesos Máximos de Rampa, Despegue y Aterrizaje (C172 N, P y F-M)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pesos Máximos de Rampa, Despegue y Aterrizaje (C172 N, P y F-M)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚖️ WEIGHT LIMITS (SECTION 2)</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- CESSNA 172 N & F-M -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CESSNA 172 N & F, G, H, I, K, L, M</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CESSNA 172 N & F, G, H, I, K, L, M</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Ramp Weight: 1044 kg (2302 lbs)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Takeoff Weight: 1043 kg (2300 lbs)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Landing Weight: 1043 kg (2300 lbs)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Ramp Weight: 908 kg (2002 lbs)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Takeoff Weight: 907 kg (2000 lbs)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Landing Weight: 907 kg (2000 lbs)</span>
             </div>
             </div>
 
             <!-- CESSNA 172 P -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CESSNA 172 P (TAE 125)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CESSNA 172 P (TAE 125)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Ramp Weight: 1090 kg (2402 lbs)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Takeoff Weight: 1089 kg (2400 lbs)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Landing Weight: 1089 kg (2400 lbs)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Ramp Weight: 954 kg (2102 lbs)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Takeoff Weight: 953 kg (2100 lbs)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Landing Weight: 953 kg (2100 lbs)</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚠️</span>
             <span>WARNING:</span>
@@ -196,14 +195,14 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/instrument-panel.png" alt="Panel de instrumentos e interruptor de batería" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/instrument-panel.png" alt="Panel de instrumentos e interruptor de batería" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-1 del POH: Disposición de interruptores BAT / STARTER y arquitectura eléctrica básica</figcaption>
         </div>
@@ -216,71 +215,71 @@ export const C172_LESSON_1 = {
 
 <!-- DIAPOSITIVA 1.2: 1.2 Límites de Maniobra y Factores de Carga -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.2 Límites de Maniobra y Factores de Carga</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.2 Límites de Maniobra y Factores de Carga</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Maneuver Limits, Prohibición de Barrenas y Cargas G Negativas</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Maneuver Limits, Prohibición de Barrenas y Cargas G Negativas</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">✈️ MANEUVER & LOAD LIMITS</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- LÍMITES DE MANIOBRA -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">LÍMITES DE MANIOBRA (MANEUVER LIMITS)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÍMITES DE MANIOBRA (MANEUVER LIMITS)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Normal Category: Sin cambios respecto a las limitaciones originales de la aeronave</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Utility Category: Prohibido iniciar barrenas intencionadamente (Intentionally initiating spins is prohibited)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Maniobras acrobáticas: No están autorizadas maniobras acrobáticas intencionadas</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Vuelo en turbulencia: Seleccionar posición BOTH en el selector de combustible</span>
             </div>
             </div>
 
             <!-- FACTORES DE CARGA -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">FACTORES DE CARGA Y ACELERACIONES G</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES DE CARGA Y ACELERACIONES G</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Flight Load Factors: Sin cambios respecto a las limitaciones estructurales del POH base</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Prohibición de Gs negativas: Prohibido iniciar intencionadamente maniobras con G negativa</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aceleraciones negativas prolongadas: Deben evitarse rigurosamente</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Límites del motor: Deben respetarse los límites de factor de carga especificados en el manual del motor</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚡</span>
             <span>CAUTION:</span>
           </strong>
-          <ul class="list-disc pl-4 space-y-1 mt-0.5 text-xs sm:text-[13px] leading-snug">
+          <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight text-[11px] leading-tight">
             <li class="pl-0.5">Está prohibido iniciar intencionadamente maniobras con G negativa (Intentionally initiating negative G maneuvers is prohibited).</li>
             <li class="pl-0.5">Evite la duración prolongada de cargas G negativas. Las aceleraciones G negativas prolongadas pueden provocar problemas de control de hélice y fallos de motor.</li>
           </ul>
@@ -290,14 +289,14 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/procedures/preflight.png" alt="Inspección estructural de célula" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/procedures/preflight.png" alt="Inspección estructural de célula" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Inspección prevuelo de superficies de control de vuelo, alas y anclajes estructurales</figcaption>
         </div>
@@ -310,74 +309,74 @@ export const C172_LESSON_1 = {
 
 <!-- DIAPOSITIVA 1.3: 1.3 Límites de Motor: Potencia, RPM y Techo Operativo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.3 Límites de Motor: Potencia, RPM y Techo Operativo</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.3 Límites de Motor: Potencia, RPM y Techo Operativo</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Technify Motors TAE 125 (CD-135 vs CD-155), RPM y Techo Certificado</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Technify Motors TAE 125 (CD-135 vs CD-155), RPM y Techo Certificado</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚙️ ENGINE OPERATING LIMITS</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- CD-135 (TAE 125-01 / 02-99) -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CONTINENTAL CD-135 (TAE 125-01 / 02-99)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONTINENTAL CD-135 (TAE 125-01 / 02-99)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Fabricante del motor: Technify Motors GmbH</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Potencia máx. despegue y continua: 99 kW (135 HP / 133 BHP)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Régimen máx. despegue y continuo: 2.300 RPM de hélice (min⁻¹)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Techo máximo certificado: 17.500 ft de altitud de presión</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Cilindrada: 1.689 cm³ (TAE 125-01) o 1.991 cm³ (TAE 125-02-99)</span>
             </div>
             </div>
 
             <!-- CD-155 (TAE 125-02-114) -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CONTINENTAL CD-155 (TAE 125-02-114)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONTINENTAL CD-155 (TAE 125-02-114)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Fabricante del motor: Technify Motors GmbH</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Potencia máx. despegue y continua: 114 kW (155 HP / 153 BHP)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Régimen máx. despegue y continuo: 2.300 RPM de hélice (min⁻¹)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Crucero máximo recomendado: 85% de carga (Max. recommended cruise)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Techo máximo certificado: 18.000 ft de altitud de presión</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>ℹ️</span>
             <span>NOTE:</span>
@@ -389,14 +388,14 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/instrument-panel.png" alt="Panel con instrumentos CED 125 y Thrust Lever" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/instrument-panel.png" alt="Panel con instrumentos CED 125 y Thrust Lever" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-1 del POH: Disposición de tacómetro digital en CED 125 y palanca monomando de empuje</figcaption>
         </div>
@@ -409,79 +408,79 @@ export const C172_LESSON_1 = {
 
 <!-- DIAPOSITIVA 1.4: 1.4 Límites Operacionales de Temperatura -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.4 Límites Operacionales de Temperatura</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.4 Límites Operacionales de Temperatura</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Límites de Aceite de Motor, Líquido Refrigerante y Caja Reductora</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Límites de Aceite de Motor, Líquido Refrigerante y Caja Reductora</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🌡️ TEMPERATURE OPERATING LIMITS</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- ACEITE MOTOR Y REFRIGERANTE -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ACEITE MOTOR Y LÍQUIDO REFRIGERANTE</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ACEITE MOTOR Y LÍQUIDO REFRIGERANTE</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aceite - Temperatura mínima de arranque: -32 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aceite - Límite mínimo de operación: 50 °C (mínimo para Take-off RPM)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aceite - Límite máximo de operación: 140 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Refrigerante - Temperatura mínima de arranque: -32 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Refrigerante - Límite mínimo de operación: 60 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Refrigerante - Límite máximo de operación: 105 °C</span>
             </div>
             </div>
 
             <!-- CAJA REDUCTORA (GEARBOX) -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CAJA REDUCTORA Y CALENTAMIENTO</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CAJA REDUCTORA Y CALENTAMIENTO</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Reductora - Límite mínimo de operación: -30 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Reductora - Límite máximo de operación: 120 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Régimen de calentamiento: Ajustar régimen warm-up (Sección 4) hasta alcanzar los límites mínimos de operación</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Calefacción de cabina: Circuito abierto permanente; mantener mando en OPEN en operación normal</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚠️</span>
             <span>WARNING:</span>
           </strong>
-          <ul class="list-disc pl-4 space-y-1 mt-0.5 text-xs sm:text-[13px] leading-snug">
+          <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight text-[11px] leading-tight">
             <li class="pl-0.5">No está permitido arrancar el motor fuera de estos límites de temperatura (It is not allowed to start the engine outside of these temperature limits).</li>
             <li class="pl-0.5">El límite mínimo de operación es una temperatura por debajo de la cual el motor puede arrancarse pero NO operarse a RPM de despegue (Take-off RPM).</li>
           </ul>
@@ -491,14 +490,14 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/cooling-system-schematic.png" alt="Esquema de refrigeración líquida" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/cooling-system-schematic.png" alt="Esquema de refrigeración líquida" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-6 del POH: Termostato de 3 vías, radiador de refrigerante y sensor de culata</figcaption>
         </div>
@@ -511,70 +510,70 @@ export const C172_LESSON_1 = {
 
 <!-- DIAPOSITIVA 1.5: 1.5 Límites de Presión y Consumo de Aceite -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.5 Límites de Presión y Consumo de Aceite</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.5 Límites de Presión y Consumo de Aceite</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Presión Mínima (1.2 / 2.3 bar), Máxima (6.0 bar) y Consumo Máximo (0.1 l/h)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Presión Mínima (1.2 / 2.3 bar), Máxima (6.0 bar) y Consumo Máximo (0.1 l/h)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛢️ OIL PRESSURE & CONSUMPTION</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- LÍMITES DE PRESIÓN -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">LÍMITES DE PRESIÓN DE ACEITE</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÍMITES DE PRESIÓN DE ACEITE</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Presión mínima de aceite: 1.2 bar (17.4 psi) en ralentí</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Presión mínima a potencia de despegue (Take-off power): 2.3 bar (33.4 psi)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Presión mínima en vuelo (in flight): 2.3 bar (33.4 psi)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Presión máxima de aceite: 6.0 bar (87.0 psi)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Pico transitorio en arranque en frío (< 20 segundos): 6.5 bar (94.3 psi)</span>
             </div>
             </div>
 
             <!-- CONSUMO Y NIVELES -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CONSUMO Y CAPACIDAD DE CÁRTER</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONSUMO Y CAPACIDAD DE CÁRTER</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Consumo máximo de aceite admisible: 0.1 l/h (0.1 quart/h)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Capacidad total de aceite en cárter: Entre 4.5 l (mínimo) y 6.0 l (máximo)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Comprobación de nivel: Varilla accesible por la compuerta de inspección</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Prohibición de vuelo: No iniciar el vuelo si el nivel está por debajo de MIN</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚡</span>
             <span>CAUTION:</span>
@@ -586,14 +585,14 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/cooling-system-schematic.png" alt="Circuito de lubricación y refrigeración" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/cooling-system-schematic.png" alt="Circuito de lubricación y refrigeración" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-6 del POH: Intercambiador de aceite de reductora y circuito de lubricación del motor</figcaption>
         </div>
@@ -606,79 +605,79 @@ export const C172_LESSON_1 = {
 
 <!-- DIAPOSITIVA 1.6: 1.6 Límites Térmicos de Combustible en Depósito -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.6 Límites Térmicos de Combustible en Depósito</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.6 Límites Térmicos de Combustible en Depósito</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla 2-3a POH: Temperaturas Mínimas para JET A-1 (-30°C / -35°C) y Diésel (>0°C / -5°C)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla 2-3a POH: Temperaturas Mínimas para JET A-1 (-30°C / -35°C) y Diésel (>0°C / -5°C)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⛽ FUEL TEMPERATURE LIMITS IN TANK</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- JET FUELS (TABLA 2-3a) -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">QUEROSENOS JET A-1, JET A, JP-8, TS-1</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">QUEROSENOS JET A-1, JET A, JP-8, TS-1</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Combustibles incluidos: JET A-1, JET A, Jet Fuel No. 3, JP-8, JP-8+100, TS-1</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Mínima en depósito antes del despegue (before Take-off): -30 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Mínima en depósito durante el vuelo (during the flight): -35 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Vigilancia en vuelo: Monitorizar temperatura en display auxiliar AED 125</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Depósito no utilizado: Debe monitorizarse si se prevé su uso posterior</span>
             </div>
             </div>
 
             <!-- DIÉSEL Y MEZCLAS -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">DIÉSEL (DIN EN 590) Y SASOL GTL</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">DIÉSEL (DIN EN 590) Y SASOL GTL</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Combustibles incluidos: Diésel automoción (DIN EN 590) y Sasol GTL</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Mínima en depósito antes del despegue (before Take-off): Superior a 0 °C (> 0 °C)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Mínima en depósito durante el vuelo (during the flight): -5 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Regla de mezclas (> 10% Diésel): Rigen los límites estrictos de Diésel</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Criterio de seguridad: Ante incertidumbre del combustible en depósito, asumir Diésel</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚠️</span>
             <span>WARNING:</span>
           </strong>
-          <ul class="list-disc pl-4 space-y-1 mt-0.5 text-xs sm:text-[13px] leading-snug">
+          <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight text-[11px] leading-tight">
             <li class="pl-0.5">Debe monitorizarse la temperatura del combustible del depósito que no esté en uso si se tiene previsto utilizarlo más adelante en el vuelo.</li>
             <li class="pl-0.5">Para mezclas de Diésel y combustible JET en el depósito: tan pronto como la proporción de Diésel en el depósito sea superior al 10%, deben respetarse los límites de temperatura para operación con Diésel (> 0 °C antes del despegue / -5 °C en vuelo). Si existe incertidumbre sobre qué combustible hay en el depósito, debe asumirse que es Diésel.</li>
           </ul>
@@ -688,14 +687,14 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema del sistema de combustible" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema del sistema de combustible" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-4 del POH: Captadores de temperatura en depósitos y circuito de alimentación</figcaption>
         </div>
@@ -708,62 +707,62 @@ export const C172_LESSON_1 = {
 
 <!-- DIAPOSITIVA 1.7: 1.7 Marcas de Instrumentos CED 125 (Motor y Reductora) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.7 Marcas de Instrumentos CED 125 (Motor y Reductora)</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.7 Marcas de Instrumentos CED 125 (Motor y Reductora)</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla 2-2 / 2-3b POH: Rangos Verde, Ámbar y Rojo en el Display Compacto</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla 2-2 / 2-3b POH: Rangos Verde, Ámbar y Rojo en el Display Compacto</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📊 CED 125 INSTRUMENT MARKINGS</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- TACÓMETRO, PRESIÓN Y CARGA -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">TACÓMETRO, PRESIÓN Y CARGA (CED 125)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TACÓMETRO, PRESIÓN Y CARGA (CED 125)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Tachometer [RPM]: Verde: 0 - 2.300 RPM | Línea Roja: > 2.300 RPM</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Oil Pressure [bar]: Roja: 0 - 1.1 | Ámbar: 1.2 - 2.2 | Verde: 2.3 - 5.1 | Ámbar: 5.2 - 6.5 | Roja: > 6.5 bar</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Oil Pressure [psi]: Roja: 0 - 16 | Ámbar: 17.4 - 32 | Verde: 33.4 - 74 | Ámbar: 75.4 - 87.0 | Roja: > 87.0 psi</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Load [%]: Verde: 0% - 100% (describe el porcentaje disponible de potencia máx.)</span>
             </div>
             </div>
 
             <!-- TEMPERATURAS DE FLUIDOS -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">TEMPERATURAS: REFRIGERANTE, ACEITE Y REDUCTORA</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TEMPERATURAS: REFRIGERANTE, ACEITE Y REDUCTORA</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Coolant Temp [°C]: Roja: < -32 | Ámbar: -32...+59 | Verde: 60 - 100 | Ámbar: 101 - 105 | Roja: > 105 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Oil Temp [°C]: Roja: < -32 | Ámbar: -32...+49 | Verde: 50 - 129 | Ámbar: 130 - 140 | Roja: > 140 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Gearbox Temp [°C]: Verde: < 115 °C | Ámbar: 115 - 120 °C | Roja: > 120 °C</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>ℹ️</span>
             <span>NOTE:</span>
@@ -775,14 +774,14 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/instrument-panel.png" alt="CED 125 en panel de instrumentos" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/instrument-panel.png" alt="CED 125 en panel de instrumentos" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-1 del POH: CED 125 (Compact Engine Display) integrado en el panel principal</figcaption>
         </div>
@@ -795,74 +794,74 @@ export const C172_LESSON_1 = {
 
 <!-- DIAPOSITIVA 1.8: 1.8 Marcas de Instrumentos AED 125 y Botón Confirm/Test -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.8 Marcas de Instrumentos AED 125 y Botón Confirm/Test</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.8 Marcas de Instrumentos AED 125 y Botón Confirm/Test</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Parámetros Eléctricos, Temperatura de Combustible y Lógica de Rearme de Alarmas</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Parámetros Eléctricos, Temperatura de Combustible y Lógica de Rearme de Alarmas</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚡ AED 125 & CONFIRM/TEST LOGIC</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- AED 125 PARÁMETROS -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">PARÁMETROS AUXILIARES (AED 125)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PARÁMETROS AUXILIARES (AED 125)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Fuel Temp (L y R) [°C]: Roja: < -30 | Ámbar: -30...-1 | Verde: 0 - 69 | Ámbar: 70 - 75 | Roja: > 75 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Voltage (14V) [V]: Roja: 0 - 10 | Ámbar: 11 - 12.5 | Verde: 12.6 - 14.0 | Ámbar: 15.0 | Roja: > 15.0 V</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Voltage (28V) [V]: Roja: 0 - 21 | Ámbar: 22 - 24 | Verde: 25 - 29.4 | Ámbar: 29.5 - 30 | Roja: > 30 V</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Alternator Current (14V) [A]: Verde: 0 - 84 | Ámbar: 85 - 90 | Roja: > 90 A</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Alternator Current (28V) [A]: Verde: 0 - 52.4 | Ámbar: 52.5 - 60 | Roja: > 60 A</span>
             </div>
             </div>
 
             <!-- LÓGICA CONFIRM / TEST -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">LÓGICA DEL BOTÓN CONFIRM / TEST</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÓGICA DEL BOTÓN CONFIRM / TEST</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Activación de aviso: La luz AED/CED Caution se enciende al entrar en rango ámbar o rojo</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Memorización: Permanece encendida aunque el parámetro retorne a la zona verde</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Confirmación: El piloto debe presionar el botón Confirm/Test para apagar la lámpara</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Rearme automático: Tras ser confirmada, volverá a iluminarse si otro parámetro se desvía</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Prueba de encendido: Presionar el botón más de 1 segundo inicia la secuencia de autotest</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>ℹ️</span>
             <span>NOTE:</span>
@@ -874,14 +873,14 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/lightpanel.png" alt="Avisadores en Annunciator Lightpanel" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/lightpanel.png" alt="Avisadores en Annunciator Lightpanel" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-2 del POH: Luces AED/CED Caution y pulsador Test/Confirm Knob en cabina</figcaption>
         </div>
@@ -894,75 +893,75 @@ export const C172_LESSON_1 = {
 
 <!-- DIAPOSITIVA 1.9: 1.9 Combustibles Autorizados y Capacidades de Depósitos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.9 Combustibles Autorizados y Capacidades de Depósitos</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.9 Combustibles Autorizados y Capacidades de Depósitos</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Grados JET/Diésel, Densidad (0.84 kg/l), Capacidades y Aviso Low Level (<10 l)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Grados JET/Diésel, Densidad (0.84 kg/l), Capacidades y Aviso Low Level (<10 l)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⛽ FUEL GRADES & CAPACITIES</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- GRADOS PERMITIDOS -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">COMBUSTIBLES Y DENSIDAD (0.84 KG/L)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">COMBUSTIBLES Y DENSIDAD (0.84 KG/L)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Combustibles autorizados: JET A-1, JET A (ASTM 1655), Jet Fuel No.3, JP-8, JP-8+100, TS-1</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Alternativos autorizados: Diésel automoción (DIN EN 590) y Sasol GTL</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Densidad superior: Jet A-1 / Diésel (0.84 kg/l) frente a AVGAS (0.715 kg/l)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Reducción de capacidad: Cuello de llenado recortado para respetar la carga alar máxima</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aditivo antifúngico: Permitido aditivo Biobor JF según especificaciones</span>
             </div>
             </div>
 
             <!-- CAPACIDADES DE DEPÓSITOS -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CAPACIDADES MÁXIMAS DE DEPÓSITOS</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CAPACIDADES MÁXIMAS DE DEPÓSITOS</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">2 Standard Tanks: Total 138.8 l (36.6 gal) | No utilizable 11.4 l (3.0 gal) | Utilizable 127.4 l (33.6 gal)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">2 Long-Range Tanks: Total 173.6 l (45.9 gal) | No utilizable 15.1 l (4.0 gal) | Utilizable 158.6 l (41.9 gal)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">2 Integral Tanks (Normal): Total 219.6 l (58.0 gal) | No utilizable 22.8 l | Utilizable 196.8 l (52.0 gal)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aviso Low Level: Se ilumina Fuel L o Fuel R cuando el nivel es inferior a 10 l (2.6 gal) por depósito</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚡</span>
             <span>CAUTION:</span>
           </strong>
-          <ul class="list-disc pl-4 space-y-1 mt-0.5 text-xs sm:text-[13px] leading-snug">
+          <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight text-[11px] leading-tight">
             <li class="pl-0.5">Para evitar la entrada de aire en el sistema de combustible, evite agotar los depósitos. En cuanto se ilumine el aviso 'Low Level', conmute al depósito con combustible suficiente o aterrice.</li>
             <li class="pl-0.5">Con ¼ de depósito o menos, está prohibido el vuelo descoordinado prolongado en cualquiera de los depósitos.</li>
             <li class="pl-0.5">En aire turbulento se recomienda encarecidamente utilizar la posición BOTH.</li>
@@ -973,14 +972,14 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema de combustible" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema de combustible" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-4 del POH: Depósitos alares, selector de 3 vías, depósito nodriza y retorno</figcaption>
         </div>
@@ -993,66 +992,66 @@ export const C172_LESSON_1 = {
 
 <!-- DIAPOSITIVA 1.10: 1.10 Fluidos Autorizados y Placards Obligatorios -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.10 Fluidos Autorizados y Placards Obligatorios</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.10 Fluidos Autorizados y Placards Obligatorios</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aceites Aprobados, Refrigerante G48 y Letreros Mandatorios de Célula y Cabina</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aceites Aprobados, Refrigerante G48 y Letreros Mandatorios de Célula y Cabina</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛢️ PERMISSIBLE FLUIDS & PLACARDS</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- FLUIDOS APROBADOS -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">FLUIDOS Y LUBRICANTES AUTORIZADOS</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FLUIDOS Y LUBRICANTES AUTORIZADOS</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aceite motor: AeroShell Oil Diesel Ultra, AeroShell Oil Diesel 10W-40, Shell Helix Ultra 5W-30 / 5W-40</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aceite reductora: Centurion Gearbox Oil N1, Shell Spirax S6 ATF ZM, Shell Spirax S6 GXME 75W-80 API GL-4</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Refrigerante: Agua y anticongelante al 50:50 (BASF Glysantin Protect Plus / G48). Punto congelación: -36 °C</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Prohibición: Prohibido mezclar tipos o marcas no declaradas expresamente</span>
             </div>
             </div>
 
             <!-- PLACARDS OBLIGATORIOS -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">PLACARDS OBLIGATORIOS (LETREROS)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PLACARDS OBLIGATORIOS (LETREROS)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Bocas de combustible: 'JET FUEL ONLY - JET A-1 / DIESEL - CAP. [X] USABLE TO BOTTOM OF FILLER TAB'</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Selector de combustible: Indicación de capacidades por posición (LEFT, RIGHT y BOTH)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Compuerta de aceite: 'Oil, see POH supplement'</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Toma externa GPU (si instalada): 'ATTENTION 12 V DC / 24 V DC OBSERVE CORRECT POLARITY'</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚡</span>
             <span>CAUTION:</span>
@@ -1064,22 +1063,21 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/procedures/preflight.png" alt="Inspección de rótulos y accesos de fluidos" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/procedures/preflight.png" alt="Inspección de rótulos y accesos de fluidos" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Inspección exterior prevuelo de bocas de combustible JET A-1 y compuerta de aceite</figcaption>
         </div>
       </div>
     </div>
   </div>
-</div>
-`,
+</div>`,
 };
 
 // ============================================================================
@@ -1093,69 +1091,68 @@ export const C172_LESSON_2 = {
   sequence_order: 2,
   lesson_order: 2,
   min_seconds: 60,
-  content_html: `
-<!-- DIAPOSITIVA 2.1: 2.1 Motor Continental TAE 125: Arquitectura y Especificaciones -->
+  content_html: `<!-- DIAPOSITIVA 2.1: 2.1 Motor Continental TAE 125: Arquitectura y Especificaciones -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.1 Motor Continental TAE 125: Arquitectura y Especificaciones</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.1 Motor Continental TAE 125: Arquitectura y Especificaciones</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Modelos CD-135 (TAE 125-02-99) y CD-155 (TAE 125-02-114)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Modelos CD-135 (TAE 125-02-99) y CD-155 (TAE 125-02-114)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚙️ ENGINE SPECIFICATIONS</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- CD-135 (TAE 125-02-99) -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CONTINENTAL CD-135 (TAE 125-02-99)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONTINENTAL CD-135 (TAE 125-02-99)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Potencia máxima: 99 kW (135 HP / 133 BHP) a 2.300 RPM de hélice (Take-off y Max. Continuous)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Cilindrada: 1.991 cm³ (121.5 in³) [variante TAE 125-01: 1.689 cm³]</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Arquitectura: 4 cilindros en línea, 4 tiempos, refrigeración líquida, DOHC (doble árbol de levas en culata)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Inyección: Directa Diésel con tecnología Common Rail y turbocompresor con intercooler</span>
             </div>
             </div>
 
             <!-- CD-155 (TAE 125-02-114) -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CONTINENTAL CD-155 (TAE 125-02-114)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONTINENTAL CD-155 (TAE 125-02-114)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Potencia máxima: 114 kW (155 HP / 153 BHP) a 2.300 RPM de hélice (Take-off y Max. Continuous)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Cilindrada: 1.991 cm³ (121.5 in³)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Arquitectura: 4 cilindros en línea, 4 tiempos, refrigeración líquida, DOHC (doble árbol de levas en culata)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Inyección: Directa Diésel con tecnología Common Rail y turbocompresor con intercooler</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>ℹ️</span>
             <span>NOTE:</span>
@@ -1167,14 +1164,14 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/instrument-panel.png" alt="Planta motriz Continental TAE 125" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/instrument-panel.png" alt="Planta motriz Continental TAE 125" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-1 del POH: Disposición de instrumentación y cabina en la instalación TAE 125</figcaption>
         </div>
@@ -1187,66 +1184,66 @@ export const C172_LESSON_2 = {
 
 <!-- DIAPOSITIVA 2.2: 2.2 Reductora Integrada y Hélice MT-Propeller -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.2 Reductora Integrada y Hélice MT-Propeller</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.2 Reductora Integrada y Hélice MT-Propeller</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Relación de Reducción i=1.69 y Paso Variable Constant Speed</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Relación de Reducción i=1.69 y Paso Variable Constant Speed</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚙️ GEARBOX & PROPELLER</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- CAJA REDUCTORA -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CAJA REDUCTORA INTEGRADA (GEARBOX)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CAJA REDUCTORA INTEGRADA (GEARBOX)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Relación de reducción: i = 1.69 (las RPM del cigüeñal se reducen a RPM de hélice)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Amortiguación: Amortiguador mecánico de torsión y vibraciones integrado</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Embrague de sobrecarga (overload release): Desacopla ante picos de par anómalos o impacto de hélice</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Lubricación independiente: Circuito de aceite propio con intercambiador agua/aceite</span>
             </div>
             </div>
 
             <!-- HÉLICE MT-PROPELLER -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">HÉLICE TRIPALA CONSTANT SPEED</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HÉLICE TRIPALA CONSTANT SPEED</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Fabricante: MT-Propeller Entwicklung GmbH</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Modelos: MTV-6-A/187-129 (Ø 1.87 m) o MTV-6-A/190-69 (Ø 1.90 m)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Construcción: 3 palas de material compuesto (madera laminada recubierta de fibra y borde de ataque de acero inoxidable)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Gobierno de paso: Regulador electro-hidráulico gobernado por el FADEC mediante presión de aceite de reductora</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚠️</span>
             <span>WARNING:</span>
@@ -1258,14 +1255,14 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/procedures/preflight.png" alt="Conjunto de Hélice MT-Propeller y Reductora" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/procedures/preflight.png" alt="Conjunto de Hélice MT-Propeller y Reductora" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Hélice tripala de velocidad constante MTV-6 y caja reductora con amortiguador mecánico</figcaption>
         </div>
@@ -1278,71 +1275,71 @@ export const C172_LESSON_2 = {
 
 <!-- DIAPOSITIVA 2.3: 2.3 Sistema FADEC: Control Digital y Redundancia Dual -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.3 Sistema FADEC: Control Digital y Redundancia Dual</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.3 Sistema FADEC: Control Digital y Redundancia Dual</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Doble ECU (Canal A y B), Sensores Duplicados y Mando Único</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Doble ECU (Canal A y B), Sensores Duplicados y Mando Único</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💻 FADEC ARCHITECTURE</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- CANAL A Y CANAL B -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CANALES FADEC A Y B REDUNDANTES</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CANALES FADEC A Y B REDUNDANTES</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Doble ECU independiente: FADEC A (activo en operación normal) y FADEC B (canal de respaldo permanente)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Sensores duplicados: Captadores dobles de RPM cigüeñal/árbol, presión de raíl, presión de admisión (MAP) y temperaturas</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Conmutación automática: Si la ECU activa detecta un fallo interno o de sensores, conmuta instantáneamente al otro canal</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Mando único (Thrust Lever): Los potenciómetros de cabina traducen la demanda del piloto en presión de sobrealimentación e inyección</span>
             </div>
             </div>
 
             <!-- ALIMENTACIÓN ELÉCTRICA FADEC -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ALIMENTACIÓN Y RESPALDO ELÉCTRICO</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ALIMENTACIÓN Y RESPALDO ELÉCTRICO</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Dependencia eléctrica total: El motor diésel no posee magnetos; los inyectores y la ECU requieren corriente continua</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Fuentes primarias: Alternador de 14V / 28V y Batería Principal a través del conmutador Main Bus</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Batería FADEC Backup: Conectada exclusivamente al FADEC A, asegura 30 minutos de operación de motor sin alternador ni batería principal</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Engine Master: Interruptor de doble contacto que activa simultáneamente ambas ECUs del FADEC</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>ℹ️</span>
             <span>NOTE:</span>
           </strong>
-          <ul class="list-disc pl-4 space-y-1 mt-0.5 text-xs sm:text-[13px] leading-snug">
+          <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight text-[11px] leading-tight">
             <li class="pl-0.5">El FADEC consta de dos componentes totalmente independientes entre sí: FADEC A y FADEC B. En caso de avería en el FADEC activo, conmuta automáticamente al otro.</li>
             <li class="pl-0.5">Si el conmutador Engine Master se coloca en OFF, se corta la alimentación eléctrica del FADEC y el motor se apaga de inmediato.</li>
           </ul>
@@ -1352,14 +1349,14 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/lightpanel.png" alt="Panel FADEC y avisadores" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/lightpanel.png" alt="Panel FADEC y avisadores" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Arquitectura de doble canal digital FADEC A y B con mando monomando de potencia</figcaption>
         </div>
@@ -1372,71 +1369,71 @@ export const C172_LESSON_2 = {
 
 <!-- DIAPOSITIVA 2.4: 2.4 Gestión FADEC: Autoprueba, Categorías de Fallo y FORCE B -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.4 Gestión FADEC: Autoprueba, Categorías de Fallo y FORCE B</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.4 Gestión FADEC: Autoprueba, Categorías de Fallo y FORCE B</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Lógica del Pulsador de Test (2s), Categorías Low/High y Mando FORCE B</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Lógica del Pulsador de Test (2s), Categorías Low/High y Mando FORCE B</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🔘 FADEC TEST & FORCE B</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- TEST Y CATEGORÍAS DE FALLO -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">PULSADOR DE PRUEBA Y CATEGORÍAS</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PULSADOR DE PRUEBA Y CATEGORÍAS</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Pulsador FADEC Test: Debe presionarse durante al menos 2 segundos continuos</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Categoría LOW (Baja gravedad): Las luces FADEC activas se apagan tras pulsar 2 segundos; continúe el vuelo y notifique a mantenimiento</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Categoría HIGH (Alta gravedad): Las luces FADEC activas quedan iluminadas fijas tras pulsar 2 segundos; fallo grave diagnosticado</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Acción ante categoría HIGH: Aterrice lo antes posible (land as soon as possible) y evite el sobrerrégimen de hélice</span>
             </div>
             </div>
 
             <!-- CONMUTADOR FORCE B -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CONMUTADOR MANUAL FORCE B</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONMUTADOR MANUAL FORCE B</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Función: Permite forzar manualmente la conmutación a B-FADEC si el motor presenta anomalías y el sistema no conmutó</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Solo unidireccional: Solo es posible conmutar de posición automática a Canal B</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Protección: Conmutador bajo guarda protectora para evitar accionamientos involuntarios</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Uso operativo: Únicamente si el sistema no conmutó de forma automática ante funcionamiento anómalo</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚠️</span>
             <span>WARNING:</span>
           </strong>
-          <ul class="list-disc pl-4 space-y-1 mt-0.5 text-xs sm:text-[13px] leading-snug">
+          <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight text-[11px] leading-tight">
             <li class="pl-0.5">Al operar únicamente con la batería FADEC Backup, el conmutador FORCE B NO DEBE ser activado bajo ningún concepto. Esto apagará el motor de inmediato.</li>
             <li class="pl-0.5">La indicación de carga del CED debe considerarse no fiable con ambas luces FADEC encendidas. Evalúe el motor mediante los demás parámetros.</li>
           </ul>
@@ -1446,14 +1443,14 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/lightpanel.png" alt="Pulsador de test y conmutador Force B" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/lightpanel.png" alt="Pulsador de test y conmutador Force B" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Protocolo de discriminación de averías LOW/HIGH y conmutador manual a Canal B</figcaption>
         </div>
@@ -1466,66 +1463,66 @@ export const C172_LESSON_2 = {
 
 <!-- DIAPOSITIVA 2.5: 2.5 Sistema Eléctrico I: Fuentes de Potencia y Alternador -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.5 Sistema Eléctrico I: Fuentes de Potencia y Alternador</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.5 Sistema Eléctrico I: Fuentes de Potencia y Alternador</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Generación 14V/28V, Batería Principal y Batería de Excitación</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Generación 14V/28V, Batería Principal y Batería de Excitación</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚡ ELECTRICAL POWER SOURCES</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- ALTERNADOR Y BATERÍA PRINCIPAL -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">GENERACIÓN Y BATERÍA PRINCIPAL</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">GENERACIÓN Y BATERÍA PRINCIPAL</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Tensión del sistema: Instalaciones disponibles en versiones de 14 Vcc o 28 Vcc</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Alternador (ALT): Fuente eléctrica primaria en vuelo; debe permanecer en ON durante toda la operación normal</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Batería Principal (BAT): Acumulador químico principal para arranque y soporte de red</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Amperímetro (Ammeter): Indica la corriente de carga del alternador; si no genera corriente, se ilumina la luz roja Alternator</span>
             </div>
             </div>
 
             <!-- BATERÍA DE EXCITACIÓN -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">BATERÍA DE EXCITACIÓN DEL ALTERNADOR</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">BATERÍA DE EXCITACIÓN DEL ALTERNADOR</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Propósito exclusivo: Asegura que el alternador mantenga excitación de campo aunque la batería principal falle por completo</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Activación automática: Conectada al circuito al girar la llave Engine Master (segundo contacto independiente)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Independencia: Garantiza que un fallo catastrófico de la batería principal no deje al alternador sin corriente de excitación</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Luz roja Alternator: Se enciende siempre con Engine Master ON a motor parado y debe apagarse inmediatamente tras el arranque</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚡</span>
             <span>CAUTION:</span>
@@ -1537,14 +1534,14 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/electrical-wiring.png" alt="Esquema de cableado eléctrico básico" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/electrical-wiring.png" alt="Esquema de cableado eléctrico básico" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-5 del POH: Circuito de alternador, batería principal y batería de excitación</figcaption>
         </div>
@@ -1557,71 +1554,71 @@ export const C172_LESSON_2 = {
 
 <!-- DIAPOSITIVA 2.6: 2.6 Sistema Eléctrico II: FADEC Backup Battery y Main Bus -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.6 Sistema Eléctrico II: FADEC Backup Battery y Main Bus</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.6 Sistema Eléctrico II: FADEC Backup Battery y Main Bus</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Batería de Respaldo FADEC (30 Min) y Barra Eléctrica Principal</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Batería de Respaldo FADEC (30 Min) y Barra Eléctrica Principal</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🔋 BACKUP BATTERY & MAIN BUS</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- FADEC BACKUP BATTERY -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">BATERÍA FADEC BACKUP (30 MINUTOS)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">BATERÍA FADEC BACKUP (30 MINUTOS)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Autonomía demostrada: Asegura un máximo de 30 minutos de funcionamiento continuo del motor sin alternador ni batería</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Conexión exclusiva: Está conectada únicamente a la ECU FADEC A</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aislamiento: Se desacopla automáticamente del resto de la red del avión para alimentar solo los sistemas vitales del motor</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Inoperatividad de aviónica: Al operar con la batería de respaldo, todos los demás equipos eléctricos del avión quedan inoperativos</span>
             </div>
             </div>
 
             <!-- CONMUTADOR MAIN BUS -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CONMUTADOR MAIN BUS</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONMUTADOR MAIN BUS</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Control de barra: Controla la barra eléctrica principal (Main Bus)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Vínculo FADEC: Es necesario para que el FADEC y el motor funcionen con Batería/Alternador ante ciertas averías eléctricas</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Posición normal: Alternator, Main Bus y Battery deben estar en ON en vuelo normal</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Deslastre en emergencia: Permite aislar consumidores ante fuego eléctrico en vuelo (ver Sección 3)</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚠️</span>
             <span>WARNING:</span>
           </strong>
-          <ul class="list-disc pl-4 space-y-1 mt-0.5 text-xs sm:text-[13px] leading-snug">
+          <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight text-[11px] leading-tight">
             <li class="pl-0.5">Si el suministro del alternador y la batería principal se interrumpe simultáneamente, el motor funciona únicamente con la batería FADEC Backup (máximo 30 minutos demostrados). En este caso, todos los demás equipos eléctricos estarán inoperativos.</li>
             <li class="pl-0.5">Al operar únicamente con la batería FADEC Backup, el conmutador FORCE B NO DEBE ser activado. Esto apagará el motor de inmediato al no tener alimentación el Canal B.</li>
           </ul>
@@ -1631,14 +1628,14 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/electrical-wiring.png" alt="Cableado de batería de respaldo y Main Bus" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/electrical-wiring.png" alt="Cableado de batería de respaldo y Main Bus" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Esquema de diodos de aislamiento y conmutación de emergencia de la batería FADEC Backup</figcaption>
         </div>
@@ -1651,71 +1648,71 @@ export const C172_LESSON_2 = {
 
 <!-- DIAPOSITIVA 2.7: 2.7 Sistema de Combustible I: Depósitos y Alimentación -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.7 Sistema de Combustible I: Depósitos y Alimentación</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.7 Sistema de Combustible I: Depósitos y Alimentación</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Capacidades de Depósitos, Densidad (0.84 kg/l), Válvulas y Reservoir Tank</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Capacidades de Depósitos, Densidad (0.84 kg/l), Válvulas y Reservoir Tank</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⛽ FUEL TANKS & FEED CIRCUIT</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- CAPACIDADES Y DENSIDAD -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">DEPÓSITOS Y DENSIDAD DE COMBUSTIBLE</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">DEPÓSITOS Y DENSIDAD DE COMBUSTIBLE</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Densidad superior: Jet A-1 y Diésel (0.84 kg/l) son más densos que AVGAS (0.715 kg/l)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Cuello de llenado: Reduce la capacidad utilizable para mantener la carga alar dentro de los límites aprobados</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">2 Standard Tanks: Total 138.8 l (36.6 US gal), no utilizable 11.4 l (3.0 US gal), utilizable 127.4 l (33.6 US gal)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">2 Long-Range Tanks: Total 173.6 l (45.9 US gal), no utilizable 15.1 l (4.0 US gal), utilizable 158.6 l (41.9 US gal)</span>
             </div>
             </div>
 
             <!-- CIRCUITO PRIMARIO DE ALIMENTACIÓN -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">VÁLVULAS Y DEPÓSITO COLECTOR</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">VÁLVULAS Y DEPÓSITO COLECTOR</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Válvula selectora: Posiciones LEFT, RIGHT y BOTH (se recomienda BOTH en aire turbulento)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Reservoir Tank: Depósito colector nodriza que garantiza alimentación continua sin burbujas de aire</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Fuel Shut-off Valve: Válvula de corte de emergencia independiente antes de la bomba eléctrica</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Sensores: Incluye sensores adicionales de temperatura de combustible y avisos de nivel bajo (Low Level)</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚡</span>
             <span>CAUTION:</span>
           </strong>
-          <ul class="list-disc pl-4 space-y-1 mt-0.5 text-xs sm:text-[13px] leading-snug">
+          <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight text-[11px] leading-tight">
             <li class="pl-0.5">En condiciones de vuelo con semiala hacia abajo prolongada, coloque el selector en el depósito superior o en BOTH.</li>
             <li class="pl-0.5">En aire turbulento se recomienda encarecidamente utilizar la posición BOTH para asegurar una alimentación simétrica.</li>
           </ul>
@@ -1725,14 +1722,14 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema de combustible oficial" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema de combustible oficial" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-4 del POH: Circuito de depósitos alares, selector de 3 vías y depósito nodriza</figcaption>
         </div>
@@ -1745,66 +1742,66 @@ export const C172_LESSON_2 = {
 
 <!-- DIAPOSITIVA 2.8: 2.8 Sistema de Combustible II: Bombas, Retorno y Enfriador -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.8 Sistema de Combustible II: Bombas, Retorno y Enfriador</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.8 Sistema de Combustible II: Bombas, Retorno y Enfriador</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Bomba Eléctrica, Bomba de Alta Presión, Retorno y Deflector Térmico (>20°C)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Bomba Eléctrica, Bomba de Alta Presión, Retorno y Deflector Térmico (>20°C)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⛽ COMMON RAIL & RETURN CIRCUIT</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- BOMBAS Y RAÍL COMÚN -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">BOMBAS ELÉCTRICA Y MECÁNICA</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">BOMBAS ELÉCTRICA Y MECÁNICA</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Bomba eléctrica (Fuel Pump): Apoya el flujo hacia el filtro en despegue, aterrizaje y emergencias</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Bomba mecánica y alta presión: Accionadas por el motor, generan la alta presión del Common Rail</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Inyección Common Rail: Inyectores controlados electrónicamente por el FADEC según demanda del Thrust Lever</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Filtro de combustible: Módulo de filtro con sensor térmico de control de intercambio de calor</span>
             </div>
             </div>
 
             <!-- CIRCUITO DE RETORNO Y ENFRIADOR -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">RETORNO Y ENFRIADOR (FUEL COOLER)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">RETORNO Y ENFRIADOR (FUEL COOLER)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Combustible sobrante: El exceso de combustible del raíl retorna a los depósitos alares a través del selector</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Retorno simétrico: En posición BOTH, el combustible caliente retorna simultáneamente a ambos depósitos</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Fuel Cooler: Radiador que reduce la temperatura del combustible de retorno antes de llegar a los depósitos</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Deflector (Baffle): Chapa de entrada que debe retirarse con temperaturas exteriores (OAT) superiores a 20°C (68°F)</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚡</span>
             <span>CAUTION:</span>
@@ -1816,14 +1813,14 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema del circuito de inyección y retorno" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema del circuito de inyección y retorno" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-4 del POH: Bomba de alta presión, raíl común, intercambiador y radiador de retorno</figcaption>
         </div>
@@ -1836,66 +1833,66 @@ export const C172_LESSON_2 = {
 
 <!-- DIAPOSITIVA 2.9: 2.9 Sistema de Refrigeración Líquida (Cooling System) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.9 Sistema de Refrigeración Líquida (Cooling System)</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.9 Sistema de Refrigeración Líquida (Cooling System)</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Termostato de 3 Vías (<84°C, 84-94°C, >94°C), Radiador y Aviso Water Level</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Termostato de 3 Vías (<84°C, 84-94°C, >94°C), Radiador y Aviso Water Level</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🌡️ LIQUID COOLING SYSTEM</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- TERMOSTATO DE 3 VÍAS -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">TERMOSTATO Y CIRCUITOS DE FLUJO</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TERMOSTATO Y CIRCUITOS DE FLUJO</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Circuito corto (< 84°C / 183°F): El refrigerante circula exclusivamente por el bloque para un calentamiento rápido</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Circuito mixto (84°C - 94°C / 183°F - 201°F): Fluye simultáneamente por el circuito corto y el radiador</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Circuito grande (> 94°C / 201°F): Todo el volumen circula a través del radiador principal (máx. 105°C / 221°F)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Mezcla de refrigerante: 50% agua y 50% anticongelante (Glysantin Protect Plus / G48). Punto de congelación: -36°C</span>
             </div>
             </div>
 
             <!-- DEPÓSITO Y CALEFACCIÓN DE CABINA -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">DEPÓSITO DE EXPANSIÓN Y CALEFACCIÓN</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">DEPÓSITO DE EXPANSIÓN Y CALEFACCIÓN</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Sensor Water Level: Boya en el depósito de compensación que activa la luz ámbar de aviso en el AED 125</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Sensor en culata: Mide la temperatura de refrigerante junto al termostato y la transmite al FADEC y CED 125</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Intercambiador de reductora: El circuito refrigera el aceite de la reductora mediante intercambiador agua/aceite</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Calefacción de cabina: Conexión abierta permanente; la admisión de aire caliente a cabina la regula el piloto</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚡</span>
             <span>CAUTION:</span>
@@ -1907,14 +1904,14 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/cooling-system-schematic.png" alt="Esquema de refrigeración líquida" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/cooling-system-schematic.png" alt="Esquema de refrigeración líquida" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-6 del POH: Radiador de refrigerante, intercambiador de reductora y depósito de compensación</figcaption>
         </div>
@@ -1927,66 +1924,66 @@ export const C172_LESSON_2 = {
 
 <!-- DIAPOSITIVA 2.10: 2.10 Sistemas de Lubricación: Motor y Caja Reductora -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.10 Sistemas de Lubricación: Motor y Caja Reductora</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.10 Sistemas de Lubricación: Motor y Caja Reductora</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Circuitos Independientes de Aceite de Motor y Aceite de Caja Reductora</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Circuitos Independientes de Aceite de Motor y Aceite de Caja Reductora</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛢️ LUBRICATION SYSTEMS</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- ACEITE DE MOTOR -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ACEITE DE MOTOR (ENGINE OIL)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ACEITE DE MOTOR (ENGINE OIL)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aceites aprobados: AeroShell Oil Diesel Ultra, AeroShell Oil Diesel 10W-40, Shell Helix Ultra 5W-30 / 5W-40</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Capacidad: Entre 4.5 l (mínimo) y 6.0 l (máximo). Consumo máx. admisible: 0.1 l/h</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Comprobación: Varilla de nivel accesible a través de la compuerta de inspección en el capó motor</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Vigilancia en CED 125: Presión normal entre 2.3 y 6.0 bar en crucero (mín. 1.2 bar en ralentí); máx. temp. 140°C</span>
             </div>
             </div>
 
             <!-- ACEITE DE REDUCTORA -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ACEITE DE REDUCTORA (GEARBOX OIL)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ACEITE DE REDUCTORA (GEARBOX OIL)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aceites aprobados: Centurion Gearbox Oil N1, Shell Spirax S6 ATF ZM, Shell Spirax S6 GXME 75W-80 API GL-4</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Capacidad: 1.0 litro</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Comprobación visual: Mirilla de nivel en el frontal de la reductora visible a través del capó</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Vigilancia en CED 125: Temperatura máxima de caja reductora 120°C</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚡</span>
             <span>CAUTION:</span>
@@ -1998,14 +1995,14 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/cooling-system-schematic.png" alt="Esquema de lubricación y refrigeración" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/cooling-system-schematic.png" alt="Esquema de lubricación y refrigeración" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-6 del POH: Intercambiador agua/aceite de reductora y circuito de enfriamiento</figcaption>
         </div>
@@ -2018,74 +2015,74 @@ export const C172_LESSON_2 = {
 
 <!-- DIAPOSITIVA 2.11: 2.11 Instrumentación de Motor: CED 125 y AED 125 -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.11 Instrumentación de Motor: CED 125 y AED 125</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.11 Instrumentación de Motor: CED 125 y AED 125</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Indicación Digital Compacta de Parámetros de Motor y Datos Auxiliares</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Indicación Digital Compacta de Parámetros de Motor y Datos Auxiliares</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📊 DIGITAL ENGINE INSTRUMENTS</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- CED 125 -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CED 125 (COMPACT ENGINE DISPLAY)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CED 125 (COMPACT ENGINE DISPLAY)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Propeller Rotary Speed: RPM de la hélice en formato digital</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Engine Oil Pressure: Presión de aceite de motor (bar)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Engine Oil Temperature: Temperatura de aceite de motor (°C)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Coolant Temperature (CT): Temperatura de refrigerante de motor (°C)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Gearbox Temperature (GT): Temperatura de la caja reductora (°C)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Load Display: Porcentaje de carga del motor (0% a 100%)</span>
             </div>
             </div>
 
             <!-- AED 125 -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">AED 125 (AUXILIARY ENGINE DISPLAY)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">AED 125 (AUXILIARY ENGINE DISPLAY)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Fuel Temperature: Temperatura de combustible (°C) en los depósitos</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Voltmeter: Tensión de la barra eléctrica (V)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Aviso Water Level: Indicador ámbar de nivel bajo de líquido refrigerante</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Amperímetro analógico: Instrumento independiente que monitoriza la corriente del alternador</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>ℹ️</span>
             <span>NOTE:</span>
@@ -2097,14 +2094,14 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/instrument-panel.png" alt="Panel de Instrumentos con CED 125 y AED 125" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/instrument-panel.png" alt="Panel de Instrumentos con CED 125 y AED 125" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Figura 1-1 del POH: Disposición del display compacto CED 125, display auxiliar AED 125 y amperímetro</figcaption>
         </div>
@@ -2117,74 +2114,74 @@ export const C172_LESSON_2 = {
 
 <!-- DIAPOSITIVA 2.12: 2.12 Panel de Alarmas (Lightpanel) y Mandos de Cabina -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-2 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.12 Panel de Alarmas (Lightpanel) y Mandos de Cabina</h1>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">2.12 Panel de Alarmas (Lightpanel) y Mandos de Cabina</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Luces Avisadoras de FADEC, Alternador, Nivel Bajo y Mandos de Motor</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Luces Avisadoras de FADEC, Alternador, Nivel Bajo y Mandos de Motor</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch py-2" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🚨 ANNUNCIATOR LIGHTPANEL</span>
         </div>
-        <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- LIGHTPANEL AVISADORES -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">PANEL DE LUCES AVISADORAS (LIGHTPANEL)</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PANEL DE LUCES AVISADORAS (LIGHTPANEL)</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">A FADEC B (Rojas): Luces de alarma independiente para Canal FADEC A y Canal B</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Alt (Roja): Luz de fallo de alternador o tensión insuficiente</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">CED / AED Caution (Ámbar): Alarma de parámetro fuera de rango en los displays</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Fuel L / Fuel R (Ámbar): Aviso de nivel bajo de combustible en cada semiala</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Glow (Ámbar): Luz de control de bujías de precalentamiento para arranque diésel</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">CED/AED Confirm: Pulsador para confirmar/silenciar avisos en los instrumentos</span>
             </div>
             </div>
 
             <!-- MANDOS DE CABINA -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">MANDOS ESPECÍFICOS DEL MOTOR</strong>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">MANDOS ESPECÍFICOS DEL MOTOR</strong>
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Thrust Lever: Mando único de empuje (ajusta simultáneamente potencia y paso de hélice)</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Alt. Air Door: Tirador de aire alternativo de admisión ante obstrucción o engelamiento del filtro</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Engine Master: Interruptor principal de alimentación de FADEC y excitación de alternador</span>
             </div>
-            <div class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Force B: Conmutador manual bajo guarda para selección forzada de Canal B</span>
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
           <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚠️</span>
             <span>WARNING:</span>
@@ -2196,22 +2193,21 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[574px] flex flex-col justify-start p-3.5 sm:p-4 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 574px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
+      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-2">
-          <div class="w-full max-h-[350px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
-            <img src="/images/c172/systems/lightpanel.png" alt="Figura 1-2 del POH: Panel de luces avisadoras" class="w-full max-h-[330px] object-contain rounded-lg" />
+        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+          <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
+            <img src="/images/c172/systems/lightpanel.png" alt="Figura 1-2 del POH: Panel de luces avisadoras" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">Disposición de luces FADEC A/B, Alternator, Caution CED/AED, Low Fuel y Glow</figcaption>
         </div>
       </div>
     </div>
   </div>
-</div>
-`,
+</div>`,
 };
 
 // ============================================================================
