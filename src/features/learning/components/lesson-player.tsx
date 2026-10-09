@@ -85,7 +85,7 @@ export function LessonPlayer({
   quiz,
   quizAttempt,
   courseDocs,
-  isSuperAdmin = false,
+  isSuperAdmin: isSuperAdminProp = false,
 }: LessonPlayerProps) {
   const router = useRouter();
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
@@ -159,7 +159,7 @@ export function LessonPlayer({
     );
   }, [contentHtml, visibilityOverrides]);
 
-  const isSuperAdmin = role === "superadmin";
+  const isSuperAdmin = Boolean(isSuperAdminProp || role === "superadmin");
   const isStaff =
     role === "superadmin" || role === "admin" || role === "instructor";
   const { visibleSlides, visibleToOriginalIndexMap } = useMemo(
