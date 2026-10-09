@@ -1522,7 +1522,7 @@ export const C172_LESSON_1 = {
     </div>
   </div>
 </div>`,
-};
+};;
 
 // ============================================================================
 // LECCIÓN 2: INGENIERÍA Y SISTEMAS CONTINENTAL DIESEL (8 DIAPOSITIVAS)
@@ -2652,7 +2652,7 @@ export const C172_LESSON_2 = {
     </div>
   </div>
 </div>`,
-};
+};;
 
 // ============================================================================
 // LECCIÓN 3: PROCEDIMIENTOS NORMALES Y CHECKLISTS (9 DIAPOSITIVAS)
@@ -4499,7 +4499,7 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 `,
-};
+};;
 
 // ============================================================================
 // LECCIÓN 4: PROCEDIMIENTOS DE EMERGENCIA (9 DIAPOSITIVAS)
@@ -5713,7 +5713,7 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 `,
-};
+};;
 
 export const C172_LESSONS = [
   C172_LESSON_1,

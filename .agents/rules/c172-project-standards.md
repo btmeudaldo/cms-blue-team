@@ -25,12 +25,16 @@ Este archivo contiene directrices técnicas y de diseño **inviolables** que deb
 
 ---
 
-## 4. Flujo de Sincronización y Persistencia en Base de Datos
-- **Sincronización Supabase obligatoria:** Cada vez que se modifique o actualice el contenido de `src/features/learning/content/c172-course-data.ts`, es obligatorio ejecutar inmediatamente el script:
+## 4. Flujo de Sincronización y Persistencia Bidireccional (Supabase ⟷ Local)
+- **Principio "Pull antes de Push":** Para evitar machacar ediciones manuales que el usuario realice directamente en Supabase, antes de modificar el archivo local `c172-course-data.ts`, es obligatorio verificar y descargar el estado actual de Supabase ejecutando:
+  ```bash
+  node scripts/pull_from_supabase.mjs
+  ```
+- **Sincronización Supabase:** Tras aplicar las modificaciones validadas en el archivo local, sincronizar hacia todos los cursos de Supabase con:
   ```bash
   node scripts/sync_all_c172_courses.mjs
   ```
-  Esto garantiza que los 3 módulos del Cessna 172 en Supabase se mantengan actualizados e idénticos.
+- **Prohibido sobreescribir a ciegas:** Nunca ejecutar una sobreescritura unidireccional sin haber incorporado previamente cualquier cambio que exista en la base de datos de producción.
 
 ---
 
