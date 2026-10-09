@@ -116,10 +116,10 @@ export const C172_LESSON_1 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pesos Máximos de Rampa, Despegue y Aterrizaje (C172 N, P y F-M)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚖️ WEIGHT LIMITS (SECTION 2)</span>
         </div>
@@ -195,12 +195,12 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/instrument-panel.png" alt="Panel de instrumentos e interruptor de batería" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -223,10 +223,10 @@ export const C172_LESSON_1 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Maneuver Limits, Prohibición de Barrenas y Cargas G Negativas</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">✈️ MANEUVER & LOAD LIMITS</span>
         </div>
@@ -289,12 +289,12 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/procedures/preflight.png" alt="Inspección estructural de célula" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -317,10 +317,10 @@ export const C172_LESSON_1 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Technify Motors TAE 125 (CD-135 vs CD-155), RPM y Techo Certificado</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚙️ ENGINE OPERATING LIMITS</span>
         </div>
@@ -388,12 +388,12 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/instrument-panel.png" alt="Panel con instrumentos CED 125 y Thrust Lever" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -416,10 +416,10 @@ export const C172_LESSON_1 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Límites de Aceite de Motor, Líquido Refrigerante y Caja Reductora</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🌡️ TEMPERATURE OPERATING LIMITS</span>
         </div>
@@ -490,12 +490,12 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/cooling-system-schematic.png" alt="Esquema de refrigeración líquida" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -518,10 +518,10 @@ export const C172_LESSON_1 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Presión Mínima (1.2 / 2.3 bar), Máxima (6.0 bar) y Consumo Máximo (0.1 l/h)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛢️ OIL PRESSURE & CONSUMPTION</span>
         </div>
@@ -585,12 +585,12 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/cooling-system-schematic.png" alt="Circuito de lubricación y refrigeración" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -613,10 +613,10 @@ export const C172_LESSON_1 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla 2-3a POH: Temperaturas Mínimas para JET A-1 (-30°C / -35°C) y Diésel (>0°C / -5°C)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⛽ FUEL TEMPERATURE LIMITS IN TANK</span>
         </div>
@@ -687,12 +687,12 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema del sistema de combustible" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -715,10 +715,10 @@ export const C172_LESSON_1 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla 2-2 / 2-3b POH: Rangos Verde, Ámbar y Rojo en el Display Compacto</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📊 CED 125 INSTRUMENT MARKINGS</span>
         </div>
@@ -774,12 +774,12 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/instrument-panel.png" alt="CED 125 en panel de instrumentos" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -802,10 +802,10 @@ export const C172_LESSON_1 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Parámetros Eléctricos, Temperatura de Combustible y Lógica de Rearme de Alarmas</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚡ AED 125 & CONFIRM/TEST LOGIC</span>
         </div>
@@ -873,12 +873,12 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/lightpanel.png" alt="Avisadores en Annunciator Lightpanel" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -901,10 +901,10 @@ export const C172_LESSON_1 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Grados JET/Diésel, Densidad (0.84 kg/l), Capacidades y Aviso Low Level (<10 l)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⛽ FUEL GRADES & CAPACITIES</span>
         </div>
@@ -972,12 +972,12 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema de combustible" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -1000,10 +1000,10 @@ export const C172_LESSON_1 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aceites Aprobados, Refrigerante G48 y Letreros Mandatorios de Célula y Cabina</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛢️ PERMISSIBLE FLUIDS & PLACARDS</span>
         </div>
@@ -1063,12 +1063,12 @@ export const C172_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/procedures/preflight.png" alt="Inspección de rótulos y accesos de fluidos" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -1101,10 +1101,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Modelos CD-135 (TAE 125-02-99) y CD-155 (TAE 125-02-114)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚙️ ENGINE SPECIFICATIONS</span>
         </div>
@@ -1164,12 +1164,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/instrument-panel.png" alt="Planta motriz Continental TAE 125" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -1192,10 +1192,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Relación de Reducción i=1.69 y Paso Variable Constant Speed</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚙️ GEARBOX & PROPELLER</span>
         </div>
@@ -1255,12 +1255,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/procedures/preflight.png" alt="Conjunto de Hélice MT-Propeller y Reductora" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -1283,10 +1283,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Doble ECU (Canal A y B), Sensores Duplicados y Mando Único</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💻 FADEC ARCHITECTURE</span>
         </div>
@@ -1349,12 +1349,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/lightpanel.png" alt="Panel FADEC y avisadores" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -1377,10 +1377,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Lógica del Pulsador de Test (2s), Categorías Low/High y Mando FORCE B</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🔘 FADEC TEST & FORCE B</span>
         </div>
@@ -1443,12 +1443,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/lightpanel.png" alt="Pulsador de test y conmutador Force B" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -1471,10 +1471,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Generación 14V/28V, Batería Principal y Batería de Excitación</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚡ ELECTRICAL POWER SOURCES</span>
         </div>
@@ -1534,12 +1534,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/electrical-wiring.png" alt="Esquema de cableado eléctrico básico" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -1562,10 +1562,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Batería de Respaldo FADEC (30 Min) y Barra Eléctrica Principal</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🔋 BACKUP BATTERY & MAIN BUS</span>
         </div>
@@ -1628,12 +1628,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/electrical-wiring.png" alt="Cableado de batería de respaldo y Main Bus" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -1656,10 +1656,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Capacidades de Depósitos, Densidad (0.84 kg/l), Válvulas y Reservoir Tank</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⛽ FUEL TANKS & FEED CIRCUIT</span>
         </div>
@@ -1722,12 +1722,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema de combustible oficial" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -1750,10 +1750,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Bomba Eléctrica, Bomba de Alta Presión, Retorno y Deflector Térmico (>20°C)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⛽ COMMON RAIL & RETURN CIRCUIT</span>
         </div>
@@ -1813,12 +1813,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/fuel-system-schematic.png" alt="Esquema del circuito de inyección y retorno" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -1841,10 +1841,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Termostato de 3 Vías (<84°C, 84-94°C, >94°C), Radiador y Aviso Water Level</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🌡️ LIQUID COOLING SYSTEM</span>
         </div>
@@ -1904,12 +1904,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/cooling-system-schematic.png" alt="Esquema de refrigeración líquida" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -1932,10 +1932,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Circuitos Independientes de Aceite de Motor y Aceite de Caja Reductora</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛢️ LUBRICATION SYSTEMS</span>
         </div>
@@ -1995,12 +1995,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/cooling-system-schematic.png" alt="Esquema de lubricación y refrigeración" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -2023,10 +2023,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Indicación Digital Compacta de Parámetros de Motor y Datos Auxiliares</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📊 DIGITAL ENGINE INSTRUMENTS</span>
         </div>
@@ -2094,12 +2094,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/instrument-panel.png" alt="Panel de Instrumentos con CED 125 y AED 125" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
@@ -2122,10 +2122,10 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Luces Avisadoras de FADEC, Alternador, Nivel Bajo y Mandos de Motor</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5 flex-1 min-h-0" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 574px) -->
-    <div class="lg:col-span-7 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🚨 ANNUNCIATOR LIGHTPANEL</span>
         </div>
@@ -2193,12 +2193,12 @@ export const C172_LESSON_2 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 574px) -->
-    <div class="lg:col-span-5 flex flex-col h-full min-h-0">
-      <div class="flex-1 h-full min-h-0 flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DIAGRAMA Y SISTEMAS</span>
         </div>
-        <div class="flex-1 flex flex-col items-center justify-start p-2 min-h-0 pt-2 sm:pt-3 space-y-1">
+        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-1">
           <div class="w-full max-h-[280px] flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 p-2 border border-slate-200 dark:border-slate-700 shadow-2xs overflow-hidden">
             <img src="/images/c172/systems/lightpanel.png" alt="Figura 1-2 del POH: Panel de luces avisadoras" class="w-full max-h-[260px] object-contain rounded-lg" />
           </div>
