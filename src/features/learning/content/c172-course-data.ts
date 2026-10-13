@@ -711,61 +711,27 @@ export const C172_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Envolvente de Masa y Centrado (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
-        </div>
-        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
-          <!-- Marco Indicador de Imagen Requerida -->
-          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
-            <div class="flex items-center justify-between w-full">
-              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
-                <span>⚖️</span> ILUSTRACIÓN TÉCNICA REQUERIDA
-              </span>
-              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
-                Pendiente de generación
-              </span>
-            </div>
-
-            <div>
-              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
-                Envolvente de Masa y Centrado (Weight & Balance Envelope)
-              </h4>
-              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
-                Diagrama oficial de carga y centrado correspondiente a la Sección 2 y Hoja F.OPS.04, vinculando los pesos estructurales con los límites de brazo del centro de gravedad.
-              </p>
-            </div>
-
-            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
-                Elementos que debe mostrar la ilustración:
-              </span>
-              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Categoría Normal:</strong> Límite de rampa 1044 kg (2302 lbs) y despegue/aterrizaje 1043 kg (2300 lbs) [1089 kg en C172 P].</span>
-                </li>
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Categoría Utilitaria:</strong> Límite de rampa 908 kg (2002 lbs) y despegue/aterrizaje 907 kg (2000 lbs).</span>
-                </li>
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Compartimentos de equipaje:</strong> Brazos y cotas de Baggage Area 1 (54 kg máx) y Baggage Area 2 (23 kg máx).</span>
-                </li>
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Silueta C172:</strong> Posición del datum de referencia, brazos de asientos y centro de gravedad admisible.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
-              Ref. POH: Suplemento Sección 2 & POH Sección 6 / Hoja de Carga F.OPS.04
-            </div>
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚖️ ENVOLVENTE DE MASA Y CENTRADO</span>
           </div>
+
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Diagrama oficial de carga y centrado, vinculando los pesos estructurales con los límites de brazo del centro de gravedad.
+            </p>
+          </div>
+
+          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-2">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/envolvente-mb.png" alt="Envolvente de Masa y Centrado C172" class="w-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/envolvente-mb.png')this.src='/images/c172/envolvente-mb.png'" />
+          </div>
+        </div>
+
+        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60">
+          Ref. POH: Suplemento Sección 2 & POH Sección 6 / Hoja de Carga F.OPS.04
         </div>
       </div>
     </div>
