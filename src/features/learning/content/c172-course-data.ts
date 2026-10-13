@@ -113,80 +113,80 @@ export const C172_LESSON_1 = {
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1.5 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-xs font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.1 Objeto del Suplemento POH y Simbología de Seguridad</h1>
+      <div class="text-sm sm:text-base font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
+      <h1 class="text-2xl sm:text-3xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight">1.1 Objeto del Suplemento POH y Simbología de Seguridad</h1>
     </div>
-    <span class="text-xs text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Suplemento Oficial de Vuelo · POH Sección 1 (General)</span>
+    <span class="text-sm sm:text-base text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Suplemento Oficial de Vuelo · POH Sección 1 (General)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 590px con scroll) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">📘 OBJETO Y SIMBOLOGÍA DE SEGURIDAD (SECCIÓN 1)</span>
+      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800 mb-2">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-lg sm:text-xl">📘 OBJETO Y SIMBOLOGÍA DE SEGURIDAD (SECCIÓN 1)</span>
         </div>
-        <div class="space-y-1.5 py-0.5">
+        <div class="space-y-2.5 py-0.5">
           <!-- Objeto del Suplemento -->
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-base sm:text-[17px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">OBJETO DEL SUPLEMENTO</strong>
-            <p class="text-slate-700 dark:text-slate-200 text-base leading-relaxed">
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-lg sm:text-xl border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">OBJETO DEL SUPLEMENTO</strong>
+            <p class="text-slate-700 dark:text-slate-200 text-[20px] sm:text-[21px] leading-relaxed">
               Este Suplemento Oficial al Manual de Operación de la Aeronave (POH) contiene la información técnica, limitaciones y procedimientos necesarios para la operación segura de los aviones Cessna 172 equipados con motores Continental CD-135 y CD-155.
             </p>
-            <p class="text-slate-700 dark:text-slate-200 text-base leading-relaxed">
+            <p class="text-slate-700 dark:text-slate-200 text-[20px] sm:text-[21px] leading-relaxed">
               La información contenida en este suplemento complementa o sustituye a la del POH básico de Cessna en todo lo relativo a la planta de potencia y sus sistemas asociados.
             </p>
           </div>
 
           <!-- Simbología de Seguridad POH -->
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-base sm:text-[17px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">SIMBOLOGÍA OFICIAL DE SEGURIDAD POH</strong>
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-lg sm:text-xl border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">SIMBOLOGÍA OFICIAL DE SEGURIDAD POH</strong>
             
-            <div class="flex items-start gap-2 text-base leading-snug">
-              <span class="font-bold text-red-600 dark:text-red-400 shrink-0 uppercase tracking-wide min-w-[90px]">WARNING:</span>
+            <div class="flex items-start gap-2.5 text-[20px] sm:text-[21px] leading-snug">
+              <span class="font-bold text-red-600 dark:text-red-400 shrink-0 uppercase tracking-wide min-w-[120px]">WARNING:</span>
               <span class="text-slate-800 dark:text-slate-200">El incumplimiento de estas normas de seguridad puede provocar lesiones graves o incluso la muerte.</span>
             </div>
 
-            <div class="flex items-start gap-2 text-base leading-snug">
-              <span class="font-bold text-amber-600 dark:text-amber-400 shrink-0 uppercase tracking-wide min-w-[90px]">CAUTION:</span>
+            <div class="flex items-start gap-2.5 text-[20px] sm:text-[21px] leading-snug">
+              <span class="font-bold text-amber-600 dark:text-amber-400 shrink-0 uppercase tracking-wide min-w-[120px]">CAUTION:</span>
               <span class="text-slate-800 dark:text-slate-200">El incumplimiento de estas notas y medidas de seguridad especiales puede causar daños al motor o a otros componentes.</span>
             </div>
 
-            <div class="flex items-start gap-2 text-base leading-snug">
-              <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0 uppercase tracking-wide min-w-[90px]">NOTE:</span>
+            <div class="flex items-start gap-2.5 text-[20px] sm:text-[21px] leading-snug">
+              <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0 uppercase tracking-wide min-w-[120px]">NOTE:</span>
               <span class="text-slate-800 dark:text-slate-200">Información técnica añadida para una mejor comprensión y ejecución de una instrucción.</span>
             </div>
           </div>
 
           <!-- Advertencia POH Actualización -->
-          <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-base leading-snug text-amber-900 dark:text-amber-200">
-            <span class="text-lg shrink-0">⚠️</span>
+          <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2.5 text-[20px] sm:text-[21px] leading-snug text-amber-900 dark:text-amber-200">
+            <span class="text-2xl shrink-0">⚠️</span>
             <span><strong>WARNING (POH):</strong> La operación segura solo está asegurada con un suplemento POH actualizado. Las revisiones y enmiendas oficiales se publican mediante Service Bulletin TM TAE 000-0004.</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Flota C172 (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Flota C172 (Altura Fija 590px con scroll) -->
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+      <div class="h-[590px] flex flex-col justify-between p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="space-y-2">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">✈️ FLOTA C172</span>
+          <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-lg sm:text-xl">✈️ FLOTA C172</span>
           </div>
 
-          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
-            <p class="text-base text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-[19px] sm:text-[20px] text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
               Este curso no sustituye al POH básico de Cessna; define exclusivamente las diferencias y procedimientos del motor diésel y sus sistemas para operar con seguridad.
             </p>
           </div>
 
           <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/C172-tarjeta.jpg" alt="Cessna 172 Continental Diésel" class="w-full max-h-[340px] object-cover rounded-xl" onerror="if(this.src!=='/images/c172/C172-tarjeta.jpg')this.src='/images/c172/C172-tarjeta.jpg'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/C172-tarjeta.jpg" alt="Cessna 172 Continental Diésel" class="w-full max-h-[300px] object-cover rounded-xl" onerror="if(this.src!=='/images/c172/C172-tarjeta.jpg')this.src='/images/c172/C172-tarjeta.jpg'" />
           </div>
         </div>
 
-        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60">
+        <div class="text-sm text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60">
           Ref. POH: Suplemento Sección 1 (General · Pág. 1-1)
         </div>
       </div>
