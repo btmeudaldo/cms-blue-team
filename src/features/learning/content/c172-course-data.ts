@@ -815,61 +815,21 @@ export const C172_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Diagrama de Maniobra V-n (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
-        </div>
-        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
-          <!-- Marco Indicador de Imagen Requerida -->
-          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
-            <div class="flex items-center justify-between w-full">
-              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
-                <span>📈</span> ILUSTRACIÓN TÉCNICA REQUERIDA
-              </span>
-              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
-                Pendiente de generación
-              </span>
-            </div>
-
-            <div>
-              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
-                Diagrama de Maniobra V-n (Flight Load Factor Envelope)
-              </h4>
-              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
-                Gráfico cartesiano oficial de factor de carga "g" frente a la velocidad indicada (KIAS), mostrando los límites estructurales certificados y las envolventes operacionales.
-              </p>
-            </div>
-
-            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
-                Elementos que debe mostrar la ilustración:
-              </span>
-              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Categoría Normal:</strong> Envolvente entre +3.8g y -1.52g (Flaps UP) y límite de +3.0g (Flaps DOWN).</span>
-                </li>
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Categoría Utilitaria:</strong> Envolvente ampliada entre +4.4g y -1.76g (Flaps UP) y +3.0g (Flaps DOWN).</span>
-                </li>
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Velocidades de corte:</strong> Velocidad de maniobra V_A, velocidad nunca exceder V_NE y curva de pérdida acelerada.</span>
-                </li>
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Señalética de maniobras prohibidas:</strong> Prohibición explícita de barrenas (spins) y maniobras acrobáticas.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
-              Ref. POH: Suplemento Sección 2 · Flight Load Factors & Maneuver Limits
-            </div>
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-2 flex-1 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📈 DIAGRAMA DE MANIOBRA V-n</span>
           </div>
+
+          <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-2">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/vn.jpg" alt="Diagrama de Maniobra V-n C172" class="w-full h-full max-h-[500px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/vn.jpg')this.src='/images/c172/vn.jpg'" />
+          </div>
+        </div>
+
+        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60">
+          Ref. POH: Suplemento Sección 2 · Flight Load Factors & Maneuver Limits
         </div>
       </div>
     </div>
