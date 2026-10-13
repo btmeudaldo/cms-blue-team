@@ -33,11 +33,11 @@ export default async function StudentLessonPage({
   // If viewing as staff/admin, ensure enrollment exists so student progress RPC works smoothly
   if (profile?.role === "admin" || profile?.role === "instructor") {
     try {
-      const { createSupabaseServerClient } = await import(
-        "@/shared/lib/supabase/server"
+      const { createSupabaseAdminClient } = await import(
+        "@/shared/lib/supabase/admin"
       );
-      const client = await createSupabaseServerClient();
-      await client
+      const adminClient = createSupabaseAdminClient();
+      await adminClient
         .from("course_enrollments")
         .upsert(
           { user_id: user.id, course_id: course.id },

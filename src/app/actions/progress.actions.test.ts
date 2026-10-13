@@ -6,6 +6,7 @@ const mocks = vi.hoisted(() => ({
   revalidate: vi.fn(),
   mockStart: vi.fn(),
   mockComplete: vi.fn(),
+  admin: vi.fn(),
 }));
 vi.mock("@/shared/lib/supabase/session", () => ({
   requireVerifiedSession: mocks.session,
@@ -18,6 +19,10 @@ vi.mock("@/shared/lib/supabase/server", () => ({
     rpc: mocks.rpc,
     from: mocks.from,
   }),
+  createSupabaseAdminClient: mocks.admin,
+}));
+vi.mock("@/shared/lib/supabase/admin", () => ({
+  createSupabaseAdminClient: mocks.admin,
 }));
 vi.mock("@/shared/lib/mock-store", () => ({
   mockStore: {
@@ -97,5 +102,49 @@ describe("verified lesson progress", () => {
       await actions.completeLessonAction("lesson", "/courses/course"),
     ).toHaveProperty("error");
     expect(mocks.revalidate).not.toHaveBeenCalled();
+  });
+
+  it("auto-enrolls instructor with admin client when enrollment was missing", async () => {
+    mocks.session.mockResolvedValue({
+      user: { id: "instructor-id" },
+      profile: { role: "instructor" },
+      client: { rpc: mocks.rpc, from: mocks.from },
+    });
+
+    // 1st RPC call fails
+    mocks.rpc.mockResolvedValueOnce({
+      data: null,
+      error: { message: "Lesson not available" },
+    });
+
+    // 2nd RPC call succeeds
+    const row = { ...progress, user_id: "instructor-id" };
+    mocks.rpc.mockResolvedValueOnce({ data: row, error: null });
+
+    const adminUpsert = vi.fn().mockResolvedValue({ error: null });
+    const adminFrom = vi.fn().mockImplementation((table: string) => {
+      if (table === "lessons") {
+        return {
+          select: vi.fn().mockReturnValue({
+            eq: vi.fn().mockReturnValue({
+              maybeSingle: vi.fn().mockResolvedValue({ data: { course_id: "course-123" } }),
+            }),
+          }),
+        };
+      }
+      if (table === "course_enrollments") {
+        return { upsert: adminUpsert };
+      }
+      return {};
+    });
+
+    mocks.admin.mockReturnValue({ from: adminFrom });
+
+    const result = await actions.startLessonAction("lesson");
+    expect(result).toEqual({ success: true, progress: row });
+    expect(adminUpsert).toHaveBeenCalledWith(
+      { user_id: "instructor-id", course_id: "course-123" },
+      { onConflict: "user_id,course_id", ignoreDuplicates: true },
+    );
   });
 });

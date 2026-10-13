@@ -24,13 +24,17 @@ async function callProgressRpc(
       (profile?.role === "admin" || profile?.role === "instructor")
     ) {
       try {
-        const { data: lesson } = await client
+        const { createSupabaseAdminClient } = await import(
+          "@/shared/lib/supabase/admin"
+        );
+        const adminClient = createSupabaseAdminClient();
+        const { data: lesson } = await adminClient
           .from("lessons")
           .select("course_id")
           .eq("id", lessonId)
           .maybeSingle();
         if (lesson?.course_id) {
-          await client.from("course_enrollments").upsert(
+          await adminClient.from("course_enrollments").upsert(
             { user_id: user.id, course_id: lesson.course_id },
             { onConflict: "user_id,course_id", ignoreDuplicates: true },
           );

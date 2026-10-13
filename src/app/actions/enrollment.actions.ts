@@ -65,6 +65,21 @@ export async function createNewUserAction(formData: FormData) {
     .eq("id", createdUser.user.id);
   if (profileError) throw new Error(profileError.message);
 
+  if (role === "instructor" || role === "admin") {
+    try {
+      const { data: courses } = await adminClient.from("courses").select("id");
+      if (courses && courses.length > 0) {
+        const enrollments = courses.map((c: any) => ({
+          user_id: createdUser.user.id,
+          course_id: c.id,
+        }));
+        await adminClient
+          .from("course_enrollments")
+          .upsert(enrollments, { onConflict: "user_id,course_id", ignoreDuplicates: true });
+      }
+    } catch {}
+  }
+
   revalidatePath("/admin/users");
   revalidatePath("/admin/progress");
 }
