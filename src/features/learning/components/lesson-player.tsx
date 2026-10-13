@@ -907,19 +907,6 @@ export function LessonPlayer({
                       {currentPageIndex + 1}/{totalLessonPages}
                     </span>
                   </div>
-                  {isSuperAdmin && totalLessonPages > 4 && (
-                    <span
-                      className={`hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[10px] font-black uppercase tracking-wide border ${
-                        currentPageIndex >= 4
-                          ? "bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-700"
-                          : "bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-700"
-                      }`}
-                    >
-                      {currentPageIndex >= 4
-                        ? "🔒 Borrador Superadmin (Oculto a alumnos)"
-                        : "✓ Publicada (Alumnos ven 1-4)"}
-                    </span>
-                  )}
                 </div>
               )}
 
@@ -1188,11 +1175,6 @@ export function LessonPlayer({
                   <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300 whitespace-nowrap">
                     Diapositiva {effectivePageIndex + 1} de {totalLessonPages}
                   </span>
-                  {isSuperAdmin && totalLessonPages > 4 && currentPageIndex >= 4 && (
-                    <span className="hidden md:inline-block px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700">
-                      Borrador
-                    </span>
-                  )}
                   <div className="flex items-center gap-1">
                     {lessonPages.map((slide, idx) => {
                       const isClickable =
