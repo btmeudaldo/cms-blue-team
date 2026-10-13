@@ -178,17 +178,17 @@ article::after,
   clear: both;
 }
 
-/* Presentation Slide Mode Styling (matching CTKI Calibri typography with uniform body text & high contrast) */
+/* Presentation Slide Mode Styling (matching CTKI Calibri typography with uniform 17px body text & high contrast) */
 .lesson-slide-container {
   font-family: "Calibri", "Candara", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
   letter-spacing: -0.01em;
-  font-size: 0.9375rem; /* 15px uniform base */
+  font-size: 1.0625rem; /* 17px uniform base */
   line-height: 1.45;
   color: #000000;
 }
 
 .lesson-slide-container h1 {
-  font-size: 1.375rem !important; /* ~22px */
+  font-size: 1.5rem !important; /* ~24px */
   line-height: 1.25 !important;
   font-weight: 700;
   color: #0B2E59 !important;
@@ -204,7 +204,7 @@ article::after,
   color: #7dd3fc !important;
 }
 
-/* Ensure ALL body text elements in slides maintain strict uniform size and pure black high contrast */
+/* Ensure ALL body text elements in slides maintain strict uniform 17px size and high contrast */
 .lesson-slide-container p,
 .lesson-slide-container li,
 .lesson-slide-container .slide-body,
@@ -216,8 +216,9 @@ article::after,
 .lesson-slide-container .text-slate-500,
 .lesson-slide-container .text-slate-600,
 .lesson-slide-container .text-slate-700,
-.lesson-slide-container .text-slate-800 {
-  font-size: 0.9375rem !important; /* 15px uniform body text */
+.lesson-slide-container .text-slate-800,
+.lesson-slide-container .text-\[17px\] {
+  font-size: 1.0625rem !important; /* 17px uniform body text */
   line-height: 1.45 !important;
   color: #000000 !important;
 }
@@ -240,7 +241,8 @@ article::after,
 .dark .lesson-slide-container .text-slate-500,
 .dark .lesson-slide-container .text-slate-600,
 .dark .lesson-slide-container .text-slate-700,
-.dark .lesson-slide-container .text-slate-800 {
+.dark .lesson-slide-container .text-slate-800,
+.dark .lesson-slide-container .text-\[17px\] {
   color: #F8FAFC !important;
 }
 
