@@ -918,61 +918,21 @@ export const C172_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Esquemas Técnicos y Avisos (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Régimen de Potencia y Monomando FADEC (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESPECIFICACIÓN DE DIAGRAMA POH</span>
-        </div>
-        <div class="flex flex-col items-center justify-start p-1.5 pt-1 space-y-2">
-          <!-- Marco Indicador de Imagen Requerida -->
-          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 sm:p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-2">
-            <div class="flex items-center justify-between w-full">
-              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
-                <span>⚙️</span> ILUSTRACIÓN TÉCNICA REQUERIDA
-              </span>
-              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
-                Pendiente de generación
-              </span>
-            </div>
-
-            <div>
-              <h4 class="text-xs sm:text-sm font-bold text-[#0B2E59] dark:text-sky-200 leading-snug">
-                Régimen de Potencia vs Altitud y Monomando FADEC
-              </h4>
-              <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5 leading-relaxed">
-                Gráfico comparativo de entrega de potencia y RPM de los motores Continental CD-135 vs CD-155 frente a la altitud, junto con el principio de control monomando.
-              </p>
-            </div>
-
-            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2 sm:p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">
-                Elementos que debe mostrar la ilustración:
-              </span>
-              <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Curvas CD-135 vs CD-155:</strong> Potencia máx despegue (99 kW / 135 HP vs 114 kW / 155 HP a 2300 RPM hélice).</span>
-                </li>
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Techos de servicio operativos:</strong> Cota máxima de 17.500 ft (CD-135) y 18.000 ft (CD-155).</span>
-                </li>
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Altitud crítica turbo:</strong> Mantenimiento de potencia nominal constante hasta la altitud crítica del turbocompresor.</span>
-                </li>
-                <li class="flex items-start gap-1.5">
-                  <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0">•</span>
-                  <span><strong>Esquema Thrust Lever:</strong> Palanca única de empuje sin palancas de mezcla ni paso de hélice gobernada por ECU.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-0.5">
-              Ref. POH: Suplemento Continental Sección 2 & Sección 5 (Power Limits & Performance)
-            </div>
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-2 flex-1 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚙️ RÉGIMEN DE POTENCIA Y MONOMANDO FADEC</span>
           </div>
+
+          <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-950 flex items-center justify-center p-2">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/potencia-altitud-fadec.png" alt="Régimen de Potencia vs Altitud y Monomando FADEC C172" class="w-full h-full max-h-[500px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/potencia-altitud-fadec.png')this.src='/images/c172/potencia-altitud-fadec.png'" />
+          </div>
+        </div>
+
+        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60">
+          Ref. POH: Suplemento Continental CD-135 & CD-155 (Secciones 2 y 5)
         </div>
       </div>
     </div>
