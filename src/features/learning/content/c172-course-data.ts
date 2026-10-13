@@ -1560,7 +1560,7 @@ export const C172_LESSON_2 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-center items-center p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="w-full h-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-950 flex items-center justify-center p-2">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.9.jpg" alt="Esquema de Depósitos Alares, Capacidades y Selector C172" class="w-full h-full max-h-[570px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/2.9.jpg')this.src='/images/c172/2.9.jpg'" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.9-v2.jpg?v=2" alt="Esquema de Depósitos Alares, Capacidades y Selector C172" class="w-full h-full max-h-[570px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/2.9-v2.jpg?v=2')this.src='/images/c172/2.9-v2.jpg?v=2'" />
         </div>
       </div>
     </div>
