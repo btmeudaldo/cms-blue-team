@@ -419,7 +419,7 @@ export const C172_LESSON_1 = {
           </div>
 
           <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/fluidos-autorizados.jpg" alt="Fluidos Autorizados C172" class="w-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/fluidos-autorizados.jpg')this.src='/images/c172/fluidos-autorizados.jpg'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/jet-fuel-only.jpg" alt="Rótulo JET FUEL ONLY C172" class="w-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/jet-fuel-only.jpg')this.src='/images/c172/jet-fuel-only.jpg'" />
           </div>
         </div>
 
