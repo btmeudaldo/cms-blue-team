@@ -167,25 +167,22 @@ export const C172_LESSON_1 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Orientación Docente y Flota C172 (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Flota C172 (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💡 ORIENTACIÓN DOCENTE Y FLOTA C172</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">✈️ FLOTA C172</span>
           </div>
 
-          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-2">
-            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
-              <span>👨‍✈️</span> ORIENTACIÓN DOCENTE
-            </span>
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
             <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
               Este curso no sustituye al POH básico de Cessna; define exclusivamente las diferencias y procedimientos del motor diésel y sus sistemas para operar con seguridad.
             </p>
           </div>
 
           <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950">
-            <img src="/images/c172/C172-tarjeta.jpg" alt="Cessna 172 Continental Diésel" class="w-full max-h-[360px] object-cover rounded-xl" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/C172-tarjeta.jpg" alt="Cessna 172 Continental Diésel" class="w-full max-h-[380px] object-cover rounded-xl" onerror="if(this.src!=='/images/c172/C172-tarjeta.jpg')this.src='/images/c172/C172-tarjeta.jpg'" />
           </div>
         </div>
 
