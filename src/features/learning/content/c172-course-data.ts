@@ -167,41 +167,30 @@ export const C172_LESSON_1 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Nota del Instructor y Gráfico (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Orientación Docente y Flota C172 (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💡 NOTA DEL INSTRUCTOR Y GRÁFICO REQUERIDO</span>
-        </div>
-        <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-3">
-          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-3">
-            <div class="flex items-center justify-between w-full">
-              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
-                <span>👨‍✈️</span> ORIENTACIÓN DOCENTE
-              </span>
-              <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
-                Pendiente de captura
-              </span>
-            </div>
-
-            <div class="space-y-1">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Explicación del Instructor:</span>
-              <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-                "Este curso no sustituye al POH básico de Cessna; define exclusivamente las diferencias y procedimientos del motor diésel y sus sistemas para operar con seguridad."
-              </p>
-            </div>
-
-            <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Gráfico / Captura a incorporar:</span>
-              <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
-                Fotografía exterior de un Cessna 172 en rampa y carátula oficial del Suplemento POH Continental.
-              </p>
-            </div>
-
-            <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
-              Ref. POH: Suplemento Sección 1 (General · Pág. 1-1)
-            </div>
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-2">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💡 ORIENTACIÓN DOCENTE Y FLOTA C172</span>
           </div>
+
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-2">
+            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
+              <span>👨‍✈️</span> ORIENTACIÓN DOCENTE
+            </span>
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Este curso no sustituye al POH básico de Cessna; define exclusivamente las diferencias y procedimientos del motor diésel y sus sistemas para operar con seguridad.
+            </p>
+          </div>
+
+          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950">
+            <img src="/images/c172/C172-tarjeta.jpg" alt="Cessna 172 Continental Diésel" class="w-full max-h-[360px] object-cover rounded-xl" />
+          </div>
+        </div>
+
+        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60">
+          Ref. POH: Suplemento Sección 1 (General · Pág. 1-1)
         </div>
       </div>
     </div>
