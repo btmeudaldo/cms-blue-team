@@ -927,7 +927,7 @@ export const C172_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-950 flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/potencia-altitud-fadec.png" alt="Régimen de Potencia vs Altitud y Monomando FADEC C172" class="w-full h-full max-h-[500px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/potencia-altitud-fadec.png')this.src='/images/c172/potencia-altitud-fadec.png'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/potencia-altitud-fadec.jpg" alt="Régimen de Potencia vs Altitud y Monomando FADEC C172" class="w-full h-full max-h-[500px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/potencia-altitud-fadec.jpg')this.src='/images/c172/potencia-altitud-fadec.jpg'" />
           </div>
         </div>
 
