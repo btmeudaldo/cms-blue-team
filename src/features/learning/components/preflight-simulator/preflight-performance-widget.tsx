@@ -107,6 +107,15 @@ export function PreflightPerformanceWidget({
   const [selectedScenarioIndex, setSelectedScenarioIndex] = useState(0); // 0 = GCXO, 1 = GCTS, 2 = GCGM
   const scenario = CANARY_PERFORMANCE_SCENARIOS[selectedScenarioIndex];
 
+  const [passedScenarios, setPassedScenarios] = useState<Record<string, boolean>>(() => {
+    const initial: Record<string, boolean> = isAlreadyCompleted
+      ? { gcxo: true, gcts: true, gcgm: true }
+      : {};
+    return initial;
+  });
+
+  const isCurrentScenarioPassed = Boolean(passedScenarios[scenario.id]);
+
   // User input states (in meters)
   const [takeoffRunInput, setTakeoffRunInput] = useState("");
   const [takeoff50ftInput, setTakeoff50ftInput] = useState("");
@@ -164,6 +173,7 @@ export function PreflightPerformanceWidget({
     setWarnings(newWarnings);
 
     if (Object.keys(newErrors).length === 0) {
+      setPassedScenarios((prev) => ({ ...prev, [scenario.id]: true }));
       setIsPassed(true);
       if (onExerciseCompleted) {
         onExerciseCompleted();
@@ -279,7 +289,7 @@ export function PreflightPerformanceWidget({
                     <td className="py-2 px-2 font-medium">
                       Take-off run
                       <div className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                        <span>Carrera suelo (Base: {scenario.baseToRun} m)</span>
+                        <span>Carrera en suelo (Fig. 5-1a)</span>
                         <span>·</span>
                         <a href="/images/c172/takeoff-performance-tables.pdf" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-400 font-semibold hover:underline">Ver Tabla 5-1a ↗</a>
                       </div>
@@ -290,7 +300,7 @@ export function PreflightPerformanceWidget({
                     <td className="py-2 px-2 text-right">
                       <input
                         type="text"
-                        placeholder={`Ej: ${scenario.toRun}`}
+                        placeholder="Metros [m]"
                         value={takeoffRunInput}
                         onChange={(e) => setTakeoffRunInput(e.target.value)}
                         className={`w-24 text-right px-2 py-1 rounded-lg border font-mono text-xs ${
@@ -307,7 +317,7 @@ export function PreflightPerformanceWidget({
                     <td className="py-2 px-2 font-bold text-[#0B2E59] dark:text-sky-300">
                       Take-off distance (50 ft)
                       <div className="text-[10px] font-normal text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                        <span>Obstáculo 15 m (Base: {scenario.baseTo50} m)</span>
+                        <span>Obstáculo 15 m (Fig. 5-1a)</span>
                         <span>·</span>
                         <a href="/images/c172/takeoff-performance-tables.pdf" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-400 font-semibold hover:underline">Ver Tabla 5-1a ↗</a>
                       </div>
@@ -318,7 +328,7 @@ export function PreflightPerformanceWidget({
                     <td className="py-2 px-2 text-right">
                       <input
                         type="text"
-                        placeholder={`Ej: ${scenario.to50ft}`}
+                        placeholder="Metros [m]"
                         value={takeoff50ftInput}
                         onChange={(e) => setTakeoff50ftInput(e.target.value)}
                         className={`w-24 text-right px-2 py-1 rounded-lg border font-mono text-xs font-bold ${
@@ -335,7 +345,7 @@ export function PreflightPerformanceWidget({
                     <td className="py-2 px-2 font-bold text-emerald-950 dark:text-emerald-300">
                       Landing distance (50 ft)
                       <div className="text-[10px] font-normal text-slate-500 dark:text-slate-400 flex flex-wrap items-center gap-1">
-                        <span>Columna &apos;TOTAL 50 FT OBS&apos; (1335 ft &divide; 3.28 = Base {scenario.baseLd50} m)</span>
+                        <span>Columna &apos;TOTAL 50 FT OBS&apos; (Fig. 5-10 · ft &divide; 3.28)</span>
                         <span>·</span>
                         <a href="/images/c172/landing_distance_table.pdf" target="_blank" rel="noopener noreferrer" className="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">Ver Tabla 5-10 ↗</a>
                       </div>
@@ -346,7 +356,7 @@ export function PreflightPerformanceWidget({
                     <td className="py-2 px-2 text-right">
                       <input
                         type="text"
-                        placeholder={`Ej: ${scenario.ld50ft}`}
+                        placeholder="Metros [m]"
                         value={landing50ftInput}
                         onChange={(e) => setLanding50ftInput(e.target.value)}
                         className={`w-24 text-right px-2 py-1 rounded-lg border font-mono text-xs font-bold ${
@@ -428,113 +438,155 @@ export function PreflightPerformanceWidget({
           </div>
 
           <div className="flex-1 min-h-0 overflow-y-auto my-1 space-y-2.5 text-xs">
-            {/* Takeoff Comparison Bar */}
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
-              <div className="flex justify-between items-center text-xs font-bold">
-                <span className="text-[#0B2E59] dark:text-sky-300">Despegue 50 ft vs TORA ({scenario.icao})</span>
-                <span className="text-emerald-600 dark:text-emerald-400 font-mono">
-                  Margen: +{scenario.runwayToraM - scenario.to50ft} m
-                </span>
-              </div>
-
-              {/* Badges row */}
-              <div className="flex items-center justify-between text-xs py-0.5">
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-sky-300 font-bold">
-                  <span>Requerido:</span>
-                  <span className="font-mono">{scenario.to50ft} m</span>
-                  <span className="text-[10px] font-normal text-blue-500">({Math.round((scenario.to50ft / scenario.runwayToraM) * 100)}% pista)</span>
-                </span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-bold">
-                  <span>Libre:</span>
-                  <span className="font-mono">+{scenario.runwayToraM - scenario.to50ft} m</span>
-                </span>
-              </div>
-
-              {/* Visual Runway Bar (no cramped text inside) */}
-              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden h-3 flex">
-                <div
-                  style={{ width: `${Math.max(4, Math.min(100, (scenario.to50ft / scenario.runwayToraM) * 100))}%` }}
-                  className="bg-blue-500 h-full rounded-l-full"
-                  title={`Requerido: ${scenario.to50ft} m`}
-                />
-                <div
-                  className="flex-1 bg-emerald-500/80 h-full rounded-r-full"
-                  title={`Remanente: +${scenario.runwayToraM - scenario.to50ft} m`}
-                />
-              </div>
-
-              <div className="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
-                <span>0 m</span>
-                <span className="font-medium text-slate-600 dark:text-slate-300">Pista Disponible (TORA): {scenario.runwayToraM} m</span>
-              </div>
-            </div>
-
-            {/* Landing Comparison Bar */}
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
-              <div className="flex justify-between items-center text-xs font-bold">
-                <span className="text-[#0B2E59] dark:text-sky-300">Aterrizaje 50 ft vs LDA ({scenario.icao})</span>
-                <span className="text-emerald-600 dark:text-emerald-400 font-mono">
-                  Margen: +{scenario.runwayLdaM - scenario.ld50ft} m
-                </span>
-              </div>
-
-              {/* Badges row */}
-              <div className="flex items-center justify-between text-xs py-0.5">
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-bold">
-                  <span>Requerido:</span>
-                  <span className="font-mono">{scenario.ld50ft} m</span>
-                  <span className="text-[10px] font-normal text-emerald-600">({Math.round((scenario.ld50ft / scenario.runwayLdaM) * 100)}% pista)</span>
-                </span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-bold">
-                  <span>Libre:</span>
-                  <span className="font-mono">+{scenario.runwayLdaM - scenario.ld50ft} m</span>
-                </span>
-              </div>
-
-              {/* Visual Runway Bar (no cramped text inside) */}
-              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden h-3 flex">
-                <div
-                  style={{ width: `${Math.max(4, Math.min(100, (scenario.ld50ft / scenario.runwayLdaM) * 100))}%` }}
-                  className="bg-emerald-600 h-full rounded-l-full"
-                  title={`Requerido: ${scenario.ld50ft} m`}
-                />
-                <div
-                  className="flex-1 bg-emerald-400/60 h-full rounded-r-full"
-                  title={`Remanente: +${scenario.runwayLdaM - scenario.ld50ft} m`}
-                />
-              </div>
-
-              <div className="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
-                <span>0 m</span>
-                <span className="font-medium text-slate-600 dark:text-slate-300">Pista Disponible (LDA): {scenario.runwayLdaM} m</span>
-              </div>
-            </div>
-
-            {/* Comparison of the 3 Canary Airports */}
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 shadow-2xs">
-              <strong className="text-[#0B2E59] dark:text-sky-300 block uppercase font-bold text-xs sm:text-[13px]">
-                Comparativa de Performance Insular (POH CD-155 a 20°C):
-              </strong>
-              <div className="space-y-1.5 text-xs sm:text-[13px]">
-                <div className={`p-2 rounded-xl flex justify-between items-center transition-all ${scenario.icao === "GCTS" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border-2 border-sky-300 dark:border-sky-700 shadow-2xs" : "bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"}`}>
-                  <span className="font-semibold text-slate-800 dark:text-slate-100">🏖️ GCTS (0 ft · S.L.):</span>
-                  <span className="font-mono text-slate-700 dark:text-slate-200">Despegue 50 ft: <strong className="text-blue-600 dark:text-sky-400">287 m</strong> · Toma: <strong className="text-emerald-600 dark:text-emerald-400">347 m</strong></span>
+            {!isCurrentScenarioPassed ? (
+              /* Estado Pendiente: Guía Metodológica sin revelar resultados */
+              <div className="h-full flex flex-col justify-center items-center p-3 text-center space-y-3">
+                <div className="w-14 h-14 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 flex items-center justify-center text-2xl shadow-xs">
+                  📐
                 </div>
-                <div className={`p-2 rounded-xl flex justify-between items-center transition-all ${scenario.icao === "GCGM" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border-2 border-sky-300 dark:border-sky-700 shadow-2xs" : "bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"}`}>
-                  <span className="font-semibold text-slate-800 dark:text-slate-100">⛰️ GCGM (1.000 ft):</span>
-                  <span className="font-mono text-slate-700 dark:text-slate-200">Despegue 50 ft: <strong className="text-blue-600 dark:text-sky-400">308 m</strong> · Toma: <strong className="text-emerald-600 dark:text-emerald-400">356 m</strong></span>
+                <div className="space-y-1 max-w-sm">
+                  <h4 className="text-sm font-bold text-[#0B2E59] dark:text-sky-300">
+                    Comprobación Gráfica TORA / LDA
+                  </h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-snug">
+                    Calcula e introduce las distancias de despegue y toma en el formulario F.OPS.02 de la izquierda. Al pulsar <strong>&quot;Validar Performance {scenario.icao}&quot;</strong> se desbloqueará la representación gráfica a escala de pista y los márgenes de seguridad.
+                  </p>
                 </div>
-                <div className={`p-2 rounded-xl flex justify-between items-center transition-all ${scenario.icao === "GCXO" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border-2 border-sky-300 dark:border-sky-700 shadow-2xs" : "bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"}`}>
-                  <span className="font-semibold text-slate-800 dark:text-slate-100">🌋 GCXO (2.000 ft):</span>
-                  <span className="font-mono text-slate-700 dark:text-slate-200">Despegue 50 ft: <strong className="text-blue-600 dark:text-sky-400">329 m</strong> · Toma: <strong className="text-emerald-600 dark:text-emerald-400">366 m</strong></span>
+
+                <div className="w-full text-left p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 shadow-2xs text-xs">
+                  <strong className="text-[#0B2E59] dark:text-sky-300 block uppercase font-bold text-xs">
+                    Instrucciones para {scenario.icao} ({scenario.runway}):
+                  </strong>
+                  <ul className="list-disc pl-4 space-y-1.5 text-slate-700 dark:text-slate-300 text-xs sm:text-[13px]">
+                    <li>
+                      <strong>Elevación:</strong> {scenario.elevationDesc}.
+                    </li>
+                    <li>
+                      <strong>Despegue (POH Fig. 5-1a):</strong> Anota la carrera en suelo y la distancia sobre 50 ft aplicando {scenario.windDesc}.
+                    </li>
+                    <li>
+                      <strong>Aterrizaje (POH Fig. 5-10):</strong> Busca la columna <em>TOTAL 50 FT OBS</em>, convierte los pies a metros (&divide; 3.28084) y aplica {scenario.windDesc}.
+                    </li>
+                  </ul>
                 </div>
               </div>
-            </div>
+            ) : (
+              /* Estado Desbloqueado: Representación Gráfica y Comparativa */
+              <>
+                <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px] flex items-center gap-2">
+                  <span className="text-base font-bold text-emerald-600">✓</span>
+                  <span><strong>¡Comprobación superada!</strong> Márgenes verificados en {scenario.icao} ({scenario.runway}).</span>
+                </div>
 
-            {/* Note */}
-            <div className="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs sm:text-[13px] text-sky-900 dark:text-sky-200 leading-snug">
-              💡 <strong>Regla Operacional:</strong> {scenario.tip}
-            </div>
+                {/* Takeoff Comparison Bar */}
+                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
+                  <div className="flex justify-between items-center text-xs font-bold">
+                    <span className="text-[#0B2E59] dark:text-sky-300">Despegue 50 ft vs TORA ({scenario.icao})</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-mono">
+                      Margen: +{scenario.runwayToraM - scenario.to50ft} m
+                    </span>
+                  </div>
+
+                  {/* Badges row */}
+                  <div className="flex items-center justify-between text-xs py-0.5">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-sky-300 font-bold">
+                      <span>Requerido:</span>
+                      <span className="font-mono">{scenario.to50ft} m</span>
+                      <span className="text-[10px] font-normal text-blue-500">({Math.round((scenario.to50ft / scenario.runwayToraM) * 100)}% pista)</span>
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-bold">
+                      <span>Libre:</span>
+                      <span className="font-mono">+{scenario.runwayToraM - scenario.to50ft} m</span>
+                    </span>
+                  </div>
+
+                  {/* Visual Runway Bar (no cramped text inside) */}
+                  <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden h-3 flex">
+                    <div
+                      style={{ width: `${Math.max(4, Math.min(100, (scenario.to50ft / scenario.runwayToraM) * 100))}%` }}
+                      className="bg-blue-500 h-full rounded-l-full"
+                      title={`Requerido: ${scenario.to50ft} m`}
+                    />
+                    <div
+                      className="flex-1 bg-emerald-500/80 h-full rounded-r-full"
+                      title={`Remanente: +${scenario.runwayToraM - scenario.to50ft} m`}
+                    />
+                  </div>
+
+                  <div className="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
+                    <span>0 m</span>
+                    <span className="font-medium text-slate-600 dark:text-slate-300">Pista Disponible (TORA): {scenario.runwayToraM} m</span>
+                  </div>
+                </div>
+
+                {/* Landing Comparison Bar */}
+                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
+                  <div className="flex justify-between items-center text-xs font-bold">
+                    <span className="text-[#0B2E59] dark:text-sky-300">Aterrizaje 50 ft vs LDA ({scenario.icao})</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-mono">
+                      Margen: +{scenario.runwayLdaM - scenario.ld50ft} m
+                    </span>
+                  </div>
+
+                  {/* Badges row */}
+                  <div className="flex items-center justify-between text-xs py-0.5">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-bold">
+                      <span>Requerido:</span>
+                      <span className="font-mono">{scenario.ld50ft} m</span>
+                      <span className="text-[10px] font-normal text-emerald-600">({Math.round((scenario.ld50ft / scenario.runwayLdaM) * 100)}% pista)</span>
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-bold">
+                      <span>Libre:</span>
+                      <span className="font-mono">+{scenario.runwayLdaM - scenario.ld50ft} m</span>
+                    </span>
+                  </div>
+
+                  {/* Visual Runway Bar (no cramped text inside) */}
+                  <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden h-3 flex">
+                    <div
+                      style={{ width: `${Math.max(4, Math.min(100, (scenario.ld50ft / scenario.runwayLdaM) * 100))}%` }}
+                      className="bg-emerald-600 h-full rounded-l-full"
+                      title={`Requerido: ${scenario.ld50ft} m`}
+                    />
+                    <div
+                      className="flex-1 bg-emerald-400/60 h-full rounded-r-full"
+                      title={`Remanente: +${scenario.runwayLdaM - scenario.ld50ft} m`}
+                    />
+                  </div>
+
+                  <div className="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
+                    <span>0 m</span>
+                    <span className="font-medium text-slate-600 dark:text-slate-300">Pista Disponible (LDA): {scenario.runwayLdaM} m</span>
+                  </div>
+                </div>
+
+                {/* Comparison of the 3 Canary Airports */}
+                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 shadow-2xs">
+                  <strong className="text-[#0B2E59] dark:text-sky-300 block uppercase font-bold text-xs sm:text-[13px]">
+                    Comparativa de Performance Insular (POH CD-155 a 20°C):
+                  </strong>
+                  <div className="space-y-1.5 text-xs sm:text-[13px]">
+                    <div className={`p-2 rounded-xl flex justify-between items-center transition-all ${scenario.icao === "GCTS" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border-2 border-sky-300 dark:border-sky-700 shadow-2xs" : "bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"}`}>
+                      <span className="font-semibold text-slate-800 dark:text-slate-100">🏖️ GCTS (0 ft · S.L.):</span>
+                      <span className="font-mono text-slate-700 dark:text-slate-200">Despegue 50 ft: <strong className="text-blue-600 dark:text-sky-400">287 m</strong> · Toma: <strong className="text-emerald-600 dark:text-emerald-400">347 m</strong></span>
+                    </div>
+                    <div className={`p-2 rounded-xl flex justify-between items-center transition-all ${scenario.icao === "GCGM" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border-2 border-sky-300 dark:border-sky-700 shadow-2xs" : "bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"}`}>
+                      <span className="font-semibold text-slate-800 dark:text-slate-100">⛰️ GCGM (1.000 ft):</span>
+                      <span className="font-mono text-slate-700 dark:text-slate-200">Despegue 50 ft: <strong className="text-blue-600 dark:text-sky-400">308 m</strong> · Toma: <strong className="text-emerald-600 dark:text-emerald-400">356 m</strong></span>
+                    </div>
+                    <div className={`p-2 rounded-xl flex justify-between items-center transition-all ${scenario.icao === "GCXO" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border-2 border-sky-300 dark:border-sky-700 shadow-2xs" : "bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"}`}>
+                      <span className="font-semibold text-slate-800 dark:text-slate-100">🌋 GCXO (2.000 ft):</span>
+                      <span className="font-mono text-slate-700 dark:text-slate-200">Despegue 50 ft: <strong className="text-blue-600 dark:text-sky-400">329 m</strong> · Toma: <strong className="text-emerald-600 dark:text-emerald-400">366 m</strong></span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Note */}
+                <div className="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs sm:text-[13px] text-sky-900 dark:text-sky-200 leading-snug">
+                  💡 <strong>Regla Operacional:</strong> {scenario.tip}
+                </div>
+              </>
+            )}
           </div>
 
           <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
