@@ -12,29 +12,33 @@ import {
 import { PreflightMission } from "./types";
 
 type Props = {
+  mode?: "all" | "takeoff" | "landing";
   onExerciseCompleted?: () => void;
   isAlreadyCompleted?: boolean;
 };
 
 export function PreflightLoadsheetWidget({
+  mode = "all",
   onExerciseCompleted,
   isAlreadyCompleted = false,
 }: Props) {
   const [selectedMissionIndex, setSelectedMissionIndex] = useState(0);
   const mission = PREFLIGHT_MISSIONS[selectedMissionIndex];
 
-  // User input states (strings for natural typing)
-  const [pilotsMass, setPilotsMass] = useState("");
+  // If in "all" mode, activeTab controls which sub-step is visible
+  const [activeTab, setActiveTab] = useState<"takeoff" | "landing">(
+    mode === "landing" ? "landing" : "takeoff"
+  );
+  const currentStep = mode === "all" ? activeTab : mode;
+
+  // User input states
   const [pilotsMoment, setPilotsMoment] = useState("");
-  const [paxMass, setPaxMass] = useState("");
   const [paxMoment, setPaxMoment] = useState("");
-  const [baggageMass, setBaggageMass] = useState("");
   const [baggageMoment, setBaggageMoment] = useState("");
 
   const [zfmMass, setZfmMass] = useState("");
   const [zfmMoment, setZfmMoment] = useState("");
 
-  const [fuelLiters, setFuelLiters] = useState("");
   const [fuelMass, setFuelMass] = useState("");
   const [fuelMoment, setFuelMoment] = useState("");
 
@@ -42,7 +46,6 @@ export function PreflightLoadsheetWidget({
   const [tomMoment, setTomMoment] = useState("");
   const [tomCg, setTomCg] = useState("");
 
-  const [tripFuelMass, setTripFuelMass] = useState("");
   const [tripFuelMoment, setTripFuelMoment] = useState("");
 
   const [lmMass, setLmMass] = useState("");
@@ -59,24 +62,16 @@ export function PreflightLoadsheetWidget({
   // Load mission initial scenario values
   const loadMissionScenario = (m: PreflightMission, idx: number) => {
     setSelectedMissionIndex(idx);
-    setPilotsMass(String(m.scenario.pilotsFrontKg));
     setPilotsMoment("");
-    setPaxMass(String(m.scenario.passengersRearKg));
     setPaxMoment("");
-    setBaggageMass(String(m.scenario.baggageKg));
     setBaggageMoment("");
     setZfmMass("");
     setZfmMoment("");
-    setFuelLiters(String(m.scenario.takeoffFuelLiters));
     setFuelMass("");
     setFuelMoment("");
     setTomMass("");
     setTomMoment("");
     setTomCg("");
-    // Estimated trip fuel for the mission
-    const estimatedTripL = Math.round(m.scenario.flightTimeHrs * 22.1);
-    const estTripKg = Math.round(estimatedTripL * 0.84 * 10) / 10;
-    setTripFuelMass(String(estTripKg));
     setTripFuelMoment("");
     setLmMass("");
     setLmMoment("");
@@ -89,7 +84,7 @@ export function PreflightLoadsheetWidget({
     setInteractiveClickPoint(null);
   };
 
-  // Expected values calculation based on mission
+  // Expected values calculation based on mission at 50% standard flight school cruise power
   const expected = useMemo(() => {
     const sc = mission.scenario;
     const pMass = sc.pilotsFrontKg;
@@ -112,7 +107,9 @@ export function PreflightLoadsheetWidget({
     const tMom = Math.round((zMom + fMom) * 100) / 100;
     const tCg = Math.round((tMom / tMass) * 1000) / 1000;
 
-    const estTripL = Math.round(sc.flightTimeHrs * 22.1);
+    // Flight school cruise power: 50% Load = 15.3 L/h
+    const hourlyFuelL = 15.3;
+    const estTripL = Math.round(sc.flightTimeHrs * hourlyFuelL * 10) / 10;
     const trMass = Math.round(estTripL * EC_NNA_DATA.fuelDensityKgL * 100) / 100;
     const trMom = Math.round(trMass * EC_NNA_DATA.arms.fuel * 100) / 100;
 
@@ -135,6 +132,7 @@ export function PreflightLoadsheetWidget({
       tomMass: tMass,
       tomMoment: tMom,
       tomCg: tCg,
+      tripFuelLiters: estTripL,
       tripFuelMass: trMass,
       tripFuelMoment: trMom,
       lmMass: lMass,
@@ -147,144 +145,140 @@ export function PreflightLoadsheetWidget({
   const handleValidate = () => {
     const newErrors: Record<string, string> = {};
     const newWarnings: string[] = [];
-
     const num = (val: string) => parseFloat(val.replace(",", "."));
 
-    // Check pilots moment
-    const userPilotsMom = num(pilotsMoment);
-    if (isNaN(userPilotsMom)) {
-      newErrors.pilotsMoment = "Campo obligatorio";
-    } else {
-      const chk = checkValueTolerance(userPilotsMom, expected.pilotsMoment, 0.02, 0.5);
-      if (!chk.isOk) {
-        newErrors.pilotsMoment =
+    if (currentStep === "takeoff") {
+      // 1. Pilots Moment
+      const userPilotsMom = num(pilotsMoment);
+      if (isNaN(userPilotsMom)) {
+        newErrors.pilotsMoment = "Campo obligatorio";
+      } else {
+        const chk = checkValueTolerance(userPilotsMom, expected.pilotsMoment, 0.02, 0.5);
+        if (!chk.isOk) {
+          newErrors.pilotsMoment =
+            attempts >= 2
+              ? `Solución: ${expected.pilotsMass} kg × 0.940 m = ${expected.pilotsMoment} kg·m`
+              : "Multiplica la masa por el brazo de pilotos (0.940 m)";
+        }
+      }
+
+      // 2. Pax Moment
+      if (expected.paxMass > 0) {
+        const userPaxMom = num(paxMoment);
+        if (isNaN(userPaxMom)) {
+          newErrors.paxMoment = "Campo obligatorio";
+        } else {
+          const chk = checkValueTolerance(userPaxMom, expected.paxMoment, 0.02, 0.5);
+          if (!chk.isOk) {
+            newErrors.paxMoment =
+              attempts >= 2
+                ? `Solución: ${expected.paxMass} kg × 1.854 m = ${expected.paxMoment} kg·m`
+                : "Multiplica la masa por el brazo de pasajeros (1.854 m)";
+          }
+        }
+      }
+
+      // 3. Baggage Moment
+      if (expected.baggageMass > 0) {
+        const userBagMom = num(baggageMoment);
+        if (isNaN(userBagMom)) {
+          newErrors.baggageMoment = "Campo obligatorio";
+        } else {
+          const chk = checkValueTolerance(userBagMom, expected.baggageMoment, 0.02, 0.5);
+          if (!chk.isOk) {
+            newErrors.baggageMoment =
+              attempts >= 2
+                ? `Solución: ${expected.baggageMass} kg × 2.413 m = ${expected.baggageMoment} kg·m`
+                : "Multiplica el equipaje por el brazo del Área 1 (2.413 m)";
+          }
+        }
+      }
+
+      // 4. ZFM Mass & Moment
+      const userZfmMass = num(zfmMass);
+      const userZfmMom = num(zfmMoment);
+      if (isNaN(userZfmMass) || !checkValueTolerance(userZfmMass, expected.zfmMass, 0.01, 1).isOk) {
+        newErrors.zfmMass =
           attempts >= 2
-            ? `Solución: ${expected.pilotsMass} kg × 0.940 m = ${expected.pilotsMoment} kg·m`
-            : "Multiplica la masa por el brazo de pilotos (0.940 m)";
-      } else if (!chk.isExact) {
-        newWarnings.push("Momento de pilotos: Leve desvío por redondeo, pero aceptado.");
+            ? `Solución: 755.44 + ${expected.pilotsMass} + ${expected.paxMass} + ${expected.baggageMass} = ${expected.zfmMass} kg`
+            : "Suma Empty Weight (755.44 kg) + pilotos + pax + equipaje";
       }
-    }
-
-    // Check pax moment
-    const userPaxMom = num(paxMoment);
-    if (expected.paxMass > 0) {
-      if (isNaN(userPaxMom)) {
-        newErrors.paxMoment = "Campo obligatorio";
-      } else {
-        const chk = checkValueTolerance(userPaxMom, expected.paxMoment, 0.02, 0.5);
-        if (!chk.isOk) {
-          newErrors.paxMoment =
-            attempts >= 2
-              ? `Solución: ${expected.paxMass} kg × 1.854 m = ${expected.paxMoment} kg·m`
-              : "Multiplica la masa por el brazo de pasajeros traseros (1.854 m)";
-        }
+      if (isNaN(userZfmMom) || !checkValueTolerance(userZfmMom, expected.zfmMoment, 0.01, 1.5).isOk) {
+        newErrors.zfmMoment =
+          attempts >= 2
+            ? `Solución: Suma momentos = ${expected.zfmMoment} kg·m`
+            : "Suma los momentos de Empty Weight y todos los ocupantes";
       }
-    }
 
-    // Check baggage moment
-    const userBagMom = num(baggageMoment);
-    if (expected.baggageMass > 0) {
-      if (isNaN(userBagMom)) {
-        newErrors.baggageMoment = "Campo obligatorio";
-      } else {
-        const chk = checkValueTolerance(userBagMom, expected.baggageMoment, 0.02, 0.5);
-        if (!chk.isOk) {
-          newErrors.baggageMoment =
-            attempts >= 2
-              ? `Solución: ${expected.baggageMass} kg × 2.413 m = ${expected.baggageMoment} kg·m`
-              : "Multiplica el equipaje por el brazo del Área 1 (2.413 m)";
-        }
+      // 5. Fuel Mass & Moment
+      const userFuelMass = num(fuelMass);
+      const userFuelMom = num(fuelMoment);
+      if (isNaN(userFuelMass) || !checkValueTolerance(userFuelMass, expected.fuelMass, 0.02, 0.5).isOk) {
+        newErrors.fuelMass =
+          attempts >= 2
+            ? `Solución: ${expected.fuelLiters} L × 0.84 = ${expected.fuelMass} kg`
+            : "Usa la densidad Jet-A1 (0.84 kg/L)";
       }
-    }
+      if (isNaN(userFuelMom) || !checkValueTolerance(userFuelMom, expected.fuelMoment, 0.02, 1).isOk) {
+        newErrors.fuelMoment =
+          attempts >= 2
+            ? `Solución: ${expected.fuelMass} kg × 1.168 m = ${expected.fuelMoment} kg·m`
+            : "Masa de combustible × brazo (1.168 m)";
+      }
 
-    // Check ZFM Mass & Moment
-    const userZfmMass = num(zfmMass);
-    const userZfmMom = num(zfmMoment);
-    if (isNaN(userZfmMass) || !checkValueTolerance(userZfmMass, expected.zfmMass, 0.01, 1).isOk) {
-      newErrors.zfmMass =
-        attempts >= 2
-          ? `Solución: 755.44 + ${expected.pilotsMass} + ${expected.paxMass} + ${expected.baggageMass} = ${expected.zfmMass} kg`
-          : "Suma el Empty Weight (755.44 kg) más pilotos, pax y equipaje";
-    }
-    if (isNaN(userZfmMom) || !checkValueTolerance(userZfmMom, expected.zfmMoment, 0.01, 1.5).isOk) {
-      newErrors.zfmMoment =
-        attempts >= 2
-          ? `Solución: Suma de momentos hasta ZFM = ${expected.zfmMoment} kg·m`
-          : "Suma los momentos de Empty Weight y todos los ocupantes";
-    }
+      // 6. TOM Mass & CG
+      const userTomMass = num(tomMass);
+      const userTomMom = num(tomMoment);
+      const userTomCg = num(tomCg);
+      if (isNaN(userTomMass) || !checkValueTolerance(userTomMass, expected.tomMass, 0.01, 1).isOk) {
+        newErrors.tomMass =
+          attempts >= 2
+            ? `Solución: ZFM (${expected.zfmMass}) + Fuel (${expected.fuelMass}) = ${expected.tomMass} kg`
+            : "TOM = ZFM + Combustible";
+      }
+      if (isNaN(userTomMom) || !checkValueTolerance(userTomMom, expected.tomMoment, 0.01, 1.5).isOk) {
+        newErrors.tomMoment =
+          attempts >= 2
+            ? `Solución: Momento TOM = ${expected.tomMoment} kg·m`
+            : "Momento ZFM + Momento Combustible";
+      }
+      if (isNaN(userTomCg) || !checkValueTolerance(userTomCg, expected.tomCg, 0.008, 0.005).isOk) {
+        newErrors.tomCg =
+          attempts >= 2
+            ? `Solución: CG = ${expected.tomMoment} / ${expected.tomMass} = ${expected.tomCg} m`
+            : "CG = Momento Total / Masa Total";
+      }
+    } else {
+      // LANDING STEP
+      const userTripMom = num(tripFuelMoment);
+      if (isNaN(userTripMom) || !checkValueTolerance(userTripMom, expected.tripFuelMoment, 0.02, 1).isOk) {
+        newErrors.tripFuelMoment =
+          attempts >= 2
+            ? `Solución: ${expected.tripFuelMass} kg × 1.168 m = ${expected.tripFuelMoment} kg·m`
+            : "Trip fuel consumido × brazo (1.168 m)";
+      }
 
-    // Check Fuel Mass & Moment (density 0.84)
-    const userFuelMass = num(fuelMass);
-    const userFuelMom = num(fuelMoment);
-    if (isNaN(userFuelMass) || !checkValueTolerance(userFuelMass, expected.fuelMass, 0.02, 0.5).isOk) {
-      newErrors.fuelMass =
-        attempts >= 2
-          ? `Solución: ${expected.fuelLiters} L × 0.84 kg/L = ${expected.fuelMass} kg`
-          : "¿Has usado la densidad correcta del Jet-A1/Diésel (0.84 kg/L)?";
-    }
-    if (isNaN(userFuelMom) || !checkValueTolerance(userFuelMom, expected.fuelMoment, 0.02, 1).isOk) {
-      newErrors.fuelMoment =
-        attempts >= 2
-          ? `Solución: ${expected.fuelMass} kg × 1.168 m = ${expected.fuelMoment} kg·m`
-          : "Multiplica la masa de combustible por su brazo (1.168 m)";
-    }
-
-    // Check TOM Mass, Moment & CG
-    const userTomMass = num(tomMass);
-    const userTomMom = num(tomMoment);
-    const userTomCg = num(tomCg);
-    if (isNaN(userTomMass) || !checkValueTolerance(userTomMass, expected.tomMass, 0.01, 1).isOk) {
-      newErrors.tomMass =
-        attempts >= 2
-          ? `Solución: ZFM (${expected.zfmMass}) + Combustible (${expected.fuelMass}) = ${expected.tomMass} kg`
-          : "Takeoff Mass = ZFM + Combustible de despegue";
-    }
-    if (isNaN(userTomMom) || !checkValueTolerance(userTomMom, expected.tomMoment, 0.01, 1.5).isOk) {
-      newErrors.tomMoment =
-        attempts >= 2
-          ? `Solución: Momento TOM = ${expected.tomMoment} kg·m`
-          : "Suma el momento de ZFM más el momento del combustible";
-    }
-    if (isNaN(userTomCg) || !checkValueTolerance(userTomCg, expected.tomCg, 0.008, 0.005).isOk) {
-      newErrors.tomCg =
-        attempts >= 2
-          ? `Solución: CG = Momento (${expected.tomMoment}) / Masa (${expected.tomMass}) = ${expected.tomCg} m`
-          : "CG = Momento Total / Masa Total (debe dar en metros, ej: 1.04 m)";
-    } else if (Math.abs(userTomCg - expected.tomCg) > 0.001) {
-      newWarnings.push(`CG de Despegue: Tu valor (${userTomCg} m) tiene leve desvío por redondeo, pero es válido.`);
-    }
-
-    // Check Trip Fuel Moment
-    const userTripMom = num(tripFuelMoment);
-    if (isNaN(userTripMom) || !checkValueTolerance(userTripMom, expected.tripFuelMoment, 0.02, 1).isOk) {
-      newErrors.tripFuelMoment =
-        attempts >= 2
-          ? `Solución: ${expected.tripFuelMass} kg × 1.168 m = ${expected.tripFuelMoment} kg·m`
-          : "Multiplica el combustible consumido por el brazo (1.168 m)";
-    }
-
-    // Check Landing Mass, Moment & CG
-    const userLmMass = num(lmMass);
-    const userLmMom = num(lmMoment);
-    const userLmCg = num(lmCg);
-    if (isNaN(userLmMass) || !checkValueTolerance(userLmMass, expected.lmMass, 0.01, 1).isOk) {
-      newErrors.lmMass =
-        attempts >= 2
-          ? `Solución: TOM (${expected.tomMass}) - Trip Fuel (${expected.tripFuelMass}) = ${expected.lmMass} kg`
-          : "Landing Mass = Masa al despegue menos Trip Fuel";
-    }
-    if (isNaN(userLmMom) || !checkValueTolerance(userLmMom, expected.lmMoment, 0.01, 1.5).isOk) {
-      newErrors.lmMoment =
-        attempts >= 2
-          ? `Solución: Momento LM = ${expected.lmMoment} kg·m`
-          : "Resta el momento del Trip Fuel al momento de despegue";
-    }
-    if (isNaN(userLmCg) || !checkValueTolerance(userLmCg, expected.lmCg, 0.008, 0.005).isOk) {
-      newErrors.lmCg =
-        attempts >= 2
-          ? `Solución: CG = Momento (${expected.lmMoment}) / Masa (${expected.lmMass}) = ${expected.lmCg} m`
-          : "CG Aterrizaje = Momento Aterrizaje / Masa Aterrizaje";
+      const userLmMass = num(lmMass);
+      const userLmMom = num(lmMoment);
+      const userLmCg = num(lmCg);
+      if (isNaN(userLmMass) || !checkValueTolerance(userLmMass, expected.lmMass, 0.01, 1).isOk) {
+        newErrors.lmMass =
+          attempts >= 2
+            ? `Solución: TOM (${expected.tomMass}) - Trip Fuel (${expected.tripFuelMass}) = ${expected.lmMass} kg`
+            : "Landing Mass = TOM menos Trip Fuel";
+      }
+      if (isNaN(userLmMom) || !checkValueTolerance(userLmMom, expected.lmMoment, 0.01, 1.5).isOk) {
+        newErrors.lmMoment =
+          attempts >= 2
+            ? `Solución: Momento LM = ${expected.lmMoment} kg·m`
+            : "Resta momento de Trip Fuel al momento de TOM";
+      }
+      if (isNaN(userLmCg) || !checkValueTolerance(userLmCg, expected.lmCg, 0.008, 0.005).isOk) {
+        newErrors.lmCg =
+          attempts >= 2
+            ? `Solución: CG = ${expected.lmMoment} / ${expected.lmMass} = ${expected.lmCg} m`
+            : "CG Aterrizaje = Momento LM / Masa LM";
+      }
     }
 
     setErrors(newErrors);
@@ -300,7 +294,7 @@ export function PreflightLoadsheetWidget({
     }
   };
 
-  // Coordinates for the SVG points
+  // SVG coordinates for TOW and LW
   const tomCoords = useMemo(() => {
     return mapCgToSvgCoords(expected.tomMass, expected.tomCg);
   }, [expected]);
@@ -315,23 +309,59 @@ export function PreflightLoadsheetWidget({
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-      {/* Columna Izquierda (lg:col-span-7): F.OPS.04.NNA Loadsheet (Altura Fija 590px) */}
+      {/* Columna Izquierda (lg:col-span-7): Altura Estricta 590px */}
       <div className="lg:col-span-7 flex flex-col">
         <div
-          className="h-[590px] flex flex-col justify-between p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
+          className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
           style={{ height: "590px" }}
         >
-          {/* Header & Mission Selector */}
-          <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          {/* Header & Sub-step Selector */}
+          <div className="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
-                📋 F.OPS.04.NNA · MASS AND BALANCE
+                {currentStep === "takeoff"
+                  ? "📋 F.OPS.04.NNA · PARTE 1: DESPEGUE (TOM & CG)"
+                  : "🛬 F.OPS.04.NNA · PARTE 2: ATERRIZAJE (LM & CG)"}
               </span>
               <div className="text-[10px] text-slate-500 font-medium">
-                {mission.name} · {expected.pilotsMass} kg del. / {expected.paxMass} kg tras. / {expected.fuelLiters} L Jet-A1
+                {mission.name} · Crucero al 50% Potencia ({mission.scenario.flightTimeHrs} h)
               </div>
             </div>
+
             <div className="flex items-center gap-1 shrink-0">
+              {mode === "all" && (
+                <div className="flex items-center bg-slate-200/80 dark:bg-slate-800 rounded-lg p-0.5 mr-1.5">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTab("takeoff");
+                      setErrors({});
+                    }}
+                    className={`px-2 py-0.5 rounded-md text-[10px] font-bold transition-all cursor-pointer ${
+                      activeTab === "takeoff"
+                        ? "bg-white dark:bg-slate-700 text-[#0B2E59] dark:text-sky-300 shadow-2xs"
+                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+                    }`}
+                  >
+                    1. Despegue
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTab("landing");
+                      setErrors({});
+                    }}
+                    className={`px-2 py-0.5 rounded-md text-[10px] font-bold transition-all cursor-pointer ${
+                      activeTab === "landing"
+                        ? "bg-white dark:bg-slate-700 text-[#0B2E59] dark:text-sky-300 shadow-2xs"
+                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+                    }`}
+                  >
+                    2. Aterrizaje
+                  </button>
+                </div>
+              )}
+
               {PREFLIGHT_MISSIONS.map((m, idx) => (
                 <button
                   key={m.id}
@@ -349,345 +379,360 @@ export function PreflightLoadsheetWidget({
             </div>
           </div>
 
-          <div className="flex-1 min-h-0 overflow-y-auto my-1">
-            <table className="w-full text-left text-[11px] border-collapse">
-              <thead>
-                <tr className="border-b border-slate-200 dark:border-slate-700 text-[10px] font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
-                  <th className="py-1 px-1.5">ITEM</th>
-                  <th className="py-1 px-1.5 text-right">MASS (KG)</th>
-                  <th className="py-1 px-1.5 text-right">ARM (M)</th>
-                  <th className="py-1 px-1.5 text-right">MOMENT (KGM)</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                {/* EMPTY WEIGHT */}
-                <tr className="bg-slate-50/50 dark:bg-slate-800/30 font-semibold">
-                  <td className="py-1.5 px-2">EMPTY WEIGHT (EC-NNA)</td>
-                  <td className="py-1.5 px-2 text-right font-mono text-slate-600 dark:text-slate-300">755,44</td>
-                  <td className="py-1.5 px-2 text-right font-mono text-slate-600 dark:text-slate-300">1,042</td>
-                  <td className="py-1.5 px-2 text-right font-mono text-slate-600 dark:text-slate-300">787,23</td>
-                </tr>
+          {/* Table Container - Strictly sized, zero outer scroll */}
+          <div className="flex-1 min-h-0 my-1 overflow-hidden flex flex-col justify-center">
+            {currentStep === "takeoff" ? (
+              /* PARTE 1: TABLA DE DESPEGUE (7 FILAS COMPACTAS) */
+              <table className="w-full text-left text-[11px] border-collapse">
+                <thead>
+                  <tr className="border-b border-slate-200 dark:border-slate-700 text-[10px] font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
+                    <th className="py-1 px-1.5">ITEM</th>
+                    <th className="py-1 px-1.5 text-right">MASA (KG)</th>
+                    <th className="py-1 px-1.5 text-right">BRAZO (M)</th>
+                    <th className="py-1 px-1.5 text-right">MOMENTO (KGM)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                  {/* EMPTY WEIGHT */}
+                  <tr className="bg-slate-50/50 dark:bg-slate-800/30 font-semibold">
+                    <td className="py-1 px-1.5">EMPTY WEIGHT (EC-NNA)</td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-600 dark:text-slate-300">755,44</td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-600 dark:text-slate-300">1,042</td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-600 dark:text-slate-300">787,23</td>
+                  </tr>
 
-                {/* PILOTS (FRONT) */}
-                <tr>
-                  <td className="py-1.5 px-2 font-medium">PILOTS (FRONT)</td>
-                  <td className="py-1.5 px-2 text-right">
-                    <span className="font-mono font-bold text-slate-700 dark:text-slate-200">
+                  {/* PILOTS */}
+                  <tr>
+                    <td className="py-1 px-1.5 font-medium">PILOTS (FRONT)</td>
+                    <td className="py-1 px-1.5 text-right font-mono font-bold text-slate-700 dark:text-slate-200">
                       {expected.pilotsMass} kg
-                    </span>
-                  </td>
-                  <td className="py-1.5 px-2 text-right font-mono text-slate-500">0,940</td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="Ej: 147.58"
-                      value={pilotsMoment}
-                      onChange={(e) => setPilotsMoment(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.pilotsMoment
-                          ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                </tr>
+                    </td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">0,940</td>
+                    <td className="py-1 px-1.5 text-right">
+                      <input
+                        type="text"
+                        placeholder="Momento"
+                        value={pilotsMoment}
+                        onChange={(e) => setPilotsMoment(e.target.value)}
+                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                          errors.pilotsMoment
+                            ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        }`}
+                      />
+                    </td>
+                  </tr>
 
-                {/* PASSENGERS (REAR) */}
-                <tr>
-                  <td className="py-1.5 px-2 font-medium">PASSENGERS (REAR)</td>
-                  <td className="py-1.5 px-2 text-right">
-                    <span className="font-mono text-slate-700 dark:text-slate-200">
-                      {expected.paxMass > 0 ? `${expected.paxMass} kg` : "0"}
-                    </span>
-                  </td>
-                  <td className="py-1.5 px-2 text-right font-mono text-slate-500">1,854</td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      disabled={expected.paxMass === 0}
-                      placeholder={expected.paxMass === 0 ? "0" : "Ej: 129.78"}
-                      value={expected.paxMass === 0 ? "0" : paxMoment}
-                      onChange={(e) => setPaxMoment(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.paxMoment
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                </tr>
+                  {/* PASSENGERS */}
+                  <tr>
+                    <td className="py-1 px-1.5 font-medium">PASSENGERS (REAR)</td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-700 dark:text-slate-200">
+                      {expected.paxMass > 0 ? `${expected.paxMass} kg` : "0 kg"}
+                    </td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">1,854</td>
+                    <td className="py-1 px-1.5 text-right">
+                      <input
+                        type="text"
+                        disabled={expected.paxMass === 0}
+                        placeholder={expected.paxMass === 0 ? "0" : "Momento"}
+                        value={expected.paxMass === 0 ? "0" : paxMoment}
+                        onChange={(e) => setPaxMoment(e.target.value)}
+                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                          errors.paxMoment
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        }`}
+                      />
+                    </td>
+                  </tr>
 
-                {/* BAGGAGE AREA 1 */}
-                <tr>
-                  <td className="py-1.5 px-2 font-medium">BAGGAGE AREA 1</td>
-                  <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-200">
-                    {expected.baggageMass} kg
-                  </td>
-                  <td className="py-1.5 px-2 text-right font-mono text-slate-500">2,413</td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="Ej: 12.07"
-                      value={baggageMoment}
-                      onChange={(e) => setBaggageMoment(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.baggageMoment
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                </tr>
+                  {/* BAGGAGE */}
+                  <tr>
+                    <td className="py-1 px-1.5 font-medium">BAGGAGE AREA 1</td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-700 dark:text-slate-200">
+                      {expected.baggageMass} kg
+                    </td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">2,413</td>
+                    <td className="py-1 px-1.5 text-right">
+                      <input
+                        type="text"
+                        placeholder="Momento"
+                        value={baggageMoment}
+                        onChange={(e) => setBaggageMoment(e.target.value)}
+                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                          errors.baggageMoment
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        }`}
+                      />
+                    </td>
+                  </tr>
 
-                {/* ZERO FUEL MASS */}
-                <tr className="bg-sky-50/60 dark:bg-sky-950/30 font-bold text-[#0B2E59] dark:text-sky-300">
-                  <td className="py-1.5 px-2 uppercase text-[11px]">ZERO FUEL MASS</td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="Suma Masa"
-                      value={zfmMass}
-                      onChange={(e) => setZfmMass(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.zfmMass
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                  <td className="py-1.5 px-2 text-right font-mono text-slate-400">—</td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="Suma Momento"
-                      value={zfmMoment}
-                      onChange={(e) => setZfmMoment(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.zfmMoment
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                </tr>
+                  {/* ZERO FUEL MASS */}
+                  <tr className="bg-sky-50/60 dark:bg-sky-950/30 font-bold text-[#0B2E59] dark:text-sky-300">
+                    <td className="py-1 px-1.5 uppercase text-[10.5px]">ZERO FUEL MASS (ZFM)</td>
+                    <td className="py-1 px-1.5 text-right">
+                      <input
+                        type="text"
+                        placeholder="Suma Masa"
+                        value={zfmMass}
+                        onChange={(e) => setZfmMass(e.target.value)}
+                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                          errors.zfmMass
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        }`}
+                      />
+                    </td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-400">—</td>
+                    <td className="py-1 px-1.5 text-right">
+                      <input
+                        type="text"
+                        placeholder="Suma Momento"
+                        value={zfmMoment}
+                        onChange={(e) => setZfmMoment(e.target.value)}
+                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                          errors.zfmMoment
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        }`}
+                      />
+                    </td>
+                  </tr>
 
-                {/* TAKE OFF FUEL */}
-                <tr>
-                  <td className="py-1.5 px-2 font-medium">
-                    TAKE OFF FUEL ({expected.fuelLiters} L)
-                  </td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="Kg (L × 0.84)"
-                      value={fuelMass}
-                      onChange={(e) => setFuelMass(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.fuelMass
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                  <td className="py-1.5 px-2 text-right font-mono text-slate-500">1,168</td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="Momento Fuel"
-                      value={fuelMoment}
-                      onChange={(e) => setFuelMoment(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.fuelMoment
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                </tr>
+                  {/* TAKEOFF FUEL */}
+                  <tr>
+                    <td className="py-1 px-1.5 font-medium">
+                      TAKEOFF FUEL ({expected.fuelLiters} L Jet-A1)
+                    </td>
+                    <td className="py-1 px-1.5 text-right">
+                      <input
+                        type="text"
+                        placeholder="Kg (L × 0.84)"
+                        value={fuelMass}
+                        onChange={(e) => setFuelMass(e.target.value)}
+                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                          errors.fuelMass
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        }`}
+                      />
+                    </td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">1,168</td>
+                    <td className="py-1 px-1.5 text-right">
+                      <input
+                        type="text"
+                        placeholder="Momento"
+                        value={fuelMoment}
+                        onChange={(e) => setFuelMoment(e.target.value)}
+                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                          errors.fuelMoment
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        }`}
+                      />
+                    </td>
+                  </tr>
 
-                {/* TAKEOFF MASS */}
-                <tr className="bg-emerald-50/70 dark:bg-emerald-950/30 font-bold text-emerald-900 dark:text-emerald-300">
-                  <td className="py-1.5 px-2 uppercase text-[11px]">
-                    TAKEOFF MASS (TOM)
-                    <div className="text-[10px] font-normal text-emerald-700 dark:text-emerald-400">
-                      CG Despegue = Momento / Masa
-                    </div>
-                  </td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="TOM (kg)"
-                      value={tomMass}
-                      onChange={(e) => setTomMass(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.tomMass
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="CG (m)"
-                      value={tomCg}
-                      onChange={(e) => setTomCg(e.target.value)}
-                      className={`w-20 text-right px-1.5 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.tomCg
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-emerald-700 font-bold"
-                      }`}
-                    />
-                  </td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="Momento TOM"
-                      value={tomMoment}
-                      onChange={(e) => setTomMoment(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.tomMoment
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                </tr>
-
-                {/* – TRIP FUEL */}
-                <tr>
-                  <td className="py-1.5 px-2 font-medium">– TRIP FUEL (Ruta)</td>
-                  <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-200">
-                    – {expected.tripFuelMass} kg
-                  </td>
-                  <td className="py-1.5 px-2 text-right font-mono text-slate-500">1,168</td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="Momento Trip"
-                      value={tripFuelMoment}
-                      onChange={(e) => setTripFuelMoment(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.tripFuelMoment
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                </tr>
-
-                {/* LANDING MASS */}
-                <tr className="bg-sky-50/70 dark:bg-sky-950/30 font-bold text-[#0B2E59] dark:text-sky-300">
-                  <td className="py-1.5 px-2 uppercase text-[11px]">
-                    LANDING MASS (LM)
-                    <div className="text-[10px] font-normal text-sky-700 dark:text-sky-400">
-                      CG Aterrizaje = Momento / Masa
-                    </div>
-                  </td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="LM (kg)"
-                      value={lmMass}
-                      onChange={(e) => setLmMass(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.lmMass
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="CG (m)"
-                      value={lmCg}
-                      onChange={(e) => setLmCg(e.target.value)}
-                      className={`w-20 text-right px-1.5 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.lmCg
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-sky-700 font-bold"
-                      }`}
-                    />
-                  </td>
-                  <td className="py-1.5 px-2 text-right">
-                    <input
-                      type="text"
-                      placeholder="Momento LM"
-                      value={lmMoment}
-                      onChange={(e) => setLmMoment(e.target.value)}
-                      className={`w-24 text-right px-2 py-0.5 rounded-lg border font-mono text-xs ${
-                        errors.lmMoment
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="flex items-center justify-between pt-1">
-            <span className="text-[11px] text-slate-500 italic">
-              * Nota POH: Densidad del combustible Diésel/Jet A-1 = 0,84 kg/l. MTOM = 1.043 kg.
-            </span>
-
-            <button
-              type="button"
-              onClick={handleValidate}
-              className="px-4 py-2 rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] text-white font-extrabold text-xs shadow-md transition-all cursor-pointer hover:scale-105 active:scale-95"
-            >
-              Comprobar Hoja y Graficar ➔
-            </button>
-          </div>
-
-          {/* Feedback messages */}
-          {Object.keys(errors).length > 0 && (
-            <div className="p-3 rounded-xl border border-rose-200 dark:border-rose-800 bg-rose-50/90 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 text-xs space-y-1 animate-in fade-in">
-              <strong className="flex items-center gap-1.5 font-bold">
-                <span>⚠️</span>
-                <span>Se han detectado {Object.keys(errors).length} casillas a corregir (Intento {attempts}):</span>
-              </strong>
-              <ul className="list-disc pl-4 space-y-0.5 text-[11px]">
-                {Object.entries(errors).map(([key, msg]) => (
-                  <li key={key}>
-                    <strong>{key}:</strong> {msg}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          {warnings.length > 0 && (
-            <div className="p-2.5 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50/90 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 text-xs space-y-0.5">
-              {warnings.map((w, idx) => (
-                <div key={idx} className="flex items-center gap-1">
-                  <span>ℹ️</span>
-                  <span>{w}</span>
+                  {/* TAKEOFF MASS (TOM) */}
+                  <tr className="bg-emerald-50/70 dark:bg-emerald-950/30 font-bold text-emerald-900 dark:text-emerald-300">
+                    <td className="py-1 px-1.5 uppercase text-[10.5px]">
+                      TAKEOFF MASS (TOM & CG)
+                    </td>
+                    <td className="py-1 px-1.5 text-right">
+                      <input
+                        type="text"
+                        placeholder="TOM (kg)"
+                        value={tomMass}
+                        onChange={(e) => setTomMass(e.target.value)}
+                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                          errors.tomMass
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                        }`}
+                      />
+                    </td>
+                    <td className="py-1 px-1.5 text-right">
+                      <input
+                        type="text"
+                        placeholder="CG (m)"
+                        value={tomCg}
+                        onChange={(e) => setTomCg(e.target.value)}
+                        className={`w-16 text-right px-1 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                          errors.tomCg
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                        }`}
+                      />
+                    </td>
+                    <td className="py-1 px-1.5 text-right">
+                      <input
+                        type="text"
+                        placeholder="Momento TOM"
+                        value={tomMoment}
+                        onChange={(e) => setTomMoment(e.target.value)}
+                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                          errors.tomMoment
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                        }`}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            ) : (
+              /* PARTE 2: TABLA DE ATERRIZAJE (5 FILAS COMPACTAS) */
+              <div className="space-y-2">
+                <div className="p-2 rounded-xl bg-sky-50/70 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs flex items-center justify-between">
+                  <span className="font-semibold text-sky-900 dark:text-sky-200">
+                    Condición de Despegue (TOM): <strong>{expected.tomMass} kg</strong> · CG: <strong>{expected.tomCg} m</strong>
+                  </span>
+                  <span className="text-[10px] text-sky-700 dark:text-sky-300 font-mono">
+                    Momento: {expected.tomMoment} kg·m
+                  </span>
                 </div>
-              ))}
-            </div>
-          )}
 
-          {isPassed && (
-            <div className="p-2.5 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs space-y-0.5 animate-in zoom-in-95 shrink-0">
-              <strong className="flex items-center gap-1.5 font-bold text-xs text-emerald-800 dark:text-emerald-300">
-                <span>🎉</span>
-                <span>¡HOJA DE CARGA VALIDADA CON ÉXITO!</span>
-              </strong>
-              <p className="text-[10.5px]">
-                Has completado correctamente todos los brazos, momentos y centro de gravedad.
-                {isTomNormal
-                  ? ` El avión está dentro de la Categoría Normal (CG TOM = ${expected.tomCg} m, MTOM = ${expected.tomMass} kg).`
-                  : ` ⚠️ Atención: El avión supera límites o tiene CG crítico.`}
-              </p>
+                <table className="w-full text-left text-[11px] border-collapse">
+                  <thead>
+                    <tr className="border-b border-slate-200 dark:border-slate-700 text-[10px] font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
+                      <th className="py-1 px-1.5">ITEM</th>
+                      <th className="py-1 px-1.5 text-right">MASA (KG)</th>
+                      <th className="py-1 px-1.5 text-right">BRAZO (M)</th>
+                      <th className="py-1 px-1.5 text-right">MOMENTO (KGM)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                    {/* TAKEOFF MASS */}
+                    <tr className="bg-slate-50/50 dark:bg-slate-800/30 font-semibold">
+                      <td className="py-1.5 px-2">TAKEOFF MASS (TOM)</td>
+                      <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
+                        {expected.tomMass}
+                      </td>
+                      <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
+                        {expected.tomCg}
+                      </td>
+                      <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
+                        {expected.tomMoment}
+                      </td>
+                    </tr>
+
+                    {/* TRIP FUEL */}
+                    <tr className="text-amber-900 dark:text-amber-300 font-medium">
+                      <td className="py-1.5 px-2">
+                        (-) TRIP FUEL ({expected.tripFuelLiters} L a 50% Potencia)
+                      </td>
+                      <td className="py-1.5 px-2 text-right font-mono font-bold text-amber-700 dark:text-amber-400">
+                        -{expected.tripFuelMass} kg
+                      </td>
+                      <td className="py-1.5 px-2 text-right font-mono text-slate-500">1,168</td>
+                      <td className="py-1.5 px-2 text-right">
+                        <input
+                          type="text"
+                          placeholder="Ej: 15.01"
+                          value={tripFuelMoment}
+                          onChange={(e) => setTripFuelMoment(e.target.value)}
+                          className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                            errors.tripFuelMoment
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          }`}
+                        />
+                      </td>
+                    </tr>
+
+                    {/* LANDING MASS (LM) */}
+                    <tr className="bg-emerald-50/70 dark:bg-emerald-950/30 font-bold text-emerald-900 dark:text-emerald-300">
+                      <td className="py-1.5 px-2 uppercase text-[10.5px]">
+                        LANDING MASS (LM & CG)
+                      </td>
+                      <td className="py-1.5 px-2 text-right">
+                        <input
+                          type="text"
+                          placeholder="LM (kg)"
+                          value={lmMass}
+                          onChange={(e) => setLmMass(e.target.value)}
+                          className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                            errors.lmMass
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                          }`}
+                        />
+                      </td>
+                      <td className="py-1.5 px-2 text-right">
+                        <input
+                          type="text"
+                          placeholder="CG (m)"
+                          value={lmCg}
+                          onChange={(e) => setLmCg(e.target.value)}
+                          className={`w-16 text-right px-1 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                            errors.lmCg
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                          }`}
+                        />
+                      </td>
+                      <td className="py-1.5 px-2 text-right">
+                        <input
+                          type="text"
+                          placeholder="Momento LM"
+                          value={lmMoment}
+                          onChange={(e) => setLmMoment(e.target.value)}
+                          className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                            errors.lmMoment
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                          }`}
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+
+          {/* Action Button & Messages */}
+          <div className="pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] text-slate-500 italic">
+                * Densidad Jet A-1 = 0,84 kg/L · Brazo Fuel = 1,168 m · MTOM = 1.043 kg
+              </span>
+
+              <button
+                type="button"
+                onClick={handleValidate}
+                className="px-3.5 py-1.5 rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] text-white font-extrabold text-xs shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95"
+              >
+                {currentStep === "takeoff"
+                  ? "Comprobar Despegue y Graficar TOW ➔"
+                  : "Comprobar Aterrizaje y Graficar Trayectoria ➔"}
+              </button>
             </div>
-          )}
+
+            {/* Error alerts */}
+            {Object.keys(errors).length > 0 && (
+              <div className="p-1.5 rounded-lg border border-rose-200 dark:border-rose-800 bg-rose-50/90 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 text-[11px] flex items-center justify-between">
+                <span>⚠️ {Object.values(errors)[0]}</span>
+                <span className="font-bold text-[10px] text-rose-600">Intento {attempts}</span>
+              </div>
+            )}
+
+            {isPassed && (
+              <div className="p-1.5 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-[11px] flex items-center justify-between">
+                <span>
+                  ✓ {currentStep === "takeoff"
+                    ? `¡Despegue válido! TOW: ${expected.tomMass} kg, CG: ${expected.tomCg} m (${isTomNormal ? "Cat. Normal" : "Fuera de límites"}).`
+                    : `¡Aterrizaje válido! LM: ${expected.lmMass} kg, CG: ${expected.lmCg} m (${isLmNormal ? "Cat. Normal" : "Fuera de límites"}).`}
+                </span>
+                <span className="font-bold text-[10px] text-emerald-600">COMPLETADO</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Columna Derecha (lg:col-span-5): Interactive SVG Envelope (Altura Fija 590px) */}
+      {/* Columna Derecha (lg:col-span-5): Live SVG Envelope (Altura Estricta 590px) */}
       <div className="lg:col-span-5 flex flex-col">
         <div
           className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
@@ -697,18 +742,19 @@ export function PreflightLoadsheetWidget({
             <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
               📈 ENVOLVENTE EN VIVO (FIG. 6-8)
             </span>
-            <span className="text-[10px] text-slate-500 font-semibold">C172 CD-155</span>
+            <span className="text-[10px] font-semibold text-slate-500">
+              {currentStep === "takeoff" ? "Punto de Despegue (TOW)" : "Trayectoria TOW → LW"}
+            </span>
           </div>
 
-          {/* SVG Container with overlay points */}
-          <div className="relative w-full aspect-[1140/880] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950">
+          {/* SVG Envelope Display */}
+          <div className="relative w-full aspect-[1140/880] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 my-auto">
             <img
               src="/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg"
               alt="Center of Gravity Limits SVG"
               className="w-full h-full object-contain pointer-events-none"
             />
 
-            {/* Live SVG overlay */}
             <svg
               viewBox="0 0 1140 880"
               className="absolute inset-0 w-full h-full cursor-crosshair"
@@ -719,16 +765,18 @@ export function PreflightLoadsheetWidget({
                 setInteractiveClickPoint({ x: clickX, y: clickY });
               }}
             >
-              {/* Consumption line TOW -> LW */}
-              <line
-                x1={tomCoords.x}
-                y1={tomCoords.y}
-                x2={lmCoords.x}
-                y2={lmCoords.y}
-                stroke="#1a80ff"
-                strokeWidth="3"
-                strokeDasharray="6 4"
-              />
+              {/* Show consumption line if in landing mode or all */}
+              {(currentStep === "landing" || isPassed) && (
+                <line
+                  x1={tomCoords.x}
+                  y1={tomCoords.y}
+                  x2={lmCoords.x}
+                  y2={lmCoords.y}
+                  stroke="#1a80ff"
+                  strokeWidth="3.5"
+                  strokeDasharray="6 4"
+                />
+              )}
 
               {/* Takeoff Point (TOW) */}
               <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
@@ -741,63 +789,43 @@ export function PreflightLoadsheetWidget({
               </g>
 
               {/* Landing Point (LW) */}
-              <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
-                <circle r="7" fill="#059669" stroke="#ffffff" strokeWidth="2.5" />
-                <rect x="12" y="-10" width="50" height="18" rx="6" fill="#065f46" opacity="0.9" />
-                <text x="37" y="3" fill="#ffffff" fontSize="10" fontWeight="bold" textAnchor="middle">
-                  LW
-                </text>
-              </g>
+              {(currentStep === "landing" || isPassed) && (
+                <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
+                  <circle r="7" fill="#059669" stroke="#ffffff" strokeWidth="2.5" />
+                  <rect x="12" y="-10" width="50" height="18" rx="6" fill="#065f46" opacity="0.9" />
+                  <text x="37" y="3" fill="#ffffff" fontSize="10" fontWeight="bold" textAnchor="middle">
+                    LW
+                  </text>
+                </g>
+              )}
 
-              {/* Student interactive click point */}
+              {/* Manual click probe */}
               {interactiveClickPoint && (
                 <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
-                  <circle r="6" fill="#f59e0b" stroke="#ffffff" strokeWidth="2" />
-                  <text x="0" y="-10" fill="#d97706" fontSize="11" fontWeight="bold" textAnchor="middle">
-                    Tu Clic
+                  <circle r="5" fill="#f59e0b" stroke="#ffffff" strokeWidth="2" />
+                  <text x="8" y="4" fill="#d97706" fontSize="10" fontWeight="bold">
+                    Sonda
                   </text>
                 </g>
               )}
             </svg>
           </div>
 
-          {/* Envelope Status badges */}
-          <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
-            <div
-              className={`p-2 rounded-xl border flex flex-col justify-between ${
-                isTomNormal
-                  ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
-                  : "bg-rose-50 dark:bg-rose-950/40 border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200"
-              }`}
-            >
-              <div className="flex items-center justify-between font-bold">
-                <span>Despegue (TOW)</span>
-                <span>{isTomNormal ? "✅ DENTRO" : "⚠️ FUERA"}</span>
-              </div>
-              <div className="text-[11px] font-mono mt-0.5">
-                {expected.tomMass} kg · CG {expected.tomCg} m
-              </div>
-              <span className="text-[10px] opacity-75">
-                {isTomUtility ? "Cat. Utility & Normal" : isTomNormal ? "Cat. Normal" : "Excede envolvente"}
+          {/* Envelope Status Footer */}
+          <div className="grid grid-cols-2 gap-2 text-[10.5px] pt-1 border-t border-slate-200 dark:border-slate-800 shrink-0">
+            <div className="p-1.5 rounded-lg bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
+              <strong className="text-blue-900 dark:text-sky-300 block">DESPEGUE (TOW):</strong>
+              <div>{expected.tomMass} kg · CG {expected.tomCg} m</div>
+              <span className={`font-bold ${isTomNormal ? "text-emerald-600" : "text-rose-600"}`}>
+                {isTomNormal ? "✓ Categoría Normal" : "⚠️ Fuera de Límites"}
               </span>
             </div>
 
-            <div
-              className={`p-2 rounded-xl border flex flex-col justify-between ${
-                isLmNormal
-                  ? "bg-sky-50 dark:bg-sky-950/40 border-sky-300 dark:border-sky-800 text-sky-900 dark:text-sky-200"
-                  : "bg-rose-50 dark:bg-rose-950/40 border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200"
-              }`}
-            >
-              <div className="flex items-center justify-between font-bold">
-                <span>Aterrizaje (LW)</span>
-                <span>{isLmNormal ? "✅ DENTRO" : "⚠️ FUERA"}</span>
-              </div>
-              <div className="text-[11px] font-mono mt-0.5">
-                {expected.lmMass} kg · CG {expected.lmCg} m
-              </div>
-              <span className="text-[10px] opacity-75">
-                {isLmNormal ? "Cat. Normal asegurada" : "Excede envolvente"}
+            <div className="p-1.5 rounded-lg bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+              <strong className="text-emerald-900 dark:text-emerald-300 block">ATERRIZAJE (LW):</strong>
+              <div>{expected.lmMass} kg · CG {expected.lmCg} m</div>
+              <span className={`font-bold ${isLmNormal ? "text-emerald-600" : "text-rose-600"}`}>
+                {isLmNormal ? (isTomUtility ? "✓ Cat. Utilidad" : "✓ Cat. Normal") : "⚠️ Fuera de Límites"}
               </span>
             </div>
           </div>

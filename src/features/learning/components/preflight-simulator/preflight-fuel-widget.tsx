@@ -27,15 +27,21 @@ export function PreflightFuelWidget({
   const [warnings, setWarnings] = useState<string[]>([]);
   const [isPassed, setIsPassed] = useState(isAlreadyCompleted);
 
-  // Flight school cruise power: 55% Load = 17.0 L/h (or 50% = 15.3 L/h)
-  const loadPct = mission.scenario.cruiseLoadPct; // 55% or 50%
-  const hourlyRate = loadPct === 50 ? 15.3 : 17.0;
+  // Flight school cruise power: 50% Load = 15.3 L/h (TAE 125-02-114 Continental CD-155)
+  const hourlyRate = 15.3;
 
   // Taxi: 3.0 L (puesta en marcha, calentamiento y rodaje)
   const taxiFuelL = 3.0;
   const expectedTripL = Math.round(mission.scenario.flightTimeHrs * hourlyRate * 10) / 10;
-  const expectedReserveL = Math.round(0.75 * hourlyRate * 10) / 10; // 12.8 L @ 55% or 11.5 L @ 50%
-  const expectedLandingL = expectedReserveL;
+  
+  // Reservas: EASA 45 min vs. Blue Team OM 1h 30min (+ alternativo)
+  const expectedEasaReserveL = 11.5; // 45 min = 0.75 h × 15.3 L/h
+  const expectedBlueTeamReserveL = 23.0; // 1h 30min = 1.5 h × 15.3 L/h
+  const expectedAlternateL = 5.1; // Desvío a alternativo ~20 min
+  const expectedBlueTeamTotalReserveL = 28.1; // 23.0 + 5.1 L
+
+  // Default expected landing fuel is at least EASA reserve (11.5 L) or Blue Team reserve (23.0 L)
+  const expectedLandingL = expectedEasaReserveL;
   const expectedRampL = Math.round((expectedTripL + expectedLandingL + taxiFuelL) * 10) / 10;
 
   const handleValidate = () => {
@@ -48,37 +54,50 @@ export function PreflightFuelWidget({
     if (isNaN(userTrip) || !checkValueTolerance(userTrip, expectedTripL, 0.06, 0.6).isOk) {
       newErrors.trip =
         attempts >= 2
-          ? `Solución: Trip fuel = ${mission.scenario.flightTimeHrs} h × ${hourlyRate} L/h = ${expectedTripL} L.`
-          : `Calcula el combustible de ruta para ${mission.scenario.flightTimeHrs} h al ${loadPct}% (${hourlyRate} L/h).`;
+          ? `Solución: Trip fuel = ${mission.scenario.flightTimeHrs} h × 15.3 L/h = ${expectedTripL} L.`
+          : `Calcula el combustible de ruta para ${mission.scenario.flightTimeHrs} h al 50% de potencia CD-155 (15.3 L/h).`;
     }
 
-    // Check Reserve Fuel (45 min VFR)
+    // Check Reserve Fuel (Accepts 45 min EASA 11.5 L, Blue Team OM 1:30 23.0 L, or with Alternate 28.1 L)
     const userReserve = num(reserveFuelLiters);
-    if (isNaN(userReserve) || !checkValueTolerance(userReserve, expectedReserveL, 0.06, 0.6).isOk) {
+    const isEasaMatch = !isNaN(userReserve) && checkValueTolerance(userReserve, expectedEasaReserveL, 0.08, 0.8).isOk;
+    const isBlueTeamMatch = !isNaN(userReserve) && checkValueTolerance(userReserve, expectedBlueTeamReserveL, 0.08, 1.2).isOk;
+    const isBlueTeamAltMatch = !isNaN(userReserve) && checkValueTolerance(userReserve, expectedBlueTeamTotalReserveL, 0.08, 1.5).isOk;
+
+    if (isNaN(userReserve) || (!isEasaMatch && !isBlueTeamMatch && !isBlueTeamAltMatch)) {
       newErrors.reserve =
         attempts >= 2
-          ? `Solución: Reserva final 45 min = 0.75 h × ${hourlyRate} L/h = ${expectedReserveL} L.`
-          : `La reserva obligatoria EASA (45 min) a ${hourlyRate} L/h es: 0.75 h × ${hourlyRate} L/h.`;
-    } else if (Math.abs(userReserve - expectedReserveL) > 0.1) {
-      newWarnings.push(`Reserva legal: Tu valor (${userReserve} L) es aceptado por redondeo (${expectedReserveL} L).`);
+          ? `Solución: EASA exige 45 min (${expectedEasaReserveL} L). En Blue Team por manual exigimos al menos 1:30 (${expectedBlueTeamReserveL} L) más combustible al alternativo (total ~${expectedBlueTeamTotalReserveL} L).`
+          : `Calcula la reserva: EASA 45 min = 11.5 L, o política Blue Team OM 1h 30min = 23.0 L (a 15.3 L/h).`;
+    } else if (isBlueTeamAltMatch) {
+      newWarnings.push(`✓ ¡Excelente! Has incluido 1h 30min de reserva final (${expectedBlueTeamReserveL} L) + combustible para alternativo (${expectedAlternateL} L).`);
+    } else if (isBlueTeamMatch) {
+      newWarnings.push(`✓ Cumples la política Blue Team OM (1:30 de reserva final = ${expectedBlueTeamReserveL} L). Recuerda añadir combustible al alternativo.`);
+    } else if (isEasaMatch) {
+      newWarnings.push(`✓ Mínimo legal EASA Part-NCO.OP.125 (45 min = ${expectedEasaReserveL} L). En Blue Team por manual se requiere al menos 1:30.`);
     }
 
-    // Check Landing Fuel (at least Reserve)
+    // Check Landing Fuel (must be at least userReserve or minimum 11.5 L)
     const userLanding = num(landingFuelLiters);
-    if (isNaN(userLanding) || userLanding < expectedReserveL * 0.95) {
+    const minAcceptableLanding = !isNaN(userReserve) && userReserve > 0 ? userReserve * 0.95 : expectedEasaReserveL * 0.95;
+    if (isNaN(userLanding) || userLanding < minAcceptableLanding) {
       newErrors.landing =
         attempts >= 2
-          ? `Solución: Landing Fuel debe ser igual o superior a la Reserva (${expectedReserveL} L).`
-          : `El combustible remanente en destino no puede ser inferior a la Reserva final legal (${expectedReserveL} L).`;
+          ? `Solución: Landing Fuel remanente en destino debe ser al menos igual a la reserva (${userReserve > 0 ? userReserve : expectedEasaReserveL} L).`
+          : `El combustible remanente en los tanques al tocar pista debe cubrir la reserva final legal.`;
     }
 
-    // Check Ramp Fuel (Trip + Landing + Taxi)
+    // Check Ramp Fuel (Trip + userLanding + Taxi 3.0 L)
+    const expectedUserRamp = !isNaN(userTrip) && !isNaN(userLanding)
+      ? Math.round((userTrip + userLanding + taxiFuelL) * 10) / 10
+      : expectedRampL;
+
     const userRamp = num(rampFuelLiters);
-    if (isNaN(userRamp) || !checkValueTolerance(userRamp, expectedRampL, 0.06, 1.2).isOk) {
+    if (isNaN(userRamp) || !checkValueTolerance(userRamp, expectedUserRamp, 0.06, 1.5).isOk) {
       newErrors.ramp =
         attempts >= 2
-          ? `Solución: Ramp Fuel = Trip (${expectedTripL}) + Landing (${expectedLandingL}) + Taxi (${taxiFuelL} L) = ${expectedRampL} L.`
-          : `Ramp Fuel = Trip (${expectedTripL} L) + Landing (${expectedLandingL} L) + Taxi (${taxiFuelL} L).`;
+          ? `Solución: Ramp Fuel = Trip (${userTrip || expectedTripL} L) + Landing (${userLanding || expectedLandingL} L) + Taxi (${taxiFuelL} L) = ${expectedUserRamp} L.`
+          : `Ramp Fuel = Trip + Landing Fuel + Taxi (${taxiFuelL} L).`;
     }
 
     setErrors(newErrors);
@@ -109,7 +128,7 @@ export function PreflightFuelWidget({
                 ⛽ PLANIFICACIÓN DE COMBUSTIBLE F.OPS.02
               </span>
               <div className="text-[10px] text-slate-500 font-medium">
-                {mission.name} · {mission.scenario.flightTimeHrs} h vuelo · Régimen Escuela {loadPct}% ({hourlyRate} L/h)
+                {mission.name} · {mission.scenario.flightTimeHrs} h vuelo · Régimen Escuela 50% ({hourlyRate} L/h)
               </div>
             </div>
             <div className="flex items-center gap-1 shrink-0">
@@ -183,7 +202,7 @@ export function PreflightFuelWidget({
                 <div className="flex items-center gap-1.5">
                   <input
                     type="text"
-                    placeholder={`Litros (Ej: ${expectedReserveL})`}
+                    placeholder={`Litros (Ej: ${expectedEasaReserveL})`}
                     value={reserveFuelLiters}
                     onChange={(e) => setReserveFuelLiters(e.target.value)}
                     className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
@@ -270,7 +289,7 @@ export function PreflightFuelWidget({
               <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs">
                 <strong className="font-bold">✓ ¡PLANIFICACIÓN DE COMBUSTIBLE VÁLIDA SEGÚN EASA!</strong>
                 <p className="text-[10px] mt-0.5">
-                  Ramp: {expectedRampL} L · Trip: {expectedTripL} L · Reserva 45 min: {expectedReserveL} L · Landing: {expectedLandingL} L.
+                  Ramp: {expectedRampL} L · Trip: {expectedTripL} L · Reserva EASA: {expectedEasaReserveL} L (OM: {expectedBlueTeamReserveL} L) · Landing: {expectedLandingL} L.
                 </p>
               </div>
             )}
@@ -321,11 +340,18 @@ export function PreflightFuelWidget({
                   Trip
                 </div>
                 <div
-                  style={{ width: `${(expectedReserveL / mission.scenario.takeoffFuelLiters) * 100}%` }}
+                  style={{ width: `${(expectedEasaReserveL / mission.scenario.takeoffFuelLiters) * 100}%` }}
                   className="bg-emerald-500 flex items-center justify-center text-[9px] font-bold text-white"
-                  title="45 min Reserve"
+                  title="45 min EASA"
                 >
-                  45 min
+                  45m EASA
+                </div>
+                <div
+                  style={{ width: `${((expectedBlueTeamTotalReserveL - expectedEasaReserveL) / mission.scenario.takeoffFuelLiters) * 100}%` }}
+                  className="bg-indigo-500 flex items-center justify-center text-[9px] font-bold text-white"
+                  title="OM Reserva Extra + Alt"
+                >
+                  +OM 1:30
                 </div>
                 <div className="flex-1 bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[9px] font-bold text-slate-600 dark:text-slate-300">
                   Extra
@@ -339,32 +365,38 @@ export function PreflightFuelWidget({
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="w-2.5 h-2.5 rounded bg-blue-500 shrink-0"></span>
-                  <span>Trip: {expectedTripL} L</span>
+                  <span>Trip ({mission.scenario.flightTimeHrs}h): {expectedTripL} L</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="w-2.5 h-2.5 rounded bg-emerald-500 shrink-0"></span>
-                  <span>Reserva 45m: {expectedReserveL} L</span>
+                  <span>EASA 45m: {expectedEasaReserveL} L</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded bg-slate-400 shrink-0"></span>
-                  <span>Remanente seguro</span>
+                  <span className="w-2.5 h-2.5 rounded bg-indigo-500 shrink-0"></span>
+                  <span>OM 1:30 + Alt: {expectedBlueTeamTotalReserveL} L</span>
                 </div>
               </div>
             </div>
 
-            {/* Regulatory rules */}
-            <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-1 text-[11px] text-slate-700 dark:text-slate-300">
-              <strong className="text-[#0B2E59] dark:text-sky-300 block uppercase font-bold text-[10px]">
-                Norma Operacional EASA Part-NCO.OP.125:
-              </strong>
-              <p className="leading-tight">
-                El piloto al mando no iniciará ningún vuelo a menos que el avión transporte suficiente combustible utilizable para:
-              </p>
-              <ul className="list-disc pl-4 space-y-0.5 text-[10px] text-slate-600 dark:text-slate-400">
-                <li>Volar hasta el aeródromo de destino previsto (Trip Fuel).</li>
-                <li>Permanecer volando a velocidad de crucero normal durante al menos <strong>45 minutos</strong> adicionales.</li>
-                <li>Compensar puesta en marcha, rodaje y contingencias imprevistas de tráfico.</li>
-              </ul>
+            {/* Regulatory rules comparison */}
+            <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-1.5 text-[11px] text-slate-700 dark:text-slate-300">
+              <div className="p-2 rounded-lg bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+                <strong className="text-emerald-900 dark:text-emerald-300 block uppercase font-bold text-[10px] mb-0.5">
+                  1. Mínimo Legal EASA Part-NCO.OP.125:
+                </strong>
+                <p className="leading-tight text-[10.5px]">
+                  Obligatorio llevar combustible de ruta más reserva final de <strong>45 minutos</strong> a régimen de crucero (<strong>11.5 L</strong> al 50% de potencia CD-155).
+                </p>
+              </div>
+
+              <div className="p-2 rounded-lg bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
+                <strong className="text-blue-900 dark:text-sky-300 block uppercase font-bold text-[10px] mb-0.5">
+                  2. Política Operativa Blue Team (Manual OM):
+                </strong>
+                <p className="leading-tight text-[10.5px]">
+                  Por Manual de Operaciones, en Blue Team debemos disponer de <strong>al menos 1:30 (1h 30min = 23.0 L) de reserva final</strong>, más el combustible necesario para alcanzar el aeródromo alternativo en caso de no haber aterrizado en destino (~5.1 L adicionales).
+                </p>
+              </div>
             </div>
           </div>
 

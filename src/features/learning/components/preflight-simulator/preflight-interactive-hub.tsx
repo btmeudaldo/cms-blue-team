@@ -6,7 +6,13 @@ import { PreflightCruiseWidget } from "./preflight-cruise-widget";
 import { PreflightFuelWidget } from "./preflight-fuel-widget";
 import { PreflightPerformanceWidget } from "./preflight-performance-widget";
 
-export type ExerciseType = "loadsheet" | "cruise" | "fuel" | "performance";
+export type ExerciseType =
+  | "loadsheet"
+  | "loadsheet_takeoff"
+  | "loadsheet_landing"
+  | "cruise"
+  | "fuel"
+  | "performance";
 
 type Props = {
   exerciseType: ExerciseType;
@@ -23,6 +29,23 @@ export function PreflightInteractiveHub({
     case "loadsheet":
       return (
         <PreflightLoadsheetWidget
+          mode="all"
+          onExerciseCompleted={onExerciseCompleted}
+          isAlreadyCompleted={isAlreadyCompleted}
+        />
+      );
+    case "loadsheet_takeoff":
+      return (
+        <PreflightLoadsheetWidget
+          mode="takeoff"
+          onExerciseCompleted={onExerciseCompleted}
+          isAlreadyCompleted={isAlreadyCompleted}
+        />
+      );
+    case "loadsheet_landing":
+      return (
+        <PreflightLoadsheetWidget
+          mode="landing"
           onExerciseCompleted={onExerciseCompleted}
           isAlreadyCompleted={isAlreadyCompleted}
         />

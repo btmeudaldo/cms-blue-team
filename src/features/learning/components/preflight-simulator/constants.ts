@@ -23,7 +23,7 @@ export const PREFLIGHT_MISSIONS: PreflightMission[] = [
     id: "mision-1",
     name: "Misión 1: Vuelo Local de Instrucción (LECU)",
     badge: "Básico · Normal",
-    description: "Vuelo de maniobras en zona LECU con Instructor y Alumno. 80 Litros de combustible en tanques estándar.",
+    description: "Vuelo de maniobras en zona LECU con Instructor y Alumno. 80 Litros de combustible en tanques estándar. Crucero de escuela al 50% de potencia CD-155 (15.3 L/h).",
     scenario: {
       origin: "LECU (Cuatro Vientos)",
       destination: "LECU (Cuatro Vientos)",
@@ -38,7 +38,7 @@ export const PREFLIGHT_MISSIONS: PreflightMission[] = [
       passengersRearKg: 0,
       baggageKg: 5,
       takeoffFuelLiters: 80,
-      cruiseLoadPct: 55, // Régimen habitual de escuela (55% Load = 17.0 L/h)
+      cruiseLoadPct: 50, // Régimen de crucero de escuela (50% Load = 15.3 L/h)
       flightTimeHrs: 1.0,
     },
   },
@@ -46,7 +46,7 @@ export const PREFLIGHT_MISSIONS: PreflightMission[] = [
     id: "mision-2",
     name: "Misión 2: Navegación de Travesía a Valladolid (LECU - LEVD)",
     badge: "Intermedio · Cerca de MTOM",
-    description: "Vuelo de travesía con 3 ocupantes y equipaje. Crucero económico a 6.000 ft al 55% de potencia CD-155.",
+    description: "Vuelo de travesía con 3 ocupantes y equipaje. Crucero económico de escuela a 6.000 ft al 50% de potencia CD-155 (15.3 L/h).",
     scenario: {
       origin: "LECU (Cuatro Vientos)",
       destination: "LEVD (Valladolid)",
@@ -61,7 +61,7 @@ export const PREFLIGHT_MISSIONS: PreflightMission[] = [
       passengersRearKg: 70, // 1 pasajero atrás
       baggageKg: 18,
       takeoffFuelLiters: 50,
-      cruiseLoadPct: 55, // 55% Load = 17.0 L/h
+      cruiseLoadPct: 50, // 50% Load = 15.3 L/h
       flightTimeHrs: 1.0,
     },
   },
@@ -69,7 +69,7 @@ export const PREFLIGHT_MISSIONS: PreflightMission[] = [
     id: "mision-3",
     name: "Misión 3: Desafío de Carga y Centrado Crítico (Alerta)",
     badge: "Desafío · Alerta de Límites",
-    description: "Configuración con ocupantes pesados atrás y equipaje al límite. Crucero económico al 50% de potencia CD-155.",
+    description: "Configuración con ocupantes pesados atrás y equipaje al límite. Crucero económico al 50% de potencia CD-155 (15.3 L/h).",
     scenario: {
       origin: "LECU (Cuatro Vientos)",
       destination: "LECU (Cuatro Vientos)",
