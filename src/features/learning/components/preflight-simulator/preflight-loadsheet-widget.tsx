@@ -722,8 +722,8 @@ export function PreflightLoadsheetWidget({
               <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px] flex items-center justify-between">
                 <span>
                   ✓ {currentStep === "takeoff"
-                    ? `¡Despegue válido! TOW: ${expected.tomMass} kg, CG: ${expected.tomCg} m (${isTomNormal ? "Cat. Normal" : "Fuera de límites"}).`
-                    : `¡Aterrizaje válido! LM: ${expected.lmMass} kg, CG: ${expected.lmCg} m (${isLmNormal ? "Cat. Normal" : "Fuera de límites"}).`}
+                    ? `¡Despegue válido! TOW: ${expected.tomMass} kg, CG: ${expected.tomCg} m (${isTomNormal ? "Categoría Normal" : "Fuera de límites"}).`
+                    : `¡Aterrizaje válido! LM: ${expected.lmMass} kg, CG: ${expected.lmCg} m (${isLmNormal ? "Categoría Normal" : "Fuera de límites"}).`}
                 </span>
                 <span className="font-bold text-xs text-emerald-600">COMPLETADO</span>
               </div>
@@ -829,7 +829,7 @@ export function PreflightLoadsheetWidget({
                 <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.lmMass} kg · CG {expected.lmCg} m</span>
               </div>
               <span className={`font-bold ${isLmNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
-                {isLmNormal ? (isTomUtility ? "✓ Cat. Utilidad" : "✓ Cat. Normal") : "⚠️ Fuera de Límites"}
+                {isLmNormal ? (isTomUtility ? "✓ Categoría Utilidad" : "✓ Categoría Normal") : "⚠️ Fuera de Límites"}
               </span>
             </div>
           </div>
