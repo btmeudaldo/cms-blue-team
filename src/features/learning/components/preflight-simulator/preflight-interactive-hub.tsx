@@ -10,6 +10,7 @@ export type ExerciseType =
   | "loadsheet"
   | "loadsheet_takeoff"
   | "loadsheet_landing"
+  | "loadsheet-exam"
   | "cruise"
   | "fuel"
   | "performance";
@@ -43,6 +44,7 @@ export function PreflightInteractiveHub({
         />
       );
     case "loadsheet_landing":
+    case "loadsheet-exam":
       return (
         <PreflightLoadsheetWidget
           mode="landing"

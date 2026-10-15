@@ -6607,28 +6607,28 @@ export const C172_LESSON_6 = {
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA) · TALLER INTERACTIVO 1</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.5 Caso Práctico 1: Cálculo Guiado de Masa y Centrado</h1>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA) · TALLER INTERACTIVO 1A</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.5 Ejercicio Práctico 1A: Masa y Centrado al Despegue (TOM & CG)</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.04.NNA Paso a Paso</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Hoja F.OPS.04.NNA · Parte 1</span>
   </div>
 
-  <div class="py-0.5" data-interactive-exercise="loadsheet"></div>
+  <div class="py-0.5" data-interactive-exercise="loadsheet_takeoff"></div>
 </div>
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 6.6: 6.6 Taller Autónomo: Validación de Carga y Centrado EC-NNA -->
+<!-- DIAPOSITIVA 6.6: 6.6 Taller Práctico 1B: Masa y Centrado F.OPS.04 (Consumo y Aterrizaje - LM & Envolvente) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA) · EJERCICIO AUTÓNOMO</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.6 Ejercicio Libre: Validación de Hoja de Carga Oficial</h1>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA) · TALLER INTERACTIVO 1B</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.6 Ejercicio Práctico 1B: Consumo de Ruta y Aterrizaje (LM & Envolvente)</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Verificación de TOW, LW y Envolvente</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Hoja F.OPS.04.NNA · Parte 2</span>
   </div>
 
-  <div class="py-0.5" data-interactive-exercise="loadsheet-exam"></div>
+  <div class="py-0.5" data-interactive-exercise="loadsheet_landing"></div>
 </div>
 
 <!-- pagebreak -->
