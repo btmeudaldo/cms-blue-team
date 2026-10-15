@@ -6362,22 +6362,33 @@ export const C172_LESSON_6 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ AERONAVE Y DOCUMENTACIÓN</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DOCUMENTACIÓN F.OPS.02</span>
+          <a href="/images/c172/f-ops-02-documentacion-prevuelo.pdf" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <span>Abrir PDF</span>
+            <span>↗</span>
+          </a>
         </div>
 
-        <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs sm:text-[13px] shadow-2xs">
+        <div class="p-2 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs sm:text-[13px] shadow-2xs shrink-0">
           <strong class="text-sky-800 dark:text-sky-300 block font-bold mb-0.5">AERONAVE EC-NNA:</strong>
-          <div>Cessna 172 con planta motriz turbodiésel <strong>Continental CD-155 (TAE 125-02-114)</strong> de 155 HP y hélice tripala MT-Propeller de velocidad constante.</div>
+          <div>Cessna 172 · Continental CD-155 (TAE 125-02-114) de 155 HP y hélice MT-Propeller constante.</div>
         </div>
 
-        <div class="w-full rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2">
-            📷
-          </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Formulario oficial F.OPS.02 de Documentación Prevuelo de la escuela Blue Team con las 4 secciones técnicas cumplimentadas
-          </p>
+        <div class="w-full flex-1 min-h-[430px] rounded-xl border border-slate-300 dark:border-slate-700 overflow-hidden bg-white dark:bg-slate-900 shadow-2xs relative">
+          <object
+            data="/images/c172/f-ops-02-documentacion-prevuelo.pdf#view=FitH&toolbar=0&navpanes=0"
+            type="application/pdf"
+            class="w-full h-full rounded-xl"
+            style="height: 435px; width: 100%; display: block;"
+          >
+            <div class="w-full h-full overflow-y-auto p-1 bg-white">
+              <img
+                src="/images/c172/f-ops-02-documentacion-prevuelo.png"
+                alt="Formulario oficial F.OPS.02 Documentación Prevuelo"
+                class="w-full h-auto rounded-lg shadow-xs block"
+              />
+            </div>
+          </object>
         </div>
 
         <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
