@@ -6374,25 +6374,12 @@ export const C172_LESSON_6 = {
           <div>Cessna 172 · Continental CD-155 (TAE 125-02-114) de 155 HP y hélice MT-Propeller constante.</div>
         </div>
 
-        <div class="w-full flex-1 min-h-[430px] rounded-xl border border-slate-300 dark:border-slate-700 overflow-hidden bg-white dark:bg-slate-900 shadow-2xs relative">
-          <object
-            data="/images/c172/f-ops-02-documentacion-prevuelo.pdf#view=FitH&toolbar=0&navpanes=0"
-            type="application/pdf"
-            class="w-full h-full rounded-xl"
-            style="height: 435px; width: 100%; display: block;"
-          >
-            <div class="w-full h-full overflow-y-auto p-1 bg-white">
-              <img
-                src="/images/c172/f-ops-02-documentacion-prevuelo.png"
-                alt="Formulario oficial F.OPS.02 Documentación Prevuelo"
-                class="w-full h-auto rounded-lg shadow-xs block"
-              />
-            </div>
-          </object>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. Documental: Manual de Operaciones Blue Team · Procedimiento Prevuelo F.OPS.02
+        <div class="w-full h-[470px] max-h-[470px] rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
+          <img
+            src="/images/c172/f-ops-02-documentacion-prevuelo.png"
+            alt="Formulario oficial F.OPS.02 Documentación Prevuelo"
+            class="w-full h-auto block rounded-lg shadow-xs"
+          />
         </div>
       </div>
     </div>

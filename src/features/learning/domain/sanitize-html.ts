@@ -1,5 +1,5 @@
 const TRUSTED_IFRAME_SRC_REGEX =
-  /^https:\/\/(www\.)?(youtube\.com\/embed\/|youtube-nocookie\.com\/embed\/|player\.vimeo\.com\/video\/)[\w\-?&=%#.]*$/i;
+  /^(https:\/\/(www\.)?(youtube\.com\/embed\/|youtube-nocookie\.com\/embed\/|player\.vimeo\.com\/video\/)[\w\-?&=%#.]*|\/images\/[\w\-+().%#&?=]+\.pdf[\w\-?&=%#.]*)$/i;
 
 export function sanitizeLessonHtml(html: string): string {
   if (!html) return "";
