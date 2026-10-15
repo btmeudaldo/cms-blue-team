@@ -6523,14 +6523,13 @@ export const C172_LESSON_6 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📄 HOJA F.OPS.04.NNA</span>
         </div>
 
-        <div class="w-full rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-            📷
-          </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Copia escaneada del formato oficial F.OPS.04.NNA mostrando las casillas de Empty Weight, ZFW, TOM, Trip Fuel y Landing Weight
-          </p>
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 my-1">
+          <img
+            src="/images/c172/6.3.jpg"
+            alt="Hoja oficial de masa y centrado F.OPS.04.NNA"
+            class="w-full h-full object-contain rounded-lg"
+            onerror="if(this.src!=='/images/c172/f-ops-04-loadsheet.jpg')this.src='/images/c172/f-ops-04-loadsheet.jpg'"
+          />
         </div>
 
         <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
