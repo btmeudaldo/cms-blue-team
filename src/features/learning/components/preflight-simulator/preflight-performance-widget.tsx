@@ -430,51 +430,83 @@ export function PreflightPerformanceWidget({
           <div className="flex-1 min-h-0 overflow-y-auto my-1 space-y-2.5 text-xs">
             {/* Takeoff Comparison Bar */}
             <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
-              <div className="flex justify-between items-center text-[11px] font-bold">
+              <div className="flex justify-between items-center text-xs font-bold">
                 <span className="text-[#0B2E59] dark:text-sky-300">Despegue 50 ft vs TORA ({scenario.icao})</span>
                 <span className="text-emerald-600 dark:text-emerald-400 font-mono">
                   Margen: +{scenario.runwayToraM - scenario.to50ft} m
                 </span>
               </div>
-              <div className="w-full bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden h-5 flex border border-slate-200 dark:border-slate-700">
-                <div
-                  style={{ width: `${Math.min(100, (scenario.to50ft / scenario.runwayToraM) * 100)}%` }}
-                  className="bg-blue-500 flex items-center justify-center text-[10px] font-bold text-white shrink-0 px-1"
-                >
-                  {scenario.to50ft} m Req.
-                </div>
-                <div className="flex-1 bg-emerald-100 dark:bg-emerald-950/40 flex items-center justify-center text-[10px] font-bold text-emerald-800 dark:text-emerald-300">
-                  Libre (+{scenario.runwayToraM - scenario.to50ft} m)
-                </div>
+
+              {/* Badges row */}
+              <div className="flex items-center justify-between text-xs py-0.5">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-sky-300 font-bold">
+                  <span>Requerido:</span>
+                  <span className="font-mono">{scenario.to50ft} m</span>
+                  <span className="text-[10px] font-normal text-blue-500">({Math.round((scenario.to50ft / scenario.runwayToraM) * 100)}% pista)</span>
+                </span>
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-bold">
+                  <span>Libre:</span>
+                  <span className="font-mono">+{scenario.runwayToraM - scenario.to50ft} m</span>
+                </span>
               </div>
-              <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400">
+
+              {/* Visual Runway Bar (no cramped text inside) */}
+              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden h-3 flex">
+                <div
+                  style={{ width: `${Math.max(4, Math.min(100, (scenario.to50ft / scenario.runwayToraM) * 100))}%` }}
+                  className="bg-blue-500 h-full rounded-l-full"
+                  title={`Requerido: ${scenario.to50ft} m`}
+                />
+                <div
+                  className="flex-1 bg-emerald-500/80 h-full rounded-r-full"
+                  title={`Remanente: +${scenario.runwayToraM - scenario.to50ft} m`}
+                />
+              </div>
+
+              <div className="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
                 <span>0 m</span>
-                <span>Pista Disponible (TORA): {scenario.runwayToraM} m</span>
+                <span className="font-medium text-slate-600 dark:text-slate-300">Pista Disponible (TORA): {scenario.runwayToraM} m</span>
               </div>
             </div>
 
             {/* Landing Comparison Bar */}
             <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
-              <div className="flex justify-between items-center text-[11px] font-bold">
+              <div className="flex justify-between items-center text-xs font-bold">
                 <span className="text-[#0B2E59] dark:text-sky-300">Aterrizaje 50 ft vs LDA ({scenario.icao})</span>
                 <span className="text-emerald-600 dark:text-emerald-400 font-mono">
                   Margen: +{scenario.runwayLdaM - scenario.ld50ft} m
                 </span>
               </div>
-              <div className="w-full bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden h-5 flex border border-slate-200 dark:border-slate-700">
-                <div
-                  style={{ width: `${Math.min(100, (scenario.ld50ft / scenario.runwayLdaM) * 100)}%` }}
-                  className="bg-emerald-600 flex items-center justify-center text-[10px] font-bold text-white shrink-0 px-1"
-                >
-                  {scenario.ld50ft} m Req.
-                </div>
-                <div className="flex-1 bg-emerald-100 dark:bg-emerald-950/40 flex items-center justify-center text-[10px] font-bold text-emerald-800 dark:text-emerald-300">
-                  Libre (+{scenario.runwayLdaM - scenario.ld50ft} m)
-                </div>
+
+              {/* Badges row */}
+              <div className="flex items-center justify-between text-xs py-0.5">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-bold">
+                  <span>Requerido:</span>
+                  <span className="font-mono">{scenario.ld50ft} m</span>
+                  <span className="text-[10px] font-normal text-emerald-600">({Math.round((scenario.ld50ft / scenario.runwayLdaM) * 100)}% pista)</span>
+                </span>
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-bold">
+                  <span>Libre:</span>
+                  <span className="font-mono">+{scenario.runwayLdaM - scenario.ld50ft} m</span>
+                </span>
               </div>
-              <div className="flex justify-between text-[10px] text-slate-500 dark:text-slate-400">
+
+              {/* Visual Runway Bar (no cramped text inside) */}
+              <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden h-3 flex">
+                <div
+                  style={{ width: `${Math.max(4, Math.min(100, (scenario.ld50ft / scenario.runwayLdaM) * 100))}%` }}
+                  className="bg-emerald-600 h-full rounded-l-full"
+                  title={`Requerido: ${scenario.ld50ft} m`}
+                />
+                <div
+                  className="flex-1 bg-emerald-400/60 h-full rounded-r-full"
+                  title={`Remanente: +${scenario.runwayLdaM - scenario.ld50ft} m`}
+                />
+              </div>
+
+              <div className="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
                 <span>0 m</span>
-                <span>Pista Disponible (LDA): {scenario.runwayLdaM} m</span>
+                <span className="font-medium text-slate-600 dark:text-slate-300">Pista Disponible (LDA): {scenario.runwayLdaM} m</span>
               </div>
             </div>
 
