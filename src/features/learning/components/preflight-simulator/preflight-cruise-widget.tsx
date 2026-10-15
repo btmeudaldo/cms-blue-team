@@ -12,16 +12,16 @@ type Props = {
 // Calibrated for flight school operations: 50% standard cruise power (and 55% reference)
 const CRUISE_TABLE_DATA = [
   // 50% Load (Long Range / Estándar Escuela): 15.3 l/h (4.0 US Gal/h)
-  { alt: 2000, load: 50, ktas: 99, fuelFlowLh: 15.3, rangeNm: 718, enduranceHrs: 7.2 },
-  { alt: 4000, load: 50, ktas: 100, fuelFlowLh: 15.3, rangeNm: 720, enduranceHrs: 7.1 },
-  { alt: 6000, load: 50, ktas: 102, fuelFlowLh: 15.3, rangeNm: 728, enduranceHrs: 6.9 },
-  { alt: 8000, load: 50, ktas: 103, fuelFlowLh: 15.3, rangeNm: 729, enduranceHrs: 6.8 },
+  { alt: 2000, load: 50, ktas: 99, fuelFlowLh: 15.3, fuelFlowGal: 4.0, rangeNm: 718, enduranceHrs: 7.2 },
+  { alt: 4000, load: 50, ktas: 100, fuelFlowLh: 15.3, fuelFlowGal: 4.0, rangeNm: 720, enduranceHrs: 7.1 },
+  { alt: 6000, load: 50, ktas: 102, fuelFlowLh: 15.3, fuelFlowGal: 4.0, rangeNm: 728, enduranceHrs: 6.9 },
+  { alt: 8000, load: 50, ktas: 103, fuelFlowLh: 15.3, fuelFlowGal: 4.0, rangeNm: 729, enduranceHrs: 6.8 },
 
   // 55% Load (Crucero Rápido): 17.0 l/h (4.5 US Gal/h)
-  { alt: 2000, load: 55, ktas: 103, fuelFlowLh: 17.0, rangeNm: 675, enduranceHrs: 6.5 },
-  { alt: 4000, load: 55, ktas: 105, fuelFlowLh: 17.0, rangeNm: 678, enduranceHrs: 6.4 },
-  { alt: 6000, load: 55, ktas: 106, fuelFlowLh: 17.0, rangeNm: 683, enduranceHrs: 6.2 },
-  { alt: 8000, load: 55, ktas: 108, fuelFlowLh: 17.0, rangeNm: 686, enduranceHrs: 6.1 },
+  { alt: 2000, load: 55, ktas: 103, fuelFlowLh: 17.0, fuelFlowGal: 4.5, rangeNm: 675, enduranceHrs: 6.5 },
+  { alt: 4000, load: 55, ktas: 105, fuelFlowLh: 17.0, fuelFlowGal: 4.5, rangeNm: 678, enduranceHrs: 6.4 },
+  { alt: 6000, load: 55, ktas: 106, fuelFlowLh: 17.0, fuelFlowGal: 4.5, rangeNm: 683, enduranceHrs: 6.2 },
+  { alt: 8000, load: 55, ktas: 108, fuelFlowLh: 17.0, fuelFlowGal: 4.5, rangeNm: 686, enduranceHrs: 6.1 },
 ];
 
 export function PreflightCruiseWidget({
@@ -74,13 +74,17 @@ export function PreflightCruiseWidget({
           : `Revisa la tabla oficial: busca la fila de ${alt} ft y columna KTAS al ${loadPct}% de carga.`;
     }
 
-    // Check Fuel Flow
+    // Check Fuel Flow (supports L/h or US Gal/h)
     const userFf = num(fuelFlowInput);
-    if (isNaN(userFf) || !checkValueTolerance(userFf, expectedFuelFlow, 0.02, 0.3).isOk) {
+    const isFfLiters = checkValueTolerance(userFf, expectedFuelFlow, 0.02, 0.3).isOk;
+    const isFfGallons = checkValueTolerance(userFf, targetRow.fuelFlowGal, 0.05, 0.2).isOk;
+    if (isNaN(userFf) || (!isFfLiters && !isFfGallons)) {
       newErrors.fuelFlow =
         attempts >= 2
-          ? `Solución: En la tabla CD-155, el consumo horario al ${loadPct}% de Load es de ${expectedFuelFlow} L/h.`
-          : `Consulta la columna Fuel Flow [L/h] en la tabla para ${loadPct}% de potencia.`;
+          ? `Solución: En la tabla CD-155, el consumo horario al ${loadPct}% de Load es de ${expectedFuelFlow} L/h (o ${targetRow.fuelFlowGal} US Gal/h).`
+          : `Consulta la columna de consumo en la tabla: ${expectedFuelFlow} L/h o ${targetRow.fuelFlowGal} Gal/h.`;
+    } else if (isFfGallons) {
+      newWarnings.push(`Consumo horario: Has introducido ${userFf} US Gal/h (equivalente a ${expectedFuelFlow} L/h).`);
     }
 
     // Check Time in Hours
@@ -205,11 +209,11 @@ export function PreflightCruiseWidget({
 
                 <div>
                   <label className="text-xs sm:text-[13px] font-semibold text-slate-600 dark:text-slate-300 block mb-0.5">
-                    Gasto Horario (Fuel Flow L/h):
+                    Gasto Horario (Fuel Flow L/h o Gal/h):
                   </label>
                   <input
                     type="text"
-                    placeholder={`Ej: ${expectedFuelFlow}`}
+                    placeholder={`Ej: ${expectedFuelFlow} (o ${targetRow.fuelFlowGal})`}
                     value={fuelFlowInput}
                     onChange={(e) => setFuelFlowInput(e.target.value)}
                     className={`w-full px-2.5 py-1 rounded-lg border font-mono text-xs sm:text-[13px] ${
@@ -390,12 +394,13 @@ export function PreflightCruiseWidget({
             <table className="w-full text-left text-xs sm:text-[13px] border-collapse">
               <thead>
                 <tr className="border-b border-slate-200 dark:border-slate-700 font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
-                  <th className="py-2 px-2">ALTITUD</th>
-                  <th className="py-2 px-2 text-center">LOAD</th>
-                  <th className="py-2 px-2 text-center">KTAS</th>
-                  <th className="py-2 px-2 text-center">FUEL [L/H]</th>
-                  <th className="py-2 px-2 text-center">RANGE</th>
-                  <th className="py-2 px-2 text-center">ENDUR</th>
+                  <th className="py-2 px-1.5">ALTITUD</th>
+                  <th className="py-2 px-1 text-center">LOAD</th>
+                  <th className="py-2 px-1 text-center">KTAS</th>
+                  <th className="py-2 px-1 text-center">FUEL [L/H]</th>
+                  <th className="py-2 px-1 text-center text-teal-700 dark:text-teal-300">FUEL [GAL/H]</th>
+                  <th className="py-2 px-1 text-center">RANGE</th>
+                  <th className="py-2 px-1 text-center">ENDUR</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-mono">
@@ -410,12 +415,13 @@ export function PreflightCruiseWidget({
                           : "hover:bg-slate-50 dark:hover:bg-slate-800/40 text-slate-700 dark:text-slate-200"
                       }
                     >
-                      <td className="py-2 px-2 font-semibold">{row.alt} ft</td>
-                      <td className="py-2 px-2 text-center text-blue-600 dark:text-sky-400 font-bold">{row.load}%</td>
-                      <td className="py-2 px-2 text-center text-sky-700 dark:text-sky-300 font-bold">{row.ktas} kt</td>
-                      <td className="py-2 px-2 text-center text-emerald-700 dark:text-emerald-300 font-bold">{row.fuelFlowLh}</td>
-                      <td className="py-2 px-2 text-center">{row.rangeNm} NM</td>
-                      <td className="py-2 px-2 text-center">{row.enduranceHrs} h</td>
+                      <td className="py-2 px-1.5 font-semibold">{row.alt} ft</td>
+                      <td className="py-2 px-1 text-center text-blue-600 dark:text-sky-400 font-bold">{row.load}%</td>
+                      <td className="py-2 px-1 text-center text-sky-700 dark:text-sky-300 font-bold">{row.ktas} kt</td>
+                      <td className="py-2 px-1 text-center text-emerald-700 dark:text-emerald-300 font-bold">{row.fuelFlowLh}</td>
+                      <td className="py-2 px-1 text-center text-teal-700 dark:text-teal-300 font-bold">{row.fuelFlowGal}</td>
+                      <td className="py-2 px-1 text-center">{row.rangeNm} NM</td>
+                      <td className="py-2 px-1 text-center">{row.enduranceHrs} h</td>
                     </tr>
                   );
                 })}
