@@ -6743,16 +6743,39 @@ export const C172_LESSON_6 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 TRIÁNGULO DE VELOCIDADES</span>
+          <a href="/images/c172/triangulo-velocidades.png" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <span>Ver Ampliado</span>
+            <span>↗</span>
+          </a>
         </div>
 
-        <div class="w-full rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-            📷
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1.5 my-1">
+          <img
+            src="/images/c172/triangulo-velocidades.png"
+            alt="Triángulo de Velocidades: TAS, Viento, Deriva (WCA) y Ground Speed (GS)"
+            class="w-full h-full object-contain rounded-lg"
+          />
+        </div>
+
+        <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs shrink-0">
+          <div class="grid grid-cols-2 gap-1.5 text-[11px] sm:text-xs">
+            <div>
+              <span class="font-bold text-red-600 dark:text-red-400">A &rarr; B (TAS):</span>
+              <span class="text-slate-600 dark:text-slate-300"> Rumbo Verdadero (TH)</span>
+            </div>
+            <div>
+              <span class="font-bold text-blue-600 dark:text-sky-400">B &rarr; C (Viento):</span>
+              <span class="text-slate-600 dark:text-slate-300"> Vector Viento</span>
+            </div>
+            <div>
+              <span class="font-bold text-emerald-600 dark:text-emerald-400">A &rarr; C (GS):</span>
+              <span class="text-slate-600 dark:text-slate-300"> Trayectoria (TR)</span>
+            </div>
+            <div>
+              <span class="font-bold text-indigo-600 dark:text-indigo-400">WCA:</span>
+              <span class="text-slate-600 dark:text-slate-300"> Corrección de Deriva</span>
+            </div>
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Diagrama vectorial del triángulo de velocidades: Rumbo Verdadero (TH), Deriva (WCA), Trayectoria (TR), TAS y Ground Speed resultante
-          </p>
         </div>
 
         <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
