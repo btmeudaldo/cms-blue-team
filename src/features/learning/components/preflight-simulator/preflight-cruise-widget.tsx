@@ -253,11 +253,11 @@ export function PreflightCruiseWidget({
 
                 <div>
                   <label className="text-xs sm:text-[13px] font-semibold text-slate-600 dark:text-slate-300 block mb-0.5">
-                    Trip Fuel (Litros):
+                    Trip Fuel (Litros / Galones):
                   </label>
                   <input
                     type="text"
-                    placeholder={`Ej: ${expectedTripLiters}`}
+                    placeholder={`Ej: ${expectedTripLiters} L (${(expectedTripLiters / 3.78541).toFixed(1)} Gal)`}
                     value={tripFuelLitersInput}
                     onChange={(e) => setTripFuelLitersInput(e.target.value)}
                     className={`w-full px-2.5 py-1 rounded-lg border font-mono text-xs sm:text-[13px] ${
@@ -292,7 +292,7 @@ export function PreflightCruiseWidget({
             {/* Step 3: Range Check */}
             <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1 shadow-2xs">
               <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block">
-                3. Autonomía Máxima Teórica (Tanques Estándar 127.4 L Usable)
+                3. Autonomía Máxima Teórica (Tanques Estándar 127.4 L / 33.65 US Gal Usable)
               </span>
               <div className="flex items-center gap-2">
                 <input
@@ -339,7 +339,7 @@ export function PreflightCruiseWidget({
               <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px]">
                 <strong className="font-bold">✓ ¡CÁLCULO DE CRUCERO Y COMBUSTIBLE CORRECTO!</strong>
                 <p className="text-xs mt-0.5">
-                  Tiempo: {expectedTimeHrs} h · Gasto ruta: {expectedTripLiters} L ({expectedTripKg} kg) · Alcance máximo: {expectedMaxRange} NM.
+                  Tiempo: {expectedTimeHrs} h · Gasto ruta: {expectedTripLiters} L / {(expectedTripLiters / 3.78541).toFixed(1)} US Gal ({expectedTripKg} kg) · Alcance máximo: {expectedMaxRange} NM.
                 </p>
               </div>
             )}
@@ -360,7 +360,7 @@ export function PreflightCruiseWidget({
                 📖 TABLA FIG. 5-4a CRUCERO
               </span>
               <span className="text-xs sm:text-[13px] text-slate-500 font-medium">
-                C172 CD-155 (TAE 125-02-114) · Standard Tanks (127.4 L usable)
+                C172 CD-155 (TAE 125-02-114) · Standard Tanks (127.4 L / 33.65 US Gal usable)
               </span>
             </div>
             <div className="flex items-center gap-1 shrink-0">

@@ -128,7 +128,7 @@ export function PreflightFuelWidget({
                 ⛽ PLANIFICACIÓN DE COMBUSTIBLE F.OPS.02
               </span>
               <div className="text-[10px] text-slate-500 font-medium">
-                {mission.name} · {mission.scenario.flightTimeHrs} h vuelo · Régimen Escuela 50% ({hourlyRate} L/h)
+                {mission.name} · {mission.scenario.flightTimeHrs} h vuelo · Régimen Escuela 50% ({hourlyRate} L/h · {(hourlyRate / 3.78541).toFixed(1)} US Gal/h)
               </div>
             </div>
             <div className="flex items-center gap-1 shrink-0">
@@ -164,16 +164,16 @@ export function PreflightFuelWidget({
                 </span>
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-mono font-bold text-[#0B2E59] dark:text-sky-300 text-sm">
-                    {taxiFuelL.toFixed(1)} L
+                    {taxiFuelL.toFixed(1)} L / {(taxiFuelL / 3.78541).toFixed(1)} Gal
                   </span>
-                  <span className="text-[10px] text-slate-500 font-medium">Fijo estándar F.OPS.02</span>
+                  <span className="text-[10px] text-slate-500 font-medium">Fijo estándar</span>
                 </div>
               </div>
 
               {/* Trip Fuel */}
               <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">
                 <label className="text-[10.5px] font-bold text-slate-600 dark:text-slate-300 block mb-0.5">
-                  2. Trip Fuel ({mission.scenario.flightTimeHrs} h × {hourlyRate} L/h)
+                  2. Trip Fuel ({mission.scenario.flightTimeHrs} h × {hourlyRate} L/h · {(hourlyRate / 3.78541).toFixed(1)} Gal/h)
                 </label>
                 <div className="flex items-center gap-1.5">
                   <input
@@ -197,7 +197,7 @@ export function PreflightFuelWidget({
               {/* Reserve Fuel */}
               <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">
                 <label className="text-[10.5px] font-bold text-slate-600 dark:text-slate-300 block mb-0.5">
-                  3. Reserva Final Obligatoria (45 min VFR)
+                  3. Reserva Final (45m = {expectedEasaReserveL} L / {(expectedEasaReserveL / 3.78541).toFixed(1)} Gal)
                 </label>
                 <div className="flex items-center gap-1.5">
                   <input
@@ -219,7 +219,7 @@ export function PreflightFuelWidget({
               {/* Landing Fuel */}
               <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">
                 <label className="text-[10.5px] font-bold text-slate-600 dark:text-slate-300 block mb-0.5">
-                  4. Landing Fuel Remanente (≥ Reserva)
+                  4. Landing Fuel (≥ OM {expectedBlueTeamTotalReserveL} L / {(expectedBlueTeamTotalReserveL / 3.78541).toFixed(1)} Gal)
                 </label>
                 <div className="flex items-center gap-1.5">
                   <input
@@ -289,7 +289,7 @@ export function PreflightFuelWidget({
               <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs">
                 <strong className="font-bold">✓ ¡PLANIFICACIÓN DE COMBUSTIBLE VÁLIDA SEGÚN EASA!</strong>
                 <p className="text-[10px] mt-0.5">
-                  Ramp: {expectedRampL} L · Trip: {expectedTripL} L · Reserva EASA: {expectedEasaReserveL} L (OM: {expectedBlueTeamReserveL} L) · Landing: {expectedLandingL} L.
+                  Ramp: {expectedRampL} L ({(expectedRampL / 3.78541).toFixed(1)} Gal) · Trip: {expectedTripL} L ({(expectedTripL / 3.78541).toFixed(1)} Gal) · Reserva EASA: {expectedEasaReserveL} L ({(expectedEasaReserveL / 3.78541).toFixed(1)} Gal) · OM: {expectedBlueTeamReserveL} L ({(expectedBlueTeamReserveL / 3.78541).toFixed(1)} Gal) · Landing: {expectedLandingL} L ({(expectedLandingL / 3.78541).toFixed(1)} Gal).
                 </p>
               </div>
             )}
@@ -321,7 +321,7 @@ export function PreflightFuelWidget({
             {/* Visual Fuel Bars */}
             <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 shadow-2xs">
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 text-[11px] block uppercase">
-                Proporción de Depósitos ({mission.scenario.takeoffFuelLiters} L Cargados)
+                Proporción de Depósitos ({mission.scenario.takeoffFuelLiters} L / {(mission.scenario.takeoffFuelLiters / 3.78541).toFixed(1)} US Gal Cargados)
               </span>
 
               <div className="w-full bg-slate-100 dark:bg-slate-900 rounded-xl overflow-hidden h-6 flex border border-slate-300 dark:border-slate-700">
@@ -361,19 +361,19 @@ export function PreflightFuelWidget({
               <div className="grid grid-cols-2 gap-1.5 text-[10px] text-slate-600 dark:text-slate-400 font-medium">
                 <div className="flex items-center gap-1">
                   <span className="w-2.5 h-2.5 rounded bg-amber-400 shrink-0"></span>
-                  <span>Taxi: {taxiFuelL} L</span>
+                  <span>Taxi: {taxiFuelL} L ({(taxiFuelL / 3.78541).toFixed(1)} Gal)</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="w-2.5 h-2.5 rounded bg-blue-500 shrink-0"></span>
-                  <span>Trip ({mission.scenario.flightTimeHrs}h): {expectedTripL} L</span>
+                  <span>Trip ({mission.scenario.flightTimeHrs}h): {expectedTripL} L ({(expectedTripL / 3.78541).toFixed(1)} Gal)</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="w-2.5 h-2.5 rounded bg-emerald-500 shrink-0"></span>
-                  <span>EASA 45m: {expectedEasaReserveL} L</span>
+                  <span>EASA 45m: {expectedEasaReserveL} L ({(expectedEasaReserveL / 3.78541).toFixed(1)} Gal)</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="w-2.5 h-2.5 rounded bg-indigo-500 shrink-0"></span>
-                  <span>OM 1:30 + Alt: {expectedBlueTeamTotalReserveL} L</span>
+                  <span>OM 1:30 + Alt: {expectedBlueTeamTotalReserveL} L ({(expectedBlueTeamTotalReserveL / 3.78541).toFixed(1)} Gal)</span>
                 </div>
               </div>
             </div>
@@ -385,7 +385,7 @@ export function PreflightFuelWidget({
                   1. Mínimo Legal EASA Part-NCO.OP.125:
                 </strong>
                 <p className="leading-tight text-[10.5px]">
-                  Obligatorio llevar combustible de ruta más reserva final de <strong>45 minutos</strong> a régimen de crucero (<strong>11.5 L</strong> al 50% de potencia CD-155).
+                  Obligatorio llevar combustible de ruta más reserva final de <strong>45 minutos</strong> a régimen de crucero (<strong>11.5 L / 3.04 US Gal</strong> al 50% de potencia CD-155).
                 </p>
               </div>
 
@@ -394,7 +394,7 @@ export function PreflightFuelWidget({
                   2. Política Operativa Blue Team (Manual OM):
                 </strong>
                 <p className="leading-tight text-[10.5px]">
-                  Por Manual de Operaciones, en Blue Team debemos disponer de <strong>al menos 1h 30min (23.0 L) de reserva final</strong>, más el combustible necesario para alcanzar el aeródromo alternativo en caso de haber aterrizado en destino (~5.1 L adicionales).
+                  Por Manual de Operaciones, en Blue Team debemos disponer de <strong>al menos 1h 30min (23.0 L / 6.08 US Gal) de reserva final</strong>, más el combustible necesario para alcanzar el aeródromo alternativo en caso de haber aterrizado en destino (~5.1 L / 1.35 US Gal adicionales).
                 </p>
               </div>
             </div>

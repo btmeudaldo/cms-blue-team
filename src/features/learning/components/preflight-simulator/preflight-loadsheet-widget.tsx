@@ -503,7 +503,7 @@ export function PreflightLoadsheetWidget({
                   {/* TAKEOFF FUEL */}
                   <tr>
                     <td className="py-1.5 px-2 font-medium">
-                      TAKEOFF FUEL ({expected.fuelLiters} L Jet-A1)
+                      TAKEOFF FUEL ({expected.fuelLiters} L / {(expected.fuelLiters / 3.78541).toFixed(1)} US Gal Jet-A1)
                     </td>
                     <td className="py-1.5 px-2 text-right">
                       <input
@@ -620,7 +620,7 @@ export function PreflightLoadsheetWidget({
                     {/* TRIP FUEL */}
                     <tr className="text-amber-900 dark:text-amber-300 font-medium">
                       <td className="py-2 px-2">
-                        (-) TRIP FUEL ({expected.tripFuelLiters} L a 50% Potencia)
+                        (-) TRIP FUEL ({expected.tripFuelLiters} L / {(expected.tripFuelLiters / 3.78541).toFixed(1)} US Gal a 50% Potencia)
                       </td>
                       <td className="py-2 px-2 text-right font-mono font-bold text-amber-700 dark:text-amber-400">
                         -{expected.tripFuelMass} kg

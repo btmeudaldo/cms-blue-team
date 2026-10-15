@@ -6345,7 +6345,7 @@ export const C172_LESSON_6 = {
           </div>
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.OP.125 & Manual OM Blue Team (Combustible Reglamentario):</strong>
-            <div>Embarcar combustible para la ruta más una reserva final legal obligatoria de <strong>45 minutos</strong> a régimen de crucero de escuela. Adicionalmente, por Manual de Operaciones de Blue Team debemos disponer de <strong>al menos 1h 30min de reserva final</strong>, más el combustible necesario para proceder al aeródromo alternativo en caso de haber aterrizado en destino.</div>
+            <div>Embarcar combustible para la ruta más una reserva final legal obligatoria de <strong>45 minutos</strong> a régimen de crucero de escuela (<strong>11.5 L / 3.04 US Gal</strong>). Adicionalmente, por Manual de Operaciones de Blue Team debemos disponer de <strong>al menos 1h 30min de reserva final</strong> (<strong>23.0 L / 6.08 US Gal</strong>), más el combustible necesario para proceder al aeródromo alternativo (<strong>5.1 L / 1.35 US Gal</strong>) en caso de haber aterrizado en destino.</div>
           </div>
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.POL.105 (Performance de Pista):</strong>
@@ -6421,7 +6421,7 @@ export const C172_LESSON_6 = {
         </div>
 
         <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px]">
-          <strong>DENSIDAD DEL COMBUSTIBLE JET-A1:</strong> La masa de combustible no equivale directamente a los litros cargados. Se utiliza la densidad certificada de <strong>0.84 kg/L</strong>: <span class="font-mono font-bold">Masa (kg) = Litros × 0.84</span>.
+          <strong>DENSIDAD DEL COMBUSTIBLE JET-A1:</strong> La masa de combustible no equivale directamente a los litros cargados. Se utiliza la densidad certificada de <strong>0.84 kg/L (7.01 lbs/US Gal)</strong>: <span class="font-mono font-bold">Masa (kg) = Litros × 0.84</span> (equivalente a <strong>1 US Gal = 3.785 L · 3.18 kg</strong>).
         </div>
 
         <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
@@ -6502,7 +6502,7 @@ export const C172_LESSON_6 = {
           </div>
           <div class="flex items-center justify-between p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <span>Combustible Usable (Fuel Tanks):</span>
-            <span class="font-mono font-bold text-blue-600 dark:text-sky-400">Brazo: 1.168 m</span>
+            <span class="font-mono font-bold text-blue-600 dark:text-sky-400">Brazo: 1.168 m (Máx. 127.4 L / 33.65 US Gal)</span>
           </div>
         </div>
 
@@ -6660,16 +6660,16 @@ export const C172_LESSON_6 = {
         <div class="grid grid-cols-2 gap-2 text-xs sm:text-[13px]">
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-blue-600 dark:text-sky-400 block mb-0.5">50% Potencia (Estándar Escuela):</strong>
-            <div>Consumo: <strong>15.3 L/h</strong> (12.85 kg/h). KTAS: 99 a 103 kt. Autonomía superior a 7 horas con tanques llenos.</div>
+            <div>Consumo: <strong>15.3 L/h (4.0 US Gal/h)</strong> (12.85 kg/h). KTAS: 99 a 103 kt. Autonomía superior a 8 horas con tanques utilizables (127.4 L / 33.65 US Gal).</div>
           </div>
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-slate-600 dark:text-slate-400 block mb-0.5">55% Potencia (Crucero Rápido):</strong>
-            <div>Consumo: <strong>17.0 L/h</strong> (14.28 kg/h). KTAS: 103 a 108 kt. Mayor velocidad con 1.7 L/h de consumo adicional.</div>
+            <div>Consumo: <strong>17.0 L/h (4.5 US Gal/h)</strong> (14.28 kg/h). KTAS: 103 a 108 kt. Mayor velocidad con 1.7 L/h (0.45 US Gal/h) de consumo adicional.</div>
           </div>
         </div>
 
         <div class="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200 text-xs sm:text-[13px]">
-          <strong>DATO CLAVE PARA EL F.OPS.02:</strong> Para cualquier cálculo de combustible de ruta (Trip Fuel) y reserva en la escuela, se multiplicará el tiempo estimado de vuelo por el régimen de 50%: <span class="font-mono font-bold">15.3 Litros/hora</span>.
+          <strong>DATO CLAVE PARA EL F.OPS.02:</strong> Para cualquier cálculo de combustible de ruta (Trip Fuel) y reserva en la escuela, se multiplicará el tiempo estimado de vuelo por el régimen de 50%: <span class="font-mono font-bold">15.3 L/h (4.0 US Gal/h)</span> [12.85 kg/h].
         </div>
       </div>
     </div>
@@ -6729,12 +6729,12 @@ export const C172_LESSON_6 = {
           </div>
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Combustible de Trayecto (Trip Fuel):</strong>
-            <div class="font-mono font-bold text-blue-600 dark:text-sky-400">Trip Fuel (L) = Tiempo (h) × 15.3 L/h (a 50% Load)</div>
+            <div class="font-mono font-bold text-blue-600 dark:text-sky-400">Trip Fuel = Tiempo (h) × 15.3 L/h (4.0 US Gal/h) [12.85 kg/h]</div>
           </div>
         </div>
 
         <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs sm:text-[13px]">
-          <strong>EJEMPLO:</strong> Para 105 NM a 6.000 ft (TAS 102 kt) con 5 kt en cara &rarr; GS = 97 kt &rarr; Tiempo = 1.08 h &rarr; Trip Fuel = 1.08 × 15.3 = 16.5 L (13.9 kg).
+          <strong>EJEMPLO:</strong> Para 105 NM a 6.000 ft (TAS 102 kt) con 5 kt en cara &rarr; GS = 97 kt &rarr; Tiempo = 1.08 h &rarr; Trip Fuel = 1.08 × 15.3 = <strong>16.5 L (4.36 US Gal)</strong> [13.9 kg].
         </div>
       </div>
     </div>
@@ -6800,24 +6800,24 @@ export const C172_LESSON_6 = {
         <div class="space-y-1.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-blue-600 dark:text-sky-400 block mb-0.5">Taxi Fuel (Rodaje y Pruebas FADEC):</strong>
-            <div>Estándar fijo en escuela: <strong>3.0 Litros (2.5 kg)</strong> para puesta en marcha, rodaje y prueba automática FADEC.</div>
+            <div>Estándar fijo en escuela: <strong>3.0 Litros (0.79 US Gal)</strong> [2.52 kg] para puesta en marcha, rodaje y prueba automática FADEC.</div>
           </div>
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-emerald-600 dark:text-emerald-400 block mb-0.5">Trip Fuel (Combustible de Ruta):</strong>
-            <div>Tiempo estimado de vuelo (ETE) × 15.3 L/h (régimen de crucero al 50%).</div>
+            <div>Tiempo estimado de vuelo (ETE) × <strong>15.3 L/h (4.0 US Gal/h)</strong> [12.85 kg/h] a régimen de crucero al 50%.</div>
           </div>
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-amber-600 dark:text-amber-400 block mb-0.5">Reserva Final Legal EASA Part-NCO.OP.125:</strong>
-            <div>Mínimo reglamentario VFR de <strong>45 minutos</strong> de crucero a 50%: <strong>11.5 Litros (9.6 kg)</strong>.</div>
+            <div>Mínimo reglamentario VFR de <strong>45 minutos</strong> de crucero a 50%: <strong>11.5 Litros (3.04 US Gal)</strong> [9.64 kg].</div>
           </div>
           <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 shadow-2xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Reserva Exigida por Manual OM Blue Team:</strong>
-            <div>Por política interna de seguridad de la escuela, se debe disponer de al menos <strong>1 hora y 30 minutos (1h 30min) de reserva final</strong> (<strong>23.0 Litros / 19.3 kg</strong>), más el combustible necesario para proceder al aeródromo alternativo en caso de haber aterrizado en destino.</div>
+            <div>Por política interna de seguridad de la escuela, se debe disponer de al menos <strong>1 hora y 30 minutos (1h 30min) de reserva final</strong>: <strong>23.0 Litros (6.08 US Gal)</strong> [19.28 kg], más el combustible necesario para proceder al aeródromo alternativo (20 min = <strong>5.1 Litros / 1.35 US Gal</strong> [4.28 kg]) en caso de haber aterrizado en destino.</div>
           </div>
         </div>
 
         <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs sm:text-[13px]">
-          <strong>RAMP FUEL MÍNIMO:</strong> Ramp Fuel = Taxi (3L) + Trip Fuel + Reserva OM 1h 30min (23.0 L) + Alternativo (20 min = 5.1 L).
+          <strong>RAMP FUEL MÍNIMO:</strong> Ramp Fuel = Taxi (<strong>3.0 L / 0.79 Gal</strong>) + Trip Fuel + Reserva OM 1h 30min (<strong>23.0 L / 6.08 Gal</strong>) + Alternativo (<strong>5.1 L / 1.35 Gal</strong>).
         </div>
       </div>
     </div>
@@ -6834,7 +6834,7 @@ export const C172_LESSON_6 = {
           </div>
           <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Diagrama esquemático de bloques de combustible: Taxi (3L), Trip Fuel de ruta, Reserva EASA 45 min y Reserva de Escuela Blue Team OM (1:30 + Alternativo)
+            Diagrama esquemático de bloques de combustible: Taxi (3.0 L / 0.79 US Gal), Trip Fuel de ruta, Reserva EASA 45 min (11.5 L / 3.04 US Gal) y Reserva de Escuela Blue Team OM (23.0 L / 6.08 US Gal + Alternativo 5.1 L / 1.35 US Gal)
           </p>
         </div>
 
@@ -7040,7 +7040,7 @@ export const C172_LESSON_6 = {
           </div>
           <div class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <span class="text-emerald-500 font-bold text-base">✓</span>
-            <div><strong>Combustible Escuela Blue Team:</strong> Ramp Fuel cubre Taxi (3L) + Trip + Reserva OM 1h 30min (23.0 L al 50%) + Alternativo (5.1 L). Mínimo legal EASA: 45 min (11.5 L).</div>
+            <div><strong>Combustible Escuela Blue Team:</strong> Ramp Fuel cubre Taxi (<strong>3.0 L / 0.79 Gal</strong>) + Trip + Reserva OM 1h 30min (<strong>23.0 L / 6.08 Gal</strong> al 50%) + Alternativo (<strong>5.1 L / 1.35 Gal</strong>). Mínimo legal EASA: 45 min (<strong>11.5 L / 3.04 Gal</strong>).</div>
           </div>
           <div class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <span class="text-emerald-500 font-bold text-base">✓</span>
