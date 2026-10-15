@@ -226,6 +226,36 @@ export function PreflightPerformanceWidget({
               </div>
             </div>
 
+            {/* Direct Links to POH Tables */}
+            <div className="flex flex-wrap items-center justify-between gap-1.5 p-2 rounded-xl bg-sky-50/70 dark:bg-slate-800/90 border border-sky-200 dark:border-slate-700 shadow-2xs">
+              <span className="text-xs font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1">
+                <span>📖</span>
+                <span>TABLAS POH NECESARIAS:</span>
+              </span>
+              <div className="flex items-center gap-1.5">
+                <a
+                  href="/images/c172/takeoff-performance-tables.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 font-bold text-xs text-blue-600 dark:text-sky-300 hover:bg-blue-50 dark:hover:bg-slate-600 transition-all shadow-2xs"
+                  title="Abrir Tabla 5-1a Despegue CD-155 en PDF"
+                >
+                  <span>🛫 Tabla Despegue (Fig. 5-1a)</span>
+                  <span>↗</span>
+                </a>
+                <a
+                  href="/images/c172/landing_distance_table.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 font-bold text-xs text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-slate-600 transition-all shadow-2xs"
+                  title="Abrir Tabla 5-10 Aterrizaje Short Field en PDF"
+                >
+                  <span>🛬 Tabla Aterrizaje (Fig. 5-10)</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
+
             <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/80 shadow-2xs">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
@@ -240,8 +270,10 @@ export function PreflightPerformanceWidget({
                   <tr>
                     <td className="py-2 px-2 font-medium">
                       Take-off run
-                      <div className="text-[9.5px] text-slate-500 dark:text-slate-400">
-                        Carrera en suelo · Base: {scenario.baseToRun} m
+                      <div className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                        <span>Carrera suelo (Base: {scenario.baseToRun} m)</span>
+                        <span>·</span>
+                        <a href="/images/c172/takeoff-performance-tables.pdf" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-400 font-semibold hover:underline">Ver Tabla 5-1a ↗</a>
                       </div>
                     </td>
                     <td className="py-2 px-2 text-center font-mono font-bold text-slate-600 dark:text-slate-300 text-xs">
@@ -266,8 +298,10 @@ export function PreflightPerformanceWidget({
                   <tr className="bg-sky-50/50 dark:bg-sky-950/30">
                     <td className="py-2 px-2 font-bold text-[#0B2E59] dark:text-sky-300">
                       Take-off distance (50 ft)
-                      <div className="text-[9.5px] font-normal text-slate-500 dark:text-slate-400">
-                        Superación obstáculo 15 m · Base: {scenario.baseTo50} m
+                      <div className="text-[10px] font-normal text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                        <span>Obstáculo 15 m (Base: {scenario.baseTo50} m)</span>
+                        <span>·</span>
+                        <a href="/images/c172/takeoff-performance-tables.pdf" target="_blank" rel="noopener noreferrer" className="text-sky-600 dark:text-sky-400 font-semibold hover:underline">Ver Tabla 5-1a ↗</a>
                       </div>
                     </td>
                     <td className="py-2 px-2 text-center font-mono font-bold text-slate-600 dark:text-slate-300 text-xs">
@@ -292,8 +326,10 @@ export function PreflightPerformanceWidget({
                   <tr className="bg-emerald-50/50 dark:bg-emerald-950/30">
                     <td className="py-2 px-2 font-bold text-emerald-950 dark:text-emerald-300">
                       Landing distance (50 ft)
-                      <div className="text-[9.5px] font-normal text-slate-500 dark:text-slate-400">
-                        Toma sobre obstáculo 50 ft · Base: {scenario.baseLd50} m
+                      <div className="text-[10px] font-normal text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                        <span>Toma obstáculo 50 ft (Base: {scenario.baseLd50} m)</span>
+                        <span>·</span>
+                        <a href="/images/c172/landing_distance_table.pdf" target="_blank" rel="noopener noreferrer" className="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">Ver Tabla 5-10 ↗</a>
                       </div>
                     </td>
                     <td className="py-2 px-2 text-center font-mono font-bold text-slate-600 dark:text-slate-300 text-xs">
@@ -461,8 +497,19 @@ export function PreflightPerformanceWidget({
             </div>
           </div>
 
-          <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-            Ref. POH: Fig. 5-1a Despegue CD-155 (m) y Fig. 5-10 Aterrizaje Short Field (ft &rarr; m)
+          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
+            <span>Consultar Documentación POH:</span>
+            <div className="flex items-center gap-2">
+              <a href="/images/c172/takeoff-performance-tables.pdf" target="_blank" rel="noopener noreferrer" className="font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-0.5">
+                <span>🛫 Fig. 5-1a Despegue</span>
+                <span>↗</span>
+              </a>
+              <span>·</span>
+              <a href="/images/c172/landing_distance_table.pdf" target="_blank" rel="noopener noreferrer" className="font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-0.5">
+                <span>🛬 Fig. 5-10 Toma</span>
+                <span>↗</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
