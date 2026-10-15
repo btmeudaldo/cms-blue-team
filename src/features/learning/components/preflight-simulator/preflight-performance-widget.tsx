@@ -146,10 +146,18 @@ export function PreflightPerformanceWidget({
     // Check Landing 50 ft
     const userLd50 = num(landing50ftInput);
     if (isNaN(userLd50) || !checkValueTolerance(userLd50, scenario.ld50ft, 0.06, 10).isOk) {
-      newErrors.landing50ft =
-        attempts >= 2
-          ? `Solución ${scenario.icao}: Distancia de toma sobre 50 ft = ${scenario.ld50ft} m (Base Fig. 5-10: ${scenario.baseLd50} m - 10% por viento).`
-          : `Convierte la distancia a 50 ft de la tabla Fig. 5-10 (${scenario.baseLd50} m) y aplica ${scenario.windDesc}.`;
+      if (!isNaN(userLd50) && (Math.abs(userLd50 - 513) <= 15 || Math.abs(userLd50 - 570) <= 15)) {
+        newErrors.landing50ft = `Has tomado 570 ft (o 513 ft), que es la carrera en suelo (GRND ROLL) y además está en PIES. La casilla pide la distancia total sobre obstáculo de 50 ft (columna 'TOTAL 50 FT OBS' = 1335 ft) y convertida a METROS: 1335 ft ÷ 3.28084 = 407 m. Aplicando -10% de viento = 366 m.`;
+      } else if (!isNaN(userLd50) && (Math.abs(userLd50 - 1201) <= 25 || Math.abs(userLd50 - 1335) <= 25)) {
+        newErrors.landing50ft = `¡Casi! Has usado la distancia a 50 ft (1335 ft), pero la tabla Fig. 5-10 viene en PIES. Debes convertirla a METROS [m]: 1335 ft ÷ 3.28084 = 407 m base; con -10% de viento = 366 m.`;
+      } else if (!isNaN(userLd50) && userLd50 > 900) {
+        newErrors.landing50ft = `¡Cuidado con las unidades! Has introducido un valor en pies (> 900 ft). El formulario F.OPS.02 requiere la distancia en METROS [m] (divide los pies de la tabla entre 3.28084).`;
+      } else {
+        newErrors.landing50ft =
+          attempts >= 2
+            ? `Solución ${scenario.icao}: Distancia de toma sobre 50 ft = ${scenario.ld50ft} m. En tabla Fig. 5-10: columna 'TOTAL 50 FT OBS' = 1335 ft ÷ 3.28 = ${scenario.baseLd50} m; con -10% viento = ${scenario.ld50ft} m.`
+            : `Fíjate en la columna 'TOTAL 50 FT OBS' (no en 'GRND ROLL') y convierte los pies a metros (÷ 3.28): ${scenario.baseLd50} m con ${scenario.windDesc}.`;
+      }
     }
 
     setErrors(newErrors);
@@ -326,8 +334,8 @@ export function PreflightPerformanceWidget({
                   <tr className="bg-emerald-50/50 dark:bg-emerald-950/30">
                     <td className="py-2 px-2 font-bold text-emerald-950 dark:text-emerald-300">
                       Landing distance (50 ft)
-                      <div className="text-[10px] font-normal text-slate-500 dark:text-slate-400 flex items-center gap-1">
-                        <span>Toma obstáculo 50 ft (Base: {scenario.baseLd50} m)</span>
+                      <div className="text-[10px] font-normal text-slate-500 dark:text-slate-400 flex flex-wrap items-center gap-1">
+                        <span>Columna &apos;TOTAL 50 FT OBS&apos; (1335 ft &divide; 3.28 = Base {scenario.baseLd50} m)</span>
                         <span>·</span>
                         <a href="/images/c172/landing_distance_table.pdf" target="_blank" rel="noopener noreferrer" className="text-emerald-600 dark:text-emerald-400 font-semibold hover:underline">Ver Tabla 5-10 ↗</a>
                       </div>
