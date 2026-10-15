@@ -6996,7 +6996,7 @@ export const C172_LESSON_6 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📖 TABLAS OFICIALES DE ATERRIZAJE</span>
-          <a href="/images/c172/landing-performance-tables.pdf" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1">
+          <a href="/images/c172/landing_distance_table.pdf" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1">
             <span>Abrir PDF</span>
             <span>↗</span>
           </a>
@@ -7004,7 +7004,7 @@ export const C172_LESSON_6 = {
 
         <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
           <img
-            src="/images/c172/landing-performance-tables.png"
+            src="/images/c172/landing_distance_table.png"
             alt="Tabla oficial de rendimiento de aterrizaje Short Field Fig. 5-10"
             class="w-full h-auto block rounded-lg shadow-xs"
           />
