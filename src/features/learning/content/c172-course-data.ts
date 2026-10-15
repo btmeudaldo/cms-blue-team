@@ -6369,12 +6369,7 @@ export const C172_LESSON_6 = {
           </a>
         </div>
 
-        <div class="p-2 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs sm:text-[13px] shadow-2xs shrink-0">
-          <strong class="text-sky-800 dark:text-sky-300 block font-bold mb-0.5">AERONAVE EC-NNA:</strong>
-          <div>Cessna 172 · Continental CD-155 (TAE 125-02-114) de 155 HP y hélice MT-Propeller constante.</div>
-        </div>
-
-        <div class="w-full h-[470px] max-h-[470px] rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
+        <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
           <img
             src="/images/c172/f-ops-02-documentacion-prevuelo.png"
             alt="Formulario oficial F.OPS.02 Documentación Prevuelo"
