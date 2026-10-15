@@ -6677,21 +6677,19 @@ export const C172_LESSON_6 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📖 TABLA 5-4a CRUISE PERFORMANCE</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📖 TABLAS CRUCERO & ALCANCE POH</span>
+          <a href="/images/c172/cruise-performance-range.pdf" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <span>Abrir PDF</span>
+            <span>↗</span>
+          </a>
         </div>
 
-        <div class="w-full rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-            📷
-          </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Extracto oficial de la tabla Fig. 5-4a del suplemento de motor TAE 125-02-114 resaltando la columna de 50% Load (15.3 L/h) y 55% Load (17.0 L/h)
-          </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. Documental: OM EC-NNA + Suplemento Motor Extract [183-188]
+        <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
+          <img
+            src="/images/c172/cruise-performance-range.png"
+            alt="Tablas oficiales de rendimiento de crucero y alcance POH CD-155"
+            class="w-full h-auto block rounded-lg shadow-xs"
+          />
         </div>
       </div>
     </div>
