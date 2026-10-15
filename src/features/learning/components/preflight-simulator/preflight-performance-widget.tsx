@@ -435,28 +435,28 @@ export function PreflightPerformanceWidget({
             </div>
 
             {/* Comparison of the 3 Canary Airports */}
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
-              <strong className="text-[#0B2E59] dark:text-sky-300 block uppercase font-bold text-[10px]">
+            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 shadow-2xs">
+              <strong className="text-[#0B2E59] dark:text-sky-300 block uppercase font-bold text-xs sm:text-[13px]">
                 Comparativa de Performance Insular (POH CD-155 a 20°C):
               </strong>
-              <div className="space-y-1 text-[10.5px]">
-                <div className={`p-1.5 rounded-lg flex justify-between items-center ${scenario.icao === "GCTS" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border border-sky-200 dark:border-sky-800" : "bg-slate-50 dark:bg-slate-900"}`}>
-                  <span>🏖️ GCTS (0 ft · S.L.):</span>
-                  <span className="font-mono">Despegue 50 ft: <strong>287 m</strong> · Toma: <strong>347 m</strong></span>
+              <div className="space-y-1.5 text-xs sm:text-[13px]">
+                <div className={`p-2 rounded-xl flex justify-between items-center transition-all ${scenario.icao === "GCTS" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border-2 border-sky-300 dark:border-sky-700 shadow-2xs" : "bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"}`}>
+                  <span className="font-semibold text-slate-800 dark:text-slate-100">🏖️ GCTS (0 ft · S.L.):</span>
+                  <span className="font-mono text-slate-700 dark:text-slate-200">Despegue 50 ft: <strong className="text-blue-600 dark:text-sky-400">287 m</strong> · Toma: <strong className="text-emerald-600 dark:text-emerald-400">347 m</strong></span>
                 </div>
-                <div className={`p-1.5 rounded-lg flex justify-between items-center ${scenario.icao === "GCGM" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border border-sky-200 dark:border-sky-800" : "bg-slate-50 dark:bg-slate-900"}`}>
-                  <span>⛰️ GCGM (1.000 ft):</span>
-                  <span className="font-mono">Despegue 50 ft: <strong>308 m</strong> · Toma: <strong>356 m</strong></span>
+                <div className={`p-2 rounded-xl flex justify-between items-center transition-all ${scenario.icao === "GCGM" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border-2 border-sky-300 dark:border-sky-700 shadow-2xs" : "bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"}`}>
+                  <span className="font-semibold text-slate-800 dark:text-slate-100">⛰️ GCGM (1.000 ft):</span>
+                  <span className="font-mono text-slate-700 dark:text-slate-200">Despegue 50 ft: <strong className="text-blue-600 dark:text-sky-400">308 m</strong> · Toma: <strong className="text-emerald-600 dark:text-emerald-400">356 m</strong></span>
                 </div>
-                <div className={`p-1.5 rounded-lg flex justify-between items-center ${scenario.icao === "GCXO" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border border-sky-200 dark:border-sky-800" : "bg-slate-50 dark:bg-slate-900"}`}>
-                  <span>🌋 GCXO (2.000 ft):</span>
-                  <span className="font-mono">Despegue 50 ft: <strong>329 m</strong> · Toma: <strong>366 m</strong></span>
+                <div className={`p-2 rounded-xl flex justify-between items-center transition-all ${scenario.icao === "GCXO" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border-2 border-sky-300 dark:border-sky-700 shadow-2xs" : "bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"}`}>
+                  <span className="font-semibold text-slate-800 dark:text-slate-100">🌋 GCXO (2.000 ft):</span>
+                  <span className="font-mono text-slate-700 dark:text-slate-200">Despegue 50 ft: <strong className="text-blue-600 dark:text-sky-400">329 m</strong> · Toma: <strong className="text-emerald-600 dark:text-emerald-400">366 m</strong></span>
                 </div>
               </div>
             </div>
 
             {/* Note */}
-            <div className="p-2 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-[10.5px] text-sky-900 dark:text-sky-200">
+            <div className="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs sm:text-[13px] text-sky-900 dark:text-sky-200 leading-snug">
               💡 <strong>Regla Operacional:</strong> {scenario.tip}
             </div>
           </div>
