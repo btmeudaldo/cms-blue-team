@@ -318,12 +318,12 @@ export function PreflightLoadsheetWidget({
           {/* Header & Sub-step Selector */}
           <div className="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
-              <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+              <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
                 {currentStep === "takeoff"
                   ? "📋 F.OPS.04.NNA · PARTE 1: DESPEGUE (TOM & CG)"
                   : "🛬 F.OPS.04.NNA · PARTE 2: ATERRIZAJE (LM & CG)"}
               </span>
-              <div className="text-[10px] text-slate-500 font-medium">
+              <div className="text-xs sm:text-[13px] text-slate-500 font-medium">
                 {mission.name} · Crucero al 50% Potencia ({mission.scenario.flightTimeHrs} h)
               </div>
             </div>
@@ -337,7 +337,7 @@ export function PreflightLoadsheetWidget({
                       setActiveTab("takeoff");
                       setErrors({});
                     }}
-                    className={`px-2 py-0.5 rounded-md text-[10px] font-bold transition-all cursor-pointer ${
+                    className={`px-2.5 py-1 rounded-md text-xs sm:text-[13px] font-bold transition-all cursor-pointer ${
                       activeTab === "takeoff"
                         ? "bg-white dark:bg-slate-700 text-[#0B2E59] dark:text-sky-300 shadow-2xs"
                         : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
@@ -351,7 +351,7 @@ export function PreflightLoadsheetWidget({
                       setActiveTab("landing");
                       setErrors({});
                     }}
-                    className={`px-2 py-0.5 rounded-md text-[10px] font-bold transition-all cursor-pointer ${
+                    className={`px-2.5 py-1 rounded-md text-xs sm:text-[13px] font-bold transition-all cursor-pointer ${
                       activeTab === "landing"
                         ? "bg-white dark:bg-slate-700 text-[#0B2E59] dark:text-sky-300 shadow-2xs"
                         : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
@@ -367,7 +367,7 @@ export function PreflightLoadsheetWidget({
                   key={m.id}
                   type="button"
                   onClick={() => loadMissionScenario(m, idx)}
-                  className={`px-2 py-0.5 rounded-lg text-[10px] font-extrabold transition-all cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-lg text-xs sm:text-[13px] font-extrabold transition-all cursor-pointer ${
                     selectedMissionIndex === idx
                       ? "bg-[#1a80ff] text-white shadow-2xs"
                       : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
@@ -379,42 +379,42 @@ export function PreflightLoadsheetWidget({
             </div>
           </div>
 
-          {/* Table Container - Strictly sized, zero outer scroll */}
+          {/* Table Container - Standard typography (text-xs sm:text-[13px]), zero outer scroll */}
           <div className="flex-1 min-h-0 my-1 overflow-hidden flex flex-col justify-center">
             {currentStep === "takeoff" ? (
-              /* PARTE 1: TABLA DE DESPEGUE (7 FILAS COMPACTAS) */
-              <table className="w-full text-left text-[11px] border-collapse">
+              /* PARTE 1: TABLA DE DESPEGUE (7 FILAS) */
+              <table className="w-full text-left text-xs sm:text-[13px] border-collapse">
                 <thead>
-                  <tr className="border-b border-slate-200 dark:border-slate-700 text-[10px] font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
-                    <th className="py-1 px-1.5">ITEM</th>
-                    <th className="py-1 px-1.5 text-right">MASA (KG)</th>
-                    <th className="py-1 px-1.5 text-right">BRAZO (M)</th>
-                    <th className="py-1 px-1.5 text-right">MOMENTO (KGM)</th>
+                  <tr className="border-b border-slate-200 dark:border-slate-700 font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
+                    <th className="py-1.5 px-2">ITEM</th>
+                    <th className="py-1.5 px-2 text-right">MASA (KG)</th>
+                    <th className="py-1.5 px-2 text-right">BRAZO (M)</th>
+                    <th className="py-1.5 px-2 text-right">MOMENTO (KGM)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                   {/* EMPTY WEIGHT */}
                   <tr className="bg-slate-50/50 dark:bg-slate-800/30 font-semibold">
-                    <td className="py-1 px-1.5">EMPTY WEIGHT (EC-NNA)</td>
-                    <td className="py-1 px-1.5 text-right font-mono text-slate-600 dark:text-slate-300">755,44</td>
-                    <td className="py-1 px-1.5 text-right font-mono text-slate-600 dark:text-slate-300">1,042</td>
-                    <td className="py-1 px-1.5 text-right font-mono text-slate-600 dark:text-slate-300">787,23</td>
+                    <td className="py-1.5 px-2">EMPTY WEIGHT (EC-NNA)</td>
+                    <td className="py-1.5 px-2 text-right font-mono text-slate-600 dark:text-slate-300">755,44</td>
+                    <td className="py-1.5 px-2 text-right font-mono text-slate-600 dark:text-slate-300">1,042</td>
+                    <td className="py-1.5 px-2 text-right font-mono text-slate-600 dark:text-slate-300">787,23</td>
                   </tr>
 
                   {/* PILOTS */}
                   <tr>
-                    <td className="py-1 px-1.5 font-medium">PILOTS (FRONT)</td>
-                    <td className="py-1 px-1.5 text-right font-mono font-bold text-slate-700 dark:text-slate-200">
+                    <td className="py-1.5 px-2 font-medium">PILOTS (FRONT)</td>
+                    <td className="py-1.5 px-2 text-right font-mono font-bold text-slate-700 dark:text-slate-200">
                       {expected.pilotsMass} kg
                     </td>
-                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">0,940</td>
-                    <td className="py-1 px-1.5 text-right">
+                    <td className="py-1.5 px-2 text-right font-mono text-slate-500">0,940</td>
+                    <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
                         placeholder="Momento"
                         value={pilotsMoment}
                         onChange={(e) => setPilotsMoment(e.target.value)}
-                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
                           errors.pilotsMoment
                             ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700"
                             : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
@@ -425,19 +425,19 @@ export function PreflightLoadsheetWidget({
 
                   {/* PASSENGERS */}
                   <tr>
-                    <td className="py-1 px-1.5 font-medium">PASSENGERS (REAR)</td>
-                    <td className="py-1 px-1.5 text-right font-mono text-slate-700 dark:text-slate-200">
+                    <td className="py-1.5 px-2 font-medium">PASSENGERS (REAR)</td>
+                    <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-200">
                       {expected.paxMass > 0 ? `${expected.paxMass} kg` : "0 kg"}
                     </td>
-                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">1,854</td>
-                    <td className="py-1 px-1.5 text-right">
+                    <td className="py-1.5 px-2 text-right font-mono text-slate-500">1,854</td>
+                    <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
                         disabled={expected.paxMass === 0}
                         placeholder={expected.paxMass === 0 ? "0" : "Momento"}
                         value={expected.paxMass === 0 ? "0" : paxMoment}
                         onChange={(e) => setPaxMoment(e.target.value)}
-                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
                           errors.paxMoment
                             ? "border-rose-500 bg-rose-50 text-rose-700"
                             : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
@@ -448,18 +448,18 @@ export function PreflightLoadsheetWidget({
 
                   {/* BAGGAGE */}
                   <tr>
-                    <td className="py-1 px-1.5 font-medium">BAGGAGE AREA 1</td>
-                    <td className="py-1 px-1.5 text-right font-mono text-slate-700 dark:text-slate-200">
+                    <td className="py-1.5 px-2 font-medium">BAGGAGE AREA 1</td>
+                    <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-200">
                       {expected.baggageMass} kg
                     </td>
-                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">2,413</td>
-                    <td className="py-1 px-1.5 text-right">
+                    <td className="py-1.5 px-2 text-right font-mono text-slate-500">2,413</td>
+                    <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
                         placeholder="Momento"
                         value={baggageMoment}
                         onChange={(e) => setBaggageMoment(e.target.value)}
-                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
                           errors.baggageMoment
                             ? "border-rose-500 bg-rose-50 text-rose-700"
                             : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
@@ -470,28 +470,28 @@ export function PreflightLoadsheetWidget({
 
                   {/* ZERO FUEL MASS */}
                   <tr className="bg-sky-50/60 dark:bg-sky-950/30 font-bold text-[#0B2E59] dark:text-sky-300">
-                    <td className="py-1 px-1.5 uppercase text-[10.5px]">ZERO FUEL MASS (ZFM)</td>
-                    <td className="py-1 px-1.5 text-right">
+                    <td className="py-1.5 px-2 uppercase text-xs sm:text-[13px]">ZERO FUEL MASS (ZFM)</td>
+                    <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
                         placeholder="Suma Masa"
                         value={zfmMass}
                         onChange={(e) => setZfmMass(e.target.value)}
-                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
                           errors.zfmMass
                             ? "border-rose-500 bg-rose-50 text-rose-700"
                             : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                         }`}
                       />
                     </td>
-                    <td className="py-1 px-1.5 text-right font-mono text-slate-400">—</td>
-                    <td className="py-1 px-1.5 text-right">
+                    <td className="py-1.5 px-2 text-right font-mono text-slate-400">—</td>
+                    <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
                         placeholder="Suma Momento"
                         value={zfmMoment}
                         onChange={(e) => setZfmMoment(e.target.value)}
-                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
                           errors.zfmMoment
                             ? "border-rose-500 bg-rose-50 text-rose-700"
                             : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
@@ -502,30 +502,30 @@ export function PreflightLoadsheetWidget({
 
                   {/* TAKEOFF FUEL */}
                   <tr>
-                    <td className="py-1 px-1.5 font-medium">
+                    <td className="py-1.5 px-2 font-medium">
                       TAKEOFF FUEL ({expected.fuelLiters} L Jet-A1)
                     </td>
-                    <td className="py-1 px-1.5 text-right">
+                    <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
                         placeholder="Kg (L × 0.84)"
                         value={fuelMass}
                         onChange={(e) => setFuelMass(e.target.value)}
-                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
                           errors.fuelMass
                             ? "border-rose-500 bg-rose-50 text-rose-700"
                             : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                         }`}
                       />
                     </td>
-                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">1,168</td>
-                    <td className="py-1 px-1.5 text-right">
+                    <td className="py-1.5 px-2 text-right font-mono text-slate-500">1,168</td>
+                    <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
                         placeholder="Momento"
                         value={fuelMoment}
                         onChange={(e) => setFuelMoment(e.target.value)}
-                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
                           errors.fuelMoment
                             ? "border-rose-500 bg-rose-50 text-rose-700"
                             : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
@@ -536,42 +536,42 @@ export function PreflightLoadsheetWidget({
 
                   {/* TAKEOFF MASS (TOM) */}
                   <tr className="bg-emerald-50/70 dark:bg-emerald-950/30 font-bold text-emerald-900 dark:text-emerald-300">
-                    <td className="py-1 px-1.5 uppercase text-[10.5px]">
+                    <td className="py-1.5 px-2 uppercase text-xs sm:text-[13px]">
                       TAKEOFF MASS (TOM & CG)
                     </td>
-                    <td className="py-1 px-1.5 text-right">
+                    <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
                         placeholder="TOM (kg)"
                         value={tomMass}
                         onChange={(e) => setTomMass(e.target.value)}
-                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
                           errors.tomMass
                             ? "border-rose-500 bg-rose-50 text-rose-700"
                             : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
                         }`}
                       />
                     </td>
-                    <td className="py-1 px-1.5 text-right">
+                    <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
                         placeholder="CG (m)"
                         value={tomCg}
                         onChange={(e) => setTomCg(e.target.value)}
-                        className={`w-16 text-right px-1 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                        className={`w-20 text-right px-1.5 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
                           errors.tomCg
                             ? "border-rose-500 bg-rose-50 text-rose-700"
                             : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
                         }`}
                       />
                     </td>
-                    <td className="py-1 px-1.5 text-right">
+                    <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
                         placeholder="Momento TOM"
                         value={tomMoment}
                         onChange={(e) => setTomMoment(e.target.value)}
-                        className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
                           errors.tomMoment
                             ? "border-rose-500 bg-rose-50 text-rose-700"
                             : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
@@ -582,57 +582,57 @@ export function PreflightLoadsheetWidget({
                 </tbody>
               </table>
             ) : (
-              /* PARTE 2: TABLA DE ATERRIZAJE (5 FILAS COMPACTAS) */
+              /* PARTE 2: TABLA DE ATERRIZAJE (5 FILAS) */
               <div className="space-y-2">
-                <div className="p-2 rounded-xl bg-sky-50/70 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs flex items-center justify-between">
+                <div className="p-2.5 rounded-xl bg-sky-50/70 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs sm:text-[13px] flex items-center justify-between">
                   <span className="font-semibold text-sky-900 dark:text-sky-200">
                     Condición de Despegue (TOM): <strong>{expected.tomMass} kg</strong> · CG: <strong>{expected.tomCg} m</strong>
                   </span>
-                  <span className="text-[10px] text-sky-700 dark:text-sky-300 font-mono">
+                  <span className="text-xs sm:text-[13px] text-sky-700 dark:text-sky-300 font-mono">
                     Momento: {expected.tomMoment} kg·m
                   </span>
                 </div>
 
-                <table className="w-full text-left text-[11px] border-collapse">
+                <table className="w-full text-left text-xs sm:text-[13px] border-collapse">
                   <thead>
-                    <tr className="border-b border-slate-200 dark:border-slate-700 text-[10px] font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
-                      <th className="py-1 px-1.5">ITEM</th>
-                      <th className="py-1 px-1.5 text-right">MASA (KG)</th>
-                      <th className="py-1 px-1.5 text-right">BRAZO (M)</th>
-                      <th className="py-1 px-1.5 text-right">MOMENTO (KGM)</th>
+                    <tr className="border-b border-slate-200 dark:border-slate-700 font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
+                      <th className="py-1.5 px-2">ITEM</th>
+                      <th className="py-1.5 px-2 text-right">MASA (KG)</th>
+                      <th className="py-1.5 px-2 text-right">BRAZO (M)</th>
+                      <th className="py-1.5 px-2 text-right">MOMENTO (KGM)</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                     {/* TAKEOFF MASS */}
                     <tr className="bg-slate-50/50 dark:bg-slate-800/30 font-semibold">
-                      <td className="py-1.5 px-2">TAKEOFF MASS (TOM)</td>
-                      <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
+                      <td className="py-2 px-2">TAKEOFF MASS (TOM)</td>
+                      <td className="py-2 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
                         {expected.tomMass}
                       </td>
-                      <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
+                      <td className="py-2 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
                         {expected.tomCg}
                       </td>
-                      <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
+                      <td className="py-2 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
                         {expected.tomMoment}
                       </td>
                     </tr>
 
                     {/* TRIP FUEL */}
                     <tr className="text-amber-900 dark:text-amber-300 font-medium">
-                      <td className="py-1.5 px-2">
+                      <td className="py-2 px-2">
                         (-) TRIP FUEL ({expected.tripFuelLiters} L a 50% Potencia)
                       </td>
-                      <td className="py-1.5 px-2 text-right font-mono font-bold text-amber-700 dark:text-amber-400">
+                      <td className="py-2 px-2 text-right font-mono font-bold text-amber-700 dark:text-amber-400">
                         -{expected.tripFuelMass} kg
                       </td>
-                      <td className="py-1.5 px-2 text-right font-mono text-slate-500">1,168</td>
-                      <td className="py-1.5 px-2 text-right">
+                      <td className="py-2 px-2 text-right font-mono text-slate-500">1,168</td>
+                      <td className="py-2 px-2 text-right">
                         <input
                           type="text"
                           placeholder="Ej: 15.01"
                           value={tripFuelMoment}
                           onChange={(e) => setTripFuelMoment(e.target.value)}
-                          className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] ${
+                          className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
                             errors.tripFuelMoment
                               ? "border-rose-500 bg-rose-50 text-rose-700"
                               : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
@@ -643,42 +643,42 @@ export function PreflightLoadsheetWidget({
 
                     {/* LANDING MASS (LM) */}
                     <tr className="bg-emerald-50/70 dark:bg-emerald-950/30 font-bold text-emerald-900 dark:text-emerald-300">
-                      <td className="py-1.5 px-2 uppercase text-[10.5px]">
+                      <td className="py-2 px-2 uppercase text-xs sm:text-[13px]">
                         LANDING MASS (LM & CG)
                       </td>
-                      <td className="py-1.5 px-2 text-right">
+                      <td className="py-2 px-2 text-right">
                         <input
                           type="text"
                           placeholder="LM (kg)"
                           value={lmMass}
                           onChange={(e) => setLmMass(e.target.value)}
-                          className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                          className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
                             errors.lmMass
                               ? "border-rose-500 bg-rose-50 text-rose-700"
                               : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
                           }`}
                         />
                       </td>
-                      <td className="py-1.5 px-2 text-right">
+                      <td className="py-2 px-2 text-right">
                         <input
                           type="text"
                           placeholder="CG (m)"
                           value={lmCg}
                           onChange={(e) => setLmCg(e.target.value)}
-                          className={`w-16 text-right px-1 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                          className={`w-20 text-right px-1.5 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
                             errors.lmCg
                               ? "border-rose-500 bg-rose-50 text-rose-700"
                               : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
                           }`}
                         />
                       </td>
-                      <td className="py-1.5 px-2 text-right">
+                      <td className="py-2 px-2 text-right">
                         <input
                           type="text"
                           placeholder="Momento LM"
                           value={lmMoment}
                           onChange={(e) => setLmMoment(e.target.value)}
-                          className={`w-24 text-right px-1.5 py-0.5 rounded border font-mono text-[11px] font-bold ${
+                          className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
                             errors.lmMoment
                               ? "border-rose-500 bg-rose-50 text-rose-700"
                               : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
@@ -695,14 +695,14 @@ export function PreflightLoadsheetWidget({
           {/* Action Button & Messages */}
           <div className="pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 space-y-1">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] text-slate-500 italic">
+              <span className="text-xs sm:text-[13px] text-slate-500 italic">
                 * Densidad Jet A-1 = 0,84 kg/L · Brazo Fuel = 1,168 m · MTOM = 1.043 kg
               </span>
 
               <button
                 type="button"
                 onClick={handleValidate}
-                className="px-3.5 py-1.5 rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] text-white font-extrabold text-xs shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95"
+                className="px-4 py-2 rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] text-white font-extrabold text-xs sm:text-[13px] shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95"
               >
                 {currentStep === "takeoff"
                   ? "Comprobar Despegue y Graficar TOW ➔"
@@ -712,20 +712,20 @@ export function PreflightLoadsheetWidget({
 
             {/* Error alerts */}
             {Object.keys(errors).length > 0 && (
-              <div className="p-1.5 rounded-lg border border-rose-200 dark:border-rose-800 bg-rose-50/90 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 text-[11px] flex items-center justify-between">
+              <div className="p-2 rounded-lg border border-rose-200 dark:border-rose-800 bg-rose-50/90 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 text-xs sm:text-[13px] flex items-center justify-between">
                 <span>⚠️ {Object.values(errors)[0]}</span>
-                <span className="font-bold text-[10px] text-rose-600">Intento {attempts}</span>
+                <span className="font-bold text-xs text-rose-600">Intento {attempts}</span>
               </div>
             )}
 
             {isPassed && (
-              <div className="p-1.5 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-[11px] flex items-center justify-between">
+              <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px] flex items-center justify-between">
                 <span>
                   ✓ {currentStep === "takeoff"
                     ? `¡Despegue válido! TOW: ${expected.tomMass} kg, CG: ${expected.tomCg} m (${isTomNormal ? "Cat. Normal" : "Fuera de límites"}).`
                     : `¡Aterrizaje válido! LM: ${expected.lmMass} kg, CG: ${expected.lmCg} m (${isLmNormal ? "Cat. Normal" : "Fuera de límites"}).`}
                 </span>
-                <span className="font-bold text-[10px] text-emerald-600">COMPLETADO</span>
+                <span className="font-bold text-xs text-emerald-600">COMPLETADO</span>
               </div>
             )}
           </div>
@@ -742,7 +742,7 @@ export function PreflightLoadsheetWidget({
             <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
               📈 ENVOLVENTE EN VIVO (FIG. 6-8)
             </span>
-            <span className="text-[10px] font-semibold text-slate-500">
+            <span className="text-xs sm:text-[13px] font-semibold text-slate-500">
               {currentStep === "takeoff" ? "Punto de Despegue (TOW)" : "Trayectoria TOW → LW"}
             </span>
           </div>
@@ -811,20 +811,24 @@ export function PreflightLoadsheetWidget({
             </svg>
           </div>
 
-          {/* Envelope Status Footer */}
-          <div className="grid grid-cols-2 gap-2 text-[10.5px] pt-1 border-t border-slate-200 dark:border-slate-800 shrink-0">
-            <div className="p-1.5 rounded-lg bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
-              <strong className="text-blue-900 dark:text-sky-300 block">DESPEGUE (TOW):</strong>
-              <div>{expected.tomMass} kg · CG {expected.tomCg} m</div>
-              <span className={`font-bold ${isTomNormal ? "text-emerald-600" : "text-rose-600"}`}>
+          {/* Envelope Status Footer - Each state in a single clean line with general font size */}
+          <div className="space-y-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 text-xs sm:text-[13px]">
+            <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
+              <div className="flex items-center gap-2">
+                <strong className="text-blue-900 dark:text-sky-300">DESPEGUE (TOW):</strong>
+                <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.tomMass} kg · CG {expected.tomCg} m</span>
+              </div>
+              <span className={`font-bold ${isTomNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
                 {isTomNormal ? "✓ Categoría Normal" : "⚠️ Fuera de Límites"}
               </span>
             </div>
 
-            <div className="p-1.5 rounded-lg bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
-              <strong className="text-emerald-900 dark:text-emerald-300 block">ATERRIZAJE (LW):</strong>
-              <div>{expected.lmMass} kg · CG {expected.lmCg} m</div>
-              <span className={`font-bold ${isLmNormal ? "text-emerald-600" : "text-rose-600"}`}>
+            <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+              <div className="flex items-center gap-2">
+                <strong className="text-emerald-900 dark:text-emerald-300">ATERRIZAJE (LW):</strong>
+                <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.lmMass} kg · CG {expected.lmCg} m</span>
+              </div>
+              <span className={`font-bold ${isLmNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
                 {isLmNormal ? (isTomUtility ? "✓ Cat. Utilidad" : "✓ Cat. Normal") : "⚠️ Fuera de Límites"}
               </span>
             </div>

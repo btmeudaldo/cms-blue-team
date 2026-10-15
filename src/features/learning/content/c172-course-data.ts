@@ -159,11 +159,6 @@ export const C172_LESSON_1 = {
           </div>
         </div>
 
-        <!-- Advertencia POH Actualización situada a continuación de los cuadros (no alineada abajo) -->
-        <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[18px] leading-tight text-amber-900 dark:text-amber-200">
-          <span class="text-xl shrink-0">⚠️</span>
-          <span><strong>WARNING (POH):</strong> La operación segura solo está asegurada con un suplemento POH actualizado (Service Bulletin TM TAE 000-0004).</span>
-        </div>
       </div>
     </div>
 
@@ -175,14 +170,20 @@ export const C172_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">✈️ FLOTA C172</span>
           </div>
 
-          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
-            <p class="text-[18px] text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+          <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-[18px] text-slate-700 dark:text-slate-200 leading-snug font-medium">
               Este curso no sustituye al POH básico de Cessna; define exclusivamente las diferencias y procedimientos del motor diésel y sus sistemas para operar con seguridad.
             </p>
           </div>
 
+          <!-- Advertencia POH Actualización reubicada en la columna derecha para equilibrar el espacio -->
+          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[17px] leading-tight text-amber-900 dark:text-amber-200">
+            <span class="text-lg shrink-0">⚠️</span>
+            <span><strong>WARNING (POH):</strong> La operación segura solo está asegurada con un suplemento POH actualizado (Service Bulletin TM TAE 000-0004).</span>
+          </div>
+
           <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/C172-tarjeta.jpg" alt="Cessna 172 Continental Diésel" class="w-full max-h-[340px] object-cover rounded-xl" onerror="if(this.src!=='/images/c172/C172-tarjeta.jpg')this.src='/images/c172/C172-tarjeta.jpg'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/C172-tarjeta.jpg" alt="Cessna 172 Continental Diésel" class="w-full max-h-[230px] object-cover rounded-xl" onerror="if(this.src!=='/images/c172/C172-tarjeta.jpg')this.src='/images/c172/C172-tarjeta.jpg'" />
           </div>
         </div>
 
