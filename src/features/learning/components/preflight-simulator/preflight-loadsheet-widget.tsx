@@ -314,67 +314,49 @@ export function PreflightLoadsheetWidget({
   const isLmNormal = isCgInsideNormal(expected.lmMass, expected.lmCg);
 
   return (
-    <div className="w-full flex flex-col space-y-4 text-slate-800 dark:text-slate-100">
-      {/* Mission selector banner */}
-      <div className="p-3 rounded-2xl bg-sky-50/80 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-sky-700 dark:text-sky-300 uppercase tracking-wider">
-              Avión de Referencia: EC-NNA (C172 · CD-155)
-            </span>
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-sky-200/80 dark:bg-sky-900 text-sky-800 dark:text-sky-200">
-              {mission.badge}
-            </span>
-          </div>
-          <h3 className="text-sm font-extrabold text-[#0B2E59] dark:text-sky-200 mt-0.5">
-            {mission.name}
-          </h3>
-          <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-            {mission.description}
-          </p>
-        </div>
-
-        {/* Mission selector buttons */}
-        <div className="flex items-center gap-1.5 shrink-0">
-          {PREFLIGHT_MISSIONS.map((m, idx) => (
-            <button
-              key={m.id}
-              type="button"
-              onClick={() => loadMissionScenario(m, idx)}
-              className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                selectedMissionIndex === idx
-                  ? "bg-[#1a80ff] text-white shadow-xs"
-                  : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
-              }`}
-            >
-              Misión {idx + 1}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Main Grid: Left = Official F.OPS.04 Table, Right = SVG Envelope with live plot */}
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-3 items-start">
-        {/* Left Column (xl:col-span-7): Table F.OPS.04 */}
-        <div className="xl:col-span-7 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3.5 shadow-xs space-y-3">
-          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
-            <div className="flex items-center gap-2">
-              <span className="text-base">📋</span>
-              <span className="text-xs font-black uppercase tracking-wider text-[#0B2E59] dark:text-sky-300">
-                F.OPS.04.NNA · MASS AND BALANCE LOADSHEET
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+      {/* Columna Izquierda (lg:col-span-7): F.OPS.04.NNA Loadsheet (Altura Fija 590px) */}
+      <div className="lg:col-span-7 flex flex-col">
+        <div
+          className="h-[590px] flex flex-col justify-between p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
+          style={{ height: "590px" }}
+        >
+          {/* Header & Mission Selector */}
+          <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+                📋 F.OPS.04.NNA · MASS AND BALANCE
               </span>
+              <div className="text-[10px] text-slate-500 font-medium">
+                {mission.name} · {expected.pilotsMass} kg del. / {expected.paxMass} kg tras. / {expected.fuelLiters} L Jet-A1
+              </div>
             </div>
-            <span className="text-[10px] text-slate-400 font-bold">Rev. 4 · 13/12/23</span>
+            <div className="flex items-center gap-1 shrink-0">
+              {PREFLIGHT_MISSIONS.map((m, idx) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  onClick={() => loadMissionScenario(m, idx)}
+                  className={`px-2 py-0.5 rounded-lg text-[10px] font-extrabold transition-all cursor-pointer ${
+                    selectedMissionIndex === idx
+                      ? "bg-[#1a80ff] text-white shadow-2xs"
+                      : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
+                  }`}
+                >
+                  M{idx + 1}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs border-collapse">
+          <div className="flex-1 min-h-0 overflow-y-auto my-1">
+            <table className="w-full text-left text-[11px] border-collapse">
               <thead>
-                <tr className="border-b-2 border-slate-200 dark:border-slate-700 text-[11px] font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-50 dark:bg-slate-800/60">
-                  <th className="py-1.5 px-2">ITEM</th>
-                  <th className="py-1.5 px-2 text-right">MASS (KG)</th>
-                  <th className="py-1.5 px-2 text-right">ARM (M)</th>
-                  <th className="py-1.5 px-2 text-right">MOMENT (KGM)</th>
+                <tr className="border-b border-slate-200 dark:border-slate-700 text-[10px] font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
+                  <th className="py-1 px-1.5">ITEM</th>
+                  <th className="py-1 px-1.5 text-right">MASS (KG)</th>
+                  <th className="py-1 px-1.5 text-right">ARM (M)</th>
+                  <th className="py-1 px-1.5 text-right">MOMENT (KGM)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -689,12 +671,12 @@ export function PreflightLoadsheetWidget({
           )}
 
           {isPassed && (
-            <div className="p-3 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs space-y-1 animate-in zoom-in-95">
-              <strong className="flex items-center gap-1.5 font-bold text-sm text-emerald-800 dark:text-emerald-300">
+            <div className="p-2.5 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs space-y-0.5 animate-in zoom-in-95 shrink-0">
+              <strong className="flex items-center gap-1.5 font-bold text-xs text-emerald-800 dark:text-emerald-300">
                 <span>🎉</span>
                 <span>¡HOJA DE CARGA VALIDADA CON ÉXITO!</span>
               </strong>
-              <p className="text-[11px]">
+              <p className="text-[10.5px]">
                 Has completado correctamente todos los brazos, momentos y centro de gravedad.
                 {isTomNormal
                   ? ` El avión está dentro de la Categoría Normal (CG TOM = ${expected.tomCg} m, MTOM = ${expected.tomMass} kg).`
@@ -703,14 +685,19 @@ export function PreflightLoadsheetWidget({
             </div>
           )}
         </div>
+      </div>
 
-        {/* Right Column (xl:col-span-5): Interactive SVG Envelope */}
-        <div className="xl:col-span-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3.5 shadow-xs space-y-2 flex flex-col">
-          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
-            <span className="text-xs font-black uppercase tracking-wider text-[#0B2E59] dark:text-sky-300">
-              🛩️ ENVOLVENTE DE CENTRO DE GRAVEDAD
+      {/* Columna Derecha (lg:col-span-5): Interactive SVG Envelope (Altura Fija 590px) */}
+      <div className="lg:col-span-5 flex flex-col">
+        <div
+          className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
+          style={{ height: "590px" }}
+        >
+          <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+              📈 ENVOLVENTE EN VIVO (FIG. 6-8)
             </span>
-            <span className="text-[10px] text-slate-500 font-semibold">Figure 6-8 (SVG Vectorial)</span>
+            <span className="text-[10px] text-slate-500 font-semibold">C172 CD-155</span>
           </div>
 
           {/* SVG Container with overlay points */}

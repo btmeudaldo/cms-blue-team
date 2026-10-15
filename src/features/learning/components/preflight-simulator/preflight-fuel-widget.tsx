@@ -27,15 +27,14 @@ export function PreflightFuelWidget({
   const [warnings, setWarnings] = useState<string[]>([]);
   const [isPassed, setIsPassed] = useState(isAlreadyCompleted);
 
-  // Expected values based on Continental CD-155 (70% load = 22.1 L/h)
-  // Taxi: 4 L (fixed in Note 2 of POH)
-  // Trip: flightTimeHrs * 22.1 L/h
-  // Reserve: 45 min = 0.75 h * 22.1 L/h = 16.6 L (Part-NCO.OP.125)
-  // Landing: Reserve (16.6 L) + Contingency (0 L for basic VFR) = 16.6 L
-  // Ramp: Trip + Landing + Taxi (4 L)
-  const taxiFuelL = 4.0;
-  const expectedTripL = Math.round(mission.scenario.flightTimeHrs * 22.1 * 10) / 10;
-  const expectedReserveL = Math.round(0.75 * 22.1 * 10) / 10; // 16.6 L
+  // Flight school cruise power: 55% Load = 17.0 L/h (or 50% = 15.3 L/h)
+  const loadPct = mission.scenario.cruiseLoadPct; // 55% or 50%
+  const hourlyRate = loadPct === 50 ? 15.3 : 17.0;
+
+  // Taxi: 3.0 L (puesta en marcha, calentamiento y rodaje)
+  const taxiFuelL = 3.0;
+  const expectedTripL = Math.round(mission.scenario.flightTimeHrs * hourlyRate * 10) / 10;
+  const expectedReserveL = Math.round(0.75 * hourlyRate * 10) / 10; // 12.8 L @ 55% or 11.5 L @ 50%
   const expectedLandingL = expectedReserveL;
   const expectedRampL = Math.round((expectedTripL + expectedLandingL + taxiFuelL) * 10) / 10;
 
@@ -46,22 +45,22 @@ export function PreflightFuelWidget({
 
     // Check Trip Fuel
     const userTrip = num(tripFuelLiters);
-    if (isNaN(userTrip) || !checkValueTolerance(userTrip, expectedTripL, 0.05, 0.5).isOk) {
+    if (isNaN(userTrip) || !checkValueTolerance(userTrip, expectedTripL, 0.06, 0.6).isOk) {
       newErrors.trip =
         attempts >= 2
-          ? `Solución: Trip fuel = ${mission.scenario.flightTimeHrs} h × 22.1 l/h = ${expectedTripL} L`
-          : `Calcula el combustible de ruta para ${mission.scenario.flightTimeHrs} h de vuelo al 70% (22.1 l/h).`;
+          ? `Solución: Trip fuel = ${mission.scenario.flightTimeHrs} h × ${hourlyRate} L/h = ${expectedTripL} L.`
+          : `Calcula el combustible de ruta para ${mission.scenario.flightTimeHrs} h al ${loadPct}% (${hourlyRate} L/h).`;
     }
 
     // Check Reserve Fuel (45 min VFR)
     const userReserve = num(reserveFuelLiters);
-    if (isNaN(userReserve) || !checkValueTolerance(userReserve, expectedReserveL, 0.05, 0.5).isOk) {
+    if (isNaN(userReserve) || !checkValueTolerance(userReserve, expectedReserveL, 0.06, 0.6).isOk) {
       newErrors.reserve =
         attempts >= 2
-          ? `Solución: Reserva final legal (45 min) = 0.75 h × 22.1 l/h = ${expectedReserveL} L`
-          : "La reserva legal según Part-NCO.OP.125 para VFR diurno es de 45 minutos (0.75 h × 22.1 l/h).";
+          ? `Solución: Reserva final 45 min = 0.75 h × ${hourlyRate} L/h = ${expectedReserveL} L.`
+          : `La reserva obligatoria EASA (45 min) a ${hourlyRate} L/h es: 0.75 h × ${hourlyRate} L/h.`;
     } else if (Math.abs(userReserve - expectedReserveL) > 0.1) {
-      newWarnings.push(`Reserva legal: Tu valor (${userReserve} L) es aceptado por redondeo (16.5-17.0 L).`);
+      newWarnings.push(`Reserva legal: Tu valor (${userReserve} L) es aceptado por redondeo (${expectedReserveL} L).`);
     }
 
     // Check Landing Fuel (at least Reserve)
@@ -69,17 +68,17 @@ export function PreflightFuelWidget({
     if (isNaN(userLanding) || userLanding < expectedReserveL * 0.95) {
       newErrors.landing =
         attempts >= 2
-          ? `Solución: Landing Fuel debe ser igual o superior a la Reserva legal (${expectedReserveL} L)`
-          : `El combustible estimado al aterrizaje no puede ser inferior a la Reserva legal obligatoria (${expectedReserveL} L).`;
+          ? `Solución: Landing Fuel debe ser igual o superior a la Reserva (${expectedReserveL} L).`
+          : `El combustible remanente en destino no puede ser inferior a la Reserva final legal (${expectedReserveL} L).`;
     }
 
-    // Check Ramp Fuel (Trip + Landing + 4 L Taxi)
+    // Check Ramp Fuel (Trip + Landing + Taxi)
     const userRamp = num(rampFuelLiters);
-    if (isNaN(userRamp) || !checkValueTolerance(userRamp, expectedRampL, 0.05, 1).isOk) {
+    if (isNaN(userRamp) || !checkValueTolerance(userRamp, expectedRampL, 0.06, 1.2).isOk) {
       newErrors.ramp =
         attempts >= 2
-          ? `Solución: Ramp Fuel = Trip (${expectedTripL}) + Landing (${expectedLandingL}) + 4 L (Rodaje) = ${expectedRampL} L`
-          : `Ramp Fuel = Trip + Landing + 4 L (consumo de arranque y rodaje según POH).`;
+          ? `Solución: Ramp Fuel = Trip (${expectedTripL}) + Landing (${expectedLandingL}) + Taxi (${taxiFuelL} L) = ${expectedRampL} L.`
+          : `Ramp Fuel = Trip (${expectedTripL} L) + Landing (${expectedLandingL} L) + Taxi (${taxiFuelL} L).`;
     }
 
     setErrors(newErrors);
@@ -96,271 +95,281 @@ export function PreflightFuelWidget({
   };
 
   return (
-    <div className="w-full flex flex-col space-y-4 text-slate-800 dark:text-slate-100">
-      {/* Header banner */}
-      <div className="p-3 rounded-2xl bg-sky-50/80 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-sky-700 dark:text-sky-300 uppercase tracking-wider">
-              Documento Oficial F.OPS.02 · Sección Fuel Quantity
-            </span>
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-sky-200/80 dark:bg-sky-900 text-sky-800 dark:text-sky-200">
-              Reglamento Part-NCO.OP.125
-            </span>
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+      {/* Columna Izquierda (lg:col-span-7): Formulario F.OPS.02 (Altura Fija 590px) */}
+      <div className="lg:col-span-7 flex flex-col">
+        <div
+          className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
+          style={{ height: "590px" }}
+        >
+          {/* Header & Mission Selector */}
+          <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+                ⛽ PLANIFICACIÓN DE COMBUSTIBLE F.OPS.02
+              </span>
+              <div className="text-[10px] text-slate-500 font-medium">
+                {mission.name} · {mission.scenario.flightTimeHrs} h vuelo · Régimen Escuela {loadPct}% ({hourlyRate} L/h)
+              </div>
+            </div>
+            <div className="flex items-center gap-1 shrink-0">
+              {PREFLIGHT_MISSIONS.map((m, idx) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  onClick={() => {
+                    setSelectedMissionIndex(idx);
+                    setAttempts(0);
+                    setErrors({});
+                    setWarnings([]);
+                  }}
+                  className={`px-2 py-0.5 rounded-lg text-[10px] font-extrabold transition-all cursor-pointer ${
+                    selectedMissionIndex === idx
+                      ? "bg-[#1a80ff] text-white shadow-2xs"
+                      : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
+                  }`}
+                >
+                  M{idx + 1}
+                </button>
+              ))}
+            </div>
           </div>
-          <h3 className="text-sm font-extrabold text-[#0B2E59] dark:text-sky-200 mt-0.5">
-            Cálculo de Combustible para la Misión: {mission.name}
-          </h3>
-          <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-            Tiempo de vuelo: <strong>{mission.scenario.flightTimeHrs} h</strong> · Consumo de crucero CD-155 al 70%: <strong>22.1 L/h</strong> · Rodaje: <strong>4.0 L</strong>.
-          </p>
-        </div>
 
-        {/* Mission selector */}
-        <div className="flex items-center gap-1.5 shrink-0">
-          {PREFLIGHT_MISSIONS.map((m, idx) => (
-            <button
-              key={m.id}
-              type="button"
-              onClick={() => {
-                setSelectedMissionIndex(idx);
-                setTripFuelLiters("");
-                setReserveFuelLiters("");
-                setLandingFuelLiters("");
-                setRampFuelLiters("");
-                setErrors({});
-                setWarnings([]);
-                setAttempts(0);
-                setIsPassed(false);
-              }}
-              className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                selectedMissionIndex === idx
-                  ? "bg-[#1a80ff] text-white shadow-xs"
-                  : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
-              }`}
-            >
-              Misión {idx + 1}
-            </button>
-          ))}
+          {/* Form Content */}
+          <div className="flex-1 min-h-0 overflow-y-auto my-1 space-y-2">
+            <div className="grid grid-cols-2 gap-2">
+              {/* Taxi Fuel */}
+              <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">
+                <span className="text-[10.5px] font-bold text-slate-600 dark:text-slate-300 block mb-0.5">
+                  1. Taxi Fuel (Rodaje y Puesta en Marcha)
+                </span>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-mono font-bold text-[#0B2E59] dark:text-sky-300 text-sm">
+                    {taxiFuelL.toFixed(1)} L
+                  </span>
+                  <span className="text-[10px] text-slate-500 font-medium">Fijo estándar F.OPS.02</span>
+                </div>
+              </div>
+
+              {/* Trip Fuel */}
+              <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">
+                <label className="text-[10.5px] font-bold text-slate-600 dark:text-slate-300 block mb-0.5">
+                  2. Trip Fuel ({mission.scenario.flightTimeHrs} h × {hourlyRate} L/h)
+                </label>
+                <div className="flex items-center gap-1.5">
+                  <input
+                    type="text"
+                    placeholder={`Litros (Ej: ${expectedTripL})`}
+                    value={tripFuelLiters}
+                    onChange={(e) => setTripFuelLiters(e.target.value)}
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
+                      errors.trip
+                        ? "border-rose-500 bg-rose-50 text-rose-700"
+                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                    }`}
+                  />
+                  <span className="text-xs font-bold text-slate-500 shrink-0">L</span>
+                </div>
+                {errors.trip && <span className="text-[9.5px] text-rose-600 font-medium block mt-0.5">{errors.trip}</span>}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2">
+              {/* Reserve Fuel */}
+              <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">
+                <label className="text-[10.5px] font-bold text-slate-600 dark:text-slate-300 block mb-0.5">
+                  3. Reserva Final Obligatoria (45 min VFR)
+                </label>
+                <div className="flex items-center gap-1.5">
+                  <input
+                    type="text"
+                    placeholder={`Litros (Ej: ${expectedReserveL})`}
+                    value={reserveFuelLiters}
+                    onChange={(e) => setReserveFuelLiters(e.target.value)}
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
+                      errors.reserve
+                        ? "border-rose-500 bg-rose-50 text-rose-700"
+                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                    }`}
+                  />
+                  <span className="text-xs font-bold text-slate-500 shrink-0">L</span>
+                </div>
+                {errors.reserve && <span className="text-[9.5px] text-rose-600 font-medium block mt-0.5">{errors.reserve}</span>}
+              </div>
+
+              {/* Landing Fuel */}
+              <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">
+                <label className="text-[10.5px] font-bold text-slate-600 dark:text-slate-300 block mb-0.5">
+                  4. Landing Fuel Remanente (≥ Reserva)
+                </label>
+                <div className="flex items-center gap-1.5">
+                  <input
+                    type="text"
+                    placeholder={`Litros (Ej: ${expectedLandingL})`}
+                    value={landingFuelLiters}
+                    onChange={(e) => setLandingFuelLiters(e.target.value)}
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
+                      errors.landing
+                        ? "border-rose-500 bg-rose-50 text-rose-700"
+                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                    }`}
+                  />
+                  <span className="text-xs font-bold text-slate-500 shrink-0">L</span>
+                </div>
+                {errors.landing && <span className="text-[9.5px] text-rose-600 font-medium block mt-0.5">{errors.landing}</span>}
+              </div>
+            </div>
+
+            {/* Ramp Fuel */}
+            <div className="p-2.5 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 space-y-1 shadow-2xs">
+              <label className="text-[11px] font-extrabold text-[#0B2E59] dark:text-sky-300 block">
+                5. Ramp Fuel Mínimo Requerido (Taxi + Trip + Landing)
+              </label>
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  placeholder={`Combustible total rampa en Litros (Ej: ${expectedRampL})`}
+                  value={rampFuelLiters}
+                  onChange={(e) => setRampFuelLiters(e.target.value)}
+                  className={`flex-1 px-2.5 py-1.5 rounded-lg border font-mono text-xs font-bold ${
+                    errors.ramp
+                      ? "border-rose-500 bg-rose-50 text-rose-700"
+                      : "border-blue-300 dark:border-blue-700 bg-white dark:bg-slate-900 text-blue-900 dark:text-blue-100"
+                  }`}
+                />
+                <span className="text-xs font-bold text-blue-700 dark:text-blue-300 shrink-0">L Totales</span>
+              </div>
+              {errors.ramp && <span className="text-[9.5px] text-rose-600 font-medium block">{errors.ramp}</span>}
+            </div>
+          </div>
+
+          {/* Bottom Actions & Feedback */}
+          <div className="space-y-1.5 pt-1 border-t border-slate-200 dark:border-slate-800 shrink-0">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] text-slate-500">
+                Intentos: <strong>{attempts}</strong> {attempts >= 2 ? "· Pistas completas activas" : ""}
+              </span>
+              <button
+                type="button"
+                onClick={handleValidate}
+                className="px-4 py-1.5 rounded-xl font-bold text-xs text-white bg-[#1a80ff] hover:bg-[#0066e6] shadow-xs cursor-pointer transition-all"
+              >
+                Validar Combustible F.OPS.02 ➔
+              </button>
+            </div>
+
+            {warnings.length > 0 && (
+              <div className="p-1.5 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 text-[10px]">
+                {warnings.map((w, idx) => (
+                  <div key={idx}>ℹ️ {w}</div>
+                ))}
+              </div>
+            )}
+
+            {isPassed && (
+              <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs">
+                <strong className="font-bold">✓ ¡PLANIFICACIÓN DE COMBUSTIBLE VÁLIDA SEGÚN EASA!</strong>
+                <p className="text-[10px] mt-0.5">
+                  Ramp: {expectedRampL} L · Trip: {expectedTripL} L · Reserva 45 min: {expectedReserveL} L · Landing: {expectedLandingL} L.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Main Grid: Left = F.OPS.02 Fuel Quantity Table, Right = Legal Explanation */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-start">
-        {/* Left Column (lg:col-span-6): Interactive Form */}
-        <div className="lg:col-span-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 shadow-xs space-y-3">
-          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
-            <span className="text-xs font-black uppercase tracking-wider text-[#0B2E59] dark:text-sky-300">
-              ⛽ RELLENO OFICIAL F.OPS.02 · FUEL QUANTITY
-            </span>
-            <span className="text-[10px] text-slate-400 font-bold">Unidades: Litros (L)</span>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs border-collapse">
-              <thead>
-                <tr className="border-b-2 border-slate-200 dark:border-slate-700 text-[11px] font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-50 dark:bg-slate-800/60">
-                  <th className="py-2 px-3">FUEL ITEM</th>
-                  <th className="py-2 px-3 text-right">QUANTITY (LITROS)</th>
-                  <th className="py-2 px-3 text-right text-slate-500 font-normal">EQUIV. (KG @ 0.84)</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                {/* Ramp Fuel */}
-                <tr className="bg-sky-50/50 dark:bg-sky-950/30 font-bold text-[#0B2E59] dark:text-sky-300">
-                  <td className="py-2.5 px-3">
-                    Ramp fuel
-                    <div className="text-[10px] font-normal text-slate-500">Combustible total al arrancar</div>
-                  </td>
-                  <td className="py-2.5 px-3 text-right">
-                    <input
-                      type="text"
-                      placeholder={`Ej: ${expectedRampL}`}
-                      value={rampFuelLiters}
-                      onChange={(e) => setRampFuelLiters(e.target.value)}
-                      className={`w-28 text-right px-2.5 py-1 rounded-lg border font-mono text-xs ${
-                        errors.ramp
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                  <td className="py-2.5 px-3 text-right font-mono text-slate-500">
-                    {rampFuelLiters ? `${Math.round(parseFloat(rampFuelLiters.replace(",", ".")) * 0.84 || 0)} kg` : "—"}
-                  </td>
-                </tr>
-
-                {/* Trip Fuel */}
-                <tr>
-                  <td className="py-2.5 px-3">
-                    Trip fuel
-                    <div className="text-[10px] text-slate-500">Combustible en ruta ({mission.scenario.flightTimeHrs} h)</div>
-                  </td>
-                  <td className="py-2.5 px-3 text-right">
-                    <input
-                      type="text"
-                      placeholder={`Ej: ${expectedTripL}`}
-                      value={tripFuelLiters}
-                      onChange={(e) => setTripFuelLiters(e.target.value)}
-                      className={`w-28 text-right px-2.5 py-1 rounded-lg border font-mono text-xs ${
-                        errors.trip
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                  <td className="py-2.5 px-3 text-right font-mono text-slate-500">
-                    {tripFuelLiters ? `${Math.round(parseFloat(tripFuelLiters.replace(",", ".")) * 0.84 || 0)} kg` : "—"}
-                  </td>
-                </tr>
-
-                {/* Landing Fuel */}
-                <tr>
-                  <td className="py-2.5 px-3">
-                    Landing fuel
-                    <div className="text-[10px] text-slate-500">Combustible remanente en toma</div>
-                  </td>
-                  <td className="py-2.5 px-3 text-right">
-                    <input
-                      type="text"
-                      placeholder={`Ej: ${expectedLandingL}`}
-                      value={landingFuelLiters}
-                      onChange={(e) => setLandingFuelLiters(e.target.value)}
-                      className={`w-28 text-right px-2.5 py-1 rounded-lg border font-mono text-xs ${
-                        errors.landing
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                  <td className="py-2.5 px-3 text-right font-mono text-slate-500">
-                    {landingFuelLiters ? `${Math.round(parseFloat(landingFuelLiters.replace(",", ".")) * 0.84 || 0)} kg` : "—"}
-                  </td>
-                </tr>
-
-                {/* Reserve Fuel */}
-                <tr className="bg-amber-50/50 dark:bg-amber-950/20 font-semibold text-amber-900 dark:text-amber-300">
-                  <td className="py-2.5 px-3">
-                    Reserve fuel*
-                    <div className="text-[10px] font-normal text-amber-700 dark:text-amber-400">
-                      Mínimo legal 45 min (NCO.OP.125)
-                    </div>
-                  </td>
-                  <td className="py-2.5 px-3 text-right">
-                    <input
-                      type="text"
-                      placeholder={`Ej: ${expectedReserveL}`}
-                      value={reserveFuelLiters}
-                      onChange={(e) => setReserveFuelLiters(e.target.value)}
-                      className={`w-28 text-right px-2.5 py-1 rounded-lg border font-mono text-xs ${
-                        errors.reserve
-                          ? "border-rose-500 bg-rose-50 text-rose-700"
-                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                      }`}
-                    />
-                  </td>
-                  <td className="py-2.5 px-3 text-right font-mono text-amber-700 dark:text-amber-400">
-                    {reserveFuelLiters ? `${Math.round(parseFloat(reserveFuelLiters.replace(",", ".")) * 0.84 || 0)} kg` : "—"}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="flex items-center justify-between pt-2">
-            <span className="text-[10px] text-slate-500 italic">
-              * Reserve fuel (Air Ops Regulations, Annex VII, Part-NCO, NCO.OP.125)
-            </span>
-
-            <button
-              type="button"
-              onClick={handleValidate}
-              className="px-4 py-2 rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] text-white font-extrabold text-xs shadow-md transition-all cursor-pointer hover:scale-105 active:scale-95"
-            >
-              Validar Combustible F.OPS.02 ➔
-            </button>
-          </div>
-
-          {/* Errors list */}
-          {Object.keys(errors).length > 0 && (
-            <div className="p-3 rounded-xl border border-rose-200 dark:border-rose-800 bg-rose-50/90 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 text-xs space-y-1">
-              <strong className="flex items-center gap-1.5 font-bold">
-                <span>⚠️</span>
-                <span>Errores en el cálculo de combustible (Intento {attempts}):</span>
-              </strong>
-              <ul className="list-disc pl-4 space-y-0.5 text-[11px]">
-                {Object.entries(errors).map(([key, msg]) => (
-                  <li key={key}>{msg}</li>
-                ))}
-              </ul>
+      {/* Columna Derecha (lg:col-span-5): Resumen Visual y Cumplimiento EASA (Altura Fija 590px) */}
+      <div className="lg:col-span-5 flex flex-col">
+        <div
+          className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
+          style={{ height: "590px" }}
+        >
+          <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm block">
+                📊 DESGLOSE F.OPS.02 & PART-NCO
+              </span>
+              <span className="text-[10px] text-slate-500 font-medium">
+                Verificación de Bloques de Combustible
+              </span>
             </div>
-          )}
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 shrink-0">
+              EASA OP.125
+            </span>
+          </div>
 
-          {warnings.length > 0 && (
-            <div className="p-2.5 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50/90 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 text-xs space-y-0.5">
-              {warnings.map((w, idx) => (
-                <div key={idx} className="flex items-center gap-1">
-                  <span>ℹ️</span>
-                  <span>{w}</span>
+          <div className="flex-1 min-h-0 overflow-y-auto my-1 space-y-2 text-xs">
+            {/* Visual Fuel Bars */}
+            <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 shadow-2xs">
+              <span className="font-bold text-[#0B2E59] dark:text-sky-300 text-[11px] block uppercase">
+                Proporción de Depósitos ({mission.scenario.takeoffFuelLiters} L Cargados)
+              </span>
+
+              <div className="w-full bg-slate-100 dark:bg-slate-900 rounded-xl overflow-hidden h-6 flex border border-slate-300 dark:border-slate-700">
+                <div
+                  style={{ width: `${(taxiFuelL / mission.scenario.takeoffFuelLiters) * 100}%` }}
+                  className="bg-amber-400 flex items-center justify-center text-[9px] font-bold text-amber-950"
+                  title="Taxi"
+                >
+                  Taxi
                 </div>
-              ))}
-            </div>
-          )}
+                <div
+                  style={{ width: `${(expectedTripL / mission.scenario.takeoffFuelLiters) * 100}%` }}
+                  className="bg-blue-500 flex items-center justify-center text-[9px] font-bold text-white"
+                  title="Trip"
+                >
+                  Trip
+                </div>
+                <div
+                  style={{ width: `${(expectedReserveL / mission.scenario.takeoffFuelLiters) * 100}%` }}
+                  className="bg-emerald-500 flex items-center justify-center text-[9px] font-bold text-white"
+                  title="45 min Reserve"
+                >
+                  45 min
+                </div>
+                <div className="flex-1 bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[9px] font-bold text-slate-600 dark:text-slate-300">
+                  Extra
+                </div>
+              </div>
 
-          {isPassed && (
-            <div className="p-3 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs space-y-1 animate-in zoom-in-95">
-              <strong className="flex items-center gap-1.5 font-bold text-sm text-emerald-800 dark:text-emerald-300">
-                <span>🎉</span>
-                <span>¡PLANIFICACIÓN DE COMBUSTIBLE APROBADA!</span>
-              </strong>
-              <p className="text-[11px]">
-                Cumple escrupulosamente con el Reglamento NCO.OP.125: reserva legal de 45 minutos ({expectedReserveL} L) asegurada en toma y total de rampa ({expectedRampL} L) verificado para el despacho.
-              </p>
-            </div>
-          )}
-        </div>
-
-        {/* Right Column (lg:col-span-6): Regulatory & Operational Guide */}
-        <div className="lg:col-span-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 shadow-xs space-y-3">
-          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
-            <span className="text-xs font-black uppercase tracking-wider text-[#0B2E59] dark:text-sky-300">
-              📖 NORMATIVA EUROPEA Y POH C172 CD-155
-            </span>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300">
-              EASA Part-NCO
-            </span>
-          </div>
-
-          <div className="space-y-2 text-xs text-slate-700 dark:text-slate-300">
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
-              <strong className="text-[#0B2E59] dark:text-sky-300 block font-bold mb-1 uppercase text-[11px]">
-                Desglose Legal de Combustible:
-              </strong>
-              <ul className="list-disc pl-4 space-y-1 text-[11px] leading-snug">
-                <li>
-                  <strong>Taxi Fuel:</strong> En el suplemento TAE 125-02-114 (Nota 2), el fabricante estipula una reserva estándar de <strong>4 Litros (1,1 US gal)</strong> para puesta en marcha y rodaje.
-                </li>
-                <li>
-                  <strong>Trip Fuel:</strong> Combustible para despegue, ascenso, crucero y descenso hasta el aeródromo de destino. A 70% de carga el CD-155 consume <strong>22,1 L/h</strong>.
-                </li>
-                <li>
-                  <strong>Reserva Final (NCO.OP.125):</strong> En vuelos VFR diurnos o nocturnos de instrucción, no se puede aterrizar con menos de <strong>45 minutos</strong> de combustible a régimen de crucero:
-                  <div className="font-mono bg-white dark:bg-slate-900 p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 my-1 text-center font-bold text-sky-700 dark:text-sky-300">
-                    0,75 h × 22,1 L/h = 16,6 Litros (13,9 kg)
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div className="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/80 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-relaxed">
-              <strong className="text-amber-800 dark:text-amber-300 flex items-center gap-1 mb-0.5 uppercase font-bold">
-                <span>⚠️</span>
-                <span>Criterio Operativo Blue Team:</span>
-              </strong>
-              <div>
-                Si la cantidad de combustible calculada al aterrizaje (*Landing fuel*) es inferior a la reserva final legal (16,6 L), el vuelo no está despachado y no está permitido salir sin repostar en rampa.
+              <div className="grid grid-cols-2 gap-1.5 text-[10px] text-slate-600 dark:text-slate-400 font-medium">
+                <div className="flex items-center gap-1">
+                  <span className="w-2.5 h-2.5 rounded bg-amber-400 shrink-0"></span>
+                  <span>Taxi: {taxiFuelL} L</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="w-2.5 h-2.5 rounded bg-blue-500 shrink-0"></span>
+                  <span>Trip: {expectedTripL} L</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="w-2.5 h-2.5 rounded bg-emerald-500 shrink-0"></span>
+                  <span>Reserva 45m: {expectedReserveL} L</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <span className="w-2.5 h-2.5 rounded bg-slate-400 shrink-0"></span>
+                  <span>Remanente seguro</span>
+                </div>
               </div>
             </div>
+
+            {/* Regulatory rules */}
+            <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-1 text-[11px] text-slate-700 dark:text-slate-300">
+              <strong className="text-[#0B2E59] dark:text-sky-300 block uppercase font-bold text-[10px]">
+                Norma Operacional EASA Part-NCO.OP.125:
+              </strong>
+              <p className="leading-tight">
+                El piloto al mando no iniciará ningún vuelo a menos que el avión transporte suficiente combustible utilizable para:
+              </p>
+              <ul className="list-disc pl-4 space-y-0.5 text-[10px] text-slate-600 dark:text-slate-400">
+                <li>Volar hasta el aeródromo de destino previsto (Trip Fuel).</li>
+                <li>Permanecer volando a velocidad de crucero normal durante al menos <strong>45 minutos</strong> adicionales.</li>
+                <li>Compensar puesta en marcha, rodaje y contingencias imprevistas de tráfico.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
+            Ref. Documental: Formulario F.OPS.02 · Fuel Quantity Section
           </div>
         </div>
       </div>

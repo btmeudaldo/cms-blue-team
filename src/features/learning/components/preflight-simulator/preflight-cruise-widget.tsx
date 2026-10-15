@@ -9,16 +9,29 @@ type Props = {
 };
 
 // Official data points from TAE 125-02-114 Figure 5-4a (CD-155 at 1043 kg, Standard Tanks)
+// Calibrated for flight school operations: 50% and 55% standard cruise power
 const CRUISE_TABLE_DATA = [
-  { alt: 0, load: 70, ktas: 114, fuelFlowLh: 22.1, rangeNm: 551, enduranceHrs: 4.8 },
+  // 50% Load (Long Range / Economic Training): 15.3 l/h (4.0 US Gal/h)
+  { alt: 2000, load: 50, ktas: 99, fuelFlowLh: 15.3, rangeNm: 718, enduranceHrs: 7.2 },
+  { alt: 4000, load: 50, ktas: 100, fuelFlowLh: 15.3, rangeNm: 720, enduranceHrs: 7.1 },
+  { alt: 6000, load: 50, ktas: 102, fuelFlowLh: 15.3, rangeNm: 728, enduranceHrs: 6.9 },
+  { alt: 8000, load: 50, ktas: 103, fuelFlowLh: 15.3, rangeNm: 729, enduranceHrs: 6.8 },
+
+  // 55% Load (Standard Flight School Cruise): 17.0 l/h (4.5 US Gal/h)
+  { alt: 2000, load: 55, ktas: 103, fuelFlowLh: 17.0, rangeNm: 675, enduranceHrs: 6.5 },
+  { alt: 4000, load: 55, ktas: 105, fuelFlowLh: 17.0, rangeNm: 678, enduranceHrs: 6.4 },
+  { alt: 6000, load: 55, ktas: 106, fuelFlowLh: 17.0, rangeNm: 683, enduranceHrs: 6.2 },
+  { alt: 8000, load: 55, ktas: 108, fuelFlowLh: 17.0, rangeNm: 686, enduranceHrs: 6.1 },
+
+  // 60% Load: 18.6 l/h (4.9 US Gal/h)
+  { alt: 2000, load: 60, ktas: 108, fuelFlowLh: 18.6, rangeNm: 631, enduranceHrs: 5.8 },
+  { alt: 4000, load: 60, ktas: 110, fuelFlowLh: 18.6, rangeNm: 637, enduranceHrs: 5.7 },
+  { alt: 6000, load: 60, ktas: 111, fuelFlowLh: 18.6, rangeNm: 638, enduranceHrs: 5.5 },
+
+  // 70% Load: 22.1 l/h (5.8 US Gal/h)
   { alt: 2000, load: 70, ktas: 116, fuelFlowLh: 22.1, rangeNm: 557, enduranceHrs: 4.7 },
   { alt: 4000, load: 70, ktas: 118, fuelFlowLh: 22.1, rangeNm: 562, enduranceHrs: 4.6 },
   { alt: 6000, load: 70, ktas: 120, fuelFlowLh: 22.1, rangeNm: 567, enduranceHrs: 4.5 },
-  { alt: 8000, load: 70, ktas: 122, fuelFlowLh: 22.1, rangeNm: 572, enduranceHrs: 4.4 },
-  { alt: 10000, load: 70, ktas: 124, fuelFlowLh: 22.1, rangeNm: 576, enduranceHrs: 4.3 },
-  // 60% Load
-  { alt: 4000, load: 60, ktas: 110, fuelFlowLh: 18.6, rangeNm: 637, enduranceHrs: 5.7 },
-  { alt: 6000, load: 60, ktas: 111, fuelFlowLh: 18.6, rangeNm: 638, enduranceHrs: 5.5 },
 ];
 
 export function PreflightCruiseWidget({
@@ -42,12 +55,13 @@ export function PreflightCruiseWidget({
   const [warnings, setWarnings] = useState<string[]>([]);
   const [isPassed, setIsPassed] = useState(isAlreadyCompleted);
 
-  // Expected values based on mission
-  // Mission 1: 2000 ft, 70% -> KTAS 116, 22.1 L/h, dist 60 NM -> time 60/116 = 0.52 h -> fuel = 11.4 L
-  // Mission 2: 6000 ft, 70% -> KTAS 120, 22.1 L/h, dist 105 NM -> time 105/120 = 0.875 h -> fuel = 19.3 L
-  // Mission 3: 4000 ft, 70% -> KTAS 118, 22.1 L/h, dist 50 NM -> time 50/118 = 0.42 h -> fuel = 9.4 L
   const alt = selectedMissionIndex === 0 ? 2000 : selectedMissionIndex === 1 ? 6000 : 4000;
-  const targetRow = CRUISE_TABLE_DATA.find((r) => r.alt === alt && r.load === 70) || CRUISE_TABLE_DATA[3];
+  const loadPct = mission.scenario.cruiseLoadPct; // 55% or 50%
+
+  const targetRow =
+    CRUISE_TABLE_DATA.find((r) => r.alt === alt && r.load === loadPct) ||
+    CRUISE_TABLE_DATA.find((r) => r.load === 55) ||
+    CRUISE_TABLE_DATA[0];
 
   const expectedKtas = targetRow.ktas;
   const expectedFuelFlow = targetRow.fuelFlowLh;
@@ -63,60 +77,60 @@ export function PreflightCruiseWidget({
 
     // Check KTAS
     const userKtas = num(ktasInput);
-    if (isNaN(userKtas) || !checkValueTolerance(userKtas, expectedKtas, 0.02, 1).isOk) {
+    if (isNaN(userKtas) || !checkValueTolerance(userKtas, expectedKtas, 0.02, 1.5).isOk) {
       newErrors.ktas =
         attempts >= 2
-          ? `Solución: En la tabla Fig. 5-4a a ${alt} ft y 70% Load, la velocidad es ${expectedKtas} KTAS`
-          : `Revisa la tabla oficial: busca la fila de ${alt} ft y columna Speed [KTAS] al 70% de carga.`;
+          ? `Solución: En la tabla Fig. 5-4a a ${alt} ft y ${loadPct}% Load, la velocidad es ${expectedKtas} KTAS.`
+          : `Revisa la tabla oficial: busca la fila de ${alt} ft y columna KTAS al ${loadPct}% de carga.`;
     }
 
     // Check Fuel Flow
     const userFf = num(fuelFlowInput);
-    if (isNaN(userFf) || !checkValueTolerance(userFf, expectedFuelFlow, 0.02, 0.2).isOk) {
+    if (isNaN(userFf) || !checkValueTolerance(userFf, expectedFuelFlow, 0.02, 0.3).isOk) {
       newErrors.fuelFlow =
         attempts >= 2
-          ? `Solución: En la tabla CD-155, el consumo horario al 70% de Load es de ${expectedFuelFlow} l/h`
-          : "Consulta la columna Fuel Flow [l/h] en la tabla para 70% de potencia.";
+          ? `Solución: En la tabla CD-155, el consumo horario al ${loadPct}% de Load es de ${expectedFuelFlow} L/h.`
+          : `Consulta la columna Fuel Flow [L/h] en la tabla para ${loadPct}% de potencia.`;
     }
 
     // Check Time in Hours
     const userTime = num(timeHrsInput);
-    if (isNaN(userTime) || !checkValueTolerance(userTime, expectedTimeHrs, 0.05, 0.04).isOk) {
+    if (isNaN(userTime) || !checkValueTolerance(userTime, expectedTimeHrs, 0.06, 0.05).isOk) {
       newErrors.timeHrs =
         attempts >= 2
-          ? `Solución: Tiempo = Distancia (${mission.scenario.distanceNm} NM) / KTAS (${expectedKtas}) = ${expectedTimeHrs} h (~${Math.round(expectedTimeHrs * 60)} min)`
-          : `Calcula el tiempo de vuelo: Distancia (${mission.scenario.distanceNm} NM) / KTAS.`;
+          ? `Solución: Tiempo = Distancia (${mission.scenario.distanceNm} NM) / KTAS (${expectedKtas}) = ${expectedTimeHrs} h (~${Math.round(expectedTimeHrs * 60)} min).`
+          : `Calcula el tiempo de vuelo: Distancia (${mission.scenario.distanceNm} NM) / KTAS (${expectedKtas}).`;
     } else if (Math.abs(userTime - expectedTimeHrs) > 0.01) {
       newWarnings.push(`Tiempo en ruta: Tu valor (${userTime} h) tiene un leve desvío por redondeo, pero es válido.`);
     }
 
     // Check Trip Fuel Liters
     const userTripL = num(tripFuelLitersInput);
-    if (isNaN(userTripL) || !checkValueTolerance(userTripL, expectedTripLiters, 0.05, 0.5).isOk) {
+    if (isNaN(userTripL) || !checkValueTolerance(userTripL, expectedTripLiters, 0.06, 0.6).isOk) {
       newErrors.tripLiters =
         attempts >= 2
-          ? `Solución: Combustible ruta = ${expectedTimeHrs} h × ${expectedFuelFlow} l/h = ${expectedTripLiters} L`
-          : "Combustible de ruta (Litros) = Tiempo en horas × Gasto horario (l/h).";
+          ? `Solución: Combustible ruta = ${expectedTimeHrs} h × ${expectedFuelFlow} L/h = ${expectedTripLiters} L.`
+          : `Combustible de ruta (Litros) = Tiempo en horas (${expectedTimeHrs} h) × Gasto horario (${expectedFuelFlow} L/h).`;
     } else if (Math.abs(userTripL - expectedTripLiters) > 0.2) {
       newWarnings.push(`Gasto en litros: Tu valor (${userTripL} L) tiene leve desvío por redondeo, pero se da por bueno.`);
     }
 
     // Check Trip Fuel Kg
     const userTripKg = num(tripFuelKgInput);
-    if (isNaN(userTripKg) || !checkValueTolerance(userTripKg, expectedTripKg, 0.05, 0.5).isOk) {
+    if (isNaN(userTripKg) || !checkValueTolerance(userTripKg, expectedTripKg, 0.06, 0.6).isOk) {
       newErrors.tripKg =
         attempts >= 2
-          ? `Solución: ${expectedTripLiters} L × 0.84 kg/L = ${expectedTripKg} kg`
+          ? `Solución: ${expectedTripLiters} L × 0.84 kg/L = ${expectedTripKg} kg.`
           : "Convierte los litros a kilogramos usando la densidad diésel de 0.84 kg/L.";
     }
 
     // Check Max Range
     const userRange = num(maxRangeInput);
-    if (isNaN(userRange) || !checkValueTolerance(userRange, expectedMaxRange, 0.02, 5).isOk) {
+    if (isNaN(userRange) || !checkValueTolerance(userRange, expectedMaxRange, 0.03, 8).isOk) {
       newErrors.maxRange =
         attempts >= 2
-          ? `Solución: En la columna Distance Range [NM] figura ${expectedMaxRange} NM`
-          : "Busca en la columna 'Distance Range [NM]' el alcance máximo con tanques estándar.";
+          ? `Solución: En la columna Distance Range [NM] figura ${expectedMaxRange} NM.`
+          : "Busca en la columna 'Distance Range [NM]' el alcance máximo con depósitos estándar.";
     }
 
     setErrors(newErrors);
@@ -133,77 +147,56 @@ export function PreflightCruiseWidget({
   };
 
   return (
-    <div className="w-full flex flex-col space-y-4 text-slate-800 dark:text-slate-100">
-      {/* Scenario header banner */}
-      <div className="p-3 rounded-2xl bg-sky-50/80 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-bold text-sky-700 dark:text-sky-300 uppercase tracking-wider">
-              Taller de Crucero y Autonomía · Continental CD-155
-            </span>
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-sky-200/80 dark:bg-sky-900 text-sky-800 dark:text-sky-200">
-              Altitud: {alt} ft · Load: 70%
-            </span>
-          </div>
-          <h3 className="text-sm font-extrabold text-[#0B2E59] dark:text-sky-200 mt-0.5">
-            Ruta: {mission.scenario.origin} ➔ {mission.scenario.destination} ({mission.scenario.distanceNm} NM)
-          </h3>
-          <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-            Consulta la tabla oficial del motor TAE 125-02-114 y calcula la velocidad, el tiempo y el gasto horario en litros y kilogramos.
-          </p>
-        </div>
-
-        {/* Mission selector */}
-        <div className="flex items-center gap-1.5 shrink-0">
-          {PREFLIGHT_MISSIONS.map((m, idx) => (
-            <button
-              key={m.id}
-              type="button"
-              onClick={() => {
-                setSelectedMissionIndex(idx);
-                setKtasInput("");
-                setFuelFlowInput("");
-                setTimeHrsInput("");
-                setTripFuelLitersInput("");
-                setTripFuelKgInput("");
-                setMaxRangeInput("");
-                setErrors({});
-                setWarnings([]);
-                setAttempts(0);
-                setIsPassed(false);
-              }}
-              className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                selectedMissionIndex === idx
-                  ? "bg-[#1a80ff] text-white shadow-xs"
-                  : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
-              }`}
-            >
-              Misión {idx + 1}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Grid: Left = Student Form, Right = Official Supplement Table 5-4a */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-start">
-        {/* Left Column (lg:col-span-6): Interactive Calculation Form */}
-        <div className="lg:col-span-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 shadow-xs space-y-3">
-          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
-            <span className="text-xs font-black uppercase tracking-wider text-[#0B2E59] dark:text-sky-300">
-              📊 CÁLCULO DE CRUCERO Y GASTO DE COMBUSTIBLE
-            </span>
-            <span className="text-[10px] text-slate-400 font-bold">Paso 1 de 3</span>
-          </div>
-
-          <div className="space-y-2.5">
-            {/* Step 1: Read from Table */}
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
-              <span className="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block">
-                1. Lectura en Tabla Fig. 5-4a ({alt} ft / 70% Load)
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+      {/* Columna Izquierda (lg:col-span-7): Formulario de Crucero (Altura Fija 590px) */}
+      <div className="lg:col-span-7 flex flex-col">
+        <div
+          className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
+          style={{ height: "590px" }}
+        >
+          {/* Header & Mission Selector */}
+          <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+                ⏱️ CRUCERO Y AUTONOMÍA (50% - 55% LOAD)
               </span>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="text-[10px] text-slate-500 font-medium">
+                {mission.name} · {alt} ft · {loadPct}% Potencia Escuela · {mission.scenario.distanceNm} NM
+              </div>
+            </div>
+            <div className="flex items-center gap-1 shrink-0">
+              {PREFLIGHT_MISSIONS.map((m, idx) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  onClick={() => {
+                    setSelectedMissionIndex(idx);
+                    setAttempts(0);
+                    setErrors({});
+                    setWarnings([]);
+                  }}
+                  className={`px-2 py-0.5 rounded-lg text-[10px] font-extrabold transition-all cursor-pointer ${
+                    selectedMissionIndex === idx
+                      ? "bg-[#1a80ff] text-white shadow-2xs"
+                      : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
+                  }`}
+                >
+                  M{idx + 1}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Form Content */}
+          <div className="flex-1 min-h-0 overflow-y-auto my-1 space-y-2">
+            {/* Step 1: Reading from Table */}
+            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
+              <span className="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block border-b pb-0.5">
+                1. Lectura en Tabla Fig. 5-4a ({alt} ft / {loadPct}% Load de Escuela)
+              </span>
+              <div className="grid grid-cols-2 gap-2 text-xs">
                 <div>
-                  <label className="text-[11px] font-semibold text-slate-600 dark:text-slate-300 block mb-0.5">
+                  <label className="text-[10.5px] font-semibold text-slate-600 dark:text-slate-300 block mb-0.5">
                     Velocidad Verdadera (KTAS):
                   </label>
                   <input
@@ -211,57 +204,57 @@ export function PreflightCruiseWidget({
                     placeholder={`Ej: ${expectedKtas}`}
                     value={ktasInput}
                     onChange={(e) => setKtasInput(e.target.value)}
-                    className={`w-full px-2.5 py-1.5 rounded-lg border font-mono text-xs ${
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
                       errors.ktas
                         ? "border-rose-500 bg-rose-50 text-rose-700"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                     }`}
                   />
-                  {errors.ktas && <span className="text-[10px] text-rose-600 font-medium">{errors.ktas}</span>}
+                  {errors.ktas && <span className="text-[9.5px] text-rose-600 font-medium block mt-0.5">{errors.ktas}</span>}
                 </div>
 
                 <div>
-                  <label className="text-[11px] font-semibold text-slate-600 dark:text-slate-300 block mb-0.5">
-                    Gasto Horario (Fuel Flow l/h):
+                  <label className="text-[10.5px] font-semibold text-slate-600 dark:text-slate-300 block mb-0.5">
+                    Gasto Horario (Fuel Flow L/h):
                   </label>
                   <input
                     type="text"
                     placeholder={`Ej: ${expectedFuelFlow}`}
                     value={fuelFlowInput}
                     onChange={(e) => setFuelFlowInput(e.target.value)}
-                    className={`w-full px-2.5 py-1.5 rounded-lg border font-mono text-xs ${
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
                       errors.fuelFlow
                         ? "border-rose-500 bg-rose-50 text-rose-700"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                     }`}
                   />
-                  {errors.fuelFlow && <span className="text-[10px] text-rose-600 font-medium">{errors.fuelFlow}</span>}
+                  {errors.fuelFlow && <span className="text-[9.5px] text-rose-600 font-medium block mt-0.5">{errors.fuelFlow}</span>}
                 </div>
               </div>
             </div>
 
-            {/* Step 2: Time & Fuel Consumption Calculation */}
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
-              <span className="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block">
+            {/* Step 2: Time & Fuel Consumption */}
+            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
+              <span className="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block border-b pb-0.5">
                 2. Cálculos Operacionales de Ruta ({mission.scenario.distanceNm} NM)
               </span>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-2 text-xs">
                 <div>
                   <label className="text-[10px] font-semibold text-slate-600 dark:text-slate-300 block mb-0.5">
-                    Tiempo en Horas:
+                    Tiempo Vuelo (h):
                   </label>
                   <input
                     type="text"
                     placeholder={`Ej: ${expectedTimeHrs}`}
                     value={timeHrsInput}
                     onChange={(e) => setTimeHrsInput(e.target.value)}
-                    className={`w-full px-2 py-1.5 rounded-lg border font-mono text-xs ${
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
                       errors.timeHrs
                         ? "border-rose-500 bg-rose-50 text-rose-700"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                     }`}
                   />
-                  {errors.timeHrs && <span className="text-[9px] text-rose-600 font-medium">{errors.timeHrs}</span>}
+                  {errors.timeHrs && <span className="text-[9px] text-rose-600 font-medium block mt-0.5">{errors.timeHrs}</span>}
                 </div>
 
                 <div>
@@ -273,145 +266,143 @@ export function PreflightCruiseWidget({
                     placeholder={`Ej: ${expectedTripLiters}`}
                     value={tripFuelLitersInput}
                     onChange={(e) => setTripFuelLitersInput(e.target.value)}
-                    className={`w-full px-2 py-1.5 rounded-lg border font-mono text-xs ${
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
                       errors.tripLiters
                         ? "border-rose-500 bg-rose-50 text-rose-700"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                     }`}
                   />
-                  {errors.tripLiters && <span className="text-[9px] text-rose-600 font-medium">{errors.tripLiters}</span>}
+                  {errors.tripLiters && <span className="text-[9px] text-rose-600 font-medium block mt-0.5">{errors.tripLiters}</span>}
                 </div>
 
                 <div>
                   <label className="text-[10px] font-semibold text-slate-600 dark:text-slate-300 block mb-0.5">
-                    Trip Fuel (Kg @ 0.84):
+                    Trip Fuel (kg @ 0.84):
                   </label>
                   <input
                     type="text"
                     placeholder={`Ej: ${expectedTripKg}`}
                     value={tripFuelKgInput}
                     onChange={(e) => setTripFuelKgInput(e.target.value)}
-                    className={`w-full px-2 py-1.5 rounded-lg border font-mono text-xs ${
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
                       errors.tripKg
                         ? "border-rose-500 bg-rose-50 text-rose-700"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                     }`}
                   />
-                  {errors.tripKg && <span className="text-[9px] text-rose-600 font-medium">{errors.tripKg}</span>}
+                  {errors.tripKg && <span className="text-[9px] text-rose-600 font-medium block mt-0.5">{errors.tripKg}</span>}
                 </div>
               </div>
             </div>
 
             {/* Step 3: Range Check */}
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1.5">
+            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1 shadow-2xs">
               <span className="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block">
-                3. Verificación de Alcance Máximo (Range)
+                3. Autonomía Máxima Teórica (Tanques Estándar 127.4 L)
               </span>
-              <div>
-                <label className="text-[11px] font-semibold text-slate-600 dark:text-slate-300 block mb-0.5">
-                  Alcance Máximo de la Tabla (Distance Range [NM]):
-                </label>
+              <div className="flex items-center gap-2">
                 <input
                   type="text"
-                  placeholder={`Ej: ${expectedMaxRange}`}
+                  placeholder={`Alcance máximo NM (Ej: ${expectedMaxRange})`}
                   value={maxRangeInput}
                   onChange={(e) => setMaxRangeInput(e.target.value)}
-                  className={`w-32 px-2.5 py-1.5 rounded-lg border font-mono text-xs ${
+                  className={`flex-1 px-2.5 py-1 rounded-lg border font-mono text-xs ${
                     errors.maxRange
                       ? "border-rose-500 bg-rose-50 text-rose-700"
-                      : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                      : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                   }`}
                 />
-                {errors.maxRange && <span className="text-[10px] text-rose-600 font-medium block mt-0.5">{errors.maxRange}</span>}
+                <span className="text-xs text-slate-500 font-medium shrink-0">NM disponibles</span>
               </div>
+              {errors.maxRange && <span className="text-[9.5px] text-rose-600 font-medium block">{errors.maxRange}</span>}
             </div>
           </div>
 
-          <div className="flex items-center justify-between pt-2">
-            <span className="text-[11px] text-slate-500 italic">
-              Fórmula: Tiempo = Distancia / KTAS · Consumo = Tiempo × Fuel Flow · Masa = Litros × 0,84
-            </span>
+          {/* Bottom Actions & Feedback */}
+          <div className="space-y-1.5 pt-1 border-t border-slate-200 dark:border-slate-800 shrink-0">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] text-slate-500">
+                Intentos: <strong>{attempts}</strong> {attempts >= 2 ? "· Pistas completas activas" : ""}
+              </span>
+              <button
+                type="button"
+                onClick={handleValidate}
+                className="px-4 py-1.5 rounded-xl font-bold text-xs text-white bg-[#1a80ff] hover:bg-[#0066e6] shadow-xs cursor-pointer transition-all"
+              >
+                Validar Cálculos de Crucero ➔
+              </button>
+            </div>
 
-            <button
-              type="button"
-              onClick={handleValidate}
-              className="px-4 py-2 rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] text-white font-extrabold text-xs shadow-md transition-all cursor-pointer hover:scale-105 active:scale-95"
-            >
-              Comprobar Cálculos de Crucero ➔
-            </button>
+            {warnings.length > 0 && (
+              <div className="p-1.5 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 text-[10px]">
+                {warnings.map((w, idx) => (
+                  <div key={idx}>ℹ️ {w}</div>
+                ))}
+              </div>
+            )}
+
+            {isPassed && (
+              <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs">
+                <strong className="font-bold">✓ ¡CÁLCULO DE CRUCERO Y COMBUSTIBLE CORRECTO!</strong>
+                <p className="text-[10px] mt-0.5">
+                  Tiempo: {expectedTimeHrs} h · Gasto ruta: {expectedTripLiters} L ({expectedTripKg} kg) · Alcance máximo: {expectedMaxRange} NM.
+                </p>
+              </div>
+            )}
           </div>
-
-          {/* Warnings and errors */}
-          {warnings.length > 0 && (
-            <div className="p-2.5 rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50/90 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 text-xs space-y-0.5">
-              {warnings.map((w, idx) => (
-                <div key={idx} className="flex items-center gap-1">
-                  <span>ℹ️</span>
-                  <span>{w}</span>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {isPassed && (
-            <div className="p-3 rounded-xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs space-y-1 animate-in zoom-in-95">
-              <strong className="flex items-center gap-1.5 font-bold text-sm text-emerald-800 dark:text-emerald-300">
-                <span>🎉</span>
-                <span>¡CÁLCULO DE CRUCERO Y COMBUSTIBLE CORRECTO!</span>
-              </strong>
-              <p className="text-[11px]">
-                Has calculado con precisión el tiempo de vuelo ({expectedTimeHrs} h), el consumo de ruta ({expectedTripLiters} L / {expectedTripKg} kg) y comprobado que la ruta ({mission.scenario.distanceNm} NM) está ampliamente dentro del alcance máximo ({expectedMaxRange} NM).
-              </p>
-            </div>
-          )}
         </div>
+      </div>
 
-        {/* Right Column (lg:col-span-6): Table Fig. 5-4a Excerpt */}
-        <div className="lg:col-span-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 shadow-xs space-y-2.5">
-          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
+      {/* Columna Derecha (lg:col-span-5): Tabla Fig. 5-4a TAE 125-02-114 (Altura Fija 590px) */}
+      <div className="lg:col-span-5 flex flex-col">
+        <div
+          className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
+          style={{ height: "590px" }}
+        >
+          <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
-              <span className="text-xs font-black uppercase tracking-wider text-[#0B2E59] dark:text-sky-300 block">
-                Figure 5-4a · Cruise Performance, Range & Endurance
+              <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm block">
+                📖 TABLA FIG. 5-4a CRUCERO
               </span>
               <span className="text-[10px] text-slate-500 font-medium">
-                Cessna 172 · Continental CD-155 (TAE 125-02-114) · Standard Tanks (127.4 L usable)
+                C172 CD-155 (TAE 125-02-114) · Standard Tanks (127.4 L usable)
               </span>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600">
-              POH Supl. 5a-15
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/60 text-sky-800 dark:text-sky-300 shrink-0">
+              POH 5a-15
             </span>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-[11px] border-collapse">
+          <div className="flex-1 min-h-0 overflow-y-auto my-1">
+            <table className="w-full text-left text-[10.5px] border-collapse">
               <thead>
-                <tr className="border-b-2 border-slate-200 dark:border-slate-700 font-extrabold text-[#0B2E59] dark:text-sky-300 bg-slate-50 dark:bg-slate-800/60">
-                  <th className="py-1 px-1.5">Alt [ft]</th>
-                  <th className="py-1 px-1.5 text-center">Load [%]</th>
-                  <th className="py-1 px-1.5 text-center">KTAS</th>
-                  <th className="py-1 px-1.5 text-center">Fuel [l/h]</th>
-                  <th className="py-1 px-1.5 text-center">Range [NM]</th>
-                  <th className="py-1 px-1.5 text-center">Endur [h]</th>
+                <tr className="border-b border-slate-200 dark:border-slate-700 font-extrabold text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
+                  <th className="py-1 px-1">Alt</th>
+                  <th className="py-1 px-1 text-center">Load</th>
+                  <th className="py-1 px-1 text-center">KTAS</th>
+                  <th className="py-1 px-1 text-center">Fuel [L/h]</th>
+                  <th className="py-1 px-1 text-center">Range</th>
+                  <th className="py-1 px-1 text-center">Endur</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-mono">
                 {CRUISE_TABLE_DATA.map((row, idx) => {
-                  const isHighlighted = row.alt === alt && row.load === 70;
+                  const isHighlighted = row.alt === alt && row.load === loadPct;
                   return (
                     <tr
                       key={idx}
                       className={
                         isHighlighted
-                          ? "bg-amber-100/70 dark:bg-amber-950/50 font-bold text-amber-900 dark:text-amber-200"
+                          ? "bg-amber-100/80 dark:bg-amber-950/60 font-bold text-amber-900 dark:text-amber-200"
                           : "hover:bg-slate-50 dark:hover:bg-slate-800/40"
                       }
                     >
-                      <td className="py-1 px-1.5">{row.alt === 0 ? "SL" : row.alt}</td>
-                      <td className="py-1 px-1.5 text-center">{row.load}%</td>
-                      <td className="py-1 px-1.5 text-center text-sky-700 dark:text-sky-300">{row.ktas}</td>
-                      <td className="py-1 px-1.5 text-center text-rose-700 dark:text-rose-300 font-bold">{row.fuelFlowLh}</td>
-                      <td className="py-1 px-1.5 text-center text-emerald-700 dark:text-emerald-300">{row.rangeNm}</td>
-                      <td className="py-1 px-1.5 text-center">{row.enduranceHrs}</td>
+                      <td className="py-0.5 px-1">{row.alt} ft</td>
+                      <td className="py-0.5 px-1 text-center text-blue-600 font-bold">{row.load}%</td>
+                      <td className="py-0.5 px-1 text-center text-sky-700 dark:text-sky-300">{row.ktas}</td>
+                      <td className="py-0.5 px-1 text-center text-emerald-700 dark:text-emerald-300 font-bold">{row.fuelFlowLh}</td>
+                      <td className="py-0.5 px-1 text-center">{row.rangeNm} NM</td>
+                      <td className="py-0.5 px-1 text-center">{row.enduranceHrs} h</td>
                     </tr>
                   );
                 })}
@@ -419,15 +410,17 @@ export function PreflightCruiseWidget({
             </table>
           </div>
 
-          <div className="p-2.5 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-[11px] space-y-1 text-slate-700 dark:text-slate-300">
-            <strong className="text-sky-800 dark:text-sky-300 block uppercase font-bold">
-              Notas Importantes del POH:
+          <div className="p-2 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-[10.5px] space-y-1 text-slate-700 dark:text-slate-300 shrink-0">
+            <strong className="text-sky-800 dark:text-sky-300 block uppercase font-bold text-[10px]">
+              💡 Régimen de Escuela (50% - 55% Load):
             </strong>
-            <ul className="list-disc pl-4 space-y-0.5 text-[10px]">
-              <li>La tabla asume 4 L para puesta en marcha y rodaje (*startup & taxi*).</li>
-              <li>El tiempo de alcance y autonomía incluye el ascenso y la **reserva legal de 45 minutos**.</li>
-              <li>No se recomienda crucero continuo por encima del 75%. Para crucero económico seleccione 70% o menos.</li>
-            </ul>
+            <p className="leading-tight">
+              En vuelo de instrucción se estandariza el crucero al <strong>50% o 55% de potencia</strong>. Garantiza un consumo económico de <strong>15.3 a 17.0 L/h</strong>, mayor longevidad del motor y una autonomía superior a 6.5 horas.
+            </p>
+          </div>
+
+          <div className="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
+            Ref. POH: Figure 5-4a Cruise Performance TAE 125-02-114
           </div>
         </div>
       </div>
