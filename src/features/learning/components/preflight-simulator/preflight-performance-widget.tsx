@@ -16,7 +16,10 @@ export interface PerformanceScenario {
   windDesc: string;
   surfaceDesc: string;
   runwayToraM: number;
+  runwayTodaM: number;
+  runwayAsdaM: number;
   runwayLdaM: number;
+  declaredDistancesNote: string;
   baseToRun: number;
   baseTo50: number;
   baseLd50: number;
@@ -32,7 +35,7 @@ export const CANARY_PERFORMANCE_SCENARIOS: PerformanceScenario[] = [
     icao: "GCXO",
     name: "GCXO · Tenerife Norte (Los Rodeos)",
     shortName: "GCXO · Los Rodeos",
-    runway: "RWY 12/30",
+    runway: "RWY 12",
     elevationDesc: "Elevación 2.077 ft · Alt. Presión: 2.000 ft",
     pressAltFt: 2000,
     oatC: 20,
@@ -40,7 +43,10 @@ export const CANARY_PERFORMANCE_SCENARIOS: PerformanceScenario[] = [
     windDesc: "9 kt en cara (-10% a todas las distancias)",
     surfaceDesc: "Asfalto seco nivelado (sin penalización)",
     runwayToraM: 3171,
+    runwayTodaM: 3364, // AIP AD 2-GCXO.13: CWY 193 m
+    runwayAsdaM: 3171,
     runwayLdaM: 3171,
+    declaredDistancesNote: "AIP AD 2-GCXO: RWY 12 dispone de CWY de 193 m (TODA = 3.364 m ≠ TORA 3.171 m). En RWY 30 TODA = 3.171 m.",
     baseToRun: 234,
     baseTo50: 366,
     baseLd50: 407, // 1335 ft / 3.28084
@@ -54,7 +60,7 @@ export const CANARY_PERFORMANCE_SCENARIOS: PerformanceScenario[] = [
     icao: "GCTS",
     name: "GCTS · Tenerife Sur (Reina Sofía)",
     shortName: "GCTS · Tenerife Sur",
-    runway: "RWY 07/25",
+    runway: "RWY 07",
     elevationDesc: "Elevación 209 ft · Alt. Presión: 0 ft (S.L.)",
     pressAltFt: 0,
     oatC: 20,
@@ -62,7 +68,10 @@ export const CANARY_PERFORMANCE_SCENARIOS: PerformanceScenario[] = [
     windDesc: "9 kt en cara (-10% a todas las distancias)",
     surfaceDesc: "Asfalto seco nivelado (sin penalización)",
     runwayToraM: 3200,
+    runwayTodaM: 3260, // AIP AD 2-GCTS.13: CWY 60 m
+    runwayAsdaM: 3200,
     runwayLdaM: 3200,
+    declaredDistancesNote: "AIP AD 2-GCTS: RWY 07/25 cuenta con CWY de 60 m (TODA = 3.260 m ≠ TORA 3.200 m).",
     baseToRun: 204,
     baseTo50: 319,
     baseLd50: 386, // 1265 ft / 3.28084
@@ -76,7 +85,7 @@ export const CANARY_PERFORMANCE_SCENARIOS: PerformanceScenario[] = [
     icao: "GCGM",
     name: "GCGM · La Gomera",
     shortName: "GCGM · La Gomera",
-    runway: "RWY 09/27",
+    runway: "RWY 09",
     elevationDesc: "Elevación 715 ft · Alt. Presión: 1.000 ft",
     pressAltFt: 1000,
     oatC: 20,
@@ -84,7 +93,10 @@ export const CANARY_PERFORMANCE_SCENARIOS: PerformanceScenario[] = [
     windDesc: "9 kt en cara (-10% a todas las distancias)",
     surfaceDesc: "Asfalto seco nivelado",
     runwayToraM: 1500,
+    runwayTodaM: 1560, // AIP AD 2-GCGM.13: CWY 60 m
+    runwayAsdaM: 1500,
     runwayLdaM: 1500,
+    declaredDistancesNote: "AIP AD 2-GCGM: RWY 09/27 cuenta con CWY de 60 m (TODA = 1.560 m ≠ TORA 1.500 m). Despegue por INT A: TORA 400 m (RWY 09) / 1.100 m (RWY 27).",
     baseToRun: 218,
     baseTo50: 342,
     baseLd50: 396, // 1300 ft / 3.28084
@@ -230,8 +242,8 @@ export function PreflightPerformanceWidget({
 
           {/* Form Content */}
           <div className="flex-1 min-h-0 overflow-y-auto my-1 space-y-2">
-            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">
-              <span className="text-[10.5px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block mb-1">
+            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+              <span className="text-[10.5px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block">
                 Condiciones Operacionales en {scenario.icao} ({scenario.runway})
               </span>
               <div className="grid grid-cols-2 gap-2 text-[10.5px] text-slate-600 dark:text-slate-300">
@@ -240,6 +252,17 @@ export function PreflightPerformanceWidget({
                 </div>
                 <div className="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                   <strong>Superficie Pista:</strong> {scenario.surfaceDesc}
+                </div>
+              </div>
+              <div className="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-[10.5px]">
+                <div className="flex flex-wrap items-center justify-between gap-1 text-[10.5px]">
+                  <span className="font-bold text-[#0B2E59] dark:text-sky-300">Distancias Declaradas AIP ({scenario.runway}):</span>
+                  <span className="font-mono text-slate-700 dark:text-slate-200">
+                    TORA: <strong>{scenario.runwayToraM} m</strong> · TODA: <strong className="text-blue-600 dark:text-sky-400">{scenario.runwayTodaM} m</strong> · ASDA: <strong>{scenario.runwayAsdaM} m</strong> · LDA: <strong className="text-emerald-600 dark:text-emerald-400">{scenario.runwayLdaM} m</strong>
+                  </span>
+                </div>
+                <div className="text-[9.5px] text-slate-500 dark:text-slate-400 mt-0.5 leading-tight">
+                  ℹ️ {scenario.declaredDistancesNote}
                 </div>
               </div>
             </div>
@@ -323,7 +346,7 @@ export function PreflightPerformanceWidget({
                       </div>
                     </td>
                     <td className="py-2 px-2 text-center font-mono font-bold text-slate-600 dark:text-slate-300 text-xs">
-                      TODA: {scenario.runwayToraM} m
+                      TODA: {scenario.runwayTodaM} m
                     </td>
                     <td className="py-2 px-2 text-right">
                       <input
@@ -426,7 +449,7 @@ export function PreflightPerformanceWidget({
           <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm block">
-                📏 MÁRGENES TORA / LDA EN {scenario.icao}
+                📏 MÁRGENES TORA / TODA / LDA EN {scenario.icao}
               </span>
               <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium">
                 {scenario.name} · {scenario.runway}
@@ -446,7 +469,7 @@ export function PreflightPerformanceWidget({
                 </div>
                 <div className="space-y-1 max-w-sm">
                   <h4 className="text-sm font-bold text-[#0B2E59] dark:text-sky-300">
-                    Comprobación Gráfica TORA / LDA
+                    Comprobación Gráfica de Distancias Declaradas (TORA / TODA / LDA)
                   </h4>
                   <p className="text-xs text-slate-600 dark:text-slate-400 leading-snug">
                     Calcula e introduce las distancias de despegue y toma en el formulario F.OPS.02 de la izquierda. Al pulsar <strong>&quot;Validar Performance {scenario.icao}&quot;</strong> se desbloqueará la representación gráfica a escala de pista y los márgenes de seguridad.
@@ -481,41 +504,43 @@ export function PreflightPerformanceWidget({
                 {/* Takeoff Comparison Bar */}
                 <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
                   <div className="flex justify-between items-center text-xs font-bold">
-                    <span className="text-[#0B2E59] dark:text-sky-300">Despegue 50 ft vs TORA ({scenario.icao})</span>
+                    <span className="text-[#0B2E59] dark:text-sky-300">Despegue 50 ft vs TODA ({scenario.icao} {scenario.runway})</span>
                     <span className="text-emerald-600 dark:text-emerald-400 font-mono">
-                      Margen: +{scenario.runwayToraM - scenario.to50ft} m
+                      Margen: +{scenario.runwayTodaM - scenario.to50ft} m
                     </span>
                   </div>
 
                   {/* Badges row */}
                   <div className="flex items-center justify-between text-xs py-0.5">
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-sky-300 font-bold">
-                      <span>Requerido:</span>
+                      <span>Requerido (50 ft):</span>
                       <span className="font-mono">{scenario.to50ft} m</span>
-                      <span className="text-[10px] font-normal text-blue-500">({Math.round((scenario.to50ft / scenario.runwayToraM) * 100)}% pista)</span>
+                      <span className="text-[10px] font-normal text-blue-500">({Math.round((scenario.to50ft / scenario.runwayTodaM) * 100)}% TODA)</span>
                     </span>
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-bold">
                       <span>Libre:</span>
-                      <span className="font-mono">+{scenario.runwayToraM - scenario.to50ft} m</span>
+                      <span className="font-mono">+{scenario.runwayTodaM - scenario.to50ft} m</span>
                     </span>
                   </div>
 
                   {/* Visual Runway Bar (no cramped text inside) */}
                   <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden h-3 flex">
                     <div
-                      style={{ width: `${Math.max(4, Math.min(100, (scenario.to50ft / scenario.runwayToraM) * 100))}%` }}
+                      style={{ width: `${Math.max(4, Math.min(100, (scenario.to50ft / scenario.runwayTodaM) * 100))}%` }}
                       className="bg-blue-500 h-full rounded-l-full"
                       title={`Requerido: ${scenario.to50ft} m`}
                     />
                     <div
                       className="flex-1 bg-emerald-500/80 h-full rounded-r-full"
-                      title={`Remanente: +${scenario.runwayToraM - scenario.to50ft} m`}
+                      title={`Remanente: +${scenario.runwayTodaM - scenario.to50ft} m`}
                     />
                   </div>
 
                   <div className="flex justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
                     <span>0 m</span>
-                    <span className="font-medium text-slate-600 dark:text-slate-300">Pista Disponible (TORA): {scenario.runwayToraM} m</span>
+                    <span className="font-medium text-slate-600 dark:text-slate-300">
+                      TORA: {scenario.runwayToraM} m · TODA (c/ Clearway): {scenario.runwayTodaM} m
+                    </span>
                   </div>
                 </div>
 
