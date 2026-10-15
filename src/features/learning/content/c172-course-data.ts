@@ -6339,42 +6339,50 @@ export const C172_LESSON_6 = {
             </p>
           </div>
 
-          <div class="space-y-1.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+          <div class="space-y-2 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
               <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.GEN.105 (Masa y Centrado):</strong>
               <div>Garantizar que la carga esté distribuida de modo que el centro de gravedad (CG) permanezca dentro de la envolvente certificada en despegue y aterrizaje.</div>
             </div>
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
               <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.OP.125 & Manual OM Blue Team (Combustible Reglamentario):</strong>
               <div>Embarcar combustible para la ruta más una reserva final legal obligatoria de <strong>45 minutos</strong> a régimen de crucero de escuela. Adicionalmente, por Manual de Operaciones de Blue Team (OM) debemos disponer de <strong>al menos 1:30 (1h 30min) de reserva final</strong>, más el combustible necesario para proceder al aeródromo alternativo en caso de no haber aterrizado en destino.</div>
             </div>
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
               <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.POL.105 (Performance de Pista):</strong>
               <div>Verificar que las distancias calculadas con correcciones de viento y superficie no superen la TORA y LDA disponibles.</div>
             </div>
           </div>
         </div>
 
-        <div class="p-2 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs sm:text-[13px]">
-          <strong>AERONAVE EC-NNA:</strong> Cessna 172 con planta motriz turbodiésel <strong>Continental CD-155 (TAE 125-02-114)</strong> de 155 HP y hélice tripala MT-Propeller de velocidad constante.
+        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
+          Normativa Operacional VFR · EASA Part-NCO & Manual OM Blue Team
         </div>
       </div>
     </div>
 
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ DOCUMENTACIÓN OFICIAL</span>
-        </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-            📷
+        <div class="space-y-2">
+          <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ AERONAVE Y DOCUMENTACIÓN</span>
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Formulario oficial F.OPS.02 de Documentación Prevuelo de la escuela Blue Team con las 4 secciones técnicas cumplimentadas
-          </p>
+
+          <!-- Cuadro AERONAVE EC-NNA trasladado a la columna derecha -->
+          <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs sm:text-[13px] shadow-2xs">
+            <strong class="text-sky-800 dark:text-sky-300 block font-bold mb-0.5">AERONAVE EC-NNA:</strong>
+            <div>Cessna 172 con planta motriz turbodiésel <strong>Continental CD-155 (TAE 125-02-114)</strong> de 155 HP y hélice tripala MT-Propeller de velocidad constante.</div>
+          </div>
+
+          <div class="w-full rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-5 text-center">
+            <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2">
+              📷
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+            <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+              Formulario oficial F.OPS.02 de Documentación Prevuelo de la escuela Blue Team con las 4 secciones técnicas cumplimentadas
+            </p>
+          </div>
         </div>
 
         <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
