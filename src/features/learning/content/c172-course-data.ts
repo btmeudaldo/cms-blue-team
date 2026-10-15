@@ -6345,7 +6345,7 @@ export const C172_LESSON_6 = {
           </div>
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.OP.125 & Manual OM Blue Team (Combustible Reglamentario):</strong>
-            <div>Embarcar combustible para la ruta más una reserva final legal obligatoria de <strong>45 minutos</strong> a régimen de crucero de escuela. Adicionalmente, por Manual de Operaciones de Blue Team (OM) debemos disponer de <strong>al menos 1:30 (1h 30min) de reserva final</strong>, más el combustible necesario para proceder al aeródromo alternativo en caso de no haber aterrizado en destino.</div>
+            <div>Embarcar combustible para la ruta más una reserva final legal obligatoria de <strong>45 minutos</strong> a régimen de crucero de escuela. Adicionalmente, por Manual de Operaciones de Blue Team debemos disponer de <strong>al menos 1h 30min de reserva final</strong>, más el combustible necesario para proceder al aeródromo alternativo en caso de haber aterrizado en destino.</div>
           </div>
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.POL.105 (Performance de Pista):</strong>
@@ -6837,7 +6837,7 @@ export const C172_LESSON_6 = {
           </div>
           <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 shadow-2xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Reserva Exigida por Manual OM Blue Team:</strong>
-            <div>Por política interna de seguridad de la escuela, se debe disponer de al menos <strong>1 hora y 30 minutos (1:30) de reserva final</strong> (<strong>23.0 Litros / 19.3 kg</strong>), más el combustible necesario para proceder al aeródromo alternativo en caso de no haber aterrizado en destino.</div>
+            <div>Por política interna de seguridad de la escuela, se debe disponer de al menos <strong>1 hora y 30 minutos (1h 30min) de reserva final</strong> (<strong>23.0 Litros / 19.3 kg</strong>), más el combustible necesario para proceder al aeródromo alternativo en caso de haber aterrizado en destino.</div>
           </div>
         </div>
 

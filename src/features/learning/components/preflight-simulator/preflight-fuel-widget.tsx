@@ -394,7 +394,7 @@ export function PreflightFuelWidget({
                   2. Política Operativa Blue Team (Manual OM):
                 </strong>
                 <p className="leading-tight text-[10.5px]">
-                  Por Manual de Operaciones, en Blue Team debemos disponer de <strong>al menos 1:30 (1h 30min = 23.0 L) de reserva final</strong>, más el combustible necesario para alcanzar el aeródromo alternativo en caso de no haber aterrizado en destino (~5.1 L adicionales).
+                  Por Manual de Operaciones, en Blue Team debemos disponer de <strong>al menos 1h 30min (23.0 L) de reserva final</strong>, más el combustible necesario para alcanzar el aeródromo alternativo en caso de haber aterrizado en destino (~5.1 L adicionales).
                 </p>
               </div>
             </div>
