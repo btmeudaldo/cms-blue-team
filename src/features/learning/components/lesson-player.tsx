@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { PreflightInteractiveHub, type ExerciseType } from "./preflight-simulator/preflight-interactive-hub";
 import { splitLessonPages } from "@/features/learning/domain/lesson-pages";
 import {
   getSlideVisibility,
@@ -176,6 +178,33 @@ export function LessonPlayer({
     lessonPages[effectivePageIndex] ?? lessonPages[0] ?? "";
   const safeContentHtml = sanitizeLessonHtml(currentSlideHtml);
 
+  // Interactive simulator widget state & gating
+  const [exerciseContainer, setExerciseContainer] = useState<HTMLElement | null>(null);
+  const [completedExercises, setCompletedExercises] = useState<Record<number, boolean>>({});
+
+  useEffect(() => {
+    if (!contentRef.current) {
+      setExerciseContainer(null);
+      return;
+    }
+    const container = contentRef.current.querySelector<HTMLElement>("[data-interactive-exercise]");
+    setExerciseContainer(container);
+  }, [effectivePageIndex, safeContentHtml]);
+
+  const activeExerciseType = useMemo(() => {
+    return (exerciseContainer?.getAttribute("data-interactive-exercise") as ExerciseType) || null;
+  }, [exerciseContainer]);
+
+  const isCurrentExerciseCompleted = useMemo(() => {
+    if (!activeExerciseType) return true;
+    return isAlreadyCompleted || isCompletedSuccess || isStaff || Boolean(completedExercises[effectivePageIndex]);
+  }, [activeExerciseType, isAlreadyCompleted, isCompletedSuccess, isStaff, completedExercises, effectivePageIndex]);
+
+  const handleExerciseCompleted = () => {
+    setCompletedExercises((prev) => ({ ...prev, [effectivePageIndex]: true }));
+    setCompletedPages((prev) => ({ ...prev, [effectivePageIndex]: true }));
+  };
+
   const currentRawIndex = isSuperAdmin
     ? effectivePageIndex
     : (visibleToOriginalIndexMap[effectivePageIndex] ?? effectivePageIndex);
@@ -208,9 +237,10 @@ export function LessonPlayer({
   const minSecondsPerPage = 1;
   const effectiveMinSeconds = 1;
   const isCurrentPageDone =
-    isAlreadyCompleted ||
-    isCompletedSuccess ||
-    Boolean(completedPages[effectivePageIndex]);
+    (isAlreadyCompleted ||
+      isCompletedSuccess ||
+      Boolean(completedPages[effectivePageIndex])) &&
+    isCurrentExerciseCompleted;
   const elapsedOnCurrentPage = pageSecondsElapsed[effectivePageIndex] ?? 0;
   const currentPageRemainingSeconds = isCurrentPageDone
     ? 0
@@ -455,13 +485,14 @@ export function LessonPlayer({
       : remainingSeconds === 0) && reachedScrollThreshold;
   const canAdvance =
     isAlreadyCompleted ||
-    canCompleteLesson(
-      serverProgress,
-      effectiveMinSeconds,
-      reachedScrollThreshold,
-      isAdvanceArmed,
-      isCompleting || Boolean(errorMessage) || !isWindowFocused,
-    );
+    (isCurrentExerciseCompleted &&
+      canCompleteLesson(
+        serverProgress,
+        effectiveMinSeconds,
+        reachedScrollThreshold,
+        isAdvanceArmed,
+        isCompleting || Boolean(errorMessage) || !isWindowFocused,
+      ));
   const isBottomBarVisible =
     isAlreadyCompleted ||
     isCompletedSuccess ||
@@ -470,6 +501,7 @@ export function LessonPlayer({
       : remainingSeconds === 0);
 
   const handleAdvanceSlide = () => {
+    if (!isCurrentExerciseCompleted) return;
     setCompletedPages((prev) => ({
       ...prev,
       [currentPageIndex]: true,
@@ -1286,15 +1318,25 @@ export function LessonPlayer({
                 Esta lección está en preparación y estará disponible próximamente.
               </div>
             ) : (
-              <article
-                ref={contentRef}
-                className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 ${
-                  isSlideMode
-                    ? "flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-5 lg:px-6 lg:py-4 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
-                    : "prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
-                }`}
-                dangerouslySetInnerHTML={{ __html: safeContentHtml }}
-              />
+              <>
+                <article
+                  ref={contentRef}
+                  className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 ${
+                    isSlideMode
+                      ? "flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-5 lg:px-6 lg:py-4 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
+                      : "prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
+                  }`}
+                  dangerouslySetInnerHTML={{ __html: safeContentHtml }}
+                />
+                {exerciseContainer && activeExerciseType && createPortal(
+                  <PreflightInteractiveHub
+                    exerciseType={activeExerciseType}
+                    onExerciseCompleted={handleExerciseCompleted}
+                    isAlreadyCompleted={isCurrentExerciseCompleted}
+                  />,
+                  exerciseContainer
+                )}
+              </>
             )}
 
             {/* Bottom Slide Status (Shown only when not in slide mode) */}
@@ -1493,10 +1535,21 @@ export function LessonPlayer({
                   <button
                     type="button"
                     onClick={handleAdvanceSlide}
-                    className="inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold text-white shadow-lg bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer transition-all whitespace-nowrap"
+                    disabled={!isCurrentExerciseCompleted}
+                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap ${
+                      !isCurrentExerciseCompleted
+                        ? "bg-amber-600/90 text-white cursor-not-allowed opacity-90 shadow-amber-500/20"
+                        : "text-white bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
+                    }`}
                   >
-                    <span>Siguiente Diapositiva ({currentPageIndex + 2}/{totalLessonPages})</span>
-                    <span>➔</span>
+                    {!isCurrentExerciseCompleted ? (
+                      <span>🔒 Completa el ejercicio de la diapositiva para continuar</span>
+                    ) : (
+                      <>
+                        <span>Siguiente Diapositiva ({currentPageIndex + 2}/{totalLessonPages})</span>
+                        <span>➔</span>
+                      </>
+                    )}
                   </button>
                 ) : (
                   <button
