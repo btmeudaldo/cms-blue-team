@@ -7023,7 +7023,7 @@ export const C172_LESSON_6 = {
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA) · TALLER INTERACTIVO 4</div>
       <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.14 Ejercicio Práctico: Performance de Despegue y Aterrizaje</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distances & POH</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distances & POH · GCXO · GCTS · GCGM</span>
   </div>
 
   <div class="py-0.5" data-interactive-exercise="performance"></div>
