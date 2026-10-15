@@ -6441,14 +6441,13 @@ export const C172_LESSON_6 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESTACIONES DE CARGA (EC-NNA)</span>
         </div>
 
-        <div class="w-full rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-            📷
-          </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Diagrama esquemático del perfil del C172 señalando el Datum en cortafuegos y los brazos oficiales: Asientos 1-2 (0.94m), Combustible (1.22m), Pasajeros (1.85m) y Equipajes
-          </p>
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 my-1">
+          <img
+            src="/images/c172/6.2.jpg"
+            alt="Estaciones de carga y brazos Cessna 172"
+            class="w-full h-full object-contain rounded-lg"
+            onerror="if(this.src!=='/images/c172/estaciones-carga-c172.jpg')this.src='/images/c172/estaciones-carga-c172.jpg'"
+          />
         </div>
 
         <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
