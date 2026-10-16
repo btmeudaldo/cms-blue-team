@@ -7,6 +7,7 @@ import {
   isCgInsideNormal,
   isCgInsideUtility,
   mapCgToSvgCoords,
+  mapSvgCoordsToCg,
   checkValueTolerance,
 } from "./constants";
 import { PreflightMission } from "./types";
@@ -60,6 +61,8 @@ export function PreflightLoadsheetWidget({
   const [passedLanding, setPassedLanding] = useState(false);
   const isStepPassed = currentStep === "takeoff" ? passedTakeoff : passedLanding;
   const [interactiveClickPoint, setInteractiveClickPoint] = useState<{ x: number; y: number } | null>(null);
+  const [hoverPoint, setHoverPoint] = useState<{ x: number; y: number } | null>(null);
+  const [zoomLevel, setZoomLevel] = useState(1);
 
   // Load mission initial scenario values
   const loadMissionScenario = (m: PreflightMission, idx: number) => {
@@ -85,6 +88,8 @@ export function PreflightLoadsheetWidget({
     setPassedTakeoff(false);
     setPassedLanding(false);
     setInteractiveClickPoint(null);
+    setHoverPoint(null);
+    setZoomLevel(1);
   };
 
   // Expected values calculation based on mission at 50% standard flight school cruise power
@@ -314,10 +319,21 @@ export function PreflightLoadsheetWidget({
   const isTomUtility = isCgInsideUtility(expected.tomMass, expected.tomCg);
   const isLmNormal = isCgInsideNormal(expected.lmMass, expected.lmCg);
 
+  // Mapped estimated values from student interactive clicks and hover cursor
+  const studentEstimated = useMemo(() => {
+    if (!interactiveClickPoint) return null;
+    return mapSvgCoordsToCg(interactiveClickPoint.x, interactiveClickPoint.y);
+  }, [interactiveClickPoint]);
+
+  const hoverData = useMemo(() => {
+    if (!hoverPoint) return null;
+    return mapSvgCoordsToCg(hoverPoint.x, hoverPoint.y);
+  }, [hoverPoint]);
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-      {/* Columna Izquierda (lg:col-span-7): Altura Estricta 590px */}
-      <div className="lg:col-span-7 flex flex-col">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+      {/* Columna Izquierda (lg:col-span-6): Altura Estricta 590px */}
+      <div className="lg:col-span-6 flex flex-col">
         <div
           className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
           style={{ height: "590px" }}
@@ -739,106 +755,381 @@ export function PreflightLoadsheetWidget({
         </div>
       </div>
 
-      {/* Columna Derecha (lg:col-span-5): Live SVG Envelope (Altura Estricta 590px) */}
-      <div className="lg:col-span-5 flex flex-col">
+      {/* Columna Derecha (lg:col-span-6): Live SVG Envelope con Lupas y Proyecciones de Ejes (Altura Estricta 590px) */}
+      <div className="lg:col-span-6 flex flex-col">
         <div
           className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
           style={{ height: "590px" }}
         >
-          <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-            <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
-              📈 ENVOLVENTE EN VIVO (FIG. 6-8)
-            </span>
-            <span className="text-xs sm:text-[13px] font-semibold text-slate-500">
-              {currentStep === "takeoff" ? "Punto de Despegue (TOW)" : "Trayectoria TOW → LW"}
-            </span>
+          {/* Header con Controles de Lupa y Estado */}
+          <div className="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+                📈 ENVOLVENTE EN VIVO (FIG. 6-8)
+              </span>
+              <span className="text-xs font-semibold text-slate-500 hidden md:inline">
+                {currentStep === "takeoff"
+                  ? (isStepPassed ? "✓ TOW Verificado" : "Localiza tu punto TOW")
+                  : (isStepPassed ? "✓ Trayectoria TOW → LW" : "Localiza tu punto LW")}
+              </span>
+            </div>
+
+            {/* Controles de Lupa (Zoom In / Out / Reset) */}
+            <div className="flex items-center gap-1 bg-white dark:bg-slate-800 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700 shadow-2xs">
+              <button
+                type="button"
+                onClick={() => setZoomLevel((z) => Math.max(1, Math.round((z - 0.25) * 100) / 100))}
+                disabled={zoomLevel <= 1}
+                className="w-6 h-6 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-extrabold text-xs hover:bg-slate-200 dark:hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
+                title="Reducir envolvente (Lupa -)"
+              >
+                🔍−
+              </button>
+              <span className="text-[11px] font-mono font-bold text-slate-700 dark:text-slate-200 px-1 min-w-[36px] text-center">
+                {Math.round(zoomLevel * 100)}%
+              </span>
+              <button
+                type="button"
+                onClick={() => setZoomLevel((z) => Math.min(2.25, Math.round((z + 0.25) * 100) / 100))}
+                disabled={zoomLevel >= 2.25}
+                className="w-6 h-6 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-extrabold text-xs hover:bg-slate-200 dark:hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
+                title="Ampliar envolvente (Lupa +)"
+              >
+                🔍+
+              </button>
+              {zoomLevel > 1 && (
+                <button
+                  type="button"
+                  onClick={() => setZoomLevel(1)}
+                  className="px-1.5 h-6 flex items-center justify-center rounded bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-sky-300 font-bold text-[10px] hover:bg-blue-200 cursor-pointer transition-all"
+                  title="Restablecer vista normal al 100%"
+                >
+                  ↺ 100%
+                </button>
+              )}
+            </div>
           </div>
 
-          {/* SVG Envelope Display */}
-          <div className="relative w-full aspect-[1140/880] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 my-auto">
-            <img
-              src="/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg"
-              alt="Center of Gravity Limits SVG"
-              className="w-full h-full object-contain pointer-events-none"
-            />
-
-            <svg
-              viewBox="0 0 1140 880"
-              className="absolute inset-0 w-full h-full cursor-crosshair"
-              onClick={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const clickX = ((e.clientX - rect.left) / rect.width) * 1140;
-                const clickY = ((e.clientY - rect.top) / rect.height) * 880;
-                setInteractiveClickPoint({ x: clickX, y: clickY });
+          {/* SVG Envelope Display con Soporte de Zoom, Pan y Crosshairs */}
+          <div className="flex-1 min-h-0 my-1 overflow-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-start">
+            <div
+              className="relative shrink-0 aspect-[1140/880] transition-all duration-200 origin-top"
+              style={{
+                width: `${zoomLevel * 100}%`,
+                minWidth: "100%",
               }}
             >
-              {/* Show consumption line if in landing mode or all */}
-              {(currentStep === "landing" || isStepPassed) && (
-                <line
-                  x1={tomCoords.x}
-                  y1={tomCoords.y}
-                  x2={lmCoords.x}
-                  y2={lmCoords.y}
-                  stroke="#1a80ff"
-                  strokeWidth="3.5"
-                  strokeDasharray="6 4"
-                />
-              )}
+              <img
+                src="/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg"
+                alt="Center of Gravity Limits SVG"
+                className="w-full h-full object-contain pointer-events-none select-none"
+              />
 
-              {/* Takeoff Point (TOW) */}
-              <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
-                <circle r="8" fill="#2563eb" stroke="#ffffff" strokeWidth="2.5" />
-                <circle r="14" fill="none" stroke="#2563eb" strokeWidth="1.5" opacity="0.6" className="animate-ping" />
-                <rect x="12" y="-12" width="60" height="20" rx="6" fill="#1e40af" opacity="0.9" />
-                <text x="42" y="2" fill="#ffffff" fontSize="11" fontWeight="bold" textAnchor="middle">
-                  TOW
-                </text>
-              </g>
+              <svg
+                viewBox="0 0 1140 880"
+                className="absolute inset-0 w-full h-full cursor-crosshair select-none"
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const clickX = ((e.clientX - rect.left) / rect.width) * 1140;
+                  const clickY = ((e.clientY - rect.top) / rect.height) * 880;
+                  if (clickX >= 130 && clickX <= 1015 && clickY >= 120 && clickY <= 695) {
+                    setHoverPoint({ x: clickX, y: clickY });
+                  } else {
+                    setHoverPoint(null);
+                  }
+                }}
+                onMouseLeave={() => setHoverPoint(null)}
+                onClick={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const clickX = ((e.clientX - rect.left) / rect.width) * 1140;
+                  const clickY = ((e.clientY - rect.top) / rect.height) * 880;
+                  setInteractiveClickPoint({ x: clickX, y: clickY });
+                }}
+              >
+                {/* 1. LÍNEAS GUÍA DE MOUSE HOVER A LOS EJES (Arriba: CG, Izquierda: Masa) */}
+                {hoverPoint && hoverData && (
+                  <g pointerEvents="none">
+                    {/* Línea horizontal hacia el eje vertical izquierdo (Masa) */}
+                    <line
+                      x1={hoverPoint.x}
+                      y1={hoverPoint.y}
+                      x2={132.7}
+                      y2={hoverPoint.y}
+                      stroke="#2563eb"
+                      strokeWidth="2.5"
+                      strokeDasharray="6 3"
+                    />
+                    {/* Badge indicador en el eje izquierdo (Masa en kg) */}
+                    <rect
+                      x={50}
+                      y={hoverPoint.y - 14}
+                      width="80"
+                      height="28"
+                      rx="6"
+                      fill="#1d4ed8"
+                      stroke="#ffffff"
+                      strokeWidth="1.5"
+                    />
+                    <text
+                      x={90}
+                      y={hoverPoint.y + 5}
+                      fill="#ffffff"
+                      fontSize="13"
+                      fontWeight="900"
+                      textAnchor="middle"
+                    >
+                      {hoverData.massKg} kg
+                    </text>
 
-              {/* Landing Point (LW) */}
-              {(currentStep === "landing" || isStepPassed) && (
-                <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
-                  <circle r="7" fill="#059669" stroke="#ffffff" strokeWidth="2.5" />
-                  <rect x="12" y="-10" width="50" height="18" rx="6" fill="#065f46" opacity="0.9" />
-                  <text x="37" y="3" fill="#ffffff" fontSize="10" fontWeight="bold" textAnchor="middle">
-                    LW
-                  </text>
-                </g>
-              )}
+                    {/* Línea vertical hacia el eje horizontal superior (CG) */}
+                    <line
+                      x1={hoverPoint.x}
+                      y1={hoverPoint.y}
+                      x2={hoverPoint.x}
+                      y2={120.3}
+                      stroke="#2563eb"
+                      strokeWidth="2.5"
+                      strokeDasharray="6 3"
+                    />
+                    {/* Badge indicador en el eje superior (Brazo CG en m) */}
+                    <rect
+                      x={hoverPoint.x - 52}
+                      y={86}
+                      width="104"
+                      height="28"
+                      rx="6"
+                      fill="#1d4ed8"
+                      stroke="#ffffff"
+                      strokeWidth="1.5"
+                    />
+                    <text
+                      x={hoverPoint.x}
+                      y={105}
+                      fill="#ffffff"
+                      fontSize="13"
+                      fontWeight="900"
+                      textAnchor="middle"
+                    >
+                      {hoverData.cgM.toFixed(3)} m
+                    </text>
 
-              {/* Manual click probe */}
-              {interactiveClickPoint && (
-                <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
-                  <circle r="5" fill="#f59e0b" stroke="#ffffff" strokeWidth="2" />
-                  <text x="8" y="4" fill="#d97706" fontSize="10" fontWeight="bold">
-                    Sonda
-                  </text>
-                </g>
-              )}
-            </svg>
+                    {/* Cursor Crosshair Center Dot */}
+                    <circle
+                      cx={hoverPoint.x}
+                      cy={hoverPoint.y}
+                      r="6"
+                      fill="#2563eb"
+                      stroke="#ffffff"
+                      strokeWidth="2.5"
+                    />
+                  </g>
+                )}
+
+                {/* 2. PASO 1: DESPEGUE (6.5) - Solo TOW */}
+                {currentStep === "takeoff" && (
+                  <>
+                    {/* Mensaje de ayuda inicial si el alumno aún no ha colocado su punto */}
+                    {!interactiveClickPoint && !isStepPassed && (
+                      <g transform="translate(570, 785)" pointerEvents="none">
+                        <rect x="-260" y="-20" width="520" height="40" rx="8" fill="#0f172a" opacity="0.88" />
+                        <text x="0" y="5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
+                          👆 Pasa el ratón para alinear los ejes y haz clic para situar tu punto TOW
+                        </text>
+                      </g>
+                    )}
+
+                    {/* Punto estimado fijado por el alumno ("Tu Punto TOW") */}
+                    {interactiveClickPoint && studentEstimated && (
+                      <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
+                        <circle r="24" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
+                        <circle r="15" fill="#f59e0b" stroke="#ffffff" strokeWidth="3.5" />
+                        <rect x="20" y="-24" width="165" height="46" rx="9" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
+                        <text x="102" y="-4" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                          TU PUNTO TOW
+                        </text>
+                        <text x="102" y="14" fill="#fef3c7" fontSize="13" fontWeight="bold" textAnchor="middle">
+                          ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
+                        </text>
+                      </g>
+                    )}
+
+                    {/* Línea de comparación entre el punto del alumno y el TOW exacto calculado */}
+                    {isStepPassed && interactiveClickPoint && (
+                      <line
+                        x1={interactiveClickPoint.x}
+                        y1={interactiveClickPoint.y}
+                        x2={tomCoords.x}
+                        y2={tomCoords.y}
+                        stroke="#f59e0b"
+                        strokeWidth="3.5"
+                        strokeDasharray="6 4"
+                      />
+                    )}
+
+                    {/* Punto exacto calculado TOW (Oculto al inicio, revelado únicamente al validar) */}
+                    {isStepPassed && (
+                      <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
+                        <circle r="26" fill="none" stroke="#2563eb" strokeWidth="3" opacity="0.75" className="animate-ping" />
+                        <circle r="16" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3.5" />
+                        <rect x="22" y="-24" width="175" height="46" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
+                        <text x="109" y="-4" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                          TOW CALCULADO
+                        </text>
+                        <text x="109" y="14" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
+                          {expected.tomMass} kg · {expected.tomCg} m
+                        </text>
+                      </g>
+                    )}
+                  </>
+                )}
+
+                {/* 3. PASO 2: ATERRIZAJE (6.6) - TOW y LW */}
+                {currentStep === "landing" && (
+                  <>
+                    {/* Punto de Despegue (TOW conocido) */}
+                    <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
+                      <circle r="14" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3" />
+                      <rect x="18" y="-18" width="130" height="36" rx="7" fill="#1e40af" stroke="#ffffff" strokeWidth="2" />
+                      <text x="83" y="-1" fill="#ffffff" fontSize="14" fontWeight="bold" textAnchor="middle">
+                        TOW (Despegue)
+                      </text>
+                      <text x="83" y="13" fill="#bfdbfe" fontSize="11" fontWeight="bold" textAnchor="middle">
+                        {expected.tomMass} kg · {expected.tomCg} m
+                      </text>
+                    </g>
+
+                    {/* Línea de consumo TOW -> LW (mostrada tras validar aterrizaje) */}
+                    {isStepPassed && (
+                      <line
+                        x1={tomCoords.x}
+                        y1={tomCoords.y}
+                        x2={lmCoords.x}
+                        y2={lmCoords.y}
+                        stroke="#1a80ff"
+                        strokeWidth="4"
+                        strokeDasharray="8 6"
+                      />
+                    )}
+
+                    {/* Punto estimado fijado por el alumno para LW */}
+                    {interactiveClickPoint && studentEstimated && (
+                      <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
+                        <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
+                        <circle r="14" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
+                        <rect x="18" y="-20" width="150" height="42" rx="8" fill="#b45309" stroke="#ffffff" strokeWidth="2" />
+                        <text x="93" y="-2" fill="#ffffff" fontSize="15" fontWeight="900" textAnchor="middle">
+                          TU PUNTO LW
+                        </text>
+                        <text x="93" y="14" fill="#fef3c7" fontSize="12" fontWeight="bold" textAnchor="middle">
+                          ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
+                        </text>
+                      </g>
+                    )}
+
+                    {/* Línea de comparación alumno vs LW exacto */}
+                    {isStepPassed && interactiveClickPoint && (
+                      <line
+                        x1={interactiveClickPoint.x}
+                        y1={interactiveClickPoint.y}
+                        x2={lmCoords.x}
+                        y2={lmCoords.y}
+                        stroke="#f59e0b"
+                        strokeWidth="3.5"
+                        strokeDasharray="6 4"
+                      />
+                    )}
+
+                    {/* Punto exacto de aterrizaje (LW) revelado tras validar */}
+                    {isStepPassed && (
+                      <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
+                        <circle r="26" fill="none" stroke="#059669" strokeWidth="3" opacity="0.75" className="animate-ping" />
+                        <circle r="16" fill="#059669" stroke="#ffffff" strokeWidth="3.5" />
+                        <rect x="22" y="-24" width="170" height="46" rx="9" fill="#065f46" stroke="#ffffff" strokeWidth="2.5" />
+                        <text x="107" y="-4" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                          LW CALCULADO
+                        </text>
+                        <text x="107" y="14" fill="#a7f3d0" fontSize="13" fontWeight="bold" textAnchor="middle">
+                          {expected.lmMass} kg · {expected.lmCg} m
+                        </text>
+                      </g>
+                    )}
+                  </>
+                )}
+              </svg>
+            </div>
           </div>
 
-          {/* Envelope Status Footer - Each state in a single clean line with general font size */}
+          {/* Footer de Estado de la Envolvente */}
           <div className="space-y-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 text-xs sm:text-[13px]">
-            <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
-              <div className="flex items-center gap-2">
-                <strong className="text-blue-900 dark:text-sky-300">DESPEGUE (TOW):</strong>
-                <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.tomMass} kg · CG {expected.tomCg} m</span>
-              </div>
-              <span className={`font-bold ${isTomNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
-                {isTomNormal ? "✓ Categoría Normal" : "⚠️ Fuera de Límites"}
-              </span>
-            </div>
+            {currentStep === "takeoff" ? (
+              /* En 6.5 SOLO se muestra el estado de Despegue (TOW) */
+              !isStepPassed ? (
+                <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800">
+                  <div className="flex items-center gap-2">
+                    <span className="text-base">📍</span>
+                    <span className="text-amber-950 dark:text-amber-200">
+                      {studentEstimated ? (
+                        <>
+                          Has situado tu marca en <strong>~{studentEstimated.massKg} kg</strong> · CG <strong>{studentEstimated.cgM.toFixed(3)} m</strong>. ¡Pulsa <em>Comprobar Despegue</em> para verificar si coincide con el TOW real!
+                        </>
+                      ) : (
+                        <>
+                          Usa la gráfica para situar tu punto <strong>TOW estimado</strong> según los cálculos de tu hoja de carga.
+                        </>
+                      )}
+                    </span>
+                  </div>
+                  <span className="text-xs font-bold text-amber-700 dark:text-amber-400 shrink-0">
+                    {studentEstimated ? "Punto fijado" : "Pendiente"}
+                  </span>
+                </div>
+              ) : (
+                <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
+                  <div className="flex items-center gap-2">
+                    <strong className="text-blue-900 dark:text-sky-300">TOW REAL:</strong>
+                    <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">
+                      {expected.tomMass} kg · CG {expected.tomCg} m
+                    </span>
+                    {studentEstimated && (
+                      <span className="text-xs text-amber-800 dark:text-amber-300 font-medium ml-1">
+                        (Tu marca: {studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m)
+                      </span>
+                    )}
+                  </div>
+                  <span className={`font-bold ${isTomNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
+                    {isTomNormal ? "✓ Categoría Normal" : "⚠️ Fuera de Límites"}
+                  </span>
+                </div>
+              )
+            ) : (
+              /* En 6.6 se muestran ambos estados (Despegue y Aterrizaje) */
+              <>
+                <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
+                  <div className="flex items-center gap-2">
+                    <strong className="text-blue-900 dark:text-sky-300">DESPEGUE (TOW):</strong>
+                    <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.tomMass} kg · CG {expected.tomCg} m</span>
+                  </div>
+                  <span className={`font-bold ${isTomNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
+                    {isTomNormal ? "✓ Categoría Normal" : "⚠️ Fuera de Límites"}
+                  </span>
+                </div>
 
-            <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
-              <div className="flex items-center gap-2">
-                <strong className="text-emerald-900 dark:text-emerald-300">ATERRIZAJE (LW):</strong>
-                <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.lmMass} kg · CG {expected.lmCg} m</span>
-              </div>
-              <span className={`font-bold ${isLmNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
-                {isLmNormal ? (isTomUtility ? "✓ Categoría Utilidad" : "✓ Categoría Normal") : "⚠️ Fuera de Límites"}
-              </span>
-            </div>
+                <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+                  <div className="flex items-center gap-2">
+                    <strong className="text-emerald-900 dark:text-emerald-300">ATERRIZAJE (LW):</strong>
+                    <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.lmMass} kg · CG {expected.lmCg} m</span>
+                    {studentEstimated && (
+                      <span className="text-xs text-amber-800 dark:text-amber-300 font-medium ml-1">
+                        (Tu marca: {studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m)
+                      </span>
+                    )}
+                  </div>
+                  <span className={`font-bold ${isLmNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
+                    {isLmNormal ? (isTomUtility ? "✓ Categoría Utilidad" : "✓ Categoría Normal") : "⚠️ Fuera de Límites"}
+                  </span>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
