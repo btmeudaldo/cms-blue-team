@@ -38,6 +38,7 @@ export function PreflightLoadsheetWidget({
   const [baggageMoment, setBaggageMoment] = useState("");
 
   const [zfmMass, setZfmMass] = useState("");
+  const [zfmCg, setZfmCg] = useState("");
   const [zfmMoment, setZfmMoment] = useState("");
 
   const [fuelMass, setFuelMass] = useState("");
@@ -47,6 +48,7 @@ export function PreflightLoadsheetWidget({
   const [tomMoment, setTomMoment] = useState("");
   const [tomCg, setTomCg] = useState("");
 
+  const [tripFuelMassInput, setTripFuelMassInput] = useState("");
   const [tripFuelMoment, setTripFuelMoment] = useState("");
 
   const [lmMass, setLmMass] = useState("");
@@ -60,7 +62,13 @@ export function PreflightLoadsheetWidget({
   const [passedTakeoff, setPassedTakeoff] = useState(false);
   const [passedLanding, setPassedLanding] = useState(false);
   const isStepPassed = currentStep === "takeoff" ? passedTakeoff : passedLanding;
+
+  // Interactive points: In 6.5 both ZFM and TOW are placed; in 6.6 LW is placed
+  const [interactiveZfmPoint, setInteractiveZfmPoint] = useState<{ x: number; y: number } | null>(null);
+  const [interactiveTomPoint, setInteractiveTomPoint] = useState<{ x: number; y: number } | null>(null);
   const [interactiveClickPoint, setInteractiveClickPoint] = useState<{ x: number; y: number } | null>(null);
+  const [activePlotPoint, setActivePlotPoint] = useState<"zfm" | "tom">("zfm");
+
   const [hoverPoint, setHoverPoint] = useState<{ x: number; y: number } | null>(null);
   const [zoomLevel, setZoomLevel] = useState(1);
   const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
@@ -138,12 +146,14 @@ export function PreflightLoadsheetWidget({
     setPaxMoment("");
     setBaggageMoment("");
     setZfmMass("");
+    setZfmCg("");
     setZfmMoment("");
     setFuelMass("");
     setFuelMoment("");
     setTomMass("");
     setTomMoment("");
     setTomCg("");
+    setTripFuelMassInput("");
     setTripFuelMoment("");
     setLmMass("");
     setLmMoment("");
@@ -156,7 +166,10 @@ export function PreflightLoadsheetWidget({
     setShowTargetHint(false);
     setPassedTakeoff(false);
     setPassedLanding(false);
+    setInteractiveZfmPoint(null);
+    setInteractiveTomPoint(null);
     setInteractiveClickPoint(null);
+    setActivePlotPoint("zfm");
     setHoverPoint(null);
     setZoomLevel(1);
     setPanOffset({ x: 0, y: 0 });
@@ -176,6 +189,7 @@ export function PreflightLoadsheetWidget({
 
     const zMass = Math.round((EC_NNA_DATA.emptyWeightKg + pMass + paxM + bagM) * 100) / 100;
     const zMom = Math.round((EC_NNA_DATA.emptyWeightMoment + pMom + paxMom + bagMom) * 100) / 100;
+    const zCg = Math.round((zMom / zMass) * 1000) / 1000;
 
     const fLiters = sc.takeoffFuelLiters;
     const fMass = Math.round(fLiters * EC_NNA_DATA.fuelDensityKgL * 100) / 100;
@@ -203,6 +217,7 @@ export function PreflightLoadsheetWidget({
       baggageMass: bagM,
       baggageMoment: bagMom,
       zfmMass: zMass,
+      zfmCg: zCg,
       zfmMoment: zMom,
       fuelLiters: fLiters,
       fuelMass: fMass,
@@ -225,15 +240,14 @@ export function PreflightLoadsheetWidget({
     const newWarnings: string[] = [];
     const num = (val: string) => parseFloat(val.replace(",", "."));
 
-    // 0. Comprobación obligatoria: debe haber situado el punto en la envolvente
-    if (!interactiveClickPoint) {
-      newErrors.envelopePoint =
-        currentStep === "takeoff"
-          ? "Es obligatorio situar tu punto TOW estimado en la envolvente gráfica antes de comprobar."
-          : "Es obligatorio situar tu punto LW estimado en la envolvente gráfica antes de comprobar.";
-    }
-
     if (currentStep === "takeoff") {
+      // 0. Comprobación obligatoria: debe haber situado ZFM y TOW
+      if (!interactiveZfmPoint) {
+        newErrors.envelopePoint = "Es obligatorio situar tu punto ZFM estimado en la envolvente antes de comprobar.";
+      } else if (!interactiveTomPoint) {
+        newErrors.envelopePoint = "Es obligatorio situar tu punto TOW estimado en la envolvente antes de comprobar.";
+      }
+
       // 1. Pilots Moment
       const userPilotsMom = num(pilotsMoment);
       if (isNaN(userPilotsMom)) {
@@ -280,9 +294,10 @@ export function PreflightLoadsheetWidget({
         }
       }
 
-      // 4. ZFM Mass & Moment
+      // 4. ZFM Mass, Moment & CG
       const userZfmMass = num(zfmMass);
       const userZfmMom = num(zfmMoment);
+      const userZfmCg = num(zfmCg);
       if (isNaN(userZfmMass) || !checkValueTolerance(userZfmMass, expected.zfmMass, 0.01, 1).isOk) {
         newErrors.zfmMass =
           attempts >= 2
@@ -294,6 +309,12 @@ export function PreflightLoadsheetWidget({
           attempts >= 2
             ? `Solución: Suma momentos = ${expected.zfmMoment} kg·m`
             : "Suma los momentos de Empty Weight y todos los ocupantes";
+      }
+      if (isNaN(userZfmCg) || !checkValueTolerance(userZfmCg, expected.zfmCg, 0.008, 0.005).isOk) {
+        newErrors.zfmCg =
+          attempts >= 2
+            ? `Solución: CG ZFM = ${expected.zfmMoment} / ${expected.zfmMass} = ${expected.zfmCg} m`
+            : "CG ZFM = Momento ZFM / Masa ZFM";
       }
 
       // 5. Fuel Mass & Moment
@@ -335,24 +356,52 @@ export function PreflightLoadsheetWidget({
             : "CG = Momento Total / Masa Total";
       }
 
-      // 7. Comprobar que el punto situado en la envolvente coincide razonablemente con el TOW
-      if (interactiveClickPoint) {
-        const est = mapSvgCoordsToCg(interactiveClickPoint.x, interactiveClickPoint.y);
-        const massDiff = Math.abs(est.massKg - expected.tomMass);
-        const cgDiff = Math.abs(est.cgM - expected.tomCg);
-        if (massDiff > 25 || cgDiff > 0.02) {
+      // 7. Comprobar que los puntos ZFM y TOW situados en la envolvente coinciden razonablemente
+      if (interactiveZfmPoint && interactiveTomPoint) {
+        const zEst = mapSvgCoordsToCg(interactiveZfmPoint.x, interactiveZfmPoint.y);
+        const zMassDiff = Math.abs(zEst.massKg - expected.zfmMass);
+        const zCgDiff = Math.abs(zEst.cgM - expected.zfmCg);
+
+        const tEst = mapSvgCoordsToCg(interactiveTomPoint.x, interactiveTomPoint.y);
+        const tMassDiff = Math.abs(tEst.massKg - expected.tomMass);
+        const tCgDiff = Math.abs(tEst.cgM - expected.tomCg);
+
+        const isZfmOff = zMassDiff > 25 || zCgDiff > 0.02;
+        const isTomOff = tMassDiff > 25 || tCgDiff > 0.02;
+
+        if (isZfmOff || isTomOff) {
           const nextPointAttempts = pointAttempts + 1;
           setPointAttempts(nextPointAttempts);
           if (nextPointAttempts < 3) {
-            newErrors.envelopePoint = `El punto TOW situado está lejos del valor calculado (~${Math.round(massDiff)} kg / ${(cgDiff * 1000).toFixed(0)} mm CG). Revisa la cuadrícula y colócalo correctamente (Intento ${nextPointAttempts}/3).`;
+            if (isZfmOff && isTomOff) {
+              newErrors.envelopePoint = `Tus puntos ZFM y TOW están lejos de los valores calculados. Revisa la cuadrícula y colócalos correctamente (Intento ${nextPointAttempts}/3).`;
+            } else if (isZfmOff) {
+              newErrors.envelopePoint = `El punto ZFM situado está lejos del valor calculado (~${Math.round(zMassDiff)} kg / ${(zCgDiff * 1000).toFixed(0)} mm CG). Revisa y recolócalo (Intento ${nextPointAttempts}/3).`;
+            } else {
+              newErrors.envelopePoint = `El punto TOW situado está lejos del valor calculado (~${Math.round(tMassDiff)} kg / ${(tCgDiff * 1000).toFixed(0)} mm CG). Revisa y recolócalo (Intento ${nextPointAttempts}/3).`;
+            }
           } else {
             setShowTargetHint(true);
-            newErrors.envelopePoint = "Se ha revelado la posición exacta calculada en la gráfica. Haz clic sobre el punto azul (TOW CALCULADO) para colocarlo correctamente y verificar.";
+            newErrors.envelopePoint = "Se han revelado las posiciones exactas de ZFM y TOW en la gráfica. Haz clic sobre los puntos calculados para colocarlos correctamente y verificar.";
           }
         }
       }
     } else {
       // LANDING STEP
+      // 0. Comprobación obligatoria LW
+      if (!interactiveClickPoint) {
+        newErrors.envelopePoint = "Es obligatorio situar tu punto LW estimado en la envolvente gráfica antes de comprobar.";
+      }
+
+      // 1. Trip Fuel Mass & Moment
+      const userTripMass = Math.abs(num(tripFuelMassInput));
+      if (isNaN(userTripMass) || !checkValueTolerance(userTripMass, expected.tripFuelMass, 0.02, 0.5).isOk) {
+        newErrors.tripFuelMass =
+          attempts >= 2
+            ? `Solución: ${expected.tripFuelLiters} L × 0.84 = ${expected.tripFuelMass} kg`
+            : "Multiplica los litros de consumo por la densidad Jet-A1 (0.84 kg/L)";
+      }
+
       const userTripMom = num(tripFuelMoment);
       if (isNaN(userTripMom) || !checkValueTolerance(userTripMom, expected.tripFuelMoment, 0.02, 1).isOk) {
         newErrors.tripFuelMoment =
@@ -383,7 +432,7 @@ export function PreflightLoadsheetWidget({
             : "CG Aterrizaje = Momento LM / Masa LM";
       }
 
-      // 7. Comprobar que el punto situado en la envolvente coincide razonablemente con el LW
+      // Comprobar que el punto situado en la envolvente coincide razonablemente con el LW
       if (interactiveClickPoint) {
         const est = mapSvgCoordsToCg(interactiveClickPoint.x, interactiveClickPoint.y);
         const massDiff = Math.abs(est.massKg - expected.lmMass);
@@ -418,7 +467,11 @@ export function PreflightLoadsheetWidget({
     }
   };
 
-  // SVG coordinates for TOW and LW
+  // SVG coordinates for ZFM, TOW and LW
+  const zfmCoords = useMemo(() => {
+    return mapCgToSvgCoords(expected.zfmMass, expected.zfmCg);
+  }, [expected]);
+
   const tomCoords = useMemo(() => {
     return mapCgToSvgCoords(expected.tomMass, expected.tomCg);
   }, [expected]);
@@ -432,6 +485,16 @@ export function PreflightLoadsheetWidget({
   const isLmNormal = isCgInsideNormal(expected.lmMass, expected.lmCg);
 
   // Mapped estimated values from student interactive clicks and hover cursor
+  const studentZfmEstimated = useMemo(() => {
+    if (!interactiveZfmPoint) return null;
+    return mapSvgCoordsToCg(interactiveZfmPoint.x, interactiveZfmPoint.y);
+  }, [interactiveZfmPoint]);
+
+  const studentTomEstimated = useMemo(() => {
+    if (!interactiveTomPoint) return null;
+    return mapSvgCoordsToCg(interactiveTomPoint.x, interactiveTomPoint.y);
+  }, [interactiveTomPoint]);
+
   const studentEstimated = useMemo(() => {
     if (!interactiveClickPoint) return null;
     return mapSvgCoordsToCg(interactiveClickPoint.x, interactiveClickPoint.y);
@@ -471,7 +534,10 @@ export function PreflightLoadsheetWidget({
                     onClick={() => {
                       setActiveTab("takeoff");
                       setErrors({});
+                      setInteractiveZfmPoint(null);
+                      setInteractiveTomPoint(null);
                       setInteractiveClickPoint(null);
+                      setActivePlotPoint("zfm");
                       setHoverPoint(null);
                       setPointAttempts(0);
                       setShowTargetHint(false);
@@ -491,7 +557,10 @@ export function PreflightLoadsheetWidget({
                     onClick={() => {
                       setActiveTab("landing");
                       setErrors({});
+                      setInteractiveZfmPoint(null);
+                      setInteractiveTomPoint(null);
                       setInteractiveClickPoint(null);
+                      setActivePlotPoint("zfm");
                       setHoverPoint(null);
                       setPointAttempts(0);
                       setShowTargetHint(false);
@@ -615,9 +684,9 @@ export function PreflightLoadsheetWidget({
                     </td>
                   </tr>
 
-                  {/* ZERO FUEL MASS */}
+                  {/* ZERO FUEL MASS (ZFM & CG) */}
                   <tr className="bg-sky-50/60 dark:bg-sky-950/30 font-bold text-[#0B2E59] dark:text-sky-300">
-                    <td className="py-1.5 px-2 uppercase text-xs sm:text-[13px]">ZERO FUEL MASS (ZFM)</td>
+                    <td className="py-1.5 px-2 uppercase text-xs sm:text-[13px]">ZERO FUEL MASS (ZFM & CG)</td>
                     <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
@@ -631,7 +700,19 @@ export function PreflightLoadsheetWidget({
                         }`}
                       />
                     </td>
-                    <td className="py-1.5 px-2 text-right font-mono text-slate-400">—</td>
+                    <td className="py-1.5 px-2 text-right">
+                      <input
+                        type="text"
+                        placeholder="CG (m)"
+                        value={zfmCg}
+                        onChange={(e) => setZfmCg(e.target.value)}
+                        className={`w-20 text-right px-1.5 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
+                          errors.zfmCg
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                        }`}
+                      />
+                    </td>
                     <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
@@ -769,8 +850,18 @@ export function PreflightLoadsheetWidget({
                       <td className="py-2 px-2">
                         (-) TRIP FUEL ({expected.tripFuelLiters} L / {(expected.tripFuelLiters / 3.78541).toFixed(1)} US Gal a 50% Potencia)
                       </td>
-                      <td className="py-2 px-2 text-right font-mono font-bold text-amber-700 dark:text-amber-400">
-                        -{expected.tripFuelMass} kg
+                      <td className="py-2 px-2 text-right">
+                        <input
+                          type="text"
+                          placeholder="-Kg (L × 0.84)"
+                          value={tripFuelMassInput}
+                          onChange={(e) => setTripFuelMassInput(e.target.value)}
+                          className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
+                            errors.tripFuelMass
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-400"
+                          }`}
+                        />
                       </td>
                       <td className="py-2 px-2 text-right font-mono text-slate-500">1,168</td>
                       <td className="py-2 px-2 text-right">
@@ -840,7 +931,66 @@ export function PreflightLoadsheetWidget({
           </div>
 
           {/* Action Button & Messages */}
-          <div className="pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 space-y-1">
+          <div className="pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 space-y-1.5">
+            {/* Aviso de punto obligatorio en la envolvente (pasado a la izquierda para dar máximo espacio a la gráfica) */}
+            {!isStepPassed && (
+              <div
+                className={`flex items-center justify-between px-3 py-1.5 rounded-xl border text-xs sm:text-[13px] ${
+                  errors.envelopePoint
+                    ? "bg-rose-50/90 dark:bg-rose-950/40 border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200"
+                    : (currentStep === "takeoff" ? (interactiveZfmPoint && interactiveTomPoint) : studentEstimated)
+                    ? "bg-sky-50/80 dark:bg-sky-950/30 border-sky-200 dark:border-sky-800 text-sky-950 dark:text-sky-200"
+                    : "bg-amber-50/80 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800 text-amber-950 dark:text-amber-200"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-base">{errors.envelopePoint ? "⚠️" : "📍"}</span>
+                  <span>
+                    {errors.envelopePoint ? (
+                      <strong>{errors.envelopePoint}</strong>
+                    ) : currentStep === "takeoff" ? (
+                      interactiveZfmPoint && interactiveTomPoint ? (
+                        <>
+                          Has situado <strong>ZFM (~{studentZfmEstimated?.massKg} kg · {studentZfmEstimated?.cgM.toFixed(3)} m)</strong> y <strong>TOW (~{studentTomEstimated?.massKg} kg · {studentTomEstimated?.cgM.toFixed(3)} m)</strong>.
+                        </>
+                      ) : !interactiveZfmPoint ? (
+                        <>
+                          <strong className="text-amber-800 dark:text-amber-300">Paso 1:</strong> Haz clic en la gráfica para situar tu punto <strong>ZFM estimado</strong>.
+                        </>
+                      ) : (
+                        <>
+                          <strong className="text-amber-800 dark:text-amber-300">Paso 2:</strong> Haz clic en la gráfica para situar tu punto <strong>TOW estimado</strong>.
+                        </>
+                      )
+                    ) : studentEstimated ? (
+                      <>
+                        Has situado tu marca en <strong>~{studentEstimated.massKg} kg</strong> · CG <strong>{studentEstimated.cgM.toFixed(3)} m</strong>.
+                      </>
+                    ) : (
+                      <>
+                        <strong className="text-amber-800 dark:text-amber-300">Obligatorio:</strong> Haz clic en la gráfica para situar tu punto <strong>LW estimado</strong> antes de comprobar.
+                      </>
+                    )}
+                  </span>
+                </div>
+                <span
+                  className={`text-xs font-bold shrink-0 ${
+                    errors.envelopePoint
+                      ? "text-rose-600 dark:text-rose-400"
+                      : (currentStep === "takeoff" ? (interactiveZfmPoint && interactiveTomPoint) : studentEstimated)
+                      ? "text-sky-700 dark:text-sky-400"
+                      : "text-amber-700 dark:text-amber-400"
+                  }`}
+                >
+                  {errors.envelopePoint
+                    ? "Revisar marca"
+                    : (currentStep === "takeoff" ? (interactiveZfmPoint && interactiveTomPoint) : studentEstimated)
+                    ? "Puntos fijados"
+                    : "Obligatorio"}
+                </span>
+              </div>
+            )}
+
             <div className="flex items-center justify-between">
               <span className="text-xs sm:text-[13px] text-slate-500 italic">
                 * Densidad Jet A-1 = 0,84 kg/L · Brazo Fuel = 1,168 m · MTOM = 1.043 kg
@@ -853,14 +1003,20 @@ export function PreflightLoadsheetWidget({
               >
                 {currentStep === "takeoff"
                   ? "Comprobar Despegue y Graficar TOW ➔"
-                  : "Comprobar Aterrizaje y Graficar Trayectoria ➔"}
+                  : "Comprobar Aterrizaje"}
               </button>
             </div>
 
-            {/* Error alerts */}
-            {Object.keys(errors).length > 0 && (
+            {/* Error alerts (except envelopePoint which is displayed above) */}
+            {Object.keys(errors).length > 0 && !errors.envelopePoint && (
               <div className="p-2 rounded-lg border border-rose-200 dark:border-rose-800 bg-rose-50/90 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 text-xs sm:text-[13px] flex items-center justify-between">
                 <span>⚠️ {Object.values(errors)[0]}</span>
+                <span className="font-bold text-xs text-rose-600">Intento {attempts}</span>
+              </div>
+            )}
+            {Object.keys(errors).length > 1 && errors.envelopePoint && (
+              <div className="p-2 rounded-lg border border-rose-200 dark:border-rose-800 bg-rose-50/90 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 text-xs sm:text-[13px] flex items-center justify-between">
+                <span>⚠️ {Object.values(errors).find(e => e !== errors.envelopePoint)}</span>
                 <span className="font-bold text-xs text-rose-600">Intento {attempts}</span>
               </div>
             )}
@@ -887,12 +1043,39 @@ export function PreflightLoadsheetWidget({
         >
           {/* Header limpio original sin desbordamientos */}
           <div className="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
-            <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
-              📈 ENVOLVENTE EN VIVO (FIG. 6-8)
+            <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs whitespace-nowrap">
+              📈 ENVOLVENTE (FIG. 6-8)
             </span>
-            <span className="text-xs sm:text-[13px] font-semibold text-slate-500">
-              {currentStep === "takeoff" ? "Punto de Despegue (TOW)" : "Trayectoria TOW → LW"}
-            </span>
+            {currentStep === "takeoff" ? (
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => setActivePlotPoint("zfm")}
+                  className={`px-2 py-0.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+                    activePlotPoint === "zfm"
+                      ? "bg-purple-600 text-white shadow-xs"
+                      : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300"
+                  }`}
+                >
+                  📍 1. Situar ZFM {interactiveZfmPoint ? "✓" : ""}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActivePlotPoint("tom")}
+                  className={`px-2 py-0.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+                    activePlotPoint === "tom"
+                      ? "bg-amber-500 text-white shadow-xs"
+                      : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300"
+                  }`}
+                >
+                  📍 2. Situar TOW {interactiveTomPoint ? "✓" : ""}
+                </button>
+              </div>
+            ) : (
+              <span className="text-xs sm:text-[13px] font-semibold text-slate-500">
+                Trayectoria TOW → LW
+              </span>
+            )}
           </div>
 
           {/* SVG Envelope Display con Proporción Inicial Original Completa y Zoom Expandible */}
@@ -939,11 +1122,6 @@ export function PreflightLoadsheetWidget({
               >
                 +
               </button>
-              {zoomLevel > 1 && (
-                <span className="text-[10px] text-slate-400 font-medium hidden sm:inline select-none pl-1">
-                  ↔ Arrastra
-                </span>
-              )}
             </div>
 
             {/* Viewport de la Envolvente: desplazamiento 2D (pan/drag) y zoom suave sin límites */}
@@ -1016,7 +1194,18 @@ export function PreflightLoadsheetWidget({
                   const clickX = ((e.clientX - rect.left) / rect.width) * 1140;
                   const clickY = ((e.clientY - rect.top) / rect.height) * 880;
                   if (clickX >= 130 && clickX <= 1015 && clickY >= 120 && clickY <= 695) {
-                    setInteractiveClickPoint({ x: clickX, y: clickY });
+                    if (currentStep === "takeoff") {
+                      if (activePlotPoint === "zfm") {
+                        setInteractiveZfmPoint({ x: clickX, y: clickY });
+                        if (!interactiveTomPoint) {
+                          setActivePlotPoint("tom");
+                        }
+                      } else {
+                        setInteractiveTomPoint({ x: clickX, y: clickY });
+                      }
+                    } else {
+                      setInteractiveClickPoint({ x: clickX, y: clickY });
+                    }
                     setErrors((prev) => {
                       if (!prev.envelopePoint) return prev;
                       const next = { ...prev };
@@ -1063,7 +1252,18 @@ export function PreflightLoadsheetWidget({
                   const clickX = ((touch.clientX - rect.left) / rect.width) * 1140;
                   const clickY = ((touch.clientY - rect.top) / rect.height) * 880;
                   if (clickX >= 130 && clickX <= 1015 && clickY >= 120 && clickY <= 695) {
-                    setInteractiveClickPoint({ x: clickX, y: clickY });
+                    if (currentStep === "takeoff") {
+                      if (activePlotPoint === "zfm") {
+                        setInteractiveZfmPoint({ x: clickX, y: clickY });
+                        if (!interactiveTomPoint) {
+                          setActivePlotPoint("tom");
+                        }
+                      } else {
+                        setInteractiveTomPoint({ x: clickX, y: clickY });
+                      }
+                    } else {
+                      setInteractiveClickPoint({ x: clickX, y: clickY });
+                    }
                     setErrors((prev) => {
                       if (!prev.envelopePoint) return prev;
                       const next = { ...prev };
@@ -1152,12 +1352,30 @@ export function PreflightLoadsheetWidget({
                   </g>
                 )}
 
-                {/* 2. PASO 1: DESPEGUE (6.5) - Solo TOW */}
+                {/* 2. PASO 1: DESPEGUE (6.5) - ZFM y TOW */}
                 {currentStep === "takeoff" && (
                   <>
-                    {/* Punto estimado fijado por el alumno ("Tu Punto TOW") - ARRIBA del punto - CUADRO MÁS GRANDE */}
-                    {interactiveClickPoint && studentEstimated && (
-                      <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
+                    {/* Punto estimado fijado por el alumno para ZFM */}
+                    {interactiveZfmPoint && studentZfmEstimated && (
+                      <g transform={`translate(${interactiveZfmPoint.x}, ${interactiveZfmPoint.y})`}>
+                        <circle r="22" fill="none" stroke="#9333ea" strokeWidth="3" opacity="0.6" className="animate-pulse" />
+                        <circle r="13" fill="#a855f7" stroke="#ffffff" strokeWidth="3" />
+                        {/* Cuadro de info centrado arriba del punto del alumno */}
+                        <g transform="translate(0, -64)">
+                          <rect x="-105" y="-28" width="210" height="56" rx="10" fill="#7e22ce" stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="0" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                            TU PUNTO ZFM
+                          </text>
+                          <text x="0" y="17" fill="#f3e8ff" fontSize="14" fontWeight="800" textAnchor="middle">
+                            ~{studentZfmEstimated.massKg} kg · {studentZfmEstimated.cgM.toFixed(3)} m
+                          </text>
+                        </g>
+                      </g>
+                    )}
+
+                    {/* Punto estimado fijado por el alumno para TOW */}
+                    {interactiveTomPoint && studentTomEstimated && (
+                      <g transform={`translate(${interactiveTomPoint.x}, ${interactiveTomPoint.y})`}>
                         <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
                         <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
                         {/* Cuadro de info centrado arriba del punto del alumno */}
@@ -1167,26 +1385,81 @@ export function PreflightLoadsheetWidget({
                             TU PUNTO TOW
                           </text>
                           <text x="0" y="17" fill="#fef3c7" fontSize="14" fontWeight="800" textAnchor="middle">
-                            ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
+                            ~{studentTomEstimated.massKg} kg · {studentTomEstimated.cgM.toFixed(3)} m
                           </text>
                         </g>
                       </g>
                     )}
 
-                    {/* Línea de comparación entre el punto del alumno y el TOW exacto calculado */}
-                    {(isStepPassed || showTargetHint) && interactiveClickPoint && (
+                    {/* Línea conectando puntos del alumno ZFM -> TOW */}
+                    {interactiveZfmPoint && interactiveTomPoint && (
                       <line
-                        x1={interactiveClickPoint.x}
-                        y1={interactiveClickPoint.y}
-                        x2={tomCoords.x}
-                        y2={tomCoords.y}
-                        stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#f59e0b"}
-                        strokeWidth="3.5"
+                        x1={interactiveZfmPoint.x}
+                        y1={interactiveZfmPoint.y}
+                        x2={interactiveTomPoint.x}
+                        y2={interactiveTomPoint.y}
+                        stroke="#d97706"
+                        strokeWidth="3"
                         strokeDasharray="6 4"
                       />
                     )}
 
-                    {/* Punto exacto calculado TOW (Revelado al validar o tras 3 intentos) - CUADRO MÁS GRANDE */}
+                    {/* Línea de combustible calculada ZFM -> TOW (revelada tras validar o tras 3 intentos) */}
+                    {(isStepPassed || showTargetHint) && (
+                      <line
+                        x1={zfmCoords.x}
+                        y1={zfmCoords.y}
+                        x2={tomCoords.x}
+                        y2={tomCoords.y}
+                        stroke="#2563eb"
+                        strokeWidth="3.5"
+                        strokeDasharray="7 5"
+                      />
+                    )}
+
+                    {/* Líneas de comparación alumno vs cálculo exacto */}
+                    {(isStepPassed || showTargetHint) && interactiveZfmPoint && (
+                      <line
+                        x1={interactiveZfmPoint.x}
+                        y1={interactiveZfmPoint.y}
+                        x2={zfmCoords.x}
+                        y2={zfmCoords.y}
+                        stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#9333ea"}
+                        strokeWidth="3"
+                        strokeDasharray="5 3"
+                      />
+                    )}
+                    {(isStepPassed || showTargetHint) && interactiveTomPoint && (
+                      <line
+                        x1={interactiveTomPoint.x}
+                        y1={interactiveTomPoint.y}
+                        x2={tomCoords.x}
+                        y2={tomCoords.y}
+                        stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#f59e0b"}
+                        strokeWidth="3"
+                        strokeDasharray="5 3"
+                      />
+                    )}
+
+                    {/* Punto exacto calculado ZFM (revelado al validar o tras 3 intentos) */}
+                    {(isStepPassed || showTargetHint) && (
+                      <g transform={`translate(${zfmCoords.x}, ${zfmCoords.y})`}>
+                        <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#7c3aed"} strokeWidth="3" opacity="0.8" className="animate-ping" />
+                        <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#6d28d9"} stroke="#ffffff" strokeWidth="3" />
+                        {/* Cuadro de info hacia la derecha del punto calculado */}
+                        <g transform="translate(24, 0)">
+                          <rect x="0" y="-28" width="220" height="56" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#581c87"} stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="110" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                            {showTargetHint && !isStepPassed ? "ZFM CALCULADO (AQUÍ)" : "ZFM CALCULADO"}
+                          </text>
+                          <text x="110" y="17" fill="#e9d5ff" fontSize="14" fontWeight="800" textAnchor="middle">
+                            {expected.zfmMass} kg · {expected.zfmCg} m
+                          </text>
+                        </g>
+                      </g>
+                    )}
+
+                    {/* Punto exacto calculado TOW (revelado al validar o tras 3 intentos) */}
                     {(isStepPassed || showTargetHint) && (
                       <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
                         <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#2563eb"} strokeWidth="3" opacity="0.8" className="animate-ping" />
@@ -1209,22 +1482,24 @@ export function PreflightLoadsheetWidget({
                 {/* 3. PASO 2: ATERRIZAJE (6.6) - TOW y LW */}
                 {currentStep === "landing" && (
                   <>
-                    {/* Punto de Despegue (TOW conocido) */}
-                    <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
-                      <circle r="13" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3" />
-                      <g transform="translate(22, 0)">
-                        <rect x="0" y="-26" width="200" height="52" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
-                        <text x="100" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
-                          TOW (Despegue)
-                        </text>
-                        <text x="100" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
-                          {expected.tomMass} kg · {expected.tomCg} m
-                        </text>
+                    {/* Punto de Despegue (TOW conocido) - SOLO se revela tras comprobar o tras 3 intentos */}
+                    {(isStepPassed || showTargetHint) && (
+                      <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
+                        <circle r="13" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3" />
+                        <g transform="translate(22, 0)">
+                          <rect x="0" y="-26" width="200" height="52" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="100" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
+                            TOW (Despegue)
+                          </text>
+                          <text x="100" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
+                            {expected.tomMass} kg · {expected.tomCg} m
+                          </text>
+                        </g>
                       </g>
-                    </g>
+                    )}
 
-                    {/* Línea de consumo TOW -> LW (mostrada tras validar aterrizaje) */}
-                    {isStepPassed && (
+                    {/* Línea de consumo TOW -> LW (mostrada tras validar aterrizaje o tras 3 intentos) */}
+                    {(isStepPassed || showTargetHint) && (
                       <line
                         x1={tomCoords.x}
                         y1={tomCoords.y}
@@ -1291,90 +1566,75 @@ export function PreflightLoadsheetWidget({
           </div>
         </div>
 
-          {/* Footer de Estado de la Envolvente */}
-          <div className="space-y-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 text-xs sm:text-[13px]">
-            {currentStep === "takeoff" ? (
-              /* En 6.5 SOLO se muestra el estado de Despegue (TOW) */
-              !isStepPassed ? (
-                <div
-                  className={`flex items-center justify-between px-3 py-2 rounded-xl border ${
-                    errors.envelopePoint
-                      ? "bg-rose-50/90 dark:bg-rose-950/40 border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200"
-                      : "bg-amber-50/80 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800 text-amber-950 dark:text-amber-200"
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">{errors.envelopePoint ? "⚠️" : "📍"}</span>
-                    <span>
-                      {errors.envelopePoint ? (
-                        <strong>{errors.envelopePoint}</strong>
-                      ) : studentEstimated ? (
-                        <>
-                          Has situado tu marca en <strong>~{studentEstimated.massKg} kg</strong> · CG <strong>{studentEstimated.cgM.toFixed(3)} m</strong>. ¡Pulsa <em>Comprobar Despegue</em> para verificar si coincide con el TOW real!
-                        </>
-                      ) : (
-                        <>
-                          <strong className="text-amber-800 dark:text-amber-300">Obligatorio:</strong> Haz clic en la gráfica para situar tu punto <strong>TOW estimado</strong> antes de comprobar.
-                        </>
+          {/* Footer de Estado de la Envolvente (solo al completar, dando máximo espacio a la gráfica) */}
+          {isStepPassed && (
+            <div className="space-y-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 text-xs sm:text-[13px]">
+              {currentStep === "takeoff" ? (
+                <>
+                  <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-purple-50/70 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800">
+                    <div className="flex items-center gap-2">
+                      <strong className="text-purple-900 dark:text-purple-300">ZFM REAL:</strong>
+                      <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">
+                        {expected.zfmMass} kg · CG {expected.zfmCg} m
+                      </span>
+                      {studentZfmEstimated && (
+                        <span className="text-xs text-purple-700 dark:text-purple-300 font-medium ml-1">
+                          (Tu marca: {studentZfmEstimated.massKg} kg · {studentZfmEstimated.cgM.toFixed(3)} m)
+                        </span>
                       )}
+                    </div>
+                    <span className="font-bold text-purple-700 dark:text-purple-300">
+                      ✓ Zero Fuel Mass
                     </span>
                   </div>
-                  <span
-                    className={`text-xs font-bold shrink-0 ${
-                      errors.envelopePoint ? "text-rose-600 dark:text-rose-400" : "text-amber-700 dark:text-amber-400"
-                    }`}
-                  >
-                    {errors.envelopePoint ? "Revisar marca" : studentEstimated ? "Punto fijado" : "Obligatorio"}
-                  </span>
-                </div>
-              ) : (
-                <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
-                  <div className="flex items-center gap-2">
-                    <strong className="text-blue-900 dark:text-sky-300">TOW REAL:</strong>
-                    <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">
-                      {expected.tomMass} kg · CG {expected.tomCg} m
-                    </span>
-                    {studentEstimated && (
-                      <span className="text-xs text-amber-800 dark:text-amber-300 font-medium ml-1">
-                        (Tu marca: {studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m)
-                      </span>
-                    )}
-                  </div>
-                  <span className={`font-bold ${isTomNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
-                    {isTomNormal ? "✓ Categoría Normal" : "⚠️ Fuera de Límites"}
-                  </span>
-                </div>
-              )
-            ) : (
-              /* En 6.6 se muestran ambos estados (Despegue y Aterrizaje) */
-              <>
-                <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
-                  <div className="flex items-center gap-2">
-                    <strong className="text-blue-900 dark:text-sky-300">DESPEGUE (TOW):</strong>
-                    <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.tomMass} kg · CG {expected.tomCg} m</span>
-                  </div>
-                  <span className={`font-bold ${isTomNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
-                    {isTomNormal ? "✓ Categoría Normal" : "⚠️ Fuera de Límites"}
-                  </span>
-                </div>
 
-                <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
-                  <div className="flex items-center gap-2">
-                    <strong className="text-emerald-900 dark:text-emerald-300">ATERRIZAJE (LW):</strong>
-                    <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.lmMass} kg · CG {expected.lmCg} m</span>
-                    {studentEstimated && (
-                      <span className="text-xs text-amber-800 dark:text-amber-300 font-medium ml-1">
-                        (Tu marca: {studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m)
+                  <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
+                    <div className="flex items-center gap-2">
+                      <strong className="text-blue-900 dark:text-sky-300">TOW REAL:</strong>
+                      <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">
+                        {expected.tomMass} kg · CG {expected.tomCg} m
                       </span>
-                    )}
+                      {studentTomEstimated && (
+                        <span className="text-xs text-amber-800 dark:text-amber-300 font-medium ml-1">
+                          (Tu marca: {studentTomEstimated.massKg} kg · {studentTomEstimated.cgM.toFixed(3)} m)
+                        </span>
+                      )}
+                    </div>
+                    <span className={`font-bold ${isTomNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
+                      {isTomNormal ? "✓ Categoría Normal" : "⚠️ Fuera de Límites"}
+                    </span>
                   </div>
-                  <span className={`font-bold ${isLmNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
-                    {isLmNormal ? (isTomUtility ? "✓ Categoría Utilidad" : "✓ Categoría Normal") : "⚠️ Fuera de Límites"}
-                  </span>
-                </div>
-              </>
-            )}
-          </div>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
+                    <div className="flex items-center gap-2">
+                      <strong className="text-blue-900 dark:text-sky-300">DESPEGUE (TOW):</strong>
+                      <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.tomMass} kg · CG {expected.tomCg} m</span>
+                    </div>
+                    <span className={`font-bold ${isTomNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
+                      {isTomNormal ? "✓ Categoría Normal" : "⚠️ Fuera de Límites"}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+                    <div className="flex items-center gap-2">
+                      <strong className="text-emerald-900 dark:text-emerald-300">ATERRIZAJE (LW):</strong>
+                      <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.lmMass} kg · CG {expected.lmCg} m</span>
+                      {studentEstimated && (
+                        <span className="text-xs text-amber-800 dark:text-amber-300 font-medium ml-1">
+                          (Tu marca: {studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m)
+                        </span>
+                      )}
+                    </div>
+                    <span className={`font-bold ${isLmNormal ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"}`}>
+                      {isLmNormal ? (isTomUtility ? "✓ Categoría Utilidad" : "✓ Categoría Normal") : "⚠️ Fuera de Límites"}
+                    </span>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
