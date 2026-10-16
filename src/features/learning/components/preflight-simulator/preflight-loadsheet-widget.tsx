@@ -852,9 +852,15 @@ export function PreflightLoadsheetWidget({
               >
                 −
               </button>
-              <span className="text-[11px] font-mono font-bold text-slate-800 dark:text-slate-100 px-1 min-w-[38px] text-center select-none">
+              <button
+                type="button"
+                onClick={() => setZoomLevel(1)}
+                disabled={zoomLevel <= 1}
+                className="text-[11px] font-mono font-bold text-slate-800 dark:text-slate-100 px-1 min-w-[38px] text-center select-none hover:text-[#1a80ff] transition-colors disabled:cursor-default"
+                title={zoomLevel > 1 ? "Clic para restablecer al 100%" : undefined}
+              >
                 {Math.round(zoomLevel * 100)}%
-              </span>
+              </button>
               <button
                 type="button"
                 onMouseDown={() => startZoomHold(0.01)}
@@ -869,16 +875,6 @@ export function PreflightLoadsheetWidget({
               >
                 +
               </button>
-              {zoomLevel > 1 && (
-                <button
-                  type="button"
-                  onClick={() => setZoomLevel(1)}
-                  className="px-1.5 h-6 flex items-center justify-center rounded-lg bg-[#1a80ff] hover:bg-[#0066e6] text-white font-bold text-[10px] cursor-pointer transition-all shadow-2xs leading-none"
-                  title="Restablecer vista 100%"
-                >
-                  100%
-                </button>
-              )}
             </div>
 
             {/* Viewport de la Envolvente: conserva el contenedor base centrado y escala de forma 100% suave y continua */}
