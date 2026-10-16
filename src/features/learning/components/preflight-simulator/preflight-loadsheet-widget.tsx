@@ -386,8 +386,8 @@ export function PreflightLoadsheetWidget({
             </div>
           </div>
 
-          {/* Table Container - Standard typography (text-xs sm:text-[13px]), zero outer scroll */}
-          <div className="flex-1 min-h-0 my-1 overflow-hidden flex flex-col justify-center">
+          {/* Table Container - Aligned to top, standard typography (text-xs sm:text-[13px]), zero outer scroll */}
+          <div className="flex-1 min-h-0 my-1 overflow-hidden flex flex-col justify-start pt-1">
             {currentStep === "takeoff" ? (
               /* PARTE 1: TABLA DE DESPEGUE (7 FILAS) */
               <table className="w-full text-left text-xs sm:text-[13px] border-collapse">

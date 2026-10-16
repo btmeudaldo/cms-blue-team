@@ -297,8 +297,8 @@ export function PreflightPerformanceWidget({
             </div>
           </div>
 
-          {/* Form Content - Spacious, no clutter, standard typography */}
-          <div className="flex-1 min-h-0 flex flex-col justify-center space-y-3 my-auto">
+          {/* Form Content - Aligned to top, standard typography */}
+          <div className="flex-1 min-h-0 flex flex-col justify-start space-y-3 pt-2">
             {/* Direct Link to POH Landing Table (on Left for 6.15) */}
             {currentStep === "landing" && (
               <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-emerald-50/70 dark:bg-slate-800/90 border border-emerald-200 dark:border-slate-700 shadow-2xs">
@@ -523,8 +523,8 @@ export function PreflightPerformanceWidget({
             </span>
           </div>
 
-          {/* Reference and Conditions Content */}
-          <div className="flex-1 min-h-0 flex flex-col justify-between py-1 space-y-2.5 text-xs sm:text-[13px]">
+          {/* Reference and Conditions Content - Aligned to top */}
+          <div className="flex-1 min-h-0 flex flex-col justify-start py-1 space-y-2.5 text-xs sm:text-[13px]">
             {/* Operational Conditions Card (Moved from Left) */}
             <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
               <div className="flex items-center justify-between text-xs sm:text-[13px]">

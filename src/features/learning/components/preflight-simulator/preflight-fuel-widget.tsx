@@ -154,8 +154,8 @@ export function PreflightFuelWidget({
             </div>
           </div>
 
-          {/* Form Content */}
-          <div className="flex-1 min-h-0 overflow-y-auto my-1 space-y-2">
+          {/* Form Content - Aligned to top */}
+          <div className="flex-1 min-h-0 overflow-y-auto my-1 space-y-2 flex flex-col justify-start pt-1">
             <div className="grid grid-cols-2 gap-2">
               {/* Taxi Fuel */}
               <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">
@@ -317,7 +317,8 @@ export function PreflightFuelWidget({
             </span>
           </div>
 
-          <div className="flex-1 min-h-0 overflow-y-auto my-1 space-y-2 text-xs">
+          {/* Visual Breakdown - Aligned to top */}
+          <div className="flex-1 min-h-0 overflow-y-auto my-1 space-y-2 text-xs flex flex-col justify-start pt-1">
             {/* Visual Fuel Bars */}
             <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 shadow-2xs">
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 text-[11px] block uppercase">

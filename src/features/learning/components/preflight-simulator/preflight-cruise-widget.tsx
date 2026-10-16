@@ -181,8 +181,8 @@ export function PreflightCruiseWidget({
             </div>
           </div>
 
-          {/* Form Content - General Standard Typography (text-xs sm:text-[13px]) */}
-          <div className="flex-1 min-h-0 my-1 space-y-2 flex flex-col justify-center">
+          {/* Form Content - Aligned to top, standard typography (text-xs sm:text-[13px]) */}
+          <div className="flex-1 min-h-0 my-1 space-y-2.5 flex flex-col justify-start pt-1">
             {/* Step 1: Reading from Table */}
             <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
               <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block border-b pb-0.5">
@@ -389,8 +389,8 @@ export function PreflightCruiseWidget({
             </div>
           </div>
 
-          {/* Tabla Fig. 5-4a con Tipografía Estándar General (text-xs sm:text-[13px]) */}
-          <div className="flex-1 min-h-0 my-auto flex flex-col justify-center">
+          {/* Tabla Fig. 5-4a con Tipografía Estándar General (text-xs sm:text-[13px]) - Alineada arriba */}
+          <div className="flex-1 min-h-0 my-1 flex flex-col justify-start pt-1">
             <table className="w-full text-left text-xs sm:text-[13px] border-collapse">
               <thead>
                 <tr className="border-b border-slate-200 dark:border-slate-700 font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
