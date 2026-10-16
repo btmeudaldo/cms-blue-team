@@ -19,28 +19,28 @@ export const C172_DOCUMENTATION: CourseDocumentationItem[] = [
     category: "Manuales Completos POH",
     registration: "EC-NNA",
     title: "POH Oficial Completo Cessna 172N (EC-NNA)",
-    url: "/manuals/cessna/OM+EC-NNA+++suplemento+motor.pdf",
+    url: "/manuals/cessna/poh-ec-nna.pdf",
     badge: "POH Completo",
   },
   {
     category: "Manuales Completos POH",
     registration: "EC-OXV",
     title: "POH Oficial Completo Reims F172K (EC-OXV)",
-    url: "/manuals/cessna/POH+++SUPLEMENTOS+F172K+EC-OXV OCR.pdf",
+    url: "/manuals/cessna/poh-ec-oxv.pdf",
     badge: "POH Completo",
   },
   {
     category: "Manuales Completos POH",
     registration: "EC-NNX",
     title: "POH Oficial Completo Reims F172 (EC-NNX)",
-    url: "/manuals/cessna/OM+EC-NNX+++suplemento+motor.pdf",
+    url: "/manuals/cessna/poh-ec-nnx.pdf",
     badge: "POH Completo",
   },
   {
     category: "Manuales Completos POH",
     registration: "EC-OXT",
     title: "Suplementos Oficiales Reims F172M (EC-OXT)",
-    url: "/manuals/cessna/SUPLEMENTOS+F172M+EC-OXT OCR.pdf",
+    url: "/manuals/cessna/poh-ec-oxt.pdf",
     badge: "Suplemento",
   },
 
@@ -78,19 +78,19 @@ export const C172_DOCUMENTATION: CourseDocumentationItem[] = [
   {
     category: "Suplementos Motor Continental",
     title: "AFM Supplement Continental TAE 125-01 / CD-135 (Instalación C172)",
-    url: "/manuals/cessna/OM+EC-NNA+++suplemento+motor.pdf",
+    url: "/manuals/cessna/poh-ec-nna.pdf",
     badge: "CD-135 AFM",
   },
   {
     category: "Suplementos Motor Continental",
     title: "AFM Supplement Continental TAE 125-02-114 / CD-155 (155 CV High Output)",
-    url: "/manuals/cessna/SUPLEMENTOS+F172M+EC-OXT OCR.pdf",
+    url: "/manuals/cessna/poh-ec-oxt.pdf",
     badge: "CD-155 AFM",
   },
   {
     category: "Hélices MT-Propeller",
     title: "Manual de Operación Gobernador y Hélice MT-Propeller MTV-6-A/187-129",
-    url: "/manuals/cessna/OM+EC-NNX+++suplemento+motor.pdf",
+    url: "/manuals/cessna/poh-ec-nnx.pdf",
     badge: "MT-Propeller",
   },
 ];
@@ -6345,7 +6345,7 @@ export const C172_LESSON_6 = {
           </div>
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.OP.125 & Manual OM Blue Team (Combustible Reglamentario):</strong>
-            <div>Embarcar combustible para la ruta más una reserva final legal obligatoria de <strong>45 minutos</strong> a régimen de crucero de escuela (<strong>11.5 L / 3.04 US Gal</strong>). Adicionalmente, por Manual de Operaciones de Blue Team debemos disponer de <strong>al menos 1h 30min de reserva final</strong> (<strong>23.0 L / 6.08 US Gal</strong>), más el combustible necesario para proceder al aeródromo alternativo (<strong>5.1 L / 1.35 US Gal</strong>) en caso de haber aterrizado en destino.</div>
+            <div>Embarcar combustible para la ruta más la reserva. Por Manual de Operaciones de Blue Team debemos disponer de <strong>al menos 1h 30min de reserva final</strong> (<strong>23.0 L / 6.08 US Gal</strong>, que ya incluyen los <strong>45 minutos</strong> reglamentarios / 11.5 L), más el combustible necesario para proceder al aeródromo alternativo (<strong>5.1 L / 1.35 US Gal</strong>) en caso de haber aterrizado en destino.</div>
           </div>
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.POL.105 (Performance de Pista):</strong>
@@ -6403,7 +6403,7 @@ export const C172_LESSON_6 = {
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PLANO DE REFERENCIA (DATUM)</strong>
           <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
-            En el C172 con motor Continental CD-155, el <strong>DATUM</strong> se localiza en la <strong>cara delantera del mamparo parallamas (firewall)</strong>. Todos los brazos de palanca se miden longitudinalmente hacia la cola del avión en metros positivos.
+            En el C172, el <strong>DATUM</strong> se localiza en la <strong>cara delantera del mamparo parallamas (firewall)</strong>. Todos los brazos de palanca se miden longitudinalmente hacia la cola del avión en metros positivos.
           </p>
         </div>
 
@@ -6424,9 +6424,7 @@ export const C172_LESSON_6 = {
           <strong>DENSIDAD DEL COMBUSTIBLE JET-A1:</strong> La masa de combustible no equivale directamente a los litros cargados. Se utiliza la densidad certificada de <strong>0.84 kg/L (7.01 lbs/US Gal)</strong>: <span class="font-mono font-bold">Masa (kg) = Litros × 0.84</span> (equivalente a <strong>1 US Gal = 3.785 L · 3.18 kg</strong>).
         </div>
 
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 6 (Weight & Balance / Equipment List Continental CD-155)
-        </div>
+
       </div>
     </div>
 
@@ -6445,9 +6443,7 @@ export const C172_LESSON_6 = {
           />
         </div>
 
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          C172 CD-155 · Suplemento de Motor TAE 125-02-114
-        </div>
+
       </div>
     </div>
   </div>
@@ -6527,9 +6523,7 @@ export const C172_LESSON_6 = {
           />
         </div>
 
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. Documental: F.OPS.04.NNA · Mass and Balance Loadsheet
-        </div>
+
       </div>
     </div>
   </div>
@@ -6593,9 +6587,7 @@ export const C172_LESSON_6 = {
           />
         </div>
 
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          POH Suplemento Continental CD-155 · Fig. 6-8 Center of Gravity Envelope
-        </div>
+
       </div>
     </div>
   </div>
@@ -6835,7 +6827,7 @@ export const C172_LESSON_6 = {
           </div>
           <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 shadow-2xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Reserva Exigida por Manual OM Blue Team:</strong>
-            <div>Por política interna de seguridad de la escuela, se debe disponer de al menos <strong>1 hora y 30 minutos (1h 30min) de reserva final</strong>: <strong>23.0 Litros (6.08 US Gal)</strong> [19.28 kg], más el combustible necesario para proceder al aeródromo alternativo (20 min = <strong>5.1 Litros / 1.35 US Gal</strong> [4.28 kg]) en caso de haber aterrizado en destino.</div>
+            <div>Por política interna de seguridad de la escuela, se debe disponer de al menos <strong>1 hora y 30 minutos (1h 30min) de reserva final</strong>: <strong>23.0 Litros (6.08 US Gal)</strong> [19.28 kg] (que ya incluye los 45 min reglamentarios), más el combustible necesario para proceder al aeródromo alternativo (20 min = <strong>5.1 Litros / 1.35 US Gal</strong> [4.28 kg]) en caso de haber aterrizado en destino.</div>
           </div>
         </div>
 
@@ -6857,13 +6849,11 @@ export const C172_LESSON_6 = {
           </div>
           <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Diagrama esquemático de bloques de combustible: Taxi (3.0 L / 0.79 US Gal), Trip Fuel de ruta, Reserva EASA 45 min (11.5 L / 3.04 US Gal) y Reserva de Escuela Blue Team OM (23.0 L / 6.08 US Gal + Alternativo 5.1 L / 1.35 US Gal)
+            Diagrama esquemático de bloques de combustible: Taxi (3.0 L / 0.79 US Gal), Trip Fuel de ruta, Reserva de Escuela Blue Team OM 1h 30min (23.0 L / 6.08 US Gal, que incluye los 45 min legales) y Alternativo (5.1 L / 1.35 US Gal)
           </p>
         </div>
 
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Manual de Operaciones Blue Team · Sección Combustible Prevuelo
-        </div>
+
       </div>
     </div>
   </div>

@@ -438,10 +438,6 @@ export function PreflightCruiseWidget({
               En vuelo de instrucción el crucero se fija al <strong>50% de potencia</strong>. Garantiza un consumo de <strong>15.3 L/h</strong>, mayor vida útil de la reductora y turbo, y una autonomía superior a 7 horas de vuelo.
             </p>
           </div>
-
-          <div className="text-xs sm:text-[13px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-            Ref. POH: Figure 5-4a Cruise Performance TAE 125-02-114
-          </div>
         </div>
       </div>
     </div>

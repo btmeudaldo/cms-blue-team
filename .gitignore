@@ -11,7 +11,6 @@ playwright-report/
 
 .vercel
 Manuales/
-public/manuals/
 scratch/
 *.pptx
 backups/
