@@ -6276,7 +6276,7 @@ export const C172_LESSON_6 = {
   course_id: C172_COURSE_ID,
   title: "6. Despacho Operativo: Documentación Prevuelo, Masa y Centrado, Combustible y Performance",
   slug: "despacho-operativo-c172-prevuelo",
-  description: "Dominio integral del despacho operacional en la aeronave de referencia EC-NNA (Continental CD-155 TAE 125-02-114). Incluye cumplimentación paso a paso de la documentación F.OPS.02, cálculo de Masa y Centrado con hoja F.OPS.04.NNA y envolvente en vivo (TOW y LW), tablas de crucero al 50% de potencia (15.3 L/h), política de combustible EASA Part-NCO.OP.125 y Manual OM Blue Team (1:30 de reserva + alternativo), y cálculo de performance de despegue y aterrizaje.",
+  description: "Dominio integral del despacho operacional en la aeronave de referencia EC-NNA. Incluye cumplimentación paso a paso de la documentación F.OPS.02, cálculo de Masa y Centrado con hoja F.OPS.04.NNA y envolvente en vivo (TOW y LW), tablas de crucero al 50% de potencia (15.3 L/h), política de combustible EASA Part-NCO.OP.125 y Manual OM Blue Team (1:30 de reserva + alternativo), y cálculo de performance de despegue y aterrizaje.",
   sequence_order: 6,
   lesson_order: 6,
   min_seconds: 1,
@@ -6319,9 +6319,6 @@ export const C172_LESSON_6 = {
           </div>
         </div>
 
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Normativa Operacional VFR · EASA Part-NCO & Manual OM Blue Team
-        </div>
       </div>
     </div>
 
@@ -6547,7 +6544,7 @@ export const C172_LESSON_6 = {
         <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1.5 my-1">
           <img
             src="/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg"
-            alt="Límites de Centro de Gravedad C172 Continental CD-155 Fig. 6-8"
+            alt="Límites de Centro de Gravedad C172 Fig. 6-8"
             class="w-full h-full object-contain rounded-lg"
             onerror="if(this.src!=='/images/c172/figure_6_8_center_of_gravity_limits%20modificado.svg')this.src='/images/c172/figure_6_8_center_of_gravity_limits%20modificado.svg'"
           />
@@ -6635,7 +6632,7 @@ export const C172_LESSON_6 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📖 TABLAS CRUCERO & ALCANCE POH</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📖 TABLAS CRUCERO & ALCANCE</span>
           <a href="/images/c172/cruise-performance-range.pdf" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1">
             <span>Abrir PDF</span>
             <span>↗</span>
@@ -6645,7 +6642,7 @@ export const C172_LESSON_6 = {
         <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
           <img
             src="/images/c172/cruise-performance-range.png"
-            alt="Tablas oficiales de rendimiento de crucero y alcance POH CD-155"
+            alt="Tablas oficiales de rendimiento de crucero y alcance"
             class="w-full h-auto block rounded-lg shadow-xs"
           />
         </div>
@@ -6676,7 +6673,7 @@ export const C172_LESSON_6 = {
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">EFECTO DEL VIENTO EN RUTA</strong>
           <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
-            La tabla de crucero POH proporciona la <strong>True Airspeed (TAS)</strong>. La velocidad con respecto al suelo (Ground Speed) depende de la componente de viento en cara (resta) o en cola (suma): <span class="font-mono font-bold text-blue-600 dark:text-sky-400">GS = TAS &plusmn; Viento</span>.
+            La tabla de crucero proporciona la <strong>True Airspeed (TAS)</strong>. La velocidad con respecto al suelo (Ground Speed) depende de la componente de viento en cara (resta) o en cola (suma): <span class="font-mono font-bold text-blue-600 dark:text-sky-400">GS = TAS &plusmn; Viento</span>.
           </p>
         </div>
 
@@ -6736,9 +6733,6 @@ export const C172_LESSON_6 = {
           </div>
         </div>
 
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Manual de Navegación VFR · Planificación de Crucero
-        </div>
       </div>
     </div>
   </div>
@@ -6746,7 +6740,7 @@ export const C172_LESSON_6 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 6.9: 6.9 Taller Interactivo 2: Crucero y Autonomía Continental CD-155 -->
+<!-- DIAPOSITIVA 6.9: 6.9 Taller Interactivo 2: Crucero y Autonomía -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
@@ -6842,12 +6836,12 @@ export const C172_LESSON_6 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 6.12: 6.12 Performance de Despegue: Tabla 5-1a CD-155 y Factores de Corrección -->
+<!-- DIAPOSITIVA 6.12: 6.12 Performance de Despegue: Tabla 5-1a y Factores de Corrección -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA)</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.12 Performance de Despegue: Tabla 5-1a CD-155 y Factores de Corrección</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.12 Performance de Despegue: Tabla 5-1a y Factores de Corrección</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Cálculo de Distancia de Carrera y Obstáculo</span>
   </div>
@@ -6862,7 +6856,7 @@ export const C172_LESSON_6 = {
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONDICIONES ESTÁNDAR DE CERTIFICACIÓN</strong>
           <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
-            La tabla de despegue oficial del motor Continental CD-155 asume <strong>MTOM de 1.043 kg</strong>, pista de asfalto nivelada y seca, acelerador a fondo antes de soltar frenos y velocidad de rotación <strong>VR = 54 KIAS</strong> (58 KIAS a 50 ft). Proporciona la distancia en metros directamente.
+            La tabla de despegue oficial asume <strong>MTOM de 1.043 kg</strong>, pista de asfalto nivelada y seca, acelerador a fondo antes de soltar frenos y velocidad de rotación <strong>VR = 54 KIAS</strong> (58 KIAS a 50 ft). Proporciona la distancia en metros directamente.
           </p>
         </div>
 
@@ -6896,7 +6890,7 @@ export const C172_LESSON_6 = {
         <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
           <img
             src="/images/c172/takeoff-performance-tables.png"
-            alt="Tablas oficiales de rendimiento de despegue POH Continental CD-155"
+            alt="Tablas oficiales de rendimiento de despegue"
             class="w-full h-auto block rounded-lg shadow-xs"
           />
         </div>
@@ -6979,7 +6973,7 @@ export const C172_LESSON_6 = {
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA) · TALLER INTERACTIVO 4</div>
       <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.14 Ejercicio Práctico: Performance de Despegue y Aterrizaje</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distances & POH · GCXO · GCTS · GCGM</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distancias Prevuelo · GCXO · GCTS · GCGM</span>
   </div>
 
   <div class="py-0.5" data-interactive-exercise="performance"></div>
@@ -7015,7 +7009,7 @@ export const C172_LESSON_6 = {
           </div>
           <div class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <span class="text-emerald-500 font-bold text-base">✓</span>
-            <div><strong>Combustible Escuela Blue Team:</strong> Ramp Fuel cubre Taxi (<strong>3.0 L / 0.79 Gal</strong>) + Trip + Reserva OM 1h 30min (<strong>23.0 L / 6.08 Gal</strong> al 50%) + Alternativo (<strong>5.1 L / 1.35 Gal</strong>). Mínimo legal EASA: 45 min (<strong>11.5 L / 3.04 Gal</strong>).</div>
+            <div><strong>Combustible Escuela Blue Team:</strong> Ramp Fuel cubre Taxi (<strong>3.0 L / 0.79 Gal</strong>) + Trip + Reserva OM 1h 30min (<strong>23.0 L / 6.08 Gal</strong> al 50%, que ya incluye los 45 min legales) + Alternativo (<strong>5.1 L / 1.35 Gal</strong>). Mínimo legal EASA: 45 min (<strong>11.5 L / 3.04 Gal</strong>).</div>
           </div>
           <div class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <span class="text-emerald-500 font-bold text-base">✓</span>
@@ -7045,9 +7039,7 @@ export const C172_LESSON_6 = {
           </p>
         </div>
 
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Blue Team Flight School · Despacho Prevuelo Oficial F.OPS.02
-        </div>
+
       </div>
     </div>
   </div>

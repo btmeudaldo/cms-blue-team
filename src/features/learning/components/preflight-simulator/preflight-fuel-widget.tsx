@@ -385,7 +385,7 @@ export function PreflightFuelWidget({
                   1. Mínimo Legal EASA Part-NCO.OP.125:
                 </strong>
                 <p className="leading-tight text-[10.5px]">
-                  Obligatorio llevar combustible de ruta más reserva final de <strong>45 minutos</strong> a régimen de crucero (<strong>11.5 L / 3.04 US Gal</strong> al 50% de potencia CD-155).
+                  Obligatorio llevar combustible de ruta más reserva final de <strong>45 minutos</strong> a régimen de crucero (<strong>11.5 L / 3.04 US Gal</strong> al 50% de potencia).
                 </p>
               </div>
 

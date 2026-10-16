@@ -81,7 +81,7 @@ export function PreflightCruiseWidget({
     if (isNaN(userFf) || (!isFfLiters && !isFfGallons)) {
       newErrors.fuelFlow =
         attempts >= 2
-          ? `Solución: En la tabla CD-155, el consumo horario al ${loadPct}% de Load es de ${expectedFuelFlow} L/h (o ${targetRow.fuelFlowGal} US Gal/h).`
+          ? `Solución: En la tabla de crucero, el consumo horario al ${loadPct}% de Load es de ${expectedFuelFlow} L/h (o ${targetRow.fuelFlowGal} US Gal/h).`
           : `Consulta la columna de consumo en la tabla: ${expectedFuelFlow} L/h o ${targetRow.fuelFlowGal} Gal/h.`;
     } else if (isFfGallons) {
       newWarnings.push(`Consumo horario: Has introducido ${userFf} US Gal/h (equivalente a ${expectedFuelFlow} L/h).`);
@@ -360,7 +360,7 @@ export function PreflightCruiseWidget({
                 📖 TABLA FIG. 5-4a CRUCERO
               </span>
               <span className="text-xs sm:text-[13px] text-slate-500 font-medium">
-                C172 CD-155 (TAE 125-02-114) · Standard Tanks (127.4 L / 33.65 US Gal usable)
+                C172 (EC-NNA) · Standard Tanks (127.4 L / 33.65 US Gal usable)
               </span>
             </div>
             <div className="flex items-center gap-1 shrink-0">

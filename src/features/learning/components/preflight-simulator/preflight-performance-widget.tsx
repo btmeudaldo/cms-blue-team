@@ -279,7 +279,7 @@ export function PreflightPerformanceWidget({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 font-bold text-xs text-blue-600 dark:text-sky-300 hover:bg-blue-50 dark:hover:bg-slate-600 transition-all shadow-2xs"
-                  title="Abrir Tabla 5-1a Despegue CD-155 en PDF"
+                  title="Abrir Tabla 5-1a Despegue en PDF"
                 >
                   <span>🛫 Tabla Despegue (Fig. 5-1a)</span>
                   <span>↗</span>
@@ -456,7 +456,7 @@ export function PreflightPerformanceWidget({
               </span>
             </div>
             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-sky-300 shrink-0">
-              POH CD-155
+              POH C172
             </span>
           </div>
 
@@ -588,7 +588,7 @@ export function PreflightPerformanceWidget({
                 {/* Comparison of the 3 Canary Airports */}
                 <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 shadow-2xs">
                   <strong className="text-[#0B2E59] dark:text-sky-300 block uppercase font-bold text-xs sm:text-[13px]">
-                    Comparativa de Performance Insular (POH CD-155 a 20°C):
+                    Comparativa de Performance Insular (a 20°C):
                   </strong>
                   <div className="space-y-1.5 text-xs sm:text-[13px]">
                     <div className={`p-2 rounded-xl flex justify-between items-center transition-all ${scenario.icao === "GCTS" ? "bg-sky-50 dark:bg-sky-950/50 font-bold border-2 border-sky-300 dark:border-sky-700 shadow-2xs" : "bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800"}`}>
@@ -612,21 +612,6 @@ export function PreflightPerformanceWidget({
                 </div>
               </>
             )}
-          </div>
-
-          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-            <span>Consultar Documentación POH:</span>
-            <div className="flex items-center gap-2">
-              <a href="/images/c172/takeoff-performance-tables.pdf" target="_blank" rel="noopener noreferrer" className="font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-0.5">
-                <span>🛫 Fig. 5-1a Despegue</span>
-                <span>↗</span>
-              </a>
-              <span>·</span>
-              <a href="/images/c172/landing_distance_table.pdf" target="_blank" rel="noopener noreferrer" className="font-bold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center gap-0.5">
-                <span>🛬 Fig. 5-10 Toma</span>
-                <span>↗</span>
-              </a>
-            </div>
           </div>
         </div>
       </div>
