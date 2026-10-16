@@ -812,12 +812,18 @@ export function PreflightLoadsheetWidget({
             ) : (
               /* PARTE 2: TABLA DE ATERRIZAJE (5 FILAS) */
               <div className="space-y-2">
-                <div className="p-2.5 rounded-xl bg-sky-50/70 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs sm:text-[13px] flex items-center justify-between">
-                  <span className="font-semibold text-sky-900 dark:text-sky-200">
-                    Condición de Despegue (TOM): <strong>{expected.tomMass} kg</strong> · CG: <strong>{expected.tomCg} m</strong>
-                  </span>
+                <div className="p-2.5 rounded-xl bg-sky-50/70 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-xs sm:text-[13px] flex items-center justify-between flex-wrap gap-2">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-purple-900 dark:text-purple-300 font-semibold">
+                      ZFW (de 6.5): <strong>{expected.zfmMass} kg</strong> · CG: <strong>{expected.zfmCg} m</strong>
+                    </span>
+                    <span className="text-slate-300 dark:text-slate-600 font-bold">|</span>
+                    <span className="font-semibold text-sky-900 dark:text-sky-200">
+                      Condición TOW: <strong>{expected.tomMass} kg</strong> · CG: <strong>{expected.tomCg} m</strong>
+                    </span>
+                  </div>
                   <span className="text-xs sm:text-[13px] text-sky-700 dark:text-sky-300 font-mono">
-                    Momento: {expected.tomMoment} kg·m
+                    Momento TOM: {expected.tomMoment} kg·m
                   </span>
                 </div>
 
@@ -1479,26 +1485,56 @@ export function PreflightLoadsheetWidget({
                   </>
                 )}
 
-                {/* 3. PASO 2: ATERRIZAJE (6.6) - TOW y LW */}
+                {/* 3. PASO 2: ATERRIZAJE (6.6) - ZFW, TOW y LW */}
                 {currentStep === "landing" && (
                   <>
-                    {/* Punto de Despegue (TOW conocido) - SOLO se revela tras comprobar o tras 3 intentos */}
+                    {/* Punto ZFW (de 6.5) - Revelado al validar aterrizaje o tras 3 intentos */}
+                    {(isStepPassed || showTargetHint) && (
+                      <g transform={`translate(${zfmCoords.x}, ${zfmCoords.y})`}>
+                        <circle r="12" fill="#7c3aed" stroke="#ffffff" strokeWidth="3" />
+                        <g transform="translate(20, 8)">
+                          <rect x="0" y="-25" width="190" height="50" rx="9" fill="#6d28d9" stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="95" y="-5" fill="#ffffff" fontSize="14" fontWeight="bold" textAnchor="middle">
+                            ZFW (de 6.5)
+                          </text>
+                          <text x="95" y="15" fill="#e9d5ff" fontSize="13" fontWeight="bold" textAnchor="middle">
+                            {expected.zfmMass} kg · {expected.zfmCg} m
+                          </text>
+                        </g>
+                      </g>
+                    )}
+
+                    {/* Línea ZFW -> TOW (Carga de combustible) */}
+                    {(isStepPassed || showTargetHint) && (
+                      <line
+                        x1={zfmCoords.x}
+                        y1={zfmCoords.y}
+                        x2={tomCoords.x}
+                        y2={tomCoords.y}
+                        stroke="#7c3aed"
+                        strokeWidth="2.5"
+                        strokeDasharray="5 4"
+                      />
+                    )}
+
+                    {/* Punto de Despegue (TOW) - Cuadro a la IZQUIERDA para evitar solaparse con LW */}
                     {(isStepPassed || showTargetHint) && (
                       <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
                         <circle r="13" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3" />
-                        <g transform="translate(22, 0)">
-                          <rect x="0" y="-26" width="200" height="52" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="100" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
+                        {/* Cuadro hacia la IZQUIERDA del punto TOW */}
+                        <g transform="translate(-24, 0)">
+                          <rect x="-200" y="-26" width="200" height="52" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="-100" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
                             TOW (Despegue)
                           </text>
-                          <text x="100" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
+                          <text x="-100" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
                             {expected.tomMass} kg · {expected.tomCg} m
                           </text>
                         </g>
                       </g>
                     )}
 
-                    {/* Línea de consumo TOW -> LW (mostrada tras validar aterrizaje o tras 3 intentos) */}
+                    {/* Línea de consumo TOW -> LW (Consumo en ruta) */}
                     {(isStepPassed || showTargetHint) && (
                       <line
                         x1={tomCoords.x}
@@ -1517,7 +1553,7 @@ export function PreflightLoadsheetWidget({
                         <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
                         <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
                         {/* Cuadro de info centrado arriba del punto del alumno */}
-                        <g transform="translate(0, -64)">
+                        <g transform="translate(0, -72)">
                           <rect x="-105" y="-28" width="210" height="56" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
                           <text x="0" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
                             TU PUNTO LW
@@ -1542,12 +1578,12 @@ export function PreflightLoadsheetWidget({
                       />
                     )}
 
-                    {/* Punto exacto de aterrizaje (LW) revelado tras validar o 3 intentos - CUADRO MÁS GRANDE */}
+                    {/* Punto exacto de aterrizaje (LW) - Cuadro hacia la DERECHA */}
                     {(isStepPassed || showTargetHint) && (
                       <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
                         <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#059669"} strokeWidth="3" opacity="0.8" className="animate-ping" />
                         <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#059669"} stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro de info hacia la derecha del punto calculado */}
+                        {/* Cuadro de LW hacia la DERECHA */}
                         <g transform="translate(24, 0)">
                           <rect x="0" y="-28" width="220" height="56" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#065f46"} stroke="#ffffff" strokeWidth="2.5" />
                           <text x="110" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
@@ -1607,6 +1643,16 @@ export function PreflightLoadsheetWidget({
                 </>
               ) : (
                 <>
+                  <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-purple-50/70 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800">
+                    <div className="flex items-center gap-2">
+                      <strong className="text-purple-900 dark:text-purple-300">ZFW (de 6.5):</strong>
+                      <span className="font-mono font-semibold text-slate-800 dark:text-slate-100">{expected.zfmMass} kg · CG {expected.zfmCg} m</span>
+                    </div>
+                    <span className="font-bold text-purple-700 dark:text-purple-300">
+                      ✓ Zero Fuel Mass
+                    </span>
+                  </div>
+
                   <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
                     <div className="flex items-center gap-2">
                       <strong className="text-blue-900 dark:text-sky-300">DESPEGUE (TOW):</strong>
