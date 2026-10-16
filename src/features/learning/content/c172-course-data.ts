@@ -59,26 +59,6 @@ export const C172_DOCUMENTATION: CourseDocumentationItem[] = [
     url: "/manuals/cessna/loadsheet-ec-nnx.pdf",
     badge: "F.OPS.04",
   },
-
-  // Suplementos Específicos Continental CD-135 / CD-155
-  {
-    category: "Suplementos Motor Continental",
-    title: "AFM Supplement Continental TAE 125-01 / CD-135 (Instalación C172)",
-    url: "/manuals/cessna/poh-ec-nna.pdf",
-    badge: "CD-135 AFM",
-  },
-  {
-    category: "Suplementos Motor Continental",
-    title: "AFM Supplement Continental TAE 125-02-114 / CD-155 (155 CV High Output)",
-    url: "/manuals/cessna/poh-ec-oxt.pdf",
-    badge: "CD-155 AFM",
-  },
-  {
-    category: "Hélices MT-Propeller",
-    title: "Manual de Operación Gobernador y Hélice MT-Propeller MTV-6-A/187-129",
-    url: "/manuals/cessna/poh-ec-nnx.pdf",
-    badge: "MT-Propeller",
-  },
 ];
 
 // ============================================================================
