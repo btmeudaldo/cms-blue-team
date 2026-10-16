@@ -13,7 +13,9 @@ export type ExerciseType =
   | "loadsheet-exam"
   | "cruise"
   | "fuel"
-  | "performance";
+  | "performance"
+  | "performance_takeoff"
+  | "performance_landing";
 
 type Props = {
   exerciseType: ExerciseType;
@@ -69,6 +71,23 @@ export function PreflightInteractiveHub({
     case "performance":
       return (
         <PreflightPerformanceWidget
+          mode="all"
+          onExerciseCompleted={onExerciseCompleted}
+          isAlreadyCompleted={isAlreadyCompleted}
+        />
+      );
+    case "performance_takeoff":
+      return (
+        <PreflightPerformanceWidget
+          mode="takeoff"
+          onExerciseCompleted={onExerciseCompleted}
+          isAlreadyCompleted={isAlreadyCompleted}
+        />
+      );
+    case "performance_landing":
+      return (
+        <PreflightPerformanceWidget
+          mode="landing"
           onExerciseCompleted={onExerciseCompleted}
           isAlreadyCompleted={isAlreadyCompleted}
         />

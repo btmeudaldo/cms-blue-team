@@ -6269,7 +6269,7 @@ export const C172_LESSON_5 = {
 // LECCIÓN 6: DESPACHO OPERATIVO: DOCUMENTACIÓN PREVUELO, M&B, COMBUSTIBLE Y PERFORMANCE (14 DIAPOSITIVAS)
 // ============================================================================
 // ============================================================================
-// LECCIÓN 6: DESPACHO OPERATIVO: DOCUMENTACIÓN PREVUELO, M&B, COMBUSTIBLE Y PERFORMANCE (14 DIAPOSITIVAS)
+// LECCIÓN 6: DESPACHO OPERATIVO: DOCUMENTACIÓN PREVUELO, M&B, COMBUSTIBLE Y PERFORMANCE (16 DIAPOSITIVAS)
 // ============================================================================
 export const C172_LESSON_6 = {
   id: "17200000-0000-0000-0000-000000000005",
@@ -6966,27 +6966,42 @@ export const C172_LESSON_6 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 6.14: 6.14 Taller Interactivo 4: Performance de Despegue y Aterrizaje -->
+<!-- DIAPOSITIVA 6.14: 6.14 Taller Interactivo 4A: Performance de Despegue (TORA & TODA) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA) · TALLER INTERACTIVO 4</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.14 Ejercicio Práctico: Performance de Despegue y Aterrizaje</h1>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA) · TALLER INTERACTIVO 4A</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.14 Ejercicio Práctico 4A: Distancias de Despegue (TORA & TODA)</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distancias Prevuelo · GCXO · GCTS · GCGM</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distancias Prevuelo · Parte 1</span>
   </div>
 
-  <div class="py-0.5" data-interactive-exercise="performance"></div>
+  <div class="py-0.5" data-interactive-exercise="performance_takeoff"></div>
 </div>
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 6.15: 6.15 Validación Final del Despacho y Firma Operativa -->
+<!-- DIAPOSITIVA 6.15: 6.15 Taller Interactivo 4B: Distancia de Aterrizaje (LDA) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA) · TALLER INTERACTIVO 4B</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.15 Ejercicio Práctico 4B: Distancia de Aterrizaje y Margen (LDA)</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distancias Prevuelo · Parte 2</span>
+  </div>
+
+  <div class="py-0.5" data-interactive-exercise="performance_landing"></div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.16: 6.16 Validación Final del Despacho y Firma Operativa -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA)</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.15 Validación Final del Despacho y Firma Operativa</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.16 Validación Final del Despacho y Firma Operativa</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Cierre Documental F.OPS.02</span>
   </div>
