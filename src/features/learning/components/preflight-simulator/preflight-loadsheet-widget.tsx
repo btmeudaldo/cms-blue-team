@@ -331,9 +331,9 @@ export function PreflightLoadsheetWidget({
   }, [hoverPoint]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
-      {/* Columna Izquierda (lg:col-span-6): Altura Estricta 590px */}
-      <div className="lg:col-span-6 flex flex-col">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+      {/* Columna Izquierda (lg:col-span-7): Altura Estricta 590px */}
+      <div className="lg:col-span-7 flex flex-col">
         <div
           className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
           style={{ height: "590px" }}
@@ -755,44 +755,47 @@ export function PreflightLoadsheetWidget({
         </div>
       </div>
 
-      {/* Columna Derecha (lg:col-span-6): Live SVG Envelope con Lupas y Proyecciones de Ejes (Altura Estricta 590px) */}
-      <div className="lg:col-span-6 flex flex-col">
+      {/* Columna Derecha (lg:col-span-5): Live SVG Envelope (Altura Estricta 590px) */}
+      <div className="lg:col-span-5 flex flex-col">
         <div
           className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
           style={{ height: "590px" }}
         >
-          {/* Header con Controles de Lupa y Estado */}
+          {/* Header limpio original sin desbordamientos */}
           <div className="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
-                📈 ENVOLVENTE EN VIVO (FIG. 6-8)
-              </span>
-              <span className="text-xs font-semibold text-slate-500 hidden md:inline">
-                {currentStep === "takeoff"
-                  ? (isStepPassed ? "✓ TOW Verificado" : "Localiza tu punto TOW")
-                  : (isStepPassed ? "✓ Trayectoria TOW → LW" : "Localiza tu punto LW")}
-              </span>
-            </div>
+            <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
+              📈 ENVOLVENTE EN VIVO (FIG. 6-8)
+            </span>
+            <span className="text-xs sm:text-[13px] font-semibold text-slate-500">
+              {currentStep === "takeoff" ? "Punto de Despegue (TOW)" : "Trayectoria TOW → LW"}
+            </span>
+          </div>
 
-            {/* Controles de Lupa (Zoom In / Out / Reset) */}
-            <div className="flex items-center gap-1 bg-white dark:bg-slate-800 p-0.5 rounded-lg border border-slate-200 dark:border-slate-700 shadow-2xs">
+          {/* SVG Envelope Display con Proporción Inicial "como antes" y Zoom Expandible */}
+          <div
+            className={`relative w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 my-auto ${
+              zoomLevel > 1 ? "overflow-auto max-h-[465px]" : "overflow-hidden aspect-[1140/880]"
+            }`}
+          >
+            {/* Controles de Lupa Flotantes (En la esquina superior derecha, sin desbordar el header) */}
+            <div className="absolute top-2 right-2 z-20 flex items-center gap-1 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-1.5 py-1 rounded-xl border border-slate-300 dark:border-slate-700 shadow-md">
               <button
                 type="button"
                 onClick={() => setZoomLevel((z) => Math.max(1, Math.round((z - 0.25) * 100) / 100))}
                 disabled={zoomLevel <= 1}
-                className="w-6 h-6 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-extrabold text-xs hover:bg-slate-200 dark:hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
+                className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-extrabold text-xs hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
                 title="Reducir envolvente (Lupa -)"
               >
                 🔍−
               </button>
-              <span className="text-[11px] font-mono font-bold text-slate-700 dark:text-slate-200 px-1 min-w-[36px] text-center">
+              <span className="text-[11px] font-mono font-bold text-slate-700 dark:text-slate-200 px-1 min-w-[34px] text-center">
                 {Math.round(zoomLevel * 100)}%
               </span>
               <button
                 type="button"
                 onClick={() => setZoomLevel((z) => Math.min(2.25, Math.round((z + 0.25) * 100) / 100))}
                 disabled={zoomLevel >= 2.25}
-                className="w-6 h-6 flex items-center justify-center rounded bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-extrabold text-xs hover:bg-slate-200 dark:hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
+                className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-extrabold text-xs hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
                 title="Ampliar envolvente (Lupa +)"
               >
                 🔍+
@@ -801,19 +804,16 @@ export function PreflightLoadsheetWidget({
                 <button
                   type="button"
                   onClick={() => setZoomLevel(1)}
-                  className="px-1.5 h-6 flex items-center justify-center rounded bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-sky-300 font-bold text-[10px] hover:bg-blue-200 cursor-pointer transition-all"
-                  title="Restablecer vista normal al 100%"
+                  className="px-1.5 h-6 flex items-center justify-center rounded-lg bg-[#1a80ff] hover:bg-[#0066e6] text-white font-bold text-[10px] cursor-pointer transition-all shadow-2xs"
+                  title="Restablecer vista 100%"
                 >
                   ↺ 100%
                 </button>
               )}
             </div>
-          </div>
 
-          {/* SVG Envelope Display con Soporte de Zoom, Pan y Crosshairs */}
-          <div className="flex-1 min-h-0 my-1 overflow-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-start">
             <div
-              className="relative shrink-0 aspect-[1140/880] transition-all duration-200 origin-top"
+              className="relative shrink-0 aspect-[1140/880] transition-all duration-200 origin-top-left"
               style={{
                 width: `${zoomLevel * 100}%`,
                 minWidth: "100%",
