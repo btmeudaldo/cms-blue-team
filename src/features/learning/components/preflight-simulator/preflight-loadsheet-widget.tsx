@@ -884,8 +884,10 @@ export function PreflightLoadsheetWidget({
             {/* Viewport de la Envolvente: conserva el contenedor base centrado y escala de forma 100% suave y continua */}
             <div className="w-full h-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 shadow-2xs overflow-auto flex p-1">
               <div
-                className="relative aspect-[1140/880] max-h-full max-w-full m-auto shrink-0 transition-transform duration-100 ease-out"
+                className="relative aspect-[1140/880] h-full max-h-full max-w-full m-auto shrink-0 transition-transform duration-100 ease-out"
                 style={{
+                  height: "100%",
+                  width: "auto",
                   transform: `scale(${zoomLevel})`,
                   transformOrigin: "center center",
                 }}
