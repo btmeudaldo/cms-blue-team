@@ -799,12 +799,8 @@ export function PreflightLoadsheetWidget({
             </span>
           </div>
 
-          {/* SVG Envelope Display con Proporción Inicial Completa y Zoom Expandible */}
-          <div
-            className={`relative w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 my-auto ${
-              zoomLevel > 1 ? "overflow-auto max-h-[465px]" : "overflow-hidden aspect-[1140/880]"
-            }`}
-          >
+          {/* SVG Envelope Display con Proporción Inicial Original Completa y Zoom Expandible */}
+          <div className="flex-1 min-h-0 w-full flex items-center justify-center my-auto py-0.5 relative">
             {/* Controles de Zoom Flotantes (+ / - sin lupas ni desbordamiento) */}
             <div className="absolute top-2 right-2 z-20 flex items-center gap-1.5 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2 py-1 rounded-xl border border-slate-300 dark:border-slate-700 shadow-md">
               <button
@@ -841,17 +837,30 @@ export function PreflightLoadsheetWidget({
             </div>
 
             <div
-              className="relative shrink-0 aspect-[1140/880] transition-all duration-200 origin-top-left"
-              style={{
-                width: zoomLevel > 1 ? `${zoomLevel * 100}%` : "100%",
-                minWidth: "100%",
-              }}
+              className={`rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 shadow-2xs ${
+                zoomLevel > 1
+                  ? "w-full h-full overflow-auto"
+                  : "w-full max-h-full aspect-[1140/880] overflow-hidden flex items-center justify-center"
+              }`}
             >
-              <img
-                src="/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg"
-                alt="Center of Gravity Limits SVG"
-                className="w-full h-full object-contain pointer-events-none select-none"
-              />
+              <div
+                className={`relative aspect-[1140/880] transition-all duration-200 ${
+                  zoomLevel > 1 ? "origin-top-left" : "w-full h-full"
+                }`}
+                style={
+                  zoomLevel > 1
+                    ? {
+                        width: `${zoomLevel * 100}%`,
+                        minWidth: `${zoomLevel * 100}%`,
+                      }
+                    : undefined
+                }
+              >
+                <img
+                  src="/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg"
+                  alt="Center of Gravity Limits SVG"
+                  className="w-full h-full object-contain pointer-events-none select-none"
+                />
 
               <svg
                 viewBox="0 0 1140 880"
@@ -962,29 +971,23 @@ export function PreflightLoadsheetWidget({
                 {/* 2. PASO 1: DESPEGUE (6.5) - Solo TOW */}
                 {currentStep === "takeoff" && (
                   <>
-                    {/* Mensaje de ayuda inicial si el alumno aún no ha colocado su punto */}
-                    {!interactiveClickPoint && !isStepPassed && (
-                      <g transform="translate(570, 785)" pointerEvents="none">
-                        <rect x="-260" y="-20" width="520" height="40" rx="8" fill="#0f172a" opacity="0.88" />
-                        <text x="0" y="5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
-                          👆 Pasa el ratón para alinear los ejes y haz clic para situar tu punto TOW
-                        </text>
-                      </g>
-                    )}
+
 
                     {/* Punto estimado fijado por el alumno ("Tu Punto TOW") - ARRIBA del punto */}
                     {interactiveClickPoint && studentEstimated && (
                       <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
-                        <circle r="24" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
-                        <circle r="15" fill="#f59e0b" stroke="#ffffff" strokeWidth="3.5" />
+                        <circle r="18" fill="none" stroke="#d97706" strokeWidth="2.5" opacity="0.6" className="animate-pulse" />
+                        <circle r="11" fill="#f59e0b" stroke="#ffffff" strokeWidth="2.5" />
                         {/* Cuadro de info centrado arriba del punto del alumno */}
-                        <rect x="-85" y="-68" width="170" height="46" rx="9" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
-                        <text x="0" y="-48" fill="#ffffff" fontSize="15" fontWeight="900" textAnchor="middle">
-                          TU PUNTO TOW
-                        </text>
-                        <text x="0" y="-30" fill="#fef3c7" fontSize="13" fontWeight="bold" textAnchor="middle">
-                          ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
-                        </text>
+                        <g transform="translate(0, -48)">
+                          <rect x="-68" y="-18" width="136" height="36" rx="8" fill="#b45309" stroke="#ffffff" strokeWidth="2" />
+                          <text x="0" y="-2" fill="#ffffff" fontSize="13" fontWeight="900" textAnchor="middle">
+                            TU PUNTO TOW
+                          </text>
+                          <text x="0" y="11" fill="#fef3c7" fontSize="11" fontWeight="bold" textAnchor="middle">
+                            ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
+                          </text>
+                        </g>
                       </g>
                     )}
 
@@ -996,7 +999,7 @@ export function PreflightLoadsheetWidget({
                         x2={tomCoords.x}
                         y2={tomCoords.y}
                         stroke="#f59e0b"
-                        strokeWidth="3.5"
+                        strokeWidth="3"
                         strokeDasharray="6 4"
                       />
                     )}
@@ -1004,16 +1007,18 @@ export function PreflightLoadsheetWidget({
                     {/* Punto exacto calculado TOW (Oculto al inicio, revelado únicamente al validar) - HACIA LA DERECHA */}
                     {isStepPassed && (
                       <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
-                        <circle r="26" fill="none" stroke="#2563eb" strokeWidth="3" opacity="0.75" className="animate-ping" />
-                        <circle r="16" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3.5" />
+                        <circle r="20" fill="none" stroke="#2563eb" strokeWidth="2.5" opacity="0.75" className="animate-ping" />
+                        <circle r="11" fill="#1d4ed8" stroke="#ffffff" strokeWidth="2.5" />
                         {/* Cuadro de info hacia la derecha del punto calculado */}
-                        <rect x="22" y="-23" width="175" height="46" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
-                        <text x="109" y="-3" fill="#ffffff" fontSize="15" fontWeight="900" textAnchor="middle">
-                          TOW CALCULADO
-                        </text>
-                        <text x="109" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
-                          {expected.tomMass} kg · {expected.tomCg} m
-                        </text>
+                        <g transform="translate(18, 0)">
+                          <rect x="0" y="-18" width="140" height="36" rx="8" fill="#1e40af" stroke="#ffffff" strokeWidth="2" />
+                          <text x="70" y="-2" fill="#ffffff" fontSize="13" fontWeight="900" textAnchor="middle">
+                            TOW CALCULADO
+                          </text>
+                          <text x="70" y="11" fill="#bfdbfe" fontSize="11" fontWeight="bold" textAnchor="middle">
+                            {expected.tomMass} kg · {expected.tomCg} m
+                          </text>
+                        </g>
                       </g>
                     )}
                   </>
@@ -1024,12 +1029,12 @@ export function PreflightLoadsheetWidget({
                   <>
                     {/* Punto de Despegue (TOW conocido) */}
                     <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
-                      <circle r="14" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3" />
-                      <rect x="18" y="-18" width="130" height="36" rx="7" fill="#1e40af" stroke="#ffffff" strokeWidth="2" />
-                      <text x="83" y="-1" fill="#ffffff" fontSize="14" fontWeight="bold" textAnchor="middle">
+                      <circle r="11" fill="#1d4ed8" stroke="#ffffff" strokeWidth="2.5" />
+                      <rect x="18" y="-17" width="130" height="34" rx="7" fill="#1e40af" stroke="#ffffff" strokeWidth="2" />
+                      <text x="83" y="-1" fill="#ffffff" fontSize="13" fontWeight="bold" textAnchor="middle">
                         TOW (Despegue)
                       </text>
-                      <text x="83" y="13" fill="#bfdbfe" fontSize="11" fontWeight="bold" textAnchor="middle">
+                      <text x="83" y="12" fill="#bfdbfe" fontSize="10.5" fontWeight="bold" textAnchor="middle">
                         {expected.tomMass} kg · {expected.tomCg} m
                       </text>
                     </g>
@@ -1042,24 +1047,26 @@ export function PreflightLoadsheetWidget({
                         x2={lmCoords.x}
                         y2={lmCoords.y}
                         stroke="#1a80ff"
-                        strokeWidth="4"
-                        strokeDasharray="8 6"
+                        strokeWidth="3.5"
+                        strokeDasharray="7 5"
                       />
                     )}
 
                     {/* Punto estimado fijado por el alumno para LW - ARRIBA del punto */}
                     {interactiveClickPoint && studentEstimated && (
                       <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
-                        <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
-                        <circle r="14" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
+                        <circle r="18" fill="none" stroke="#d97706" strokeWidth="2.5" opacity="0.6" className="animate-pulse" />
+                        <circle r="11" fill="#f59e0b" stroke="#ffffff" strokeWidth="2.5" />
                         {/* Cuadro de info centrado arriba del punto del alumno */}
-                        <rect x="-85" y="-68" width="170" height="46" rx="9" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
-                        <text x="0" y="-48" fill="#ffffff" fontSize="15" fontWeight="900" textAnchor="middle">
-                          TU PUNTO LW
-                        </text>
-                        <text x="0" y="-30" fill="#fef3c7" fontSize="13" fontWeight="bold" textAnchor="middle">
-                          ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
-                        </text>
+                        <g transform="translate(0, -48)">
+                          <rect x="-68" y="-18" width="136" height="36" rx="8" fill="#b45309" stroke="#ffffff" strokeWidth="2" />
+                          <text x="0" y="-2" fill="#ffffff" fontSize="13" fontWeight="900" textAnchor="middle">
+                            TU PUNTO LW
+                          </text>
+                          <text x="0" y="11" fill="#fef3c7" fontSize="11" fontWeight="bold" textAnchor="middle">
+                            ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
+                          </text>
+                        </g>
                       </g>
                     )}
 
@@ -1071,7 +1078,7 @@ export function PreflightLoadsheetWidget({
                         x2={lmCoords.x}
                         y2={lmCoords.y}
                         stroke="#f59e0b"
-                        strokeWidth="3.5"
+                        strokeWidth="3"
                         strokeDasharray="6 4"
                       />
                     )}
@@ -1079,16 +1086,18 @@ export function PreflightLoadsheetWidget({
                     {/* Punto exacto de aterrizaje (LW) revelado tras validar - HACIA LA DERECHA */}
                     {isStepPassed && (
                       <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
-                        <circle r="26" fill="none" stroke="#059669" strokeWidth="3" opacity="0.75" className="animate-ping" />
-                        <circle r="16" fill="#059669" stroke="#ffffff" strokeWidth="3.5" />
+                        <circle r="20" fill="none" stroke="#059669" strokeWidth="2.5" opacity="0.75" className="animate-ping" />
+                        <circle r="11" fill="#059669" stroke="#ffffff" strokeWidth="2.5" />
                         {/* Cuadro de info hacia la derecha del punto calculado */}
-                        <rect x="22" y="-23" width="170" height="46" rx="9" fill="#065f46" stroke="#ffffff" strokeWidth="2.5" />
-                        <text x="107" y="-3" fill="#ffffff" fontSize="15" fontWeight="900" textAnchor="middle">
-                          LW CALCULADO
-                        </text>
-                        <text x="107" y="15" fill="#a7f3d0" fontSize="13" fontWeight="bold" textAnchor="middle">
-                          {expected.lmMass} kg · {expected.lmCg} m
-                        </text>
+                        <g transform="translate(18, 0)">
+                          <rect x="0" y="-18" width="140" height="36" rx="8" fill="#065f46" stroke="#ffffff" strokeWidth="2" />
+                          <text x="70" y="-2" fill="#ffffff" fontSize="13" fontWeight="900" textAnchor="middle">
+                            LW CALCULADO
+                          </text>
+                          <text x="70" y="11" fill="#a7f3d0" fontSize="11" fontWeight="bold" textAnchor="middle">
+                            {expected.lmMass} kg · {expected.lmCg} m
+                          </text>
+                        </g>
                       </g>
                     )}
                   </>
@@ -1096,6 +1105,7 @@ export function PreflightLoadsheetWidget({
               </svg>
             </div>
           </div>
+        </div>
 
           {/* Footer de Estado de la Envolvente */}
           <div className="space-y-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 text-xs sm:text-[13px]">
