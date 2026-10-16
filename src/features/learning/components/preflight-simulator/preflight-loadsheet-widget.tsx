@@ -799,43 +799,43 @@ export function PreflightLoadsheetWidget({
             </span>
           </div>
 
-          {/* SVG Envelope Display con Proporción Inicial "como antes" y Zoom Expandible */}
+          {/* SVG Envelope Display con Proporción Inicial Completa y Zoom Expandible */}
           <div
             className={`relative w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 my-auto ${
               zoomLevel > 1 ? "overflow-auto max-h-[465px]" : "overflow-hidden aspect-[1140/880]"
             }`}
           >
-            {/* Controles de Lupa Flotantes (En la esquina superior derecha, sin desbordar el header) */}
-            <div className="absolute top-2 right-2 z-20 flex items-center gap-1 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-1.5 py-1 rounded-xl border border-slate-300 dark:border-slate-700 shadow-md">
+            {/* Controles de Zoom Flotantes (+ / - sin lupas ni desbordamiento) */}
+            <div className="absolute top-2 right-2 z-20 flex items-center gap-1.5 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2 py-1 rounded-xl border border-slate-300 dark:border-slate-700 shadow-md">
               <button
                 type="button"
                 onClick={() => setZoomLevel((z) => Math.max(1, Math.round((z - 0.25) * 100) / 100))}
                 disabled={zoomLevel <= 1}
-                className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-extrabold text-xs hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
-                title="Reducir envolvente (Lupa -)"
+                className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-extrabold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer leading-none"
+                title="Reducir (-)"
               >
-                🔍−
+                −
               </button>
-              <span className="text-[11px] font-mono font-bold text-slate-700 dark:text-slate-200 px-1 min-w-[34px] text-center">
+              <span className="text-[11px] font-mono font-bold text-slate-800 dark:text-slate-100 px-1 min-w-[34px] text-center">
                 {Math.round(zoomLevel * 100)}%
               </span>
               <button
                 type="button"
                 onClick={() => setZoomLevel((z) => Math.min(2.25, Math.round((z + 0.25) * 100) / 100))}
                 disabled={zoomLevel >= 2.25}
-                className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-extrabold text-xs hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer"
-                title="Ampliar envolvente (Lupa +)"
+                className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-extrabold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer leading-none"
+                title="Ampliar (+)"
               >
-                🔍+
+                +
               </button>
               {zoomLevel > 1 && (
                 <button
                   type="button"
                   onClick={() => setZoomLevel(1)}
-                  className="px-1.5 h-6 flex items-center justify-center rounded-lg bg-[#1a80ff] hover:bg-[#0066e6] text-white font-bold text-[10px] cursor-pointer transition-all shadow-2xs"
+                  className="px-1.5 h-6 flex items-center justify-center rounded-lg bg-[#1a80ff] hover:bg-[#0066e6] text-white font-bold text-[10px] cursor-pointer transition-all shadow-2xs leading-none"
                   title="Restablecer vista 100%"
                 >
-                  ↺ 100%
+                  100%
                 </button>
               )}
             </div>
@@ -843,7 +843,7 @@ export function PreflightLoadsheetWidget({
             <div
               className="relative shrink-0 aspect-[1140/880] transition-all duration-200 origin-top-left"
               style={{
-                width: `${zoomLevel * 100}%`,
+                width: zoomLevel > 1 ? `${zoomLevel * 100}%` : "100%",
                 minWidth: "100%",
               }}
             >
@@ -880,22 +880,22 @@ export function PreflightLoadsheetWidget({
                   });
                 }}
               >
-                {/* 1. LÍNEAS GUÍA DE MOUSE HOVER A LOS EJES (Arriba: CG, Izquierda: Masa) */}
+                {/* 1. LÍNEAS GUÍA DE MOUSE HOVER A LOS EJES (Arriba: CG, Derecha: Masa en kg) */}
                 {hoverPoint && hoverData && (
                   <g pointerEvents="none">
-                    {/* Línea horizontal hacia el eje vertical izquierdo (Masa) */}
+                    {/* Línea horizontal hacia el eje vertical DERECHO (Masa en kg) */}
                     <line
                       x1={hoverPoint.x}
                       y1={hoverPoint.y}
-                      x2={132.7}
+                      x2={1013.3}
                       y2={hoverPoint.y}
                       stroke="#2563eb"
                       strokeWidth="2.5"
                       strokeDasharray="6 3"
                     />
-                    {/* Badge indicador en el eje izquierdo (Masa en kg) */}
+                    {/* Badge indicador en el eje derecho (Masa en kg) */}
                     <rect
-                      x={50}
+                      x={1016}
                       y={hoverPoint.y - 14}
                       width="80"
                       height="28"
@@ -905,7 +905,7 @@ export function PreflightLoadsheetWidget({
                       strokeWidth="1.5"
                     />
                     <text
-                      x={90}
+                      x={1056}
                       y={hoverPoint.y + 5}
                       fill="#ffffff"
                       fontSize="13"
@@ -915,7 +915,7 @@ export function PreflightLoadsheetWidget({
                       {hoverData.massKg} kg
                     </text>
 
-                    {/* Línea vertical hacia el eje horizontal superior (CG) */}
+                    {/* Línea vertical hacia el eje horizontal SUPERIOR (CG) */}
                     <line
                       x1={hoverPoint.x}
                       y1={hoverPoint.y}
