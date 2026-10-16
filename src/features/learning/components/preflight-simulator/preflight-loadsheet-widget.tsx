@@ -63,9 +63,33 @@ export function PreflightLoadsheetWidget({
   const [interactiveClickPoint, setInteractiveClickPoint] = useState<{ x: number; y: number } | null>(null);
   const [hoverPoint, setHoverPoint] = useState<{ x: number; y: number } | null>(null);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
+  const [isPanning, setIsPanning] = useState(false);
+  const [pointAttempts, setPointAttempts] = useState(0);
+  const [showTargetHint, setShowTargetHint] = useState(false);
+
+  const isDraggingRef = useRef(false);
+  const dragStartRef = useRef({ x: 0, y: 0 });
+  const panStartRef = useRef({ x: 0, y: 0 });
+  const hasMovedRef = useRef(false);
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+
   const zoomIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const zoomTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isRepeatingRef = useRef(false);
+
+  const clampPan = (newX: number, newY: number, zoom: number) => {
+    if (zoom <= 1) return { x: 0, y: 0 };
+    const vp = viewportRef.current;
+    const w = vp ? vp.clientWidth : 610;
+    const h = vp ? vp.clientHeight : 477;
+    const maxPanX = Math.max(0, ((zoom - 1) * w) / 2 + 100);
+    const maxPanY = Math.max(0, ((zoom - 1) * h) / 2 + 100);
+    return {
+      x: Math.max(-maxPanX, Math.min(maxPanX, newX)),
+      y: Math.max(-maxPanY, Math.min(maxPanY, newY)),
+    };
+  };
 
   const startZoomHold = (delta: number) => {
     isRepeatingRef.current = false;
@@ -74,7 +98,11 @@ export function PreflightLoadsheetWidget({
     zoomTimeoutRef.current = setTimeout(() => {
       isRepeatingRef.current = true;
       zoomIntervalRef.current = setInterval(() => {
-        setZoomLevel((z) => Math.min(2.5, Math.max(1, Math.round((z + delta) * 100) / 100)));
+        setZoomLevel((z) => {
+          const next = Math.min(2.5, Math.max(1, Math.round((z + delta) * 100) / 100));
+          if (next <= 1) setPanOffset({ x: 0, y: 0 });
+          return next;
+        });
       }, 40);
     }, 240);
   };
@@ -89,7 +117,11 @@ export function PreflightLoadsheetWidget({
 
   const handleZoomStep = (delta: number) => {
     if (isRepeatingRef.current) return;
-    setZoomLevel((z) => Math.min(2.5, Math.max(1, Math.round((z + delta) * 100) / 100)));
+    setZoomLevel((z) => {
+      const next = Math.min(2.5, Math.max(1, Math.round((z + delta) * 100) / 100));
+      if (next <= 1) setPanOffset({ x: 0, y: 0 });
+      return next;
+    });
   };
 
   useEffect(() => {
@@ -120,11 +152,14 @@ export function PreflightLoadsheetWidget({
     setErrors({});
     setWarnings([]);
     setAttempts(0);
+    setPointAttempts(0);
+    setShowTargetHint(false);
     setPassedTakeoff(false);
     setPassedLanding(false);
     setInteractiveClickPoint(null);
     setHoverPoint(null);
     setZoomLevel(1);
+    setPanOffset({ x: 0, y: 0 });
   };
 
   // Expected values calculation based on mission at 50% standard flight school cruise power
@@ -305,8 +340,15 @@ export function PreflightLoadsheetWidget({
         const est = mapSvgCoordsToCg(interactiveClickPoint.x, interactiveClickPoint.y);
         const massDiff = Math.abs(est.massKg - expected.tomMass);
         const cgDiff = Math.abs(est.cgM - expected.tomCg);
-        if (massDiff > 60 || cgDiff > 0.05) {
-          newErrors.envelopePoint = `Tu marca en la envolvente (~${est.massKg} kg, CG ~${est.cgM.toFixed(3)} m) no coincide con el TOW calculado (~${expected.tomMass} kg, CG ~${expected.tomCg} m). Ajusta el punto en la gráfica.`;
+        if (massDiff > 25 || cgDiff > 0.02) {
+          const nextPointAttempts = pointAttempts + 1;
+          setPointAttempts(nextPointAttempts);
+          if (nextPointAttempts < 3) {
+            newErrors.envelopePoint = `El punto TOW situado está lejos del valor calculado (~${Math.round(massDiff)} kg / ${(cgDiff * 1000).toFixed(0)} mm CG). Revisa la cuadrícula y colócalo correctamente (Intento ${nextPointAttempts}/3).`;
+          } else {
+            setShowTargetHint(true);
+            newErrors.envelopePoint = "Se ha revelado la posición exacta calculada en la gráfica. Haz clic sobre el punto azul (TOW CALCULADO) para colocarlo correctamente y verificar.";
+          }
         }
       }
     } else {
@@ -346,8 +388,15 @@ export function PreflightLoadsheetWidget({
         const est = mapSvgCoordsToCg(interactiveClickPoint.x, interactiveClickPoint.y);
         const massDiff = Math.abs(est.massKg - expected.lmMass);
         const cgDiff = Math.abs(est.cgM - expected.lmCg);
-        if (massDiff > 60 || cgDiff > 0.05) {
-          newErrors.envelopePoint = `Tu marca en la envolvente (~${est.massKg} kg, CG ~${est.cgM.toFixed(3)} m) no coincide con el LW calculado (~${expected.lmMass} kg, CG ~${expected.lmCg} m). Ajusta el punto en la gráfica.`;
+        if (massDiff > 25 || cgDiff > 0.02) {
+          const nextPointAttempts = pointAttempts + 1;
+          setPointAttempts(nextPointAttempts);
+          if (nextPointAttempts < 3) {
+            newErrors.envelopePoint = `El punto LW situado está lejos del valor calculado (~${Math.round(massDiff)} kg / ${(cgDiff * 1000).toFixed(0)} mm CG). Revisa la cuadrícula y colócalo correctamente (Intento ${nextPointAttempts}/3).`;
+          } else {
+            setShowTargetHint(true);
+            newErrors.envelopePoint = "Se ha revelado la posición exacta calculada en la gráfica. Haz clic sobre el punto verde (LW CALCULADO) para colocarlo correctamente y verificar.";
+          }
         }
       }
     }
@@ -422,6 +471,12 @@ export function PreflightLoadsheetWidget({
                     onClick={() => {
                       setActiveTab("takeoff");
                       setErrors({});
+                      setInteractiveClickPoint(null);
+                      setHoverPoint(null);
+                      setPointAttempts(0);
+                      setShowTargetHint(false);
+                      setPanOffset({ x: 0, y: 0 });
+                      setZoomLevel(1);
                     }}
                     className={`px-2.5 py-1 rounded-md text-xs sm:text-[13px] font-bold transition-all cursor-pointer ${
                       activeTab === "takeoff"
@@ -436,6 +491,12 @@ export function PreflightLoadsheetWidget({
                     onClick={() => {
                       setActiveTab("landing");
                       setErrors({});
+                      setInteractiveClickPoint(null);
+                      setHoverPoint(null);
+                      setPointAttempts(0);
+                      setShowTargetHint(false);
+                      setPanOffset({ x: 0, y: 0 });
+                      setZoomLevel(1);
                     }}
                     className={`px-2.5 py-1 rounded-md text-xs sm:text-[13px] font-bold transition-all cursor-pointer ${
                       activeTab === "landing"
@@ -854,7 +915,10 @@ export function PreflightLoadsheetWidget({
               </button>
               <button
                 type="button"
-                onClick={() => setZoomLevel(1)}
+                onClick={() => {
+                  setZoomLevel(1);
+                  setPanOffset({ x: 0, y: 0 });
+                }}
                 disabled={zoomLevel <= 1}
                 className="text-[11px] font-mono font-bold text-slate-800 dark:text-slate-100 px-1 min-w-[38px] text-center select-none hover:text-[#1a80ff] transition-colors disabled:cursor-default"
                 title={zoomLevel > 1 ? "Clic para restablecer al 100%" : undefined}
@@ -875,17 +939,31 @@ export function PreflightLoadsheetWidget({
               >
                 +
               </button>
+              {zoomLevel > 1 && (
+                <span className="text-[10px] text-slate-400 font-medium hidden sm:inline select-none pl-1">
+                  ↔ Arrastra
+                </span>
+              )}
             </div>
 
-            {/* Viewport de la Envolvente: conserva el contenedor base centrado y escala de forma 100% suave y continua */}
-            <div className="w-full h-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 shadow-2xs overflow-auto flex p-1">
+            {/* Viewport de la Envolvente: desplazamiento 2D (pan/drag) y zoom suave sin límites */}
+            <div
+              ref={viewportRef}
+              onWheel={(e) => {
+                if (zoomLevel > 1) {
+                  setPanOffset((prev) => clampPan(prev.x - e.deltaX * 0.7, prev.y - e.deltaY * 0.7, zoomLevel));
+                }
+              }}
+              className="w-full h-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 shadow-2xs overflow-hidden flex p-1 relative select-none"
+            >
               <div
-                className="relative aspect-[1140/880] h-full max-h-full max-w-full m-auto shrink-0 transition-transform duration-100 ease-out"
+                className="relative aspect-[1140/880] h-full max-h-full max-w-full m-auto shrink-0 select-none"
                 style={{
                   height: "100%",
                   width: "auto",
-                  transform: `scale(${zoomLevel})`,
+                  transform: `translate(${panOffset.x}px, ${panOffset.y}px) scale(${zoomLevel})`,
                   transformOrigin: "center center",
+                  transition: isPanning ? "none" : "transform 100ms ease-out",
                 }}
               >
                 <img
@@ -896,8 +974,27 @@ export function PreflightLoadsheetWidget({
 
               <svg
                 viewBox="0 0 1140 880"
-                className="absolute inset-0 w-full h-full cursor-crosshair select-none"
+                className={`absolute inset-0 w-full h-full select-none ${
+                  isPanning ? "cursor-grabbing" : zoomLevel > 1 ? "cursor-grab" : "cursor-crosshair"
+                }`}
+                onMouseDown={(e) => {
+                  if (e.button !== 0) return;
+                  isDraggingRef.current = true;
+                  hasMovedRef.current = false;
+                  dragStartRef.current = { x: e.clientX, y: e.clientY };
+                  panStartRef.current = { ...panOffset };
+                }}
                 onMouseMove={(e) => {
+                  if (isDraggingRef.current && zoomLevel > 1) {
+                    const dx = e.clientX - dragStartRef.current.x;
+                    const dy = e.clientY - dragStartRef.current.y;
+                    if (Math.hypot(dx, dy) > 4) {
+                      hasMovedRef.current = true;
+                      setIsPanning(true);
+                      setPanOffset(clampPan(panStartRef.current.x + dx, panStartRef.current.y + dy, zoomLevel));
+                    }
+                  }
+
                   const rect = e.currentTarget.getBoundingClientRect();
                   const clickX = ((e.clientX - rect.left) / rect.width) * 1140;
                   const clickY = ((e.clientY - rect.top) / rect.height) * 880;
@@ -907,18 +1004,73 @@ export function PreflightLoadsheetWidget({
                     setHoverPoint(null);
                   }
                 }}
-                onMouseLeave={() => setHoverPoint(null)}
-                onClick={(e) => {
+                onMouseUp={(e) => {
+                  const wasDragging = hasMovedRef.current;
+                  isDraggingRef.current = false;
+                  hasMovedRef.current = false;
+                  setIsPanning(false);
+
+                  if (wasDragging) return;
+
                   const rect = e.currentTarget.getBoundingClientRect();
                   const clickX = ((e.clientX - rect.left) / rect.width) * 1140;
                   const clickY = ((e.clientY - rect.top) / rect.height) * 880;
-                  setInteractiveClickPoint({ x: clickX, y: clickY });
-                  setErrors((prev) => {
-                    if (!prev.envelopePoint) return prev;
-                    const next = { ...prev };
-                    delete next.envelopePoint;
-                    return next;
-                  });
+                  if (clickX >= 130 && clickX <= 1015 && clickY >= 120 && clickY <= 695) {
+                    setInteractiveClickPoint({ x: clickX, y: clickY });
+                    setErrors((prev) => {
+                      if (!prev.envelopePoint) return prev;
+                      const next = { ...prev };
+                      delete next.envelopePoint;
+                      return next;
+                    });
+                  }
+                }}
+                onMouseLeave={() => {
+                  isDraggingRef.current = false;
+                  hasMovedRef.current = false;
+                  setIsPanning(false);
+                  setHoverPoint(null);
+                }}
+                onTouchStart={(e) => {
+                  if (e.touches.length === 1) {
+                    isDraggingRef.current = true;
+                    hasMovedRef.current = false;
+                    dragStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                    panStartRef.current = { ...panOffset };
+                  }
+                }}
+                onTouchMove={(e) => {
+                  if (isDraggingRef.current && zoomLevel > 1 && e.touches.length === 1) {
+                    const dx = e.touches[0].clientX - dragStartRef.current.x;
+                    const dy = e.touches[0].clientY - dragStartRef.current.y;
+                    if (Math.hypot(dx, dy) > 4) {
+                      hasMovedRef.current = true;
+                      setIsPanning(true);
+                      setPanOffset(clampPan(panStartRef.current.x + dx, panStartRef.current.y + dy, zoomLevel));
+                    }
+                  }
+                }}
+                onTouchEnd={(e) => {
+                  const wasDragging = hasMovedRef.current;
+                  isDraggingRef.current = false;
+                  hasMovedRef.current = false;
+                  setIsPanning(false);
+
+                  if (wasDragging || e.changedTouches.length === 0) return;
+
+                  const touch = e.changedTouches[0];
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const clickX = ((touch.clientX - rect.left) / rect.width) * 1140;
+                  const clickY = ((touch.clientY - rect.top) / rect.height) * 880;
+                  if (clickX >= 130 && clickX <= 1015 && clickY >= 120 && clickY <= 695) {
+                    setInteractiveClickPoint({ x: clickX, y: clickY });
+                    setErrors((prev) => {
+                      if (!prev.envelopePoint) return prev;
+                      const next = { ...prev };
+                      delete next.envelopePoint;
+                      return next;
+                    });
+                  }
                 }}
               >
                 {/* 1. LÍNEAS GUÍA DE MOUSE HOVER A LOS EJES (Arriba: CG, Derecha: Masa en kg) */}
@@ -1003,20 +1155,18 @@ export function PreflightLoadsheetWidget({
                 {/* 2. PASO 1: DESPEGUE (6.5) - Solo TOW */}
                 {currentStep === "takeoff" && (
                   <>
-
-
-                    {/* Punto estimado fijado por el alumno ("Tu Punto TOW") - ARRIBA del punto */}
+                    {/* Punto estimado fijado por el alumno ("Tu Punto TOW") - ARRIBA del punto - CUADRO MÁS GRANDE */}
                     {interactiveClickPoint && studentEstimated && (
                       <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
-                        <circle r="18" fill="none" stroke="#d97706" strokeWidth="2.5" opacity="0.6" className="animate-pulse" />
-                        <circle r="11" fill="#f59e0b" stroke="#ffffff" strokeWidth="2.5" />
+                        <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
+                        <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
                         {/* Cuadro de info centrado arriba del punto del alumno */}
-                        <g transform="translate(0, -48)">
-                          <rect x="-68" y="-18" width="136" height="36" rx="8" fill="#b45309" stroke="#ffffff" strokeWidth="2" />
-                          <text x="0" y="-2" fill="#ffffff" fontSize="13" fontWeight="900" textAnchor="middle">
+                        <g transform="translate(0, -64)">
+                          <rect x="-105" y="-28" width="210" height="56" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="0" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
                             TU PUNTO TOW
                           </text>
-                          <text x="0" y="11" fill="#fef3c7" fontSize="11" fontWeight="bold" textAnchor="middle">
+                          <text x="0" y="17" fill="#fef3c7" fontSize="14" fontWeight="800" textAnchor="middle">
                             ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
                           </text>
                         </g>
@@ -1024,30 +1174,30 @@ export function PreflightLoadsheetWidget({
                     )}
 
                     {/* Línea de comparación entre el punto del alumno y el TOW exacto calculado */}
-                    {isStepPassed && interactiveClickPoint && (
+                    {(isStepPassed || showTargetHint) && interactiveClickPoint && (
                       <line
                         x1={interactiveClickPoint.x}
                         y1={interactiveClickPoint.y}
                         x2={tomCoords.x}
                         y2={tomCoords.y}
-                        stroke="#f59e0b"
-                        strokeWidth="3"
+                        stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#f59e0b"}
+                        strokeWidth="3.5"
                         strokeDasharray="6 4"
                       />
                     )}
 
-                    {/* Punto exacto calculado TOW (Oculto al inicio, revelado únicamente al validar) - HACIA LA DERECHA */}
-                    {isStepPassed && (
+                    {/* Punto exacto calculado TOW (Revelado al validar o tras 3 intentos) - CUADRO MÁS GRANDE */}
+                    {(isStepPassed || showTargetHint) && (
                       <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
-                        <circle r="20" fill="none" stroke="#2563eb" strokeWidth="2.5" opacity="0.75" className="animate-ping" />
-                        <circle r="11" fill="#1d4ed8" stroke="#ffffff" strokeWidth="2.5" />
+                        <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#2563eb"} strokeWidth="3" opacity="0.8" className="animate-ping" />
+                        <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#1d4ed8"} stroke="#ffffff" strokeWidth="3" />
                         {/* Cuadro de info hacia la derecha del punto calculado */}
-                        <g transform="translate(18, 0)">
-                          <rect x="0" y="-18" width="140" height="36" rx="8" fill="#1e40af" stroke="#ffffff" strokeWidth="2" />
-                          <text x="70" y="-2" fill="#ffffff" fontSize="13" fontWeight="900" textAnchor="middle">
-                            TOW CALCULADO
+                        <g transform="translate(24, 0)">
+                          <rect x="0" y="-28" width="220" height="56" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#1e40af"} stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="110" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                            {showTargetHint && !isStepPassed ? "TOW CALCULADO (AQUÍ)" : "TOW CALCULADO"}
                           </text>
-                          <text x="70" y="11" fill="#bfdbfe" fontSize="11" fontWeight="bold" textAnchor="middle">
+                          <text x="110" y="17" fill="#bfdbfe" fontSize="14" fontWeight="800" textAnchor="middle">
                             {expected.tomMass} kg · {expected.tomCg} m
                           </text>
                         </g>
@@ -1061,14 +1211,16 @@ export function PreflightLoadsheetWidget({
                   <>
                     {/* Punto de Despegue (TOW conocido) */}
                     <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
-                      <circle r="11" fill="#1d4ed8" stroke="#ffffff" strokeWidth="2.5" />
-                      <rect x="18" y="-17" width="130" height="34" rx="7" fill="#1e40af" stroke="#ffffff" strokeWidth="2" />
-                      <text x="83" y="-1" fill="#ffffff" fontSize="13" fontWeight="bold" textAnchor="middle">
-                        TOW (Despegue)
-                      </text>
-                      <text x="83" y="12" fill="#bfdbfe" fontSize="10.5" fontWeight="bold" textAnchor="middle">
-                        {expected.tomMass} kg · {expected.tomCg} m
-                      </text>
+                      <circle r="13" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3" />
+                      <g transform="translate(22, 0)">
+                        <rect x="0" y="-26" width="200" height="52" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
+                        <text x="100" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
+                          TOW (Despegue)
+                        </text>
+                        <text x="100" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
+                          {expected.tomMass} kg · {expected.tomCg} m
+                        </text>
+                      </g>
                     </g>
 
                     {/* Línea de consumo TOW -> LW (mostrada tras validar aterrizaje) */}
@@ -1084,18 +1236,18 @@ export function PreflightLoadsheetWidget({
                       />
                     )}
 
-                    {/* Punto estimado fijado por el alumno para LW - ARRIBA del punto */}
+                    {/* Punto estimado fijado por el alumno para LW - ARRIBA del punto - CUADRO MÁS GRANDE */}
                     {interactiveClickPoint && studentEstimated && (
                       <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
-                        <circle r="18" fill="none" stroke="#d97706" strokeWidth="2.5" opacity="0.6" className="animate-pulse" />
-                        <circle r="11" fill="#f59e0b" stroke="#ffffff" strokeWidth="2.5" />
+                        <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
+                        <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
                         {/* Cuadro de info centrado arriba del punto del alumno */}
-                        <g transform="translate(0, -48)">
-                          <rect x="-68" y="-18" width="136" height="36" rx="8" fill="#b45309" stroke="#ffffff" strokeWidth="2" />
-                          <text x="0" y="-2" fill="#ffffff" fontSize="13" fontWeight="900" textAnchor="middle">
+                        <g transform="translate(0, -64)">
+                          <rect x="-105" y="-28" width="210" height="56" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="0" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
                             TU PUNTO LW
                           </text>
-                          <text x="0" y="11" fill="#fef3c7" fontSize="11" fontWeight="bold" textAnchor="middle">
+                          <text x="0" y="17" fill="#fef3c7" fontSize="14" fontWeight="800" textAnchor="middle">
                             ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
                           </text>
                         </g>
@@ -1103,30 +1255,30 @@ export function PreflightLoadsheetWidget({
                     )}
 
                     {/* Línea de comparación alumno vs LW exacto */}
-                    {isStepPassed && interactiveClickPoint && (
+                    {(isStepPassed || showTargetHint) && interactiveClickPoint && (
                       <line
                         x1={interactiveClickPoint.x}
                         y1={interactiveClickPoint.y}
                         x2={lmCoords.x}
                         y2={lmCoords.y}
-                        stroke="#f59e0b"
-                        strokeWidth="3"
+                        stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#f59e0b"}
+                        strokeWidth="3.5"
                         strokeDasharray="6 4"
                       />
                     )}
 
-                    {/* Punto exacto de aterrizaje (LW) revelado tras validar - HACIA LA DERECHA */}
-                    {isStepPassed && (
+                    {/* Punto exacto de aterrizaje (LW) revelado tras validar o 3 intentos - CUADRO MÁS GRANDE */}
+                    {(isStepPassed || showTargetHint) && (
                       <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
-                        <circle r="20" fill="none" stroke="#059669" strokeWidth="2.5" opacity="0.75" className="animate-ping" />
-                        <circle r="11" fill="#059669" stroke="#ffffff" strokeWidth="2.5" />
+                        <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#059669"} strokeWidth="3" opacity="0.8" className="animate-ping" />
+                        <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#059669"} stroke="#ffffff" strokeWidth="3" />
                         {/* Cuadro de info hacia la derecha del punto calculado */}
-                        <g transform="translate(18, 0)">
-                          <rect x="0" y="-18" width="140" height="36" rx="8" fill="#065f46" stroke="#ffffff" strokeWidth="2" />
-                          <text x="70" y="-2" fill="#ffffff" fontSize="13" fontWeight="900" textAnchor="middle">
-                            LW CALCULADO
+                        <g transform="translate(24, 0)">
+                          <rect x="0" y="-28" width="220" height="56" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#065f46"} stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="110" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                            {showTargetHint && !isStepPassed ? "LW CALCULADO (AQUÍ)" : "LW CALCULADO"}
                           </text>
-                          <text x="70" y="11" fill="#a7f3d0" fontSize="11" fontWeight="bold" textAnchor="middle">
+                          <text x="110" y="17" fill="#a7f3d0" fontSize="14" fontWeight="800" textAnchor="middle">
                             {expected.lmMass} kg · {expected.lmCg} m
                           </text>
                         </g>
