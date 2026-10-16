@@ -1,7 +1,11 @@
 /* global process, console, fetch, URLSearchParams */
+import fs from "node:fs";
+import path from "node:path";
+import os from "node:os";
+
 /**
  * @file clean-vercel-deployments.mjs
- * @description Política automatizada de retención de despliegues en Vercel para CMS Blue Team.
+ * @description Política automatizada de retención de despliegues en Vercel para Blue Team.
  * Conserva estrictamente las N últimas versiones de producción y las M últimas de preview,
  * purgando los despliegues históricos obsoletos para mantenerse siempre dentro de la cuota gratuita de Vercel.
  */
@@ -11,13 +15,13 @@
  *
  * @param {Array} deployments - Lista de objetos de despliegue devueltos por la API de Vercel.
  * @param {Object} options
- * @param {number} [options.keepProd=2] - Número de despliegues de producción a conservar.
- * @param {number} [options.keepPreview=1] - Número de despliegues de preview a conservar.
+ * @param {number} [options.keepProd=3] - Número de despliegues de producción a conservar.
+ * @param {number} [options.keepPreview=2] - Número de despliegues de preview a conservar.
  * @returns {{ toKeep: Array, toDelete: Array }}
  */
 export function determineDeploymentsToDelete(
   deployments = [],
-  { keepProd = 2, keepPreview = 1 } = {},
+  { keepProd = 3, keepPreview = 2 } = {},
 ) {
   if (!Array.isArray(deployments) || deployments.length === 0) {
     return { toKeep: [], toDelete: [] };
@@ -27,14 +31,16 @@ export function determineDeploymentsToDelete(
   const isProtectedState = (d) =>
     d.state === "BUILDING" || d.state === "INITIALIZING";
 
+  const getTimestamp = (d) => d.createdAt || d.created || 0;
+
   // Separar en producción y preview
   const prodDeployments = deployments
     .filter((d) => d.target === "production")
-    .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+    .sort((a, b) => getTimestamp(b) - getTimestamp(a));
 
   const previewDeployments = deployments
     .filter((d) => d.target !== "production")
-    .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+    .sort((a, b) => getTimestamp(b) - getTimestamp(a));
 
   // Seleccionar los que se conservan
   const keptProd = prodDeployments.slice(0, keepProd);
@@ -51,110 +57,198 @@ export function determineDeploymentsToDelete(
   return { toKeep, toDelete };
 }
 
+function resolveVercelToken() {
+  if (process.env.VERCEL_TOKEN) {
+    return process.env.VERCEL_TOKEN;
+  }
+  const candidatePaths = [
+    process.env.APPDATA
+      ? path.join(process.env.APPDATA, "com.vercel.cli", "Data", "auth.json")
+      : null,
+    path.join(os.homedir(), ".local", "share", "com.vercel.cli", "auth.json"),
+    path.join(os.homedir(), ".vercel", "auth.json"),
+    path.join(
+      os.homedir(),
+      "Library",
+      "Application Support",
+      "com.vercel.cli",
+      "auth.json",
+    ),
+  ].filter(Boolean);
+
+  for (const p of candidatePaths) {
+    try {
+      if (fs.existsSync(p)) {
+        const raw = fs.readFileSync(p, "utf8");
+        const json = JSON.parse(raw);
+        if (json.token) return json.token;
+      }
+    } catch {}
+  }
+
+  return undefined;
+}
+
+async function fetchAllDeployments({ token, teamId, projectId, appName }) {
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  };
+
+  let allDeployments = [];
+  let nextTimestamp = null;
+
+  while (true) {
+    const queryParams = new URLSearchParams({ limit: "100" });
+    if (projectId) queryParams.append("projectId", projectId);
+    else if (appName) queryParams.append("app", appName);
+    if (teamId) queryParams.append("teamId", teamId);
+    if (nextTimestamp) queryParams.append("until", nextTimestamp);
+
+    const listUrl = `https://api.vercel.com/v6/deployments?${queryParams.toString()}`;
+    const res = await fetch(listUrl, { headers });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`Error al listar despliegues (${res.status}): ${errText}`);
+    }
+
+    const data = await res.json();
+    const batch = data.deployments || [];
+    if (batch.length === 0) break;
+    allDeployments.push(...batch);
+
+    if (!data.pagination || !data.pagination.next) break;
+    nextTimestamp = data.pagination.next;
+  }
+
+  return allDeployments;
+}
+
 /**
  * Consulta los despliegues de Vercel y ejecuta la purga de los obsoletos.
  */
 export async function cleanVercelDeployments({
-  token = process.env.VERCEL_TOKEN,
-  projectName = process.env.VERCEL_PROJECT_NAME || "cms-blue-team",
+  token = resolveVercelToken(),
+  projectName = process.env.VERCEL_PROJECT_NAME || "all",
   teamId = process.env.VERCEL_TEAM_ID || "team_N2yQOBjjUNNmxUbs4jeK0vWY",
-  keepProd = 2,
-  keepPreview = 1,
+  keepProd = Number(process.env.KEEP_PROD) || 3,
+  keepPreview = Number(process.env.KEEP_PREVIEW) || 2,
   dryRun = process.env.DRY_RUN === "true",
 } = {}) {
   if (!token) {
     throw new Error("Falta el token de autenticación VERCEL_TOKEN");
   }
 
-  const queryParams = new URLSearchParams({
-    limit: "100",
-  });
-  if (projectName && projectName !== "all") {
-    queryParams.append("app", projectName);
-  }
-  if (teamId) {
-    queryParams.append("teamId", teamId);
-  }
-
-  const listUrl = `https://api.vercel.com/v6/deployments?${queryParams.toString()}`;
-
   const headers = {
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
   };
 
-  console.log(
-    `🔍 Consultando despliegues en Vercel (Proyecto: ${projectName || "todos"})...`,
-  );
-  const res = await fetch(listUrl, { headers });
+  let targetProjects = [];
 
-  if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(
-      `Error al listar despliegues de Vercel (${res.status}): ${errText}`,
-    );
+  // Si projectName es "all" o el valor por defecto "cms-blue-team",
+  // obtenemos todos los proyectos del equipo (cms-blue-team y blue-team-web)
+  if (projectName === "all" || projectName === "cms-blue-team" || !projectName) {
+    const projectsUrl = teamId
+      ? `https://api.vercel.com/v9/projects?teamId=${teamId}`
+      : `https://api.vercel.com/v9/projects`;
+    try {
+      const res = await fetch(projectsUrl, { headers });
+      if (res.ok) {
+        const data = await res.json();
+        targetProjects = (data.projects || []).map((p) => ({ id: p.id, name: p.name }));
+        console.log(`🔍 Modo automático ("${projectName}"): Encontrados ${targetProjects.length} proyectos en Vercel.`);
+      }
+    } catch (e) {
+      console.warn("No se pudieron listar todos los proyectos, recurriendo a proyecto individual:", e.message);
+    }
   }
 
-  const data = await res.json();
-  const deployments = data.deployments || [];
-  console.log(`📋 Se encontraron ${deployments.length} despliegues en total.`);
-
-  const { toKeep, toDelete } = determineDeploymentsToDelete(deployments, {
-    keepProd,
-    keepPreview,
-  });
-
-  console.log(`✅ Despliegues conservados (${toKeep.length}):`);
-  for (const d of toKeep) {
-    const date = new Date(d.createdAt).toISOString();
-    console.log(
-      `   - [${d.target || "preview"}] ${d.uid} (${d.name}) | ${date} | Estado: ${d.state}`,
-    );
+  if (targetProjects.length === 0) {
+    targetProjects = [{ id: null, name: projectName || "cms-blue-team" }];
   }
 
-  console.log(`\n🗑️ Despliegues a eliminar (${toDelete.length}):`);
-  let deletedCount = 0;
+  let totalFoundGlobal = 0;
+  let keptCountGlobal = 0;
+  let deletedCountGlobal = 0;
 
-  for (const d of toDelete) {
-    const date = new Date(d.createdAt).toISOString();
-    if (dryRun) {
+  for (const proj of targetProjects) {
+    console.log(`\n========================================`);
+    console.log(`📦 Procesando proyecto: ${proj.name}`);
+
+    const deployments = await fetchAllDeployments({
+      token,
+      teamId,
+      projectId: proj.id,
+      appName: proj.id ? undefined : proj.name,
+    });
+
+    console.log(`📋 Total de despliegues encontrados: ${deployments.length}`);
+    totalFoundGlobal += deployments.length;
+
+    const { toKeep, toDelete } = determineDeploymentsToDelete(deployments, {
+      keepProd,
+      keepPreview,
+    });
+
+    keptCountGlobal += toKeep.length;
+
+    console.log(`✅ Despliegues conservados (${toKeep.length}):`);
+    for (const d of toKeep) {
+      const date = new Date(d.createdAt || d.created).toISOString();
       console.log(
-        `   [DRY RUN] Se eliminaría: [${d.target || "preview"}] ${d.uid} (${d.name}) | ${date}`,
+        `   - [${d.target || "preview"}] ${d.uid} (${d.name}) | ${date} | Estado: ${d.state}`,
       );
-      deletedCount++;
-      continue;
     }
 
-    const delUrl = teamId
-      ? `https://api.vercel.com/v13/deployments/${d.uid}?teamId=${teamId}`
-      : `https://api.vercel.com/v13/deployments/${d.uid}`;
+    console.log(`\n🗑️ Despliegues a eliminar (${toDelete.length}):`);
+    let deletedCount = 0;
 
-    try {
-      const delRes = await fetch(delUrl, {
-        method: "DELETE",
-        headers,
-      });
-
-      if (delRes.ok) {
+    for (const d of toDelete) {
+      const date = new Date(d.createdAt || d.created).toISOString();
+      if (dryRun) {
         console.log(
-          `   ✓ Eliminado: [${d.target || "preview"}] ${d.uid} (${d.name}) | ${date}`,
+          `   [DRY RUN] Se eliminaría: [${d.target || "preview"}] ${d.uid} (${d.name}) | ${date}`,
         );
         deletedCount++;
-      } else {
-        const errorMsg = await delRes.text();
-        console.warn(
-          `   ⚠️ No se pudo eliminar ${d.uid} (${delRes.status}): ${errorMsg}`,
-        );
+        continue;
       }
-    } catch (err) {
-      console.error(`   ❌ Error de red al eliminar ${d.uid}:`, err.message);
+
+      const delUrl = teamId
+        ? `https://api.vercel.com/v13/deployments/${d.uid}?teamId=${teamId}`
+        : `https://api.vercel.com/v13/deployments/${d.uid}`;
+
+      try {
+        const delRes = await fetch(delUrl, {
+          method: "DELETE",
+          headers,
+        });
+
+        if (delRes.ok) {
+          console.log(
+            `   ✓ Eliminado: [${d.target || "preview"}] ${d.uid} (${d.name}) | ${date}`,
+          );
+          deletedCount++;
+        } else {
+          const errorMsg = await delRes.text();
+          console.warn(
+            `   ⚠️ No se pudo eliminar ${d.uid} (${delRes.status}): ${errorMsg}`,
+          );
+        }
+      } catch (err) {
+        console.error(`   ❌ Error de red al eliminar ${d.uid}:`, err.message);
+      }
     }
+
+    deletedCountGlobal += deletedCount;
+    console.log(`Completado para ${proj.name}: ${deletedCount} eliminados.`);
   }
 
   return {
-    totalFound: deployments.length,
-    keptCount: toKeep.length,
-    deletedCount,
+    totalFound: totalFoundGlobal,
+    keptCount: keptCountGlobal,
+    deletedCount: deletedCountGlobal,
   };
 }
 
