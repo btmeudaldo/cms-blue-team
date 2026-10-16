@@ -65,21 +65,31 @@ export function PreflightLoadsheetWidget({
   const [zoomLevel, setZoomLevel] = useState(1);
   const zoomIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const zoomTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isRepeatingRef = useRef(false);
 
-  const startZoomRepeat = (delta: number) => {
-    setZoomLevel((z) => Math.min(2.5, Math.max(1, Math.round((z + delta) * 100) / 100)));
+  const startZoomHold = (delta: number) => {
+    isRepeatingRef.current = false;
     if (zoomTimeoutRef.current) clearTimeout(zoomTimeoutRef.current);
     if (zoomIntervalRef.current) clearInterval(zoomIntervalRef.current);
     zoomTimeoutRef.current = setTimeout(() => {
+      isRepeatingRef.current = true;
       zoomIntervalRef.current = setInterval(() => {
         setZoomLevel((z) => Math.min(2.5, Math.max(1, Math.round((z + delta) * 100) / 100)));
-      }, 35);
-    }, 220);
+      }, 40);
+    }, 240);
   };
 
-  const stopZoomRepeat = () => {
+  const stopZoomHold = () => {
     if (zoomTimeoutRef.current) clearTimeout(zoomTimeoutRef.current);
     if (zoomIntervalRef.current) clearInterval(zoomIntervalRef.current);
+    setTimeout(() => {
+      isRepeatingRef.current = false;
+    }, 50);
+  };
+
+  const handleZoomStep = (delta: number) => {
+    if (isRepeatingRef.current) return;
+    setZoomLevel((z) => Math.min(2.5, Math.max(1, Math.round((z + delta) * 100) / 100)));
   };
 
   useEffect(() => {
@@ -830,12 +840,12 @@ export function PreflightLoadsheetWidget({
             <div className="absolute top-2 right-2 z-20 flex items-center gap-1.5 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2 py-1 rounded-xl border border-slate-300 dark:border-slate-700 shadow-md">
               <button
                 type="button"
-                onMouseDown={() => startZoomRepeat(-0.01)}
-                onMouseUp={stopZoomRepeat}
-                onMouseLeave={stopZoomRepeat}
-                onTouchStart={() => startZoomRepeat(-0.01)}
-                onTouchEnd={stopZoomRepeat}
-                onClick={(e) => e.preventDefault()}
+                onMouseDown={() => startZoomHold(-0.01)}
+                onMouseUp={stopZoomHold}
+                onMouseLeave={stopZoomHold}
+                onTouchStart={() => startZoomHold(-0.01)}
+                onTouchEnd={stopZoomHold}
+                onClick={() => handleZoomStep(-0.01)}
                 disabled={zoomLevel <= 1}
                 className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-extrabold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer leading-none select-none"
                 title="Reducir 1% (-)"
@@ -847,12 +857,12 @@ export function PreflightLoadsheetWidget({
               </span>
               <button
                 type="button"
-                onMouseDown={() => startZoomRepeat(0.01)}
-                onMouseUp={stopZoomRepeat}
-                onMouseLeave={stopZoomRepeat}
-                onTouchStart={() => startZoomRepeat(0.01)}
-                onTouchEnd={stopZoomRepeat}
-                onClick={(e) => e.preventDefault()}
+                onMouseDown={() => startZoomHold(0.01)}
+                onMouseUp={stopZoomHold}
+                onMouseLeave={stopZoomHold}
+                onTouchStart={() => startZoomHold(0.01)}
+                onTouchEnd={stopZoomHold}
+                onClick={() => handleZoomStep(0.01)}
                 disabled={zoomLevel >= 2.5}
                 className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-extrabold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer leading-none select-none"
                 title="Ampliar 1% (+)"
@@ -871,25 +881,14 @@ export function PreflightLoadsheetWidget({
               )}
             </div>
 
-            <div
-              className={`rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 shadow-2xs ${
-                zoomLevel > 1
-                  ? "w-full h-full overflow-auto"
-                  : "w-full max-h-full aspect-[1140/880] overflow-hidden flex items-center justify-center"
-              }`}
-            >
+            {/* Viewport de la Envolvente: conserva el contenedor base centrado y escala de forma 100% suave y continua */}
+            <div className="w-full h-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 shadow-2xs overflow-auto flex p-1">
               <div
-                className={`relative aspect-[1140/880] transition-all duration-200 ${
-                  zoomLevel > 1 ? "origin-top-left" : "w-full h-full"
-                }`}
-                style={
-                  zoomLevel > 1
-                    ? {
-                        width: `${zoomLevel * 100}%`,
-                        minWidth: `${zoomLevel * 100}%`,
-                      }
-                    : undefined
-                }
+                className="relative aspect-[1140/880] max-h-full max-w-full m-auto shrink-0 transition-transform duration-100 ease-out"
+                style={{
+                  transform: `scale(${zoomLevel})`,
+                  transformOrigin: "center center",
+                }}
               >
                 <img
                   src="/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg"
