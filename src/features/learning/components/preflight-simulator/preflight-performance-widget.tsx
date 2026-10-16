@@ -390,100 +390,116 @@ export function PreflightPerformanceWidget({
               </div>
             )}
 
-            {/* F.OPS.02 Input Table */}
-            <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/80 shadow-2xs overflow-hidden">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="border-b border-slate-200 dark:border-slate-700 text-xs sm:text-[13px] font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
-                    <th className="py-2 px-3 w-[46%]">CASILLA F.OPS.02</th>
-                    <th className="py-2 px-3 text-center w-[30%] text-slate-600 dark:text-slate-300">DISPONIBLE AIP ({scenario.icao})</th>
-                    <th className="py-2 px-3 text-right w-[24%]">CALCULADO [m]</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-xs sm:text-[13px]">
-                  {currentStep === "takeoff" ? (
-                    <>
-                      {/* Take-off run */}
-                      <tr>
-                        <td className="py-2.5 px-3 font-semibold">
-                          Take-off run
-                          <div className="text-xs text-slate-500 dark:text-slate-400 font-normal">
-                            Carrera en suelo (Fig. 5-1a · col. &apos;GRND ROLL&apos; - 10% viento)
-                          </div>
-                        </td>
-                        <td className="py-2.5 px-3 text-center font-mono font-bold text-slate-700 dark:text-slate-200">
-                          TORA: {scenario.runwayToraM} m
-                        </td>
-                        <td className="py-2.5 px-3 text-right">
-                          <input
-                            type="text"
-                            placeholder="Metros [m]"
-                            value={takeoffRunInput}
-                            onChange={(e) => setTakeoffRunInput(e.target.value)}
-                            className={`w-28 text-right px-2.5 py-1.5 rounded-lg border font-mono text-xs sm:text-[13px] ${
-                              errors.takeoffRun
-                                ? "border-rose-500 bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-200"
-                                : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
-                            }`}
-                          />
-                        </td>
-                      </tr>
-
-                      {/* Take-off distance (50 ft) */}
-                      <tr className="bg-sky-50/50 dark:bg-sky-950/30">
-                        <td className="py-2.5 px-3 font-bold text-[#0B2E59] dark:text-sky-300">
-                          Take-off distance (50 ft)
-                          <div className="text-xs font-normal text-slate-500 dark:text-slate-400">
-                            Obstáculo 15 m (Fig. 5-1a · &apos;TOTAL TO CLEAR 50 FT OBS&apos; - 10%)
-                          </div>
-                        </td>
-                        <td className="py-2.5 px-3 text-center font-mono font-bold text-slate-700 dark:text-slate-200">
-                          TODA: {scenario.runwayTodaM} m
-                        </td>
-                        <td className="py-2.5 px-3 text-right">
-                          <input
-                            type="text"
-                            placeholder="Metros [m]"
-                            value={takeoff50ftInput}
-                            onChange={(e) => setTakeoff50ftInput(e.target.value)}
-                            className={`w-28 text-right px-2.5 py-1.5 rounded-lg border font-mono text-xs sm:text-[13px] font-bold ${
-                              errors.takeoff50ft
-                                ? "border-rose-500 bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-200"
-                                : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sky-700 dark:text-sky-300"
-                            }`}
-                          />
-                        </td>
-                      </tr>
-                    </>
-                  ) : (
-                    /* Landing distance (50 ft) */
-                    <tr className="bg-emerald-50/50 dark:bg-emerald-950/30">
-                      <td className="py-3 px-3 font-bold text-emerald-950 dark:text-emerald-300">
-                        Landing distance (50 ft)
-                        <div className="text-xs font-normal text-slate-500 dark:text-slate-400 mt-0.5">
-                          Columna &apos;TOTAL 50 FT OBS&apos; (Fig. 5-10 · ft &divide; 3.28084 · -10% viento)
+            {/* Calculation Cards - Never hidden, spacious and responsive */}
+            <div className="space-y-2">
+              {currentStep === "takeoff" ? (
+                <>
+                  {/* Item 1: Take-off run */}
+                  <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+                    <div className="flex flex-wrap items-center justify-between gap-1.5">
+                      <div>
+                        <span className="font-bold text-xs sm:text-[13px] text-[#0B2E59] dark:text-sky-300 block">
+                          1. Take-off run (Carrera en suelo)
+                        </span>
+                        <div className="text-xs text-slate-500 dark:text-slate-400 font-normal">
+                          POH Fig. 5-1a · Columna &apos;GRND ROLL&apos; (con -10% por viento)
                         </div>
-                      </td>
-                      <td className="py-3 px-3 text-center font-mono font-bold text-slate-700 dark:text-slate-200">
-                        LDA: {scenario.runwayLdaM} m
-                      </td>
-                      <td className="py-3 px-3 text-right">
+                      </div>
+                      <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 shrink-0">
+                        <span>TORA:</span>
+                        <strong className="text-[#0B2E59] dark:text-sky-300">{scenario.runwayToraM} m</strong>
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2 pt-0.5">
+                      <div className="flex-1 relative">
                         <input
                           type="text"
-                          placeholder="Metros [m]"
-                          value={landing50ftInput}
-                          onChange={(e) => setLanding50ftInput(e.target.value)}
-                          className={`w-28 text-right px-2.5 py-1.5 rounded-lg border font-mono text-xs sm:text-[13px] font-bold ${
-                            errors.landing50ft
+                          placeholder="Introduce metros calculados (Ej: 211)"
+                          value={takeoffRunInput}
+                          onChange={(e) => setTakeoffRunInput(e.target.value)}
+                          className={`w-full px-3 py-1.5 rounded-lg border font-mono text-xs sm:text-[13px] ${
+                            errors.takeoffRun
                               ? "border-rose-500 bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-200"
-                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-emerald-700 dark:text-emerald-300"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                           }`}
                         />
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
+                      </div>
+                      <span className="text-xs sm:text-[13px] font-bold text-slate-500 shrink-0">m</span>
+                    </div>
+                  </div>
+
+                  {/* Item 2: Take-off distance (50 ft) */}
+                  <div className="p-2.5 rounded-xl bg-sky-50/50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 shadow-2xs space-y-1.5">
+                    <div className="flex flex-wrap items-center justify-between gap-1.5">
+                      <div>
+                        <span className="font-bold text-xs sm:text-[13px] text-[#0B2E59] dark:text-sky-300 block">
+                          2. Take-off distance (Obstáculo 50 ft / 15 m)
+                        </span>
+                        <div className="text-xs text-slate-500 dark:text-slate-400 font-normal">
+                          POH Fig. 5-1a · &apos;TOTAL TO CLEAR 50 FT OBS&apos; (con -10% viento)
+                        </div>
+                      </div>
+                      <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-sky-300 dark:border-sky-700 text-blue-700 dark:text-sky-300 shrink-0">
+                        <span>TODA:</span>
+                        <strong>{scenario.runwayTodaM} m</strong>
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2 pt-0.5">
+                      <div className="flex-1 relative">
+                        <input
+                          type="text"
+                          placeholder="Introduce metros calculados (Ej: 329)"
+                          value={takeoff50ftInput}
+                          onChange={(e) => setTakeoff50ftInput(e.target.value)}
+                          className={`w-full px-3 py-1.5 rounded-lg border font-mono text-xs sm:text-[13px] font-bold ${
+                            errors.takeoff50ft
+                              ? "border-rose-500 bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-200"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sky-700 dark:text-sky-300"
+                          }`}
+                        />
+                      </div>
+                      <span className="text-xs sm:text-[13px] font-bold text-slate-500 shrink-0">m</span>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                /* Item Landing distance (50 ft) */
+                <div className="p-3 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 shadow-2xs space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-1.5">
+                    <div>
+                      <span className="font-bold text-xs sm:text-[13px] text-emerald-950 dark:text-emerald-300 block">
+                        Landing distance (Obstáculo 50 ft / 15 m)
+                      </span>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 font-normal">
+                        POH Fig. 5-10 · &apos;TOTAL 50 FT OBS&apos; en pies &divide; 3.28084 (con -10% viento)
+                      </div>
+                    </div>
+                    <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-emerald-300 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 shrink-0">
+                      <span>LDA:</span>
+                      <strong>{scenario.runwayLdaM} m</strong>
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2 pt-0.5">
+                    <div className="flex-1 relative">
+                      <input
+                        type="text"
+                        placeholder="Introduce metros calculados (Ej: 366)"
+                        value={landing50ftInput}
+                        onChange={(e) => setLanding50ftInput(e.target.value)}
+                        className={`w-full px-3 py-2 rounded-lg border font-mono text-xs sm:text-[13px] font-bold ${
+                          errors.landing50ft
+                            ? "border-rose-500 bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-200"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-emerald-700 dark:text-emerald-300"
+                        }`}
+                      />
+                    </div>
+                    <span className="text-xs sm:text-[13px] font-bold text-slate-500 shrink-0">m</span>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Error notifications */}
