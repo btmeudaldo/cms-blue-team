@@ -34,14 +34,14 @@ export function PreflightFuelWidget({
   const taxiFuelL = 3.0;
   const expectedTripL = Math.round(mission.scenario.flightTimeHrs * hourlyRate * 10) / 10;
   
-  // Reservas: EASA 45 min vs. Blue Team OM 1h 30min (+ alternativo)
+  // Reservas: EASA 45 min (11.5 L) vs. Blue Team OM 1h 30min (23.0 L total, que ya incluye los 45 min)
   const expectedEasaReserveL = 11.5; // 45 min = 0.75 h × 15.3 L/h
-  const expectedBlueTeamReserveL = 23.0; // 1h 30min = 1.5 h × 15.3 L/h
+  const expectedBlueTeamReserveL = 23.0; // 1h 30min = 1.5 h × 15.3 L/h (Reserva Final OM completa)
   const expectedAlternateL = 5.1; // Desvío a alternativo ~20 min
-  const expectedBlueTeamTotalReserveL = 28.1; // 23.0 + 5.1 L
+  const expectedBlueTeamTotalReserveL = 28.1; // 23.0 + 5.1 L con alternativo
 
-  // Default expected landing fuel is at least EASA reserve (11.5 L) or Blue Team reserve (23.0 L)
-  const expectedLandingL = expectedEasaReserveL;
+  // En Blue Team la reserva final es 1h 30min (23.0 L), por lo que el Landing Fuel remanente mínimo son 23.0 L
+  const expectedLandingL = expectedBlueTeamReserveL;
   const expectedRampL = Math.round((expectedTripL + expectedLandingL + taxiFuelL) * 10) / 10;
 
   const handleValidate = () => {
@@ -58,33 +58,33 @@ export function PreflightFuelWidget({
           : `Calcula el combustible de ruta para ${mission.scenario.flightTimeHrs} h al 50% de potencia CD-155 (15.3 L/h).`;
     }
 
-    // Check Reserve Fuel (Accepts 45 min EASA 11.5 L, Blue Team OM 1:30 23.0 L, or with Alternate 28.1 L)
+    // Check Reserve Fuel (En Blue Team la reserva final es 1h 30min = 23.0 L, que incluye los 45 min legales)
     const userReserve = num(reserveFuelLiters);
-    const isEasaMatch = !isNaN(userReserve) && checkValueTolerance(userReserve, expectedEasaReserveL, 0.08, 0.8).isOk;
     const isBlueTeamMatch = !isNaN(userReserve) && checkValueTolerance(userReserve, expectedBlueTeamReserveL, 0.08, 1.2).isOk;
     const isBlueTeamAltMatch = !isNaN(userReserve) && checkValueTolerance(userReserve, expectedBlueTeamTotalReserveL, 0.08, 1.5).isOk;
+    const isEasaMatch = !isNaN(userReserve) && checkValueTolerance(userReserve, expectedEasaReserveL, 0.08, 0.8).isOk;
 
-    if (isNaN(userReserve) || (!isEasaMatch && !isBlueTeamMatch && !isBlueTeamAltMatch)) {
+    if (isNaN(userReserve) || (!isBlueTeamMatch && !isBlueTeamAltMatch && !isEasaMatch)) {
       newErrors.reserve =
         attempts >= 2
-          ? `Solución: EASA exige 45 min (${expectedEasaReserveL} L). En Blue Team por manual exigimos al menos 1:30 (${expectedBlueTeamReserveL} L) más combustible al alternativo (total ~${expectedBlueTeamTotalReserveL} L).`
-          : `Calcula la reserva: EASA 45 min = 11.5 L, o política Blue Team OM 1h 30min = 23.0 L (a 15.3 L/h).`;
+          ? `Solución: En Blue Team por Manual OM la reserva final es 1h 30min (${expectedBlueTeamReserveL} L a 15.3 L/h, que ya incluye los 45 min legales).`
+          : `Calcula la reserva final Blue Team (1h 30min = 23.0 L).`;
     } else if (isBlueTeamAltMatch) {
       newWarnings.push(`✓ ¡Excelente! Has incluido 1h 30min de reserva final (${expectedBlueTeamReserveL} L) + combustible para alternativo (${expectedAlternateL} L).`);
     } else if (isBlueTeamMatch) {
-      newWarnings.push(`✓ Cumples la política Blue Team OM (1:30 de reserva final = ${expectedBlueTeamReserveL} L). Recuerda añadir combustible al alternativo.`);
+      newWarnings.push(`✓ Correcto: 1h 30min de reserva final Blue Team (${expectedBlueTeamReserveL} L, incluye ya los 45 min legales).`);
     } else if (isEasaMatch) {
-      newWarnings.push(`✓ Mínimo legal EASA Part-NCO.OP.125 (45 min = ${expectedEasaReserveL} L). En Blue Team por manual se requiere al menos 1:30.`);
+      newWarnings.push(`ℹ️ Has introducido el mínimo EASA de 45 min (${expectedEasaReserveL} L). Recuerda que por Manual OM Blue Team nuestra reserva final es de 1h 30min (${expectedBlueTeamReserveL} L).`);
     }
 
-    // Check Landing Fuel (must be at least userReserve or minimum 11.5 L)
+    // Check Landing Fuel (must be at least userReserve or minimum 23.0 L)
     const userLanding = num(landingFuelLiters);
-    const minAcceptableLanding = !isNaN(userReserve) && userReserve > 0 ? userReserve * 0.95 : expectedEasaReserveL * 0.95;
+    const minAcceptableLanding = !isNaN(userReserve) && userReserve > 0 ? userReserve * 0.95 : expectedBlueTeamReserveL * 0.95;
     if (isNaN(userLanding) || userLanding < minAcceptableLanding) {
       newErrors.landing =
         attempts >= 2
-          ? `Solución: Landing Fuel remanente en destino debe ser al menos igual a la reserva (${userReserve > 0 ? userReserve : expectedEasaReserveL} L).`
-          : `El combustible remanente en los tanques al tocar pista debe cubrir la reserva final legal.`;
+          ? `Solución: Landing Fuel remanente en destino debe cubrir la reserva final (al menos ${userReserve > 0 ? userReserve : expectedBlueTeamReserveL} L).`
+          : `El combustible remanente en destino al tocar pista debe cubrir la reserva final (1h 30m = 23.0 L).`;
     }
 
     // Check Ramp Fuel (Trip + userLanding + Taxi 3.0 L)
@@ -197,12 +197,12 @@ export function PreflightFuelWidget({
               {/* Reserve Fuel */}
               <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">
                 <label className="text-[10.5px] font-bold text-slate-600 dark:text-slate-300 block mb-0.5">
-                  3. Reserva Final (45m = {expectedEasaReserveL} L / {(expectedEasaReserveL / 3.78541).toFixed(1)} Gal)
+                  3. Reserva Final (OM 1h 30m = {expectedBlueTeamReserveL} L / {(expectedBlueTeamReserveL / 3.78541).toFixed(1)} Gal)
                 </label>
                 <div className="flex items-center gap-1.5">
                   <input
                     type="text"
-                    placeholder={`Litros (Ej: ${expectedEasaReserveL})`}
+                    placeholder={`Litros (Ej: ${expectedBlueTeamReserveL})`}
                     value={reserveFuelLiters}
                     onChange={(e) => setReserveFuelLiters(e.target.value)}
                     className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
@@ -219,7 +219,7 @@ export function PreflightFuelWidget({
               {/* Landing Fuel */}
               <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">
                 <label className="text-[10.5px] font-bold text-slate-600 dark:text-slate-300 block mb-0.5">
-                  4. Landing Fuel (≥ OM {expectedBlueTeamTotalReserveL} L / {(expectedBlueTeamTotalReserveL / 3.78541).toFixed(1)} Gal)
+                  4. Landing Fuel (≥ Reserva Final {expectedBlueTeamReserveL} L / {(expectedBlueTeamReserveL / 3.78541).toFixed(1)} Gal)
                 </label>
                 <div className="flex items-center gap-1.5">
                   <input
@@ -325,77 +325,77 @@ export function PreflightFuelWidget({
                 Proporción de Depósitos ({mission.scenario.takeoffFuelLiters} L / {(mission.scenario.takeoffFuelLiters / 3.78541).toFixed(1)} US Gal Cargados)
               </span>
 
-              <div className="w-full bg-slate-100 dark:bg-slate-900 rounded-xl overflow-hidden h-6 flex border border-slate-300 dark:border-slate-700">
+              <div className="w-full bg-slate-100 dark:bg-slate-900 rounded-xl overflow-hidden h-7 flex border border-slate-300 dark:border-slate-700">
                 <div
                   style={{ width: `${(taxiFuelL / mission.scenario.takeoffFuelLiters) * 100}%` }}
-                  className="bg-amber-400 flex items-center justify-center text-[9px] font-bold text-amber-950"
-                  title="Taxi"
+                  className="bg-amber-400 flex items-center justify-center text-[10px] font-bold text-amber-950"
+                  title={`Taxi: ${taxiFuelL} L`}
                 >
                   Taxi
                 </div>
                 <div
                   style={{ width: `${(expectedTripL / mission.scenario.takeoffFuelLiters) * 100}%` }}
-                  className="bg-blue-500 flex items-center justify-center text-[9px] font-bold text-white"
-                  title="Trip"
+                  className="bg-blue-500 flex items-center justify-center text-[10px] font-bold text-white"
+                  title={`Trip: ${expectedTripL} L`}
                 >
-                  Trip
+                  Trip ({expectedTripL} L)
                 </div>
                 <div
-                  style={{ width: `${(expectedEasaReserveL / mission.scenario.takeoffFuelLiters) * 100}%` }}
-                  className="bg-emerald-500 flex items-center justify-center text-[9px] font-bold text-white"
-                  title="45 min EASA"
+                  style={{ width: `${(expectedBlueTeamReserveL / mission.scenario.takeoffFuelLiters) * 100}%` }}
+                  className="bg-purple-600 flex items-center justify-center text-[10px] font-bold text-white"
+                  title={`Reserva Final OM 1h 30m: ${expectedBlueTeamReserveL} L (incluye los 45 min legales)`}
                 >
-                  45m EASA
+                  Reserva 1:30 ({expectedBlueTeamReserveL} L)
                 </div>
                 <div
-                  style={{ width: `${((expectedBlueTeamTotalReserveL - expectedEasaReserveL) / mission.scenario.takeoffFuelLiters) * 100}%` }}
-                  className="bg-indigo-500 flex items-center justify-center text-[9px] font-bold text-white"
-                  title="OM Reserva Extra + Alt"
+                  style={{ width: `${(expectedAlternateL / mission.scenario.takeoffFuelLiters) * 100}%` }}
+                  className="bg-teal-600 flex items-center justify-center text-[9.5px] font-bold text-white"
+                  title={`Alternativo: ${expectedAlternateL} L (~20 min)`}
                 >
-                  +OM 1:30
+                  Alt ({expectedAlternateL} L)
                 </div>
-                <div className="flex-1 bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[9px] font-bold text-slate-600 dark:text-slate-300">
+                <div className="flex-1 bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold text-slate-600 dark:text-slate-300">
                   Extra
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-1.5 text-[10px] text-slate-600 dark:text-slate-400 font-medium">
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded bg-amber-400 shrink-0"></span>
                   <span>Taxi: {taxiFuelL} L ({(taxiFuelL / 3.78541).toFixed(1)} Gal)</span>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded bg-blue-500 shrink-0"></span>
                   <span>Trip ({mission.scenario.flightTimeHrs}h): {expectedTripL} L ({(expectedTripL / 3.78541).toFixed(1)} Gal)</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded bg-emerald-500 shrink-0"></span>
-                  <span>EASA 45m: {expectedEasaReserveL} L ({(expectedEasaReserveL / 3.78541).toFixed(1)} Gal)</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded bg-purple-600 shrink-0"></span>
+                  <span>Reserva Final (1h 30m): {expectedBlueTeamReserveL} L (incluye 45m legales)</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <span className="w-2.5 h-2.5 rounded bg-indigo-500 shrink-0"></span>
-                  <span>OM 1:30 + Alt: {expectedBlueTeamTotalReserveL} L ({(expectedBlueTeamTotalReserveL / 3.78541).toFixed(1)} Gal)</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded bg-teal-600 shrink-0"></span>
+                  <span>Alternativo (20m): {expectedAlternateL} L ({(expectedAlternateL / 3.78541).toFixed(1)} Gal)</span>
                 </div>
               </div>
             </div>
 
             {/* Regulatory rules comparison */}
             <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-1.5 text-[11px] text-slate-700 dark:text-slate-300">
-              <div className="p-2 rounded-lg bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
-                <strong className="text-emerald-900 dark:text-emerald-300 block uppercase font-bold text-[10px] mb-0.5">
-                  1. Mínimo Legal EASA Part-NCO.OP.125:
+              <div className="p-2 rounded-lg bg-purple-50/70 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800">
+                <strong className="text-purple-900 dark:text-purple-300 block uppercase font-bold text-[10px] mb-0.5">
+                  1. Política Blue Team (Manual OM): Reserva Final 1h 30min Total
                 </strong>
                 <p className="leading-tight text-[10.5px]">
-                  Obligatorio llevar combustible de ruta más reserva final de <strong>45 minutos</strong> a régimen de crucero (<strong>11.5 L / 3.04 US Gal</strong> al 50% de potencia).
+                  La reserva final obligatoria en Blue Team es de <strong>1 hora y 30 minutos ({expectedBlueTeamReserveL} L / 6.08 US Gal)</strong>. Esta reserva <strong>ya incluye los 45 minutos mínimos</strong> legales exigidos por EASA Part-NCO.OP.125 (no se suman aparte; la reserva final es de 1h 30m en total).
                 </p>
               </div>
 
-              <div className="p-2 rounded-lg bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
-                <strong className="text-blue-900 dark:text-sky-300 block uppercase font-bold text-[10px] mb-0.5">
-                  2. Política Operativa Blue Team (Manual OM):
+              <div className="p-2 rounded-lg bg-teal-50/70 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-800">
+                <strong className="text-teal-900 dark:text-teal-300 block uppercase font-bold text-[10px] mb-0.5">
+                  2. Combustible para Aeródromo Alternativo:
                 </strong>
                 <p className="leading-tight text-[10.5px]">
-                  Por Manual de Operaciones, en Blue Team debemos disponer de <strong>al menos 1h 30min (23.0 L / 6.08 US Gal) de reserva final</strong> (que ya incluye los 45 min reglamentarios), más el combustible necesario para alcanzar el aeródromo alternativo en caso de haber aterrizado en destino (~5.1 L / 1.35 US Gal adicionales).
+                  En caso de planificar aeródromo alternativo se añaden <strong>{expectedAlternateL} L (1.35 US Gal)</strong> correspondientes a ~20 min de vuelo adicional de desvío.
                 </p>
               </div>
             </div>
