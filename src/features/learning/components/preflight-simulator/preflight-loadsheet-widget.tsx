@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
   EC_NNA_DATA,
   PREFLIGHT_MISSIONS,
@@ -63,6 +63,31 @@ export function PreflightLoadsheetWidget({
   const [interactiveClickPoint, setInteractiveClickPoint] = useState<{ x: number; y: number } | null>(null);
   const [hoverPoint, setHoverPoint] = useState<{ x: number; y: number } | null>(null);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const zoomIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const zoomTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const startZoomRepeat = (delta: number) => {
+    setZoomLevel((z) => Math.min(2.5, Math.max(1, Math.round((z + delta) * 100) / 100)));
+    if (zoomTimeoutRef.current) clearTimeout(zoomTimeoutRef.current);
+    if (zoomIntervalRef.current) clearInterval(zoomIntervalRef.current);
+    zoomTimeoutRef.current = setTimeout(() => {
+      zoomIntervalRef.current = setInterval(() => {
+        setZoomLevel((z) => Math.min(2.5, Math.max(1, Math.round((z + delta) * 100) / 100)));
+      }, 35);
+    }, 220);
+  };
+
+  const stopZoomRepeat = () => {
+    if (zoomTimeoutRef.current) clearTimeout(zoomTimeoutRef.current);
+    if (zoomIntervalRef.current) clearInterval(zoomIntervalRef.current);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (zoomTimeoutRef.current) clearTimeout(zoomTimeoutRef.current);
+      if (zoomIntervalRef.current) clearInterval(zoomIntervalRef.current);
+    };
+  }, []);
 
   // Load mission initial scenario values
   const loadMissionScenario = (m: PreflightMission, idx: number) => {
@@ -801,26 +826,36 @@ export function PreflightLoadsheetWidget({
 
           {/* SVG Envelope Display con Proporción Inicial Original Completa y Zoom Expandible */}
           <div className="flex-1 min-h-0 w-full flex items-center justify-center my-auto py-0.5 relative">
-            {/* Controles de Zoom Flotantes (+ / - sin lupas ni desbordamiento) */}
+            {/* Controles de Zoom Flotantes (+ / - en saltos de 1% sin desbordamiento) */}
             <div className="absolute top-2 right-2 z-20 flex items-center gap-1.5 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xs px-2 py-1 rounded-xl border border-slate-300 dark:border-slate-700 shadow-md">
               <button
                 type="button"
-                onClick={() => setZoomLevel((z) => Math.max(1, Math.round((z - 0.25) * 100) / 100))}
+                onMouseDown={() => startZoomRepeat(-0.01)}
+                onMouseUp={stopZoomRepeat}
+                onMouseLeave={stopZoomRepeat}
+                onTouchStart={() => startZoomRepeat(-0.01)}
+                onTouchEnd={stopZoomRepeat}
+                onClick={(e) => e.preventDefault()}
                 disabled={zoomLevel <= 1}
-                className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-extrabold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer leading-none"
-                title="Reducir (-)"
+                className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-extrabold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer leading-none select-none"
+                title="Reducir 1% (-)"
               >
                 −
               </button>
-              <span className="text-[11px] font-mono font-bold text-slate-800 dark:text-slate-100 px-1 min-w-[34px] text-center">
+              <span className="text-[11px] font-mono font-bold text-slate-800 dark:text-slate-100 px-1 min-w-[38px] text-center select-none">
                 {Math.round(zoomLevel * 100)}%
               </span>
               <button
                 type="button"
-                onClick={() => setZoomLevel((z) => Math.min(2.25, Math.round((z + 0.25) * 100) / 100))}
-                disabled={zoomLevel >= 2.25}
-                className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-extrabold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer leading-none"
-                title="Ampliar (+)"
+                onMouseDown={() => startZoomRepeat(0.01)}
+                onMouseUp={stopZoomRepeat}
+                onMouseLeave={stopZoomRepeat}
+                onTouchStart={() => startZoomRepeat(0.01)}
+                onTouchEnd={stopZoomRepeat}
+                onClick={(e) => e.preventDefault()}
+                disabled={zoomLevel >= 2.5}
+                className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-extrabold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer leading-none select-none"
+                title="Ampliar 1% (+)"
               >
                 +
               </button>
