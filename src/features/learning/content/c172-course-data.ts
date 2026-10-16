@@ -59,20 +59,6 @@ export const C172_DOCUMENTATION: CourseDocumentationItem[] = [
     url: "/manuals/cessna/loadsheet-ec-nnx.pdf",
     badge: "F.OPS.04",
   },
-  {
-    category: "Hojas de Carga F.OPS.04",
-    registration: "EC-OXT",
-    title: "Hoja de Masa y Centrado F.OPS.04.OXT (BEW: 785.00 kg / Arm: 1.035 m)",
-    url: "/manuals/cessna/loadsheet-ec-oxt.pdf",
-    badge: "F.OPS.04",
-  },
-  {
-    category: "Hojas de Carga F.OPS.04",
-    registration: "EC-OXV",
-    title: "Hoja de Masa y Centrado F.OPS.04.OXV (BEW: 778.20 kg / Arm: 1.038 m)",
-    url: "/manuals/cessna/loadsheet-ec-oxv.pdf",
-    badge: "F.OPS.04",
-  },
 
   // Suplementos Específicos Continental CD-135 / CD-155
   {
