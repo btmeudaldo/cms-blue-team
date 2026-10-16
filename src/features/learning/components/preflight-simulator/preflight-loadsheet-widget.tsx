@@ -155,6 +155,14 @@ export function PreflightLoadsheetWidget({
     const newWarnings: string[] = [];
     const num = (val: string) => parseFloat(val.replace(",", "."));
 
+    // 0. Comprobación obligatoria: debe haber situado el punto en la envolvente
+    if (!interactiveClickPoint) {
+      newErrors.envelopePoint =
+        currentStep === "takeoff"
+          ? "Es obligatorio situar tu punto TOW estimado en la envolvente gráfica antes de comprobar."
+          : "Es obligatorio situar tu punto LW estimado en la envolvente gráfica antes de comprobar.";
+    }
+
     if (currentStep === "takeoff") {
       // 1. Pilots Moment
       const userPilotsMom = num(pilotsMoment);
@@ -256,6 +264,16 @@ export function PreflightLoadsheetWidget({
             ? `Solución: CG = ${expected.tomMoment} / ${expected.tomMass} = ${expected.tomCg} m`
             : "CG = Momento Total / Masa Total";
       }
+
+      // 7. Comprobar que el punto situado en la envolvente coincide razonablemente con el TOW
+      if (interactiveClickPoint) {
+        const est = mapSvgCoordsToCg(interactiveClickPoint.x, interactiveClickPoint.y);
+        const massDiff = Math.abs(est.massKg - expected.tomMass);
+        const cgDiff = Math.abs(est.cgM - expected.tomCg);
+        if (massDiff > 60 || cgDiff > 0.05) {
+          newErrors.envelopePoint = `Tu marca en la envolvente (~${est.massKg} kg, CG ~${est.cgM.toFixed(3)} m) no coincide con el TOW calculado (~${expected.tomMass} kg, CG ~${expected.tomCg} m). Ajusta el punto en la gráfica.`;
+        }
+      }
     } else {
       // LANDING STEP
       const userTripMom = num(tripFuelMoment);
@@ -286,6 +304,16 @@ export function PreflightLoadsheetWidget({
           attempts >= 2
             ? `Solución: CG = ${expected.lmMoment} / ${expected.lmMass} = ${expected.lmCg} m`
             : "CG Aterrizaje = Momento LM / Masa LM";
+      }
+
+      // 7. Comprobar que el punto situado en la envolvente coincide razonablemente con el LW
+      if (interactiveClickPoint) {
+        const est = mapSvgCoordsToCg(interactiveClickPoint.x, interactiveClickPoint.y);
+        const massDiff = Math.abs(est.massKg - expected.lmMass);
+        const cgDiff = Math.abs(est.cgM - expected.lmCg);
+        if (massDiff > 60 || cgDiff > 0.05) {
+          newErrors.envelopePoint = `Tu marca en la envolvente (~${est.massKg} kg, CG ~${est.cgM.toFixed(3)} m) no coincide con el LW calculado (~${expected.lmMass} kg, CG ~${expected.lmCg} m). Ajusta el punto en la gráfica.`;
+        }
       }
     }
 
@@ -844,6 +872,12 @@ export function PreflightLoadsheetWidget({
                   const clickX = ((e.clientX - rect.left) / rect.width) * 1140;
                   const clickY = ((e.clientY - rect.top) / rect.height) * 880;
                   setInteractiveClickPoint({ x: clickX, y: clickY });
+                  setErrors((prev) => {
+                    if (!prev.envelopePoint) return prev;
+                    const next = { ...prev };
+                    delete next.envelopePoint;
+                    return next;
+                  });
                 }}
               >
                 {/* 1. LÍNEAS GUÍA DE MOUSE HOVER A LOS EJES (Arriba: CG, Izquierda: Masa) */}
@@ -938,16 +972,17 @@ export function PreflightLoadsheetWidget({
                       </g>
                     )}
 
-                    {/* Punto estimado fijado por el alumno ("Tu Punto TOW") */}
+                    {/* Punto estimado fijado por el alumno ("Tu Punto TOW") - ARRIBA del punto */}
                     {interactiveClickPoint && studentEstimated && (
                       <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
                         <circle r="24" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
                         <circle r="15" fill="#f59e0b" stroke="#ffffff" strokeWidth="3.5" />
-                        <rect x="20" y="-24" width="165" height="46" rx="9" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
-                        <text x="102" y="-4" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                        {/* Cuadro de info centrado arriba del punto del alumno */}
+                        <rect x="-85" y="-68" width="170" height="46" rx="9" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
+                        <text x="0" y="-48" fill="#ffffff" fontSize="15" fontWeight="900" textAnchor="middle">
                           TU PUNTO TOW
                         </text>
-                        <text x="102" y="14" fill="#fef3c7" fontSize="13" fontWeight="bold" textAnchor="middle">
+                        <text x="0" y="-30" fill="#fef3c7" fontSize="13" fontWeight="bold" textAnchor="middle">
                           ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
                         </text>
                       </g>
@@ -966,16 +1001,17 @@ export function PreflightLoadsheetWidget({
                       />
                     )}
 
-                    {/* Punto exacto calculado TOW (Oculto al inicio, revelado únicamente al validar) */}
+                    {/* Punto exacto calculado TOW (Oculto al inicio, revelado únicamente al validar) - HACIA LA DERECHA */}
                     {isStepPassed && (
                       <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
                         <circle r="26" fill="none" stroke="#2563eb" strokeWidth="3" opacity="0.75" className="animate-ping" />
                         <circle r="16" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3.5" />
-                        <rect x="22" y="-24" width="175" height="46" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
-                        <text x="109" y="-4" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                        {/* Cuadro de info hacia la derecha del punto calculado */}
+                        <rect x="22" y="-23" width="175" height="46" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
+                        <text x="109" y="-3" fill="#ffffff" fontSize="15" fontWeight="900" textAnchor="middle">
                           TOW CALCULADO
                         </text>
-                        <text x="109" y="14" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
+                        <text x="109" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
                           {expected.tomMass} kg · {expected.tomCg} m
                         </text>
                       </g>
@@ -1011,16 +1047,17 @@ export function PreflightLoadsheetWidget({
                       />
                     )}
 
-                    {/* Punto estimado fijado por el alumno para LW */}
+                    {/* Punto estimado fijado por el alumno para LW - ARRIBA del punto */}
                     {interactiveClickPoint && studentEstimated && (
                       <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
                         <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
                         <circle r="14" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
-                        <rect x="18" y="-20" width="150" height="42" rx="8" fill="#b45309" stroke="#ffffff" strokeWidth="2" />
-                        <text x="93" y="-2" fill="#ffffff" fontSize="15" fontWeight="900" textAnchor="middle">
+                        {/* Cuadro de info centrado arriba del punto del alumno */}
+                        <rect x="-85" y="-68" width="170" height="46" rx="9" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
+                        <text x="0" y="-48" fill="#ffffff" fontSize="15" fontWeight="900" textAnchor="middle">
                           TU PUNTO LW
                         </text>
-                        <text x="93" y="14" fill="#fef3c7" fontSize="12" fontWeight="bold" textAnchor="middle">
+                        <text x="0" y="-30" fill="#fef3c7" fontSize="13" fontWeight="bold" textAnchor="middle">
                           ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
                         </text>
                       </g>
@@ -1039,16 +1076,17 @@ export function PreflightLoadsheetWidget({
                       />
                     )}
 
-                    {/* Punto exacto de aterrizaje (LW) revelado tras validar */}
+                    {/* Punto exacto de aterrizaje (LW) revelado tras validar - HACIA LA DERECHA */}
                     {isStepPassed && (
                       <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
                         <circle r="26" fill="none" stroke="#059669" strokeWidth="3" opacity="0.75" className="animate-ping" />
                         <circle r="16" fill="#059669" stroke="#ffffff" strokeWidth="3.5" />
-                        <rect x="22" y="-24" width="170" height="46" rx="9" fill="#065f46" stroke="#ffffff" strokeWidth="2.5" />
-                        <text x="107" y="-4" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                        {/* Cuadro de info hacia la derecha del punto calculado */}
+                        <rect x="22" y="-23" width="170" height="46" rx="9" fill="#065f46" stroke="#ffffff" strokeWidth="2.5" />
+                        <text x="107" y="-3" fill="#ffffff" fontSize="15" fontWeight="900" textAnchor="middle">
                           LW CALCULADO
                         </text>
-                        <text x="107" y="14" fill="#a7f3d0" fontSize="13" fontWeight="bold" textAnchor="middle">
+                        <text x="107" y="15" fill="#a7f3d0" fontSize="13" fontWeight="bold" textAnchor="middle">
                           {expected.lmMass} kg · {expected.lmCg} m
                         </text>
                       </g>
@@ -1064,23 +1102,35 @@ export function PreflightLoadsheetWidget({
             {currentStep === "takeoff" ? (
               /* En 6.5 SOLO se muestra el estado de Despegue (TOW) */
               !isStepPassed ? (
-                <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800">
+                <div
+                  className={`flex items-center justify-between px-3 py-2 rounded-xl border ${
+                    errors.envelopePoint
+                      ? "bg-rose-50/90 dark:bg-rose-950/40 border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200"
+                      : "bg-amber-50/80 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800 text-amber-950 dark:text-amber-200"
+                  }`}
+                >
                   <div className="flex items-center gap-2">
-                    <span className="text-base">📍</span>
-                    <span className="text-amber-950 dark:text-amber-200">
-                      {studentEstimated ? (
+                    <span className="text-base">{errors.envelopePoint ? "⚠️" : "📍"}</span>
+                    <span>
+                      {errors.envelopePoint ? (
+                        <strong>{errors.envelopePoint}</strong>
+                      ) : studentEstimated ? (
                         <>
                           Has situado tu marca en <strong>~{studentEstimated.massKg} kg</strong> · CG <strong>{studentEstimated.cgM.toFixed(3)} m</strong>. ¡Pulsa <em>Comprobar Despegue</em> para verificar si coincide con el TOW real!
                         </>
                       ) : (
                         <>
-                          Usa la gráfica para situar tu punto <strong>TOW estimado</strong> según los cálculos de tu hoja de carga.
+                          <strong className="text-amber-800 dark:text-amber-300">Obligatorio:</strong> Haz clic en la gráfica para situar tu punto <strong>TOW estimado</strong> antes de comprobar.
                         </>
                       )}
                     </span>
                   </div>
-                  <span className="text-xs font-bold text-amber-700 dark:text-amber-400 shrink-0">
-                    {studentEstimated ? "Punto fijado" : "Pendiente"}
+                  <span
+                    className={`text-xs font-bold shrink-0 ${
+                      errors.envelopePoint ? "text-rose-600 dark:text-rose-400" : "text-amber-700 dark:text-amber-400"
+                    }`}
+                  >
+                    {errors.envelopePoint ? "Revisar marca" : studentEstimated ? "Punto fijado" : "Obligatorio"}
                   </span>
                 </div>
               ) : (
