@@ -44,7 +44,7 @@ export function PreflightCruiseWidget({
   const [attempts, setAttempts] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [warnings, setWarnings] = useState<string[]>([]);
-  const [isPassed, setIsPassed] = useState(isAlreadyCompleted);
+  const [isPassed, setIsPassed] = useState(false);
 
   const alt = selectedMissionIndex === 0 ? 2000 : selectedMissionIndex === 1 ? 6000 : 4000;
   const loadPct = 50; // Standard flight school cruise load is 50%

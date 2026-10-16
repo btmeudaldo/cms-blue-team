@@ -56,7 +56,7 @@ export function PreflightLoadsheetWidget({
   const [attempts, setAttempts] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [warnings, setWarnings] = useState<string[]>([]);
-  const [isPassed, setIsPassed] = useState(isAlreadyCompleted);
+  const [isPassed, setIsPassed] = useState(false);
   const [interactiveClickPoint, setInteractiveClickPoint] = useState<{ x: number; y: number } | null>(null);
 
   // Load mission initial scenario values

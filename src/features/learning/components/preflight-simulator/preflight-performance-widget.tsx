@@ -299,6 +299,26 @@ export function PreflightPerformanceWidget({
 
           {/* Form Content - Spacious, no clutter, standard typography */}
           <div className="flex-1 min-h-0 flex flex-col justify-center space-y-3 my-auto">
+            {/* Direct Link to POH Landing Table (on Left for 6.15) */}
+            {currentStep === "landing" && (
+              <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-emerald-50/70 dark:bg-slate-800/90 border border-emerald-200 dark:border-slate-700 shadow-2xs">
+                <span className="text-xs sm:text-[13px] font-bold text-emerald-950 dark:text-emerald-300 flex items-center gap-1.5">
+                  <span>📖</span>
+                  <span>TABLA POH ATERRIZAJE:</span>
+                </span>
+                <a
+                  href="/images/c172/landing_distance_table.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 font-bold text-xs sm:text-[13px] text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-slate-600 transition-all shadow-2xs"
+                  title="Abrir Tabla 5-10 Aterrizaje Short Field en PDF"
+                >
+                  <span>🛬 Abrir Fig. 5-10 Landing Distance Short Field [ft]</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            )}
+
             {/* Landing Unit Conversion Reminder */}
             {currentStep === "landing" && (
               <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border-2 border-amber-300 dark:border-amber-700 text-xs sm:text-[13px] text-amber-950 dark:text-amber-100 flex items-center justify-between gap-2 shadow-xs">
@@ -544,8 +564,8 @@ export function PreflightPerformanceWidget({
               </div>
             </div>
 
-            {/* Direct Link to Relevant POH Table (Moved from Left) */}
-            {currentStep === "takeoff" ? (
+            {/* Direct Link to Relevant POH Table (for Takeoff) */}
+            {currentStep === "takeoff" && (
               <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-sky-50/70 dark:bg-slate-800/90 border border-sky-200 dark:border-slate-700 shadow-2xs">
                 <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
                   <span>📖</span>
@@ -559,23 +579,6 @@ export function PreflightPerformanceWidget({
                   title="Abrir Tabla 5-1a Despegue en PDF"
                 >
                   <span>🛫 Abrir Fig. 5-1a Take-Off Distance [m]</span>
-                  <span>↗</span>
-                </a>
-              </div>
-            ) : (
-              <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-emerald-50/70 dark:bg-slate-800/90 border border-emerald-200 dark:border-slate-700 shadow-2xs">
-                <span className="text-xs sm:text-[13px] font-bold text-emerald-950 dark:text-emerald-300 flex items-center gap-1.5">
-                  <span>📖</span>
-                  <span>TABLA POH ATERRIZAJE:</span>
-                </span>
-                <a
-                  href="/images/c172/landing_distance_table.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 font-bold text-xs sm:text-[13px] text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-slate-600 transition-all shadow-2xs"
-                  title="Abrir Tabla 5-10 Aterrizaje Short Field en PDF"
-                >
-                  <span>🛬 Abrir Fig. 5-10 Landing Distance Short Field [ft]</span>
                   <span>↗</span>
                 </a>
               </div>

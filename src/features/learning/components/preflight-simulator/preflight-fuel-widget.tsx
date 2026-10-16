@@ -25,7 +25,7 @@ export function PreflightFuelWidget({
   const [attempts, setAttempts] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [warnings, setWarnings] = useState<string[]>([]);
-  const [isPassed, setIsPassed] = useState(isAlreadyCompleted);
+  const [isPassed, setIsPassed] = useState(false);
 
   // Flight school cruise power: 50% Load = 15.3 L/h (TAE 125-02-114 Continental CD-155)
   const hourlyRate = 15.3;
