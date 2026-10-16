@@ -1330,9 +1330,10 @@ export function LessonPlayer({
                 />
                 {exerciseContainer && activeExerciseType && createPortal(
                   <PreflightInteractiveHub
+                    key={`${activeExerciseType}_slide_${effectivePageIndex}`}
                     exerciseType={activeExerciseType}
                     onExerciseCompleted={handleExerciseCompleted}
-                    isAlreadyCompleted={isCurrentExerciseCompleted}
+                    isAlreadyCompleted={false}
                   />,
                   exerciseContainer
                 )}

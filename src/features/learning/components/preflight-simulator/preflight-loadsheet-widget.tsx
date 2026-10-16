@@ -56,7 +56,9 @@ export function PreflightLoadsheetWidget({
   const [attempts, setAttempts] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [warnings, setWarnings] = useState<string[]>([]);
-  const [isPassed, setIsPassed] = useState(false);
+  const [passedTakeoff, setPassedTakeoff] = useState(false);
+  const [passedLanding, setPassedLanding] = useState(false);
+  const isStepPassed = currentStep === "takeoff" ? passedTakeoff : passedLanding;
   const [interactiveClickPoint, setInteractiveClickPoint] = useState<{ x: number; y: number } | null>(null);
 
   // Load mission initial scenario values
@@ -80,7 +82,8 @@ export function PreflightLoadsheetWidget({
     setErrors({});
     setWarnings([]);
     setAttempts(0);
-    setIsPassed(false);
+    setPassedTakeoff(false);
+    setPassedLanding(false);
     setInteractiveClickPoint(null);
   };
 
@@ -285,7 +288,11 @@ export function PreflightLoadsheetWidget({
     setWarnings(newWarnings);
 
     if (Object.keys(newErrors).length === 0) {
-      setIsPassed(true);
+      if (currentStep === "takeoff") {
+        setPassedTakeoff(true);
+      } else {
+        setPassedLanding(true);
+      }
       if (onExerciseCompleted) {
         onExerciseCompleted();
       }
@@ -718,7 +725,7 @@ export function PreflightLoadsheetWidget({
               </div>
             )}
 
-            {isPassed && (
+            {isStepPassed && (
               <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px] flex items-center justify-between">
                 <span>
                   ✓ {currentStep === "takeoff"
@@ -766,7 +773,7 @@ export function PreflightLoadsheetWidget({
               }}
             >
               {/* Show consumption line if in landing mode or all */}
-              {(currentStep === "landing" || isPassed) && (
+              {(currentStep === "landing" || isStepPassed) && (
                 <line
                   x1={tomCoords.x}
                   y1={tomCoords.y}
@@ -789,7 +796,7 @@ export function PreflightLoadsheetWidget({
               </g>
 
               {/* Landing Point (LW) */}
-              {(currentStep === "landing" || isPassed) && (
+              {(currentStep === "landing" || isStepPassed) && (
                 <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
                   <circle r="7" fill="#059669" stroke="#ffffff" strokeWidth="2.5" />
                   <rect x="12" y="-10" width="50" height="18" rx="6" fill="#065f46" opacity="0.9" />
