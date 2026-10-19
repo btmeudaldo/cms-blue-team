@@ -999,8 +999,8 @@ export const C172_LESSON_2 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="/images/c172/figure_6_3_loading_arrangements.png" alt="Figura 6-3 Disposición de Carga y Compartimentos de Equipaje Cessna 172" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2">
+            <img src="/images/c172/figure_6_3_loading_arrangements.jpg?v=2" alt="Figura 6-3 Disposición de Carga y Compartimentos de Equipaje Cessna 172" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
