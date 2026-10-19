@@ -29,26 +29,10 @@ const COURSES = [
       "Curso oficial de familiarización de tipo, diferencias técnicas y procedimientos para la flota Cessna 172 con motores Continental CD-135 y CD-155 Turbo Diésel (EC-NNA, EC-OXV, EC-NNX, EC-OXT) de Blue Team Flight School, conforme a EASA Part-FCL.710. Duración oficial reglamentaria: 4 horas lectivas.",
     image_url: COVER_IMAGE,
   },
-  {
-    id: "17200000-0000-0000-0000-000000000272",
-    title: "Cessna 172: Manual POH Oficial & Explicaciones Operacionales",
-    slug: "c172-manual-poh",
-    description:
-      "Manual POH oficial y procedimientos operacionales para la flota Cessna 172 con datos literales extraídos directamente del POH oficial y suplementos Continental CD-135 / CD-155 (columna izquierda) junto con notas didácticas y fundamentos operativos (columna derecha).",
-    image_url: COVER_IMAGE,
-  },
-  {
-    id: "85579dd2-2450-48d4-a1f9-bb9da7257a76",
-    title: "Cessna 172: Suplemento Continental CD-135 / CD-155 (POH Oficial)",
-    slug: "c172-suplemento-tae125-ec-nna",
-    description:
-      "Curso oficial con las 4 lecciones completas del suplemento POH: Limitaciones, Sistemas, Procedimientos Normales y Procedimientos de Emergencia para motores Continental CD-135 / CD-155.",
-    image_url: COVER_IMAGE,
-  },
 ];
 
 async function sync() {
-  console.log("Synchronizing courses and lessons across all C172 modules...");
+  console.log("Synchronizing courses and lessons for C172...");
 
   // 1. Update Course details
   for (const c of COURSES) {
@@ -88,12 +72,7 @@ async function sync() {
 
     // Ensure clean state per course
     for (const sourceLesson of C172_LESSONS) {
-      let lessonId = sourceLesson.id;
-      if (c.id === "17200000-0000-0000-0000-000000000272") {
-        lessonId = `17200000-0000-0000-0000-0000000002${String(sourceLesson.sequence_order).padStart(2, "0")}`;
-      } else if (c.id === "85579dd2-2450-48d4-a1f9-bb9da7257a76") {
-        lessonId = `a1100000-0000-0000-0000-0000000000${String(sourceLesson.sequence_order).padStart(2, "0")}`;
-      }
+      const lessonId = sourceLesson.id;
       const wordCount = sourceLesson.content_html
         .replace(/<[^>]*>/g, " ")
         .split(/\s+/)
