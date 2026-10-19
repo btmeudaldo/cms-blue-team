@@ -1674,12 +1674,11 @@ export const C172_LESSON_2 = {
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📟 AED 125 & PANEL ANUNCIADOR</span>
-          <span class="text-[10px] font-semibold text-[#2361A8] dark:text-sky-400 bg-sky-50 dark:bg-sky-950/60 px-2 py-0.5 rounded-md border border-sky-200 dark:border-sky-900">POH Secc. 2 & 7</span>
         </div>
 
         <div class="flex flex-col gap-2 flex-1 min-h-0">
-          <!-- 1. AED 125 Display Auxiliar -->
-          <div class="flex-[2] min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
+          <!-- 1. AED 125 Display Auxiliar (50%) -->
+          <div class="flex-1 min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
             <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
               <span class="text-[11px] font-bold text-[#0B2E59] dark:text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-sky-600"></span>
@@ -1688,12 +1687,12 @@ export const C172_LESSON_2 = {
               <span class="text-[9px] font-bold text-sky-800 bg-sky-100 px-1.5 py-0.5 rounded">Fuel Temp / V / A</span>
             </div>
             <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[175px] object-contain rounded-md" onerror="if(this.src!=='/images/c172/2.8-aed.jpg?v=1')this.src='/images/c172/2.8-aed.jpg?v=1'" />
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[220px] object-contain rounded-md" onerror="if(this.src!=='/images/c172/2.8-aed.jpg?v=1')this.src='/images/c172/2.8-aed.jpg?v=1'" />
             </div>
           </div>
 
-          <!-- 2. Panel Anunciador de Alarmas (Ampliado y Gran Legibilidad) -->
-          <div class="flex-[3] min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
+          <!-- 2. Panel Anunciador de Alarmas (50%) -->
+          <div class="flex-1 min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
             <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
               <span class="text-[11px] font-bold text-[#0B2E59] dark:text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-amber-500"></span>
@@ -1702,7 +1701,7 @@ export const C172_LESSON_2 = {
               <span class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded">CED/AED Caution</span>
             </div>
             <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full h-full max-h-[250px] object-contain rounded-md" onerror="if(this.src!=='/images/c172/2.8-annunciator.jpg?v=1')this.src='/images/c172/2.8-annunciator.jpg?v=1'" />
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full h-full max-h-[220px] object-contain rounded-md" onerror="if(this.src!=='/images/c172/2.8-annunciator.jpg?v=1')this.src='/images/c172/2.8-annunciator.jpg?v=1'" />
             </div>
           </div>
         </div>
