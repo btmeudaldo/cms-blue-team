@@ -596,8 +596,8 @@ export const C172_LESSON_2 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Tablas Oficiales (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2">
+      <div class="h-[590px] flex flex-col justify-between p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-3">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⏱️ AIRSPEED LIMITATIONS (VELOCIDADES LÍMITE)</span>
           </div>
@@ -607,79 +607,71 @@ export const C172_LESSON_2 = {
             <table class="w-full text-left text-[11px] leading-tight">
               <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
                 <tr>
-                  <th class="p-2 px-2.5">VELOCIDAD</th>
-                  <th class="p-2 px-2 text-center">KCAS</th>
-                  <th class="p-2 px-2 text-center font-extrabold text-[#1a80ff] dark:text-sky-400">KIAS</th>
-                  <th class="p-2 px-2.5">SIGNIFICADO OPERACIONAL</th>
+                  <th class="p-2.5 px-3">VELOCIDAD</th>
+                  <th class="p-2.5 px-2 text-center">KCAS</th>
+                  <th class="p-2.5 px-2 text-center font-extrabold text-[#1a80ff] dark:text-sky-400">KIAS</th>
+                  <th class="p-2.5 px-3">SIGNIFICADO OPERACIONAL</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
                 <tr>
-                  <td class="p-2 px-2.5 font-bold font-mono">V<sub>NE</sub> (Never Exceed)</td>
-                  <td class="p-2 px-2 text-center font-mono">158</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">160</td>
-                  <td class="p-2 px-2.5">No exceder esta velocidad en ninguna operación bajo ninguna condición.</td>
+                  <td class="p-2.5 px-3 font-bold font-mono">V<sub>NE</sub> (Never Exceed)</td>
+                  <td class="p-2.5 px-2 text-center font-mono">158</td>
+                  <td class="p-2.5 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">160</td>
+                  <td class="p-2.5 px-3">No exceder esta velocidad en ninguna operación.</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold font-mono">V<sub>NO</sub> (Max. Structural)</td>
-                  <td class="p-2 px-2 text-center font-mono">126</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold text-amber-600 dark:text-amber-400">128</td>
-                  <td class="p-2 px-2.5">Máximo crucero estructural; no superar salvo en aire totalmente calmo y con precaución.</td>
+                  <td class="p-2.5 px-3 font-bold font-mono">V<sub>NO</sub> (Max. Structural)</td>
+                  <td class="p-2.5 px-2 text-center font-mono">126</td>
+                  <td class="p-2.5 px-2 text-center font-mono font-extrabold text-amber-600 dark:text-amber-400">128</td>
+                  <td class="p-2.5 px-3">No exceder esta velocidad salvo en aire calmo, y solo con precaución.</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold font-mono">V<sub>A</sub> (Maneuvering Speed)</td>
-                  <td class="p-2 px-2 text-center font-mono">96 / 88 / 80</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold text-blue-600 dark:text-sky-400">97 / 89 / 80</td>
-                  <td class="p-2 px-2.5"><strong>97 KIAS</strong> (2.300 lbs), <strong>89 KIAS</strong> (1.950 lbs), <strong>80 KIAS</strong> (1.600 lbs). No aplicar deflexiones bruscas ni totales de mandos.</td>
+                  <td class="p-2.5 px-3 font-bold font-mono">V<sub>A</sub> (Maneuvering Speed)</td>
+                  <td class="p-2.5 px-2 text-center font-mono">96 / 88 / 80</td>
+                  <td class="p-2.5 px-2 text-center font-mono font-extrabold text-blue-600 dark:text-sky-400">97 / 89 / 80</td>
+                  <td class="p-2.5 px-3"><strong>97 KIAS</strong> (2.300 lbs), <strong>89 KIAS</strong> (1.950 lbs), <strong>80 KIAS</strong> (1.600 lbs). No aplicar deflexiones de mandos bruscas ni totales por encima de esta velocidad.</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold font-mono">V<sub>FE</sub> (Max. Flaps Down)</td>
-                  <td class="p-2 px-2 text-center font-mono">86</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold text-emerald-600 dark:text-emerald-400">85</td>
-                  <td class="p-2 px-2.5">Velocidad máxima permisible con flaps extendidos (10°, 20° o 40°).</td>
+                  <td class="p-2.5 px-3 font-bold font-mono">V<sub>FE</sub> (Max. Flaps Down)</td>
+                  <td class="p-2.5 px-2 text-center font-mono">86</td>
+                  <td class="p-2.5 px-2 text-center font-mono font-extrabold text-emerald-600 dark:text-emerald-400">85</td>
+                  <td class="p-2.5 px-3">No exceder esta velocidad con flaps extendidos.</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold font-mono">Ventanilla Abierta</td>
-                  <td class="p-2 px-2 text-center font-mono">158</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold">160</td>
-                  <td class="p-2 px-2.5">Velocidad máxima autorizada de vuelo con ventanillas laterales abiertas.</td>
+                  <td class="p-2.5 px-3 font-bold font-mono">Ventanilla Abierta</td>
+                  <td class="p-2.5 px-2 text-center font-mono">158</td>
+                  <td class="p-2.5 px-2 text-center font-mono font-extrabold">160</td>
+                  <td class="p-2.5 px-3">No exceder esta velocidad con las ventanillas abiertas.</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <!-- Cuadros informativos bien espaciados -->
-          <div class="space-y-1.5 pt-1">
-            <div class="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 flex items-start gap-2 text-[11px] leading-tight text-blue-900 dark:text-blue-200">
-              <span class="text-base shrink-0">💡</span>
-              <span><strong>Comportamiento de V<sub>A</sub> con el Peso:</strong> La velocidad de maniobra disminuye conforme se reduce el peso de la aeronave. Con menor masa inercial, una ráfaga brusca genera mayor aceleración vertical (factor de carga G) a una misma velocidad.</span>
-            </div>
-
-            <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200">
-              <span class="text-base shrink-0">⚠️</span>
-              <span><strong>Vuelo en Turbulencia:</strong> Al encontrar turbulencia severa en ruta, reducir de inmediato la potencia y mantener la velocidad indicada por debajo de la V<sub>A</sub> correspondiente al peso actual de vuelo.</span>
-            </div>
+          <!-- Nota textual POH al pie de tabla -->
+          <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-[11px] leading-relaxed text-slate-700 dark:text-slate-300">
+            <strong>Nota POH:</strong> La velocidad de maniobra (V<sub>A</sub>) es la velocidad máxima a la cual la deflexión aerodinámica total de los mandos no excederá los límites estructurales de diseño de la aeronave.
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Anemómetro Oficial C172 (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Imagen en blanco (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🎛️ VELOCIDADES INDICADAS Y CALIBRADAS</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📷 MATERIAL GRÁFICO</span>
           </div>
 
-          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-1">
-            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-              El anemómetro presenta lecturas en <strong>KIAS</strong> (Knots Indicated Airspeed). Las velocidades en <strong>KCAS</strong> corrigen los errores de instalación y posición del tubo Pitot en los distintos ángulos de ataque.
+          <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+            <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+              📷
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen en Blanco / Pendiente</span>
+            <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+              Envolvente o diagrama de velocidades de la célula C172
             </p>
-          </div>
-
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-black flex items-center justify-center p-2">
-            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 calibrado en nudos" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
@@ -702,8 +694,8 @@ export const C172_LESSON_2 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Tablas Oficiales (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2">
+      <div class="h-[590px] flex flex-col justify-between p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-3">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🎯 AIRSPEED INDICATOR MARKINGS (ARCOS DEL ANEMÓMETRO)</span>
           </div>
@@ -713,86 +705,75 @@ export const C172_LESSON_2 = {
             <table class="w-full text-left text-[11px] leading-tight">
               <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
                 <tr>
-                  <th class="p-2 px-2.5">MARCA</th>
-                  <th class="p-2 px-2 text-center font-mono">RANGO KIAS</th>
-                  <th class="p-2 px-2.5">SIGNIFICADO AERODINÁMICO OFICIAL</th>
+                  <th class="p-2.5 px-3">MARCA</th>
+                  <th class="p-2.5 px-2 text-center font-mono">RANGO KIAS</th>
+                  <th class="p-2.5 px-3">SIGNIFICADO AERODINÁMICO OFICIAL</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
                 <tr>
-                  <td class="p-2 px-2.5 font-bold flex items-center gap-1.5">
+                  <td class="p-2.5 px-3 font-bold flex items-center gap-1.5">
                     <span class="w-2.5 h-2.5 rounded-full bg-slate-300 border border-slate-400 shrink-0"></span>
                     <span>Arco Blanco</span>
                   </td>
-                  <td class="p-2 px-2 text-center font-mono font-bold">41 – 85</td>
-                  <td class="p-2 px-2.5"><strong>Full Flap Operating Range:</strong> Límite inferior V<sub>SO</sub> a peso máximo en configuración de aterrizaje (41 KIAS). Límite superior V<sub>FE</sub> con flaps extendidos (85 KIAS).</td>
+                  <td class="p-2.5 px-2 text-center font-mono font-bold">41 – 85</td>
+                  <td class="p-2.5 px-3"><strong>Full Flap Operating Range:</strong> Límite inferior V<sub>SO</sub> a peso máximo en configuración de aterrizaje. Límite superior V<sub>FE</sub> máxima con flaps extendidos.</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold flex items-center gap-1.5">
+                  <td class="p-2.5 px-3 font-bold flex items-center gap-1.5">
                     <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
                     <span>Arco Verde</span>
                   </td>
-                  <td class="p-2 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">47 – 128</td>
-                  <td class="p-2 px-2.5"><strong>Normal Operating Range:</strong> Límite inferior V<sub>S</sub> con flaps arriba a CG más adelantado (47 KIAS). Límite superior V<sub>NO</sub> de crucero estructural (128 KIAS).</td>
+                  <td class="p-2.5 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">47 – 128</td>
+                  <td class="p-2.5 px-3"><strong>Normal Operating Range:</strong> Límite inferior V<sub>S</sub> con flaps arriba a peso máximo y CG más adelantado. Límite superior V<sub>NO</sub> de crucero estructural.</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold flex items-center gap-1.5">
+                  <td class="p-2.5 px-3 font-bold flex items-center gap-1.5">
                     <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0"></span>
                     <span>Arco Amarillo</span>
                   </td>
-                  <td class="p-2 px-2 text-center font-mono font-bold text-amber-600 dark:text-amber-400">128 – 160</td>
-                  <td class="p-2 px-2.5"><strong>Caution Range:</strong> Operaciones con precaución y exclusivamente en aire calmo y sin turbulencias.</td>
+                  <td class="p-2.5 px-2 text-center font-mono font-bold text-amber-600 dark:text-amber-400">128 – 160</td>
+                  <td class="p-2.5 px-3"><strong>Caution Range:</strong> Operaciones con precaución y solo en aire calmo.</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold flex items-center gap-1.5">
+                  <td class="p-2.5 px-3 font-bold flex items-center gap-1.5">
                     <span class="w-2.5 h-2.5 rounded-full bg-red-600 shrink-0"></span>
                     <span>Línea Roja</span>
                   </td>
-                  <td class="p-2 px-2 text-center font-mono font-bold text-red-600 dark:text-red-400">160</td>
-                  <td class="p-2 px-2.5"><strong>Maximum Speed (V<sub>NE</sub>):</strong> Velocidad de nunca exceder bajo cualquier régimen o condición de vuelo. Prohibido superar.</td>
+                  <td class="p-2.5 px-2 text-center font-mono font-bold text-red-600 dark:text-red-400">160</td>
+                  <td class="p-2.5 px-3"><strong>Maximum Speed:</strong> Velocidad máxima bajo cualquier régimen de vuelo (V<sub>NE</sub>).</td>
                 </tr>
               </tbody>
             </table>
-          </div>
-
-          <!-- Cuadros informativos bien espaciados -->
-          <div class="space-y-1.5 pt-1">
-            <div class="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/60 flex items-start gap-2 text-[11px] leading-tight text-emerald-900 dark:text-emerald-200">
-              <span class="text-base shrink-0">🛬</span>
-              <span><strong>Operación con Flaps en Aproximación:</strong> La velocidad indicada durante la aproximación final debe estar siempre dentro del Arco Blanco. La velocidad de referencia de aproximación (V<sub>REF</sub>) normal oscila entre 60 y 65 KIAS con flaps extendidos.</span>
-            </div>
-
-            <div class="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200">
-              <span class="text-base shrink-0">🚨</span>
-              <span><strong>Protección de Flaps:</strong> Nunca deflactar o mantener flaps fuera del Arco Blanco (>85 KIAS). Exceder este límite puede provocar deformaciones estructurales en las guías y mecanismos de accionamiento Fowler.</span>
-            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Anemómetro Oficial C172 (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Imagen en blanco (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🎛️ ANEMÓMETRO C172 (CALIBRADO EN KNOTS)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📷 MATERIAL GRÁFICO</span>
           </div>
 
-          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
-            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-              Indicador de velocidad anemométrica de la célula Cessna 172 con anillo móvil exterior de True Airspeed (TAS) y franjas de limitación reglamentaria de colores.
+          <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+            <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+              📷
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen en Blanco / Pendiente</span>
+            <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+              Fotografía de carátula o indicador de velocidad anemométrica en cabina
             </p>
-          </div>
-
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-black flex items-center justify-center p-2">
-            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 con arcos de colores" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
     </div>
   </div>
-</div><!-- pagebreak -->
+</div>
+
+<!-- pagebreak -->
 
 <!-- DIAPOSITIVA 2.3: 2.3 Límites de Peso Estructural (Weight Limits) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
