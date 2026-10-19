@@ -601,7 +601,7 @@ export const C172_LESSON_1 = {
 };
 
 // ============================================================================
-// LECCIÓN 2: LIMITACIONES OPERACIONALES POH (10 DIAPOSITIVAS)
+// LECCIÓN 2: LIMITACIONES OPERACIONALES POH (12 DIAPOSITIVAS)
 // ============================================================================
 export const C172_LESSON_2 = {
   id: "17200000-0000-0000-0000-000000000001",
@@ -611,12 +611,160 @@ export const C172_LESSON_2 = {
   sequence_order: 2,
   lesson_order: 2,
   min_seconds: 1,
-  content_html: `<!-- DIAPOSITIVA 2.1: 1.1 Límites de Peso Estructural (Weight Limits) -->
+  content_html: `<!-- DIAPOSITIVA 2.1: 2.1 Límites de Velocidad de la Célula y Arcos del Anemómetro -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · LIMITACIONES POH (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.1 Limitaciones de Velocidad de la Célula y Arcos del Anemómetro</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Airspeed Limitations & Indicator Markings</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Tablas Oficiales POH Sección 2 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⏱️ AIRSPEED LIMITATIONS (FIGURE 2-1 POH)</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH pág. 2-4</span>
+        </div>
+
+        <!-- Tabla de Limitaciones de Velocidad -->
+        <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
+          <table class="w-full text-left text-[11px] leading-tight">
+            <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
+              <tr>
+                <th class="p-1.5 px-2">VELOCIDAD</th>
+                <th class="p-1.5 px-1 text-center">KCAS</th>
+                <th class="p-1.5 px-1 text-center font-extrabold text-[#1a80ff] dark:text-sky-400">KIAS</th>
+                <th class="p-1.5 px-2">SIGNIFICADO OPERACIONAL (POH)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
+              <tr>
+                <td class="p-1 px-2 font-bold font-mono">V<sub>NE</sub> (Never Exceed)</td>
+                <td class="p-1 px-1 text-center font-mono">158</td>
+                <td class="p-1 px-1 text-center font-mono font-extrabold text-red-600 dark:text-red-400">160</td>
+                <td class="p-1 px-2 text-[10.5px]">No exceder esta velocidad en ninguna operación bajo ninguna condición.</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold font-mono">V<sub>NO</sub> (Max. Structural)</td>
+                <td class="p-1 px-1 text-center font-mono">126</td>
+                <td class="p-1 px-1 text-center font-mono font-extrabold text-amber-600 dark:text-amber-400">128</td>
+                <td class="p-1 px-2 text-[10.5px]">Máx. crucero estructural; no superar salvo en aire totalmente calmo y con precaución.</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold font-mono">V<sub>A</sub> (Maneuvering Speed)</td>
+                <td class="p-1 px-1 text-center font-mono">96 / 88 / 80</td>
+                <td class="p-1 px-1 text-center font-mono font-extrabold text-blue-600 dark:text-sky-400">97 / 89 / 80</td>
+                <td class="p-1 px-2 text-[10.5px]"><strong>97 KIAS</strong> (2300 lbs), <strong>89 KIAS</strong> (1950 lbs), <strong>80 KIAS</strong> (1600 lbs). No aplicar deflexiones bruscas ni totales de mandos.</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold font-mono">V<sub>FE</sub> (Max. Flaps Down)</td>
+                <td class="p-1 px-1 text-center font-mono">86</td>
+                <td class="p-1 px-1 text-center font-mono font-extrabold text-emerald-600 dark:text-emerald-400">85</td>
+                <td class="p-1 px-2 text-[10.5px]">Velocidad máxima permisible con flaps extendidos (10°, 20° o 40°).</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold font-mono">Ventanilla Abierta</td>
+                <td class="p-1 px-1 text-center font-mono">158</td>
+                <td class="p-1 px-1 text-center font-mono font-extrabold">160</td>
+                <td class="p-1 px-2 text-[10.5px]">Velocidad máxima autorizada de vuelo con ventanillas laterales abiertas.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🎯 AIRSPEED INDICATOR MARKINGS (FIGURE 2-2 POH)</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH pág. 2-5</span>
+        </div>
+
+        <!-- Tabla de Arcos del Anemómetro -->
+        <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
+          <table class="w-full text-left text-[11px] leading-tight">
+            <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
+              <tr>
+                <th class="p-1.5 px-2">MARCA</th>
+                <th class="p-1.5 px-2 text-center font-mono">RANGO KIAS</th>
+                <th class="p-1.5 px-2">SIGNIFICADO AERODINÁMICO OFICIAL</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
+              <tr>
+                <td class="p-1 px-2 font-bold flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-slate-300 border border-slate-400 shrink-0"></span>
+                  <span>Arco Blanco</span>
+                </td>
+                <td class="p-1 px-2 text-center font-mono font-bold">41 – 85</td>
+                <td class="p-1 px-2 text-[10.5px]"><strong>Full Flap Operating Range:</strong> Límite inferior V<sub>SO</sub> a peso máximo en configuración de aterrizaje. Límite superior V<sub>FE</sub>.</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+                  <span>Arco Verde</span>
+                </td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">47 – 128</td>
+                <td class="p-1 px-2 text-[10.5px]"><strong>Normal Operating Range:</strong> Límite inferior V<sub>S</sub> con flaps arriba a CG más adelantado (47 KIAS). Límite superior V<sub>NO</sub> (128 KIAS).</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0"></span>
+                  <span>Arco Amarillo</span>
+                </td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-amber-600 dark:text-amber-400">128 – 160</td>
+                <td class="p-1 px-2 text-[10.5px]"><strong>Caution Range:</strong> Operaciones con precaución y exclusivamente en aire calmo y sin turbulencias.</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-red-600 shrink-0"></span>
+                  <span>Línea Roja</span>
+                </td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-red-600 dark:text-red-400">160</td>
+                <td class="p-1 px-2 text-[10.5px]"><strong>Maximum Speed (V<sub>NE</sub>):</strong> Velocidad máxima bajo cualquier régimen de vuelo.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Anemómetro Oficial C172 (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🎛️ ANEMÓMETRO C172 (CALIBRADO EN KNOTS)</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Indicador de velocidad anemométrica de la célula Cessna 172 con anillo móvil exterior de True Airspeed (TAS) y franjas de limitación reglamentaria según POH Sección 2.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-black flex items-center justify-center p-2">
+            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 con arcos de colores POH" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+          </div>
+        </div>
+
+        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
+          Ref. POH: Sección 2 (Limitaciones) págs. 2-4 y 2-5.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.2: 2.2 Límites de Peso Estructural (Weight Limits) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.1 Límites de Peso Estructural (Weight Limits)</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.2 Límites de Peso Estructural (Weight Limits)</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pesos Máximos de Rampa, Despegue y Aterrizaje</span>
   </div>
@@ -728,12 +876,140 @@ export const C172_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.2: 1.2 Límites de Maniobra y Factores de Carga -->
+<!-- DIAPOSITIVA 2.3: 2.3 Compartimentos de Equipaje y Categorías de Vuelo (Normal vs Utilidad) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · LIMITACIONES POH (SECCIÓN 2 & 6)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.3 Compartimentos de Equipaje y Categorías de Vuelo</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Baggage Compartment Limits & Flight Load Factors</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): POH Sección 2 & 6 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🧳 BAGGAGE COMPARTMENT LIMITS (SECCIÓN 2 & 6)</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH pág. 2-6 y 6-7</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+          <!-- BAGGAGE AREA 1 -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ÁREA DE EQUIPAJE 1 (STATIONS 82 - 108)</strong>
+            <div class="text-[11px] leading-tight space-y-1 text-slate-800 dark:text-slate-200">
+              <div class="flex justify-between">
+                <span>Capacidad máxima:</span>
+                <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">120 lbs (54.4 kg)</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Brazo de palanca (C.G. Arm):</span>
+                <span class="font-mono font-bold">95 in (2.41 m)</span>
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 pt-0.5">Ubicado inmediatamente tras los respaldos de asientos traseros hasta la cuaderna de la estación 108.</p>
+            </div>
+          </div>
+
+          <!-- BAGGAGE AREA 2 -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ÁREA DE EQUIPAJE 2 (STATIONS 108 - 142)</strong>
+            <div class="text-[11px] leading-tight space-y-1 text-slate-800 dark:text-slate-200">
+              <div class="flex justify-between">
+                <span>Capacidad máxima:</span>
+                <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">50 lbs (22.7 kg)</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Brazo de palanca (C.G. Arm):</span>
+                <span class="font-mono font-bold">123 in (3.12 m)</span>
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 pt-0.5">Espacio posterior bajo la repisa entre las cuadernas de fuselaje de estación 108 y 142.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- WARNING COMBINED WEIGHT -->
+        <div class="p-2 px-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+          <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>⚠️</span>
+            <span>LIMITACIÓN COMBINADA ESTRICTA (POH NOTE):</span>
+          </strong>
+          <div>"The maximum combined weight capacity for both Baggage Area 1 and Baggage Area 2 is 120 pounds (54.4 kg)." No se puede cargar 120 lbs en el Área 1 y 50 lbs en el Área 2 simultáneamente; el peso sumado de ambos compartimentos no puede superar jamás los 120 lbs (54.4 kg).</div>
+        </div>
+
+        <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 FACTORES DE CARGA (FLIGHT LOAD FACTOR LIMITS)</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH pág. 2-8</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch text-[11px]">
+          <!-- CATEGORÍA NORMAL -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase">CATEGORÍA NORMAL (MTOW 2300 lbs)</strong>
+            <div class="flex justify-between py-0.5">
+              <span>Flaps UP (Recogidos):</span>
+              <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">+3.8 G / -1.52 G</span>
+            </div>
+            <div class="flex justify-between py-0.5">
+              <span>Flaps DOWN (Extendidos):</span>
+              <span class="font-mono font-bold text-blue-600 dark:text-sky-400">+3.0 G</span>
+            </div>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400">Operaciones no acrobáticas estándar de crucero, navegación e instrucción básica.</p>
+          </div>
+
+          <!-- CATEGORÍA UTILIDAD -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase">CATEGORÍA UTILIDAD (MTOW 2000 lbs)</strong>
+            <div class="flex justify-between py-0.5">
+              <span>Flaps UP (Recogidos):</span>
+              <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">+4.4 G / -1.76 G</span>
+            </div>
+            <div class="flex justify-between py-0.5">
+              <span>Flaps DOWN (Extendidos):</span>
+              <span class="font-mono font-bold text-blue-600 dark:text-sky-400">+3.0 G</span>
+            </div>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400"><strong>Condición reglamentaria POH:</strong> Prohibido equipaje en Área 1 y 2, y prohibidos pasajeros en plazas traseras.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama Oficial POH Fig 6-3 (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📦 ESTACIONES DE FUSELAJE C172 (FIG. 6-3)</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Diagrama oficial de disposición de carga (*Loading Arrangements*) de la Cessna 172 con las estaciones de gravedad en pulgadas desde el Datum (pared cortafuegos).
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
+            <img src="/images/c172/figure_6_3_loading_arrangements.png" alt="Figura 6-3 Disposición de Carga y Compartimentos de Equipaje Cessna 172" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+          </div>
+        </div>
+
+        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
+          Ref. POH: Sección 6 (Weight & Balance) Figura 6-3 pág. 6-7.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.4: 2.4 Límites de Maniobra y Factores de Carga -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.2 Límites de Maniobra y Factores de Carga</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.4 Límites de Maniobra y Factores de Carga</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Maneuver Limits, Prohibición de Barrenas y Cargas G Negativas</span>
   </div>
@@ -826,12 +1102,12 @@ export const C172_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.3: 1.3 Límites de Motor: Potencia, RPM y Techo Operativo -->
+<!-- DIAPOSITIVA 2.5: 2.5 Límites de Motor: Potencia, RPM y Techo Operativo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.3 Límites de Motor: Potencia, RPM y Techo Operativo</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.5 Límites de Motor: Potencia, RPM y Techo Operativo</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Technify Motors TAE 125 (CD-135 vs CD-155), RPM y Techo Certificado</span>
   </div>
@@ -929,12 +1205,12 @@ export const C172_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.4: 1.4 Límites Operacionales de Temperatura -->
+<!-- DIAPOSITIVA 2.6: 2.6 Límites Operacionales de Temperatura -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.4 Límites Operacionales de Temperatura</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.6 Límites Operacionales de Temperatura</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Límites de Aceite de Motor, Líquido Refrigerante y Caja Reductora</span>
   </div>
@@ -1035,12 +1311,12 @@ export const C172_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.5: 1.5 Límites de Presión y Consumo de Aceite -->
+<!-- DIAPOSITIVA 2.7: 2.7 Límites de Presión y Consumo de Aceite -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.5 Límites de Presión y Consumo de Aceite</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.7 Límites de Presión y Consumo de Aceite</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Presión Mínima (1.2 / 2.3 bar), Máxima (6.0 bar) y Consumo Máximo (0.1 l/h)</span>
   </div>
@@ -1134,12 +1410,12 @@ export const C172_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.6: 1.6 Límites Térmicos de Combustible en Depósito -->
+<!-- DIAPOSITIVA 2.8: 2.8 Límites Térmicos de Combustible en Depósito -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.6 Límites Térmicos de Combustible en Depósito</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.8 Límites Térmicos de Combustible en Depósito</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla 2-3a POH: Temperaturas Mínimas para JET A-1 (-30°C / -35°C) y Diésel (>0°C / -5°C)</span>
   </div>
@@ -1240,12 +1516,12 @@ export const C172_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.7: 1.7 Marcas de Instrumentos CED 125 (Motor y Reductora) -->
+<!-- DIAPOSITIVA 2.9: 2.9 Marcas de Instrumentos CED 125 (Motor y Reductora) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.7 Marcas de Instrumentos CED 125 (Motor y Reductora)</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.9 Marcas de Instrumentos CED 125 (Motor y Reductora)</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla 2-2 / 2-3b POH: Rangos Verde, Ámbar y Rojo en el Display Compacto</span>
   </div>
@@ -1326,12 +1602,12 @@ export const C172_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.8: 1.8 Marcas de Instrumentos AED 125 y Botón Confirm/Test -->
+<!-- DIAPOSITIVA 2.10: 2.10 Marcas de Instrumentos AED 125 y Botón Confirm/Test -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.8 Marcas de Instrumentos AED 125 y Botón Confirm/Test</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.10 Marcas de Instrumentos AED 125 y Botón Confirm/Test</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Parámetros Eléctricos, Temperatura de Combustible y Lógica de Rearme de Alarmas</span>
   </div>
@@ -1450,12 +1726,12 @@ export const C172_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.9: 1.9 Combustibles Autorizados y Capacidades de Depósitos -->
+<!-- DIAPOSITIVA 2.11: 2.11 Combustibles Autorizados y Capacidades de Depósitos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.9 Combustibles Autorizados y Capacidades de Depósitos</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.11 Combustibles Autorizados y Capacidades de Depósitos</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Grados JET/Diésel, Densidad (0.84 kg/l), Capacidades y Aviso Low Level (<10 l)</span>
   </div>
@@ -1548,12 +1824,12 @@ export const C172_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.10: 1.10 Fluidos Autorizados y Placards Obligatorios -->
+<!-- DIAPOSITIVA 2.12: 2.12 Fluidos Autorizados y Placards Obligatorios -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.10 Fluidos Autorizados y Placards Obligatorios</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.12 Fluidos Autorizados y Placards Obligatorios</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aceites Aprobados, Refrigerante G48 y Letreros Mandatorios de Célula y Cabina</span>
   </div>
@@ -2858,6 +3134,173 @@ export const C172_LESSON_3 = {
       </div>
     </div>
   </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.13: 3.13 Sistemas de Célula I: Mandos de Vuelo, Compensación y Flaps Fowler Eléctricos -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · SISTEMAS POH (SECCIÓN 7)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.13 Sistemas de Célula I: Mandos de Vuelo, Compensación y Flaps Fowler</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Flight Controls, Elevator Trim & Wing Flap System</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): POH Sección 7 Mandos y Flaps (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🕹️ FLIGHT CONTROLS & TRIM SYSTEM (POH PÁG. 7-8)</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH Sección 7</span>
+        </div>
+
+        <!-- Mandos Primarios y Compensador -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Mandos de Vuelo Convencionales:</strong> El sistema de mandos de vuelo consiste en alerones, timón de profundidad y timón de dirección convencionales operados manualmente a través de varillaje mecánico y cables de control desde los volantes de mando y pedales.</div>
+          </div>
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Alerones Diferenciales:</strong> Diseñados para reducir la guiñada adversa; el alerón que sube tiene mayor deflexión hacia arriba que la deflexión hacia abajo del alerón opuesto.</div>
+          </div>
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Sistema de Compensación de Profundidad (Elevator Trim Tab):</strong> Accionado manualmente mediante la rueda de trim vertical montada en el pedestal de cabina. La rotación hacia adelante compensa morro abajo (*nose-down*); hacia atrás compensa morro arriba (*nose-up*).</div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🪽 WING FLAP SYSTEM (POH PÁG. 7-10)</span>
+        </div>
+
+        <!-- Flaps Fowler Eléctricos -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Flaps Fowler de Ranura Simple (Single-Slot Type):</strong> Al extenderse se desplazan primero hacia atrás sobre sus guías antes de deflectarse hacia abajo, aumentando tanto la superficie alar efectiva como la curvatura del perfil y reenergizando la capa límite mediante la ranura de flujo.</div>
+          </div>
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Accionamiento Eléctrico:</strong> Operados por un motor eléctrico de corriente continua instalado en la semiala derecha, acoplado mediante varillas mecánicas y cables sincronizadores a ambas superficies.</div>
+          </div>
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Palanca Selectora e Indicador:</strong> La palanca en el panel de instrumentos dispone de topes mecánicos en <strong>10°</strong> y <strong>20°</strong>. Para ángulos mayores se desplaza a la derecha del tope hacia <strong>40°</strong> (o 30° según célula). Un indicador mecánico seguidor muestra el ángulo exacto de deflexión.</div>
+          </div>
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Protección Eléctrica:</strong> Circuito protegido por un disyuntor automático (*circuit breaker*) de <strong>15 Amperios</strong> identificado como <code class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">FLAP</code>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema POH Fig 7-3 (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ SISTEMA DE FLAPS C172 (FIGURA 7-3)</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Perspectiva isométrica oficial del manual POH que ilustra el montaje, ranuras aerodinámicas y varillaje del sistema de flaps tipo Fowler en las semialas de la Cessna 172.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
+            <img src="/images/c172/figure_7_3_wing_flap_system.png" alt="Figura 7-3 Wing Flap System Cessna 172 POH" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+          </div>
+        </div>
+
+        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
+          Ref. POH: Sección 7 (Airplane & Systems Descriptions) Figura 7-3 pág. 7-10.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.14: 3.14 Sistemas de Célula II: Tren de Aterrizaje, Frenos, Dirección en Tierra y Aviso Neumático de Pérdida -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · SISTEMAS POH (SECCIÓN 7)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.14 Sistemas de Célula II: Tren, Frenos, Dirección en Tierra y Aviso de Pérdida</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Landing Gear, Ground Steering & Stall Warning</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): POH Sección 7 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛞 TREN, FRENOS Y DIRECCIÓN (POH PÁG. 7-9 & 7-10)</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH Sección 7</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+          <div><strong>Tren de Aterrizaje Triciclo Fijo:</strong> La amortiguación del tren principal se logra mediante ballestas de acero tubular de resorte de una sola pieza. La pata de morro cuenta con un amortiguador oleoneumático (*air/oil shock strut*).</div>
+          <div><strong>Frenos de Disco Hidráulicos:</strong> Frenos de disco sencillos en la parte interior de cada rueda principal, accionados hidráulicamente de forma independiente mediante los cilindros maestros en las punteras de los pedales.</div>
+          <div><strong>Dirección en Tierra (Ground Control):</strong> Rueda de morro orientable acoplada a los pedales de dirección mediante un varillaje con resorte elástico (*spring-loaded steering bungee*):
+            <div class="grid grid-cols-2 gap-1.5 pt-1 font-mono">
+              <span class="p-1 rounded-md bg-blue-50 dark:bg-blue-950/40 text-[#1a80ff] dark:text-sky-400 font-bold">Solo pedales: ±10°</span>
+              <span class="p-1 rounded-md bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 font-bold">Con freno dif.: ±30°</span>
+            </div>
+          </div>
+          <div><strong>Radio Mínimo de Giro:</strong> Con pedales y frenado diferencial, el radio mínimo de giro es de <strong>27 ft 5.5 in (8.37 m)</strong>.</div>
+        </div>
+
+        <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚠️ AVISO NEUMÁTICO DE PÉRDIDA Y PITOT-ESTÁTICA</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH pág. 7-31 & 7-34</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+          <div><strong>Aviso Neumático de Pérdida (Stall Warning System):</strong> Consta de una toma ranurada en el borde de ataque del ala izquierda conectada a una bocina acústica en la esquina superior izquierda del marco del parabrisas.
+            <div class="p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 my-1 font-semibold">
+              ✓ 100% Neumático e Independiente: La depresión aerodinámica al acercarse al ángulo crítico succiona aire a través de la bocina, emitiendo un sonido continuo entre 5 y 10 nudos antes de la pérdida real en todas las configuraciones. Funciona sin energía eléctrica.
+            </div>
+          </div>
+          <div><strong>Comprobación Prevuelo Oficial POH:</strong> Colocar un paño limpio sobre la abertura del borde de ataque y aspirar suavemente con la boca: el sonido audible en cabina confirma el estado operativo de la bocina y sus conductos.</div>
+          <div><strong>Toma Estática Alternativa (Alternate Static Source):</strong> Válvula ubicada en el pedestal inferior para suministrar presión estática desde el interior de cabina si la toma estática exterior se bloquea por hielo o agua.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema Aeromecánico (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 ESQUEMA DE TREN, DIRECCIÓN Y PÉRDIDA</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Representación técnica de los arcos de giro de rueda de morro (bungee), amortiguación oleoneumática y principio de succión del avisador de pérdida neumático de la C172.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
+            <img src="/images/c172/figure_7_ground_steering_and_gear.svg" alt="Esquema de Tren de Aterrizaje, Dirección de Rueda de Morro y Bocina de Pérdida Neumática Cessna 172" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+          </div>
+        </div>
+
+        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
+          Ref. POH: Sección 7 (Airplane & Systems Descriptions) págs. 7-9, 7-10 y 7-34.
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
 };;
 
@@ -2872,8 +3315,7 @@ export const C172_LESSON_4 = {
   sequence_order: 4,
   lesson_order: 4,
   min_seconds: 1,
-  content_html: `
-<!-- DIAPOSITIVA 4.1: 4.1 Inspección Prevuelo I: Cabina Inicial -->
+  content_html: `<!-- DIAPOSITIVA 4.1: 4.1 Inspección Prevuelo I: Cabina Inicial -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
@@ -4318,12 +4760,136 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.16: 4.16 Despegue y Ascenso -->
+<!-- DIAPOSITIVA 4.16: 4.16 Velocidades Operativas de Vuelo y Viento Cruzado Demostrado -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · PROCEDIMIENTOS NORMALES (SECCIÓN 4)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.16 Velocidades Operativas de Vuelo y Viento Cruzado Demostrado</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Speeds for Normal Operation & Crosswind Component</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Tabla Oficial Sección 4 POH (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛫 SPEEDS FOR NORMAL OPERATION (POH PÁG. 4-3)</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">Peso máx. 2300 lbs</span>
+        </div>
+
+        <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
+          <table class="w-full text-left text-[11px] leading-tight">
+            <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
+              <tr>
+                <th class="p-1.5 px-2">FASE DE OPERACIÓN</th>
+                <th class="p-1.5 px-2 text-center">CONFIGURACIÓN</th>
+                <th class="p-1.5 px-2 text-center font-extrabold text-[#1a80ff] dark:text-sky-400">KIAS (POH)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
+              <tr>
+                <td class="p-1 px-2 font-bold">Despegue y Ascenso Inicial Normal</td>
+                <td class="p-1 px-2 text-center">Flaps UP (0°)</td>
+                <td class="p-1 px-2 text-center font-mono font-bold">70 – 80 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Despegue Campo Corto (Sobre 50 ft)</td>
+                <td class="p-1 px-2 text-center">Flaps UP (0°)</td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-amber-600 dark:text-amber-400">59 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Mejor Régimen de Ascenso (V<sub>Y</sub>)</td>
+                <td class="p-1 px-2 text-center">Nivel del Mar / 10.000 ft</td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-blue-600 dark:text-sky-400">73 / 68 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Mejor Ángulo de Ascenso (V<sub>X</sub>)</td>
+                <td class="p-1 px-2 text-center">Nivel del Mar / 10.000 ft</td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-indigo-600 dark:text-indigo-400">59 / 61 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Ascenso Normal en Ruta (Enroute Climb)</td>
+                <td class="p-1 px-2 text-center">Flaps UP (0°)</td>
+                <td class="p-1 px-2 text-center font-mono font-bold">75 – 85 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Aproximación Normal sin Flaps</td>
+                <td class="p-1 px-2 text-center">Flaps UP (0°)</td>
+                <td class="p-1 px-2 text-center font-mono font-bold">60 – 70 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Aproximación Normal con Flaps</td>
+                <td class="p-1 px-2 text-center">Flaps 40° (Full)</td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">55 – 65 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Aproximación Campo Corto</td>
+                <td class="p-1 px-2 text-center">Flaps 40°</td>
+                <td class="p-1 px-2 text-center font-mono font-bold">60 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Aproximación Frustrada (Balked Landing)</td>
+                <td class="p-1 px-2 text-center">Flaps 20° (Máx. Potencia)</td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-purple-600 dark:text-purple-400">55 KIAS</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">💨 VIENTO CRUZADO MÁXIMO DEMOSTRADO</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH pág. 4-3</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[11px] leading-tight shadow-2xs">
+          <div class="flex items-center justify-between font-bold mb-1">
+            <span>MAXIMUM DEMONSTRATED CROSSWIND VELOCITY:</span>
+            <span class="font-mono text-sm font-extrabold text-[#1a80ff] dark:text-sky-400">15 KNOTS</span>
+          </div>
+          <p class="text-[10.5px] leading-relaxed">
+            Valor ensayado satisfactoriamente por el fabricante en despegue y aterrizaje sin que la aeronave presente dificultades de control. <em>Nota técnica reglamentaria:</em> No constituye una limitación estructural restrictiva para la aeronave, sino una velocidad de control demostrada durante la certificación.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Figura 5-3 Stall Speeds (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📊 VELOCIDADES DE PÉRDIDA SEGÚN ALABEO (FIG. 5-3)</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Tabla oficial del POH con el incremento de la velocidad de pérdida (KIAS/KCAS) a peso máximo (2300 lbs) según el ángulo de alabeo (0°, 30°, 45° y 60°) y posición de flaps.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
+            <img src="/images/c172/figure_5_3_stall_speeds.png" alt="Figura 5-3 Stall Speeds Cessna 172 POH" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+          </div>
+        </div>
+
+        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
+          Ref. POH: Sección 5 (Performance) Figura 5-3 pág. 5-11.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.17: 4.17 Despegue y Ascenso -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.16 Despegue y Ascenso</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.17 Despegue y Ascenso</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Configuración de Despegue, Velocidades y Ascenso</span>
   </div>
@@ -4427,12 +4993,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.17: 4.17 Vuelo de Crucero y Gestión de Combustible -->
+<!-- DIAPOSITIVA 4.18: 4.18 Vuelo de Crucero y Gestión de Combustible -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.17 Vuelo de Crucero y Gestión de Combustible</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.18 Vuelo de Crucero y Gestión de Combustible</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Potencia, Compensación y Gestión de Combustible</span>
   </div>
@@ -4530,12 +5096,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.18: 4.18 Descenso y Aterrizaje Normal -->
+<!-- DIAPOSITIVA 4.19: 4.19 Descenso y Aterrizaje Normal -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.18 Descenso y Aterrizaje Normal</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.19 Descenso y Aterrizaje Normal</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimientos de Descenso, Aproximación y Toma</span>
   </div>
@@ -4651,12 +5217,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.19: 4.19 Maniobra de Escape: Aproximación Frustrada -->
+<!-- DIAPOSITIVA 4.20: 4.20 Maniobra de Escape: Aproximación Frustrada -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.19 Maniobra de Escape: Aproximación Frustrada</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.20 Maniobra de Escape: Aproximación Frustrada</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Maniobra de Motor y al Aire (Go-Around)</span>
   </div>
@@ -4733,12 +5299,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.20: 4.20 Tras el Aterrizaje y Parada de Motor -->
+<!-- DIAPOSITIVA 4.21: 4.21 Tras el Aterrizaje y Parada de Motor -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.20 Tras el Aterrizaje y Parada de Motor</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.21 Tras el Aterrizaje y Parada de Motor</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Configuración de Pista y Parada</span>
   </div>
@@ -4836,12 +5402,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.21: 4.21 Procedimientos Especiales -->
+<!-- DIAPOSITIVA 4.22: 4.22 Procedimientos Especiales -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.21 Procedimientos Especiales</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.22 Procedimientos Especiales</h1>
     </div>
     
   </div>
@@ -4922,8 +5488,7 @@ export const C172_LESSON_4 = {
       </div>
     </div>
   </div>
-</div>
-`,
+</div>`,
 };;
 
 // ============================================================================
@@ -4937,13 +5502,120 @@ export const C172_LESSON_5 = {
   sequence_order: 5,
   lesson_order: 5,
   min_seconds: 1,
-  content_html: `
-<!-- DIAPOSITIVA 5.1: 5.1 Fallo de Motor en Despegue: En Pista y Tras el Despegue -->
+  content_html: `<!-- DIAPOSITIVA 5.1: 5.1 Velocidades de Emergencia de la Célula y Perfil de Mejor Planeo (Maximum Glide) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · PROCEDIMIENTOS DE EMERGENCIA (SECCIÓN 3)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.1 Velocidades de Emergencia de la Célula y Perfil de Mejor Planeo</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Airspeeds for Emergency Operation & Maximum Glide</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): POH Sección 3 Velocidades de Emergencia (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🚨 AIRSPEEDS FOR EMERGENCY OPERATION (POH PÁG. 3-3)</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH Sección 3</span>
+        </div>
+
+        <!-- Tabla de Velocidades de Emergencia -->
+        <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
+          <table class="w-full text-left text-[11px] leading-tight">
+            <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
+              <tr>
+                <th class="p-1.5 px-2">CONDICIÓN DE EMERGENCIA</th>
+                <th class="p-1.5 px-2 text-center">CONFIGURACIÓN</th>
+                <th class="p-1.5 px-2 text-center font-extrabold text-red-600 dark:text-red-400">KIAS (POH)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
+              <tr>
+                <td class="p-1 px-2 font-bold">Fallo de Motor tras el Despegue</td>
+                <td class="p-1 px-2 text-center">Flaps UP (0°)</td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-red-600 dark:text-red-400">65 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Fallo de Motor tras el Despegue</td>
+                <td class="p-1 px-2 text-center">Flaps DOWN (Extendidos)</td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-red-600 dark:text-red-400">60 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Velocidad de Mejor Planeo (Maximum Glide)</td>
+                <td class="p-1 px-2 text-center">Peso 2300 lbs / Flaps UP</td>
+                <td class="p-1 px-2 text-center font-mono font-extrabold text-[#1a80ff] dark:text-sky-400">65 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Aterrizaje de Precaución con Motor</td>
+                <td class="p-1 px-2 text-center">Flaps 40°</td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">60 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Toma Forzosa sin Motor (Forced Landing)</td>
+                <td class="p-1 px-2 text-center">Flaps UP (0°)</td>
+                <td class="p-1 px-2 text-center font-mono font-bold">65 KIAS</td>
+              </tr>
+              <tr>
+                <td class="p-1 px-2 font-bold">Toma Forzosa sin Motor (Forced Landing)</td>
+                <td class="p-1 px-2 text-center">Flaps DOWN (Extendidos)</td>
+                <td class="p-1 px-2 text-center font-mono font-bold text-blue-600 dark:text-sky-400">60 KIAS</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📐 PROCEDIMIENTO AMPLIFICADO DE PLANEO (POH PÁG. 3-11)</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+          <div>
+            <strong>Establecimiento Inmediato de Velocidad:</strong> Tras un fallo de motor en vuelo, debe adoptarse de inmediato la actitud de mejor planeo para mantener <strong>65 KIAS</strong> con flaps recogidos. Mientras se planea hacia la zona de aterrizaje seleccionada, se intentará identificar la causa del fallo o preparar la toma forzosa.
+          </div>
+          <div class="p-1.5 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 text-blue-900 dark:text-blue-200 font-semibold">
+            Alcance Oficial de Planeo: Aproximadamente <strong>1.5 millas náuticas por cada 1.000 ft</strong> de altura sobre el terreno (con flaps arriba, hélice en molinete y viento en calma).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Figura 3-1 Maximum Glide (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📉 GRÁFICA DE MEJOR PLANEO (FIGURA 3-1 POH)</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Curva oficial de distancia alcanzable en planeo (NM) según la altitud sobre el terreno (ft AGL) a velocidad de 65 KIAS con flaps recogidos y viento cero.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
+            <img src="/images/c172/figure_3_1_maximum_glide.png" alt="Figura 3-1 Maximum Glide Cessna 172 POH" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+          </div>
+        </div>
+
+        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
+          Ref. POH: Sección 3 (Emergency Procedures) Figura 3-1 pág. 3-11.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 5.2: 5.2 Fallo de Motor en Despegue: En Pista y Tras el Despegue -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.1 Fallo de Motor en Despegue: En Pista y Tras el Despegue</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.2 Fallo de Motor en Despegue: En Pista y Tras el Despegue</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Fallo en Carrera en Pista y Fallo Inmediato tras el Despegue</span>
   </div>
@@ -5046,12 +5718,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.2: 5.2 Fallo de Motor en Vuelo y Reencendido -->
+<!-- DIAPOSITIVA 5.3: 5.3 Fallo de Motor en Vuelo y Reencendido -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.2 Fallo de Motor en Vuelo y Reencendido</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.3 Fallo de Motor en Vuelo y Reencendido</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Gestión de Alimentación de Combustible y Protocolo de Reencendido</span>
   </div>
@@ -5167,12 +5839,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.3: 5.3 Avisos Luminosos FADEC en Vuelo -->
+<!-- DIAPOSITIVA 5.4: 5.4 Avisos Luminosos FADEC en Vuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.3 Avisos Luminosos FADEC en Vuelo</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.4 Avisos Luminosos FADEC en Vuelo</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Luces FADEC Parpadeantes o Fijas: Categorías Low y High</span>
   </div>
@@ -5265,12 +5937,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.4: 5.4 Comportamiento Anómalo del Motor y Force B -->
+<!-- DIAPOSITIVA 5.5: 5.5 Comportamiento Anómalo del Motor y Force B -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.4 Comportamiento Anómalo del Motor y Force B</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.5 Comportamiento Anómalo del Motor y Force B</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Conmutación Manual a Canal B y Prevención de Sobrerégimen de Hélice</span>
   </div>
@@ -5353,12 +6025,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.5: 5.5 Incendios: Motor en Tierra, en Vuelo y Eléctrico -->
+<!-- DIAPOSITIVA 5.6: 5.6 Incendios: Motor en Tierra, en Vuelo y Eléctrico -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.5 Incendios: Motor en Tierra, en Vuelo y Eléctrico</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.6 Incendios: Motor en Tierra, en Vuelo y Eléctrico</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Protocolo de Corte de Fuego, Extinción y Aislamiento Eléctrico</span>
   </div>
@@ -5492,12 +6164,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.6: 5.6 Parada de Motor en Vuelo y Aterrizaje Forzoso -->
+<!-- DIAPOSITIVA 5.7: 5.7 Parada de Motor en Vuelo y Aterrizaje Forzoso -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.6 Parada de Motor en Vuelo y Aterrizaje Forzoso</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.7 Parada de Motor en Vuelo y Aterrizaje Forzoso</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimiento de Corte Voluntario y Aterrizaje sin Motor (Engine Out)</span>
   </div>
@@ -5612,12 +6284,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.7: 5.7 Engelamiento Inadvertido y Recuperación de Barrena -->
+<!-- DIAPOSITIVA 5.8: 5.8 Engelamiento Inadvertido y Recuperación de Barrena -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.7 Engelamiento Inadvertido y Recuperación de Barrena</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.8 Engelamiento Inadvertido y Recuperación de Barrena</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Condiciones Meteorológicas Adversas y Salida de Espiral</span>
   </div>
@@ -5748,12 +6420,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.8: 5.8 Fallo del Alternador y Descarga de Batería -->
+<!-- DIAPOSITIVA 5.9: 5.9 Fallo del Alternador y Descarga de Batería -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.8 Fallo del Alternador y Descarga de Batería</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.9 Fallo del Alternador y Descarga de Batería</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Avisos Luminosos, Batería Principal y Protocolo de Deslastre Eléctrico</span>
   </div>
@@ -5860,12 +6532,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.9: 5.9 Fallo Eléctrico Total y Batería FADEC Backup -->
+<!-- DIAPOSITIVA 5.10: 5.10 Fallo Eléctrico Total y Batería FADEC Backup -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.9 Fallo Eléctrico Total y Batería FADEC Backup</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.10 Fallo Eléctrico Total y Batería FADEC Backup</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aislamiento de Equipos y Funcionamiento Autónomo del Motor (30 Minutos)</span>
   </div>
@@ -5936,12 +6608,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.10: 5.10 Anomalías de Aceite: Presión y Temperatura -->
+<!-- DIAPOSITIVA 5.11: 5.11 Anomalías de Aceite: Presión y Temperatura -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.10 Anomalías de Aceite: Presión y Temperatura</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.11 Anomalías de Aceite: Presión y Temperatura</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Presión de Aceite Baja (&lt; 2.3 bar / &lt; 1.2 bar) y Sobretemperatura de Aceite</span>
   </div>
@@ -6033,12 +6705,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.11: 5.11 Anomalías Térmicas: Refrigerante, Water Level y Reductora -->
+<!-- DIAPOSITIVA 5.12: 5.12 Anomalías Térmicas: Refrigerante, Water Level y Reductora -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.11 Anomalías Térmicas: Refrigerante, Water Level y Reductora</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.12 Anomalías Térmicas: Refrigerante, Water Level y Reductora</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Sobretemperatura de Refrigerante, Aviso Water Level y Temperatura de Reductora</span>
   </div>
@@ -6132,12 +6804,12 @@ export const C172_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.12: 5.12 Pérdida de Potencia, Combustible y Malfunciones de Hélice -->
+<!-- DIAPOSITIVA 5.13: 5.13 Pérdida de Potencia, Combustible y Malfunciones de Hélice -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.12 Pérdida de Potencia, Combustible y Malfunciones de Hélice</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.13 Pérdida de Potencia, Combustible y Malfunciones de Hélice</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Disminución de Potencia, Temperaturas Límite de Combustible y RPM de Hélice</span>
   </div>
@@ -6261,8 +6933,7 @@ export const C172_LESSON_5 = {
       </div>
     </div>
   </div>
-</div>
-`,
+</div>`,
 };
 
 // ============================================================================
