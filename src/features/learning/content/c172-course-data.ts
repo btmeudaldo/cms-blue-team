@@ -627,11 +627,38 @@ export const C172_LESSON_2 = {
                   <td class="p-2.5 px-2 text-center font-mono font-extrabold text-amber-600 dark:text-amber-400">128</td>
                   <td class="p-2.5 px-3">No exceder esta velocidad salvo en aire calmo, y solo con precaución.</td>
                 </tr>
-                <tr>
-                  <td class="p-2.5 px-3 font-bold font-mono">V<sub>A</sub> (Maneuvering Speed)</td>
-                  <td class="p-2.5 px-2 text-center font-mono">96 / 88 / 80</td>
-                  <td class="p-2.5 px-2 text-center font-mono font-extrabold text-blue-600 dark:text-sky-400">97 / 89 / 80</td>
-                  <td class="p-2.5 px-3"><strong>97 KIAS</strong> (2.300 lbs), <strong>89 KIAS</strong> (1.950 lbs), <strong>80 KIAS</strong> (1.600 lbs). No aplicar deflexiones de mandos bruscas ni totales por encima de esta velocidad.</td>
+                <!-- V_A (Maneuvering Speed) · Formato POH Oficial -->
+                <tr class="bg-sky-50/70 dark:bg-sky-950/40">
+                  <td class="pt-2 pb-1 px-3 font-bold font-mono text-[#0B2E59] dark:text-sky-300" colspan="3">
+                    V<sub>A</sub> (Maneuvering Speed):
+                  </td>
+                  <td class="p-2.5 px-3 align-middle text-slate-700 dark:text-slate-300 border-l border-slate-200 dark:border-slate-700/60" rowspan="4">
+                    No aplicar deflexiones de mandos bruscas ni totales por encima de esta velocidad. La velocidad de maniobra disminuye al reducir el peso de la aeronave.
+                  </td>
+                </tr>
+                <tr class="bg-sky-50/30 dark:bg-sky-950/20">
+                  <td class="py-1 px-3 pl-6">
+                    <span class="font-medium text-slate-800 dark:text-slate-200">2.300 lbs</span>
+                    <span class="text-[10px] text-slate-400 dark:text-slate-400 font-normal ml-1">(1.043 kg)</span>
+                  </td>
+                  <td class="py-1 px-2 text-center font-mono text-slate-700 dark:text-slate-300">96</td>
+                  <td class="py-1 px-2 text-center font-mono font-extrabold text-blue-600 dark:text-sky-400">97</td>
+                </tr>
+                <tr class="bg-sky-50/30 dark:bg-sky-950/20">
+                  <td class="py-1 px-3 pl-6">
+                    <span class="font-medium text-slate-800 dark:text-slate-200">1.950 lbs</span>
+                    <span class="text-[10px] text-slate-400 dark:text-slate-400 font-normal ml-1">(885 kg)</span>
+                  </td>
+                  <td class="py-1 px-2 text-center font-mono text-slate-700 dark:text-slate-300">88</td>
+                  <td class="py-1 px-2 text-center font-mono font-extrabold text-blue-600 dark:text-sky-400">89</td>
+                </tr>
+                <tr class="bg-sky-50/30 dark:bg-sky-950/20">
+                  <td class="pb-2 pt-1 px-3 pl-6">
+                    <span class="font-medium text-slate-800 dark:text-slate-200">1.600 lbs</span>
+                    <span class="text-[10px] text-slate-400 dark:text-slate-400 font-normal ml-1">(726 kg)</span>
+                  </td>
+                  <td class="pb-2 pt-1 px-2 text-center font-mono text-slate-700 dark:text-slate-300">80</td>
+                  <td class="pb-2 pt-1 px-2 text-center font-mono font-extrabold text-blue-600 dark:text-sky-400">80</td>
                 </tr>
                 <tr>
                   <td class="p-2.5 px-3 font-bold font-mono">V<sub>FE</sub> (Max. Flaps Down)</td>
