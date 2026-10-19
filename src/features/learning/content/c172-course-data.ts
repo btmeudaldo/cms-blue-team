@@ -597,7 +597,7 @@ export const C172_LESSON_2 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Tablas Oficiales (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-3">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⏱️ AIRSPEED LIMITATIONS (VELOCIDADES LÍMITE)</span>
@@ -675,11 +675,6 @@ export const C172_LESSON_2 = {
               </tbody>
             </table>
           </div>
-
-          <!-- Nota textual POH al pie de tabla -->
-          <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-[11px] leading-relaxed text-slate-700 dark:text-slate-300">
-            <strong>Nota POH:</strong> La velocidad de maniobra (V<sub>A</sub>) es la velocidad máxima a la cual la deflexión aerodinámica total de los mandos no excederá los límites estructurales de diseño de la aeronave.
-          </div>
         </div>
       </div>
     </div>
@@ -699,7 +694,12 @@ export const C172_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2">
-            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 calibrado en nudos" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 calibrado en nudos" class="w-full h-full max-h-[290px] object-contain rounded-lg" />
+          </div>
+
+          <!-- Nota POH sobre V_A trasladada a la derecha -->
+          <div class="w-full shrink-0 p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-[11px] leading-relaxed text-slate-700 dark:text-slate-300 shadow-2xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300">Nota POH:</strong> La velocidad de maniobra (V<sub>A</sub>) es la velocidad máxima a la cual la deflexión aerodinámica total de los mandos no excederá los límites estructurales de diseño de la aeronave.
           </div>
         </div>
       </div>
