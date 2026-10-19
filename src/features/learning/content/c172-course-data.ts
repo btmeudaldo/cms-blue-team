@@ -3260,9 +3260,9 @@ export const C172_LESSON_3 = {
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): POH Sección 7 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): POH Sección 7 (Altura Fija 590px, Sin Scroll) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TREN, FRENOS Y DIRECCIÓN</span>
         </div>
@@ -3281,15 +3281,10 @@ export const C172_LESSON_3 = {
 
         <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AVISO NEUMÁTICO DE PÉRDIDA Y PITOT-ESTÁTICA</span>
-          
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
-          <div><strong>Aviso Neumático de Pérdida (Stall Warning System):</strong> Consta de una toma ranurada en el borde de ataque del ala izquierda conectada a una bocina acústica en la esquina superior izquierda del marco del parabrisas.
-            <div class="p-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 my-1 font-semibold">
-              ✓ 100% Neumático e Independiente: La depresión aerodinámica al acercarse al ángulo crítico succiona aire a través de la bocina, emitiendo un sonido continuo entre 5 y 10 nudos antes de la pérdida real en todas las configuraciones. Funciona sin energía eléctrica.
-            </div>
-          </div>
+          <div><strong>Aviso Neumático de Pérdida (Stall Warning System):</strong> Consta de una toma ranurada en el borde de ataque del ala izquierda conectada a una bocina acústica en la esquina superior izquierda del marco del parabrisas.</div>
           <div><strong>Comprobación Prevuelo Oficial:</strong> Colocar un paño limpio sobre la abertura del borde de ataque y aspirar suavemente con la boca: el sonido audible en cabina confirma el estado operativo de la bocina y sus conductos.</div>
           <div><strong>Toma Estática Alternativa (Alternate Static Source):</strong> Válvula ubicada en el pedestal inferior para suministrar presión estática desde el interior de cabina si la toma estática exterior se bloquea por hielo o agua.</div>
         </div>
