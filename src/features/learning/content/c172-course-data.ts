@@ -656,22 +656,22 @@ export const C172_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Imagen en blanco (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Anemómetro Oficial C172 (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📷 MATERIAL GRÁFICO</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🎛️ VELOCIDADES INDICADAS Y CALIBRADAS</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
-            <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-              📷
-            </div>
-            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen en Blanco / Pendiente</span>
-            <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-              Envolvente o diagrama de velocidades de la célula C172
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              El anemómetro presenta lecturas en <strong>KIAS</strong> (Knots Indicated Airspeed). Las velocidades en <strong>KCAS</strong> corrigen los errores de instalación y posición del tubo Pitot en los distintos ángulos de ataque.
             </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2">
+            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 calibrado en nudos" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
@@ -750,22 +750,22 @@ export const C172_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Imagen en blanco (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Anemómetro Oficial C172 (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📷 MATERIAL GRÁFICO</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🎛️ ANEMÓMETRO C172 (CALIBRADO EN KNOTS)</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
-            <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-              📷
-            </div>
-            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen en Blanco / Pendiente</span>
-            <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-              Fotografía de carátula o indicador de velocidad anemométrica en cabina
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Indicador de velocidad anemométrica de la célula Cessna 172 con anillo móvil exterior de True Airspeed (TAS) y franjas de limitación reglamentaria de colores.
             </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2">
+            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 con arcos de colores" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
