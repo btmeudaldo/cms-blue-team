@@ -3310,8 +3310,8 @@ export const C172_LESSON_3 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="/images/c172/figure_7_ground_steering_and_gear.svg" alt="Esquema de Tren de Aterrizaje, Dirección de Rueda de Morro y Bocina de Pérdida Neumática Cessna 172" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/80 flex items-center justify-center p-2">
+            <img src="/images/c172/3.14-tren-frenos-direccion.jpg" alt="Esquema de Tren de Aterrizaje, Dirección en Tierra y Aviso de Pérdida Cessna 172" class="w-full h-full max-h-[420px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
