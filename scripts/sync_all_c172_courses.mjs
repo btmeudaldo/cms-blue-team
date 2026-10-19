@@ -86,18 +86,13 @@ async function sync() {
         .eq("id", el.id);
     }
 
+    // Ensure clean state per course
     for (const sourceLesson of C172_LESSONS) {
-      // Find matching lesson by slug first, then by id
-      const target = (existingLessons || []).find(
-        (l) => l.slug === sourceLesson.slug || l.id === sourceLesson.id
-      );
-
-      // Generate deterministic or target id for new lesson
-      let lessonId = target ? target.id : sourceLesson.id;
-      if (!target && c.id === "17200000-0000-0000-0000-000000000272") {
-        lessonId = "17200000-0000-0000-0000-000000000110";
-      } else if (!target && c.id === "85579dd2-2450-48d4-a1f9-bb9da7257a76") {
-        lessonId = "a1100000-0000-0000-0000-000000000001";
+      let lessonId = sourceLesson.id;
+      if (c.id === "17200000-0000-0000-0000-000000000272") {
+        lessonId = `17200000-0000-0000-0000-0000000002${String(sourceLesson.sequence_order).padStart(2, "0")}`;
+      } else if (c.id === "85579dd2-2450-48d4-a1f9-bb9da7257a76") {
+        lessonId = `a1100000-0000-0000-0000-0000000000${String(sourceLesson.sequence_order).padStart(2, "0")}`;
       }
       const wordCount = sourceLesson.content_html
         .replace(/<[^>]*>/g, " ")
@@ -109,7 +104,7 @@ async function sync() {
           id: lessonId,
           course_id: c.id,
           title: sourceLesson.title,
-          slug: target?.slug || sourceLesson.slug,
+          slug: sourceLesson.slug,
           content_html: sourceLesson.content_html,
           sequence_order: sourceLesson.sequence_order,
           lesson_order: sourceLesson.lesson_order,
