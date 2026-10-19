@@ -733,22 +733,22 @@ export const C172_LESSON_2 = {
             <table class="w-full text-left text-[11px] leading-snug">
               <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
                 <tr>
-                  <th class="py-2.5 px-3 w-[26%]">MARCA (MARKING)</th>
-                  <th class="py-2.5 px-2 text-center w-[20%] font-mono">RANGO KIAS</th>
-                  <th class="py-2.5 px-3 w-[54%]">SIGNIFICADO OFICIAL POH (SIGNIFICANCE)</th>
+                  <th class="py-2.5 px-3 w-[19%]">MARCA</th>
+                  <th class="py-2.5 px-2 text-center w-[15%] font-mono">RANGO KIAS</th>
+                  <th class="py-2.5 px-3 w-[66%]">SIGNIFICADO OFICIAL POH (SIGNIFICANCE)</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
                 <!-- Arco Blanco -->
                 <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
-                  <td class="py-2.5 px-3 align-top font-bold">
+                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
                     <div class="flex items-center gap-2">
                       <span class="w-2.5 h-2.5 rounded-full bg-white border-2 border-slate-400 shrink-0 shadow-xs"></span>
                       <span class="text-xs text-slate-900 dark:text-white">Arco Blanco</span>
                     </div>
                     <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">White Arc</span>
                   </td>
-                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-slate-800 dark:text-slate-100">
+                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-slate-800 dark:text-slate-100 whitespace-nowrap">
                     41 – 85
                   </td>
                   <td class="py-2.5 px-3 align-top">
@@ -762,14 +762,14 @@ export const C172_LESSON_2 = {
 
                 <!-- Arco Verde -->
                 <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
-                  <td class="py-2.5 px-3 align-top font-bold">
+                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
                     <div class="flex items-center gap-2">
                       <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 border border-emerald-600 shrink-0 shadow-xs"></span>
                       <span class="text-xs text-emerald-700 dark:text-emerald-400">Arco Verde</span>
                     </div>
                     <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">Green Arc</span>
                   </td>
-                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-emerald-600 dark:text-emerald-400">
+                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
                     47 – 128
                   </td>
                   <td class="py-2.5 px-3 align-top">
@@ -783,14 +783,14 @@ export const C172_LESSON_2 = {
 
                 <!-- Arco Amarillo -->
                 <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
-                  <td class="py-2.5 px-3 align-top font-bold">
+                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
                     <div class="flex items-center gap-2">
                       <span class="w-2.5 h-2.5 rounded-full bg-amber-400 border border-amber-500 shrink-0 shadow-xs"></span>
                       <span class="text-xs text-amber-700 dark:text-amber-400">Arco Amarillo</span>
                     </div>
                     <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">Yellow Arc</span>
                   </td>
-                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-amber-600 dark:text-amber-400">
+                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-amber-600 dark:text-amber-400 whitespace-nowrap">
                     128 – 160
                   </td>
                   <td class="py-2.5 px-3 align-top">
@@ -803,14 +803,14 @@ export const C172_LESSON_2 = {
 
                 <!-- Línea Roja -->
                 <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
-                  <td class="py-2.5 px-3 align-top font-bold">
+                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
                     <div class="flex items-center gap-2">
                       <span class="w-2.5 h-2.5 rounded-full bg-red-600 border border-red-700 shrink-0 shadow-xs"></span>
                       <span class="text-xs text-red-600 dark:text-red-400">Línea Roja</span>
                     </div>
                     <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">Red Line</span>
                   </td>
-                  <td class="py-2.5 px-2 text-center align-middle font-mono font-extrabold text-sm text-red-600 dark:text-red-400">
+                  <td class="py-2.5 px-2 text-center align-middle font-mono font-extrabold text-sm text-red-600 dark:text-red-400 whitespace-nowrap">
                     160
                   </td>
                   <td class="py-2.5 px-3 align-top">
