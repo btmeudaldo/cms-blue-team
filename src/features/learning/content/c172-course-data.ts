@@ -608,10 +608,10 @@ export const C172_LESSON_2 = {
             <table class="w-full text-left text-[11px] leading-tight">
               <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
                 <tr>
-                  <th class="p-2.5 px-3">VELOCIDAD</th>
-                  <th class="p-2.5 px-2 text-center">KCAS</th>
-                  <th class="p-2.5 px-2 text-center font-extrabold text-[#1a80ff] dark:text-sky-400">KIAS</th>
-                  <th class="p-2.5 px-3">SIGNIFICADO OPERACIONAL</th>
+                  <th class="p-2.5 px-3 w-[38%]">VELOCIDAD</th>
+                  <th class="p-2.5 px-2 text-center w-[13%]">KCAS</th>
+                  <th class="p-2.5 px-2 text-center w-[13%] font-extrabold text-[#1a80ff] dark:text-sky-400">KIAS</th>
+                  <th class="p-2.5 px-3 w-[36%]">SIGNIFICADO OPERACIONAL</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
@@ -637,7 +637,7 @@ export const C172_LESSON_2 = {
                   </td>
                 </tr>
                 <tr class="bg-sky-50/30 dark:bg-sky-950/20">
-                  <td class="py-1 px-3 pl-6">
+                  <td class="py-1 px-3 pl-6 whitespace-nowrap">
                     <span class="font-medium text-slate-800 dark:text-slate-200">2.300 lbs</span>
                     <span class="text-[10px] text-slate-400 dark:text-slate-400 font-normal ml-1">(1.043 kg)</span>
                   </td>
@@ -645,7 +645,7 @@ export const C172_LESSON_2 = {
                   <td class="py-1 px-2 text-center font-mono font-extrabold text-blue-600 dark:text-sky-400">97</td>
                 </tr>
                 <tr class="bg-sky-50/30 dark:bg-sky-950/20">
-                  <td class="py-1 px-3 pl-6">
+                  <td class="py-1 px-3 pl-6 whitespace-nowrap">
                     <span class="font-medium text-slate-800 dark:text-slate-200">1.950 lbs</span>
                     <span class="text-[10px] text-slate-400 dark:text-slate-400 font-normal ml-1">(885 kg)</span>
                   </td>
@@ -653,7 +653,7 @@ export const C172_LESSON_2 = {
                   <td class="py-1 px-2 text-center font-mono font-extrabold text-blue-600 dark:text-sky-400">89</td>
                 </tr>
                 <tr class="bg-sky-50/30 dark:bg-sky-950/20">
-                  <td class="pb-2 pt-1 px-3 pl-6">
+                  <td class="pb-2 pt-1 px-3 pl-6 whitespace-nowrap">
                     <span class="font-medium text-slate-800 dark:text-slate-200">1.600 lbs</span>
                     <span class="text-[10px] text-slate-400 dark:text-slate-400 font-normal ml-1">(726 kg)</span>
                   </td>
