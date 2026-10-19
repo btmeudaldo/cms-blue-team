@@ -728,51 +728,118 @@ export const C172_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🎯 AIRSPEED INDICATOR MARKINGS (ARCOS DEL ANEMÓMETRO)</span>
           </div>
 
-          <!-- Tabla de Arcos del Anemómetro -->
+          <!-- Tabla de Arcos del Anemómetro (Formato POH Oficial Tabla 2-2) -->
           <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
-            <table class="w-full text-left text-[11px] leading-tight">
+            <table class="w-full text-left text-[11px] leading-snug">
               <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
                 <tr>
-                  <th class="p-2.5 px-3">MARCA</th>
-                  <th class="p-2.5 px-2 text-center font-mono">RANGO KIAS</th>
-                  <th class="p-2.5 px-3">SIGNIFICADO AERODINÁMICO OFICIAL</th>
+                  <th class="py-2.5 px-3 w-[26%]">MARCA (MARKING)</th>
+                  <th class="py-2.5 px-2 text-center w-[20%] font-mono">RANGO KIAS</th>
+                  <th class="py-2.5 px-3 w-[54%]">SIGNIFICADO OFICIAL POH (SIGNIFICANCE)</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
-                <tr>
-                  <td class="p-2.5 px-3 font-bold flex items-center gap-1.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300 border border-slate-400 shrink-0"></span>
-                    <span>Arco Blanco</span>
+                <!-- Arco Blanco -->
+                <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
+                  <td class="py-3 px-3 align-top font-bold">
+                    <div class="flex items-center gap-2">
+                      <span class="w-3 h-3 rounded-full bg-white border-2 border-slate-400 shrink-0 shadow-xs"></span>
+                      <span class="text-xs text-slate-900 dark:text-white">Arco Blanco</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-5 mt-0.5">White Arc</span>
                   </td>
-                  <td class="p-2.5 px-2 text-center font-mono font-bold">41 – 85</td>
-                  <td class="p-2.5 px-3"><strong>Full Flap Operating Range:</strong> Límite inferior V<sub>SO</sub> a peso máximo en configuración de aterrizaje. Límite superior V<sub>FE</sub> máxima con flaps extendidos.</td>
+                  <td class="py-3 px-2 text-center align-middle font-mono font-bold text-sm text-slate-800 dark:text-slate-100">
+                    41 – 85
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Rango de Operación con Flaps (Full Flap Operating Range):</strong>
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300 space-y-0.5">
+                      <div>• <strong>Límite inferior (41 KIAS):</strong> V<sub>SO</sub> a peso máximo en configuración de aterrizaje.</div>
+                      <div>• <strong>Límite superior (85 KIAS):</strong> V<sub>FE</sub> velocidad máxima admisible con flaps extendidos.</div>
+                    </div>
+                  </td>
                 </tr>
-                <tr>
-                  <td class="p-2.5 px-3 font-bold flex items-center gap-1.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
-                    <span>Arco Verde</span>
+
+                <!-- Arco Verde -->
+                <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
+                  <td class="py-3 px-3 align-top font-bold">
+                    <div class="flex items-center gap-2">
+                      <span class="w-3 h-3 rounded-full bg-emerald-500 border border-emerald-600 shrink-0 shadow-xs"></span>
+                      <span class="text-xs text-emerald-700 dark:text-emerald-400">Arco Verde</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-5 mt-0.5">Green Arc</span>
                   </td>
-                  <td class="p-2.5 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">47 – 128</td>
-                  <td class="p-2.5 px-3"><strong>Normal Operating Range:</strong> Límite inferior V<sub>S</sub> con flaps arriba a peso máximo y CG más adelantado. Límite superior V<sub>NO</sub> de crucero estructural.</td>
+                  <td class="py-3 px-2 text-center align-middle font-mono font-bold text-sm text-emerald-600 dark:text-emerald-400">
+                    47 – 128
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <strong class="text-emerald-800 dark:text-emerald-300 block mb-0.5">Rango Operacional Normal (Normal Operating Range):</strong>
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300 space-y-0.5">
+                      <div>• <strong>Límite inferior (47 KIAS):</strong> V<sub>S</sub> con flaps retraídos a peso máximo y CG adelantado.</div>
+                      <div>• <strong>Límite superior (128 KIAS):</strong> V<sub>NO</sub> velocidad máxima de crucero estructural.</div>
+                    </div>
+                  </td>
                 </tr>
-                <tr>
-                  <td class="p-2.5 px-3 font-bold flex items-center gap-1.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0"></span>
-                    <span>Arco Amarillo</span>
+
+                <!-- Arco Amarillo -->
+                <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
+                  <td class="py-3 px-3 align-top font-bold">
+                    <div class="flex items-center gap-2">
+                      <span class="w-3 h-3 rounded-full bg-amber-400 border border-amber-500 shrink-0 shadow-xs"></span>
+                      <span class="text-xs text-amber-700 dark:text-amber-400">Arco Amarillo</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-5 mt-0.5">Yellow Arc</span>
                   </td>
-                  <td class="p-2.5 px-2 text-center font-mono font-bold text-amber-600 dark:text-amber-400">128 – 160</td>
-                  <td class="p-2.5 px-3"><strong>Caution Range:</strong> Operaciones con precaución y solo en aire calmo.</td>
+                  <td class="py-3 px-2 text-center align-middle font-mono font-bold text-sm text-amber-600 dark:text-amber-400">
+                    128 – 160
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <strong class="text-amber-800 dark:text-amber-300 block mb-0.5">Rango de Precaución (Caution Range):</strong>
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300">
+                      Operaciones que deben efectuarse exclusivamente con precaución y en aire en calma.
+                    </div>
+                  </td>
                 </tr>
-                <tr>
-                  <td class="p-2.5 px-3 font-bold flex items-center gap-1.5">
-                    <span class="w-2.5 h-2.5 rounded-full bg-red-600 shrink-0"></span>
-                    <span>Línea Roja</span>
+
+                <!-- Línea Roja -->
+                <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
+                  <td class="py-3 px-3 align-top font-bold">
+                    <div class="flex items-center gap-2">
+                      <span class="w-3 h-3 rounded-full bg-red-600 border border-red-700 shrink-0 shadow-xs"></span>
+                      <span class="text-xs text-red-600 dark:text-red-400">Línea Roja</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-5 mt-0.5">Red Line</span>
                   </td>
-                  <td class="p-2.5 px-2 text-center font-mono font-bold text-red-600 dark:text-red-400">160</td>
-                  <td class="p-2.5 px-3"><strong>Maximum Speed:</strong> Velocidad máxima bajo cualquier régimen de vuelo (V<sub>NE</sub>).</td>
+                  <td class="py-3 px-2 text-center align-middle font-mono font-extrabold text-sm text-red-600 dark:text-red-400">
+                    160
+                  </td>
+                  <td class="py-3 px-3 align-top">
+                    <strong class="text-red-700 dark:text-red-400 block mb-0.5">Velocidad de Nunca Exceder (V<sub>NE</sub>):</strong>
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300">
+                      Velocidad máxima admisible en todas las operaciones. Prohibido superarla bajo ninguna circunstancia.
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <!-- Resumen Operativo Práctico -->
+          <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 text-xs">
+            <div class="font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5 text-xs">
+              <span>💡</span>
+              <span>Criterio Operacional del POH:</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-slate-700 dark:text-slate-300 leading-tight">
+              <div class="p-2 rounded-lg bg-white dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60">
+                <strong class="text-slate-900 dark:text-white block mb-0.5">• Régimen con Flaps (< 85 KIAS):</strong>
+                Mantener la velocidad estrictamente dentro del Arco Blanco al operar la palanca de flaps para evitar sobrecargas mecánicas.
+              </div>
+              <div class="p-2 rounded-lg bg-white dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-700/60">
+                <strong class="text-slate-900 dark:text-white block mb-0.5">• Vuelo en Turbulencia (< 128 KIAS):</strong>
+                Al encontrar aire agitado, reducir inmediatamente por debajo del Arco Amarillo (dentro del rango de crucero estructural seguro).
+              </div>
+            </div>
           </div>
         </div>
       </div>
