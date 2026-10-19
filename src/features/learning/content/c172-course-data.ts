@@ -83,15 +83,15 @@ export const C172_LESSON_1 = {
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
       <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">1.1 Objeto del Suplemento POH y Simbología de Seguridad</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Suplemento Oficial de Vuelo · POH Sección 1 (General)</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Especificaciones Generales de la Aeronave</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch pt-1" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): Información Técnica (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-0.5 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">📘 OBJETO Y SIMBOLOGÍA DE SEGURIDAD (SECCIÓN 1)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">📘 OBJETO Y SIMBOLOGÍA DE SEGURIDAD</span>
         </div>
 
         <!-- Objeto del Suplemento -->
@@ -152,10 +152,6 @@ export const C172_LESSON_1 = {
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/C172-tarjeta.jpg" alt="Cessna 172 Continental Diésel" class="w-full max-h-[230px] object-cover rounded-xl" onerror="if(this.src!=='/images/c172/C172-tarjeta.jpg')this.src='/images/c172/C172-tarjeta.jpg'" />
           </div>
         </div>
-
-        <div class="text-[18px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60">
-          Ref. POH: Suplemento Sección 1 (General · Pág. 1-1)
-        </div>
       </div>
     </div>
   </div>
@@ -170,11 +166,11 @@ export const C172_LESSON_1 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">1.2 Especificaciones del Motor Continental CD-135 / CD-155</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Arquitectura de Motor Diésel Turboalimentado (POH Pág. 1-2)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Arquitectura de Motor Diésel Turboalimentado</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): Información Técnica (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
@@ -232,10 +228,6 @@ export const C172_LESSON_1 = {
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/Continental-Engine-Jet-A-CD-155-View-latest.png" alt="Motor Continental CD-155 Jet-A" class="w-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/Continental-Engine-Jet-A-CD-155-View-latest.png')this.src='/images/c172/Continental-Engine-Jet-A-CD-155-View-latest.png'" />
           </div>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60">
-          Ref. POH: Suplemento Sección 1 (General · Pág. 1-2)
-        </div>
       </div>
     </div>
   </div>
@@ -250,11 +242,11 @@ export const C172_LESSON_1 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">1.3 Hélice MT-Propeller Tripala de Paso Constante</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Gobernador Hidráulico y Velocidad Constante (POH Pág. 1-3)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Gobernador Hidráulico y Velocidad Constante</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): Información Técnica (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
@@ -316,10 +308,6 @@ export const C172_LESSON_1 = {
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.3-propeller.jpg?v=1" alt="Hélice MT-Propeller Tripala MTV-6" class="w-full h-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/1.3-propeller.jpg?v=1')this.src='/images/c172/1.3-propeller.jpg?v=1'" />
           </div>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Suplemento Sección 1 (General · Pág. 1-3)
-        </div>
       </div>
     </div>
   </div>
@@ -334,11 +322,11 @@ export const C172_LESSON_1 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">1.4 Combustibles Autorizados y Diferencias de Densidad</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">JET A-1, Diésel EN 590 y Prohibición de AVGAS (POH Pág. 1-3 y 1-7)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">JET A-1, Diésel EN 590 y Prohibición de AVGAS</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): Información Técnica (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
@@ -389,10 +377,6 @@ export const C172_LESSON_1 = {
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/jet-fuel-only.jpg" alt="Rótulo JET FUEL ONLY C172" class="w-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/jet-fuel-only.jpg')this.src='/images/c172/jet-fuel-only.jpg'" />
           </div>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60">
-          Ref. POH: Suplemento Sección 1 (General · Pág. 1-3 y 1-7)
-        </div>
       </div>
     </div>
   </div>
@@ -407,11 +391,11 @@ export const C172_LESSON_1 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">1.5 Fluidos de Servicio: Aceite, Reductora y Refrigerante</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Fluidos de Motor, Caja Reductora y Sistema de Refrigeración (POH Pág. 1-4)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Fluidos de Motor, Caja Reductora y Sistema de Refrigeración</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): Información Técnica (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
@@ -478,10 +462,6 @@ export const C172_LESSON_1 = {
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.5-fluidos.jpg?v=1" alt="Fluidos de Servicio C172" class="w-full h-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/1.5-fluidos.jpg?v=1')this.src='/images/c172/1.5-fluidos.jpg?v=1'" />
           </div>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Suplemento Sección 1 (General · Pág. 1-4)
-        </div>
       </div>
     </div>
   </div>
@@ -496,11 +476,11 @@ export const C172_LESSON_1 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-135 / CD-155</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">1.6 Mandos e Instrumentación de Motor en Cabina</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Disposición de Instrumentos y Panel Anunciador (POH Figuras 1-1 y 1-2)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Disposición de Instrumentos y Panel Anunciador</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 1 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): Información Técnica (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
@@ -535,10 +515,6 @@ export const C172_LESSON_1 = {
               </p>
             </div>
           </div>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Suplemento Sección 1 (General · Pág. 1-5 y 1-6)
         </div>
       </div>
     </div>
@@ -588,10 +564,6 @@ export const C172_LESSON_1 = {
                 Tomar imagen real del panel e identificar instrumentos
               </p>
             </div>
-          </div>
-
-          <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-            Ref. POH: Suplemento Sección 1 (General · Pág. 1-5 y 1-6)
           </div>
         </div>
       </div>
