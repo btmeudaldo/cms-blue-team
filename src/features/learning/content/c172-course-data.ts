@@ -618,31 +618,31 @@ export const C172_LESSON_2 = {
                 <td class="p-1 px-2 font-bold font-mono">V<sub>NE</sub> (Never Exceed)</td>
                 <td class="p-1 px-1 text-center font-mono">158</td>
                 <td class="p-1 px-1 text-center font-mono font-extrabold text-red-600 dark:text-red-400">160</td>
-                <td class="p-1 px-2 text-[10.5px]">No exceder esta velocidad en ninguna operación bajo ninguna condición.</td>
+                <td class="p-1 px-2">No exceder esta velocidad en ninguna operación bajo ninguna condición.</td>
               </tr>
               <tr>
                 <td class="p-1 px-2 font-bold font-mono">V<sub>NO</sub> (Max. Structural)</td>
                 <td class="p-1 px-1 text-center font-mono">126</td>
                 <td class="p-1 px-1 text-center font-mono font-extrabold text-amber-600 dark:text-amber-400">128</td>
-                <td class="p-1 px-2 text-[10.5px]">Máx. crucero estructural; no superar salvo en aire totalmente calmo y con precaución.</td>
+                <td class="p-1 px-2">Máx. crucero estructural; no superar salvo en aire totalmente calmo y con precaución.</td>
               </tr>
               <tr>
                 <td class="p-1 px-2 font-bold font-mono">V<sub>A</sub> (Maneuvering Speed)</td>
                 <td class="p-1 px-1 text-center font-mono">96 / 88 / 80</td>
                 <td class="p-1 px-1 text-center font-mono font-extrabold text-blue-600 dark:text-sky-400">97 / 89 / 80</td>
-                <td class="p-1 px-2 text-[10.5px]"><strong>97 KIAS</strong> (2300 lbs), <strong>89 KIAS</strong> (1950 lbs), <strong>80 KIAS</strong> (1600 lbs). No aplicar deflexiones bruscas ni totales de mandos.</td>
+                <td class="p-1 px-2"><strong>97 KIAS</strong> (2300 lbs), <strong>89 KIAS</strong> (1950 lbs), <strong>80 KIAS</strong> (1600 lbs). No aplicar deflexiones bruscas ni totales de mandos.</td>
               </tr>
               <tr>
                 <td class="p-1 px-2 font-bold font-mono">V<sub>FE</sub> (Max. Flaps Down)</td>
                 <td class="p-1 px-1 text-center font-mono">86</td>
                 <td class="p-1 px-1 text-center font-mono font-extrabold text-emerald-600 dark:text-emerald-400">85</td>
-                <td class="p-1 px-2 text-[10.5px]">Velocidad máxima permisible con flaps extendidos (10°, 20° o 40°).</td>
+                <td class="p-1 px-2">Velocidad máxima permisible con flaps extendidos (10°, 20° o 40°).</td>
               </tr>
               <tr>
                 <td class="p-1 px-2 font-bold font-mono">Ventanilla Abierta</td>
                 <td class="p-1 px-1 text-center font-mono">158</td>
                 <td class="p-1 px-1 text-center font-mono font-extrabold">160</td>
-                <td class="p-1 px-2 text-[10.5px]">Velocidad máxima autorizada de vuelo con ventanillas laterales abiertas.</td>
+                <td class="p-1 px-2">Velocidad máxima autorizada de vuelo con ventanillas laterales abiertas.</td>
               </tr>
             </tbody>
           </table>
@@ -670,7 +670,7 @@ export const C172_LESSON_2 = {
                   <span>Arco Blanco</span>
                 </td>
                 <td class="p-1 px-2 text-center font-mono font-bold">41 – 85</td>
-                <td class="p-1 px-2 text-[10.5px]"><strong>Full Flap Operating Range:</strong> Límite inferior V<sub>SO</sub> a peso máximo en configuración de aterrizaje. Límite superior V<sub>FE</sub>.</td>
+                <td class="p-1 px-2"><strong>Full Flap Operating Range:</strong> Límite inferior V<sub>SO</sub> a peso máximo en configuración de aterrizaje. Límite superior V<sub>FE</sub>.</td>
               </tr>
               <tr>
                 <td class="p-1 px-2 font-bold flex items-center gap-1.5">
@@ -678,7 +678,7 @@ export const C172_LESSON_2 = {
                   <span>Arco Verde</span>
                 </td>
                 <td class="p-1 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">47 – 128</td>
-                <td class="p-1 px-2 text-[10.5px]"><strong>Normal Operating Range:</strong> Límite inferior V<sub>S</sub> con flaps arriba a CG más adelantado (47 KIAS). Límite superior V<sub>NO</sub> (128 KIAS).</td>
+                <td class="p-1 px-2"><strong>Normal Operating Range:</strong> Límite inferior V<sub>S</sub> con flaps arriba a CG más adelantado (47 KIAS). Límite superior V<sub>NO</sub> (128 KIAS).</td>
               </tr>
               <tr>
                 <td class="p-1 px-2 font-bold flex items-center gap-1.5">
@@ -686,7 +686,7 @@ export const C172_LESSON_2 = {
                   <span>Arco Amarillo</span>
                 </td>
                 <td class="p-1 px-2 text-center font-mono font-bold text-amber-600 dark:text-amber-400">128 – 160</td>
-                <td class="p-1 px-2 text-[10.5px]"><strong>Caution Range:</strong> Operaciones con precaución y exclusivamente en aire calmo y sin turbulencias.</td>
+                <td class="p-1 px-2"><strong>Caution Range:</strong> Operaciones con precaución y exclusivamente en aire calmo y sin turbulencias.</td>
               </tr>
               <tr>
                 <td class="p-1 px-2 font-bold flex items-center gap-1.5">
@@ -694,7 +694,7 @@ export const C172_LESSON_2 = {
                   <span>Línea Roja</span>
                 </td>
                 <td class="p-1 px-2 text-center font-mono font-bold text-red-600 dark:text-red-400">160</td>
-                <td class="p-1 px-2 text-[10.5px]"><strong>Maximum Speed (V<sub>NE</sub>):</strong> Velocidad máxima bajo cualquier régimen de vuelo.</td>
+                <td class="p-1 px-2"><strong>Maximum Speed (V<sub>NE</sub>):</strong> Velocidad máxima bajo cualquier régimen de vuelo.</td>
               </tr>
             </tbody>
           </table>
