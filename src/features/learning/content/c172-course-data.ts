@@ -2089,10 +2089,6 @@ export const C172_LESSON_3 = {
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.1-cd155-engine.png?v=1" alt="Motor Continental Jet-A CD-155" class="w-full h-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/Continental-Engine-Jet-A-CD-155-View-latest.png')this.src='/images/c172/Continental-Engine-Jet-A-CD-155-View-latest.png'" />
           </div>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. Continental Aerospace Technologies · CD-155 Operation &amp; Maintenance Manual
-        </div>
       </div>
     </div>
   </div>
@@ -2189,10 +2185,6 @@ export const C172_LESSON_3 = {
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.2-gearbox-propeller.jpg?v=1" alt="Reductora Integrada y Hélice MT-Propeller" class="w-full h-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.2-gearbox-propeller.jpg')this.src='/images/c172/3.2-gearbox-propeller.jpg'" />
           </div>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Suplemento Sección 7 &amp; Manual MT-Propeller MTV-6
         </div>
       </div>
     </div>
@@ -2292,10 +2284,6 @@ export const C172_LESSON_3 = {
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.3-fadec.jpg?v=1" alt="Arquitectura del Sistema FADEC Continental CD-135 / CD-155" class="w-full h-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.3-fadec.jpg')this.src='/images/c172/3.3-fadec.jpg'" />
           </div>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Suplemento Continental Sección 7 &amp; Manual TAE 125 (FADEC System Architecture)
         </div>
       </div>
     </div>
@@ -2413,10 +2401,6 @@ export const C172_LESSON_3 = {
             </ul>
           </div>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Suplemento Continental Sección 4 &amp; Sección 7 (Procedimiento FADEC Test)
-        </div>
       </div>
     </div>
   </div>
@@ -2505,10 +2489,6 @@ export const C172_LESSON_3 = {
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.4-fadec-test.jpg?v=1" alt="Esquema Eléctrico General: Alternador, Batería y Distribución" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.4-fadec-test.jpg')this.src='/images/c172/3.4-fadec-test.jpg'" />
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Fig. 1-2 Electrical Scheme (Alternator, Battery &amp; Excitation Battery)
         </div>
       </div>
     </div>
@@ -2602,10 +2582,6 @@ export const C172_LESSON_3 = {
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.5-electrical.jpg?v=1" alt="Esquema Eléctrico: Batería FADEC Backup (Alimentación Exclusiva a ECU A) y Main Bus" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.5-electrical.jpg')this.src='/images/c172/3.5-electrical.jpg'" />
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Fig. 1-2 Electrical Scheme (FADEC Backup Battery, ECU A Isolation &amp; Main Bus)
-        </div>
       </div>
     </div>
   </div>
@@ -2696,11 +2672,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.7-fuel-tanks.jpg?v=1" alt="Esquema de Combustible POH: Depósitos, Selector y Depósito Nodriza" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.7-fuel-tanks.jpg')this.src='/images/c172/3.7-fuel-tanks.jpg'" />
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Fig. 1-4 Fuel System Schematic (Standard &amp; Long-Range Tanks, Selector, Reservoir Tank)
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.7-fuel-tanks.jpg?v=1" alt="Esquema de Combustible: Depósitos, Selector y Depósito Nodriza" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.7-fuel-tanks.jpg')this.src='/images/c172/3.7-fuel-tanks.jpg'" />
         </div>
       </div>
     </div>
@@ -2789,11 +2761,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.8-fuel-return.jpg?v=2" alt="Esquema POH: Retorno de Combustible, Fuel Cooler y Deflector Térmico" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.8-fuel-return.jpg?v=2')this.src='/images/c172/3.8-fuel-return.jpg?v=2'" />
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Fig. 1-4 Fuel System Schematic (Common Rail, Fuel Cooler &amp; Deflector Térmico &gt;20°C)
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.8-fuel-return.jpg?v=2" alt="Esquema de Retorno de Combustible, Fuel Cooler y Deflector Térmico" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.8-fuel-return.jpg?v=2')this.src='/images/c172/3.8-fuel-return.jpg?v=2'" />
         </div>
       </div>
     </div>
@@ -2882,11 +2850,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.9-cooling-system.jpg?v=1" alt="Esquema POH: Sistema de Refrigeración Líquida TAE 125" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.9-cooling-system.jpg')this.src='/images/c172/3.9-cooling-system.jpg'" />
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Fig. 1-5 Cooling System (Expansion Tank, Radiator, Thermostat &amp; Gearbox Cooler)
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.9-cooling-system.jpg?v=1" alt="Esquema de Refrigeración Líquida TAE 125" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.9-cooling-system.jpg')this.src='/images/c172/3.9-cooling-system.jpg'" />
         </div>
       </div>
     </div>
@@ -2975,11 +2939,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.10-lubrication.jpg?v=1" alt="Esquema POH: Circuitos de Aceite de Motor y Caja Reductora" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.10-lubrication.jpg')this.src='/images/c172/3.10-lubrication.jpg'" />
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Fig. 1-6 Lubrication Systems (Engine Oil Circuit &amp; Gearbox Oil Circuit)
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.10-lubrication.jpg?v=1" alt="Esquema de Circuitos de Aceite de Motor y Caja Reductora" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.10-lubrication.jpg')this.src='/images/c172/3.10-lubrication.jpg'" />
         </div>
       </div>
     </div>
@@ -3073,7 +3033,7 @@ export const C172_LESSON_3 = {
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">📟 INSTRUMENTACIÓN DIGITAL CED &amp; AED</span>
-          <span class="text-[9px] font-bold text-sky-800 bg-sky-100 dark:bg-sky-950/70 dark:text-sky-300 px-1.5 py-0.5 rounded">POH Fig. 1-1</span>
+          
         </div>
 
         <div class="flex flex-col gap-2 flex-1 min-h-0">
@@ -3104,10 +3064,6 @@ export const C172_LESSON_3 = {
               <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.11-aed2.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[195px] object-contain rounded-md" onerror="if(this.src!=='/images/c172/3.11-aed2.jpg')this.src='/images/c172/3.11-aed2.jpg'" />
             </div>
           </div>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Suplemento Sección 7 (CED 125 &amp; AED 125 Engine Instrumentation)
         </div>
       </div>
     </div>
@@ -3207,10 +3163,6 @@ export const C172_LESSON_3 = {
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.12-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172: Avisadores FADEC A/B, Alternador, CED/AED Caution, Low Fuel y Glow" class="w-full h-full max-h-[480px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.12-annunciator.jpg')this.src='/images/c172/3.12-annunciator.jpg'" />
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Fig. 1-2 Annunciator Lightpanel &amp; Test/Confirm Pushbutton
-        </div>
       </div>
     </div>
   </div>
@@ -3222,7 +3174,7 @@ export const C172_LESSON_3 = {
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · SISTEMAS POH (SECCIÓN 7)</div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.13 Sistemas de Célula I: Mandos de Vuelo, Compensación y Flaps Fowler</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Flight Controls, Elevator Trim & Wing Flap System</span>
@@ -3233,8 +3185,8 @@ export const C172_LESSON_3 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🕹️ FLIGHT CONTROLS & TRIM SYSTEM (POH PÁG. 7-8)</span>
-          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH Sección 7</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🕹️ FLIGHT CONTROLS & TRIM SYSTEM</span>
+          
         </div>
 
         <!-- Mandos Primarios y Compensador -->
@@ -3254,7 +3206,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🪽 WING FLAP SYSTEM (POH PÁG. 7-10)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🪽 WING FLAP SYSTEM</span>
         </div>
 
         <!-- Flaps Fowler Eléctricos -->
@@ -3284,22 +3236,18 @@ export const C172_LESSON_3 = {
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛩️ SISTEMA DE FLAPS C172 (FIGURA 7-3)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🪽 SISTEMA DE FLAPS FOWLER (C172)</span>
           </div>
 
           <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
             <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-              Perspectiva isométrica oficial del manual POH que ilustra el montaje, ranuras aerodinámicas y varillaje del sistema de flaps tipo Fowler en las semialas de la Cessna 172.
+              Perspectiva isométrica que ilustra el montaje, ranuras aerodinámicas y varillaje del sistema de flaps tipo Fowler en las semialas de la Cessna 172.
             </p>
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="/images/c172/figure_7_3_wing_flap_system.png" alt="Figura 7-3 Wing Flap System Cessna 172 POH" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+            <img src="/images/c172/3.13-flaps-fowler.jpg" alt="Sistema de Flaps Fowler Cessna 172" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
           </div>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 7 (Airplane & Systems Descriptions) Figura 7-3 pág. 7-10.
         </div>
       </div>
     </div>
@@ -3312,7 +3260,7 @@ export const C172_LESSON_3 = {
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · SISTEMAS POH (SECCIÓN 7)</div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.14 Sistemas de Célula II: Tren, Frenos, Dirección en Tierra y Aviso de Pérdida</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Landing Gear, Ground Steering & Stall Warning</span>
@@ -3323,8 +3271,7 @@ export const C172_LESSON_3 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛞 TREN, FRENOS Y DIRECCIÓN (POH PÁG. 7-9 & 7-10)</span>
-          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH Sección 7</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">🛞 TREN, FRENOS Y DIRECCIÓN</span>
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
@@ -3341,7 +3288,7 @@ export const C172_LESSON_3 = {
 
         <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">⚠️ AVISO NEUMÁTICO DE PÉRDIDA Y PITOT-ESTÁTICA</span>
-          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH pág. 7-31 & 7-34</span>
+          
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
@@ -3350,7 +3297,7 @@ export const C172_LESSON_3 = {
               ✓ 100% Neumático e Independiente: La depresión aerodinámica al acercarse al ángulo crítico succiona aire a través de la bocina, emitiendo un sonido continuo entre 5 y 10 nudos antes de la pérdida real en todas las configuraciones. Funciona sin energía eléctrica.
             </div>
           </div>
-          <div><strong>Comprobación Prevuelo Oficial POH:</strong> Colocar un paño limpio sobre la abertura del borde de ataque y aspirar suavemente con la boca: el sonido audible en cabina confirma el estado operativo de la bocina y sus conductos.</div>
+          <div><strong>Comprobación Prevuelo Oficial:</strong> Colocar un paño limpio sobre la abertura del borde de ataque y aspirar suavemente con la boca: el sonido audible en cabina confirma el estado operativo de la bocina y sus conductos.</div>
           <div><strong>Toma Estática Alternativa (Alternate Static Source):</strong> Válvula ubicada en el pedestal inferior para suministrar presión estática desde el interior de cabina si la toma estática exterior se bloquea por hielo o agua.</div>
         </div>
       </div>
@@ -3373,10 +3320,6 @@ export const C172_LESSON_3 = {
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
             <img src="/images/c172/figure_7_ground_steering_and_gear.svg" alt="Esquema de Tren de Aterrizaje, Dirección de Rueda de Morro y Bocina de Pérdida Neumática Cessna 172" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
           </div>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 7 (Airplane & Systems Descriptions) págs. 7-9, 7-10 y 7-34.
         </div>
       </div>
     </div>
