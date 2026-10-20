@@ -1855,8 +1855,8 @@ export const C172_LESSON_2 = {
         </div>
 
         <div class="flex flex-col gap-2 flex-1 min-h-0">
-          <!-- 1. 50% SUPERIOR: AED 125 (Izquierda) + NOTA (Derecha) -->
-          <div class="flex-1 min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
+          <!-- 1. PARTE SUPERIOR: AED 125 (Izquierda, ampliado) + NOTA (Derecha) -->
+          <div class="flex-[1.18] min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2.5 shadow-2xs">
             <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
               <span class="text-[11px] font-bold text-[#0B2E59] dark:text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-sky-600"></span>
@@ -1865,14 +1865,14 @@ export const C172_LESSON_2 = {
               <span class="text-[9px] font-bold text-sky-800 bg-sky-100 px-1.5 py-0.5 rounded">Fuel Temp / V / A</span>
             </div>
 
-            <div class="flex-1 min-h-0 grid grid-cols-12 gap-2 items-center">
-              <!-- AED 125 a la izquierda (col-span-5) -->
-              <div class="col-span-5 h-full flex items-center justify-center overflow-hidden">
-                <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[175px] object-contain rounded-md" />
+            <div class="flex-1 min-h-0 grid grid-cols-12 gap-3 items-center">
+              <!-- AED 125 a la izquierda (col-span-6, tamaño optimizado) -->
+              <div class="col-span-6 h-full flex items-center justify-center overflow-hidden py-0.5">
+                <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[205px] object-contain rounded-md" />
               </div>
 
-              <!-- NOTA en cuadro a la derecha (col-span-7) -->
-              <div class="col-span-7 p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-relaxed shadow-2xs">
+              <!-- NOTA en cuadro a la derecha (col-span-6) -->
+              <div class="col-span-6 p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-relaxed shadow-2xs">
                 <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs">
                   <span>ℹ️</span>
                   <span>NOTE:</span>
@@ -1882,7 +1882,7 @@ export const C172_LESSON_2 = {
             </div>
           </div>
 
-          <!-- 2. 50% INFERIOR: Panel Anunciador de Alarmas (Legible y centrado) -->
+          <!-- 2. PARTE INFERIOR: Panel Anunciador de Alarmas (Ajustado armónicamente sin perder nitidez) -->
           <div class="flex-1 min-h-0 flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
             <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
               <span class="text-[11px] font-bold text-[#0B2E59] dark:text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
@@ -1893,7 +1893,7 @@ export const C172_LESSON_2 = {
             </div>
 
             <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden py-0.5">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full h-full max-h-[195px] object-contain rounded-md" />
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full h-full max-h-[165px] object-contain rounded-md" />
             </div>
           </div>
         </div>
