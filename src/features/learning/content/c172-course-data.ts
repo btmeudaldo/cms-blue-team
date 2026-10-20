@@ -1819,7 +1819,7 @@ export const C172_LESSON_2 = {
         <!-- LÓGICA CONFIRM / TEST -->
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÓGICA OPERATIVA DEL BOTÓN CONFIRM / TEST</strong>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1 pt-0.5 text-[11px] leading-tight">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1.5 pt-0.5 text-[11px] leading-tight">
             <div class="flex items-start gap-1.5">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
               <span class="text-slate-800 dark:text-slate-200"><strong>Activación de aviso:</strong> La luz AED/CED Caution se enciende al entrar en rango ámbar o rojo.</span>
@@ -1842,14 +1842,6 @@ export const C172_LESSON_2 = {
             </div>
           </div>
         </div>
-
-        <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
-          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-            <span>ℹ️</span>
-            <span>NOTE:</span>
-          </strong>
-          <div>La lámpara de aviso AED/CED permanece encendida incluso cuando la indicación del motor regresa al rango verde/normal de operación y debe ser confirmada presionando el pulsador Confirm/Test.</div>
-        </div>
       </div>
     </div>
 
@@ -1861,8 +1853,8 @@ export const C172_LESSON_2 = {
         </div>
 
         <div class="flex flex-col gap-2 flex-1 min-h-0">
-          <!-- 1. AED 125 Display Auxiliar (50%) -->
-          <div class="flex-1 min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
+          <!-- 1. AED 125 Display Auxiliar -->
+          <div class="flex-[1.1] min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
             <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
               <span class="text-[11px] font-bold text-[#0B2E59] dark:text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-sky-600"></span>
@@ -1871,21 +1863,32 @@ export const C172_LESSON_2 = {
               <span class="text-[9px] font-bold text-sky-800 bg-sky-100 px-1.5 py-0.5 rounded">Fuel Temp / V / A</span>
             </div>
             <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[220px] object-contain rounded-md" />
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[190px] object-contain rounded-md" />
             </div>
           </div>
 
-          <!-- 2. Panel Anunciador de Alarmas (50%) -->
-          <div class="flex-1 min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
-            <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
-              <span class="text-[11px] font-bold text-[#0B2E59] dark:text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                Panel Anunciador · Luces de Aviso y Alarma
-              </span>
-              <span class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded">CED/AED Caution</span>
+          <!-- 2. Panel Anunciador de Alarmas con NOTA -->
+          <div class="flex-[1.2] min-h-0 flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
+            <div>
+              <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
+                <span class="text-[11px] font-bold text-[#0B2E59] dark:text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                  Panel Anunciador · Luces de Aviso y Alarma
+                </span>
+                <span class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded">CED/AED Caution</span>
+              </div>
+              <div class="w-full bg-white flex items-center justify-center overflow-hidden py-0.5">
+                <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full max-h-[105px] object-contain rounded-md" />
+              </div>
             </div>
-            <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full h-full max-h-[220px] object-contain rounded-md" />
+
+            <!-- NOTA del Panel Anunciador / Confirm-Test -->
+            <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0 mt-1">
+              <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+                <span>ℹ️</span>
+                <span>NOTE:</span>
+              </strong>
+              <div>La lámpara de aviso AED/CED permanece encendida incluso cuando la indicación del motor regresa al rango verde/normal de operación y debe ser confirmada presionando el pulsador Confirm/Test.</div>
             </div>
           </div>
         </div>
