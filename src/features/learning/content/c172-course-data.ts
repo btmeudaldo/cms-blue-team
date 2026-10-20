@@ -1135,8 +1135,8 @@ export const C172_LESSON_2 = {
                   <span><strong class="text-slate-900 dark:text-slate-100">Categoría Utilidad (MTOW 907 kg / 2000 lbs):</strong> Prohibido equipaje en áreas 1 y 2, y prohibidos pasajeros en plazas traseras.</span>
                 </div>
                 <div class="flex items-start gap-1.5 text-[11px] leading-snug">
-                  <span class="font-bold text-red-600 dark:text-red-400 shrink-0">⚠️</span>
-                  <span><strong class="text-red-700 dark:text-red-400">Modificación Suplemento Diésel (EC-NNA):</strong> ¡Prohibido iniciar barrenas intencionadamente (*Intentionally initiating spins is prohibited*)!</span>
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                  <span>Prohibido iniciar barrenas intencionadamente (*Intentionally initiating spins is prohibited*).</span>
                 </div>
                 <div class="flex items-start gap-1.5 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
