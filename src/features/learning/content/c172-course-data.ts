@@ -3511,10 +3511,6 @@ export const C172_LESSON_4 = {
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/4.1-preflight-walkaround.jpg" alt="Ruta de Inspección Exterior Prevuelo (Walkaround C172)" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/4.1-preflight-walkaround.jpg')this.src='/images/c172/4.1-preflight-walkaround.jpg'" />
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 Procedimientos Normales (Secuencia de Inspección Exterior Puntos 1 al 8)
-        </div>
       </div>
     </div>
   </div>
@@ -3600,10 +3596,6 @@ export const C172_LESSON_4 = {
             Panel de combustible en cabina: selector de depósitos (BOTH/L/R), válvula Shut-off y luz Water Level
           </p>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Inspección de Cabina - Controles de Combustible)
-        </div>
       </div>
     </div>
   </div>
@@ -3684,10 +3676,6 @@ export const C172_LESSON_4 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Inspección de empenaje (timón de dirección y profundidad) y borde de salida del ala derecha (alerón y flap)
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Estaciones 2 Empennage y 3 Right Wing Trailing Edge)
         </div>
       </div>
     </div>
@@ -3777,10 +3765,6 @@ export const C172_LESSON_4 = {
             Semiala derecha: puntos de purga de combustible alar con vaso muestreador, tapón de llenado y tren principal
           </p>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Estación 4 Right Wing - Drenajes y Llenado)
-        </div>
       </div>
     </div>
   </div>
@@ -3856,10 +3840,6 @@ export const C172_LESSON_4 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Drenaje del depósito de reserva en fuselaje (lado derecho) y válvula de purga del filtro en cortafuegos
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Estación 5 Nose - Depósito Reserva y Filtro)
         </div>
       </div>
     </div>
@@ -3954,10 +3934,6 @@ export const C172_LESSON_4 = {
             Morro y motor: varilla de aceite motor, mirilla de reductora (Gearbox), hélice tripala, tomas de aire y tren de morro
           </p>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Estación 5 Nose - Motor, Reductora y Hélice)
-        </div>
       </div>
     </div>
   </div>
@@ -4030,10 +4006,6 @@ export const C172_LESSON_4 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Semiala izquierda: tapón de llenado de combustible, válvulas de drenaje alares con vaso muestreador y tren principal
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Estación 6 Left Wing - Drenajes y Tren)
         </div>
       </div>
     </div>
@@ -4114,10 +4086,6 @@ export const C172_LESSON_4 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Semiala izquierda: tubo pitot, toma de ventilación, bocina de aviso de pérdida en borde de ataque, alerón y flap
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Estaciones 7 Pitot/Stall Warning y 8 Trailing Edge)
         </div>
       </div>
     </div>
@@ -4242,10 +4210,6 @@ export const C172_LESSON_4 = {
             </strong>
             <div>El interruptor Avionics Power debe estar desconectado durante el arranque del motor para evitar posibles daños en la aviónica.</div>
           </div>
-
-          <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60">
-            Ref. POH: Sección 4 (Before Starting Engine)
-          </div>
         </div>
       </div>
     </div>
@@ -4367,10 +4331,6 @@ export const C172_LESSON_4 = {
             </strong>
             <div>No utilice una unidad de alimentación en tierra para arrancar el motor. No está permitido arrancarlo con alimentación externa. Si no es posible arrancar con batería, debe verificarse su estado antes del vuelo.</div>
           </div>
-
-          <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60">
-            Ref. POH: Sección 4 (Starting Engine - Instrumentación y Mandos)
-          </div>
         </div>
       </div>
     </div>
@@ -4470,10 +4430,6 @@ export const C172_LESSON_4 = {
             Comprobación de calentamiento: parámetros CED 125 (aceite 50°C, refrigerante 60°C) e interruptores de Batería y Alternador
           </p>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Warm Up &amp; FADEC Backup Battery Test)
-        </div>
       </div>
     </div>
   </div>
@@ -4554,10 +4510,6 @@ export const C172_LESSON_4 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Cabina previa al despegue: comprobación de mandos libres, ajuste de compensador (Trim) y selector de combustible en BOTH
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Before Take-Off - Mandos y Calados)
         </div>
       </div>
     </div>
@@ -4660,10 +4612,6 @@ export const C172_LESSON_4 = {
             Panel anunciador y botón FADEC Test: secuencia de luces FADEC A y B y comprobación automática de paso de hélice
           </p>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (FADEC Test Sequence)
-        </div>
       </div>
     </div>
   </div>
@@ -4747,10 +4695,6 @@ export const C172_LESSON_4 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Interruptor de conmutación manual Force B (Automático / FADEC B) y luces de alarma en el panel anunciador
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Force B Switch & Critical Failures)
         </div>
       </div>
     </div>
@@ -4858,10 +4802,6 @@ export const C172_LESSON_4 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Instrumentos en prueba de máxima potencia: Load display al 94-100%, 2240-2300 RPM y bomba eléctrica ON
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Full Power Check 94% & Take-off Setting)
         </div>
       </div>
     </div>
@@ -4983,10 +4923,6 @@ export const C172_LESSON_4 = {
             <img src="/images/c172/figure_5_3_stall_speeds.png" alt="Figura 5-3 Stall Speeds Cessna 172 POH" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
           </div>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 5 (Performance) Figura 5-3 pág. 5-11.
-        </div>
       </div>
     </div>
   </div>
@@ -5092,10 +5028,6 @@ export const C172_LESSON_4 = {
             Indicación de cabina en despegue y ascenso: anemómetro (55 KIAS rotación / 70-85 KIAS ascenso) y parámetros CED 125 a 100%
           </p>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Take-Off & Climb Speeds)
-        </div>
       </div>
     </div>
   </div>
@@ -5194,10 +5126,6 @@ export const C172_LESSON_4 = {
               <span>Con ¼ de depósito o menos, está prohibido el vuelo prolongado o no coordinado cuando se opera con el depósito izquierdo o derecho.</span>
             </div>
           </div>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Cruise Power Setting & Fuel Management)
         </div>
       </div>
     </div>
@@ -5316,10 +5244,6 @@ export const C172_LESSON_4 = {
             Velocidades de aproximación final y toma (60-63 KIAS) con flaps 20°-30° y técnica de contacto en pista
           </p>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Descent & Normal Landing)
-        </div>
       </div>
     </div>
   </div>
@@ -5397,10 +5321,6 @@ export const C172_LESSON_4 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Perfil de maniobra de aproximación frustrada (Go-Around): empuje al 100%, retracción inmediata de flaps a 20° y velocidad 58 KIAS
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Balked Landing / Go-Around Profile)
         </div>
       </div>
     </div>
@@ -5501,10 +5421,6 @@ export const C172_LESSON_4 = {
             Procedimiento de parada de motor: 2 min de enfriamiento de turbo en ralentí, Engine Master OFF y selector de combustible en LEFT/RIGHT
           </p>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (After Landing & Engine Shutdown)
-        </div>
       </div>
     </div>
   </div>
@@ -5586,10 +5502,6 @@ export const C172_LESSON_4 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Página de procedimientos especiales del POH: tablas de despegue en campo corto, aeródromos a gran elevación y deflector de frío/calor
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 4 (Special Procedures - Short Field & Temperature Extremes)
         </div>
       </div>
     </div>
@@ -5705,10 +5617,6 @@ export const C172_LESSON_5 = {
             <img src="/images/c172/figure_3_1_maximum_glide.png" alt="Figura 3-1 Maximum Glide Cessna 172 POH" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
           </div>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Emergency Procedures) Figura 3-1 pág. 3-11.
-        </div>
       </div>
     </div>
   </div>
@@ -5812,10 +5720,6 @@ export const C172_LESSON_5 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Perfil de fallo de motor en despegue: aterrizaje en pista o frente a la aeronave manteniendo 60-65 KIAS y corte total
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Engine Failure During / After Take-Off)
         </div>
       </div>
     </div>
@@ -5934,10 +5838,6 @@ export const C172_LESSON_5 = {
             Procedimiento de reencendido en vuelo: envolvente de planeo (65-85 KIAS &lt;13.000 ft), selector en BOTH y ciclo de Engine Master
           </p>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Engine In-Flight Restart Procedures)
-        </div>
       </div>
     </div>
   </div>
@@ -6032,10 +5932,6 @@ export const C172_LESSON_5 = {
             Panel anunciador con avisos FADEC A y B (parpadeo o fija) y pulsador de prueba/rearme FADEC Test
           </p>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (FADEC Warning Lights & Test Procedures)
-        </div>
       </div>
     </div>
   </div>
@@ -6119,10 +6015,6 @@ export const C172_LESSON_5 = {
             </strong>
             <div class="text-xs sm:text-[13px] leading-snug">Debido a fallos indicados por las luces de aviso FADEC, puede perderse la corriente de la válvula de la hélice, lo que conduce a un ajuste de paso fino. Esto puede provocar un sobrerrégimen. Velocidades por debajo de 100 KIAS son adecuadas para evitar el sobregiro en caso de fallo. Si el control de revoluciones de la hélice falla, los ascensos se pueden realizar a 65 KIAS y 100% de potencia.</div>
           </div>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Abnormal Engine Behavior & Force B Operation)
         </div>
       </div>
     </div>
@@ -6259,10 +6151,6 @@ export const C172_LESSON_5 = {
             </ul>
           </div>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Engine & Electrical Fire Procedures)
-        </div>
       </div>
     </div>
   </div>
@@ -6378,10 +6266,6 @@ export const C172_LESSON_5 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Configuración de planeo forzoso (60-65 KIAS), detención de hélice por vibraciones y desbloqueo de puertas para toma
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Engine Shutdown & Forced Landing)
         </div>
       </div>
     </div>
@@ -6515,10 +6399,6 @@ export const C172_LESSON_5 = {
             Mandos de cabina ante engelamiento: calefacción de pitot, tirador Alternate Air Door y salida de espiral en picado a 80 KIAS
           </p>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Inadvertent Icing & Spiral Dive Recovery)
-        </div>
       </div>
     </div>
   </div>
@@ -6627,10 +6507,6 @@ export const C172_LESSON_5 = {
             <div>Si el FADEC estuvo alimentado solo por batería hasta este punto, las RPM pueden caer momentáneamente cuando se conecta el alternador. En cualquier caso: ¡deje el alternador conectado en ON!</div>
           </div>
         </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Alternator Failure & Battery Discharge)
-        </div>
       </div>
     </div>
   </div>
@@ -6702,10 +6578,6 @@ export const C172_LESSON_5 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Esquema de alimentación de emergencia: funcionamiento autónomo de FADEC Backup (30 min) y cabina a oscuras
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Total Electrical Failure & FADEC Backup Battery)
         </div>
       </div>
     </div>
@@ -6799,10 +6671,6 @@ export const C172_LESSON_5 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Indicador CED 125 con parámetros de presión y temperatura de aceite en franja ámbar/roja y luz de aviso Caution
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Engine Oil Pressure & Temperature Limits)
         </div>
       </div>
     </div>
@@ -6898,10 +6766,6 @@ export const C172_LESSON_5 = {
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Display CED 125 con temperaturas de refrigerante y reductora (&gt; 120°C) y luz anunciadora WATER LEVEL
           </p>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Coolant & Gearbox Temperature Warnings)
         </div>
       </div>
     </div>
@@ -7031,10 +6895,6 @@ export const C172_LESSON_5 = {
               <li class="pl-0.5">Una baja temperatura de combustible puede producirse al volar en clima frío con el enfriador de combustible en funcionamiento (deflector desmontado).</li>
             </ul>
           </div>
-        </div>
-
-        <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 px-1 border-t border-slate-200/60 dark:border-slate-800/60 shrink-0">
-          Ref. POH: Sección 3 (Power Loss, Fuel Temp & Propeller Overspeed)
         </div>
       </div>
     </div>
