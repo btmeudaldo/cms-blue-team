@@ -1110,7 +1110,7 @@ export const C172_LESSON_2 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.5 Límites de Maniobra y Factores de Carga</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Maneuver Limits, Prohibición de Barrenas y Cargas G Negativas</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Límites Estructurales POH EC-NNA Sec. 2 & Prohibición de Barrenas</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -1118,62 +1118,71 @@ export const C172_LESSON_2 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">MANEUVER & LOAD LIMITS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">MANEUVER & FLIGHT LOAD LIMITS (POH EC-NNA SEC. 2)</span>
         </div>
-        <div class="space-y-1 py-0.5">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+        <div class="space-y-1.5 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
             <!-- LÍMITES DE MANIOBRA -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÍMITES DE MANIOBRA (MANEUVER LIMITS)</strong>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Normal Category: Sin cambios respecto a las limitaciones originales de la aeronave</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Utility Category: Prohibido iniciar barrenas intencionadamente (Intentionally initiating spins is prohibited)</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Maniobras acrobáticas: No están autorizadas maniobras acrobáticas intencionadas</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Vuelo en turbulencia: Seleccionar posición BOTH en el selector de combustible</span>
-            </div>
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÍMITES DE MANIOBRA (POH & SUPLEMENTO)</strong>
+              <div class="space-y-1 pt-0.5">
+                <div class="flex items-start gap-1.5 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                  <span><strong class="text-slate-900 dark:text-slate-100">Categoría Normal (MTOW 1043 kg / 2300 lbs):</strong> Maniobras normales de vuelo, virajes con banqueo &le; 60°, pérdidas suaves, ochos perezosos y chandelles. Prohibidas acrobacias.</span>
+                </div>
+                <div class="flex items-start gap-1.5 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                  <span><strong class="text-slate-900 dark:text-slate-100">Categoría Utilidad (MTOW 907 kg / 2000 lbs):</strong> Prohibido equipaje en áreas 1 y 2, y prohibidos pasajeros en plazas traseras.</span>
+                </div>
+                <div class="flex items-start gap-1.5 text-[11px] leading-snug">
+                  <span class="font-bold text-red-600 dark:text-red-400 shrink-0">⚠️</span>
+                  <span><strong class="text-red-700 dark:text-red-400">Modificación Suplemento Diésel (EC-NNA):</strong> ¡Prohibido iniciar barrenas intencionadamente (*Intentionally initiating spins is prohibited*)!</span>
+                </div>
+                <div class="flex items-start gap-1.5 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                  <span class="text-slate-700 dark:text-slate-300">Vuelo en turbulencia: Obligatorio selector en posición BOTH.</span>
+                </div>
+              </div>
             </div>
 
             <!-- FACTORES DE CARGA -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES DE CARGA Y ACELERACIONES G</strong>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Flight Load Factors: Sin cambios respecto a las limitaciones estructurales del POH base</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Prohibición de Gs negativas: Prohibido iniciar intencionadamente maniobras con G negativa</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Aceleraciones negativas prolongadas: Deben evitarse rigurosamente</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Límites del motor: Deben respetarse los límites de factor de carga especificados en el manual del motor</span>
-            </div>
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES DE CARGA (POH C172N SEC. 2)</strong>
+              <div class="space-y-1 pt-0.5">
+                <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80">
+                  <div class="font-bold text-[#2361A8] dark:text-sky-400 text-[10px] uppercase">Categoría Normal (hasta 2300 lbs):</div>
+                  <div class="flex justify-between text-[11px] font-medium pt-0.5">
+                    <span class="text-slate-700 dark:text-slate-300">Flaps UP: <strong class="text-emerald-600 dark:text-emerald-400 font-mono">+3.8 G / -1.52 G</strong></span>
+                    <span class="text-slate-700 dark:text-slate-300">Flaps DOWN (10°-40°): <strong class="text-blue-600 dark:text-sky-400 font-mono">+3.0 G</strong></span>
+                  </div>
+                </div>
+
+                <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80">
+                  <div class="font-bold text-amber-600 dark:text-amber-400 text-[10px] uppercase">Categoría Utilidad (hasta 2000 lbs):</div>
+                  <div class="flex justify-between text-[11px] font-medium pt-0.5">
+                    <span class="text-slate-700 dark:text-slate-300">Flaps UP: <strong class="text-emerald-600 dark:text-emerald-400 font-mono">+4.4 G / -1.76 G</strong></span>
+                    <span class="text-slate-700 dark:text-slate-300">Flaps DOWN (10°-40°): <strong class="text-blue-600 dark:text-sky-400 font-mono">+3.0 G</strong></span>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-1.5 text-[11px] leading-snug pt-0.5">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                  <span class="text-slate-700 dark:text-slate-300">Aceleración negativa con flaps: El diseño aerodinámico restringe el límite a 0.0 G en configuración de flaps extendidos.</span>
+                </div>
+              </div>
             </div>
           </div>
-        <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
-          <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-            <span>⚡</span>
-            <span>CAUTION:</span>
-          </strong>
-          <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight text-[11px] leading-tight">
-            <li class="pl-0.5">Está prohibido iniciar intencionadamente maniobras con G negativa (Intentionally initiating negative G maneuvers is prohibited).</li>
-            <li class="pl-0.5">Evite la duración prolongada de cargas G negativas. Las aceleraciones G negativas prolongadas pueden provocar problemas de control de hélice y fallos de motor.</li>
-          </ul>
-        </div>
+
+          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs shrink-0">
+              <span>⚡</span>
+              <span>CAUTION (LIMITACIÓN CRÍTICA MOTOR CONTINENTAL):</span>
+            </strong>
+            <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
+              <li class="pl-0.5">Está prohibido iniciar intencionadamente maniobras con G negativa (Intentionally initiating negative G maneuvers is prohibited).</li>
+              <li class="pl-0.5">Evite la duración prolongada de cargas G negativas: pueden provocar fallos en el control de paso de la hélice e interrupción de la alimentación de combustible al motor.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
