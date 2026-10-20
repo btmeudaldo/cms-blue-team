@@ -4403,13 +4403,6 @@ export const C172_LESSON_4 = {
             </div>
             </div>
           </div>
-        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 ">
-          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-            <span>⚠️</span>
-            <span>WARNING:</span>
-          </strong>
-          <div>Debe asegurarse de que tanto Battery como Alternator estén conectados. Si está instalado el interruptor de alternador con guarda, la guarda del interruptor debe estar cerrada.</div>
-        </div>
         </div>
       </div>
     </div>
@@ -4421,14 +4414,24 @@ export const C172_LESSON_4 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-5 text-center my-1.5">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2">
             📷
           </div>
           <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Comprobación de calentamiento: parámetros CED 125 (aceite 50°C, refrigerante 60°C) e interruptores de Batería y Alternador
           </p>
+        </div>
+
+        <div class="space-y-1.5 shrink-0">
+          <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px]">
+              <span>⚠️</span>
+              <span>WARNING:</span>
+            </strong>
+            <div>Debe asegurarse de que tanto Battery como Alternator estén conectados. Si está instalado el interruptor de alternador con guarda, la guarda del interruptor debe estar cerrada.</div>
+          </div>
         </div>
       </div>
     </div>
