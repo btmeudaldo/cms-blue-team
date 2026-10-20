@@ -2204,9 +2204,9 @@ export const C172_LESSON_3 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Relación de Reducción i=1.69 y Paso Variable Constant Speed</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 590px) -->
-    <div class="lg:col-span-7 flex flex-col">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): Manual POH Suplemento Continental (Altura Fija 590px) -->
+    <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GEARBOX & PROPELLER</span>
@@ -2216,20 +2216,20 @@ export const C172_LESSON_3 = {
             <!-- CAJA REDUCTORA -->
             <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CAJA REDUCTORA INTEGRADA (GEARBOX)</strong>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+            <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
               <span class="text-slate-800 dark:text-slate-200">Relación de reducción: i = 1.69 (las RPM del cigüeñal se reducen a RPM de hélice)</span>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+            <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
               <span class="text-slate-800 dark:text-slate-200">Amortiguación: Amortiguador mecánico de torsión y vibraciones integrado</span>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+            <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
               <span class="text-slate-800 dark:text-slate-200">Embrague de sobrecarga (overload release): Desacopla ante picos de par anómalos o impacto de hélice</span>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+            <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
               <span class="text-slate-800 dark:text-slate-200">Lubricación independiente: Circuito de aceite propio con intercambiador agua/aceite</span>
             </div>
             </div>
@@ -2237,21 +2237,21 @@ export const C172_LESSON_3 = {
             <!-- HÉLICE MT-PROPELLER -->
             <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HÉLICE TRIPALA CONSTANT SPEED</strong>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+            <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
               <span class="text-slate-800 dark:text-slate-200">Fabricante: MT-Propeller Entwicklung GmbH</span>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+            <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
               <span class="text-slate-800 dark:text-slate-200">Modelos: MTV-6-A/187-129 (Ø 1.87 m) o MTV-6-A/190-69 (Ø 1.90 m)</span>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Construcción: 3 palas de material compuesto (madera laminada recubierta de fibra y borde de ataque de acero inoxidable)</span>
+            <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200">Construcción: 3 palas de material compuesto (madera laminada recubierta de fibra y borde de acero)</span>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Gobierno de paso: Regulador electro-hidráulico gobernado por el FADEC mediante presión de aceite de reductora</span>
+            <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200">Gobierno de paso: Regulador electro-hidráulico gobernado por el FADEC mediante presión de aceite</span>
             </div>
             </div>
           </div>
@@ -2266,22 +2266,22 @@ export const C172_LESSON_3 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Reductora Integrada y Hélice MT-Propeller (Altura Fija 590px) -->
-    <div class="lg:col-span-5 flex flex-col">
+    <!-- Columna Derecha (lg:col-span-6): Reductora Integrada y Hélice MT-Propeller (Altura Fija 590px - Imagen Máxima) -->
+    <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CAJA REDUCTORA Y HÉLICE MT-PROPELLER</span>
           </div>
 
-          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
-            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 px-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-snug font-medium">
               Arquitectura de la caja reductora con relación i=1.69, amortiguador torsional, embrague de sobrecarga y sistema de gobierno electro-hidráulico de la hélice MTV-6.
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.2-gearbox-propeller.jpg?v=1" alt="Reductora Integrada y Hélice MT-Propeller" class="w-full h-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.2-gearbox-propeller.jpg')this.src='/images/c172/3.2-gearbox-propeller.jpg'" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/90 flex flex-col items-center justify-center p-0.5">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.2-gearbox-propeller.jpg?v=1" alt="Reductora Integrada y Hélice MT-Propeller" class="w-full h-full object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.2-gearbox-propeller.jpg')this.src='/images/c172/3.2-gearbox-propeller.jpg'" />
           </div>
         </div>
       </div>
