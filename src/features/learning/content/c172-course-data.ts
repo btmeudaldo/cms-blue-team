@@ -1273,6 +1273,13 @@ export const C172_LESSON_2 = {
           </strong>
           <div>En ausencia de otra declaración explícita, toda la información sobre RPM en este suplemento del POH corresponde a RPM de la hélice (propeller RPM). La relación de reducción de la caja reductora es i = 1.69.</div>
         </div>
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-1 shadow-2xs shrink-0">
+          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+            <span>⚠️</span>
+            <span>WARNING (LIMITACIÓN DE ARRANQUE POH SEC. 2):</span>
+          </strong>
+          <div>No está permitido arrancar el motor utilizando energía externa (external power). Si el arranque no es posible empleando la batería de a bordo, debe verificarse obligatoriamente el estado de la batería antes del vuelo.</div>
+        </div>
         </div>
       </div>
     </div>
