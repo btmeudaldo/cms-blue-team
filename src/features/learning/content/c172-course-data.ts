@@ -1622,13 +1622,13 @@ export const C172_LESSON_2 = {
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CED 125 INSTRUMENT MARKINGS</span>
         </div>
-        <div class="space-y-2 py-0.5 overflow-y-auto">
+        <div class="space-y-2 py-0.5">
           <!-- TABLA 1: TACÓMETRO, PRESIÓN Y CARGA (CED 125) -->
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
             <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-0.5">
@@ -1716,35 +1716,37 @@ export const C172_LESSON_2 = {
               </table>
             </div>
           </div>
-        <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
-          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-            <span>ℹ️</span>
-            <span>NOTE:</span>
-          </strong>
-          <div>Load' describe el porcentaje disponible de la potencia máxima del motor. Si el interruptor Engine Master está desconectado (OFF), la indicación de carga no muestra ningún valor aunque la hélice esté girando.</div>
-        </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Instrumento Digital CED 125 (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Instrumento Digital CED 125 y NOTA (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-center items-center p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="w-full h-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-between p-2">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-between p-2">
           <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.7-v2.jpg?v=2" alt="Compact Engine Display CED 125" class="w-full h-full max-h-[530px] object-contain rounded-lg" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.7-v2.jpg?v=2" alt="Compact Engine Display CED 125" class="w-full h-full max-h-[385px] object-contain rounded-lg" />
           </div>
-          <figcaption class="mt-1.5 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
-            <strong class="font-bold text-[#0B2E59] dark:text-sky-300">CED 125</strong> · Compact Engine Display (Motor y Reductora)
+          <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300">CED 125</strong> · Compact Engine Display (Motor y Reductora)
           </figcaption>
+        </div>
+
+        <!-- NOTA: Lectura de Load y Engine Master -->
+        <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0 mt-2">
+          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+            <span>ℹ️</span>
+            <span>NOTE:</span>
+          </strong>
+          <div>'Load' describe el porcentaje disponible de la potencia máxima del motor. Si el interruptor Engine Master está desconectado (OFF), la indicación de carga no muestra ningún valor aunque la hélice esté girando.</div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- pagebreak -->
-
+</div>
+
+<!-- pagebreak -->
+
 <!-- DIAPOSITIVA 2.11: 2.11 Marcas de Instrumentos AED 125 y Botón Confirm/Test -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -1756,9 +1758,9 @@ export const C172_LESSON_2 = {
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
-    <!-- Columna Izquierda (lg:col-span-6): POH Suplemento Sección 2 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-6): POH Suplemento Sección 2 (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AED 125 & CONFIRM/TEST LOGIC</span>
         </div>
@@ -1845,16 +1847,16 @@ export const C172_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): Instrumento AED 125 y Panel Anunciador (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-6): Instrumento AED 125 y Panel Anunciador (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AED 125 & PANEL ANUNCIADOR</span>
         </div>
 
         <div class="flex flex-col gap-2 flex-1 min-h-0">
           <!-- 1. AED 125 Display Auxiliar -->
-          <div class="flex-[1.1] min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
+          <div class="flex-[1.4] min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
             <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
               <span class="text-[11px] font-bold text-[#0B2E59] dark:text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-sky-600"></span>
@@ -1863,12 +1865,12 @@ export const C172_LESSON_2 = {
               <span class="text-[9px] font-bold text-sky-800 bg-sky-100 px-1.5 py-0.5 rounded">Fuel Temp / V / A</span>
             </div>
             <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[190px] object-contain rounded-md" />
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[180px] object-contain rounded-md" />
             </div>
           </div>
 
-          <!-- 2. Panel Anunciador de Alarmas con NOTA -->
-          <div class="flex-[1.2] min-h-0 flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
+          <!-- 2. Panel Anunciador de Alarmas con NOTA (Imagen ultra compacta sin scroll) -->
+          <div class="flex-1 min-h-0 flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white p-2 shadow-2xs">
             <div>
               <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
                 <span class="text-[11px] font-bold text-[#0B2E59] dark:text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
@@ -1877,8 +1879,8 @@ export const C172_LESSON_2 = {
                 </span>
                 <span class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded">CED/AED Caution</span>
               </div>
-              <div class="w-full bg-white flex items-center justify-center overflow-hidden py-0.5">
-                <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full max-h-[105px] object-contain rounded-md" />
+              <div class="w-full bg-white flex items-center justify-center overflow-hidden py-1">
+                <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="h-[50px] max-h-[50px] w-auto max-w-full object-contain rounded-md shadow-2xs" />
               </div>
             </div>
 
@@ -1895,10 +1897,10 @@ export const C172_LESSON_2 = {
       </div>
     </div>
   </div>
-</div>
-
-<!-- pagebreak -->
-
+</div>
+
+<!-- pagebreak -->
+
 <!-- DIAPOSITIVA 2.12: 2.12 Combustibles Autorizados y Capacidades de Depósitos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
