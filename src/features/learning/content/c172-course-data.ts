@@ -1628,44 +1628,92 @@ export const C172_LESSON_2 = {
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CED 125 INSTRUMENT MARKINGS</span>
         </div>
-        <div class="space-y-1 py-0.5">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
-            <!-- TACÓMETRO, PRESIÓN Y CARGA -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TACÓMETRO, PRESIÓN Y CARGA (CED 125)</strong>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Tachometer [RPM]: Verde: 0 - 2.300 RPM | Línea Roja: > 2.300 RPM</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Oil Pressure [bar]: Roja: 0 - 1.1 | Ámbar: 1.2 - 2.2 | Verde: 2.3 - 5.1 | Ámbar: 5.2 - 6.5 | Roja: > 6.5 bar</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Oil Pressure [psi]: Roja: 0 - 16 | Ámbar: 17.4 - 32 | Verde: 33.4 - 74 | Ámbar: 75.4 - 87.0 | Roja: > 87.0 psi</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Load [%]: Verde: 0% - 100% (describe el porcentaje disponible de potencia máx.)</span>
-            </div>
+        <div class="space-y-2 py-0.5 overflow-y-auto">
+          <!-- TABLA 1: TACÓMETRO, PRESIÓN Y CARGA (CED 125) -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">TACÓMETRO, PRESIÓN Y CARGA (CED 125)</strong>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">POH Tabla 2-2</span>
             </div>
 
-            <!-- TEMPERATURAS DE FLUIDOS -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TEMPERATURAS: REFRIGERANTE, ACEITE Y REDUCTORA</strong>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Coolant Temp [°C]: Roja: < -32 | Ámbar: -32...+59 | Verde: 60 - 100 | Ámbar: 101 - 105 | Roja: > 105 °C</span>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-[11px] leading-tight">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
+                    <th class="py-1 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300 w-[28%]">Parámetro [Unidad]</th>
+                    <th class="py-1 px-1.5 font-bold text-emerald-700 dark:text-emerald-400 w-[24%]">Verde (Normal)</th>
+                    <th class="py-1 px-1.5 font-bold text-amber-700 dark:text-amber-400 w-[24%]">Ámbar (Precaución)</th>
+                    <th class="py-1 px-1.5 font-bold text-red-700 dark:text-red-400 w-[24%]">Roja (Límite / Alarma)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Tachometer [RPM]</td>
+                    <td class="py-1 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0 - 2.300 RPM</td>
+                    <td class="py-1 px-1.5 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                    <td class="py-1 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&gt; 2.300 RPM <span class="text-[10px] font-normal">(Línea Roja)</span></td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Pressure [bar]</td>
+                    <td class="py-1 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">2.3 - 5.1 bar</td>
+                    <td class="py-1 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">1.2 - 2.2 | 5.2 - 6.5</td>
+                    <td class="py-1 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">0 - 1.1 | &gt; 6.5 bar</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Pressure [psi]</td>
+                    <td class="py-1 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">33.4 - 74 psi</td>
+                    <td class="py-1 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">17.4 - 32 | 75.4 - 87.0</td>
+                    <td class="py-1 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">0 - 16 | &gt; 87.0 psi</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Load [%]</td>
+                    <td class="py-1 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0% - 100%</td>
+                    <td class="py-1 px-1.5 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                    <td class="py-1 px-1.5 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Oil Temp [°C]: Roja: < -32 | Ámbar: -32...+49 | Verde: 50 - 129 | Ámbar: 130 - 140 | Roja: > 140 °C</span>
+          </div>
+
+          <!-- TABLA 2: TEMPERATURAS: REFRIGERANTE, ACEITE Y REDUCTORA -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">TEMPERATURAS: REFRIGERANTE, ACEITE Y REDUCTORA</strong>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">POH Tabla 2-2</span>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Gearbox Temp [°C]: Verde: < 115 °C | Ámbar: 115 - 120 °C | Roja: > 120 °C</span>
-            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-[11px] leading-tight">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
+                    <th class="py-1 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300 w-[28%]">Parámetro [Unidad]</th>
+                    <th class="py-1 px-1.5 font-bold text-emerald-700 dark:text-emerald-400 w-[24%]">Verde (Normal)</th>
+                    <th class="py-1 px-1.5 font-bold text-amber-700 dark:text-amber-400 w-[24%]">Ámbar (Precaución)</th>
+                    <th class="py-1 px-1.5 font-bold text-red-700 dark:text-red-400 w-[24%]">Roja (Límite / Alarma)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Coolant Temp [°C]</td>
+                    <td class="py-1 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">60 - 100 °C</td>
+                    <td class="py-1 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+59 | 101 - 105</td>
+                    <td class="py-1 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 105 °C</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Temp [°C]</td>
+                    <td class="py-1 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">50 - 129 °C</td>
+                    <td class="py-1 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+49 | 130 - 140</td>
+                    <td class="py-1 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 140 °C</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Gearbox Temp [°C]</td>
+                    <td class="py-1 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">&lt; 115 °C</td>
+                    <td class="py-1 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">115 - 120 °C</td>
+                    <td class="py-1 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&gt; 120 °C</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
