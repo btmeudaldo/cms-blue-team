@@ -4923,7 +4923,7 @@ export const C172_LESSON_4 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="/images/c172/figure_5_3_stall_speeds.png" alt="Figura 5-3 Stall Speeds Cessna 172 POH" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/4.16.jpg" alt="Figura 5-3 Stall Speeds Cessna 172 POH" class="w-full h-full max-h-[460px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/4.16.jpg')this.src='/images/c172/4.16.jpg'" />
           </div>
         </div>
       </div>
