@@ -1267,11 +1267,11 @@ export const C172_LESSON_2 = {
             </div>
             <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Crucero máximo recomendado: 85% de carga (Max. recommended cruise)</span>
+              <span class="text-slate-800 dark:text-slate-200">Techo máximo certificado: 18.000 ft de altitud de presión</span>
             </div>
             <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Techo máximo certificado: 18.000 ft de altitud de presión</span>
+              <span class="text-slate-800 dark:text-slate-200">Cilindrada: 1.991 cm³</span>
             </div>
             </div>
           </div>
