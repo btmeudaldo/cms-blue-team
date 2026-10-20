@@ -1710,69 +1710,97 @@ export const C172_LESSON_2 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
     <!-- Columna Izquierda (lg:col-span-6): POH Suplemento Sección 2 (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AED 125 & CONFIRM/TEST LOGIC</span>
         </div>
-        <div class="space-y-1 py-0.5">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
-            <!-- AED 125 PARÁMETROS -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PARÁMETROS AUXILIARES (AED 125)</strong>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Fuel Temp (L y R) [°C]: Roja: < -30 | Ámbar: -30...-1 | Verde: 0 - 69 | Ámbar: 70 - 75 | Roja: > 75 °C</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Voltage (14V) [V]: Roja: 0 - 10 | Ámbar: 11 - 12.5 | Verde: 12.6 - 14.0 | Ámbar: 15.0 | Roja: > 15.0 V</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Voltage (28V) [V]: Roja: 0 - 21 | Ámbar: 22 - 24 | Verde: 25 - 29.4 | Ámbar: 29.5 - 30 | Roja: > 30 V</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Alternator Current (14V) [A]: Verde: 0 - 84 | Ámbar: 85 - 90 | Roja: > 90 A</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Alternator Current (28V) [A]: Verde: 0 - 52.4 | Ámbar: 52.5 - 60 | Roja: > 60 A</span>
-            </div>
-            </div>
 
-            <!-- LÓGICA CONFIRM / TEST -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÓGICA DEL BOTÓN CONFIRM / TEST</strong>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Activación de aviso: La luz AED/CED Caution se enciende al entrar en rango ámbar o rojo</span>
+        <!-- TABLA DE MARCAS DE INSTRUMENTOS AED 125 -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 w-full shrink-0">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-0.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">MARCAS DE INSTRUMENTOS AUXILIARES (AED 125)</strong>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">POH Tabla 2-3</span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-[11px] leading-tight">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
+                  <th class="py-1 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300">Parámetro [Unidad]</th>
+                  <th class="py-1 px-1.5 font-bold text-emerald-700 dark:text-emerald-400">Verde (Normal)</th>
+                  <th class="py-1 px-1.5 font-bold text-amber-700 dark:text-amber-400">Ámbar (Precaución)</th>
+                  <th class="py-1 px-1.5 font-bold text-red-700 dark:text-red-400">Roja (Límite / Alarma)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Fuel Temp (L y R) [°C]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0 - 69 °C</td>
+                  <td class="py-1.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">-30...-1 | 70 - 75 °C</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -30 | &gt; 75 °C</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Voltage (14V) [V]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">12.6 - 14.0 V</td>
+                  <td class="py-1.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">11 - 12.5 | 15.0 V</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">0 - 10 | &gt; 15.0 V</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Voltage (28V) [V]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">25 - 29.4 V</td>
+                  <td class="py-1.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">22 - 24 | 29.5 - 30 V</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">0 - 21 | &gt; 30 V</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Alternator Current (14V) [A]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0 - 84 A</td>
+                  <td class="py-1.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">85 - 90 A</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&gt; 90 A</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Alternator Current (28V) [A]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0 - 52.4 A</td>
+                  <td class="py-1.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">52.5 - 60 A</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&gt; 60 A</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- LÓGICA CONFIRM / TEST -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÓGICA OPERATIVA DEL BOTÓN CONFIRM / TEST</strong>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1 pt-0.5 text-[11px] leading-tight">
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Activación de aviso:</strong> La luz AED/CED Caution se enciende al entrar en rango ámbar o rojo.</span>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Memorización: Permanece encendida aunque el parámetro retorne a la zona verde</span>
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Memorización:</strong> Permanece encendida aunque el parámetro retorne a la zona verde.</span>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Confirmación: El piloto debe presionar el botón Confirm/Test para apagar la lámpara</span>
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Confirmación:</strong> El piloto debe presionar el botón Confirm/Test para apagar la lámpara.</span>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Rearme automático: Tras ser confirmada, volverá a iluminarse si otro parámetro se desvía</span>
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Rearme automático:</strong> Tras ser confirmada, volverá a iluminarse si otro parámetro se desvía.</span>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Prueba de encendido: Presionar el botón más de 1 segundo inicia la secuencia de autotest</span>
-            </div>
+            <div class="flex items-start gap-1.5 sm:col-span-2">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Prueba de encendido:</strong> Presionar el botón más de 1 segundo inicia la secuencia de autotest.</span>
             </div>
           </div>
-        <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
-          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+        </div>
+
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
+          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>ℹ️</span>
             <span>NOTE:</span>
           </strong>
           <div>La lámpara de aviso AED/CED permanece encendida incluso cuando la indicación del motor regresa al rango verde/normal de operación y debe ser confirmada presionando el pulsador Confirm/Test.</div>
-        </div>
         </div>
       </div>
     </div>
