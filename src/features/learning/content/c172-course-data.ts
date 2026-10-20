@@ -862,67 +862,110 @@ export const C172_LESSON_2 = {
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.3 Límites de Peso Estructural (Weight Limits)</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.3 Límites de Peso y Centro de Gravedad (Weight & CG Limits)</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pesos Máximos de Rampa, Despegue y Aterrizaje</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pesos Máximos y Envolvente de Centrado POH Sec. 2</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="42">
-    <!-- Columna Izquierda (lg:col-span-5): POH Suplemento Sección 2 (Altura Fija 590px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): Pesos y Límites CG (Altura Fija 590px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">WEIGHT LIMITS (SECTION 2)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">WEIGHT & CG LIMITS (SECTION 2)</span>
         </div>
 
-        <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+        <!-- Breve descripción oficial -->
+        <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
           <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
             Diagrama oficial de carga y centrado, vinculando los pesos estructurales con los límites de brazo del centro de gravedad.
           </p>
         </div>
 
-        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full">
-          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CESSNA 172</strong>
-          <div class="space-y-0.5 pt-0.5">
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Ramp Weight: 1044 kg (2302 lbs)</span>
+        <!-- Tabla de Pesos Estructurales -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 w-full shrink-0">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÍMITES DE PESO ESTRUCTURAL (CESSNA 172)</strong>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-[11px] leading-tight">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
+                  <th class="py-1 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300">Categoría</th>
+                  <th class="py-1 px-1.5 font-bold">Max. Ramp</th>
+                  <th class="py-1 px-1.5 font-bold">Max. Takeoff (MTOW)</th>
+                  <th class="py-1 px-1.5 font-bold">Max. Landing (MLW)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-[#2361A8] dark:text-sky-400 whitespace-nowrap">Normal Category</td>
+                  <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-medium">1044 kg (2302 lbs)</td>
+                  <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-medium">1043 kg (2300 lbs)</td>
+                  <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-medium">1043 kg (2300 lbs)</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-amber-600 dark:text-amber-400 whitespace-nowrap">Utility Category</td>
+                  <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-medium">908 kg (2002 lbs)</td>
+                  <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-medium">907 kg (2000 lbs)</td>
+                  <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-medium">907 kg (2000 lbs)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Center of Gravity Limits (POH Section 2) -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 w-full shrink-0">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">CENTER OF GRAVITY LIMITS</strong>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium hidden sm:inline">Datum: Lower portion of front face of firewall</span>
+          </div>
+
+          <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium sm:hidden pb-1 border-b border-slate-100 dark:border-slate-700">
+            Datum: Lower portion of front face of firewall
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] leading-snug">
+            <!-- Normal Category -->
+            <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="font-bold text-[#2361A8] dark:text-sky-400 block uppercase text-[10px] tracking-wider border-b border-slate-200 dark:border-slate-700/60 pb-0.5">NORMAL CATEGORY</span>
+              <div class="pt-0.5">
+                <span class="font-bold text-slate-700 dark:text-slate-300 text-[10px] uppercase">Forward:</span>
+                <p class="text-slate-600 dark:text-slate-300 mt-0.5">
+                  35.0 in. aft of datum at 1950 lbs. or less, with straight line variation to 38.5 in. aft of datum at 2300 lbs.
+                </p>
+              </div>
+              <div>
+                <span class="font-bold text-slate-700 dark:text-slate-300 text-[10px] uppercase">Aft:</span>
+                <p class="text-slate-600 dark:text-slate-300 mt-0.5">
+                  47.3 in. aft of datum at all weights.
+                </p>
+              </div>
             </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Takeoff Weight: 1043 kg (2300 lbs)</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Landing Weight: 1043 kg (2300 lbs)</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Ramp Weight: 908 kg (2002 lbs)</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Takeoff Weight: 907 kg (2000 lbs)</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Landing Weight: 907 kg (2000 lbs)</span>
+
+            <!-- Utility Category -->
+            <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 space-y-1">
+              <span class="font-bold text-amber-600 dark:text-amber-400 block uppercase text-[10px] tracking-wider border-b border-slate-200 dark:border-slate-700/60 pb-0.5">UTILITY CATEGORY</span>
+              <div class="pt-0.5">
+                <span class="font-bold text-slate-700 dark:text-slate-300 text-[10px] uppercase">Forward:</span>
+                <p class="text-slate-600 dark:text-slate-300 mt-0.5">
+                  35.0 in. aft of datum at 1950 lbs. or less, with straight line variation to 35.5 in. aft of datum at 2000 lbs.
+                </p>
+              </div>
+              <div>
+                <span class="font-bold text-slate-700 dark:text-slate-300 text-[10px] uppercase">Aft:</span>
+                <p class="text-slate-600 dark:text-slate-300 mt-0.5">
+                  40.5 in. aft of datum at all weights.
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
-          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-            <span>⚠️</span>
-            <span>WARNING:</span>
-          </strong>
-          <div>No está permitido arrancar el motor utilizando energía externa (external power). Si el arranque no es posible empleando la batería de a bordo, debe verificarse obligatoriamente el estado de la batería antes del vuelo.</div>
-        </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-7): Envolvente de Masa y Centrado (Altura Fija 590px) -->
-    <div class="lg:col-span-7 flex flex-col">
+    <!-- Columna Derecha (lg:col-span-6): Envolvente de Masa y Centrado (Altura Fija 590px) -->
+    <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE DE MASA Y CENTRADO</span>
