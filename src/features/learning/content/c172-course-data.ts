@@ -1622,16 +1622,16 @@ export const C172_LESSON_2 = {
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Filas compactas, texto intacto, sin scroll) -->
+    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Tablas con espacio equilibrado, sin scroll) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800 mb-2">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CED 125 INSTRUMENT MARKINGS</span>
         </div>
-        <div class="space-y-1.5 py-0.5">
+        <div class="space-y-3 py-1">
           <!-- TABLA 1: TACÓMETRO, PRESIÓN Y CARGA (CED 125) -->
-          <div class="p-1.5 px-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 w-full shrink-0">
-            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-0.5">
+          <div class="p-2.5 px-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-1">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">TACÓMETRO, PRESIÓN Y CARGA (CED 125)</strong>
               <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">POH Tabla 2-2</span>
             </div>
@@ -1640,36 +1640,36 @@ export const C172_LESSON_2 = {
               <table class="w-full text-left text-[11px] leading-tight">
                 <thead>
                   <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
-                    <th class="py-0.5 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300 w-[22%] whitespace-nowrap">Parámetro</th>
-                    <th class="py-0.5 px-1.5 font-bold text-emerald-700 dark:text-emerald-400 w-[18%] whitespace-nowrap">Verde</th>
-                    <th class="py-0.5 px-1.5 font-bold text-amber-700 dark:text-amber-400 w-[35%] whitespace-nowrap">Ámbar</th>
-                    <th class="py-0.5 px-1.5 font-bold text-red-700 dark:text-red-400 w-[25%] whitespace-nowrap">Roja</th>
+                    <th class="py-1.5 px-2 font-bold text-[#0B2E59] dark:text-sky-300 w-[22%] whitespace-nowrap">Parámetro</th>
+                    <th class="py-1.5 px-2 font-bold text-emerald-700 dark:text-emerald-400 w-[18%] whitespace-nowrap">Verde</th>
+                    <th class="py-1.5 px-2 font-bold text-amber-700 dark:text-amber-400 w-[35%] whitespace-nowrap">Ámbar</th>
+                    <th class="py-1.5 px-2 font-bold text-red-700 dark:text-red-400 w-[25%] whitespace-nowrap">Roja</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
-                    <td class="py-0.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Tachometer [RPM]</td>
-                    <td class="py-0.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0 - 2.300 RPM</td>
-                    <td class="py-0.5 px-1.5 text-slate-400 dark:text-slate-500 font-mono">—</td>
-                    <td class="py-0.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono whitespace-nowrap">&gt; 2.300 RPM</td>
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Tachometer [RPM]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0 - 2.300 RPM</td>
+                    <td class="py-1.5 px-2 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono whitespace-nowrap">&gt; 2.300 RPM</td>
                   </tr>
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
-                    <td class="py-0.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Pressure [bar]</td>
-                    <td class="py-0.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">2.3 - 5.1 bar</td>
-                    <td class="py-0.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">1.2 - 2.2 | 5.2 - 6.5</td>
-                    <td class="py-0.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">0 - 1.1 | &gt; 6.5 bar</td>
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Pressure [bar]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">2.3 - 5.1 bar</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">1.2 - 2.2 | 5.2 - 6.5</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">0 - 1.1 | &gt; 6.5 bar</td>
                   </tr>
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
-                    <td class="py-0.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Pressure [psi]</td>
-                    <td class="py-0.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">33.4 - 74 psi</td>
-                    <td class="py-0.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">17.4 - 32 | 75.4 - 87.0</td>
-                    <td class="py-0.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">0 - 16 | &gt; 87.0 psi</td>
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Pressure [psi]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">33.4 - 74 psi</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">17.4 - 32 | 75.4 - 87.0</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">0 - 16 | &gt; 87.0 psi</td>
                   </tr>
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
-                    <td class="py-0.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Load [%]</td>
-                    <td class="py-0.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0% - 100%</td>
-                    <td class="py-0.5 px-1.5 text-slate-400 dark:text-slate-500 font-mono">—</td>
-                    <td class="py-0.5 px-1.5 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Load [%]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0% - 100%</td>
+                    <td class="py-1.5 px-2 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                    <td class="py-1.5 px-2 text-slate-400 dark:text-slate-500 font-mono">—</td>
                   </tr>
                 </tbody>
               </table>
@@ -1677,8 +1677,8 @@ export const C172_LESSON_2 = {
           </div>
 
           <!-- TABLA 2: TEMPERATURAS: REFRIGERANTE, ACEITE Y REDUCTORA -->
-          <div class="p-1.5 px-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 w-full shrink-0">
-            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-0.5">
+          <div class="p-2.5 px-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-1">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">TEMPERATURAS: REFRIGERANTE, ACEITE Y REDUCTORA</strong>
               <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">POH Tabla 2-2</span>
             </div>
@@ -1687,30 +1687,30 @@ export const C172_LESSON_2 = {
               <table class="w-full text-left text-[11px] leading-tight">
                 <thead>
                   <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
-                    <th class="py-0.5 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300 w-[22%] whitespace-nowrap">Parámetro</th>
-                    <th class="py-0.5 px-1.5 font-bold text-emerald-700 dark:text-emerald-400 w-[18%] whitespace-nowrap">Verde</th>
-                    <th class="py-0.5 px-1.5 font-bold text-amber-700 dark:text-amber-400 w-[35%] whitespace-nowrap">Ámbar</th>
-                    <th class="py-0.5 px-1.5 font-bold text-red-700 dark:text-red-400 w-[25%] whitespace-nowrap">Roja</th>
+                    <th class="py-1.5 px-2 font-bold text-[#0B2E59] dark:text-sky-300 w-[22%] whitespace-nowrap">Parámetro</th>
+                    <th class="py-1.5 px-2 font-bold text-emerald-700 dark:text-emerald-400 w-[18%] whitespace-nowrap">Verde</th>
+                    <th class="py-1.5 px-2 font-bold text-amber-700 dark:text-amber-400 w-[35%] whitespace-nowrap">Ámbar</th>
+                    <th class="py-1.5 px-2 font-bold text-red-700 dark:text-red-400 w-[25%] whitespace-nowrap">Roja</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
-                    <td class="py-0.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Coolant Temp [°C]</td>
-                    <td class="py-0.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">60 - 100 °C</td>
-                    <td class="py-0.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+59 | 101 - 105</td>
-                    <td class="py-0.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 105 °C</td>
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Coolant Temp [°C]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">60 - 100 °C</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+59 | 101 - 105</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 105 °C</td>
                   </tr>
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
-                    <td class="py-0.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Temp [°C]</td>
-                    <td class="py-0.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">50 - 129 °C</td>
-                    <td class="py-0.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+49 | 130 - 140</td>
-                    <td class="py-0.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 140 °C</td>
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Temp [°C]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">50 - 129 °C</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+49 | 130 - 140</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 140 °C</td>
                   </tr>
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
-                    <td class="py-0.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Gearbox Temp [°C]</td>
-                    <td class="py-0.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">&lt; 115 °C</td>
-                    <td class="py-0.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">115 - 120 °C</td>
-                    <td class="py-0.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&gt; 120 °C</td>
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Gearbox Temp [°C]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">&lt; 115 °C</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">115 - 120 °C</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&gt; 120 °C</td>
                   </tr>
                 </tbody>
               </table>
@@ -1892,13 +1892,9 @@ export const C172_LESSON_2 = {
               <span class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded">CED/AED Caution</span>
             </div>
 
-            <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden py-1">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full h-full max-h-[160px] object-contain rounded-md" />
+            <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden py-0.5">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full h-full max-h-[195px] object-contain rounded-md" />
             </div>
-
-            <figcaption class="text-center text-[10px] text-slate-500 dark:text-slate-400 font-medium shrink-0 pt-0.5">
-              Panel Anunciador de cabina (C172) con indicación CED/AED Caution
-            </figcaption>
           </div>
         </div>
       </div>
