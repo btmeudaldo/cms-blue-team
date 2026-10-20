@@ -25,7 +25,8 @@
     "test:db": "supabase test db --local supabase/tests",
     "clean:vercel": "node scripts/clean-vercel-deployments.mjs",
     "db:backup": "node scripts/pull_c172_from_db.mjs",
-    "db:pull": "node scripts/sync_c172_from_db.mjs"
+    "db:pull": "node scripts/sync_c172_from_db.mjs",
+    "db:push": "node scripts/push_c172_to_db.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
