@@ -2183,8 +2183,8 @@ export const C172_LESSON_3 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.1-cd155-engine.png?v=1" alt="Motor Continental Jet-A CD-155" class="w-full h-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/Continental-Engine-Jet-A-CD-155-View-latest.png')this.src='/images/c172/Continental-Engine-Jet-A-CD-155-View-latest.png'" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.1-cd155-engine.png?v=1" alt="Motor Continental Jet-A CD-155" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
@@ -2281,7 +2281,7 @@ export const C172_LESSON_3 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/90 flex flex-col items-center justify-center p-0.5">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.2-gearbox-propeller.jpg?v=1" alt="Reductora Integrada y Hélice MT-Propeller" class="w-full h-full object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.2-gearbox-propeller.jpg')this.src='/images/c172/3.2-gearbox-propeller.jpg'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.2-gearbox-propeller.jpg?v=1" alt="Reductora Integrada y Hélice MT-Propeller" class="w-full h-full object-contain rounded-lg" />
           </div>
         </div>
       </div>
@@ -2344,7 +2344,7 @@ export const C172_LESSON_3 = {
             </div>
             <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Batería FADEC Backup: Conectada exclusivamente al FADEC A, asegura 30 minutos de operación de motor sin alternador ni batería principal</span>
+              <span class="text-slate-800 dark:text-slate-200">Batería FADEC Backup: Conectada exclusivamente al FADEC A, tiene un máximo de 30 minutos de operación de motor sin alternador ni batería principal</span>
             </div>
             <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
@@ -2379,8 +2379,8 @@ export const C172_LESSON_3 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.3-fadec.jpg?v=1" alt="Arquitectura del Sistema FADEC Continental CD-135 / CD-155" class="w-full h-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.3-fadec.jpg')this.src='/images/c172/3.3-fadec.jpg'" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.3-fadec.jpg?v=1" alt="Arquitectura del Sistema FADEC Continental CD-135 / CD-155" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
@@ -2405,7 +2405,7 @@ export const C172_LESSON_3 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FADEC TEST & FORCE B</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FADEC TEST &amp; FORCE B</span>
         </div>
         <div class="space-y-1 py-0.5">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
@@ -2586,7 +2586,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.4-fadec-test.jpg?v=1" alt="Esquema Eléctrico General: Alternador, Batería y Distribución" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.4-fadec-test.jpg')this.src='/images/c172/3.4-fadec-test.jpg'" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.4-fadec-test.jpg?v=1" alt="Esquema Eléctrico General: Alternador, Batería y Distribución" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
     </div>
@@ -2678,7 +2678,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.5-electrical.jpg?v=1" alt="Esquema Eléctrico: Batería FADEC Backup (Alimentación Exclusiva a ECU A) y Main Bus" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.5-electrical.jpg')this.src='/images/c172/3.5-electrical.jpg'" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.5-electrical.jpg?v=1" alt="Esquema Eléctrico: Batería FADEC Backup (Alimentación Exclusiva a ECU A) y Main Bus" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
     </div>
@@ -2770,7 +2770,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.7-fuel-tanks.jpg?v=1" alt="Esquema de Combustible: Depósitos, Selector y Depósito Nodriza" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.7-fuel-tanks.jpg')this.src='/images/c172/3.7-fuel-tanks.jpg'" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.7-fuel-tanks.jpg?v=1" alt="Esquema de Combustible: Depósitos, Selector y Depósito Nodriza" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
     </div>
@@ -2859,7 +2859,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.8-fuel-return.jpg?v=2" alt="Esquema de Retorno de Combustible, Fuel Cooler y Deflector Térmico" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.8-fuel-return.jpg?v=2')this.src='/images/c172/3.8-fuel-return.jpg?v=2'" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.8-fuel-return.jpg?v=2" alt="Esquema de Retorno de Combustible, Fuel Cooler y Deflector Térmico" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
     </div>
@@ -2948,7 +2948,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.9-cooling-system.jpg?v=1" alt="Esquema de Refrigeración Líquida TAE 125" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.9-cooling-system.jpg')this.src='/images/c172/3.9-cooling-system.jpg'" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.9-cooling-system.jpg?v=1" alt="Esquema de Refrigeración Líquida TAE 125" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
     </div>
@@ -3037,7 +3037,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.10-lubrication.jpg?v=1" alt="Esquema de Circuitos de Aceite de Motor y Caja Reductora" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.10-lubrication.jpg')this.src='/images/c172/3.10-lubrication.jpg'" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.10-lubrication.jpg?v=1" alt="Esquema de Circuitos de Aceite de Motor y Caja Reductora" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
     </div>
@@ -3145,7 +3145,7 @@ export const C172_LESSON_3 = {
               <span class="text-[9px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded">Tach / Press / Temp / Load</span>
             </div>
             <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.11-ced2.jpg?v=1" alt="Compact Engine Display CED 125" class="w-full h-full max-h-[195px] object-contain rounded-md" onerror="if(this.src!=='/images/c172/3.11-ced2.jpg')this.src='/images/c172/3.11-ced2.jpg'" />
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.11-ced2.jpg?v=1" alt="Compact Engine Display CED 125" class="w-full h-full max-h-[195px] object-contain rounded-md" />
             </div>
           </div>
 
@@ -3159,7 +3159,7 @@ export const C172_LESSON_3 = {
               <span class="text-[9px] font-bold text-sky-800 bg-sky-100 px-1.5 py-0.5 rounded">Fuel Temp / Voltmeter / Water Level</span>
             </div>
             <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.11-aed2.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[195px] object-contain rounded-md" onerror="if(this.src!=='/images/c172/3.11-aed2.jpg')this.src='/images/c172/3.11-aed2.jpg'" />
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.11-aed2.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[195px] object-contain rounded-md" />
             </div>
           </div>
         </div>
@@ -3259,7 +3259,7 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.12-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172: Avisadores FADEC A/B, Alternador, CED/AED Caution, Low Fuel y Glow" class="w-full h-full max-h-[480px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/3.12-annunciator.jpg')this.src='/images/c172/3.12-annunciator.jpg'" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.12-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172: Avisadores FADEC A/B, Alternador, CED/AED Caution, Low Fuel y Glow" class="w-full h-full max-h-[480px] object-contain rounded-lg" />
         </div>
       </div>
     </div>
@@ -3275,7 +3275,7 @@ export const C172_LESSON_3 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.13 Sistemas de Célula I: Mandos de Vuelo, Compensación y Flaps Fowler</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Flight Controls, Elevator Trim & Wing Flap System</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Flight Controls, Elevator Trim &amp; Wing Flap System</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -3283,14 +3283,14 @@ export const C172_LESSON_3 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FLIGHT CONTROLS & TRIM SYSTEM</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FLIGHT CONTROLS &amp; TRIM SYSTEM</span>
         </div>
 
         <!-- Mandos Primarios y Compensador -->
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
           <div class="flex items-start gap-2 text-[11px] leading-tight">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-            <div><strong>Mandos de Vuelo Convencionales:</strong> El sistema de mandos de vuelo consiste en alerones, timón de profundidad y timón de dirección convencionales operados manualmente a través de varillaje mecánico y cables de control desde los volantes de mando y pedales.</div>
+            <div><strong>Mandos de Vuelo Convencionales:</strong> El sistema de mandos de vuelo consiste en alerones, timón de profundidad y timón de dirección convencionales operados manualmente a través de varillaje mecánico y cables de control desde los cuernos de mando y pedales.</div>
           </div>
           <div class="flex items-start gap-2 text-[11px] leading-tight">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
@@ -3298,7 +3298,7 @@ export const C172_LESSON_3 = {
           </div>
           <div class="flex items-start gap-2 text-[11px] leading-tight">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-            <div><strong>Sistema de Compensación de Profundidad (Elevator Trim Tab):</strong> Accionado manualmente mediante la rueda de trim vertical montada en el pedestal de cabina. La rotación hacia adelante compensa morro abajo (*nose-down*); hacia atrás compensa morro arriba (*nose-up*).</div>
+            <div><strong>Sistema de Compensación de Profundidad (Elevator Trim Tab):</strong> Accionado manualmente mediante la rueda de trim vertical montada en el pedestal de cabina. La rotación hacia adelante compensa morro abajo (nose-down); hacia atrás compensa morro arriba (nose-up).</div>
           </div>
         </div>
 
@@ -3318,7 +3318,7 @@ export const C172_LESSON_3 = {
           </div>
           <div class="flex items-start gap-2 text-[11px] leading-tight">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-            <div><strong>Palanca Selectora e Indicador:</strong> La palanca en el panel de instrumentos dispone de topes mecánicos en <strong>10°</strong> y <strong>20°</strong>. Para ángulos mayores se desplaza a la derecha del tope hacia <strong>40°</strong> (o 30° según célula). Un indicador mecánico seguidor muestra el ángulo exacto de deflexión.</div>
+            <div><strong>Palanca Selectora e Indicador:</strong> La palanca en el panel de instrumentos dispone de indicador de&nbsp;<strong>10°,</strong>&nbsp;<strong>20°, 30</strong><span style="font-weight: 700; letter-spacing: -0.18px; font-size: 1.125rem;">°</span><strong style="font-size: 1.125rem; letter-spacing: -0.01em;">&nbsp;y 40</strong><span style="font-weight: 700; letter-spacing: -0.18px; font-size: 1.125rem;">°</span><span style="font-size: 1.125rem; letter-spacing: -0.01em;">.&nbsp;</span><span style="font-size: 1.125rem; letter-spacing: -0.01em;">Un indicador mecánico seguidor muestra el ángulo exacto de deflexión.</span></div>
           </div>
         </div>
       </div>
@@ -3337,8 +3337,8 @@ export const C172_LESSON_3 = {
             <div><strong>Protección Eléctrica:</strong> Circuito protegido por un disyuntor automático (<em>circuit breaker</em>) de <strong>15 Amperios</strong> identificado como <code class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">FLAP</code>.</div>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/80 flex items-center justify-center p-2">
-            <img src="/images/c172/3.13-flaps-fowler.jpg" alt="Sistema de Flaps Fowler Cessna 172" class="w-full h-full max-h-[460px] object-contain rounded-lg" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/80 flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="/images/c172/3.13-flaps-fowler.jpg" alt="Sistema de Flaps Fowler Cessna 172" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
@@ -3355,7 +3355,7 @@ export const C172_LESSON_3 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.14 Sistemas de Célula II: Tren, Frenos, Dirección en Tierra y Aviso de Pérdida</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Landing Gear, Ground Steering & Stall Warning</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Landing Gear, Ground Steering &amp; Stall Warning</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -3367,9 +3367,9 @@ export const C172_LESSON_3 = {
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
-          <div><strong>Tren de Aterrizaje Triciclo Fijo:</strong> La amortiguación del tren principal se logra mediante ballestas de acero tubular de resorte de una sola pieza. La pata de morro cuenta con un amortiguador oleoneumático (*air/oil shock strut*).</div>
+          <div><strong>Tren de Aterrizaje Triciclo Fijo:</strong> La amortiguación del tren principal se logra mediante ballestas de acero tubular de resorte de una sola pieza. La pata de morro cuenta con un amortiguador oleoneumático (air/oil shock strut).</div>
           <div><strong>Frenos de Disco Hidráulicos:</strong> Frenos de disco sencillos en la parte interior de cada rueda principal, accionados hidráulicamente de forma independiente mediante los cilindros maestros en las punteras de los pedales.</div>
-          <div><strong>Dirección en Tierra (Ground Control):</strong> Rueda de morro orientable acoplada a los pedales de dirección mediante un varillaje con resorte elástico (*spring-loaded steering bungee*):
+          <div><strong>Dirección en Tierra (Ground Control):</strong> Rueda de morro orientable acoplada a los pedales de dirección mediante un varillaje con resorte elástico (spring-loaded steering bungee):
             <div class="grid grid-cols-2 gap-1.5 pt-1 font-mono">
               <span class="p-1 rounded-md bg-blue-50 dark:bg-blue-950/40 text-[#1a80ff] dark:text-sky-400 font-bold">Solo pedales: ±10°</span>
               <span class="p-1 rounded-md bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 font-bold">Con freno dif.: ±30°</span>
@@ -3404,15 +3404,15 @@ export const C172_LESSON_3 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/80 flex items-center justify-center p-2">
-            <img src="/images/c172/3.14-tren-frenos-direccion.jpg" alt="Esquema de Tren de Aterrizaje, Dirección en Tierra y Aviso de Pérdida Cessna 172" class="w-full h-full max-h-[420px] object-contain rounded-lg" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/80 flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="/images/c172/3.14-tren-frenos-direccion.jpg" alt="Esquema de Tren de Aterrizaje, Dirección en Tierra y Aviso de Pérdida Cessna 172" class="w-full h-full max-h-[420px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>`,
-};;
+};
 
 // ============================================================================
 // LECCIÓN 3: PROCEDIMIENTOS NORMALES Y CHECKLISTS (9 DIAPOSITIVAS)
