@@ -99,11 +99,7 @@ export const C172_LESSON_1 = {
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-sm sm:text-base border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">OBJETO DEL SUPLEMENTO</strong>
             <p class="text-slate-700 dark:text-slate-200 text-sm sm:text-[15px] leading-relaxed">
-              Este Suplemento Oficial al Manual de Operación de la Aeronave (POH) contiene la información técnica, limitaciones y procedimientos necesarios para la operación segura de los aviones Cessna 172 equipados con motores Continental CD-135 y CD-155.
-            </p>
-            <p class="text-slate-700 dark:text-slate-200 text-sm sm:text-[15px] leading-relaxed">
-              Complementa o sustituye al POH básico de Cessna en todo lo relativo a la planta de potencia y sus sistemas asociados.
-            </p>
+              Este curso esta basado en el manual oficial de Cessna 172 y el suplemento de Continental CD135 y CD155, contiene la información técnica, limitaciones y procedimientos necesarios para la operación segura de los aviones Cessna 172 equipados con motores Continental CD-135 y CD-155.&nbsp;<span style="letter-spacing: -0.18px; font-size: 1.125rem;">Este curso no sustituye al POH básico de Cessna y el suplemento de Continental.</span></p>
           </div>
 
           <!-- Simbología de Seguridad POH -->
@@ -140,17 +136,10 @@ export const C172_LESSON_1 = {
       <div class="h-[590px] flex flex-col justify-between p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">FLOTA C172</span>
-          </div>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">FLOTA C172</span></div>
 
-          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
-            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 leading-snug font-medium">
-              Este curso no sustituye al POH básico de Cessna; define exclusivamente las diferencias y procedimientos del motor diésel y sus sistemas para operar con seguridad.
-            </p>
-          </div>
-
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/C172-tarjeta.jpg" alt="Cessna 172 Continental Diésel" class="w-full h-full max-h-[440px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/C172-tarjeta.jpg')this.src='/images/c172/C172-tarjeta.jpg'" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex items-center justify-center p-2 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/C172-tarjeta.jpg" alt="Cessna 172 Continental Diésel" class="w-full h-full max-h-[440px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
         </div>
       </div>
@@ -185,7 +174,7 @@ export const C172_LESSON_1 = {
               Motor de 4 cilindros en línea, cuatro tiempos, refrigeración líquida, doble árbol de levas en cabeza (DOHC), inyección directa Common-Rail y turboalimentado con intercooler. Cilindrada total: 1.991 cm³ (121.5 in³).
             </p>
             <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
-              Controlado íntegramente por sistema electrónico FADEC. La hélice es accionada mediante caja reductora integrada (relación $i = 1.69$) con amortiguador mecánico de vibraciones y embrague de sobrecarga. Cuenta con motor de arranque y alternador integrados.
+              Controlado íntegramente por sistema electrónico FADEC. La hélice es accionada mediante caja reductora integrada (relación i = 1.69) con amortiguador mecánico de vibraciones y embrague de sobrecarga. Cuenta con motor de arranque y alternador integrados.
             </p>
           </div>
 
@@ -198,14 +187,14 @@ export const C172_LESSON_1 = {
             <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-0.5 pt-0.5">
               <li class="flex items-start gap-1.5">• <span>Carburador y sistema de calefacción de carburador.</span></li>
               <li class="flex items-start gap-1.5">• <span>Magnetos de encendido y bujías convencionales.</span></li>
-              <li class="flex items-start gap-1.5">• <span>Mando de mezcla y sistema de cebado (*primer*).</span></li>
+              <li class="flex items-start gap-1.5">• <span>Mando de mezcla y sistema de cebado (primer).</span></li>
             </ul>
           </div>
 
           <!-- Warning eléctrico POH -->
           <div class="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200">
             <span class="text-base shrink-0">🚨</span>
-            <span><strong>WARNING (POH):</strong> El motor requiere energía eléctrica continua para operar. Si fallan batería y alternador, el motor solo operará durante un máximo de **30 minutos** con la batería de reserva FADEC. Prestar máxima atención a las indicaciones de fallo del alternador.</span>
+            <span><strong>WARNING (POH):</strong> El motor requiere energía eléctrica continua para operar. Si fallan batería y alternador, el motor solo operará durante un máximo de 30 minutos con la batería de reserva FADEC. Prestar máxima atención a las indicaciones de fallo del alternador.</span>
           </div>
         </div>
       </div>
@@ -225,8 +214,8 @@ export const C172_LESSON_1 = {
             </p>
           </div>
 
-          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/Continental-Engine-Jet-A-CD-155-View-latest.png" alt="Motor Continental CD-155 Jet-A" class="w-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/Continental-Engine-Jet-A-CD-155-View-latest.png')this.src='/images/c172/Continental-Engine-Jet-A-CD-155-View-latest.png'" />
+          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-2 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/Continental-Engine-Jet-A-CD-155-View-latest.png" alt="Motor Continental CD-155 Jet-A" class="w-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
         </div>
       </div>
@@ -281,10 +270,10 @@ export const C172_LESSON_1 = {
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FUNCIONAMIENTO CONSTANT SPEED</strong>
             <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
-              La hélice es de velocidad constante (*constant speed*). El paso de las palas se ajusta hidráulicamente mediante presión de aceite suministrada por el motor y gestionada directamente por el sistema FADEC.
+              La hélice es de velocidad constante (constant speed). El paso de las palas se ajusta hidráulicamente mediante presión de aceite suministrada por el motor y gestionada directamente por el sistema FADEC.
             </p>
             <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
-              El piloto no dispone de palanca mecánica de paso de hélice en cabina: al mover la palanca monomando de empuje (*Thrust Lever*), la ECU del FADEC determina y comanda el paso óptimo para mantener 2.300 RPM en despegue y crucero continuo.
+              El piloto no dispone de palanca mecánica de paso de hélice en cabina: al mover la palanca monomando de empuje (Thrust Lever), la ECU del FADEC determina y comanda el paso óptimo para mantener 2.300 RPM en despegue y crucero continuo.
             </p>
           </div>
         </div>
@@ -305,8 +294,8 @@ export const C172_LESSON_1 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.3-propeller.jpg?v=1" alt="Hélice MT-Propeller Tripala MTV-6" class="w-full h-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/1.3-propeller.jpg?v=1')this.src='/images/c172/1.3-propeller.jpg?v=1'" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.3-propeller.jpg?v=1" alt="Hélice MT-Propeller Tripala MTV-6" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
@@ -354,7 +343,7 @@ export const C172_LESSON_1 = {
           <!-- Caution POH Combustibles No Autorizados -->
           <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200">
             <span class="text-base shrink-0">⚠️</span>
-            <span><strong>CAUTION (POH):</strong> El uso de combustibles no aprobados provocará daños en el motor y en los componentes del sistema de combustible, pudiendo provocar una parada de motor en vuelo. **AVGAS 100LL está terminantemente prohibido.**</span>
+            <span><strong>CAUTION (POH):</strong> El uso de combustibles no aprobados puede provocar daños en el motor y en los componentes del sistema de combustible, pudiendo provocar una parada de motor en vuelo. AVGAS 100LL está terminantemente prohibido.</span>
           </div>
         </div>
       </div>
@@ -374,8 +363,8 @@ export const C172_LESSON_1 = {
             </p>
           </div>
 
-          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/jet-fuel-only.jpg" alt="Rótulo JET FUEL ONLY C172" class="w-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/jet-fuel-only.jpg')this.src='/images/c172/jet-fuel-only.jpg'" />
+          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/jet-fuel-only.jpg" alt="Rótulo JET FUEL ONLY C172" class="w-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
@@ -459,8 +448,8 @@ export const C172_LESSON_1 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.5-fluidos.jpg?v=1" alt="Fluidos de Servicio C172" class="w-full h-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/1.5-fluidos.jpg?v=1')this.src='/images/c172/1.5-fluidos.jpg?v=1'" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.5-fluidos.jpg?v=1" alt="Fluidos de Servicio C172" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
@@ -495,7 +484,7 @@ export const C172_LESSON_1 = {
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-[11px] text-slate-700 dark:text-slate-300">
                 <p>• <strong>Alt. Air Door:</strong> Mando de aire alternativo de motor.</p>
                 <p>• <strong>Starter:</strong> Pulsador de arranque eléctrico.</p>
-                <p>• <strong>BAT / MAIN / ALT:</strong> Interruptores de batería, barra y alternador.</p>
+                <p>• <strong>BAT / MAIN / ALT:</strong> Interruptores de batería, bus y alternador.</p>
                 <p>• <strong>Engine Master:</strong> Interruptor que alimenta eléctricamente la ECU FADEC.</p>
                 <p>• <strong>Fuel Pump:</strong> Interruptor de la bomba eléctrica auxiliar.</p>
                 <p>• <strong>Force B:</strong> Conmutador para forzar manualmente el canal B.</p>
@@ -689,12 +678,11 @@ export const C172_LESSON_2 = {
 
           <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
             <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-              El anemómetro presenta lecturas en <strong>KIAS</strong> (Knots Indicated Airspeed). Las velocidades en <strong>KCAS</strong> corrigen los errores de instalación y posición del tubo Pitot en los distintos ángulos de ataque.
-            </p>
+              El anemómetro presenta lecturas en <strong>KIAS</strong> (Knots Indicated Airspeed). Las velocidades en <strong>KCAS</strong> corrigen los errores de el instrumento, instalación y posición del tubo Pitot.</p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2">
-            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 calibrado en nudos" class="w-full h-full max-h-[290px] object-contain rounded-lg" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 calibrado en nudos" class="w-full h-full max-h-[290px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
 
           <!-- Nota POH sobre V_A trasladada a la derecha -->
@@ -735,7 +723,7 @@ export const C172_LESSON_2 = {
                 <tr>
                   <th class="py-2.5 px-3 w-[19%]">MARCA</th>
                   <th class="py-2.5 px-2 text-center w-[15%] font-mono">RANGO KIAS</th>
-                  <th class="py-2.5 px-3 w-[66%]">SIGNIFICADO OFICIAL POH (SIGNIFICANCE)</th>
+                  <th class="py-2.5 px-3 w-[66%]">SIGNIFICADO OFICIAL POH</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
@@ -841,8 +829,8 @@ export const C172_LESSON_2 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2">
-            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 con arcos de colores" class="w-full h-full max-h-[250px] object-contain rounded-lg" />
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 con arcos de colores" class="w-full h-full max-h-[250px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
 
           <!-- Criterio Operacional del POH trasladado a la derecha -->
@@ -857,7 +845,7 @@ export const C172_LESSON_2 = {
               </div>
               <div>
                 <strong class="text-slate-900 dark:text-white">• Vuelo en Turbulencia (&lt; 128 KIAS):</strong>
-                Al encontrar aire agitado, reducir inmediatamente por debajo del Arco Amarillo (dentro del rango de crucero estructural seguro).
+                Al encontrar aire turbulento, reducir inmediatamente por debajo del Arco Amarillo (dentro del rango de crucero estructural seguro).
               </div>
             </div>
           </div>
@@ -879,18 +867,23 @@ export const C172_LESSON_2 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pesos Máximos de Rampa, Despegue y Aterrizaje</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): POH Suplemento Sección 2 (Altura Fija 590px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="42">
+    <!-- Columna Izquierda (lg:col-span-5): POH Suplemento Sección 2 (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">WEIGHT LIMITS (SECTION 2)</span>
         </div>
-        <div class="space-y-1 py-0.5">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
-            <!-- CESSNA 172 N & F-M -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CESSNA 172 N & F, G, H, I, K, L, M</strong>
+
+        <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+          <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+            Diagrama oficial de carga y centrado, vinculando los pesos estructurales con los límites de brazo del centro de gravedad.
+          </p>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CESSNA 172</strong>
+          <div class="space-y-0.5 pt-0.5">
             <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Ramp Weight: 1044 kg (2302 lbs)</span>
@@ -915,65 +908,28 @@ export const C172_LESSON_2 = {
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
               <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Landing Weight: 907 kg (2000 lbs)</span>
             </div>
-            </div>
-
-            <!-- CESSNA 172 P -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CESSNA 172 P (TAE 125)</strong>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Ramp Weight: 1090 kg (2402 lbs)</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Takeoff Weight: 1089 kg (2400 lbs)</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Normal Category - Max. Landing Weight: 1089 kg (2400 lbs)</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Ramp Weight: 954 kg (2102 lbs)</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Takeoff Weight: 953 kg (2100 lbs)</span>
-            </div>
-            <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Utility Category - Max. Landing Weight: 953 kg (2100 lbs)</span>
-            </div>
-            </div>
           </div>
-        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0 ">
+        </div>
+
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
           <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚠️</span>
             <span>WARNING:</span>
           </strong>
           <div>No está permitido arrancar el motor utilizando energía externa (external power). Si el arranque no es posible empleando la batería de a bordo, debe verificarse obligatoriamente el estado de la batería antes del vuelo.</div>
         </div>
-        </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Envolvente de Masa y Centrado (Altura Fija 590px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE DE MASA Y CENTRADO</span>
-          </div>
+    <!-- Columna Derecha (lg:col-span-7): Envolvente de Masa y Centrado (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE DE MASA Y CENTRADO</span>
+        </div>
 
-          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
-            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-              Diagrama oficial de carga y centrado, vinculando los pesos estructurales con los límites de brazo del centro de gravedad.
-            </p>
-          </div>
-
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.1-cg-limits.png?v=2" alt="Envolvente de Masa y Centrado C172 (Figure 6-8)" class="w-full h-full max-h-[380px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg?v=2')this.src='/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg?v=2'" />
-          </div>
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1.5 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: 100%; max-width: 100%; height: 100%; float: none; clear: both; opacity: 1;">
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.1-cg-limits.png?v=2" alt="Envolvente de Masa y Centrado C172 (Figure 6-8)" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;">
         </div>
       </div>
     </div>
@@ -1188,7 +1144,7 @@ export const C172_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/vn.jpg" alt="Diagrama de Maniobra V-n C172" class="w-full h-full max-h-[500px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/vn.jpg')this.src='/images/c172/vn.jpg'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/vn.jpg" alt="Diagrama de Maniobra V-n C172" class="w-full h-full max-h-[500px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
@@ -1287,7 +1243,7 @@ export const C172_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/potencia-altitud-fadec.jpg" alt="Régimen de Potencia vs Altitud y Monomando FADEC C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/potencia-altitud-fadec.jpg')this.src='/images/c172/potencia-altitud-fadec.jpg'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/potencia-altitud-fadec.jpg" alt="Régimen de Potencia vs Altitud y Monomando FADEC C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
@@ -1389,7 +1345,7 @@ export const C172_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/limites-temperatura.jpg" alt="Límites Operacionales de Temperatura C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/limites-temperatura.jpg')this.src='/images/c172/limites-temperatura.jpg'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/limites-temperatura.jpg" alt="Límites Operacionales de Temperatura C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
@@ -1484,7 +1440,7 @@ export const C172_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/presion-aceite-lubricacion.jpg" alt="Circuito de Lubricación y Manómetro de Presión de Aceite C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/presion-aceite-lubricacion.jpg')this.src='/images/c172/presion-aceite-lubricacion.jpg'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/presion-aceite-lubricacion.jpg" alt="Circuito de Lubricación y Manómetro de Presión de Aceite C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
@@ -1586,7 +1542,7 @@ export const C172_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/temperatura-combustible-retorno.jpg" alt="Sondas Térmicas en Depósitos y Circuito de Retorno C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/temperatura-combustible-retorno.jpg')this.src='/images/c172/temperatura-combustible-retorno.jpg'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/temperatura-combustible-retorno.jpg" alt="Sondas Térmicas en Depósitos y Circuito de Retorno C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
@@ -1669,7 +1625,7 @@ export const C172_LESSON_2 = {
       <div class="h-[590px] flex flex-col justify-center items-center p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="w-full h-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-between p-2">
           <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.7-v2.jpg?v=2" alt="Compact Engine Display CED 125" class="w-full h-full max-h-[530px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/2.7-v2.jpg?v=2')this.src='/images/c172/2.7-v2.jpg?v=2'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.7-v2.jpg?v=2" alt="Compact Engine Display CED 125" class="w-full h-full max-h-[530px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1.5 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
             <strong class="font-bold text-[#0B2E59] dark:text-sky-300">CED 125</strong> · Compact Engine Display (Motor y Reductora)
@@ -1780,7 +1736,7 @@ export const C172_LESSON_2 = {
               <span class="text-[9px] font-bold text-sky-800 bg-sky-100 px-1.5 py-0.5 rounded">Fuel Temp / V / A</span>
             </div>
             <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[220px] object-contain rounded-md" onerror="if(this.src!=='/images/c172/2.8-aed.jpg?v=1')this.src='/images/c172/2.8-aed.jpg?v=1'" />
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[220px] object-contain rounded-md" />
             </div>
           </div>
 
@@ -1794,7 +1750,7 @@ export const C172_LESSON_2 = {
               <span class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded">CED/AED Caution</span>
             </div>
             <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full h-full max-h-[220px] object-contain rounded-md" onerror="if(this.src!=='/images/c172/2.8-annunciator.jpg?v=1')this.src='/images/c172/2.8-annunciator.jpg?v=1'" />
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full h-full max-h-[220px] object-contain rounded-md" />
             </div>
           </div>
         </div>
@@ -1890,7 +1846,7 @@ export const C172_LESSON_2 = {
       <div class="h-[590px] flex flex-col justify-center items-center p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="w-full h-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-between p-2">
           <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.9-fuel.jpg?v=1" alt="Diagrama del sistema de combustible (Left, Right, Both)" class="w-full h-full max-h-[530px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/2.9-fuel.jpg?v=1')this.src='/images/c172/2.9-fuel.jpg?v=1'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.9-fuel.jpg?v=1" alt="Diagrama del sistema de combustible (Left, Right, Both)" class="w-full h-full max-h-[530px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1.5 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
             <strong class="font-bold text-[#0B2E59] dark:text-sky-300">Diagrama del sistema de combustible</strong> (Left, Right, Both)
@@ -1979,7 +1935,7 @@ export const C172_LESSON_2 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-center items-center p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="w-full h-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.10-v2.jpg?v=2" alt="Placards Obligatorios de Cabina y Accesos de Servicio C172" class="w-full h-full max-h-[570px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/2.10-v2.jpg?v=2')this.src='/images/c172/2.10-v2.jpg?v=2'" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.10-v2.jpg?v=2" alt="Placards Obligatorios de Cabina y Accesos de Servicio C172" class="w-full h-full max-h-[570px] object-contain rounded-lg" />
         </div>
       </div>
     </div>
