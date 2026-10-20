@@ -1640,10 +1640,10 @@ export const C172_LESSON_2 = {
               <table class="w-full text-left text-[11px] leading-tight">
                 <thead>
                   <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
-                    <th class="py-0.5 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300 w-[28%]">Parámetro [Unidad]</th>
-                    <th class="py-0.5 px-1.5 font-bold text-emerald-700 dark:text-emerald-400 w-[24%]">Verde (Normal)</th>
-                    <th class="py-0.5 px-1.5 font-bold text-amber-700 dark:text-amber-400 w-[24%]">Ámbar (Precaución)</th>
-                    <th class="py-0.5 px-1.5 font-bold text-red-700 dark:text-red-400 w-[24%]">Roja (Límite / Alarma)</th>
+                    <th class="py-0.5 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300 w-[22%] whitespace-nowrap">Parámetro</th>
+                    <th class="py-0.5 px-1.5 font-bold text-emerald-700 dark:text-emerald-400 w-[18%] whitespace-nowrap">Verde</th>
+                    <th class="py-0.5 px-1.5 font-bold text-amber-700 dark:text-amber-400 w-[35%] whitespace-nowrap">Ámbar</th>
+                    <th class="py-0.5 px-1.5 font-bold text-red-700 dark:text-red-400 w-[25%] whitespace-nowrap">Roja</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
@@ -1651,7 +1651,7 @@ export const C172_LESSON_2 = {
                     <td class="py-0.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Tachometer [RPM]</td>
                     <td class="py-0.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0 - 2.300 RPM</td>
                     <td class="py-0.5 px-1.5 text-slate-400 dark:text-slate-500 font-mono">—</td>
-                    <td class="py-0.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&gt; 2.300 RPM <span class="text-[10px] font-normal">(Línea Roja)</span></td>
+                    <td class="py-0.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono whitespace-nowrap">&gt; 2.300 RPM</td>
                   </tr>
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
                     <td class="py-0.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Pressure [bar]</td>
@@ -1687,10 +1687,10 @@ export const C172_LESSON_2 = {
               <table class="w-full text-left text-[11px] leading-tight">
                 <thead>
                   <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
-                    <th class="py-0.5 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300 w-[28%]">Parámetro [Unidad]</th>
-                    <th class="py-0.5 px-1.5 font-bold text-emerald-700 dark:text-emerald-400 w-[24%]">Verde (Normal)</th>
-                    <th class="py-0.5 px-1.5 font-bold text-amber-700 dark:text-amber-400 w-[24%]">Ámbar (Precaución)</th>
-                    <th class="py-0.5 px-1.5 font-bold text-red-700 dark:text-red-400 w-[24%]">Roja (Límite / Alarma)</th>
+                    <th class="py-0.5 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300 w-[22%] whitespace-nowrap">Parámetro</th>
+                    <th class="py-0.5 px-1.5 font-bold text-emerald-700 dark:text-emerald-400 w-[18%] whitespace-nowrap">Verde</th>
+                    <th class="py-0.5 px-1.5 font-bold text-amber-700 dark:text-amber-400 w-[35%] whitespace-nowrap">Ámbar</th>
+                    <th class="py-0.5 px-1.5 font-bold text-red-700 dark:text-red-400 w-[25%] whitespace-nowrap">Roja</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
@@ -1776,10 +1776,10 @@ export const C172_LESSON_2 = {
             <table class="w-full text-left text-[11px] leading-tight">
               <thead>
                 <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
-                  <th class="py-1 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300">Parámetro [Unidad]</th>
-                  <th class="py-1 px-1.5 font-bold text-emerald-700 dark:text-emerald-400">Verde (Normal)</th>
-                  <th class="py-1 px-1.5 font-bold text-amber-700 dark:text-amber-400">Ámbar (Precaución)</th>
-                  <th class="py-1 px-1.5 font-bold text-red-700 dark:text-red-400">Roja (Límite / Alarma)</th>
+                  <th class="py-1 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300">Parámetro</th>
+                  <th class="py-1 px-1.5 font-bold text-emerald-700 dark:text-emerald-400">Verde</th>
+                  <th class="py-1 px-1.5 font-bold text-amber-700 dark:text-amber-400">Ámbar</th>
+                  <th class="py-1 px-1.5 font-bold text-red-700 dark:text-red-400">Roja</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
