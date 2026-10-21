@@ -7175,7 +7175,7 @@ export const C172_LESSON_6 = {
         </div>
 
         <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs sm:text-[13px]">
-          <strong>REGLA DE ORO DE DESPACHO:</strong> Se deben graficar DOS puntos: el punto de despegue (TOW) y el punto de aterrizaje (LW), unidos por la línea de consumo de combustible. Ambos deben estar dentro de la envolvente.
+          <strong>REGLA DE ORO DE DESPACHO:</strong> Se deben graficar los puntos en la envolvente: el punto de masa sin combustible (<strong>ZFW</strong>), el punto de despegue (<strong>TOW</strong>) y el punto de aterrizaje (<strong>LW</strong>), unidos por la línea de consumo de combustible. Todos los puntos (ZFW, TOW y LW) deben estar estrictamente dentro de la envolvente certificada.
         </div>
       </div>
     </div>
