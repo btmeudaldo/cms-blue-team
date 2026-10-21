@@ -1583,8 +1583,8 @@ export function PreflightLoadsheetWidget({
                 {/* 2. PASO 1: DESPEGUE (6.5) - ZFM y TOW */}
                 {currentStep === "takeoff" && (
                   <>
-                    {/* Proyecciones sobre los ejes para ZFM (Arriba: CG, Derecha: Masa en kg) */}
-                    {interactiveZfmPoint && studentZfmEstimated && (
+                    {/* Líneas de proyección a los ejes para ZFM (sin cuadros de medidas que tapen) */}
+                    {interactiveZfmPoint && (
                       <g pointerEvents="none">
                         <line
                           x1={interactiveZfmPoint.x}
@@ -1592,64 +1592,25 @@ export function PreflightLoadsheetWidget({
                           x2={1013.3}
                           y2={interactiveZfmPoint.y}
                           stroke="#9333ea"
-                          strokeWidth="4"
-                          strokeDasharray="9 5"
-                        />
-                        <rect
-                          x={1014}
-                          y={interactiveZfmPoint.y - 25}
-                          width="145"
-                          height="50"
-                          rx="10"
-                          fill="#7e22ce"
-                          stroke="#ffffff"
                           strokeWidth="2.5"
+                          strokeDasharray="6 4"
+                          opacity="0.85"
                         />
-                        <text
-                          x={1086}
-                          y={interactiveZfmPoint.y + 11}
-                          fill="#ffffff"
-                          fontSize="24"
-                          fontWeight="900"
-                          textAnchor="middle"
-                        >
-                          {studentZfmEstimated.massKg} kg
-                        </text>
-
                         <line
                           x1={interactiveZfmPoint.x}
                           y1={interactiveZfmPoint.y}
                           x2={interactiveZfmPoint.x}
                           y2={120.3}
                           stroke="#9333ea"
-                          strokeWidth="4"
-                          strokeDasharray="9 5"
-                        />
-                        <rect
-                          x={Math.max(135, Math.min(845, interactiveZfmPoint.x - 85))}
-                          y={56}
-                          width="170"
-                          height="52"
-                          rx="10"
-                          fill="#7e22ce"
-                          stroke="#ffffff"
                           strokeWidth="2.5"
+                          strokeDasharray="6 4"
+                          opacity="0.85"
                         />
-                        <text
-                          x={Math.max(220, Math.min(930, interactiveZfmPoint.x))}
-                          y={93}
-                          fill="#ffffff"
-                          fontSize="24"
-                          fontWeight="900"
-                          textAnchor="middle"
-                        >
-                          {studentZfmEstimated.cgM.toFixed(3)} m
-                        </text>
                       </g>
                     )}
 
-                    {/* Proyecciones sobre los ejes para TOW (Arriba: CG, Derecha: Masa en kg) */}
-                    {interactiveTomPoint && studentTomEstimated && (
+                    {/* Líneas de proyección a los ejes para TOW (sin cuadros de medidas que tapen) */}
+                    {interactiveTomPoint && (
                       <g pointerEvents="none">
                         <line
                           x1={interactiveTomPoint.x}
@@ -1657,59 +1618,20 @@ export function PreflightLoadsheetWidget({
                           x2={1013.3}
                           y2={interactiveTomPoint.y}
                           stroke="#d97706"
-                          strokeWidth="4"
-                          strokeDasharray="9 5"
-                        />
-                        <rect
-                          x={1014}
-                          y={interactiveTomPoint.y - 25}
-                          width="145"
-                          height="50"
-                          rx="10"
-                          fill="#b45309"
-                          stroke="#ffffff"
                           strokeWidth="2.5"
+                          strokeDasharray="6 4"
+                          opacity="0.85"
                         />
-                        <text
-                          x={1086}
-                          y={interactiveTomPoint.y + 11}
-                          fill="#ffffff"
-                          fontSize="24"
-                          fontWeight="900"
-                          textAnchor="middle"
-                        >
-                          {studentTomEstimated.massKg} kg
-                        </text>
-
                         <line
                           x1={interactiveTomPoint.x}
                           y1={interactiveTomPoint.y}
                           x2={interactiveTomPoint.x}
                           y2={120.3}
                           stroke="#d97706"
-                          strokeWidth="4"
-                          strokeDasharray="9 5"
-                        />
-                        <rect
-                          x={Math.max(135, Math.min(845, interactiveTomPoint.x - 85))}
-                          y={interactiveZfmPoint ? 2 : 56}
-                          width="170"
-                          height="52"
-                          rx="10"
-                          fill="#b45309"
-                          stroke="#ffffff"
                           strokeWidth="2.5"
+                          strokeDasharray="6 4"
+                          opacity="0.85"
                         />
-                        <text
-                          x={Math.max(220, Math.min(930, interactiveTomPoint.x))}
-                          y={interactiveZfmPoint ? 39 : 93}
-                          fill="#ffffff"
-                          fontSize="24"
-                          fontWeight="900"
-                          textAnchor="middle"
-                        >
-                          {studentTomEstimated.cgM.toFixed(3)} m
-                        </text>
                       </g>
                     )}
 
@@ -1903,8 +1825,8 @@ export function PreflightLoadsheetWidget({
                       />
                     )}
 
-                    {/* Proyecciones sobre los ejes para LW (Arriba: CG, Derecha: Masa en kg) */}
-                    {interactiveClickPoint && studentEstimated && (
+                    {/* Líneas de proyección a los ejes para LW (sin cuadros de medidas que tapen) */}
+                    {interactiveClickPoint && (
                       <g pointerEvents="none">
                         <line
                           x1={interactiveClickPoint.x}
@@ -1912,59 +1834,20 @@ export function PreflightLoadsheetWidget({
                           x2={1013.3}
                           y2={interactiveClickPoint.y}
                           stroke="#059669"
-                          strokeWidth="4"
-                          strokeDasharray="9 5"
-                        />
-                        <rect
-                          x={1014}
-                          y={interactiveClickPoint.y - 25}
-                          width="145"
-                          height="50"
-                          rx="10"
-                          fill="#065f46"
-                          stroke="#ffffff"
                           strokeWidth="2.5"
+                          strokeDasharray="6 4"
+                          opacity="0.85"
                         />
-                        <text
-                          x={1086}
-                          y={interactiveClickPoint.y + 11}
-                          fill="#ffffff"
-                          fontSize="24"
-                          fontWeight="900"
-                          textAnchor="middle"
-                        >
-                          {studentEstimated.massKg} kg
-                        </text>
-
                         <line
                           x1={interactiveClickPoint.x}
                           y1={interactiveClickPoint.y}
                           x2={interactiveClickPoint.x}
                           y2={120.3}
                           stroke="#059669"
-                          strokeWidth="4"
-                          strokeDasharray="9 5"
-                        />
-                        <rect
-                          x={Math.max(135, Math.min(845, interactiveClickPoint.x - 85))}
-                          y={56}
-                          width="170"
-                          height="52"
-                          rx="10"
-                          fill="#065f46"
-                          stroke="#ffffff"
                           strokeWidth="2.5"
+                          strokeDasharray="6 4"
+                          opacity="0.85"
                         />
-                        <text
-                          x={Math.max(220, Math.min(930, interactiveClickPoint.x))}
-                          y={93}
-                          fill="#ffffff"
-                          fontSize="24"
-                          fontWeight="900"
-                          textAnchor="middle"
-                        >
-                          {studentEstimated.cgM.toFixed(3)} m
-                        </text>
                       </g>
                     )}
 
