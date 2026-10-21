@@ -710,10 +710,183 @@ export const C172_LESSON_4_QUIZ: Quiz = {
   ],
 };
 
+// ============================================================================
+// LECCIÓN 5: PROCEDIMIENTOS DE EMERGENCIA Y CASOS ANÓMALOS (13 PREGUNTAS)
+// ============================================================================
+export const C172_LESSON_5_QUIZ: Quiz = {
+  id: "quiz-c172-lesson-5",
+  course_id: C172_COURSE_ID,
+  lesson_id: "17200000-0000-0000-0000-000000000004",
+  title: "Examen de Verificación: 5. Procedimientos de Emergencia y Casos Anómalos",
+  description:
+    "Evaluación teórica sobre procedimientos de emergencia según el POH del Cessna 172 con motor Continental CD-135 / CD-155: mejor planeo, fallo de motor en despegue y vuelo, avisos FADEC, Force B, incendios, engelamiento, fallos eléctricos y anomalías de hélice y aceite.",
+  minPassScorePercentage: 75,
+  questions: [
+    {
+      id: "c172-5-1",
+      question: "Según la tabla oficial \"Airspeeds for Emergency Operation\" del POH (peso máximo 2.300 lbs), ¿cuál es la velocidad de mejor planeo (Maximum Glide) con flaps recogidos (Flaps UP) y qué alcance aproximado proporciona por cada 1.000 pies de altitud sobre el terreno?",
+      options: [
+        "55 KIAS y 3.0 millas náuticas por cada 1.000 ft.",
+        "65 KIAS y aproximadamente 1.5 millas náuticas por cada 1.000 ft AGL (con flaps arriba y viento en calma).",
+        "75 KIAS y 0.8 millas náuticas por cada 1.000 ft.",
+        "85 KIAS y 2.5 millas náuticas por cada 1.000 ft.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La Sección 3 del POH fija la velocidad de mejor planeo en 65 KIAS a 2.300 lbs con flaps recogidos (reduciéndose a 60 KIAS con flaps extendidos). El procedimiento amplificado de planeo establece un alcance oficial de 1.5 NM por cada 1.000 pies de altura sobre el terreno en aire en calma.",
+    },
+    {
+      id: "c172-5-2",
+      question: "En caso de fallo repentino de motor inmediatamente tras el despegue (Immediately After Take-off), ¿cuál es la regla de pilotaje y decisión operativa prioritaria establecida en la advertencia (WARNING) del POH?",
+      options: [
+        "Iniciar un viraje escarpado de 180 grados a 50 KIAS para regresar inmediatamente a la pista contraria.",
+        "Aterrizar recto al frente (con pequeñas correcciones de rumbo de hasta unos 30 grados del eje), bajando el morro para mantener 65 KIAS (flaps UP) o 60 KIAS (flaps extendidos), ya que la altitud y la velocidad rara vez son suficientes para virar de vuelta al aeródromo.",
+        "Mantener el morro alto para prolongar el planeo y ciclar el interruptor Engine Master.",
+        "Extender flaps a 40 grados inmediatamente y acelerar a 80 KIAS.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La advertencia (WARNING) del POH estipula expresamente que la altitud y la velocidad tras el despegue rara vez permiten volver al aeródromo con un viraje de 180°. La prioridad absoluta es bajar el morro para asegurar la velocidad de planeo (65 KIAS limpia / 60 KIAS con flaps) y aterrizar recto al frente en el terreno disponible más despejado.",
+    },
+    {
+      id: "c172-5-3",
+      question: "¿Cuáles son los límites de velocidad y altitud que definen la envolvente oficial del POH para intentar el protocolo de reencendido del motor Continental en vuelo (Restart After Engine Failure)?",
+      options: [
+        "Velocidad entre 45 y 55 KIAS y altitud por encima de 15.000 pies.",
+        "Velocidad superior a 110 KIAS y altitud por debajo de 3.000 pies.",
+        "Velocidad entre 65 y 85 KIAS y altitud por debajo de 13.000 pies.",
+        "Velocidad constante de 100 KIAS a cualquier altitud.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "La checklist oficial \"Restart After Engine Failure\" exige mantener la velocidad de vuelo estabilizada entre 65 y 85 KIAS y planear por debajo de 13.000 pies para garantizar la densidad de aire y flujo a través del turbo requeridos para el reencendido por compresión.",
+    },
+    {
+      id: "c172-5-4",
+      question: "Al observar una luz de aviso FADEC parpadeando en vuelo, ¿cómo discrimina el piloto entre una anomalía de categoría LOW y una de categoría HIGH según la checklist de emergencia?",
+      options: [
+        "Presionando el botón FADEC Test durante al menos 2 segundos: si la luz se apaga es un aviso de categoría LOW (el vuelo puede continuar); si permanece encendida fija es categoría HIGH (fallo grave en el canal, aterrizar lo antes posible).",
+        "Acelerando el motor al 100% de carga durante 30 segundos continuos.",
+        "Pasando el conmutador Force B a la posición FADEC B.",
+        "Desconectando la batería principal durante 10 segundos.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "En el protocolo \"FADEC Warning\", presionar el botón FADEC Test durante al menos 2 segundos borra avisos transitorios (LOW category warning), permitiendo continuar el vuelo si la luz se apaga. Si la luz queda encendida de forma continua (HIGH category warning), indica un fallo no recuperable en el canal activo y obliga a aterrizar lo antes posible.",
+    },
+    {
+      id: "c172-5-5",
+      question: "Según la advertencia (WARNING) del POH relativa al interruptor de seguridad FORCE B, ¿en qué condición eléctrica está expresamente prohibido accionarlo debido a que provocaría el apagado inmediato del motor?",
+      options: [
+        "Cuando el avión vuela a velocidades inferiores a 65 KIAS.",
+        "Cuando el alternador principal esté suministrando más de 30 amperios.",
+        "Cuando ambos depósitos de combustible se encuentren llenos.",
+        "Cuando la aeronave esté operando alimentada únicamente por la batería FADEC Backup.",
+      ],
+      correctAnswerIndex: 3,
+      explanation: "El WARNING del POH advierte taxativamente: \"Al operar únicamente con la batería FADEC Backup, el interruptor FORCE-B NO debe ser activado. Esto apagará el motor\", ya que la arquitectura de respaldo de emergencia alimenta el circuito principal y no el conmutador forzado.",
+    },
+    {
+      id: "c172-5-6",
+      question: "En caso de fuego de motor en vuelo (Engine Fire in Flight), ¿cuáles son las dos acciones mecánicas inmediatas indispensables para cortar el aporte de combustible y la inyección al compartimento motor?",
+      options: [
+        "Conectar la bomba auxiliar eléctrica y abrir la calefacción de cabina.",
+        "Llevar el interruptor Engine Master a OFF y cerrar la válvula Fuel Shut-off Valve (tirada completamente hacia fuera).",
+        "Poner el selector de combustible en BOTH y activar el arrancador.",
+        "Reducir la velocidad por debajo de 55 KIAS y abrir todas las tomas de ventilación de cabina.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La checklist ENGINE FIRE IN FLIGHT establece como primeras acciones prioritarias: (1) Engine Master - OFF (corta eléctricamente los inyectores y la ECU) y (2) Fuel Shut-off Valve - CLOSED (cierra físicamente el paso de combustible desde los depósitos al cortafuegos), aislando el foco del fuego.",
+    },
+    {
+      id: "c172-5-7",
+      question: "Antes de la toma de contacto en un aterrizaje forzoso con motor parado (Emergency Landing with Engine Out), ¿qué acción preventiva de seguridad en cabina exige el checklist para asegurar la evacuación de los ocupantes tras el impacto?",
+      options: [
+        "Bloquear los seguros de las puertas con la llave de cabina.",
+        "Retraer todos los cinturones de seguridad para ganar libertad de movimiento.",
+        "Desbloquear y desenganchar las puertas de cabina (Cabin Doors - UNLOCK) antes de la toma de contacto.",
+        "Abrir completamente la válvula Fuel Shut-off para despresurizar los conductos.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "El paso (6) de la checklist de toma de emergencia indica: \"Cabin Doors - UNLOCK before touch-down\". Abrir los pestillos de las puertas antes del contacto previene que la deformación estructural de la célula durante la toma en terreno irregular deje las puertas atascadas, permitiendo la evacuación inmediata.",
+    },
+    {
+      id: "c172-5-8",
+      question: "Si tras un encuentro inadvertido con condiciones de engelamiento se acumula hielo en los bordes de ataque de las alas, ¿por qué la checklist del POH exige mantener los flaps completamente recogidos (Flaps UP) para la aproximación y aterrizaje?",
+      options: [
+        "Para evitar la pérdida de efectividad o entrada en pérdida del estabilizador horizontal/mando de profundidad, y mitigar el riesgo de pérdida asimétrica.",
+        "Para evitar el sobrecalentamiento de los motores eléctricos de los flaps.",
+        "Porque con hielo los flaps no pueden extenderse por encima de 40 KIAS.",
+        "Para facilitar que el avión aterrice con la rueda de morro primero.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "La checklist FLIGHT IN ICING CONDITIONS establece en su paso (8): \"Leave flaps retracted (avoids loss of elevator effectiveness)\". Con escarcha o hielo en los planos, deflexionar los flaps altera el flujo descendente (downwash) sobre la cola, pudiendo provocar la pérdida prematura del empenaje horizontal o una inversión de mandos incontrolable.",
+    },
+    {
+      id: "c172-5-9",
+      question: "En caso de fallo completo del alternador en vuelo (luz de aviso Alternator encendida fija y amperímetro en descarga), tras realizar el deslastre inmediato de consumidores eléctricos no esenciales, ¿cuál es el tiempo de funcionamiento continuo del motor que ha demostrado el fabricante operando con la batería principal?",
+      options: [
+        "Menos de 10 minutos.",
+        "30 minutos como límite absoluto para cualquier equipo.",
+        "Aproximadamente 120 minutos (2 horas) en base a los consumos y supuestos de la Tabla 3-1a del POH.",
+        "Tiempo ilimitado ya que el motor diésel no requiere energía eléctrica una vez arrancado.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "El aviso de precaución (CAUTION) del POH certifica que, ante fallo de alternador y tras desconectar equipos no esenciales (bomba eléctrica, luces, piloto automático, etc.), la capacidad remanente de la batería principal proporciona aproximadamente 120 minutos de suministro continuo a la ECU FADEC y bomba de combustible.",
+    },
+    {
+      id: "c172-5-10",
+      question: "Si se produce un fallo eléctrico total simultáneo del alternador y de la batería principal en vuelo, ¿durante cuánto tiempo máximo probado puede continuar funcionando el motor alimentado de forma autónoma por la batería FADEC Backup?",
+      options: [
+        "5 minutos únicamente.",
+        "60 minutos con las luces de navegación encendidas.",
+        "Hasta agotar completamente los depósitos de combustible alares.",
+        "Un máximo probado de 30 minutos (quedando todos los demás equipos eléctricos del avión inoperativos).",
+      ],
+      correctAnswerIndex: 3,
+      explanation: "La advertencia (WARNING) de fallo eléctrico total estipula: \"Se ha demostrado que el motor continúa funcionando durante un máximo de 30 minutos cuando se alimenta únicamente de la batería FADEC Backup. En este caso, todos los demás equipos eléctricos no funcionarán\".",
+    },
+    {
+      id: "c172-5-11",
+      question: "Si en vuelo de crucero la indicación de presión de aceite desciende por debajo de 2.3 bar (sector ámbar/rojo en el CED 125), ¿cuál es la acción inmediata sobre la potencia y el procedimiento de vuelo establecido?",
+      options: [
+        "Reducir la potencia lo más rápidamente posible, vigilar si la temperatura de aceite se aproxima al límite rojo y aterrizar lo antes posible previendo un posible fallo de motor.",
+        "Acelerar al 100% de potencia para forzar la circulación de la bomba mecánica de aceite.",
+        "Apagar inmediatamente la batería y el alternador.",
+        "Conectar la calefacción de cabina para enfriar el cárter.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "La checklist OIL PRESSURE TOO LOW exige: (1) \"Reduce power as quickly as possible\", (2) vigilar la temperatura de aceite y si se aproxima a límites o sigue bajando la presión, aterrizar lo antes posible (Land as soon as possible) y prepararse para un posible fallo total de motor.",
+    },
+    {
+      id: "c172-5-12",
+      question: "Si durante el vuelo se activa la alarma por sobretemperatura de la caja reductora (Gearbox Temperature Too High, superior a 120 grados C en arco rojo), ¿a qué rango específico debe reducirse la potencia de motor de inmediato según la checklist de emergencia?",
+      options: [
+        "Reducir la potencia a ralentí (IDLE) y planear a 65 KIAS con motor cortado.",
+        "Reducir la potencia a un rango entre 55% y 75% lo más rápidamente posible y aterrizar lo antes posible.",
+        "Mantener 100% de carga para forzar el flujo del radiador de la reductora.",
+        "Cortar el interruptor Engine Master y apagar la bomba de combustible.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La checklist GEARBOX TEMP TOO HIGH (> 120 °C) ordena explícitamente: (1) \"Reduce power to 55% - 75% as quickly as possible\" y (2) \"Land as soon as possible\". Reducir a este rango de potencia modera el esfuerzo sobre los engranajes reductores y el aceite de lubricación de la hélice sin perder sustentación.",
+    },
+    {
+      id: "c172-5-13",
+      question: "Ante una malfunción en el gobernador de la hélice que provoca un sobrerrégimen descontrolado de revoluciones (RPM Too High, superior a 2.500 RPM), ¿cuál es la limitación de velocidad indicada indispensable que debe aplicar el piloto para proteger el conjunto hélice-reductora?",
+      options: [
+        "Mantener al menos 140 KIAS para refrigerar el regulador hidráulico.",
+        "Acelerar a la velocidad de maniobra VA (97 KIAS) con 100% de potencia.",
+        "Extender flaps a 30 grados a cualquier velocidad.",
+        "Reducir la velocidad de vuelo por debajo de 100 KIAS y reducir potencia para evitar que la hélice sobregire en paso fino.",
+      ],
+      correctAnswerIndex: 3,
+      explanation: "La checklist PROPELLER RPM MALFUNCTIONS y las notas del POH indican: ante pérdida de control hidráulico, las contrapesas llevan las palas hacia paso fino; por ello, el piloto debe reducir potencia y \"Reduce airspeed below 100 KIAS to prevent overspeed\", ajustando la potencia necesaria para mantener altitud y aterrizar lo antes posible.",
+    },
+  ],
+};
+
 export const C172_QUIZZES: Quiz[] = [
   C172_LESSON_1_QUIZ,
   C172_LESSON_2_QUIZ,
   C172_LESSON_3_QUIZ,
   C172_LESSON_4_QUIZ,
+  C172_LESSON_5_QUIZ,
 ];
+
 
