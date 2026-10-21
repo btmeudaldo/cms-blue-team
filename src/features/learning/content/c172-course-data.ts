@@ -7701,11 +7701,11 @@ export const C172_LESSON_6 = {
           </a>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex items-center justify-center p-1 my-1">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1 my-1">
           <img
             src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/f-ops-02-ejemplo-rellenado.png"
             alt="F.OPS.02 Documentación Prevuelo rellenada con los datos del ejemplo resuelto"
-            class="w-full h-full object-contain rounded-lg"
+            class="w-full h-auto block rounded-lg shadow-xs"
             onerror="if(this.src!=='/images/c172/f-ops-02-ejemplo-rellenado.png')this.src='/images/c172/f-ops-02-ejemplo-rellenado.png'"
           />
         </div>
