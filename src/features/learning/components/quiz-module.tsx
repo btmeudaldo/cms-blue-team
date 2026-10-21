@@ -21,6 +21,7 @@ import type {
   StartedQuizAttempt,
   QuizAttemptResult,
 } from "../domain/quiz-types";
+import { C172_QUIZZES } from "../content/c172-quizzes-data";
 
 type QuizModuleProps = {
   quiz: StudentQuiz;
@@ -151,6 +152,7 @@ export function QuizModule({
   // --- RESULT VIEW ---
   if (attemptResult) {
     const passed = attemptResult.passed;
+    const enrichedQuiz = C172_QUIZZES.find((q) => q.id === quiz.id);
     return (
       <div
         className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8 shadow-md space-y-6 ${
@@ -233,6 +235,60 @@ export function QuizModule({
             </div>
           </div>
         </div>
+
+        {/* Sección de Explicaciones Técnicas POH cuando el examen es superado */}
+        {passed && enrichedQuiz?.questions && enrichedQuiz.questions.length > 0 && (
+          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-4">
+            <div className="flex items-center justify-between pb-1">
+              <div>
+                <h3 className="text-sm sm:text-base font-extrabold text-[#0B2E59] dark:text-sky-300 flex items-center gap-2">
+                  <span>📖</span>
+                  <span>Fundamentos Técnicos y Justificación POH</span>
+                </h3>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                  Consulta la explicación técnica oficial del POH de cada respuesta correcta para consolidar tus conocimientos de vuelo.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3 max-h-[460px] overflow-y-auto pr-1">
+              {enrichedQuiz.questions.map((q, idx) => (
+                <div
+                  key={q.id}
+                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-800/40 p-4 space-y-2.5 text-left"
+                >
+                  <div className="flex items-start gap-2.5">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#1a80ff] text-white text-[10px] font-bold mt-0.5">
+                      {idx + 1}
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">
+                      {q.question}
+                    </span>
+                  </div>
+
+                  <div className="pl-7 space-y-2">
+                    <div className="inline-flex items-start gap-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 p-2 rounded-xl border border-emerald-200 dark:border-emerald-800/60 w-full">
+                      <span className="shrink-0">✓ Respuesta Correcta:</span>
+                      <span className="font-semibold text-slate-800 dark:text-slate-200">
+                        {q.options[q.correctAnswerIndex]}
+                      </span>
+                    </div>
+
+                    {q.explanation && (
+                      <div className="rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 p-2.5 text-[11px] leading-relaxed text-sky-950 dark:text-sky-200">
+                        <strong className="text-sky-700 dark:text-sky-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[10px]">
+                          <span>💡</span>
+                          <span>Fundamento Oficial POH:</span>
+                        </strong>
+                        <div>{q.explanation}</div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {state.error && (
           <p role="alert" className="text-sm text-rose-700 dark:text-rose-300">
