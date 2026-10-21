@@ -6013,31 +6013,32 @@ export const C172_LESSON_5 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Referencia de Sistemas y Avisos (Altura Fija 600px) -->
+    <!-- Columna Derecha (lg:col-span-5): Interruptor FORCE B y Control de Paso (Altura Fija 600px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y AVISOS</span>
-        </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-4 text-center my-1.5">
-          <div class="w-10 h-10 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shadow-xs mb-2">
-            📷
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INTERRUPTOR FORCE B</span>
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-[13px] font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Interruptor de seguridad FORCE B (Automático / FADEC B) y control de paso fino/sobrerrégimen de hélice (&lt;100 KIAS)
-          </p>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+            <img
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.5.jpg"
+              alt="Interruptor de seguridad FORCE B (Automático / FADEC B) en cabina Cessna 172 CD-155"
+              class="w-full h-full object-contain rounded-lg"
+              onerror="if(this.src!=='/images/c172/5.5.jpg')this.src='/images/c172/5.5.jpg'"
+            />
+          </div>
         </div>
 
-        <div class="space-y-1.5 shrink-0">
+        <div class="space-y-1.5 shrink-0 mt-1.5">
           <!-- WARNING con el 3er punto transferido a la derecha -->
-          <div class="w-full p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs">
-            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+          <div class="w-full p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs leading-relaxed shadow-2xs">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
               <span>⚠️</span>
               <span>WARNING:</span>
             </strong>
-            <div class="text-xs sm:text-[13px] leading-snug">Debido a fallos indicados por las luces de aviso FADEC, puede perderse la corriente de la válvula de la hélice, lo que conduce a un ajuste de paso fino. Esto puede provocar un sobrerrégimen. Velocidades por debajo de 100 KIAS son adecuadas para evitar el sobregiro en caso de fallo. Si el control de revoluciones de la hélice falla, los ascensos se pueden realizar a 65 KIAS y 100% de potencia.</div>
+            <div class="text-[11px] sm:text-xs leading-snug">Debido a fallos indicados por las luces de aviso FADEC, puede perderse la corriente de la válvula de la hélice, lo que conduce a un ajuste de paso fino. Esto puede provocar un sobrerrégimen. Velocidades por debajo de 100 KIAS son adecuadas para evitar el sobregiro en caso de fallo. Si el control de revoluciones de la hélice falla, los ascensos se pueden realizar a 65 KIAS y 100% de potencia.</div>
           </div>
         </div>
       </div>
