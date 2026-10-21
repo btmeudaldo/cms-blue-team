@@ -7683,22 +7683,36 @@ export const C172_LESSON_6 = {
     </div>
 
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FIRMA Y DESPACHO COMPLETADO</span>
-        </div>
-
-        <div class="w-full rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-            📷
+          <div>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm block">F.OPS.02 · MODELO CUMPLIMENTADO</span>
+            <span class="text-[10px] text-slate-500 font-medium">Ejemplo Oficial Resuelto Misión 1 (EC-NNA)</span>
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Copia física del F.OPS.02 validada con las firmas del alumno y del instructor de vuelo (FI) en operaciones antes de la inspección prevuelo
-          </p>
+          <a
+            href="/images/c172/f-ops-02-ejemplo-rellenado.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1 shrink-0"
+            title="Abrir PDF cumplimentado en nueva pestaña"
+          >
+            <span>Abrir PDF</span>
+            <span>↗</span>
+          </a>
         </div>
 
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex items-center justify-center p-1 my-1">
+          <img
+            src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/f-ops-02-ejemplo-rellenado.png"
+            alt="F.OPS.02 Documentación Prevuelo rellenada con los datos del ejemplo resuelto"
+            class="w-full h-full object-contain rounded-lg"
+            onerror="if(this.src!=='/images/c172/f-ops-02-ejemplo-rellenado.png')this.src='/images/c172/f-ops-02-ejemplo-rellenado.png'"
+          />
+        </div>
 
+        <div class="p-2 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-[11px] text-emerald-900 dark:text-emerald-200 shrink-0">
+          <strong>✓ REGISTRO OFICIAL VALIDADO:</strong> Despacho conforme a EASA Part-NCO.OP.125 y Manual OM Blue Team con los cálculos de los ejemplos completados y firmados.
+        </div>
       </div>
     </div>
   </div>
