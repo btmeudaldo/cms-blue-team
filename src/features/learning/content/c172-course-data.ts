@@ -7068,22 +7068,27 @@ export const C172_LESSON_6 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DATOS TÉCNICOS ESPECÍFICOS DE EC-NNA</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DATOS TÉCNICOS Y PESOS (REFERENCIA EC-NNA)</span>
         </div>
 
         <div class="grid grid-cols-3 gap-2 text-center">
           <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
-            <span class="text-[10px] text-blue-700 dark:text-sky-400 font-bold block">BEW (EMPTY WEIGHT)</span>
+            <span class="text-[10px] text-blue-700 dark:text-sky-400 font-bold block">BEW (EMPTY WEIGHT)*</span>
             <span class="font-mono font-bold text-sm text-[#0B2E59] dark:text-white">755.44 kg</span>
           </div>
           <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
-            <span class="text-[10px] text-blue-700 dark:text-sky-400 font-bold block">BRAZO BEW</span>
+            <span class="text-[10px] text-blue-700 dark:text-sky-400 font-bold block">BRAZO BEW*</span>
             <span class="font-mono font-bold text-sm text-[#0B2E59] dark:text-white">1.042 m</span>
           </div>
           <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
-            <span class="text-[10px] text-blue-700 dark:text-sky-400 font-bold block">MOMENTO BÁSICO</span>
+            <span class="text-[10px] text-blue-700 dark:text-sky-400 font-bold block">MOMENTO BÁSICO*</span>
             <span class="font-mono font-bold text-sm text-[#0B2E59] dark:text-white">787.23 kg·m</span>
           </div>
+        </div>
+
+        <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-amber-900 dark:text-amber-200 text-xs leading-relaxed flex items-start gap-2">
+          <span class="font-bold shrink-0">⚠️ NOTA BEW:</span>
+          <span>El <strong>BEW (Empty Weight)</strong> indicado aquí se incluye como <strong>referencia</strong> (ejemplo EC-NNA). El BEW es distinto para cada aeronave; para el cálculo de peso y centrado operacional se debe utilizar obligatoriamente el BEW que figura en la <strong>hoja de carga (loadsheet) de cada avión</strong>.</span>
         </div>
 
         <div class="space-y-1.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
@@ -7106,7 +7111,7 @@ export const C172_LESSON_6 = {
         </div>
 
         <div class="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200 text-xs sm:text-[13px]">
-          <strong>MTOM / MLM (PESO MÁXIMO):</strong> Tanto en despegue como en aterrizaje, la masa total máxima admisible de EC-NNA es de <strong>1.043,00 kg (2.300 lbs)</strong>.
+          <strong>MTOM / MLM (PESO MÁXIMO):</strong> Tanto en despegue como en aterrizaje, la masa total máxima admisible es de <strong>1.043,00 kg (2.300 lbs)</strong> (igual para todas las Cessna 172 de la flota).
         </div>
       </div>
     </div>
