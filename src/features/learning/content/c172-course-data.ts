@@ -6707,21 +6707,28 @@ export const C172_LESSON_5 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Referencia de Sistemas y Avisos (Altura Fija 600px) -->
+    <!-- Columna Derecha (lg:col-span-5): Indicador CED 125 y Alarmas de Aceite (Altura Fija 600px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
-        </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-            📷
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INDICADOR CED 125: ACEITE</span>
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Indicador CED 125 con parámetros de presión y temperatura de aceite en franja ámbar/roja y luz de aviso Caution
-          </p>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Alarma de aceite en CED 125: OP &lt; 2.3 bar (ámbar/rojo) y OT &gt; 140 °C con luz <strong>CAUTION</strong>. Reducir potencia, ganar velocidad de refrigeración y prever fallo inminente.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+            <img
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.11.jpg"
+              alt="Indicador CED 125 con fallo de presión y sobretemperatura de aceite en Cessna 172 CD-155"
+              class="w-full h-full object-contain rounded-lg"
+              onerror="if(this.src!=='/images/c172/5.11.jpg')this.src='/images/c172/5.11.jpg'"
+            />
+          </div>
         </div>
       </div>
     </div>
