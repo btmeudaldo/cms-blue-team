@@ -7687,7 +7687,7 @@ export const C172_LESSON_6 = {
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
           <div>
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm block">F.OPS.02 · MODELO CUMPLIMENTADO</span>
-            <span class="text-[10px] text-slate-500 font-medium">Ejemplo Oficial Resuelto Misión 1 (EC-NNA)</span>
+            <span class="text-[10px] text-slate-500 font-medium">Vuelo BTM26C · EC-NNA (Despacho Prevuelo)</span>
           </div>
           <a
             href="/images/c172/f-ops-02-ejemplo-rellenado.pdf"
