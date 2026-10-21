@@ -881,12 +881,216 @@ export const C172_LESSON_5_QUIZ: Quiz = {
   ],
 };
 
+export const C172_LESSON_6_QUIZ: Quiz = {
+  id: "quiz-c172-lesson-6",
+  course_id: C172_COURSE_ID,
+  lesson_id: "17200000-0000-0000-0000-000000000005",
+  title: "Examen de Verificación: Despacho Operativo, Masa y Centrado, Combustible y Performance",
+  description: "Evaluación teórica integral de los estándares de despacho de vuelo F.OPS.02, cálculo de carga y centrado, gestión de combustible y cálculo de performances de despegue y aterrizaje en el Cessna 172.",
+  minPassScorePercentage: 75,
+  questions: [
+    {
+      id: "c172-6-1",
+      question: "¿Cuál es el requerimiento de combustible de reserva final para vuelos VFR diurnos según la política interna de Blue Team Flight School (especificada en el despacho F.OPS.02) en comparación con el mínimo reglamentario Part-NCO?",
+      options: [
+        "Part-NCO exige 30 minutos y Blue Team incrementa este margen a 1 hora 30 minutos (23.0 L) a régimen estándar más alternativo (5.1 L).",
+        "Part-NCO exige 10 minutos y Blue Team exige 20 minutos.",
+        "Part-NCO exige 2 horas y Blue Team reduce el requisito a 45 minutos.",
+        "Ambas normativas coinciden en un mínimo de 45 minutos sin combustible para alternativo.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "La normativa EASA Part-NCO.OP.125 fija como mínimo 30 minutos de reserva final para vuelos VFR diurnos. Sin embargo, el Manual de Operaciones de Blue Team Flight School (F.OPS.02) aplica un estándar de seguridad superior, exigiendo una reserva final obligatoria de 1 hora y 30 minutos (23.0 L al consumo estándar de 15.3 L/h), a lo que se suma el combustible de alternativo (5.1 L equivalentes a 20 minutos de vuelo).",
+    },
+    {
+      id: "c172-6-2",
+      question: "En el cálculo de masa y centrado del Cessna 172 con motor Continental CD-135/CD-155, ¿dónde se ubica la línea de referencia (Datum) y qué valor de densidad estándar debe aplicarse al combustible Jet A-1?",
+      options: [
+        "El Datum está en el borde de ataque del ala y la densidad del Jet A-1 es 0.72 kg/L.",
+        "El Datum está en el eje del tren principal y la densidad del Jet A-1 es 1.00 kg/L.",
+        "El Datum se sitúa en la cara delantera del mamparo parallamas (firewall) y la densidad estándar de cálculo del Jet A-1 es 0.84 kg/L (7.01 lbs/US Gal).",
+        "El Datum está en la punta del cono de la hélice y la densidad del Jet A-1 es 0.78 kg/L.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "Según el POH y el Suplemento Continental, el Datum o plano de referencia longitudinal se localiza en la cara delantera del mamparo parallamas (firewall). A diferencia de la gasolina de aviación Avgas 100LL (0.72 kg/L), el queroseno Jet A-1 es notablemente más denso, calculándose a 0.84 kg/L (o 7.01 lbs por galón estadounidense).",
+    },
+    {
+      id: "c172-6-3",
+      question: "Al cumplimentar la hoja de carga F.OPS.04.NNA para el C172N (EC-NNA), ¿cuál es el peso máximo autorizado al despegue (MTOM) y el límite de masa permitido en el compartimento de equipaje 1 (Baggage 1)?",
+      options: [
+        "MTOM de 1.150 kg y límite en Baggage 1 de 90 kg.",
+        "MTOM de 1.043 kg (2.300 lbs) y límite de masa en Baggage 1 de 54 kg (120 lbs).",
+        "MTOM de 950 kg y límite en Baggage 1 de 30 kg.",
+        "MTOM de 1.200 kg y sin límite en compartimento de equipajes siempre que no exceda el MTOM.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "Para el Cessna 172N la masa máxima de despegue (MTOM) y aterrizaje (MLM) certificada es de 1.043 kg (2.300 lbs). El compartimento Baggage 1 (brazo 95 pulgadas) tiene una limitación estructural estricta de 54 kg (120 lbs), mientras que el Baggage 2 tolera un máximo de 23 kg (50 lbs), no pudiendo superar entre ambos los 54 kg combinados.",
+    },
+    {
+      id: "c172-6-4",
+      question: "¿Qué consecuencia aerodinámica crítica provoca operar el Cessna 172 con un centro de gravedad situado por detrás del límite trasero admisible de la envolvente (CG excesivamente retrasado)?",
+      options: [
+        "Aumento exagerado de la estabilidad longitudinal y dificultad para levantar el morro.",
+        "Disminución notable de la velocidad de crucero sin afectar a la maniobrabilidad.",
+        "Imposibilidad de rotar el avión durante la carrera de despegue.",
+        "Reducción severa de la estabilidad longitudinal, fuerzas de mando en profundidad extremadamente ligeras o invertidas y gran dificultad o imposibilidad de recuperación de una pérdida o barrena.",
+      ],
+      correctAnswerIndex: 3,
+      explanation: "Un centro de gravedad excesivamente trasero reduce drásticamente el brazo de palanca y la eficacia estabilizadora del empenaje horizontal. El avión se vuelve inestable en cabeceo, las fuerzas sobre la palanca de mandos se aligeran peligrosamente y, en caso de entrada en pérdida o barrena, el timón de profundidad puede no tener suficiente autoridad para bajar el morro, tornando la maniobra irrecuperable.",
+    },
+    {
+      id: "c172-6-5",
+      question: "¿Cómo se define conceptualmente la Masa Sin Combustible (Zero Fuel Mass - ZFM) en la hoja de carga del Cessna 172 y qué elementos la componen?",
+      options: [
+        "Es el peso básico en vacío del avión (BEW) al que se añade únicamente el peso del piloto al mando.",
+        "Es la masa total del avión completamente cargado en plataforma antes de arrancar los motores, incluyendo combustible utilizable.",
+        "Es la masa resultante de sumar al Peso Básico en Vacío (BEW) específico de la aeronave los pesos de todos los ocupantes y el equipaje de cabina, excluyendo el combustible utilizable.",
+        "Es la masa del avión tras consumir únicamente el combustible de contingencia y alternativo.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "La Zero Fuel Mass (ZFM) representa el peso estructural del avión cargado sin combustible útil. Se calcula sumando a la Basic Empty Mass (BEW, que ya incluye aceite de motor y combustible no drenable) el peso de los pilotos, pasajeros y equipajes cargados en los compartimentos correspondientes.",
+    },
+    {
+      id: "c172-6-6",
+      question: "Al planificar un vuelo de navegación, ¿por qué es imperativo comprobar que tanto la masa y centro de gravedad al despegue (TOW) como los previstos al aterrizaje (LW) se encuentren dentro de la envolvente de centrado?",
+      options: [
+        "Porque el peso máximo de aterrizaje en el C172N es 200 kg inferior al de despegue y exige arrojar combustible.",
+        "Porque a medida que se consume combustible en vuelo, el peso total disminuye y la posición del centro de gravedad se desplaza a lo largo del brazo de los depósitos alares, pudiendo salirse de los límites permitidos.",
+        "Porque la reglamentación prohíbe aterrizar con más de 20 litros en los tanques.",
+        "Únicamente es necesario verificar el peso al despegue; el centrado al aterrizaje no varía en aviones monomotores.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "Aunque en el Cessna 172N la MTOM y la MLM son idénticas (1.043 kg), el consumo de combustible durante la ruta (Trip Fuel) reduce el peso total y altera el momento de la aeronave según el brazo de los depósitos alares (48 pulgadas). Es preceptivo verificar que tanto el punto de despegue (TOW) como el de toma (LW = TOW - Trip Fuel) permanezcan dentro de los límites de peso y brazos de la envolvente.",
+    },
+    {
+      id: "c172-6-7",
+      question: "¿Qué régimen de potencia constante ha establecido Blue Team Flight School como perfil de referencia estándar para la navegación de crucero en sus C172 diésel y cuál es su consumo horario de combustible?",
+      options: [
+        "75% de Load con un consumo de 25.5 L/h (6.7 Gal/h).",
+        "50% de Load con un consumo de 15.3 L/h (4.0 Gal/h o 12.85 kg/h), proporcionando entre 99 y 103 KTAS.",
+        "100% de Load durante todo el crucero con un consumo de 38.0 L/h.",
+        "60% de Load con mezcla empobrecida manualmente por el piloto.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "Para optimizar la vida útil del motor, la estabilidad térmica y la predictibilidad operativa, Blue Team Flight School establece un régimen estándar de crucero del 50% de carga de motor (Load). A este régimen, el motor Continental CD-135 consume exactamente 15.3 L/h (4.0 US Gal/h o 12.85 kg/h), alcanzando entre 99 y 103 nudos de velocidad verdadera (KTAS) y garantizando más de 8 horas de autonomía máxima.",
+    },
+    {
+      id: "c172-6-8",
+      question: "En el registro de navegación y combustible (OFP), ¿cómo se obtiene la velocidad sobre el suelo (Ground Speed - GS) y de qué manera determina el combustible consumido en ruta (Trip Fuel)?",
+      options: [
+        "La GS resulta de corregir la velocidad verdadera (TAS) con la componente de viento en cara o en cola; el tiempo estimado en ruta (ETE = Distancia / GS) multiplicado por el consumo horario (15.3 L/h) define el Trip Fuel.",
+        "La GS se mide directamente con el anemómetro del avión sin considerar el viento meteorológico.",
+        "La GS equivale a la velocidad indicada multiplicada por la densidad del combustible.",
+        "El Trip Fuel se calcula dividiendo la distancia de ruta directamente entre la velocidad indicada sin importar la GS.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "La Ground Speed (GS) es la velocidad real de la aeronave respecto al suelo, calculada vectorialmente ajustando la True Airspeed (TAS) con el viento (viento en cola suma a la TAS, viento en cara resta). Dividiendo la distancia de cada tramo entre la GS se obtiene el tiempo estimado en ruta (ETE); el ETE total multiplicado por 15.3 L/h rinde con exactitud el Trip Fuel.",
+    },
+    {
+      id: "c172-6-9",
+      question: "Al volar a un 50% de Load constante con motor Continental turbodiésel, si se asciende desde el nivel del mar hasta 6.000 pies manteniendo dicho porcentaje, ¿qué sucede con la velocidad verdadera (TAS) y el consumo horario?",
+      options: [
+        "La TAS disminuye drásticamente debido a la menor sustentación en el aire fino.",
+        "El consumo se duplica para mantener el 50% de carga a mayor altitud.",
+        "La TAS aumenta progresivamente debido a la menor densidad del aire mientras que el consumo se mantiene constante en 15.3 L/h gracias a la gestión electrónica y al turbocompresor.",
+        "Tanto la TAS como el consumo permanecen rigurosamente inalterados en cualquier nivel de vuelo.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "A potencia porcentual constante (50% de Load), el turbocompresor y la FADEC mantienen la masa de aire y la inyección requeridas, conservando el consumo invariable en 15.3 L/h. Sin embargo, al ascender a niveles superiores donde la densidad del aire atmosférico es menor, la resistencia aerodinámica disminuye, incrementando la velocidad verdadera (TAS) de 99 KTAS en niveles bajos a unos 103 KTAS a 6.000 ft.",
+    },
+    {
+      id: "c172-6-10",
+      question: "En la política de gestión de combustible de la escuela, ¿qué cantidad fija está estandarizada para el rodaje en tierra (Taxi Fuel) y cuándo debe seleccionarse el depósito de combustible auxiliar?",
+      options: [
+        "Se asignan 15.0 L para rodaje y el auxiliar se usa para el despegue.",
+        "Se fija un valor estándar de 3.0 L (0.79 Gal / 2.52 kg) para rodaje, y la válvula selectora debe permanecer en el depósito principal (Main) durante el despegue, crucero y aterrizaje.",
+        "No se computa combustible de rodaje y la válvula selectora debe alternarse cada 5 minutos en tierra.",
+        "Se computan 10.0 L para rodaje y se debe despegar siempre con el tanque auxiliar para vaciarlo primero.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "El procedimiento de despacho estandariza una cifra fija de 3.0 litros (0.79 US Gal / 2.52 kg) para las fases de puesta en marcha, rodaje y prueba de motor (Taxi Fuel). En cuanto a la válvula de combustible, el motor CD-135 se alimenta siempre desde el depósito principal (Main Tank), utilizándose la posición Auxiliary únicamente para trasvasar combustible al depósito principal cuando este tiene espacio libre.",
+    },
+    {
+      id: "c172-6-11",
+      question: "Si durante la inspección prevuelo en rampa el piloto comprueba visualmente que el avión tiene 42 litros en los tanques y el cálculo de la hoja de despacho exige un Ramp Fuel mínimo de 53 litros para la navegación planificada, ¿cuál es la decisión operativa correcta?",
+      options: [
+        "Decisión GO: despegar y reducir la reserva final de 1h 30m a 30m en vuelo si fuera necesario.",
+        "Decisión GO: volar a menor altitud para consumir menos combustible.",
+        "Decisión GO: eliminar el aeropuerto alternativo del plan para cuadrar los litros disponibles.",
+        "Decisión NO-GO: no iniciar el vuelo hasta repostar al menos la diferencia de combustible para cumplir con el Ramp Fuel requerido por el despacho F.OPS.02.",
+      ],
+      correctAnswerIndex: 3,
+      explanation: "El despacho F.OPS.02 es mandatorio. Si el combustible a bordo (Ramp Fuel real) es inferior al mínimo calculado (Ramp Fuel Requerido = Taxi + Trip + Reserva Final 1h30m + Alternativo), el estado es estrictamente NO-GO. El piloto no puede recortar reservas reglamentarias de la escuela ni suprimir el alternativo para salir; debe solicitar el repostaje necesario antes del vuelo.",
+    },
+    {
+      id: "c172-6-12",
+      question: "Según las tablas de despegue del POH del Cessna 172N (Figura 5-1a), si la operación se realiza en una pista de hierba seca nivelada en lugar de pavimento asfaltado, ¿qué factor de corrección reglamentario debe aplicarse a la distancia de despegue?",
+      options: [
+        "Reducir la distancia calculada en un 10% por amortiguación de las ruedas.",
+        "No se aplica ninguna corrección si los neumáticos están inflados a presión nominal.",
+        "Incrementar la carrera de despegue en tierra (Ground Roll) en un 15% debido a la mayor resistencia a la rodadura.",
+        "Incrementar la distancia total sobre obstáculo de 50 ft en un 50% sin modificar la carrera de tierra.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "Las notas técnicas de la Figura 5-1a del POH del C172 establecen que en operaciones sobre pista de hierba seca y nivelada, la carrera de despegue en tierra (Ground Roll) calculada para pavimento firme debe incrementarse en un 15% (+15%) debido a la resistencia por rozamiento que ofrece la cubierta vegetal sobre el tren de aterrizaje.",
+    },
+    {
+      id: "c172-6-13",
+      question: "Al planificar el aterrizaje en una pista de hierba seca nivelada utilizando las tablas de performance del POH (Figura 5-10), ¿qué factor de incremento exige el fabricante sobre la carrera en tierra (Ground Roll)?",
+      options: [
+        "Añadir un 45% (+45%) a la distancia de carrera en tierra debido a la menor adherencia y menor eficacia del frenado sobre hierba.",
+        "Añadir solo un 15%, idéntico al factor de despegue.",
+        "Reducir la distancia en un 20% ya que la hierba frena el avión más rápido.",
+        "Añadir un 5% a la distancia total sobre obstáculo de 50 pies sin tocar la carrera en tierra.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "En la Figura 5-10 de aterrizaje del POH, la nota sobre pista de hierba seca (dry grass) estipula un incremento del 45% (+45%) sobre la carrera de aterrizaje en tierra (Ground Roll). La hierba reduce significativamente el coeficiente de fricción de los neumáticos con el suelo, disminuyendo drásticamente la capacidad de frenado en comparación con una superficie de asfalto u hormigón seco.",
+    },
+    {
+      id: "c172-6-14",
+      question: "¿Qué relación debe cumplirse obligatoriamente entre la distancia de despegue calculada (con todos los factores meteorológicos y de pista aplicados) y la TORA declarada del aeródromo para validar el despegue?",
+      options: [
+        "La carrera calculada puede superar la TORA hasta en un 10% si se utiliza el efecto suelo.",
+        "La carrera de despegue en tierra factorizada debe ser estrictamente menor que la TORA (Take-Off Run Available), dejando un margen de seguridad positivo ante cualquier imprevisto.",
+        "La carrera de despegue en tierra debe coincidir exactamente con la TORA sin importar el margen.",
+        "La distancia calculada solo debe compararse con la longitud de la calle de rodaje adyacente.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La TORA (Take-Off Run Available) es la longitud física declarada de pista disponible y apta para la carrera en tierra del avión. Para que el despegue sea legal y seguro, la carrera de despegue calculada (corregida por temperatura, altitud de presión, viento y estado de la superficie) debe ser significativamente menor que la TORA disponible.",
+    },
+    {
+      id: "c172-6-15",
+      question: "¿Qué distancia declarada de pista debe utilizar el piloto al mando para verificar que el avión puede aterrizar y frenar con seguridad según la ficha AIP del aeródromo de destino?",
+      options: [
+        "La TODA (Take-Off Distance Available).",
+        "La ASDA (Accelerate-Stop Distance Available).",
+        "La distancia comprendida entre los hangares y la manga de viento.",
+        "La LDA (Landing Distance Available), que es la longitud de pista declarada apta y utilizable para la carrera de toma y parada.",
+      ],
+      correctAnswerIndex: 3,
+      explanation: "La LDA (Landing Distance Available) es la distancia declarada por la autoridad aeronáutica en la publicación de información aeronáutica (AIP) que está disponible y adecuada para el aterrizaje de una aeronave en tierra. La distancia de aterrizaje calculada en el POH (con el margen de seguridad correspondiente) debe ser siempre inferior a la LDA.",
+    },
+    {
+      id: "c172-6-16",
+      question: "Antes de dirigirse a la aeronave para realizar el vuelo de entrenamiento, ¿qué trámite formal es indispensable para que el formulario de despacho F.OPS.02 sea legalmente válido en Blue Team Flight School?",
+      options: [
+        "Enviar un mensaje telefónico a la torre de control de destino.",
+        "La revisión y firma conjunta obligatoria del formulario F.OPS.02 en papel o soporte digital tanto por parte del alumno piloto al mando como del instructor de vuelo responsable.",
+        "Basta con el visto bueno verbal del personal de combustible en rampa.",
+        "Únicamente se firma si las condiciones meteorológicas son de vuelo instrumental (IFR).",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "El procedimiento de la escuela establece que el vuelo no puede comenzar sin el cierre y validación formal del despacho F.OPS.02. El documento debe estar completamente cumplimentado (cálculo de masa y centrado, combustible y performance verificada) y contar con la firma mancomunada del alumno (PIC bajo supervisión) y del instructor responsable, acreditando que la operación cumple los márgenes de seguridad aprobados.",
+    },
+  ],
+};
+
 export const C172_QUIZZES: Quiz[] = [
   C172_LESSON_1_QUIZ,
   C172_LESSON_2_QUIZ,
   C172_LESSON_3_QUIZ,
   C172_LESSON_4_QUIZ,
   C172_LESSON_5_QUIZ,
+  C172_LESSON_6_QUIZ,
 ];
 
 
