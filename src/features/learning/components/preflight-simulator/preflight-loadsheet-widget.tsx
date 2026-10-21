@@ -630,15 +630,6 @@ export function PreflightLoadsheetWidget({
                 <span className="text-xs sm:text-[13px] text-slate-500 font-medium">
                   {mission.name} · Crucero al 50% Potencia ({mission.scenario.flightTimeHrs} h)
                 </span>
-                <span
-                  className={`text-[10px] sm:text-[11px] font-extrabold px-2 py-0.5 rounded-full ${
-                    isAllPracticeCompleted
-                      ? "bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
-                      : "bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700"
-                  }`}
-                >
-                  {isAllPracticeCompleted ? "✓ 2/2 resueltos" : `${solvedPracticeCount}/2 para avanzar`}
-                </span>
               </div>
             </div>
 
@@ -699,7 +690,6 @@ export function PreflightLoadsheetWidget({
                 title="Misión 1: Ejemplo guiado resuelto"
               >
                 <span>M1</span>
-                <span className="text-[10px] font-normal">(Ejemplo ✓)</span>
               </button>
               {[1, 2].map((idx) => {
                 const isSolved = Boolean(solvedMissions[idx]);
@@ -726,41 +716,6 @@ export function PreflightLoadsheetWidget({
 
           {/* Table Container - Aligned to top, standard typography (text-xs sm:text-[13px]), zero outer scroll */}
           <div className="flex-1 min-h-0 my-1 overflow-hidden flex flex-col justify-start pt-1">
-            {/* Banner Didáctico: M1 Ejemplo o M2/M3 Práctica */}
-            {selectedMissionIndex === 0 ? (
-              <div className="p-2 mb-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-300 dark:border-emerald-700 text-emerald-950 dark:text-emerald-100 shadow-2xs shrink-0">
-                <div className="flex items-center justify-between gap-2">
-                  <div className="space-y-0.5">
-                    <div className="flex items-center gap-1.5 font-black text-xs sm:text-[13px] text-emerald-800 dark:text-emerald-300">
-                      <span>🟢</span>
-                      <span>EJEMPLO RESUELTO · Misión 1 (Referencia)</span>
-                    </div>
-                    <p className="text-[11px] sm:text-xs text-emerald-700 dark:text-emerald-300 leading-snug">
-                      Este primer ejercicio se muestra resuelto y graficado como modelo. Para poder avanzar, resuelve los otros dos ejercicios (<strong>M2</strong> y <strong>M3</strong>).
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => loadMissionScenario(PREFLIGHT_MISSIONS[1], 1)}
-                    className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shrink-0 shadow-xs transition cursor-pointer flex items-center gap-1 hover:scale-105 active:scale-95"
-                  >
-                    <span>Pulsa en M2</span>
-                    <span>➔</span>
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div className="px-2.5 py-1 mb-1.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs flex items-center justify-between shrink-0">
-                <span className="font-semibold text-[11px] sm:text-xs">
-                  ✏️ Resuelve este ejercicio ({mission.name.split(":")[0]}): calcula los datos y sitúa los puntos en la envolvente.
-                </span>
-                {solvedMissions[selectedMissionIndex] && (
-                  <span className="text-emerald-600 dark:text-emerald-400 font-extrabold text-xs">
-                    ✓ Resuelto con éxito
-                  </span>
-                )}
-              </div>
-            )}
 
             {currentStep === "takeoff" ? (
               /* PARTE 1: TABLA DE DESPEGUE (7 FILAS) */
@@ -1151,7 +1106,7 @@ export function PreflightLoadsheetWidget({
           {/* Action Button & Messages */}
           <div className="pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 space-y-1.5">
             {/* Aviso de punto obligatorio en la envolvente (pasado a la izquierda para dar máximo espacio a la gráfica) */}
-            {!isStepPassed && (
+            {!isStepPassed && selectedMissionIndex !== 0 && (
               <div
                 className={`flex items-center justify-between px-3 py-1.5 rounded-xl border text-xs sm:text-[13px] ${
                   errors.envelopePoint
