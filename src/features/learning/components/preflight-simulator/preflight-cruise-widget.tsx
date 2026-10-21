@@ -22,29 +22,71 @@ const CRUISE_TABLE_DATA = [
   { alt: 4000, load: 55, ktas: 105, fuelFlowLh: 17.0, fuelFlowGal: 4.5, rangeNm: 678, enduranceHrs: 6.4 },
   { alt: 6000, load: 55, ktas: 106, fuelFlowLh: 17.0, fuelFlowGal: 4.5, rangeNm: 683, enduranceHrs: 6.2 },
   { alt: 8000, load: 55, ktas: 108, fuelFlowLh: 17.0, fuelFlowGal: 4.5, rangeNm: 686, enduranceHrs: 6.1 },
-];
+];type MissionInputs = {
+  ktas: string;
+  fuelFlow: string;
+  timeHrs: string;
+  tripLiters: string;
+  tripKg: string;
+  maxRange: string;
+};
+
+// Initial state: M1 is fully prefilled as the official solved model example
+const INITIAL_MISSION_INPUTS: Record<number, MissionInputs> = {
+  0: {
+    ktas: "99",
+    fuelFlow: "15.3",
+    timeHrs: "0.61",
+    tripLiters: "9.3",
+    tripKg: "7.8",
+    maxRange: "718",
+  },
+  1: { ktas: "", fuelFlow: "", timeHrs: "", tripLiters: "", tripKg: "", maxRange: "" },
+  2: { ktas: "", fuelFlow: "", timeHrs: "", tripLiters: "", tripKg: "", maxRange: "" },
+};
 
 export function PreflightCruiseWidget({
   onExerciseCompleted,
   isAlreadyCompleted = false,
 }: Props) {
-  const [selectedMissionIndex, setSelectedMissionIndex] = useState(1); // default Mission 2 (Travesía)
+  const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on Mission 1 (Solved Example)
   const [selectedTablePower, setSelectedTablePower] = useState<50 | 55>(50); // Filter for right table
   const mission = PREFLIGHT_MISSIONS[selectedMissionIndex];
 
-  // Inputs
-  const [ktasInput, setKtasInput] = useState("");
-  const [fuelFlowInput, setFuelFlowInput] = useState("");
-  const [timeHrsInput, setTimeHrsInput] = useState("");
-  const [tripFuelLitersInput, setTripFuelLitersInput] = useState("");
-  const [tripFuelKgInput, setTripFuelKgInput] = useState("");
-  const [maxRangeInput, setMaxRangeInput] = useState("");
+  // Per-mission input states so student work is kept across tab switches
+  const [missionInputs, setMissionInputs] = useState<Record<number, MissionInputs>>(INITIAL_MISSION_INPUTS);
+  const [solvedMissions, setSolvedMissions] = useState<Record<number, boolean>>({});
+
+  const currentInputs = missionInputs[selectedMissionIndex] || {
+    ktas: "",
+    fuelFlow: "",
+    timeHrs: "",
+    tripLiters: "",
+    tripKg: "",
+    maxRange: "",
+  };
+
+  const updateCurrentInput = (field: keyof MissionInputs, value: string) => {
+    setMissionInputs((prev) => ({
+      ...prev,
+      [selectedMissionIndex]: {
+        ...(prev[selectedMissionIndex] || {
+          ktas: "",
+          fuelFlow: "",
+          timeHrs: "",
+          tripLiters: "",
+          tripKg: "",
+          maxRange: "",
+        }),
+        [field]: value,
+      },
+    }));
+  };
 
   // Feedback states
   const [attempts, setAttempts] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [warnings, setWarnings] = useState<string[]>([]);
-  const [isPassed, setIsPassed] = useState(false);
 
   const alt = selectedMissionIndex === 0 ? 2000 : selectedMissionIndex === 1 ? 6000 : 4000;
   const loadPct = 50; // Standard flight school cruise load is 50%
@@ -69,13 +111,29 @@ export function PreflightCruiseWidget({
 
   const expectedMaxRange = targetRow.rangeNm;
 
+  const solvedPracticeCount = (solvedMissions[1] ? 1 : 0) + (solvedMissions[2] ? 1 : 0);
+  const isAllPracticeCompleted = solvedPracticeCount === 2 || isAlreadyCompleted;
+
+  const switchMission = (idx: number) => {
+    setSelectedMissionIndex(idx);
+    setAttempts(0);
+    setErrors({});
+    setWarnings([]);
+  };
+
   const handleValidate = () => {
+    // If student is on M1 (Example), validate is not needed; guide to M2
+    if (selectedMissionIndex === 0) {
+      switchMission(1);
+      return;
+    }
+
     const newErrors: Record<string, string> = {};
     const newWarnings: string[] = [];
     const num = (v: string) => parseFloat(v.replace(",", "."));
 
     // 1. Check KTAS
-    const userKtas = num(ktasInput);
+    const userKtas = num(currentInputs.ktas);
     if (isNaN(userKtas) || !checkValueTolerance(userKtas, expectedKtas, 0.02, 1.5).isOk) {
       newErrors.ktas =
         attempts >= 1
@@ -84,7 +142,7 @@ export function PreflightCruiseWidget({
     }
 
     // 2. Check Fuel Flow (supports L/h or US Gal/h)
-    const userFf = num(fuelFlowInput);
+    const userFf = num(currentInputs.fuelFlow);
     const isFfLiters = checkValueTolerance(userFf, expectedFuelFlow, 0.02, 0.3).isOk;
     const isFfGallons = checkValueTolerance(userFf, expectedFuelFlowGal, 0.05, 0.2).isOk;
     if (isNaN(userFf) || (!isFfLiters && !isFfGallons)) {
@@ -97,7 +155,7 @@ export function PreflightCruiseWidget({
     }
 
     // 3. Check Time in Hours
-    const userTime = num(timeHrsInput);
+    const userTime = num(currentInputs.timeHrs);
     if (isNaN(userTime) || !checkValueTolerance(userTime, expectedTimeHrs, 0.06, 0.05).isOk) {
       newErrors.timeHrs =
         attempts >= 1
@@ -106,7 +164,7 @@ export function PreflightCruiseWidget({
     }
 
     // 4. Check Trip Fuel (supports Liters OR Gallons)
-    const userTrip = num(tripFuelLitersInput);
+    const userTrip = num(currentInputs.tripLiters);
     const isTripLiters = checkValueTolerance(userTrip, expectedTripLiters, 0.06, 0.6).isOk;
     const isTripGallons =
       checkValueTolerance(userTrip, expectedTripGallons, 0.06, 0.25).isOk ||
@@ -121,7 +179,7 @@ export function PreflightCruiseWidget({
     }
 
     // 5. Check Trip Fuel Mass (supports Kg OR Lbs)
-    const userTripMass = num(tripFuelKgInput);
+    const userTripMass = num(currentInputs.tripKg);
     const isMassKg = checkValueTolerance(userTripMass, expectedTripKg, 0.06, 0.6).isOk;
     const isMassLbs = checkValueTolerance(userTripMass, expectedTripLbs, 0.06, 1.2).isOk;
     if (isNaN(userTripMass) || (!isMassKg && !isMassLbs)) {
@@ -134,7 +192,7 @@ export function PreflightCruiseWidget({
     }
 
     // 6. Check Max Range
-    const userRange = num(maxRangeInput);
+    const userRange = num(currentInputs.maxRange);
     if (isNaN(userRange) || !checkValueTolerance(userRange, expectedMaxRange, 0.03, 8).isOk) {
       newErrors.maxRange =
         attempts >= 1
@@ -146,9 +204,12 @@ export function PreflightCruiseWidget({
     setWarnings(newWarnings);
 
     if (Object.keys(newErrors).length === 0) {
-      setIsPassed(true);
-      if (onExerciseCompleted) {
-        onExerciseCompleted();
+      const nextSolved = { ...solvedMissions, [selectedMissionIndex]: true };
+      setSolvedMissions(nextSolved);
+      if (nextSolved[1] && nextSolved[2]) {
+        if (onExerciseCompleted) {
+          onExerciseCompleted();
+        }
       }
     } else {
       setAttempts((prev) => prev + 1);
@@ -157,6 +218,7 @@ export function PreflightCruiseWidget({
 
   const displayedRows = CRUISE_TABLE_DATA.filter((r) => r.load === selectedTablePower);
   const errorCount = Object.keys(errors).length;
+  const isCurrentMissionSolved = selectedMissionIndex === 0 || Boolean(solvedMissions[selectedMissionIndex]);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -172,37 +234,98 @@ export function PreflightCruiseWidget({
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
                 ⏱️ CRUCERO Y AUTONOMÍA (50% LOAD)
               </span>
-              <div className="text-xs sm:text-[13px] text-slate-500 font-medium">
-                {mission.name} · {alt} ft · {loadPct}% Potencia · {mission.scenario.distanceNm} NM
+              <div className="flex items-center gap-2 mt-0.5">
+                <span className="text-xs sm:text-[13px] text-slate-500 font-medium">
+                  {mission.name} · {alt} ft · {loadPct}% Potencia · {mission.scenario.distanceNm} NM
+                </span>
+                <span
+                  className={`text-[10px] sm:text-[11px] font-extrabold px-2 py-0.5 rounded-full ${
+                    isAllPracticeCompleted
+                      ? "bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
+                      : "bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700"
+                  }`}
+                >
+                  {isAllPracticeCompleted ? "✓ 2/2 resueltos" : `${solvedPracticeCount}/2 para avanzar`}
+                </span>
               </div>
             </div>
             <div className="flex items-center gap-1 shrink-0">
-              {PREFLIGHT_MISSIONS.map((m, idx) => (
-                <button
-                  key={m.id}
-                  type="button"
-                  onClick={() => {
-                    setSelectedMissionIndex(idx);
-                    setAttempts(0);
-                    setErrors({});
-                    setWarnings([]);
-                  }}
-                  className={`px-2.5 py-1 rounded-lg text-xs sm:text-[13px] font-extrabold transition-all cursor-pointer ${
-                    selectedMissionIndex === idx
-                      ? "bg-[#1a80ff] text-white shadow-2xs"
-                      : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
-                  }`}
-                >
-                  M{idx + 1}
-                </button>
-              ))}
+              <button
+                type="button"
+                onClick={() => switchMission(0)}
+                className={`px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
+                  selectedMissionIndex === 0
+                    ? "bg-emerald-600 text-white shadow-2xs"
+                    : "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
+                }`}
+                title="Misión 1: Ejemplo guiado resuelto"
+              >
+                <span>M1</span>
+                <span className="text-[10px] font-normal">(Ejemplo ✓)</span>
+              </button>
+              {[1, 2].map((idx) => {
+                const isSolved = Boolean(solvedMissions[idx]);
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => switchMission(idx)}
+                    className={`px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
+                      selectedMissionIndex === idx
+                        ? "bg-[#1a80ff] text-white shadow-2xs"
+                        : isSolved
+                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
+                          : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
+                    }`}
+                  >
+                    <span>M{idx + 1}</span>
+                    <span>{isSolved ? "✓" : "⏳"}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
           {/* Form Content - Ajustado para no requerir scroll */}
-          <div className="flex-1 my-1 space-y-2 flex flex-col justify-start pt-0.5">
+          <div className="flex-1 my-1 space-y-1.5 flex flex-col justify-start pt-0.5">
+            {/* Banner Didáctico: M1 Ejemplo o M2/M3 Práctica */}
+            {selectedMissionIndex === 0 ? (
+              <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-300 dark:border-emerald-700 text-emerald-950 dark:text-emerald-100 shadow-2xs">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="space-y-0.5">
+                    <div className="flex items-center gap-1.5 font-black text-xs sm:text-[13px] text-emerald-800 dark:text-emerald-300">
+                      <span>🟢</span>
+                      <span>EJEMPLO RESUELTO · Misión 1 (Referencia)</span>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-emerald-700 dark:text-emerald-300 leading-snug">
+                      Este primer ejercicio está resuelto como modelo. Para poder avanzar, resuelve los otros dos ejercicios (<strong>M2</strong> y <strong>M3</strong>).
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => switchMission(1)}
+                    className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shrink-0 shadow-xs transition cursor-pointer flex items-center gap-1 hover:scale-105 active:scale-95"
+                  >
+                    <span>Pulsa en M2</span>
+                    <span>➔</span>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="px-2.5 py-1.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs flex items-center justify-between">
+                <span className="font-semibold text-[11px] sm:text-xs">
+                  ✏️ Resuelve este ejercicio ({mission.name.split(":")[0]}) según los datos de ruta y la tabla Fig. 5-4a.
+                </span>
+                {isCurrentMissionSolved && (
+                  <span className="text-emerald-600 dark:text-emerald-400 font-extrabold text-xs">
+                    ✓ Resuelto con éxito
+                  </span>
+                )}
+              </div>
+            )}
+
             {/* Step 1: Reading from Table */}
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
+            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1 shadow-2xs">
               <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block border-b pb-0.5">
                 1. Lectura en Tabla Fig. 5-4a ({alt} ft / {loadPct}% Load)
               </span>
@@ -219,12 +342,15 @@ export function PreflightCruiseWidget({
                   <input
                     type="text"
                     placeholder={`Ej: ${expectedKtas}`}
-                    value={ktasInput}
-                    onChange={(e) => setKtasInput(e.target.value)}
+                    value={currentInputs.ktas}
+                    disabled={selectedMissionIndex === 0}
+                    onChange={(e) => updateCurrentInput("ktas", e.target.value)}
                     className={`w-full px-2.5 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
-                      errors.ktas
-                        ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                      selectedMissionIndex === 0
+                        ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                        : errors.ktas
+                          ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                     }`}
                   />
                 </div>
@@ -241,12 +367,15 @@ export function PreflightCruiseWidget({
                   <input
                     type="text"
                     placeholder={`Ej: ${expectedFuelFlow} L/h o ${expectedFuelFlowGal} Gal/h`}
-                    value={fuelFlowInput}
-                    onChange={(e) => setFuelFlowInput(e.target.value)}
+                    value={currentInputs.fuelFlow}
+                    disabled={selectedMissionIndex === 0}
+                    onChange={(e) => updateCurrentInput("fuelFlow", e.target.value)}
                     className={`w-full px-2.5 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
-                      errors.fuelFlow
-                        ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                      selectedMissionIndex === 0
+                        ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                        : errors.fuelFlow
+                          ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                     }`}
                   />
                 </div>
@@ -254,7 +383,7 @@ export function PreflightCruiseWidget({
             </div>
 
             {/* Step 2: Time & Fuel Consumption */}
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
+            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1 shadow-2xs">
               <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block border-b pb-0.5">
                 2. Cálculos de Ruta ({mission.scenario.distanceNm} NM · Admite L o Galones)
               </span>
@@ -271,12 +400,15 @@ export function PreflightCruiseWidget({
                   <input
                     type="text"
                     placeholder={`Ej: ${expectedTimeHrs}`}
-                    value={timeHrsInput}
-                    onChange={(e) => setTimeHrsInput(e.target.value)}
+                    value={currentInputs.timeHrs}
+                    disabled={selectedMissionIndex === 0}
+                    onChange={(e) => updateCurrentInput("timeHrs", e.target.value)}
                     className={`w-full px-2 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
-                      errors.timeHrs
-                        ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                      selectedMissionIndex === 0
+                        ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                        : errors.timeHrs
+                          ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                     }`}
                   />
                 </div>
@@ -284,7 +416,7 @@ export function PreflightCruiseWidget({
                 <div>
                   <div className="flex items-center justify-between mb-0.5">
                     <label className="font-semibold text-slate-600 dark:text-slate-300">
-                      Trip (L o Gal):
+                      Trip Fuel:
                     </label>
                     {errors.tripLiters && (
                       <span className="text-[11px] text-rose-600 dark:text-rose-400 font-bold">⚠️ Revisa</span>
@@ -292,13 +424,16 @@ export function PreflightCruiseWidget({
                   </div>
                   <input
                     type="text"
-                    placeholder={`Ej: ${expectedTripLiters} o ${expectedTripGallons}`}
-                    value={tripFuelLitersInput}
-                    onChange={(e) => setTripFuelLitersInput(e.target.value)}
+                    placeholder={`Ej: ${expectedTripLiters} L / ${expectedTripGallons} Gal`}
+                    value={currentInputs.tripLiters}
+                    disabled={selectedMissionIndex === 0}
+                    onChange={(e) => updateCurrentInput("tripLiters", e.target.value)}
                     className={`w-full px-2 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
-                      errors.tripLiters
-                        ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                      selectedMissionIndex === 0
+                        ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                        : errors.tripLiters
+                          ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                     }`}
                   />
                 </div>
@@ -315,12 +450,15 @@ export function PreflightCruiseWidget({
                   <input
                     type="text"
                     placeholder={`Ej: ${expectedTripKg} o ${expectedTripLbs}`}
-                    value={tripFuelKgInput}
-                    onChange={(e) => setTripFuelKgInput(e.target.value)}
+                    value={currentInputs.tripKg}
+                    disabled={selectedMissionIndex === 0}
+                    onChange={(e) => updateCurrentInput("tripKg", e.target.value)}
                     className={`w-full px-2 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
-                      errors.tripKg
-                        ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                      selectedMissionIndex === 0
+                        ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                        : errors.tripKg
+                          ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                     }`}
                   />
                 </div>
@@ -328,7 +466,7 @@ export function PreflightCruiseWidget({
             </div>
 
             {/* Step 3: Range Check */}
-            <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1 shadow-2xs">
+            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1 shadow-2xs">
               <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block">
                 3. Autonomía Máxima Teórica (Tanques Estándar 127.4 L / 33.65 US Gal Usable)
               </span>
@@ -336,12 +474,15 @@ export function PreflightCruiseWidget({
                 <input
                   type="text"
                   placeholder={`Alcance máximo NM (Ej: ${expectedMaxRange})`}
-                  value={maxRangeInput}
-                  onChange={(e) => setMaxRangeInput(e.target.value)}
+                  value={currentInputs.maxRange}
+                  disabled={selectedMissionIndex === 0}
+                  onChange={(e) => updateCurrentInput("maxRange", e.target.value)}
                   className={`flex-1 px-3 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
-                    errors.maxRange
-                      ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
-                      : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                    selectedMissionIndex === 0
+                      ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                      : errors.maxRange
+                        ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
                   }`}
                 />
                 <span className="text-xs sm:text-[13px] text-slate-500 font-medium shrink-0">NM disponibles</span>
@@ -356,15 +497,31 @@ export function PreflightCruiseWidget({
           <div className="space-y-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0">
             <div className="flex items-center justify-between">
               <span className="text-xs sm:text-[13px] text-slate-500 font-medium">
-                Intentos: <strong>{attempts}</strong>
+                {selectedMissionIndex === 0 ? (
+                  <span>Modelo de referencia (Ejemplo)</span>
+                ) : (
+                  <span>Intentos en M{selectedMissionIndex + 1}: <strong>{attempts}</strong></span>
+                )}
               </span>
-              <button
-                type="button"
-                onClick={handleValidate}
-                className="px-4 py-2 rounded-xl font-bold text-xs sm:text-[13px] text-white bg-[#1a80ff] hover:bg-[#0066e6] shadow-xs cursor-pointer transition-all hover:scale-105 active:scale-95"
-              >
-                Validar Cálculos de Crucero ➔
-              </button>
+
+              {selectedMissionIndex === 0 ? (
+                <button
+                  type="button"
+                  onClick={() => switchMission(1)}
+                  className="px-4 py-2 rounded-xl font-black text-xs sm:text-[13px] text-white bg-emerald-600 hover:bg-emerald-700 shadow-xs cursor-pointer transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5"
+                >
+                  <span>Ejemplo Resuelto · Pulsa aquí para ir a M2</span>
+                  <span>➔</span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleValidate}
+                  className="px-4 py-2 rounded-xl font-bold text-xs sm:text-[13px] text-white bg-[#1a80ff] hover:bg-[#0066e6] shadow-xs cursor-pointer transition-all hover:scale-105 active:scale-95"
+                >
+                  Validar Cálculos de Crucero ➔
+                </button>
+              )}
             </div>
 
             {errorCount > 0 && (
@@ -373,12 +530,28 @@ export function PreflightCruiseWidget({
               </div>
             )}
 
-            {isPassed && (
+            {isAllPracticeCompleted && (
               <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px]">
-                <strong className="font-bold">✓ ¡CÁLCULO DE CRUCERO Y COMBUSTIBLE CORRECTO!</strong>
+                <strong className="font-bold">🎉 ¡ENHORABUENA! HAS COMPLETADO LOS EJERCICIOS M2 Y M3</strong>
                 <p className="text-xs mt-0.5">
-                  Tiempo: {expectedTimeHrs} h · Gasto ruta: {expectedTripLiters} L ({expectedTripGallons} US Gal) · Masa: {expectedTripKg} kg ({expectedTripLbs} lbs) · Alcance: {expectedMaxRange} NM.
+                  Has validado correctamente los cálculos de crucero y combustible. Ya puedes pulsar en <strong>Siguiente Diapositiva</strong> para continuar.
                 </p>
+              </div>
+            )}
+
+            {!isAllPracticeCompleted && solvedMissions[selectedMissionIndex] && selectedMissionIndex === 1 && (
+              <div className="p-2 rounded-lg border border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/40 text-sky-900 dark:text-sky-200 text-xs flex items-center justify-between gap-2">
+                <div>
+                  <strong className="font-bold">✓ ¡Misión M2 completada!</strong>
+                  <p className="text-[11px] text-sky-800 dark:text-sky-300">Te queda la Misión M3 para desbloquear el avance.</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => switchMission(2)}
+                  className="px-3 py-1.5 rounded-lg bg-[#1a80ff] hover:bg-[#0066e6] text-white font-bold text-xs shrink-0 cursor-pointer transition hover:scale-105"
+                >
+                  Ir a M3 ➔
+                </button>
               </div>
             )}
           </div>

@@ -18,12 +18,74 @@ type Props = {
   isAlreadyCompleted?: boolean;
 };
 
+type LoadsheetMissionInputs = {
+  pilotsMoment: string;
+  paxMoment: string;
+  baggageMoment: string;
+  zfmMass: string;
+  zfmCg: string;
+  zfmMoment: string;
+  fuelMass: string;
+  fuelMoment: string;
+  tomMass: string;
+  tomMoment: string;
+  tomCg: string;
+  tripFuelMassInput: string;
+  tripFuelMoment: string;
+  lmMass: string;
+  lmMoment: string;
+  lmCg: string;
+  interactiveZfmPoint: { x: number; y: number } | null;
+  interactiveTomPoint: { x: number; y: number } | null;
+  interactiveClickPoint: { x: number; y: number } | null;
+};
+
+const M1_ZFM_POINT = mapCgToSvgCoords(917.44, 1.032);
+const M1_TOM_POINT = mapCgToSvgCoords(984.64, 1.041);
+const M1_LM_POINT = mapCgToSvgCoords(971.79, 1.040);
+
+const INITIAL_LOADSHEET_STORE: Record<number, LoadsheetMissionInputs> = {
+  0: {
+    pilotsMoment: "147.58",
+    paxMoment: "0",
+    baggageMoment: "12.07",
+    zfmMass: "917.44",
+    zfmCg: "1.032",
+    zfmMoment: "946.88",
+    fuelMass: "67.20",
+    fuelMoment: "78.49",
+    tomMass: "984.64",
+    tomMoment: "1025.37",
+    tomCg: "1.041",
+    tripFuelMassInput: "12.85",
+    tripFuelMoment: "15.01",
+    lmMass: "971.79",
+    lmMoment: "1010.36",
+    lmCg: "1.040",
+    interactiveZfmPoint: M1_ZFM_POINT,
+    interactiveTomPoint: M1_TOM_POINT,
+    interactiveClickPoint: M1_LM_POINT,
+  },
+  1: {
+    pilotsMoment: "", paxMoment: "", baggageMoment: "", zfmMass: "", zfmCg: "", zfmMoment: "",
+    fuelMass: "", fuelMoment: "", tomMass: "", tomMoment: "", tomCg: "",
+    tripFuelMassInput: "", tripFuelMoment: "", lmMass: "", lmMoment: "", lmCg: "",
+    interactiveZfmPoint: null, interactiveTomPoint: null, interactiveClickPoint: null,
+  },
+  2: {
+    pilotsMoment: "", paxMoment: "", baggageMoment: "", zfmMass: "", zfmCg: "", zfmMoment: "",
+    fuelMass: "", fuelMoment: "", tomMass: "", tomMoment: "", tomCg: "",
+    tripFuelMassInput: "", tripFuelMoment: "", lmMass: "", lmMoment: "", lmCg: "",
+    interactiveZfmPoint: null, interactiveTomPoint: null, interactiveClickPoint: null,
+  },
+};
+
 export function PreflightLoadsheetWidget({
   mode = "all",
   onExerciseCompleted,
   isAlreadyCompleted = false,
 }: Props) {
-  const [selectedMissionIndex, setSelectedMissionIndex] = useState(0);
+  const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on Mission 1 (Solved Example)
   const mission = PREFLIGHT_MISSIONS[selectedMissionIndex];
 
   // If in "all" mode, activeTab controls which sub-step is visible
@@ -32,28 +94,32 @@ export function PreflightLoadsheetWidget({
   );
   const currentStep = mode === "all" ? activeTab : mode;
 
-  // User input states
-  const [pilotsMoment, setPilotsMoment] = useState("");
-  const [paxMoment, setPaxMoment] = useState("");
-  const [baggageMoment, setBaggageMoment] = useState("");
+  // Mission store preserving user work across tab switches
+  const [missionStore, setMissionStore] = useState<Record<number, LoadsheetMissionInputs>>(INITIAL_LOADSHEET_STORE);
+  const [solvedMissions, setSolvedMissions] = useState<Record<number, boolean>>({});
 
-  const [zfmMass, setZfmMass] = useState("");
-  const [zfmCg, setZfmCg] = useState("");
-  const [zfmMoment, setZfmMoment] = useState("");
+  // Active inputs: M1 starts prefilled as the solved example
+  const [pilotsMoment, setPilotsMoment] = useState("147.58");
+  const [paxMoment, setPaxMoment] = useState("0");
+  const [baggageMoment, setBaggageMoment] = useState("12.07");
 
-  const [fuelMass, setFuelMass] = useState("");
-  const [fuelMoment, setFuelMoment] = useState("");
+  const [zfmMass, setZfmMass] = useState("917.44");
+  const [zfmCg, setZfmCg] = useState("1.032");
+  const [zfmMoment, setZfmMoment] = useState("946.88");
 
-  const [tomMass, setTomMass] = useState("");
-  const [tomMoment, setTomMoment] = useState("");
-  const [tomCg, setTomCg] = useState("");
+  const [fuelMass, setFuelMass] = useState("67.20");
+  const [fuelMoment, setFuelMoment] = useState("78.49");
 
-  const [tripFuelMassInput, setTripFuelMassInput] = useState("");
-  const [tripFuelMoment, setTripFuelMoment] = useState("");
+  const [tomMass, setTomMass] = useState("984.64");
+  const [tomMoment, setTomMoment] = useState("1025.37");
+  const [tomCg, setTomCg] = useState("1.041");
 
-  const [lmMass, setLmMass] = useState("");
-  const [lmMoment, setLmMoment] = useState("");
-  const [lmCg, setLmCg] = useState("");
+  const [tripFuelMassInput, setTripFuelMassInput] = useState("12.85");
+  const [tripFuelMoment, setTripFuelMoment] = useState("15.01");
+
+  const [lmMass, setLmMass] = useState("971.79");
+  const [lmMoment, setLmMoment] = useState("1010.36");
+  const [lmCg, setLmCg] = useState("1.040");
 
   // Validation feedback state
   const [attempts, setAttempts] = useState(0);
@@ -64,9 +130,9 @@ export function PreflightLoadsheetWidget({
   const isStepPassed = currentStep === "takeoff" ? passedTakeoff : passedLanding;
 
   // Interactive points: In 6.5 both ZFM and TOW are placed; in 6.6 LW is placed
-  const [interactiveZfmPoint, setInteractiveZfmPoint] = useState<{ x: number; y: number } | null>(null);
-  const [interactiveTomPoint, setInteractiveTomPoint] = useState<{ x: number; y: number } | null>(null);
-  const [interactiveClickPoint, setInteractiveClickPoint] = useState<{ x: number; y: number } | null>(null);
+  const [interactiveZfmPoint, setInteractiveZfmPoint] = useState<{ x: number; y: number } | null>(M1_ZFM_POINT);
+  const [interactiveTomPoint, setInteractiveTomPoint] = useState<{ x: number; y: number } | null>(M1_TOM_POINT);
+  const [interactiveClickPoint, setInteractiveClickPoint] = useState<{ x: number; y: number } | null>(M1_LM_POINT);
   const [activePlotPoint, setActivePlotPoint] = useState<"zfm" | "tom">("zfm");
 
   const [hoverPoint, setHoverPoint] = useState<{ x: number; y: number } | null>(null);
@@ -141,34 +207,60 @@ export function PreflightLoadsheetWidget({
 
   // Load mission initial scenario values
   const loadMissionScenario = (m: PreflightMission, idx: number) => {
+    // 1. Guardar estado de la misión que dejamos
+    setMissionStore((prev) => ({
+      ...prev,
+      [selectedMissionIndex]: {
+        pilotsMoment,
+        paxMoment,
+        baggageMoment,
+        zfmMass,
+        zfmCg,
+        zfmMoment,
+        fuelMass,
+        fuelMoment,
+        tomMass,
+        tomMoment,
+        tomCg,
+        tripFuelMassInput,
+        tripFuelMoment,
+        lmMass,
+        lmMoment,
+        lmCg,
+        interactiveZfmPoint,
+        interactiveTomPoint,
+        interactiveClickPoint,
+      },
+    }));
+
+    // 2. Cargar estado de la misión seleccionada
+    const nextData = idx === 0 ? INITIAL_LOADSHEET_STORE[0] : (missionStore[idx] || INITIAL_LOADSHEET_STORE[idx]);
     setSelectedMissionIndex(idx);
-    setPilotsMoment("");
-    setPaxMoment("");
-    setBaggageMoment("");
-    setZfmMass("");
-    setZfmCg("");
-    setZfmMoment("");
-    setFuelMass("");
-    setFuelMoment("");
-    setTomMass("");
-    setTomMoment("");
-    setTomCg("");
-    setTripFuelMassInput("");
-    setTripFuelMoment("");
-    setLmMass("");
-    setLmMoment("");
-    setLmCg("");
+    setPilotsMoment(nextData.pilotsMoment);
+    setPaxMoment(nextData.paxMoment);
+    setBaggageMoment(nextData.baggageMoment);
+    setZfmMass(nextData.zfmMass);
+    setZfmCg(nextData.zfmCg);
+    setZfmMoment(nextData.zfmMoment);
+    setFuelMass(nextData.fuelMass);
+    setFuelMoment(nextData.fuelMoment);
+    setTomMass(nextData.tomMass);
+    setTomMoment(nextData.tomMoment);
+    setTomCg(nextData.tomCg);
+    setTripFuelMassInput(nextData.tripFuelMassInput);
+    setTripFuelMoment(nextData.tripFuelMoment);
+    setLmMass(nextData.lmMass);
+    setLmMoment(nextData.lmMoment);
+    setLmCg(nextData.lmCg);
+    setInteractiveZfmPoint(nextData.interactiveZfmPoint);
+    setInteractiveTomPoint(nextData.interactiveTomPoint);
+    setInteractiveClickPoint(nextData.interactiveClickPoint);
 
     setErrors({});
     setWarnings([]);
     setAttempts(0);
     setPointAttempts(0);
     setShowTargetHint(false);
-    setPassedTakeoff(false);
-    setPassedLanding(false);
-    setInteractiveZfmPoint(null);
-    setInteractiveTomPoint(null);
-    setInteractiveClickPoint(null);
     setActivePlotPoint("zfm");
     setHoverPoint(null);
     setZoomLevel(1);
@@ -236,6 +328,12 @@ export function PreflightLoadsheetWidget({
 
   // Validation handler
   const handleValidate = () => {
+    // If student is on M1 (Example), validate is not needed; guide to M2
+    if (selectedMissionIndex === 0) {
+      loadMissionScenario(PREFLIGHT_MISSIONS[1], 1);
+      return;
+    }
+
     const newErrors: Record<string, string> = {};
     const newWarnings: string[] = [];
     const num = (val: string) => parseFloat(val.replace(",", "."));
@@ -459,13 +557,20 @@ export function PreflightLoadsheetWidget({
       } else {
         setPassedLanding(true);
       }
-      if (onExerciseCompleted) {
-        onExerciseCompleted();
+      const nextSolved = { ...solvedMissions, [selectedMissionIndex]: true };
+      setSolvedMissions(nextSolved);
+      if (nextSolved[1] && nextSolved[2]) {
+        if (onExerciseCompleted) {
+          onExerciseCompleted();
+        }
       }
     } else {
       setAttempts((prev) => prev + 1);
     }
   };
+
+  const solvedPracticeCount = (solvedMissions[1] ? 1 : 0) + (solvedMissions[2] ? 1 : 0);
+  const isAllPracticeCompleted = solvedPracticeCount === 2 || isAlreadyCompleted;
 
   // SVG coordinates for ZFM, TOW and LW
   const zfmCoords = useMemo(() => {
@@ -521,8 +626,19 @@ export function PreflightLoadsheetWidget({
                   ? "📋 F.OPS.04.NNA · PARTE 1: DESPEGUE (TOM & CG)"
                   : "🛬 F.OPS.04.NNA · PARTE 2: ATERRIZAJE (LM & CG)"}
               </span>
-              <div className="text-xs sm:text-[13px] text-slate-500 font-medium">
-                {mission.name} · Crucero al 50% Potencia ({mission.scenario.flightTimeHrs} h)
+              <div className="flex items-center gap-2 mt-0.5">
+                <span className="text-xs sm:text-[13px] text-slate-500 font-medium">
+                  {mission.name} · Crucero al 50% Potencia ({mission.scenario.flightTimeHrs} h)
+                </span>
+                <span
+                  className={`text-[10px] sm:text-[11px] font-extrabold px-2 py-0.5 rounded-full ${
+                    isAllPracticeCompleted
+                      ? "bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
+                      : "bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700"
+                  }`}
+                >
+                  {isAllPracticeCompleted ? "✓ 2/2 resueltos" : `${solvedPracticeCount}/2 para avanzar`}
+                </span>
               </div>
             </div>
 
@@ -534,9 +650,6 @@ export function PreflightLoadsheetWidget({
                     onClick={() => {
                       setActiveTab("takeoff");
                       setErrors({});
-                      setInteractiveZfmPoint(null);
-                      setInteractiveTomPoint(null);
-                      setInteractiveClickPoint(null);
                       setActivePlotPoint("zfm");
                       setHoverPoint(null);
                       setPointAttempts(0);
@@ -557,9 +670,6 @@ export function PreflightLoadsheetWidget({
                     onClick={() => {
                       setActiveTab("landing");
                       setErrors({});
-                      setInteractiveZfmPoint(null);
-                      setInteractiveTomPoint(null);
-                      setInteractiveClickPoint(null);
                       setActivePlotPoint("zfm");
                       setHoverPoint(null);
                       setPointAttempts(0);
@@ -578,25 +688,80 @@ export function PreflightLoadsheetWidget({
                 </div>
               )}
 
-              {PREFLIGHT_MISSIONS.map((m, idx) => (
-                <button
-                  key={m.id}
-                  type="button"
-                  onClick={() => loadMissionScenario(m, idx)}
-                  className={`px-2.5 py-1 rounded-lg text-xs sm:text-[13px] font-extrabold transition-all cursor-pointer ${
-                    selectedMissionIndex === idx
-                      ? "bg-[#1a80ff] text-white shadow-2xs"
-                      : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
-                  }`}
-                >
-                  M{idx + 1}
-                </button>
-              ))}
+              <button
+                type="button"
+                onClick={() => loadMissionScenario(PREFLIGHT_MISSIONS[0], 0)}
+                className={`px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
+                  selectedMissionIndex === 0
+                    ? "bg-emerald-600 text-white shadow-2xs"
+                    : "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
+                }`}
+                title="Misión 1: Ejemplo guiado resuelto"
+              >
+                <span>M1</span>
+                <span className="text-[10px] font-normal">(Ejemplo ✓)</span>
+              </button>
+              {[1, 2].map((idx) => {
+                const isSolved = Boolean(solvedMissions[idx]);
+                return (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => loadMissionScenario(PREFLIGHT_MISSIONS[idx], idx)}
+                    className={`px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
+                      selectedMissionIndex === idx
+                        ? "bg-[#1a80ff] text-white shadow-2xs"
+                        : isSolved
+                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
+                          : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
+                    }`}
+                  >
+                    <span>M{idx + 1}</span>
+                    <span>{isSolved ? "✓" : "⏳"}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
           {/* Table Container - Aligned to top, standard typography (text-xs sm:text-[13px]), zero outer scroll */}
           <div className="flex-1 min-h-0 my-1 overflow-hidden flex flex-col justify-start pt-1">
+            {/* Banner Didáctico: M1 Ejemplo o M2/M3 Práctica */}
+            {selectedMissionIndex === 0 ? (
+              <div className="p-2 mb-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-300 dark:border-emerald-700 text-emerald-950 dark:text-emerald-100 shadow-2xs shrink-0">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="space-y-0.5">
+                    <div className="flex items-center gap-1.5 font-black text-xs sm:text-[13px] text-emerald-800 dark:text-emerald-300">
+                      <span>🟢</span>
+                      <span>EJEMPLO RESUELTO · Misión 1 (Referencia)</span>
+                    </div>
+                    <p className="text-[11px] sm:text-xs text-emerald-700 dark:text-emerald-300 leading-snug">
+                      Este primer ejercicio se muestra resuelto y graficado como modelo. Para poder avanzar, resuelve los otros dos ejercicios (<strong>M2</strong> y <strong>M3</strong>).
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => loadMissionScenario(PREFLIGHT_MISSIONS[1], 1)}
+                    className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shrink-0 shadow-xs transition cursor-pointer flex items-center gap-1 hover:scale-105 active:scale-95"
+                  >
+                    <span>Pulsa en M2</span>
+                    <span>➔</span>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="px-2.5 py-1 mb-1.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs flex items-center justify-between shrink-0">
+                <span className="font-semibold text-[11px] sm:text-xs">
+                  ✏️ Resuelve este ejercicio ({mission.name.split(":")[0]}): calcula los datos y sitúa los puntos en la envolvente.
+                </span>
+                {solvedMissions[selectedMissionIndex] && (
+                  <span className="text-emerald-600 dark:text-emerald-400 font-extrabold text-xs">
+                    ✓ Resuelto con éxito
+                  </span>
+                )}
+              </div>
+            )}
+
             {currentStep === "takeoff" ? (
               /* PARTE 1: TABLA DE DESPEGUE (7 FILAS) */
               <table className="w-full text-left text-xs sm:text-[13px] border-collapse">
@@ -629,11 +794,14 @@ export function PreflightLoadsheetWidget({
                         type="text"
                         placeholder="Momento"
                         value={pilotsMoment}
+                        disabled={selectedMissionIndex === 0}
                         onChange={(e) => setPilotsMoment(e.target.value)}
                         className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
-                          errors.pilotsMoment
-                            ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700"
-                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                            : errors.pilotsMoment
+                              ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                         }`}
                       />
                     </td>
@@ -649,14 +817,16 @@ export function PreflightLoadsheetWidget({
                     <td className="py-1.5 px-2 text-right">
                       <input
                         type="text"
-                        disabled={expected.paxMass === 0}
+                        disabled={selectedMissionIndex === 0 || expected.paxMass === 0}
                         placeholder={expected.paxMass === 0 ? "0" : "Momento"}
                         value={expected.paxMass === 0 ? "0" : paxMoment}
                         onChange={(e) => setPaxMoment(e.target.value)}
                         className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
-                          errors.paxMoment
-                            ? "border-rose-500 bg-rose-50 text-rose-700"
-                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                            : errors.paxMoment
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                         }`}
                       />
                     </td>
@@ -674,11 +844,14 @@ export function PreflightLoadsheetWidget({
                         type="text"
                         placeholder="Momento"
                         value={baggageMoment}
+                        disabled={selectedMissionIndex === 0}
                         onChange={(e) => setBaggageMoment(e.target.value)}
                         className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
-                          errors.baggageMoment
-                            ? "border-rose-500 bg-rose-50 text-rose-700"
-                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                            : errors.baggageMoment
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                         }`}
                       />
                     </td>
@@ -692,11 +865,14 @@ export function PreflightLoadsheetWidget({
                         type="text"
                         placeholder="Suma Masa"
                         value={zfmMass}
+                        disabled={selectedMissionIndex === 0}
                         onChange={(e) => setZfmMass(e.target.value)}
                         className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
-                          errors.zfmMass
-                            ? "border-rose-500 bg-rose-50 text-rose-700"
-                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                            : errors.zfmMass
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                         }`}
                       />
                     </td>
@@ -705,11 +881,14 @@ export function PreflightLoadsheetWidget({
                         type="text"
                         placeholder="CG (m)"
                         value={zfmCg}
+                        disabled={selectedMissionIndex === 0}
                         onChange={(e) => setZfmCg(e.target.value)}
                         className={`w-20 text-right px-1.5 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
-                          errors.zfmCg
-                            ? "border-rose-500 bg-rose-50 text-rose-700"
-                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                            : errors.zfmCg
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                         }`}
                       />
                     </td>
@@ -718,11 +897,14 @@ export function PreflightLoadsheetWidget({
                         type="text"
                         placeholder="Suma Momento"
                         value={zfmMoment}
+                        disabled={selectedMissionIndex === 0}
                         onChange={(e) => setZfmMoment(e.target.value)}
                         className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
-                          errors.zfmMoment
-                            ? "border-rose-500 bg-rose-50 text-rose-700"
-                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                            : errors.zfmMoment
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                         }`}
                       />
                     </td>
@@ -738,11 +920,14 @@ export function PreflightLoadsheetWidget({
                         type="text"
                         placeholder="Kg (L × 0.84)"
                         value={fuelMass}
+                        disabled={selectedMissionIndex === 0}
                         onChange={(e) => setFuelMass(e.target.value)}
                         className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
-                          errors.fuelMass
-                            ? "border-rose-500 bg-rose-50 text-rose-700"
-                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                            : errors.fuelMass
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                         }`}
                       />
                     </td>
@@ -752,11 +937,14 @@ export function PreflightLoadsheetWidget({
                         type="text"
                         placeholder="Momento"
                         value={fuelMoment}
+                        disabled={selectedMissionIndex === 0}
                         onChange={(e) => setFuelMoment(e.target.value)}
                         className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
-                          errors.fuelMoment
-                            ? "border-rose-500 bg-rose-50 text-rose-700"
-                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                            : errors.fuelMoment
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                         }`}
                       />
                     </td>
@@ -772,11 +960,14 @@ export function PreflightLoadsheetWidget({
                         type="text"
                         placeholder="TOM (kg)"
                         value={tomMass}
+                        disabled={selectedMissionIndex === 0}
                         onChange={(e) => setTomMass(e.target.value)}
                         className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
-                          errors.tomMass
-                            ? "border-rose-500 bg-rose-50 text-rose-700"
-                            : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                          selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                            : errors.tomMass
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
                         }`}
                       />
                     </td>
@@ -785,11 +976,14 @@ export function PreflightLoadsheetWidget({
                         type="text"
                         placeholder="CG (m)"
                         value={tomCg}
+                        disabled={selectedMissionIndex === 0}
                         onChange={(e) => setTomCg(e.target.value)}
                         className={`w-20 text-right px-1.5 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
-                          errors.tomCg
-                            ? "border-rose-500 bg-rose-50 text-rose-700"
-                            : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                          selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                            : errors.tomCg
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
                         }`}
                       />
                     </td>
@@ -798,11 +992,14 @@ export function PreflightLoadsheetWidget({
                         type="text"
                         placeholder="Momento TOM"
                         value={tomMoment}
+                        disabled={selectedMissionIndex === 0}
                         onChange={(e) => setTomMoment(e.target.value)}
                         className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
-                          errors.tomMoment
-                            ? "border-rose-500 bg-rose-50 text-rose-700"
-                            : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                          selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                            : errors.tomMoment
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
                         }`}
                       />
                     </td>
@@ -861,11 +1058,14 @@ export function PreflightLoadsheetWidget({
                           type="text"
                           placeholder="-Kg (L × 0.84)"
                           value={tripFuelMassInput}
+                          disabled={selectedMissionIndex === 0}
                           onChange={(e) => setTripFuelMassInput(e.target.value)}
                           className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
-                            errors.tripFuelMass
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-400"
+                            selectedMissionIndex === 0
+                              ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
+                              : errors.tripFuelMass
+                                ? "border-rose-500 bg-rose-50 text-rose-700"
+                                : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-400"
                           }`}
                         />
                       </td>
@@ -875,11 +1075,14 @@ export function PreflightLoadsheetWidget({
                           type="text"
                           placeholder="Ej: 15.01"
                           value={tripFuelMoment}
+                          disabled={selectedMissionIndex === 0}
                           onChange={(e) => setTripFuelMoment(e.target.value)}
                           className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
-                            errors.tripFuelMoment
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                            selectedMissionIndex === 0
+                              ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                              : errors.tripFuelMoment
+                                ? "border-rose-500 bg-rose-50 text-rose-700"
+                                : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                           }`}
                         />
                       </td>
@@ -895,11 +1098,14 @@ export function PreflightLoadsheetWidget({
                           type="text"
                           placeholder="LM (kg)"
                           value={lmMass}
+                          disabled={selectedMissionIndex === 0}
                           onChange={(e) => setLmMass(e.target.value)}
                           className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
-                            errors.lmMass
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                            selectedMissionIndex === 0
+                              ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
+                              : errors.lmMass
+                                ? "border-rose-500 bg-rose-50 text-rose-700"
+                                : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
                           }`}
                         />
                       </td>
@@ -908,11 +1114,14 @@ export function PreflightLoadsheetWidget({
                           type="text"
                           placeholder="CG (m)"
                           value={lmCg}
+                          disabled={selectedMissionIndex === 0}
                           onChange={(e) => setLmCg(e.target.value)}
                           className={`w-20 text-right px-1.5 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
-                            errors.lmCg
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                            selectedMissionIndex === 0
+                              ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
+                              : errors.lmCg
+                                ? "border-rose-500 bg-rose-50 text-rose-700"
+                                : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
                           }`}
                         />
                       </td>
@@ -921,11 +1130,14 @@ export function PreflightLoadsheetWidget({
                           type="text"
                           placeholder="Momento LM"
                           value={lmMoment}
+                          disabled={selectedMissionIndex === 0}
                           onChange={(e) => setLmMoment(e.target.value)}
                           className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
-                            errors.lmMoment
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                            selectedMissionIndex === 0
+                              ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
+                              : errors.lmMoment
+                                ? "border-rose-500 bg-rose-50 text-rose-700"
+                                : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
                           }`}
                         />
                       </td>
@@ -1002,15 +1214,26 @@ export function PreflightLoadsheetWidget({
                 * Densidad Jet A-1 = 0,84 kg/L · Brazo Fuel = 1,168 m · MTOM = 1.043 kg
               </span>
 
-              <button
-                type="button"
-                onClick={handleValidate}
-                className="px-4 py-2 rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] text-white font-extrabold text-xs sm:text-[13px] shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95"
-              >
-                {currentStep === "takeoff"
-                  ? "Comprobar Despegue y Graficar TOW ➔"
-                  : "Comprobar Aterrizaje"}
-              </button>
+              {selectedMissionIndex === 0 ? (
+                <button
+                  type="button"
+                  onClick={() => loadMissionScenario(PREFLIGHT_MISSIONS[1], 1)}
+                  className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-[13px] shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95 flex items-center gap-1.5"
+                >
+                  <span>Ejemplo Resuelto · Pulsa aquí para ir a M2</span>
+                  <span>➔</span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleValidate}
+                  className="px-4 py-2 rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] text-white font-extrabold text-xs sm:text-[13px] shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95"
+                >
+                  {currentStep === "takeoff"
+                    ? "Comprobar Despegue y Graficar TOW ➔"
+                    : "Comprobar Aterrizaje ➔"}
+                </button>
+              )}
             </div>
 
             {/* Error alerts (except envelopePoint which is displayed above) */}
@@ -1027,7 +1250,32 @@ export function PreflightLoadsheetWidget({
               </div>
             )}
 
-            {isStepPassed && (
+            {isAllPracticeCompleted && (
+              <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px]">
+                <strong className="font-bold">🎉 ¡ENHORABUENA! HAS COMPLETADO LOS EJERCICIOS M2 Y M3</strong>
+                <p className="text-xs mt-0.5">
+                  Has validado correctamente los cálculos y la envolvente. Ya puedes pulsar en <strong>Siguiente Diapositiva</strong> para continuar.
+                </p>
+              </div>
+            )}
+
+            {!isAllPracticeCompleted && solvedMissions[selectedMissionIndex] && selectedMissionIndex === 1 && (
+              <div className="p-2 rounded-lg border border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/40 text-sky-900 dark:text-sky-200 text-xs flex items-center justify-between gap-2">
+                <div>
+                  <strong className="font-bold">✓ ¡Misión M2 completada!</strong>
+                  <p className="text-[11px] text-sky-800 dark:text-sky-300">Te queda la Misión M3 para desbloquear el avance.</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => loadMissionScenario(PREFLIGHT_MISSIONS[2], 2)}
+                  className="px-3 py-1.5 rounded-lg bg-[#1a80ff] hover:bg-[#0066e6] text-white font-bold text-xs shrink-0 cursor-pointer transition hover:scale-105"
+                >
+                  Ir a M3 ➔
+                </button>
+              </div>
+            )}
+
+            {isStepPassed && !isAllPracticeCompleted && !solvedMissions[selectedMissionIndex] && (
               <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px] flex items-center justify-between">
                 <span>
                   ✓ {currentStep === "takeoff"
@@ -1194,7 +1442,7 @@ export function PreflightLoadsheetWidget({
                   hasMovedRef.current = false;
                   setIsPanning(false);
 
-                  if (wasDragging) return;
+                  if (wasDragging || selectedMissionIndex === 0) return;
 
                   const rect = e.currentTarget.getBoundingClientRect();
                   const clickX = ((e.clientX - rect.left) / rect.width) * 1140;
@@ -1251,7 +1499,7 @@ export function PreflightLoadsheetWidget({
                   hasMovedRef.current = false;
                   setIsPanning(false);
 
-                  if (wasDragging || e.changedTouches.length === 0) return;
+                  if (wasDragging || e.changedTouches.length === 0 || selectedMissionIndex === 0) return;
 
                   const touch = e.changedTouches[0];
                   const rect = e.currentTarget.getBoundingClientRect();

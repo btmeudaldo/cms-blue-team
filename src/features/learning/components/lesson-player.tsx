@@ -118,6 +118,7 @@ export function LessonPlayer({
     useState(isAlreadyCompleted);
   const [showCompletionToast, setShowCompletionToast] = useState(false);
   const [showQuizPromptModal, setShowQuizPromptModal] = useState(false);
+  const [showExercisePendingModal, setShowExercisePendingModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isActivityPaused, setIsActivityPaused] = useState(false);
   const [retryVersion, setRetryVersion] = useState(0);
@@ -1535,16 +1536,21 @@ export function LessonPlayer({
                 {currentPageIndex < totalLessonPages - 1 ? (
                   <button
                     type="button"
-                    onClick={handleAdvanceSlide}
-                    disabled={!isCurrentExerciseCompleted}
-                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap ${
+                    onClick={() => {
+                      if (!isCurrentExerciseCompleted) {
+                        setShowExercisePendingModal(true);
+                      } else {
+                        handleAdvanceSlide();
+                      }
+                    }}
+                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${
                       !isCurrentExerciseCompleted
-                        ? "bg-amber-600/90 text-white cursor-not-allowed opacity-90 shadow-amber-500/20"
-                        : "text-white bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
+                        ? "bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20 hover:scale-105 active:scale-95"
+                        : "text-white bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95"
                     }`}
                   >
                     {!isCurrentExerciseCompleted ? (
-                      <span>🔒 Completa el ejercicio de la diapositiva para continuar</span>
+                      <span>🔒 Ejercicios pendientes (pulsa para info)</span>
                     ) : (
                       <>
                         <span>Siguiente Diapositiva ({currentPageIndex + 2}/{totalLessonPages})</span>
@@ -1554,26 +1560,73 @@ export function LessonPlayer({
                   </button>
                 ) : (
                   <button
-                    disabled={!canAdvance}
-                    onClick={handleComplete}
-                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold text-white shadow-lg transition-all whitespace-nowrap ${
-                      canAdvance
-                        ? "bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95 cursor-pointer"
-                        : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
+                    type="button"
+                    onClick={(e) => {
+                      if (!isCurrentExerciseCompleted) {
+                        setShowExercisePendingModal(true);
+                      } else {
+                        handleComplete(e);
+                      }
+                    }}
+                    disabled={!canAdvance && isCurrentExerciseCompleted}
+                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${
+                      !isCurrentExerciseCompleted
+                        ? "bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20 hover:scale-105 active:scale-95"
+                        : canAdvance
+                          ? "bg-[#1a80ff] hover:bg-[#0066e6] text-white shadow-blue-500/30 hover:scale-105 active:scale-95"
+                          : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
                     }`}
                   >
-                    {isCompleting
-                      ? "Verificando en servidor..."
-                      : isCompletedSuccess || isAlreadyCompleted
-                        ? "✓ Finalizado"
-                        : quiz && !quizAttempt?.passed
-                          ? "Completar y Ver Examen ➔"
-                          : "Completar y Salir ➔"}
+                    {!isCurrentExerciseCompleted ? (
+                      <span>🔒 Ejercicios pendientes (pulsa para info)</span>
+                    ) : isCompleting ? (
+                      "Verificando en servidor..."
+                    ) : isCompletedSuccess || isAlreadyCompleted ? (
+                      "✓ Finalizado"
+                    ) : quiz && !quizAttempt?.passed ? (
+                      "Completar y Ver Examen ➔"
+                    ) : (
+                      "Completar y Salir ➔"
+                    )}
                   </button>
                 )}
               </div>
             </div>
           </section>
+        )}
+
+        {/* Modal / Dialog when student clicks next with interactive exercises pending */}
+        {showExercisePendingModal && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 animate-in fade-in duration-200"
+          >
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-4 text-center">
+              <div className="w-14 h-14 rounded-2xl bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-3xl mx-auto shadow-inner">
+                🔒
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-xl font-black text-slate-900 dark:text-white">
+                  Ejercicios Prácticos Pendientes
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Para avanzar a la siguiente diapositiva debes finalizar los ejercicios interactivos de esta sección.
+                  <br className="hidden sm:inline" />
+                  El primer ejercicio (<strong>Misión 1</strong>) se muestra resuelto como modelo guiado; debes resolver y validar las misiones <strong>M2</strong> y <strong>M3</strong> antes de continuar.
+                </p>
+              </div>
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowExercisePendingModal(false)}
+                  className="w-full rounded-2xl bg-[#1a80ff] hover:bg-[#0066e6] text-white py-3 text-xs font-bold transition shadow-md shadow-blue-500/20 cursor-pointer"
+                >
+                  Entendido, resolver ejercicios ➔
+                </button>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>
