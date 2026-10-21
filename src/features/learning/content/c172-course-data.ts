@@ -5947,13 +5947,24 @@ export const C172_LESSON_5 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-800 bg-slate-950 flex items-center justify-center p-1.5 shadow-inner">
             <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.4.jpg"
-              alt="Panel anunciador con avisos FADEC A y B en cabina Cessna 172 CD-155"
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.4.jpg?v=3"
+              alt="Panel anunciador real con avisos luminosos FADEC y pulsador FADEC TEST en cabina Cessna 172 CD-155"
               class="w-full h-full object-contain rounded-lg"
               onerror="if(this.src!=='/images/c172/5.4.jpg')this.src='/images/c172/5.4.jpg'"
             />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 shrink-0 mt-1.5">
+          <div class="p-2 rounded-xl border border-amber-300 dark:border-amber-700/60 bg-amber-50/80 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-snug shadow-2xs">
+            <strong class="text-amber-700 dark:text-amber-400 block font-bold uppercase tracking-wide text-[10px] mb-0.5">🟡 AVISO CATEGORÍA LOW</strong>
+            Luz parpadeante o transitoria. Tras pulsar FADEC Test &ge; 2 s, la luz se <strong>apaga</strong>. Vuelo puede continuar con normalidad.
+          </div>
+          <div class="p-2 rounded-xl border border-rose-300 dark:border-rose-700/60 bg-rose-50/80 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[11px] leading-snug shadow-2xs">
+            <strong class="text-rose-700 dark:text-rose-400 block font-bold uppercase tracking-wide text-[10px] mb-0.5">🔴 AVISO CATEGORÍA HIGH</strong>
+            Luz permanece <strong>fija</strong> tras pulsar FADEC Test. Fallo grave en canal activo. Aterrizar lo antes posible y prever toma de emergencia.
           </div>
         </div>
       </div>
