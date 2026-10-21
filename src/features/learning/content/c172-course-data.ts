@@ -7450,9 +7450,10 @@ export const C172_LESSON_6 = {
 
         <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 my-1">
           <img
-            src="/images/c172/6.10.jpg"
+            src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/6.10.jpg"
             alt="Política de combustible y desglose de bloques Blue Team"
             class="w-full h-full object-contain rounded-lg"
+            onerror="if(this.src!=='/images/c172/6.10.jpg')this.src='/images/c172/6.10.jpg'"
           />
         </div>
 
