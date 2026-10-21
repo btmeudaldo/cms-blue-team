@@ -431,8 +431,289 @@ export const C172_LESSON_3_QUIZ: Quiz = {
   ],
 };
 
+// ============================================================================
+// LECCIÓN 4: PROCEDIMIENTOS NORMALES Y OPERACIÓN CONTINENTAL DIÉSEL (22 PREGUNTAS)
+// ============================================================================
+export const C172_LESSON_4_QUIZ: Quiz = {
+  id: "quiz-c172-lesson-4",
+  course_id: C172_COURSE_ID,
+  lesson_id: "17200000-0000-0000-0000-000000000003",
+  title: "Examen de Verificación: 4. Procedimientos Normales y Operación Continental Diésel",
+  description:
+    "Evaluación de conocimientos teóricos sobre los procedimientos normales, listas de verificación prevuelo, arranque, pruebas FADEC y operación del Cessna 172 con motor Continental CD-135 / CD-155.",
+  minPassScorePercentage: 75,
+  questions: [
+    {
+      id: "c172-4-1",
+      question: "Durante la comprobación inicial de cabina (punto 1 CABIN de la checklist prevuelo), ¿cuál es la limitación estipulada para comprobar la calefacción de la sonda Pitot (Pitot Heat)?",
+      options: [
+        "Mantenerla conectada durante al menos 3 minutos para estabilizar la indicación de amperímetro.",
+        "Comprobar que comience a calentarse al tacto en un plazo no superior a 30 segundos con interruptores de Batería y Pitot Heat conectados, para evitar sobrecalentamiento y descarga de batería.",
+        "Encenderla únicamente con el interruptor Engine Master en ON y el motor en marcha a 1400 RPM.",
+        "Tocar la punta con guantes térmicos tras 5 minutos de funcionamiento continuo para medir su temperatura máxima.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La nota (NOTE) del POH exige comprobar que el calentador del pitot esté caliente al tacto en un plazo máximo de 30 segundos con los interruptores de batería y calefacción de pitot conectados. Al no existir flujo de aire de impacto para refrigerar la sonda en tierra, mantenerla encendida por más tiempo degradaría el elemento calefactor y descargaría la batería principal.",
+    },
+    {
+      id: "c172-4-2",
+      question: "Al conectar los interruptores de batería y bus principal durante la inspección de cabina, ¿qué verificación es obligatoria respecto a la luz anunciadora \"Water Level\"?",
+      options: [
+        "Debe permanecer encendida fija en ámbar durante todo el vuelo para indicar que el circuito está activo.",
+        "Debe parpadear en rojo de forma continua indicando que la válvula Fuel Shut-off está abierta.",
+        "Debe comprobarse que esté apagada (CHECK OFF), confirmando que no hay agua acumulada en el sensor del depósito colector.",
+        "Solo se activa si el selector de combustible se sitúa manualmente en la posición LEFT.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "En la checklist de cabina previa al arranque, el paso (10) estipula taxativamente: \"Light 'Water Level' - CHECK OFF\". Tras la inicialización eléctrica, la luz debe permanecer apagada; si queda encendida, existe presencia de agua en el separador/colector y el vuelo está estrictamente prohibido hasta drenarla.",
+    },
+    {
+      id: "c172-4-3",
+      question: "En la inspección exterior del empenaje de cola, ¿cuál es el procedimiento obligatorio antes de comprobar la libertad de movimiento de las superficies de mando?",
+      options: [
+        "Retirar el seguro de ráfagas del timón de dirección (Rudder Gust Lock) y desconectar el amarre de cola (Tail Tie-Down).",
+        "Dejar colocado el seguro de ráfagas para evitar que el timón de dirección golpee los topes mecánicos.",
+        "Desconectar la varilla del compensador de profundidad con la mano para inspeccionar sus holguras.",
+        "Fijar el timón de dirección completamente a la derecha para drenar agua de lluvia del cono de cola.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "La sección (2) EMPENNAGE establece como pasos (1) y (2): retirar el seguro de ráfagas del timón de dirección (Rudder Gust Lock - REMOVE) y soltar el amarre de cola (Tail Tie-Down - DISCONNECT). Solo entonces se puede verificar visual y manualmente el movimiento suave, la libertad de recorrido y la seguridad de bisagras y varillajes.",
+    },
+    {
+      id: "c172-4-4",
+      question: "Si tras tomar muestras repetidas de combustible en las válvulas de purga (sumideros) del semiala continúa habiendo indicios de agua, turbidez o contaminación, ¿cuál es la decisión operativa y procedimiento reglamentario que exige el POH?",
+      options: [
+        "Aplicar potencia plena en tierra con frenos pisados durante 2 minutos para que el filtro de combustible centrifugue las impurezas.",
+        "No debe volarse el avión bajo ninguna circunstancia; personal de mantenimiento cualificado debe vaciar los depósitos y purgar el sistema por completo antes del vuelo.",
+        "Encender la bomba auxiliar eléctrica para transferir el combustible contaminado directamente al depósito colector.",
+        "Despegar con normalidad manteniendo una altitud de crucero inferior a 3.000 pies para evitar la congelación de las impurezas.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La advertencia (WARNING) del POH y de la checklist exterior establece textualmente: si, después de tomar muestras repetidamente, sigue habiendo indicios de contaminación, no debe volarse el avión. El personal de mantenimiento cualificado debe vaciar los depósitos y purgar el sistema por completo para eliminar todo contaminante antes de volver a volar.",
+    },
+    {
+      id: "c172-4-5",
+      question: "En la estación NOSE del Cessna 172 con motor Continental Diésel, ¿dónde se encuentran situados los drenajes del depósito de reserva (Reservoir Tank) y del filtro de combustible (Fuel Strainer)?",
+      options: [
+        "En la parte superior de la cubierta del motor junto a la varilla de comprobación de aceite.",
+        "En el interior de la cabina, debajo de la alfombrilla del asiento del piloto.",
+        "En el borde de salida de las alas junto a las bisagras de accionamiento de los alerones.",
+        "El drenaje del Reservoir Tank en el fuselaje lado copiloto (derecho), y el drenaje del Fuel Strainer en el lado izquierdo del cortafuegos.",
+      ],
+      correctAnswerIndex: 3,
+      explanation: "Las notas técnicas de la estación (5) NOSE especifican que la válvula de purga del depósito colector (Reservoir Tank Quick Drain) está situada en los bajos del fuselaje en el lado derecho (lado copiloto), y la válvula de purga del filtro de combustible (Fuel Strainer) se localiza en la pared cortafuegos en el lado izquierdo en sentido de vuelo.",
+    },
+    {
+      id: "c172-4-6",
+      question: "Al revisar el compartimento del motor Continental y la hélice, ¿cuál es el requisito mínimo de nivel de aceite que debe observarse en la mirilla de la caja reductora (Gearbox Oil Level)?",
+      options: [
+        "El aceite debe cubrir al menos la mitad de la mirilla de inspección de cristal.",
+        "La mirilla de inspección debe estar completamente vacía con el motor en frío.",
+        "El nivel debe rebasar el borde superior del cuello del depósito de combustible.",
+        "No es necesario revisarlo si la varilla de aceite del cárter de motor marca el nivel máximo.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "El paso (7) de la checklist (5) NOSE estipula: \"Gearbox Oil Level - CHECK the oil has to cover at least half of the inspection glass\". La reductora posee lubricación independiente del motor y su nivel de aceite debe cubrir como mínimo la mitad de la mirilla transparente para garantizar la lubricación de los engranajes y el control del paso de la hélice.",
+    },
+    {
+      id: "c172-4-7",
+      question: "Durante la inspección del semiala izquierda y tren principal, ¿qué comprobación es requerida en el neumático de la rueda principal (Main Wheel Tire)?",
+      options: [
+        "Desinflar completamente la cámara para comprobar que la llanta no esté fisurada.",
+        "Lubricar la superficie de la banda de rodadura con grasa aeronáutica antes de salir a pista.",
+        "Comprobar la presión correcta de inflado y el estado general (ausencia de grietas por intemperie, profundidad adecuada y desgaste uniforme de la banda de rodadura).",
+        "Asegurar que el neumático no tenga ningún tipo de dibujo ni hendidura longitudinal.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "El checklist en la estación (6) LEFT WING exige: \"Main Wheel Tire - CHECK for proper inflation and general condition (weather checks, tread depth and wear, etc.)\", asegurando la integridad estructural del neumático para absorber cargas de aterrizaje y frenado.",
+    },
+    {
+      id: "c172-4-8",
+      question: "Al inspeccionar el borde de ataque del semiala izquierda, ¿cómo se comprueba de forma correcta el funcionamiento del avisador de pérdida (Stall Warning)?",
+      options: [
+        "Conectando la calefacción Pitot durante 2 minutos hasta escuchar el zumbador.",
+        "Colocando un pañuelo limpio sobre la abertura del avisador y aplicando una suave succión con la boca, verificando que la bocina emita sonido en cabina.",
+        "Empujando con un destornillador la toma estática izquierda para comprobar su interruptor.",
+        "Inyectando aire a presión desde un compresor industrial dentro del orificio del detector.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La instrucción del POH para la estación (7) indica textualmente: \"Stall Warning Opening - CHECK for blockage. To check the system, place a clean handkerchief over the vent opening and apply suction; a sound from the warning horn will confirm system operation\". El sistema opera por depresión neumática pasiva hacia la cabina.",
+    },
+    {
+      id: "c172-4-9",
+      question: "En la checklist \"Before Starting Engine\", ¿por qué debe verificarse que el interruptor de potencia de aviónica (Avionics Power Switch) esté en OFF antes de dar arranque al motor?",
+      options: [
+        "Para evitar daños en los equipos de aviónica sensibles debido a picos y caídas transitorias de tensión durante el accionamiento del arrancador.",
+        "Para evitar que las radios aeronáuticas transmitan automáticamente una señal de emergencia por la frecuencia 121.5 MHz.",
+        "Para permitir que la bomba mecánica de combustible diésel de alta presión se cebe.",
+        "Porque la centralita electrónica FADEC bloquea el arranque si detecta el transponder encendido.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "El aviso de precaución (CAUTION) del POH advierte: \"El interruptor Avionics Power debe estar desconectado durante el arranque del motor para evitar posibles daños en la aviónica\". Al arrancar, el motor de arranque eléctrico consume intensidades muy elevadas generando transitorios y picos de voltaje perjudiciales para los equipos de radio y navegación.",
+    },
+    {
+      id: "c172-4-10",
+      question: "Tras accionar el arrancador y arrancar el motor diésel, ¿cuál es la limitación estricta de presión mínima de aceite indicada en el checklist POH?",
+      options: [
+        "Se dispone de hasta 30 segundos a ralentí para que la aguja de presión de aceite comience a moverse.",
+        "La presión de aceite puede permanecer en cero hasta que la temperatura de refrigerante alcance los 60 grados C.",
+        "Si después de 3 segundos no se indica la presión mínima de aceite de 1 bar, se debe parar el motor inmediatamente.",
+        "Solo es obligatorio apagar el motor si la presión de combustible supera los 5 bar en el CED 125.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "La advertencia (CAUTION) oficial del POH para la puesta en marcha estipula taxativamente: \"Si después de 3 segundos no se indica la presión mínima de aceite de 1 bar: ¡pare el motor inmediatamente!\". La lubricación inmediata del turbocompresor y cojinetes del cigüeñal es crítica en motores sobrealimentados.",
+    },
+    {
+      id: "c172-4-11",
+      question: "Durante la fase de calentamiento (Warm Up), ¿cuáles son las temperaturas mínimas requeridas antes de poder iniciar el vuelo o aplicar potencia de despegue?",
+      options: [
+        "Temperatura de aceite a 20 grados C y temperatura de refrigerante a 25 grados C.",
+        "Refrigerante a 100 grados C y aceite de caja reductora a 120 grados C.",
+        "No existen requisitos mínimos de temperatura ya que el FADEC gestiona el motor desde cualquier valor.",
+        "Temperatura de aceite mínimo a 50 grados C (122 grados F) y temperatura de refrigerante mínimo a 60 grados C (140 grados F).",
+      ],
+      correctAnswerIndex: 3,
+      explanation: "La checklist oficial de WARM UP especifica: calentar ~2 minutos a 890 RPM y luego aumentar las revoluciones a 1400 RPM hasta que la temperatura de aceite alcance al menos 50 °C (122 °F) y la de refrigerante alcance al menos 60 °C (140 °F) antes de iniciar pruebas a plena potencia o el despegue.",
+    },
+    {
+      id: "c172-4-12",
+      question: "En la checklist \"Before Take-Off\", ¿en qué posición obligatoria deben verificarse las válvulas del sistema de combustible?",
+      options: [
+        "Selector de combustible en LEFT y válvula Fuel Shut-off extraída hacia fuera.",
+        "Selector de combustible en BOTH y válvula Fuel Shut-off completamente introducida (OPEN / Push Full In).",
+        "Selector de combustible en RIGHT y bomba eléctrica de combustible apagada.",
+        "Selector de combustible en OFF para permitir suministro por gravedad desde el depósito colector.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "En las comprobaciones previas al despegue, el selector de combustible debe fijarse obligatoriamente en BOTH (paso 6) para permitir alimentación simétrica de ambos planos, y la válvula de corte Fuel Shut-off debe estar completamente empujada hacia dentro (OPEN / Push Full In).",
+    },
+    {
+      id: "c172-4-13",
+      question: "Durante la prueba automática de FADEC y ajuste de hélice en el punto de espera, ¿cuál es el procedimiento que debe seguir el piloto al accionar el botón FADEC Test?",
+      options: [
+        "Mantener la Thrust Lever en IDLE y mantener presionado el botón FADEC Test durante toda la prueba hasta que la luz FADEC A se apague y el motor regrese a RPM de ralentí.",
+        "Pulsar y soltar rápidamente el botón con la palanca de gases (Thrust Lever) al 100%.",
+        "Desconectar la batería durante el test para probar el alternador exclusivo del FADEC.",
+        "Mover manualmente la palanca de paso de la hélice mientras parpadean las luces del panel.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "La checklist exige: \"Thrust Lever - IDLE\", pulsar y mantener presionado el botón (\"FADEC Test Button - PRESS and HOLD button for entire test\"). El FADEC toma el control, aumenta RPM, conmuta al canal B (luz B encendida), verifica el paso de hélice, conmuta al canal A (luz A encendida), verifica hélice y retorna a ralentí apagando las luces. Si se suelta antes, la prueba se cancela.",
+    },
+    {
+      id: "c172-4-14",
+      question: "Según las advertencias (WARNING) del POH relativas a las pruebas de FADEC y Force B antes del despegue, ¿cuál de las siguientes situaciones PROHÍBE el despegue de forma taxativa?",
+      options: [
+        "Si el motor varía levemente de sonido de forma momentánea al conmutar entre los canales A y B.",
+        "Si el voltímetro marca dentro del arco verde y el amperímetro muestra carga positiva.",
+        "Si el motor se para, se producen fallos prolongados de encendido o las luces FADEC parpadean o quedan encendidas durante la prueba, incluso si después el motor parece funcionar con normalidad.",
+        "Si la prueba automática dura más de 5 segundos en completarse.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "Las advertencias críticas (WARNING) del POH indican: \"Todo el procedimiento de prueba debe realizarse sin ningún fallo. Si el motor se para o las luces FADEC parpadean, el despegue está prohibido. Esto se aplica incluso si el motor parece funcionar sin fallos después de la prueba\". Un aviso parpadeante denota un fallo registrado en la memoria no volátil del FADEC.",
+    },
+    {
+      id: "c172-4-15",
+      question: "Al realizar la comprobación de máxima potencia estática en tierra (Thrust Lever FULL FORWARD con frenos pisados), ¿qué valores mínimos deben verificarse en el instrumento CED 125?",
+      options: [
+        "Carga de motor al 50% y régimen de hélice a 1800 RPM.",
+        "Carga de motor (Load display) de al menos 94% y régimen de hélice entre 2240 y 2300 RPM.",
+        "Carga de motor al 110% y régimen de hélice a 2700 RPM en arco rojo.",
+        "Cualquier valor de carga es admisible siempre que la bomba eléctrica esté apagada.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "El paso (12) de la checklist Before Take-off estipula taxativamente: \"Thrust Lever - FULL FORWARD, load display min. 94%, RPM 2240 - 2300\". Tras verificar estos valores de empuje estático pleno y constatar que todos los parámetros de motor están en arco verde, se retrasa la palanca a IDLE.",
+    },
+    {
+      id: "c172-4-16",
+      question: "Según la tabla oficial \"Speeds for Normal Operation\" del POH (peso máximo 2300 lbs), ¿cuáles son las velocidades indicadas para el mejor régimen de ascenso (VY a nivel del mar) y la componente máxima demostrada de viento cruzado?",
+      options: [
+        "VY = 60 KIAS y viento cruzado máximo demostrado = 25 nudos.",
+        "VY = 85 KIAS y viento cruzado máximo demostrado = 10 nudos.",
+        "VY = 95 KIAS y viento cruzado máximo demostrado = 20 nudos.",
+        "VY = 73 KIAS y viento cruzado máximo demostrado = 15 nudos.",
+      ],
+      correctAnswerIndex: 3,
+      explanation: "La tabla de velocidades de operación normal de la Sección 4 (pág. 4-3) fija la velocidad de mejor régimen de ascenso VY a nivel del mar en 73 KIAS (68 KIAS a 10.000 ft), y la Maximum Demonstrated Crosswind Velocity en 15 nudos, valor ensayado y certificado satisfactoriamente por el fabricante.",
+    },
+    {
+      id: "c172-4-17",
+      question: "En la checklist \"After Take-Off\", ¿cuáles son las dos acciones inmediatas requeridas al alcanzar unos 300 pies de altitud y más de 65 KIAS de velocidad?",
+      options: [
+        "Retraer los flaps (Wing Flaps RETRACT) y apagar la bomba auxiliar eléctrica (Electric Fuel Pump OFF).",
+        "Reducir la palanca de gases al 50% de carga y conectar de inmediato el piloto automático.",
+        "Pasar el selector de combustible a la posición LEFT y encender la calefacción de cabina.",
+        "Extender flaps a 20 grados y accionar la llave de contacto en START.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "El apartado AFTER TAKE-OFF indica textualmente: \"(1) Altitude about 300 ft, Airspeed more than 65 KIAS: Wing Flaps - RETRACT. (2) Electric Fuel Pump - OFF\". Para el ascenso en ruta posterior (Climb), la palanca se mantiene en FULL FORWARD a 70-85 KIAS.",
+    },
+    {
+      id: "c172-4-18",
+      question: "Según la precaución (CAUTION) del POH relativa a la gestión de combustible en vuelo de crucero, ¿cuándo está prohibido el vuelo prolongado o no coordinado operando con un único depósito (LEFT o RIGHT)?",
+      options: [
+        "Cuando la temperatura exterior en vuelo sea superior a 30 grados C.",
+        "Siempre que se vuele a una altitud superior a 1.000 pies sobre el terreno.",
+        "Cuando el depósito en uso tenga un cuarto (1/4) de capacidad o menos.",
+        "Únicamente durante vuelos nocturnos o en condiciones IFR.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "La precaución (CAUTION) del POH para la fase de crucero advierte textualmente: \"Con 1/4 de depósito o menos, está prohibido el vuelo prolongado o no coordinado cuando se opera con el depósito izquierdo o derecho\". En esas condiciones, maniobras no coordinadas o resbales podrían descebar la toma de combustible del depósito.",
+    },
+    {
+      id: "c172-4-19",
+      question: "En la aproximación final para un aterrizaje normal, ¿cuáles son las velocidades indicadas de aproximación recomendadas por el POH según la deflexión de flaps?",
+      options: [
+        "50 KIAS con flaps 20° y 45 KIAS con flaps 30°.",
+        "63 KIAS con flaps 20° y 60 KIAS con flaps 30°.",
+        "75 KIAS con flaps 20° y 70 KIAS con flaps 30°.",
+        "85 KIAS independientemente de la posición seleccionada de los flaps.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La checklist NORMAL LANDING establece: \"Airspeed in Final Approach: wing flaps 20°: 63 KIAS / 72 mph; wing flaps 30°: 60 KIAS / 69 mph\". La toma de contacto (Touchdown) debe realizarse con las ruedas del tren principal primero y bajar suavemente la rueda de morro.",
+    },
+    {
+      id: "c172-4-20",
+      question: "Al ejecutar una aproximación frustrada (Balked Landing / Go-Around), ¿cuál es la secuencia inmediata de potencia, configuración de flaps y velocidad de ascenso para franquear obstáculos?",
+      options: [
+        "Thrust Lever a FULL FORWARD, retraer flaps inmediatamente a 20°, y mantener 58 KIAS de velocidad de ascenso hasta superar todos los obstáculos.",
+        "Thrust Lever al 75%, retraer flaps a 0° de inmediato y mantener 80 KIAS.",
+        "Mantener flaps 30° hasta alcanzar 1.000 pies de altitud y acelerar a 90 KIAS.",
+        "Cortar la Thrust Lever a ralentí (IDLE) y mantener 50 KIAS en actitud de planeo.",
+      ],
+      correctAnswerIndex: 0,
+      explanation: "La checklist BALKED LANDING especifica: \"(1) Thrust Lever - FULL FORWARD; (2) Wing Flaps - RETRACT TO 20° (immediately after Thrust Lever FULL FORWARD); (3) Climb Speed - 58 KIAS (until all obstacles are cleared)\". Superados los obstáculos y alcanzada una altitud segura y más de 65 KIAS, se retraen los flaps a 10° y finalmente a 0°.",
+    },
+    {
+      id: "c172-4-21",
+      question: "Al aparcar y asegurar el avión (Securing Airplane), ¿por qué el checklist POH exige situar el selector de combustible en la posición LEFT o RIGHT en lugar de BOTH?",
+      options: [
+        "Para cebar la bomba mecánica de alta presión antes del siguiente vuelo.",
+        "Para purgar automáticamente el agua acumulada en el depósito colector.",
+        "Para desconectar físicamente la batería principal del sistema eléctrico.",
+        "Para evitar el flujo cruzado o trasvase por gravedad entre los depósitos alares si el avión queda estacionado en terreno inclinado.",
+      ],
+      correctAnswerIndex: 3,
+      explanation: "El paso (8) de SECURING AIRPLANE estipula: \"Fuel Selector Valve - LEFT or RIGHT (to prevent crossfeeding between tanks)\". Si el selector quedara en BOTH en un estacionamiento con pendiente o desnivel lateral, el combustible drenaría por gravedad desde el depósito del semiala elevada hacia el semiala baja provocando asimetría o derrame por venteo.",
+    },
+    {
+      id: "c172-4-22",
+      question: "Según los procedimientos especiales del POH para despegue en campo corto (Short Field Take-Off), ¿cuál es la configuración de flaps, velocidad de alzado de morro y velocidad sobre obstáculo de 50 pies?",
+      options: [
+        "Flaps 0°, alzar morro a 45 KIAS y velocidad sobre obstáculo de 50 KIAS.",
+        "Flaps 30°, soltar frenos en ralentí y rotar a 65 KIAS.",
+        "Flaps 10°, aplicar frenos hasta máxima potencia, alzar rueda de morro a 55 KIAS y mantener velocidad de ascenso sobre obstáculos de 57 KIAS.",
+        "Flaps 20° y mantener el mando Alternate Air abierto durante todo el ascenso.",
+      ],
+      correctAnswerIndex: 2,
+      explanation: "La sección de procedimientos especiales del Suplemento Continental TAE 125-02-114 establece: para despegue en campo corto se seleccionan Flaps 10°, se aplican frenos hasta alcanzar máxima potencia de motor, se alza la rueda de morro a 55 KIAS y se mantiene rigurosamente una velocidad de ascenso de 57 KIAS hasta haber superado el obstáculo de 50 pies.",
+    },
+  ],
+};
+
 export const C172_QUIZZES: Quiz[] = [
   C172_LESSON_1_QUIZ,
   C172_LESSON_2_QUIZ,
   C172_LESSON_3_QUIZ,
+  C172_LESSON_4_QUIZ,
 ];
+

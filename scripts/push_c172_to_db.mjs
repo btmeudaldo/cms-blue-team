@@ -54,7 +54,7 @@ async function push() {
       .from("quizzes")
       .upsert({
         id: q.id,
-        course_id: q.course_id,
+        course_id: q.course_id || C172_COURSE_ID,
         lesson_id: q.lesson_id,
         lesson_slug: lesson?.slug || "generalidades-especificaciones-c172",
         title: q.title,
