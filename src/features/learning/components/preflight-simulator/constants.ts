@@ -21,19 +21,19 @@ export const EC_NNA_DATA = {
 export const PREFLIGHT_MISSIONS: PreflightMission[] = [
   {
     id: "mision-1",
-    name: "Misión 1: Vuelo Local de Instrucción (GCLP - Gran Canaria)",
+    name: "Misión 1: Vuelo Local de Instrucción (GCXO - Tenerife Norte)",
     badge: "Básico · Normal",
-    description: "Vuelo de maniobras en zona local de Gran Canaria (GCLP) con Instructor y Alumno. 80 Litros de combustible en tanques estándar. Crucero al 50% de potencia CD-155 (15.3 L/h).",
+    description: "Vuelo de maniobras en zona local de Tenerife Norte (GCXO) con Instructor y Alumno. 80 Litros de combustible en tanques estándar. Crucero al 50% de potencia CD-155 (15.3 L/h).",
     scenario: {
-      origin: "GCLP (Gran Canaria)",
-      destination: "GCLP (Gran Canaria)",
+      origin: "GCXO (Tenerife Norte)",
+      destination: "GCXO (Tenerife Norte)",
       distanceNm: 60,
-      altPressFt: 1500,
-      oatC: 22,
+      altPressFt: 2000,
+      oatC: 20,
       windKt: 9, // 9 kt en cara
       runwayType: "asphalt",
-      runwayToraM: 3100,
-      runwayLdaM: 3100,
+      runwayToraM: 3171,
+      runwayLdaM: 3171,
       pilotsFrontKg: 157, // Alumno 75 kg + Instructor 82 kg
       passengersRearKg: 0,
       baggageKg: 5,
@@ -44,48 +44,48 @@ export const PREFLIGHT_MISSIONS: PreflightMission[] = [
   },
   {
     id: "mision-2",
-    name: "Misión 2: Navegación Interinsular (GCLP - GCFV)",
+    name: "Misión 2: Navegación Interinsular (GCXO - GCGM)",
     badge: "Intermedio · Cerca de MTOM",
-    description: "Vuelo de travesía interinsular de Gran Canaria a Fuerteventura con 3 ocupantes y equipaje. Crucero a 6.000 ft al 50% de potencia CD-155 (15.3 L/h).",
+    description: "Vuelo de travesía interinsular desde Tenerife Norte (GCXO) a La Gomera (GCGM) con 3 ocupantes y equipaje. Crucero a 6.000 ft al 50% de potencia CD-155 (15.3 L/h).",
     scenario: {
-      origin: "GCLP (Gran Canaria)",
-      destination: "GCFV (Fuerteventura)",
-      distanceNm: 105,
+      origin: "GCXO (Tenerife Norte)",
+      destination: "GCGM (La Gomera)",
+      distanceNm: 60,
       altPressFt: 1000,
-      oatC: 24,
+      oatC: 22,
       windKt: 5, // 5 kt viento de cara
       runwayType: "asphalt",
-      runwayToraM: 2400,
-      runwayLdaM: 2400,
+      runwayToraM: 1500,
+      runwayLdaM: 1500,
       pilotsFrontKg: 155, // 2 pilotos 78 kg y 77 kg
       passengersRearKg: 70, // 1 pasajero atrás
       baggageKg: 18,
       takeoffFuelLiters: 50,
       cruiseLoadPct: 50, // 50% Load = 15.3 L/h
-      flightTimeHrs: 1.0,
+      flightTimeHrs: 0.6,
     },
   },
   {
     id: "mision-3",
-    name: "Misión 3: Desafío de Carga y Centrado Crítico (GCXO - Tenerife Norte)",
+    name: "Misión 3: Desafío de Carga Crítica (GCTS - GCXO)",
     badge: "Desafío · Alerta de Límites",
-    description: "Configuración con ocupantes pesados atrás y equipaje al límite en vuelo insular. Crucero al 50% de potencia CD-155 (15.3 L/h).",
+    description: "Travesía interinsular desde Tenerife Sur (GCTS) hacia Tenerife Norte (GCXO) con 4 ocupantes y equipaje abundante al límite. Crucero al 50% de potencia CD-155 (15.3 L/h).",
     scenario: {
-      origin: "GCXO (Tenerife Norte)",
+      origin: "GCTS (Tenerife Sur)",
       destination: "GCXO (Tenerife Norte)",
-      distanceNm: 50,
-      altPressFt: 2073,
-      oatC: 26,
+      distanceNm: 45,
+      altPressFt: 0,
+      oatC: 24,
       windKt: -4, // 4 kt viento en cola
       runwayType: "asphalt",
-      runwayToraM: 3171,
+      runwayToraM: 3200,
       runwayLdaM: 3171,
       pilotsFrontKg: 120, // 2 pilotos muy ligeros (60 kg c/u)
       passengersRearKg: 165, // 2 ocupantes pesados atrás (85 kg + 80 kg)
       baggageKg: 45, // Equipaje abundante atrás
       takeoffFuelLiters: 65,
       cruiseLoadPct: 50, // 50% Load = 15.3 L/h
-      flightTimeHrs: 0.8,
+      flightTimeHrs: 0.5,
     },
   },
 ];

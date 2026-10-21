@@ -7334,7 +7334,7 @@ export const C172_LESSON_6 = {
         </div>
 
         <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs sm:text-[13px]">
-          <strong>EJEMPLO:</strong> Para 105 NM a 6.000 ft (TAS 102 kt) con 5 kt en cara &rarr; GS = 97 kt &rarr; Tiempo = 1.08 h &rarr; Trip Fuel = 1.08 × 15.3 = <strong>16.5 L (4.36 US Gal)</strong> [13.9 kg].
+          <strong>EJEMPLO (Tenerife Norte GCXO &rarr; La Gomera GCGM · 60 NM):</strong> Para 60 NM a 6.000 ft (TAS 102 kt) con 5 kt en cara &rarr; GS = 97 kt &rarr; Tiempo = 0.62 h (37 min) &rarr; Trip Fuel = 0.62 × 15.3 = <strong>9.5 L (2.51 US Gal)</strong> [8.0 kg].
         </div>
       </div>
     </div>
