@@ -113,12 +113,29 @@ type Props = {
   isAlreadyCompleted?: boolean;
 };
 
+type PerfInputs = {
+  takeoffRun: string;
+  takeoff50ft: string;
+  landing50ft: string;
+};
+
+// Initial state: GCXO (index 0) is fully prefilled as the official solved model example
+const INITIAL_PERF_INPUTS: Record<number, PerfInputs> = {
+  0: {
+    takeoffRun: "211",
+    takeoff50ft: "329",
+    landing50ft: "366",
+  },
+  1: { takeoffRun: "", takeoff50ft: "", landing50ft: "" },
+  2: { takeoffRun: "", takeoff50ft: "", landing50ft: "" },
+};
+
 export function PreflightPerformanceWidget({
   mode = "all",
   onExerciseCompleted,
   isAlreadyCompleted = false,
 }: Props) {
-  const [selectedScenarioIndex, setSelectedScenarioIndex] = useState(0); // 0 = GCXO, 1 = GCTS, 2 = GCGM
+  const [selectedScenarioIndex, setSelectedScenarioIndex] = useState(0); // Starts on GCXO (Solved Example)
   const scenario = CANARY_PERFORMANCE_SCENARIOS[selectedScenarioIndex];
 
   // If in "all" mode, activeTab controls which sub-step is visible
@@ -127,35 +144,71 @@ export function PreflightPerformanceWidget({
   );
   const currentStep = mode === "all" ? activeTab : mode;
 
-  const [passedTakeoff, setPassedTakeoff] = useState<Record<string, boolean>>({});
-  const [passedLanding, setPassedLanding] = useState<Record<string, boolean>>({});
+  // Per-scenario input persistence
+  const [scenarioInputs, setScenarioInputs] = useState<Record<number, PerfInputs>>(INITIAL_PERF_INPUTS);
+
+  // Per-scenario solved states
+  const [solvedTakeoff, setSolvedTakeoff] = useState<Record<number, boolean>>({});
+  const [solvedLanding, setSolvedLanding] = useState<Record<number, boolean>>({});
+
+  const currentInputs = scenarioInputs[selectedScenarioIndex] || {
+    takeoffRun: "",
+    takeoff50ft: "",
+    landing50ft: "",
+  };
+
+  const updateCurrentInput = (field: keyof PerfInputs, value: string) => {
+    setScenarioInputs((prev) => ({
+      ...prev,
+      [selectedScenarioIndex]: {
+        ...(prev[selectedScenarioIndex] || {
+          takeoffRun: "",
+          takeoff50ft: "",
+          landing50ft: "",
+        }),
+        [field]: value,
+      },
+    }));
+  };
 
   const isCurrentStepPassed =
-    currentStep === "takeoff"
-      ? Boolean(passedTakeoff[scenario.id])
-      : Boolean(passedLanding[scenario.id]);
-
-  // User input states (in meters)
-  const [takeoffRunInput, setTakeoffRunInput] = useState("");
-  const [takeoff50ftInput, setTakeoff50ftInput] = useState("");
-  const [landing50ftInput, setLanding50ftInput] = useState("");
+    selectedScenarioIndex === 0 ||
+    (currentStep === "takeoff"
+      ? Boolean(solvedTakeoff[selectedScenarioIndex])
+      : Boolean(solvedLanding[selectedScenarioIndex]));
 
   // Feedback states
   const [attempts, setAttempts] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [warnings, setWarnings] = useState<string[]>([]);
 
+  const solvedTakeoffCount = (solvedTakeoff[1] ? 1 : 0) + (solvedTakeoff[2] ? 1 : 0);
+  const solvedLandingCount = (solvedLanding[1] ? 1 : 0) + (solvedLanding[2] ? 1 : 0);
+
+  const switchScenario = (idx: number) => {
+    setSelectedScenarioIndex(idx);
+    setAttempts(0);
+    setErrors({});
+    setWarnings([]);
+  };
+
   const handleValidate = () => {
+    // If student is on GCXO (Example), validate is not needed; guide to GCTS
+    if (selectedScenarioIndex === 0) {
+      switchScenario(1);
+      return;
+    }
+
     const newErrors: Record<string, string> = {};
     const newWarnings: string[] = [];
     const num = (v: string) => parseFloat(v.replace(",", "."));
 
     if (currentStep === "takeoff") {
       // Check Takeoff Run
-      const userToRun = num(takeoffRunInput);
+      const userToRun = num(currentInputs.takeoffRun);
       if (isNaN(userToRun) || !checkValueTolerance(userToRun, scenario.toRun, 0.06, 8).isOk) {
         newErrors.takeoffRun =
-          attempts >= 2
+          attempts >= 1
             ? `Solución ${scenario.icao}: Carrera despegue = ${scenario.toRun} m (Base ${scenario.baseToRun} m - 10% por 9 kt viento).`
             : `Aplica -10% de viento sobre la carrera base (${scenario.baseToRun} m) de la tabla Fig. 5-1a.`;
       } else if (Math.abs(userToRun - scenario.toRun) > 2) {
@@ -163,10 +216,10 @@ export function PreflightPerformanceWidget({
       }
 
       // Check Takeoff 50 ft
-      const userTo50 = num(takeoff50ftInput);
+      const userTo50 = num(currentInputs.takeoff50ft);
       if (isNaN(userTo50) || !checkValueTolerance(userTo50, scenario.to50ft, 0.06, 10).isOk) {
         newErrors.takeoff50ft =
-          attempts >= 2
+          attempts >= 1
             ? `Solución ${scenario.icao}: Distancia despegue a 50 ft = ${scenario.to50ft} m (Base ${scenario.baseTo50} m - 10% viento).`
             : `Aplica -10% sobre la distancia de obstáculo 50 ft (${scenario.baseTo50} m) de la Fig. 5-1a.`;
       }
@@ -175,27 +228,34 @@ export function PreflightPerformanceWidget({
       setWarnings(newWarnings);
 
       if (Object.keys(newErrors).length === 0) {
-        setPassedTakeoff((prev) => ({ ...prev, [scenario.id]: true }));
-        if (onExerciseCompleted) {
-          onExerciseCompleted();
+        const nextSolved = { ...solvedTakeoff, [selectedScenarioIndex]: true };
+        setSolvedTakeoff(nextSolved);
+
+        const isTakeoffDone = nextSolved[1] && nextSolved[2];
+        const isLandingDone = solvedLanding[1] && solvedLanding[2];
+
+        if (mode === "takeoff" && isTakeoffDone) {
+          if (onExerciseCompleted) onExerciseCompleted();
+        } else if (mode === "all" && isTakeoffDone && isLandingDone) {
+          if (onExerciseCompleted) onExerciseCompleted();
         }
       } else {
         setAttempts((prev) => prev + 1);
       }
     } else {
       // LANDING STEP
-      const userLd50 = num(landing50ftInput);
+      const userLd50 = num(currentInputs.landing50ft);
       if (isNaN(userLd50) || !checkValueTolerance(userLd50, scenario.ld50ft, 0.06, 10).isOk) {
         if (!isNaN(userLd50) && (Math.abs(userLd50 - 513) <= 15 || Math.abs(userLd50 - 570) <= 15)) {
-          newErrors.landing50ft = `Has tomado 570 ft (o 513 ft), que es carrera en suelo y en PIES. La casilla pide distancia sobre obstáculo de 50 ft ('TOTAL 50 FT OBS' = 1335 ft) en METROS: 1335 ÷ 3.28084 = 407 m base; con -10% viento = 366 m.`;
+          newErrors.landing50ft = `Has tomado 570 ft (o 513 ft), que es carrera en suelo y en PIES. La casilla pide distancia sobre obstáculo de 50 ft ('TOTAL 50 FT OBS' = 1335 ft) en METROS: divide entre 3.28084 y resta 10% por viento.`;
         } else if (!isNaN(userLd50) && (Math.abs(userLd50 - 1201) <= 25 || Math.abs(userLd50 - 1335) <= 25)) {
-          newErrors.landing50ft = `¡Casi! Has usado distancia a 50 ft en pies (1335 ft). La tabla Fig. 5-10 viene en PIES. Conviértela a METROS: 1335 ft ÷ 3.28084 = 407 m base; con -10% viento = 366 m.`;
+          newErrors.landing50ft = `¡Casi! Has usado distancia a 50 ft en pies. La tabla Fig. 5-10 viene en PIES. Conviértela a METROS (divide entre 3.28084 y resta 10% de viento).`;
         } else if (!isNaN(userLd50) && userLd50 > 900) {
           newErrors.landing50ft = `¡Cuidado con las unidades! Has introducido un valor en pies (> 900 ft). F.OPS.02 requiere la distancia en METROS [m] (divide entre 3.28084).`;
         } else {
           newErrors.landing50ft =
-            attempts >= 2
-              ? `Solución ${scenario.icao}: Distancia sobre 50 ft = ${scenario.ld50ft} m. En Fig. 5-10: columna 'TOTAL 50 FT OBS' = 1335 ft ÷ 3.28 = ${scenario.baseLd50} m; con -10% viento = ${scenario.ld50ft} m.`
+            attempts >= 1
+              ? `Solución ${scenario.icao}: Distancia sobre 50 ft = ${scenario.ld50ft} m. En Fig. 5-10: columna 'TOTAL 50 FT OBS' = ${Math.round(scenario.baseLd50 * 3.28084)} ft ÷ 3.28 = ${scenario.baseLd50} m; con -10% viento = ${scenario.ld50ft} m.`
               : `Columna 'TOTAL 50 FT OBS' (no 'GRND ROLL') y convierte pies a metros (÷ 3.28084): ${scenario.baseLd50} m con ${scenario.windDesc}.`;
         }
       }
@@ -204,9 +264,16 @@ export function PreflightPerformanceWidget({
       setWarnings(newWarnings);
 
       if (Object.keys(newErrors).length === 0) {
-        setPassedLanding((prev) => ({ ...prev, [scenario.id]: true }));
-        if (onExerciseCompleted) {
-          onExerciseCompleted();
+        const nextSolved = { ...solvedLanding, [selectedScenarioIndex]: true };
+        setSolvedLanding(nextSolved);
+
+        const isTakeoffDone = solvedTakeoff[1] && solvedTakeoff[2];
+        const isLandingDone = nextSolved[1] && nextSolved[2];
+
+        if (mode === "landing" && isLandingDone) {
+          if (onExerciseCompleted) onExerciseCompleted();
+        } else if (mode === "all" && isTakeoffDone && isLandingDone) {
+          if (onExerciseCompleted) onExerciseCompleted();
         }
       } else {
         setAttempts((prev) => prev + 1);
@@ -271,37 +338,73 @@ export function PreflightPerformanceWidget({
                 </div>
               )}
 
-              {CANARY_PERFORMANCE_SCENARIOS.map((sc, idx) => (
-                <button
-                  key={sc.id}
-                  type="button"
-                  onClick={() => {
-                    setSelectedScenarioIndex(idx);
-                    setTakeoffRunInput("");
-                    setTakeoff50ftInput("");
-                    setLanding50ftInput("");
-                    setAttempts(0);
-                    setErrors({});
-                    setWarnings([]);
-                  }}
-                  className={`px-2.5 py-1 rounded-lg text-xs sm:text-[13px] font-extrabold transition-all cursor-pointer ${
-                    selectedScenarioIndex === idx
-                      ? "bg-[#1a80ff] text-white shadow-2xs"
-                      : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700"
-                  }`}
-                  title={sc.name}
-                >
-                  {sc.icao}
-                </button>
-              ))}
+              {/* Airport Selector Tabs: GCXO is solved model example */}
+              <button
+                type="button"
+                onClick={() => switchScenario(0)}
+                className={`px-2.5 py-1 rounded-lg text-xs sm:text-[13px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
+                  selectedScenarioIndex === 0
+                    ? "bg-emerald-600 text-white shadow-2xs"
+                    : "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
+                }`}
+                title="GCXO: Ejemplo guiado resuelto"
+              >
+                <span>GCXO</span>
+              </button>
+
+              {[1, 2].map((idx) => {
+                const sc = CANARY_PERFORMANCE_SCENARIOS[idx];
+                const isSolved =
+                  currentStep === "takeoff"
+                    ? Boolean(solvedTakeoff[idx])
+                    : Boolean(solvedLanding[idx]);
+
+                return (
+                  <button
+                    key={sc.id}
+                    type="button"
+                    onClick={() => switchScenario(idx)}
+                    className={`px-2.5 py-1 rounded-lg text-xs sm:text-[13px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
+                      selectedScenarioIndex === idx
+                        ? "bg-[#1a80ff] text-white shadow-2xs"
+                        : isSolved
+                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
+                          : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700"
+                    }`}
+                    title={sc.name}
+                  >
+                    <span>{sc.icao}</span>
+                    <span>{isSolved ? "✓" : "⏳"}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Form Content - Aligned to top, standard typography */}
-          <div className="flex-1 min-h-0 flex flex-col justify-start space-y-3 pt-2">
-            {/* Direct Link to POH Landing Table (on Left for 6.15) */}
+          {/* Form Content - Aligned to top */}
+          <div className="flex-1 min-h-0 flex flex-col justify-start space-y-2 pt-1 overflow-y-auto">
+            {/* Solved Example Alert (for GCXO) */}
+            {selectedScenarioIndex === 0 && (
+              <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 text-xs flex items-center justify-between gap-2 shadow-2xs">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-sm">🟢</span>
+                  <span>
+                    <strong>EJEMPLO RESUELTO · GCXO (Referencia):</strong> Este primer cálculo se muestra completado como modelo oficial. Para avanzar, calcula los otros dos aeródromos (<strong>GCTS</strong> y <strong>GCGM</strong>).
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => switchScenario(1)}
+                  className="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] shrink-0 transition-all cursor-pointer"
+                >
+                  Ir a GCTS ➔
+                </button>
+              </div>
+            )}
+
+            {/* Direct Link to POH Landing Table (on Left for landing mode) */}
             {currentStep === "landing" && (
-              <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-emerald-50/70 dark:bg-slate-800/90 border border-emerald-200 dark:border-slate-700 shadow-2xs">
+              <div className="flex items-center justify-between gap-2 p-2 rounded-xl bg-emerald-50/70 dark:bg-slate-800/90 border border-emerald-200 dark:border-slate-700 shadow-2xs">
                 <span className="text-xs sm:text-[13px] font-bold text-emerald-950 dark:text-emerald-300 flex items-center gap-1.5">
                   <span>📖</span>
                   <span>TABLA POH ATERRIZAJE:</span>
@@ -310,7 +413,7 @@ export function PreflightPerformanceWidget({
                   href="/images/c172/landing_distance_table.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 font-bold text-xs sm:text-[13px] text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-slate-600 transition-all shadow-2xs"
+                  className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 font-bold text-xs sm:text-[13px] text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-slate-600 transition-all shadow-2xs"
                   title="Abrir Tabla 5-10 Aterrizaje Short Field en PDF"
                 >
                   <span>🛬 Abrir Fig. 5-10 Landing Distance Short Field [ft]</span>
@@ -321,14 +424,14 @@ export function PreflightPerformanceWidget({
 
             {/* Landing Unit Conversion Reminder */}
             {currentStep === "landing" && (
-              <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 border-2 border-amber-300 dark:border-amber-700 text-xs sm:text-[13px] text-amber-950 dark:text-amber-100 flex items-center justify-between gap-2 shadow-xs">
+              <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700 text-xs sm:text-[13px] text-amber-950 dark:text-amber-100 flex items-center justify-between gap-2 shadow-xs">
                 <div className="flex items-center gap-2">
-                  <span className="text-lg">⚠️</span>
+                  <span className="text-base">⚠️</span>
                   <span>
-                    <strong>CONVERSIÓN DE UNIDADES:</strong> Fig. 5-10 está en <strong>PIES [ft]</strong>. Divide entre <strong>3.28084</strong> para obtener <strong>METROS [m]</strong>.
+                    <strong>CONVERSIÓN:</strong> Fig. 5-10 viene en <strong>PIES [ft]</strong>. Divide entre <strong>3.28084</strong> para obtener <strong>METROS [m]</strong>.
                   </span>
                 </div>
-                <span className="font-mono font-bold bg-white dark:bg-slate-800 px-2.5 py-1 rounded-md border border-amber-300 dark:border-amber-700 shrink-0 text-xs sm:text-[13px]">
+                <span className="font-mono font-bold bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-amber-300 dark:border-amber-700 shrink-0 text-xs sm:text-[12px]">
                   ft ÷ 3.28084 = m
                 </span>
               </div>
@@ -338,7 +441,7 @@ export function PreflightPerformanceWidget({
             {currentStep === "takeoff" ? (
               <>
                 {/* Item 1: Take-off run */}
-                <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
+                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div>
                       <span className="font-bold text-xs sm:text-[14px] text-[#0B2E59] dark:text-sky-300 block">
@@ -348,7 +451,7 @@ export function PreflightPerformanceWidget({
                         POH Fig. 5-1a · Columna &apos;GRND ROLL&apos; (con -10% por viento)
                       </div>
                     </div>
-                    <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 shrink-0">
+                    <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 shrink-0">
                       <span>TORA:</span>
                       <strong className="text-[#0B2E59] dark:text-sky-300">{scenario.runwayToraM} m</strong>
                     </span>
@@ -359,9 +462,9 @@ export function PreflightPerformanceWidget({
                       <input
                         type="text"
                         placeholder="Introduce metros calculados (Ej: 211)"
-                        value={takeoffRunInput}
-                        onChange={(e) => setTakeoffRunInput(e.target.value)}
-                        className={`w-full px-3 py-2 rounded-lg border font-mono text-xs sm:text-[14px] ${
+                        value={currentInputs.takeoffRun}
+                        onChange={(e) => updateCurrentInput("takeoffRun", e.target.value)}
+                        className={`w-full px-3 py-1.5 rounded-lg border font-mono text-xs sm:text-[14px] ${
                           errors.takeoffRun
                             ? "border-rose-500 bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-200"
                             : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
@@ -373,7 +476,7 @@ export function PreflightPerformanceWidget({
                 </div>
 
                 {/* Item 2: Take-off distance (50 ft) */}
-                <div className="p-3 rounded-xl bg-sky-50/50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 shadow-2xs space-y-2">
+                <div className="p-2.5 rounded-xl bg-sky-50/50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 shadow-2xs space-y-1.5">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div>
                       <span className="font-bold text-xs sm:text-[14px] text-[#0B2E59] dark:text-sky-300 block">
@@ -383,7 +486,7 @@ export function PreflightPerformanceWidget({
                         POH Fig. 5-1a · &apos;TOTAL TO CLEAR 50 FT OBS&apos; (con -10% viento)
                       </div>
                     </div>
-                    <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-sky-300 dark:border-sky-700 text-blue-700 dark:text-sky-300 shrink-0">
+                    <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2 py-0.5 rounded-lg bg-white dark:bg-slate-900 border border-sky-300 dark:border-sky-700 text-blue-700 dark:text-sky-300 shrink-0">
                       <span>TODA:</span>
                       <strong>{scenario.runwayTodaM} m</strong>
                     </span>
@@ -394,9 +497,9 @@ export function PreflightPerformanceWidget({
                       <input
                         type="text"
                         placeholder="Introduce metros calculados (Ej: 329)"
-                        value={takeoff50ftInput}
-                        onChange={(e) => setTakeoff50ftInput(e.target.value)}
-                        className={`w-full px-3 py-2 rounded-lg border font-mono text-xs sm:text-[14px] font-bold ${
+                        value={currentInputs.takeoff50ft}
+                        onChange={(e) => updateCurrentInput("takeoff50ft", e.target.value)}
+                        className={`w-full px-3 py-1.5 rounded-lg border font-mono text-xs sm:text-[14px] font-bold ${
                           errors.takeoff50ft
                             ? "border-rose-500 bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-200"
                             : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sky-700 dark:text-sky-300"
@@ -409,7 +512,7 @@ export function PreflightPerformanceWidget({
               </>
             ) : (
               /* Item Landing distance (50 ft) */
-              <div className="p-3.5 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 shadow-2xs space-y-2.5">
+              <div className="p-3 rounded-xl bg-emerald-50/50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 shadow-2xs space-y-2">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div>
                     <span className="font-bold text-xs sm:text-[14px] text-emerald-950 dark:text-emerald-300 block">
@@ -419,7 +522,7 @@ export function PreflightPerformanceWidget({
                       POH Fig. 5-10 · &apos;TOTAL 50 FT OBS&apos; en pies &divide; 3.28084 (con -10% viento)
                     </div>
                   </div>
-                  <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-emerald-300 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 shrink-0">
+                  <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2 py-0.5 rounded-lg bg-white dark:bg-slate-900 border border-emerald-300 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 shrink-0">
                     <span>LDA:</span>
                     <strong>{scenario.runwayLdaM} m</strong>
                   </span>
@@ -430,9 +533,9 @@ export function PreflightPerformanceWidget({
                     <input
                       type="text"
                       placeholder="Introduce metros calculados (Ej: 366)"
-                      value={landing50ftInput}
-                      onChange={(e) => setLanding50ftInput(e.target.value)}
-                      className={`w-full px-3 py-2 rounded-lg border font-mono text-xs sm:text-[14px] font-bold ${
+                      value={currentInputs.landing50ft}
+                      onChange={(e) => updateCurrentInput("landing50ft", e.target.value)}
+                      className={`w-full px-3 py-1.5 rounded-lg border font-mono text-xs sm:text-[14px] font-bold ${
                         errors.landing50ft
                           ? "border-rose-500 bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-200"
                           : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-emerald-700 dark:text-emerald-300"
@@ -455,27 +558,40 @@ export function PreflightPerformanceWidget({
           </div>
 
           {/* Validation & Status Button */}
-          <div className="pt-2.5 border-t border-slate-200 dark:border-slate-800 shrink-0 space-y-2">
+          <div className="pt-2 border-t border-slate-200 dark:border-slate-800 shrink-0 space-y-1.5">
             <div className="flex items-center justify-between gap-2">
               <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                Pistas: GCXO (3.171 m) · GCTS (3.200 m) · GCGM (1.500 m)
+                {selectedScenarioIndex === 0 ? (
+                  <span className="text-emerald-700 dark:text-emerald-400 font-bold">
+                    ✓ Modelo de referencia resuelto
+                  </span>
+                ) : (
+                  <span>
+                    Ejercicios resueltos: <strong>{currentStep === "takeoff" ? solvedTakeoffCount : solvedLandingCount} de 2</strong> (GCTS y GCGM)
+                  </span>
+                )}
               </span>
               <button
                 type="button"
                 onClick={handleValidate}
-                className="px-5 py-2.5 rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] dark:bg-sky-400 dark:hover:bg-sky-300 text-white dark:text-slate-950 font-black text-xs sm:text-[13px] transition-all shadow-md shadow-blue-500/25 cursor-pointer flex items-center gap-1.5 hover:scale-105 active:scale-95"
+                className={`px-4 py-2 rounded-xl text-white font-bold text-xs sm:text-[13px] transition-all shadow-xs cursor-pointer flex items-center gap-1.5 ${
+                  selectedScenarioIndex === 0
+                    ? "bg-emerald-600 hover:bg-emerald-700"
+                    : "bg-[#1a80ff] hover:bg-[#0066e6]"
+                }`}
               >
                 <span>
-                  {currentStep === "takeoff"
-                    ? `Validar Performance Despegue ${scenario.icao}`
-                    : `Validar Performance Aterrizaje ${scenario.icao}`}
+                  {selectedScenarioIndex === 0
+                    ? "Pasar a GCTS (Ejercicio) ➔"
+                    : currentStep === "takeoff"
+                      ? `Validar Despegue ${scenario.icao} ➔`
+                      : `Validar Aterrizaje ${scenario.icao} ➔`}
                 </span>
-                <span>→</span>
               </button>
             </div>
 
             {warnings.length > 0 && (
-              <div className="p-2 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 text-xs sm:text-[13px]">
+              <div className="p-1.5 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 text-xs">
                 {warnings.map((w, idx) => (
                   <div key={idx}>ℹ️ {w}</div>
                 ))}
@@ -483,11 +599,13 @@ export function PreflightPerformanceWidget({
             )}
 
             {isCurrentStepPassed && (
-              <div className="p-2.5 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px]">
+              <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs">
                 <strong className="font-bold">
-                  {currentStep === "takeoff"
-                    ? `✓ ¡DESPEGUE VALIDADO EN ${scenario.icao}!`
-                    : `✓ ¡ATERRIZAJE VALIDADO EN ${scenario.icao}!`}
+                  {selectedScenarioIndex === 0
+                    ? `✓ MODELO OFICIAL RESUELTO (${scenario.icao}):`
+                    : currentStep === "takeoff"
+                      ? `✓ ¡DESPEGUE VALIDADO EN ${scenario.icao}!`
+                      : `✓ ¡ATERRIZAJE VALIDADO EN ${scenario.icao}!`}
                 </strong>
                 <p className="text-xs mt-0.5">
                   {currentStep === "takeoff"
@@ -524,7 +642,7 @@ export function PreflightPerformanceWidget({
           </div>
 
           {/* Reference and Conditions Content - Aligned to top */}
-          <div className="flex-1 min-h-0 flex flex-col justify-start py-1 space-y-2.5 text-xs sm:text-[13px]">
+          <div className="flex-1 min-h-0 flex flex-col justify-start py-1 space-y-2 text-xs sm:text-[13px] overflow-y-auto">
             {/* Operational Conditions Card (Moved from Left) */}
             <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
               <div className="flex items-center justify-between text-xs sm:text-[13px]">
@@ -552,7 +670,7 @@ export function PreflightPerformanceWidget({
                   </span>
                   <span className="font-mono text-slate-800 dark:text-slate-100">
                     {currentStep === "takeoff" ? (
-                      <>TORA: <strong>{scenario.runwayToraM} m</strong> · TODA: <strong className="text-blue-600 dark:text-sky-400">{scenario.runwayTodaM} m</strong> (c/ Clearway)</>
+                      <>TORA: <strong>{scenario.runwayToraM} m</strong> · TODA: <strong className="text-blue-600 dark:text-sky-400">{scenario.runwayTodaM} m</strong></>
                     ) : (
                       <>LDA (Pista Disponible): <strong className="text-emerald-600 dark:text-emerald-400">{scenario.runwayLdaM} m</strong></>
                     )}
@@ -586,11 +704,11 @@ export function PreflightPerformanceWidget({
 
             {/* Dynamic Bottom Area: Step instructions or Graphical Runway Scale */}
             {!isCurrentStepPassed ? (
-              <div className="p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-2 shadow-2xs text-xs sm:text-[13px]">
+              <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs text-xs sm:text-[13px]">
                 <strong className="text-[#0B2E59] dark:text-sky-300 block uppercase font-bold text-xs sm:text-[13px]">
                   Guía Metodológica para {scenario.icao} ({scenario.runway}):
                 </strong>
-                <ul className="list-disc pl-4 space-y-1.5 text-slate-700 dark:text-slate-300">
+                <ul className="list-disc pl-4 space-y-1 text-slate-700 dark:text-slate-300">
                   <li>
                     <strong>Elevación:</strong> {scenario.elevationDesc}.
                   </li>
@@ -603,7 +721,7 @@ export function PreflightPerformanceWidget({
                         <strong>Corrección Viento:</strong> Aplica -10% por viento en cara de {scenario.windDesc}.
                       </li>
                       <li>
-                        <strong>Validación:</strong> Introduce los valores en las casillas de la izquierda y pulsa <em>Validar Performance</em> para contrastar contra TODA ({scenario.runwayTodaM} m).
+                        <strong>Validación:</strong> Introduce los valores y pulsa <em>Validar Despegue</em>.
                       </li>
                     </>
                   ) : (
@@ -612,13 +730,10 @@ export function PreflightPerformanceWidget({
                         <strong>Tabla Fig. 5-10:</strong> Columna <em>TOTAL 50 FT OBS</em> en pies.
                       </li>
                       <li>
-                        <strong>Conversión a Metros:</strong> Divide los pies entre 3.28084.
+                        <strong>Conversión a Metros:</strong> Divide los pies entre 3.28084 y aplica -10% por viento.
                       </li>
                       <li>
-                        <strong>Corrección Viento:</strong> Aplica -10% por viento en cara.
-                      </li>
-                      <li>
-                        <strong>Validación:</strong> Introduce los metros calculados a la izquierda y pulsa <em>Validar Performance</em> para verificar margen sobre LDA ({scenario.runwayLdaM} m).
+                        <strong>Validación:</strong> Introduce los metros y pulsa <em>Validar Aterrizaje</em>.
                       </li>
                     </>
                   )}
