@@ -7690,7 +7690,7 @@ export const C172_LESSON_6 = {
             <span class="text-[10px] text-slate-500 font-medium">Vuelo BTM26C · EC-NNA (Despacho Prevuelo)</span>
           </div>
           <a
-            href="/images/c172/f-ops-02-ejemplo-rellenado.pdf"
+            href="/images/c172/f-ops-02-ejemplo-rellenado-btm26c.pdf"
             target="_blank"
             rel="noopener noreferrer"
             class="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1 shrink-0"
@@ -7703,10 +7703,10 @@ export const C172_LESSON_6 = {
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1 my-1">
           <img
-            src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/f-ops-02-ejemplo-rellenado.png"
-            alt="F.OPS.02 Documentación Prevuelo rellenada con los datos del ejemplo resuelto"
+            src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/f-ops-02-ejemplo-rellenado-btm26c.png?v=2"
+            alt="F.OPS.02 Documentación Prevuelo rellenada con los datos del ejemplo resuelto (Vuelo BTM26C)"
             class="w-full h-auto block rounded-lg shadow-xs"
-            onerror="if(this.src!=='/images/c172/f-ops-02-ejemplo-rellenado.png')this.src='/images/c172/f-ops-02-ejemplo-rellenado.png'"
+            onerror="if(this.src!=='/images/c172/f-ops-02-ejemplo-rellenado-btm26c.png')this.src='/images/c172/f-ops-02-ejemplo-rellenado-btm26c.png'"
           />
         </div>
 
