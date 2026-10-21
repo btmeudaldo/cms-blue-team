@@ -564,6 +564,25 @@ export function PreflightLoadsheetWidget({
           onExerciseCompleted();
         }
       }
+
+      // Auto-zoom al 150% (1.5) enfocado en los puntos de la solución
+      const vp = viewportRef.current;
+      const w = vp ? vp.clientWidth : 610;
+      const h = vp ? vp.clientHeight : 477;
+      const scale = Math.min(w / 1140, h / 880);
+
+      const targetMidX = currentStep === "takeoff"
+        ? (zfmCoords.x + tomCoords.x) / 2
+        : (tomCoords.x + lmCoords.x) / 2;
+      const targetMidY = currentStep === "takeoff"
+        ? (zfmCoords.y + tomCoords.y) / 2
+        : (tomCoords.y + lmCoords.y) / 2;
+
+      const panX = - (targetMidX - 570) * scale * 1.5;
+      const panY = - (targetMidY - 440) * scale * 1.5;
+
+      setZoomLevel(1.5);
+      setPanOffset(clampPan(panX, panY, 1.5));
     } else {
       setAttempts((prev) => prev + 1);
     }
@@ -1350,7 +1369,7 @@ export function PreflightLoadsheetWidget({
                   width: "auto",
                   transform: `translate(${panOffset.x}px, ${panOffset.y}px) scale(${zoomLevel})`,
                   transformOrigin: "center center",
-                  transition: isPanning ? "none" : "transform 100ms ease-out",
+                  transition: isPanning ? "none" : "transform 350ms cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
               >
                 <img
@@ -1699,16 +1718,18 @@ export function PreflightLoadsheetWidget({
                       <g transform={`translate(${interactiveZfmPoint.x}, ${interactiveZfmPoint.y})`}>
                         <circle r="22" fill="none" stroke="#9333ea" strokeWidth="3" opacity="0.6" className="animate-pulse" />
                         <circle r="13" fill="#a855f7" stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro de info centrado arriba del punto del alumno */}
-                        <g transform="translate(0, -66)">
-                          <rect x="-115" y="-30" width="230" height="60" rx="10" fill="#7e22ce" stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="0" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
-                            TU PUNTO ZFM
-                          </text>
-                          <text x="0" y="18" fill="#f3e8ff" fontSize="16" fontWeight="800" textAnchor="middle">
-                            ~{studentZfmEstimated.massKg} kg · {studentZfmEstimated.cgM.toFixed(3)} m
-                          </text>
-                        </g>
+                        {/* Cuadro a la IZQUIERDA del punto ZFM para nunca solaparse con TOW */}
+                        {!isStepPassed && !showTargetHint && (
+                          <g transform="translate(-24, 0)">
+                            <rect x="-220" y="-30" width="220" height="60" rx="10" fill="#7e22ce" stroke="#ffffff" strokeWidth="2.5" />
+                            <text x="-110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
+                              TU PUNTO ZFM
+                            </text>
+                            <text x="-110" y="18" fill="#f3e8ff" fontSize="16" fontWeight="800" textAnchor="middle">
+                              ~{studentZfmEstimated.massKg} kg · {studentZfmEstimated.cgM.toFixed(3)} m
+                            </text>
+                          </g>
+                        )}
                       </g>
                     )}
 
@@ -1717,16 +1738,18 @@ export function PreflightLoadsheetWidget({
                       <g transform={`translate(${interactiveTomPoint.x}, ${interactiveTomPoint.y})`}>
                         <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
                         <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro de info centrado arriba del punto del alumno */}
-                        <g transform="translate(0, -66)">
-                          <rect x="-115" y="-30" width="230" height="60" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="0" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
-                            TU PUNTO TOW
-                          </text>
-                          <text x="0" y="18" fill="#fef3c7" fontSize="16" fontWeight="800" textAnchor="middle">
-                            ~{studentTomEstimated.massKg} kg · {studentTomEstimated.cgM.toFixed(3)} m
-                          </text>
-                        </g>
+                        {/* Cuadro a la DERECHA del punto TOW para nunca solaparse con ZFM */}
+                        {!isStepPassed && !showTargetHint && (
+                          <g transform="translate(24, 0)">
+                            <rect x="0" y="-30" width="220" height="60" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
+                            <text x="110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
+                              TU PUNTO TOW
+                            </text>
+                            <text x="110" y="18" fill="#fef3c7" fontSize="16" fontWeight="800" textAnchor="middle">
+                              ~{studentTomEstimated.massKg} kg · {studentTomEstimated.cgM.toFixed(3)} m
+                            </text>
+                          </g>
+                        )}
                       </g>
                     )}
 
@@ -1780,36 +1803,36 @@ export function PreflightLoadsheetWidget({
                       />
                     )}
 
-                    {/* Punto exacto calculado ZFM (revelado al validar o tras 3 intentos) */}
+                    {/* Punto exacto calculado ZFM - Cuadro a la IZQUIERDA */}
                     {(isStepPassed || showTargetHint) && (
                       <g transform={`translate(${zfmCoords.x}, ${zfmCoords.y})`}>
                         <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#7c3aed"} strokeWidth="3" opacity="0.8" className="animate-ping" />
                         <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#6d28d9"} stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro de info hacia la derecha del punto calculado */}
-                        <g transform="translate(24, 0)">
-                          <rect x="0" y="-28" width="220" height="56" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#581c87"} stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="110" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
-                            {showTargetHint && !isStepPassed ? "ZFM CALCULADO (AQUÍ)" : "ZFM CALCULADO"}
+                        {/* Cuadro de ZFM hacia la IZQUIERDA */}
+                        <g transform="translate(-24, 0)">
+                          <rect x="-225" y="-30" width="225" height="60" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#581c87"} stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="-112" y="-6" fill="#ffffff" fontSize="17" fontWeight="900" textAnchor="middle">
+                            {showTargetHint && !isStepPassed ? "ZFM CALCULADO (AQUÍ)" : "ZFM (Zero Fuel)"}
                           </text>
-                          <text x="110" y="17" fill="#e9d5ff" fontSize="14" fontWeight="800" textAnchor="middle">
+                          <text x="-112" y="18" fill="#e9d5ff" fontSize="15" fontWeight="800" textAnchor="middle">
                             {expected.zfmMass} kg · {expected.zfmCg} m
                           </text>
                         </g>
                       </g>
                     )}
 
-                    {/* Punto exacto calculado TOW (revelado al validar o tras 3 intentos) */}
+                    {/* Punto exacto calculado TOW - Cuadro a la DERECHA */}
                     {(isStepPassed || showTargetHint) && (
                       <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
                         <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#2563eb"} strokeWidth="3" opacity="0.8" className="animate-ping" />
                         <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#1d4ed8"} stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro de info hacia la derecha del punto calculado */}
+                        {/* Cuadro de TOW hacia la DERECHA */}
                         <g transform="translate(24, 0)">
-                          <rect x="0" y="-28" width="220" height="56" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#1e40af"} stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="110" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
-                            {showTargetHint && !isStepPassed ? "TOW CALCULADO (AQUÍ)" : "TOW CALCULADO"}
+                          <rect x="0" y="-30" width="225" height="60" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#1e40af"} stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="112" y="-6" fill="#ffffff" fontSize="17" fontWeight="900" textAnchor="middle">
+                            {showTargetHint && !isStepPassed ? "TOW CALCULADO (AQUÍ)" : "TOW (Despegue)"}
                           </text>
-                          <text x="110" y="17" fill="#bfdbfe" fontSize="14" fontWeight="800" textAnchor="middle">
+                          <text x="112" y="18" fill="#bfdbfe" fontSize="15" fontWeight="800" textAnchor="middle">
                             {expected.tomMass} kg · {expected.tomCg} m
                           </text>
                         </g>
@@ -1821,16 +1844,16 @@ export function PreflightLoadsheetWidget({
                 {/* 3. PASO 2: ATERRIZAJE (6.6) - ZFW, TOW y LW */}
                 {currentStep === "landing" && (
                   <>
-                    {/* Punto ZFW (de 6.5) - Revelado al validar aterrizaje o tras 3 intentos */}
+                    {/* Punto ZFW (de 6.5) - Cuadro a la IZQUIERDA */}
                     {(isStepPassed || showTargetHint) && (
                       <g transform={`translate(${zfmCoords.x}, ${zfmCoords.y})`}>
                         <circle r="12" fill="#7c3aed" stroke="#ffffff" strokeWidth="3" />
-                        <g transform="translate(20, 8)">
-                          <rect x="0" y="-25" width="190" height="50" rx="9" fill="#6d28d9" stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="95" y="-5" fill="#ffffff" fontSize="14" fontWeight="bold" textAnchor="middle">
+                        <g transform="translate(-24, 0)">
+                          <rect x="-205" y="-28" width="205" height="56" rx="9" fill="#6d28d9" stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="-102" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
                             ZFW (de 6.5)
                           </text>
-                          <text x="95" y="15" fill="#e9d5ff" fontSize="13" fontWeight="bold" textAnchor="middle">
+                          <text x="-102" y="15" fill="#e9d5ff" fontSize="13" fontWeight="bold" textAnchor="middle">
                             {expected.zfmMass} kg · {expected.zfmCg} m
                           </text>
                         </g>
@@ -1850,17 +1873,17 @@ export function PreflightLoadsheetWidget({
                       />
                     )}
 
-                    {/* Punto de Despegue (TOW) - Cuadro a la IZQUIERDA para evitar solaparse con LW */}
+                    {/* Punto de Despegue (TOW) - Cuadro ARRIBA para no solapar con ZFW ni LW */}
                     {(isStepPassed || showTargetHint) && (
                       <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
                         <circle r="13" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro hacia la IZQUIERDA del punto TOW */}
-                        <g transform="translate(-24, 0)">
-                          <rect x="-200" y="-26" width="200" height="52" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="-100" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
+                        {/* Cuadro hacia ARRIBA del punto TOW */}
+                        <g transform="translate(0, -68)">
+                          <rect x="-105" y="-28" width="210" height="56" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
+                          <text x="0" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
                             TOW (Despegue)
                           </text>
-                          <text x="-100" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
+                          <text x="0" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
                             {expected.tomMass} kg · {expected.tomCg} m
                           </text>
                         </g>
@@ -1945,21 +1968,22 @@ export function PreflightLoadsheetWidget({
                       </g>
                     )}
 
-                    {/* Punto estimado fijado por el alumno para LW - ARRIBA del punto - CUADRO MÁS GRANDE */}
+                    {/* Punto estimado fijado por el alumno para LW - Cuadro a la DERECHA antes de comprobar */}
                     {interactiveClickPoint && studentEstimated && (
                       <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
                         <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
                         <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro de info centrado arriba del punto del alumno */}
-                        <g transform="translate(0, -72)">
-                          <rect x="-115" y="-30" width="230" height="60" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="0" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
-                            TU PUNTO LW
-                          </text>
-                          <text x="0" y="18" fill="#fef3c7" fontSize="16" fontWeight="800" textAnchor="middle">
-                            ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
-                          </text>
-                        </g>
+                        {!isStepPassed && !showTargetHint && (
+                          <g transform="translate(24, 0)">
+                            <rect x="0" y="-30" width="220" height="60" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
+                            <text x="110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
+                              TU PUNTO LW
+                            </text>
+                            <text x="110" y="18" fill="#fef3c7" fontSize="16" fontWeight="800" textAnchor="middle">
+                              ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
+                            </text>
+                          </g>
+                        )}
                       </g>
                     )}
 
@@ -1985,7 +2009,7 @@ export function PreflightLoadsheetWidget({
                         <g transform="translate(24, 0)">
                           <rect x="0" y="-28" width="220" height="56" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#065f46"} stroke="#ffffff" strokeWidth="2.5" />
                           <text x="110" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
-                            {showTargetHint && !isStepPassed ? "LW CALCULADO (AQUÍ)" : "LW CALCULADO"}
+                            {showTargetHint && !isStepPassed ? "LW CALCULADO (AQUÍ)" : "LW (Aterrizaje)"}
                           </text>
                           <text x="110" y="17" fill="#a7f3d0" fontSize="14" fontWeight="800" textAnchor="middle">
                             {expected.lmMass} kg · {expected.lmCg} m
