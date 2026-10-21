@@ -20,7 +20,7 @@ export const C172_LESSON_1_QUIZ: Quiz = {
         "Notificación obligatoria que requiere apagar el motor en vuelo de manera inmediata.",
       ],
       correctAnswerIndex: 1,
-      explanation: "Según la simbología oficial del POH, WARNING advierte de riesgo de lesiones graves o muerte, mientras que CAUTION advierte de que el incumplimiento puede causar daños al motor o a los componentes del avión.",
+      explanation: "Según la simbología oficial de seguridad del POH (Sección 1), WARNING advierte de un peligro operativo inminente que causará lesiones graves o la muerte, mientras que CAUTION advierte de que el incumplimiento del procedimiento puede causar averías o daños mecánicos a los componentes del avión o del motor.",
     },
     {
       id: "c172-1-2",
@@ -32,7 +32,7 @@ export const C172_LESSON_1_QUIZ: Quiz = {
         "El depósito colector de combustible y la bomba eléctrica auxiliar.",
       ],
       correctAnswerIndex: 2,
-      explanation: "El motor diésel Continental carece de carburador, magnetos, bujías y mando de mezcla; toda la gestión de combustión es electrónica e inyección Common-Rail controlada por la ECU FADEC.",
+      explanation: "Al instalar el motor Continental Diésel TAE 125, la combustión se rige por autoencendido por compresión (ciclo diésel) y la dosificación se realiza por inyección Common Rail controlada por la ECU FADEC. Por ello, se suprimen totalmente el carburador, la calefacción de carburador, las magnetos, las bujías, el cebador manual (primer) y el mando rojo de mezcla.",
     },
     {
       id: "c172-1-3",
@@ -44,7 +44,7 @@ export const C172_LESSON_1_QUIZ: Quiz = {
         "Mediante un servomotor eléctrico accionado exclusivamente con el interruptor FADEC Test.",
       ],
       correctAnswerIndex: 1,
-      explanation: "En la cabina no existe palanca azul de paso. El sistema FADEC gobierna hidráulicamente el paso de las palas con presión de aceite para mantener 2.300 RPM constantes en despegue y crucero.",
+      explanation: "En la cabina del Continental Diésel no existe palanca azul de paso de hélice. El sistema FADEC controla electrónicamente una válvula electro-hidráulica que modula la presión de aceite hacia el cubo de la hélice MT-Propeller, ajustando de forma continua el ángulo de las palas para mantener 2.300 RPM constantes en crucero y despegue.",
     },
     {
       id: "c172-1-4",
@@ -56,7 +56,7 @@ export const C172_LESSON_1_QUIZ: Quiz = {
         "Densidad de 0.65 kg/l; el combustible es más ligero y permite aumentar el equipaje sin restricciones.",
       ],
       correctAnswerIndex: 1,
-      explanation: "El JET A-1 y el diésel EN 590 tienen una densidad de 0.84 kg/l (frente a 0.715 kg/l del AVGAS), resultando en aproximadamente un 17% más de masa para el mismo volumen de combustible.",
+      explanation: "El JET A-1 y el diésel EN 590 tienen una densidad estándar de 0.84 kg/l (frente a 0.715 kg/l del AVGAS 100LL). Esta mayor masa (aproximadamente un 17% más de peso para el mismo volumen) debe computarse cuidadosamente en la hoja de carga y centrado F.OPS.04 para no rebasar el peso máximo al despegue (MTOW 2.300 lbs).",
     },
     {
       id: "c172-1-5",
@@ -68,7 +68,7 @@ export const C172_LESSON_1_QUIZ: Quiz = {
         "El aceite de la reductora se comprueba extrayendo la varilla de nivel del aceite de motor en el capó derecho.",
       ],
       correctAnswerIndex: 1,
-      explanation: "La reductora y el motor son circuitos mecánicos y de lubricación completamente independientes. El nivel de aceite de motor se mide con su varilla y el de la reductora mediante su mirilla de cristal.",
+      explanation: "El motor y la caja reductora disponen de circuitos y fluidos de lubricación totalmente independientes. El nivel de aceite de motor se mide mediante su varilla en la compuerta de inspección del capó, mientras que el nivel de aceite de reductora (1.0 l de Centurion N1 / Shell Spirax S6) se verifica exclusivamente a través de la mirilla de cristal frontal en el capó.",
     },
     {
       id: "c172-1-6",
@@ -80,7 +80,7 @@ export const C172_LESSON_1_QUIZ: Quiz = {
         "Seleccionar exclusivamente el canal auxiliar FADEC B.",
       ],
       correctAnswerIndex: 2,
-      explanation: "El interruptor Engine Master sustituye la llave de encendido tradicional; su función es energizar el sistema de control FADEC para permitir la inyección de combustible y habilitar el arranque.",
+      explanation: "El conmutador ENGINE MASTER sustituye la llave tradicional de encendido. Su función es alimentar eléctricamente las dos ECUs del FADEC y conectar la batería de excitación del alternador; si se apaga en vuelo (OFF), el motor se detiene de forma instantánea al cortarse el suministro eléctrico a los inyectores.",
     },
   ],
 };
@@ -252,7 +252,187 @@ export const C172_LESSON_2_QUIZ: Quiz = {
   ],
 };
 
+export const C172_LESSON_3_QUIZ: Quiz = {
+  id: "quiz-c172-lesson-3",
+  course_id: C172_COURSE_ID,
+  lesson_id: "17200000-0000-0000-0000-000000000002",
+  title: "Examen de Verificación: 3. Ingeniería del Avión y Sistemas Continental CD-135 / CD-155",
+  description: "Evaluación teórica de verificación sobre arquitectura del motor TAE 125, reductora, hélice MT-Propeller, FADEC dual y FORCE B, sistema eléctrico, combustible, lubricación, refrigeración y sistemas de célula del Cessna 172.",
+  minPassScorePercentage: 75,
+  questions: [
+    {
+      id: "c172-3-1",
+      question: "En comparación con los motores convencionales de aviación general que tradicionalmente equipan al Cessna 172, ¿cuál es la configuración mecánica básica y qué sistemas auxiliares quedan completamente suprimidos en los motores Continental CD-135 y CD-155?",
+      options: [
+        "Es un motor bóxer de 6 cilindros refrigerado por aire; se suprimen el filtro de aire y el alternador principal.",
+        "Es un motor de 4 cilindros en línea, 4 tiempos, refrigeración líquida, DOHC, inyección directa Common Rail y turbocompresor con intercooler; se suprimen el carburador, las magnetos de encendido, las bujías, la calefacción de carburador, el cebador manual (primer) y la palanca de mezcla.",
+        "Es un motor radial diésel de inyección indirecta; se suprimen las bombas mecánicas de combustible y el intercooler.",
+        "Es un motor bóxer con doble turbina eléctrica; se suprimen los inyectores y el radiador de refrigerante.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La planta motriz Continental CD-135/155 es un motor diésel de 4 cilindros en línea y refrigeración líquida con inyección directa Common Rail. Al estar controlado electrónicamente por FADEC e ignición por compresión, prescinde por completo de carburador, mando de calefacción, magnetos, bujías y mando de mezcla rojo.",
+    },
+    {
+      id: "c172-3-2",
+      question: "¿Qué función cumple el embrague de sobrecarga (overload release) integrado en la caja reductora y qué comportamiento adopta la hélice MT-Propeller MTV-6 de velocidad constante ante una pérdida total de presión hidráulica de aceite?",
+      options: [
+        "El embrague aumenta las RPM de la hélice en despegue; ante la pérdida de presión de aceite las palas van a bandera (feather) para minimizar la resistencia.",
+        "El embrague desacopla el eje ante picos excesivos de par o impacto de la hélice contra el suelo protegiendo el cigüeñal; ante la pérdida de presión de aceite los contrapesos y muelles llevan las palas automáticamente a paso fino (low pitch), recomendándose volar por debajo de 100 KIAS para evitar sobregiro.",
+        "El embrague bloquea la hélice de forma inmediata si se superan 2.300 RPM; la pérdida de presión de aceite fija el paso en 45 grados de forma irreversible.",
+        "El embrague actúa como freno aerodinámico en aproximación; la hélice se regula mediante un servomotor eléctrico independiente del aceite de la reductora.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La caja reductora (ratio i = 1.69) cuenta con un embrague de desacople de seguridad contra impactos. Ante pérdida de presión de aceite del regulador hidráulico, el sistema mecánicamente adopta paso fino (low pitch). Si esto ocurre en vuelo, la velocidad debe mantenerse por debajo de 100 KIAS para prevenir el sobrerrégimen de la hélice.",
+    },
+    {
+      id: "c172-3-3",
+      question: "En cuanto a la arquitectura y gobierno del sistema FADEC del motor Continental Diésel, ¿cómo opera la redundancia entre los canales A y B y cómo se transmite la potencia demandada por el piloto?",
+      options: [
+        "El Canal A controla los cilindros 1 y 2 mientras que el Canal B controla los cilindros 3 y 4 de forma simultánea.",
+        "Dispone de dos ECUs independientes con sensórica duplicada; el Canal A opera de forma normal y, si detecta una anomalía interna o de sensores, conmuta automáticamente al Canal B, gobernando la potencia a través de los potenciómetros del monomando Thrust Lever.",
+        "El piloto debe alternar manualmente entre Canal A y Canal B cada 30 minutos de vuelo mediante el interruptor Engine Master.",
+        "El FADEC solo controla el régimen de ralentí; el paso de la hélice y la mezcla se gestionan manualmente con cables teleflex desde el pedestal.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "El FADEC cuenta con dos computadores (ECU A y ECU B) totalmente redundantes con sensores dobles. La ECU A está activa de modo predeterminado y, ante cualquier discrepancia o fallo, transfiere el control a la ECU B automáticamente. La palanca monomando (Thrust Lever) envía la señal a través de potenciómetros a la ECU activa, regulando a la vez inyección y paso de hélice.",
+    },
+    {
+      id: "c172-3-4",
+      question: "Durante el vuelo, si se encienden las luces avisadoras del FADEC y el piloto mantiene pulsado el botón FADEC TEST durante al menos 2 segundos, ¿cómo se diferencia un fallo de categoría LOW frente a uno de categoría HIGH y qué precaución crítica existe con el mando FORCE B?",
+      options: [
+        "En categoría LOW el motor se apaga durante 2 segundos; en categoría HIGH se enciende la luz de fuego; el mando FORCE B debe activarse siempre antes del aterrizaje.",
+        "En categoría LOW las luces FADEC se apagan tras los 2 segundos de pulsación (notificar a mantenimiento al aterrizar); en categoría HIGH permanecen encendidas fijas requiriendo aterrizar lo antes posible; el conmutador FORCE B jamás debe activarse si se vuela únicamente con la batería FADEC Backup ya que apagaría el motor.",
+        "En categoría LOW las RPM bajan a 1.200 RPM; en categoría HIGH el FADEC bloquea la potencia al 100%; el mando FORCE B conmuta de vuelta al Canal A.",
+        "El botón FADEC TEST solo funciona con motor parado en tierra; en vuelo carece de efecto y el mando FORCE B se usa para conectar la bomba eléctrica de combustible.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "Si tras pulsar el botón FADEC TEST durante 2 segundos las luces se apagan, el fallo es menor (categoría LOW); si quedan encendidas fijas, es un fallo crítico (categoría HIGH) que exige aterrizar lo antes posible. El mando FORCE B es unidireccional y bajo ningún concepto debe accionarse si se opera con la batería FADEC Backup, pues esta solo alimenta la ECU A y conmutar a B causaría la parada inmediata del motor.",
+    },
+    {
+      id: "c172-3-5",
+      question: "En el sistema eléctrico de la aeronave, ¿cuál es el propósito exclusivo de la batería de excitación del alternador y cuándo debe apagarse la luz roja Alternator en el panel de anunciadores?",
+      options: [
+        "Suministra energía a las radios de comunicaciones si falla el alternador; la luz se apaga al activar la bomba eléctrica de combustible.",
+        "Proporciona corriente de excitación al campo del alternador para asegurar su funcionamiento continuo aunque la batería principal sufra un fallo total; la luz roja se enciende con Engine Master ON a motor parado y debe apagarse inmediatamente tras el arranque al comenzar a generar corriente.",
+        "Alimenta los flaps eléctricos en tierra; la luz se apaga al colocar el mando Thrust Lever en posición de despegue.",
+        "Funciona como acumulador auxiliar del horizonte artificial; la luz roja solo debe apagarse tras 5 minutos de calentamiento del motor.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "Los motores diésel FADEC requieren electricidad continua para la inyección. La pequeña batería de excitación garantiza que el alternador siga generando corriente incluso si la batería principal se desconecta o cortocircuita. La luz Alternator luce con motor parado y debe apagarse en cuanto el alternador gira y produce energía tras el encendido.",
+    },
+    {
+      id: "c172-3-6",
+      question: "Si durante el vuelo se produce un fallo total y simultáneo tanto del alternador principal como de la batería de a bordo, ¿qué respaldo eléctrico suministra la batería FADEC Backup y a qué componente alimenta?",
+      options: [
+        "Alimenta toda la aviónica y luces del avión durante un máximo de 60 minutos.",
+        "Suministra energía de forma exclusiva a la ECU FADEC A, garantizando un máximo de 30 minutos de funcionamiento continuo de motor con el resto de sistemas eléctricos del avión inoperativos.",
+        "Alimenta a ambas ECUs (Canal A y Canal B) de forma rotativa durante 2 horas.",
+        "Solo alimenta la bomba eléctrica de combustible y la bocina de pérdida durante 10 minutos.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La batería de reserva FADEC Backup está aislada del resto del avión y cableada únicamente a la ECU FADEC A. Proporciona hasta 30 minutos de funcionamiento de motor para permitir un aterrizaje de emergencia, quedando todos los demás servicios eléctricos y aviónica desconectados.",
+    },
+    {
+      id: "c172-3-7",
+      question: "¿Por qué las bocas de llenado de combustible de los depósitos alares del C172 modificado a Continental Diésel tienen el cuello recortado y qué función cumple el depósito nodriza (Reservoir Tank)?",
+      options: [
+        "Para evitar que rebose el combustible al rodar; el depósito nodriza sirve para purgar el agua del fondo de las alas.",
+        "Porque el JET A-1 y el diésel son más densos (0.84 kg/l frente a 0.715 kg/l del AVGAS), limitando el volumen cargable para no sobrepasar la carga alar máxima aprobada; el depósito nodriza asegura un suministro constante y libre de burbujas de aire hacia el motor.",
+        "Para permitir la entrada de pistolas de repostaje de aviones comerciales; el depósito nodriza almacena el combustible no utilizable.",
+        "Para acelerar la velocidad de llenado en plataforma; el depósito nodriza calienta el combustible mediante resistencias eléctricas de 28V.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "Dado que el querosene JET A-1 es un 17% más pesado que la gasolina AVGAS, el cuello recortado limita el volumen máximo admisible en los depósitos para proteger la estructura alar. El depósito colector (Reservoir Tank) actúa como nodriza eliminando bolsas de aire antes de las bombas de inyección.",
+    },
+    {
+      id: "c172-3-8",
+      question: "En el circuito de combustible del Continental Diésel, ¿cómo se gestiona el exceso de combustible procedente del Common Rail y cuándo es obligatorio retirar el deflector (baffle) de entrada del enfriador de combustible (Fuel Cooler)?",
+      options: [
+        "El combustible sobrante se quema en el turbocompresor; el deflector debe retirarse cuando la presión de admisión supera 2.0 bar.",
+        "El combustible sobrante retorna caliente a través del enfriador hacia los depósitos alares (a ambos en posición BOTH); el deflector del Fuel Cooler debe desmontarse de forma obligatoria cuando la temperatura exterior (OAT) supere los 20 °C (68 °F).",
+        "El combustible sobrante se envía al depósito auxiliar de 10 litros; el deflector debe retirarse en operaciones con lluvia o hielo en vuelo.",
+        "El exceso se evacua al exterior por el sumidero de drenaje ventral; el deflector es una pieza fija que nunca debe desmontarse.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "La bomba de alta presión impulsa más combustible del inyectado; el sobrante caliente se devuelve a los depósitos a través del Fuel Cooler. Para evitar sobrecalentamiento del combustible en alas en épocas cálidas, el suplemento POH exige retirar la chapa deflectora cuando la OAT supere los 20 °C.",
+    },
+    {
+      id: "c172-3-9",
+      question: "¿Cómo regula el termostato de 3 vías el flujo del refrigerante líquido del motor según su temperatura y qué proporción reglamentaria debe tener la mezcla anticongelante?",
+      options: [
+        "Por debajo de 50 °C apaga la bomba de agua; entre 50 °C y 80 °C enfría la reductora; requiere 100% de etilenglicol puro.",
+        "A menos de 84 °C recircula en circuito corto por el bloque del motor; entre 84 °C y 94 °C opera en circuito mixto (bloque y radiador); por encima de 94 °C fluye todo a través del radiador principal; la mezcla reglamentaria es 50% agua desmineralizada y 50% anticongelante BASF Glysantin G48 (protección hasta -36 °C).",
+        "A menos de 60 °C el refrigerante se desvía a la cabina de pasajeros; a más de 105 °C se purga al exterior; no lleva anticongelante.",
+        "El termostato es de regulación manual mediante un tirador en cabina; se utiliza aceite sintético de baja viscosidad en lugar de refrigerante líquido. ",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "El termostato de tres vías optimiza el calentamiento: por debajo de 84 °C evita el radiador (circuito corto); entre 84 y 94 °C abre gradualmente; y sobre 94 °C dirige todo el flujo al radiador. El fluido aprobado es agua desmineralizada con 50% de BASF Glysantin G48 silicatado, con punto de congelación a -36 °C.",
+    },
+    {
+      id: "c172-3-10",
+      question: "Respecto a los fluidos y comprobación de los sistemas de lubricación del grupo motopropulsor, ¿cuáles son las capacidades oficiales y el método reglamentario de verificación de niveles para el motor y para la reductora?",
+      options: [
+        "Ambos comparten un único cárter común de 10 litros con una sola varilla accesible por el capó izquierdo.",
+        "El motor posee entre 4.5 y 6.0 litros de aceite sintético aprobado y se comprueba mediante su varilla en la compuerta de inspección; la caja reductora dispone de 1.0 litro de lubricante específico de engranajes y su nivel se verifica visualmente a través de su propia mirilla de cristal en el capó.",
+        "El motor tiene 2.5 litros de aceite mineral; la caja reductora se llena automáticamente desde el circuito de refrigeración líquida.",
+        "El aceite de motor se mide en el instrumento digital CED 125 sin varilla; la reductora no contiene aceite al estar sellada con grasa sólida de litio.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "Motor y reductora son circuitos mecánicamente independientes: el motor utiliza entre 4.5 y 6.0 l de aceite (Shell Helix Ultra / AeroShell Diesel Ultra) medido por varilla, mientras que la caja reductora requiere 1.0 l de aceite de transmisiones (Centurion N1 / Shell Spirax S6) verificado por una mirilla de cristal transparente frontal.",
+    },
+    {
+      id: "c172-3-11",
+      question: "En los paneles digitales de monitorización de la planta motriz, ¿qué parámetros específicos presenta la pantalla compacta de motor CED 125 frente a la pantalla auxiliar AED 125?",
+      options: [
+        "El CED 125 muestra las frecuencias de radio y navegación VHF; el AED 125 muestra el altímetro y el variómetro barométrico.",
+        "El CED 125 muestra RPM de hélice, presión y temperatura de aceite de motor, temperatura de refrigerante, temperatura de reductora y porcentaje de potencia (Load %); el AED 125 muestra temperatura de combustible en depósitos izquierdo y derecho, voltaje de barra y aviso Water Level.",
+        "El CED 125 muestra la velocidad indicada y rumbo magnético; el AED 125 muestra el cronómetro y el nivel de flaps.",
+        "El CED 125 indica el flujo de combustible por hora; el AED 125 controla el paso de hélice y la presión de sobrealimentación manual.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "El display CED 125 reúne los parámetros directos del motor y reductora (tacómetro, OP, OT, CT, GT y Load %), mientras que el AED 125 cubre los datos auxiliares de la instalación: temperatura en los tanques alares de combustible, voltímetro digital y la luz de nivel bajo de refrigerante (Water Level).",
+    },
+    {
+      id: "c172-3-12",
+      question: "En el panel anunciador (Lightpanel) del Cessna 172 Continental Diésel, ¿qué significado tienen los avisadores luminosos \"Fuel L\" / \"Fuel R\" y \"Glow\", y cuál es la función del tirador \"Alt. Air Door\"?",
+      options: [
+        "\"Fuel L/R\" indica desequilibrio en vuelo; \"Glow\" indica sobrecalentamiento del radiador; \"Alt. Air Door\" abre la compuerta de ventilación de cabina para el pasaje.",
+        "\"Fuel L/R\" advierten de nivel bajo de combustible (menos de 10 litros en el depósito respectivo); \"Glow\" indica el precalentamiento activo de las bujías de incandescencia para el arranque diésel; \"Alt. Air Door\" abre una toma alternativa de admisión no filtrada hacia el motor si el filtro de aire principal se obstruye por hielo o impurezas.",
+        "\"Fuel L/R\" indican que las bombas eléctricas están encendidas; \"Glow\" advierte de chispa en las magnetos; \"Alt. Air Door\" desconecta el alternador de 28V.",
+        "\"Fuel L/R\" indican que el selector está en BOTH; \"Glow\" indica ignición continua; \"Alt. Air Door\" vacía los sumideros de combustible en vuelo.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "En el panel anunciador, \"Fuel L/R\" advierte de menos de 10 litros en cada ala; \"Glow\" señala el funcionamiento de los calentadores diésel de arranque en frío. El mando \"Alt. Air Door\" permite aspirar aire no filtrado directamente desde el interior del capó ante la obstrucción del filtro de aire primario por hielo o nieve.",
+    },
+    {
+      id: "c172-3-13",
+      question: "¿Qué tipo aerodinámico y mecanismo de actuación tienen los flaps del Cessna 172 y cuál es la particularidad de diseño de sus alerones convencionales?",
+      options: [
+        "Son flaps de intradós mecánicos operados por palanca manual; los alerones son simétricos para vuelo acrobático.",
+        "Son flaps Fowler de ranura simple (single-slot) accionados eléctricamente por un motor en la semiala derecha (con posiciones de 10°, 20°, 30° y 40° protegidos por breaker de 15A); los alerones son de tipo diferencial (el alerón que sube deflexiona más que el que baja) para mitigar la guiñada adversa.",
+        "Son flaps ranurados dobles de accionamiento hidráulico; los alerones actúan simultáneamente como frenos aerodinámicos (flaperones).",
+        "Son slats de borde de ataque automáticos; el trim de profundidad se acciona mediante servomotores neumáticos de vacío.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "El C172 emplea flaps Fowler eléctricos de ranura simple que se deslizan hacia atrás y hacia abajo aumentando superficie y curvatura alar. Los alerones son diferenciales: el alerón que se desplaza hacia arriba tiene un ángulo mayor que el que baja, generando una resistencia parásita equilibrada que neutraliza la guiñada adversa.",
+    },
+    {
+      id: "c172-3-14",
+      question: "Respecto a la conducción en tierra, amortiguación y el sistema de aviso de pérdida en el Cessna 172, ¿cuál de las siguientes descripciones técnicas es la correcta de acuerdo con la Sección 7 del POH?",
+      options: [
+        "El tren principal dispone de amortiguadores oleoneumáticos de aire-aceite; la rueda de morro gira 90° con pedales y el avisador de pérdida es un vibrador de cuerno eléctrico (stick shaker).",
+        "El tren principal amortigua mediante ballestas de acero tubular y el de morro por pata oleoneumática; la rueda de morro orientable gira hasta 10° con pedales y hasta 30° con frenado diferencial; el avisador de pérdida es puramente neumático por succión (ranura en borde de ataque del ala izquierda conectada a una bocina acústica en cabina verificable en prevuelo aspirando suavemente con un paño limpio).",
+        "Los frenos son de tambor neumáticos accionados por una palanca en el suelo; la rueda de morro es fija y no orientable.",
+        "El avisador de pérdida funciona mediante una veleta electrónica de ángulo de ataque calefactada conectada a la pantalla AED 125.",
+      ],
+      correctAnswerIndex: 1,
+      explanation: "El tren principal absorbe impactos mediante ballestas elásticas de acero de una sola pieza, y la pata de morro mediante amortiguador aire/aceite (oleoneumático). La rueda de morro pivota hasta 10° con timón y hasta 30° con freno diferencial. El avisador de pérdida opera por depresión neumática pasiva conectada a una bocina acústica en cabina, sin cables ni alimentación eléctrica.",
+    },
+  ],
+};
+
 export const C172_QUIZZES: Quiz[] = [
   C172_LESSON_1_QUIZ,
   C172_LESSON_2_QUIZ,
+  C172_LESSON_3_QUIZ,
 ];
