@@ -5708,21 +5708,28 @@ export const C172_LESSON_5 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Referencia de Sistemas y Avisos (Altura Fija 600px) -->
+    <!-- Columna Derecha (lg:col-span-5): Perfil de Fallo de Motor en Despegue (Altura Fija 600px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
-        </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-            📷
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PERFIL DE TOMA DE EMERGENCIA</span>
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Perfil de fallo de motor en despegue: aterrizaje en pista o frente a la aeronave manteniendo 60-65 KIAS y corte total
-          </p>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Aterrizaje en pista remanente o recto al frente (&plusmn;30&deg; del eje de pista). Mantener 60-65 KIAS y realizar corte total antes del impacto.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+            <img
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.2.jpg"
+              alt="Perfil de Fallo de Motor en Despegue C172: aterrizaje en pista o al frente (+-30 grados)"
+              class="w-full h-full object-contain rounded-lg"
+              onerror="if(this.src!=='/images/c172/5.2.jpg')this.src='/images/c172/5.2.jpg'"
+            />
+          </div>
         </div>
       </div>
     </div>
