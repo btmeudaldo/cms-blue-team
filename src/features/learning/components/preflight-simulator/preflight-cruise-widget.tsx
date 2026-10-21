@@ -199,8 +199,8 @@ export function PreflightCruiseWidget({
             </div>
           </div>
 
-          {/* Form Content - Sin desbordamientos con scrollbar suave si hiciera falta */}
-          <div className="flex-1 min-h-0 overflow-y-auto pr-1 my-1 space-y-2 flex flex-col justify-start pt-0.5">
+          {/* Form Content - Ajustado para no requerir scroll */}
+          <div className="flex-1 my-1 space-y-2 flex flex-col justify-start pt-0.5">
             {/* Step 1: Reading from Table */}
             <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1.5 shadow-2xs">
               <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block border-b pb-0.5">
@@ -368,16 +368,8 @@ export function PreflightCruiseWidget({
             </div>
 
             {errorCount > 0 && (
-              <div className="p-2 rounded-lg border border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 text-xs flex items-center justify-between">
-                <span>⚠️ <strong>{errorCount} {errorCount === 1 ? "valor a revisar" : "valores a revisar"}.</strong> Consulta la explicación paso a paso en el panel derecho 👉</span>
-              </div>
-            )}
-
-            {warnings.length > 0 && (
-              <div className="p-1.5 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 text-[11px] sm:text-xs space-y-0.5">
-                {warnings.map((w, idx) => (
-                  <div key={idx}>ℹ️ {w}</div>
-                ))}
+              <div className="p-1.5 rounded-lg border border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 text-xs flex items-center justify-between">
+                <span>⚠️ <strong>{errorCount} {errorCount === 1 ? "valor a revisar" : "valores a revisar"}.</strong> Ver correcciones a la derecha 👉</span>
               </div>
             )}
 
@@ -474,6 +466,18 @@ export function PreflightCruiseWidget({
               </tbody>
             </table>
           </div>
+
+          {/* Unidades detectadas y equivalencias (si el alumno usó Galones o Libras) en columna derecha */}
+          {warnings.length > 0 && (
+            <div className="shrink-0 my-1 p-2 rounded-xl border border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/40 text-sky-950 dark:text-sky-200 text-xs space-y-0.5 shadow-2xs">
+              <span className="font-bold block text-[11px] uppercase tracking-wider text-sky-700 dark:text-sky-400">
+                ℹ️ Equivalencias Detectadas:
+              </span>
+              {warnings.map((w, idx) => (
+                <div key={idx} className="leading-snug">{w}</div>
+              ))}
+            </div>
+          )}
 
           {/* Zona inferior dinámica: Panel de Correcciones cuando hay errores O Explicación didáctica si está correcto */}
           {errorCount > 0 ? (
