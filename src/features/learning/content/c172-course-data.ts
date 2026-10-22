@@ -4996,34 +4996,44 @@ export const C172_LESSON_4 = {
             </div>
           </div>
 
-          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[12.5px] leading-relaxed my-1 shadow-2xs shrink-0">
-            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
-              <span>ℹ️</span>
-              <span>NOTE:</span>
-            </strong>
-            <div>Si es necesario un ascenso de máximo rendimiento, utilice las velocidades indicadas en la tabla «Maximum Rate Of Climb» de la sección 5. Si la temperatura del aceite y/o del refrigerante se aproximan al límite superior, continúe con un ángulo de ascenso menor para mejorar la refrigeración, si es posible.</div>
+          <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12.5px] leading-snug shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops:</strong>
+            <ul class="list-disc list-inside space-y-0.5 text-slate-800 dark:text-slate-200">
+              <li><strong>Velocidades de despegue (5.6.1):</strong> 60 kt para TO Flap 10º; 65 kts para flap 0º. Aplicando la correspondiente corrección de rachas si así se requiere.</li>
+              <li><strong>Rotación y ascenso inicial (6.10):</strong> Rotaremos a 60 kts, haciendo un ascenso inicial a 65 kts (Vx) hasta los 500 ft.</li>
+              <li><strong>After Take-Off a 500 ft (6.10):</strong> Seleccionar flap 0, BAJAR MORRO (para Vy 75Kt) y reducir potencia (92% aprox), fuel pump off, landing light off.</li>
+              <li><strong>Velocidades de ascenso (5.6.2):</strong> Vx 60 kt IAS para 10º flap; Vx 65 kt IAS para flap 0º; Vy 75 kt IAS flap 0º. Seguimos ascendiendo a 75 kts (Vy) a altitud de circuito o según la salida.</li>
+            </ul>
           </div>
 
-          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[12.5px] leading-relaxed my-1 shadow-2xs shrink-0">
-            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+          <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs leading-tight shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 inline-flex items-center gap-1 uppercase tracking-wide text-xs">
               <span>ℹ️</span>
               <span>NOTE:</span>
             </strong>
-            <div>Deben vigilarse las temperaturas del combustible.</div>
+            <span class="ml-1">Deben vigilarse las temperaturas del combustible.</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Referencia POH (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Referencia POH y Diagrama (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[12.5px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+            <span>ℹ️</span>
+            <span>NOTE:</span>
+          </strong>
+          <div>Si es necesario un ascenso de máximo rendimiento, utilice las velocidades indicadas en la tabla «Maximum Rate Of Climb» de la sección 5. Si la temperatura del aceite y/o del refrigerante se aproximan al límite superior, continúe con un ángulo de ascenso menor para mejorar la refrigeración, si es posible.</div>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-4 text-center">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2">
             📷
           </div>
           <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
