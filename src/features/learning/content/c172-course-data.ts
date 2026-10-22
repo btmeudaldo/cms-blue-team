@@ -4633,92 +4633,88 @@ export const C172_LESSON_4 = {
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
-    <!-- Columna Izquierda (lg:col-span-6): POH (8) FADEC Check y SOPs divididos en 2 sub-columnas (Altura Fija 600px) -->
+    <!-- Columna Izquierda (lg:col-span-6): Procedimientos Normales (Altura Fija 600px) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[600px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800 mb-2">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">(8) BEFORE TAKE-OFF · AUTOPRUEBA FADEC</span>
+      <div class="h-[600px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(8) BEFORE TAKE-OFF · AUTOPRUEBA FADEC</span>
         </div>
-        
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch flex-1">
-          <!-- Sub-columna 1: Checklist Oficial POH (Paso 8) -->
-          <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(8) FADEC CHECK (POH)</strong>
-            <div lang="en" class="text-[18px] leading-snug text-slate-800 dark:text-slate-200 space-y-1 pt-0.5">
-              <div><strong>a)</strong> Thrust Lever - <strong>IDLE</strong></div>
-              <div><strong>b)</strong> Test Button - <strong>PRESS &amp; HOLD</strong></div>
-              <div><strong>c)</strong> Luces A+B <strong>ON</strong> (RPM suben)</div>
-              <div><strong>d)</strong> Conmuta a <strong>B</strong> (solo luz B ON)</div>
-              <div><strong>e)</strong> Hélice excitada (RPM bajan)</div>
-              <div><strong>f)</strong> Conmuta a <strong>A</strong> (solo luz A ON)</div>
-              <div><strong>g)</strong> Hélice excitada (RPM bajan)</div>
-              <div><strong>h)</strong> Luz A <strong>OFF</strong> (ralentí nominal)</div>
-              <div><strong>i)</strong> Test Button - <strong>RELEASE</strong></div>
+        <div class="space-y-2 py-1">
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(8) FADEC and propeller adjustment function check:</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">a)</span>
+              <span class="text-slate-800 dark:text-slate-200">Thrust Lever - IDLE (both FADEC lights should be OFF)</span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">b)</span>
+              <span class="text-slate-800 dark:text-slate-200">FADEC Test Button - PRESS and HOLD button for entire test</span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">c)</span>
+              <span class="text-slate-800 dark:text-slate-200">Both FADEC lights - ON, RPM increases.</span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">d)</span>
+              <span class="text-slate-800 dark:text-slate-200">The FADEC automatically switches to B-component (only FADEC B light is ON)</span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">e)</span>
+              <span class="text-slate-800 dark:text-slate-200">The propeller control is excited, RPM decreases</span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">f)</span>
+              <span class="text-slate-800 dark:text-slate-200">The FADEC automatically switches to channel A (only FADEC A light is ON), RPM increases</span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">g)</span>
+              <span class="text-slate-800 dark:text-slate-200">The propeller control is excited, RPM decreases</span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">h)</span>
+              <span class="text-slate-800 dark:text-slate-200">FADEC A light goes OFF, idle RPM is reached, the test is completed.</span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">i)</span>
+              <span class="text-slate-800 dark:text-slate-200">FADEC Test Button - RELEASE</span>
             </div>
           </div>
 
-          <!-- Sub-columna 2: SOPs Blue Team -->
-          <div class="p-2.5 sm:p-3 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-[18px] leading-snug shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-blue-200 dark:border-blue-800 pb-1 uppercase tracking-wide">SOPs BLUE TEAM · PRUEBA</strong>
-            <div class="space-y-1.5 text-slate-800 dark:text-slate-200 pt-0.5">
-              <div class="flex items-start gap-1.5">
-                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                <div><strong>Parámetros en verde:</strong> Aceite &ge; 50°C y agua &ge; 60°C antes de iniciar.</div>
-              </div>
-              <div class="flex items-start gap-1.5">
-                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                <div><strong>Pulsación continua:</strong> Mantener pulsado sin soltar (ciclo de 10 a 15 s).</div>
-              </div>
-              <div class="flex items-start gap-1.5">
-                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                <div><strong>Verificación auditiva:</strong> Escuchar las dos caídas de RPM al excitarse el paso.</div>
-              </div>
-              <div class="flex items-start gap-1.5">
-                <span class="text-red-600 dark:text-red-400 font-bold shrink-0">⚠️</span>
-                <div><strong>Criterio No-Go:</strong> Calado, tos o parpadeo prohíbe el despegue.</div>
-              </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+            <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 h-full flex flex-col justify-start">
+              <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+                <span>⚠️</span>
+                <span>WARNING:</span>
+              </strong>
+              <div>Si las luces FADEC no se encienden en este punto, significa que el procedimiento de prueba ha fallado y no debe intentarse el despegue.</div>
+            </div>
+            <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed my-1.5 shadow-2xs shrink-0 h-full flex flex-col justify-start">
+              <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+                <span>ℹ️</span>
+                <span>NOTE:</span>
+              </strong>
+              <div>Si se suelta el botón de prueba antes de que termine la autoprueba, el FADEC pasa inmediatamente al funcionamiento normal.</div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): Warning, Note y Estados de Luces (Altura Fija 600px) -->
+    <!-- Columna Derecha (lg:col-span-6): Referencia POH e Imagen Recomendada (Altura Fija 600px) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[600px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
-        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800 mb-2">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">ADVERTENCIAS Y PROTOCOLO POH</span>
+      <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="space-y-2 py-0.5">
-          <!-- Warning POH -->
-          <div class="p-3 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-relaxed shadow-2xs space-y-1">
-            <strong class="text-red-700 dark:text-red-400 flex items-center gap-2 uppercase tracking-wide text-[18px]">
-              <span>⚠️</span>
-              <span>WARNING (POH):</span>
-            </strong>
-            <p class="leading-snug">Si las luces FADEC no se encienden al pulsar el botón, el procedimiento de prueba ha fallado y no debe intentarse el despegue bajo ningún concepto.</p>
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
           </div>
-
-          <!-- Note POH -->
-          <div class="p-3 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-relaxed shadow-2xs space-y-1">
-            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-2 uppercase tracking-wide text-[18px]">
-              <span>ℹ️</span>
-              <span>NOTE (POH):</span>
-            </strong>
-            <p class="leading-snug">Si se suelta el botón de prueba antes de que concluya el ciclo de autoprueba, el sistema FADEC pasa inmediatamente al funcionamiento normal.</p>
-          </div>
-
-          <!-- Estados de Luces POH -->
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[18px] leading-snug">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">SECUENCIA DE LUCES EN LA PRUEBA:</strong>
-            <div class="space-y-1 text-slate-800 dark:text-slate-200">
-              <div>• <strong>Inicio:</strong> Luces FADEC A y B encendidas (RPM aumentan).</div>
-              <div>• <strong>Canal B:</strong> Solo luz FADEC B encendida (caída de RPM por paso).</div>
-              <div>• <strong>Canal A:</strong> Solo luz FADEC A encendida (caída de RPM por paso).</div>
-              <div>• <strong>Final:</strong> Luz FADEC A se apaga (retorno a ralentí nominal IDLE).</div>
-            </div>
-          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Panel anunciador y botón FADEC Test: secuencia de luces FADEC A y B y comprobación automática de paso de hélice
+          </p>
         </div>
       </div>
     </div>
