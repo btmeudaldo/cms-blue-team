@@ -3986,7 +3986,7 @@ export const C172_LESSON_4 = {
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(6) LEFT WING</span>
         </div>
-        <div class="space-y-2 py-1 flex-1 flex flex-col justify-between">
+        <div class="space-y-2.5 py-1 flex-1 flex flex-col justify-start">
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(6) LEFT WING</strong>
             <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
