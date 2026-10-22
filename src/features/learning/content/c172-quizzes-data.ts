@@ -1023,15 +1023,15 @@ export const C172_LESSON_6_QUIZ: Quiz = {
     },
     {
       id: "c172-6-12",
-      question: "Según las tablas de despegue del POH del Cessna 172N (Figura 5-1a), si la operación se realiza en una pista de hierba seca nivelada en lugar de pavimento asfaltado, ¿qué factor de corrección reglamentario debe aplicarse a la distancia de despegue?",
+      question: "Según las notas de las tablas de despegue del POH del Cessna 172N (Figura 5-1a), ¿qué factor de corrección reglamentario debe aplicarse a las distancias de despegue en función del viento?",
       options: [
-        "Reducir la distancia calculada en un 10% por amortiguación de las ruedas.",
-        "No se aplica ninguna corrección si los neumáticos están inflados a presión nominal.",
-        "Incrementar la carrera de despegue en tierra (Ground Roll) en un 15% debido a la mayor resistencia a la rodadura.",
-        "Incrementar la distancia total sobre obstáculo de 50 ft en un 50% sin modificar la carrera de tierra.",
+        "Restar un 10% por cada 9 nudos de viento en cara (headwind) o sumar un 10% por cada 2 nudos de viento en cola (tailwind hasta 10 kt máx).",
+        "Sumar un 10% por cada 9 nudos de viento en cara y restar un 10% con viento en cola.",
+        "Restar un 20% fijo siempre que el viento supere 5 nudos, sin distinguir si es en cara o en cola.",
+        "Las tablas de despegue prohíben aplicar correcciones por viento; solo se admiten correcciones por temperatura.",
       ],
-      correctAnswerIndex: 2,
-      explanation: "Las notas técnicas de la Figura 5-1a del POH del C172 establecen que en operaciones sobre pista de hierba seca y nivelada, la carrera de despegue en tierra (Ground Roll) calculada para pavimento firme debe incrementarse en un 15% (+15%) debido a la resistencia por rozamiento que ofrece la cubierta vegetal sobre el tren de aterrizaje.",
+      correctAnswerIndex: 0,
+      explanation: "Las notas técnicas oficiales de la Figura 5-1a del POH establecen textualmente: 'Disminuir las distancias calculadas en un 10% por cada 9 nudos de viento de cara (headwind). Para operaciones con viento en cola (tailwind) de hasta 10 nudos, incrementar las distancias en un 10% por cada 2 nudos'. Esta corrección es fundamental para asegurar que la aeronave despegue con margen seguro dentro de la TORA/TODA disponible.",
     },
     {
       id: "c172-6-13",
