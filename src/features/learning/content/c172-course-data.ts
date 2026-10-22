@@ -4998,12 +4998,24 @@ export const C172_LESSON_4 = {
 
           <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12.5px] leading-snug shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops:</strong>
-            <ul class="list-disc list-inside space-y-0.5 text-slate-800 dark:text-slate-200">
-              <li><strong>Velocidades de despegue (5.6.1):</strong> 60 kt para TO Flap 10º; 65 kts para flap 0º. Aplicando la correspondiente corrección de rachas si así se requiere.</li>
-              <li><strong>Rotación y ascenso inicial (6.10):</strong> Rotaremos a 60 kts, haciendo un ascenso inicial a 65 kts (Vx) hasta los 500 ft.</li>
-              <li><strong>After Take-Off a 500 ft (6.10):</strong> Seleccionar flap 0, BAJAR MORRO (para Vy 75Kt) y reducir potencia (92% aprox), fuel pump off, landing light off.</li>
-              <li><strong>Velocidades de ascenso (5.6.2):</strong> Vx 60 kt IAS para 10º flap; Vx 65 kt IAS para flap 0º; Vy 75 kt IAS flap 0º. Seguimos ascendiendo a 75 kts (Vy) a altitud de circuito o según la salida.</li>
-            </ul>
+            <div class="space-y-1 text-slate-800 dark:text-slate-200">
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Velocidades de despegue:</strong> 60 kt para TO Flap 10º; 65 kts para flap 0º. Aplicando la correspondiente corrección de rachas si así se requiere.</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Rotación y ascenso inicial:</strong> Rotaremos a 60 kts, haciendo un ascenso inicial a 65 kts (Vx) hasta los 500 ft.</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>After Take-Off a 500 ft:</strong> Seleccionar flap 0, BAJAR MORRO (para Vy 75Kt) y reducir potencia (92% aprox), fuel pump off, landing light off.</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Velocidades de ascenso:</strong> Vx 60 kt IAS para 10º flap; Vx 65 kt IAS para flap 0º; Vy 75 kt IAS flap 0º. Seguimos ascendiendo a 75 kts (Vy) a altitud de circuito o según la salida.</div>
+              </div>
+            </div>
           </div>
 
           <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs leading-tight shadow-2xs shrink-0">
