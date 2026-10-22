@@ -5782,10 +5782,26 @@ export const C172_LESSON_5 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PERFIL DE TOMA DE EMERGENCIA</span>
           </div>
 
-          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
-            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-              Aterrizaje en pista remanente o recto al frente (&plusmn;30&deg; del eje de pista). Mantener 60-65 KIAS y realizar corte total antes del impacto.
-            </p>
+          <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12.5px] leading-snug shadow-2xs space-y-1 shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops:</strong>
+            <div class="space-y-1 text-slate-800 dark:text-slate-200">
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Antes de Vr:</strong> Abortar con la voz «STOP, STOP, STOP», gases al ralentí, mantener eje de pista y frenar.</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Con pista remanente:</strong> Gases al ralentí, morro abajo (mín. 60 kt), flaps según requerido, tomar y notificar.</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Sin pista remanente &lt; 1.000 ft AGL:</strong> Morro abajo (65 kt flap 0° / 60 kt con flaps), campo al frente (&plusmn;30&deg; a &plusmn;45&deg;), asegurar corte y abrir puertas.</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Sin pista remanente &gt; 1.000 ft AGL:</strong> Morro abajo (65 kt), a discreción del PIC posible viraje de 180° contra el viento para volver a pista.</div>
+              </div>
+            </div>
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
