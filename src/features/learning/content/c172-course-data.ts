@@ -4377,88 +4377,118 @@ export const C172_LESSON_4 = {
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Comprobaciones Eléctricas, FADEC Backup y Calentamiento</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): Procedimientos Normales (Altura Fija 590px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): Procedimientos Normales y SOPs (Altura Fija 600px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[600px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">WARM UP</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">STARTING ENGINE, WARM UP & SOPs RODAJE</span>
         </div>
         <div class="space-y-2 py-1">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(11) FADEC Backup Battery Test</strong>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(11)</span>
-              <span class="text-slate-800 dark:text-slate-200">FADEC Backup Battery test a) Alternator - OFF, engine must operate normally b) Battery - OFF, for min. 10 seconds; engine must operate normally, the red FADEC lamps must not be illuminated c) Battery - ON d) Alternator - ON</span>
-            </div>
+            <!-- Sub-columna Izquierda: FADEC Backup Test + SOPs Rodaje -->
+            <div class="flex flex-col gap-2 justify-between">
+              <!-- FADEC Backup Battery Test reducido -->
+              <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 shrink-0">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(11) FADEC Backup Battery Test</strong>
+                <div lang="en" class="text-xs sm:text-[12px] leading-snug text-slate-800 dark:text-slate-200 space-y-0.5">
+                  <div><strong>a)</strong> Alternator - OFF (engine operates normally)</div>
+                  <div><strong>b)</strong> Battery - OFF for min. 10 s (red FADEC lamps OFF)</div>
+                  <div><strong>c)</strong> Battery - ON | <strong>d)</strong> Alternator - ON</div>
+                </div>
+              </div>
+
+              <!-- SOPs Sección 6.7 Rodaje -->
+              <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[11.5px] leading-snug shadow-2xs space-y-1 flex-1">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops (Secc. 6.7 - Rodaje):</strong>
+                <div class="space-y-1 text-slate-800 dark:text-slate-200">
+                  <div class="flex items-start gap-1.5">
+                    <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                    <div><strong>Antes de rodar:</strong> Área libre con callout <em>«LEFT / RIGHT SIDE CLEAR»</em>, luz Taxi/Landing ON y verificar ruta ATC sobre ficha.</div>
+                  </div>
+                  <div class="flex items-start gap-1.5">
+                    <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                    <div><strong>Frenos:</strong> Primera acción al iniciar rodaje; comprobar aplicando presión suave dos veces.</div>
+                  </div>
+                  <div class="flex items-start gap-1.5">
+                    <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                    <div><strong>Régimen:</strong> Motor &lt; 10% de carga. No rodar frenando (frenar con puntas y volver a apoyar talones en el suelo).</div>
+                  </div>
+                  <div class="flex items-start gap-1.5">
+                    <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                    <div><strong>Mandos y cabina:</strong> Columna contrarrestando el viento y mano en gases (IDLE listo). Listas y radio solo con avión parado.</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">STARTING ENGINE</strong>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(12)</span>
-              <span class="text-slate-800 dark:text-slate-200">Avionic-Power Switch - ON</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(13)</span>
-              <span class="text-slate-800 dark:text-slate-200">Radios - ON</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(14)</span>
-              <span class="text-slate-800 dark:text-slate-200">Ammeter - Check positive charge, alternator warning light must be OFF</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(15)</span>
-              <span class="text-slate-800 dark:text-slate-200">Voltmeter - Check in green range</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(16)</span>
-              <span class="text-slate-800 dark:text-slate-200">Electric Fuel Pump - OFF</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(17)</span>
-              <span class="text-slate-800 dark:text-slate-200">Flaps - RETRACT</span>
-            </div>
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 pt-1.5 uppercase tracking-wide">WARM UP</strong>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
-              <span class="text-slate-800 dark:text-slate-200">Let the engine warm up about 2 minutes at 890 RPM.</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
-              <span class="text-slate-800 dark:text-slate-200">Increase RPM to 1400 until oil temperature 50°C (122°F), coolant temperature 60°C (140°F).</span>
-            </div>
+            <!-- Sub-columna Derecha: STARTING ENGINE & WARM UP POH -->
+            <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">STARTING ENGINE (POH)</strong>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(12)</span>
+                <span class="text-slate-800 dark:text-slate-200">Avionic-Power Switch - ON</span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(13)</span>
+                <span class="text-slate-800 dark:text-slate-200">Radios - ON</span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(14)</span>
+                <span class="text-slate-800 dark:text-slate-200">Ammeter - Check positive charge, alternator warning light OFF</span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(15)</span>
+                <span class="text-slate-800 dark:text-slate-200">Voltmeter - Check in green range</span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(16)</span>
+                <span class="text-slate-800 dark:text-slate-200">Electric Fuel Pump - OFF</span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(17)</span>
+                <span class="text-slate-800 dark:text-slate-200">Flaps - RETRACT</span>
+              </div>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 pt-1 uppercase tracking-wide">WARM UP (POH)</strong>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(1)</span>
+                <span class="text-slate-800 dark:text-slate-200">Let engine warm up about 2 min at 890 RPM.</span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(2)</span>
+                <span class="text-slate-800 dark:text-slate-200">Increase RPM to 1400 until oil temp 50°C (122°F), coolant temp 60°C (140°F).</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Referencia POH (Altura Fija 590px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
-        </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-5 text-center my-1.5">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2">
-            📷
+    <!-- Columna Derecha (lg:col-span-6): Referencia POH e Imagen (Altura Fija 600px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BATERÍA FADEC BACKUP Y CALENTAMIENTO</span>
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Comprobación de calentamiento: parámetros CED 125 (aceite 50°C, refrigerante 60°C) e interruptores de Batería y Alternador
-          </p>
-        </div>
 
-        <div class="space-y-1.5 shrink-0">
-          <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs">
-            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px]">
-              <span>⚠️</span>
-              <span>WARNING:</span>
-            </strong>
-            <div>Debe asegurarse de que tanto Battery como Alternator estén conectados. Si está instalado el interruptor de alternador con guarda, la guarda del interruptor debe estar cerrada.</div>
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/60 flex items-center justify-center p-1">
+            <img
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.6-fadec-backup.jpg?v=1"
+              alt="Esquema de Batería FADEC Backup e Interruptores Eléctricos"
+              class="w-full h-full object-contain rounded-lg"
+              onerror="if(this.src!=='/images/c172/3.6-fadec-backup.jpg')this.src='/images/c172/3.6-fadec-backup.jpg'"
+            />
+          </div>
+
+          <div class="space-y-1.5 shrink-0">
+            <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[12px] leading-relaxed shadow-2xs">
+              <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+                <span>⚠️</span>
+                <span>WARNING (POH):</span>
+              </strong>
+              <div>Debe asegurarse de que tanto Battery como Alternator estén conectados. Si está instalado el interruptor de alternador con guarda, la guarda del interruptor debe estar cerrada.</div>
+            </div>
           </div>
         </div>
       </div>
