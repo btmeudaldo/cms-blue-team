@@ -4400,7 +4400,7 @@ export const C172_LESSON_4 = {
 
               <!-- SOPs Sección 6.7 Rodaje -->
               <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[11.5px] leading-snug shadow-2xs space-y-1 flex-1">
-                <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops (Secc. 6.7 - Rodaje):</strong>
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops:</strong>
                 <div class="space-y-1 text-slate-800 dark:text-slate-200">
                   <div class="flex items-start gap-1.5">
                     <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
