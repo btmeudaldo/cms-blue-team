@@ -5906,25 +5906,9 @@ export const C172_LESSON_5 = {
             </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Columna Derecha (lg:col-span-6): Protocolo de Reencendido en Vuelo y SOPs (Altura Fija 600px) -->
-    <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PROTOCOLO DE REENCENDIDO EN VUELO</span>
-          </div>
-
-          <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12px] leading-snug shadow-2xs space-y-1 shrink-0">
+          <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12px] leading-snug shadow-2xs space-y-1 shrink-0 mt-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops:</strong>
             <div class="space-y-1 text-slate-800 dark:text-slate-200">
-              <div class="flex items-start gap-2">
-                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                <div><strong>Prioridades:</strong> Seguir un claro orden «FLY, NAVIGATE, COMMUNICATE».</div>
-              </div>
               <div class="flex items-start gap-2">
                 <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
                 <div><strong>FLY:</strong> Máximo planeo (65 KIAS flaps UP – 60 KIAS flaps 10°) sin perder altitud, bajando morro y trimando.</div>
@@ -5946,6 +5930,17 @@ export const C172_LESSON_5 = {
                 <div><strong>Evacuación:</strong> Evacuar la aeronave y una vez fuera de peligro avisar a un responsable de Blue Team.</div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6): Protocolo de Reencendido en Vuelo (Altura Fija 600px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PROTOCOLO DE REENCENDIDO EN VUELO</span>
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
