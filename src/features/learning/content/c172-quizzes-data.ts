@@ -963,15 +963,15 @@ export const C172_LESSON_6_QUIZ: Quiz = {
     },
     {
       id: "c172-6-7",
-      question: "¿Qué régimen de potencia constante ha establecido Blue Team Flight School como perfil de referencia estándar para la navegación de crucero en sus C172 diésel y cuál es su consumo horario de combustible?",
+      question: "En la cumplimentación del formulario de despacho F.OPS.02, ¿cómo debe calcular el piloto el combustible de ruta (Trip Fuel) para la navegación planificada?",
       options: [
-        "75% de Load con un consumo de 25.5 L/h (6.7 Gal/h).",
-        "50% de Load con un consumo de 15.3 L/h (4.0 Gal/h o 12.85 kg/h), proporcionando entre 99 y 103 KTAS.",
-        "100% de Load durante todo el crucero con un consumo de 38.0 L/h.",
-        "60% de Load con mezcla empobrecida manualmente por el piloto.",
+        "Multiplicando el Tiempo Estimado en Ruta (ETE = Distancia / Ground Speed) por el consumo horario de crucero de 15.3 L/h (12.85 kg/h).",
+        "Añadiendo siempre una cantidad fija de 50 litros con independencia de la distancia a volar.",
+        "Dividiendo la distancia total entre la velocidad indicada (IAS) y sumando 30 litros.",
+        "Tomando directamente la indicación de nivel de los aforadores de cabina antes del arranque.",
       ],
-      correctAnswerIndex: 1,
-      explanation: "Para optimizar la vida útil del motor, la estabilidad térmica y la predictibilidad operativa, Blue Team Flight School establece un régimen estándar de crucero del 50% de carga de motor (Load). A este régimen, el motor Continental CD-135 consume exactamente 15.3 L/h (4.0 US Gal/h o 12.85 kg/h), alcanzando entre 99 y 103 nudos de velocidad verdadera (KTAS) y garantizando más de 8 horas de autonomía máxima.",
+      correctAnswerIndex: 0,
+      explanation: "Según la norma operativa de la escuela (dato clave del F.OPS.02 en diapositiva 6.7), para el cálculo del combustible de ruta (Trip Fuel) se multiplica el tiempo estimado en vuelo (ETE en horas) por el régimen de crucero de escuela al 50%: 15.3 L/h (4.0 US Gal/h o 12.85 kg/h).",
     },
     {
       id: "c172-6-8",
