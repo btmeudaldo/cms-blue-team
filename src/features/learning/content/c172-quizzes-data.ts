@@ -1035,15 +1035,15 @@ export const C172_LESSON_6_QUIZ: Quiz = {
     },
     {
       id: "c172-6-13",
-      question: "Al planificar el aterrizaje en una pista de hierba seca nivelada utilizando las tablas de performance del POH (Figura 5-10), ¿qué factor de incremento exige el fabricante sobre la carrera en tierra (Ground Roll)?",
+      question: "Según las notas de certificación de la tabla de aterrizaje en campo corto (Figura 5-10) del Cessna 172, ¿qué configuración de flaps y técnica de pilotaje asume el fabricante para alcanzar las distancias mínimas publicadas?",
       options: [
-        "Añadir un 45% (+45%) a la distancia de carrera en tierra debido a la menor adherencia y menor eficacia del frenado sobre hierba.",
-        "Añadir solo un 15%, idéntico al factor de despegue.",
-        "Reducir la distancia en un 20% ya que la hierba frena el avión más rápido.",
-        "Añadir un 5% a la distancia total sobre obstáculo de 50 pies sin tocar la carrera en tierra.",
+        "Wing Flaps a 30°, velocidad de aproximación a 50 ft recomendada (aprox. 60 KIAS) y aplicación inmediata de frenado máximo eficaz tras la toma.",
+        "Wing Flaps a 10°, frenada suave sin tocar la rueda de morro y aproximación a 75 KIAS.",
+        "Flaps totalmente recogidos (0°) y aproximación con motor al ralentí a 80 KIAS.",
+        "Aproximación en ángulo plano de 1 grado sin uso de frenos en pista.",
       ],
       correctAnswerIndex: 0,
-      explanation: "En la Figura 5-10 de aterrizaje del POH, la nota sobre pista de hierba seca (dry grass) estipula un incremento del 45% (+45%) sobre la carrera de aterrizaje en tierra (Ground Roll). La hierba reduce significativamente el coeficiente de fricción de los neumáticos con el suelo, disminuyendo drásticamente la capacidad de frenado en comparación con una superficie de asfalto u hormigón seco.",
+      explanation: "La tabla de aterrizaje en campo corto (Figura 5-10 del POH) asume como base de ensayo flaps extendidos a 30° (full flaps), palanca de potencia en IDLE antes de los 50 pies, velocidad de cruce del umbral recomendada (aprox. 60 KIAS para MTOM) y la aplicación inmediata de frenado máximo efectivo tras el contacto de la rueda de morro sin derrapar los neumáticos.",
     },
     {
       id: "c172-6-14",
