@@ -187,7 +187,7 @@ export function QuizModule({
           </div>
 
           <div
-            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold ${
+            className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-base font-bold ${
               passed
                 ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60"
                 : "bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800/60"
@@ -204,13 +204,13 @@ export function QuizModule({
               : "No has alcanzado la nota mínima"}
           </h2>
 
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
+          <p className="text-base text-slate-600 dark:text-slate-400 max-w-lg mx-auto leading-relaxed">
             {`Has obtenido un ${attemptResult.score_percentage}% de aciertos.`}
             {` La nota mínima requerida es del ${attemptResult.min_pass_score_percentage ?? 75}%.`}
           </p>
 
           <div className="pt-1">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
+            <span className="inline-flex items-center gap-2 text-base font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-4 py-1.5 rounded-full border border-emerald-200 dark:border-emerald-800">
               ✓ Intento guardado y registrado en tu expediente
             </span>
           </div>
@@ -219,7 +219,7 @@ export function QuizModule({
         {/* Executive Score Card */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
           <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 p-4 text-center">
-            <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <span className="text-sm sm:text-base font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Calificación Obtenida
             </span>
             <div
@@ -234,7 +234,7 @@ export function QuizModule({
           </div>
 
           <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 p-4 text-center">
-            <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <span className="text-sm sm:text-base font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Aciertos Totales
             </span>
             <div className="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">
@@ -243,7 +243,7 @@ export function QuizModule({
           </div>
 
           <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 p-4 text-center">
-            <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <span className="text-sm sm:text-base font-extrabold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Tiempo Empleado
             </span>
             <div className="text-3xl font-extrabold text-[#1a80ff] mt-1">
@@ -257,7 +257,7 @@ export function QuizModule({
           <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-4">
             <div className="flex items-center justify-between pb-1">
               <div>
-                <h3 className="text-sm sm:text-base font-extrabold text-[#0B2E59] dark:text-sky-300 flex items-center gap-2">
+                <h3 className="text-lg sm:text-xl font-extrabold text-[#0B2E59] dark:text-sky-300 flex items-center gap-2">
                   <span>📖</span>
                   <span>
                     {passed
@@ -265,7 +265,7 @@ export function QuizModule({
                       : "Revisión del Examen y Justificación POH"}
                   </span>
                 </h3>
-                <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p className="text-base text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
                   {passed
                     ? "Consulta la justificación técnica de cada pregunta para consolidar tus conocimientos de vuelo."
                     : "Revisa las preguntas contestadas y consulta los fundamentos oficiales del POH antes de reintentar."}
@@ -273,7 +273,7 @@ export function QuizModule({
               </div>
             </div>
 
-            <div className="space-y-3.5 max-h-[640px] lg:max-h-[720px] overflow-y-auto pr-1 sm:pr-2">
+            <div className="space-y-4 max-h-[640px] lg:max-h-[720px] overflow-y-auto pr-1 sm:pr-2">
               {enrichedQuiz.questions.map((q, idx) => {
                 const userAnswerIndex = userAnswers[q.id];
                 const hasUserAnswer =
@@ -300,23 +300,23 @@ export function QuizModule({
                 return (
                   <div
                     key={q.id}
-                    className={`rounded-2xl border p-4 sm:p-5 space-y-3 text-left transition-colors ${cardBorder}`}
+                    className={`rounded-2xl border p-4 sm:p-5 space-y-3.5 text-left transition-colors ${cardBorder}`}
                   >
                     <div className="flex items-start justify-between gap-3">
-                      <div className="flex items-start gap-2.5 min-w-0">
+                      <div className="flex items-start gap-3 min-w-0">
                         <span
-                          className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white text-xs font-bold mt-0.5 shadow-xs ${badgeBg}`}
+                          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-white text-sm font-bold mt-0.5 shadow-xs ${badgeBg}`}
                         >
                           {idx + 1}
                         </span>
-                        <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">
+                        <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-snug">
                           {q.question}
                         </span>
                       </div>
 
                       {isCorrect !== null && (
                         <span
-                          className={`inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full shrink-0 border ${
+                          className={`inline-flex items-center gap-1.5 text-sm sm:text-base font-bold px-3 py-1 rounded-full shrink-0 border ${
                             isCorrect
                               ? "text-emerald-700 dark:text-emerald-300 bg-emerald-100/80 dark:bg-emerald-950/50 border-emerald-300/70 dark:border-emerald-800/60"
                               : "text-rose-700 dark:text-rose-300 bg-rose-100/80 dark:bg-rose-950/50 border-rose-300/70 dark:border-rose-800/60"
@@ -330,11 +330,11 @@ export function QuizModule({
                       )}
                     </div>
 
-                    <div className="pl-8 sm:pl-8.5 space-y-2">
+                    <div className="pl-9 sm:pl-10 space-y-2.5">
                       {isCorrect === false &&
                         hasUserAnswer &&
                         q.options[userAnswerIndex] !== undefined && (
-                          <div className="inline-flex items-start gap-1.5 text-xs text-rose-700 dark:text-rose-300 bg-rose-50/90 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-200 dark:border-rose-900/50 w-full">
+                          <div className="inline-flex items-start gap-2 text-base text-rose-700 dark:text-rose-300 bg-rose-50/90 dark:bg-rose-950/40 p-3 rounded-xl border border-rose-200 dark:border-rose-900/50 w-full leading-snug">
                             <span className="shrink-0 font-bold">✗ Tu respuesta:</span>
                             <span className="font-medium text-slate-800 dark:text-slate-200">
                               {q.options[userAnswerIndex]}
@@ -342,7 +342,7 @@ export function QuizModule({
                           </div>
                         )}
 
-                      <div className="inline-flex items-start gap-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-xl border border-emerald-200 dark:border-emerald-800/60 w-full">
+                      <div className="inline-flex items-start gap-2 text-base font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 p-3 rounded-xl border border-emerald-200 dark:border-emerald-800/60 w-full leading-snug">
                         <span className="shrink-0">✓ Respuesta Correcta:</span>
                         <span className="font-semibold text-slate-800 dark:text-slate-200">
                           {q.options[q.correctAnswerIndex]}
@@ -350,12 +350,12 @@ export function QuizModule({
                       </div>
 
                       {q.explanation && (
-                        <div className="rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 p-3 text-[11px] sm:text-xs leading-relaxed text-sky-950 dark:text-sky-200">
-                          <strong className="text-sky-700 dark:text-sky-400 flex items-center gap-1 mb-1 uppercase tracking-wide text-[10px]">
+                        <div className="rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 p-3.5 text-base leading-relaxed text-sky-950 dark:text-sky-200">
+                          <strong className="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1.5 uppercase tracking-wide text-sm sm:text-base font-bold">
                             <span>💡</span>
                             <span>Fundamento Oficial POH:</span>
                           </strong>
-                          <div className="text-slate-800 dark:text-slate-200">
+                          <div className="text-slate-800 dark:text-slate-200 text-base leading-relaxed">
                             {q.explanation}
                           </div>
                         </div>
@@ -369,7 +369,7 @@ export function QuizModule({
         )}
 
         {state.error && (
-          <p role="alert" className="text-sm text-rose-700 dark:text-rose-300">
+          <p role="alert" className="text-base text-rose-700 dark:text-rose-300">
             {state.error}
           </p>
         )}
@@ -382,7 +382,7 @@ export function QuizModule({
                   nextLessonUrl ||
                   (quiz.course_id ? `/courses/${quiz.course_id}` : "/quizzes")
                 }
-                className="w-full sm:w-auto rounded-xl bg-emerald-600 hover:bg-emerald-700 px-6 py-2.5 text-xs font-bold text-white transition-all text-center shadow-xs inline-flex items-center justify-center gap-1.5"
+                className="w-full sm:w-auto rounded-xl bg-emerald-600 hover:bg-emerald-700 px-6 py-3 text-base font-bold text-white transition-all text-center shadow-xs inline-flex items-center justify-center gap-2"
               >
                 <span>
                   {nextLessonTitle
@@ -396,7 +396,7 @@ export function QuizModule({
 
               <Link
                 href="/quizzes"
-                className="w-full sm:w-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 px-4 py-2.5 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-all text-center shadow-xs inline-flex items-center justify-center gap-1.5"
+                className="w-full sm:w-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 px-5 py-3 text-base font-semibold text-slate-700 dark:text-slate-300 transition-all text-center shadow-xs inline-flex items-center justify-center gap-2"
               >
                 <span>Volver a Evaluaciones</span>
               </Link>
@@ -407,7 +407,7 @@ export function QuizModule({
                 type="button"
                 onClick={handleStart}
                 disabled={isStarting}
-                className="w-full sm:w-auto rounded-xl bg-rose-600 hover:bg-rose-700 px-5 py-2.5 text-xs font-bold text-white transition-all cursor-pointer shadow-xs inline-flex items-center justify-center gap-1.5"
+                className="w-full sm:w-auto rounded-xl bg-rose-600 hover:bg-rose-700 px-6 py-3 text-base font-bold text-white transition-all cursor-pointer shadow-xs inline-flex items-center justify-center gap-2"
               >
                 <span>🔄</span>
                 <span>{isStarting ? "Iniciando..." : "Reintentar Examen"}</span>
@@ -417,7 +417,7 @@ export function QuizModule({
                 href={
                   quiz.course_id ? `/courses/${quiz.course_id}` : "/quizzes"
                 }
-                className="w-full sm:w-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 px-4 py-2.5 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-all text-center shadow-xs inline-flex items-center justify-center gap-1.5"
+                className="w-full sm:w-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 px-5 py-3 text-base font-semibold text-slate-700 dark:text-slate-300 transition-all text-center shadow-xs inline-flex items-center justify-center gap-2"
               >
                 <span>Volver al Panel de Lecciones</span>
               </Link>
@@ -430,15 +430,15 @@ export function QuizModule({
 
   if (!startedAttempt) {
     return (
-      <section className="mx-auto max-w-3xl space-y-4 rounded-3xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
-        <h2 className="text-xl font-bold">{quiz.title}</h2>
-        <p>{quiz.description}</p>
-        <p className="text-sm">
+      <section className="mx-auto max-w-3xl space-y-4 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900 text-base">
+        <h2 className="text-xl sm:text-2xl font-bold">{quiz.title}</h2>
+        <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">{quiz.description}</p>
+        <p className="text-base text-slate-600 dark:text-slate-400">
           El examen comienza al pulsar iniciar. La nota se mostrará cuando el
           servidor confirme el resultado.
         </p>
         {state.error && (
-          <p role="alert" className="text-sm text-rose-700 dark:text-rose-300">
+          <p role="alert" className="text-base text-rose-700 dark:text-rose-300">
             {state.error}
           </p>
         )}
@@ -446,7 +446,7 @@ export function QuizModule({
           type="button"
           disabled={isStarting}
           onClick={handleStart}
-          className="rounded-xl bg-blue-700 px-5 py-3 font-bold text-white disabled:opacity-50"
+          className="rounded-xl bg-blue-700 hover:bg-blue-800 px-6 py-3.5 text-base font-bold text-white disabled:opacity-50 transition-colors"
         >
           {isStarting ? "Iniciando..." : "Iniciar examen"}
         </button>
@@ -457,7 +457,7 @@ export function QuizModule({
   // --- QUESTION TAKING / REVIEW VIEW ---
   if (!currentQuestion) {
     return (
-      <div className="p-8 text-center text-slate-500">
+      <div className="p-8 text-center text-slate-500 text-base">
         No hay preguntas cargadas en este quiz.
       </div>
     );
@@ -466,22 +466,22 @@ export function QuizModule({
   return (
     <div
       className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8 shadow-sm space-y-6 ${
-        isEmbedded ? "max-w-full" : "max-w-3xl mx-auto"
+        isEmbedded ? "max-w-full" : "max-w-4xl mx-auto"
       }`}
     >
       {/* Quiz Header Bar */}
       <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
         <div>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 text-[10px] font-extrabold text-[#1a80ff] uppercase tracking-wider">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 px-3 py-1 text-sm font-extrabold text-[#1a80ff] uppercase tracking-wider">
             Examen Teórico Aeronáutico
           </span>
-          <h2 className="text-lg font-extrabold text-slate-900 dark:text-white mt-1">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mt-1.5">
             {startedAttempt?.quiz.title ?? quiz.title}
           </h2>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 text-xs font-mono font-bold text-slate-700 dark:text-slate-300">
+          <div className="flex items-center gap-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 px-3.5 py-2 text-base font-mono font-bold text-slate-700 dark:text-slate-300">
             <span>⏱️</span>
             <span>
               {Math.floor(elapsedSeconds / 60)
@@ -494,16 +494,16 @@ export function QuizModule({
       </div>
 
       {/* Progress Dots */}
-      <div className="flex items-center justify-between gap-2 text-xs">
+      <div className="flex items-center justify-between gap-2 text-base">
         <span className="font-extrabold text-slate-700 dark:text-slate-300">
           Pregunta {currentQuestionIndex + 1} de {questions.length}
         </span>
-        <span className="text-slate-400">
+        <span className="text-slate-500 dark:text-slate-400">
           Respondidas: {answeredCount} / {questions.length}
         </span>
       </div>
 
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+      <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
         <div
           className="h-full bg-[#1a80ff] transition-all duration-300 rounded-full"
           style={{
@@ -514,7 +514,7 @@ export function QuizModule({
 
       {/* Question Card */}
       <div className="space-y-4 pt-2">
-        <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-relaxed">
+        <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed">
           {currentQuestion.question}
         </h3>
 
@@ -530,34 +530,34 @@ export function QuizModule({
                 onClick={() => handleSelectOption(optIdx)}
                 disabled={state.locked}
                 aria-pressed={isSelected}
-                className={`w-full text-left flex items-center justify-between rounded-2xl border p-4 text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+                className={`w-full text-left flex items-center justify-between rounded-2xl border p-4 sm:p-4.5 text-base sm:text-lg font-semibold transition-all cursor-pointer ${
                   isSelected
                     ? "border-[#1a80ff] bg-blue-50/80 dark:bg-blue-950/40 text-[#1a80ff] shadow-sm font-bold"
                     : "border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900"
                 }`}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3.5">
                   <div
-                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-xl font-bold text-xs ${
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl font-bold text-base ${
                       isSelected
                         ? "bg-[#1a80ff] text-white"
-                        : "bg-slate-100 dark:bg-slate-800 text-slate-500"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
                     }`}
                   >
                     {String.fromCharCode(65 + optIdx)}
                   </div>
-                  <span>{option}</span>
+                  <span className="leading-snug">{option}</span>
                 </div>
 
                 <div
-                  className={`h-4 w-4 rounded-full border flex items-center justify-center ${
+                  className={`h-5 w-5 rounded-full border flex items-center justify-center shrink-0 ${
                     isSelected
                       ? "border-[#1a80ff] bg-[#1a80ff]"
                       : "border-slate-300 dark:border-slate-700"
                   }`}
                 >
                   {isSelected && (
-                    <div className="h-1.5 w-1.5 rounded-full bg-white"></div>
+                    <div className="h-2 w-2 rounded-full bg-white"></div>
                   )}
                 </div>
               </button>
@@ -569,7 +569,7 @@ export function QuizModule({
       {state.error && (
         <div
           role="alert"
-          className="rounded-xl border border-rose-300 p-4 text-sm text-rose-700 dark:text-rose-300"
+          className="rounded-xl border border-rose-300 p-4 text-base text-rose-700 dark:text-rose-300"
         >
           {state.error} Las respuestas quedan bloqueadas para reenviar este
           mismo intento.
@@ -581,7 +581,7 @@ export function QuizModule({
           type="button"
           disabled={currentQuestionIndex === 0}
           onClick={() => setCurrentQuestionIndex((prev) => prev - 1)}
-          className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-xs font-bold text-slate-600 dark:text-slate-300 disabled:opacity-30 cursor-pointer"
+          className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-5 py-2.5 text-base font-bold text-slate-600 dark:text-slate-300 disabled:opacity-30 cursor-pointer"
         >
           &larr; Anterior
         </button>
@@ -590,7 +590,7 @@ export function QuizModule({
           <button
             type="button"
             onClick={() => setCurrentQuestionIndex((prev) => prev + 1)}
-            className="rounded-xl bg-slate-900 dark:bg-slate-800 text-white px-5 py-2 text-xs font-bold hover:bg-[#1a80ff] transition-colors cursor-pointer"
+            className="rounded-xl bg-slate-900 dark:bg-slate-800 text-white px-6 py-2.5 text-base font-bold hover:bg-[#1a80ff] transition-colors cursor-pointer"
           >
             Siguiente &rarr;
           </button>
@@ -599,7 +599,7 @@ export function QuizModule({
             type="button"
             disabled={state.submitting || !allAnswered}
             onClick={handleSubmitQuiz}
-            className="rounded-xl bg-[#1a80ff] px-6 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] disabled:opacity-50 transition-all shadow-sm cursor-pointer"
+            className="rounded-xl bg-[#1a80ff] px-7 py-3 text-base font-bold text-white hover:bg-[#0066e6] disabled:opacity-50 transition-all shadow-sm cursor-pointer"
           >
             {state.submitting
               ? "Evaluando..."
