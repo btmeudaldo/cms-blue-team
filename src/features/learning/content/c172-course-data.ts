@@ -3791,24 +3791,24 @@ export const C172_LESSON_4 = {
         </div>
         <div class="space-y-1.5 py-0.5">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(5) NOSE</strong>
             <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[13px] leading-snug">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(1)</span>
               <span class="text-slate-800 dark:text-slate-200">Reservoir Tank Quick Drain Valve - DRAIN at least a cupful of fuel (using sampler cup) from valve to check for water, sediment and proper fuel grade (Diesel or JET-A1) before each flight and after each refueling. If water is observed, take further samples until clear and then gently rock wings and lower tail to the ground to move any additional contaminants to the sampling point. Take repeated samples until all contamination has been removed.</span>
             </div>
-            <div class="p-1.5 px-2 rounded-lg border-l-3 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs leading-snug my-0.5 shadow-2xs shrink-0">
-              <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide">ℹ️ NOTE:</strong> <span class="ml-1">El drenaje del depósito de reserva se encuentra en el fuselaje, en el lado del copiloto del avión.</span>
+            <div class="p-1 px-2 rounded-lg border-l-3 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs leading-snug my-0.5 shadow-2xs shrink-0">
+              <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide">ℹ️ NOTE:</strong> <span class="ml-1">El drenaje del depósito de reserva esta en el fuselaje, en el lado del copiloto.</span>
             </div>
             </div>
 
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(5) NOSE (Cont.)</strong>
             <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[13px] leading-snug">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(2)</span>
               <span class="text-slate-800 dark:text-slate-200">Before first flight of the day and after each refueling - DRAIN the Fuel Strainer Quick Drain Valve with the sampler cup to remove water and sediment from the screen. Ensure that the screen drain is properly closed again. If water is discovered, there might be even more water in the fuel system. Therefore, take further samples from fuel strainer and the tank sumps.</span>
             </div>
-            <div class="p-1.5 px-2 rounded-lg border-l-3 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs leading-snug my-0.5 shadow-2xs shrink-0">
+            <div class="p-1 px-2 rounded-lg border-l-3 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs leading-snug my-0.5 shadow-2xs shrink-0">
               <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide">ℹ️ NOTE:</strong> <span class="ml-1">El drenaje del filtro de combustible se encuentra en el lado izquierdo del cortafuegos (en el sentido de vuelo).</span>
             </div>
             </div>
