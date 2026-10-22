@@ -97,4 +97,43 @@ describe("quiz confirmed results UI", () => {
     expect(html).toContain("Reintentar Examen");
     expect(html).not.toContain("Repetir cuestionario (Repaso)");
   });
+
+  it("shows discreet correct and incorrect indicators in the review section for enriched quizzes", () => {
+    const c172Quiz = {
+      id: "quiz-c172-lesson-1",
+      course_id: "c172-tdi",
+      title: "Examen Lección 1",
+      description: "Prueba C172",
+      minPassScorePercentage: 75,
+      questions: [],
+    };
+
+    const html = renderToStaticMarkup(
+      createElement(QuizModule, {
+        quiz: c172Quiz,
+        previousAttempt: {
+          id: "a-review",
+          user_id: "u",
+          quiz_id: "quiz-c172-lesson-1",
+          score_percentage: 85,
+          correct_count: 5,
+          total_questions: 6,
+          passed: true,
+          elapsed_seconds: 120,
+          completed_at: "2026-10-22",
+          answers: {
+            "c172-1-1": 1, // correct
+            "c172-1-2": 0, // incorrect (correct is 2)
+          },
+        },
+      }),
+    );
+
+    expect(html).toContain("✓");
+    expect(html).toContain("Correcta");
+    expect(html).toContain("✗");
+    expect(html).toContain("Incorrecta");
+    expect(html).toContain("Tu respuesta:");
+    expect(html).toContain("Respuesta Correcta:");
+  });
 });

@@ -56,7 +56,7 @@ export default async function StandaloneQuizPage({
         role={profile?.role}
       />
 
-      <main className="flex-1 mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <main className="flex-1 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         {/* Breadcrumb Navigation */}
         <div className="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-400">
           <div className="flex items-center gap-2">

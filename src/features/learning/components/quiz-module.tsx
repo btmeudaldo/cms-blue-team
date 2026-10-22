@@ -153,10 +153,26 @@ export function QuizModule({
   if (attemptResult) {
     const passed = attemptResult.passed;
     const enrichedQuiz = C172_QUIZZES.find((q) => q.id === quiz.id);
+
+    // Parse user answers from current session state or persisted attempt
+    let userAnswers: Record<string, number> = {};
+    if (state.answers && Object.keys(state.answers).length > 0) {
+      userAnswers = state.answers;
+    } else if ((attemptResult as any)?.answers) {
+      const raw = (attemptResult as any).answers;
+      if (typeof raw === "string") {
+        try {
+          userAnswers = JSON.parse(raw);
+        } catch {}
+      } else if (typeof raw === "object") {
+        userAnswers = raw;
+      }
+    }
+
     return (
       <div
-        className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8 shadow-md space-y-6 ${
-          isEmbedded ? "max-w-full" : "max-w-3xl mx-auto"
+        className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8 lg:p-10 shadow-md space-y-6 ${
+          isEmbedded ? "max-w-full" : "w-full max-w-5xl lg:max-w-6xl mx-auto"
         }`}
       >
         <div className="text-center space-y-3">
@@ -236,56 +252,118 @@ export function QuizModule({
           </div>
         </div>
 
-        {/* Sección de Explicaciones Técnicas POH cuando el examen es superado */}
-        {passed && enrichedQuiz?.questions && enrichedQuiz.questions.length > 0 && (
+        {/* Sección de Explicaciones Técnicas POH */}
+        {enrichedQuiz?.questions && enrichedQuiz.questions.length > 0 && (
           <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-4">
             <div className="flex items-center justify-between pb-1">
               <div>
                 <h3 className="text-sm sm:text-base font-extrabold text-[#0B2E59] dark:text-sky-300 flex items-center gap-2">
                   <span>📖</span>
-                  <span>Fundamentos Técnicos y Justificación POH</span>
+                  <span>
+                    {passed
+                      ? "Fundamentos Técnicos y Justificación POH"
+                      : "Revisión del Examen y Justificación POH"}
+                  </span>
                 </h3>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-                  Consulta la explicación técnica oficial del POH de cada respuesta correcta para consolidar tus conocimientos de vuelo.
+                <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  {passed
+                    ? "Consulta la justificación técnica de cada pregunta para consolidar tus conocimientos de vuelo."
+                    : "Revisa las preguntas contestadas y consulta los fundamentos oficiales del POH antes de reintentar."}
                 </p>
               </div>
             </div>
 
-            <div className="space-y-3 max-h-[460px] overflow-y-auto pr-1">
-              {enrichedQuiz.questions.map((q, idx) => (
-                <div
-                  key={q.id}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-800/40 p-4 space-y-2.5 text-left"
-                >
-                  <div className="flex items-start gap-2.5">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#1a80ff] text-white text-[10px] font-bold mt-0.5">
-                      {idx + 1}
-                    </span>
-                    <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">
-                      {q.question}
-                    </span>
-                  </div>
+            <div className="space-y-3.5 max-h-[640px] lg:max-h-[720px] overflow-y-auto pr-1 sm:pr-2">
+              {enrichedQuiz.questions.map((q, idx) => {
+                const userAnswerIndex = userAnswers[q.id];
+                const hasUserAnswer =
+                  typeof userAnswerIndex === "number" &&
+                  Number.isInteger(userAnswerIndex);
+                const isCorrect = hasUserAnswer
+                  ? userAnswerIndex === q.correctAnswerIndex
+                  : null;
 
-                  <div className="pl-7 space-y-2">
-                    <div className="inline-flex items-start gap-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 p-2 rounded-xl border border-emerald-200 dark:border-emerald-800/60 w-full">
-                      <span className="shrink-0">✓ Respuesta Correcta:</span>
-                      <span className="font-semibold text-slate-800 dark:text-slate-200">
-                        {q.options[q.correctAnswerIndex]}
-                      </span>
+                const cardBorder =
+                  isCorrect === true
+                    ? "border-emerald-200/90 dark:border-emerald-900/60 bg-emerald-50/20 dark:bg-emerald-950/15"
+                    : isCorrect === false
+                    ? "border-rose-200/90 dark:border-rose-900/60 bg-rose-50/20 dark:bg-rose-950/15"
+                    : "border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-800/40";
+
+                const badgeBg =
+                  isCorrect === true
+                    ? "bg-emerald-600"
+                    : isCorrect === false
+                    ? "bg-rose-600"
+                    : "bg-[#1a80ff]";
+
+                return (
+                  <div
+                    key={q.id}
+                    className={`rounded-2xl border p-4 sm:p-5 space-y-3 text-left transition-colors ${cardBorder}`}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-start gap-2.5 min-w-0">
+                        <span
+                          className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white text-xs font-bold mt-0.5 shadow-xs ${badgeBg}`}
+                        >
+                          {idx + 1}
+                        </span>
+                        <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-slate-100 leading-snug">
+                          {q.question}
+                        </span>
+                      </div>
+
+                      {isCorrect !== null && (
+                        <span
+                          className={`inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full shrink-0 border ${
+                            isCorrect
+                              ? "text-emerald-700 dark:text-emerald-300 bg-emerald-100/80 dark:bg-emerald-950/50 border-emerald-300/70 dark:border-emerald-800/60"
+                              : "text-rose-700 dark:text-rose-300 bg-rose-100/80 dark:bg-rose-950/50 border-rose-300/70 dark:border-rose-800/60"
+                          }`}
+                        >
+                          <span className="font-extrabold">{isCorrect ? "✓" : "✗"}</span>
+                          <span className="hidden sm:inline">
+                            {isCorrect ? "Correcta" : "Incorrecta"}
+                          </span>
+                        </span>
+                      )}
                     </div>
 
-                    {q.explanation && (
-                      <div className="rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 p-2.5 text-[11px] leading-relaxed text-sky-950 dark:text-sky-200">
-                        <strong className="text-sky-700 dark:text-sky-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[10px]">
-                          <span>💡</span>
-                          <span>Fundamento Oficial POH:</span>
-                        </strong>
-                        <div>{q.explanation}</div>
+                    <div className="pl-8 sm:pl-8.5 space-y-2">
+                      {isCorrect === false &&
+                        hasUserAnswer &&
+                        q.options[userAnswerIndex] !== undefined && (
+                          <div className="inline-flex items-start gap-1.5 text-xs text-rose-700 dark:text-rose-300 bg-rose-50/90 dark:bg-rose-950/40 p-2.5 rounded-xl border border-rose-200 dark:border-rose-900/50 w-full">
+                            <span className="shrink-0 font-bold">✗ Tu respuesta:</span>
+                            <span className="font-medium text-slate-800 dark:text-slate-200">
+                              {q.options[userAnswerIndex]}
+                            </span>
+                          </div>
+                        )}
+
+                      <div className="inline-flex items-start gap-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 p-2.5 rounded-xl border border-emerald-200 dark:border-emerald-800/60 w-full">
+                        <span className="shrink-0">✓ Respuesta Correcta:</span>
+                        <span className="font-semibold text-slate-800 dark:text-slate-200">
+                          {q.options[q.correctAnswerIndex]}
+                        </span>
                       </div>
-                    )}
+
+                      {q.explanation && (
+                        <div className="rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 p-3 text-[11px] sm:text-xs leading-relaxed text-sky-950 dark:text-sky-200">
+                          <strong className="text-sky-700 dark:text-sky-400 flex items-center gap-1 mb-1 uppercase tracking-wide text-[10px]">
+                            <span>💡</span>
+                            <span>Fundamento Oficial POH:</span>
+                          </strong>
+                          <div className="text-slate-800 dark:text-slate-200">
+                            {q.explanation}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
