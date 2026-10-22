@@ -637,7 +637,7 @@ export const C172_LESSON_4_QUIZ: Quiz = {
     },
     {
       id: "c172-4-17",
-      question: "En la checklist \"After Take-Off\", ¿cuáles son las dos acciones inmediatas requeridas al alcanzar unos 300 pies de altitud y más de 65 KIAS de velocidad?",
+      question: "En la checklist \"After Take-Off\", ¿cuáles son las dos acciones inmediatas requeridas al alcanzar unos 500 pies de altitud y más de 65 KIAS de velocidad?",
       options: [
         "Retraer los flaps (Wing Flaps RETRACT) y apagar la bomba auxiliar eléctrica (Electric Fuel Pump OFF).",
         "Reducir la palanca de gases al 50% de carga y conectar de inmediato el piloto automático.",
@@ -645,7 +645,7 @@ export const C172_LESSON_4_QUIZ: Quiz = {
         "Extender flaps a 20 grados y accionar la llave de contacto en START.",
       ],
       correctAnswerIndex: 0,
-      explanation: "El apartado AFTER TAKE-OFF indica textualmente: \"(1) Altitude about 300 ft, Airspeed more than 65 KIAS: Wing Flaps - RETRACT. (2) Electric Fuel Pump - OFF\". Para el ascenso en ruta posterior (Climb), la palanca se mantiene en FULL FORWARD a 70-85 KIAS.",
+      explanation: "El apartado AFTER TAKE-OFF indica textualmente: \"(1) Altitude about 500 ft, Airspeed more than 65 KIAS: Wing Flaps - RETRACT. (2) Electric Fuel Pump - OFF\". Para el ascenso en ruta posterior (Climb), la palanca se mantiene en FULL FORWARD a 70-85 KIAS.",
     },
     {
       id: "c172-4-18",

@@ -4978,7 +4978,7 @@ export const C172_LESSON_4 = {
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">AFTER TAKE-OFF</strong>
               <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12.5px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(1)</span>
-                <span class="text-slate-800 dark:text-slate-200">Altitude about 300 ft, Airspeed more than 65 KIAS/75 mph - Wing Flaps - RETRACT</span>
+                <span class="text-slate-800 dark:text-slate-200">Altitude about 500 ft, Airspeed more than 65 KIAS/75 mph - Wing Flaps - RETRACT</span>
               </div>
               <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12.5px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(2)</span>

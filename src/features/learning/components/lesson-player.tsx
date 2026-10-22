@@ -237,7 +237,10 @@ export function LessonPlayer({
   // 1 second per page for fast review as requested
   const minSecondsPerPage = 1;
   const effectiveMinSeconds = 1;
+  const isSlideMode = totalLessonPages > 1;
+  const isAfterLastSlide = isSlideMode && currentPageIndex >= totalLessonPages;
   const isCurrentPageDone =
+    isAfterLastSlide ||
     (isAlreadyCompleted ||
       isCompletedSuccess ||
       Boolean(completedPages[effectivePageIndex])) &&
@@ -250,7 +253,6 @@ export function LessonPlayer({
     totalLessonPages > 1 ? currentPageRemainingSeconds : remainingSeconds;
 
   const completedLessonSet = new Set(completedLessonIds);
-  const isSlideMode = totalLessonPages > 1;
   const lessonLayoutClasses = getLessonLayoutClasses(isIndexOpen, isSlideMode);
 
   useEffect(() => {
@@ -590,8 +592,11 @@ export function LessonPlayer({
       setShowCompletionToast(true);
 
       // When finishing a lesson:
-      // If quiz exists and has not been passed yet, ask the student if they want to take the exam now or return to syllabus
-      if (quiz && !quizAttempt?.passed) {
+      if (isSlideMode) {
+        // En modo diapositivas, avanzar limpiamente a la pantalla final después de la última diapositiva
+        setCurrentPageIndex(totalLessonPages);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else if (quiz && !quizAttempt?.passed) {
         setShowQuizPromptModal(true);
       } else {
         // If there is no quiz (or it was already passed), return directly to the lesson selection panel
@@ -1206,7 +1211,9 @@ export function LessonPlayer({
                 {/* Center: Slide Indicator strictly centered */}
                 <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-auto">
                   <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300 whitespace-nowrap">
-                    Diapositiva {effectivePageIndex + 1} de {totalLessonPages}
+                    {isAfterLastSlide
+                      ? "Fin de la Lección · Evaluación"
+                      : `Diapositiva ${effectivePageIndex + 1} de ${totalLessonPages}`}
                   </span>
                   <div className="flex items-center gap-1">
                     {lessonPages.map((slide, idx) => {
@@ -1230,7 +1237,7 @@ export function LessonPlayer({
                             }
                           }}
                           className={`h-2.5 rounded-full transition-all ${
-                            idx === effectivePageIndex
+                            !isAfterLastSlide && idx === effectivePageIndex
                               ? isPrivate
                                 ? "w-6 bg-amber-500"
                                 : "w-6 bg-[#1a80ff]"
@@ -1250,6 +1257,21 @@ export function LessonPlayer({
                         />
                       );
                     })}
+                    {quiz && (isAlreadyCompleted || isCompletedSuccess || quizAttempt?.passed) && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setCurrentPageIndex(totalLessonPages);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className={`h-2.5 rounded-full transition-all cursor-pointer ${
+                          isAfterLastSlide
+                            ? "w-6 bg-emerald-500 shadow-xs"
+                            : "w-2.5 bg-emerald-300 dark:bg-emerald-700 hover:bg-emerald-400"
+                        }`}
+                        title="Ir a Evaluación / Examen (Fin de Lección)"
+                      />
+                    )}
                   </div>
                 </div>
 
@@ -1294,7 +1316,7 @@ export function LessonPlayer({
             )}
 
             {/* SuperAdmin Private Slide Banner */}
-            {isSuperAdmin && currentSlideVisibility === "private" && (
+            {!isAfterLastSlide && isSuperAdmin && currentSlideVisibility === "private" && (
               <div className="flex items-center justify-between gap-3 px-4 py-2.5 rounded-2xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-300/80 dark:border-amber-700/80 text-xs text-amber-900 dark:text-amber-200 font-medium shadow-2xs">
                 <div className="flex items-center gap-2">
                   <span className="text-base">🔒</span>
@@ -1317,6 +1339,128 @@ export function LessonPlayer({
             {totalLessonPages === 0 ? (
               <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center text-slate-500 dark:text-slate-400 text-sm">
                 Esta lección está en preparación y estará disponible próximamente.
+              </div>
+            ) : isAfterLastSlide ? (
+              <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm p-6 sm:p-10 flex flex-col justify-center items-center my-auto min-h-[460px] max-w-3xl mx-auto w-full text-center space-y-6 animate-in fade-in zoom-in-95 duration-200">
+                {quiz ? (
+                  quizAttempt?.passed ? (
+                    <div className="space-y-6 w-full">
+                      <div className="w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-3xl mx-auto shadow-inner">
+                        🏆
+                      </div>
+                      <div className="space-y-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 dark:bg-emerald-950 px-3.5 py-1 text-xs font-extrabold text-emerald-700 dark:text-emerald-300">
+                          Examen Aprobado ({quizAttempt.score_percentage}%)
+                        </span>
+                        <h2 className="text-2xl font-black text-slate-900 dark:text-white">
+                          {quiz.title}
+                        </h2>
+                        <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
+                          Lectura verificada y examen aprobado registrados satisfactoriamente.
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setCurrentPageIndex(totalLessonPages - 1);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                          className="w-full sm:w-auto rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 transition-all text-center cursor-pointer"
+                        >
+                          &larr; Repasar Diapositivas
+                        </button>
+                        <Link
+                          href={`/quizzes/${quiz.id}`}
+                          className="w-full sm:w-auto rounded-2xl border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/60 px-5 py-2.5 text-xs font-bold text-emerald-800 dark:text-emerald-200 hover:bg-emerald-100 transition-all text-center"
+                        >
+                          Revisar Examen
+                        </Link>
+                        <Link
+                          href={`/courses/${courseId}`}
+                          className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-6 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all text-center shadow-xs"
+                        >
+                          Volver al Panel de Lecciones &rarr;
+                        </Link>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-6 w-full">
+                      <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950 text-[#1a80ff] flex items-center justify-center text-3xl mx-auto shadow-inner">
+                        ✨
+                      </div>
+                      <div className="space-y-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 dark:bg-blue-950 px-3.5 py-1 text-xs font-extrabold text-[#1a80ff]">
+                          ✨ Lectura Verificada — Examen Activado
+                        </span>
+                        <h2 className="text-2xl font-black text-slate-900 dark:text-white">
+                          {quiz.title}
+                        </h2>
+                        <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
+                          Has completado la lectura. ¿Deseas realizar el examen teórico ahora?
+                        </p>
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setCurrentPageIndex(totalLessonPages - 1);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }}
+                          className="w-full sm:w-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-5 py-3 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center cursor-pointer"
+                        >
+                          &larr; Repasar Diapositivas
+                        </button>
+                        <Link
+                          href={`/courses/${courseId}`}
+                          className="w-full sm:w-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-5 py-3 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center"
+                        >
+                          Volver al Panel de Lecciones
+                        </Link>
+                        <Link
+                          href={`/quizzes/${quiz.id}`}
+                          className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-6 py-3 text-xs font-extrabold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all text-center"
+                        >
+                          📝 Realizar Examen Teórico Ahora &rarr;
+                        </Link>
+                      </div>
+                    </div>
+                  )
+                ) : (
+                  <div className="space-y-6 w-full">
+                    <div className="w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-3xl mx-auto shadow-inner">
+                      🎉
+                    </div>
+                    <div className="space-y-2">
+                      <h2 className="text-2xl font-black text-slate-900 dark:text-white">
+                        ¡Lección Completada!
+                      </h2>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
+                        Has completado todas las diapositivas de esta lección.
+                      </p>
+                    </div>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setCurrentPageIndex(totalLessonPages - 1);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className="w-full sm:w-auto rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 transition-all text-center cursor-pointer"
+                      >
+                        &larr; Repasar Diapositivas
+                      </button>
+                      <Link
+                        href={`/courses/${courseId}`}
+                        className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-6 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all text-center shadow-xs"
+                      >
+                        Volver al Panel de Lecciones &rarr;
+                      </Link>
+                    </div>
+                  </div>
+                )}
               </div>
             ) : (
               <>
@@ -1364,8 +1508,8 @@ export function LessonPlayer({
               </div>
             )}
 
-            {/* End of Lesson Quiz Action Banner (Shown ONLY when quiz is unlocked / ready, never while reading) */}
-            {quiz && (isAlreadyCompleted || isCompletedSuccess || quizAttempt?.passed) && (
+            {/* End of Lesson Quiz Action Banner (Shown ONLY for non-slide mode lessons at the bottom of the document) */}
+            {!isSlideMode && quiz && (isAlreadyCompleted || isCompletedSuccess || quizAttempt?.passed) && (
               <div className="mt-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-md space-y-4 animate-in fade-in duration-300">
                 {quizAttempt?.passed ? (
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -1520,7 +1664,7 @@ export function LessonPlayer({
         )}
 
         {/* Bottom Horizontal Action Dock Bar - Appears ONLY when required anticheat time has passed for current page */}
-        {isBottomBarVisible && (
+        {isBottomBarVisible && !isAfterLastSlide && (
           <section
             aria-label="Avance de lección"
             className="fixed bottom-0 left-0 right-0 z-40 h-16 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg shadow-2xl flex items-center px-4 sm:px-8 animate-in fade-in slide-in-from-bottom duration-300"
@@ -1556,6 +1700,40 @@ export function LessonPlayer({
                         <span>Siguiente Diapositiva ({currentPageIndex + 2}/{totalLessonPages})</span>
                         <span>➔</span>
                       </>
+                    )}
+                  </button>
+                ) : isSlideMode ? (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      if (!isCurrentExerciseCompleted) {
+                        setShowExercisePendingModal(true);
+                      } else if (isAlreadyCompleted || isCompletedSuccess) {
+                        setCurrentPageIndex(totalLessonPages);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      } else {
+                        handleComplete(e);
+                      }
+                    }}
+                    disabled={!canAdvance && isCurrentExerciseCompleted}
+                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${
+                      !isCurrentExerciseCompleted
+                        ? "bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20 hover:scale-105 active:scale-95"
+                        : canAdvance
+                          ? "bg-[#1a80ff] hover:bg-[#0066e6] text-white shadow-blue-500/30 hover:scale-105 active:scale-95"
+                          : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
+                    }`}
+                  >
+                    {!isCurrentExerciseCompleted ? (
+                      <span>🔒 Ejercicios pendientes (pulsa para info)</span>
+                    ) : isCompleting ? (
+                      "Verificando en servidor..."
+                    ) : isCompletedSuccess || isAlreadyCompleted ? (
+                      "Finalizar y Ver Examen ➔"
+                    ) : quiz && !quizAttempt?.passed ? (
+                      "Completar y Ver Examen ➔"
+                    ) : (
+                      "Completar y Salir ➔"
                     )}
                   </button>
                 ) : (
