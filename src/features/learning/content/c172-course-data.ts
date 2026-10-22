@@ -5100,12 +5100,12 @@ export const C172_LESSON_4 = {
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Potencia, Compensación y Gestión de Combustible</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): Procedimientos Normales (Altura Fija 590px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): Procedimientos Normales (Altura Fija 600px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[600px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CRUISE</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CRUISE (AFM / POH)</span>
         </div>
         <div class="space-y-1.5 py-1">
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
@@ -5124,7 +5124,7 @@ export const C172_LESSON_4 = {
             </div>
             <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12.5px] leading-snug">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(4)</span>
-              <span class="text-slate-800 dark:text-slate-200">Fuel Quantity and Temperature (Display and LOW LEVEL caution lights) - MONITOR. Whenever possible, the airplane should be flown with the fuel selector in the BOTH position to empty and heat both fuel tanks evenly. However, operation in the LEFT or RIGHT position may be desirable to correct a fuel quantity imbalance or during periods of intentional uncoordinated flight maneuvers. During prolonged operation with the fuel selector in either the LEFT or RIGHT position the fuel balance and temperatures should be closely monitored.</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel Quantity and Temperature (Display and LOW LEVEL caution lights) - MONITOR. Whenever possible, fly with the fuel selector in BOTH position to empty and heat both fuel tanks evenly. LEFT or RIGHT may be used to correct a fuel quantity imbalance.</span>
             </div>
             <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12.5px] leading-snug">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">(5)</span>
@@ -5132,11 +5132,11 @@ export const C172_LESSON_4 = {
             </div>
           </div>
 
-          <!-- CAUTION con los primeros 2 puntos en la izquierda -->
-          <div lang="es" class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[12.5px] leading-relaxed shadow-2xs shrink-0">
+          <!-- CAUTION unificado POH con los 3 puntos oficiales -->
+          <div lang="es" class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[12px] leading-relaxed shadow-2xs shrink-0 mt-1">
             <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
               <span>⚡</span>
-              <span>CAUTION:</span>
+              <span>CAUTION (POH):</span>
             </strong>
             <ul class="space-y-1 pl-1">
               <li class="flex items-start gap-1.5">
@@ -5147,39 +5147,58 @@ export const C172_LESSON_4 = {
                 <span class="text-amber-600 dark:text-amber-400 font-bold shrink-0">•</span>
                 <span>En aire turbulento se recomienda encarecidamente utilizar la posición BOTH.</span>
               </li>
+              <li class="flex items-start gap-1.5">
+                <span class="text-amber-600 dark:text-amber-400 font-bold shrink-0">•</span>
+                <span>Con ¼ de depósito o menos, está prohibido el vuelo prolongado o no coordinado cuando se opera con el depósito izquierdo o derecho.</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Referencia POH (Altura Fija 590px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y PRECAUCIONES</span>
-        </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-4 text-center my-1.5">
-          <div class="w-10 h-10 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shadow-xs mb-2">
-            📷
+    <!-- Columna Derecha (lg:col-span-6): SOPs Blue Team Secc. 6.13 e Imagen (Altura Fija 600px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SOPs BLUE TEAM · CRUCERO Y REGLA FREDA</span>
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-[13px] font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Display CED 125 en crucero (ajuste de potencia 70-75%) y control de equilibrio de combustible entre depósitos alares
-          </p>
-        </div>
 
-        <div class="space-y-1.5 shrink-0">
-          <div lang="es" class="w-full p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[12.5px] leading-relaxed shadow-2xs">
-            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
-              <span>⚡</span>
-              <span>CAUTION:</span>
-            </strong>
-            <div class="flex items-start gap-1.5 pl-1">
-              <span class="text-amber-600 dark:text-amber-400 font-bold shrink-0">•</span>
-              <span>Con ¼ de depósito o menos, está prohibido el vuelo prolongado o no coordinado cuando se opera con el depósito izquierdo o derecho.</span>
+          <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12px] leading-snug shadow-2xs space-y-1.5 shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops (Secc. 6.13):</strong>
+            
+            <div class="space-y-1 text-slate-800 dark:text-slate-200">
+              <div class="flex items-start gap-1.5">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Potencia normal en crucero:</strong> Utilizar entre un <strong>45% y un 55% de carga</strong>.</div>
+              </div>
+              <div class="flex items-start gap-1.5">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Velocidades de crucero C172:</strong> Bajo <strong>80 KIAS</strong> | Medio <strong>90 KIAS</strong> | Alto <strong>100 KIAS</strong>.</div>
+              </div>
+              <div class="flex items-start gap-1.5">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Comprobaciones periódicas (cada 20 min aprox) — Regla FREDA:</strong></div>
+              </div>
             </div>
+
+            <div class="pl-2.5 space-y-0.5 text-[11.5px] sm:text-[12px] text-slate-700 dark:text-slate-300 border-l-2 border-blue-300 dark:border-blue-700">
+              <div><strong>F (FUEL):</strong> Cantidad, bomba de combustible y equilibrio en tanques alares.</div>
+              <div><strong>R (Radio):</strong> Ajustar frecuencias, volúmenes y verificar equipos.</div>
+              <div><strong>E (ENGINE):</strong> Parámetros en verde AFM (presión/temp. aceite, refrigerante).</div>
+              <div><strong>D (DIRECTIONAL):</strong> Calar girodireccional con brújula en vuelo recto y nivelado.</div>
+              <div><strong>A (ALTITUDE):</strong> Calaje QNH/QNE y cross-check altímetros (desvío máx. 50 ft).</div>
+            </div>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+            <img
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.11-ced2.jpg?v=1"
+              alt="Display CED 125 en crucero con indicación de carga (Load %) y parámetros de motor"
+              class="w-full h-full object-contain rounded-lg"
+              onerror="if(this.src!=='/images/c172/3.11-ced2.jpg')this.src='/images/c172/3.11-ced2.jpg'"
+            />
           </div>
         </div>
       </div>
