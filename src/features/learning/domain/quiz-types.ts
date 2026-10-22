@@ -42,6 +42,7 @@ export type QuizAttemptResult = {
   completed_at: string;
   elapsed_seconds: number;
   min_pass_score_percentage?: number | null;
+  answers?: Record<string, number> | null;
 };
 
 export type LessonCombinedStatus = {
