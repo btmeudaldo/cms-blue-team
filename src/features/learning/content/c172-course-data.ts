@@ -5279,6 +5279,20 @@ export const C172_LESSON_4 = {
             </div>
             </div>
           </div>
+
+          <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12.5px] leading-snug shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops:</strong>
+            <div class="space-y-1 text-slate-800 dark:text-slate-200">
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Velocidades de aproximación:</strong> 70 kt para Flap 10º; 65 kt para Flap 20º o 30º; 60 kt para Flap 40º.</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div>Aplicaremos la correspondiente corrección por racha a estas velocidades.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
