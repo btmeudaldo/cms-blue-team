@@ -893,13 +893,13 @@ export const C172_LESSON_6_QUIZ: Quiz = {
       id: "c172-6-1",
       question: "¿Cuál es el requerimiento de combustible de reserva final para vuelos VFR diurnos según la política interna de Blue Team Flight School (especificada en el despacho F.OPS.02) en comparación con el mínimo reglamentario Part-NCO?",
       options: [
-        "Part-NCO exige 45 minutos (11.5 L) y Blue Team incrementa este margen a 1 hora 30 minutos (23.0 L) a régimen estándar más alternativo (5.1 L).",
+        "Part-NCO exige 45 minutos (11.5 L) y Blue Team incrementa este margen a 1 hora 30 minutos (23.0 L) a régimen estándar más alternativo.",
         "Part-NCO exige 10 minutos y Blue Team exige 20 minutos.",
         "Part-NCO exige 2 horas y Blue Team reduce el requisito a 45 minutos.",
         "Ambas normativas coinciden en un mínimo de 45 minutos sin combustible para alternativo.",
       ],
       correctAnswerIndex: 0,
-      explanation: "La normativa EASA Part-NCO.OP.125 para aviones con motor de pistón fija un mínimo reglamentario de 45 minutos de reserva final (11.5 L al 50% de crucero). Sin embargo, el Manual de Operaciones de Blue Team Flight School (F.OPS.02) aplica un estándar de seguridad superior, exigiendo una reserva final obligatoria de 1 hora y 30 minutos (23.0 L al consumo estándar de 15.3 L/h), a lo que se suma el combustible de alternativo (5.1 L equivalentes a 20 minutos de vuelo).",
+      explanation: "La normativa EASA Part-NCO.OP.125 para aviones con motor de pistón fija un mínimo reglamentario de 45 minutos de reserva final (11.5 L al 50% de crucero). Sin embargo, el Manual de Operaciones de Blue Team Flight School (F.OPS.02) aplica un estándar de seguridad superior, exigiendo una reserva final obligatoria de 1 hora y 30 minutos (23.0 L al consumo estándar de 15.3 L/h), a lo que se suma el combustible necesario para el aeródromo alternativo según la planificación del vuelo.",
     },
     {
       id: "c172-6-2",
