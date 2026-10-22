@@ -5906,48 +5906,7 @@ export const C172_LESSON_5 = {
             </div>
             </div>
           </div>
-          <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12.5px] leading-snug shadow-2xs space-y-1 shrink-0">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops:</strong>
-            <div class="space-y-1 text-slate-800 dark:text-slate-200">
-              <div class="flex items-start gap-2">
-                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                <div><strong>Prioridades:</strong> Seguir un claro orden de prioridades «FLY, NAVIGATE, COMMUNICATE».</div>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                <div><strong>FLY:</strong> Ajustar velocidad de máximo planeo (65 KIAS flaps UP – 60 KIAS flaps 10°) sin perder altitud, bajando el morro y trimando el avión.</div>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                <div><strong>NAVIGATE:</strong> Seleccionar la mejor zona de aterrizaje (pista, zona despejada, playa, etc.) teniendo en cuenta viento y superficie.</div>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                <div><strong>COMMUNICATE:</strong> Declarar emergencia en frecuencia actual o 121.5 MHz («MAYDAY x3») y Transponder 7700 Modo A.</div>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                <div><strong>Rearranque por altitud:</strong> Con más de 1.500 ft AGL intentar rearranque con «Scanflow» en L (de selectora a Start). Por debajo de 1.000 ft AGL solo asegurar motor según POH y volar el avión.</div>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                <div><strong>Evacuación:</strong> Evacuar la aeronave y una vez fuera de peligro avisar a un responsable de Blue Team.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Columna Derecha (lg:col-span-5): Protocolo de Reencendido en Vuelo (Altura Fija 600px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PROTOCOLO DE REENCENDIDO EN VUELO</span>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch shrink-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch mt-1 shrink-0">
             <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[12px] leading-snug shadow-2xs shrink-0 flex flex-col justify-start">
               <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-xs shrink-0">
                 <span>ℹ️</span>
@@ -5961,6 +5920,47 @@ export const C172_LESSON_5 = {
                 <span>WARNING:</span>
               </strong>
               <div>La bomba de alta presión debe ser revisada por un centro autorizado antes del siguiente vuelo.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Protocolo de Reencendido en Vuelo y SOPs (Altura Fija 600px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PROTOCOLO DE REENCENDIDO EN VUELO</span>
+          </div>
+
+          <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12px] leading-snug shadow-2xs space-y-1 shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops:</strong>
+            <div class="space-y-1 text-slate-800 dark:text-slate-200">
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Prioridades:</strong> Seguir un claro orden «FLY, NAVIGATE, COMMUNICATE».</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>FLY:</strong> Máximo planeo (65 KIAS flaps UP – 60 KIAS flaps 10°) sin perder altitud, bajando morro y trimando.</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>NAVIGATE:</strong> Seleccionar mejor zona de aterrizaje (pista, despejado, playa) según viento y superficie.</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>COMMUNICATE:</strong> Declarar «MAYDAY x3» en frecuencia o 121.5 MHz y Transponder en 7700 Modo A.</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Rearranque por altitud:</strong> &gt; 1.500 ft AGL intentar rearranque con Scanflow en «L» (selectora a Start switch). &lt; 1.000 ft AGL solo asegurar motor según POH y volar el avión.</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+                <div><strong>Evacuación:</strong> Evacuar la aeronave y una vez fuera de peligro avisar a un responsable de Blue Team.</div>
+              </div>
             </div>
           </div>
 
