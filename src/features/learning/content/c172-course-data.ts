@@ -5192,7 +5192,7 @@ export const C172_LESSON_4 = {
             </div>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/60 flex items-center justify-center p-1">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.11-ced2.jpg?v=1"
               alt="Display CED 125 en crucero con indicación de carga (Load %) y parámetros de motor"
