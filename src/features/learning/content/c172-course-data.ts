@@ -5906,22 +5906,6 @@ export const C172_LESSON_5 = {
             </div>
             </div>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch mt-1 shrink-0">
-            <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[12px] leading-snug shadow-2xs shrink-0 flex flex-col justify-start">
-              <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-xs shrink-0">
-                <span>ℹ️</span>
-                <span>NOTE:</span>
-              </strong>
-              <div>Quedarse sin combustible en un depósito activa el parpadeo de ambas luces de aviso FADEC.</div>
-            </div>
-            <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[12px] leading-snug shadow-2xs shrink-0 flex flex-col justify-start">
-              <strong class="text-red-700 dark:text-red-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-xs shrink-0">
-                <span>⚠️</span>
-                <span>WARNING:</span>
-              </strong>
-              <div>La bomba de alta presión debe ser revisada por un centro autorizado antes del siguiente vuelo.</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -6045,6 +6029,7 @@ export const C172_LESSON_5 = {
           <ul class="list-disc pl-4 space-y-1 mt-0.5 text-xs sm:text-[13px] leading-snug">
             <li class="pl-0.5">El FADEC consta de dos componentes que son independientes entre sí: FADEC A y FADEC B. En caso de avería en el FADEC activo, conmuta automáticamente al otro.</li>
             <li class="pl-0.5">La indicación de carga del CED debe considerarse no fiable con ambas luces FADEC iluminadas. Utilice otras indicaciones para evaluar la condición del motor.</li>
+            <li class="pl-0.5">Quedarse sin combustible en un depósito activa el parpadeo de ambas luces de aviso FADEC.</li>
           </ul>
         </div>
         </div>
