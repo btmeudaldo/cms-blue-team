@@ -972,7 +972,7 @@ export const C172_LESSON_2 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1.5 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: 100%; max-width: 100%; height: 100%; float: none; clear: both; opacity: 1;">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.1-cg-limits.png?v=2" alt="Envolvente de Masa y Centrado C172 (Figure 6-8)" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;">
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.1-cg-limits.png?v=2" alt="Envolvente de Masa y Centrado C172" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;">
         </div>
       </div>
     </div>
@@ -1078,12 +1078,12 @@ export const C172_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Diagrama Oficial POH Fig 6-3 (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Diagrama Oficial POH (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESTACIONES DE FUSELAJE C172 (FIG. 6-3)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESTACIONES DE FUSELAJE C172</span>
           </div>
 
           <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
@@ -1093,7 +1093,7 @@ export const C172_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2">
-            <img src="/images/c172/figure_6_3_loading_arrangements.jpg?v=2" alt="Figura 6-3 Disposición de Carga y Compartimentos de Equipaje Cessna 172" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
+            <img src="/images/c172/figure_6_3_loading_arrangements.jpg?v=2" alt="Disposición de Carga y Compartimentos de Equipaje Cessna 172" class="w-full h-full max-h-[380px] object-contain rounded-lg" />
           </div>
         </div>
       </div>
@@ -3324,7 +3324,7 @@ export const C172_LESSON_3 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Esquema POH Fig 7-3 (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Esquema POH (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
@@ -4887,7 +4887,7 @@ export const C172_LESSON_4 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SPEEDS FOR NORMAL OPERATION (POH PÁG. 4-3)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SPEEDS FOR NORMAL OPERATION</span>
           <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">Peso máx. 2300 lbs</span>
         </div>
 
@@ -4952,7 +4952,7 @@ export const C172_LESSON_4 = {
 
         <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">VIENTO CRUZADO MÁXIMO DEMOSTRADO</span>
-          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH pág. 4-3</span>
+          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH SECCIÓN 4</span>
         </div>
 
         <div class="p-2.5 rounded-xl border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[11px] leading-tight shadow-2xs">
@@ -4972,7 +4972,7 @@ export const C172_LESSON_4 = {
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">VELOCIDADES DE PÉRDIDA SEGÚN ALABEO (FIG. 5-3)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">VELOCIDADES DE PÉRDIDA SEGÚN ALABEO</span>
           </div>
 
           <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
@@ -4982,7 +4982,7 @@ export const C172_LESSON_4 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/4.16.jpg" alt="Figura 5-3 Stall Speeds Cessna 172 POH" class="w-full h-full max-h-[460px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/4.16.jpg')this.src='/images/c172/4.16.jpg'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/4.16.jpg" alt="Stall Speeds Cessna 172 POH" class="w-full h-full max-h-[460px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/4.16.jpg')this.src='/images/c172/4.16.jpg'" />
           </div>
         </div>
       </div>
@@ -5602,7 +5602,7 @@ export const C172_LESSON_4 = {
             <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HOT WEATHER OPERATION</strong>
               <p class="text-xs sm:text-[12px] text-slate-700 dark:text-slate-300 leading-snug">
-                Operación con tiempo cálido: página 4-24. Retirar deflector de refrigerador de combustible si OAT en tierra &gt; 20°C.
+                Operación con tiempo cálido: Retirar deflector de refrigerador de combustible si OAT en tierra &gt; 20°C.
               </p>
             </div>
           </div>
@@ -5693,7 +5693,7 @@ export const C172_LESSON_5 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[600px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 600px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AIRSPEEDS FOR EMERGENCY OPERATION (POH PÁG. 3-3)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AIRSPEEDS FOR EMERGENCY OPERATION</span>
           <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH Sección 3</span>
         </div>
 
@@ -5743,7 +5743,7 @@ export const C172_LESSON_5 = {
         </div>
 
         <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PROCEDIMIENTO AMPLIFICADO DE PLANEO (POH PÁG. 3-11)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PROCEDIMIENTO AMPLIFICADO DE PLANEO</span>
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
@@ -5762,7 +5762,7 @@ export const C172_LESSON_5 = {
       <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GRÁFICA DE MEJOR PLANEO (FIGURA 3-1 POH)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GRÁFICA DE MEJOR PLANEO</span>
           </div>
 
           <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
@@ -5772,7 +5772,7 @@ export const C172_LESSON_5 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.1.jpg" alt="Figura 3-1 Maximum Glide Cessna 172 POH" class="w-full h-full max-h-[460px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/5.1.jpg')this.src='/images/c172/5.1.jpg'" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.1.jpg" alt="Maximum Glide Cessna 172 POH" class="w-full h-full max-h-[460px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/5.1.jpg')this.src='/images/c172/5.1.jpg'" />
           </div>
         </div>
       </div>
@@ -7382,12 +7382,12 @@ export const C172_LESSON_6 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 6.4: 6.4 La Envolvente de Centro de Gravedad (Fig. 6-8) -->
+<!-- DIAPOSITIVA 6.4: 6.4 La Envolvente de Centro de Gravedad -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA)</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.4 La Envolvente de Centro de Gravedad (Fig. 6-8)</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.4 La Envolvente de Centro de Gravedad</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Límites Certificados de Estabilidad</span>
   </div>
@@ -7396,7 +7396,7 @@ export const C172_LESSON_6 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INTERPRETACIÓN DE LA FIGURA 6-8</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INTERPRETACIÓN DE LA ENVOLVENTE CG</span>
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
@@ -7426,13 +7426,13 @@ export const C172_LESSON_6 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE OFICIAL FIG. 6-8</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE OFICIAL DE CG</span>
         </div>
 
         <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1.5 my-1">
           <img
             src="/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg"
-            alt="Límites de Centro de Gravedad C172 Fig. 6-8"
+            alt="Límites de Centro de Gravedad C172"
             class="w-full h-full object-contain rounded-lg"
             onerror="if(this.src!=='/images/c172/figure_6_8_center_of_gravity_limits%20modificado.svg')this.src='/images/c172/figure_6_8_center_of_gravity_limits%20modificado.svg'"
           />
@@ -7635,7 +7635,7 @@ export const C172_LESSON_6 = {
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD-155 (EC-NNA) · TALLER INTERACTIVO 2</div>
       <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.9 Ejercicio Práctico: Tablas de Crucero y Autonomía</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla Fig. 5-4a a 50% de Potencia</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla a 50% de Potencia</span>
   </div>
 
   <div class="py-0.5" data-interactive-exercise="cruise"></div>
@@ -7737,7 +7737,7 @@ export const C172_LESSON_6 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PARÁMETROS DE LA TABLA FIG. 5-1a</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PARÁMETROS DE DESPEGUE</span>
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
@@ -7806,7 +7806,7 @@ export const C172_LESSON_6 = {
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TABLA SHORT FIELD LANDING (FIG. 5-10)</strong>
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TABLA SHORT FIELD LANDING</strong>
           <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
             En las tablas originales de Cessna, las distancias vienen en <strong>pies (ft)</strong> y deben convertirse a <strong>metros</strong> para anotarlas en el F.OPS.02: <span class="font-mono font-bold text-blue-600 dark:text-sky-400">Metros = Pies / 3.28084</span>.
           </p>
@@ -7842,7 +7842,7 @@ export const C172_LESSON_6 = {
         <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
           <img
             src="/images/c172/landing_distance_table.png"
-            alt="Tabla oficial de rendimiento de aterrizaje Short Field Fig. 5-10"
+            alt="Tabla oficial de rendimiento de aterrizaje Short Field"
             class="w-full h-auto block rounded-lg shadow-xs"
           />
         </div>
@@ -7907,7 +7907,7 @@ export const C172_LESSON_6 = {
           </div>
           <div class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <span class="text-emerald-500 font-bold text-base"></span>
-            <div><strong>Centro de Gravedad:</strong> Puntos de despegue y aterrizaje dentro de la envolvente Fig. 6-8.</div>
+            <div><strong>Centro de Gravedad:</strong> Puntos de despegue y aterrizaje dentro de la envolvente oficial.</div>
           </div>
           <div class="flex items-center gap-2 p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <span class="text-emerald-500 font-bold text-base"></span>
