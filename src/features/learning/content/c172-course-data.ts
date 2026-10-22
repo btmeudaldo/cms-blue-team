@@ -5842,9 +5842,9 @@ export const C172_LESSON_5 = {
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Gestión de Alimentación de Combustible y Protocolo de Reencendido</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): Procedimientos de Emergencia (Altura Fija 600px) -->
-    <div class="lg:col-span-7 flex flex-col">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): Procedimientos de Emergencia (Altura Fija 600px) -->
+    <div class="lg:col-span-6 flex flex-col">
       <div class="h-[600px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENGINE MALFUNCTION IN FLIGHT</span>
@@ -5926,8 +5926,8 @@ export const C172_LESSON_5 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Protocolo de Reencendido en Vuelo y SOPs (Altura Fija 600px) -->
-    <div class="lg:col-span-5 flex flex-col">
+    <!-- Columna Derecha (lg:col-span-6): Protocolo de Reencendido en Vuelo y SOPs (Altura Fija 600px) -->
+    <div class="lg:col-span-6 flex flex-col">
       <div class="h-[600px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
