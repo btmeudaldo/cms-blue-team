@@ -5925,10 +5925,6 @@ export const C172_LESSON_5 = {
                 <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
                 <div><strong>Rearranque por altitud:</strong> &gt; 1.500 ft AGL intentar rearranque con Scanflow en «L» (selectora a Start switch). &lt; 1.000 ft AGL solo asegurar motor según POH y volar el avión.</div>
               </div>
-              <div class="flex items-start gap-2">
-                <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                <div><strong>Evacuación:</strong> Evacuar la aeronave y una vez fuera de peligro avisar a un responsable de Blue Team.</div>
-              </div>
             </div>
           </div>
         </div>
@@ -5941,6 +5937,14 @@ export const C172_LESSON_5 = {
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PROTOCOLO DE REENCENDIDO EN VUELO</span>
+          </div>
+
+          <div class="p-2 sm:p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12px] leading-snug shadow-2xs space-y-1 shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops (Cont.):</strong>
+            <div class="flex items-start gap-2 text-slate-800 dark:text-slate-200">
+              <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+              <div><strong>Evacuación:</strong> Evacuar la aeronave y una vez fuera de peligro avisar a un responsable de Blue Team.</div>
+            </div>
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
