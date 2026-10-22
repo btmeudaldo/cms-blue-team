@@ -5017,14 +5017,6 @@ export const C172_LESSON_4 = {
               </div>
             </div>
           </div>
-
-          <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs leading-tight shadow-2xs shrink-0">
-            <strong class="text-sky-700 dark:text-sky-400 inline-flex items-center gap-1 uppercase tracking-wide text-xs">
-              <span>ℹ️</span>
-              <span>NOTE:</span>
-            </strong>
-            <span class="ml-1">Deben vigilarse las temperaturas del combustible.</span>
-          </div>
         </div>
       </div>
     </div>
@@ -5036,12 +5028,22 @@ export const C172_LESSON_4 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[12.5px] leading-relaxed shadow-2xs shrink-0">
-          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
-            <span>ℹ️</span>
-            <span>NOTE:</span>
-          </strong>
-          <div>Si es necesario un ascenso de máximo rendimiento, utilice las velocidades indicadas en la tabla «Maximum Rate Of Climb» de la sección 5. Si la temperatura del aceite y/o del refrigerante se aproximan al límite superior, continúe con un ángulo de ascenso menor para mejorar la refrigeración, si es posible.</div>
+        <div class="space-y-1.5 shrink-0">
+          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[12.5px] leading-relaxed shadow-2xs">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <div>Si es necesario un ascenso de máximo rendimiento, utilice las velocidades indicadas en la tabla «Maximum Rate Of Climb» de la sección 5. Si la temperatura del aceite y/o del refrigerante se aproximan al límite superior, continúe con un ángulo de ascenso menor para mejorar la refrigeración, si es posible.</div>
+          </div>
+
+          <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs leading-tight shadow-2xs">
+            <strong class="text-sky-700 dark:text-sky-400 inline-flex items-center gap-1 uppercase tracking-wide text-xs">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <span class="ml-1">Deben vigilarse las temperaturas del combustible.</span>
+          </div>
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-4 text-center">
