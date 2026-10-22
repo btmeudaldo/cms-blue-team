@@ -4472,13 +4472,14 @@ export const C172_LESSON_4 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BATERÍA FADEC BACKUP Y CALENTAMIENTO</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/60 flex items-center justify-center p-1">
-            <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.6-fadec-backup.jpg"
-              alt="Esquema de Batería FADEC Backup e Interruptores Eléctricos"
-              class="w-full h-full object-contain rounded-lg"
-              onerror="if(!this.src.includes('3.6-fadec-backup.jpg'))this.src='/images/c172/3.6-fadec-backup.jpg'"
-            />
+          <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-5 text-center my-1.5">
+            <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2">
+              📷
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+            <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+              Comprobación de calentamiento: parámetros CED 125 (aceite 50°C, refrigerante 60°C) e interruptores de Batería y Alternador
+            </p>
           </div>
 
           <div class="space-y-1.5 shrink-0">
