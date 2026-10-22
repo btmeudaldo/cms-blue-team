@@ -4512,47 +4512,46 @@ export const C172_LESSON_4 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
     <!-- Columna Izquierda (lg:col-span-6): Procedimientos Normales (Altura Fija 600px) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[600px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(8) BEFORE TAKE-OFF · CABINA Y MANDOS</span>
-          <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400">POH SECCIÓN 4</span>
+      <div class="h-[600px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800 mb-2">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">(8) BEFORE TAKE-OFF · CABINA Y MANDOS</span>
         </div>
-        <div class="space-y-2 py-1">
+        <div class="space-y-2 py-0.5">
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">BEFORE TAKE-OFF (ÍTEMS 1 – 7)</strong>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">BEFORE TAKE-OFF (ÍTEMS 1 – 7)</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-[18px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[28px]">(1)</span>
               <span class="text-slate-800 dark:text-slate-200">Parking Brake - <strong>SET</strong></span>
             </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-[18px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[28px]">(2)</span>
               <span class="text-slate-800 dark:text-slate-200">Cabin Doors and Windows - <strong>CLOSED and LOCKED</strong></span>
             </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(3)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-[18px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[28px]">(3)</span>
               <span class="text-slate-800 dark:text-slate-200">Flight Controls - <strong>FREE and CORRECT</strong></span>
             </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(4)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-[18px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[28px]">(4)</span>
               <span class="text-slate-800 dark:text-slate-200">Flight Instruments - <strong>CHECK and SET</strong></span>
             </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(5)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-[18px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[28px]">(5)</span>
               <span class="text-slate-800 dark:text-slate-200">Fuel quantity - <strong>CHECK</strong></span>
             </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(6)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-[18px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[28px]">(6)</span>
               <span class="text-slate-800 dark:text-slate-200">Fuel Selector Valve - <strong>SET to BOTH</strong></span>
             </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(7)</span>
-              <span class="text-slate-800 dark:text-slate-200">Elevator Trim and Rudder Trim (if installed) - <strong>SET for take-off</strong></span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-[18px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[28px]">(7)</span>
+              <span class="text-slate-800 dark:text-slate-200">Elevator Trim and Rudder Trim - <strong>SET for take-off</strong></span>
             </div>
           </div>
 
-          <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-xs sm:text-[12px] text-sky-900 dark:text-sky-200 space-y-1">
-            <strong class="text-sky-800 dark:text-sky-300 block uppercase tracking-wide text-xs">CRITERIOS TÉCNICOS POH:</strong>
-            <p class="leading-snug">Verificar el libre y correcto movimiento de todas las superficies de mando en sus topes mecánicos. Comprobar que el selector de combustible se encuentre rigurosamente en <strong>BOTH</strong> y el compensador de profundidad ajustado exactamente en el rango de despegue (Take-off band).</p>
+          <div class="p-3 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-[18px] text-sky-900 dark:text-sky-200 space-y-1">
+            <strong class="text-sky-800 dark:text-sky-300 block uppercase tracking-wide text-[18px]">CRITERIOS TÉCNICOS POH:</strong>
+            <p class="leading-snug">Verificar el libre y correcto movimiento de mandos en sus topes. Selector de combustible rigurosamente en <strong>BOTH</strong> y compensador ajustado en el rango de despegue.</p>
           </div>
         </div>
       </div>
@@ -4560,65 +4559,60 @@ export const C172_LESSON_4 = {
 
     <!-- Columna Derecha (lg:col-span-6): SOPs Blue Team (Altura Fija 600px) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[600px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SOPs BLUE TEAM · PUNTO DE ESPERA Y BRIEFING CORTO</span>
+      <div class="h-[600px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800 mb-2">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">SOPs BLUE TEAM · PUNTO DE ESPERA Y BRIEFING CORTO</span>
         </div>
 
-        <!-- Punto de espera y cabina estéril -->
-        <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12px] leading-snug shadow-2xs space-y-1.5 shrink-0 mb-1.5">
-          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Punto de Espera y Cabina Estéril (SOP Secc. 6.7 / 6.8):</strong>
-          <div class="flex items-start gap-1.5">
-            <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-            <div><strong>Comprobaciones detenidos:</strong> Todas las comprobaciones previas al despegue se realizan detenidos en el punto de espera asignado con el <strong>freno de estacionamiento puesto (SET)</strong>.</div>
-          </div>
-          <div class="flex items-start gap-1.5">
-            <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-            <div><strong>Cabina estéril:</strong> Rigurosamente activa durante todo el chequeo previo y briefing. Sin conversaciones ajenas a la operación.</div>
-          </div>
-        </div>
-
-        <!-- Briefing corto de despegue -->
-        <div class="p-2.5 rounded-xl border border-indigo-200 dark:border-indigo-800/80 bg-indigo-50/70 dark:bg-indigo-950/30 text-slate-800 dark:text-slate-200 text-xs sm:text-[12px] leading-snug shadow-2xs space-y-1.5 shrink-0">
-          <strong class="text-indigo-900 dark:text-indigo-300 block text-xs border-b border-indigo-200 dark:border-indigo-800 pb-0.5 uppercase tracking-wide">Briefing Corto de Despegue en Visual (SOP Secc. 6.9):</strong>
-
-          <div class="grid grid-cols-2 gap-1.5 pb-1 border-b border-indigo-100 dark:border-indigo-800/60">
-            <div>
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-[11px] uppercase">1. Procedimiento:</span>
-              <span class="text-[11.5px] text-slate-700 dark:text-slate-300">Normal, campo corto o viento cruzado.</span>
+        <div class="space-y-2 py-0.5">
+          <!-- Punto de espera y cabina estéril -->
+          <div class="p-3 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-[18px] leading-snug shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-blue-200 dark:border-blue-800 pb-1 uppercase tracking-wide">Punto de Espera y Cabina Estéril:</strong>
+            <div class="flex items-start gap-2">
+              <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+              <div><strong>Comprobaciones detenidos:</strong> Chequeos realizados en punto de espera con freno de estacionamiento puesto (SET).</div>
             </div>
-            <div>
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-[11px] uppercase">2. Velocidades:</span>
-              <span class="text-[11.5px] text-slate-700 dark:text-slate-300">Vr: 60 kt (F10) / 65 kt (F0). Vx: 65 kt a 500 ft.</span>
+            <div class="flex items-start gap-2">
+              <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+              <div><strong>Cabina estéril:</strong> Activa durante todo el chequeo previo y briefing. Sin conversaciones ajenas al vuelo.</div>
             </div>
           </div>
 
-          <div class="space-y-1 pt-0.5">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-[11px] uppercase">3. Los 4 Casos Críticos de Emergencia:</span>
+          <!-- Briefing corto de despegue -->
+          <div class="p-3 rounded-xl border border-indigo-200 dark:border-indigo-800/80 bg-indigo-50/70 dark:bg-indigo-950/30 text-slate-800 dark:text-slate-200 text-[18px] leading-snug shadow-2xs space-y-1.5">
+            <strong class="text-indigo-900 dark:text-indigo-300 block text-[18px] border-b border-indigo-200 dark:border-indigo-800 pb-1 uppercase tracking-wide">Briefing Corto de Despegue en Visual:</strong>
 
-            <div class="flex items-start gap-1 text-[11.5px] sm:text-[12px]">
-              <span class="text-red-600 dark:text-red-400 font-bold shrink-0">①</span>
-              <div><strong>En carrera de despegue:</strong> Cortar gases, control direccional con pies, frenar si es necesario, notificar despegue abortado a ATC y checklist de emergencia.</div>
+            <div class="space-y-1">
+              <div><strong>Procedimiento y velocidades:</strong> Normal, campo corto o viento cruzado. Vr 60 kt (F10) / 65 kt (F0). Vx 65 kt.</div>
             </div>
 
-            <div class="flex items-start gap-1 text-[11.5px] sm:text-[12px]">
-              <span class="text-amber-600 dark:text-amber-400 font-bold shrink-0">②</span>
-              <div><strong>En el aire con pista remanente:</strong> Cortar gases, morro abajo (mínimo 60 kt), flaps según requiera, aterrizar, notificar a ATC y checklist.</div>
+            <div class="space-y-1 pt-1 border-t border-indigo-100 dark:border-indigo-800/60">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px]">Los 4 Casos Críticos de Emergencia:</strong>
+
+              <div class="flex items-start gap-2">
+                <span class="text-red-600 dark:text-red-400 font-bold shrink-0">①</span>
+                <div><strong>En carrera:</strong> Gases al ralentí, frenar si es necesario, mantener eje y avisar a ATC.</div>
+              </div>
+
+              <div class="flex items-start gap-2">
+                <span class="text-amber-600 dark:text-amber-400 font-bold shrink-0">②</span>
+                <div><strong>En aire con pista:</strong> Gases cortados, morro abajo (mín. 60 kt), flaps según requiera y aterrizar.</div>
+              </div>
+
+              <div class="flex items-start gap-2">
+                <span class="text-amber-600 dark:text-amber-400 font-bold shrink-0">③</span>
+                <div><strong>Sin pista &lt; 1000 ft:</strong> Morro abajo (65 kt / 60 kt), campo en sector ±30°–45° y comunicar.</div>
+              </div>
+
+              <div class="flex items-start gap-2">
+                <span class="text-indigo-600 dark:text-indigo-400 font-bold shrink-0">④</span>
+                <div><strong>Sin pista &gt; 1000 ft:</strong> Morro abajo (65 kt), viraje 180° contra el viento a pista y declarar emergencia.</div>
+              </div>
             </div>
 
-            <div class="flex items-start gap-1 text-[11.5px] sm:text-[12px]">
-              <span class="text-amber-600 dark:text-amber-400 font-bold shrink-0">③</span>
-              <div><strong>Sin pista remanente &lt; 1000 ft AGL:</strong> Morro abajo para 65 kt (sin flap) / 60 kt (con flap), buscar campo en sector 30°–45° desde el morro (preferiblemente viento en cara), comunicar y checklist.</div>
+            <div class="pt-1 border-t border-indigo-100 dark:border-indigo-800/60 text-[18px] text-indigo-950 dark:text-indigo-200">
+              <strong>Mando (PIC):</strong> En emergencia real el control del avión lo asume inmediatamente el instructor.
             </div>
-
-            <div class="flex items-start gap-1 text-[11.5px] sm:text-[12px]">
-              <span class="text-indigo-600 dark:text-indigo-400 font-bold shrink-0">④</span>
-              <div><strong>Sin pista remanente &gt; 1000 ft AGL:</strong> Morro abajo para 65 kt, viraje de 180° siempre en contra del viento buscando la pista, declarar emergencia, aterrizar y checklist.</div>
-            </div>
-          </div>
-
-          <div class="p-1.5 rounded-lg bg-amber-50/90 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-[11px] text-amber-900 dark:text-amber-200 leading-tight">
-            <strong>Transferencia de Mandos (PIC):</strong> En emergencia real el control del avión queda inmediatamente bajo responsabilidad del instructor (PIC).
           </div>
         </div>
       </div>
