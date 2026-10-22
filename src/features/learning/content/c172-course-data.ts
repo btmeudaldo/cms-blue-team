@@ -5428,37 +5428,17 @@ export const C172_LESSON_4 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AFTER LANDING & SECURING AIRPLANE</span>
         </div>
         <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-start">
-            <div class="flex flex-col gap-2">
-              <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
-                <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">AFTER LANDING</strong>
-                <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
-                  <span class="text-slate-800 dark:text-slate-200">Wing Flaps - RETRACT</span>
-                </div>
-                <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
-                  <span class="text-slate-800 dark:text-slate-200">Electric Fuel Pump - OFF</span>
-                </div>
-              </div>
-
-              <div class="p-2.5 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12.5px] leading-snug shadow-2xs space-y-1">
-                <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops:</strong>
-                <div class="space-y-1 text-slate-800 dark:text-slate-200">
-                  <div class="flex items-start gap-2">
-                    <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                    <div><strong>Pista libre:</strong> Realizar las acciones tras abandonar completamente la pista activa y rebasar la línea de espera. Luces Landing/Strobes OFF y Pitot Heat OFF.</div>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                    <div><strong>Enfriamiento turbo:</strong> El rodaje en ralentí hacia estacionamiento computa para los 2 min de estabilización térmica.</div>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
-                    <div><strong>Estacionamiento:</strong> Calzos puestos, pitot cubierto y fuel selector en LEFT o RIGHT (evita trasvase).</div>
-                  </div>
-                </div>
-              </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">AFTER LANDING</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Wing Flaps - RETRACT</span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">(2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Electric Fuel Pump - OFF</span>
+            </div>
             </div>
 
             <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
