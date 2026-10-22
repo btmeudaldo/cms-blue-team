@@ -5569,70 +5569,97 @@ export const C172_LESSON_4 = {
     
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): Procedimientos Normales (Altura Fija 590px) -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): Procedimientos Normales (Altura Fija 600px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[600px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SPECIAL PROCEDURES</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SPECIAL PROCEDURES (POH / AFM)</span>
         </div>
         <div class="space-y-2 py-1">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">PROCEDURES OVER 5500ft AIRFIELD ELEVATION
-              </strong>
-              <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
-                A altitudes superiores a 5,500 ft: acelerar con Thrust Lever FULL FORWARD con frenos aplicados hasta alcanzar el 100% de carga antes de soltar frenos.
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+            <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">OVER 5500ft AIRFIELD ELEVATION</strong>
+              <p class="text-xs sm:text-[12px] text-slate-700 dark:text-slate-300 leading-snug">
+                A altitudes superiores a 5.500 ft: acelerar con Thrust Lever FULL FORWARD con frenos aplicados hasta alcanzar el 100% de carga antes de soltar frenos.
               </p>
             </div>
 
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">SHORT FIELD TAKE-OFF
-              </strong>
-              <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
+            <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">SHORT FIELD TAKE-OFF (POH)</strong>
+              <p class="text-xs sm:text-[12px] text-slate-700 dark:text-slate-300 leading-snug">
                 Flaps 10°, frenos aplicados hasta máxima potencia. Alzar rueda de morro a 55 KIAS y mantener velocidad de ascenso sobre obstáculos de 57 KIAS.
               </p>
             </div>
 
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">COLD WEATHER OPERATION
-              </strong>
-              <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
-                Precalentamiento de motor por debajo de -10°C. Comprobar instalación de deflector (baffle) de refrigerador de combustible si OAT < 20°C.
+            <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">COLD WEATHER OPERATION</strong>
+              <p class="text-xs sm:text-[12px] text-slate-700 dark:text-slate-300 leading-snug">
+                Precalentamiento de motor por debajo de -10°C. Comprobar instalación de deflector (baffle) de refrigerador de combustible si OAT &lt; 20°C.
               </p>
             </div>
 
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">HOT WEATHER OPERATION
-              </strong>
-              <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
-                Operación con tiempo cálido: página 4-24. Retirar deflector de refrigerador de combustible si OAT en tierra > 20°C.
+            <div class="p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HOT WEATHER OPERATION</strong>
+              <p class="text-xs sm:text-[12px] text-slate-700 dark:text-slate-300 leading-snug">
+                Operación con tiempo cálido: página 4-24. Retirar deflector de refrigerador de combustible si OAT en tierra &gt; 20°C.
               </p>
             </div>
           </div>
 
-          <div class="p-3 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs sm:text-[13px]">
-            <strong>DOCUMENTACIÓN OFICIAL:</strong> Para la ejecución detallada de despegue y toma en pista corta o condiciones meteorológicas extremas, consúltense las páginas indicadas de la Sección 4 del Suplemento POH Continental TAE 125-02-114.
+          <div class="p-2.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-900 dark:text-sky-200 text-xs sm:text-[12px] leading-snug">
+            <strong>DOCUMENTACIÓN OFICIAL:</strong> Para la ejecución detallada en condiciones meteorológicas o de altitud extremas, consúltense las secciones específicas del Suplemento Continental TAE 125-02-114.
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Referencia POH (Altura Fija 590px) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+    <!-- Columna Derecha (lg:col-span-6): SOPs Blue Team (Altura Fija 600px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[600px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 600px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SOPs BLUE TEAM · VIENTO CRUZADO Y TÉCNICAS ESPECIALES</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-            📷
+        <div class="p-3 rounded-xl border border-blue-200 dark:border-blue-800/80 bg-blue-50/80 dark:bg-blue-950/40 text-slate-800 dark:text-slate-200 text-xs sm:text-[12px] leading-snug shadow-2xs space-y-2 shrink-0">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-blue-200 dark:border-blue-800 pb-0.5 uppercase tracking-wide">Sops (Secciones 6.16 y 6.11):</strong>
+
+          <!-- Viento cruzado -->
+          <div class="space-y-1">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-xs">Aterrizaje con Viento Cruzado (Secc. 6.16):</span>
+            <div class="flex items-start gap-1.5">
+              <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+              <div><strong>Flaps:</strong> Configuración mínima de flaps requerida según la longitud de pista.</div>
+            </div>
+            <div class="flex items-start gap-1.5">
+              <span class="text-red-600 dark:text-red-400 font-bold shrink-0">⚠️</span>
+              <div class="text-red-900 dark:text-red-200 font-semibold">¡Los resbales con flap 40º están terminantemente prohibidos!</div>
+            </div>
+            <div class="flex items-start gap-1.5">
+              <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+              <div><strong>Técnica preferente Sideslip (Plano alto C172):</strong>
+                <ul class="list-disc pl-4 mt-0.5 space-y-0.5 text-[11.5px] sm:text-[12px] text-slate-700 dark:text-slate-300">
+                  <li>Rudder suficiente para alinear con eje de pista (nueva neutralidad de pies).</li>
+                  <li>Alerones al viento (plano bajo hacia el viento para mantenerse en eje).</li>
+                  <li>Contacto inicial con rueda de barlovento y luego sotavento.</li>
+                  <li>Mantener la corrección de pies y alerones en todo momento tras la toma.</li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Página de procedimientos especiales del POH: tablas de despegue en campo corto, aeródromos a gran elevación y deflector de frío/calor
-          </p>
+
+          <!-- Despegues especiales -->
+          <div class="space-y-1 pt-1.5 border-t border-blue-200 dark:border-blue-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-xs">Despegues Especiales (Secc. 6.11):</span>
+            <div class="flex items-start gap-1.5">
+              <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+              <div><strong>Campo corto (6.11.2):</strong> Flap 10°, frenos pisados hasta plena potencia («Take-off power set»), soltar frenos y despegue normal (prevalece POH).</div>
+            </div>
+            <div class="flex items-start gap-1.5">
+              <span class="text-[#0B2E59] dark:text-sky-300 font-bold shrink-0">•</span>
+              <div><strong>Campo blando (6.11.3):</strong> No detenerse en pista, rodar con palanca al pecho, al aire en efecto suelo antes de Vr, acelerar en efecto suelo hasta Vx y ascender normal con Flap 10.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
