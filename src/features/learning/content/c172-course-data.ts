@@ -4474,10 +4474,10 @@ export const C172_LESSON_4 = {
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/60 flex items-center justify-center p-1">
             <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.6-fadec-backup.jpg?v=1"
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.6-fadec-backup.jpg"
               alt="Esquema de Batería FADEC Backup e Interruptores Eléctricos"
               class="w-full h-full object-contain rounded-lg"
-              onerror="if(this.src!=='/images/c172/3.6-fadec-backup.jpg')this.src='/images/c172/3.6-fadec-backup.jpg'"
+              onerror="if(!this.src.includes('3.6-fadec-backup.jpg'))this.src='/images/c172/3.6-fadec-backup.jpg'"
             />
           </div>
 
