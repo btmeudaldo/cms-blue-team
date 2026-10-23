@@ -923,24 +923,24 @@ export const DA40_LESSON_2 = {
             </div>
           </div>
         </div>
-
-        <!-- Warning AFM Oficial -->
-        <div class="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0">
-          <span class="text-base shrink-0">🚨</span>
-          <span><strong>WARNING (AFM):</strong> Exceder los límites de masa conduce a una sobrecarga estructural y degradación del rendimiento de vuelo. Exceder los límites de centrado reduce drásticamente la controlabilidad y estabilidad del avión.</span>
-        </div>
       </div>
     </div>
 
     <!-- Columna Derecha (lg:col-span-6): Envolvente de Masa y Centrado (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE DE MASA Y CENTRADO (CG ENVELOPE)</span>
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1.5 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: 100%; max-width: 100%; height: 100%; float: none; clear: both; opacity: 1;">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-cg-limits.png" alt="Envolvente de Masa y Centrado Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;">
+        </div>
+
+        <!-- Warning AFM Oficial -->
+        <div class="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0">
+          <span class="text-base shrink-0">🚨</span>
+          <span><strong>WARNING (AFM):</strong> Exceder los límites de masa conduce a una sobrecarga estructural y degradación del rendimiento de vuelo. Exceder los límites de centrado reduce drásticamente la controlabilidad y estabilidad del avión.</span>
         </div>
       </div>
     </div>
