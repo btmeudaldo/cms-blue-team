@@ -953,6 +953,130 @@ export const DA40_LESSON_2 = {
     </div>
   </div>
 </div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.4: 2.4 Compartimento de Equipaje y Categorías de Vuelo (Normal vs Utilidad) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2 & 6)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.4 Compartimento de Equipaje y Categorías de Vuelo</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Baggage Compartment Limits & Flight Load Factors</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 & 6 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BAGGAGE COMPARTMENT LIMITS (SECCIÓN 2 & 6)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+            <!-- COMPARTIMENTO PRINCIPAL TRASERO -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">COMPARTIMENTO TRASERO PRINCIPAL</strong>
+              <div class="text-[11px] leading-tight space-y-1 text-slate-800 dark:text-slate-200">
+                <div class="flex justify-between">
+                  <span>Capacidad máxima:</span>
+                  <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">30 kg (66 lb)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Brazo de palanca (C.G. Arm):</span>
+                  <span class="font-mono font-bold">3,65 m (143,7 in)</span>
+                </div>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 pt-0.5">Ubicado tras los respaldos de los asientos traseros con red de retención reglamentaria (Baggage Net).</p>
+              </div>
+            </div>
+
+            <!-- RED DE RETENCIÓN Y ESTIBA -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">RED DE RETENCIÓN Y ESTIBA</strong>
+              <div class="text-[11px] leading-tight space-y-1 text-slate-800 dark:text-slate-200">
+                <div class="flex justify-between">
+                  <span>Anclajes reglamentarios:</span>
+                  <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">4 puntos</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Desplazamiento de carga:</span>
+                  <span class="font-mono font-bold text-red-600 dark:text-red-400">Prohibido</span>
+                </div>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 pt-0.5">Toda carga debe amarrarse firmemente para evitar descebado del centro de gravedad hacia atrás en despegue o ascenso.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- WARNING BAGGAGE LIMITATION -->
+          <div class="p-2 px-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+              <span>⚠️</span>
+              <span>LIMITACIÓN ESTRICTA DE EQUIPAJE (AFM NOTE):</span>
+            </strong>
+            <div>La masa máxima admisible en el compartimento de equipaje es de <strong>30 kg (66 lb)</strong>. Todo el bulto debe asegurarse con la red de equipaje homologada. Sobrepasar esta masa o dejar carga suelta provoca desplazamientos críticos del centro de gravedad fuera de la envolvente permitida.</div>
+          </div>
+
+          <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FACTORES DE CARGA Y CONDICIONES (AFM 2.10 & 2.12)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch text-[11px]">
+            <!-- CATEGORÍA NORMAL -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase">CATEGORÍA NORMAL (MTOW 1.150 kg)</strong>
+              <div class="flex justify-between py-0.5">
+                <span>Flaps UP (Recogidos):</span>
+                <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">+3.8 G / -1.52 G</span>
+              </div>
+              <div class="flex justify-between py-0.5">
+                <span>Flaps T/O o LDG (Extendidos):</span>
+                <span class="font-mono font-bold text-blue-600 dark:text-sky-400">+2.0 G / 0 G</span>
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400">Hasta <strong>4 ocupantes</strong> y equipaje autorizado (máx 30 kg). Prohibida acrobacia y barrenas.</p>
+            </div>
+
+            <!-- CATEGORÍA UTILIDAD -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase">CATEGORÍA UTILIDAD (MTOW 980 kg)</strong>
+              <div class="flex justify-between py-0.5">
+                <span>Flaps UP (Recogidos):</span>
+                <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">+4.4 G / -1.76 G</span>
+              </div>
+              <div class="flex justify-between py-0.5">
+                <span>Flaps T/O o LDG (Extendidos):</span>
+                <span class="font-mono font-bold text-blue-600 dark:text-sky-400">+2.0 G / -1.0 G</span>
+              </div>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400"><strong>Condición AFM:</strong> Máximo <strong>2 ocupantes</strong> (ambos delante). Asientos traseros vacíos y sin equipaje.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama Oficial AFM (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BRAZOS DE PALANCA DA40 TDI (AFM 6.4.1)</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Diagrama oficial de brazos de palanca (*Moment Arms*) del Diamond DA40 TDI desde el plano de referencia (Datum Plane: 2,194 m delante de la raíz alar).
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-moment-arms.png" alt="Brazos de Palanca y Compartimentos de Carga Diamond DA40 TDI" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `,
 };
 
