@@ -237,7 +237,10 @@ export function LessonPlayer({
   // 1 second per page for fast review as requested
   const minSecondsPerPage = 1;
   const effectiveMinSeconds = 1;
-  const isSlideMode = totalLessonPages > 1;
+  const isSlideMode =
+    totalLessonPages > 1 ||
+    contentHtml.includes("lesson-slide-container") ||
+    contentHtml.includes("<!-- DIAPOSITIVA");
   const isAfterLastSlide = isSlideMode && currentPageIndex >= totalLessonPages;
   const isCurrentPageDone =
     isAfterLastSlide ||

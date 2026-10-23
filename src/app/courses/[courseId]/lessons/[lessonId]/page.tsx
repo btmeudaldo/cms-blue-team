@@ -8,6 +8,11 @@ import {
   C172_DOCUMENTATION,
 } from "@/features/learning/content/c172-course-data";
 import {
+  DA40_COURSE_ID,
+  DA40_COURSE_SLUG,
+  DA40_DOCUMENTATION,
+} from "@/features/learning/content/da40-course-data";
+import {
   getResilientCourseDetail,
   getResilientQuizAttempts,
   getResilientQuizForLesson,
@@ -99,6 +104,8 @@ export default async function StudentLessonPage({
 
   const isC172 =
     course.slug === C172_COURSE_SLUG || course.id === C172_COURSE_ID;
+  const isDA40 =
+    course.slug === DA40_COURSE_SLUG || course.id === DA40_COURSE_ID;
 
   const lessonContentHtml = currentLesson.content_html;
 
@@ -122,7 +129,13 @@ export default async function StudentLessonPage({
       completedLessonIds={completedLessonIds}
       quiz={quiz}
       quizAttempt={quizAttempt}
-      courseDocs={isC172 ? C172_DOCUMENTATION : undefined}
+      courseDocs={
+        isC172
+          ? C172_DOCUMENTATION
+          : isDA40
+            ? DA40_DOCUMENTATION
+            : undefined
+      }
       isSuperAdmin={isSuperAdmin}
     />
   );

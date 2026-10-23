@@ -8,8 +8,8 @@ export type CourseDocumentationItem = {
 
 export const C172_COURSE_ID = "17200000-0000-0000-0000-000000000172";
 export const C172_COURSE_SLUG = "cessna-172-continental-diesel";
-export const C172_COURSE_TITLE = "Curso de Familiarización y Diferencias Cessna 172 (Continental CD-135 / CD-155)";
-export const C172_COURSE_DESCRIPTION = "Curso oficial de familiarización de tipo, diferencias técnicas y procedimientos para la flota Cessna 172 con motores Continental CD-135 y CD-155 Turbo Diésel (EC-NNA, EC-OXV, EC-NNX, EC-OXT) de Blue Team Flight School, conforme a EASA Part-FCL.710. Duración oficial reglamentaria: 4 horas lectivas.";
+export const C172_COURSE_TITLE = "Curso Cessna 172 (Continental CD-135 / CD-155)";
+export const C172_COURSE_DESCRIPTION = "Curso oficial de tipo, especificaciones técnicas y procedimientos para la flota Cessna 172 con motores Continental CD-135 y CD-155 Turbo Diésel (EC-NNA, EC-OXV, EC-NNX, EC-OXT) de Blue Team Flight School, conforme a EASA Part-FCL.710. Duración oficial reglamentaria: 4 horas lectivas.";
 export const C172_COURSE_IMAGE_URL = "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80";
 export const C172_COURSE_REQUIRES_EXAM = false;
 
@@ -89,17 +89,18 @@ export const C172_LESSON_1 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch pt-1" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Información Técnica (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">OBJETO Y SIMBOLOGÍA DE SEGURIDAD</span>
           </div>
 
           <!-- Objeto del Suplemento -->
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-sm sm:text-base border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">OBJETO DEL SUPLEMENTO</strong>
-            <p class="text-slate-700 dark:text-slate-200 text-sm sm:text-[15px] leading-relaxed">
-              Este curso esta basado en el manual oficial de Cessna 172 y el suplemento de Continental CD135 y CD155, contiene la información técnica, limitaciones y procedimientos necesarios para la operación segura de los aviones Cessna 172 equipados con motores Continental CD-135 y CD-155.&nbsp;<span style="letter-spacing: -0.18px; font-size: 1.125rem;">Este curso no sustituye al POH básico de Cessna y el suplemento de Continental.</span></p>
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs sm:text-sm border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">OBJETO DEL SUPLEMENTO</strong>
+            <p class="text-slate-700 dark:text-slate-200 text-xs sm:text-sm leading-relaxed">
+              Este curso está basado en el manual oficial de Cessna 172 y el suplemento de Continental CD-135 y CD-155, con la información técnica, limitaciones y procedimientos operacionales para el vuelo seguro. Este curso no sustituye al POH básico de Cessna ni al suplemento de Continental.
+            </p>
           </div>
 
           <!-- Simbología de Seguridad POH -->
@@ -119,6 +120,33 @@ export const C172_LESSON_1 = {
             <div class="flex items-start gap-2 text-xs sm:text-sm leading-tight">
               <span class="font-bold text-[#2361A8] dark:text-sky-400 shrink-0 uppercase tracking-wide min-w-[85px]">NOTE:</span>
               <span class="text-slate-800 dark:text-slate-200">Información técnica añadida para una mejor comprensión y ejecución de una instrucción.</span>
+            </div>
+          </div>
+
+          <!-- Dimensiones Principales de la Aeronave -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 mb-1 uppercase tracking-wide">DIMENSIONES PRINCIPALES DE LA AERONAVE</strong>
+            <div class="grid grid-cols-3 gap-x-4 text-xs text-slate-700 dark:text-slate-200">
+              <!-- Columna 1 (Izquierda) -->
+              <div class="flex flex-col gap-y-1">
+                <div class="flex items-center"><span class="w-[125px] shrink-0">• Envergadura:</span> <strong class="text-[#0B2E59] dark:text-sky-300">10,97 m</strong></div>
+                <div class="flex items-center"><span class="w-[125px] shrink-0">• Longitud:</span> <strong class="text-[#0B2E59] dark:text-sky-300">8,20 m</strong></div>
+                <div class="flex items-center"><span class="w-[125px] shrink-0">• Altura total:</span> <strong class="text-[#0B2E59] dark:text-sky-300">2,68 m</strong></div>
+              </div>
+
+              <!-- Columna 2 (Centro) -->
+              <div class="flex flex-col gap-y-1">
+                <div class="flex items-center"><span class="w-[135px] shrink-0">• Ancho de vía:</span> <strong class="text-[#0B2E59] dark:text-sky-300">2,55 m</strong></div>
+                <div class="flex items-center"><span class="w-[135px] shrink-0">• Superficie alar:</span> <strong class="text-[#0B2E59] dark:text-sky-300">16,16 m²</strong></div>
+                <div class="flex items-center"><span class="w-[135px] shrink-0">• Plano horizontal:</span> <strong class="text-[#0B2E59] dark:text-sky-300">3,45 m</strong></div>
+              </div>
+
+              <!-- Columna 3 (Derecha) -->
+              <div class="flex flex-col gap-y-1">
+                <div class="flex items-center"><span class="w-[125px] shrink-0">• Wheelbase:</span> <strong class="text-[#0B2E59] dark:text-sky-300">1,65 m</strong></div>
+                <div class="flex items-center"><span class="w-[125px] shrink-0">• Radio de giro:</span> <strong class="text-[#0B2E59] dark:text-sky-300">8,37 m</strong></div>
+                <div class="flex items-center"><span class="w-[125px] shrink-0">• Luz de hélice:</span> <strong class="text-[#0B2E59] dark:text-sky-300">0,30 m</strong></div>
+              </div>
             </div>
           </div>
 
@@ -343,7 +371,7 @@ export const C172_LESSON_1 = {
           <!-- Caution POH Combustibles No Autorizados -->
           <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200">
             <span class="text-base shrink-0">⚠️</span>
-            <span><strong>CAUTION (POH):</strong> El uso de combustibles no aprobados puede provocar daños en el motor y en los componentes del sistema de combustible, pudiendo provocar una parada de motor en vuelo. AVGAS 100LL está terminantemente prohibido.</span>
+            <span><strong>CAUTION:</strong> El uso de combustibles no aprobados puede provocar daños en el motor y en los componentes del sistema de combustible, pudiendo provocar una parada de motor en vuelo. AVGAS 100LL está terminantemente prohibido.</span>
           </div>
         </div>
       </div>
@@ -509,57 +537,28 @@ export const C172_LESSON_1 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Nota del Instructor y Gráfico (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Instrumentación de Motor CED/AED (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">NOTA DEL INSTRUCTOR Y GRÁFICO REQUERIDO</span>
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-between">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DISPLAYS CED 125, AED 125 Y LIGHTPANEL</span>
           </div>
-          <div class="flex flex-col items-center justify-start p-2 pt-1 space-y-3">
-            <div class="w-full flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-3.5 border-2 border-dashed border-[#2361A8]/40 dark:border-sky-500/40 shadow-xs space-y-3">
-              <div class="flex items-center justify-between w-full">
-                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#EBF3FC] dark:bg-sky-950 text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 border border-[#CBDFF7] dark:border-sky-800">
-                  ORIENTACIÓN DOCENTE
-                </span>
-                <span class="text-[10px] font-semibold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-md border border-amber-200 dark:border-amber-900">
-                  Pendiente de captura
-                </span>
-              </div>
 
-              <div class="space-y-1">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Explicación del Instructor:</span>
-                <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-                  "Familiarízate con la disposición de mandos: el interruptor Engine Master es el control vital del FADEC, y el pulsador FADEC Test se utiliza para la prueba automática de canales en tierra."
-                </p>
-              </div>
-
-              <div class="w-full rounded-lg bg-[#F8FAFC] dark:bg-slate-900/60 p-2.5 border border-slate-200 dark:border-slate-700/80 space-y-1">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-[#2361A8] dark:text-sky-400 block">Gráfico / Captura a incorporar:</span>
-                <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Fotografía del panel de instrumentos del Cessna 172 señalando la hilera de interruptores, el display CED 125 y el panel anunciador.
-                </p>
-              </div>
-            </div>
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-black flex items-center justify-center p-2 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/cockpit-instruments.jpg" alt="Displays CED 125, AED 125 y Lightpanel FADEC" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
-        </div>
 
-        <!-- Mensaje inferior solicitado: Tomar imagen real del panel e identificar instrumentos -->
-        <div class="space-y-1.5 shrink-0 pt-2">
-          <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/50 border-2 border-dashed border-amber-400 dark:border-amber-600 flex items-center gap-3 text-amber-950 dark:text-amber-100 shadow-2xs">
-            <span class="text-2xl shrink-0">📸</span>
-            <div class="space-y-0.5">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400 block">Acción Requerida · Material Gráfico:</span>
-              <p class="text-xs font-bold leading-snug text-amber-950 dark:text-amber-100">
-                Tomar imagen real del panel e identificar instrumentos
-              </p>
-            </div>
+          <!-- Nota Técnica de Instrumentación -->
+          <div class="w-full shrink-0 p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-[11px] leading-relaxed text-slate-700 dark:text-slate-300 shadow-2xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300">Instrumentación Digital:</strong> El indicador <strong>CED 125</strong> centraliza los parámetros vitales del motor en barras analógicas y display numérico, el <strong>AED 125</strong> supervisa depósitos, sistema eléctrico y Water Level, y el <strong>Lightpanel</strong> alberga los avisadores de estado y prueba de FADEC.
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>`,
+</div>
+`,
 };
 
 // ============================================================================
@@ -1743,10 +1742,14 @@ export const C172_LESSON_2 = {
       </div>
     </div>
   </div>
-</div>
-
-<!-- pagebreak -->
-
+</div>
+
+
+
+<!-- pagebreak -->
+
+
+
 <!-- DIAPOSITIVA 2.11: 2.11 Marcas de Instrumentos AED 125 y Botón Confirm/Test -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
