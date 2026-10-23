@@ -656,6 +656,166 @@ export const DA40_LESSON_2 = {
     </div>
   </div>
 </div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.2: 2.2 Marcas del Indicador de Velocidad (Airspeed Indicator Markings) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.2 Marcas del Indicador de Velocidad (Airspeed Indicator Markings)</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Arcos de Colores y Rangos Operacionales Reglamentarios</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Tablas Oficiales AFM 2.3 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-3">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AIRSPEED INDICATOR MARKINGS (ARCOS DEL ANEMÓMETRO)</span>
+          </div>
+
+          <!-- Tabla de Arcos del Anemómetro (Formato AFM Oficial 2.3) -->
+          <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
+            <table class="w-full text-left text-[11px] leading-snug">
+              <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
+                <tr>
+                  <th class="py-2.5 px-3 w-[19%]">MARCA</th>
+                  <th class="py-2.5 px-2 text-center w-[15%] font-mono">RANGO KIAS</th>
+                  <th class="py-2.5 px-3 w-[66%]">SIGNIFICADO OFICIAL AFM</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
+                <!-- Arco Blanco -->
+                <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
+                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-white border-2 border-slate-400 shrink-0 shadow-xs"></span>
+                      <span class="text-xs text-slate-900 dark:text-white">Arco Blanco</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">White Arc</span>
+                  </td>
+                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-slate-800 dark:text-slate-100 whitespace-nowrap">
+                    49 – 91
+                  </td>
+                  <td class="py-2.5 px-3 align-top">
+                    <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Operating range with flaps fully extended:</strong>
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300 space-y-0.5">
+                      <div>• <strong>Límite inferior (49 KIAS):</strong> v<sub>SO</sub> a masa máxima (1.150 kg) en configuración LDG.</div>
+                      <div>• <strong>Límite superior (91 KIAS):</strong> v<sub>FE</sub> máxima con flaps en posición LDG. (Flaps T/O hasta 108 KIAS).</div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Arco Verde -->
+                <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
+                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 border border-emerald-600 shrink-0 shadow-xs"></span>
+                      <span class="text-xs text-emerald-700 dark:text-emerald-400">Arco Verde</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">Green Arc</span>
+                  </td>
+                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
+                    52 – 129
+                  </td>
+                  <td class="py-2.5 px-3 align-top">
+                    <strong class="text-emerald-800 dark:text-emerald-300 block mb-0.5">Normal operating range:</strong>
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300 space-y-0.5">
+                      <div>• <strong>Límite inferior (52 KIAS):</strong> v<sub>S</sub> con flaps retraídos (UP) a masa máxima.</div>
+                      <div>• <strong>Límite superior (129 KIAS):</strong> v<sub>NO</sub> = v<sub>C</sub> crucero estructural máximo.</div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Arco Amarillo -->
+                <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
+                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-amber-400 border border-amber-500 shrink-0 shadow-xs"></span>
+                      <span class="text-xs text-amber-700 dark:text-amber-400">Arco Amarillo</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">Yellow Arc</span>
+                  </td>
+                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-amber-600 dark:text-amber-400 whitespace-nowrap">
+                    129 – 178
+                  </td>
+                  <td class="py-2.5 px-3 align-top">
+                    <strong class="text-amber-800 dark:text-amber-300 block mb-0.5">Caution range ("Only in smooth air"):</strong>
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300">
+                      Operaciones exclusivamente con precaución y en aire en calma.
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Línea Roja -->
+                <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
+                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-red-600 border border-red-700 shrink-0 shadow-xs"></span>
+                      <span class="text-xs text-red-600 dark:text-red-400">Línea Roja</span>
+                    </div>
+                    <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">Red Line</span>
+                  </td>
+                  <td class="py-2.5 px-2 text-center align-middle font-mono font-extrabold text-sm text-red-600 dark:text-red-400 whitespace-nowrap">
+                    178
+                  </td>
+                  <td class="py-2.5 px-3 align-top">
+                    <strong class="text-red-700 dark:text-red-400 block mb-0.5">Maximum speed for all operations (v<sub>NE</sub>):</strong>
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300">
+                      Velocidad máxima admisible en todas las operaciones. Prohibido superarla.
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Anemómetro Oficial DA40 (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ANEMÓMETRO DA40 TDI (CALIBRADO EN KNOTS)</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Indicador de velocidad anemométrica de la célula Diamond DA40 TDI con escala en KIAS y franjas de limitación reglamentaria de colores según AFM 2.3.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-anemometro.jpg" alt="Anemómetro oficial Diamond DA40 TDI con arcos de colores" class="w-full h-full max-h-[250px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+
+          <!-- Criterio Operacional del AFM -->
+          <div class="w-full shrink-0 p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-1 text-xs">
+            <div class="font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5 text-xs">
+              <span>Criterio Operacional del AFM:</span>
+            </div>
+            <div class="text-[11px] text-slate-700 dark:text-slate-300 leading-snug space-y-1">
+              <div>
+                <strong class="text-slate-900 dark:text-white">• Régimen con Flaps (&lt; 91 KIAS):</strong>
+                Mantener la velocidad estrictamente dentro del Arco Blanco al operar en configuración LDG (flaps de aterrizaje) para evitar sobrecargas aerodinámicas.
+              </div>
+              <div>
+                <strong class="text-slate-900 dark:text-white">• Vuelo en Turbulencia (&lt; 129 KIAS):</strong>
+                Al encontrar aire turbulento, reducir inmediatamente por debajo del Arco Amarillo (dentro del régimen normal de operación, Arco Verde).
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `,
 };
 
