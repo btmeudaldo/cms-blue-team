@@ -1077,6 +1077,911 @@ export const DA40_LESSON_2 = {
     </div>
   </div>
 </div>
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.5: 2.5 Límites de Maniobra y Factores de Carga -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.5 Límites de Maniobra y Factores de Carga</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Factores de Carga Estructurales AFM 2.10 & Prohibición de Barrenas AFM 2.9</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">MANEUVER & FLIGHT LOAD LIMITS (AFM 2.9 & 2.10)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+            <!-- LÍMITES DE MANIOBRA -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">MANIOBRAS APROBADAS (AFM 2.9)</strong>
+              <div class="space-y-1 pt-0.5 text-[11px] leading-snug text-slate-800 dark:text-slate-200">
+                <div class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                  <span><strong class="text-slate-900 dark:text-slate-100">Categoría Normal (MTOW 1.150 kg):</strong> Maniobras normales, pérdidas suaves (sin pérdida dinámica), virajes con banqueo &le; 60°, ochos perezosos y chandelles.</span>
+                </div>
+                <div class="flex items-start gap-1.5">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                  <span><strong class="text-slate-900 dark:text-slate-100">Categoría Utilidad (MTOW 980 kg):</strong> Maniobras normales y de entrenamiento con banqueo hasta 90°. Asientos traseros vacíos.</span>
+                </div>
+                <div class="flex items-start gap-1.5 text-red-600 dark:text-red-400 font-medium">
+                  <span class="shrink-0">•</span>
+                  <span><strong>Barrenas prohibidas:</strong> Prohibido iniciar barrenas intencionadamente (*Spinning is prohibited*).</span>
+                </div>
+                <div class="flex items-start gap-1.5 text-slate-600 dark:text-slate-300">
+                  <span class="shrink-0">•</span>
+                  <span>Banqueo &gt; 60°: Afecta a la precisión de los giróscopos de actitud y direccional.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- FACTORES DE CARGA -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES DE CARGA (AFM 2.10)</strong>
+              <div class="space-y-1 pt-0.5">
+                <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80">
+                  <div class="font-bold text-[#2361A8] dark:text-sky-400 text-[10px] uppercase">Categoría Normal (hasta 1.150 kg):</div>
+                  <div class="flex justify-between text-[11px] font-medium pt-0.5">
+                    <span class="text-slate-700 dark:text-slate-300">Flaps UP: <strong class="text-emerald-600 dark:text-emerald-400 font-mono">+3.8 G / -1.52 G</strong></span>
+                    <span class="text-slate-700 dark:text-slate-300">Flaps T/O o LDG: <strong class="text-blue-600 dark:text-sky-400 font-mono">+2.0 G / 0 G</strong></span>
+                  </div>
+                </div>
+
+                <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80">
+                  <div class="font-bold text-amber-600 dark:text-amber-400 text-[10px] uppercase">Categoría Utilidad (hasta 980 kg):</div>
+                  <div class="flex justify-between text-[11px] font-medium pt-0.5">
+                    <span class="text-slate-700 dark:text-slate-300">Flaps UP: <strong class="text-emerald-600 dark:text-emerald-400 font-mono">+4.4 G / -1.76 G</strong></span>
+                    <span class="text-slate-700 dark:text-slate-300">Flaps T/O o LDG: <strong class="text-blue-600 dark:text-sky-400 font-mono">+2.0 G / -1.0 G</strong></span>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-1.5 text-[10px] text-slate-500 dark:text-slate-400 pt-0.5 leading-snug">
+                  <span>•</span>
+                  <span>Estructura certificada según estándar JAR-23. Exceder estos límites provocará sobrecargas estructurales.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAUTION AFM NEGATIVE G -->
+          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚡</span>
+              <span>CAUTION (AFM 2.10 - LIMITACIÓN G NEGATIVA):</span>
+            </strong>
+            <p>Evitar la duración prolongada de cargas G negativas (*Avoid extended negative g-loads duration*): pueden causar fallos en el control hidráulico del paso de la hélice y descebado transitorio del motor con oscilaciones de potencia (*engine surging*).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama de Maniobra V-n (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA DE MANIOBRA V-n</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/vn.jpg" alt="Diagrama de Maniobra V-n DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.6: 2.6 Límites de Motor: Potencia, RPM y Techo Operativo -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.6 Límites de Motor: Potencia, RPM y Techo Operativo</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Thielert TAE 125-01 / TAE 125-02-99, RPM y Techo Certificado AFM 2.4 & 2.11</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="space-y-1 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENGINE OPERATING LIMITS (AFM 2.4 & 2.11)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- TAE 125-01 / TAE 125-02-99 -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">MOTOR THIELERT TAE 125</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Fabricante: Thielert Aircraft Engines GmbH</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Potencia máx. despegue: 99 kW (135 CV DIN) a 2300 RPM</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Potencia máx. continua: 99 kW (135 CV DIN / 100% LOAD)</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Régimen continuo: 2.300 RPM de hélice</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Overspeed transitorio máx: 2.500 RPM (máx 20 s en 02-99)</span>
+              </div>
+            </div>
+
+            <!-- CILINDRADA Y TECHO CERTIFICADO -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ESPECIFICACIONES Y TECHO (AFM 2.11)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Techo operativo certificado: <strong>16.400 ft (5.000 m)</strong></span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Cilindrada: 1.689 cm³ (01) / 1.991 cm³ (02-99)</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Hélice: mt-Propeller MTV-6-A/187-129 tripala</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Ángulo de pala (0.75 R): 12° a 28°</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Relación de reductora: <strong>i = 1.69</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA OFICIAL FORMATO C172 -->
+          <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <div>Toda la información sobre RPM en el AFM corresponde a RPM de la hélice (propeller RPM). Con la reductora integrada (i = 1.69), 2.300 RPM de hélice equivalen a 3.887 RPM del cigüeñal del motor diésel.</div>
+          </div>
+
+          <!-- WARNING ARRANQUE -->
+          <div class="p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>WARNING (LIMITACIÓN ELÉCTRICA DE ARRANQUE):</span>
+            </strong>
+            <div>No está permitido arrancar el motor si la tensión de la batería principal es insuficiente para activar el sistema FADEC. Las unidades ECU y los inyectores Common-Rail dependen de suministro eléctrico continuo e ininterrumpido.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Régimen de Potencia y Monomando FADEC (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RÉGIMEN DE POTENCIA Y MONOMANDO FADEC</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/potencia-altitud-fadec.jpg" alt="Régimen de Potencia vs Altitud y Monomando FADEC DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.7: 2.7 Límites Operacionales de Temperatura -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.7 Límites Operacionales de Temperatura</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Límites de Aceite de Motor, Líquido Refrigerante y Caja Reductora AFM 2.4 & 2.16</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="space-y-1 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TEMPERATURE OPERATING LIMITS (AFM 2.4 & 2.16.1)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- ACEITE MOTOR Y REFRIGERANTE -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ACEITE MOTOR Y LÍQUIDO REFRIGERANTE</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Aceite - Temp. mínima de arranque: <strong>-32 °C</strong></span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Aceite - Rango normal (verde): <strong>50 °C a 125 °C</strong></span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Aceite - Máximo absoluto (rojo): <strong>140 °C</strong></span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Refrigerante - Temp. mínima de arranque: <strong>-32 °C</strong></span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Refrigerante - Rango normal (verde): <strong>60 °C a 96 °C</strong></span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Refrigerante - Máximo absoluto (rojo): <strong>105 °C</strong></span>
+              </div>
+            </div>
+
+            <!-- CAJA REDUCTORA Y TEMPERATURA EXTERIOR -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CAJA REDUCTORA Y ENTORNO</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Reductora - Rango normal (verde): hasta <strong>115 °C</strong></span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Reductora - Precaución (amarillo): <strong>115 °C a 120 °C</strong></span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Reductora - Máximo absoluto (rojo): <strong>120 °C</strong></span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Temp. exterior admisible: <strong>-20 °C a +54 °C</strong></span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Precalentamiento: Mandatorio bajo <strong>-20 °C</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- WARNING TEMPERATURA -->
+          <div class="p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>WARNING (AFM 2.4 & 2.16.1):</span>
+            </strong>
+            <p>No aplicar potencia de despegue (Take-off power) hasta que la temperatura del refrigerante alcance un mínimo de <strong>60 °C</strong> y la del aceite <strong>50 °C</strong>. No arrancar el motor con temperaturas de célula inferiores a -20 °C sin precalentamiento externo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama Sinóptico de Temperaturas (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA SINÓPTICO DE TEMPERATURAS</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/limites-temperatura.jpg" alt="Límites Operacionales de Temperatura DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.8: 2.8 Límites de Presión y Consumo de Aceite -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.8 Límites de Presión y Consumo de Aceite</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Presión Mínima (1.2 bar), Normal (2.3–5.2 bar), Máxima (6.5 bar) y Consumo AFM 2.4</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">OIL PRESSURE & CONSUMPTION LIMITS (AFM 2.4)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+            <!-- RANGOS DE PRESIÓN -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">RANGOS DE PRESIÓN (AFM 2.4)</strong>
+              <div class="space-y-1 pt-0.5 text-[11px] leading-tight">
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Mínimo absoluto:</span>
+                  <span class="font-mono font-bold text-red-600 dark:text-red-400">1.2 bar</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Margen bajo (amarillo):</span>
+                  <span class="font-mono font-bold text-amber-600 dark:text-amber-400">1.2 a 2.3 bar</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Régimen normal (verde):</span>
+                  <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">2.3 a 5.2 bar</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Margen alto (amarillo):</span>
+                  <span class="font-mono font-bold text-amber-600 dark:text-amber-400">5.2 a 6.5 bar</span>
+                </div>
+                <div class="flex justify-between py-0.5">
+                  <span class="text-slate-700 dark:text-slate-300">Máximo absoluto:</span>
+                  <span class="font-mono font-bold text-red-600 dark:text-red-400">6.5 bar</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CAPACIDAD Y CONSUMO -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CAPACIDAD Y CONSUMO DE ACEITE</strong>
+              <div class="space-y-1 pt-0.5 text-[11px] leading-tight">
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Cantidad mínima en cárter:</span>
+                  <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">4,5 L (4.8 US qts)</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Cantidad máxima en cárter:</span>
+                  <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">6,0 L (6.3 US qts)</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Consumo máximo admisible:</span>
+                  <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">0,1 L/h (0.1 qts/h)</span>
+                </div>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 pt-1 leading-relaxed">
+                  Sistema de lubricación por cárter húmedo accionado por bomba mecánica acoplada al cigüeñal.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAUTION ACEITE -->
+          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION (AFM 2.4):</span>
+            </strong>
+            <p>Los valores indicados de presión de aceite se corrigen por altitud de presión. Presiones inferiores a 2.3 bar en vuelo de crucero requieren comprobación inmediata de temperatura de aceite y descenso de potencia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Circuito de Lubricación y Manómetro (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CIRCUITO DE LUBRICACIÓN Y CONTROL</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/presion-aceite-lubricacion.jpg" alt="Circuito de Lubricación y Manómetro DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.9: 2.9 Límites Térmicos de Combustible en Depósito -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.9 Límites Térmicos de Combustible en Depósito</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Temperaturas Mínimas y Máximas para JET A-1 y Diésel EN 590 AFM 2.14 & 2.16.2</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FUEL TEMPERATURE LIMITS (AFM 2.16.2)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+            <!-- JET FUEL -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">QUEROSENO JET A-1 / JET A / JP-8</strong>
+              <div class="space-y-1 pt-0.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span>Temp. mínima operativa:</span>
+                  <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">-30 °C (-22 °F)</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span>Temp. máxima (TAE 125-01):</span>
+                  <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">+65 °C (+149 °F)</span>
+                </div>
+                <div class="flex justify-between py-0.5">
+                  <span>Temp. máxima (02-99):</span>
+                  <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">+75 °C (+167 °F)</span>
+                </div>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 pt-1 leading-relaxed">
+                  Excelente fluidez en frío. No requiere aditivos anticongelantes bajo condiciones operativas estándar.
+                </p>
+              </div>
+            </div>
+
+            <!-- AUTOMOCIÓN DIÉSEL -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">AUTOMOCIÓN DIÉSEL (EN 590)</strong>
+              <div class="space-y-1 pt-0.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span>Mínima para arranque:</span>
+                  <span class="font-mono font-bold text-amber-600 dark:text-amber-400">-5 °C (+23 °F)</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span>Mínima para despegue (Main):</span>
+                  <span class="font-mono font-bold text-amber-600 dark:text-amber-400">+5 °C (+41 °F)</span>
+                </div>
+                <div class="flex justify-between py-0.5">
+                  <span>Temperatura máxima:</span>
+                  <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">+65 °C / +75 °C</span>
+                </div>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 pt-1 leading-relaxed">
+                  Riesgo de precipitación de parafinas sólidas con combustible frío que colmatarían el filtro de combustible.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA FUEL COOLER -->
+          <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>ℹ️</span>
+              <span>INTERCAMBIADOR TÉRMICO DE COMBUSTIBLE (FUEL COOLER):</span>
+            </strong>
+            <p>El combustible sobrante de alta presión de la Common-Rail regresa al Main Tank a través del Fuel Cooler. Este flujo continuo calienta el combustible en el depósito izquierdo durante el vuelo, asegurando que se mantenga fluido y por encima del punto de congelación.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Temperatura de Combustible y Retorno (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TEMPERATURA DE COMBUSTIBLE Y RETORNO</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/temperatura-combustible-retorno.jpg" alt="Temperatura de Combustible y Circuito de Retorno DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.10: 2.10 Marcas de Instrumentos CED 125 (Motor y Reductora) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.10 Marcas de Instrumentos CED 125 (Motor y Reductora)</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla Oficial AFM 2.5: Rangos Verde, Amarillo y Rojo en el Display Compacto</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CED 125 ENGINE INSTRUMENT MARKINGS (AFM 2.5)</span>
+          </div>
+
+          <!-- Tabla Completa CED 125 AFM 2.5 -->
+          <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
+            <table class="w-full text-left text-[11px] leading-tight">
+              <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
+                <tr>
+                  <th class="p-1.5 px-2">PARÁMETRO</th>
+                  <th class="p-1.5 px-1.5 text-center text-red-600">ROJO INF.</th>
+                  <th class="p-1.5 px-1.5 text-center text-amber-600">AMARILLO</th>
+                  <th class="p-1.5 px-1.5 text-center text-emerald-600">VERDE (NORMAL)</th>
+                  <th class="p-1.5 px-1.5 text-center text-amber-600">AMARILLO</th>
+                  <th class="p-1.5 px-1.5 text-center text-red-600">ROJO SUP.</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
+                <tr>
+                  <td class="p-1.5 px-2 font-bold">LOAD (%)</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">0 – 100 %</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2 font-bold">RPM Hélice</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">hasta 2300</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">2400 – 2500*</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 2500</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2 font-bold">Oil Press (bar)</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; 1.2</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">1.2 – 2.3</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">2.3 – 5.2</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">5.2 – 6.5</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 6.5</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2 font-bold">Oil Temp (°C)</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; -32</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">-32 a 50</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">50 a 125</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">125 a 140</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 140</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2 font-bold">Coolant Temp (°C)</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; -32</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">-32 a 60</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">60 a 96</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">96 a 105</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 105</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2 font-bold">Gearbox Temp (°C)</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">hasta 115</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">115 a 120</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 120</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-snug">
+            * Con motor TAE 125-02-99 instalado, el rango verde es 0–2300 RPM y cualquier valor &gt; 2300 RPM activa el arco rojo superior.
+          </p>
+
+          <!-- NOTA FADEC TEST -->
+          <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>ℹ️</span>
+              <span>TEST DE BARRAS DE LEDS EN PUESTA EN MARCHA:</span>
+            </strong>
+            <p>Al situar el conmutador ELECT. MASTER en ON, todas las barras de LEDs del CED 125 y AED 125 realizan un barrido automático de autodiagnóstico visual para comprobar el correcto funcionamiento de cada segmento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Instrumento Digital CED 125 (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INSTRUMENTO DIGITAL CED 125</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-black flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.7-v2.jpg?v=2" alt="Display Digital CED 125 DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.11: 2.11 Marcas de Instrumentos AED 125 y Panel Anunciador -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.11 Marcas de Instrumentos AED 125 y Panel Anunciador</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Parámetros Eléctricos, Combustible y Luces Anunciadoras AFM 2.5 & 2.6</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): AED 125 y Panel Anunciador (Altura Fija 590px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AED 125 & ANNUNCIATOR LIGHTS (AFM 2.5 & 2.6)</span>
+          </div>
+
+          <!-- Tabla AED 125 AFM 2.5 -->
+          <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
+            <table class="w-full text-left text-[11px] leading-tight">
+              <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
+                <tr>
+                  <th class="p-1.5 px-2">PARÁMETRO</th>
+                  <th class="p-1.5 px-1.5 text-center text-red-600">ROJO INF.</th>
+                  <th class="p-1.5 px-1.5 text-center text-amber-600">AMARILLO</th>
+                  <th class="p-1.5 px-1.5 text-center text-emerald-600">VERDE</th>
+                  <th class="p-1.5 px-1.5 text-center text-amber-600">AMARILLO</th>
+                  <th class="p-1.5 px-1.5 text-center text-red-600">ROJO SUP.</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
+                <tr>
+                  <td class="p-1.5 px-2 font-bold">Voltímetro (V)</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; 11.0</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">11.0 – 12.6</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">12.6 – 15.0</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">15.0 – 15.5</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 15.5</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2 font-bold">Amperímetro (A)</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">hasta 85</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">85 – 90</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 90</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2 font-bold">Fuel Temp (°C)</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; -30</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">-30 a +4*</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">+5 a 69</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">70 a 75</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 75</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2 font-bold">Fuel Qty (USG)</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; 0.45</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">0.45 a 14.0</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-snug">
+            * De -30 °C a -6 °C el segmento amarillo parpadea; de -5 °C a +4 °C permanece fijo en versiones con panel analógico.
+          </p>
+
+          <!-- Tarjeta Luces Panel Anunciador AFM 2.6 -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">AVISADORES DEL ANNUNCIATOR PANEL (AFM 2.6)</strong>
+            <div class="grid grid-cols-2 gap-1 text-[10px] text-slate-700 dark:text-slate-300 pt-0.5">
+              <div>• <strong>ENGINE:</strong> Parámetro fuera de verde</div>
+              <div>• <strong>ALTERNATOR:</strong> Fallo del alternador</div>
+              <div>• <strong>ECU A / ECU B:</strong> Fallo de canal FADEC</div>
+              <div>• <strong>WATER LEVEL:</strong> Bajo nivel de refrigerante</div>
+              <div>• <strong>LOW FUEL:</strong> Depósito principal &lt; 3-4 USG</div>
+              <div>• <strong>ECU BACKUP:</strong> Batería FADEC insuficiente</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6): AED 125 y Panel Anunciador (Altura Fija 590px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-between">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DISPLAY AED 125 Y ANNUNCIATOR PANEL</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-black flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Display AED 125 DA40 TDI" class="w-full h-full max-h-[220px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+
+          <div class="w-full shrink-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1.5 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Annunciator Panel DA40 TDI" class="w-full h-full max-h-[140px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.12: 2.12 Combustibles Autorizados y Capacidades de Depósitos -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.12 Combustibles Autorizados y Capacidades de Depósitos</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Grados JET/Diésel, Capacidades, Desbalance Máximo y Bomba de Trasvase AFM 2.14</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FUEL LIMITATIONS & TANK CAPACITIES (AFM 2.14)</span>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">COMBUSTIBLES AUTORIZADOS Y DENSIDAD</strong>
+            <div class="space-y-1 text-[11px] text-slate-800 dark:text-slate-200">
+              <p>• <strong>Queroseno de aviación:</strong> JET A-1, JET A, JP-8 (densidad estándar: <strong>0,84 kg/L</strong> / 7.01 lb/gal).</p>
+              <p>• <strong>Automoción alternativo:</strong> Diésel (EN 590) y mezclas con queroseno JET (prohibido en Indonesia y Malasia).</p>
+              <p class="text-red-600 dark:text-red-400 font-semibold">• <strong>AVGAS 100LL está terminantemente prohibido</strong> bajo cualquier circunstancia.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch text-[11px]">
+            <!-- STANDARD TANK -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase">DEPÓSITO ESTÁNDAR (STANDARD)</strong>
+              <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                <span>Capacidad total:</span>
+                <span class="font-mono font-bold">2 x 15.0 USG (113.6 L)</span>
+              </div>
+              <div class="flex justify-between py-0.5">
+                <span>Combustible utilizable:</span>
+                <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">2 x 14.0 USG (106.0 L)</span>
+              </div>
+            </div>
+
+            <!-- LONG RANGE TANK -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase">LONG RANGE TANK (OPCIONAL)</strong>
+              <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                <span>Capacidad total:</span>
+                <span class="font-mono font-bold">2 x 20.5 USG (155.2 L)</span>
+              </div>
+              <div class="flex justify-between py-0.5">
+                <span>Combustible utilizable:</span>
+                <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">2 x 19.5 USG (147.6 L)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DESBALANCE Y BOMBA DE TRASVASE -->
+          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>DESBALANCE MÁXIMO Y TRASVASE (AFM 2.14):</span>
+            </strong>
+            <p>La diferencia máxima permisible entre el depósito derecho e izquierdo es de <strong>9 US gal (34 L)</strong>. El trasvase de combustible desde el Aux Tank se realiza mediante el interruptor <code>FUEL TRANSFER</code> a razón de ~60 US gal/h hacia el depósito principal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema de Depósitos Alares y Selector (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SISTEMA DE COMBUSTIBLE Y SELECTOR</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.9-fuel.jpg?v=1" alt="Esquema de Depósitos Alares y Selector DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.13: 2.13 Fluidos de Servicio, Placards y Limitaciones Operacionales -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.13 Fluidos de Servicio, Placards y Limitaciones Operacionales</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aceites Aprobados, Refrigerante y Letreros Mandatorios de Cabina AFM 2.15 & 2.16</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">APPROVED FLUIDS & MANDATORY PLACARDS (AFM 2.15 & 2.16)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch text-[11px]">
+            <!-- FLUIDOS DE SERVICIO HOMOLOGADOS -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FLUIDOS DE SERVICIO (AFM 2.4)</strong>
+              <div class="space-y-1 pt-0.5 leading-tight text-slate-800 dark:text-slate-200">
+                <p>• <strong>Aceite de Motor:</strong> Shell Helix Ultra 5W-30 / 5W-40, AeroShell Oil Diesel 10W-40 o Ultra 5W-30.</p>
+                <p>• <strong>Aceite de Caja Reductora:</strong> Shell EP 75W-90 o Shell Spirax GSX 75W-80 GL-4.</p>
+                <p>• <strong>Líquido Refrigerante:</strong> 50% agua desionizada y 50% anticongelante glicol con especificación BASF Glysantin (G48).</p>
+              </div>
+            </div>
+
+            <!-- PLACARDS MANDATORIOS DE CABINA -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LETREROS MANDATORIOS (AFM 2.15)</strong>
+              <div class="space-y-1 pt-0.5 leading-tight text-slate-800 dark:text-slate-200">
+                <p>• <strong>Maniobras:</strong> Acrobacias y barrenas prohibidas (*Spins prohibited*).</p>
+                <p>• <strong>Equipaje:</strong> Rótulo de carga máxima 30 kg (66 lb) fijada con red.</p>
+                <p>• <strong>Bocas alares:</strong> <code>JET FUEL ONLY</code> con tipos aprobados.</p>
+                <p>• <strong>Parasoles (AFM 2.16.8):</strong> Uso permitido exclusivamente en vuelo de crucero.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA ECU BACKUP BATTERY -->
+          <div class="p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>🚨</span>
+              <span>BATERÍA DE RESERVA ECU (AFM 2.16.7):</span>
+            </strong>
+            <p>La luz roja <code>ECU BACKUP UNSAFE</code> en el Annunciator Panel indica carga insuficiente en la batería de reserva FADEC. En esta condición, los vuelos en reglas IFR quedan terminantemente prohibidos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Placards y Accesos de Servicio (Altura Fija 590px) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLACARDS OFICIALES Y ACCESOS DE SERVICIO</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.10-v2.jpg?v=2" alt="Placards y Accesos de Servicio DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `,
 };
 

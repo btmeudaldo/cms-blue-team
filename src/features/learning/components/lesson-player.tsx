@@ -1318,25 +1318,7 @@ export function LessonPlayer({
               </nav>
             )}
 
-            {/* SuperAdmin Private Slide Banner */}
-            {!isAfterLastSlide && isSuperAdmin && currentSlideVisibility === "private" && (
-              <div className="flex items-center justify-between gap-3 px-4 py-2.5 rounded-2xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-300/80 dark:border-amber-700/80 text-xs text-amber-900 dark:text-amber-200 font-medium shadow-2xs">
-                <div className="flex items-center gap-2">
-                  <span className="text-base">🔒</span>
-                  <span>
-                    <strong>Modo Borrador:</strong> Esta diapositiva solo está a la vista para ti. Los alumnos no pueden verla hasta marcarla como <strong>"Visible para todos"</strong>.
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  disabled={isUpdatingVisibility}
-                  onClick={() => handleLiveVisibilityChange("public")}
-                  className="px-3 py-1 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs cursor-pointer transition-colors shrink-0 shadow-2xs"
-                >
-                  Hacer visible a todos
-                </button>
-              </div>
-            )}
+            {/* SuperAdmin Private Slide Banner ocultado a petición del usuario para evitar scroll vertical */}
 
             {/* Content Article Container: Full reading width preserved without forced screen scroll */}
             {totalLessonPages === 0 ? (

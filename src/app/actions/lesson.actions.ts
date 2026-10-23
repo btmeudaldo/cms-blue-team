@@ -199,15 +199,41 @@ export async function updateSlideVisibilityAction({
     );
   }
 
-  const isUuid =
+  const isLessonUuid =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
       lessonId,
     );
-  let query = supabase
-    .from("lessons")
-    .select("id, content_html")
-    .eq("course_id", courseId);
-  query = isUuid ? query.eq("id", lessonId) : query.eq("slug", lessonId);
+  const isCourseUuid =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      courseId,
+    );
+
+  let query = supabase.from("lessons").select("id, content_html");
+
+  if (isLessonUuid) {
+    query = query.eq("id", lessonId);
+  } else {
+    query = query.eq("slug", lessonId);
+    if (isCourseUuid) {
+      query = query.eq("course_id", courseId);
+    } else {
+      try {
+        if (typeof supabase.from("courses")?.select === "function") {
+          const { data: courseRow } = await supabase
+            .from("courses")
+            .select("id")
+            .eq("slug", courseId)
+            .maybeSingle();
+          if (courseRow?.id) {
+            query = query.eq("course_id", courseRow.id);
+          }
+        }
+      } catch {
+        // Fallback for mock environments
+      }
+    }
+  }
+
   const { data: lesson, error: fetchErr } = await query.single();
 
   if (fetchErr || !lesson) {
