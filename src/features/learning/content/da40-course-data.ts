@@ -821,6 +821,138 @@ export const DA40_LESSON_2 = {
     </div>
   </div>
 </div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.3: 2.3 Límites de Peso Estructural (Weight Limits) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.3 Límites de Peso y Centro de Gravedad (Weight & CG Limits)</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pesos Máximos Estructurales y Envolvente de Centrado AFM 2.7 & 2.8</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): Pesos y Límites CG (Altura Fija 590px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">WEIGHT & CG LIMITS (SECTION 2)</span>
+          </div>
+
+          <!-- Breve descripción oficial -->
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Diagrama oficial de carga y centrado del Diamond DA40 TDI, vinculando los pesos estructurales con los límites de brazo del centro de gravedad.
+            </p>
+          </div>
+
+          <!-- Tabla de Pesos Estructurales AFM 2.7 -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÍMITES DE PESO ESTRUCTURAL (DIAMOND DA40 TDI)</strong>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-[11px] leading-tight">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
+                    <th class="py-1 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300">Categoría</th>
+                    <th class="py-1 px-1.5 font-bold">Max. Ramp</th>
+                    <th class="py-1 px-1.5 font-bold">Max. Takeoff (MTOW)</th>
+                    <th class="py-1 px-1.5 font-bold">Max. Landing (MLW)</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-1.5 font-bold text-[#2361A8] dark:text-sky-400 whitespace-nowrap">Normal Category</td>
+                    <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-medium">1.150 kg (2.535 lb)</td>
+                    <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-bold text-sky-700 dark:text-sky-300">1.150 kg (2.535 lb)</td>
+                    <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-medium">
+                      1.150 kg <span class="text-[10px] text-slate-500">(1.092 kg estándar)</span>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-1.5 font-bold text-amber-600 dark:text-amber-400 whitespace-nowrap">Utility Category</td>
+                    <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-medium">980 kg (2.161 lb)</td>
+                    <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-bold text-amber-700 dark:text-amber-300">980 kg (2.161 lb)</td>
+                    <td class="py-1.5 px-1.5 text-slate-800 dark:text-slate-200 font-medium">980 kg (2.161 lb)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-[10px] text-slate-500 dark:text-slate-400 pt-0.5">
+              * MLW de 1.150 kg requiere amortiguadores de pata de tren de 18 mm (MÄM 40-123 instalada). Equipaje máximo: 30 kg (66 lb).
+            </p>
+          </div>
+
+          <!-- Center of Gravity Limits (AFM 2.8) -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 w-full shrink-0">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">CENTER OF GRAVITY LIMITS (AFM 2.8)</strong>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium hidden sm:inline">Datum: 2,194 m fwd of stub wing root rib</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] leading-snug">
+              <!-- Normal Category -->
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 space-y-1">
+                <span class="font-bold text-[#2361A8] dark:text-sky-400 block uppercase text-[10px] tracking-wider border-b border-slate-200 dark:border-slate-700/60 pb-0.5">NORMAL CATEGORY (≤ 1.150 kg)</span>
+                <div>
+                  <span class="font-bold text-slate-700 dark:text-slate-300 text-[10px] uppercase">Forward:</span>
+                  <p class="text-slate-600 dark:text-slate-300 mt-0.5">
+                    2,40 m (94,5 in) aft of DP (780–980 kg); variación lineal hasta 2,46 m (96,9 in) a 1.150 kg.
+                  </p>
+                </div>
+                <div>
+                  <span class="font-bold text-slate-700 dark:text-slate-300 text-[10px] uppercase">Aft:</span>
+                  <p class="text-slate-600 dark:text-slate-300 mt-0.5">
+                    2,59 m (102,0 in) Standard Tank / 2,55 m (100,4 in) Long Range.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Utility Category -->
+              <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700/80 space-y-1">
+                <span class="font-bold text-amber-600 dark:text-amber-400 block uppercase text-[10px] tracking-wider border-b border-slate-200 dark:border-slate-700/60 pb-0.5">UTILITY CATEGORY (≤ 980 kg)</span>
+                <div>
+                  <span class="font-bold text-slate-700 dark:text-slate-300 text-[10px] uppercase">Forward:</span>
+                  <p class="text-slate-600 dark:text-slate-300 mt-0.5">
+                    2,40 m (94,5 in) aft of DP constante entre 780 kg y 980 kg.
+                  </p>
+                </div>
+                <div>
+                  <span class="font-bold text-slate-700 dark:text-slate-300 text-[10px] uppercase">Aft:</span>
+                  <p class="text-slate-600 dark:text-slate-300 mt-0.5">
+                    2,59 m (102,0 in) aft of DP con Standard Tank.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Warning AFM Oficial -->
+        <div class="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0">
+          <span class="text-base shrink-0">🚨</span>
+          <span><strong>WARNING (AFM):</strong> Exceder los límites de masa conduce a una sobrecarga estructural y degradación del rendimiento de vuelo. Exceder los límites de centrado reduce drásticamente la controlabilidad y estabilidad del avión.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6): Envolvente de Masa y Centrado (Altura Fija 590px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE DE MASA Y CENTRADO (CG ENVELOPE)</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1.5 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: 100%; max-width: 100%; height: 100%; float: none; clear: both; opacity: 1;">
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-cg-limits.png" alt="Envolvente de Masa y Centrado Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `,
 };
 

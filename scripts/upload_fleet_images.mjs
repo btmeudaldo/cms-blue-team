@@ -18,6 +18,7 @@ const uploads = [
   { local: "public/images/da40/da40-cover.jpg", remote: "fleet/da40/da40-cover.jpg", mime: "image/jpeg" },
   { local: "public/images/da40/cockpit-instruments.jpg", remote: "fleet/da40/cockpit-instruments.jpg", mime: "image/jpeg" },
   { local: "public/images/da40/da40-anemometro.jpg", remote: "fleet/da40/da40-anemometro.jpg", mime: "image/jpeg" },
+  { local: "public/images/da40/da40-cg-limits-cropped.png", remote: "fleet/da40/da40-cg-limits.png", mime: "image/png" },
   { local: "public/images/c172/cockpit-instruments.jpg", remote: "fleet/c172/cockpit-instruments.jpg", mime: "image/jpeg" },
 ];
 
