@@ -923,7 +923,7 @@ export function LessonPlayer({
                 </div>
                 <div className="flex flex-col leading-tight">
                   <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">
-                    {totalLessonPages > 1
+                    {totalLessonPages > 1 || isSlideMode
                       ? `Tiempo Diapositiva ${activeRemainingSeconds > 0 ? `(${activeRemainingSeconds}s)` : ""}`
                       : "Tiempo Exigido"}
                   </span>
@@ -938,7 +938,7 @@ export function LessonPlayer({
               </div>
 
               {/* Slide Counter Badge */}
-              {totalLessonPages > 1 && (
+              {(totalLessonPages > 1 || isSlideMode) && (
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-1.5 rounded-xl bg-sky-50 dark:bg-sky-950/40 px-3 py-1.5 border border-sky-200 dark:border-sky-800">
                     <span className="text-[10px] font-bold uppercase text-sky-600 dark:text-sky-400">
@@ -1184,8 +1184,8 @@ export function LessonPlayer({
               </div>
             )}
 
-            {/* Top Slide / Page Navigator Bar (Shown when lesson has multiple slides) */}
-            {totalLessonPages > 1 && (
+            {/* Top Slide / Page Navigator Bar (Shown when lesson has multiple slides or isSlideMode) */}
+            {(totalLessonPages > 1 || isSlideMode) && (
               <nav
                 aria-label="Navegación de diapositivas"
                 className="relative flex items-center justify-between gap-3 px-4 py-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-2xs backdrop-blur-sm min-h-[44px]"
