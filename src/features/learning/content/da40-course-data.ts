@@ -1713,101 +1713,141 @@ export const DA40_LESSON_2 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.11 Marcas de Instrumentos AED 125 y Panel Anunciador</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Parámetros Eléctricos, Combustible y Luces Anunciadoras</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Parámetros Eléctricos, Combustible y Lógica de Rearme de Alarmas</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
-    <!-- Columna Izquierda (lg:col-span-6): AED 125 y Panel Anunciador (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-6): AED 125 y Lógica Confirm/Test (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AED 125 & ANNUNCIATOR LIGHTS</span>
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AED 125 & CONFIRM/TEST LOGIC</span>
+        </div>
+
+        <!-- TABLA DE MARCAS DE INSTRUMENTOS AED 125 -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 w-full shrink-0">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-0.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">MARCAS DE INSTRUMENTOS AUXILIARES (AED 125)</strong>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">AFM Tabla 2.5</span>
           </div>
 
-          <!-- Tabla AED 125 AFM 2.5 -->
-          <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
+          <div class="overflow-x-auto">
             <table class="w-full text-left text-[11px] leading-tight">
-              <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  <th class="p-1.5 px-2">PARÁMETRO</th>
-                  <th class="p-1.5 px-1.5 text-center text-red-600">ROJO INF.</th>
-                  <th class="p-1.5 px-1.5 text-center text-amber-600">AMARILLO</th>
-                  <th class="p-1.5 px-1.5 text-center text-emerald-600">VERDE</th>
-                  <th class="p-1.5 px-1.5 text-center text-amber-600">AMARILLO</th>
-                  <th class="p-1.5 px-1.5 text-center text-red-600">ROJO SUP.</th>
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
+                  <th class="py-1 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300">Parámetro</th>
+                  <th class="py-1 px-1.5 font-bold text-emerald-700 dark:text-emerald-400">Verde</th>
+                  <th class="py-1 px-1.5 font-bold text-amber-700 dark:text-amber-400">Ámbar</th>
+                  <th class="py-1 px-1.5 font-bold text-red-700 dark:text-red-400">Roja</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
-                <tr>
-                  <td class="p-1.5 px-2 font-bold">Voltímetro (V)</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; 11.0</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">11.0 – 12.6</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">12.6 – 15.0</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">15.0 – 15.5</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 15.5</td>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Voltímetro (14V) [V]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">12.6 - 15.0 V</td>
+                  <td class="py-1.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">11.0 - 12.6 | 15.0 - 15.5 V</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&lt; 11.0 | &gt; 15.5 V</td>
                 </tr>
-                <tr>
-                  <td class="p-1.5 px-2 font-bold">Amperímetro (A)</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">hasta 85</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">85 – 90</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 90</td>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Amperímetro [A]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">hasta 85 A</td>
+                  <td class="py-1.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">85 - 90 A</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&gt; 90 A</td>
                 </tr>
-                <tr>
-                  <td class="p-1.5 px-2 font-bold">Fuel Temp (°C)</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; -30</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">-30 a +4*</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">+5 a 69</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">70 a 75</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 75</td>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Fuel Temp (L y R) [°C]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">+5 a 69 °C</td>
+                  <td class="py-1.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">-30...+4 | 70 - 75 °C</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -30 | &gt; 75 °C</td>
                 </tr>
-                <tr>
-                  <td class="p-1.5 px-2 font-bold">Fuel Qty (USG)</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; 0.45</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">0.45 a 14.0</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Fuel Qty [USG]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0.45 a 14.0 USG</td>
+                  <td class="py-1.5 px-1.5 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&lt; 0.45 USG</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-snug">
-            * De -30 °C a -6 °C el segmento amarillo parpadea; de -5 °C a +4 °C permanece fijo en versiones con panel analógico.
-          </p>
+        </div>
 
-          <!-- Tarjeta Luces Panel Anunciador AFM 2.6 -->
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">AVISADORES DEL ANNUNCIATOR PANEL</strong>
-            <div class="grid grid-cols-2 gap-1 text-[10px] text-slate-700 dark:text-slate-300 pt-0.5">
-              <div>• <strong>ENGINE:</strong> Parámetro fuera de verde</div>
-              <div>• <strong>ALTERNATOR:</strong> Fallo del alternador</div>
-              <div>• <strong>ECU A / ECU B:</strong> Fallo de canal FADEC</div>
-              <div>• <strong>WATER LEVEL:</strong> Bajo nivel de refrigerante</div>
-              <div>• <strong>LOW FUEL:</strong> Depósito principal &lt; 3-4 USG</div>
-              <div>• <strong>ECU BACKUP:</strong> Batería FADEC insuficiente</div>
+        <!-- LÓGICA CONFIRM / TEST -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÓGICA OPERATIVA DEL BOTÓN CONFIRM / TEST</strong>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1.5 pt-0.5 text-[11px] leading-tight">
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Activación de aviso:</strong> La luz <strong>ENGINE</strong> se enciende si cualquier indicación entra en ámbar o rojo.</span>
+            </div>
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Memorización:</strong> Permanece encendida aunque el parámetro retorne a la zona verde de operación.</span>
+            </div>
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Confirmación:</strong> El piloto debe presionar el pulsador Confirm / Test para apagar y acusar la alarma.</span>
+            </div>
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Rearme automático:</strong> Tras confirmarse, volverá a iluminarse si otro parámetro se desvía de los límites.</span>
+            </div>
+            <div class="flex items-start gap-1.5 sm:col-span-2">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Prueba de encendido:</strong> Mantener presionado el botón más de 1 segundo inicia el barrido de autotest en todos los displays.</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): AED 125 y Panel Anunciador (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-6): AED 125 + NOTA / Panel Anunciador (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-between">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DISPLAY AED 125 Y ANNUNCIATOR PANEL</span>
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AED 125 & PANEL ANUNCIADOR</span>
+        </div>
+
+        <div class="flex flex-col gap-2 flex-1 min-h-0">
+          <!-- 1. PARTE SUPERIOR: AED 125 + NOTA -->
+          <div class="flex-[1.18] min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-white p-2.5 shadow-2xs">
+            <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
+              <span class="text-[11px] font-bold text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-sky-600"></span>
+                AED 125 · Auxiliary Engine Display
+              </span>
+              <span class="text-[9px] font-bold text-sky-800 bg-sky-100 px-1.5 py-0.5 rounded">Fuel Temp / V / A / Qty</span>
+            </div>
+
+            <div class="flex-1 min-h-0 grid grid-cols-12 gap-3 items-center">
+              <!-- AED 125 a la izquierda -->
+              <div class="col-span-6 h-full flex items-center justify-center overflow-hidden py-0.5">
+                <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125 DA40 TDI" class="w-full h-full max-h-[205px] object-contain rounded-md" />
+              </div>
+
+              <!-- NOTA en cuadro a la derecha -->
+              <div class="col-span-6 p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-relaxed shadow-2xs">
+                <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs">
+                  <span>ℹ️</span>
+                  <span>NOTE:</span>
+                </strong>
+                <div>Si una indicación sale del rango verde, se ilumina la luz ámbar <strong>ENGINE</strong> en el panel anunciador. Permanece encendida incluso cuando la indicación regresa a verde y debe ser confirmada mediante el pulsador Confirm/Test.</div>
+              </div>
+            </div>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Display AED 125 DA40 TDI" class="w-full h-full max-h-[220px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
-          </div>
+          <!-- 2. PARTE INFERIOR: Panel Anunciador de Alarmas -->
+          <div class="flex-1 min-h-0 flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-white p-2 shadow-2xs">
+            <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
+              <span class="text-[11px] font-bold text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                Panel Anunciador · Luces de Motor y Sistemas
+              </span>
+              <span class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded">ENGINE Caution</span>
+            </div>
 
-          <div class="w-full shrink-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-1.5 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Annunciator Panel DA40 TDI" class="w-full h-full max-h-[140px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+            <div class="w-full flex-1 min-h-0 bg-white dark:bg-white flex items-center justify-center overflow-hidden py-0.5">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina DA40 TDI" class="w-full h-full max-h-[165px] object-contain rounded-md" />
+            </div>
           </div>
         </div>
       </div>
