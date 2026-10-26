@@ -2162,6 +2162,110 @@ export const DA40_LESSON_3 = {
     </div>
   </div>
 </div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.2: 3.2 Reductora Integrada y Hélice MT-Propeller -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.2 Reductora Integrada y Hélice MT-Propeller</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Relación i=1:1.69 y Paso Variable Constant Speed</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): Especificaciones Reductora y Hélice AFM (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GEARBOX & PROPELLER</span>
+        </div>
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- CAJA REDUCTORA -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CAJA REDUCTORA INTEGRADA (GEARBOX)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Relación de desmultiplicación: i = 1:1.69 (las RPM del cigüeñal se reducen a RPM de hélice)</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Amortiguador de torsión: Amortiguador mecánico de vibraciones torsionales incorporado</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Embrague de sobrecarga (overload release): Desacopla ante picos de par anómalos o impacto de hélice</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Lubricación independiente: Circuito de aceite propio con intercambiador de calor agua/aceite</span>
+              </div>
+            </div>
+
+            <!-- HÉLICE MT-PROPELLER -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HÉLICE TRIPALA CONSTANT SPEED</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Fabricante y modelo: mt-Propeller MTV-6-A/187-129 (diámetro 187 cm / 1,87 m)</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Construcción: Madera laminada reforzada con fibra, borde de acero inoxidable y lámina PU en raíz</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Rango de paso: Ángulo de 12° a 28° (a 0,75 R) gobernado automáticamente por la ECU</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Regulador electro-hidráulico: Brida al frente del motor con circuito de aceite propio</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADVERTENCIAS AFM: SEGURIDAD Y FALLO DE GOBERNADOR -->
+          <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>WARNING:</span>
+            </strong>
+            <div>Ante una pérdida de presión de aceite en el gobernador, las palas van automáticamente a paso fino (low pitch / altas RPM) funcionando como una hélice de paso fijo. El régimen se controla directamente con la palanca de empuje (Power Lever) sin superar 2.300 RPM (máx. 2.500 RPM transitorio). Las palas ligeras de madera cambian de RPM más rápido que las metálicas: mover siempre la palanca con suavidad. Jamás mover la hélice con la mano.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6): Reductora Integrada y Hélice MT-Propeller (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CAJA REDUCTORA Y HÉLICE MT-PROPELLER</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 px-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-snug font-medium">
+              Arquitectura de la caja reductora con relación i=1:1.69, amortiguador torsional, embrague de sobrecarga y sistema de gobierno electro-hidráulico de la hélice MTV-6-A/187-129.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/90 flex flex-col items-center justify-between p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.2-gearbox-propeller.jpg?v=1" alt="Reductora Integrada y Hélice MT-Propeller" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
+            </div>
+            <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
+              <strong class="text-[#0B2E59] dark:text-sky-300">mt-Propeller MTV-6-A/187-129</strong> · Caja reductora con embrague de fricción y gobernador integrado con circuito de aceite independiente
+            </figcaption>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `,
 };
 
