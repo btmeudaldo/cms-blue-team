@@ -1985,64 +1985,71 @@ export const DA40_LESSON_2 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.13 Fluidos de Servicio, Placards y Limitaciones Operacionales</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aceites Aprobados, Refrigerante y Letreros Mandatorios de Cabina</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aceites Aprobados, Refrigerante, Capacidades y Letreros Mandatorios</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">APPROVED FLUIDS & MANDATORY PLACARDS</span>
-          </div>
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-0.5">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">APPROVED FLUIDS & MANDATORY PLACARDS</span>
+        </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch text-[11px]">
+        <div class="space-y-1.5 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch text-[11px] leading-tight">
             <!-- FLUIDOS DE SERVICIO HOMOLOGADOS -->
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FLUIDOS DE SERVICIO</strong>
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FLUIDOS Y LUBRICANTES AUTORIZADOS</strong>
               <div class="space-y-1 pt-0.5 leading-tight text-slate-800 dark:text-slate-200">
                 <p>• <strong>Aceite de Motor:</strong> Shell Helix Ultra 5W-30 / 5W-40, AeroShell Oil Diesel 10W-40 o Ultra 5W-30.</p>
-                <p>• <strong>Aceite de Caja Reductora:</strong> Shell EP 75W-90 o Shell Spirax GSX 75W-80 GL-4.</p>
-                <p>• <strong>Líquido Refrigerante:</strong> 50% agua desionizada y 50% anticongelante glicol con especificación BASF Glysantin (G48).</p>
+                <p>• <strong>Capacidad de Aceite:</strong> Mínimo <strong>4,5 L</strong> | Máximo <strong>6,0 L</strong> (consumo máx. admisible: 0,1 L/h).</p>
+                <p>• <strong>Aceite de Reductora:</strong> Shell EP 75W-90, Shell Spirax GSX 75W-80 GL-4 o Centurion N1 (~1,0 L).</p>
+                <p>• <strong>Refrigerante:</strong> 50% agua desionizada y 50% BASF Glysantin (G48) con punto de congelación a -36 °C.</p>
+                <p>• <strong>Prohibición:</strong> Prohibido mezclar tipos o marcas no autorizadas expresamente en el AFM.</p>
               </div>
             </div>
 
             <!-- PLACARDS MANDATORIOS DE CABINA -->
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LETREROS MANDATORIOS</strong>
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LETREROS MANDATORIOS (AFM 2.16)</strong>
               <div class="space-y-1 pt-0.5 leading-tight text-slate-800 dark:text-slate-200">
-                <p>• <strong>Maniobras:</strong> Acrobacias y barrenas prohibidas (*Spins prohibited*).</p>
-                <p>• <strong>Equipaje:</strong> Rótulo de carga máxima 30 kg (66 lb) fijada con red.</p>
-                <p>• <strong>Bocas alares:</strong> <code>JET FUEL ONLY</code> con tipos aprobados.</p>
-                <p>• <strong>Parasoles:</strong> Uso permitido exclusivamente en vuelo de crucero.</p>
+                <p>• <strong>Panel de Instrumentos:</strong> Rótulo de categorías Normal y Utility (VFR D/N, IFR; acrobacias y barrenas prohibidas).</p>
+                <p>• <strong>Velocidades $v_A$:</strong> 108 KIAS (>980 a 1150 kg) / 94 KIAS (780 a 980 kg).</p>
+                <p>• <strong>Válvula de Emergencia:</strong> <code>NORMAL - EMERGENCY TRANSFER - OFF</code>.</p>
+                <p>• <strong>Equipaje:</strong> Máximo 30 kg (66 lb) fijado obligatoriamente con red.</p>
+                <p>• <strong>Bocas alares:</strong> <code>JET FUEL ONLY</code> (14 US gal utilizables).</p>
+                <p>• <strong>Cabina:</strong> Rótulo obligatorio <code>No smoking</code>.</p>
               </div>
             </div>
           </div>
 
-          <!-- NOTA ECU BACKUP BATTERY -->
+          <!-- NOTA ECU BACKUP BATTERY Y ADVERTENCIAS -->
           <div class="p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
             <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
               <span>🚨</span>
-              <span>BATERÍA DE RESERVA ECU:</span>
+              <span>BATERÍA DE RESERVA ECU & VIGENCIA DE LETREROS:</span>
             </strong>
-            <p>La luz roja <code>ECU BACKUP UNSAFE</code> en el Annunciator Panel indica carga insuficiente en la batería de reserva FADEC. En esta condición, los vuelos en reglas IFR quedan terminantemente prohibidos.</p>
+            <p>La luz roja <code>ECU BACKUP UNSAFE</code> en el Annunciator Panel indica carga insuficiente en la batería de reserva FADEC. En esta condición, los vuelos en reglas IFR quedan terminantemente prohibidos. Todos los letreros y placards contenidos en el AFM deben permanecer perfectamente legibles e instalados.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Placards y Accesos de Servicio (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Placards Oficiales de Cabina DA40 TDI (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLACARDS OFICIALES Y ACCESOS DE SERVICIO</span>
-          </div>
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLACARD MANDATORIO DE CABINA DA40 TDI</span>
+        </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.10-v2.jpg?v=2" alt="Placards y Accesos de Servicio DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-placards.png" alt="Placard Mandatorio de Cabina Diamond DA40 TDI" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
           </div>
+          <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300">Placard Mandatorio de Cabina DA40 TDI</strong> · Velocidades $v_A$ según masa, categorías Normal/Utility, operaciones VFR/IFR y prohibición de acrobacias
+          </figcaption>
         </div>
       </div>
     </div>
