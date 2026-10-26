@@ -1143,16 +1143,16 @@ export const DA40_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Diagrama de Maniobra V-n (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Factores de Carga Estructurales (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA DE MANIOBRA V-n</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FACTORES DE CARGA ESTRUCTURALES</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/vn.jpg" alt="Diagrama de Maniobra V-n DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-load-factors.png?v=1" alt="Tabla Oficial de Factores de Carga Estructurales Diamond DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
