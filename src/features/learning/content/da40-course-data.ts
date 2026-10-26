@@ -1863,34 +1863,57 @@ export const DA40_LESSON_2 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.12 Combustibles Autorizados y Capacidades de Depósitos</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Grados JET/Diésel, Capacidades, Desbalance Máximo y Bomba de Trasvase</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Grados JET/Diésel, Temp. Mínima de Despegue, Capacidades y Trasvase</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FUEL LIMITATIONS & TANK CAPACITIES</span>
-          </div>
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-0.5">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FUEL LIMITATIONS & TANK CAPACITIES</span>
+        </div>
 
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">COMBUSTIBLES AUTORIZADOS Y DENSIDAD</strong>
-            <div class="space-y-1 text-[11px] text-slate-800 dark:text-slate-200">
-              <p>• <strong>Queroseno de aviación:</strong> JET A-1, JET A, JP-8 (densidad estándar: <strong>0,84 kg/L</strong> / 7.01 lb/gal).</p>
-              <p>• <strong>Automoción alternativo:</strong> Diésel (EN 590) y mezclas con queroseno JET (prohibido en Indonesia y Malasia).</p>
-              <p class="text-red-600 dark:text-red-400 font-semibold">• <strong>AVGAS 100LL está terminantemente prohibido</strong> bajo cualquier circunstancia.</p>
+        <div class="space-y-1.5 py-0.5">
+          <!-- TARJETA 1: COMBUSTIBLES AUTORIZADOS Y TEMPERATURAS -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">COMBUSTIBLES AUTORIZADOS, TEMPERATURA Y DENSIDAD</strong>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-1 text-[11px] leading-tight text-slate-800 dark:text-slate-200 pt-0.5">
+              <div class="flex items-start gap-1.5">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span><strong>Queroseno JET:</strong> JET A-1, JET A, JP-8, TS-1 (densidad 0,84 kg/L).</span>
+              </div>
+              <div class="flex items-start gap-1.5">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span><strong>Diésel alternativo:</strong> Automoción EN 590 y mezclas con JET.</span>
+              </div>
+              <div class="flex items-start gap-1.5">
+                <span class="font-bold text-emerald-700 dark:text-emerald-400 shrink-0">•</span>
+                <span><strong>Mín. despegue JET:</strong> <strong>-30 °C</strong> (máx. admisible: <strong>+75 °C</strong>).</span>
+              </div>
+              <div class="flex items-start gap-1.5">
+                <span class="font-bold text-amber-700 dark:text-amber-400 shrink-0">•</span>
+                <span><strong>Mín. despegue Diésel:</strong> <strong>-5 °C</strong> (congelación de parafinas).</span>
+              </div>
+              <div class="flex items-start gap-1.5 sm:col-span-2 text-red-600 dark:text-red-400 font-semibold pt-0.5">
+                <span class="shrink-0">•</span>
+                <span><strong>AVGAS 100LL:</strong> Terminantemente prohibido bajo cualquier circunstancia.</span>
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch text-[11px]">
-            <!-- STANDARD TANK -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase">DEPÓSITO ESTÁNDAR (STANDARD)</strong>
+          <!-- TARJETA 2: CAPACIDADES Y AVISO LOW FUEL -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch text-[11px] leading-tight">
+            <!-- STANDARD TANKS -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase">DEPÓSITOS ESTÁNDAR (STANDARD)</strong>
               <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
                 <span>Capacidad total:</span>
                 <span class="font-mono font-bold">2 x 15.0 USG (113.6 L)</span>
+              </div>
+              <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                <span>Combustible no utilizable:</span>
+                <span class="font-mono text-slate-500">2 x 1.0 USG (7.6 L)</span>
               </div>
               <div class="flex justify-between py-0.5">
                 <span>Combustible utilizable:</span>
@@ -1898,43 +1921,55 @@ export const DA40_LESSON_2 = {
               </div>
             </div>
 
-            <!-- LONG RANGE TANK -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase">LONG RANGE TANK (OPCIONAL)</strong>
+            <!-- AUXILIARY / LONG RANGE -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase">AUXILIAR / BOMBA DE TRASVASE</strong>
               <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
-                <span>Capacidad total:</span>
-                <span class="font-mono font-bold">2 x 20.5 USG (155.2 L)</span>
+                <span>Depósito Auxiliar utilizable:</span>
+                <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">1 x 13.7 USG (52.0 L)</span>
+              </div>
+              <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                <span>Tasa de trasvase eléctrico:</span>
+                <span class="font-mono">~60 US gal/h (1 gal/min)</span>
               </div>
               <div class="flex justify-between py-0.5">
-                <span>Combustible utilizable:</span>
-                <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">2 x 19.5 USG (147.6 L)</span>
+                <span>Aviso <strong>LOW FUEL</strong>:</span>
+                <span class="font-mono font-bold text-amber-600">&lt; 3 a 4 USG (11-15 L)</span>
               </div>
             </div>
           </div>
 
-          <!-- DESBALANCE Y BOMBA DE TRASVASE -->
+          <!-- TARJETA 3: CAUTION OPERACIONAL AFM 2.14 -->
           <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
-              <span>⚠️</span>
-              <span>DESBALANCE MÁXIMO Y TRASVASE:</span>
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs shrink-0">
+              <span>⚡</span>
+              <span>LIMITACIONES OPERATIVAS DEL SISTEMA DE COMBUSTIBLE (AFM 2.14):</span>
             </strong>
-            <p>La diferencia máxima permisible entre el depósito derecho e izquierdo es de <strong>9 US gal (34 L)</strong>. El trasvase de combustible desde el Aux Tank se realiza mediante el interruptor <code>FUEL TRANSFER</code> a razón de ~60 US gal/h hacia el depósito principal.</p>
+            <ul class="list-disc pl-3 space-y-0.5 text-[11px] leading-tight">
+              <li><strong>Válvula selectora (Emergency Fuel Valve):</strong> Cuenta con posiciones <code>NORMAL</code>, <code>EMERGENCY TRANSFER</code> y <code>OFF</code>. En la DA40 <strong>no existe posición BOTH</strong>.</li>
+              <li><strong>Despegue y aterrizaje:</strong> Deben realizarse en el depósito principal (Main Tank) con la válvula en posición <code>NORMAL</code>.</li>
+              <li><strong>Desbalance máximo permitido:</strong> La diferencia máxima permisible entre el depósito derecho e izquierdo es de <strong>9 US gal (34 L)</strong>.</li>
+              <li><strong>Vuelo descoordinado:</strong> Con menos de 3 US gal en el depósito seleccionado, está prohibido el vuelo descoordinado prolongado (resbale/derrape) para evitar descebado del motor.</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Esquema de Depósitos Alares y Selector (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Esquema Oficial de Combustible DA40 TDI (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SISTEMA DE COMBUSTIBLE Y SELECTOR</span>
-          </div>
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SISTEMA DE COMBUSTIBLE DA40 TDI</span>
+        </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.9-fuel.jpg?v=1" alt="Esquema de Depósitos Alares y Selector DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-fuel-system.png" alt="Esquema Oficial del Sistema de Combustible Diamond DA40 TDI" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
           </div>
+          <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300">Esquema del Sistema de Combustible DA40 TDI</strong> · Válvula selectora (Normal, Emergency, Off), Main Tank, Aux Tank y Bomba de Trasvase
+          </figcaption>
         </div>
       </div>
     </div>
