@@ -1728,7 +1728,6 @@ export const DA40_LESSON_2 = {
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 w-full shrink-0">
           <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-0.5">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">MARCAS DE INSTRUMENTOS AUXILIARES (AED 125)</strong>
-            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">AFM Tabla 2.5</span>
           </div>
 
           <div class="overflow-x-auto">
