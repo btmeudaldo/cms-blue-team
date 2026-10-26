@@ -1946,9 +1946,9 @@ export const DA40_LESSON_2 = {
               <span>LIMITACIONES OPERATIVAS DEL SISTEMA DE COMBUSTIBLE (AFM 2.14):</span>
             </strong>
             <ul class="list-disc pl-3 space-y-0.5 text-[11px] leading-tight">
-              <li><strong>Válvula selectora (Emergency Fuel Valve):</strong> Cuenta con posiciones <code>NORMAL</code>, <code>EMERGENCY TRANSFER</code> y <code>OFF</code>. En la DA40 <strong>no existe posición BOTH</strong>.</li>
+              <li><strong>Válvula selectora (Emergency Fuel Valve):</strong> Cuenta con posiciones <code>NORMAL</code>, <code>EMERGENCY TRANSFER</code> y <code>OFF</code>.</li>
               <li><strong>Despegue y aterrizaje:</strong> Deben realizarse en el depósito principal (Main Tank) con la válvula en posición <code>NORMAL</code>.</li>
-              <li><strong>Desbalance máximo permitido:</strong> La diferencia máxima permisible entre el depósito derecho e izquierdo es de <strong>9 US gal (34 L)</strong>.</li>
+              <li><strong>Desbalance máximo:</strong> La diferencia máxima permisible entre el depósito derecho e izquierdo es de <strong>9 US gal (34 L)</strong>.</li>
               <li><strong>Vuelo descoordinado:</strong> Con menos de 3 US gal en el depósito seleccionado, está prohibido el vuelo descoordinado prolongado (resbale/derrape) para evitar descebado del motor.</li>
             </ul>
           </div>
