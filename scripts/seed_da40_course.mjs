@@ -44,7 +44,45 @@ async function seedDA40() {
 
   // 2. Upsert lessons
   for (const lesson of DA40_LESSONS) {
-    const wordCount = lesson.content_html
+    let contentToSave = lesson.content_html;
+
+    // Preservar visibilidad configurada en producción desde la interfaz
+    try {
+      const { data: dbLesson } = await supabase
+        .from("lessons")
+        .select("content_html")
+        .eq("id", lesson.id)
+        .maybeSingle();
+
+      if (dbLesson && dbLesson.content_html) {
+        const pagebreakRegex = /(?:<!--\s*(?:pagebreak|slidebreak|page-break|slide-break)\s*-->)/gi;
+        const remoteSlides = dbLesson.content_html.split(pagebreakRegex);
+        const localSlides = contentToSave.split(pagebreakRegex);
+
+        if (remoteSlides.length === localSlides.length) {
+          const mergedSlides = localSlides.map((lSlide, i) => {
+            const rSlide = remoteSlides[i];
+            const isLocalPrivate = /data-slide-visibility=["'](?:private|only-me)["']/i.test(lSlide);
+            const isRemotePublic = rSlide && (/data-slide-visibility=["']public["']/i.test(rSlide) || (!rSlide.includes('data-slide-visibility="private"') && !rSlide.includes("data-slide-visibility='private'")));
+
+            // Si en remoto se pasó a pública en la app O en local ya no es privada -> PUBLIC
+            if (isRemotePublic || !isLocalPrivate) {
+              return lSlide.replace(/\s*data-slide-visibility=["'][^"']*["']/gi, "");
+            } else {
+              if (!lSlide.includes('data-slide-visibility="private"')) {
+                return lSlide.replace(/(<div[^>]*class=["'][^"']*lesson-slide-container[^"']*["'])/i, '$1 data-slide-visibility="private"');
+              }
+              return lSlide;
+            }
+          });
+          contentToSave = mergedSlides.join("\n\n<!-- pagebreak -->\n\n");
+        }
+      }
+    } catch (e) {
+      console.warn("No se pudo verificar visibilidad previa en Supabase:", e);
+    }
+
+    const wordCount = contentToSave
       .replace(/<[^>]*>/g, " ")
       .split(/\s+/)
       .filter(Boolean).length;
@@ -57,7 +95,7 @@ async function seedDA40() {
         slug: lesson.slug,
         sequence_order: lesson.sequence_order,
         lesson_order: lesson.lesson_order ?? lesson.sequence_order,
-        content_html: lesson.content_html,
+        content_html: contentToSave,
         word_count: wordCount,
         min_seconds: lesson.min_seconds,
         updated_at: new Date().toISOString(),

@@ -1061,7 +1061,7 @@ export const DA40_LESSON_2 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 2.5: 2.5 Límites de Maniobra y Factores de Carga -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
@@ -1163,7 +1163,7 @@ export const DA40_LESSON_2 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 2.6: 2.6 Límites de Motor: Potencia, RPM y Techo Operativo -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
@@ -1274,7 +1274,7 @@ export const DA40_LESSON_2 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 2.7: 2.7 Límites Operacionales de Temperatura -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
