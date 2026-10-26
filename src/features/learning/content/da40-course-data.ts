@@ -1002,7 +1002,7 @@ export const DA40_LESSON_2 = {
               <span>⚠️</span>
               <span>LIMITACIÓN ESTRICTA DE EQUIPAJE:</span>
             </strong>
-            <div>La masa máxima admisible en el compartimento de equipaje es de <strong>30 kg (66 lb)</strong>. Todo el bulto debe asegurarse con la red de equipaje homologada. Sobrepasar esta masa o dejar carga suelta provoca desplazamientos críticos del centro de gravedad fuera de la envolvente permitida.</div>
+            <div>La masa máxima admisible en el compartimento de equipaje es de <strong>30 kg (66 lb)</strong>. Todo el bulto debe asegurarse con la red de equipaje homologada. Sobrepasar esta masa o dejar carga suelta provoca desplazamientos críticos del CG.</div>
           </div>
 
           <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
