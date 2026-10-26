@@ -2061,7 +2061,7 @@ export const DA40_LESSON_2 = {
 export const DA40_LESSON_3 = {
   id: "da400000-0000-0000-0000-000000000030",
   course_id: DA40_COURSE_ID,
-  title: "3. Ingeniería del Avión y Sistemas Continental CD-135",
+  title: "3. Ingeniería del Avión y Sistemas Continental CD-135 / CD-155",
   slug: "sistemas-continental-diesel-da40",
   sequence_order: 3,
   lesson_order: 3,
@@ -2073,7 +2073,7 @@ export const DA40_LESSON_3 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.1 Motor Thielert / Continental TAE 125: Arquitectura y Especificaciones</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Modelo TAE 125-02-99 (Centurion 2.0 / CD-135)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Modelo TAE 125-02-99/114 (CD-135 / CD-155)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -2085,12 +2085,12 @@ export const DA40_LESSON_3 = {
         </div>
         <div class="space-y-1 py-0.5">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
-            <!-- TAE 125-02-99 ESPECIFICACIONES -->
+            <!-- TAE 125-02 ESPECIFICACIONES -->
             <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">THIELERT TAE 125-02-99 (CD-135)</strong>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">THIELERT TAE 125-02 (CD-135/CD-155)</strong>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Potencia máxima: 99 kW (135 DIN-HP) a 2.300 RPM de hélice (Take-off y Max. Continuous)</span>
+                <span class="text-slate-800 dark:text-slate-200">Potencia máxima: 99 kW (135/155 DIN-HP) a 2.300 RPM de hélice (Take-off y Max. Continuous)</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
@@ -2145,12 +2145,12 @@ export const DA40_LESSON_3 = {
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLANTA MOTRIZ TAE 125-02-99</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLANTA MOTRIZ TAE 125-02-99/114</span>
           </div>
 
           <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
             <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-              Arquitectura general del motor Thielert / Continental TAE 125-02-99: 4 cilindros en línea, refrigeración líquida, inyección directa Common Rail y turbocompresión con intercooler.
+              Arquitectura general del motor Thielert / Continental TAE 125-02-99/114: 4 cilindros en línea, refrigeración líquida, inyección directa Common Rail y turbocompresión con intercooler.
             </p>
           </div>
 
@@ -2166,4 +2166,5 @@ export const DA40_LESSON_3 = {
 };
 
 export const DA40_LESSONS = [DA40_LESSON_1, DA40_LESSON_2, DA40_LESSON_3];
+
 
