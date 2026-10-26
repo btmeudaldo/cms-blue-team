@@ -1583,110 +1583,125 @@ export const DA40_LESSON_2 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.10 Marcas de Instrumentos CED 125 (Motor y Reductora)</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla Oficial: Rangos Verde, Amarillo y Rojo en el Display Compacto</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla Oficial AFM: Rangos Verde, Amarillo y Rojo en el Display Compacto</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-7): AFM Sección 2 (Tablas estructuradas, Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CED 125 ENGINE INSTRUMENT MARKINGS</span>
+      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800 mb-2">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CED 125 INSTRUMENT MARKINGS</span>
+        </div>
+        <div class="space-y-3 py-1">
+          <!-- TABLA 1: TACÓMETRO, PRESIÓN Y CARGA (CED 125) -->
+          <div class="p-2.5 px-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">TACÓMETRO, PRESIÓN Y CARGA (CED 125)</strong>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">AFM Tabla 2.5</span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-[11px] leading-tight">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
+                    <th class="py-1.5 px-2 font-bold text-[#0B2E59] dark:text-sky-300 w-[24%] whitespace-nowrap">Parámetro</th>
+                    <th class="py-1.5 px-2 font-bold text-emerald-700 dark:text-emerald-400 w-[22%] whitespace-nowrap">Verde</th>
+                    <th class="py-1.5 px-2 font-bold text-amber-700 dark:text-amber-400 w-[30%] whitespace-nowrap">Ámbar</th>
+                    <th class="py-1.5 px-2 font-bold text-red-700 dark:text-red-400 w-[24%] whitespace-nowrap">Roja</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Tachometer [RPM]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0 - 2.300 RPM</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">2.400 - 2.500*</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono whitespace-nowrap">&gt; 2.500 RPM*</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Pressure [bar]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">2.3 - 5.2 bar</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">1.2 - 2.3 | 5.2 - 6.5</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&lt; 1.2 | &gt; 6.5 bar</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Load [%]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0% - 100%</td>
+                    <td class="py-1.5 px-2 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                    <td class="py-1.5 px-2 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
-          <!-- Tabla Completa CED 125 AFM 2.5 -->
-          <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
-            <table class="w-full text-left text-[11px] leading-tight">
-              <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  <th class="p-1.5 px-2">PARÁMETRO</th>
-                  <th class="p-1.5 px-1.5 text-center text-red-600">ROJO INF.</th>
-                  <th class="p-1.5 px-1.5 text-center text-amber-600">AMARILLO</th>
-                  <th class="p-1.5 px-1.5 text-center text-emerald-600">VERDE (NORMAL)</th>
-                  <th class="p-1.5 px-1.5 text-center text-amber-600">AMARILLO</th>
-                  <th class="p-1.5 px-1.5 text-center text-red-600">ROJO SUP.</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
-                <tr>
-                  <td class="p-1.5 px-2 font-bold">LOAD (%)</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">0 – 100 %</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                </tr>
-                <tr>
-                  <td class="p-1.5 px-2 font-bold">RPM Hélice</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">hasta 2300</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">2400 – 2500*</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 2500</td>
-                </tr>
-                <tr>
-                  <td class="p-1.5 px-2 font-bold">Oil Press (bar)</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; 1.2</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">1.2 – 2.3</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">2.3 – 5.2</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">5.2 – 6.5</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 6.5</td>
-                </tr>
-                <tr>
-                  <td class="p-1.5 px-2 font-bold">Oil Temp (°C)</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; -32</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">-32 a 50</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">50 a 125</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">125 a 140</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 140</td>
-                </tr>
-                <tr>
-                  <td class="p-1.5 px-2 font-bold">Coolant Temp (°C)</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&lt; -32</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">-32 a 60</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">60 a 96</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">96 a 105</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 105</td>
-                </tr>
-                <tr>
-                  <td class="p-1.5 px-2 font-bold">Gearbox Temp (°C)</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                  <td class="p-1.5 px-1.5 text-center text-slate-400">--</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-emerald-600 font-mono">hasta 115</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-amber-600 font-mono">115 a 120</td>
-                  <td class="p-1.5 px-1.5 text-center font-bold text-red-600 font-mono">&gt; 120</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-snug">
-            * Con motor TAE 125-02-99 instalado, el rango verde es 0–2300 RPM y cualquier valor &gt; 2300 RPM activa el arco rojo superior.
-          </p>
+          <!-- TABLA 2: TEMPERATURAS: REFRIGERANTE, ACEITE Y REDUCTORA -->
+          <div class="p-2.5 px-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">TEMPERATURAS: REFRIGERANTE, ACEITE Y REDUCTORA</strong>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">AFM Tabla 2.5</span>
+            </div>
 
-          <!-- NOTA FADEC TEST -->
-          <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
-              <span>ℹ️</span>
-              <span>TEST DE BARRAS DE LEDS EN PUESTA EN MARCHA:</span>
-            </strong>
-            <p>Al situar el conmutador ELECT. MASTER en ON, todas las barras de LEDs del CED 125 y AED 125 realizan un barrido automático de autodiagnóstico visual para comprobar el correcto funcionamiento de cada segmento.</p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-[11px] leading-tight">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
+                    <th class="py-1.5 px-2 font-bold text-[#0B2E59] dark:text-sky-300 w-[24%] whitespace-nowrap">Parámetro</th>
+                    <th class="py-1.5 px-2 font-bold text-emerald-700 dark:text-emerald-400 w-[22%] whitespace-nowrap">Verde</th>
+                    <th class="py-1.5 px-2 font-bold text-amber-700 dark:text-amber-400 w-[30%] whitespace-nowrap">Ámbar</th>
+                    <th class="py-1.5 px-2 font-bold text-red-700 dark:text-red-400 w-[24%] whitespace-nowrap">Roja</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Coolant Temp [°C]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">60 - 96 °C (105*)</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+59 | 96 - 105</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 105 °C</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Temp [°C]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">50 - 125 °C (140*)</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+49 | 125 - 140</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 140 °C</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Gearbox Temp [°C]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">&lt; 115 °C</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">115 - 120 °C</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&gt; 120 °C</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-[10px] text-slate-600 dark:text-slate-400 leading-snug">
+            * Con motor TAE 125-02 (Centurion 2.0 / CD-155), el rango verde de RPM es 0–2.300 RPM (rojo &gt; 2.300 RPM) y el refrigerante permite verde hasta 105 °C.
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Instrumento Digital CED 125 (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Instrumento Digital CED 125 y NOTA (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INSTRUMENTO DIGITAL CED 125</span>
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2">
+          <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.7-v2.jpg?v=2" alt="Display Digital CED 125 DA40 TDI" class="w-full h-full max-h-[385px] object-contain rounded-lg" />
           </div>
+          <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300">CED 125</strong> · Compact Engine Display (Motor y Reductora)
+          </figcaption>
+        </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.7-v2.jpg?v=2" alt="Display Digital CED 125 DA40 TDI" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
-          </div>
+        <!-- NOTA: Lectura de Load y Engine Master -->
+        <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0 mt-2">
+          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+            <span>ℹ️</span>
+            <span>NOTE:</span>
+          </strong>
+          <div>'Load' describe el porcentaje disponible de la potencia máxima del motor. Si el interruptor Engine Master está desconectado (OFF), la indicación de carga no muestra ningún valor aunque la hélice esté girando.</div>
         </div>
       </div>
     </div>
