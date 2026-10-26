@@ -25,16 +25,25 @@ Este archivo contiene directrices técnicas y de diseño **inviolables** que deb
 
 ---
 
-## 4. Flujo de Sincronización y Persistencia Bidireccional (Supabase ⟷ Local)
-- **Principio "Pull antes de Push":** Para evitar machacar ediciones manuales que el usuario realice directamente en Supabase, antes de modificar el archivo local `c172-course-data.ts`, es obligatorio verificar y descargar el estado actual de Supabase ejecutando:
+## 4. Flujo de Sincronización Obligatoria con Supabase (C172 y DA40)
+> **¡IMPORTANTE!** El reproductor de lecciones en la plataforma web carga el contenido HTML dinámicamente desde la base de datos de **Supabase** (`lessons.content_html`), NO desde los archivos estáticos de TypeScript. Modificar únicamente `c172-course-data.ts` o `da40-course-data.ts` no reflejará los cambios en la plataforma hasta que se sincronicen en la base de datos.
+
+- **Obligatoriedad de sincronización inmediata:** En **CUALQUIER** tarea donde se modifique texto, diseño, HTML o imágenes en los archivos de contenido de cursos, es **ESTRICTAMENTE OBLIGATORIO** ejecutar el script de sincronización a Supabase antes de dar por terminada la respuesta o hacer commit.
+- **Sincronización DA40 (`da40-course-data.ts`):**
   ```bash
-  node scripts/pull_from_supabase.mjs
+  npm run db:push:da40
+  # o alternativamente:
+  node scripts/seed_da40_course.mjs
   ```
-- **Sincronización Supabase:** Tras aplicar las modificaciones validadas en el archivo local, sincronizar hacia todos los cursos de Supabase con:
-  ```bash
-  node scripts/sync_all_c172_courses.mjs
-  ```
-- **Prohibido sobreescribir a ciegas:** Nunca ejecutar una sobreescritura unidireccional sin haber incorporado previamente cualquier cambio que exista en la base de datos de producción.
+- **Sincronización C172 (`c172-course-data.ts`):**
+  - **Principio "Pull antes de Push":** Antes de modificar localmente, comprobar cambios en remoto si aplica con `node scripts/pull_from_supabase.mjs`.
+  - **Push a Supabase:**
+    ```bash
+    npm run db:push
+    # o alternativamente:
+    node scripts/sync_all_c172_courses.mjs
+    ```
+- **Prohibido sobreescribir a ciegas:** Nunca ejecutar una sobreescritura unidireccional sin haber incorporado previamente cambios existentes en la base de datos de producción.
 
 ---
 
