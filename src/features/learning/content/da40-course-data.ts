@@ -1615,8 +1615,8 @@ export const DA40_LESSON_2 = {
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
                     <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Tachometer [RPM]</td>
                     <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0 - 2.300 RPM</td>
-                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">2.400 - 2.500*</td>
-                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono whitespace-nowrap">&gt; 2.500 RPM*</td>
+                    <td class="py-1.5 px-2 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono whitespace-nowrap">&gt; 2.300 RPM</td>
                   </tr>
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
                     <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Pressure [bar]</td>
@@ -1655,14 +1655,14 @@ export const DA40_LESSON_2 = {
                 <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
                     <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Coolant Temp [°C]</td>
-                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">60 - 96 °C (105*)</td>
-                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+59 | 96 - 105</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">60 - 96 °C</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+60 | 96 - 105 °C</td>
                     <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 105 °C</td>
                   </tr>
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
                     <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Temp [°C]</td>
-                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">50 - 125 °C (140*)</td>
-                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+49 | 125 - 140</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">50 - 125 °C</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+50 | 125 - 140 °C</td>
                     <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 140 °C</td>
                   </tr>
                   <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
@@ -1674,10 +1674,6 @@ export const DA40_LESSON_2 = {
                 </tbody>
               </table>
             </div>
-          </div>
-
-          <div class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-[10px] text-slate-600 dark:text-slate-400 leading-snug">
-            * Con motor TAE 125-02 (Centurion 2.0 / CD-155), el rango verde de RPM es 0–2.300 RPM (rojo &gt; 2.300 RPM) y el refrigerante permite verde hasta 105 °C.
           </div>
         </div>
       </div>
