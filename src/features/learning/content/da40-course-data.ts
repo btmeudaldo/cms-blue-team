@@ -2261,6 +2261,107 @@ export const DA40_LESSON_3 = {
     </div>
   </div>
 </div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.3: 3.3 Sistema FADEC: Control Digital y Redundancia Dual -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.3 Sistema FADEC: Control Digital y Redundancia Dual</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Doble ECU (Canal A y B), Sensores Duplicados y Mando Único</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Arquitectura FADEC AFM 7.9.2 y 7.10 (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FADEC ARCHITECTURE</span>
+        </div>
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- CANAL A Y CANAL B -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CANALES FADEC A Y B REDUNDANTES</strong>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Doble ECU independiente: ECU A (canal activo en operación normal) y ECU B (canal de respaldo permanente)</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Sensores duplicados: Doble captador de RPM, presión de raíl, sobrealimentación (MAP) y temperaturas</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Conmutación automática (ECU SWAP): Si la ECU activa detecta un fallo interno, transfiere el control a la otra</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Mando único (Power Lever): Potenciómetros de cabina traducen la consigna de potencia (% LOAD) a la ECU activa</span>
+              </div>
+            </div>
+
+            <!-- ALIMENTACIÓN Y BATERÍA DE RESPALDO -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ALIMENTACIÓN Y RESPALDO ELÉCTRICO</strong>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Dependencia eléctrica total: Motor diésel sin magnetos; inyectores y ECUs requieren alimentación continua</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuentes primarias: Alternador de 14 V con regulación PWM y Batería Principal de plomo-ácido de 12 V / 23 Ah</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">ECU Backup Battery: Batería de 12 V / 12 Ah bajo asiento trasero; alimenta automáticamente a la ECU B</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Interruptor Engine Master: Conecta ambas ECUs al ECU Bus; al colocarlo en OFF el motor se apaga de inmediato</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA INFORMATIVA AFM -->
+          <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
+              <li class="pl-0.5">El sistema FADEC consta de dos canales independientes (ECU A y ECU B). En caso de avería en el canal activo, el sistema conmuta automáticamente al otro. La posición manual ECU B del conmutador solo debe emplearse en emergencias.</li>
+              <li class="pl-0.5">Si el conmutador ENGINE MASTER se coloca en OFF, se corta la alimentación eléctrica del FADEC y los inyectores, provocando la parada inmediata del motor.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Arquitectura del Sistema FADEC (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ARQUITECTURA DEL SISTEMA FADEC</span>
+        </div>
+        <div class="w-full flex-1 min-h-0 flex flex-col justify-start space-y-1.5 overflow-hidden">
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Esquema funcional de redundancia dual: doble unidad de control electrónico (ECU A y B), sensórica duplicada, fuentes de alimentación y gobierno integral monomando.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/90 flex flex-col items-center justify-center p-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.3-fadec.jpg?v=1" alt="Arquitectura del Sistema FADEC Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `,
 };
 
