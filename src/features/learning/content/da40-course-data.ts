@@ -1246,7 +1246,7 @@ export const DA40_LESSON_2 = {
           <div class="p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
             <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
               <span>⚠️</span>
-              <span>WARNING (LIMITACIÓN ELÉCTRICA DE ARRANQUE):</span>
+              <span>WARNING:</span>
             </strong>
             <div>No está permitido arrancar el motor si la tensión de la batería principal es insuficiente para activar el sistema FADEC. Las unidades ECU y los inyectores Common-Rail dependen de suministro eléctrico continuo e ininterrumpido.</div>
           </div>
