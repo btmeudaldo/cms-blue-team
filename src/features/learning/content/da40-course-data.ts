@@ -2058,5 +2058,112 @@ export const DA40_LESSON_2 = {
 `,
 };
 
-export const DA40_LESSONS = [DA40_LESSON_1, DA40_LESSON_2];
+export const DA40_LESSON_3 = {
+  id: "da400000-0000-0000-0000-000000000030",
+  course_id: DA40_COURSE_ID,
+  title: "3. Ingeniería del Avión y Sistemas Continental CD-135",
+  slug: "sistemas-continental-diesel-da40",
+  sequence_order: 3,
+  lesson_order: 3,
+  min_seconds: 1,
+  content_html: `<!-- DIAPOSITIVA 3.1: 3.1 Motor Thielert / Continental TAE 125: Arquitectura y Especificaciones -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.1 Motor Thielert / Continental TAE 125: Arquitectura y Especificaciones</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Modelo TAE 125-02-99 (Centurion 2.0 / CD-135)</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Especificaciones del Motor AFM 7.9.1 (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENGINE SPECIFICATIONS</span>
+        </div>
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- TAE 125-02-99 ESPECIFICACIONES -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">THIELERT TAE 125-02-99 (CD-135)</strong>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Potencia máxima: 99 kW (135 DIN-HP) a 2.300 RPM de hélice (Take-off y Max. Continuous)</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Cilindrada: 1.991 cm³ (121.5 in³), ciclo Diésel de 4 tiempos</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Arquitectura: 4 cilindros en línea, refrigeración líquida y cárter húmedo (wet sump)</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Alimentación: Inyección directa Common Rail y turbocompresor con intercooler</span>
+              </div>
+            </div>
+
+            <!-- CAJA REDUCTORA Y CONTROL FADEC -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">REDUCTORA Y GESTIÓN FADEC</strong>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Reductora de velocidad de hélice: Relación de engranajes i = 1:1.69</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Gobernador de hélice: Integrado en el motor con circuito de lubricación propio independiente</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Control FADEC: Regulación electrónica digital de inyección, presión de admisión y paso de hélice</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Instrumentación de motor: Monitorización integrada mediante los displays CED 125 y AED 125</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA FADEC Y COMPONENTES SUPRIMIDOS -->
+          <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <div>Debido a la tecnología Common Rail con control electrónico FADEC y combustión por ciclo Diésel, en este motor quedan suprimidos: carburador y calefacción de carburador, magnetos de encendido y bujías, palanca manual de mezcla (mixture) y sistema de cebador (primer). La operación de empuje se efectúa exclusivamente mediante la palanca monomando (Power Lever).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Planta Motriz Continental / Thielert (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLANTA MOTRIZ TAE 125-02-99</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Arquitectura general del motor Thielert / Continental TAE 125-02-99: 4 cilindros en línea, refrigeración líquida, inyección directa Common Rail y turbocompresión con intercooler.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.1-cd155-engine.png?v=1" alt="Motor Thielert / Continental TAE 125 Turbo Diésel" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+};
+
+export const DA40_LESSONS = [DA40_LESSON_1, DA40_LESSON_2, DA40_LESSON_3];
 
