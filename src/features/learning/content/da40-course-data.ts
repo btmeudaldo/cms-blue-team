@@ -2389,11 +2389,11 @@ export const DA40_LESSON_3 = {
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PULSADOR DE PRUEBA Y CATEGORÍAS</strong>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Palanca en IDLE (&lt;900 RPM): Pulsar y mantener inicia el self-test completo tanto en tierra como en vuelo</span>
+                <span class="text-slate-800 dark:text-slate-200">Prueba en tierra (prevuelo AFM 4A.6): En IDLE (&lt;900 RPM), pulsar y mantener ejecuta el self-test completo antes del despegue</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Ciclo de comprobación: Conmuta ECU A a B, cicla paso de hélice (RPM monitoreadas), ligero shake y retorna a ECU A</span>
+                <span class="text-slate-800 dark:text-slate-200">Ciclo automático: Conmuta ECU A a B, cicla paso de hélice (RPM monitoreadas), leve cabeceo (shake) y retorno suave a ECU A</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
@@ -2401,7 +2401,7 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Reset en vuelo (&gt;2 s): Con palanca sobre IDLE (&gt;900 RPM), resetea avisos solo una vez y ante fallos leves</span>
+                <span class="text-slate-800 dark:text-slate-200">En vuelo (AFM 4B.3): Autotest inhibido (&gt;900 RPM); el botón sirve únicamente para resetear avisos leves (&gt;2 s, 1 sola vez)</span>
               </div>
             </div>
 
