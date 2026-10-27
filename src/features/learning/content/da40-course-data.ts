@@ -2434,7 +2434,7 @@ export const DA40_LESSON_3 = {
               <span>WARNING / CAUTION AFM (SECCIÓN 4A Y 4B):</span>
             </strong>
             <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
-              <li class="pl-0.5"><strong>Prueba en tierra (AFM 4A.6):</strong> Si los avisadores no parpadean o si la luz 'ECU BACKUP UNSAFE' no se apaga tras el ciclo, la batería de respaldo no tiene capacidad suficiente (&lt;70%) para alimentar a la ECU en fallo eléctrico severo.</li>
+              <li class="pl-0.5"><strong>Prueba en tierra (AFM 4A.6):</strong> Si los avisadores no parpadean o si la luz 'ECU BACKUP UNSAFE' no se apaga, la batería de respaldo no tiene carga suficiente (&lt;70%): ante fallo de alternador y batería principal el motor se apagará. Aborte de inmediato el vuelo.</li>
               <li class="pl-0.5"><strong>Comportamiento del motor:</strong> Es normal una ligera sacudida durante el cambio de ECU. En caso de caídas prolongadas de potencia o si el motor se detiene durante la prueba, aborte la preparación del vuelo.</li>
             </ul>
           </div>
