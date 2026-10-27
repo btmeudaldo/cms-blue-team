@@ -3313,6 +3313,88 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.13: 3.13 Sistemas de Célula I: Mandos de Vuelo, Compensación y Flaps Eléctricos -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.13 Sistemas de Célula I: Mandos de Vuelo, Compensación y Flaps Eléctricos</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Flight Controls, Elevator Trim &amp; Wing Flap System</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Mandos y Flaps (Altura Fija 590px, Sin Scroll) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FLIGHT CONTROLS &amp; TRIM SYSTEM</span>
+        </div>
+
+        <!-- Mandos Primarios y Compensador -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Palancas de Mando y Varillas Rígidas:</strong> Mandos dobles mediante palancas (<span class="italic">control sticks</span>). Los alerones y el timón de profundidad se operan mediante varillas rígidas de empuje de acero (<span class="italic">steel push-rods</span>) con terminales de rótula sellados con barniz de seguridad (<span class="italic">locking varnish</span>).</div>
+          </div>
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Timón de Dirección y Regulación de Pedales:</strong> El timón de dirección se acciona mediante cables de acero guiados por poleas. Los pedales incorporan un tirador de desbloqueo detrás de su soporte para ajuste longitudinal exclusivo en tierra (prohibido regular en vuelo).</div>
+          </div>
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Sistema de Compensación de Profundidad (<span class="italic">Elevator Trim</span>):</strong> Accionado manualmente por la rueda negra de trim en la consola central tras la palanca de gases. Dispone de mecanismo de fricción y marca blanca para despegue (T/O). Conectado mediante cable Bowden al tab del timón de profundidad.</div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">WING FLAP SYSTEM</span>
+        </div>
+
+        <!-- Flaps Eléctricos -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Flaps de Curvatura en Composite (<span class="italic">Plain Flaps</span>):</strong> Construcción sándwich GFRP/CFRP con 6 bisagras fijadas mediante pasadores elásticos (<span class="italic">roll pins</span>). Un tubo de torsión transversal a través del fuselaje interconecta mecánicamente ambos planos para impedir deflexiones asimétricas.</div>
+          </div>
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Accionamiento Eléctrico y Protección:</strong> Operados por un motor eléctrico comandado por selector de 3 posiciones en el panel de instrumentos; incluye interruptores de final de carrera en UP y LDG, y disyuntor automático <code class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">FLAP</code>.</div>
+          </div>
+          <div class="flex items-start gap-2 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
+            <div><strong>Posiciones e Indicador Lumínico:</strong> Tres posiciones: Cruise UP (0°, luz verde), Take-off T/O (20°, luz blanca, V<sub>FE</sub> = 108 KIAS) y Landing LDG (42°, luz blanca, V<sub>FE</sub> = 91 KIAS). El encendido de dos luces simultáneas indica flaps en movimiento de tránsito.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema y Datos Técnicos (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SISTEMA DE FLAPS (DA40 TDI)</span>
+          </div>
+
+          <div class="w-full shrink-0 flex items-start gap-2 rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Protección y Velocidades Máximas:</strong> Disyuntor automático <code class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">FLAP</code>. Límites de velocidad de operación: <strong class="text-emerald-700 dark:text-emerald-400">V<sub>FE</sub> T/O = 108 KIAS</strong> y <strong class="text-amber-700 dark:text-amber-400">V<sub>FE</sub> LDG = 91 KIAS</strong>.</div>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-flaps-system.png" alt="Sistema de Flaps y Mandos de Vuelo Diamond DA40 TDI" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 460px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+
 `,
 };
 
