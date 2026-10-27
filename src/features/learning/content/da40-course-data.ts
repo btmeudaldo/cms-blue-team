@@ -3448,7 +3448,7 @@ export const DA40_LESSON_3 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-landing-gear-brakes.png" alt="Esquema del Sistema Hidráulico de Frenos Diamond DA40 TDI" class="w-full h-full max-h-[440px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 440px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-landing-gear-brakes.png?v=2" alt="Esquema del Sistema de Tren de Aterrizaje y Frenos Diamond DA40 TDI" class="w-full h-full max-h-[440px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 440px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
           </div>
         </div>
       </div>
