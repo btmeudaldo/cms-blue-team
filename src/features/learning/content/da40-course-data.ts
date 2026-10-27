@@ -3365,7 +3365,7 @@ export const DA40_LESSON_3 = {
           </div>
           <div class="flex items-start gap-2 text-[11px] leading-tight">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-            <div><strong>Posiciones e Indicador Lumínico:</strong> Tres posiciones: Cruise UP (0°, luz verde), Take-off T/O (20°, luz blanca, V<sub>FE</sub> = 108 KIAS) y Landing LDG (42°, luz blanca, V<sub>FE</sub> = 91 KIAS). El encendido de dos luces simultáneas indica flaps en movimiento de tránsito.</div>
+            <div><strong>Protección y Velocidades Máximas:</strong> Disyuntor automático <code class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">FLAP</code>. Límites de velocidad de operación: <strong class="text-emerald-700 dark:text-emerald-400">V<sub>FE</sub> T/O = 108 KIAS</strong> y <strong class="text-amber-700 dark:text-amber-400">V<sub>FE</sub> LDG = 91 KIAS</strong>.</div>
           </div>
         </div>
       </div>
@@ -3381,17 +3381,15 @@ export const DA40_LESSON_3 = {
 
           <div class="w-full shrink-0 flex items-start gap-2 rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs text-[11px] leading-tight text-slate-800 dark:text-slate-200">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
-            <div><strong>Protección y Velocidades Máximas:</strong> Disyuntor automático <code class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">FLAP</code>. Límites de velocidad de operación: <strong class="text-emerald-700 dark:text-emerald-400">V<sub>FE</sub> T/O = 108 KIAS</strong> y <strong class="text-amber-700 dark:text-amber-400">V<sub>FE</sub> LDG = 91 KIAS</strong>.</div>
+            <div><strong>Posiciones e Indicador Lumínico:</strong> Tres posiciones: Cruise UP (0°, luz verde), Take-off T/O (20°, luz blanca, V<sub>FE</sub> = 108 KIAS) y Landing LDG (42°, luz blanca, V<sub>FE</sub> = 91 KIAS). El encendido de dos luces simultáneas indica flaps en movimiento de tránsito.</div>
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-flaps-system.png" alt="Sistema de Flaps y Mandos de Vuelo Diamond DA40 TDI" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 460px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-flaps-system.jpg" alt="Sistema de Flaps y Mandos de Vuelo Diamond DA40 TDI" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 460px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
   </div>
 </div>
 
