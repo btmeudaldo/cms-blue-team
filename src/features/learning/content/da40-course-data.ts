@@ -2397,7 +2397,7 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Batería de respaldo (IFR): Comprueba capacidad; si es &lt;70%, la luz 'ECU BACKUP UNSAFE' queda encendida continua</span>
+                <span class="text-slate-800 dark:text-slate-200">Batería de respaldo ECU (12V/12Ah): Comprueba que tiene carga (&ge;70%) para alimentar la ECU B si fallan alternador y batería principal</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
@@ -2434,7 +2434,7 @@ export const DA40_LESSON_3 = {
               <span>WARNING / CAUTION AFM (SECCIÓN 4A Y 4B):</span>
             </strong>
             <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
-              <li class="pl-0.5"><strong>Prueba en tierra (AFM 4A.6):</strong> Si los avisadores no parpadean o si la luz 'ECU BACKUP UNSAFE' no se apaga tras el ciclo, la batería de respaldo no tiene carga suficiente (&lt;70%). Los vuelos IFR quedan prohibidos.</li>
+              <li class="pl-0.5"><strong>Prueba en tierra (AFM 4A.6):</strong> Si los avisadores no parpadean o si la luz 'ECU BACKUP UNSAFE' no se apaga tras el ciclo, la batería de respaldo no tiene capacidad suficiente (&lt;70%) para alimentar a la ECU en fallo eléctrico severo.</li>
               <li class="pl-0.5"><strong>Comportamiento del motor:</strong> Es normal una ligera sacudida durante el cambio de ECU. En caso de caídas prolongadas de potencia o si el motor se detiene durante la prueba, aborte la preparación del vuelo.</li>
             </ul>
           </div>
