@@ -2737,7 +2737,7 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Desbalance máximo: Límite de 9 US gal (aprox. 34 l) entre planos; en Long Range la indicación máxima en cabina es 15 US gal</span>
+                <span class="text-slate-800 dark:text-slate-200">Desbalance máximo: Límite de 9 US gal (aprox. 34 l)</span>
               </div>
             </div>
           </div>
