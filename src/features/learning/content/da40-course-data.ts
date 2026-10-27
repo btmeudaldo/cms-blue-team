@@ -3421,14 +3421,13 @@ export const DA40_LESSON_3 = {
         </div>
 
         <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AVISO NEUMÁTICO DE PÉRDIDA Y PITOT-ESTÁTICA</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AVISO NEUMÁTICO DE PÉRDIDA</span>
         </div>
 
-        <!-- Aviso de Pérdida y Pitot-Estática -->
+        <!-- Aviso de Pérdida -->
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
           <div><strong>Aviso Neumático de Pérdida (<span class="italic">Stall Warning System</span>):</strong> Toma ranurada en el borde de ataque del ala izquierda marcada con un <strong>anillo rojo</strong>. La depresión por succión activa la bocina en el panel entre <strong>10 y mín. 5 nudos</strong> por encima de la velocidad de pérdida (V<sub>S</sub> + 10 a 5 kt), intensificándose al decrecer la velocidad.</div>
           <div><strong>Comprobación Prevuelo Oficial:</strong> Colocar un paño limpio sobre la abertura del borde de ataque y aspirar suavemente con la boca: el sonido audible en cabina verifica el estado de la bocina y sus conductos.</div>
-          <div><strong>Sonda Pitot-Estática y Válvula Alternativa:</strong> Sonda única calefactada bajo el ala izquierda con orificios de presión estática integrados y filtros en la raíz alar. La válvula de estática alternativa (<span class="italic">Alternate Static Valve</span>) en cabina permite tomar presión interior si la exterior se bloquea.</div>
         </div>
       </div>
     </div>
@@ -3444,7 +3443,7 @@ export const DA40_LESSON_3 = {
           <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs text-[11px] leading-tight text-slate-800 dark:text-slate-200 space-y-1">
             <div>• <strong>Rueda de Morro:</strong> Rueda loca (<span class="italic">free-castering</span>) con elastómeros; maniobra en tierra mediante frenado diferencial.</div>
             <div>• <strong>Umbral de Pérdida:</strong> Bocina acústica activa por succión neumática a <strong class="text-amber-700 dark:text-amber-400">V<sub>S</sub> + 5 a 10 kt</strong>.</div>
-            <div>• <strong>Estática Alternativa:</strong> Válvula reconfigurable en cabina ante hielo o bloqueo de la sonda exterior.</div>
+            <div>• <strong>Sonda Pitot-Estática y Válvula Alternativa:</strong> Sonda única calefactada bajo el ala izquierda con orificios de presión estática integrados y filtros en la raíz alar. La válvula de estática alternativa (<span class="italic">Alternate Static Valve</span>) en cabina permite tomar presión interior si la exterior se bloquea.</div>
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
