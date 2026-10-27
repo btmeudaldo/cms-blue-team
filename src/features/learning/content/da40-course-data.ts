@@ -2380,7 +2380,7 @@ export const DA40_LESSON_3 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ECU TEST &amp; ECU SWAP (AFM 4A.6, 4B.3 &amp; 7.9)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ECU TEST &amp; ECU SWAP</span>
         </div>
         <div class="space-y-1 py-0.5">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
@@ -2389,7 +2389,7 @@ export const DA40_LESSON_3 = {
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PULSADOR DE PRUEBA Y CATEGORÍAS</strong>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Prueba en tierra (prevuelo AFM 4A.6): En IDLE (&lt;900 RPM), pulsar y mantener ejecuta el self-test completo antes del despegue</span>
+                <span class="text-slate-800 dark:text-slate-200">Prueba en tierra (prevuelo): En IDLE (&lt;900 RPM), pulsar y mantener ejecuta el self-test completo antes del despegue</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
@@ -2401,7 +2401,7 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">En vuelo (AFM 4B.3): Autotest inhibido (&gt;900 RPM); el botón sirve únicamente para resetear avisos leves (&gt;2 s, 1 sola vez)</span>
+                <span class="text-slate-800 dark:text-slate-200">En vuelo: Autotest inhibido (&gt;900 RPM); el botón sirve únicamente para resetear avisos leves (&gt;2 s, 1 sola vez)</span>
               </div>
             </div>
 
@@ -2431,10 +2431,10 @@ export const DA40_LESSON_3 = {
           <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
             <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
               <span>⚠️</span>
-              <span>WARNING / CAUTION AFM (SECCIÓN 4A Y 4B):</span>
+              <span>WARNING / CAUTION:</span>
             </strong>
             <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
-              <li class="pl-0.5"><strong>Prueba en tierra (AFM 4A.6):</strong> Si los avisadores no parpadean o si la luz 'ECU BACKUP UNSAFE' no se apaga, la batería de respaldo no tiene carga suficiente (&lt;70%): ante fallo de alternador y batería principal el motor se apagará. Aborte de inmediato el vuelo.</li>
+              <li class="pl-0.5"><strong>Prueba en tierra:</strong> Si los avisadores no parpadean o si la luz 'ECU BACKUP UNSAFE' no se apaga, la batería de respaldo no tiene carga suficiente (&lt;70%): ante fallo de alternador y batería principal el motor se apagará. Aborte de inmediato el vuelo.</li>
               <li class="pl-0.5"><strong>Comportamiento del motor:</strong> Es normal una ligera sacudida durante el cambio de ECU. En caso de caídas prolongadas de potencia o si el motor se detiene durante la prueba, aborte la preparación del vuelo.</li>
             </ul>
           </div>
@@ -2466,7 +2466,7 @@ export const DA40_LESSON_3 = {
 
           <div class="p-3 rounded-xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-left w-full max-w-sm space-y-1.5 shadow-2xs">
             <span class="text-[10px] font-bold text-amber-900 dark:text-amber-300 uppercase tracking-wide flex items-center gap-1.5">
-              Puntos clave para el video (AFM 4A.6):
+              Puntos clave para el video:
             </span>
             <ul class="text-[11px] text-amber-950 dark:text-amber-200/90 space-y-1 list-disc pl-4">
               <li>Palanca monomando de potencia en ralentí (IDLE) y RPM &lt; 900</li>
