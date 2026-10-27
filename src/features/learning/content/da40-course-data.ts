@@ -3393,6 +3393,69 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.14: 3.14 Sistemas de Célula II: Tren, Frenos, Dirección en Tierra y Aviso de Pérdida -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.14 Sistemas de Célula II: Tren, Frenos, Dirección en Tierra y Aviso de Pérdida</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Landing Gear, Ground Steering &amp; Stall Warning</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Tren, Frenos, Aviso de Pérdida (Altura Fija 590px, Sin Scroll) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TREN, FRENOS Y DIRECCIÓN</span>
+        </div>
+
+        <!-- Tren, Frenos y Dirección -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+          <div><strong>Tren de Aterrizaje Triciclo Fijo:</strong> Tren principal sustentado por ballestas de acero templado (<span class="italic">sprung steel struts</span>) con carenados de rueda desmontables (su retirada reduce prestaciones). La pata de morro dispone de rueda orientable loca (<span class="italic">free-castering</span>) amortiguada por un paquete de elastómeros (<span class="italic">elastomer package</span>).</div>
+          <div><strong>Dirección en Tierra (<span class="italic">Ground Steering</span>):</strong> La rueda de morro no tiene conexión mecánica directa a los pedales; el guiado en rodaje se realiza exclusivamente mediante <strong>frenado diferencial</strong> en las punteras de los pedales en combinación con el timón, permitiendo giros muy cerrados pivotando sobre una rueda principal.</div>
+          <div><strong>Frenos Hidráulicos y de Estacionamiento:</strong> Frenos de disco individuales accionados hidráulicamente mediante cilindros maestros en las punteras de los pedales (<span class="italic">toe pedals</span>). La palanca de estacionamiento bajo el panel central se tira hacia abajo y se bombean los pedales para atrapar presión; para liberar se empuja hacia arriba.</div>
+        </div>
+
+        <div class="flex items-center justify-between shrink-0 pt-1 pb-0.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AVISO NEUMÁTICO DE PÉRDIDA Y PITOT-ESTÁTICA</span>
+        </div>
+
+        <!-- Aviso de Pérdida y Pitot-Estática -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+          <div><strong>Aviso Neumático de Pérdida (<span class="italic">Stall Warning System</span>):</strong> Toma ranurada en el borde de ataque del ala izquierda marcada con un <strong>anillo rojo</strong>. La depresión por succión activa la bocina en el panel entre <strong>10 y mín. 5 nudos</strong> por encima de la velocidad de pérdida (V<sub>S</sub> + 10 a 5 kt), intensificándose al decrecer la velocidad.</div>
+          <div><strong>Comprobación Prevuelo Oficial:</strong> Colocar un paño limpio sobre la abertura del borde de ataque y aspirar suavemente con la boca: el sonido audible en cabina verifica el estado de la bocina y sus conductos.</div>
+          <div><strong>Sonda Pitot-Estática y Válvula Alternativa:</strong> Sonda única calefactada bajo el ala izquierda con orificios de presión estática integrados y filtros en la raíz alar. La válvula de estática alternativa (<span class="italic">Alternate Static Valve</span>) en cabina permite tomar presión interior si la exterior se bloquea.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema Hidráulico y Parámetros (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESQUEMA DE FRENOS Y TREN (DA40)</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs text-[11px] leading-tight text-slate-800 dark:text-slate-200 space-y-1">
+            <div>• <strong>Rueda de Morro:</strong> Rueda loca (<span class="italic">free-castering</span>) con elastómeros; maniobra en tierra mediante frenado diferencial.</div>
+            <div>• <strong>Umbral de Pérdida:</strong> Bocina acústica activa por succión neumática a <strong class="text-amber-700 dark:text-amber-400">V<sub>S</sub> + 5 a 10 kt</strong>.</div>
+            <div>• <strong>Estática Alternativa:</strong> Válvula reconfigurable en cabina ante hielo o bloqueo de la sonda exterior.</div>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-landing-gear-brakes.png" alt="Esquema del Sistema Hidráulico de Frenos Diamond DA40 TDI" class="w-full h-full max-h-[440px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 440px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 `,
 };
 
