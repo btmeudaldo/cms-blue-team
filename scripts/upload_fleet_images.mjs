@@ -23,6 +23,7 @@ const uploads = [
   { local: "public/images/da40/da40-load-factors.png", remote: "fleet/da40/da40-load-factors.png", mime: "image/png" },
   { local: "public/images/da40/da40-temp-limits.png", remote: "fleet/da40/da40-temp-limits.png", mime: "image/png" },
   { local: "public/images/da40/da40-fuel-system.png", remote: "fleet/da40/da40-fuel-system.png", mime: "image/png" },
+  { local: "public/images/da40/da40-fuel-schematic.png", remote: "fleet/da40/da40-fuel-schematic.png", mime: "image/png" },
   { local: "public/images/da40/da40-placards.png", remote: "fleet/da40/da40-placards.png", mime: "image/png" },
   { local: "public/images/da40/da40-electrical-sources.png", remote: "fleet/da40/da40-electrical-sources.png", mime: "image/png" },
   { local: "public/images/da40/da40-electrical-buses.png", remote: "fleet/da40/da40-electrical-buses.png", mime: "image/png" },
