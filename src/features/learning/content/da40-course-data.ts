@@ -2362,6 +2362,124 @@ export const DA40_LESSON_3 = {
     </div>
   </div>
 </div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.4: 3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y Mando ECU SWAP -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y Mando ECU SWAP</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Lógica del Pulsador ECU TEST, Conmutador ECU SWAP y Reset de Avisadores</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Manual AFM Secciones 4A, 4B y 7 (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ECU TEST &amp; ECU SWAP (AFM 4A.6, 4B.3 &amp; 7.9)</span>
+        </div>
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- TEST Y CATEGORÍAS DE FALLO -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PULSADOR DE PRUEBA Y CATEGORÍAS</strong>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Palanca en IDLE (&lt;900 RPM): Pulsar y mantener inicia el self-test completo tanto en tierra como en vuelo</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Ciclo de comprobación: Conmuta ECU A a B, cicla paso de hélice (RPM monitoreadas), ligero shake y retorna a ECU A</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Batería de respaldo (IFR): Comprueba capacidad; si es &lt;70%, la luz 'ECU BACKUP UNSAFE' queda encendida continua</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Reset en vuelo (&gt;2 s): Con palanca sobre IDLE (&gt;900 RPM), resetea avisos solo una vez y ante fallos leves</span>
+              </div>
+            </div>
+
+            <!-- CONMUTADOR ECU SWAP -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONMUTADOR MANUAL ECU SWAP</strong>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Posición AUTOMATIC: Operación normal comandada por ECU A con transferencia automática a ECU B ante error o pérdida de sensor</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Posición manual ECU B: Conmutación forzada bajo guarda; solo debe utilizarse en emergencias si el automatismo falla</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Reaparición de aviso: Tras un reset en vuelo, el aviso volverá a encenderse en el siguiente arranque de motor</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Avisador no reseteable: Si la luz ECU A o B no apaga o reaparece, aterrice en el aeródromo adecuado más cercano</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA / WARNING AFM -->
+          <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>WARNING / CAUTION AFM (SECCIÓN 4A Y 4B):</span>
+            </strong>
+            <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
+              <li class="pl-0.5"><strong>Prueba en tierra (AFM 4A.6):</strong> Si los avisadores no parpadean o si la luz 'ECU BACKUP UNSAFE' no se apaga tras el ciclo, la batería de respaldo no tiene carga suficiente (&lt;70%). Los vuelos IFR quedan prohibidos.</li>
+              <li class="pl-0.5"><strong>Comportamiento del motor:</strong> Es normal una ligera sacudida durante el cambio de ECU. En caso de caídas prolongadas de potencia o si el motor se detiene durante la prueba, aborte la preparación del vuelo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Acción Requerida / Video Prueba FADEC (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CONTENIDO AUDIOVISUAL</span>
+          <span class="text-[9px] font-bold text-amber-800 bg-amber-100 dark:bg-amber-950/70 dark:text-amber-300 px-1.5 py-0.5 rounded">Pendiente Grabación</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 flex flex-col items-center justify-center p-4 text-center space-y-3">
+          <div class="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-950/60 border-2 border-amber-300 dark:border-amber-700 flex items-center justify-center text-3xl shadow-sm text-amber-600 dark:text-amber-400 shrink-0">
+            🎥
+          </div>
+          <div class="space-y-1.5 max-w-sm">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400 block">Acción Requerida · Material Audiovisual:</span>
+            <h3 class="text-base sm:text-lg font-bold text-[#0B2E59] dark:text-sky-200 leading-tight">
+              Hacer video prueba ECU TEST DA40 TDI
+            </h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Grabar video demostrativo del procedimiento real de prueba ECU en cabina: posicionamiento en IDLE, accionamiento del pulsador ECU TEST, ciclado de hélice y verificación de avisadores.
+            </p>
+          </div>
+
+          <div class="p-3 rounded-xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-left w-full max-w-sm space-y-1.5 shadow-2xs">
+            <span class="text-[10px] font-bold text-amber-900 dark:text-amber-300 uppercase tracking-wide flex items-center gap-1.5">
+              Puntos clave para el video (AFM 4A.6):
+            </span>
+            <ul class="text-[11px] text-amber-950 dark:text-amber-200/90 space-y-1 list-disc pl-4">
+              <li>Palanca monomando de potencia en ralentí (IDLE) y RPM &lt; 900</li>
+              <li>Pulsación continua del botón ECU TEST hasta la finalización del ciclo</li>
+              <li>Secuencia de avisadores: parpadeo de ECU A, ECU B, CAUTION y ECU BACKUP UNSAFE</li>
+              <li>Ciclado automático de RPM de hélice y retorno suave a ECU A con extinción de luces</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `,
 };
 
