@@ -3147,10 +3147,7 @@ export const DA40_LESSON_3 = {
               <span>ℹ️</span>
               <span>NOTE:</span>
             </strong>
-            <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
-              <li class="pl-0.5">Si el conmutador ENGINE MASTER está en posición OFF, la indicación de carga (LOAD) no muestra ningún valor numérico aunque la hélice esté girando.</li>
-              <li class="pl-0.5">Cuando cualquier parámetro entra en rango de precaución (amarillo) o peligro (rojo), la barra digital parpadea y se enciende la luz ENGINE en el panel de anunciadores con alerta acústica; pulsar el botón ACKNOWLEDGE silencia la alarma y fija la barra en continuo.</li>
-            </ul>
+            <div>Si el conmutador ENGINE MASTER está en posición OFF, la indicación de carga (LOAD) no muestra ningún valor numérico aunque la hélice esté girando.</div>
           </div>
         </div>
       </div>
