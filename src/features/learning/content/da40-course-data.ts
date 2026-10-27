@@ -2877,6 +2877,100 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.9: 3.9 Sistema de Refrigeración Líquida (Cooling System) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.9 Sistema de Refrigeración Líquida (Cooling System)</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Termostato (~80°C, 80-94°C, >94°C), Radiador, Calefacción y Aviso Water Level</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">LIQUID COOLING SYSTEM</span>
+        </div>
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- TERMOSTATO Y CIRCUITOS DE FLUJO -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TERMOSTATO Y CIRCUITOS DE FLUJO</strong>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Circuito de Bypass (&lt; 80 °C): El refrigerante recircula exclusivamente por el bloque para un calentamiento rápido</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Circuito Mixto (80 °C - 94 °C): La válvula termostática abre progresivamente, dividiendo el caudal entre bypass y radiador</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Circuito Principal (&gt; 94 °C): El termostato deriva todo el caudal al radiador frontal (límite máximo operativo: 105 °C / 221 °F)</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Líquido refrigerante: Mezcla 50% agua destilada y 50% anticongelante (Glysantin Protect Plus / G48) hasta -36 °C</span>
+              </div>
+            </div>
+
+            <!-- DEPÓSITO DE EXPANSIÓN, CALEFACCIÓN Y CONTROL -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">DEPÓSITO DE EXPANSIÓN Y CALEFACCIÓN</strong>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Depósito y aviso WATER LEVEL: Botella de expansión con válvula de sobrepresión y sensor de nivel que enciende WATER LEVEL</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Sensor en culata (CT): Mide la temperatura de refrigerante junto al termostato y la transmite a la ECU y al CED 125</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Intercambiador de reductora: Refrigera el aceite de la caja reductora mediante intercambiador integrado agua/aceite</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Calefacción de cabina: Intercambiador líquido-aire de flujo continuo; el piloto regula el caudal mediante CABIN HEAT</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA / CAUTION AFM -->
+          <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚡</span>
+              <span>CAUTION:</span>
+            </strong>
+            <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
+              <li class="pl-0.5">Si se ilumina el aviso WATER LEVEL (pérdida de refrigerante): reduzca potencia de inmediato y prepárese para un aterrizaje de emergencia con motor parado (AFM 3.5.1).</li>
+              <li class="pl-0.5">Ante alta temperatura de refrigerante con WATER LEVEL apagado: reduzca potencia un 10 % y aumente la velocidad en 10 KIAS; si no entra en arco verde en 60 s, aterrice en el aeródromo adecuado más cercano.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema del Sistema de Refrigeración (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESQUEMA DE REFRIGERACIÓN (TAE 125)</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-cooling-system.jpg" alt="Esquema del Sistema de Refrigeración Líquida Thielert TAE 125 Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 `,
 };
 
