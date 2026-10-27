@@ -2355,7 +2355,7 @@ export const DA40_LESSON_3 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/90 flex flex-col items-center justify-center p-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.3-fadec.jpg?v=1" alt="Arquitectura del Sistema FADEC Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/3.3-fadec.jpg?v=1" alt="Arquitectura del Sistema FADEC Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
           </div>
         </div>
       </div>
