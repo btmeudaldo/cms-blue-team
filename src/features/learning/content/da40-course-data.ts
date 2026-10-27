@@ -2608,7 +2608,7 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Autonomía demostrada (30 min): Suministra energía a la ECU B durante al menos 30 minutos para alcanzar un aterrizaje seguro</span>
+                <span class="text-slate-800 dark:text-slate-200">Autonomía: Suministra energía a la ECU B durante un máximo de 30 minutos para alcanzar un aterrizaje seguro</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
