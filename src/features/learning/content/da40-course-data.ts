@@ -2638,30 +2638,40 @@ export const DA40_LESSON_3 = {
             </div>
           </div>
 
-          <!-- NOTA / WARNING AFM -->
+          <!-- NOTA / WARNING AFM - PARTE 1 -->
           <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
-            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
               <span>⚠️</span>
-              <span>WARNING:</span>
+              <span>WARNING: SUMINISTRO EXCLUSIVO A ECU B</span>
             </strong>
-            <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
-              <li class="pl-0.5">Si se pierde el suministro del alternador y la batería principal a la vez, el motor funciona únicamente con la batería de respaldo alimentando a la <strong>ECU B</strong> (máximo 30 minutos). En este estado, todos los demás equipos eléctricos del avión estarán inoperativos.</li>
-              <li class="pl-0.5">Al operar con la batería de respaldo FADEC, <strong>el conmutador ECU SWAP debe permanecer en posición automática o ECU B</strong>. No intente seleccionar la ECU A; carece de energía eléctrica y provocaría la parada inmediata del motor en vuelo.</li>
-            </ul>
+            <div class="text-[11px] leading-tight">
+              Si se interrumpe simultáneamente el alternador y la batería principal, el motor funciona únicamente con la batería de respaldo alimentando a la <strong>ECU B</strong> (máximo 30 minutos). En este estado, todos los demás equipos eléctricos y aviónica del avión estarán inoperativos.
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Esquema de Distribución de Barras Eléctricas (Altura Fija 590px sin scroll) -->
+    <!-- Columna Derecha (lg:col-span-5): Esquema y Warning Parte 2 (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ARQUITECTURA DE BARRAS ELÉCTRICAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FUENTES DE POTENCIA Y DISTRIBUCIÓN</span>
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-electrical-sources.png?v=3" alt="Esquema Eléctrico Oficial de Fuentes y Distribución Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+        </div>
+
+        <!-- NOTA / WARNING AFM - PARTE 2 -->
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight mt-1 shadow-2xs shrink-0">
+          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+            <span>⚠️</span>
+            <span>WARNING: CONMUTADOR ECU SWAP</span>
+          </strong>
+          <div class="text-[11px] leading-tight">
+            Al operar con la batería de respaldo FADEC, <strong>el conmutador ECU SWAP debe permanecer en AUTO o ECU B</strong>. No intente seleccionar la ECU A bajo ningún concepto: carece de energía y provocará la <strong>parada inmediata del motor</strong> en vuelo.
+          </div>
         </div>
       </div>
     </div>
