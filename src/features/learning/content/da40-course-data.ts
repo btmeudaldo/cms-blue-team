@@ -2608,7 +2608,7 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Autonomía: Suministra energía a la ECU B durante un máximo de 30 minutos para alcanzar un aterrizaje seguro</span>
+                <span class="text-slate-800 dark:text-slate-200">Autonomía con Essential Bus ON: Las baterías garantizan un suministro eléctrico mínimo de 30 minutos para alcanzar un aterrizaje seguro</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
@@ -2633,7 +2633,7 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Conmutador ESSENTIAL BUS: En fallo de alternador, poner en ON desconecta la Main Bus y conecta la Essential Bus a batería (mínimo 30 min)</span>
+                <span class="text-slate-800 dark:text-slate-200">Conmutador ESSENTIAL BUS: En fallo de alternador, poner en ON desconecta la Main Bus y conecta Essential Bus a batería (suministro mínimo 30 min)</span>
               </div>
             </div>
           </div>
@@ -2645,7 +2645,7 @@ export const DA40_LESSON_3 = {
               <span>WARNING: SUMINISTRO EXCLUSIVO A ECU B</span>
             </strong>
             <div class="text-[11px] leading-tight">
-              Si se interrumpe simultáneamente el alternador y la batería principal, el motor funciona únicamente con la batería de respaldo alimentando a la <strong>ECU B</strong> (máximo 30 minutos). En este estado, todos los demás equipos eléctricos y aviónica del avión estarán inoperativos.
+              Si se interrumpe simultáneamente el alternador y la batería principal, el motor funciona únicamente con la batería de respaldo alimentando a la <strong>ECU B</strong>. En este estado, todos los demás equipos eléctricos y aviónica del avión estarán inoperativos.
             </div>
           </div>
         </div>
