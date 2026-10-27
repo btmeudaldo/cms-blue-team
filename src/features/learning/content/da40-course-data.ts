@@ -2365,18 +2365,18 @@ export const DA40_LESSON_3 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.4: 3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y Mando ECU SWAP -->
+<!-- DIAPOSITIVA 3.4: 3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y Conmutador ECU SWAP -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y Mando ECU SWAP</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y Conmutador ECU SWAP</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Lógica del Pulsador ECU TEST, Conmutador ECU SWAP y Reset de Avisadores</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Lógica del Pulsador ECU TEST, Posiciones AUTOMATIC / ECU B y Reseteo de Avisadores</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): Manual AFM Secciones 4A, 4B y 7 (Altura Fija 590px sin scroll) -->
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
@@ -2384,45 +2384,45 @@ export const DA40_LESSON_3 = {
         </div>
         <div class="space-y-1 py-0.5">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
-            <!-- TEST Y CATEGORÍAS DE FALLO -->
+            <!-- PULSADOR ECU TEST -->
             <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PULSADOR DE PRUEBA Y CATEGORÍAS</strong>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PULSADOR ECU TEST (DOBLE FUNCIÓN)</strong>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Prueba en tierra (prevuelo): En IDLE (&lt;900 RPM), pulsar y mantener ejecuta el self-test completo antes del despegue</span>
+                <span class="text-slate-800 dark:text-slate-200">En IDLE y RPM &lt; 900: Pulsar y mantener inicia el self-test (posible en tierra y vuelo solo en IDLE; en caso contrario no inicia)</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Ciclo automático: Conmuta ECU A a B, cicla paso de hélice (RPM monitoreadas), leve cabeceo (shake) y retorno suave a ECU A</span>
+                <span class="text-slate-800 dark:text-slate-200">Ciclo de prueba: Conmuta ECU A a B, cicla hélice (RPM monitoreadas), ligera sacudida (shake) y vuelve a ECU A apagando avisadores</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Batería de respaldo ECU (12V/12Ah): Comprueba que tiene carga (&ge;70%) para alimentar la ECU B si fallan alternador y batería principal</span>
+                <span class="text-slate-800 dark:text-slate-200">Sobre IDLE o RPM &gt; 900: Presionar &gt;2 segundos resetea avisos ECU A o B una sola vez y solo ante fallos de menor gravedad</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">En vuelo: Autotest inhibido (&gt;900 RPM); el botón sirve únicamente para resetear avisos leves (&gt;2 s, 1 sola vez)</span>
+                <span class="text-slate-800 dark:text-slate-200">Batería de respaldo (IFR): Comprueba su carga antes de cada vuelo; si es &lt;70%, la luz roja ECU BACKUP UNSAFE queda fija</span>
               </div>
             </div>
 
             <!-- CONMUTADOR ECU SWAP -->
             <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONMUTADOR MANUAL ECU SWAP</strong>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONMUTADOR ECU SWAP (AUTOMATIC / ECU B)</strong>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Posición AUTOMATIC: Operación normal comandada por ECU A con transferencia automática a ECU B ante error o pérdida de sensor</span>
+                <span class="text-slate-800 dark:text-slate-200">Posición AUTOMATIC: Operación normal gobernada por ECU A con conmutación automática a ECU B ante fallo o pérdida de sensor</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Posición manual ECU B: Conmutación forzada bajo guarda; solo debe utilizarse en emergencias si el automatismo falla</span>
+                <span class="text-slate-800 dark:text-slate-200">Conmutación manual (solo emergencia): Si la conmutación automática falla, puede realizarse manualmente seleccionando la posición ECU B</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Reaparición de aviso: Tras un reset en vuelo, el aviso volverá a encenderse en el siguiente arranque de motor</span>
+                <span class="text-slate-800 dark:text-slate-200">Criterio de reversión: Si seleccionando la posición ECU B no se resuelve el problema del motor, volver a colocar en AUTOMATIC</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Avisador no reseteable: Si la luz ECU A o B no apaga o reaparece, aterrice en el aeródromo adecuado más cercano</span>
+                <span class="text-slate-800 dark:text-slate-200">Avisador no reseteable en vuelo: Si el aviso ECU A o B no se apaga tras el reset o reaparece, aterrice en el aeródromo adecuado más cercano</span>
               </div>
             </div>
           </div>
@@ -2434,8 +2434,8 @@ export const DA40_LESSON_3 = {
               <span>WARNING / CAUTION:</span>
             </strong>
             <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
-              <li class="pl-0.5"><strong>Prueba en tierra:</strong> Si los avisadores no parpadean o si la luz 'ECU BACKUP UNSAFE' no se apaga, la batería de respaldo no tiene carga suficiente (&lt;70%): ante fallo de alternador y batería principal el motor se apagará. Aborte de inmediato el vuelo.</li>
-              <li class="pl-0.5"><strong>Comportamiento del motor:</strong> Es normal una ligera sacudida durante el cambio de ECU. En caso de caídas prolongadas de potencia o si el motor se detiene durante la prueba, aborte la preparación del vuelo.</li>
+              <li class="pl-0.5"><strong>WARNING:</strong> Si los avisadores no se encienden en el test o si 'ECU BACKUP UNSAFE' no se apaga, la batería de respaldo no tiene energía suficiente para alimentar el motor en fallo eléctrico severo (vuelos IFR prohibidos).</li>
+              <li class="pl-0.5"><strong>CAUTION:</strong> Al conmutar entre ECUs es normal una ligera sacudida. En caso de caídas prolongadas de potencia o si el motor se detiene durante la prueba, termine la preparación del vuelo.</li>
             </ul>
           </div>
         </div>

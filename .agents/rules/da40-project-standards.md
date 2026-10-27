@@ -34,3 +34,4 @@ Este archivo define las directrices y criterios obligatorios para la creación y
   node scripts/seed_da40_course.mjs
   ```
   para que el cambio se refleje en la plataforma web en tiempo real.
+
