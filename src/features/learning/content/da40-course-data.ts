@@ -3281,18 +3281,6 @@ export const DA40_LESSON_3 = {
               </div>
             </div>
           </div>
-
-          <!-- NOTA / WARNING AFM -->
-          <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
-            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-              <span>⚠️</span>
-              <span>WARNING:</span>
-            </strong>
-            <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
-              <li class="pl-0.5">Si se enciende la luz ECU A o ECU B, o tras registrarse un fallo de ECU (incluso si se ha podido resetear con el botón ECU TEST), se prohíbe el vuelo y se requiere mantenimiento técnico antes del siguiente vuelo.</li>
-              <li class="pl-0.5">Ante un fallo de la ECU o del gobernador, las palas de la hélice pueden quedar bloqueadas en el paso más alto (máximo paso), reduciendo significativamente las prestaciones y el régimen de ascenso del avión.</li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>
@@ -3306,7 +3294,19 @@ export const DA40_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-annunciator-panel-realistic.jpg" alt="Panel Anunciador de Cabina Diamond DA40 TDI Thielert TAE 125" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 480px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-annunciator-panel-realistic.jpg" alt="Panel Anunciador de Cabina Diamond DA40 TDI Thielert TAE 125" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 380px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+        </div>
+
+        <!-- NOTA / WARNING AFM EN COLUMNA DERECHA -->
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight mt-1 shadow-2xs shrink-0">
+          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+            <span>⚠️</span>
+            <span>WARNING:</span>
+          </strong>
+          <ul class="list-disc pl-3 space-y-0.5 text-[11px] leading-tight">
+            <li class="pl-0.5">Si se enciende la luz ECU A o ECU B, o tras registrarse un fallo de ECU (incluso si se ha podido resetear con el botón ECU TEST), se prohíbe el vuelo y se requiere mantenimiento técnico antes del siguiente vuelo.</li>
+            <li class="pl-0.5">Ante un fallo de la ECU o del gobernador, las palas de la hélice pueden quedar bloqueadas en el paso más alto (máximo paso), reduciendo significativamente las prestaciones y el régimen de ascenso del avión.</li>
+          </ul>
         </div>
       </div>
     </div>
