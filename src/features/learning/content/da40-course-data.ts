@@ -2836,16 +2836,15 @@ export const DA40_LESSON_3 = {
             </div>
           </div>
 
-          <!-- NOTA / CAUTION AFM -->
+          <!-- NOTA / CAUTION AFM - PARTE 1 -->
           <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
-            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
               <span>⚡</span>
-              <span>CAUTION:</span>
+              <span>CAUTION: BOMBA DE TRASVASE Y DESCEBADO</span>
             </strong>
             <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
               <li class="pl-0.5">Si la luz de aviso FUEL TRANS parpadea, apague inmediatamente la bomba eléctrica de trasvase (posible descebado o anomalía en el flujo).</li>
               <li class="pl-0.5">Si la bomba mecánica aspira aire (p. ej. al agotarse el depósito en EMERG. TRANSFER), es preceptiva una inspección técnica antes del siguiente vuelo.</li>
-              <li class="pl-0.5">El uso de combustibles no aprobados o volar con el deflector puesto a OAT > 20°C puede causar sobretemperatura y daños severos en el sistema.</li>
             </ul>
           </div>
         </div>
@@ -2860,7 +2859,18 @@ export const DA40_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-fuel-cooler-baffle.png" alt="Esquema del Enfriador de Combustible y Deflector (Fuel Cooler Baffle) Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-fuel-cooler.png" alt="Esquema del Enfriador de Combustible y Deflector (Fuel Cooler Baffle) Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+        </div>
+
+        <!-- NOTA / CAUTION AFM - PARTE 2 -->
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight mt-1 shadow-2xs shrink-0">
+          <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+            <span>⚡</span>
+            <span>CAUTION: DEFLECTOR Y TEMPERATURA</span>
+          </strong>
+          <div class="text-[11px] leading-tight">
+            El uso de combustibles no aprobados o volar con el deflector puesto a OAT &gt; 20°C puede causar sobretemperatura y daños severos en el sistema.
+          </div>
         </div>
       </div>
     </div>
