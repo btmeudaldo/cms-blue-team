@@ -28,6 +28,8 @@ const uploads = [
   { local: "public/images/da40/da40-fuel-cooler.png", remote: "fleet/da40/da40-fuel-cooler.png", mime: "image/png" },
   { local: "public/images/da40/da40-cooling-system.png", remote: "fleet/da40/da40-cooling-system.png", mime: "image/png" },
   { local: "public/images/da40/da40-lubrication-system.jpg", remote: "fleet/da40/da40-lubrication-system.jpg", mime: "image/jpeg" },
+  { local: "public/images/da40/da40-ced125.jpg", remote: "fleet/da40/da40-ced125.jpg", mime: "image/jpeg" },
+  { local: "public/images/da40/da40-aed125.jpg", remote: "fleet/da40/da40-aed125.jpg", mime: "image/jpeg" },
   { local: "public/images/da40/da40-placards.png", remote: "fleet/da40/da40-placards.png", mime: "image/png" },
   { local: "public/images/da40/da40-electrical-sources.png", remote: "fleet/da40/da40-electrical-sources.png", mime: "image/png" },
   { local: "public/images/da40/da40-electrical-buses.png", remote: "fleet/da40/da40-electrical-buses.png", mime: "image/png" },

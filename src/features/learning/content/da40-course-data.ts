@@ -3065,6 +3065,138 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.11: 3.11 Instrumentación de Motor: CED 125 y AED 125 -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.11 Instrumentación de Motor: CED 125 y AED 125</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Indicación Digital Compacta de Parámetros de Motor y Datos Auxiliares</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIGITAL ENGINE INSTRUMENTS</span>
+        </div>
+        <div class="space-y-1 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- CED 125 -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CED 125 (COMPACT ENGINE DISPLAY)</strong>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Propeller Rotary Speed: RPM de la hélice en indicación digital numérica y de barra</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Engine Oil Pressure (OP): Presión de aceite (bar, normal 2.3 - 5.2 bar, mín. 1.2 bar)</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Engine Oil Temp (OT): Temperatura de aceite de motor (°C, normal 50 - 125 °C, máx. 140 °C)</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Coolant Temp (CT): Temperatura de refrigerante de motor (°C, normal 60 - 96 °C, máx. 105 °C)</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Gearbox Temp (GT): Temperatura de aceite de reductora (°C, normal hasta 115 °C, máx. 120 °C)</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Load Display: Porcentaje de potencia de motor desarrollada (0% a 100%)</span>
+              </div>
+            </div>
+
+            <!-- AED 125 -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">AED 125 (AUXILIARY ENGINE DISPLAY)</strong>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel Quantity (MAIN &amp; AUX): Cantidad de combustible en galones US para ambos depósitos</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel Temperature: Temperatura de combustible (°C) en depósito principal y auxiliar</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Bus Voltage &amp; Amps: Tensión de barra eléctrica (V) e intensidad del generador (A)</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Aviso Water Level: Indicador ámbar de precaución que alerta de nivel bajo de refrigerante</span>
+              </div>
+              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel Flow: Caudal horario de consumo de combustible (US gal/h)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA AFM -->
+          <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
+              <li class="pl-0.5">Si el conmutador ENGINE MASTER está en posición OFF, la indicación de carga (LOAD) no muestra ningún valor numérico aunque la hélice esté girando.</li>
+              <li class="pl-0.5">Cuando cualquier parámetro entra en rango de precaución (amarillo) o peligro (rojo), la barra digital parpadea y se enciende la luz ENGINE en el panel de anunciadores con alerta acústica; pulsar el botón ACKNOWLEDGE silencia la alarma y fija la barra en continuo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Displays Digitales CED 125 y AED 125 (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INSTRUMENTACIÓN DIGITAL CED &amp; AED</span>
+        </div>
+
+        <div class="flex flex-col gap-2 flex-1 min-h-0">
+          <!-- 1. CED 125 Display Compacto de Motor -->
+          <div class="flex-1 min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 p-2 shadow-2xs">
+            <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-700">
+              <span class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                CED 125 · Compact Engine Display
+              </span>
+              <span class="text-[9px] font-bold text-emerald-800 bg-emerald-100 dark:bg-emerald-950 dark:text-emerald-300 px-1.5 py-0.5 rounded">Tach / Press / Temp / Load</span>
+            </div>
+            <div class="w-full flex-1 min-h-0 bg-white dark:bg-slate-900/50 rounded-lg flex items-center justify-center overflow-hidden p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-ced125.jpg" alt="Compact Engine Display CED 125 Thielert TAE 125 Diamond DA40 TDI" class="w-full h-full max-h-[195px] object-contain rounded-md" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 195px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+            </div>
+          </div>
+
+          <!-- 2. AED 125 Display Auxiliar -->
+          <div class="flex-1 min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 p-2 shadow-2xs">
+            <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-700">
+              <span class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-sky-600"></span>
+                AED 125 · Auxiliary Engine Display
+              </span>
+              <span class="text-[9px] font-bold text-sky-800 bg-sky-100 dark:bg-sky-950 dark:text-sky-300 px-1.5 py-0.5 rounded">Fuel / Volt / Amps / Flow / Level</span>
+            </div>
+            <div class="w-full flex-1 min-h-0 bg-white dark:bg-slate-900/50 rounded-lg flex items-center justify-center overflow-hidden p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-aed125.jpg" alt="Auxiliary Engine Display AED 125 Thielert TAE 125 Diamond DA40 TDI" class="w-full h-full max-h-[195px] object-contain rounded-md" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 195px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 `,
 };
 
