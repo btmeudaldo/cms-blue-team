@@ -5854,157 +5854,102 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.5: 5.5 Reencendido de Motor con Hélice en Molinete -->
+<!-- DIAPOSITIVA 5.5: 5.5 Reencendido de Motor en Vuelo (Molinete y Arrancador) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.5 Reencendido de Motor con Hélice en Molinete</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.5 Reencendido de Motor en Vuelo (Molinete y Arrancador)</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Restarting the Engine with Windmilling Propeller</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Engine Restart in Flight · Windmilling & Stationary Propeller</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RESTARTING WITH WINDMILLING PROPELLER</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PROCEDIMIENTOS DE REENCENDIDO AFM</span>
           </div>
 
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">RESTARTING WITH WINDMILLING PROPELLER</strong>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+            <!-- CASO A: HÉLICE EN MOLINETE -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">A. HÉLICE EN MOLINETE</strong>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-medium">73 to 110 KIAS</span></span>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">2.</span>
                 <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">IDLE</span></span>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">3.</span>
                 <span class="text-slate-800 dark:text-slate-200">Fuel valve &mdash; <span class="italic font-medium">check ON</span></span>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">4.</span>
                 <span class="text-slate-800 dark:text-slate-200">Fuel transfer pump &mdash; <span class="italic font-medium">ON</span></span>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">5.</span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">5.</span>
                 <span class="text-slate-800 dark:text-slate-200">Emergency windows &mdash; <span class="italic font-medium">CLOSE</span></span>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">6.</span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">6.</span>
                 <span class="text-slate-800 dark:text-slate-200">ELECTRIC MASTER &mdash; <span class="italic font-medium">check ON</span></span>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">7.</span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">7.</span>
                 <span class="text-slate-800 dark:text-slate-200">ENGINE MASTER &mdash; <span class="italic font-medium">ON</span></span>
               </div>
-            <div class="text-[11px] text-slate-500 dark:text-slate-400 italic pt-0.5">If the engine does not restart:</div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">8.</span>
-                <span class="text-slate-800 dark:text-slate-200">ECU SWAP switch &mdash; <span class="italic font-medium">ECU B</span></span>
+              <div class="text-[10px] text-slate-500 dark:text-slate-400 italic pt-0.5">Si no reenciende: ECU SWAP to ECU B</div>
+            </div>
+
+            <!-- CASO B: HÉLICE PARADA (STARTER) -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">B. HÉLICE PARADA (STARTER)</strong>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">1.</span>
+                <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-medium">73 KIAS (GLIDE)</span></span>
               </div>
-          </div>
-          <!-- NOTE AFM -->
-          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
-            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-              <span>ℹ️</span>
-              <span>NOTE:</span>
-            </strong>
-            <div>Mientras se mantenga una velocidad aérea de al menos 60 KIAS y la hélice esté girando en molinete, el motor arrancará automáticamente al colocar ENGINE MASTER en posición ON sin necesidad de accionar la llave de arranque (starter).</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
-        </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
-            📷
-          </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Curva envolvente de reencendido en molinete (velocidad 73-110 KIAS y techo hasta 6000 ft).
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- pagebreak -->
-
-<!-- DIAPOSITIVA 5.6: 5.6 Reencendido de Motor con Hélice Parada (Starter) -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
-    <div>
-      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.6 Reencendido de Motor con Hélice Parada (Starter)</h1>
-    </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Restarting the Engine with Stationary Propeller</span>
-  </div>
-
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RESTARTING WITH STATIONARY PROPELLER</span>
-          </div>
-
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">RESTARTING WITH STATIONARY PROPELLER</strong>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
-                <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-medium">73 KIAS (1150 kg) / 68 KIAS (1000 kg)</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
-                <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">IDLE</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">2.</span>
                 <span class="text-slate-800 dark:text-slate-200">Electrical consumers &mdash; <span class="italic font-medium">OFF</span></span>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
-                <span class="text-slate-800 dark:text-slate-200">Fuel valve &mdash; <span class="italic font-medium">check ON</span></span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">3.</span>
+                <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">IDLE</span></span>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">5.</span>
-                <span class="text-slate-800 dark:text-slate-200">Fuel transfer pump &mdash; <span class="italic font-medium">ON</span></span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">4.</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel valve & pump &mdash; <span class="italic font-medium">ON</span></span>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">6.</span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">5.</span>
                 <span class="text-slate-800 dark:text-slate-200">ELECTRIC MASTER &mdash; <span class="italic font-medium">check ON</span></span>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">7.</span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">6.</span>
                 <span class="text-slate-800 dark:text-slate-200">ENGINE MASTER &mdash; <span class="italic font-medium">ON</span></span>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">8.</span>
-                <span class="text-slate-800 dark:text-slate-200">ELECTRIC MASTER (Key) &mdash; <span class="italic font-medium">START (release when engine is running)</span></span>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">7.</span>
+                <span class="text-slate-800 dark:text-slate-200">Ignition key &mdash; <span class="italic font-medium">START (máx. 10 s)</span></span>
               </div>
+              <div class="text-[10px] text-slate-500 dark:text-slate-400 italic pt-0.5">Soltar llave en cuanto arranque</div>
+            </div>
           </div>
-          <!-- CAUTION AFM -->
-          <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
-            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+
+          <!-- COMPARATIVA Y PRECAUCIÓN AFM -->
+          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] sm:text-xs leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-xs shrink-0">
               <span>⚠️</span>
-              <span>CAUTION:</span>
+              <span>DIFERENCIA OPERATIVA CLAVE:</span>
             </strong>
-            <div>La hélice de un motor TAE 125 parado se sitúa en bandera por acción de los muelles mecánicos y contrapesos. Al accionar el starter para reencendido, no mantenga la llave en START más de 10 segundos continuados para preservar la carga de la batería y evitar sobrecalentamiento.</div>
+            <div><strong>Molinete:</strong> Si la hélice gira por el viento relativo (73-110 KIAS), el motor reenciende solo con <span class="font-semibold text-emerald-700 dark:text-emerald-400">ENGINE MASTER ON</span>. <strong>Parada:</strong> La hélice pasa a bandera mecánica; se debe accionar el arrancador (<span class="font-semibold">START</span>) con consumidores apagados (máx. 10 segundos).</div>
           </div>
         </div>
       </div>
@@ -6023,7 +5968,7 @@ export const DA40_LESSON_5 = {
           </div>
           <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Diagrama de hélice en bandera y accionamiento de llave de contacto en START con desconexión previa de consumidores.
+            Curva envolvente de reencendido en molinete (73-110 KIAS / techo 6.000 ft) y posición de hélice en bandera.
           </p>
         </div>
       </div>
@@ -6033,12 +5978,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.7: 5.7 Malfunción del Regulador de RPM y Sobrevelocidad -->
+<!-- DIAPOSITIVA 5.6: 5.6 Malfunción del Regulador de RPM y Sobrevelocidad -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.7 Malfunción del Regulador de RPM y Sobrevelocidad</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.6 Malfunción del Regulador de RPM y Sobrevelocidad</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Defective RPM Regulating System & Propeller Overspeed</span>
   </div>
@@ -6127,12 +6072,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.8: 5.8 Humo y Fuego en Tierra y Durante el Despegue -->
+<!-- DIAPOSITIVA 5.7: 5.7 Humo y Fuego en Tierra y Durante el Despegue -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.8 Humo y Fuego en Tierra y Durante el Despegue</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.7 Humo y Fuego en Tierra y Durante el Despegue</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Smoke and Fire on Ground & During Take-Off</span>
   </div>
@@ -6224,12 +6169,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.9: 5.9 Incendio de Motor en Vuelo -->
+<!-- DIAPOSITIVA 5.8: 5.8 Incendio de Motor en Vuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.9 Incendio de Motor en Vuelo</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.8 Incendio de Motor en Vuelo</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Engine Fire in Flight</span>
   </div>
@@ -6309,12 +6254,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.10: 5.10 Humo e Incendio Eléctrico en Vuelo -->
+<!-- DIAPOSITIVA 5.9: 5.9 Humo e Incendio Eléctrico en Vuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.10 Humo e Incendio Eléctrico en Vuelo</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.9 Humo e Incendio Eléctrico en Vuelo</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Electrical Fire with Smoke in Flight</span>
   </div>
@@ -6390,12 +6335,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.11: 5.11 Aterrizaje de Emergencia con Motor Parado -->
+<!-- DIAPOSITIVA 5.10: 5.10 Aterrizaje de Emergencia con Motor Parado -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.11 Aterrizaje de Emergencia con Motor Parado</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.10 Aterrizaje de Emergencia con Motor Parado</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Emergency Landing with Engine Off</span>
   </div>
@@ -6487,12 +6432,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.12: 5.12 Aterrizaje con Neumático Desinflado o Frenos Fallidos -->
+<!-- DIAPOSITIVA 5.11: 5.11 Aterrizaje con Neumático Desinflado o Frenos Fallidos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.12 Aterrizaje con Neumático Desinflado o Frenos Fallidos</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.11 Aterrizaje con Neumático Desinflado o Frenos Fallidos</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Defective Tire on MLG & Defective Brakes</span>
   </div>
@@ -6588,12 +6533,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.13: 5.13 Recuperación de Barrena Inadvertida (Unintentional Spin) -->
+<!-- DIAPOSITIVA 5.12: 5.12 Recuperación de Barrena Inadvertida (Unintentional Spin) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.13 Recuperación de Barrena Inadvertida (Unintentional Spin)</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.12 Recuperación de Barrena Inadvertida (Unintentional Spin)</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Recovery from an Unintentional Spin</span>
   </div>
@@ -6671,12 +6616,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.14: 5.14 Vuelo Inadvertido en Condiciones de Engelamiento -->
+<!-- DIAPOSITIVA 5.13: 5.13 Vuelo Inadvertido en Condiciones de Engelamiento -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.14 Vuelo Inadvertido en Condiciones de Engelamiento</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.13 Vuelo Inadvertido en Condiciones de Engelamiento</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Icing - Unintentional Flight into Icing Conditions</span>
   </div>
@@ -6757,12 +6702,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.15: 5.15 Fallo Eléctrico Total y Switch EMERGENCY -->
+<!-- DIAPOSITIVA 5.14: 5.14 Fallo Eléctrico Total y Switch EMERGENCY -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.15 Fallo Eléctrico Total y Switch EMERGENCY</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.14 Fallo Eléctrico Total y Switch EMERGENCY</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Complete Failure of the Electrical System</span>
   </div>
@@ -6838,12 +6783,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.16: 5.16 Monóxido de Carbono (CO) y Aviso DOOR en Vuelo -->
+<!-- DIAPOSITIVA 5.15: 5.15 Monóxido de Carbono (CO) y Aviso DOOR en Vuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.16 Monóxido de Carbono (CO) y Aviso DOOR en Vuelo</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.15 Monóxido de Carbono (CO) y Aviso DOOR en Vuelo</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Carbon Monoxide Contamination & 'DOOR' Warning Light On</span>
   </div>
@@ -6931,12 +6876,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.17: 5.17 Aterrizaje de Precaución con Motor Operativo -->
+<!-- DIAPOSITIVA 5.16: 5.16 Aterrizaje de Precaución con Motor Operativo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.17 Aterrizaje de Precaución con Motor Operativo</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.16 Aterrizaje de Precaución con Motor Operativo</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Precautionary Landing with Engine Power Available</span>
   </div>
@@ -7028,12 +6973,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.18: 5.18 Luces de Aviso FADEC: ECU A y ECU B en Vuelo -->
+<!-- DIAPOSITIVA 5.17: 5.17 Luces de Aviso FADEC: ECU A y ECU B en Vuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.18 Luces de Aviso FADEC: ECU A y ECU B en Vuelo</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.17 Luces de Aviso FADEC: ECU A y ECU B en Vuelo</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">ECU A & ECU B Failure (Annunciator Panel)</span>
   </div>
@@ -7115,12 +7060,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.19: 5.19 Conmutación Manual de ECU (ECU SWAP en Vuelo) -->
+<!-- DIAPOSITIVA 5.18: 5.18 Conmutación Manual de ECU (ECU SWAP en Vuelo) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.19 Conmutación Manual de ECU (ECU SWAP en Vuelo)</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.18 Conmutación Manual de ECU (ECU SWAP en Vuelo)</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Manual ECU Selection in Flight</span>
   </div>
@@ -7195,12 +7140,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.20: 5.20 Fallo de Alternador y Aviso LOW VOLTS -->
+<!-- DIAPOSITIVA 5.19: 5.19 Fallo de Alternador y Aviso LOW VOLTS -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.20 Fallo de Alternador y Aviso LOW VOLTS</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.19 Fallo de Alternador y Aviso LOW VOLTS</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Alternator Failure & Low Voltage Caution</span>
   </div>
@@ -7277,12 +7222,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.21: 5.21 Anomalías de Temperatura: Refrigerante y Aceite -->
+<!-- DIAPOSITIVA 5.20: 5.20 Anomalías de Temperatura: Refrigerante y Aceite -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.21 Anomalías de Temperatura: Refrigerante y Aceite</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.20 Anomalías de Temperatura: Refrigerante y Aceite</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Coolant Temperature (CT) & Oil Temperature (OT)</span>
   </div>
@@ -7370,12 +7315,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.22: 5.22 Anomalías de Presión de Aceite y Reductora -->
+<!-- DIAPOSITIVA 5.21: 5.21 Anomalías de Presión de Aceite y Reductora -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.22 Anomalías de Presión de Aceite y Reductora</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.21 Anomalías de Presión de Aceite y Reductora</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Oil Pressure (OP) & Gearbox Temperature (GT)</span>
   </div>
@@ -7455,12 +7400,12 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.23: 5.23 Combustible y Malfunción del Sistema de Flaps -->
+<!-- DIAPOSITIVA 5.22: 5.22 Combustible y Malfunción del Sistema de Flaps -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.23 Combustible y Malfunción del Sistema de Flaps</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.22 Combustible y Malfunción del Sistema de Flaps</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Low Fuel & Flap Operating System Failure</span>
   </div>
