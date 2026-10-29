@@ -3625,65 +3625,44 @@ export const DA40_LESSON_4 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(1) LEFT MAIN LANDING GEAR &amp; WING ROOT</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(1) LEFT MAIN LANDING GEAR</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(1) LEFT MAIN GEAR &amp; WING ROOT</strong>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">a)</span>
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(1) LEFT MAIN LANDING GEAR</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">a)</span>
               <span class="text-slate-800 dark:text-slate-200">Landing gear strut &mdash; <span class="italic font-medium">visual inspection</span></span>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">b)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">b)</span>
               <span class="text-slate-800 dark:text-slate-200">Wheel fairing &mdash; <span class="italic font-medium">visual inspection</span></span>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">c)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">c)</span>
               <span class="text-slate-800 dark:text-slate-200">Tire, wheel, brake &mdash; <span class="italic font-medium">visual inspection, check tire pressure (2.5 bar / 36 psi), check brake condition &amp; fluid leaks</span></span>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">d)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">d)</span>
               <span class="text-slate-800 dark:text-slate-200">Chocks &mdash; <span class="italic font-medium">remove</span></span>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">e)</span>
-              <span class="text-slate-800 dark:text-slate-200">Fuel tank drain (left wing) &mdash; <span class="italic font-medium">drain fuel and check for contamination (water &amp; sediment)</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">f)</span>
-              <span class="text-slate-800 dark:text-slate-200">Wing root air inlet &amp; cabin step &mdash; <span class="italic font-medium">visual inspection, unobstructed</span></span>
-            </div>
-          </div>
-
-          <!-- PUNTOS CRÍTICOS -->
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PUNTOS CRÍTICOS DE INSPECCIÓN</strong>
-            <div class="flex items-start gap-2 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-              <span><strong>Presión y Neumático:</strong> Presión de 2.5 bar (36 psi). Comprobar marcas de deslizamiento sobre llanta, profundidad del dibujo y ausencia de cortes en los flancos.</span>
-            </div>
-            <div class="flex items-start gap-2 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-              <span><strong>Conjunto de Frenos y Latiguillos:</strong> Verificar ausencia de fugas de fluido hidráulico rojo (MIL-PRF-5606), discos sin sobrecalentamiento ni deformaciones, y pastillas con grosor superior al mínimo.</span>
-            </div>
-            <div class="flex items-start gap-2 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-              <span><strong>Purga del Depósito Principal (MAIN):</strong> Válvula de drenaje situada en el intradós de la raíz alar izquierda. Imprescindible para eliminar agua decantada antes del arranque.</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">e)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel tank drain &mdash; <span class="italic font-medium">drain fuel and check for contamination (water &amp; sediment)</span></span>
             </div>
           </div>
 
           <!-- CAUTION AFM -->
-          <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+          <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
               <span>⚠️</span>
               <span>CAUTION:</span>
             </strong>
-            <div>Drene una muestra de combustible en un vaso transparente antes del primer vuelo del día y tras repostar. Compruebe la ausencia total de agua, sedimentos o turbidez. Si detecta agua, continúe drenando hasta obtener combustible completamente limpio; si la presencia de contaminación persiste, el vuelo queda prohibido.</div>
+            <div>Drene una muestra de combustible en un vaso transparente antes del primer vuelo del día y tras repostar para comprobar la ausencia de agua y partículas. Si detecta agua, continúe drenando hasta obtener combustible completamente limpio; si la presencia de contaminación persiste, el vuelo queda prohibido.</div>
           </div>
         </div>
       </div>
@@ -3725,69 +3704,52 @@ export const DA40_LESSON_4 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(2) LEFT WING &amp; FLIGHT CONTROLS</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(2) LEFT WING</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(2) LEFT WING</strong>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">a)</span>
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(2) LEFT WING</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">a)</span>
               <span class="text-slate-800 dark:text-slate-200">Entire wing surface &mdash; <span class="italic font-medium">visual inspection</span></span>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">b)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">b)</span>
               <span class="text-slate-800 dark:text-slate-200">Stall warning hole &mdash; <span class="italic font-medium">check unobstructed</span></span>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">c)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">c)</span>
               <span class="text-slate-800 dark:text-slate-200">Pitot-static probe &mdash; <span class="italic font-medium">remove cover, check unobstructed and undamaged</span></span>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">d)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">d)</span>
               <span class="text-slate-800 dark:text-slate-200">Wing tip, position light, strobe light (ACL) &mdash; <span class="italic font-medium">visual inspection</span></span>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">e)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">e)</span>
               <span class="text-slate-800 dark:text-slate-200">Aileron and hinges &mdash; <span class="italic font-medium">visual inspection, check freedom of movement and play</span></span>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">f)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">f)</span>
               <span class="text-slate-800 dark:text-slate-200">Aileron control rod &mdash; <span class="italic font-medium">visual inspection, check locking varnish</span></span>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">g)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">g)</span>
               <span class="text-slate-800 dark:text-slate-200">Flap and hinges &mdash; <span class="italic font-medium">visual inspection, check play</span></span>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">h)</span>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">h)</span>
               <span class="text-slate-800 dark:text-slate-200">Flap control rod and drive &mdash; <span class="italic font-medium">visual inspection</span></span>
             </div>
           </div>
 
-          <!-- PUNTOS CRÍTICOS -->
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PUNTOS CRÍTICOS DE INSPECCIÓN</strong>
-            <div class="flex items-start gap-2 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-              <span><strong>Aviso Neumático de Pérdida:</strong> Ranura en el borde de ataque con anillo rojo. Comprobar que no esté obstruida por suciedad o hielo y verificar la bocina aspirando con un paño limpio.</span>
-            </div>
-            <div class="flex items-start gap-2 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-              <span><strong>Sonda Pitot-Estática Calefactada:</strong> Retirar la funda roja protectora; verificar que los orificios dinámicos y estáticos estén libres y la sonda alineada sin flexiones.</span>
-            </div>
-            <div class="flex items-start gap-2 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-              <span><strong>Varillas Rígidas (Push-Rods):</strong> Comprobar los terminales de rótula de alerón y flap; asegurar que el barniz de fijación rojo (locking varnish) permanezca intacto.</span>
-            </div>
-          </div>
-
           <!-- NOTE AFM -->
-          <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
               <span>ℹ️</span>
               <span>NOTE:</span>
             </strong>
