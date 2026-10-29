@@ -7549,7 +7549,1317 @@ export const DA40_LESSON_5 = {
 };
 
 
-export const DA40_LESSONS = [DA40_LESSON_1, DA40_LESSON_2, DA40_LESSON_3, DA40_LESSON_4, DA40_LESSON_5];
+// ============================================================================
+// LECCIÓN 6: DESPACHO OPERATIVO: DOCUMENTACIÓN PREVUELO, M&B, COMBUSTIBLE Y PERFORMANCE (16 DIAPOSITIVAS)
+// ============================================================================
+export const DA40_LESSON_6 = {
+  id: "da400000-0000-0000-0000-000000000060",
+  course_id: DA40_COURSE_ID,
+  title: "6. Despacho Operativo: Documentación Prevuelo, Masa y Centrado, Combustible y Performance",
+  slug: "despacho-operativo-da40-prevuelo",
+  description: "Dominio integral del despacho operacional en la aeronave Diamond DA40 TDI (Thielert TAE 125-01 / CD-135). Incluye cumplimentación paso a paso de la documentación oficial F.OPS.02, cálculo de Masa y Centrado con hoja de carga según AFM Capítulo 6 (BEW 735 kg, brazos 2,30 m / 3,25 m / 2,63 m / 3,65 m) y envolvente de CG (MTOM y MLM 1150 kg), régimen de crucero y consumo horario al 60% (15,1 L/h) y 70% (18,5 L/h), política de combustible EASA Part-NCO.OP.125 y Manual OM Blue Team (1h 30m de reserva obligatoria), y cálculo de performance de despegue y aterrizaje según AFM Capítulo 5 con factores de corrección de viento, pendiente y superficie de hierba.",
+  sequence_order: 6,
+  lesson_order: 6,
+  min_seconds: 1,
+  content_html: `<!-- DIAPOSITIVA 6.1: 6.1 Despacho Operativo y Documentación Prevuelo F.OPS.02 -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · DESPACHO OPERATIVO</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.1 Despacho Operativo y Documentación Prevuelo F.OPS.02</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimiento Operacional Oficial</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">MARCO NORMATIVO EASA PART-NCO & BLUE TEAM</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">OBLIGACIONES DEL PILOTO AL MANDO (PIC)</strong>
+          <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
+            Antes de cada vuelo en la escuela, el piloto al mando tiene la obligación técnica y legal de cumplimentar el formulario <strong>F.OPS.02 (Documentación Prevuelo)</strong>, verificando que la aeronave opere con total seguridad dentro de los límites certificados de masa, centrado, combustible y distancias de pista.
+          </p>
+        </div>
+
+        <div class="space-y-1.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.GEN.105 (Masa y Centrado):</strong>
+            <div>Garantizar que la carga esté distribuida de modo que el centro de gravedad (CG) permanezca dentro de la envolvente certificada tanto al despegue (TOW) como al aterrizaje (LW).</div>
+          </div>
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.OP.125 & Manual OM Blue Team (Combustible):</strong>
+            <div>Embarcar combustible para la ruta más la reserva. Por Manual de Operaciones de Blue Team debemos disponer de <strong>al menos 1h 30min de reserva final</strong> (<strong>22,7 L / 6,0 US gal</strong> al 60% de potencia), más el combustible necesario para proceder al aeródromo alternativo (<strong>5,1 L / 1,35 US gal</strong>).</div>
+          </div>
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Part-NCO.POL.105 (Performance de Pista):</strong>
+            <div>Verificar que las distancias calculadas con correcciones de viento, temperatura y superficie no superen la TORA y LDA disponibles.</div>
+          </div>
+        </div>
+
+        <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-sky-800 dark:text-sky-300 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>ℹ️</span> NOTA OPERACIONAL
+          </strong>
+          <span>El F.OPS.02 debe ser firmado por el alumno y el instructor antes de retirar las llaves de la aeronave de operaciones.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DOCUMENTACIÓN F.OPS.02</span>
+          <a href="/images/c172/f-ops-02-documentacion-prevuelo.pdf" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-1">
+            <span>Abrir PDF</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
+          <img
+            src="/images/c172/f-ops-02-documentacion-prevuelo.png"
+            alt="Formulario oficial F.OPS.02 Documentación Prevuelo"
+            class="w-full h-auto block rounded-lg shadow-xs"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.2: 6.2 Teoría de Carga y Centrado: Datum, Brazos y Momentos -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · CARGA Y CENTRADO</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.2 Teoría de Carga y Centrado: Datum, Brazos y Momentos</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Física del Vuelo y Estabilidad</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PRINCIPIOS FÍSICOS DE EQUILIBRIO</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PLANO DE REFERENCIA (DATUM)</strong>
+          <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
+            En el DA40 TDI, el <strong>Datum Plane (DP)</strong> es un plano vertical imaginario situado a <strong>2,194 metros (86,38 in)</strong> por delante del punto más adelantado de la costilla de raíz del ala corta (<em>stub wing root rib</em>). La aeronave se nivela longitudinalmente mediante una cuña de relación 600:31 colocada sobre la parte superior del fuselaje trasero.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-[13px]">
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase">Asientos Delanteros:</strong>
+            <div class="text-slate-700 dark:text-slate-300">Piloto y copiloto / instructor.</div>
+            <div class="font-mono font-bold text-sky-600 dark:text-sky-400">Brazo: 2,30 m (90,6 in)</div>
+          </div>
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase">Asientos Traseros:</strong>
+            <div class="text-slate-700 dark:text-slate-300">Pasajeros traseros.</div>
+            <div class="font-mono font-bold text-sky-600 dark:text-sky-400">Brazo: 3,25 m (128,0 in)</div>
+          </div>
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase">Depósitos Alares:</strong>
+            <div class="text-slate-700 dark:text-slate-300">Combustible utilizable en alas.</div>
+            <div class="font-mono font-bold text-sky-600 dark:text-sky-400">Brazo: 2,63 m (103,5 in)</div>
+          </div>
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase">Compartimento Equipaje:</strong>
+            <div class="text-slate-700 dark:text-slate-300">Bandeja estándar (máx. 30 kg).</div>
+            <div class="font-mono font-bold text-sky-600 dark:text-sky-400">Brazo: 3,65 m (143,7 in)</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase">Cálculo del Momento:</span>
+            <code class="text-sky-600 dark:text-sky-400 font-mono font-bold">Momento [kg·m] = Masa [kg] × Brazo [m]</code>
+          </div>
+          <div class="flex items-center justify-between text-xs border-t border-slate-100 dark:border-slate-700 pt-1">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase">Centro de Gravedad (CG):</span>
+            <code class="text-sky-600 dark:text-sky-400 font-mono font-bold">CG [m] = Σ Momentos / Σ Masas</code>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-amber-800 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>⚠️</span> DENSIDAD DEL COMBUSTIBLE JET A-1 / DIÉSEL
+          </strong>
+          <span>El JET A-1 y el diésel automoción tienen una densidad oficial de <strong>0,84 kg/L (7,01 lb/US gal)</strong>. Para el cálculo de masa, cada 100 litros de combustible equivalen a <strong>84,0 kg</strong> de peso (frente a 71,5 kg del AVGAS 100LL).</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESTACIONES Y BRAZOS DE PALANCA</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/da40/da40-moment-arms.png"
+            alt="Brazos de palanca oficiales del Diamond DA40 TDI"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.3: 6.3 Estructura del Loadsheet Oficial DA40 (F.OPS.04) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LOAD SHEET F.OPS.04</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.3 Estructura del Loadsheet Oficial DA40 (F.OPS.04)</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Registro de Carga y Hoja Oficial</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESTRUCTURA DEL LOADSHEET OFICIAL AFM</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs sm:text-[13px]">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TABLA DE CÁLCULO DE MASA Y CENTRADO</strong>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700 text-[#0B2E59] dark:text-sky-300">
+                  <th class="py-1 pr-2 font-bold">Elemento de Carga</th>
+                  <th class="py-1 px-2 font-bold text-center">Brazo</th>
+                  <th class="py-1 px-2 font-bold text-right">Masa [kg]</th>
+                  <th class="py-1 pl-2 font-bold text-right">Momento [kg·m]</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+                <tr><td class="py-1 pr-2 font-semibold">1. Masa en Vacío (BEW)</td><td class="py-1 px-2 text-center font-mono">Según informe</td><td class="py-1 px-2 text-right">735,0</td><td class="py-1 pl-2 text-right">1820,00</td></tr>
+                <tr><td class="py-1 pr-2">2. Asientos Delanteros</td><td class="py-1 px-2 text-center font-mono">2,30 m</td><td class="py-1 px-2 text-right">Piloto + Cop</td><td class="py-1 pl-2 text-right">Masa × 2,30</td></tr>
+                <tr><td class="py-1 pr-2">3. Asientos Traseros</td><td class="py-1 px-2 text-center font-mono">3,25 m</td><td class="py-1 px-2 text-right">Pasajeros</td><td class="py-1 pl-2 text-right">Masa × 3,25</td></tr>
+                <tr><td class="py-1 pr-2">4. Equipaje (máx. 30 kg)</td><td class="py-1 px-2 text-center font-mono">3,65 m</td><td class="py-1 px-2 text-right">Carga maletero</td><td class="py-1 pl-2 text-right">Masa × 3,65</td></tr>
+                <tr class="bg-slate-50 dark:bg-slate-800 font-semibold"><td class="py-1 pr-2 text-[#0B2E59] dark:text-sky-300">5. Zero Fuel Mass (ZFM)</td><td class="py-1 px-2 text-center">&mdash;</td><td class="py-1 px-2 text-right text-sky-600 dark:text-sky-400">Σ 1..4</td><td class="py-1 pl-2 text-right text-sky-600 dark:text-sky-400">Σ 1..4</td></tr>
+                <tr><td class="py-1 pr-2">6. Combustible Despegue</td><td class="py-1 px-2 text-center font-mono">2,63 m</td><td class="py-1 px-2 text-right">Litros × 0,84</td><td class="py-1 pl-2 text-right">Masa × 2,63</td></tr>
+                <tr class="bg-sky-50/70 dark:bg-sky-950/40 font-bold"><td class="py-1 pr-2 text-[#0B2E59] dark:text-sky-300">7. Take-Off Mass (TOM)</td><td class="py-1 px-2 text-center">&mdash;</td><td class="py-1 px-2 text-right text-emerald-600 dark:text-emerald-400">ZFM + Comb</td><td class="py-1 pl-2 text-right text-emerald-600 dark:text-emerald-400">ZFM + Comb</td></tr>
+                <tr><td class="py-1 pr-2 text-rose-600 dark:text-rose-400">8. Consumo de Ruta (Trip)</td><td class="py-1 px-2 text-center font-mono">2,63 m</td><td class="py-1 px-2 text-right text-rose-600 dark:text-rose-400">&minus; Trip Fuel</td><td class="py-1 pl-2 text-right text-rose-600 dark:text-rose-400">&minus; (Masa × 2,63)</td></tr>
+                <tr class="bg-slate-100 dark:bg-slate-800 font-bold"><td class="py-1 pr-2 text-[#0B2E59] dark:text-sky-300">9. Landing Mass (LM)</td><td class="py-1 px-2 text-center">&mdash;</td><td class="py-1 px-2 text-right text-sky-600 dark:text-sky-400">TOM &minus; Trip</td><td class="py-1 pl-2 text-right text-sky-600 dark:text-sky-400">TOM &minus; Trip</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase">MTOM (Masa Máx. Despegue):</span>
+            <div class="font-mono text-emerald-600 dark:text-emerald-400 font-bold text-sm">1150 kg (2535 lb)</div>
+          </div>
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase">MLM (Masa Máx. Aterrizaje):</span>
+            <div class="font-mono text-emerald-600 dark:text-emerald-400 font-bold text-sm">1150 kg (2535 lb)</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-red-800 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>🚨</span> WARNING (AFM)
+          </strong>
+          <span>Exceder los límites de masa certificada conduce a sobrecarga estructural y grave pérdida de rendimiento. Exceder los límites de centrado reduce severamente la autoridad de mandos y la estabilidad.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TABLA OFICIAL DE CARGA AFM</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/da40/da40-loadsheet-table.png"
+            alt="Hoja oficial de cálculo de carga del Diamond DA40 TDI"
+            class="max-w-full h-auto object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.4: 6.4 La Envolvente de Centro de Gravedad (CG Envelope) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · ENVOLVENTE DE CENTRADO</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.4 La Envolvente de Centro de Gravedad (CG Envelope)</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Límites Certificados de Estabilidad</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">LÍMITES ADMISIBLES DE CG</span>
+        </div>
+
+        <div class="space-y-2 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">CATEGORÍA NORMAL (HASTA 1150 KG)</strong>
+            <p class="leading-snug">
+              &bull; <strong>Límite Delantero:</strong> 2,40 m (94,5 in) constante desde 780 kg hasta 980 kg; variación lineal hasta <strong>2,46 m (96,9 in)</strong> a 1150 kg.<br>
+              &bull; <strong>Límite Trasero:</strong> <strong>2,59 m (102,0 in)</strong> con tanque estándar (2,55 m con tanque Long Range).
+            </p>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">CATEGORÍA UTILIDAD (HASTA 980 KG)</strong>
+            <p class="leading-snug">
+              Para vuelo en Categoría de Utilidad (maniobras autorizadas como pérdidas y virajes escarpados): la masa total no debe exceder <strong>980 kg (2161 lb)</strong>, no se permiten ocupantes en asientos traseros ni equipaje en el maletero. El límite delantero permanece constante en 2,40 m y el trasero en 2,59 m.
+            </p>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">EFECTO DEL CONSUMO DE COMBUSTIBLE EN EL CG</strong>
+            <p class="leading-snug">
+              Los depósitos alares del DA40 se sitúan a un brazo de <strong>2,63 m</strong>. Al estar situados ligeramente por detrás del CG habitual (~2,52 a 2,54 m), el consumo de combustible en crucero produce un <strong>leve avance hacia adelante</strong> del CG a lo largo del vuelo.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-amber-800 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>⚠️</span> REGLA DE ORO DE DESPACHO
+          </strong>
+          <span>Deben graficarse obligatoriamente <strong>ambos puntos</strong> en la envolvente: el punto de despegue (TOM & CG) y el punto previsto al aterrizaje (LM & CG). Ambos deben situarse holgadamente dentro de los márgenes certificados.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE DE CG (AFM)</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/da40/da40-cg-limits.png"
+            alt="Envolvente de masa y centrado oficial Diamond DA40 TDI"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.5: 6.5 Ejercicio Práctico 1A: Masa y Centrado al Despegue (TOM & CG) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER PRÁCTICO 1A</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.5 Ejercicio Práctico 1A: Masa y Centrado al Despegue (TOM & CG)</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Cálculo de TOM y Centrado Pre-Takeoff</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESCENARIO PRÁCTICO 1A: CÁLCULO DE DESPEGUE</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">DATOS DE LA MISIÓN DE ENTRENAMIENTO</strong>
+          <div class="grid grid-cols-2 gap-2 text-slate-700 dark:text-slate-300">
+            <div>&bull; Avión: <strong>DA40 TDI</strong></div>
+            <div>&bull; BEW: <strong>735,0 kg</strong> / Arm: <strong>2,476 m</strong></div>
+            <div>&bull; Asientos Delanteros: <strong>155 kg</strong> (75 kg Alumno + 80 kg Instructor)</div>
+            <div>&bull; Asiento Trasero: <strong>70 kg</strong> (Pasajero observador)</div>
+            <div>&bull; Maletero: <strong>15 kg</strong> (Maletines de vuelo)</div>
+            <div>&bull; Combustible: <strong>80 L</strong> JET A-1 (67,2 kg a 0,84 kg/L)</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">RESOLUCIÓN DE HOJA DE CARGA</strong>
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-700 font-bold text-[#0B2E59] dark:text-sky-300">
+                <th class="py-0.5">Estación</th>
+                <th class="py-0.5 text-center">Brazo [m]</th>
+                <th class="py-0.5 text-right">Masa [kg]</th>
+                <th class="py-0.5 text-right">Momento [kg·m]</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-mono text-[11px]">
+              <tr><td>Masa en Vacío (BEW)</td><td class="text-center">2,476</td><td class="text-right">735,00</td><td class="text-right">1820,00</td></tr>
+              <tr><td>Asientos Delanteros</td><td class="text-center">2,300</td><td class="text-right">155,00</td><td class="text-right">356,50</td></tr>
+              <tr><td>Asiento Trasero</td><td class="text-center">3,250</td><td class="text-right">70,00</td><td class="text-right">227,50</td></tr>
+              <tr><td>Equipaje</td><td class="text-center">3,650</td><td class="text-right">15,00</td><td class="text-right">54,75</td></tr>
+              <tr class="bg-slate-50 dark:bg-slate-800 font-bold text-slate-900 dark:text-slate-100"><td>ZFM (Zero Fuel Mass)</td><td class="text-center">2,522</td><td class="text-right">975,00</td><td class="text-right">2458,75</td></tr>
+              <tr><td>Combustible Despegue (80 L)</td><td class="text-center">2,630</td><td class="text-right">67,20</td><td class="text-right">176,74</td></tr>
+              <tr class="bg-emerald-50 dark:bg-emerald-950/40 font-bold text-emerald-900 dark:text-emerald-300"><td>TOM (Take-Off Mass)</td><td class="text-center">2,529</td><td class="text-right">1042,20</td><td class="text-right">2635,49</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/50">
+            <span class="font-bold text-emerald-800 dark:text-emerald-300 block uppercase">Masa Despegue:</span>
+            <div class="font-mono text-base font-bold text-emerald-700 dark:text-emerald-300">1042,2 kg</div>
+            <div class="text-[11px] text-emerald-600 dark:text-emerald-400">&le; MTOM 1150 kg (Margen: 107,8 kg)</div>
+          </div>
+          <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/50">
+            <span class="font-bold text-emerald-800 dark:text-emerald-300 block uppercase">Centro de Gravedad:</span>
+            <div class="font-mono text-base font-bold text-emerald-700 dark:text-emerald-300">2,529 m</div>
+            <div class="text-[11px] text-emerald-600 dark:text-emerald-400">Dentro límites [2,423 - 2,590 m]</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">VERIFICACIÓN EN ENVOLVENTE</span>
+          <span class="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-[11px]">✓ DESPACHO VÁLIDO</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/da40/da40-cg-limits.png"
+            alt="Punto de despegue TOM en la envolvente del Diamond DA40 TDI"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+
+        <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-xs space-y-0.5 shrink-0">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-[11px] uppercase">COBERTURA DE LÍMITES AL DESPEGUE:</strong>
+          <div class="text-slate-600 dark:text-slate-400 text-[11px]">
+            A 1042,2 kg, el límite delantero calculado es 2,423 m y el trasero 2,590 m. El valor obtenido de <strong>2,529 m</strong> se encuentra en la zona central de óptima estabilidad.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.6: 6.6 Ejercicio Práctico 1B: Consumo de Ruta y Aterrizaje (LM & Envolvente) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER PRÁCTICO 1B</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.6 Ejercicio Práctico 1B: Consumo de Ruta y Aterrizaje (LM & Envolvente)</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Cálculo de LM y Verificación Post-Flight</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESCENARIO PRÁCTICO 1B: CÁLCULO DE ATERRIZAJE</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONSUMO DE COMBUSTIBLE EN RUTA (TRIP FUEL)</strong>
+          <p class="text-slate-700 dark:text-slate-300 leading-snug">
+            Durante la navegación entre aeródromos se consumen <strong>35,0 litros</strong> de JET A-1.<br>
+            &bull; Masa de combustible consumido: <strong>35,0 L &times; 0,84 kg/L = 29,40 kg</strong>.<br>
+            &bull; Brazo de palanca de los depósitos alares: <strong>2,630 m</strong>.<br>
+            &bull; Momento sustraído: <strong>29,40 kg &times; 2,630 m = 77,32 kg&middot;m</strong>.
+          </p>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">BALANCE FINAL AL ATERRIZAJE</strong>
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-700 font-bold text-[#0B2E59] dark:text-sky-300">
+                <th class="py-0.5">Concepto</th>
+                <th class="py-0.5 text-center">Brazo [m]</th>
+                <th class="py-0.5 text-right">Masa [kg]</th>
+                <th class="py-0.5 text-right">Momento [kg·m]</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-mono text-[11px]">
+              <tr><td>Masa al Despegue (TOM)</td><td class="text-center">2,529</td><td class="text-right">1042,20</td><td class="text-right">2635,49</td></tr>
+              <tr class="text-rose-600 dark:text-rose-400"><td>Trip Fuel (Consumo de Ruta)</td><td class="text-center">2,630</td><td class="text-right">&minus; 29,40</td><td class="text-right">&minus; 77,32</td></tr>
+              <tr class="bg-sky-50 dark:bg-sky-950/40 font-bold text-sky-900 dark:text-sky-200"><td>Masa al Aterrizaje (LM)</td><td class="text-center">2,526</td><td class="text-right">1012,80</td><td class="text-right">2558,17</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="p-2 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/50">
+            <span class="font-bold text-sky-800 dark:text-sky-300 block uppercase">Masa Aterrizaje:</span>
+            <div class="font-mono text-base font-bold text-sky-700 dark:text-sky-300">1012,8 kg</div>
+            <div class="text-[11px] text-sky-600 dark:text-sky-400">&le; MLM 1150 kg (Margen: 137,2 kg)</div>
+          </div>
+          <div class="p-2 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/50">
+            <span class="font-bold text-sky-800 dark:text-sky-300 block uppercase">CG al Aterrizaje:</span>
+            <div class="font-mono text-base font-bold text-sky-700 dark:text-sky-300">2,526 m</div>
+            <div class="text-[11px] text-sky-600 dark:text-sky-400">Desplazamiento: &minus;3 mm hacia adelante</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-sky-800 dark:text-sky-300 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>ℹ️</span> CONCLUSIÓN CINEMÁTICA
+          </strong>
+          <span>Como el brazo del combustible (2,63 m) se encuentra muy cerca del centro de gravedad, el consumo de combustible apenas modifica el trimado del DA40, garantizando un comportamiento en mandos constante durante todo el vuelo.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TRAYECTORIA DE CG EN VUELO</span>
+          <span class="px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/60 text-sky-700 dark:text-sky-300 font-bold text-[11px]">TOW &rarr; LW CONFORME</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/da40/da40-cg-limits.png"
+            alt="Puntos TOM y LM en la envolvente del Diamond DA40 TDI"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+
+        <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-xs space-y-0.5 shrink-0">
+          <div class="flex justify-between items-center text-[11px]">
+            <span>Punto 1 (Despegue): <strong>1042,2 kg @ 2,529 m</strong></span>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold">✓ VÁLIDO</span>
+          </div>
+          <div class="flex justify-between items-center text-[11px] border-t border-slate-100 dark:border-slate-700 pt-0.5">
+            <span>Punto 2 (Aterrizaje): <strong>1012,8 kg @ 2,526 m</strong></span>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold">✓ VÁLIDO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.7: 6.7 Régimen de Crucero: Rendimiento y Consumo al 60% de Potencia -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · RENDIMIENTO DE CRUCERO</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.7 Régimen de Crucero: Rendimiento y Consumo al 60% de Potencia</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Operación Estándar de Escuela</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RÉGIMEN ESTÁNDAR DE ESCUELA: 60% LOAD</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">GESTIÓN MONO-PALANCA Y EFICIENCIA DIÉSEL</strong>
+          <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
+            En el DA40 TDI con motor Thielert TAE 125-01 / Continental CD-135, el piloto selecciona directamente el porcentaje de potencia (*% LOAD*) en la palanca única. La ECU regula automáticamente la inyección y el paso de hélice.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <span class="font-bold text-sky-600 dark:text-sky-400 block uppercase text-[11px]">60% POTENCIA (ESCUELA)</span>
+            <div class="text-[11px] text-slate-700 dark:text-slate-300">
+              Crucero económico oficial Blue Team:<br>
+              <strong>4,0 US gal/h (15,1 L/h)</strong><br>
+              TAS: ~118 a 120 kts a FL60
+            </div>
+          </div>
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 block uppercase text-[11px]">70% POTENCIA (NORMAL)</span>
+            <div class="text-[11px] text-slate-700 dark:text-slate-300">
+              Crucero de velocidad estándar:<br>
+              <strong>4,9 US gal/h (18,5 L/h)</strong><br>
+              TAS: ~124 a 126 kts a FL60
+            </div>
+          </div>
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <span class="font-bold text-amber-600 dark:text-amber-400 block uppercase text-[11px]">80% POTENCIA (RÁPIDO)</span>
+            <div class="text-[11px] text-slate-700 dark:text-slate-300">
+              Máximo crucero continuo:<br>
+              <strong>5,8 US gal/h (22,0 L/h)</strong><br>
+              TAS: ~130 a 132 kts a FL60
+            </div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-sky-800 dark:text-sky-300 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>ℹ️</span> DATO CLAVE PARA EL F.OPS.02
+          </strong>
+          <span>Para cualquier cálculo de combustible de ruta (Trip Fuel) y reservas en la flota DA40 TDI de Blue Team, se toma como referencia reglamentaria de consumo económico de crucero: <strong>15,1 L/h (4,0 US gal/h)</strong>.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO AFM: FUEL FLOW VS LOAD</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/da40/da40-fuel-flow-load.png"
+            alt="Ábaco oficial AFM de consumo horario Fuel Flow vs % Load"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.8: 6.8 Ground Speed, Viento y Cálculo de Combustible Horario -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · NAVEGACIÓN Y VIENTO</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.8 Ground Speed, Viento y Cálculo de Combustible Horario</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Cinemática de Vuelo</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">EFECTO DEL VIENTO EN RUTA</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">EL TRIÁNGULO DE VELOCIDADES</strong>
+          <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
+            La velocidad verdadera (TAS) proporciona la velocidad respecto al aire. El viento en altura vectorialmente modifica la trayectoria, resultando en el rumbo corregido por deriva y la velocidad respecto al suelo (Ground Speed / GS).
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 block uppercase">Tiempo en Ruta (ETE):</span>
+            <div class="font-mono text-sky-600 dark:text-sky-400 font-bold">ETE [min] = (Distancia / GS) × 60</div>
+            <div class="text-slate-600 dark:text-slate-400 text-[11px]">Calculado para cada tramo de la navegación.</div>
+          </div>
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 block uppercase">Combustible de Trayecto:</span>
+            <div class="font-mono text-emerald-600 dark:text-emerald-400 font-bold">Trip [L] = ETE [h] × 15,1 L/h</div>
+            <div class="text-slate-600 dark:text-slate-400 text-[11px]">Consumo horario a potencia de crucero 60%.</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">EJEMPLO PRÁCTICO DE NAVEGACIÓN (75 NM)</strong>
+          <p class="text-slate-700 dark:text-slate-300 leading-snug">
+            Para un vuelo de <strong>75 NM</strong> a 6.000 ft con TAS de 120 kt y viento de proa de 15 kt ($	ext{GS} = 105	ext{ kt}$):<br>
+            &bull; <strong>ETE = (75 / 105) &times; 60 = 42,9 min = 0,715 h</strong>.<br>
+            &bull; <strong>Trip Fuel = 0,715 h &times; 15,1 L/h = 10,80 Litros</strong> (9,07 kg de JET A-1).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TRIÁNGULO DE VELOCIDADES</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/c172/triangulo-velocidades.png"
+            alt="Triángulo de velocidades y cinemática del viento en navegación"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.9: 6.9 Ejercicio Práctico 2: Crucero y Autonomía -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER PRÁCTICO 2</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.9 Ejercicio Práctico 2: Crucero y Autonomía</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Planificación de Ruta y Alcance</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TALLER PRÁCTICO 2: PLANIFICACIÓN DE CRUCERO</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONDICIONES DE VUELO EN RUTA</strong>
+          <div class="grid grid-cols-2 gap-2 text-slate-700 dark:text-slate-300">
+            <div>&bull; Altitud de Presión: <strong>6.750 ft</strong></div>
+            <div>&bull; Temperatura exterior: <strong>ISA + 10°C</strong></div>
+            <div>&bull; Ajuste de potencia: <strong>60% Load</strong></div>
+            <div>&bull; Consumo: <strong>15,1 L/h (4,0 US gal/h)</strong></div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">EXTRACCIÓN EN ÁBACO DE CRUCERO (AFM)</strong>
+          <p class="text-slate-700 dark:text-slate-300 leading-snug">
+            Localizando 6.750 ft en el eje vertical y trasladando horizontalmente hasta la curva discontinua de <strong>60% LOAD (ISA + 10°C)</strong>, se desciende verticalmente hacia el eje inferior:<br>
+            &bull; <strong>True Airspeed (TAS) obtenida:</strong> <span class="font-mono font-bold text-sky-600 dark:text-sky-400">120 kts</span>.
+          </p>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CÁLCULO DE AUTONOMÍA TOTAL (TANQUES ESTÁNDAR)</strong>
+          <p class="text-slate-700 dark:text-slate-300 leading-snug">
+            Con los tanques estándar del DA40 TDI cargados a plena capacidad utilizable (<strong>106 litros / 28,0 US gal</strong>):<br>
+            &bull; <strong>Autonomía Bruta = 106 L / 15,1 L/h = 7,02 horas = 7 h 01 min</strong>.<br>
+            &bull; Alcance sin viento: <strong>7,0 h &times; 120 kt &approx; 840 NM</strong>.
+          </p>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-emerald-500 bg-emerald-50/90 dark:bg-emerald-950/30 text-emerald-950 dark:text-emerald-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-emerald-800 dark:text-emerald-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>✓</span> EFICIENCIA CERTIFICADA
+          </strong>
+          <span>El consumo de sólo 15,1 L/h permite volar más de 5 horas de navegación con más de 2 horas completas de reserva final reglamentaria remanente a bordo.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO AFM: CRUISING TAS</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/da40/da40-cruise-tas.png"
+            alt="Ábaco oficial AFM de crucero y velocidad verdadera TAS"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.10: 6.10 Política de Combustible: Part-NCO.OP.125 & Manual OM Blue Team -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · POLÍTICA DE COMBUSTIBLE</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.10 Política de Combustible: Part-NCO.OP.125 & Manual OM Blue Team</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Seguridad Operacional y Reservas</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">POLÍTICA DE COMBUSTIBLE OFICIAL</span>
+        </div>
+
+        <div class="space-y-1.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex justify-between items-center mb-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300">1. Taxi Fuel (Rodaje y Pruebas FADEC):</strong>
+              <span class="font-mono font-bold text-sky-600 dark:text-sky-400">3,0 L (0,79 US gal)</span>
+            </div>
+            <div>Combustible asignado para puesta en marcha, rodaje al punto de espera y test automático de ECU/FADEC.</div>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex justify-between items-center mb-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300">2. Trip Fuel (Combustible de Ruta):</strong>
+              <span class="font-mono font-bold text-sky-600 dark:text-sky-400">Según ETE</span>
+            </div>
+            <div>Calculado con el ETE de cada tramo y el consumo horario de 15,1 L/h (4,0 US gal/h).</div>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex justify-between items-center mb-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300">3. Alternativo (Desvío):</strong>
+              <span class="font-mono font-bold text-sky-600 dark:text-sky-400">5,1 L (1,35 US gal)</span>
+            </div>
+            <div>Combustible para frustrada y vuelo al aeródromo alternativo asignado.</div>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex justify-between items-center mb-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300">4. Reserva Final Obligatoria OM Blue Team:</strong>
+              <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">22,7 L (6,0 US gal)</span>
+            </div>
+            <div>El reglamento EASA Part-NCO exige 45 minutos (11,3 L). <strong>Blue Team exige por Manual de Operaciones 1 hora 30 minutos obligatoria</strong> (22,65 L) para máxima seguridad de instrucción.</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-amber-800 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>⚠️</span> RAMP FUEL MÍNIMO
+          </strong>
+          <span><strong>Ramp Fuel Mínimo = Taxi (3,0 L) + Trip + Alternativo (5,1 L) + Reserva OM 1:30 (22,7 L)</strong>. Nunca se despegará si la cantidad a bordo es inferior a este total.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">POLÍTICA DE COMBUSTIBLE EASA & OM</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/c172/6.10.jpg"
+            alt="Esquema reglamentario de política de combustible EASA Part-NCO"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.11: 6.11 Ejercicio Práctico 3: Planificación de Combustible F.OPS.02 -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER PRÁCTICO 3</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.11 Ejercicio Práctico 3: Planificación de Combustible F.OPS.02</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Hoja de Carga F.OPS.02</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CUMPLIMENTACIÓN DEL PLAN DE COMBUSTIBLE</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">DESGLOSE DEL F.OPS.02 PARA DA40 TDI</strong>
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-700 font-bold text-[#0B2E59] dark:text-sky-300">
+                <th class="py-0.5">Componente</th>
+                <th class="py-0.5 text-center">Tiempo</th>
+                <th class="py-0.5 text-right">Litros</th>
+                <th class="py-0.5 text-right">US Gal</th>
+                <th class="py-0.5 text-right">Masa (0,84)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300 font-mono text-[11px]">
+              <tr><td>Taxi Fuel (Rodaje)</td><td class="text-center">&mdash;</td><td class="text-right">3,0 L</td><td class="text-right">0,79</td><td class="text-right">2,52 kg</td></tr>
+              <tr><td>Trip Fuel (Navegación 75 NM)</td><td class="text-center">43 min</td><td class="text-right">10,8 L</td><td class="text-right">2,85</td><td class="text-right">9,07 kg</td></tr>
+              <tr><td>Alternativo (Desvío)</td><td class="text-center">20 min</td><td class="text-right">5,1 L</td><td class="text-right">1,35</td><td class="text-right">4,28 kg</td></tr>
+              <tr><td>Reserva OM Blue Team (1:30)</td><td class="text-center">90 min</td><td class="text-right">22,7 L</td><td class="text-right">6,00</td><td class="text-right">19,07 kg</td></tr>
+              <tr class="bg-amber-50 dark:bg-amber-950/40 font-bold text-amber-900 dark:text-amber-200"><td>Mínimo Requerido (Ramp)</td><td class="text-center">2h 33m</td><td class="text-right">41,6 L</td><td class="text-right">11,00</td><td class="text-right">34,94 kg</td></tr>
+              <tr class="bg-emerald-50 dark:bg-emerald-950/40 font-bold text-emerald-900 dark:text-emerald-200"><td>Combustible a Bordo Real</td><td class="text-center">3h 58m</td><td class="text-right">60,0 L</td><td class="text-right">15,85</td><td class="text-right">50,40 kg</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/50">
+            <span class="font-bold text-emerald-800 dark:text-emerald-300 block uppercase">Margen Adicional:</span>
+            <div class="font-mono text-base font-bold text-emerald-700 dark:text-emerald-300">+ 18,4 L (+1h 13m)</div>
+            <div class="text-[11px] text-emerald-600 dark:text-emerald-400">Combustible extra para contingencias</div>
+          </div>
+          <div class="p-2 rounded-xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/50">
+            <span class="font-bold text-sky-800 dark:text-sky-300 block uppercase">Combustible para TOM:</span>
+            <div class="font-mono text-base font-bold text-sky-700 dark:text-sky-300">57,0 L (47,88 kg)</div>
+            <div class="text-[11px] text-sky-600 dark:text-sky-400">Ramp Fuel menos 3 L de Taxi</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-sky-800 dark:text-sky-300 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>ℹ️</span> VERIFICACIÓN DE CAPACIDAD
+          </strong>
+          <span>Los 60,0 litros planificados caben perfectamente dentro de los 106 L utilizables de los depósitos estándar alares (14 galones utilizables por cada ala = 53 L por semiala).</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CAPACIDADES DE COMBUSTIBLE DA40</span>
+        </div>
+
+        <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block uppercase border-b border-slate-100 dark:border-slate-700 pb-1">DEPÓSITOS ESTÁNDAR (AFM CAPÍTULO 7)</strong>
+          <div class="space-y-1 text-slate-700 dark:text-slate-300">
+            <div>&bull; Depósito Principal (Izquierdo): <strong>14,0 US gal (53 L)</strong> utilizables.</div>
+            <div>&bull; Depósito Auxiliar (Derecho): <strong>14,0 US gal (53 L)</strong> utilizables.</div>
+            <div>&bull; Total Utilizable Estándar: <strong>28,0 US gal (106 L)</strong> = 89,04 kg.</div>
+            <div>&bull; No utilizable: 2,0 US gal (~7,6 L) incluidos en BEW.</div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block uppercase border-b border-slate-100 dark:border-slate-700 pb-1">DEPÓSITOS LONG RANGE (OPCIONAL)</strong>
+          <div class="space-y-1 text-slate-700 dark:text-slate-300">
+            <div>&bull; Total Utilizable Long Range: <strong>40,0 US gal (151,4 L)</strong> = 127,18 kg.</div>
+            <div>&bull; Brazo de palanca: 2,63 m (idéntico al estándar).</div>
+            <div>&bull; Límite trasero de CG con Long Range: <strong>2,55 m</strong> (frente a 2,59 m).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.12: 6.12 Performance de Despegue: Parámetros y Factores de Corrección -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PERFORMANCE DE DESPEGUE</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.12 Performance de Despegue: Parámetros y Factores de Corrección</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimientos de Certificación AFM</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CONDICIONES DE DESPEGUE (AFM)</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONDICIONES DE REFERENCIA DE CERTIFICACIÓN</strong>
+          <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
+            Palanca: <strong>MAX (100% Load)</strong> &bull; Flaps: <strong>T/O</strong> &bull; Pista asfaltada seca y nivelada.<br>
+            &bull; Rotación ($v_R$): <strong>59 KIAS</strong> (1150 kg) / 55 KIAS (1000 kg) / 49 KIAS (850 kg).<br>
+            &bull; Ascenso inicial: <strong>66 KIAS</strong> (1150 kg) / 60 KIAS (1000 kg) / 54 KIAS (850 kg).
+          </p>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-xs sm:text-[13px]">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES OFICIALES DE CORRECCIÓN DE PISTA (AFM)</strong>
+          <div class="space-y-1 text-slate-700 dark:text-slate-300">
+            <div>&bull; <strong>Viento en cara / cola:</strong> Corrección gráfica directa mediante las curvas del ábaco.</div>
+            <div>&bull; <strong>Hierba seca corta (&le; 5 cm / 2 in):</strong> <strong>+10%</strong> en la carrera de despegue.</div>
+            <div>&bull; <strong>Hierba media (5 a 10 cm / 2 a 4 in):</strong> <strong>+15%</strong> en la carrera de despegue.</div>
+            <div>&bull; <strong>Hierba alta (> 10 cm / 4 in):</strong> al menos <strong>+25%</strong> en la carrera de despegue.</div>
+            <div>&bull; <strong>Pendiente ascendente (+2% uphill):</strong> <strong>+10%</strong> en la distancia total de despegue (el efecto sobre la carrera en tierra puede ser mayor).</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-amber-800 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>⚠️</span> CRITERIO LEGAL DE PISTA
+          </strong>
+          <span>Para un despegue seguro y reglamentario, la longitud de pista disponible (TORA / TODA) debe ser <strong>al menos igual a la distancia total de despegue sobre el obstáculo de 15 m (50 ft)</strong> calculada con todos los factores correctores.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO AFM: TAKE-OFF OVER 50 FT</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/da40/da40-takeoff-distance.png"
+            alt="Ábaco oficial AFM de distancia total de despegue sobre 50 ft"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.13: 6.13 Performance de Aterrizaje: Parámetros y Factores de Corrección -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PERFORMANCE DE ATERRIZAJE</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.13 Performance de Aterrizaje: Parámetros y Factores de Corrección</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimientos de Certificación AFM</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CONDICIONES DE ATERRIZAJE (AFM)</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONDICIONES DE REFERENCIA (FLAPS LDG)</strong>
+          <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
+            Palanca: <strong>IDLE</strong> &bull; Flaps: <strong>LDG</strong> &bull; Pista asfaltada seca y nivelada.<br>
+            &bull; Velocidad aproximación ($v_{REF}$): <strong>71 KIAS</strong> (1150 kg) / 63 KIAS (1000 kg) / 58 KIAS (850 kg).<br>
+            &bull; Valores ISA a nivel del mar (1150 kg): Distancia total a 15 m = <strong>744 m</strong> · Carrera = <strong>287 m</strong>.
+          </p>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-xs sm:text-[13px]">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES OFICIALES DE CORRECCIÓN (AFM)</strong>
+          <div class="space-y-1 text-slate-700 dark:text-slate-300">
+            <div>&bull; <strong>Viento en cara / cola:</strong> Corrección gráfica en el ábaco.</div>
+            <div>&bull; <strong>Hierba seca corta (&le; 5 cm):</strong> <strong>+5%</strong> en la carrera de aterrizaje.</div>
+            <div>&bull; <strong>Hierba media (5 a 10 cm):</strong> <strong>+15%</strong> en la carrera de aterrizaje.</div>
+            <div>&bull; <strong>Hierba alta (> 10 cm):</strong> al menos <strong>+25%</strong> en la carrera de parada.</div>
+            <div>&bull; <strong>Pendiente descendente (-2% downhill):</strong> <strong>+10%</strong> en la distancia total.</div>
+            <div>&bull; <strong>Exceso de velocidad:</strong> Una velocidad de aproximación superior a $v_{REF}$ alarga drásticamente la distancia de flotación (flare).</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-amber-800 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>⚠️</span> COMPARACIÓN CON LDA
+          </strong>
+          <span>La distancia de aterrizaje sobre 15 m (50 ft) calculada debe ser inferior a la distancia de aterrizaje disponible (LDA), aplicando el factor de margen reglamentario escolar (1,43).</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO AFM: LANDING OVER 50 FT</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/da40/da40-landing-distance.png"
+            alt="Ábaco oficial AFM de distancia total de aterrizaje con Flaps LDG"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.14: 6.14 Ejercicio Práctico 4A: Distancias de Despegue (TORA & TODA) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER PRÁCTICO 4A</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.14 Ejercicio Práctico 4A: Distancias de Despegue (TORA & TODA)</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Verificación de Pista Disponible</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TALLER PRÁCTICO 4A: PERFORMANCE DE DESPEGUE</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">DATOS METEOROLÓGICOS Y AEROPORTUARIOS</strong>
+          <div class="grid grid-cols-2 gap-2 text-slate-700 dark:text-slate-300">
+            <div>&bull; Altitud de Presión: <strong>4.000 ft</strong></div>
+            <div>&bull; Temperatura exterior (OAT): <strong>22°C (72°F)</strong></div>
+            <div>&bull; Masa al Despegue: <strong>1070 kg (2359 lb)</strong></div>
+            <div>&bull; Viento en cara: <strong>10 kts</strong> (Headwind)</div>
+            <div>&bull; Pista: <strong>Asfalto seco y nivelado</strong></div>
+            <div>&bull; Longitud disponible: <strong>TORA = 850 m / TODA = 900 m</strong></div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">EXTRACCIÓN Y RESOLUCIÓN EN ÁBACO AFM</strong>
+          <p class="text-slate-700 dark:text-slate-300 leading-snug">
+            Siguiendo las líneas de referencia del ábaco oficial de despegue sobre 50 ft (AFM 5.3.7):<br>
+            1. Desde 22°C subir hasta la línea de 4.000 ft.<br>
+            2. Trasladar horizontalmente hacia la derecha hasta la línea de referencia de masa.<br>
+            3. Seguir la curva proporcional a 1070 kg.<br>
+            4. Trasladar hasta la referencia de viento y corregir para 10 kt de cara.<br>
+            &bull; <strong>Distancia total requerida a 50 ft:</strong> <span class="font-mono font-bold text-sky-600 dark:text-sky-400">600 m (1969 ft)</span>.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/50">
+            <span class="font-bold text-emerald-800 dark:text-emerald-300 block uppercase">Distancia Requerida:</span>
+            <div class="font-mono text-base font-bold text-emerald-700 dark:text-emerald-300">600 metros</div>
+            <div class="text-[11px] text-emerald-600 dark:text-emerald-400">Sobre obstáculo de 15 m (50 ft)</div>
+          </div>
+          <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/50">
+            <span class="font-bold text-emerald-800 dark:text-emerald-300 block uppercase">Margen en TORA (850 m):</span>
+            <div class="font-mono text-base font-bold text-emerald-700 dark:text-emerald-300">+ 250 metros</div>
+            <div class="text-[11px] text-emerald-600 dark:text-emerald-400">141% de margen de seguridad</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RESOLUCIÓN GRÁFICA EN ÁBACO</span>
+          <span class="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-[11px]">✓ DESPEGO AUTORIZADO</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/da40/da40-takeoff-distance.png"
+            alt="Resolución gráfica oficial de distancia de despegue en el DA40 TDI"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.15: 6.15 Ejercicio Práctico 4B: Distancia de Aterrizaje y Margen (LDA) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER PRÁCTICO 4B</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.15 Ejercicio Práctico 4B: Distancia de Aterrizaje y Margen (LDA)</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Verificación de Pista de Destino</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TALLER PRÁCTICO 4B: DISTANCIA DE ATERRIZAJE</span>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONDICIONES EN AERÓDROMO DE DESTINO</strong>
+          <div class="grid grid-cols-2 gap-2 text-slate-700 dark:text-slate-300">
+            <div>&bull; Altitud de Presión: <strong>2.000 ft</strong></div>
+            <div>&bull; Temperatura exterior: <strong>15°C (59°F)</strong></div>
+            <div>&bull; Masa al Aterrizaje: <strong>1000 kg (2205 lb)</strong></div>
+            <div>&bull; Viento en cara: <strong>10 kts</strong> (Headwind)</div>
+            <div>&bull; Configuración: <strong>Flaps LDG</strong> ($v_{REF} = 63	ext{ KIAS}$)</div>
+            <div>&bull; Pista disponible: <strong>LDA = 900 metros</strong> (Asfalto seco)</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">EXTRACCIÓN EN ÁBACOS AFM</strong>
+          <p class="text-slate-700 dark:text-slate-300 leading-snug">
+            Siguiendo el ejemplo oficial del manual de vuelo (AFM 5.3.11):<br>
+            &bull; <strong>Distancia total sobre 50 ft:</strong> <span class="font-mono font-bold text-sky-600 dark:text-sky-400">500 m (1640 ft)</span>.<br>
+            &bull; <strong>Carrera en tierra (Ground Roll):</strong> <span class="font-mono font-bold text-slate-700 dark:text-slate-300">195 m (640 ft)</span>.
+          </p>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">APLICACIÓN DE MARGEN REGLAMENTARIO (FACTOR 1,43)</strong>
+          <p class="text-slate-700 dark:text-slate-300 leading-snug">
+            &bull; Distancia con factor escolar: <strong>500 m &times; 1,43 = 715 metros</strong>.<br>
+            &bull; Comparativa: <strong>715 m &le; 900 m (LDA)</strong>. Margen libre remanente de <strong>185 metros</strong>.
+          </p>
+        </div>
+
+        <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/50 flex items-center justify-between text-xs">
+          <span class="font-bold text-emerald-800 dark:text-emerald-300 uppercase">Estado Operacional:</span>
+          <span class="font-bold text-emerald-700 dark:text-emerald-300">✓ ATERRIZAJE TOTALMENTE FACTIBLE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RESOLUCIÓN GRÁFICA EN ÁBACO</span>
+          <span class="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-[11px]">✓ ATERRIZAJE AUTORIZADO</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/da40/da40-landing-distance.png"
+            alt="Resolución gráfica oficial de distancia de aterrizaje en el DA40 TDI"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.16: 6.16 Validación Final del Despacho y Firma Operativa -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · DESPACHO OPERATIVO</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.16 Validación Final del Despacho y Firma Operativa</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aprobación Go / No-Go y Doble Firma</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CHECKLIST DE VALIDACIÓN F.OPS.02</span>
+        </div>
+
+        <div class="space-y-1.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-between">
+            <div>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block">1. Pilar Masa y Centrado:</strong>
+              <span class="text-slate-600 dark:text-slate-400">TOM (1042,2 kg) &le; 1150 kg &bull; CG (2,529 m) en envolvente.</span>
+            </div>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold font-mono">CONFORME ✓</span>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-between">
+            <div>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block">2. Pilar Plan de Combustible:</strong>
+              <span class="text-slate-600 dark:text-slate-400">Ramp Fuel (60,0 L) &ge; Mínimo 41,6 L (con 1:30 OM Blue Team).</span>
+            </div>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold font-mono">CONFORME ✓</span>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-between">
+            <div>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block">3. Pilar Performance de Despegue:</strong>
+              <span class="text-slate-600 dark:text-slate-400">Distancia sobre 50 ft (600 m) &le; TORA disponible (850 m).</span>
+            </div>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold font-mono">CONFORME ✓</span>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-between">
+            <div>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block">4. Pilar Performance de Aterrizaje:</strong>
+              <span class="text-slate-600 dark:text-slate-400">Distancia factorizada (715 m) &le; LDA disponible (900 m).</span>
+            </div>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold font-mono">CONFORME ✓</span>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-emerald-500 bg-emerald-50/90 dark:bg-emerald-950/30 text-emerald-950 dark:text-emerald-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+          <strong class="text-emerald-800 dark:text-emerald-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+            <span>✍️</span> DOBLE FIRMA OPERATIVA OBLIGATORIA
+          </strong>
+          <span>El formulario F.OPS.02 debe ser firmado por el alumno en calidad de Piloto al Mando (PIC) y por el Instructor de Vuelo habilitado antes de poner en marcha los motores.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">EJEMPLO DE F.OPS.02 COMPLETADO</span>
+          <span class="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-[11px]">GO / AUTORIZADO</span>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
+          <img
+            src="/images/c172/f-ops-02-ejemplo-rellenado-btm26c.png"
+            alt="Ejemplo de despacho completado y firmado F.OPS.02"
+            class="w-full h-auto block rounded-lg shadow-xs"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`
+};
+
+export const DA40_LESSONS = [DA40_LESSON_1, DA40_LESSON_2, DA40_LESSON_3, DA40_LESSON_4, DA40_LESSON_5, DA40_LESSON_6];
 
 
 
