@@ -35,3 +35,13 @@ Este archivo define las directrices y criterios obligatorios para la creación y
   ```
   para que el cambio se refleje en la plataforma web en tiempo real.
 
+---
+
+## 5. Visibilidad de Diapositivas Nuevas (Privadas por Defecto)
+- **Toda nueva diapositiva que se cree debe nacer SIEMPRE oculta para los alumnos (`data-slide-visibility="private"`)**:
+  ```html
+  <div class="lesson-slide-container" data-slide-visibility="private">
+  ```
+- **Propósito**: Garantizar que solo el usuario / instructor / administrador pueda ver las diapositivas durante la fase de desarrollo, revisión o borrador. Los alumnos nunca las verán hasta que el usuario decida publicarlas explícitamente.
+- **Preservación permanente**: Los scripts de sincronización (`seed_da40_course.mjs`) deben respetar y preservar este atributo en todo momento.
+
