@@ -59,24 +59,65 @@ async function seedDA40() {
         const remoteSlides = dbLesson.content_html.split(pagebreakRegex);
         const localSlides = contentToSave.split(pagebreakRegex);
 
-        if (remoteSlides.length === localSlides.length) {
-          const mergedSlides = localSlides.map((lSlide, i) => {
-            const rSlide = remoteSlides[i];
-            const isLocalPrivate = /data-slide-visibility=["'](?:private|only-me)["']/i.test(lSlide);
-            const isRemotePublic = rSlide && (/data-slide-visibility=["']public["']/i.test(rSlide) || (!rSlide.includes('data-slide-visibility="private"') && !rSlide.includes("data-slide-visibility='private'")));
+        // Mapa de visibilidad remota por identificador de diapositiva o índice
+        const remotePrivateMap = new Map(); // key -> boolean
 
-            // Si en remoto se pasó a pública en la app O en local ya no es privada -> PUBLIC
-            if (isRemotePublic || !isLocalPrivate) {
-              return lSlide.replace(/\s*data-slide-visibility=["'][^"']*["']/gi, "");
-            } else {
-              if (!lSlide.includes('data-slide-visibility="private"')) {
-                return lSlide.replace(/(<div[^>]*class=["'][^"']*lesson-slide-container[^"']*["'])/i, '$1 data-slide-visibility="private"');
-              }
-              return lSlide;
-            }
-          });
-          contentToSave = mergedSlides.join("\n\n<!-- pagebreak -->\n\n");
+        const extractSlideKey = (slideText, index) => {
+          // Intentar obtener número de diapositiva (ej: "4.1", "4.2", etc.)
+          const commentMatch = slideText.match(/<!--\s*DIAPOSITIVA\s+([0-9.]+)/i);
+          if (commentMatch) return commentMatch[1].trim();
+          const headingMatch = slideText.match(/<h[1-4][^>]*>\s*([0-9.]+)/i);
+          if (headingMatch) return headingMatch[1].trim();
+          return `index_${index}`;
+        };
+
+        const isSlidePrivate = (slideText) => {
+          return (
+            /data-slide-visibility=["'](?:private|only-me)["']/i.test(slideText) ||
+            /class=["'][^"']*\bslide-private\b[^"']*["']/i.test(slideText)
+          );
+        };
+
+        const setSlidePrivateAttr = (slideText) => {
+          if (isSlidePrivate(slideText)) return slideText;
+          if (/<div[^>]*class=["'][^"']*lesson-slide-container/i.test(slideText)) {
+            return slideText.replace(
+              /(<div[^>]*class=["'][^"']*lesson-slide-container[^"']*)/i,
+              '$1 data-slide-visibility="private"'
+            );
+          }
+          return slideText.replace(/^(\s*<[a-zA-Z0-9\-]+)/i, '$1 data-slide-visibility="private"');
+        };
+
+        // Registrar diapositivas remotas que el usuario haya ocultado
+        remoteSlides.forEach((rSlide, rIdx) => {
+          if (isSlidePrivate(rSlide)) {
+            const key = extractSlideKey(rSlide, rIdx);
+            remotePrivateMap.set(key, true);
+            remotePrivateMap.set(`index_${rIdx}`, true);
+          }
+        });
+
+        if (remotePrivateMap.size > 0) {
+          console.log(`🔒 Se detectaron ${remotePrivateMap.size} diapositiva(s) privadas en Supabase para lección "${lesson.title}". Preservando visibilidad...`);
         }
+
+        const mergedSlides = localSlides.map((lSlide, lIdx) => {
+          const key = extractSlideKey(lSlide, lIdx);
+          const isLocalPrivate = isSlidePrivate(lSlide);
+          const isRemotePrivate = remotePrivateMap.get(key) || remotePrivateMap.get(`index_${lIdx}`);
+
+          // Si está privada en remoto o en local, se PRESERVA como privada
+          if (isRemotePrivate || isLocalPrivate) {
+            console.log(`   👁️‍🗨️ Preservando diapositiva privada: [${key}]`);
+            return setSlidePrivateAttr(lSlide);
+          }
+
+          // Si no es privada, asegurar que quede limpia
+          return lSlide.replace(/\s*data-slide-visibility=["'][^"']*["']/gi, "");
+        });
+
+        contentToSave = mergedSlides.join("\n\n<!-- pagebreak -->\n\n");
       }
     } catch (e) {
       console.warn("No se pudo verificar visibilidad previa en Supabase:", e);
