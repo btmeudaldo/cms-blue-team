@@ -7600,13 +7600,6 @@ export const DA40_LESSON_6 = {
             <div>Verificar que las distancias calculadas con correcciones de viento, temperatura y superficie no superen la TORA y LDA disponibles.</div>
           </div>
         </div>
-
-        <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
-          <strong class="text-sky-800 dark:text-sky-300 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
-            <span>ℹ️</span> NOTA OPERACIONAL
-          </strong>
-          <span>El F.OPS.02 debe ser firmado por el alumno y el instructor antes de retirar las llaves de la aeronave de operaciones.</span>
-        </div>
       </div>
     </div>
 
