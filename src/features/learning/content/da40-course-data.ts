@@ -6417,11 +6417,13 @@ export const DA40_LESSON_5 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">EMERGENCY LANDING WITH ENGINE OFF</span>
           </div>
 
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">EMERGENCY LANDING WITH ENGINE OFF</strong>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+            <!-- Columna 1: GLIDE & PREPARATION -->
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">GLIDE & PREPARATION</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
-                <span class="text-slate-800 dark:text-slate-200">Landing area &mdash; <span class="italic font-medium">select field (upward slope if no level area)</span></span>
+                <span class="text-slate-800 dark:text-slate-200">Landing area &mdash; <span class="italic font-medium">select field (upward slope if available)</span></span>
               </div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
@@ -6435,7 +6437,11 @@ export const DA40_LESSON_5 = {
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
                 <span class="text-slate-800 dark:text-slate-200">Radio / Transponder &mdash; <span class="italic font-medium">MAYDAY call / 7700</span></span>
               </div>
-            <div class="text-[11px] text-slate-500 dark:text-slate-400 italic pt-0.5">On final approach:</div>
+            </div>
+
+            <!-- Columna 2: FINAL & TOUCHDOWN -->
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">FINAL & TOUCHDOWN</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">5.</span>
                 <span class="text-slate-800 dark:text-slate-200">Flaps &mdash; <span class="italic font-medium">T/O or LDG</span></span>
@@ -6444,15 +6450,15 @@ export const DA40_LESSON_5 = {
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">6.</span>
                 <span class="text-slate-800 dark:text-slate-200">Approach speed &mdash; <span class="italic font-medium">72 KIAS (T/O) / 71 KIAS (LDG)</span></span>
               </div>
-            <div class="text-[11px] text-slate-500 dark:text-slate-400 italic pt-0.5">Immediately prior to touchdown:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">7.</span>
-                <span class="text-slate-800 dark:text-slate-200">ENGINE MASTER / Fuel valve / ELECTRIC MASTER &mdash; <span class="italic font-medium">OFF</span></span>
+                <span class="text-slate-800 dark:text-slate-200">ENGINE / Fuel / Elec &mdash; <span class="italic font-medium">OFF</span></span>
               </div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">8.</span>
-                <span class="text-slate-800 dark:text-slate-200">Canopy & Passenger door &mdash; <span class="italic font-medium">unlatch prior to touchdown</span></span>
+                <span class="text-slate-800 dark:text-slate-200">Canopy & Doors &mdash; <span class="italic font-medium">unlatch prior to touchdown</span></span>
               </div>
+            </div>
           </div>
           <!-- NOTE AFM -->
           <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
@@ -6952,11 +6958,13 @@ export const DA40_LESSON_5 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PRECAUTIONARY LANDING</span>
           </div>
 
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">PRECAUTIONARY LANDING</strong>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 items-stretch">
+            <!-- Columna 1: INSPECTION & APPROACH -->
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">INSPECTION & APPROACH</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
-                <span class="text-slate-800 dark:text-slate-200">Landing area &mdash; <span class="italic font-medium">select appropriate area (upward slope if available)</span></span>
+                <span class="text-slate-800 dark:text-slate-200">Landing area &mdash; <span class="italic font-medium">select appropriate area</span></span>
               </div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
@@ -6964,29 +6972,34 @@ export const DA40_LESSON_5 = {
               </div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
-                <span class="text-slate-800 dark:text-slate-200">Approach / Low pass &mdash; <span class="italic font-medium">overfly field to recognize obstacles</span></span>
+                <span class="text-slate-800 dark:text-slate-200">Approach / Low pass &mdash; <span class="italic font-medium">overfly to recognize obstacles</span></span>
               </div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
-                <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-medium">73 KIAS (1150 kg) / 68 KIAS (1000 kg)</span></span>
+                <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-medium">73 KIAS (1150 kg) / 68 KIAS</span></span>
               </div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">5.</span>
                 <span class="text-slate-800 dark:text-slate-200">ATC &mdash; <span class="italic font-medium">advise position and intentions</span></span>
               </div>
-            <div class="text-[11px] text-slate-500 dark:text-slate-400 italic pt-1">On final approach:</div>
+            </div>
+
+            <!-- Columna 2: FINAL & TOUCHDOWN -->
+            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">FINAL & TOUCHDOWN</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">6.</span>
                 <span class="text-slate-800 dark:text-slate-200">Flaps &mdash; <span class="italic font-medium">LDG</span></span>
               </div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">7.</span>
-                <span class="text-slate-800 dark:text-slate-200">Approach speed &mdash; <span class="italic font-medium">67 KIAS (1092 kg) / 71 KIAS (1150 kg)</span></span>
+                <span class="text-slate-800 dark:text-slate-200">Approach speed &mdash; <span class="italic font-medium">67 KIAS (1092 kg) / 71 KIAS</span></span>
               </div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">8.</span>
-                <span class="text-slate-800 dark:text-slate-200">Touchdown &mdash; <span class="italic font-medium">softest possible on main gear first</span></span>
+                <span class="text-slate-800 dark:text-slate-200">Touchdown &mdash; <span class="italic font-medium">softest possible on main gear</span></span>
               </div>
+            </div>
           </div>
           <!-- NOTE AFM -->
           <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
