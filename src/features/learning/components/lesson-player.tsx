@@ -196,6 +196,17 @@ export function LessonPlayer({
     return (exerciseContainer?.getAttribute("data-interactive-exercise") as ExerciseType) || null;
   }, [exerciseContainer]);
 
+  const activeAircraft = useMemo<"c172" | "da40">(() => {
+    const attr = exerciseContainer?.getAttribute("data-aircraft");
+    if (attr === "da40" || attr === "c172") return attr;
+    const lowerCourse = (courseTitle || "").toLowerCase();
+    const lowerLesson = (lessonTitle || "").toLowerCase();
+    if (lowerCourse.includes("da40") || lowerCourse.includes("diamond") || lowerLesson.includes("da40")) {
+      return "da40";
+    }
+    return "c172";
+  }, [exerciseContainer, courseTitle, lessonTitle]);
+
   const isCurrentExerciseCompleted = useMemo(() => {
     if (!activeExerciseType) return true;
     return isAlreadyCompleted || isCompletedSuccess || isStaff || Boolean(completedExercises[effectivePageIndex]);
@@ -1460,8 +1471,9 @@ export function LessonPlayer({
                 />
                 {exerciseContainer && activeExerciseType && createPortal(
                   <PreflightInteractiveHub
-                    key={`${activeExerciseType}_slide_${effectivePageIndex}`}
+                    key={`${activeAircraft}_${activeExerciseType}_slide_${effectivePageIndex}`}
                     exerciseType={activeExerciseType}
+                    aircraft={activeAircraft}
                     onExerciseCompleted={handleExerciseCompleted}
                     isAlreadyCompleted={false}
                   />,
