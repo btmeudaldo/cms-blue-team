@@ -3609,6 +3609,107 @@ export const DA40_LESSON_4 = {
     </div>
   </div>
 </div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.2: 4.2 Inspección Exterior I: Raíz Alar y Tren Principal Izquierdo -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.2 Inspección Exterior I: Raíz Alar y Tren Principal Izquierdo</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estación 1: Tren Principal, Carenados y Drenaje Alar</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(1) LEFT MAIN LANDING GEAR &amp; WING ROOT</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(1) LEFT MAIN GEAR &amp; WING ROOT</strong>
+            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">a)</span>
+              <span class="text-slate-800 dark:text-slate-200">Landing gear strut &mdash; <span class="italic font-medium">visual inspection</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">b)</span>
+              <span class="text-slate-800 dark:text-slate-200">Wheel fairing &mdash; <span class="italic font-medium">visual inspection</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">c)</span>
+              <span class="text-slate-800 dark:text-slate-200">Tire, wheel, brake &mdash; <span class="italic font-medium">visual inspection, check tire pressure (2.5 bar / 36 psi), check brake condition &amp; fluid leaks</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">d)</span>
+              <span class="text-slate-800 dark:text-slate-200">Chocks &mdash; <span class="italic font-medium">remove</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">e)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel tank drain (left wing) &mdash; <span class="italic font-medium">drain fuel and check for contamination (water &amp; sediment)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">f)</span>
+              <span class="text-slate-800 dark:text-slate-200">Wing root air inlet &amp; cabin step &mdash; <span class="italic font-medium">visual inspection, unobstructed</span></span>
+            </div>
+          </div>
+
+          <!-- PUNTOS CRÍTICOS -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PUNTOS CRÍTICOS DE INSPECCIÓN</strong>
+            <div class="flex items-start gap-2 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span><strong>Presión y Neumático:</strong> Presión de 2.5 bar (36 psi). Comprobar marcas de deslizamiento sobre llanta, profundidad del dibujo y ausencia de cortes en los flancos.</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span><strong>Conjunto de Frenos y Latiguillos:</strong> Verificar ausencia de fugas de fluido hidráulico rojo (MIL-PRF-5606), discos sin sobrecalentamiento ni deformaciones, y pastillas con grosor superior al mínimo.</span>
+            </div>
+            <div class="flex items-start gap-2 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span><strong>Purga del Depósito Principal (MAIN):</strong> Válvula de drenaje situada en el intradós de la raíz alar izquierda. Imprescindible para eliminar agua decantada antes del arranque.</span>
+            </div>
+          </div>
+
+          <!-- CAUTION AFM -->
+          <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION:</span>
+            </strong>
+            <div>Drene una muestra de combustible en un vaso transparente antes del primer vuelo del día y tras repostar. Compruebe la ausencia total de agua, sedimentos o turbidez. Si detecta agua, continúe drenando hasta obtener combustible completamente limpio; si la presencia de contaminación persiste, el vuelo queda prohibido.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Conjunto de tren principal izquierdo del DA40: pata de fibra de vidrio, carenado aerodinámico de rueda, pinza de freno de disco y válvula de purga de combustible en la raíz alar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 `,
 };
 
