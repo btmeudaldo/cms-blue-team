@@ -7649,49 +7649,25 @@ export const DA40_LESSON_6 = {
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PLANO DE REFERENCIA (DATUM)</strong>
           <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
-            En el DA40 TDI, el <strong>Datum Plane (DP)</strong> es un plano vertical imaginario situado a <strong>2,194 metros (86,38 in)</strong> por delante del punto más adelantado de la costilla de raíz del ala corta (<em>stub wing root rib</em>). La aeronave se nivela longitudinalmente mediante una cuña de relación 600:31 colocada sobre la parte superior del fuselaje trasero.
+            En el DA40 TDI, el <strong>DATUM</strong> se localiza en un plano vertical situado a <strong>2,194 metros (86,38 in)</strong> por delante del punto más adelantado de la costilla de raíz del ala corta (<em>stub wing root rib</em>). Todos los brazos de palanca se miden longitudinalmente hacia la cola del avión en metros positivos. La aeronave se nivela mediante una cuña 600:31 colocada en la parte superior del fuselaje trasero.
           </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-[13px]">
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase">Asientos Delanteros:</strong>
-            <div class="text-slate-700 dark:text-slate-300">Piloto y copiloto / instructor.</div>
-            <div class="font-mono font-bold text-sky-600 dark:text-sky-400">Brazo: 2,30 m (90,6 in)</div>
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Cálculo del Momento:</strong>
+            <div class="font-mono font-bold text-sky-600 dark:text-sky-400">Momento = Masa × Brazo</div>
+            <p class="text-[11px] text-slate-500 mt-1">Multiplicación de la masa de cada elemento por su distancia al Datum en metros (kg·m).</p>
           </div>
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase">Asientos Traseros:</strong>
-            <div class="text-slate-700 dark:text-slate-300">Pasajeros traseros.</div>
-            <div class="font-mono font-bold text-sky-600 dark:text-sky-400">Brazo: 3,25 m (128,0 in)</div>
-          </div>
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase">Depósitos Alares:</strong>
-            <div class="text-slate-700 dark:text-slate-300">Combustible utilizable en alas.</div>
-            <div class="font-mono font-bold text-sky-600 dark:text-sky-400">Brazo: 2,63 m (103,5 in)</div>
-          </div>
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase">Compartimento Equipaje:</strong>
-            <div class="text-slate-700 dark:text-slate-300">Bandeja estándar (máx. 30 kg).</div>
-            <div class="font-mono font-bold text-sky-600 dark:text-sky-400">Brazo: 3,65 m (143,7 in)</div>
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Centro de Gravedad (CG):</strong>
+            <div class="font-mono font-bold text-emerald-600 dark:text-emerald-400">CG = Momento Total / Masa Total</div>
+            <p class="text-[11px] text-slate-500 mt-1">Posición longitudinal del equilibrio de masa respecto al Datum, expresada en metros.</p>
           </div>
         </div>
 
-        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-          <div class="flex items-center justify-between text-xs">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase">Cálculo del Momento:</span>
-            <code class="text-sky-600 dark:text-sky-400 font-mono font-bold">Momento [kg·m] = Masa [kg] × Brazo [m]</code>
-          </div>
-          <div class="flex items-center justify-between text-xs border-t border-slate-100 dark:border-slate-700 pt-1">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase">Centro de Gravedad (CG):</span>
-            <code class="text-sky-600 dark:text-sky-400 font-mono font-bold">CG [m] = Σ Momentos / Σ Masas</code>
-          </div>
-        </div>
-
-        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
-          <strong class="text-amber-800 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
-            <span>⚠️</span> DENSIDAD DEL COMBUSTIBLE JET A-1 / DIÉSEL
-          </strong>
-          <span>El JET A-1 y el diésel automoción tienen una densidad oficial de <strong>0,84 kg/L (7,01 lb/US gal)</strong>. Para el cálculo de masa, cada 100 litros de combustible equivalen a <strong>84,0 kg</strong> de peso (frente a 71,5 kg del AVGAS 100LL).</span>
+        <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed">
+          <strong>DENSIDAD DEL COMBUSTIBLE JET-A1:</strong> La masa de combustible no equivale directamente a los litros cargados. Se utiliza la densidad certificada de <strong>0,84 kg/L (7,01 lb/US gal)</strong>: <span class="font-mono font-bold">Masa [kg] = Litros × 0,84</span> (equivalente a <strong>1 US gal = 3,785 L = 3,18 kg</strong>).
         </div>
       </div>
     </div>
@@ -7732,52 +7708,50 @@ export const DA40_LESSON_6 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESTRUCTURA DEL LOADSHEET OFICIAL AFM</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DATOS TÉCNICOS Y PESOS (REFERENCIA DA40 TDI)</span>
         </div>
 
-        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs sm:text-[13px]">
-          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TABLA DE CÁLCULO DE MASA Y CENTRADO</strong>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs border-collapse">
-              <thead>
-                <tr class="border-b border-slate-200 dark:border-slate-700 text-[#0B2E59] dark:text-sky-300">
-                  <th class="py-1 pr-2 font-bold">Elemento de Carga</th>
-                  <th class="py-1 px-2 font-bold text-center">Brazo</th>
-                  <th class="py-1 px-2 font-bold text-right">Masa [kg]</th>
-                  <th class="py-1 pl-2 font-bold text-right">Momento [kg·m]</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
-                <tr><td class="py-1 pr-2 font-semibold">1. Masa en Vacío (BEW)</td><td class="py-1 px-2 text-center font-mono">Según informe</td><td class="py-1 px-2 text-right">735,0</td><td class="py-1 pl-2 text-right">1820,00</td></tr>
-                <tr><td class="py-1 pr-2">2. Asientos Delanteros</td><td class="py-1 px-2 text-center font-mono">2,30 m</td><td class="py-1 px-2 text-right">Piloto + Cop</td><td class="py-1 pl-2 text-right">Masa × 2,30</td></tr>
-                <tr><td class="py-1 pr-2">3. Asientos Traseros</td><td class="py-1 px-2 text-center font-mono">3,25 m</td><td class="py-1 px-2 text-right">Pasajeros</td><td class="py-1 pl-2 text-right">Masa × 3,25</td></tr>
-                <tr><td class="py-1 pr-2">4. Equipaje (máx. 30 kg)</td><td class="py-1 px-2 text-center font-mono">3,65 m</td><td class="py-1 px-2 text-right">Carga maletero</td><td class="py-1 pl-2 text-right">Masa × 3,65</td></tr>
-                <tr class="bg-slate-50 dark:bg-slate-800 font-semibold"><td class="py-1 pr-2 text-[#0B2E59] dark:text-sky-300">5. Zero Fuel Mass (ZFM)</td><td class="py-1 px-2 text-center">&mdash;</td><td class="py-1 px-2 text-right text-sky-600 dark:text-sky-400">Σ 1..4</td><td class="py-1 pl-2 text-right text-sky-600 dark:text-sky-400">Σ 1..4</td></tr>
-                <tr><td class="py-1 pr-2">6. Combustible Despegue</td><td class="py-1 px-2 text-center font-mono">2,63 m</td><td class="py-1 px-2 text-right">Litros × 0,84</td><td class="py-1 pl-2 text-right">Masa × 2,63</td></tr>
-                <tr class="bg-sky-50/70 dark:bg-sky-950/40 font-bold"><td class="py-1 pr-2 text-[#0B2E59] dark:text-sky-300">7. Take-Off Mass (TOM)</td><td class="py-1 px-2 text-center">&mdash;</td><td class="py-1 px-2 text-right text-emerald-600 dark:text-emerald-400">ZFM + Comb</td><td class="py-1 pl-2 text-right text-emerald-600 dark:text-emerald-400">ZFM + Comb</td></tr>
-                <tr><td class="py-1 pr-2 text-rose-600 dark:text-rose-400">8. Consumo de Ruta (Trip)</td><td class="py-1 px-2 text-center font-mono">2,63 m</td><td class="py-1 px-2 text-right text-rose-600 dark:text-rose-400">&minus; Trip Fuel</td><td class="py-1 pl-2 text-right text-rose-600 dark:text-rose-400">&minus; (Masa × 2,63)</td></tr>
-                <tr class="bg-slate-100 dark:bg-slate-800 font-bold"><td class="py-1 pr-2 text-[#0B2E59] dark:text-sky-300">9. Landing Mass (LM)</td><td class="py-1 px-2 text-center">&mdash;</td><td class="py-1 px-2 text-right text-sky-600 dark:text-sky-400">TOM &minus; Trip</td><td class="py-1 pl-2 text-right text-sky-600 dark:text-sky-400">TOM &minus; Trip</td></tr>
-              </tbody>
-            </table>
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
+            <span class="text-[10px] text-blue-700 dark:text-sky-400 font-bold block uppercase">BEW (EMPTY WEIGHT)*</span>
+            <span class="font-mono font-bold text-sm text-[#0B2E59] dark:text-white">735.00 kg</span>
+          </div>
+          <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
+            <span class="text-[10px] text-blue-700 dark:text-sky-400 font-bold block uppercase">BRAZO BEW*</span>
+            <span class="font-mono font-bold text-sm text-[#0B2E59] dark:text-white">2.476 m</span>
+          </div>
+          <div class="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800">
+            <span class="text-[10px] text-blue-700 dark:text-sky-400 font-bold block uppercase">MOMENTO BÁSICO*</span>
+            <span class="font-mono font-bold text-sm text-[#0B2E59] dark:text-white">1820.00 kg·m</span>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase">MTOM (Masa Máx. Despegue):</span>
-            <div class="font-mono text-emerald-600 dark:text-emerald-400 font-bold text-sm">1150 kg (2535 lb)</div>
+        <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-amber-900 dark:text-amber-200 text-xs leading-relaxed flex items-start gap-2">
+          <span class="font-bold shrink-0">⚠️ NOTA BEW:</span>
+          <span>El <strong>BEW (Empty Weight)</strong> indicado aquí se incluye como <strong>referencia</strong> (ejemplo AFM Sección 6.3). El BEW es distinto para cada aeronave; para el cálculo operacional se debe utilizar obligatoriamente el BEW que figura en el <strong>informe de masa y centrado de cada avión</strong>.</span>
+        </div>
+
+        <div class="space-y-1.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
+          <div class="flex items-center justify-between p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <span>Pilotos (Asientos 1 y 2 Delanteros):</span>
+            <span class="font-mono font-bold text-blue-600 dark:text-sky-400">Brazo: 2.300 m (90.6 in)</span>
           </div>
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase">MLM (Masa Máx. Aterrizaje):</span>
-            <div class="font-mono text-emerald-600 dark:text-emerald-400 font-bold text-sm">1150 kg (2535 lb)</div>
+          <div class="flex items-center justify-between p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <span>Pasajeros (Asientos 3 y 4 Traseros):</span>
+            <span class="font-mono font-bold text-blue-600 dark:text-sky-400">Brazo: 3.250 m (128.0 in)</span>
+          </div>
+          <div class="flex items-center justify-between p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <span>Equipaje (Baggage Compartment):</span>
+            <span class="font-mono font-bold text-blue-600 dark:text-sky-400">Brazo: 3.650 m (143.7 in) (Máx. 30 kg)</span>
+          </div>
+          <div class="flex items-center justify-between p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <span>Combustible Usable (Wing Tanks):</span>
+            <span class="font-mono font-bold text-blue-600 dark:text-sky-400">Brazo: 2.630 m (103.5 in) (Máx. 106 L / 28.0 US Gal)</span>
           </div>
         </div>
 
-        <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
-          <strong class="text-red-800 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
-            <span>🚨</span> WARNING (AFM)
-          </strong>
-          <span>Exceder los límites de masa certificada conduce a sobrecarga estructural y grave pérdida de rendimiento. Exceder los límites de centrado reduce severamente la autoridad de mandos y la estabilidad.</span>
+        <div class="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200 text-xs sm:text-[13px]">
+          <strong>MTOM / MLM (PESO MÁXIMO):</strong> Tanto en despegue como en aterrizaje, la masa total máxima admisible es de <strong>1.150,00 kg (2.535 lb)</strong> (igual para todas las Diamond DA40 TDI de la flota).
         </div>
       </div>
     </div>
