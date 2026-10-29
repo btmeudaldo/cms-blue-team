@@ -7202,7 +7202,7 @@ export const C172_LESSON_5 = {
 export const C172_LESSON_6 = {
   id: "17200000-0000-0000-0000-000000000005",
   course_id: C172_COURSE_ID,
-  title: "6. Despacho Operativo: Documentación Prevuelo, Masa y Centrado, Combustible y Performance",
+  title: "6. Documentación Prevuelo, Masa y Centrado, Combustible y Performance",
   slug: "despacho-operativo-c172-prevuelo",
   description: "Dominio integral del despacho operacional en la aeronave de referencia EC-NNA. Incluye cumplimentación paso a paso de la documentación F.OPS.02, cálculo de Masa y Centrado con hoja F.OPS.04.NNA y envolvente en vivo (TOW y LW), tablas de crucero al 50% de potencia (15.3 L/h), política de combustible EASA Part-NCO.OP.125 y Manual OM Blue Team (1:30 de reserva + alternativo), y cálculo de performance de despegue y aterrizaje.",
   sequence_order: 6,

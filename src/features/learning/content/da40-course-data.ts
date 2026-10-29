@@ -7555,7 +7555,7 @@ export const DA40_LESSON_5 = {
 export const DA40_LESSON_6 = {
   id: "da400000-0000-0000-0000-000000000060",
   course_id: DA40_COURSE_ID,
-  title: "6. Despacho Operativo: Documentación Prevuelo, Masa y Centrado, Combustible y Performance",
+  title: "6. Documentación Prevuelo, Masa y Centrado, Combustible y Performance",
   slug: "despacho-operativo-da40-prevuelo",
   description: "Dominio integral del despacho operacional en la aeronave Diamond DA40 TDI (Thielert TAE 125-01 / CD-135). Incluye cumplimentación paso a paso de la documentación oficial F.OPS.02, cálculo de Masa y Centrado con hoja de carga según AFM Capítulo 6 (BEW 735 kg, brazos 2,30 m / 3,25 m / 2,63 m / 3,65 m) y envolvente de CG (MTOM y MLM 1150 kg), régimen de crucero y consumo horario al 60% (15,1 L/h) y 70% (18,5 L/h), política de combustible EASA Part-NCO.OP.125 y Manual OM Blue Team (1h 30m de reserva obligatoria), y cálculo de performance de despegue y aterrizaje según AFM Capítulo 5 con factores de corrección de viento, pendiente y superficie de hierba.",
   sequence_order: 6,
