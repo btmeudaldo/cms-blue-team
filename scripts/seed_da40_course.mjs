@@ -59,9 +59,6 @@ async function seedDA40() {
         const remoteSlides = dbLesson.content_html.split(pagebreakRegex);
         const localSlides = contentToSave.split(pagebreakRegex);
 
-        // Mapa de visibilidad remota por identificador de diapositiva o índice
-        const remotePrivateMap = new Map(); // key -> boolean
-
         const extractSlideKey = (slideText, index) => {
           // Intentar obtener número de diapositiva (ej: "4.1", "4.2", etc.)
           const commentMatch = slideText.match(/<!--\s*DIAPOSITIVA\s+([0-9.]+)/i);
@@ -89,32 +86,40 @@ async function seedDA40() {
           return slideText.replace(/^(\s*<[a-zA-Z0-9\-]+)/i, '$1 data-slide-visibility="private"');
         };
 
-        // Registrar diapositivas remotas que el usuario haya ocultado
-        remoteSlides.forEach((rSlide, rIdx) => {
-          if (isSlidePrivate(rSlide)) {
-            const key = extractSlideKey(rSlide, rIdx);
-            remotePrivateMap.set(key, true);
-            remotePrivateMap.set(`index_${rIdx}`, true);
-          }
-        });
+        const setSlidePublicAttr = (slideText) => {
+          return slideText
+            .replace(/\s*data-slide-visibility=["'][^"']*["']/gi, "")
+            .replace(/\b(?:slide-private)\b/gi, "");
+        };
 
-        if (remotePrivateMap.size > 0) {
-          console.log(`🔒 Se detectaron ${remotePrivateMap.size} diapositiva(s) privadas en Supabase para lección "${lesson.title}". Preservando visibilidad...`);
-        }
+        // Registrar visibilidad remota de CADA diapositiva en Supabase.
+        // Supabase es la fuente de la verdad absoluta para diapositivas existentes.
+        const remoteVisibilityMap = new Map();
+        remoteSlides.forEach((rSlide, rIdx) => {
+          const key = extractSlideKey(rSlide, rIdx);
+          const vis = isSlidePrivate(rSlide) ? "private" : "public";
+          remoteVisibilityMap.set(key, vis);
+          remoteVisibilityMap.set(`index_${rIdx}`, vis);
+        });
 
         const mergedSlides = localSlides.map((lSlide, lIdx) => {
           const key = extractSlideKey(lSlide, lIdx);
-          const isLocalPrivate = isSlidePrivate(lSlide);
-          const isRemotePrivate = remotePrivateMap.get(key) || remotePrivateMap.get(`index_${lIdx}`);
+          const remoteVis = remoteVisibilityMap.get(key) ?? remoteVisibilityMap.get(`index_${lIdx}`);
 
-          // Si está privada en remoto o en local, se PRESERVA como privada
-          if (isRemotePrivate || isLocalPrivate) {
-            console.log(`   👁️‍🗨️ Preservando diapositiva privada: [${key}]`);
-            return setSlidePrivateAttr(lSlide);
+          let finalVis = "public";
+          if (remoteVis !== undefined) {
+            // El estado remoto en Supabase PREVALECE sobre el archivo local
+            finalVis = remoteVis;
+          } else {
+            // Diapositiva nueva que no existía antes en Supabase
+            finalVis = isSlidePrivate(lSlide) ? "private" : "public";
           }
 
-          // Si no es privada, asegurar que quede limpia
-          return lSlide.replace(/\s*data-slide-visibility=["'][^"']*["']/gi, "");
+          if (finalVis === "private") {
+            return setSlidePrivateAttr(lSlide);
+          } else {
+            return setSlidePublicAttr(lSlide);
+          }
         });
 
         contentToSave = mergedSlides.join("\n\n<!-- pagebreak -->\n\n");

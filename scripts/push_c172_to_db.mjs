@@ -22,7 +22,86 @@ async function push() {
   console.log(`📤 Subiendo lecciones locales a Supabase (Curso ${C172_COURSE_ID})...`);
 
   for (const lesson of C172_LESSONS) {
-    const wordCount = lesson.content_html
+    const pagebreakRegex = /(?:<!--\s*(?:pagebreak|slidebreak|page-break|slide-break)\s*-->)/gi;
+    let contentToSave = lesson.content_html;
+
+    try {
+      const { data: remoteLesson } = await supabase
+        .from("lessons")
+        .select("content_html")
+        .eq("id", lesson.id)
+        .eq("course_id", C172_COURSE_ID)
+        .maybeSingle();
+
+      if (remoteLesson?.content_html) {
+        const remoteSlides = remoteLesson.content_html.split(pagebreakRegex);
+        const localSlides = contentToSave.split(pagebreakRegex);
+
+        const extractSlideKey = (slideText, index) => {
+          const commentMatch = slideText.match(/<!--\s*DIAPOSITIVA\s+([0-9.]+)/i);
+          if (commentMatch) return commentMatch[1].trim();
+          const headingMatch = slideText.match(/<h[1-4][^>]*>\s*([0-9.]+)/i);
+          if (headingMatch) return headingMatch[1].trim();
+          return `index_${index}`;
+        };
+
+        const isSlidePrivate = (slideText) => {
+          return (
+            /data-slide-visibility=["'](?:private|only-me)["']/i.test(slideText) ||
+            /class=["'][^"']*\bslide-private\b[^"']*["']/i.test(slideText)
+          );
+        };
+
+        const setSlidePrivateAttr = (slideText) => {
+          if (isSlidePrivate(slideText)) return slideText;
+          if (/<div[^>]*class=["'][^"']*lesson-slide-container/i.test(slideText)) {
+            return slideText.replace(
+              /(<div[^>]*class=["'][^"']*lesson-slide-container[^"']*)/i,
+              '$1 data-slide-visibility="private"'
+            );
+          }
+          return slideText.replace(/^(\s*<[a-zA-Z0-9\-]+)/i, '$1 data-slide-visibility="private"');
+        };
+
+        const setSlidePublicAttr = (slideText) => {
+          return slideText
+            .replace(/\s*data-slide-visibility=["'][^"']*["']/gi, "")
+            .replace(/\b(?:slide-private)\b/gi, "");
+        };
+
+        const remoteVisibilityMap = new Map();
+        remoteSlides.forEach((rSlide, rIdx) => {
+          const key = extractSlideKey(rSlide, rIdx);
+          const vis = isSlidePrivate(rSlide) ? "private" : "public";
+          remoteVisibilityMap.set(key, vis);
+          remoteVisibilityMap.set(`index_${rIdx}`, vis);
+        });
+
+        const mergedSlides = localSlides.map((lSlide, lIdx) => {
+          const key = extractSlideKey(lSlide, lIdx);
+          const remoteVis = remoteVisibilityMap.get(key) ?? remoteVisibilityMap.get(`index_${lIdx}`);
+
+          let finalVis = "public";
+          if (remoteVis !== undefined) {
+            finalVis = remoteVis;
+          } else {
+            finalVis = isSlidePrivate(lSlide) ? "private" : "public";
+          }
+
+          if (finalVis === "private") {
+            return setSlidePrivateAttr(lSlide);
+          } else {
+            return setSlidePublicAttr(lSlide);
+          }
+        });
+
+        contentToSave = mergedSlides.join("\n\n<!-- pagebreak -->\n\n");
+      }
+    } catch (e) {
+      console.warn("No se pudo verificar visibilidad remota previa para C172:", e);
+    }
+
+    const wordCount = contentToSave
       .replace(/<[^>]*>/g, " ")
       .split(/\s+/)
       .filter(Boolean).length;
@@ -32,7 +111,7 @@ async function push() {
       .update({
         title: lesson.title,
         slug: lesson.slug,
-        content_html: lesson.content_html,
+        content_html: contentToSave,
         word_count: wordCount,
         min_seconds: lesson.min_seconds,
         updated_at: new Date().toISOString(),
