@@ -3780,6 +3780,1711 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.4: 4.4 Inspección Exterior III: Fuselaje y Empenaje en T -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.4 Inspección Exterior III: Fuselaje y Empenaje en T</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estaciones 3, 4 y 5: Fuselaje, Cola en T y Mandos</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(3, 4, 5) FUSELAGE &amp; EMPENNAGE</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM EN 2 TARJETAS -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(3 &amp; 5) FUSELAGE</strong>
+              <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">a)</span>
+                <span class="text-slate-800 dark:text-slate-200">Skin (left side) &mdash; <span class="italic font-medium">visual inspection</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">b)</span>
+                <span class="text-slate-800 dark:text-slate-200">Antennas &mdash; <span class="italic font-medium">visual inspection</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">c)</span>
+                <span class="text-slate-800 dark:text-slate-200">Canopy jettison lever &mdash; <span class="italic font-medium">check safety pin installed</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">d)</span>
+                <span class="text-slate-800 dark:text-slate-200">Skin (right side) &mdash; <span class="italic font-medium">visual inspection</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">e)</span>
+                <span class="text-slate-800 dark:text-slate-200">Rear passenger door &mdash; <span class="italic font-medium">visual inspection, check locking mechanism</span></span>
+              </div>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(4) EMPENNAGE</strong>
+              <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">a)</span>
+                <span class="text-slate-800 dark:text-slate-200">Entire empennage surface &mdash; <span class="italic font-medium">visual inspection</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">b)</span>
+                <span class="text-slate-800 dark:text-slate-200">Horizontal stabilizer &amp; elevator &mdash; <span class="italic font-medium">check freedom of movement and play</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">c)</span>
+                <span class="text-slate-800 dark:text-slate-200">Elevator trim tab &mdash; <span class="italic font-medium">visual inspection, check safety wiring</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">d)</span>
+                <span class="text-slate-800 dark:text-slate-200">Vertical stabilizer &amp; rudder &mdash; <span class="italic font-medium">check freedom of movement &amp; cables secure</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">e)</span>
+                <span class="text-slate-800 dark:text-slate-200">Tail skid &amp; tie-down &mdash; <span class="italic font-medium">check condition, tie-down removed</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTE AFM -->
+          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <div>Durante la inspección visual, examine el estado de las superficies de composite descartando grietas, delamination, holguras o defectos de fijación. Compruebe que la varilla y el alambre de seguridad del tab de trim de profundidad permanezcan intactos.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Empenaje en T del DA40 mostrando el timón de profundidad, el tab de trim con varilla y alambre de seguridad, el timón de dirección y el patín de cola inferior.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.5: 4.5 Inspección Exterior IV: Semiala Derecha y Combustible -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.5 Inspección Exterior IV: Semiala Derecha y Combustible</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estación 6: Flap, Alerón, Luces y Depósito de Combustible</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(6) RIGHT WING</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(6) RIGHT WING</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">a)</span>
+              <span class="text-slate-800 dark:text-slate-200">Flap and hinges &mdash; <span class="italic font-medium">visual inspection, check play</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">b)</span>
+              <span class="text-slate-800 dark:text-slate-200">Flap control rod and drive &mdash; <span class="italic font-medium">visual inspection</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">c)</span>
+              <span class="text-slate-800 dark:text-slate-200">Aileron and hinges &mdash; <span class="italic font-medium">visual inspection, check freedom of movement and play</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">d)</span>
+              <span class="text-slate-800 dark:text-slate-200">Aileron control rod &mdash; <span class="italic font-medium">visual inspection, check locking varnish</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">e)</span>
+              <span class="text-slate-800 dark:text-slate-200">Wing tip, position light, strobe light (ACL) &mdash; <span class="italic font-medium">visual inspection</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">f)</span>
+              <span class="text-slate-800 dark:text-slate-200">Entire wing surface &mdash; <span class="italic font-medium">visual inspection</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">g)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel tank cap &amp; vent &mdash; <span class="italic font-medium">check closed and secure, vent unobstructed</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">h)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel tank drain &mdash; <span class="italic font-medium">drain fuel and check for contamination (water &amp; sediment)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">i)</span>
+              <span class="text-slate-800 dark:text-slate-200">Auxiliary fuel tank (if installed) &mdash; <span class="italic font-medium">check drain, cap &amp; vent</span></span>
+            </div>
+          </div>
+
+          <!-- WARNING AFM -->
+          <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>WARNING:</span>
+            </strong>
+            <div>Asegúrese de que el tapón del depósito de combustible quede completamente enrasado y bloqueado a ras de superficie. Si no queda herméticamente cerrado, la depresión aerodinámica sobre el ala succionará el combustible en vuelo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Extradós de la semiala derecha del DA40 mostrando el tapón de llenado de combustible principal enrasado, el tubo de venteo y la superficie alar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.6: 4.6 Inspección Exterior V: Tren Principal Derecho y Drenajes -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.6 Inspección Exterior V: Tren Principal Derecho y Drenajes</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estación 7: Pata de Tren, Carenado, Freno y Cierre de Purga</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(7) RIGHT MAIN LANDING GEAR</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(7) RIGHT MAIN LANDING GEAR</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">a)</span>
+              <span class="text-slate-800 dark:text-slate-200">Landing gear strut &mdash; <span class="italic font-medium">visual inspection</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">b)</span>
+              <span class="text-slate-800 dark:text-slate-200">Wheel fairing &mdash; <span class="italic font-medium">visual inspection</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">c)</span>
+              <span class="text-slate-800 dark:text-slate-200">Tire, wheel, brake &mdash; <span class="italic font-medium">visual inspection, check tire pressure (2.5 bar / 36 psi), check brake condition &amp; fluid leaks</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">d)</span>
+              <span class="text-slate-800 dark:text-slate-200">Chocks &mdash; <span class="italic font-medium">remove</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">e)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel tank drain (right wing) &mdash; <span class="italic font-medium">check drain closed, no leaks</span></span>
+            </div>
+          </div>
+
+          <!-- CAUTION AFM -->
+          <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION:</span>
+            </strong>
+            <div>Compruebe que las válvulas de purga de combustible queden totalmente cerradas y selladas tras la toma de muestras, sin ningún goteo residual. Verifique que no existan fugas de líquido hidráulico en el disco o latiguillos de freno.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Tren de aterrizaje principal derecho del DA40: pata de suspensión elástica, conjunto de freno de disco hidráulico y carenado de rueda.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.7: 4.7 Inspección Exterior VI: Morro, Aceites (Motor y Caja), Hélice y Tren -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.7 Inspección Exterior VI: Morro, Aceites (Motor y Caja), Hélice y Tren</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estación 8: Capó Motor, Niveles de Aceite, Hélice MTV y Pata de Morro</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(8) FRONT FUSELAGE, ENGINE &amp; PROPELLER</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(8) FRONT FUSELAGE &amp; ENGINE (PART 1)</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">a)</span>
+              <span class="text-slate-800 dark:text-slate-200">Right engine cowl &mdash; <span class="italic font-medium">check fasteners secure</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">b)</span>
+              <span class="text-slate-800 dark:text-slate-200">Oil inspection door &mdash; <span class="italic font-medium">open, check engine oil level (min 4.5 l, max 6.0 l)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">c)</span>
+              <span class="text-slate-800 dark:text-slate-200">Gearbox oil level &mdash; <span class="italic font-medium">check sight glass (oil must be visible)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">d)</span>
+              <span class="text-slate-800 dark:text-slate-200">Oil filler caps &mdash; <span class="italic font-medium">check secure, oil door close and latch</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">e)</span>
+              <span class="text-slate-800 dark:text-slate-200">Propeller and spinner &mdash; <span class="italic font-medium">visual inspection, check for nicks, cracks &amp; oil leaks</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">f)</span>
+              <span class="text-slate-800 dark:text-slate-200">Air inlets &mdash; <span class="italic font-medium">cooling air, intercooler, oil cooler inlets clean &amp; unobstructed</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">g)</span>
+              <span class="text-slate-800 dark:text-slate-200">Nose landing gear &mdash; <span class="italic font-medium">strut, elastomer pack, wheel fairing, tire pressure (2.0 bar / 29 psi)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">h)</span>
+              <span class="text-slate-800 dark:text-slate-200">Tow bar &amp; chocks &mdash; <span class="italic font-medium">remove</span></span>
+            </div>
+          </div>
+
+          <!-- CAUTION AFM -->
+          <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION:</span>
+            </strong>
+            <div>Para una medición exacta del aceite de motor, espere al menos 5 minutos tras parar el motor. El aceite de la caja reductora debe ser visible en la mirilla de cristal; si no es visible o está bajo, el vuelo está prohibido y se requiere mantenimiento técnico antes de volar.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Puerta de inspección de aceite del capó motor abierta mostrando la varilla de aceite de motor graduada, la mirilla de la caja reductora y la hélice MTV tripala.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.8: 4.8 Inspección Exterior VII: Filtro Principal (Gascolator) y Cierre -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.8 Inspección Exterior VII: Filtro Principal (Gascolator) y Cierre</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estación 8 (Cont.): Escape, Purga del Gascolator y Cierre</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(8) NOSE SECTION (Cont.) &amp; GASCOLATOR</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(8) NOSE SECTION (Cont.) &amp; FINAL WALK-AROUND</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">a)</span>
+              <span class="text-slate-800 dark:text-slate-200">Left engine cowl &mdash; <span class="italic font-medium">check fasteners secure</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">b)</span>
+              <span class="text-slate-800 dark:text-slate-200">Exhaust pipe &mdash; <span class="italic font-medium">check condition, clearance and security</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">c)</span>
+              <span class="text-slate-800 dark:text-slate-200">Gascolator / main fuel filter &mdash; <span class="italic font-medium">drain fuel, check for water and sediment</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">d)</span>
+              <span class="text-slate-800 dark:text-slate-200">Cowling air outlet &mdash; <span class="italic font-medium">unobstructed</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">e)</span>
+              <span class="text-slate-800 dark:text-slate-200">Overall airplane condition &mdash; <span class="italic font-medium">final check around aircraft</span></span>
+            </div>
+          </div>
+
+          <!-- CAUTION AFM -->
+          <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION:</span>
+            </strong>
+            <div>La purga del gascolator es la comprobación más baja del circuito de combustible. Si se detecta agua o sedimentos, purgue repetidamente hasta obtener combustible completamente limpio. Si la contaminación persiste, no intente arrancar el motor y avise a mantenimiento.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Válvula de drenaje del gascolator en la parte inferior del capó del DA40 con el vaso de muestreo de combustible diésel/Jet-A1.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.9: 4.9 Antes del Arranque del Motor -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.9 Antes del Arranque del Motor</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Preparación de Cabina, Pasajeros, Cierres y Válvulas</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BEFORE STARTING ENGINE</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">BEFORE STARTING ENGINE</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Pre-flight inspection &mdash; <span class="italic font-medium">completed</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Rudder pedals &mdash; <span class="italic font-medium">adjusted and locked</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">Passengers &mdash; <span class="italic font-medium">briefed</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Safety harnesses &mdash; <span class="italic font-medium">fastened and adjusted</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5)</span>
+              <span class="text-slate-800 dark:text-slate-200">Canopy &amp; rear door &mdash; <span class="italic font-medium">closed and locked, check DOORS light OFF</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6)</span>
+              <span class="text-slate-800 dark:text-slate-200">Parking brake &mdash; <span class="italic font-medium">set</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7)</span>
+              <span class="text-slate-800 dark:text-slate-200">Flight controls &mdash; <span class="italic font-medium">free and correct</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">8)</span>
+              <span class="text-slate-800 dark:text-slate-200">Trimming wheel &mdash; <span class="italic font-medium">set T/O</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">9)</span>
+              <span class="text-slate-800 dark:text-slate-200">Emergency fuel valve &mdash; <span class="italic font-medium">check NORMAL</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">10)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel transfer pump &mdash; <span class="italic font-medium">OFF</span></span>
+            </div>
+          </div>
+
+          <!-- WARNING AFM -->
+          <div class="p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>WARNING:</span>
+            </strong>
+            <div>Regule y bloquee los pedales exclusivamente en tierra antes de arrancar. Jamás intente desbloquear o regular los pedales durante el rodaje o el vuelo; tirar del pomo de desbloqueo desengancha el mecanismo de retención y puede causar la pérdida total de control de timón y frenos.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CABINA Y MANDOS</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Vista general de la cabina del DA40 desde el asiento de piloto mostrando la palanca de mandos, los pedales ajustables, la rueda de trim y la válvula de combustible en NORMAL.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.10: 4.10 Puesta en Marcha: Procedimiento de Arranque Diésel -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.10 Puesta en Marcha: Procedimiento de Arranque Diésel</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">FADEC, Precalentamiento GLOW, Arranque y Presión de Aceite</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENGINE STARTING</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ENGINE STARTING</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Strobe lights (ACL) &mdash; <span class="italic font-medium">ON</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">IDLE</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">ELECTRIC MASTER &mdash; <span class="italic font-medium">ON</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Annunciator lightpanel &mdash; <span class="italic font-medium">test (press TEST, check all lights illuminate)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5)</span>
+              <span class="text-slate-800 dark:text-slate-200">Propeller area &mdash; <span class="italic font-medium">CLEAR</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6)</span>
+              <span class="text-slate-800 dark:text-slate-200">ENGINE MASTER &mdash; <span class="italic font-medium">ON, wait for GLOW light to extinguish</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7)</span>
+              <span class="text-slate-800 dark:text-slate-200">START key &mdash; <span class="italic font-medium">turn to START, release immediately when engine fires</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">8)</span>
+              <span class="text-slate-800 dark:text-slate-200">Oil pressure &mdash; <span class="italic font-medium">check, green within 3 seconds (min 1.2 bar)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">9)</span>
+              <span class="text-slate-800 dark:text-slate-200">CED 125 &amp; AED 125 &mdash; <span class="italic font-medium">monitor engine parameters</span></span>
+            </div>
+          </div>
+
+          <!-- CAUTION AFM -->
+          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION:</span>
+            </strong>
+            <div>Si la presión de aceite no entra en arco verde en un plazo de 3 segundos tras el arranque, corte inmediatamente ENGINE MASTER en OFF. No mantenga la llave en START más de 10 segundos continuados; deje enfriar el motor de arranque 2 minutos antes de un nuevo intento.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PANEL DE ARRANQUE Y CONTROL</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Panel de conmutadores de arranque del DA40: interruptor de llave con START, interruptor basculante ENGINE MASTER, aviso GLOW y display digital CED 125 con presión de aceite.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.11: 4.11 Calentamiento del Motor y Rodaje -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.11 Calentamiento del Motor y Rodaje</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aviónica, Comprobación de Flaps y Guiado Diferencial en Tierra</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BEFORE TAXIING &amp; TAXIING</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">BEFORE TAXIING &amp; TAXIING</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Avionics Master &mdash; <span class="italic font-medium">ON</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Electrical equipment &mdash; <span class="italic font-medium">ON as required</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">Wing flaps &mdash; <span class="italic font-medium">cycle T/O, LDG, back to UP (check indicator lights)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Annunciator lightpanel &mdash; <span class="italic font-medium">check extinguished (DOORS, START, ECU A/B, LOW VOLTS, ALTERNATOR)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5)</span>
+              <span class="text-slate-800 dark:text-slate-200">Parking brake &mdash; <span class="italic font-medium">release</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6)</span>
+              <span class="text-slate-800 dark:text-slate-200">Brakes &mdash; <span class="italic font-medium">test immediately after starting taxi</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7)</span>
+              <span class="text-slate-800 dark:text-slate-200">Flight instruments &mdash; <span class="italic font-medium">check gyro, turn coordinator &amp; compass in turns</span></span>
+            </div>
+          </div>
+
+          <!-- NOTE AFM -->
+          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <div>La rueda de morro es libre (free-castering) y no tiene conexión mecánica directa con los pedales; el control direccional durante el rodaje se realiza mediante toques suaves y cortos en los frenos diferenciales de las punteras en combinación con el timón de dirección.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TÉCNICA DE RODAJE Y FRENADO</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Diagrama esquemático de maniobra de rodaje y giro cerrado del DA40 mostrando la rueda de morro libre (free-castering) y el frenado diferencial con pedales.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.12: 4.12 Antes del Despegue I: Cabina, Mandos y Parámetros -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.12 Antes del Despegue I: Cabina, Mandos y Parámetros</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Freno de Parking, Puertas, Compensador y Arcos Verdes</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BEFORE TAKE-OFF (PART 1)</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">BEFORE TAKE-OFF (CABIN &amp; PARAMETERS)</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Parking brake &mdash; <span class="italic font-medium">set</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Canopy &amp; rear door &mdash; <span class="italic font-medium">closed and locked, DOORS light OFF</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">Flight controls &mdash; <span class="italic font-medium">free and correct</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Trimming wheel &mdash; <span class="italic font-medium">set T/O</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel quantity &mdash; <span class="italic font-medium">check sufficient for flight</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel temperature &mdash; <span class="italic font-medium">check in green range (min 20°C Jet-A1 / 0°C diésel)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7)</span>
+              <span class="text-slate-800 dark:text-slate-200">Emergency fuel valve &mdash; <span class="italic font-medium">NORMAL</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">8)</span>
+              <span class="text-slate-800 dark:text-slate-200">Electric fuel pump &mdash; <span class="italic font-medium">ON</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">9)</span>
+              <span class="text-slate-800 dark:text-slate-200">Engine temperatures &mdash; <span class="italic font-medium">check green (oil min 50°C, coolant min 60°C, gearbox min 40°C)</span></span>
+            </div>
+          </div>
+
+          <!-- CAUTION AFM -->
+          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION:</span>
+            </strong>
+            <div>No inicie la prueba de motor ni el despegue si las temperaturas de aceite, refrigerante o caja reductora no han alcanzado el arco verde en los instrumentos digitales CED/AED 125.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CONSOLA CENTRAL Y COMPENSADOR</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Consola central del DA40 mostrando la rueda negra de compensador de profundidad alineada con la marca blanca T/O, la palanca de gases y la válvula de combustible en NORMAL.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.13: 4.13 Antes del Despegue II: Autoprueba FADEC / Prueba de ECU -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.13 Antes del Despegue II: Autoprueba FADEC / Prueba de ECU</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Secuencia Automática de Prueba FADEC a 1900 RPM y Ciclado de Hélice</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ECU TEST (RUN-UP)</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ECU TEST / ENGINE RUN-UP</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">IDLE</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Propeller area &mdash; <span class="italic font-medium">CLEAR</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <div class="text-slate-800 dark:text-slate-200">
+                <span>ECU TEST button &mdash; <span class="italic font-medium">PRESS and HOLD throughout full sequence:</span></span>
+                <div class="pl-4 pt-1 space-y-1">
+                  <div>a) RPM increases automatically to 1900–2000 RPM</div>
+                  <div>b) Propeller cycles, ECU B light illuminates (switching to ECU B)</div>
+                  <div>c) Propeller cycles, ECU A light illuminates (switching to ECU A)</div>
+                  <div>d) Annunciator lights extinguish, RPM drops back to idle</div>
+                </div>
+              </div>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">ECU TEST button &mdash; <span class="italic font-medium">RELEASE</span></span>
+            </div>
+          </div>
+
+          <!-- WARNING AFM -->
+          <div class="p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>WARNING:</span>
+            </strong>
+            <div>Mantenga pulsado el botón ECU TEST de forma continua hasta que finalice todo el ciclo automático y las RPM vuelvan al ralentí. Si durante la secuencia el motor vibra severamente, caen las RPM de forma anormal o alguna luz de ECU permanece encendida o parpadea, el despegue queda terminantemente prohibido.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SECUENCIA DE AUTOPRUEBA FADEC</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Gráfica cronológica de la autoprueba de ECU mostrando el aumento de RPM a 1900, conmutación automática de canales A y B, ciclado de hélice y respuesta de luces avisadoras.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.14: 4.14 Antes del Despegue III: Conmutación Manual ECU Swap y Criterios Go/No-Go -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.14 Antes del Despegue III: Conmutación Manual ECU Swap y Criterios Go/No-Go</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Comprobación del Canal B, Posición AUTOMATIC y Disyuntores</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ECU SWAP &amp; SYSTEMS CHECK</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ECU SWAP &amp; CIRCUIT BREAKERS</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">ECU SWAP switch &mdash; <span class="italic font-medium">switch to ECU B (check engine continues running smoothly)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">ECU SWAP switch &mdash; <span class="italic font-medium">return to AUTOMATIC (safety guard wire closed)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">Pitot heat &mdash; <span class="italic font-medium">ON (check ammeter rise on AED 125 and PITOT light)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Pitot heat &mdash; <span class="italic font-medium">OFF (or leave ON if icing conditions/IFR)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5)</span>
+              <span class="text-slate-800 dark:text-slate-200">Circuit breakers &mdash; <span class="italic font-medium">check all set in</span></span>
+            </div>
+          </div>
+
+          <!-- NOTE AFM -->
+          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <div>El interruptor ECU SWAP permite forzar el canal secundario B en caso de fallo; durante el vuelo debe permanecer siempre bajo su guarda de seguridad roja en posición AUTOMATIC para que la FADEC autogestione las conmutaciones por software.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INTERRUPTOR ECU SWAP Y CONSUMO</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Interruptor basculante ECU SWAP protegido por guarda de seguridad roja precintada en AUTOMATIC junto a la fila de disyuntores de cabina.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.15: 4.15 Antes del Despegue IV: Calefacción Pitot, Flaps y Briefing -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.15 Antes del Despegue IV: Calefacción Pitot, Flaps y Briefing</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Configuración de Flaps T/O, Bomba Eléctrica, Transponder y Briefing</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BEFORE TAKE-OFF (FINAL)</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">BEFORE TAKE-OFF (FINAL CONFIGURATION)</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Wing flaps &mdash; <span class="italic font-medium">set T/O (white T/O light illuminated)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Electric fuel pump &mdash; <span class="italic font-medium">check ON</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">Avionics &amp; transponder &mdash; <span class="italic font-medium">set ALT, squawk code verified</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Altimeters &mdash; <span class="italic font-medium">set QNH (cross-check within limits)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5)</span>
+              <span class="text-slate-800 dark:text-slate-200">Directional gyro &mdash; <span class="italic font-medium">aligned with magnetic compass</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6)</span>
+              <span class="text-slate-800 dark:text-slate-200">Take-off &amp; departure briefing &mdash; <span class="italic font-medium">completed</span></span>
+            </div>
+          </div>
+
+          <!-- NOTE AFM -->
+          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <div>La posición reglamentaria de flaps para todo despegue en el DA40 TDI (tanto normal como en campo corto) es T/O (20°). Verifique que la luz indicadora blanca T/O esté fija antes de entrar a pista.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESQUEMA DE BRIEFING DE DESPEGUE</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Diagrama didáctico de briefing de despegue: pista en uso, velocidades de rotación (59 kt), ascenso y acciones de emergencia ante fallo de motor antes o después de la rotación.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.16: 4.16 Velocidades Operativas de Vuelo y Viento Cruzado Demostrado -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.16 Velocidades Operativas de Vuelo y Viento Cruzado Demostrado</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Velocidades Normales de Operación (1150 kg) y Límite de Viento Cruzado</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AIRSPEEDS FOR NORMAL OPERATION</span>
+          </div>
+
+          <!-- TABLA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">OPERATING AIRSPEEDS (1150 kg / 2535 lbs)</strong>
+            <div lang="en" class="flex items-start justify-between py-0.5 text-xs sm:text-[13px] border-b border-slate-100 dark:border-slate-700/50">
+              <span class="text-slate-800 dark:text-slate-200">Airspeed for rotation (<span class="italic font-medium">VR</span>)</span>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300">59 KIAS</span>
+            </div>
+            <div lang="en" class="flex items-start justify-between py-0.5 text-xs sm:text-[13px] border-b border-slate-100 dark:border-slate-700/50">
+              <span class="text-slate-800 dark:text-slate-200">Airspeed for best angle of climb (<span class="italic font-medium">VX</span>, flaps T/O)</span>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300">66 KIAS</span>
+            </div>
+            <div lang="en" class="flex items-start justify-between py-0.5 text-xs sm:text-[13px] border-b border-slate-100 dark:border-slate-700/50">
+              <span class="text-slate-800 dark:text-slate-200">Airspeed for best rate of climb (<span class="italic font-medium">VY</span>, flaps UP)</span>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300">73 KIAS</span>
+            </div>
+            <div lang="en" class="flex items-start justify-between py-0.5 text-xs sm:text-[13px] border-b border-slate-100 dark:border-slate-700/50">
+              <span class="text-slate-800 dark:text-slate-200">Cruising climb</span>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300">73 &ndash; 80 KIAS</span>
+            </div>
+            <div lang="en" class="flex items-start justify-between py-0.5 text-xs sm:text-[13px] border-b border-slate-100 dark:border-slate-700/50">
+              <span class="text-slate-800 dark:text-slate-200">Maximum flap operating speed (<span class="italic font-medium">VFE T/O</span>)</span>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300">108 KIAS</span>
+            </div>
+            <div lang="en" class="flex items-start justify-between py-0.5 text-xs sm:text-[13px] border-b border-slate-100 dark:border-slate-700/50">
+              <span class="text-slate-800 dark:text-slate-200">Maximum flap operating speed (<span class="italic font-medium">VFE LDG</span>)</span>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300">91 KIAS</span>
+            </div>
+            <div lang="en" class="flex items-start justify-between py-0.5 text-xs sm:text-[13px] border-b border-slate-100 dark:border-slate-700/50">
+              <span class="text-slate-800 dark:text-slate-200">Maneuvering speed (<span class="italic font-medium">VA</span>)</span>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300">108 KIAS</span>
+            </div>
+            <div lang="en" class="flex items-start justify-between py-0.5 text-xs sm:text-[13px] border-b border-slate-100 dark:border-slate-700/50">
+              <span class="text-slate-800 dark:text-slate-200">Approach speed (flaps T/O)</span>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300">73 KIAS</span>
+            </div>
+            <div lang="en" class="flex items-start justify-between py-0.5 text-xs sm:text-[13px] border-b border-slate-100 dark:border-slate-700/50">
+              <span class="text-slate-800 dark:text-slate-200">Approach speed (<span class="italic font-medium">VREF</span> flaps LDG)</span>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300">65 KIAS <span class="text-[11px] font-normal text-slate-500">(Short field: 58 KIAS)</span></span>
+            </div>
+            <div lang="en" class="flex items-start justify-between py-0.5 text-xs sm:text-[13px]">
+              <span class="text-slate-800 dark:text-slate-200">Go-around speed (flaps T/O)</span>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300">66 KIAS</span>
+            </div>
+          </div>
+
+          <!-- NOTE AFM -->
+          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <div>La componente de viento cruzado máxima demostrada para el despegue y el aterrizaje es de 20 nudos (37 km/h). Para operaciones con viento racheado o cruzado fuerte, mantenga la configuración de flaps en T/O y sume la mitad de la racha a la velocidad de aproximación.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">COMPONENTES DE VIENTO CRUZADO</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Gráfica de componentes de viento relativo y límite de viento cruzado demostrado de 20 nudos con el anemómetro del Diamond DA40 TDI.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.17: 4.17 Despegue y Ascenso -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.17 Despegue y Ascenso</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Alineación, Carrera de Despegue, Rotación y Ascenso Inicial</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TAKE-OFF &amp; CLIMB</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">TAKE-OFF &amp; CLIMB</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Runway lineup &mdash; <span class="italic font-medium">centered, nose wheel straight</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">smooth FULL FORWARD</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">Engine parameters &mdash; <span class="italic font-medium">check CED 125 (Load &gt; 95%, 2300 RPM, temps &amp; press in green)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Elevator control &mdash; <span class="italic font-medium">neutral during ground roll</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5)</span>
+              <span class="text-slate-800 dark:text-slate-200">Rotate &mdash; <span class="italic font-medium">59 KIAS, pitch for climb</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6)</span>
+              <span class="text-slate-800 dark:text-slate-200">Climb speed &mdash; <span class="italic font-medium">accelerate to 66 KIAS (VX) or 73 KIAS (VY)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7)</span>
+              <div class="text-slate-800 dark:text-slate-200">
+                <span>At safe altitude (min 600 ft AGL):</span>
+                <div class="pl-4 pt-0.5 space-y-0.5">
+                  <div>a) Wing flaps &mdash; <span class="italic font-medium">UP (white T/O light off, green UP light on)</span></div>
+                  <div>b) Electric fuel pump &mdash; <span class="italic font-medium">OFF</span></div>
+                  <div>c) Climb power &mdash; <span class="italic font-medium">maintain as required</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAUTION AFM -->
+          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION:</span>
+            </strong>
+            <div>Al aplicar potencia máxima, compruebe de inmediato que la carga del motor en el CED 125 alcance al menos el 95% y las RPM se sitúen en 2300. Si la potencia es insuficiente o se enciende alguna luz de motor, corte potencia y aborte el despegue de inmediato.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PERFIL DE DESPEGUE Y ASCENSO</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Perfil de despegue y ascenso del DA40 indicando rotación a 59 kt, velocidad Vy de 73 kt, aceleración y retracción de flaps por encima de 600 ft AGL.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.18: 4.18 Vuelo de Crucero y Gestión de Combustible -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.18 Vuelo de Crucero y Gestión de Combustible</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Ajustes de Potencia (60-80%), Bomba de Trasvase y Desbalance Máximo</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CRUISE &amp; FUEL MANAGEMENT</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CRUISE &amp; FUEL MANAGEMENT</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">set 60% to 80% load</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Elevator trim &mdash; <span class="italic font-medium">adjust for level flight</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">Engine parameters &mdash; <span class="italic font-medium">monitor CED 125 &amp; AED 125</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <div class="text-slate-800 dark:text-slate-200">
+                <span>Fuel management (if auxiliary tank installed):</span>
+                <div class="pl-4 pt-0.5 space-y-0.5">
+                  <div>a) Main tank level &mdash; <span class="italic font-medium">monitor consumption</span></div>
+                  <div>b) Fuel transfer switch &mdash; <span class="italic font-medium">ON when main tank drops below 14 US gal</span></div>
+                  <div>c) Fuel transfer switch &mdash; <span class="italic font-medium">OFF when main tank replenished or auxiliary tank empty</span></div>
+                  <div>d) Maximum allowable fuel unbalance &mdash; <span class="italic font-medium">10 US gal</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAUTION AFM -->
+          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION:</span>
+            </strong>
+            <div>No mantenga la bomba de trasvase encendida continuamente. Apague el interruptor de trasvase cuando el depósito principal esté lleno o el auxiliar vacío para evitar sobrepresiones y escape de combustible por el respiradero.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GESTIÓN DE TRASVASE DE COMBUSTIBLE</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Diagrama esquemático de transferencia de combustible en crucero: bombeo eléctrico desde el depósito auxiliar (derecho) al depósito principal (izquierdo).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.19: 4.19 Descenso y Aterrizaje Normal -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.19 Descenso y Aterrizaje Normal</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aproximación, Configuración de Flaps (T/O y LDG), Recogida y Frenado</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DESCENT &amp; LANDING</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">DESCENT &amp; APPROACH / LANDING</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Descent power &mdash; <span class="italic font-medium">reduce smoothly (avoid rapid chilling)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Safety harnesses &mdash; <span class="italic font-medium">secured</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">Emergency fuel valve &mdash; <span class="italic font-medium">NORMAL</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Electric fuel pump &mdash; <span class="italic font-medium">ON</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5)</span>
+              <span class="text-slate-800 dark:text-slate-200">Wing flaps &mdash; <span class="italic font-medium">set T/O below 108 KIAS (approach speed 73 KIAS)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6)</span>
+              <span class="text-slate-800 dark:text-slate-200">Final approach &mdash; <span class="italic font-medium">wing flaps set LDG below 91 KIAS, maintain 65 KIAS</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7)</span>
+              <span class="text-slate-800 dark:text-slate-200">Touchdown &mdash; <span class="italic font-medium">flare smoothly, land on main wheels first, gently lower nose wheel</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">8)</span>
+              <span class="text-slate-800 dark:text-slate-200">Braking &mdash; <span class="italic font-medium">aerodynamic first, apply toe brakes smoothly as required</span></span>
+            </div>
+          </div>
+
+          <!-- NOTE AFM -->
+          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE:</span>
+            </strong>
+            <div>En condiciones de turbulencia o viento cruzado fuerte (hasta 20 kt), mantenga flaps en T/O y aproxime a 73 KIAS sumando la mitad de la racha a la velocidad de referencia.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PERFIL DE APROXIMACIÓN Y TOMA</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Perfil de aproximación y toma del DA40: configuración de flaps T/O en base (73 kt), flaps LDG en final (65 kt), recogida (flare) y toma principal.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.20: 4.20 Maniobra de Escape: Motor y al Aire -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.20 Maniobra de Escape: Motor y al Aire</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aproximación Frustrada (Balked Landing / Go-Around)</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BALKED LANDING / GO-AROUND</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">BALKED LANDING (GO-AROUND)</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">smooth FULL FORWARD</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Wing flaps &mdash; <span class="italic font-medium">set T/O immediately (retract from LDG 42° to T/O 20°)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">Pitch attitude &mdash; <span class="italic font-medium">establish climb attitude</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Climb speed &mdash; <span class="italic font-medium">66 KIAS</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5)</span>
+              <span class="text-slate-800 dark:text-slate-200">Positive rate of climb &mdash; <span class="italic font-medium">confirm on VSI and altimeter</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6)</span>
+              <span class="text-slate-800 dark:text-slate-200">At safe altitude (min 600 ft AGL) &mdash; <span class="italic font-medium">wing flaps UP, electric fuel pump OFF</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7)</span>
+              <span class="text-slate-800 dark:text-slate-200">ATC &mdash; <span class="italic font-medium">notify go-around</span></span>
+            </div>
+          </div>
+
+          <!-- WARNING AFM -->
+          <div class="p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>WARNING:</span>
+            </strong>
+            <div>En motor y al aire, retraiga inmediatamente los flaps de LDG (42°) a T/O (20°); jamás los retraiga directamente a UP para evitar un hundimiento brusco por pérdida repentina de sustentación cerca del suelo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TRAYECTORIA DE APROXIMACIÓN FRUSTRADA</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Diagrama de escape y motor y al aire (Go-Around): aplicación suave de máxima potencia, flaps a posición intermedia T/O y ascenso con 66 kt.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.21: 4.21 Tras el Aterrizaje y Parada de Motor -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.21 Tras el Aterrizaje y Parada de Motor</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Desalojo de Pista, Enfriamiento de Turbo (1-2 min) y Corte</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AFTER LANDING &amp; ENGINE SHUT-DOWN</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">AFTER LANDING &amp; SHUT-DOWN</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Wing flaps &mdash; <span class="italic font-medium">UP</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Pitot heat &amp; landing light &mdash; <span class="italic font-medium">OFF</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">Electric fuel pump &mdash; <span class="italic font-medium">OFF</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Parking brake &mdash; <span class="italic font-medium">set in parking area</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5)</span>
+              <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">IDLE (wait 1 to 2 minutes for turbocharger cooldown)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6)</span>
+              <span class="text-slate-800 dark:text-slate-200">ELT &mdash; <span class="italic font-medium">check 121.5 MHz (no transmission)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7)</span>
+              <span class="text-slate-800 dark:text-slate-200">Avionics Master &amp; electrical consumers &mdash; <span class="italic font-medium">OFF</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">8)</span>
+              <span class="text-slate-800 dark:text-slate-200">ENGINE MASTER &mdash; <span class="italic font-medium">OFF</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">9)</span>
+              <span class="text-slate-800 dark:text-slate-200">ELECTRIC MASTER &mdash; <span class="italic font-medium">OFF (pull out key)</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">10)</span>
+              <span class="text-slate-800 dark:text-slate-200">Control lock, pitot cover &amp; chocks &mdash; <span class="italic font-medium">install</span></span>
+            </div>
+          </div>
+
+          <!-- CAUTION AFM -->
+          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION:</span>
+            </strong>
+            <div>Es imperativo dejar el motor en ralentí entre 1 y 2 minutos antes de cortar el ENGINE MASTER para que el flujo de aceite estabilice y enfríe los cojinetes del turbocompresor. Cortar el motor caliente de golpe provoca la carbonización instantánea del aceite y la avería del turbo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENFRIAMIENTO DE TURBOCOMPRESOR</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Esquema del turbocompresor mostrando el flujo continuo de aceite lubricante en ralentí (1 a 2 min) para evitar la coquización térmica del eje antes del corte de motor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 4.22: 4.22 Procedimientos Especiales y Operación en Tiempo Frío -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.22 Procedimientos Especiales y Operación en Tiempo Frío</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Precalentamiento Diésel, Arranque con GPU y Pistas Blandas</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SPECIAL PROCEDURES &amp; COLD WEATHER</span>
+          </div>
+
+          <!-- LISTA VERBATIM AFM -->
+          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">SPECIAL &amp; COLD WEATHER OPERATIONS</strong>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1)</span>
+              <span class="text-slate-800 dark:text-slate-200">Pre-heating engine &mdash; <span class="italic font-medium">mandatory if engine oil/coolant temperature is below -5°C</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2)</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel additive / Anti-icing &mdash; <span class="italic font-medium">verify approved anti-icing additive for Jet-A1 in cold temps</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3)</span>
+              <span class="text-slate-800 dark:text-slate-200">External power starting (GPU) &mdash; <span class="italic font-medium">use if battery voltage is below 11.5 V</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4)</span>
+              <span class="text-slate-800 dark:text-slate-200">Wet grass / soft field take-off &mdash; <span class="italic font-medium">flaps T/O, rolling start, hold nose wheel off gently</span></span>
+            </div>
+            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5)</span>
+              <span class="text-slate-800 dark:text-slate-200">Water contamination check &mdash; <span class="italic font-medium">drain all fuel sumps after refueling and before flight</span></span>
+            </div>
+          </div>
+
+          <!-- WARNING AFM -->
+          <div class="p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
+              <span>⚠️</span>
+              <span>WARNING:</span>
+            </strong>
+            <div>En temperaturas bajo cero, cualquier resto de agua en el combustible forma cristales de hielo que colmatan los microfiltros de la inyección diésel common rail, provocando la parada total del motor en vuelo. En invierno, use aditivos antihielo aprobados o asegure que el combustible esté completamente libre de agua.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">OPERACIÓN EN TIEMPO FRÍO Y GPU</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
+          </div>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Gráfica de rangos de temperatura para combustible Jet-A1 / Diésel y conexión de fuente externa (GPU) para arranque en clima frío.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 `,
 };
