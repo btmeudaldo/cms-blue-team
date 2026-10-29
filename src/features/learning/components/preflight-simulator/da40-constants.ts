@@ -248,3 +248,4 @@ export const DA40_PERFORMANCE_SCENARIOS: DA40PerformanceScenario[] = [
     tip: "La Gomera (1.000 ft): Pista de 1.500 m. Verificación clave de márgenes sobre terreno insular.",
   },
 ];
+

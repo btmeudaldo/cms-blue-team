@@ -18,6 +18,99 @@ export const EC_NNA_DATA = {
   fuelDensityKgL: 0.84, // Jet A-1 / Diésel
 };
 
+export const DA40_DATA = {
+  registration: "EC-XXX",
+  model: "Diamond DA40 TDI",
+  engine: "Thielert TAE 125-01 / CD-135 (99 kW / 135 HP)",
+  mtomKg: 1150,
+  mtomLbs: 2535,
+  mlmKg: 1150,
+  minFlightMassKg: 780,
+  emptyWeightKg: 735.0,
+  emptyWeightArm: 2.476,
+  emptyWeightMoment: 1820.0,
+  arms: {
+    pilotsFront: 2.30,
+    passengersRear: 3.25,
+    baggageArea1: 3.65, // Standard tray max 30 kg
+    fuel: 2.63, // Wing tanks
+  },
+  fuelDensityKgL: 0.84, // Jet A-1 / Diésel EN 590
+  maxFuelLiters: 106,
+};
+
+export const DA40_PREFLIGHT_MISSIONS: PreflightMission[] = [
+  {
+    id: "da40-mision-1",
+    name: "Misión 1: Vuelo Local de Instrucción (GCXO - Tenerife Norte)",
+    badge: "Básico · Normal",
+    description: "Vuelo de maniobras en zona local de Tenerife Norte (GCXO) con Instructor y Alumno. 80 Litros de JET A-1 en depósitos estándar. Régimen de crucero al 60% de carga (15,1 L/h).",
+    scenario: {
+      origin: "GCXO (Tenerife Norte)",
+      destination: "GCXO (Tenerife Norte)",
+      distanceNm: 60,
+      altPressFt: 2000,
+      oatC: 20,
+      windKt: 9, // 9 kt en cara
+      runwayType: "asphalt",
+      runwayToraM: 3171,
+      runwayLdaM: 3171,
+      pilotsFrontKg: 157, // Alumno 75 kg + Instructor 82 kg
+      passengersRearKg: 0,
+      baggageKg: 10,
+      takeoffFuelLiters: 80,
+      cruiseLoadPct: 60, // 60% Load = 15.1 L/h
+      flightTimeHrs: 1.0,
+    },
+  },
+  {
+    id: "da40-mision-2",
+    name: "Misión 2: Navegación Interinsular (GCXO - GCGM)",
+    badge: "Intermedio · Travesía",
+    description: "Vuelo de travesía interinsular desde Tenerife Norte (GCXO) a La Gomera (GCGM) con 3 ocupantes y equipaje. Crucero a 6.000 ft al 60% de potencia (15,1 L/h).",
+    scenario: {
+      origin: "GCXO (Tenerife Norte)",
+      destination: "GCGM (La Gomera)",
+      distanceNm: 60,
+      altPressFt: 1000,
+      oatC: 22,
+      windKt: 5,
+      runwayType: "asphalt",
+      runwayToraM: 1500,
+      runwayLdaM: 1500,
+      pilotsFrontKg: 155, // 2 ocupantes delante (78 kg + 77 kg)
+      passengersRearKg: 75, // 1 pasajero detrás
+      baggageKg: 20,
+      takeoffFuelLiters: 65,
+      cruiseLoadPct: 60,
+      flightTimeHrs: 0.6,
+    },
+  },
+  {
+    id: "da40-mision-3",
+    name: "Misión 3: Desafío de Carga y Centrado (GCTS - GCXO)",
+    badge: "Desafío · Alerta de Límites",
+    description: "Travesía interinsular desde Tenerife Sur (GCTS) hacia Tenerife Norte (GCXO) con 4 ocupantes y equipaje máximo en bandeja (30 kg). Crucero al 70% de potencia (18,5 L/h).",
+    scenario: {
+      origin: "GCTS (Tenerife Sur)",
+      destination: "GCXO (Tenerife Norte)",
+      distanceNm: 45,
+      altPressFt: 0,
+      oatC: 24,
+      windKt: -4,
+      runwayType: "asphalt",
+      runwayToraM: 3200,
+      runwayLdaM: 3171,
+      pilotsFrontKg: 140, // 2 ocupantes delante ligeros (70 kg c/u)
+      passengersRearKg: 150, // 2 ocupantes detrás (75 kg c/u)
+      baggageKg: 30, // Máximo en bandeja estándar
+      takeoffFuelLiters: 90,
+      cruiseLoadPct: 70, // 70% Load = 18.5 L/h
+      flightTimeHrs: 0.5,
+    },
+  },
+];
+
 export const PREFLIGHT_MISSIONS: PreflightMission[] = [
   {
     id: "mision-1",
@@ -155,6 +248,55 @@ export function mapSvgCoordsToCg(x: number, y: number): { massKg: number; cgM: n
   return {
     massKg: Math.round(massKg),
     cgM: Math.round((cgMm / 1000) * 1000) / 1000,
+  };
+}
+
+/**
+ * Checks whether a given (massKg, cgM) coordinate is within the DA40 Normal Category Envelope
+ */
+export function isCgInsideNormalDA40(massKg: number, cgM: number): boolean {
+  if (massKg < 780 || massKg > 1150) return false;
+  let fwdLimit = 2.40;
+  if (massKg > 980) {
+    fwdLimit = 2.40 + ((massKg - 980) / (1150 - 980)) * (2.46 - 2.40);
+  }
+  const aftLimit = 2.59;
+  return cgM >= fwdLimit && cgM <= aftLimit;
+}
+
+/**
+ * Checks whether a given (massKg, cgM) coordinate is within the DA40 Utility Category Envelope
+ */
+export function isCgInsideUtilityDA40(massKg: number, cgM: number): boolean {
+  if (massKg < 780 || massKg > 980) return false;
+  const fwdLimit = 2.40;
+  const aftLimit = 2.59;
+  return cgM >= fwdLimit && cgM <= aftLimit;
+}
+
+/**
+ * Maps Mass (kg) and CG (m) into DA40 SVG viewBox (1050 x 870) coordinates
+ */
+export function mapCgToSvgCoordsDA40(massKg: number, cgM: number): { x: number; y: number } {
+  const clampedCg = Math.max(2.38, Math.min(2.62, cgM));
+  const x = 184 + (clampedCg - 2.40) * 3557.89;
+
+  const clampedMass = Math.max(740, Math.min(1200, massKg));
+  const y = 680 - (clampedMass - 780) * 1.5027;
+
+  return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 };
+}
+
+/**
+ * Inverse mapping for DA40: maps (x, y) on SVG to Mass (kg) and CG (m)
+ */
+export function mapSvgCoordsToCgDA40(x: number, y: number): { massKg: number; cgM: number } {
+  const cgM = 2.40 + (x - 184) / 3557.89;
+  const massKg = 780 + (680 - y) / 1.5027;
+
+  return {
+    massKg: Math.round(massKg),
+    cgM: Math.round(cgM * 1000) / 1000,
   };
 }
 

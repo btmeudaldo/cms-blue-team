@@ -110,6 +110,7 @@ export function PreflightInteractiveHub({
       return (
         <PreflightLoadsheetWidget
           mode="all"
+          aircraft={aircraft}
           onExerciseCompleted={onExerciseCompleted}
           isAlreadyCompleted={isAlreadyCompleted}
         />
@@ -118,6 +119,7 @@ export function PreflightInteractiveHub({
       return (
         <PreflightLoadsheetWidget
           mode="takeoff"
+          aircraft={aircraft}
           onExerciseCompleted={onExerciseCompleted}
           isAlreadyCompleted={isAlreadyCompleted}
         />
@@ -127,6 +129,7 @@ export function PreflightInteractiveHub({
       return (
         <PreflightLoadsheetWidget
           mode="landing"
+          aircraft={aircraft}
           onExerciseCompleted={onExerciseCompleted}
           isAlreadyCompleted={isAlreadyCompleted}
         />
@@ -134,6 +137,7 @@ export function PreflightInteractiveHub({
     case "cruise":
       return (
         <PreflightCruiseWidget
+          aircraft={aircraft}
           onExerciseCompleted={onExerciseCompleted}
           isAlreadyCompleted={isAlreadyCompleted}
         />
@@ -141,6 +145,7 @@ export function PreflightInteractiveHub({
     case "fuel":
       return (
         <PreflightFuelWidget
+          aircraft={aircraft}
           onExerciseCompleted={onExerciseCompleted}
           isAlreadyCompleted={isAlreadyCompleted}
         />
@@ -149,6 +154,7 @@ export function PreflightInteractiveHub({
       return (
         <PreflightPerformanceWidget
           mode="all"
+          aircraft={aircraft}
           onExerciseCompleted={onExerciseCompleted}
           isAlreadyCompleted={isAlreadyCompleted}
         />
@@ -157,6 +163,7 @@ export function PreflightInteractiveHub({
       return (
         <PreflightPerformanceWidget
           mode="takeoff"
+          aircraft={aircraft}
           onExerciseCompleted={onExerciseCompleted}
           isAlreadyCompleted={isAlreadyCompleted}
         />
@@ -165,6 +172,7 @@ export function PreflightInteractiveHub({
       return (
         <PreflightPerformanceWidget
           mode="landing"
+          aircraft={aircraft}
           onExerciseCompleted={onExerciseCompleted}
           isAlreadyCompleted={isAlreadyCompleted}
         />
