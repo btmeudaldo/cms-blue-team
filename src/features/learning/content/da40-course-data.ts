@@ -5492,7 +5492,7 @@ export const DA40_LESSON_4 = {
 export const DA40_LESSON_5 = {
   id: "da400000-0000-0000-0000-000000000050",
   course_id: DA40_COURSE_ID,
-  title: "5. Procedimientos de Emergencia y Anómalos",
+  title: "5. Procedimientos de Emergencia y Casos Anómalos",
   slug: "procedimientos-emergencia-da40",
   sequence_order: 5,
   lesson_order: 5,
@@ -5504,7 +5504,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.1 Velocidades de Emergencia de la Célula y Mejor Planeo</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.1.2 Certain Airspeeds in Emergencies & 3.4 Gliding</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Certain Airspeeds in Emergencies & Gliding</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -5513,12 +5513,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.1.2 & 3.4 AIRSPEEDS IN EMERGENCIES & GLIDING</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AIRSPEEDS IN EMERGENCIES & GLIDING</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.1.2 & 3.4 AIRSPEEDS IN EMERGENCIES & GLIDING</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">AIRSPEEDS IN EMERGENCIES & GLIDING</strong>
             <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs mb-2">
               <table class="w-full text-left text-xs sm:text-[13px] leading-tight">
                 <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
@@ -5558,7 +5558,7 @@ export const DA40_LESSON_5 = {
               </table>
             </div>
             <div class="pt-1 text-xs sm:text-[13px] space-y-1">
-              <div class="font-bold text-[#0B2E59] dark:text-sky-300">3.4 GLIDING:</div>
+              <div class="font-bold text-[#0B2E59] dark:text-sky-300">GLIDING (MAXIMUM GLIDE RATIO):</div>
               <div lang="en" class="flex items-start gap-2 py-0.5"><span class="font-bold text-[#0B2E59] dark:text-sky-300 min-w-[20px]">1.</span><span>Flaps &mdash; <span class="italic font-medium">UP</span></span></div>
               <div lang="en" class="flex items-start gap-2 py-0.5"><span class="font-bold text-[#0B2E59] dark:text-sky-300 min-w-[20px]">2.</span><span>Airspeed &mdash; <span class="italic font-medium font-bold text-[#1a80ff] dark:text-sky-400">73 KIAS (1150 kg) / 68 KIAS (1000 kg) / 60 KIAS (850 kg)</span></span></div>
             </div>
@@ -5605,7 +5605,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.2 Fallo de Motor en Tierra y Aborto de Despegue</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.2.1 Engine Problems on Ground & 3.2.2 (a) Take-Off Aborted</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Engine Problems on Ground & Aborted Take-Off</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -5614,12 +5614,13 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.2.1 & 3.2.2 (a) ENGINE PROBLEMS ON GROUND / ABORTED TAKE-OFF</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENGINE PROBLEMS ON GROUND & ABORTED TAKE-OFF</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.2.1 & 3.2.2 (a) ENGINE PROBLEMS ON GROUND / ABORTED TAKE-OFF</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ENGINE PROBLEMS ON GROUND & ABORTED TAKE-OFF</strong>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">ENGINE PROBLEMS ON GROUND:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">IDLE</span></span>
@@ -5632,7 +5633,7 @@ export const DA40_LESSON_5 = {
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
                 <span class="text-slate-800 dark:text-slate-200">ENGINE MASTER &mdash; <span class="italic font-medium">OFF</span></span>
               </div>
-            <div class="pt-2 text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 border-t border-slate-100 dark:border-slate-700">3.2.2 (a) TAKE-OFF CAN STILL BE ABORTED:</div>
+            <div class="pt-2 text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 border-t border-slate-100 dark:border-slate-700">TAKE-OFF CAN STILL BE ABORTED:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">IDLE</span></span>
@@ -5697,7 +5698,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.3 Fallo de Motor Tras el Despegue (EFATO)</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.2.2 (b) Take-Off Can No Longer Be Aborted</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Take-Off Can No Longer Be Aborted</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -5706,12 +5707,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.2.2 (b) ENGINE FAILURE AFTER TAKE-OFF</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENGINE FAILURE AFTER TAKE-OFF</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.2.2 (b) ENGINE FAILURE AFTER TAKE-OFF</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ENGINE FAILURE AFTER TAKE-OFF</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-medium">72 KIAS (1150 kg, 2535 lb) / 66 KIAS (1000 kg, 2205 lb)</span></span>
@@ -5780,7 +5781,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.4 Fallo de Motor en Vuelo (Engine Failure in Flight)</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.2.3 Engine Problems in Flight - Rough Running & Power Loss</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Engine Problems in Flight - Rough Running & Power Loss</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -5789,12 +5790,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.2.3 ENGINE PROBLEMS IN FLIGHT</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENGINE PROBLEMS IN FLIGHT</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.2.3 ENGINE PROBLEMS IN FLIGHT</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ENGINE PROBLEMS IN FLIGHT</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-medium">73 KIAS (1150 kg, 2535 lb) / 68 KIAS (1000 kg, 2205 lb)</span></span>
@@ -5850,7 +5851,7 @@ export const DA40_LESSON_5 = {
             <span>⚠️</span>
             <span>WARNING:</span>
           </strong>
-          <div>Si el problema no se resuelve de inmediato y el motor no genera potencia suficiente para mantener vuelo nivelado, ejecute de inmediato la preparación de aterrizaje de emergencia (3.5.1). El ciclo de reset (ENGINE MASTER OFF-ON) solo debe intentarse con altitud segura remanente.</div>
+          <div>Si el problema no se resuelve de inmediato y el motor no genera potencia suficiente para mantener vuelo nivelado, ejecute de inmediato la preparación de aterrizaje de emergencia. El ciclo de reset (ENGINE MASTER OFF-ON) solo debe intentarse con altitud segura remanente.</div>
         </div>
       </div>
     </div>
@@ -5866,7 +5867,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.5 Reencendido de Motor con Hélice en Molinete</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.2.4 Restarting the Engine with Windmilling Propeller</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Restarting the Engine with Windmilling Propeller</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -5875,12 +5876,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.2.4 RESTARTING WITH WINDMILLING PROPELLER</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RESTARTING WITH WINDMILLING PROPELLER</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.2.4 RESTARTING WITH WINDMILLING PROPELLER</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">RESTARTING WITH WINDMILLING PROPELLER</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-medium">73 to 110 KIAS</span></span>
@@ -5957,7 +5958,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.6 Reencendido de Motor con Hélice Parada (Starter)</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.2.5 Restarting the Engine with Stationary Propeller</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Restarting the Engine with Stationary Propeller</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -5966,12 +5967,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.2.5 RESTARTING WITH STATIONARY PROPELLER</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RESTARTING WITH STATIONARY PROPELLER</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.2.5 RESTARTING WITH STATIONARY PROPELLER</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">RESTARTING WITH STATIONARY PROPELLER</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-medium">73 KIAS (1150 kg) / 68 KIAS (1000 kg)</span></span>
@@ -6047,7 +6048,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.7 Malfunción del Regulador de RPM y Sobrevelocidad</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.2.6 Defective RPM Regulating System & Propeller Overspeed</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Defective RPM Regulating System & Propeller Overspeed</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -6056,13 +6057,13 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.2.6 DEFECTIVE RPM REGULATING SYSTEM</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DEFECTIVE RPM REGULATING SYSTEM</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.2.6 DEFECTIVE RPM REGULATING SYSTEM</strong>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">(a) Oscillating RPM:</div>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">DEFECTIVE RPM REGULATING SYSTEM</strong>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">OSCILLATING RPM:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">change position slightly</span></span>
@@ -6071,7 +6072,7 @@ export const DA40_LESSON_5 = {
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
                 <span class="text-slate-800 dark:text-slate-200">ECU SWAP switch &mdash; <span class="italic font-medium">ECU B (check RPM stability)</span></span>
               </div>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">(b) Propeller Overspeed (RPM > 2500):</div>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">PROPELLER OVERSPEED (RPM > 2500):</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">reduce as necessary</span></span>
@@ -6136,7 +6137,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.8 Humo y Fuego en Tierra y Durante el Despegue</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.3.1 Smoke and Fire on Ground & 3.3.2 During Take-Off</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Smoke and Fire on Ground & During Take-Off</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -6145,13 +6146,13 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.3.1 & 3.3.2 SMOKE AND FIRE ON GROUND / TAKE-OFF</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SMOKE AND FIRE ON GROUND / TAKE-OFF</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.3.1 & 3.3.2 SMOKE AND FIRE ON GROUND / TAKE-OFF</strong>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">3.3.1 SMOKE AND FIRE ON GROUND:</div>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">SMOKE AND FIRE ON GROUND / TAKE-OFF</strong>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">SMOKE AND FIRE ON GROUND:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">ENGINE MASTER &mdash; <span class="italic font-medium">OFF</span></span>
@@ -6172,7 +6173,7 @@ export const DA40_LESSON_5 = {
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">5.</span>
                 <span class="text-slate-800 dark:text-slate-200">Canopy / Passenger door &mdash; <span class="italic font-medium">unlatch and evacuate</span></span>
               </div>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">3.3.2 SMOKE AND FIRE DURING TAKE-OFF (Aborted):</div>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">SMOKE AND FIRE DURING TAKE-OFF (ABORTED):</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">IDLE</span></span>
@@ -6228,7 +6229,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.9 Incendio de Motor en Vuelo</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.3.3 (a) Engine Fire in Flight</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Engine Fire in Flight</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -6237,12 +6238,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.3.3 (a) ENGINE FIRE IN FLIGHT</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENGINE FIRE IN FLIGHT</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.3.3 (a) ENGINE FIRE IN FLIGHT</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ENGINE FIRE IN FLIGHT</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Cabin heat &mdash; <span class="italic font-medium">OFF</span></span>
@@ -6269,7 +6270,7 @@ export const DA40_LESSON_5 = {
               </div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">7.</span>
-                <span class="text-slate-800 dark:text-slate-200">Landing &mdash; <span class="italic font-medium">prepare for emergency landing (3.5.1)</span></span>
+                <span class="text-slate-800 dark:text-slate-200">Landing &mdash; <span class="italic font-medium">prepare for emergency landing</span></span>
               </div>
           </div>
         </div>
@@ -6314,7 +6315,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.10 Humo e Incendio Eléctrico en Vuelo</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.3.3 (b) Electrical Fire with Smoke in Flight</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Electrical Fire with Smoke in Flight</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -6323,12 +6324,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.3.3 (b) ELECTRICAL FIRE IN FLIGHT</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ELECTRICAL FIRE IN FLIGHT</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.3.3 (b) ELECTRICAL FIRE IN FLIGHT</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ELECTRICAL FIRE IN FLIGHT</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">EMERGENCY switch &mdash; <span class="italic font-medium">ON (if installed)</span></span>
@@ -6396,7 +6397,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.11 Aterrizaje de Emergencia con Motor Parado</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.5.1 Emergency Landing with Engine Off</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Emergency Landing with Engine Off</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -6405,12 +6406,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.5.1 EMERGENCY LANDING WITH ENGINE OFF</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">EMERGENCY LANDING WITH ENGINE OFF</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.5.1 EMERGENCY LANDING WITH ENGINE OFF</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">EMERGENCY LANDING WITH ENGINE OFF</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Landing area &mdash; <span class="italic font-medium">select field (upward slope if no level area)</span></span>
@@ -6488,7 +6489,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.12 Aterrizaje con Neumático Desinflado o Frenos Fallidos</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.5.2 Defective Tire on MLG & 3.5.3 Defective Brakes</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Defective Tire on MLG & Defective Brakes</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -6497,13 +6498,13 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.5.2 & 3.5.3 DEFECTIVE TIRE / BRAKES</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DEFECTIVE TIRE / BRAKES</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.5.2 & 3.5.3 DEFECTIVE TIRE / BRAKES</strong>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">3.5.2 DEFECTIVE TIRE ON MLG:</div>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">DEFECTIVE TIRE / BRAKES</strong>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">DEFECTIVE TIRE ON MLG:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Flaps &mdash; <span class="italic font-medium">LDG</span></span>
@@ -6520,7 +6521,7 @@ export const DA40_LESSON_5 = {
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
                 <span class="text-slate-800 dark:text-slate-200">Directional control &mdash; <span class="italic font-medium">maintain with rudder and ailerons</span></span>
               </div>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">3.5.3 DEFECTIVE BRAKES:</div>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">DEFECTIVE BRAKES:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Runway choice &mdash; <span class="italic font-medium">grass recommended for rolling resistance</span></span>
@@ -6584,7 +6585,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.13 Recuperación de Barrena Inadvertida (Unintentional Spin)</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.6 Recovery from an Unintentional Spin</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Recovery from an Unintentional Spin</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -6593,12 +6594,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.6 RECOVERY FROM AN UNINTENTIONAL SPIN</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RECOVERY FROM AN UNINTENTIONAL SPIN</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.6 RECOVERY FROM AN UNINTENTIONAL SPIN</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">RECOVERY FROM AN UNINTENTIONAL SPIN</strong>
             <div class="text-[11px] text-slate-500 dark:text-slate-400 italic pb-1">Carry out immediately and simultaneously:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
@@ -6668,7 +6669,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.14 Vuelo Inadvertido en Condiciones de Engelamiento</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.7.1 Icing - Unintentional Flight into Icing Conditions</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Icing - Unintentional Flight into Icing Conditions</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -6677,12 +6678,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.7.1 ICING</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ICING PROCEDURES</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.7.1 ICING</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ICING PROCEDURES</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">PITOT HEAT &mdash; <span class="italic font-medium">ON</span></span>
@@ -6755,7 +6756,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.15 Fallo Eléctrico Total y Switch EMERGENCY</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.7.2 (a) Complete Failure of the Electrical System</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Complete Failure of the Electrical System</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -6764,12 +6765,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.7.2 FAILURES IN THE ELECTRICAL SYSTEM</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">COMPLETE ELECTRICAL FAILURE</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.7.2 FAILURES IN THE ELECTRICAL SYSTEM</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">COMPLETE ELECTRICAL FAILURE</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Circuit breakers &mdash; <span class="italic font-medium">check if all OK (pressed in)</span></span>
@@ -6837,7 +6838,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.16 Monóxido de Carbono (CO) y Aviso DOOR en Vuelo</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">3.7.3 CO Contamination & 3.7.4 'DOOR' Warning Light On</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Carbon Monoxide Contamination & 'DOOR' Warning Light On</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -6846,13 +6847,13 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">3.7.3 & 3.7.4 CO CONTAMINATION & DOOR WARNING</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CO CONTAMINATION & DOOR WARNING</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.7.3 & 3.7.4 CO CONTAMINATION & DOOR WARNING</strong>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">3.7.3 SUSPICION OF CARBON MONOXIDE (CO):</div>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CO CONTAMINATION & DOOR WARNING</strong>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">SUSPICION OF CARBON MONOXIDE (CO):</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Cabin heat &mdash; <span class="italic font-medium">OFF</span></span>
@@ -6869,7 +6870,7 @@ export const DA40_LESSON_5 = {
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
                 <span class="text-slate-800 dark:text-slate-200">Landing &mdash; <span class="italic font-medium">land on next suitable airfield</span></span>
               </div>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">3.7.4 'DOOR'-WARNING LIGHT ON:</div>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">'DOOR'-WARNING LIGHT ON:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-medium">reduce immediately (<= 140 KIAS)</span></span>
@@ -6925,7 +6926,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.17 Aterrizaje de Precaución con Motor Operativo</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">4B.1 Precautionary Landing</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Precautionary Landing with Engine Power Available</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -6934,12 +6935,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">4B.1 PRECAUTIONARY LANDING</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PRECAUTIONARY LANDING</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.1 PRECAUTIONARY LANDING</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">PRECAUTIONARY LANDING</strong>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Landing area &mdash; <span class="italic font-medium">select appropriate area (upward slope if available)</span></span>
@@ -7016,7 +7017,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.18 Luces de Aviso FADEC: ECU A y ECU B en Vuelo</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">4B.3.2 & 4B.3.3 ECU A / ECU B Failure (Annunciator Panel)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">ECU A & ECU B Failure (Annunciator Panel)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -7025,18 +7026,18 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">4B.3.2 & 4B.3.3 ECU FAILURES</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ECU FAILURES</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.2 & 4B.3.3 ECU FAILURES</strong>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">(a) Caution on the ground:</div>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ECU FAILURES</strong>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">CAUTION ON THE GROUND:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Flight preparation &mdash; <span class="italic font-medium">TERMINATE</span></span>
               </div>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">(b) Caution in flight - Flashing caution:</div>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">CAUTION IN FLIGHT (FLASHING):</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">ECU TEST button &mdash; <span class="italic font-medium">press and hold for > 2 seconds</span></span>
@@ -7098,7 +7099,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.19 Conmutación Manual de ECU (ECU SWAP en Vuelo)</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">4B.3.2 (c) Manual ECU Selection (ECU SWAP)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Manual ECU Selection in Flight</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -7107,12 +7108,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">4B.3.2 MANUAL ECU SELECTION</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">MANUAL ECU SELECTION</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.2 MANUAL ECU SELECTION</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">MANUAL ECU SELECTION</strong>
             <div class="text-[11px] text-slate-500 dark:text-slate-400 italic pb-1">Only if engine malfunction / power loss on active ECU:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
@@ -7179,7 +7180,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.20 Fallo de Alternador y Aviso LOW VOLTS</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">4B.3.4 Alternator Failure & 4B.3.1 Low Voltage Caution</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Alternator Failure & Low Voltage Caution</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -7188,12 +7189,12 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">4B.3.1 & 4B.3.4 ELECTRICAL SYSTEM ANOMALIES</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ELECTRICAL SYSTEM ANOMALIES</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.1 & 4B.3.4 ELECTRICAL SYSTEM ANOMALIES</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ELECTRICAL SYSTEM ANOMALIES</strong>
             <div class="text-[11px] text-slate-500 dark:text-slate-400 italic pb-1">ALTERNATOR or LOW VOLTS caution illuminated:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
@@ -7262,7 +7263,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.21 Anomalías de Temperatura: Refrigerante y Aceite</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">4B.2.2 Coolant Temperature (CT) & 4B.2.3 Oil Temperature (OT)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Coolant Temperature (CT) & Oil Temperature (OT)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -7271,13 +7272,13 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">4B.2.2 & 4B.2.3 THERMAL ANOMALIES</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">THERMAL ANOMALIES</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.2.2 & 4B.2.3 THERMAL ANOMALIES</strong>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">4B.2.2 COOLANT TEMPERATURE (CT) HIGH (> 105°C):</div>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">THERMAL ANOMALIES</strong>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">COOLANT TEMPERATURE (CT) HIGH (> 105°C):</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Coolant quantity (WATER LEVEL) &mdash; <span class="italic font-medium">check annunciator light</span></span>
@@ -7294,7 +7295,7 @@ export const DA40_LESSON_5 = {
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
                 <span class="text-slate-800 dark:text-slate-200">Cabin heat &mdash; <span class="italic font-medium">ON (helps dissipate engine heat)</span></span>
               </div>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">4B.2.3 OIL TEMPERATURE (OT) HIGH (> 140°C):</div>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">OIL TEMPERATURE (OT) HIGH (> 140°C):</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Oil pressure (OP) &mdash; <span class="italic font-medium">check if normal</span></span>
@@ -7350,7 +7351,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.22 Anomalías de Presión de Aceite y Reductora</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">4B.2.4 Oil Pressure (OP) & 4B.2.5 Gearbox Temperature (GT)</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Oil Pressure (OP) & Gearbox Temperature (GT)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -7359,13 +7360,13 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">4B.2.4 & 4B.2.5 OIL PRESSURE & GEARBOX ANOMALIES</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">OIL PRESSURE & GEARBOX ANOMALIES</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.2.4 & 4B.2.5 OIL PRESSURE & GEARBOX ANOMALIES</strong>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">4B.2.4 LOW OIL PRESSURE (OP < 1.0 bar):</div>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">OIL PRESSURE & GEARBOX ANOMALIES</strong>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">LOW OIL PRESSURE (OP < 1.0 bar):</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Oil temperature (OT) &mdash; <span class="italic font-medium">check</span></span>
@@ -7378,7 +7379,7 @@ export const DA40_LESSON_5 = {
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
                 <span class="text-slate-800 dark:text-slate-200">Landing &mdash; <span class="italic font-medium">land immediately (engine failure imminent)</span></span>
               </div>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">4B.2.5 HIGH GEARBOX TEMPERATURE (GT > 120°C):</div>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">HIGH GEARBOX TEMPERATURE (GT > 120°C):</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">reduce power</span></span>
@@ -7430,7 +7431,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
       <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.23 Combustible y Malfunción del Sistema de Flaps</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">4B.3.7 Low Fuel & 4B.6 Flap Operating System Failure</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Low Fuel & Flap Operating System Failure</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -7439,13 +7440,13 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">4B.3.7 & 4B.6 FUEL & FLAP SYSTEM ANOMALIES</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FUEL & FLAP SYSTEM ANOMALIES</span>
           </div>
 
           <!-- LISTA VERBATIM AFM -->
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex-1 min-h-0 overflow-hidden">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.7 & 4B.6 FUEL & FLAP SYSTEM ANOMALIES</strong>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">4B.3.7 LOW FUEL CAUTION & 3.2.7 FUEL TRANSFER FAILURE:</div>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">FUEL & FLAP SYSTEM ANOMALIES</strong>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pb-0.5">LOW FUEL CAUTION & FUEL TRANSFER FAILURE:</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Fuel transfer pump &mdash; <span class="italic font-medium">ON</span></span>
@@ -7459,7 +7460,7 @@ export const DA40_LESSON_5 = {
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
                 <span class="text-slate-800 dark:text-slate-200">Emergency fuel valve &mdash; <span class="italic font-medium">EMERG. TRANSFER</span></span>
               </div>
-            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">4B.6 FAILURES IN FLAP OPERATING SYSTEM (Flaps UP):</div>
+            <div class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">FAILURES IN FLAP OPERATING SYSTEM (FLAPS UP):</div>
               <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                 <span class="text-slate-800 dark:text-slate-200">Approach speed &mdash; <span class="italic font-medium">73 KIAS (1150 kg) / 68 KIAS (1000 kg)</span></span>
