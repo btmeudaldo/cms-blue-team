@@ -34,6 +34,7 @@ const uploads = [
   { local: "public/images/da40/da40-flaps-system.jpg", remote: "fleet/da40/da40-flaps-system.jpg", mime: "image/jpeg" },
   { local: "public/images/da40/da40-landing-gear-brakes.png", remote: "fleet/da40/da40-landing-gear-brakes.png", mime: "image/png" },
   { local: "public/images/da40/da40-walkaround.png", remote: "fleet/da40/da40-walkaround.png", mime: "image/png" },
+  { local: "public/images/da40/da40-walkaround.jpg", remote: "fleet/da40/da40-walkaround.jpg", mime: "image/jpeg" },
   { local: "public/images/da40/da40-placards.png", remote: "fleet/da40/da40-placards.png", mime: "image/png" },
   { local: "public/images/da40/da40-electrical-sources.png", remote: "fleet/da40/da40-electrical-sources.png", mime: "image/png" },
   { local: "public/images/da40/da40-electrical-buses.png", remote: "fleet/da40/da40-electrical-buses.png", mime: "image/png" },

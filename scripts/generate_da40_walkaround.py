@@ -275,3 +275,4 @@ def generate_da40_walkaround():
 
 if __name__ == "__main__":
     generate_da40_walkaround()
+

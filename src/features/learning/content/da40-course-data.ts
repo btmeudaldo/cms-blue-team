@@ -3479,8 +3479,8 @@ export const DA40_LESSON_4 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Procedimientos Normales (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col justify-between">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">(1) CABIN CHECK</span>
           </div>
@@ -3495,7 +3495,7 @@ export const DA40_LESSON_4 = {
           </div>
 
           <!-- LISTA EN 2 COLUMNAS (VERBATIM AFM) -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch flex-1">
             <!-- (1) CABIN CHECK (Parte 1: a hasta i) -->
             <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(1) CABIN CHECK</strong>
@@ -3582,20 +3582,11 @@ export const DA40_LESSON_4 = {
               </div>
             </div>
           </div>
-
-          <!-- WARNING AFM -->
-          <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
-            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
-              <span>⚠️</span>
-              <span>WARNING:</span>
-            </strong>
-            <div>Al conectar el interruptor ELECTRIC MASTER, utilizar una toma externa (GPU) o manipular la hélice, trate siempre la hélice como si el ENGINE MASTER estuviera en ON. ¡Jamás mueva la hélice a mano con el ENGINE MASTER en ON ni inmediatamente tras la parada del motor debido a la presión residual acumulada en el common rail!</div>
-          </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Diagrama de Inspección Exterior Walkaround (Altura Fija 590px sin scroll) -->
+    <!-- Columna Derecha (lg:col-span-5): Diagrama de Inspección Exterior Walkaround + WARNING (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
@@ -3603,7 +3594,16 @@ export const DA40_LESSON_4 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-walkaround.png" alt="Ruta de Inspección Prevuelo Walkaround Diamond DA40 TDI" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/da40/da40-walkaround.png')this.src='/images/da40/da40-walkaround.png'" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 515px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-walkaround.jpg" alt="Ruta de Inspección Prevuelo Walkaround Diamond DA40 TDI" class="w-full h-full max-h-[460px] object-contain rounded-lg" onerror="if(this.src!=='/images/da40/da40-walkaround.jpg')this.src='/images/da40/da40-walkaround.jpg'" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 460px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+        </div>
+
+        <!-- WARNING AFM (Ubicado en columna derecha) -->
+        <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight mt-1.5 shadow-2xs shrink-0">
+          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+            <span>⚠️</span>
+            <span>WARNING:</span>
+          </strong>
+          <div>Al conectar el interruptor ELECTRIC MASTER, utilizar una toma externa (GPU) o manipular la hélice, trate siempre la hélice como si el ENGINE MASTER estuviera en ON. ¡Jamás mueva la hélice a mano con el ENGINE MASTER en ON ni inmediatamente tras la parada del motor debido a la presión residual acumulada en el common rail!</div>
         </div>
       </div>
     </div>
