@@ -4969,71 +4969,105 @@ export const DA40_LESSON_4 = {
 </div>
 
 <!-- pagebreak -->
-<!-- DIAPOSITIVA 4.13: 4.13 Antes del Despegue II: Autoprueba FADEC / Prueba de ECU -->
+<!-- DIAPOSITIVA 4.13: 4.13 Antes del Despegue II: ECU Test, ECU Swap y Lista Final (Ítems 17 al 32) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.13 Antes del Despegue II: Autoprueba FADEC / Prueba de ECU</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.13 Antes del Despegue II: ECU Test, ECU Swap y Lista Final</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Secuencia Automática de Conmutación de Canales y Ciclado de Hélice</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Autoprueba FADEC, Conmutación Manual y Preparación Final (Ítems 17 al 32)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Checklist Oficial Verbatim AFM -->
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ECU TEST (Ítems 17 al 26)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BEFORE TAKE-OFF (Ítems 17 al 32)</span>
           </div>
 
-          <!-- LISTA VERBATIM AFM (ÍTEMS 17 - 26) -->
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">Secuencia ECU TEST:</strong>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">17.</span>
-              <span class="text-slate-800 dark:text-slate-200">ECU TEST &mdash; <span class="italic font-medium">press and hold</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">18.</span>
-              <span class="text-slate-800 dark:text-slate-200">Caution lights (ECU A, ECU B, CAUTION) &mdash; <span class="italic font-medium">blinking</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">19.</span>
-              <span class="text-slate-800 dark:text-slate-200">'ECU BACKUP UNSAFE'-light &mdash; <span class="italic font-medium">blinking, if installed</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">20.</span>
-              <span class="text-slate-800 dark:text-slate-200">Caution lights (ECU B, CAUTION) &mdash; <span class="italic font-medium">blinking</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">21.</span>
-              <span class="text-slate-800 dark:text-slate-200">Propeller RPM &mdash; <span class="italic font-medium">cycling</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">22.</span>
-              <span class="text-slate-800 dark:text-slate-200">Caution lights (ECU A, CAUTION) &mdash; <span class="italic font-medium">blinking</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">23.</span>
-              <span class="text-slate-800 dark:text-slate-200">Propeller RPM &mdash; <span class="italic font-medium">cycling</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">24.</span>
-              <span class="text-slate-800 dark:text-slate-200">Caution lights &mdash; <span class="italic font-medium">extinguished</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">25.</span>
-              <span class="text-slate-800 dark:text-slate-200">'ECU BACKUP UNSAFE'-light &mdash; <span class="italic font-medium">extinguished</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">26.</span>
-              <span class="text-slate-800 dark:text-slate-200">ECU TEST &mdash; <span class="italic font-medium">release</span></span>
+          <!-- LISTA VERBATIM AFM (16 ÍTEMS EN 2 COLUMNAS 17-24 y 25-32) -->
+          <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-0.5">
+              <!-- Subcolumna 1: Ítems 17 - 24 (ECU TEST Parte 1) -->
+              <div class="space-y-0.5">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ECU TEST:</strong>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">17.</span>
+                  <span class="text-slate-800 dark:text-slate-200">ECU TEST &mdash; <span class="italic font-medium">press and hold</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">18.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Caution lights (ECU A, B, CAUTION) &mdash; <span class="italic font-medium">blinking</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">19.</span>
+                  <span class="text-slate-800 dark:text-slate-200">'ECU BACKUP UNSAFE' &mdash; <span class="italic font-medium">blinking, if installed</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">20.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Caution lights (ECU B, CAUTION) &mdash; <span class="italic font-medium">blinking</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">21.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Propeller RPM &mdash; <span class="italic font-medium">cycling</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">22.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Caution lights (ECU A, CAUTION) &mdash; <span class="italic font-medium">blinking</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">23.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Propeller RPM &mdash; <span class="italic font-medium">cycling</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">24.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Caution lights &mdash; <span class="italic font-medium">extinguished</span></span>
+                </div>
+              </div>
+
+              <!-- Subcolumna 2: Ítems 25 - 32 (ECU TEST Fin, ECU SWAP y Final) -->
+              <div class="space-y-0.5">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ECU SWAP &amp; FINAL:</strong>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">25.</span>
+                  <span class="text-slate-800 dark:text-slate-200">'ECU BACKUP UNSAFE' &mdash; <span class="italic font-medium">extinguished</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">26.</span>
+                  <span class="text-slate-800 dark:text-slate-200">ECU TEST &mdash; <span class="italic font-medium">release</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">27.</span>
+                  <span class="text-slate-800 dark:text-slate-200">ECU SWAP &mdash; <span class="italic font-medium">ECU B</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">28.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Engine &mdash; <span class="italic font-medium">check running without a change</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">29.</span>
+                  <span class="text-slate-800 dark:text-slate-200">ECU SWAP &mdash; <span class="italic font-medium">AUTOMATIC</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">30.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Pitot heating &mdash; <span class="italic font-medium">ON, if required</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">31.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Landing light &mdash; <span class="italic font-medium">ON, if required</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">32.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Parking brake &mdash; <span class="italic font-medium">release</span></span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- AVISOS AFM VERBATIM (IFR PROHIBITED Y CRITERIOS) -->
+          <!-- AVISOS AFM VERBATIM Y NOTAS -->
           <div class="space-y-1 shrink-0">
             <div class="p-2 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[11px] leading-tight shadow-2xs">
               <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs">WARNING (ECU Backup Unsafe):</strong>
@@ -5043,6 +5077,13 @@ export const DA40_LESSON_4 = {
               <strong class="text-amber-700 dark:text-amber-400 uppercase tracking-wide text-xs">CAUTION (Abort Flight on Error):</strong>
               The whole test procedure must be passed without any error. In case of an error terminate flight preparation even when the engine seems to run smoothly after the test procedure.
             </div>
+            <div class="p-1.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs">
+              <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide text-xs">NOTE (Engine Shake on ECU Swap):</strong>
+              When switching from one ECU to the other a slight shake of the engine may occur. In case of longer dropouts of the engine, terminate flight preparation.
+            </div>
+            <div class="p-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-300 dark:border-emerald-700/60 text-emerald-900 dark:text-emerald-200 text-[11px] font-semibold flex items-center justify-between px-2.5">
+              <span>✅ END OF CHECKLIST · BEFORE TAKE-OFF COMPLETE (Ítems 1 al 32)</span>
+            </div>
           </div>
         </div>
       </div>
@@ -5052,209 +5093,28 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CRONOGRAMA DE AUTOPRUEBA FADEC</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AUTOPRUEBA FADEC Y ECU SWAP</span>
         </div>
 
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
+        <div class="space-y-1.5 text-xs text-slate-700 dark:text-slate-200">
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Fase 1 · Pulsar y Mantener:</strong>
-            Al pulsar el botón ECU TEST (con palanca en IDLE), parpadean ECU A, ECU B, CAUTION y la luz ECU BACKUP UNSAFE.
-          </div>
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Fase 2 · Canal B y Ciclo de Hélice:</strong>
-            El FADEC conmuta al Canal B (parpadean ECU B y CAUTION). Las RPM de hélice ciclan automáticamente comprobando el gobernador.
+            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Secuencia Automática (ECU TEST):</strong>
+            Pulsar y mantener botón con palanca en IDLE: parpadean avisos &rarr; Canal B cicla hélice &rarr; Canal A cicla hélice &rarr; luces se apagan &rarr; soltar botón.
           </div>
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Fase 3 · Canal A y Segundo Ciclo:</strong>
-            El FADEC conmuta al Canal A (parpadean ECU A y CAUTION). Las RPM ciclan por segunda vez.
+            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Conmutación Manual (ECU SWAP):</strong>
+            Seleccionar ECU B: verificar funcionamiento continuo sin fallos. Regresar a AUTOMATIC y cerrar tapa protectora roja antes de entrar en pista.
           </div>
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Fase 4 · Extinción y Liberación:</strong>
-            Todas las luces se apagan y las RPM vuelven a ralentí (~890 RPM). En ese momento se libera el pulsador.
-          </div>
-        </div>
-
-        <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Regla Estricta Go/No-Go</span>
-          <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            Si se suelta el botón antes de la extinción o el motor se cala durante el ciclo, aborte el vuelo inmediatamente.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- pagebreak -->
-
-<!-- DIAPOSITIVA 4.14: 4.14 Antes del Despegue III: Conmutación Manual ECU Swap y Criterios Go/No-Go -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
-    <div>
-      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.14 Antes del Despegue III: Conmutación Manual ECU Swap</h1>
-    </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Verificación Operativa del Canal B y Criterios Go/No-Go</span>
-  </div>
-
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): Checklist Oficial Verbatim AFM -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ECU SWAP (Ítems 27 al 29)</span>
-          </div>
-
-          <!-- LISTA VERBATIM AFM (ÍTEMS 27 - 29) -->
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ECU SWAP Checklist:</strong>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">27.</span>
-              <span class="text-slate-800 dark:text-slate-200">ECU SWAP &mdash; <span class="italic font-medium">ECU B</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">28.</span>
-              <span class="text-slate-800 dark:text-slate-200">Engine &mdash; <span class="italic font-medium">check running without a change</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">29.</span>
-              <span class="text-slate-800 dark:text-slate-200">ECU SWAP &mdash; <span class="italic font-medium">AUTOMATIC</span></span>
-            </div>
-          </div>
-
-          <!-- NOTE AFM VERBATIM -->
-          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
-            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-              <span>ℹ️</span>
-              <span>NOTE (Engine Shake):</span>
-            </strong>
-            <div>When switching from one ECU to the other a slight shake of the engine may occur. In case of longer dropouts of the engine, or if the engine stops during the test, terminate flight preparation.</div>
-          </div>
-
-          <!-- CAUTION OPERATIVA -->
-          <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
-            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-              <span>⚠️</span>
-              <span>GUARDA DE SEGURIDAD DEL INTERRUPTOR:</span>
-            </strong>
-            <div>El conmutador ECU SWAP dispone de una tapa de protección roja con resorte. Al volver a AUTOMATIC, asegúrese de que la guarda queda completamente cerrada para impedir un accionamiento involuntario en vuelo.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ARQUITECTURA DE DOBLE CANAL FADEC</span>
-        </div>
-
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Propósito de la Prueba ECU SWAP:</strong>
-            Mientras que el botón ECU TEST realiza una autoprueba automática de sensores y solenoides, el interruptor manual ECU SWAP fuerza físicamente al motor a operar bajo el control exclusivo del Canal B.
-          </div>
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Criterio de Aceptación:</strong>
-            El motor debe continuar funcionando suavemente sin pérdida apreciable de potencia ni oscilación sostenida de RPM. Solo se tolera una leve vibración transitoria (slight shake) en el instante del cambio de relé.
+            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Briefing de Despegue y Alineación:</strong>
+            Calefacción de pitot y luz de aterrizaje según proceda. Liberar freno de parking al recibir autorización de despegue y verificar eje libre.
           </div>
         </div>
 
         <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2.5 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Posición de Vuelo: AUTOMATIC</span>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Comprobaciones 1 a 32 Completadas</span>
           <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            Nunca despegue con el conmutador en ECU B. En caso de avería, el FADEC solo puede alternar automáticamente entre canales si el interruptor está en AUTOMATIC.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- pagebreak -->
-
-<!-- DIAPOSITIVA 4.15: 4.15 Antes del Despegue IV: Calefacción Pitot, Flaps y Briefing -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
-    <div>
-      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.15 Antes del Despegue IV: Calefacción Pitot, Luces y Pista</h1>
-    </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Preparación Final, Alineación con Eje de Pista y Liberación de Frenos</span>
-  </div>
-
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7): Checklist Oficial Verbatim AFM -->
-    <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-2.5 flex-1 min-h-0 flex flex-col justify-start">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BEFORE TAKE-OFF FINAL (Ítems 30 al 32)</span>
-          </div>
-
-          <!-- LISTA VERBATIM AFM (ÍTEMS 30 - 32) -->
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">Final Checklist:</strong>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">30.</span>
-              <span class="text-slate-800 dark:text-slate-200">Pitot heating &mdash; <span class="italic font-medium">ON, if required</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">31.</span>
-              <span class="text-slate-800 dark:text-slate-200">Landing light &mdash; <span class="italic font-medium">ON, if required</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">32.</span>
-              <span class="text-slate-800 dark:text-slate-200">Parking brake &mdash; <span class="italic font-medium">release</span></span>
-            </div>
-          </div>
-
-          <!-- BADGE DE CIERRE CHECKLIST -->
-          <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-300 dark:border-emerald-700/60 text-emerald-900 dark:text-emerald-200 text-xs font-semibold flex items-center gap-2">
-            <span>✅</span>
-            <span>END OF CHECKLIST · BEFORE TAKE-OFF COMPLETE</span>
-          </div>
-
-          <!-- NOTA OPERATIVA BLUE TEAM -->
-          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
-            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
-              <span>ℹ️</span>
-              <span>LINE-UP CHECK Y ALINEACIÓN DE PISTA:</span>
-            </strong>
-            <div>Tras recibir autorización de entrada a pista: verifique aproximación final libre, compruebe que el rumbo de pista coincide con la brújula y el giróscopo/HSI, active transponder en ALT y revise que los flaps permanezcan en T/O y el compensador en posición T/O.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Columna Derecha (lg:col-span-5): Diagrama y Sistemas -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BRIEFING DE DESPEGUE (DEPARTURE BRIEFING)</span>
-        </div>
-
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">1. Anormalidad en Carrera de Despegue:</strong>
-            Potencia IDLE inmediatamente, frenada máxima en pista disponible, mantener eje y desalojar notificando a torre.
-          </div>
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">2. Fallo de Motor Tras Despegue (&lt; 800 ft AGL):</strong>
-            Actitud de morro abajo, velocidad de planeo 73 KIAS (flaps T/O) o 71 KIAS, aterrizar en el campo disponible frente a nosotros en un arco no superior a 30° a cada lado. <strong>¡Nunca intentar virar de vuelta a pista!</strong>
-          </div>
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">3. Fallo Por Encima de Altitud de Seguridad (&gt; 800 ft AGL):</strong>
-            Adoptar 73 KIAS, evaluar campo idóneo o tráfico en circuito para aterrizaje forzoso según viento.
-          </div>
-        </div>
-
-        <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2.5 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Listos para el Despegue</span>
-          <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            Comprobaciones 1 a 32 completadas estrictamente bajo procedimiento oficial AFM.
+            Procedimiento Before Take-Off íntegro completado estrictamente según AFM DA40 TDI.
           </p>
         </div>
       </div>
