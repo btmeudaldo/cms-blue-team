@@ -78,6 +78,16 @@ export function DA40PerformanceWidget({
   const [attempts, setAttempts] = useState(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [warnings, setWarnings] = useState<string[]>([]);
+  const [isChartModalOpen, setIsChartModalOpen] = useState(false);
+
+  const chartSrc =
+    currentStep === "takeoff"
+      ? "/images/da40/da40-takeoff-50ft.png"
+      : "/images/da40/da40-landing-distance.png";
+  const chartTitle =
+    currentStep === "takeoff"
+      ? "Takeoff Distance 50ft (AFM Fig. 5.3.5) - Diamond DA40 TDI"
+      : "Landing Distance (AFM Fig. 5.3.11) - Diamond DA40 TDI";
 
   const solvedTakeoffCount = (solvedTakeoff[1] ? 1 : 0) + (solvedTakeoff[2] ? 1 : 0);
   const solvedLandingCount = (solvedLanding[1] ? 1 : 0) + (solvedLanding[2] ? 1 : 0);
@@ -344,23 +354,45 @@ export function DA40PerformanceWidget({
               </div>
             )}
 
-            {/* Direct Link to POH Landing Table (on Left for landing mode) */}
+            {/* Direct Link to AFM Landing Table (on Left for landing mode) */}
             {currentStep === "landing" && (
               <div className="flex items-center justify-between gap-2 p-2 rounded-xl bg-emerald-50/70 dark:bg-slate-800/90 border border-emerald-200 dark:border-slate-700 shadow-2xs">
                 <span className="text-xs sm:text-[13px] font-bold text-emerald-950 dark:text-emerald-300 flex items-center gap-1.5">
                   <span>📖</span>
-                  <span>TABLA POH ATERRIZAJE:</span>
+                  <span>TABLA AFM ATERRIZAJE:</span>
                 </span>
-                <a
-                  href="/images/c172/landing_distance_table.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 font-bold text-xs sm:text-[13px] text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-slate-600 transition-all shadow-2xs"
-                  title="Abrir Tabla 5-10 Aterrizaje Short Field en PDF"
-                >
-                  <span>🛬 Abrir Fig. 5-10 Landing Distance Short Field [ft]</span>
-                  <span>↗</span>
-                </a>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setIsChartModalOpen(true)}
+                    style={{
+                      backgroundColor: "#059669",
+                      color: "#ffffff",
+                      fontSize: "13px",
+                      fontWeight: 700,
+                    }}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-emerald-600 font-bold transition-all shadow-2xs cursor-pointer hover:bg-emerald-700"
+                    title="Ver Gráfico de Aterrizaje"
+                  >
+                    <span style={{ color: "#ffffff" }}>🛬 Ver Tabla Aterrizaje</span>
+                    <span>🔍</span>
+                  </button>
+                  <a
+                    href="/images/da40/da40-landing-distance.png"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      backgroundColor: "#f1f5f9",
+                      color: "#000000",
+                      fontSize: "13px",
+                      fontWeight: 700,
+                    }}
+                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
+                    title="Abrir imagen en nueva pestaña"
+                  >
+                    <span style={{ color: "#000000" }}>↗</span>
+                  </a>
+                </div>
               </div>
             )}
 
@@ -632,16 +664,40 @@ export function DA40PerformanceWidget({
                 <span>📖</span>
                 <span>{currentStep === "takeoff" ? "TABLA AFM DESPEGUE:" : "TABLA AFM ATERRIZAJE:"}</span>
               </span>
-              <a
-                href={currentStep === "takeoff" ? "/images/da40/da40-takeoff-distance.png" : "/images/da40/da40-landing-distance.png"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 font-bold text-xs sm:text-[13px] text-blue-600 dark:text-sky-300 hover:bg-blue-50 dark:hover:bg-slate-600 transition-all shadow-2xs"
-                title="Abrir Gráfico AFM"
-              >
-                <span>{currentStep === "takeoff" ? "🛫 Abrir Fig. 5.3.5 Take-Off" : "🛬 Abrir Fig. 5.3.11 Landing"}</span>
-                <span>↗</span>
-              </a>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => setIsChartModalOpen(true)}
+                  style={{
+                    backgroundColor: "#0B2E59",
+                    color: "#ffffff",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                  }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#0B2E59] hover:bg-[#082242] transition-all cursor-pointer shadow-2xs"
+                  title="Ver Gráfica en Pantalla"
+                >
+                  <span style={{ color: "#ffffff" }}>
+                    {currentStep === "takeoff" ? "🛫 Ver Tabla Takeoff Distance 50ft" : "🛬 Ver Tabla Landing Distance"}
+                  </span>
+                  <span>🔍</span>
+                </button>
+                <a
+                  href={chartSrc}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    backgroundColor: "#f1f5f9",
+                    color: "#000000",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                  }}
+                  className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
+                  title="Abrir imagen en nueva pestaña"
+                >
+                  <span style={{ color: "#000000" }}>↗</span>
+                </a>
+              </div>
             </div>
 
             {/* Dynamic Bottom Area: Step instructions or Graphical Runway Scale */}
@@ -768,6 +824,52 @@ export function DA40PerformanceWidget({
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal for Full Resolution Chart Inspection */}
+      {isChartModalOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-sm flex flex-col items-center justify-center p-3 animate-in fade-in duration-150"
+          onClick={() => setIsChartModalOpen(false)}
+        >
+          <div
+            className="relative max-w-6xl w-full max-h-[94vh] flex flex-col bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-4 py-2.5 border-b border-slate-200 dark:border-slate-800 shrink-0 bg-slate-50 dark:bg-slate-900">
+              <span className="font-bold text-[#0B2E59] dark:text-sky-300 text-sm sm:text-base">
+                {chartTitle}
+              </span>
+              <div className="flex items-center gap-2">
+                <a
+                  href={chartSrc}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all"
+                >
+                  Abrir en pestaña nueva ↗
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setIsChartModalOpen(false)}
+                  className="px-3 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold transition-all cursor-pointer"
+                >
+                  ✕ Cerrar
+                </button>
+              </div>
+            </div>
+
+            {/* Modal Image Viewport */}
+            <div className="flex-1 min-h-0 p-2 flex items-center justify-center bg-slate-950 overflow-auto">
+              <img
+                src={chartSrc}
+                alt={chartTitle}
+                className="max-w-full max-h-[82vh] object-contain rounded"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
