@@ -201,7 +201,7 @@ export function DA40PerformanceWidget({
 
             <div className="flex items-center gap-1.5 shrink-0">
               {mode === "all" && (
-                <div className="flex items-center bg-slate-200/80 dark:bg-slate-800 rounded-lg p-0.5 mr-1">
+                <div className="flex items-center bg-slate-200 dark:bg-slate-800 rounded-lg p-0.5 mr-1 border border-slate-300 dark:border-slate-700">
                   <button
                     type="button"
                     onClick={() => {
@@ -209,13 +209,17 @@ export function DA40PerformanceWidget({
                       setErrors({});
                       setWarnings([]);
                     }}
-                    className={`px-2.5 py-1 rounded-md text-xs sm:text-[13px] font-bold transition-all cursor-pointer ${
-                      activeTab === "takeoff"
-                        ? "bg-white dark:bg-slate-700 text-[#0B2E59] dark:text-sky-300 shadow-2xs"
-                        : "text-slate-600 dark:text-slate-400"
-                    }`}
+                    style={{
+                      backgroundColor: activeTab === "takeoff" ? "#0B2E59" : "transparent",
+                      color: activeTab === "takeoff" ? "#ffffff" : "#000000",
+                      fontSize: "1.125rem",
+                      fontWeight: 700,
+                    }}
+                    className="px-3 py-1.5 rounded-md transition-all cursor-pointer"
                   >
-                    1. Despegue
+                    <span style={{ color: activeTab === "takeoff" ? "#ffffff" : "#000000", fontSize: "1.125rem", fontWeight: 700 }}>
+                      1. Despegue
+                    </span>
                   </button>
                   <button
                     type="button"
@@ -224,13 +228,17 @@ export function DA40PerformanceWidget({
                       setErrors({});
                       setWarnings([]);
                     }}
-                    className={`px-2.5 py-1 rounded-md text-xs sm:text-[13px] font-bold transition-all cursor-pointer ${
-                      activeTab === "landing"
-                        ? "bg-white dark:bg-slate-700 text-[#0B2E59] dark:text-sky-300 shadow-2xs"
-                        : "text-slate-600 dark:text-slate-400"
-                    }`}
+                    style={{
+                      backgroundColor: activeTab === "landing" ? "#0B2E59" : "transparent",
+                      color: activeTab === "landing" ? "#ffffff" : "#000000",
+                      fontSize: "1.125rem",
+                      fontWeight: 700,
+                    }}
+                    className="px-3 py-1.5 rounded-md transition-all cursor-pointer"
                   >
-                    2. Aterrizaje
+                    <span style={{ color: activeTab === "landing" ? "#ffffff" : "#000000", fontSize: "1.125rem", fontWeight: 700 }}>
+                      2. Aterrizaje
+                    </span>
                   </button>
                 </div>
               )}
@@ -242,17 +250,25 @@ export function DA40PerformanceWidget({
                 style={{
                   backgroundColor: selectedScenarioIndex === 0 ? "#059669" : "#ecfdf5",
                   color: selectedScenarioIndex === 0 ? "#ffffff" : "#065f46",
-                  fontSize: "12px",
-                  fontWeight: 800,
+                  fontSize: "1.125rem",
+                  fontWeight: 700,
                 }}
-                className={`px-2.5 py-1 rounded-lg font-extrabold transition-all cursor-pointer flex items-center gap-1 border ${
+                className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1.5 border ${
                   selectedScenarioIndex === 0
                     ? "border-emerald-600 shadow-2xs"
                     : "border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
                 }`}
                 title="GCXO: Ejemplo guiado resuelto"
               >
-                <span style={{ color: selectedScenarioIndex === 0 ? "#ffffff" : "#065f46" }}>GCXO</span>
+                <span
+                  style={{
+                    color: selectedScenarioIndex === 0 ? "#ffffff" : "#065f46",
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
+                  }}
+                >
+                  GCXO
+                </span>
               </button>
 
               {[1, 2].map((idx) => {
@@ -271,10 +287,10 @@ export function DA40PerformanceWidget({
                     style={{
                       backgroundColor: isSelected ? "#0B2E59" : isSolved ? "#ecfdf5" : "#f1f5f9",
                       color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000",
-                      fontSize: "12px",
-                      fontWeight: 800,
+                      fontSize: "1.125rem",
+                      fontWeight: 700,
                     }}
-                    className={`px-2.5 py-1 rounded-lg font-extrabold transition-all cursor-pointer flex items-center gap-1 border ${
+                    className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1.5 border ${
                       isSelected
                         ? "border-[#0B2E59] shadow-2xs"
                         : isSolved
@@ -283,10 +299,22 @@ export function DA40PerformanceWidget({
                     }`}
                     title={sc.name}
                   >
-                    <span style={{ color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000" }}>
+                    <span
+                      style={{
+                        color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000",
+                        fontSize: "1.125rem",
+                        fontWeight: 700,
+                      }}
+                    >
                       {sc.icao}
                     </span>
-                    <span style={{ color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000" }}>
+                    <span
+                      style={{
+                        color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000",
+                        fontSize: "1.125rem",
+                        fontWeight: 700,
+                      }}
+                    >
                       {isSolved ? "✓" : "⏳"}
                     </span>
                   </button>

@@ -239,24 +239,32 @@ export function DA40CruiseWidget({
                 </span>
               </div>
             </div>
-            <div className="flex items-center gap-1 shrink-0">
+            <div className="flex items-center gap-1.5 shrink-0">
               <button
                 type="button"
                 onClick={() => switchMission(0)}
                 style={{
                   backgroundColor: selectedMissionIndex === 0 ? "#059669" : "#ecfdf5",
                   color: selectedMissionIndex === 0 ? "#ffffff" : "#065f46",
-                  fontSize: "12px",
-                  fontWeight: 800,
+                  fontSize: "1.125rem",
+                  fontWeight: 700,
                 }}
-                className={`px-2.5 py-1 rounded-lg font-extrabold transition-all cursor-pointer flex items-center gap-1 border ${
+                className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1 border ${
                   selectedMissionIndex === 0
                     ? "border-emerald-600 shadow-2xs"
                     : "border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
                 }`}
                 title="Misión 1: Ejemplo guiado resuelto"
               >
-                <span style={{ color: selectedMissionIndex === 0 ? "#ffffff" : "#065f46" }}>M1</span>
+                <span
+                  style={{
+                    color: selectedMissionIndex === 0 ? "#ffffff" : "#065f46",
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
+                  }}
+                >
+                  M1
+                </span>
               </button>
               {[1, 2].map((idx) => {
                 const isSolved = Boolean(solvedMissions[idx]);
@@ -269,10 +277,10 @@ export function DA40CruiseWidget({
                     style={{
                       backgroundColor: isSelected ? "#0B2E59" : isSolved ? "#ecfdf5" : "#f1f5f9",
                       color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000",
-                      fontSize: "12px",
-                      fontWeight: 800,
+                      fontSize: "1.125rem",
+                      fontWeight: 700,
                     }}
-                    className={`px-2.5 py-1 rounded-lg font-extrabold transition-all cursor-pointer flex items-center gap-1 border ${
+                    className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1 border ${
                       isSelected
                         ? "border-[#0B2E59] shadow-2xs"
                         : isSolved
@@ -280,10 +288,22 @@ export function DA40CruiseWidget({
                           : "border-slate-300 hover:bg-slate-200"
                     }`}
                   >
-                    <span style={{ color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000" }}>
+                    <span
+                      style={{
+                        color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000",
+                        fontSize: "1.125rem",
+                        fontWeight: 700,
+                      }}
+                    >
                       M{idx + 1}
                     </span>
-                    <span style={{ color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000" }}>
+                    <span
+                      style={{
+                        color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000",
+                        fontSize: "1.125rem",
+                        fontWeight: 700,
+                      }}
+                    >
                       {isSolved ? "✓" : "⏳"}
                     </span>
                   </button>
@@ -563,23 +583,29 @@ export function DA40CruiseWidget({
                 DA40 TDI · Standard Tanks (106.0 L / 28.00 Gal)
               </span>
             </div>
-            <div className="flex items-center gap-1 shrink-0">
+            <div className="flex items-center gap-1.5 shrink-0">
               <button
                 type="button"
                 onClick={() => setSelectedTablePower(60)}
                 style={{
                   backgroundColor: selectedTablePower === 60 ? "#0B2E59" : "#f1f5f9",
                   color: selectedTablePower === 60 ? "#ffffff" : "#000000",
-                  fontSize: "12px",
-                  fontWeight: 800,
+                  fontSize: "1.125rem",
+                  fontWeight: 700,
                 }}
-                className={`px-3 py-1 rounded-md transition-all cursor-pointer border ${
+                className={`px-3 py-1.5 rounded-md transition-all cursor-pointer border ${
                   selectedTablePower === 60
                     ? "border-[#0B2E59] shadow-2xs"
                     : "border-slate-300 hover:bg-slate-200"
                 }`}
               >
-                <span style={{ color: selectedTablePower === 60 ? "#ffffff" : "#000000" }}>
+                <span
+                  style={{
+                    color: selectedTablePower === 60 ? "#ffffff" : "#000000",
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
+                  }}
+                >
                   60%
                 </span>
               </button>
@@ -589,16 +615,22 @@ export function DA40CruiseWidget({
                 style={{
                   backgroundColor: selectedTablePower === 70 ? "#0B2E59" : "#f1f5f9",
                   color: selectedTablePower === 70 ? "#ffffff" : "#000000",
-                  fontSize: "12px",
-                  fontWeight: 800,
+                  fontSize: "1.125rem",
+                  fontWeight: 700,
                 }}
-                className={`px-3 py-1 rounded-md transition-all cursor-pointer border ${
+                className={`px-3 py-1.5 rounded-md transition-all cursor-pointer border ${
                   selectedTablePower === 70
                     ? "border-[#0B2E59] shadow-2xs"
                     : "border-slate-300 hover:bg-slate-200"
                 }`}
               >
-                <span style={{ color: selectedTablePower === 70 ? "#ffffff" : "#000000" }}>
+                <span
+                  style={{
+                    color: selectedTablePower === 70 ? "#ffffff" : "#000000",
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
+                  }}
+                >
                   70%
                 </span>
               </button>
