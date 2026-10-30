@@ -4534,7 +4534,7 @@ export const DA40_LESSON_4 = {
           <!-- WARNING AFM VERBATIM -->
           <div class="p-2 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[11px] leading-tight shadow-2xs shrink-0">
             <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs">WARNING:</strong>
-            Never move the propeller by hand.
+            Nunca mover la hélice con la mano.
           </div>
         </div>
       </div>
