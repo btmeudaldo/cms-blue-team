@@ -5322,51 +5322,58 @@ export const DA40_LESSON_4 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CRUISE & FUEL TRANSFER</span>
           </div>
 
-          <!-- CRUISE (4 ÍTEMS) -->
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">Cruise Checklist:</strong>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">1.</span>
-              <span class="text-slate-800 dark:text-slate-200">Flaps &mdash; <span class="italic font-medium">UP</span></span>
+          <!-- CHECKLISTS EN 2 COLUMNAS (CRUISE Y FUEL TRANSFER) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <!-- CRUISE (4 ÍTEMS) -->
+            <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">Cruise Checklist:</strong>
+              <div lang="en" class="flex items-start gap-1 py-0.2 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">1.</span>
+                <span class="text-slate-800 dark:text-slate-200">Flaps &mdash; <span class="italic font-medium">UP</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1 py-0.2 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">2.</span>
+                <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">performance as req. (70% rec.)</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1 py-0.2 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">3.</span>
+                <span class="text-slate-800 dark:text-slate-200">Trim &mdash; <span class="italic font-medium">as required</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1 py-0.2 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">4.</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel transfer &mdash; <span class="italic font-medium">repeat as required</span></span>
+              </div>
             </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">2.</span>
-              <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <span class="italic font-medium">performance as required (70 % recommended)</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">3.</span>
-              <span class="text-slate-800 dark:text-slate-200">Trim &mdash; <span class="italic font-medium">as required</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">4.</span>
-              <span class="text-slate-800 dark:text-slate-200">Fuel transfer &mdash; <span class="italic font-medium">repeat as required (in accordance with FUEL TRANSFER)</span></span>
+
+            <!-- FUEL TRANSFER (2 ÍTEMS) -->
+            <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">Fuel Transfer Procedure:</strong>
+              <div lang="en" class="flex items-start gap-1 py-0.2 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">1.</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel transfer switch &mdash; <span class="italic font-medium">ON</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1 py-0.2 text-xs leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">2.</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel transfer switch &mdash; <span class="italic font-medium">OFF, if required</span></span>
+              </div>
             </div>
           </div>
 
-          <!-- FUEL TRANSFER (2 ÍTEMS) -->
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">Fuel Transfer Procedure:</strong>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">1.</span>
-              <span class="text-slate-800 dark:text-slate-200">Fuel transfer switch &mdash; <span class="italic font-medium">ON</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">2.</span>
-              <span class="text-slate-800 dark:text-slate-200">Fuel transfer switch &mdash; <span class="italic font-medium">OFF, if required</span></span>
-            </div>
-          </div>
-
-          <!-- CAUTIONS Y NOTAS AFM VERBATIM -->
-          <div class="space-y-1 shrink-0">
+          <!-- NOTAS Y AVISOS AFM VERBATIM (A LA IZQUIERDA) -->
+          <div class="space-y-1.5 shrink-0">
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-200 shadow-2xs">
               <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Alimentación Unidireccional:</strong>
               El motor DA40 TDI solo consume del depósito principal izquierdo (MAIN). El depósito derecho (AUX) almacena reserva y no alimenta directamente las bombas de inyección.
             </div>
-            <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-200 shadow-2xs">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Estrategia de Trasvase:</strong>
+              Cuando el depósito MAIN baje de 10-12 US galones, conecte el interruptor FUEL TRANSFER. Con una tasa de 60 US gal/h, el trasvase completo toma unos pocos minutos. Verifique que sube la cantidad en MAIN y baja en AUX.
+            </div>
+            <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs leading-tight shadow-2xs">
               <strong class="text-amber-700 dark:text-amber-400 uppercase tracking-wide text-xs">CAUTION (Main Tank Feed):</strong>
               During normal operation fuel is taken from the main tank only. Therefore fuel must be transferred from auxiliary tank to main tank. The transfer rate is approx. 60 US gal/h (227 liters/h).
             </div>
-            <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs">
+            <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs leading-tight shadow-2xs">
               <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide text-xs">NOTE (Automatic Turn-Off & Blinking):</strong>
               The transfer pump turns off automatically to avoid overfilling main tank. Status light is illuminated only while running. <strong>If status light blinks, pump must be switched OFF!</strong>
             </div>
@@ -5379,20 +5386,16 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SISTEMA DE COMBUSTIBLE DIÉSEL</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Estrategia de Trasvase:</strong>
-            Cuando el depósito MAIN baje de 10-12 US galones, conecte el interruptor FUEL TRANSFER. Con una tasa de 60 US gal/h, el trasvase completo toma unos pocos minutos. Verifique que sube la cantidad en MAIN y baja en AUX.
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
           </div>
-        </div>
-
-        <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2.5 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Ajuste de Crucero Recomendado</span>
-          <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            Ajuste el mando de potencia a <strong>70 % LOAD</strong> para un crucero económico óptimo con un consumo de ~18-20 l/h (4.8 - 5.3 US gal/h).
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Esquema del Sistema de Combustible</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Diagrama esquemático de los depósitos MAIN y AUX, bomba de trasvase eléctrica y retorno de combustible diésel.
           </p>
         </div>
       </div>
@@ -5568,11 +5571,6 @@ export const DA40_LESSON_4 = {
             </div>
           </div>
 
-          <!-- END OF CHECKLIST BADGE -->
-          <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-300 dark:border-emerald-700/60 text-emerald-900 dark:text-emerald-200 text-xs font-semibold flex items-center gap-2">
-            <span>✅</span>
-            <span>END OF CHECKLIST · GO-AROUND COMPLETE</span>
-          </div>
 
           <!-- NOTA OPERATIVA BLUE TEAM -->
           <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
@@ -5741,11 +5739,6 @@ export const DA40_LESSON_4 = {
             </div>
           </div>
 
-          <!-- CAUTION TURBO AFM VERBATIM -->
-          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-amber-700 dark:text-amber-400 uppercase tracking-wide text-xs">CAUTION (Turbocharger Cooling 2 min):</strong>
-            Never shut down the engine immediately after flight! Maintain engine IDLE for at least 2 minutes to let the turbocharger cool off. Sudden shutdown carbonizes oil on the hot turbo bearings and destroys the turbocharger.
-          </div>
         </div>
       </div>
     </div>
@@ -5755,6 +5748,12 @@ export const DA40_LESSON_4 = {
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
+        </div>
+
+        <!-- CAUTION TURBO AFM VERBATIM (A LA DERECHA) -->
+        <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs leading-relaxed shadow-2xs mb-2">
+          <strong class="text-amber-700 dark:text-amber-400 uppercase tracking-wide text-xs block mb-1">CAUTION (Turbocharger Cooling 2 min):</strong>
+          Never shut down the engine immediately after flight! Maintain engine IDLE for at least 2 minutes to let the turbocharger cool off. Sudden shutdown carbonizes oil on the hot turbo bearings and destroys the turbocharger.
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
@@ -5818,11 +5817,6 @@ export const DA40_LESSON_4 = {
             </div>
           </div>
 
-          <!-- END OF CHECKLIST BADGE -->
-          <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-300 dark:border-emerald-700/60 text-emerald-900 dark:text-emerald-200 text-xs font-semibold flex items-center gap-2">
-            <span>✅</span>
-            <span>NORMAL OPERATING PROCEDURES COMPLETE</span>
-          </div>
         </div>
       </div>
     </div>
