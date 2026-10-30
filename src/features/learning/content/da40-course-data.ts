@@ -4661,15 +4661,7 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CALENTAMIENTO Y FADEC</span>
-        </div>
-
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Cronograma de Calentamiento:</strong>
-            1. Mantener ralentí (IDLE, aprox. 890 RPM) durante 2 minutos completos para estabilizar la lubricación.<br/>
-            2. Ajustar 1400 RPM hasta que temperatura de aceite (&gt; 50 °C) y refrigerante (&gt; 60 °C) alcancen el arco verde.
-          </div>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
@@ -4918,16 +4910,10 @@ export const DA40_LESSON_4 = {
             </div>
           </div>
 
-          <!-- PROCEDIMIENTO DE POTENCIA MÁXIMA EN PUNTO DE ESPERA -->
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-200 space-y-1.5 shadow-2xs">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block uppercase text-xs">Procedimiento de Potencia Máxima en Punto de Espera:</strong>
-            <p class="m-0">Con freno de parking puesto y avión orientado al viento, avanzar palanca a MAX durante 10 segundos continuos:</p>
-            <ul class="list-disc pl-4 space-y-0.5 my-1">
-              <li><strong>RPM:</strong> Debe estabilizarse entre 2240 y 2300 RPM.</li>
-              <li><strong>Carga (LOAD):</strong> Debe estabilizarse entre 90 % y 100 %.</li>
-              <li><strong>Presión de Aceite:</strong> Dentro del sector verde (2.3 a 6.0 bar).</li>
-            </ul>
-            <p class="m-0">Si durante los 10 segundos la carga no alcanza al menos el 90 % o las RPM no superan 2240, aborte el vuelo y regrese a plataforma para revisión de mantenimiento del turbo o inyección.</p>
+          <!-- WARNING COMBUSTIBLE DIÉSEL AFM (A LA IZQUIERDA) -->
+          <div class="p-2.5 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-xs leading-relaxed shadow-2xs shrink-0">
+            <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs block mb-0.5">WARNING (Diesel Take-Off Fuel Temp):</strong>
+            If operated with Diesel Fuel, fuel temperature on the left side must be in the green range (minimum +5 °C / +41 °F) before take-off!
           </div>
         </div>
       </div>
@@ -4938,12 +4924,6 @@ export const DA40_LESSON_4 = {
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
-        </div>
-
-        <!-- WARNING COMBUSTIBLE DIÉSEL AFM (COLOCADO A LA DERECHA) -->
-        <div class="p-2.5 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-xs leading-relaxed shadow-2xs mb-2">
-          <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs block mb-1">WARNING (Diesel Take-Off Fuel Temp):</strong>
-          If operated with Diesel Fuel, fuel temperature on the left side must be in the green range (minimum +5 °C / +41 °F) before take-off!
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
@@ -5081,28 +5061,16 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AUTOPRUEBA FADEC Y ECU SWAP</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="space-y-1.5 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Secuencia Automática (ECU TEST):</strong>
-            Pulsar y mantener botón con palanca en IDLE: parpadean avisos &rarr; Canal B cicla hélice &rarr; Canal A cicla hélice &rarr; luces se apagan &rarr; soltar botón.
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
           </div>
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Conmutación Manual (ECU SWAP):</strong>
-            Seleccionar ECU B: verificar funcionamiento continuo sin fallos. Regresar a AUTOMATIC y cerrar tapa protectora roja antes de entrar en pista.
-          </div>
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Briefing de Despegue y Alineación:</strong>
-            Calefacción de pitot y luz de aterrizaje según proceda. Liberar freno de parking al recibir autorización de despegue y verificar eje libre.
-          </div>
-        </div>
-
-        <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2.5 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Comprobaciones 1 a 32 Completadas</span>
-          <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            Procedimiento Before Take-Off íntegro completado estrictamente según AFM DA40 TDI.
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Autoprueba FADEC y ECU Swap</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Panel de control FADEC con pulsador ECU TEST, interruptor conmutable ECU SWAP con guarda de seguridad y anunciadores ECU A / ECU B.
           </p>
         </div>
       </div>
@@ -5320,24 +5288,16 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PERFIL DE DESPEGUE Y TRANSICIÓN</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Rotación y Despegue:</strong>
-            Aplicar palanca de gases a MAX suavemente en 2-3 s. Mantener eje de pista con timón de dirección. A 59 KIAS tirar suavemente para levantar la rueda de morro y adoptar actitud de ascenso para 66 KIAS con Flaps T/O.
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
           </div>
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Transición a Ascenso de Crucero:</strong>
-            Al superar la altitud de seguridad (mínimo 300-500 ft AGL): acelerar a 73 KIAS, subir flaps a UP, apagar landing light y ajustar compensador para aliviar esfuerzos de palanca.
-          </div>
-        </div>
-
-        <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2.5 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Verificación Temprana de Motor</span>
-          <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            Compruebe parámetros de motor al inicio de la carrera para abortar a tiempo si RPM &lt; 2240 o LOAD &lt; 90 %.
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Perfil de Despegue y Ascenso</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Rotación a 59 KIAS, ascenso inicial en vY con Flaps T/O a 66 KIAS y transición a ascenso de crucero en Flaps UP a 73 KIAS.
           </p>
         </div>
       </div>
@@ -5401,6 +5361,10 @@ export const DA40_LESSON_4 = {
 
           <!-- CAUTIONS Y NOTAS AFM VERBATIM -->
           <div class="space-y-1 shrink-0">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-200 shadow-2xs">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5 uppercase text-xs">Alimentación Unidireccional:</strong>
+              El motor DA40 TDI solo consume del depósito principal izquierdo (MAIN). El depósito derecho (AUX) almacena reserva y no alimenta directamente las bombas de inyección.
+            </div>
             <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs">
               <strong class="text-amber-700 dark:text-amber-400 uppercase tracking-wide text-xs">CAUTION (Main Tank Feed):</strong>
               During normal operation fuel is taken from the main tank only. Therefore fuel must be transferred from auxiliary tank to main tank. The transfer rate is approx. 60 US gal/h (227 liters/h).
@@ -5422,10 +5386,6 @@ export const DA40_LESSON_4 = {
         </div>
 
         <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Alimentación Unidireccional:</strong>
-            El motor DA40 TDI solo consume del depósito principal izquierdo (MAIN). El depósito derecho (AUX) almacena reserva y no alimenta directamente las bombas de inyección.
-          </div>
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
             <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Estrategia de Trasvase:</strong>
             Cuando el depósito MAIN baje de 10-12 US galones, conecte el interruptor FUEL TRANSFER. Con una tasa de 60 US gal/h, el trasvase completo toma unos pocos minutos. Verifique que sube la cantidad en MAIN y baja en AUX.
@@ -5548,24 +5508,16 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CIRCUITO DE TRÁFICO Y VELOCIDADES</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Tramo Viento en Cola:</strong>
-            Velocidad reducida por debajo de <strong>108 KIAS</strong> (arco blanco extendido). Extender Flaps a <strong>T/O</strong>. Comprobar arneses de seguridad y encender luz de aterrizaje.
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
           </div>
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Tramo Final y Aterrizaje:</strong>
-            Reducir por debajo de <strong>91 KIAS</strong> (arco blanco estándar) para extender Flaps a <strong>LDG</strong>. Estabilizar a <strong>71 KIAS</strong> en final corta hasta la recogida.
-          </div>
-        </div>
-
-        <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2.5 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Protección del Motor Diésel en Descenso Frío</span>
-          <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            Por encima de 5000 ft mantenga al menos 30 % de potencia para evitar que la cámara de combustión se enfríe en exceso y pueda pararse.
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Aproximación y Circuito</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Configuración de flaps en tramo de aproximación (T/O &lt; 108 KIAS, LDG &lt; 91 KIAS) y velocidad de aproximación final de 71 KIAS.
           </p>
         </div>
       </div>
@@ -5643,27 +5595,16 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CRITERIOS DE APROXIMACIÓN FRUSTRADA</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Criterios Mandatarios de Go-Around:</strong>
-            - Aproximación no estabilizada a 500 ft AGL en VMC (velocidad &plusmn;5 kt, senda no alineada).<br/>
-            - Pista ocupada por otra aeronave, vehículo o fauna.<br/>
-            - Ráfagas severas o cizalladura súbita en corta final.<br/>
-            - Instrucción expresa de torre ("Motor y al aire").
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
           </div>
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Retracción Progresiva de Flaps:</strong>
-            Nunca retraiga los flaps directamente de LDG a UP. Con el motor a pleno empuje, pasar inmediatamente a Flaps UP causaría una pérdida brusca de sustentación y hundimiento contra el suelo.
-          </div>
-        </div>
-
-        <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2.5 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Franqueamiento de Obstáculos</span>
-          <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            Mantenga 66 KIAS hasta franquear cualquier obstáculo de salida antes de acelerar a 73 KIAS para ascenso en ruta.
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Maniobra de Motor y al Aire (Go-Around)</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Aplicación de potencia MAX, actitud de ascenso a velocidad mínima vR/vY y retracción secuencial de flaps de LDG a T/O.
           </p>
         </div>
       </div>
@@ -5816,24 +5757,16 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENFRIAMIENTO Y POST-VUELO</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Protección Crítica del Turbocompresor:</strong>
-            El turbocompresor gira a más de 100.000 RPM a altas temperaturas de gases de escape. La parada sin enfriar (mínimo 2 minutos en ralentí a 890 RPM) detiene la circulación de aceite lubricante, carbonizándolo en el eje y provocando fallos mecánicos graves.
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
           </div>
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Comprobación Auditiva del ELT:</strong>
-            Sintonizar 121.500 MHz en el VHF antes de cortar batería para confirmar que el transmisor de localización de emergencia no se activó por una toma dura.
-          </div>
-        </div>
-
-        <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2.5 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Protección en Rampa</span>
-          <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            Coloque funda de pitot, calzos en ruedas principales y morro, y cinchas de anclaje (tie-downs) si la aeronave permanece pernoctando en plataforma.
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Parada de Motor y Estacionamiento</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Enfriamiento de 2 minutos en IDLE para el turbocompresor, corte de interruptores Engine Master y Electric Master e inspección post-vuelo.
           </p>
         </div>
       </div>
@@ -5901,24 +5834,16 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">NOTAS OPERATIVAS Y SEGURIDAD</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Puntos de Toma de Tierra (Grounding):</strong>
-            Conecte siempre la pinza de descarga electrostática del camión de combustible en las zonas metálicas sin pintar del escalón alar (izquierdo o derecho) antes de retirar el tapón de llenado.
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
           </div>
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Operación Diésel vs JET A-1:</strong>
-            El combustible JET A-1 tolera temperaturas de hasta -30 °C. Si se utiliza diésel de automoción (EN 590), no se puede arrancar si la temperatura es inferior a -5 °C ni despegar si el depósito izquierdo está a menos de +5 °C por riesgo de congelación de parafinas.
-          </div>
-        </div>
-
-        <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2.5 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Oxígeno y Techo Operativo</span>
-          <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            Techo operativo máximo certificado: 16.400 ft (FL164). Requisitos de oxígeno suplementario obligatorios por encima de 10.000 ft según normativa SERA.
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Repostaje y Descarga Estática</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Puntos de descarga electrostática en escalón alar, bocas de llenado de depósitos y precauciones para combustible diésel y JET A-1.
           </p>
         </div>
       </div>
