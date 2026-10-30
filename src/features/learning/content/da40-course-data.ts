@@ -3974,97 +3974,112 @@ export const DA40_LESSON_4 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">5. FUSELAGE RIGHT & 6. RIGHT WING</span>
           </div>
 
-          <!-- SECCIÓN 5: FUSELAGE, RIGHT SIDE -->
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+          <!-- SECCIÓN 5: FUSELAGE, RIGHT SIDE (2 COLUMNAS a-b y c-d) -->
+          <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">5. Fuselage, right side:</strong>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">a)</span>
-              <span class="text-slate-800 dark:text-slate-200">Fuselage skin &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">b)</span>
-              <span class="text-slate-800 dark:text-slate-200">Rear window &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">c)</span>
-              <span class="text-slate-800 dark:text-slate-200">Canopy, right side &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">d)</span>
-              <span class="text-slate-800 dark:text-slate-200">Autopilot static source (if installed) &mdash; <span class="italic font-medium">check for blockage</span></span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-0.5">
+              <div class="space-y-0.5">
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">a)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Fuselage skin &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">b)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Rear window &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+              </div>
+              <div class="space-y-0.5">
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">c)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Canopy, right side &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">d)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Autopilot static source (if installed) &mdash; <span class="italic font-medium">check for blockage</span></span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- SECCIÓN 6: RIGHT WING -->
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+          <!-- SECCIÓN 6: RIGHT WING (2 COLUMNAS a-i y j-q) -->
+          <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">6. Right wing:</strong>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">a)</span>
-              <span class="text-slate-800 dark:text-slate-200">Flap and linkage &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">b)</span>
-              <span class="text-slate-800 dark:text-slate-200">Flap hinges and safety pin &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">c)</span>
-              <span class="text-slate-800 dark:text-slate-200">Aileron and linkage &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">d)</span>
-              <span class="text-slate-800 dark:text-slate-200">Aileron hinges and safety pin &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">e)</span>
-              <span class="text-slate-800 dark:text-slate-200">Foreign objects in aileron paddle &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">f)</span>
-              <span class="text-slate-800 dark:text-slate-200">Wing tip &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">g)</span>
-              <span class="text-slate-800 dark:text-slate-200">Position light, strobe light (ACL) &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">h)</span>
-              <span class="text-slate-800 dark:text-slate-200">Tie-down &mdash; <span class="italic font-medium">check, clear</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">i)</span>
-              <span class="text-slate-800 dark:text-slate-200">Entire wing surface &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">j)</span>
-              <span class="text-slate-800 dark:text-slate-200">2 stall strips on wing &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">k)</span>
-              <span class="text-slate-800 dark:text-slate-200">Tank air outlet in lower surface &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">l)</span>
-              <span class="text-slate-800 dark:text-slate-200">Tank filler &mdash; <span class="italic font-medium">visual check, use alternate mean for fuel qty. check</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">m)</span>
-              <span class="text-slate-800 dark:text-slate-200">Openings on lower surface &mdash; <span class="italic font-medium">check for foreign objects and for traces of fuel</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">n)</span>
-              <span class="text-slate-800 dark:text-slate-200">Tank drain &mdash; <span class="italic font-medium">drain off to check for water and sediment (drain until no water comes out)</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">o)</span>
-              <span class="text-slate-800 dark:text-slate-200">Fuel cooler baffle on stub wing &mdash; <span class="italic font-medium">check (removed if OAT > 20 °C / 68 °F; installed if OAT < 20 °C / 68 °F)</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">p)</span>
-              <span class="text-slate-800 dark:text-slate-200">Step &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">q)</span>
-              <span class="text-slate-800 dark:text-slate-200">Static dischargers &mdash; <span class="italic font-medium">visual inspection</span></span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-0.5">
+              <!-- Subcolumna 1: Ítems a - i (9 ítems) -->
+              <div class="space-y-0.5">
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">a)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Flap and linkage &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">b)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Flap hinges and safety pin &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">c)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Aileron and linkage &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">d)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Aileron hinges and safety pin &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">e)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Foreign objects in aileron paddle &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">f)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Wing tip &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">g)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Position light, strobe light (ACL) &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">h)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Tie-down &mdash; <span class="italic font-medium">check, clear</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">i)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Entire wing surface &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+              </div>
+
+              <!-- Subcolumna 2: Ítems j - q (8 ítems) -->
+              <div class="space-y-0.5">
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">j)</span>
+                  <span class="text-slate-800 dark:text-slate-200">2 stall strips on wing &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">k)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Tank air outlet in lower surface &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">l)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Tank filler &mdash; <span class="italic font-medium">visual check, use alternate mean for fuel qty. check</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">m)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Openings on lower surface &mdash; <span class="italic font-medium">check for foreign objects and for traces of fuel</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">n)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Tank drain &mdash; <span class="italic font-medium">drain off to check for water and sediment (drain until no water comes out)</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">o)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Fuel cooler baffle on stub wing &mdash; <span class="italic font-medium">check (removed if OAT &gt; 20 °C / 68 °F; installed if OAT &lt; 20 °C / 68 °F)</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">p)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Step &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">q)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Static dischargers &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
