@@ -356,15 +356,19 @@ export function DA40FuelChartWidget() {
                 onClick={() => setPreset(preset.load)}
                 style={{
                   backgroundColor: isActive ? "#0B2E59" : "#f1f5f9",
-                  color: isActive ? "#ffffff" : "#0f172a",
+                  color: isActive ? "#ffffff" : "#000000",
+                  fontSize: "12px",
+                  fontWeight: 800,
                 }}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition-all cursor-pointer border ${
+                className={`px-3 py-1 rounded-lg transition-all cursor-pointer border ${
                   isActive
-                    ? "border-[#0B2E59] shadow-sm ring-2 ring-sky-300 dark:bg-sky-600 dark:text-white"
-                    : "border-slate-300 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700"
+                    ? "border-[#0B2E59] shadow-sm ring-2 ring-sky-300 dark:bg-sky-600"
+                    : "border-slate-300 hover:bg-slate-200 dark:bg-slate-800 dark:border-slate-700"
                 }`}
               >
-                {preset.label}
+                <span style={{ color: isActive ? "#ffffff" : "#000000" }}>
+                  {preset.label}
+                </span>
               </button>
             );
           })}

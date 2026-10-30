@@ -28,36 +28,44 @@ export function DA40TakeoffChartsWidget() {
       {/* Top Controls: Selector Buttons & Zoom Action */}
       <div className="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
         {/* Selector Tabs: Ground Roll & Takeoff Distance 50ft */}
-        <div className="flex items-center gap-1 p-0.5 bg-slate-200/90 dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-700">
+        <div className="flex items-center gap-1.5 p-1 bg-slate-200 dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-700">
           <button
             type="button"
             onClick={() => setActiveTab("ground_roll")}
             style={{
               backgroundColor: activeTab === "ground_roll" ? "#0B2E59" : "transparent",
-              color: activeTab === "ground_roll" ? "#ffffff" : "#0f172a",
+              color: activeTab === "ground_roll" ? "#ffffff" : "#000000",
+              fontSize: "13px",
+              fontWeight: 800,
             }}
-            className={`px-3.5 py-1 rounded-lg text-xs font-extrabold transition-all cursor-pointer ${
+            className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
               activeTab === "ground_roll"
-                ? "shadow-xs dark:bg-sky-600 dark:!text-white"
-                : "hover:bg-slate-300/60 dark:text-slate-200 dark:hover:bg-slate-700"
+                ? "shadow-sm dark:bg-sky-600"
+                : "hover:bg-slate-300 dark:hover:bg-slate-700"
             }`}
           >
-            Ground Roll
+            <span style={{ color: activeTab === "ground_roll" ? "#ffffff" : "#000000" }}>
+              Ground Roll
+            </span>
           </button>
           <button
             type="button"
             onClick={() => setActiveTab("obstacle_50ft")}
             style={{
               backgroundColor: activeTab === "obstacle_50ft" ? "#0B2E59" : "transparent",
-              color: activeTab === "obstacle_50ft" ? "#ffffff" : "#0f172a",
+              color: activeTab === "obstacle_50ft" ? "#ffffff" : "#000000",
+              fontSize: "13px",
+              fontWeight: 800,
             }}
-            className={`px-3.5 py-1 rounded-lg text-xs font-extrabold transition-all cursor-pointer ${
+            className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
               activeTab === "obstacle_50ft"
-                ? "shadow-xs dark:bg-sky-600 dark:!text-white"
-                : "hover:bg-slate-300/60 dark:text-slate-200 dark:hover:bg-slate-700"
+                ? "shadow-sm dark:bg-sky-600"
+                : "hover:bg-slate-300 dark:hover:bg-slate-700"
             }`}
           >
-            Takeoff Distance 50ft
+            <span style={{ color: activeTab === "obstacle_50ft" ? "#ffffff" : "#000000" }}>
+              Takeoff Distance 50ft
+            </span>
           </button>
         </div>
 
@@ -96,28 +104,36 @@ export function DA40TakeoffChartsWidget() {
             {/* Modal Header */}
             <div className="flex items-center justify-between px-4 py-2 border-b border-slate-200 dark:border-slate-800 shrink-0 bg-slate-50 dark:bg-slate-900">
               {/* Modal Tabs */}
-              <div className="flex items-center gap-1 p-0.5 bg-slate-200 dark:bg-slate-800 rounded-lg">
+              <div className="flex items-center gap-1.5 p-1 bg-slate-200 dark:bg-slate-800 rounded-lg">
                 <button
                   type="button"
                   onClick={() => setActiveTab("ground_roll")}
                   style={{
                     backgroundColor: activeTab === "ground_roll" ? "#0B2E59" : "transparent",
-                    color: activeTab === "ground_roll" ? "#ffffff" : "#0f172a",
+                    color: activeTab === "ground_roll" ? "#ffffff" : "#000000",
+                    fontSize: "13px",
+                    fontWeight: 800,
                   }}
-                  className="px-3 py-1 rounded-md text-xs font-bold transition-all cursor-pointer"
+                  className="px-3.5 py-1.5 rounded-md transition-all cursor-pointer"
                 >
-                  Ground Roll
+                  <span style={{ color: activeTab === "ground_roll" ? "#ffffff" : "#000000" }}>
+                    Ground Roll
+                  </span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveTab("obstacle_50ft")}
                   style={{
                     backgroundColor: activeTab === "obstacle_50ft" ? "#0B2E59" : "transparent",
-                    color: activeTab === "obstacle_50ft" ? "#ffffff" : "#0f172a",
+                    color: activeTab === "obstacle_50ft" ? "#ffffff" : "#000000",
+                    fontSize: "13px",
+                    fontWeight: 800,
                   }}
-                  className="px-3 py-1 rounded-md text-xs font-bold transition-all cursor-pointer"
+                  className="px-3.5 py-1.5 rounded-md transition-all cursor-pointer"
                 >
-                  Takeoff Distance 50ft
+                  <span style={{ color: activeTab === "obstacle_50ft" ? "#ffffff" : "#000000" }}>
+                    Takeoff Distance 50ft
+                  </span>
                 </button>
               </div>
 

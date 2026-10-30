@@ -204,29 +204,53 @@ article::after,
   color: #7dd3fc !important;
 }
 
-/* Slide body text styling (standard 18px uniform reading size for prose paragraphs) */
+/* Ensure ALL body text elements in slides maintain strict uniform 18px size and high contrast */
+.lesson-slide-container p,
+.lesson-slide-container li,
 .lesson-slide-container .slide-body,
-.lesson-slide-container .slide-text {
-  font-size: 1.125rem;
-  line-height: 1.45;
-  color: #000000;
+.lesson-slide-container .text-xs,
+.lesson-slide-container .text-\[10px\],
+.lesson-slide-container .text-\[11px\],
+.lesson-slide-container .text-sm,
+.lesson-slide-container .text-base,
+.lesson-slide-container .text-slate-500,
+.lesson-slide-container .text-slate-600,
+.lesson-slide-container .text-slate-700,
+.lesson-slide-container .text-slate-800,
+.lesson-slide-container .text-\[17px\],
+.lesson-slide-container .text-\[18px\] {
+  font-size: 1.125rem !important; /* 18px uniform body text */
+  line-height: 1.45 !important;
+  color: #000000 !important;
 }
 
+.lesson-slide-container strong,
+.lesson-slide-container b {
+  font-weight: 700;
+  color: #000000 !important;
+}
+
+/* Dark mode high-contrast support for prolonged reading */
+.dark .lesson-slide-container p,
+.dark .lesson-slide-container li,
 .dark .lesson-slide-container .slide-body,
-.dark .lesson-slide-container .slide-text {
-  color: #F8FAFC;
+.dark .lesson-slide-container .text-xs,
+.dark .lesson-slide-container .text-\[10px\],
+.dark .lesson-slide-container .text-\[11px\],
+.dark .lesson-slide-container .text-sm,
+.dark .lesson-slide-container .text-base,
+.dark .lesson-slide-container .text-slate-500,
+.dark .lesson-slide-container .text-slate-600,
+.dark .lesson-slide-container .text-slate-700,
+.dark .lesson-slide-container .text-slate-800,
+.dark .lesson-slide-container .text-\[17px\],
+.dark .lesson-slide-container .text-\[18px\] {
+  color: #F8FAFC !important;
 }
 
-/* Strict button and widget isolation: buttons and interactive elements fully control their own colors and font size */
-.lesson-slide-container button,
-.lesson-slide-container [data-interactive-exercise] {
-  font-family: inherit;
-}
-
-/* Button contrast helpers */
-.lesson-slide-container button.text-white,
-.lesson-slide-container [data-interactive-exercise] button.text-white {
-  color: #ffffff !important;
+.dark .lesson-slide-container strong,
+.dark .lesson-slide-container b {
+  color: #FFFFFF !important;
 }
 
 /* Dynamic continuous percentage column layouts */
