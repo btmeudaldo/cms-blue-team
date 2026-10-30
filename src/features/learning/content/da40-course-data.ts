@@ -5065,10 +5065,6 @@ export const DA40_LESSON_4 = {
               <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs">WARNING (ECU Backup Unsafe):</strong>
               If caution lights or 'ECU BACKUP UNSAFE' do not illuminate, error in test. If 'ECU BACKUP UNSAFE' does not extinguish after test, backup battery lacks sufficient power. <strong>IFR-flights are prohibited!</strong>
             </div>
-            <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs">
-              <strong class="text-amber-700 dark:text-amber-400 uppercase tracking-wide text-xs">CAUTION (Abort Flight on Error):</strong>
-              The whole test procedure must be passed without any error. In case of an error terminate flight preparation even when the engine seems to run smoothly after the test procedure.
-            </div>
             <div class="p-1.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs">
               <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide text-xs">NOTE (Engine Shake on ECU Swap):</strong>
               When switching from one ECU to the other a slight shake of the engine may occur. In case of longer dropouts of the engine, terminate flight preparation.
