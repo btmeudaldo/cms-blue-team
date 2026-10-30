@@ -7700,11 +7700,11 @@ export const DA40_LESSON_6 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TABLA OFICIAL DE CARGA AFM</span>
         </div>
 
-        <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 flex items-center justify-center p-1 my-auto shadow-xs">
           <img
             src="/images/da40/da40-loadsheet-table.png"
             alt="Hoja oficial de cálculo de carga del Diamond DA40 TDI"
-            class="max-w-full h-auto object-contain rounded-lg"
+            class="w-full h-full object-contain rounded-lg"
           />
         </div>
       </div>
