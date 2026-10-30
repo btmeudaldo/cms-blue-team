@@ -126,14 +126,10 @@ export function DA40FuelChartWidget() {
     setIsHovering(true);
   };
 
-  // Check if current point is close to the theoretical AFM curve
-  const theoUsg = getTheoreticalUsg(point.load);
-  const isOnAfmCurve = Math.abs(point.usg - theoUsg) < 0.25;
-
   return (
     <div className="w-full h-full flex flex-col justify-between bg-white dark:bg-slate-900 rounded-xl p-2 select-none overflow-hidden">
       {/* Top Value Readout Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-1.5 px-2 py-1 rounded-lg bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shrink-0">
+      <div className="h-10 shrink-0 flex items-center justify-between px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80">
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
             POTENCIA:
@@ -141,11 +137,6 @@ export function DA40FuelChartWidget() {
           <span className="font-mono font-extrabold text-base text-[#0B2E59] dark:text-sky-300">
             {point.load.toFixed(1)}% LOAD
           </span>
-          {isOnAfmCurve && (
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-400">
-              En curva AFM
-            </span>
-          )}
         </div>
 
         <div className="flex items-center gap-3 font-mono text-xs font-bold">
@@ -194,38 +185,49 @@ export function DA40FuelChartWidget() {
               y1={point.y}
               x2={BOX.right}
               y2={point.y}
-              stroke="#2563eb"
-              strokeWidth="4"
-              strokeDasharray="8 6"
+              stroke="#1d4ed8"
+              strokeWidth="5"
+              strokeDasharray="10 6"
             />
             {/* Arrow on Right Axis */}
             <polygon
-              points={`${BOX.right - 12},${point.y - 7} ${BOX.right - 12},${point.y + 7} ${BOX.right - 2},${point.y}`}
-              fill="#2563eb"
+              points={`${BOX.right - 14},${point.y - 8} ${BOX.right - 14},${point.y + 8} ${BOX.right - 2},${point.y}`}
+              fill="#1d4ed8"
             />
-            {/* Badge on Right Axis */}
-            <g transform={`translate(${BOX.right + 6}, ${Math.max(105, Math.min(815, point.y))})`}>
+            {/* Badge on Right Axis (Same size & style as Mass & Balance) */}
+            <g transform={`translate(${BOX.right + 6}, ${Math.max(124, Math.min(811, point.y))})`}>
               <rect
                 x="0"
-                y="-18"
-                width="145"
-                height="36"
-                rx="6"
+                y="-28"
+                width="214"
+                height="56"
+                rx="10"
                 fill="#1d4ed8"
                 stroke="#ffffff"
-                strokeWidth="2"
-                filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.3))"
+                strokeWidth="3"
+                filter="drop-shadow(0px 3px 6px rgba(0,0,0,0.35))"
               />
               <text
-                x="72"
-                y="5"
+                x="107"
+                y="-3"
                 textAnchor="middle"
                 fill="#ffffff"
-                fontSize="15"
+                fontSize="22"
                 fontFamily="monospace"
                 fontWeight="900"
               >
-                {point.usg.toFixed(2)} USG | {point.lph.toFixed(1)}L
+                {point.usg.toFixed(2)} USG/h
+              </text>
+              <text
+                x="107"
+                y="19"
+                textAnchor="middle"
+                fill="#bfdbfe"
+                fontSize="18"
+                fontFamily="monospace"
+                fontWeight="800"
+              >
+                {point.lph.toFixed(1)} L/h
               </text>
             </g>
 
@@ -235,34 +237,34 @@ export function DA40FuelChartWidget() {
               y1={point.y}
               x2={point.x}
               y2={BOX.bottom}
-              stroke="#2563eb"
-              strokeWidth="4"
-              strokeDasharray="8 6"
+              stroke="#1d4ed8"
+              strokeWidth="5"
+              strokeDasharray="10 6"
             />
             {/* Arrow on Bottom Axis */}
             <polygon
-              points={`${point.x - 7},${BOX.bottom - 12} ${point.x + 7},${BOX.bottom - 12} ${point.x},${BOX.bottom - 2}`}
-              fill="#2563eb"
+              points={`${point.x - 8},${BOX.bottom - 14} ${point.x + 8},${BOX.bottom - 14} ${point.x},${BOX.bottom - 2}`}
+              fill="#1d4ed8"
             />
-            {/* Badge on Bottom Axis */}
-            <g transform={`translate(${Math.max(50, Math.min(820, point.x))}, ${BOX.bottom + 6})`}>
+            {/* Badge on Bottom Axis (Same size & style as Mass & Balance) */}
+            <g transform={`translate(${Math.max(120, Math.min(755, point.x))}, ${BOX.bottom + 8})`}>
               <rect
-                x="-40"
+                x="-85"
                 y="0"
-                width="80"
-                height="32"
-                rx="6"
+                width="170"
+                height="54"
+                rx="10"
                 fill="#1d4ed8"
                 stroke="#ffffff"
-                strokeWidth="2"
-                filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.3))"
+                strokeWidth="3"
+                filter="drop-shadow(0px 3px 6px rgba(0,0,0,0.35))"
               />
               <text
                 x="0"
-                y="21"
+                y="37"
                 textAnchor="middle"
                 fill="#ffffff"
-                fontSize="16"
+                fontSize="26"
                 fontFamily="monospace"
                 fontWeight="900"
               >
@@ -273,7 +275,7 @@ export function DA40FuelChartWidget() {
             {/* Point Marker (Crosshair center dot with glow) */}
             <circle
               cx={point.x}
-              y={point.y}
+              cy={point.y}
               r="14"
               fill="#3b82f6"
               fillOpacity="0.25"
@@ -282,7 +284,7 @@ export function DA40FuelChartWidget() {
             />
             <circle
               cx={point.x}
-              y={point.y}
+              cy={point.y}
               r="7"
               fill="#1d4ed8"
               stroke="#ffffff"
