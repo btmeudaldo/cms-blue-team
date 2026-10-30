@@ -4380,11 +4380,6 @@ export const DA40_LESSON_4 = {
             </div>
           </div>
 
-          <!-- END OF CHECKLIST BADGE -->
-          <div class="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-300 dark:border-emerald-700/60 text-emerald-900 dark:text-emerald-200 text-xs font-semibold flex items-center gap-2">
-            <span>✅</span>
-            <span>END OF CHECKLIST · PRE-FLIGHT INSPECTION COMPLETE</span>
-          </div>
 
           <!-- CAUTION OPERATIVA BLUE TEAM -->
           <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
