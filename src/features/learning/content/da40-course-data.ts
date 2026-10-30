@@ -4783,10 +4783,16 @@ export const DA40_LESSON_4 = {
             </div>
           </div>
 
-          <!-- CAUTIONS AFM VERBATIM -->
-          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-amber-700 dark:text-amber-400 uppercase tracking-wide text-xs">CAUTION (Taxiing & Brakes):</strong>
-            Avoid prolonged permanent braking while taxiing (overheats brakes and may cause loss of brake capacity). When taxiing on a poor surface select the lowest possible RPM to avoid propeller damage.
+          <!-- PRUEBA DE FRENOS INICIAL Y CAUTIONS AFM VERBATIM -->
+          <div class="space-y-1 shrink-0">
+            <div class="p-2 rounded-xl bg-sky-50/90 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-slate-800 dark:text-slate-200 text-[11px] leading-tight shadow-2xs">
+              <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide text-xs block mb-0.5">Prueba de Frenos Inicial:</strong>
+              Al iniciar el movimiento en la calle de rodaje, pisar firmemente ambos pedales de freno para verificar resistencia hidráulica y deceleración simétrica sin desvío de rumbo.
+            </div>
+            <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs">
+              <strong class="text-amber-700 dark:text-amber-400 uppercase tracking-wide text-xs">CAUTION (Taxiing & Brakes):</strong>
+              Avoid prolonged permanent braking while taxiing (overheats brakes and may cause loss of brake capacity). When taxiing on a poor surface select the lowest possible RPM to avoid propeller damage.
+            </div>
           </div>
         </div>
       </div>
@@ -4796,24 +4802,16 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">COMPROBACIONES EN RODAJE</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Prueba de Frenos Inicial:</strong>
-            Al iniciar el movimiento en la calle de rodaje, pisar firmemente ambos pedales de freno para verificar resistencia hidráulica y deceleración simétrica sin desvío de rumbo.
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
           </div>
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Instrumentos Giroscópicos en Virajes:</strong>
-            Durante los giros en tierra: la bola del coordinador de virajes debe desplazarse hacia el exterior del viraje, el bastón/índice hacia el sentido del viraje, y la brújula y giro direccional aumentar o disminuir rumbos coherentemente.
-          </div>
-        </div>
-
-        <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2.5 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Protección Térmica de Frenos</span>
-          <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            No mantenga los frenos pisados de forma continua para controlar la velocidad. Deje rodar el avión libremente y aplique frenadas intermitentes para evitar sobrecalentamiento.
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Rodaje y Control de Frenos</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Mandos de vuelo, pedales de dirección con frenos diferenciales en tren principal y comprobación de instrumentos de vuelo durante el viraje.
           </p>
         </div>
       </div>
