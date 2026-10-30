@@ -35,7 +35,7 @@ function getRegimeBadge(load: number) {
   }
   if (load >= 58 && load <= 62) {
     return {
-      name: "Crucero Económico AFM (Máx. Alcance)",
+      name: "Crucero Económico AFM",
       color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-400",
     };
   }
@@ -47,7 +47,7 @@ function getRegimeBadge(load: number) {
   }
   if (load >= 68 && load <= 72) {
     return {
-      name: "Crucero Normal AFM (Estándar)",
+      name: "Crucero Normal AFM",
       color: "bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border-blue-400",
     };
   }
@@ -71,11 +71,10 @@ function getRegimeBadge(load: number) {
 
 export function DA40FuelChartWidget() {
   const [selectedLoad, setSelectedLoad] = useState<number>(60);
-  const [isHovering, setIsHovering] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   // SVG coordinate system boundaries
-  // Plot area inside SVG:
   const plotLeft = 60;
   const plotRight = 440;
   const plotTop = 40;
@@ -124,37 +123,38 @@ export function DA40FuelChartWidget() {
     return `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
   }).join(" ");
 
-  // Mouse / Touch interaction handlers
-  const handlePointer = (clientX: number) => {
+  // Robust pointer tracking using SVG matrix inversion
+  const handlePointerMove = (clientX: number, clientY: number) => {
     if (!svgRef.current) return;
-    const rect = svgRef.current.getBoundingClientRect();
-    const scale = 540 / rect.width;
-    const svgX = (clientX - rect.left) * scale;
-    const newLoad = xToLoad(svgX);
-    setSelectedLoad(newLoad);
-  };
-
-  const onMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
-    handlePointer(e.clientX);
-    setIsHovering(true);
-  };
-
-  const onTouchMove = (e: React.TouchEvent<SVGSVGElement>) => {
-    if (e.touches[0]) {
-      handlePointer(e.touches[0].clientX);
-      setIsHovering(true);
+    try {
+      const svg = svgRef.current;
+      const pt = svg.createSVGPoint();
+      pt.x = clientX;
+      pt.y = clientY;
+      const ctm = svg.getScreenCTM();
+      if (!ctm) return;
+      const svgCoords = pt.matrixTransform(ctm.inverse());
+      const newLoad = xToLoad(svgCoords.x);
+      setSelectedLoad(newLoad);
+    } catch {
+      // Fallback
+      const rect = svgRef.current.getBoundingClientRect();
+      const relX = clientX - rect.left;
+      const ratio = relX / rect.width;
+      const load = minLoad + ratio * (maxLoad - minLoad);
+      setSelectedLoad(Math.max(30, Math.min(100, Math.round(load))));
     }
   };
 
   return (
     <div className="w-full h-full flex flex-col justify-between bg-white dark:bg-slate-900 rounded-xl p-2 select-none overflow-hidden">
       {/* HUD Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-1.5 px-1 py-1 rounded-lg bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shrink-0">
+      <div className="flex flex-wrap items-center justify-between gap-1.5 px-2 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shrink-0">
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
             % LOAD:
           </span>
-          <span className="font-mono font-extrabold text-base text-[#0B2E59] dark:text-sky-300">
+          <span className="font-mono font-extrabold text-lg text-[#0B2E59] dark:text-sky-300">
             {selectedLoad}%
           </span>
           <span
@@ -169,28 +169,32 @@ export function DA40FuelChartWidget() {
             <span className="text-[10px] text-slate-500 font-sans font-semibold">
               USG/h:
             </span>
-            <span className="text-sm">{currentUsg.toFixed(2)}</span>
+            <span className="text-sm font-extrabold">{currentUsg.toFixed(2)}</span>
           </div>
           <div className="flex items-center gap-1 text-emerald-700 dark:text-emerald-400">
             <span className="text-[10px] text-slate-500 font-sans font-semibold">
               L/h:
             </span>
-            <span className="text-sm">{currentLph.toFixed(1)}</span>
+            <span className="text-sm font-extrabold">{currentLph.toFixed(1)}</span>
           </div>
         </div>
       </div>
 
       {/* SVG Interactive Chart Canvas */}
-      <div className="relative w-full flex-1 min-h-0 flex items-center justify-center py-0.5">
+      <div
+        className="relative w-full flex-1 min-h-0 flex items-center justify-center py-1 cursor-crosshair touch-none"
+        onPointerEnter={() => setIsHovered(true)}
+        onPointerLeave={() => setIsHovered(false)}
+        onPointerMove={(e) => handlePointerMove(e.clientX, e.clientY)}
+        onPointerDown={(e) => {
+          (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
+          handlePointerMove(e.clientX, e.clientY);
+        }}
+      >
         <svg
           ref={svgRef}
           viewBox="0 0 540 450"
-          className="w-full h-full max-h-[440px] cursor-crosshair touch-none"
-          onMouseMove={onMouseMove}
-          onMouseEnter={() => setIsHovering(true)}
-          onMouseLeave={() => setIsHovering(false)}
-          onTouchMove={onTouchMove}
-          onTouchStart={() => setIsHovering(true)}
+          className="w-full h-full max-h-[430px]"
         >
           {/* Chart Title */}
           <text
@@ -408,12 +412,12 @@ export function DA40FuelChartWidget() {
             x2={currentX}
             y2={currentY}
             stroke="#ef4444"
-            strokeWidth="2"
+            strokeWidth="2.5"
             strokeDasharray="4 3"
           />
           {/* Arrow pointing to curve from bottom */}
           <polygon
-            points={`${currentX - 4},${plotBottom - 2} ${currentX + 4},${plotBottom - 2} ${currentX},${plotBottom - 8}`}
+            points={`${currentX - 5},${plotBottom - 2} ${currentX + 5},${plotBottom - 2} ${currentX},${plotBottom - 9}`}
             fill="#ef4444"
           />
 
@@ -424,12 +428,12 @@ export function DA40FuelChartWidget() {
             x2={plotRight}
             y2={currentY}
             stroke="#ef4444"
-            strokeWidth="2"
+            strokeWidth="2.5"
             strokeDasharray="4 3"
           />
           {/* Arrow pointing right to Y axis */}
           <polygon
-            points={`${plotRight - 8},${currentY - 4} ${plotRight - 8},${currentY + 4} ${plotRight - 2},${currentY}`}
+            points={`${plotRight - 9},${currentY - 5} ${plotRight - 9},${currentY + 5} ${plotRight - 2},${currentY}`}
             fill="#ef4444"
           />
 
@@ -437,17 +441,17 @@ export function DA40FuelChartWidget() {
           <circle
             cx={currentX}
             y={currentY}
-            r="8"
-            className="fill-red-500/20 stroke-red-500 stroke-[2] animate-pulse"
+            r="9"
+            className="fill-red-500/25 stroke-red-500 stroke-[2] animate-pulse"
           />
           <circle
             cx={currentX}
             y={currentY}
             r="4.5"
-            className="fill-red-600 dark:fill-red-400 stroke-white stroke-[1.5]"
+            className="fill-red-600 dark:fill-red-400 stroke-white stroke-[2]"
           />
 
-          {/* Interactive Tooltip Callout */}
+          {/* Interactive Floating Tooltip */}
           <g
             transform={`translate(${Math.min(
               plotRight - 150,
@@ -458,21 +462,21 @@ export function DA40FuelChartWidget() {
               width="140"
               height="45"
               rx="6"
-              className="fill-slate-900/95 dark:fill-slate-950/95 stroke-sky-400 stroke-[1] shadow-lg"
+              className="fill-slate-900/95 dark:fill-slate-950/95 stroke-sky-400 stroke-[1.5] shadow-xl"
             />
             <text
               x="70"
-              y="16"
+              y="17"
               textAnchor="middle"
-              className="fill-sky-300 text-[10px] font-bold"
+              className="fill-sky-300 text-[11px] font-extrabold"
             >
               {selectedLoad}% LOAD
             </text>
             <text
               x="70"
-              y="34"
+              y="35"
               textAnchor="middle"
-              className="fill-white text-[11px] font-mono font-bold"
+              className="fill-white text-[12px] font-mono font-bold"
             >
               {currentUsg.toFixed(2)} USG &bull; {currentLph.toFixed(1)} L/h
             </text>
@@ -480,10 +484,10 @@ export function DA40FuelChartWidget() {
         </svg>
       </div>
 
-      {/* Quick Select Preset Buttons & Interactive Hint */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 pt-1 border-t border-slate-200 dark:border-slate-800 shrink-0">
-        <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium flex items-center gap-1">
-          <span>👆</span> Mueve el cursor o selecciona un régimen estándar:
+      {/* Quick Select Preset Buttons & Hint */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0">
+        <span className="text-[11px] text-slate-600 dark:text-slate-400 font-medium flex items-center gap-1">
+          <span className="text-base">👉</span> Pasa el ratón o pulsa un régimen:
         </span>
         <div className="flex items-center gap-1">
           {[
@@ -496,9 +500,9 @@ export function DA40FuelChartWidget() {
               key={preset.load}
               type="button"
               onClick={() => setSelectedLoad(preset.load)}
-              className={`px-2 py-0.5 rounded text-[11px] font-bold transition-colors ${
+              className={`px-2.5 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${
                 selectedLoad === preset.load
-                  ? "bg-[#0B2E59] text-white dark:bg-sky-500 dark:text-slate-950 shadow-xs"
+                  ? "bg-[#0B2E59] text-white dark:bg-sky-500 dark:text-slate-950 shadow-sm ring-2 ring-sky-300 dark:ring-sky-600"
                   : "bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300"
               }`}
             >

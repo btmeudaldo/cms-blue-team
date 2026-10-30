@@ -7896,14 +7896,8 @@ export const DA40_LESSON_6 = {
         <div
           data-interactive-exercise="fuel_chart"
           data-aircraft="da40"
-          class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 shadow-xs"
-        >
-          <img
-            src="/images/da40/da40-fuel-flow-load.png"
-            alt="Ábaco oficial AFM de consumo horario Fuel Flow vs % Load"
-            class="w-full h-full object-contain rounded-lg"
-          />
-        </div>
+          class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 shadow-xs flex flex-col"
+        ></div>
       </div>
     </div>
   </div>
