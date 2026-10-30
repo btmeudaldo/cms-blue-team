@@ -4931,29 +4931,16 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PRUEBA DE PLENA POTENCIA (MAX 10s)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="space-y-2 text-xs text-slate-700 dark:text-slate-200">
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Procedimiento de Potencia Máxima en Punto de Espera:</strong>
-            Con freno de parking puesto y avión orientado al viento, avanzar palanca a MAX durante 10 segundos continuos:
-            <ul class="list-disc pl-4 mt-1 space-y-0.5 text-[11px]">
-              <li><strong>RPM:</strong> Debe estabilizarse entre <strong>2240 y 2300 RPM</strong>.</li>
-              <li><strong>Carga (LOAD):</strong> Debe estabilizarse entre <strong>90 % y 100 %</strong>.</li>
-              <li><strong>Presión de Aceite:</strong> Dentro del sector verde (2.3 a 6.0 bar).</li>
-            </ul>
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
+            📷
           </div>
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1 uppercase text-xs">Criterio Aborto Antes de Pista:</strong>
-            Si durante los 10 segundos la carga no alcanza al menos el 90 % o las RPM no superan 2240, aborte el vuelo y regrese a plataforma para revisión de mantenimiento del turbo o inyección.
-          </div>
-        </div>
-
-        <div class="w-full rounded-xl border border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 p-2.5 text-center mt-auto">
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400">Comprobación de Alarma DOOR</span>
-          <p class="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
-            Verifique la luz DOOR apagada en el panel de anunciadores antes de continuar con la prueba FADEC.
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Punto de Espera y Prueba de Motor</span>
+          <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
+            Orientación al viento en punto de espera, freno de parking calado, verificación de alarma DOOR y comprobación de parámetros de potencia (RPM y LOAD).
           </p>
         </div>
       </div>
