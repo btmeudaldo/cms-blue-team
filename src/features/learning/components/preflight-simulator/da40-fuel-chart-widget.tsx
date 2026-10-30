@@ -341,26 +341,29 @@ export function DA40FuelChartWidget() {
         <span className="text-[11px] text-slate-600 dark:text-slate-400 font-medium flex items-center gap-1">
           <span className="text-base">👆</span> Haz clic o mueve el cursor por la gráfica:
         </span>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5">
           {[
             { label: "60% Eco", load: 60 },
             { label: "70% Normal", load: 70 },
             { label: "80% Rápido", load: 80 },
             { label: "100% Despegue", load: 100 },
-          ].map((preset) => (
-            <button
-              key={preset.load}
-              type="button"
-              onClick={() => setPreset(preset.load)}
-              className={`px-2.5 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${
-                Math.abs(point.load - preset.load) < 0.5
-                  ? "bg-[#0B2E59] text-white dark:bg-sky-500 dark:text-slate-950 shadow-sm ring-2 ring-sky-300 dark:ring-sky-600"
-                  : "bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300"
-              }`}
-            >
-              {preset.label}
-            </button>
-          ))}
+          ].map((preset) => {
+            const isActive = Math.abs(point.load - preset.load) < 0.5;
+            return (
+              <button
+                key={preset.load}
+                type="button"
+                onClick={() => setPreset(preset.load)}
+                className={`px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition-all cursor-pointer ${
+                  isActive
+                    ? "bg-blue-600 dark:bg-blue-600 !text-white text-white shadow-md ring-2 ring-blue-300 dark:ring-blue-400"
+                    : "bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700"
+                }`}
+              >
+                {preset.label}
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>
