@@ -4531,10 +4531,16 @@ export const DA40_LESSON_4 = {
             </div>
           </div>
 
-          <!-- WARNING AFM VERBATIM -->
-          <div class="p-2 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs">WARNING:</strong>
-            Nunca mover la hélice con la mano.
+          <!-- WARNINGS AFM VERBATIM -->
+          <div class="space-y-1 shrink-0">
+            <div class="p-2 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[11px] leading-tight shadow-2xs">
+              <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs">WARNING:</strong>
+              Before starting the engine the pilot must ensure that the propeller area is free, and no persons can be endangered.
+            </div>
+            <div class="p-2 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[11px] leading-tight shadow-2xs">
+              <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs">WARNING:</strong>
+              Nunca mover la hélice con la mano.
+            </div>
           </div>
         </div>
       </div>
@@ -4579,12 +4585,6 @@ export const DA40_LESSON_4 = {
         <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">STARTING ENGINE</span>
-          </div>
-
-          <!-- AVISO AFM PREVIO AL ARRANQUE -->
-          <div class="p-2 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs">WARNING:</strong>
-            Before starting the engine the pilot must ensure that the propeller area is free, and no persons can be endangered.
           </div>
 
           <!-- LISTA VERBATIM AFM (ÍTEMS 1 - 9 EN 2 COLUMNAS 1-5 y 6-9) -->
