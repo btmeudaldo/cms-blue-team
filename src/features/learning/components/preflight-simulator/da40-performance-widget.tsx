@@ -347,9 +347,17 @@ export function DA40PerformanceWidget({
                 <button
                   type="button"
                   onClick={() => switchScenario(1)}
-                  className="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] shrink-0 transition-all cursor-pointer"
+                  style={{
+                    backgroundColor: "#059669",
+                    color: "#ffffff",
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
+                  }}
+                  className="px-3 py-1.5 rounded-lg font-bold shrink-0 transition-all cursor-pointer hover:bg-emerald-700 shadow-2xs"
                 >
-                  Ir a GCTS ➔
+                  <span style={{ color: "#ffffff", fontSize: "1.125rem", fontWeight: 700 }}>
+                    Ir a GCTS ➔
+                  </span>
                 </button>
               </div>
             )}
@@ -368,13 +376,15 @@ export function DA40PerformanceWidget({
                     style={{
                       backgroundColor: "#059669",
                       color: "#ffffff",
-                      fontSize: "13px",
+                      fontSize: "1.125rem",
                       fontWeight: 700,
                     }}
-                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-emerald-600 font-bold transition-all shadow-2xs cursor-pointer hover:bg-emerald-700"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-emerald-600 font-bold transition-all shadow-2xs cursor-pointer hover:bg-emerald-700"
                     title="Ver Gráfico de Aterrizaje"
                   >
-                    <span style={{ color: "#ffffff" }}>🛬 Ver Tabla Aterrizaje</span>
+                    <span style={{ color: "#ffffff", fontSize: "1.125rem", fontWeight: 700 }}>
+                      🛬 Ver Tabla Aterrizaje
+                    </span>
                     <span>🔍</span>
                   </button>
                   <a
@@ -384,13 +394,13 @@ export function DA40PerformanceWidget({
                     style={{
                       backgroundColor: "#f1f5f9",
                       color: "#000000",
-                      fontSize: "13px",
+                      fontSize: "1.125rem",
                       fontWeight: 700,
                     }}
-                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
                     title="Abrir imagen en nueva pestaña"
                   >
-                    <span style={{ color: "#000000" }}>↗</span>
+                    <span style={{ color: "#000000", fontSize: "1.125rem", fontWeight: 700 }}>↗</span>
                   </a>
                 </div>
               </div>
@@ -551,12 +561,12 @@ export function DA40PerformanceWidget({
                 style={{
                   backgroundColor: selectedScenarioIndex === 0 ? "#059669" : "#0B2E59",
                   color: "#ffffff",
-                  fontSize: "13px",
+                  fontSize: "1.125rem",
                   fontWeight: 800,
                 }}
                 className="px-4 py-2 rounded-xl shadow-xs cursor-pointer flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95"
               >
-                <span style={{ color: "#ffffff" }}>
+                <span style={{ color: "#ffffff", fontSize: "1.125rem", fontWeight: 800 }}>
                   {selectedScenarioIndex === 0
                     ? "Pasar a GCTS (Ejercicio) ➔"
                     : currentStep === "takeoff"
@@ -671,13 +681,13 @@ export function DA40PerformanceWidget({
                   style={{
                     backgroundColor: "#0B2E59",
                     color: "#ffffff",
-                    fontSize: "13px",
+                    fontSize: "1.125rem",
                     fontWeight: 700,
                   }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#0B2E59] hover:bg-[#082242] transition-all cursor-pointer shadow-2xs"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#0B2E59] hover:bg-[#082242] transition-all cursor-pointer shadow-2xs"
                   title="Ver Gráfica en Pantalla"
                 >
-                  <span style={{ color: "#ffffff" }}>
+                  <span style={{ color: "#ffffff", fontSize: "1.125rem", fontWeight: 700 }}>
                     {currentStep === "takeoff" ? "🛫 Ver Tabla Takeoff Distance 50ft" : "🛬 Ver Tabla Landing Distance"}
                   </span>
                   <span>🔍</span>
@@ -689,13 +699,13 @@ export function DA40PerformanceWidget({
                   style={{
                     backgroundColor: "#f1f5f9",
                     color: "#000000",
-                    fontSize: "13px",
+                    fontSize: "1.125rem",
                     fontWeight: 700,
                   }}
-                  className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
                   title="Abrir imagen en nueva pestaña"
                 >
-                  <span style={{ color: "#000000" }}>↗</span>
+                  <span style={{ color: "#000000", fontSize: "1.125rem", fontWeight: 700 }}>↗</span>
                 </a>
               </div>
             </div>
@@ -845,14 +855,16 @@ export function DA40PerformanceWidget({
                   href={chartSrc}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all"
+                  style={{ fontSize: "1.125rem", fontWeight: 700 }}
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 transition-all"
                 >
                   Abrir en pestaña nueva ↗
                 </a>
                 <button
                   type="button"
                   onClick={() => setIsChartModalOpen(false)}
-                  className="px-3 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold transition-all cursor-pointer"
+                  style={{ fontSize: "1.125rem", fontWeight: 700 }}
+                  className="px-3.5 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 transition-all cursor-pointer"
                 >
                   ✕ Cerrar
                 </button>
