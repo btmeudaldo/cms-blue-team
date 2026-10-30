@@ -291,41 +291,43 @@ export function DA40FuelChartWidget() {
               strokeWidth="2.5"
             />
 
-            {/* Floating Info Tooltip */}
+            {/* Floating Info Tooltip (Same style & size as Axis Badges & Mass/Balance) */}
             <g
               transform={`translate(${Math.min(
-                BOX.right - 180,
-                Math.max(BOX.left + 10, point.x - 90)
-              )}, ${Math.max(BOX.top + 10, point.y - 65)})`}
+                BOX.right - 125,
+                Math.max(BOX.left + 125, point.x)
+              )}, ${point.y < 165 ? point.y + 48 : point.y - 48})`}
             >
               <rect
-                width="180"
-                height="50"
-                rx="8"
-                fill="#0f172a"
-                fillOpacity="0.95"
-                stroke="#38bdf8"
-                strokeWidth="2"
-                filter="drop-shadow(0px 4px 6px rgba(0,0,0,0.4))"
+                x="-118"
+                y="-30"
+                width="236"
+                height="60"
+                rx="10"
+                fill="#1d4ed8"
+                stroke="#ffffff"
+                strokeWidth="3"
+                filter="drop-shadow(0px 3px 6px rgba(0,0,0,0.35))"
               />
               <text
-                x="90"
-                y="19"
+                x="0"
+                y="-5"
                 textAnchor="middle"
-                fill="#38bdf8"
-                fontSize="13"
-                fontWeight="800"
+                fill="#ffffff"
+                fontSize="20"
+                fontFamily="sans-serif"
+                fontWeight="900"
               >
                 {point.load.toFixed(1)}% LOAD
               </text>
               <text
-                x="90"
-                y="39"
+                x="0"
+                y="19"
                 textAnchor="middle"
-                fill="#ffffff"
-                fontSize="14"
+                fill="#bfdbfe"
+                fontSize="17"
                 fontFamily="monospace"
-                fontWeight="900"
+                fontWeight="800"
               >
                 {point.usg.toFixed(2)} USG &bull; {point.lph.toFixed(1)} L/h
               </text>
