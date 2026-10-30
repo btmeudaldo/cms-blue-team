@@ -262,11 +262,8 @@ article::after,
   line-height: initial;
 }
 
-.lesson-slide-container .text-white,
 .lesson-slide-container button.text-white,
-.lesson-slide-container [data-interactive-exercise] .text-white,
-.lesson-slide-container [data-interactive-exercise] [class*="text-white"],
-.lesson-slide-container [class*="!text-white"] {
+.lesson-slide-container [data-interactive-exercise] button.text-white {
   color: #ffffff !important;
 }
 
