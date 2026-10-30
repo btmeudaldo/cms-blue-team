@@ -7494,7 +7494,7 @@ export const DA40_LESSON_6 = {
   course_id: DA40_COURSE_ID,
   title: "6. Documentación Prevuelo, Masa y Centrado, Combustible y Performance",
   slug: "despacho-operativo-da40-prevuelo",
-  description: "Dominio integral del despacho operacional en la aeronave Diamond DA40 TDI (Thielert TAE 125-01 / CD-135). Incluye cumplimentación paso a paso de la documentación oficial F.OPS.02, cálculo de Masa y Centrado con hoja de carga según AFM Capítulo 6 (BEW 735 kg, brazos 2,30 m / 3,25 m / 2,63 m / 3,65 m) y envolvente de CG (MTOM y MLM 1150 kg), régimen de crucero y consumo horario al 60% (15,1 L/h) y 70% (18,5 L/h), política de combustible EASA Part-NCO.OP.125 y Manual OM Blue Team (1h 30m de reserva obligatoria), y cálculo de performance de despegue y aterrizaje según AFM Capítulo 5 con factores de corrección de viento, pendiente y superficie de hierba.",
+  description: "Dominio integral del despacho operacional en la aeronave Diamond DA40 TDI. Incluye cumplimentación paso a paso de la documentación oficial F.OPS.02, cálculo de Masa y Centrado con hoja de carga según AFM Capítulo 6 (BEW 735 kg, brazos 2,30 m / 3,25 m / 2,63 m / 3,65 m) y envolvente de CG (MTOM y MLM 1150 kg), régimen de crucero y consumo horario al 60% (15,1 L/h) y 70% (18,5 L/h), política de combustible EASA Part-NCO.OP.125 y Manual OM Blue Team (1h 30m de reserva obligatoria), y cálculo de performance de despegue y aterrizaje según AFM Capítulo 5 con factores de corrección de viento, pendiente y superficie de hierba.",
   sequence_order: 6,
   lesson_order: 6,
   min_seconds: 1,
@@ -7979,7 +7979,7 @@ export const DA40_LESSON_6 = {
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI (TAE 125-01) · TALLER INTERACTIVO 2</div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER INTERACTIVO 2</div>
       <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.9 Ejercicio Práctico: Tablas de Crucero y Autonomía</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla a 60% de Potencia</span>
@@ -8076,7 +8076,7 @@ export const DA40_LESSON_6 = {
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI (TAE 125-01) · TALLER INTERACTIVO 3</div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER INTERACTIVO 3</div>
       <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.11 Ejercicio Práctico: Planificación de Combustible F.OPS.02</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Part-NCO.OP.125 & Manual OM</span>
@@ -8228,7 +8228,7 @@ export const DA40_LESSON_6 = {
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI (TAE 125-01) · TALLER INTERACTIVO 4A</div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER INTERACTIVO 4A</div>
       <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.14 Ejercicio Práctico 4A: Distancias de Despegue (TORA & TODA)</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distancias Prevuelo · Parte 1</span>
@@ -8243,7 +8243,7 @@ export const DA40_LESSON_6 = {
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI (TAE 125-01) · TALLER INTERACTIVO 4B</div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER INTERACTIVO 4B</div>
       <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.15 Ejercicio Práctico 4B: Distancia de Aterrizaje y Margen (LDA)</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distancias Prevuelo · Parte 2</span>

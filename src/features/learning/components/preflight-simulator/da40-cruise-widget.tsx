@@ -195,7 +195,7 @@ export function DA40CruiseWidget({
     if (isNaN(userRange) || !checkValueTolerance(userRange, expectedMaxRange, 0.03, 8).isOk) {
       newErrors.maxRange =
         attempts >= 1
-          ? `En la columna 'Distance Range [NM]' a ${alt} ft y 50% de Load figura ${expectedMaxRange} NM.`
+          ? `En la columna 'Distance Range [NM]' a ${alt} ft y ${loadPct}% de Load figura ${expectedMaxRange} NM.`
           : "Busca en la columna 'Distance Range [NM]' el alcance máximo con depósitos estándar.";
     }
 
@@ -231,7 +231,7 @@ export function DA40CruiseWidget({
           <div className="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
-                ⏱️ CRUCERO Y AUTONOMÍA (50% LOAD)
+                ⏱️ CRUCERO Y AUTONOMÍA
               </span>
               <div className="flex items-center gap-2 mt-0.5">
                 <span className="text-xs sm:text-[13px] text-slate-500 font-medium">
@@ -525,7 +525,7 @@ export function DA40CruiseWidget({
                 📖 TABLA AFM 5.3.10 CRUCERO
               </span>
               <span className="text-[11px] sm:text-xs text-slate-500 font-medium">
-                DA40 TDI (TAE 125-01) · Standard Tanks (106.0 L / 28.00 Gal)
+                DA40 TDI · Standard Tanks (106.0 L / 28.00 Gal)
               </span>
             </div>
             <div className="flex items-center gap-1 shrink-0">
@@ -660,13 +660,7 @@ export function DA40CruiseWidget({
             </div>
           ) : (
             <div className="p-2.5 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-xs sm:text-[13px] space-y-1 text-slate-700 dark:text-slate-300 shrink-0">
-              <strong className="text-sky-800 dark:text-sky-300 block uppercase font-bold text-xs sm:text-[13px]">
-                💡 Régimen de Escuela Blue Team (50% Load):
-              </strong>
-              <p className="leading-snug">
-                En vuelo de instrucción el crucero se fija al <strong>50% de potencia</strong>. Garantiza un consumo contenido de <strong>15.3 L/h (4.0 US Gal/h)</strong>, mayor vida útil de la reductora y turbo, y una autonomía superior a 7 horas de vuelo.
-              </p>
-              <div className="pt-1 border-t border-sky-200/60 dark:border-sky-800/60 text-[11px] text-sky-900 dark:text-sky-300 font-medium">
+              <div className="text-[11px] sm:text-xs text-sky-900 dark:text-sky-300 font-medium flex items-center gap-1.5">
                 ⛽ Puedes introducir el combustible tanto en <strong>Litros</strong> como en <strong>US Galones</strong>, y la masa en <strong>Kg</strong> o <strong>Libras</strong>.
               </div>
             </div>
