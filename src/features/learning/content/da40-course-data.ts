@@ -8097,9 +8097,9 @@ export const DA40_LESSON_6 = {
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimientos de Certificación AFM</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7) -->
-    <div class="lg:col-span-7 flex flex-col">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CONDICIONES DE DESPEGUE (AFM)</span>
@@ -8109,7 +8109,7 @@ export const DA40_LESSON_6 = {
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONDICIONES DE REFERENCIA DE CERTIFICACIÓN</strong>
           <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
             Palanca: <strong>MAX (100% Load)</strong> &bull; Flaps: <strong>T/O</strong> &bull; Pista asfaltada seca y nivelada.<br>
-            &bull; Rotación ($v_R$): <strong>59 KIAS</strong> (1150 kg) / 55 KIAS (1000 kg) / 49 KIAS (850 kg).<br>
+            &bull; Rotación: <strong>59 KIAS</strong> (1150 kg) / 55 KIAS (1000 kg) / 49 KIAS (850 kg).<br>
             &bull; Ascenso inicial: <strong>66 KIAS</strong> (1150 kg) / 60 KIAS (1000 kg) / 54 KIAS (850 kg).
           </p>
         </div>
@@ -8118,9 +8118,9 @@ export const DA40_LESSON_6 = {
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES OFICIALES DE CORRECCIÓN DE PISTA (AFM)</strong>
           <div class="space-y-1 text-slate-700 dark:text-slate-300">
             <div>&bull; <strong>Viento en cara / cola:</strong> Corrección gráfica directa mediante las curvas del ábaco.</div>
-            <div>&bull; <strong>Hierba seca corta (&le; 5 cm / 2 in):</strong> <strong>+10%</strong> en la carrera de despegue.</div>
-            <div>&bull; <strong>Hierba media (5 a 10 cm / 2 a 4 in):</strong> <strong>+15%</strong> en la carrera de despegue.</div>
-            <div>&bull; <strong>Hierba alta (> 10 cm / 4 in):</strong> al menos <strong>+25%</strong> en la carrera de despegue.</div>
+            <div>&bull; <strong>Hierba seca corta (&le; 5 cm / 2 in):</strong> <strong>+10%</strong> en la carrera de despegue (Ground Roll).</div>
+            <div>&bull; <strong>Hierba media (5 a 10 cm / 2 a 4 in):</strong> <strong>+15%</strong> en la carrera de despegue (Ground Roll).</div>
+            <div>&bull; <strong>Hierba alta (> 10 cm / 4 in):</strong> al menos <strong>+25%</strong> en la carrera de despegue (Ground Roll).</div>
             <div>&bull; <strong>Pendiente ascendente (+2% uphill):</strong> <strong>+10%</strong> en la distancia total de despegue (el efecto sobre la carrera en tierra puede ser mayor).</div>
           </div>
         </div>
@@ -8134,20 +8134,10 @@ export const DA40_LESSON_6 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
-        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO AFM: TAKE-OFF OVER 50 FT</span>
-        </div>
-
-        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
-          <img
-            src="/images/da40/da40-takeoff-distance.png"
-            alt="Ábaco oficial AFM de distancia total de despegue sobre 50 ft"
-            class="max-w-full max-h-full object-contain rounded-lg"
-          />
-        </div>
+    <!-- Columna Derecha (lg:col-span-6 con Selector Interactivo de Ábacos) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="w-full h-full flex-1 min-h-0" data-interactive-exercise="takeoff_charts" data-aircraft="da40"></div>
       </div>
     </div>
   </div>
