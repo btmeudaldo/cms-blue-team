@@ -8152,35 +8152,35 @@ export const DA40_LESSON_6 = {
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PERFORMANCE DE ATERRIZAJE</div>
       <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.13 Performance de Aterrizaje: Parámetros y Factores de Corrección</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimientos de Certificación AFM</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimientos de Certificación</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
-    <!-- Columna Izquierda (lg:col-span-7) -->
-    <div class="lg:col-span-7 flex flex-col">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CONDICIONES DE ATERRIZAJE (AFM)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CONDICIONES DE ATERRIZAJE</span>
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONDICIONES DE REFERENCIA (FLAPS LDG)</strong>
           <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
             Palanca: <strong>IDLE</strong> &bull; Flaps: <strong>LDG</strong> &bull; Pista asfaltada seca y nivelada.<br>
-            &bull; Velocidad aproximación ($v_{REF}$): <strong>71 KIAS</strong> (1150 kg) / 63 KIAS (1000 kg) / 58 KIAS (850 kg).<br>
+            &bull; Velocidad de aproximación: <strong>71 KIAS</strong> (1150 kg) / 63 KIAS (1000 kg) / 58 KIAS (850 kg).<br>
             &bull; Valores ISA a nivel del mar (1150 kg): Distancia total a 15 m = <strong>744 m</strong> · Carrera = <strong>287 m</strong>.
           </p>
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-xs sm:text-[13px]">
-          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES OFICIALES DE CORRECCIÓN (AFM)</strong>
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES OFICIALES DE CORRECCIÓN DE PISTA</strong>
           <div class="space-y-1 text-slate-700 dark:text-slate-300">
             <div>&bull; <strong>Viento en cara / cola:</strong> Corrección gráfica en el ábaco.</div>
-            <div>&bull; <strong>Hierba seca corta (&le; 5 cm):</strong> <strong>+5%</strong> en la carrera de aterrizaje.</div>
-            <div>&bull; <strong>Hierba media (5 a 10 cm):</strong> <strong>+15%</strong> en la carrera de aterrizaje.</div>
+            <div>&bull; <strong>Hierba seca corta (&le; 5 cm):</strong> <strong>+5%</strong> en la carrera de aterrizaje (Ground Roll).</div>
+            <div>&bull; <strong>Hierba media (5 a 10 cm):</strong> <strong>+15%</strong> en la carrera de aterrizaje (Ground Roll).</div>
             <div>&bull; <strong>Hierba alta (> 10 cm):</strong> al menos <strong>+25%</strong> en la carrera de parada.</div>
             <div>&bull; <strong>Pendiente descendente (-2% downhill):</strong> <strong>+10%</strong> en la distancia total.</div>
-            <div>&bull; <strong>Exceso de velocidad:</strong> Una velocidad de aproximación superior a $v_{REF}$ alarga drásticamente la distancia de flotación (flare).</div>
+            <div>&bull; <strong>Exceso de velocidad:</strong> Una velocidad de aproximación excesiva alarga drásticamente la distancia de flotación (flare).</div>
           </div>
         </div>
 
@@ -8193,17 +8193,13 @@ export const DA40_LESSON_6 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5) -->
-    <div class="lg:col-span-5 flex flex-col">
+    <!-- Columna Derecha (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
-        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO AFM: LANDING OVER 50 FT</span>
-        </div>
-
-        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 flex items-center justify-center p-2 shadow-xs">
           <img
-            src="/images/da40/da40-landing-distance.png"
-            alt="Ábaco oficial AFM de distancia total de aterrizaje con Flaps LDG"
+            src="/images/da40/da40-landing-distance.png?v=2"
+            alt="Ábaco oficial de distancia de aterrizaje DA40 TDI"
             class="max-w-full max-h-full object-contain rounded-lg"
           />
         </div>
