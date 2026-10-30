@@ -253,6 +253,23 @@ article::after,
   color: #FFFFFF !important;
 }
 
+/* Interactive widgets and buttons must retain their proper text colors and NOT be forced to black */
+.lesson-slide-container button,
+.lesson-slide-container [data-interactive-exercise] button,
+.lesson-slide-container [data-interactive-exercise] input,
+.lesson-slide-container [data-interactive-exercise] select {
+  font-size: initial;
+  line-height: initial;
+}
+
+.lesson-slide-container .text-white,
+.lesson-slide-container button.text-white,
+.lesson-slide-container [data-interactive-exercise] .text-white,
+.lesson-slide-container [data-interactive-exercise] [class*="text-white"],
+.lesson-slide-container [class*="!text-white"] {
+  color: #ffffff !important;
+}
+
 /* Dynamic continuous percentage column layouts */
 [data-left-pct] {
   --col-left: 50fr;

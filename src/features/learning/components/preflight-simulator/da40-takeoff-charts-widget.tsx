@@ -32,9 +32,10 @@ export function DA40TakeoffChartsWidget() {
           <button
             type="button"
             onClick={() => setActiveTab("ground_roll")}
+            style={{ color: activeTab === "ground_roll" ? "#ffffff" : undefined }}
             className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               activeTab === "ground_roll"
-                ? "bg-[#0B2E59] text-white shadow-xs dark:bg-sky-600"
+                ? "bg-[#0B2E59] !text-white text-white shadow-xs dark:bg-sky-600 dark:!text-white"
                 : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
@@ -43,9 +44,10 @@ export function DA40TakeoffChartsWidget() {
           <button
             type="button"
             onClick={() => setActiveTab("obstacle_50ft")}
+            style={{ color: activeTab === "obstacle_50ft" ? "#ffffff" : undefined }}
             className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
               activeTab === "obstacle_50ft"
-                ? "bg-[#0B2E59] text-white shadow-xs dark:bg-sky-600"
+                ? "bg-[#0B2E59] !text-white text-white shadow-xs dark:bg-sky-600 dark:!text-white"
                 : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
@@ -94,7 +96,7 @@ export function DA40TakeoffChartsWidget() {
                   onClick={() => setActiveTab("ground_roll")}
                   className={`px-3 py-1 rounded-md text-xs font-bold transition-all cursor-pointer ${
                     activeTab === "ground_roll"
-                      ? "bg-[#0B2E59] text-white"
+                      ? "bg-[#0B2E59] !text-white text-white"
                       : "text-slate-600 dark:text-slate-300"
                   }`}
                 >
@@ -105,7 +107,7 @@ export function DA40TakeoffChartsWidget() {
                   onClick={() => setActiveTab("obstacle_50ft")}
                   className={`px-3 py-1 rounded-md text-xs font-bold transition-all cursor-pointer ${
                     activeTab === "obstacle_50ft"
-                      ? "bg-[#0B2E59] text-white"
+                      ? "bg-[#0B2E59] !text-white text-white"
                       : "text-slate-600 dark:text-slate-300"
                   }`}
                 >

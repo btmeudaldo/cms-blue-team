@@ -354,6 +354,7 @@ export function DA40FuelChartWidget() {
                 key={preset.load}
                 type="button"
                 onClick={() => setPreset(preset.load)}
+                style={{ color: isActive ? "#ffffff" : undefined }}
                 className={`px-2.5 py-1 rounded-lg text-[11px] font-extrabold transition-all cursor-pointer ${
                   isActive
                     ? "bg-blue-600 dark:bg-blue-600 !text-white text-white shadow-md ring-2 ring-blue-300 dark:ring-blue-400"
