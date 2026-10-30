@@ -5707,28 +5707,47 @@ export const DA40_LESSON_4 = {
             </div>
           </div>
 
-          <!-- POST-FLIGHT INSPECTION (8 ÍTEMS EN 2 COLUMNAS) -->
+          <!-- POST-FLIGHT INSPECTION (8 ÍTEMS EN 2 COLUMNAS 1-4 y 5-8) -->
           <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">Post-Flight Inspection:</strong>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-0.5">
+              <!-- Subcolumna 1: Ítems 1 - 4 -->
               <div class="space-y-0.5">
-                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
-                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1-3.</span>
-                  <span class="text-slate-800 dark:text-slate-200">ENGINE MASTER OFF &middot; ELEC ON &middot; AVIONIC ON</span>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                  <span class="text-slate-800 dark:text-slate-200">ENGINE MASTER &mdash; <span class="italic font-medium">OFF</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
-                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4.</span>
-                  <span class="text-slate-800 dark:text-slate-200">ELT &mdash; <span class="italic font-medium">check activated (listen 121.5)</span></span>
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                  <span class="text-slate-800 dark:text-slate-200">ELECTRIC MASTER &mdash; <span class="italic font-medium">ON</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                  <span class="text-slate-800 dark:text-slate-200">AVIONIC MASTER &mdash; <span class="italic font-medium">ON</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
+                  <span class="text-slate-800 dark:text-slate-200">ELT &mdash; <span class="italic font-medium">check activated: listen on 121.5 MHz</span></span>
                 </div>
               </div>
+
+              <!-- Subcolumna 2: Ítems 5 - 8 -->
               <div class="space-y-0.5">
-                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
-                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5-6.</span>
-                  <span class="text-slate-800 dark:text-slate-200">AVIONIC MASTER OFF &middot; ELECTRIC MASTER OFF</span>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">5.</span>
+                  <span class="text-slate-800 dark:text-slate-200">AVIONIC MASTER &mdash; <span class="italic font-medium">OFF</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
-                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7-8.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Pitot cover install &middot; Tie-down/chocks</span>
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">6.</span>
+                  <span class="text-slate-800 dark:text-slate-200">ELECTRIC MASTER &mdash; <span class="italic font-medium">OFF</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">7.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Parking brake &mdash; <span class="italic font-medium">release, use chocks</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">8.</span>
+                  <span class="text-slate-800 dark:text-slate-200">Airplane &mdash; <span class="italic font-medium">moor, if unsupervised for extended period</span></span>
                 </div>
               </div>
             </div>
