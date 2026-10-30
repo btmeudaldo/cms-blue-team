@@ -5102,41 +5102,41 @@ export const DA40_LESSON_4 = {
               <thead>
                 <tr class="bg-slate-100 dark:bg-slate-800 text-[#0B2E59] dark:text-sky-300 font-bold border-b border-slate-200 dark:border-slate-700">
                   <th class="py-2 px-2.5">Operating Airspeed</th>
-                  <th class="py-2 px-2 text-center">850 kg<br/><span class="text-[10px] font-normal text-slate-500 dark:text-slate-400">(1874 lb)</span></th>
-                  <th class="py-2 px-2 text-center">1000 kg<br/><span class="text-[10px] font-normal text-slate-500 dark:text-slate-400">(2205 lb)</span></th>
-                  <th class="py-2 px-2 text-center bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300">1150 kg<br/><span class="text-[10px] font-normal text-sky-600 dark:text-sky-400">(2535 lb MTOW)</span></th>
+                  <th class="py-2 px-2 text-center">850 kg<br/><span class="text-xs font-normal text-slate-500 dark:text-slate-400">(1874 lb)</span></th>
+                  <th class="py-2 px-2 text-center">1000 kg<br/><span class="text-xs font-normal text-slate-500 dark:text-slate-400">(2205 lb)</span></th>
+                  <th class="py-2 px-2 text-center bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-300">1150 kg<br/><span class="text-xs font-normal text-sky-600 dark:text-sky-400">(2535 lb MTOW)</span></th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-slate-700 font-mono text-[11px] sm:text-xs">
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-700 font-mono text-xs">
                 <tr>
                   <td class="py-2 px-2.5 font-sans font-medium text-slate-800 dark:text-slate-200">Airspeed for rotation (Take-off run, v<sub>R</sub>) (Flaps T/O)</td>
-                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold">49 KIAS</td>
-                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold">55 KIAS</td>
-                  <td class="py-2 px-2 text-center bg-sky-50/60 dark:bg-sky-950/20 text-[#0B2E59] dark:text-sky-200 font-extrabold text-[13px]">59 KIAS</td>
+                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold text-xs">49 KIAS</td>
+                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold text-xs">55 KIAS</td>
+                  <td class="py-2 px-2 text-center bg-sky-50/60 dark:bg-sky-950/20 text-[#0B2E59] dark:text-sky-200 font-bold text-xs">59 KIAS</td>
                 </tr>
                 <tr>
                   <td class="py-2 px-2.5 font-sans font-medium text-slate-800 dark:text-slate-200">Airspeed for take-off climb (best rate-of-climb v<sub>Y</sub>) (Flaps T/O)</td>
-                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold">54 KIAS</td>
-                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold">60 KIAS</td>
-                  <td class="py-2 px-2 text-center bg-sky-50/60 dark:bg-sky-950/20 text-[#0B2E59] dark:text-sky-200 font-extrabold text-[13px]">66 KIAS</td>
+                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold text-xs">54 KIAS</td>
+                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold text-xs">60 KIAS</td>
+                  <td class="py-2 px-2 text-center bg-sky-50/60 dark:bg-sky-950/20 text-[#0B2E59] dark:text-sky-200 font-bold text-xs">66 KIAS</td>
                 </tr>
                 <tr>
                   <td class="py-2 px-2.5 font-sans font-medium text-slate-800 dark:text-slate-200">Airspeed for cruise climb (Flaps UP)</td>
-                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold">60 KIAS</td>
-                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold">68 KIAS</td>
-                  <td class="py-2 px-2 text-center bg-sky-50/60 dark:bg-sky-950/20 text-[#0B2E59] dark:text-sky-200 font-extrabold text-[13px]">73 KIAS</td>
+                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold text-xs">60 KIAS</td>
+                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold text-xs">68 KIAS</td>
+                  <td class="py-2 px-2 text-center bg-sky-50/60 dark:bg-sky-950/20 text-[#0B2E59] dark:text-sky-200 font-bold text-xs">73 KIAS</td>
                 </tr>
                 <tr>
                   <td class="py-2 px-2.5 font-sans font-medium text-slate-800 dark:text-slate-200">Approach speed for normal landing (Flaps LDG)</td>
-                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold">58 KIAS</td>
-                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold">63 KIAS</td>
-                  <td class="py-2 px-2 text-center bg-sky-50/60 dark:bg-sky-950/20 text-[#0B2E59] dark:text-sky-200 font-extrabold text-[13px]">71 KIAS</td>
+                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold text-xs">58 KIAS</td>
+                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold text-xs">63 KIAS</td>
+                  <td class="py-2 px-2 text-center bg-sky-50/60 dark:bg-sky-950/20 text-[#0B2E59] dark:text-sky-200 font-bold text-xs">71 KIAS</td>
                 </tr>
                 <tr>
                   <td class="py-2 px-2.5 font-sans font-medium text-slate-800 dark:text-slate-200">Minimum speed during go-around (Flaps T/O)</td>
-                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold">54 KIAS</td>
-                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold">60 KIAS</td>
-                  <td class="py-2 px-2 text-center bg-sky-50/60 dark:bg-sky-950/20 text-[#0B2E59] dark:text-sky-200 font-extrabold text-[13px]">66 KIAS</td>
+                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold text-xs">54 KIAS</td>
+                  <td class="py-2 px-2 text-center text-slate-700 dark:text-slate-300 font-bold text-xs">60 KIAS</td>
+                  <td class="py-2 px-2 text-center bg-sky-50/60 dark:bg-sky-950/20 text-[#0B2E59] dark:text-sky-200 font-bold text-xs">66 KIAS</td>
                 </tr>
               </tbody>
             </table>
