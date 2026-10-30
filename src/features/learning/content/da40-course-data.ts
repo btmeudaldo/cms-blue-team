@@ -5049,9 +5049,6 @@ export const DA40_LESSON_4 = {
               <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide text-xs">NOTE (Engine Shake on ECU Swap):</strong>
               When switching from one ECU to the other a slight shake of the engine may occur. In case of longer dropouts of the engine, terminate flight preparation.
             </div>
-            <div class="p-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-300 dark:border-emerald-700/60 text-emerald-900 dark:text-emerald-200 text-[11px] font-semibold flex items-center justify-between px-2.5">
-              <span>✅ END OF CHECKLIST · BEFORE TAKE-OFF COMPLETE (Ítems 1 al 32)</span>
-            </div>
           </div>
         </div>
       </div>
