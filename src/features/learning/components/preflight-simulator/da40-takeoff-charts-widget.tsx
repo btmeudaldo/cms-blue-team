@@ -35,16 +35,22 @@ export function DA40TakeoffChartsWidget() {
             style={{
               backgroundColor: activeTab === "ground_roll" ? "#0B2E59" : "transparent",
               color: activeTab === "ground_roll" ? "#ffffff" : "#000000",
-              fontSize: "13px",
-              fontWeight: 800,
+              fontSize: "1.125rem",
+              fontWeight: 700,
             }}
-            className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+            className={`px-4 py-1.5 rounded-lg transition-all cursor-pointer ${
               activeTab === "ground_roll"
                 ? "shadow-sm dark:bg-sky-600"
                 : "hover:bg-slate-300 dark:hover:bg-slate-700"
             }`}
           >
-            <span style={{ color: activeTab === "ground_roll" ? "#ffffff" : "#000000" }}>
+            <span
+              style={{
+                color: activeTab === "ground_roll" ? "#ffffff" : "#000000",
+                fontSize: "1.125rem",
+                fontWeight: 700,
+              }}
+            >
               Ground Roll
             </span>
           </button>
@@ -54,16 +60,22 @@ export function DA40TakeoffChartsWidget() {
             style={{
               backgroundColor: activeTab === "obstacle_50ft" ? "#0B2E59" : "transparent",
               color: activeTab === "obstacle_50ft" ? "#ffffff" : "#000000",
-              fontSize: "13px",
-              fontWeight: 800,
+              fontSize: "1.125rem",
+              fontWeight: 700,
             }}
-            className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+            className={`px-4 py-1.5 rounded-lg transition-all cursor-pointer ${
               activeTab === "obstacle_50ft"
                 ? "shadow-sm dark:bg-sky-600"
                 : "hover:bg-slate-300 dark:hover:bg-slate-700"
             }`}
           >
-            <span style={{ color: activeTab === "obstacle_50ft" ? "#ffffff" : "#000000" }}>
+            <span
+              style={{
+                color: activeTab === "obstacle_50ft" ? "#ffffff" : "#000000",
+                fontSize: "1.125rem",
+                fontWeight: 700,
+              }}
+            >
               Takeoff Distance 50ft
             </span>
           </button>
@@ -111,12 +123,18 @@ export function DA40TakeoffChartsWidget() {
                   style={{
                     backgroundColor: activeTab === "ground_roll" ? "#0B2E59" : "transparent",
                     color: activeTab === "ground_roll" ? "#ffffff" : "#000000",
-                    fontSize: "13px",
-                    fontWeight: 800,
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
                   }}
-                  className="px-3.5 py-1.5 rounded-md transition-all cursor-pointer"
+                  className="px-4 py-1.5 rounded-md transition-all cursor-pointer"
                 >
-                  <span style={{ color: activeTab === "ground_roll" ? "#ffffff" : "#000000" }}>
+                  <span
+                    style={{
+                      color: activeTab === "ground_roll" ? "#ffffff" : "#000000",
+                      fontSize: "1.125rem",
+                      fontWeight: 700,
+                    }}
+                  >
                     Ground Roll
                   </span>
                 </button>
@@ -126,12 +144,18 @@ export function DA40TakeoffChartsWidget() {
                   style={{
                     backgroundColor: activeTab === "obstacle_50ft" ? "#0B2E59" : "transparent",
                     color: activeTab === "obstacle_50ft" ? "#ffffff" : "#000000",
-                    fontSize: "13px",
-                    fontWeight: 800,
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
                   }}
-                  className="px-3.5 py-1.5 rounded-md transition-all cursor-pointer"
+                  className="px-4 py-1.5 rounded-md transition-all cursor-pointer"
                 >
-                  <span style={{ color: activeTab === "obstacle_50ft" ? "#ffffff" : "#000000" }}>
+                  <span
+                    style={{
+                      color: activeTab === "obstacle_50ft" ? "#ffffff" : "#000000",
+                      fontSize: "1.125rem",
+                      fontWeight: 700,
+                    }}
+                  >
                     Takeoff Distance 50ft
                   </span>
                 </button>
