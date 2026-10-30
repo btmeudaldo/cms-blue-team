@@ -208,7 +208,7 @@ export function LessonPlayer({
   }, [exerciseContainer, courseTitle, lessonTitle]);
 
   const isCurrentExerciseCompleted = useMemo(() => {
-    if (!activeExerciseType) return true;
+    if (!activeExerciseType || activeExerciseType === "fuel_chart") return true;
     return isAlreadyCompleted || isCompletedSuccess || isStaff || Boolean(completedExercises[effectivePageIndex]);
   }, [activeExerciseType, isAlreadyCompleted, isCompletedSuccess, isStaff, completedExercises, effectivePageIndex]);
 

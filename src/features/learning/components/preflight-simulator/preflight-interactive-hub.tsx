@@ -9,6 +9,7 @@ import { DA40LoadsheetWidget } from "./da40-loadsheet-widget";
 import { DA40CruiseWidget } from "./da40-cruise-widget";
 import { DA40FuelWidget } from "./da40-fuel-widget";
 import { DA40PerformanceWidget } from "./da40-performance-widget";
+import { DA40FuelChartWidget } from "./da40-fuel-chart-widget";
 
 export type ExerciseType =
   | "loadsheet"
@@ -19,7 +20,8 @@ export type ExerciseType =
   | "fuel"
   | "performance"
   | "performance_takeoff"
-  | "performance_landing";
+  | "performance_landing"
+  | "fuel_chart";
 
 type Props = {
   exerciseType: ExerciseType;
@@ -68,6 +70,8 @@ export function PreflightInteractiveHub({
             isAlreadyCompleted={isAlreadyCompleted}
           />
         );
+      case "fuel_chart":
+        return <DA40FuelChartWidget />;
       case "fuel":
         return (
           <DA40FuelWidget
@@ -138,6 +142,8 @@ export function PreflightInteractiveHub({
           isAlreadyCompleted={isAlreadyCompleted}
         />
       );
+    case "fuel_chart":
+      return <DA40FuelChartWidget />;
     case "fuel":
       return (
         <PreflightFuelWidget
