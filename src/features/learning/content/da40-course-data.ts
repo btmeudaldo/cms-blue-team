@@ -4929,12 +4929,6 @@ export const DA40_LESSON_4 = {
             </ul>
             <p class="m-0">Si durante los 10 segundos la carga no alcanza al menos el 90 % o las RPM no superan 2240, aborte el vuelo y regrese a plataforma para revisión de mantenimiento del turbo o inyección.</p>
           </div>
-
-          <!-- WARNING COMBUSTIBLE DIÉSEL AFM -->
-          <div class="p-2 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs">WARNING (Diesel Take-Off Fuel Temp):</strong>
-            If operated with Diesel Fuel, fuel temperature on the left side must be in the green range (minimum +5 °C / +41 °F) before take-off!
-          </div>
         </div>
       </div>
     </div>
@@ -4944,6 +4938,12 @@ export const DA40_LESSON_4 = {
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
+        </div>
+
+        <!-- WARNING COMBUSTIBLE DIÉSEL AFM (COLOCADO A LA DERECHA) -->
+        <div class="p-2.5 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-xs leading-relaxed shadow-2xs mb-2">
+          <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs block mb-1">WARNING (Diesel Take-Off Fuel Temp):</strong>
+          If operated with Diesel Fuel, fuel temperature on the left side must be in the green range (minimum +5 °C / +41 °F) before take-off!
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
