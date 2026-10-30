@@ -7816,14 +7816,14 @@ export const DA40_LESSON_6 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 6.7: 6.7 Régimen de Crucero: Rendimiento y Consumo al 60% de Potencia -->
+<!-- DIAPOSITIVA 6.7: 6.7 Régimen de Crucero: Rendimiento y Consumo de Combustible -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · RENDIMIENTO DE CRUCERO</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.7 Régimen de Crucero: Rendimiento y Consumo al 60% de Potencia</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.7 Régimen de Crucero: Rendimiento y Consumo de Combustible</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Operación Estándar de Escuela</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tablas y Gráficas de Rendimiento AFM</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -7831,48 +7831,56 @@ export const DA40_LESSON_6 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RÉGIMEN ESTÁNDAR DE ESCUELA: 60% LOAD</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">REGÍMENES DE CRUCERO Y CONSUMO (AFM SECCIÓN 5)</span>
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">GESTIÓN MONO-PALANCA Y EFICIENCIA DIÉSEL</strong>
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">GESTIÓN MONO-PALANCA Y EFICIENCIA DE CRUCERO</strong>
           <p class="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
-            En el DA40 TDI con motor Thielert TAE 125-01 / Continental CD-135, el piloto selecciona directamente el porcentaje de potencia (*% LOAD*) en la palanca única. La ECU regula automáticamente la inyección y el paso de hélice.
+            En el Diamond DA40 TDI, la palanca monomando comanda directamente el porcentaje de potencia deseado (<em>% LOAD</em>). La ECU gestiona automáticamente la dosificación óptima de combustible y el paso variable de la hélice para cada régimen de vuelo.
           </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+          <!-- 60% CRUCERO ECONÓMICO -->
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <span class="font-bold text-sky-600 dark:text-sky-400 block uppercase text-[11px]">60% POTENCIA (ESCUELA)</span>
+            <span class="font-bold text-sky-600 dark:text-sky-400 block uppercase text-[11px]">60% LOAD (ECONÓMICO)</span>
             <div class="text-[11px] text-slate-700 dark:text-slate-300">
-              Crucero económico oficial Blue Team:<br>
+              Crucero económico AFM:<br>
               <strong>4,0 US gal/h (15,1 L/h)</strong><br>
-              TAS: ~118 a 120 kts a FL60
+              TAS: ~118 a 120 kts a FL60<br>
+              <span class="text-slate-500 dark:text-slate-400 text-[10px]">Máximo alcance y autonomía</span>
             </div>
           </div>
+
+          <!-- 70% CRUCERO NORMAL -->
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 block uppercase text-[11px]">70% POTENCIA (NORMAL)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 block uppercase text-[11px]">70% LOAD (NORMAL)</span>
             <div class="text-[11px] text-slate-700 dark:text-slate-300">
-              Crucero de velocidad estándar:<br>
+              Crucero normal AFM:<br>
               <strong>4,9 US gal/h (18,5 L/h)</strong><br>
-              TAS: ~124 a 126 kts a FL60
+              TAS: ~124 a 126 kts a FL60<br>
+              <span class="text-slate-500 dark:text-slate-400 text-[10px]">Equilibrio estándar de crucero</span>
             </div>
           </div>
+
+          <!-- 80% CRUCERO RÁPIDO -->
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <span class="font-bold text-amber-600 dark:text-amber-400 block uppercase text-[11px]">80% POTENCIA (RÁPIDO)</span>
+            <span class="font-bold text-amber-600 dark:text-amber-400 block uppercase text-[11px]">80% LOAD (RÁPIDO)</span>
             <div class="text-[11px] text-slate-700 dark:text-slate-300">
-              Máximo crucero continuo:<br>
+              Crucero rápido AFM:<br>
               <strong>5,8 US gal/h (22,0 L/h)</strong><br>
-              TAS: ~130 a 132 kts a FL60
+              TAS: ~130 a 132 kts a FL60<br>
+              <span class="text-slate-500 dark:text-slate-400 text-[10px]">Máximo crucero continuo</span>
             </div>
           </div>
         </div>
 
         <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
           <strong class="text-sky-800 dark:text-sky-300 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
-            <span>ℹ️</span> DATO CLAVE PARA EL F.OPS.02
+            <span>ℹ️</span> LECTURA DIRECTA DEL ÁBACO AFM (FUEL FLOW)
           </strong>
-          <span>Para cualquier cálculo de combustible de ruta (Trip Fuel) y reservas en la flota DA40 TDI de Blue Team, se toma como referencia reglamentaria de consumo económico de crucero: <strong>15,1 L/h (4,0 US gal/h)</strong>.</span>
+          <span>Conforme al ábaco oficial de consumo horario del AFM (figura derecha), a un <strong>60% LOAD</strong> el consumo resultante es exactamente de <strong>4,0 US gal/h (15,1 L/h)</strong>. A <strong>70% LOAD</strong> es de <strong>4,9 US gal/h (18,5 L/h)</strong> y a <strong>80% LOAD</strong> asciende a <strong>5,8 US gal/h (22,0 L/h)</strong>.</span>
         </div>
       </div>
     </div>
@@ -7881,14 +7889,14 @@ export const DA40_LESSON_6 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO AFM: FUEL FLOW VS LOAD</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO OFICIAL AFM: FUEL FLOW VS LOAD</span>
         </div>
 
-        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 flex items-center justify-center p-1.5 my-auto shadow-xs">
           <img
             src="/images/da40/da40-fuel-flow-load.png"
             alt="Ábaco oficial AFM de consumo horario Fuel Flow vs % Load"
-            class="max-w-full max-h-full object-contain rounded-lg"
+            class="w-full h-full object-contain rounded-lg"
           />
         </div>
       </div>
