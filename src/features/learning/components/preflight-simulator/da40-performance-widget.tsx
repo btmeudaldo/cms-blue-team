@@ -362,49 +362,6 @@ export function DA40PerformanceWidget({
               </div>
             )}
 
-            {/* Direct Link to AFM Landing Table (on Left for landing mode) */}
-            {currentStep === "landing" && (
-              <div className="flex items-center justify-between gap-2 p-2 rounded-xl bg-emerald-50/70 dark:bg-slate-800/90 border border-emerald-200 dark:border-slate-700 shadow-2xs">
-                <span className="text-xs sm:text-[13px] font-bold text-emerald-950 dark:text-emerald-300 flex items-center gap-1.5">
-                  <span>📖</span>
-                  <span>TABLA AFM ATERRIZAJE:</span>
-                </span>
-                <div className="flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => setIsChartModalOpen(true)}
-                    style={{
-                      backgroundColor: "#059669",
-                      color: "#ffffff",
-                      fontSize: "1.125rem",
-                      fontWeight: 700,
-                    }}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-emerald-600 font-bold transition-all shadow-2xs cursor-pointer hover:bg-emerald-700"
-                    title="Ver Gráfico de Aterrizaje"
-                  >
-                    <span style={{ color: "#ffffff", fontSize: "1.125rem", fontWeight: 700 }}>
-                      🛬 Ver Tabla Aterrizaje
-                    </span>
-                    <span>🔍</span>
-                  </button>
-                  <a
-                    href="/images/da40/da40-landing-distance.png"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      backgroundColor: "#f1f5f9",
-                      color: "#000000",
-                      fontSize: "1.125rem",
-                      fontWeight: 700,
-                    }}
-                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
-                    title="Abrir imagen en nueva pestaña"
-                  >
-                    <span style={{ color: "#000000", fontSize: "1.125rem", fontWeight: 700 }}>↗</span>
-                  </a>
-                </div>
-              </div>
-            )}
 
             {/* Landing Unit Conversion Reminder */}
             {currentStep === "landing" && (
