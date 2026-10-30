@@ -2,7 +2,8 @@
 
 import React, { useState, useRef, useCallback } from "react";
 
-const DATA_POINTS = [
+// Official AFM curve points for reference & snap
+const AFM_CURVE = [
   { load: 30, usg: 1.85 },
   { load: 40, usg: 2.50 },
   { load: 50, usg: 3.20 },
@@ -13,118 +14,79 @@ const DATA_POINTS = [
   { load: 100, usg: 7.70 },
 ];
 
-function interpolateFuelFlow(load: number): number {
-  const clampedLoad = Math.max(30, Math.min(100, load));
-  for (let i = 0; i < DATA_POINTS.length - 1; i++) {
-    const p1 = DATA_POINTS[i];
-    const p2 = DATA_POINTS[i + 1];
-    if (clampedLoad >= p1.load && clampedLoad <= p2.load) {
-      const t = (clampedLoad - p1.load) / (p2.load - p1.load);
+function getTheoreticalUsg(load: number): number {
+  const cLoad = Math.max(30, Math.min(100, load));
+  for (let i = 0; i < AFM_CURVE.length - 1; i++) {
+    const p1 = AFM_CURVE[i];
+    const p2 = AFM_CURVE[i + 1];
+    if (cLoad >= p1.load && cLoad <= p2.load) {
+      const t = (cLoad - p1.load) / (p2.load - p1.load);
       return p1.usg + t * (p2.usg - p1.usg);
     }
   }
   return 4.0;
 }
 
-function getRegimeBadge(load: number) {
-  if (load < 58) {
-    return {
-      name: "Baja Potencia / Espera",
-      color: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border-slate-300",
-    };
-  }
-  if (load >= 58 && load <= 62) {
-    return {
-      name: "Crucero Económico AFM",
-      color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-400",
-    };
-  }
-  if (load > 62 && load < 68) {
-    return {
-      name: "Crucero Intermedio",
-      color: "bg-sky-100 text-sky-800 dark:bg-sky-950/60 dark:text-sky-300 border-sky-400",
-    };
-  }
-  if (load >= 68 && load <= 72) {
-    return {
-      name: "Crucero Normal AFM",
-      color: "bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border-blue-400",
-    };
-  }
-  if (load > 72 && load < 78) {
-    return {
-      name: "Crucero Rápido Intermedio",
-      color: "bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 border-amber-400",
-    };
-  }
-  if (load >= 78 && load <= 82) {
-    return {
-      name: "Máx. Crucero Continuo AFM",
-      color: "bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300 border-orange-400",
-    };
-  }
+// Bounding box of the grid inside the original 1070 x 917 screenshot
+const BOX = {
+  left: 34,
+  right: 841,
+  top: 96,
+  bottom: 839,
+  width: 841 - 34, // 807 px
+  height: 839 - 96, // 743 px
+  minLoad: 30,
+  maxLoad: 100,
+  minUsg: 1.0,
+  maxUsg: 8.0,
+};
+
+function coordsToData(x: number, y: number) {
+  const clampedX = Math.max(BOX.left, Math.min(BOX.right, x));
+  const clampedY = Math.max(BOX.top, Math.min(BOX.bottom, y));
+
+  const load =
+    BOX.minLoad +
+    ((clampedX - BOX.left) / BOX.width) * (BOX.maxLoad - BOX.minLoad);
+  const usg =
+    BOX.maxUsg -
+    ((clampedY - BOX.top) / BOX.height) * (BOX.maxUsg - BOX.minUsg);
+  const lph = usg * 3.78541;
+
   return {
-    name: "Régimen de Ascenso / Despegue",
-    color: "bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300 border-red-400",
+    x: clampedX,
+    y: clampedY,
+    load: Math.round(load * 10) / 10,
+    usg: Math.round(usg * 100) / 100,
+    lph: Math.round(lph * 10) / 10,
   };
 }
 
+function dataToCoords(load: number, usg: number) {
+  const x =
+    BOX.left +
+    ((load - BOX.minLoad) / (BOX.maxLoad - BOX.minLoad)) * BOX.width;
+  const y =
+    BOX.top + ((BOX.maxUsg - usg) / (BOX.maxUsg - BOX.minUsg)) * BOX.height;
+  return { x, y };
+}
+
 export function DA40FuelChartWidget() {
-  const [selectedLoad, setSelectedLoad] = useState<number>(60);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
   const svgRef = useRef<SVGSVGElement | null>(null);
 
-  // SVG coordinate system boundaries
-  const plotLeft = 60;
-  const plotRight = 440;
-  const plotTop = 40;
-  const plotBottom = 400;
-  const plotWidth = plotRight - plotLeft;
-  const plotHeight = plotBottom - plotTop;
+  // Default initial point: Official AFM Example at 60% LOAD & 4.0 USG/h
+  const defaultCoords = dataToCoords(60, 4.0);
+  const [point, setPoint] = useState({
+    x: defaultCoords.x,
+    y: defaultCoords.y,
+    load: 60.0,
+    usg: 4.0,
+    lph: 15.1,
+  });
+  const [isHovering, setIsHovering] = useState(false);
 
-  // X range: 30 to 100
-  const minLoad = 30;
-  const maxLoad = 100;
-  const loadToX = useCallback(
-    (load: number) => {
-      return plotLeft + ((load - minLoad) / (maxLoad - minLoad)) * plotWidth;
-    },
-    [plotLeft, plotWidth]
-  );
-  const xToLoad = useCallback(
-    (x: number) => {
-      const ratio = (x - plotLeft) / plotWidth;
-      const load = minLoad + ratio * (maxLoad - minLoad);
-      return Math.max(30, Math.min(100, Math.round(load)));
-    },
-    [plotLeft, plotWidth]
-  );
-
-  // Y range: 1.0 to 8.0 USG/h
-  const minUsg = 1.0;
-  const maxUsg = 8.0;
-  const usgToY = useCallback(
-    (usg: number) => {
-      return plotBottom - ((usg - minUsg) / (maxUsg - minUsg)) * plotHeight;
-    },
-    [plotBottom, plotHeight]
-  );
-
-  const currentUsg = interpolateFuelFlow(selectedLoad);
-  const currentLph = currentUsg * 3.78541;
-  const currentX = loadToX(selectedLoad);
-  const currentY = usgToY(currentUsg);
-  const badge = getRegimeBadge(selectedLoad);
-
-  // Path data for the curve
-  const pathD = DATA_POINTS.map((pt, i) => {
-    const x = loadToX(pt.load);
-    const y = usgToY(pt.usg);
-    return `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
-  }).join(" ");
-
-  // Robust pointer tracking using SVG matrix inversion
-  const handlePointerMove = (clientX: number, clientY: number) => {
+  // Pointer event conversion using native SVG screen matrix
+  const handlePointer = useCallback((clientX: number, clientY: number) => {
     if (!svgRef.current) return;
     try {
       const svg = svgRef.current;
@@ -133,35 +95,57 @@ export function DA40FuelChartWidget() {
       pt.y = clientY;
       const ctm = svg.getScreenCTM();
       if (!ctm) return;
-      const svgCoords = pt.matrixTransform(ctm.inverse());
-      const newLoad = xToLoad(svgCoords.x);
-      setSelectedLoad(newLoad);
+      const svgPt = pt.matrixTransform(ctm.inverse());
+
+      // Only update if inside or close to the chart area
+      if (
+        svgPt.x >= BOX.left - 10 &&
+        svgPt.x <= BOX.right + 10 &&
+        svgPt.y >= BOX.top - 10 &&
+        svgPt.y <= BOX.bottom + 10
+      ) {
+        const data = coordsToData(svgPt.x, svgPt.y);
+        setPoint(data);
+        setIsHovering(true);
+      }
     } catch {
-      // Fallback
-      const rect = svgRef.current.getBoundingClientRect();
-      const relX = clientX - rect.left;
-      const ratio = relX / rect.width;
-      const load = minLoad + ratio * (maxLoad - minLoad);
-      setSelectedLoad(Math.max(30, Math.min(100, Math.round(load))));
+      // Ignore
     }
+  }, []);
+
+  const setPreset = (load: number) => {
+    const usg = getTheoreticalUsg(load);
+    const coords = dataToCoords(load, usg);
+    setPoint({
+      x: coords.x,
+      y: coords.y,
+      load,
+      usg: Math.round(usg * 100) / 100,
+      lph: Math.round(usg * 3.78541 * 10) / 10,
+    });
+    setIsHovering(true);
   };
+
+  // Check if current point is close to the theoretical AFM curve
+  const theoUsg = getTheoreticalUsg(point.load);
+  const isOnAfmCurve = Math.abs(point.usg - theoUsg) < 0.25;
 
   return (
     <div className="w-full h-full flex flex-col justify-between bg-white dark:bg-slate-900 rounded-xl p-2 select-none overflow-hidden">
-      {/* HUD Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-1.5 px-2 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shrink-0">
+      {/* Top Value Readout Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-1.5 px-2 py-1 rounded-lg bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shrink-0">
         <div className="flex items-center gap-2">
           <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-            % LOAD:
+            POTENCIA:
           </span>
-          <span className="font-mono font-extrabold text-lg text-[#0B2E59] dark:text-sky-300">
-            {selectedLoad}%
+          <span className="font-mono font-extrabold text-base text-[#0B2E59] dark:text-sky-300">
+            {point.load.toFixed(1)}% LOAD
           </span>
-          <span
-            className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${badge.color}`}
-          >
-            {badge.name}
-          </span>
+          {isOnAfmCurve && (
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-400">
+              En curva AFM
+            </span>
+          )}
         </div>
 
         <div className="flex items-center gap-3 font-mono text-xs font-bold">
@@ -169,339 +153,203 @@ export function DA40FuelChartWidget() {
             <span className="text-[10px] text-slate-500 font-sans font-semibold">
               USG/h:
             </span>
-            <span className="text-sm font-extrabold">{currentUsg.toFixed(2)}</span>
+            <span className="text-sm font-extrabold">{point.usg.toFixed(2)}</span>
           </div>
           <div className="flex items-center gap-1 text-emerald-700 dark:text-emerald-400">
             <span className="text-[10px] text-slate-500 font-sans font-semibold">
               L/h:
             </span>
-            <span className="text-sm font-extrabold">{currentLph.toFixed(1)}</span>
+            <span className="text-sm font-extrabold">{point.lph.toFixed(1)}</span>
           </div>
         </div>
       </div>
 
-      {/* SVG Interactive Chart Canvas */}
+      {/* Image Container with SVG Overlay */}
       <div
-        className="relative w-full flex-1 min-h-0 flex items-center justify-center py-1 cursor-crosshair touch-none"
-        onPointerEnter={() => setIsHovered(true)}
-        onPointerLeave={() => setIsHovered(false)}
-        onPointerMove={(e) => handlePointerMove(e.clientX, e.clientY)}
+        className="relative w-full flex-1 min-h-0 flex items-center justify-center p-0.5 my-auto touch-none cursor-crosshair overflow-hidden"
+        onPointerMove={(e) => handlePointer(e.clientX, e.clientY)}
         onPointerDown={(e) => {
           (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
-          handlePointerMove(e.clientX, e.clientY);
+          handlePointer(e.clientX, e.clientY);
         }}
+        onPointerEnter={() => setIsHovering(true)}
       >
-        <svg
-          ref={svgRef}
-          viewBox="0 0 540 450"
-          className="w-full h-full max-h-[430px]"
-        >
-          {/* Chart Title */}
-          <text
-            x="250"
-            y="24"
-            textAnchor="middle"
-            className="fill-[#0B2E59] dark:fill-sky-300 text-[16px] font-extrabold tracking-wider"
+        <div className="relative aspect-[1070/917] h-full max-h-full max-w-full m-auto select-none">
+          {/* 1. ORIGINAL AFM SCREENSHOT IMAGE AS BACKGROUND */}
+          <img
+            src="/images/da40/da40-fuel-flow-load.png"
+            alt="Ábaco oficial AFM de consumo horario Fuel Flow vs % Load"
+            className="w-full h-full object-contain pointer-events-none select-none block"
+          />
+
+          {/* 2. INTERACTIVE SVG OVERLAY ON TOP OF THE EXACT IMAGE */}
+          <svg
+            ref={svgRef}
+            viewBox="0 0 1070 917"
+            className="absolute inset-0 w-full h-full select-none pointer-events-none"
           >
-            FUEL FLOW
-          </text>
-
-          {/* Background grid container */}
-          <rect
-            x={plotLeft}
-            y={plotTop}
-            width={plotWidth}
-            height={plotHeight}
-            className="fill-white dark:fill-slate-950 stroke-slate-800 dark:stroke-slate-200 stroke-[2]"
-          />
-
-          {/* Vertical Grid Lines (% LOAD: 30, 40, ..., 100) */}
-          {[30, 40, 50, 60, 70, 80, 90, 100].map((load) => {
-            const x = loadToX(load);
-            return (
-              <g key={`x_grid_${load}`}>
-                {load > 30 && load < 100 && (
-                  <line
-                    x1={x}
-                    y1={plotTop}
-                    x2={x}
-                    y2={plotBottom}
-                    stroke="#94a3b8"
-                    strokeWidth="1"
-                    strokeDasharray="4 4"
-                    opacity="0.6"
-                  />
-                )}
-                {/* Tick on X axis */}
-                <line
-                  x1={x}
-                  y1={plotBottom}
-                  x2={x}
-                  y2={plotBottom + 6}
-                  stroke="currentColor"
-                  className="stroke-slate-800 dark:stroke-slate-200 stroke-[1.5]"
-                />
-                {/* Tick label */}
-                <text
-                  x={x}
-                  y={plotBottom + 20}
-                  textAnchor="middle"
-                  className="fill-slate-700 dark:fill-slate-300 text-[11px] font-bold"
-                >
-                  {load}
-                </text>
-              </g>
-            );
-          })}
-
-          {/* Horizontal Grid Lines (USG/h: 1 to 8) */}
-          {[1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8].map(
-            (usg) => {
-              const y = usgToY(usg);
-              const isMajor = Number.isInteger(usg);
-              return (
-                <g key={`y_grid_${usg}`}>
-                  {isMajor && usg > 1 && usg < 8 && (
-                    <line
-                      x1={plotLeft}
-                      y1={y}
-                      x2={plotRight}
-                      y2={y}
-                      stroke="#94a3b8"
-                      strokeWidth="1"
-                      strokeDasharray="4 4"
-                      opacity="0.6"
-                    />
-                  )}
-                  {/* Right Y-Axis USG Ticks */}
-                  <line
-                    x1={plotRight}
-                    y1={y}
-                    x2={plotRight + (isMajor ? 8 : 4)}
-                    stroke="currentColor"
-                    className="stroke-slate-800 dark:stroke-slate-200 stroke-[1.5]"
-                  />
-                  {isMajor && (
-                    <text
-                      x={plotRight + 12}
-                      y={y + 4}
-                      className="fill-slate-800 dark:fill-slate-200 text-[11px] font-bold"
-                    >
-                      {usg}
-                    </text>
-                  )}
-                </g>
-              );
-            }
-          )}
-
-          {/* Liter/hour scale ticks on far right */}
-          {[4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30].map(
-            (lph) => {
-              const usg = lph / 3.78541;
-              if (usg < minUsg || usg > maxUsg) return null;
-              const y = usgToY(usg);
-              const isMajor = lph % 2 === 0;
-              return (
-                <g key={`lph_${lph}`}>
-                  <line
-                    x1={plotRight + 42}
-                    y1={y}
-                    x2={plotRight + 48}
-                    stroke="currentColor"
-                    className="stroke-slate-800 dark:stroke-slate-200 stroke-[1]"
-                  />
-                  {isMajor && (
-                    <text
-                      x={plotRight + 52}
-                      y={y + 3.5}
-                      className="fill-slate-700 dark:fill-slate-300 text-[10px] font-semibold"
-                    >
-                      {lph}
-                    </text>
-                  )}
-                </g>
-              );
-            }
-          )}
-
-          {/* Right vertical axis line for Liters scale */}
-          <line
-            x1={plotRight + 42}
-            y1={plotTop}
-            x2={plotRight + 42}
-            y2={plotBottom}
-            stroke="currentColor"
-            className="stroke-slate-800 dark:stroke-slate-200 stroke-[1.5]"
-          />
-
-          {/* Axis Titles */}
-          <text
-            x={plotLeft + plotWidth / 2}
-            y={plotBottom + 38}
-            textAnchor="middle"
-            className="fill-slate-800 dark:fill-slate-200 text-[11px] font-extrabold uppercase tracking-wider"
-          >
-            LOAD [%] &rarr;
-          </text>
-
-          <text
-            x={plotRight + 26}
-            y={plotTop + plotHeight / 2}
-            textAnchor="middle"
-            transform={`rotate(-90 ${plotRight + 26} ${plotTop + plotHeight / 2})`}
-            className="fill-slate-800 dark:fill-slate-200 text-[9.5px] font-bold tracking-tight"
-          >
-            FUEL FLOW [US Gal./hour] &rarr;
-          </text>
-
-          <text
-            x={plotRight + 84}
-            y={plotTop + plotHeight / 2}
-            textAnchor="middle"
-            transform={`rotate(-90 ${plotRight + 84} ${plotTop + plotHeight / 2})`}
-            className="fill-slate-800 dark:fill-slate-200 text-[9.5px] font-bold tracking-tight"
-          >
-            FUEL FLOW [Liter/hour] &rarr;
-          </text>
-
-          {/* Example Box Text (as in official AFM) */}
-          <g className="text-[10px]">
-            <text
-              x={plotLeft + 12}
-              y={plotTop + 24}
-              className="fill-slate-700 dark:fill-slate-300 text-[10px] font-bold"
-            >
-              AFM EXAMPLE:
-            </text>
-            <text
-              x={plotLeft + 12}
-              y={plotTop + 38}
-              className="fill-slate-600 dark:fill-slate-400 text-[9.5px]"
-            >
-              POWERSETTING 60 % LOAD
-            </text>
-            <text
-              x={plotLeft + 12}
-              y={plotTop + 54}
-              className="fill-slate-700 dark:fill-slate-300 text-[10px] font-bold"
-            >
-              RESULT:
-            </text>
-            <text
-              x={plotLeft + 12}
-              y={plotTop + 68}
-              className="fill-slate-600 dark:fill-slate-400 text-[9.5px]"
-            >
-              FUEL FLOW 4 US Gal. / 15.1 L/h
-            </text>
-          </g>
-
-          {/* MAIN FUEL FLOW CURVE */}
-          <path
-            d={pathD}
-            fill="none"
-            className="stroke-[#0B2E59] dark:stroke-sky-400 stroke-[3.5] stroke-linecap-round"
-          />
-
-          {/* INTERACTIVE PROJECTIONS */}
-          {/* Vertical projection down to X axis */}
-          <line
-            x1={currentX}
-            y1={plotBottom}
-            x2={currentX}
-            y2={currentY}
-            stroke="#ef4444"
-            strokeWidth="2.5"
-            strokeDasharray="4 3"
-          />
-          {/* Arrow pointing to curve from bottom */}
-          <polygon
-            points={`${currentX - 5},${plotBottom - 2} ${currentX + 5},${plotBottom - 2} ${currentX},${plotBottom - 9}`}
-            fill="#ef4444"
-          />
-
-          {/* Horizontal projection across to Y axis */}
-          <line
-            x1={currentX}
-            y1={currentY}
-            x2={plotRight}
-            y2={currentY}
-            stroke="#ef4444"
-            strokeWidth="2.5"
-            strokeDasharray="4 3"
-          />
-          {/* Arrow pointing right to Y axis */}
-          <polygon
-            points={`${plotRight - 9},${currentY - 5} ${plotRight - 9},${currentY + 5} ${plotRight - 2},${currentY}`}
-            fill="#ef4444"
-          />
-
-          {/* Target marker on curve */}
-          <circle
-            cx={currentX}
-            y={currentY}
-            r="9"
-            className="fill-red-500/25 stroke-red-500 stroke-[2] animate-pulse"
-          />
-          <circle
-            cx={currentX}
-            y={currentY}
-            r="4.5"
-            className="fill-red-600 dark:fill-red-400 stroke-white stroke-[2]"
-          />
-
-          {/* Interactive Floating Tooltip */}
-          <g
-            transform={`translate(${Math.min(
-              plotRight - 150,
-              Math.max(plotLeft + 10, currentX - 70)
-            )}, ${Math.max(plotTop + 10, currentY - 55)})`}
-          >
-            <rect
-              width="140"
-              height="45"
-              rx="6"
-              className="fill-slate-900/95 dark:fill-slate-950/95 stroke-sky-400 stroke-[1.5] shadow-xl"
+            {/* Horizontal Dashed Projection to the Right Y-Axis (Fuel Flow) */}
+            <line
+              x1={point.x}
+              y1={point.y}
+              x2={BOX.right}
+              y2={point.y}
+              stroke="#2563eb"
+              strokeWidth="4"
+              strokeDasharray="8 6"
             />
-            <text
-              x="70"
-              y="17"
-              textAnchor="middle"
-              className="fill-sky-300 text-[11px] font-extrabold"
+            {/* Arrow on Right Axis */}
+            <polygon
+              points={`${BOX.right - 12},${point.y - 7} ${BOX.right - 12},${point.y + 7} ${BOX.right - 2},${point.y}`}
+              fill="#2563eb"
+            />
+            {/* Badge on Right Axis */}
+            <g transform={`translate(${BOX.right + 6}, ${Math.max(105, Math.min(815, point.y))})`}>
+              <rect
+                x="0"
+                y="-18"
+                width="145"
+                height="36"
+                rx="6"
+                fill="#1d4ed8"
+                stroke="#ffffff"
+                strokeWidth="2"
+                filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.3))"
+              />
+              <text
+                x="72"
+                y="5"
+                textAnchor="middle"
+                fill="#ffffff"
+                fontSize="15"
+                fontFamily="monospace"
+                fontWeight="900"
+              >
+                {point.usg.toFixed(2)} USG | {point.lph.toFixed(1)}L
+              </text>
+            </g>
+
+            {/* Vertical Dashed Projection to the Bottom X-Axis (% LOAD) */}
+            <line
+              x1={point.x}
+              y1={point.y}
+              x2={point.x}
+              y2={BOX.bottom}
+              stroke="#2563eb"
+              strokeWidth="4"
+              strokeDasharray="8 6"
+            />
+            {/* Arrow on Bottom Axis */}
+            <polygon
+              points={`${point.x - 7},${BOX.bottom - 12} ${point.x + 7},${BOX.bottom - 12} ${point.x},${BOX.bottom - 2}`}
+              fill="#2563eb"
+            />
+            {/* Badge on Bottom Axis */}
+            <g transform={`translate(${Math.max(50, Math.min(820, point.x))}, ${BOX.bottom + 6})`}>
+              <rect
+                x="-40"
+                y="0"
+                width="80"
+                height="32"
+                rx="6"
+                fill="#1d4ed8"
+                stroke="#ffffff"
+                strokeWidth="2"
+                filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.3))"
+              />
+              <text
+                x="0"
+                y="21"
+                textAnchor="middle"
+                fill="#ffffff"
+                fontSize="16"
+                fontFamily="monospace"
+                fontWeight="900"
+              >
+                {point.load.toFixed(1)}%
+              </text>
+            </g>
+
+            {/* Point Marker (Crosshair center dot with glow) */}
+            <circle
+              cx={point.x}
+              y={point.y}
+              r="14"
+              fill="#3b82f6"
+              fillOpacity="0.25"
+              stroke="#2563eb"
+              strokeWidth="2.5"
+            />
+            <circle
+              cx={point.x}
+              y={point.y}
+              r="7"
+              fill="#1d4ed8"
+              stroke="#ffffff"
+              strokeWidth="2.5"
+            />
+
+            {/* Floating Info Tooltip */}
+            <g
+              transform={`translate(${Math.min(
+                BOX.right - 180,
+                Math.max(BOX.left + 10, point.x - 90)
+              )}, ${Math.max(BOX.top + 10, point.y - 65)})`}
             >
-              {selectedLoad}% LOAD
-            </text>
-            <text
-              x="70"
-              y="35"
-              textAnchor="middle"
-              className="fill-white text-[12px] font-mono font-bold"
-            >
-              {currentUsg.toFixed(2)} USG &bull; {currentLph.toFixed(1)} L/h
-            </text>
-          </g>
-        </svg>
+              <rect
+                width="180"
+                height="50"
+                rx="8"
+                fill="#0f172a"
+                fillOpacity="0.95"
+                stroke="#38bdf8"
+                strokeWidth="2"
+                filter="drop-shadow(0px 4px 6px rgba(0,0,0,0.4))"
+              />
+              <text
+                x="90"
+                y="19"
+                textAnchor="middle"
+                fill="#38bdf8"
+                fontSize="13"
+                fontWeight="800"
+              >
+                {point.load.toFixed(1)}% LOAD
+              </text>
+              <text
+                x="90"
+                y="39"
+                textAnchor="middle"
+                fill="#ffffff"
+                fontSize="14"
+                fontFamily="monospace"
+                fontWeight="900"
+              >
+                {point.usg.toFixed(2)} USG &bull; {point.lph.toFixed(1)} L/h
+              </text>
+            </g>
+          </svg>
+        </div>
       </div>
 
-      {/* Quick Select Preset Buttons & Hint */}
+      {/* Preset Buttons & Instruction Hint */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0">
         <span className="text-[11px] text-slate-600 dark:text-slate-400 font-medium flex items-center gap-1">
-          <span className="text-base">👉</span> Pasa el ratón o pulsa un régimen:
+          <span className="text-base">👆</span> Haz clic o mueve el cursor por la gráfica:
         </span>
         <div className="flex items-center gap-1">
           {[
             { label: "60% Eco", load: 60 },
-            { label: "70% Norm", load: 70 },
-            { label: "80% Ráp", load: 80 },
-            { label: "100% Desp", load: 100 },
+            { label: "70% Normal", load: 70 },
+            { label: "80% Rápido", load: 80 },
+            { label: "100% Despegue", load: 100 },
           ].map((preset) => (
             <button
               key={preset.load}
               type="button"
-              onClick={() => setSelectedLoad(preset.load)}
+              onClick={() => setPreset(preset.load)}
               className={`px-2.5 py-1 rounded-md text-[11px] font-bold transition-all cursor-pointer ${
-                selectedLoad === preset.load
+                Math.abs(point.load - preset.load) < 0.5
                   ? "bg-[#0B2E59] text-white dark:bg-sky-500 dark:text-slate-950 shadow-sm ring-2 ring-sky-300 dark:ring-sky-600"
                   : "bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300"
               }`}
