@@ -4090,16 +4090,11 @@ export const DA40_LESSON_4 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DEFLECTOR REFRIGERADOR COMBUSTIBLE</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA Y SISTEMAS</span>
         </div>
 
-        <div class="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-700/60 text-xs text-amber-950 dark:text-amber-200 mb-2 leading-relaxed">
-          <strong class="text-amber-700 dark:text-amber-400 block mb-1 uppercase font-bold text-xs">Regla Operativa Baffle (Ítem 6.o):</strong>
-          El combustible diésel retornado del common rail se enfría mediante el radiador en la raíz alar derecha. A temperaturas cálidas (OAT en tierra &gt; 20 °C) el deflector <strong>debe retirarse</strong> para evitar sobrecalentamiento de combustible. Con OAT &lt; 20 °C debe instalarse para evitar sobreenfriamiento del depósito auxiliar.
-        </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-4 text-center my-auto">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2">
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center my-auto">
+          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
             📷
           </div>
           <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Semiala Derecha y Stub Wing</span>
@@ -4224,76 +4219,86 @@ export const DA40_LESSON_4 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">8. FRONT FUSELAGE</span>
           </div>
 
-          <!-- LISTA VERBATIM AFM (17 ÍTEMS a - q) -->
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+          <!-- LISTA VERBATIM AFM (17 ÍTEMS EN 2 COLUMNAS a-i y j-q) -->
+          <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">8. Front fuselage:</strong>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">a)</span>
-              <span class="text-slate-800 dark:text-slate-200">Engine oil level &mdash; <span class="italic font-medium">check dipstick (inspection hole in the upper cowling)</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">b)</span>
-              <span class="text-slate-800 dark:text-slate-200">Gearbox oil level &mdash; <span class="italic font-medium">check visually (inspection hole in the lower cowling)</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">c)</span>
-              <span class="text-slate-800 dark:text-slate-200">Cowling &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">d)</span>
-              <span class="text-slate-800 dark:text-slate-200">5 air intakes &mdash; <span class="italic font-medium">clear</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">e)</span>
-              <span class="text-slate-800 dark:text-slate-200">Propeller &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">f)</span>
-              <span class="text-slate-800 dark:text-slate-200">Spinner including attachment screws &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">g)</span>
-              <span class="text-slate-800 dark:text-slate-200">Nose landing gear strut &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">h)</span>
-              <span class="text-slate-800 dark:text-slate-200">Gear strut fairing (if installed) &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">i)</span>
-              <span class="text-slate-800 dark:text-slate-200">Winter Baffle (if installed) &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">j)</span>
-              <span class="text-slate-800 dark:text-slate-200">Tie-down (if installed) &mdash; <span class="italic font-medium">check, clear</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">k)</span>
-              <span class="text-slate-800 dark:text-slate-200">Tire and wheel &mdash; <span class="italic font-medium">visual inspection, check slip marks</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">l)</span>
-              <span class="text-slate-800 dark:text-slate-200">Wear, tread depth of tire &mdash; <span class="italic font-medium">check</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">m)</span>
-              <span class="text-slate-800 dark:text-slate-200">Wheel fairing &mdash; <span class="italic font-medium">visual inspection</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">n)</span>
-              <span class="text-slate-800 dark:text-slate-200">Tow bar &mdash; <span class="italic font-medium">removed</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">o)</span>
-              <span class="text-slate-800 dark:text-slate-200">Tire inflation pressure (2.0 bar / 29 psi) &mdash; <span class="italic font-medium">check</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">p)</span>
-              <span class="text-slate-800 dark:text-slate-200">Chocks &mdash; <span class="italic font-medium">remove</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-1.5 py-0.2 text-[11px] sm:text-xs leading-tight">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">q)</span>
-              <span class="text-slate-800 dark:text-slate-200">Exhaust &mdash; <span class="italic font-medium">visual inspection</span></span>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-0.5">
+              <!-- Subcolumna 1: Ítems a - i (9 ítems) -->
+              <div class="space-y-0.5">
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">a)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Engine oil level &mdash; <span class="italic font-medium">check dipstick (inspection hole in upper cowling)</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">b)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Gearbox oil level &mdash; <span class="italic font-medium">check visually (inspection hole in lower cowling)</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">c)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Cowling &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">d)</span>
+                  <span class="text-slate-800 dark:text-slate-200">5 air intakes &mdash; <span class="italic font-medium">clear</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">e)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Propeller &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">f)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Spinner including attachment screws &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">g)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Nose landing gear strut &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">h)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Gear strut fairing (if installed) &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">i)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Winter Baffle (if installed) &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+              </div>
+
+              <!-- Subcolumna 2: Ítems j - q (8 ítems) -->
+              <div class="space-y-0.5">
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">j)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Tie-down (if installed) &mdash; <span class="italic font-medium">check, clear</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">k)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Tire and wheel &mdash; <span class="italic font-medium">visual inspection, check slip marks</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">l)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Wear, tread depth of tire &mdash; <span class="italic font-medium">check</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">m)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Wheel fairing &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">n)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Tow bar &mdash; <span class="italic font-medium">removed</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">o)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Tire inflation pressure (2.0 bar / 29 psi) &mdash; <span class="italic font-medium">check</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">p)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Chocks &mdash; <span class="italic font-medium">remove</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">q)</span>
+                  <span class="text-slate-800 dark:text-slate-200">Exhaust &mdash; <span class="italic font-medium">visual inspection</span></span>
+                </div>
+              </div>
             </div>
           </div>
 
