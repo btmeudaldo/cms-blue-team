@@ -4918,6 +4918,26 @@ export const DA40_LESSON_4 = {
             </div>
           </div>
 
+          <!-- PROCEDIMIENTO DE POTENCIA MÁXIMA EN PUNTO DE ESPERA -->
+          <div class="p-2 sm:p-2.5 rounded-xl bg-sky-50/90 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-slate-800 dark:text-slate-200 text-[11px] leading-tight shadow-2xs space-y-1">
+            <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide text-xs block">Procedimiento de Potencia Máxima en Punto de Espera:</strong>
+            <p class="m-0">Con freno de parking puesto y avión orientado al viento, avanzar palanca a MAX durante 10 segundos continuos:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-1 py-0.5 font-medium text-[10.5px]">
+              <div class="p-1 rounded bg-white/80 dark:bg-slate-800/80 border border-sky-100 dark:border-sky-900">
+                <strong>RPM:</strong> 2240 &ndash; 2300 RPM
+              </div>
+              <div class="p-1 rounded bg-white/80 dark:bg-slate-800/80 border border-sky-100 dark:border-sky-900">
+                <strong>Carga (LOAD):</strong> 90 % &ndash; 100 %
+              </div>
+              <div class="p-1 rounded bg-white/80 dark:bg-slate-800/80 border border-sky-100 dark:border-sky-900">
+                <strong>Presión Aceite:</strong> 2.3 &ndash; 6.0 bar
+              </div>
+            </div>
+            <p class="m-0 text-amber-800 dark:text-amber-300 font-medium">
+              Si durante los 10 segundos la carga no alcanza al menos el 90 % o las RPM no superan 2240, aborte el vuelo y regrese a plataforma para revisión de mantenimiento del turbo o inyección.
+            </p>
+          </div>
+
           <!-- WARNING COMBUSTIBLE DIÉSEL AFM -->
           <div class="p-2 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[11px] leading-tight shadow-2xs shrink-0">
             <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs">WARNING (Diesel Take-Off Fuel Temp):</strong>
