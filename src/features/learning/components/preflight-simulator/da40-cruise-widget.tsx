@@ -243,32 +243,49 @@ export function DA40CruiseWidget({
               <button
                 type="button"
                 onClick={() => switchMission(0)}
-                className={`px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
+                style={{
+                  backgroundColor: selectedMissionIndex === 0 ? "#059669" : "#ecfdf5",
+                  color: selectedMissionIndex === 0 ? "#ffffff" : "#065f46",
+                  fontSize: "12px",
+                  fontWeight: 800,
+                }}
+                className={`px-2.5 py-1 rounded-lg font-extrabold transition-all cursor-pointer flex items-center gap-1 border ${
                   selectedMissionIndex === 0
-                    ? "bg-emerald-600 text-white shadow-2xs"
-                    : "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
+                    ? "border-emerald-600 shadow-2xs"
+                    : "border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
                 }`}
                 title="Misión 1: Ejemplo guiado resuelto"
               >
-                <span>M1</span>
+                <span style={{ color: selectedMissionIndex === 0 ? "#ffffff" : "#065f46" }}>M1</span>
               </button>
               {[1, 2].map((idx) => {
                 const isSolved = Boolean(solvedMissions[idx]);
+                const isSelected = selectedMissionIndex === idx;
                 return (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => switchMission(idx)}
-                    className={`px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
-                      selectedMissionIndex === idx
-                        ? "bg-[#1a80ff] text-white shadow-2xs"
+                    style={{
+                      backgroundColor: isSelected ? "#0B2E59" : isSolved ? "#ecfdf5" : "#f1f5f9",
+                      color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000",
+                      fontSize: "12px",
+                      fontWeight: 800,
+                    }}
+                    className={`px-2.5 py-1 rounded-lg font-extrabold transition-all cursor-pointer flex items-center gap-1 border ${
+                      isSelected
+                        ? "border-[#0B2E59] shadow-2xs"
                         : isSolved
-                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
-                          : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
+                          ? "border-emerald-300 dark:border-emerald-700"
+                          : "border-slate-300 hover:bg-slate-200"
                     }`}
                   >
-                    <span>M{idx + 1}</span>
-                    <span>{isSolved ? "✓" : "⏳"}</span>
+                    <span style={{ color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000" }}>
+                      M{idx + 1}
+                    </span>
+                    <span style={{ color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000" }}>
+                      {isSolved ? "✓" : "⏳"}
+                    </span>
                   </button>
                 );
               })}
@@ -462,18 +479,30 @@ export function DA40CruiseWidget({
                 <button
                   type="button"
                   onClick={() => switchMission(1)}
-                  className="px-4 py-2 rounded-xl font-black text-xs sm:text-[13px] text-white bg-emerald-600 hover:bg-emerald-700 shadow-xs cursor-pointer transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5"
+                  style={{
+                    backgroundColor: "#059669",
+                    color: "#ffffff",
+                    fontSize: "13px",
+                    fontWeight: 900,
+                  }}
+                  className="px-4 py-2 rounded-xl shadow-xs cursor-pointer transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5"
                 >
-                  <span>Ejemplo Resuelto · Pulsa aquí para ir a M2</span>
-                  <span>➔</span>
+                  <span style={{ color: "#ffffff" }}>Ejemplo Resuelto · Pulsa aquí para ir a M2</span>
+                  <span style={{ color: "#ffffff" }}>➔</span>
                 </button>
               ) : (
                 <button
                   type="button"
                   onClick={handleValidate}
-                  className="px-4 py-2 rounded-xl font-bold text-xs sm:text-[13px] text-white bg-[#1a80ff] hover:bg-[#0066e6] shadow-xs cursor-pointer transition-all hover:scale-105 active:scale-95"
+                  style={{
+                    backgroundColor: "#0B2E59",
+                    color: "#ffffff",
+                    fontSize: "13px",
+                    fontWeight: 800,
+                  }}
+                  className="px-4 py-2 rounded-xl shadow-xs cursor-pointer transition-all hover:scale-105 active:scale-95"
                 >
-                  Validar Cálculos de Crucero ➔
+                  <span style={{ color: "#ffffff" }}>Validar Cálculos de Crucero ➔</span>
                 </button>
               )}
             </div>
@@ -502,9 +531,15 @@ export function DA40CruiseWidget({
                 <button
                   type="button"
                   onClick={() => switchMission(2)}
-                  className="px-3 py-1.5 rounded-lg bg-[#1a80ff] hover:bg-[#0066e6] text-white font-bold text-xs shrink-0 cursor-pointer transition hover:scale-105"
+                  style={{
+                    backgroundColor: "#0B2E59",
+                    color: "#ffffff",
+                    fontSize: "12px",
+                    fontWeight: 800,
+                  }}
+                  className="px-3 py-1.5 rounded-lg shrink-0 cursor-pointer transition hover:scale-105"
                 >
-                  Ir a M3 ➔
+                  <span style={{ color: "#ffffff" }}>Ir a M3 ➔</span>
                 </button>
               </div>
             )}
@@ -532,24 +567,40 @@ export function DA40CruiseWidget({
               <button
                 type="button"
                 onClick={() => setSelectedTablePower(60)}
-                className={`px-2.5 py-0.5 rounded-md text-xs font-bold transition-all cursor-pointer ${
+                style={{
+                  backgroundColor: selectedTablePower === 60 ? "#0B2E59" : "#f1f5f9",
+                  color: selectedTablePower === 60 ? "#ffffff" : "#000000",
+                  fontSize: "12px",
+                  fontWeight: 800,
+                }}
+                className={`px-3 py-1 rounded-md transition-all cursor-pointer border ${
                   selectedTablePower === 60
-                    ? "bg-[#1a80ff] text-white shadow-2xs"
-                    : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
+                    ? "border-[#0B2E59] shadow-2xs"
+                    : "border-slate-300 hover:bg-slate-200"
                 }`}
               >
-                50%
+                <span style={{ color: selectedTablePower === 60 ? "#ffffff" : "#000000" }}>
+                  60%
+                </span>
               </button>
               <button
                 type="button"
                 onClick={() => setSelectedTablePower(70)}
-                className={`px-2.5 py-0.5 rounded-md text-xs font-bold transition-all cursor-pointer ${
+                style={{
+                  backgroundColor: selectedTablePower === 70 ? "#0B2E59" : "#f1f5f9",
+                  color: selectedTablePower === 70 ? "#ffffff" : "#000000",
+                  fontSize: "12px",
+                  fontWeight: 800,
+                }}
+                className={`px-3 py-1 rounded-md transition-all cursor-pointer border ${
                   selectedTablePower === 70
-                    ? "bg-[#1a80ff] text-white shadow-2xs"
-                    : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
+                    ? "border-[#0B2E59] shadow-2xs"
+                    : "border-slate-300 hover:bg-slate-200"
                 }`}
               >
-                55%
+                <span style={{ color: selectedTablePower === 70 ? "#ffffff" : "#000000" }}>
+                  70%
+                </span>
               </button>
             </div>
           </div>

@@ -239,14 +239,20 @@ export function DA40PerformanceWidget({
               <button
                 type="button"
                 onClick={() => switchScenario(0)}
-                className={`px-2.5 py-1 rounded-lg text-xs sm:text-[13px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
+                style={{
+                  backgroundColor: selectedScenarioIndex === 0 ? "#059669" : "#ecfdf5",
+                  color: selectedScenarioIndex === 0 ? "#ffffff" : "#065f46",
+                  fontSize: "12px",
+                  fontWeight: 800,
+                }}
+                className={`px-2.5 py-1 rounded-lg font-extrabold transition-all cursor-pointer flex items-center gap-1 border ${
                   selectedScenarioIndex === 0
-                    ? "bg-emerald-600 text-white shadow-2xs"
-                    : "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
+                    ? "border-emerald-600 shadow-2xs"
+                    : "border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
                 }`}
                 title="GCXO: Ejemplo guiado resuelto"
               >
-                <span>GCXO</span>
+                <span style={{ color: selectedScenarioIndex === 0 ? "#ffffff" : "#065f46" }}>GCXO</span>
               </button>
 
               {[1, 2].map((idx) => {
@@ -255,23 +261,34 @@ export function DA40PerformanceWidget({
                   currentStep === "takeoff"
                     ? Boolean(solvedTakeoff[idx])
                     : Boolean(solvedLanding[idx]);
+                const isSelected = selectedScenarioIndex === idx;
 
                 return (
                   <button
                     key={sc.id}
                     type="button"
                     onClick={() => switchScenario(idx)}
-                    className={`px-2.5 py-1 rounded-lg text-xs sm:text-[13px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
-                      selectedScenarioIndex === idx
-                        ? "bg-[#1a80ff] text-white shadow-2xs"
+                    style={{
+                      backgroundColor: isSelected ? "#0B2E59" : isSolved ? "#ecfdf5" : "#f1f5f9",
+                      color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000",
+                      fontSize: "12px",
+                      fontWeight: 800,
+                    }}
+                    className={`px-2.5 py-1 rounded-lg font-extrabold transition-all cursor-pointer flex items-center gap-1 border ${
+                      isSelected
+                        ? "border-[#0B2E59] shadow-2xs"
                         : isSolved
-                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
-                          : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700"
+                          ? "border-emerald-300 dark:border-emerald-700"
+                          : "border-slate-300 hover:bg-slate-200"
                     }`}
                     title={sc.name}
                   >
-                    <span>{sc.icao}</span>
-                    <span>{isSolved ? "✓" : "⏳"}</span>
+                    <span style={{ color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000" }}>
+                      {sc.icao}
+                    </span>
+                    <span style={{ color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000" }}>
+                      {isSolved ? "✓" : "⏳"}
+                    </span>
                   </button>
                 );
               })}
@@ -471,13 +488,15 @@ export function DA40PerformanceWidget({
               <button
                 type="button"
                 onClick={handleValidate}
-                className={`px-4 py-2 rounded-xl text-white font-bold text-xs sm:text-[13px] transition-all shadow-xs cursor-pointer flex items-center gap-1.5 ${
-                  selectedScenarioIndex === 0
-                    ? "bg-emerald-600 hover:bg-emerald-700"
-                    : "bg-[#1a80ff] hover:bg-[#0066e6]"
-                }`}
+                style={{
+                  backgroundColor: selectedScenarioIndex === 0 ? "#059669" : "#0B2E59",
+                  color: "#ffffff",
+                  fontSize: "13px",
+                  fontWeight: 800,
+                }}
+                className="px-4 py-2 rounded-xl shadow-xs cursor-pointer flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95"
               >
-                <span>
+                <span style={{ color: "#ffffff" }}>
                   {selectedScenarioIndex === 0
                     ? "Pasar a GCTS (Ejercicio) ➔"
                     : currentStep === "takeoff"
