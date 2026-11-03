@@ -502,7 +502,7 @@ export function DA40CruiseWidget({
                   style={{
                     backgroundColor: "#059669",
                     color: "#ffffff",
-                    fontSize: "13px",
+                    fontSize: "18px",
                     fontWeight: 900,
                   }}
                   className="px-4 py-2 rounded-xl shadow-xs cursor-pointer transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5"

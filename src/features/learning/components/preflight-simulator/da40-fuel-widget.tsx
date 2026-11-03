@@ -245,25 +245,6 @@ export function DA40FuelWidget({
 
           {/* Form Content - Aligned to top */}
           <div className="flex-1 min-h-0 overflow-y-auto my-1 space-y-2 flex flex-col justify-start pt-1">
-            {/* Solved Example Alert (for M1) */}
-            {selectedMissionIndex === 0 && (
-              <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 text-xs flex items-center justify-between gap-2 shadow-2xs">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-sm">🟢</span>
-                  <span>
-                    <strong>EJEMPLO RESUELTO · Misión 1 (Referencia):</strong> Este primer ejercicio se muestra completado como modelo. Para avanzar, resuelve los ejercicios <strong>M2</strong> y <strong>M3</strong>.
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => switchMission(1)}
-                  className="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] shrink-0 transition-all cursor-pointer"
-                >
-                  Ir a M2 ➔
-                </button>
-              </div>
-            )}
-
             <div className="grid grid-cols-2 gap-2">
               {/* Taxi Fuel */}
               <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs">

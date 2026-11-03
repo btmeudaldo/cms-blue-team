@@ -153,17 +153,13 @@ export function DA40PerformanceWidget({
       // LANDING STEP
       const userLd50 = num(currentInputs.landing50ft);
       if (isNaN(userLd50) || !checkValueTolerance(userLd50, scenario.ld50ft, 0.06, 10).isOk) {
-        if (!isNaN(userLd50) && (Math.abs(userLd50 - 513) <= 15 || Math.abs(userLd50 - 570) <= 15)) {
-          newErrors.landing50ft = `Has tomado 570 ft (o 513 ft), que es carrera en suelo y en PIES. La casilla pide distancia sobre obstáculo de 50 ft ('TOTAL 50 FT OBS' = 1335 ft) en METROS: divide entre 3.28084 y resta 10% por viento.`;
-        } else if (!isNaN(userLd50) && (Math.abs(userLd50 - 1201) <= 25 || Math.abs(userLd50 - 1335) <= 25)) {
-          newErrors.landing50ft = `¡Casi! Has usado distancia a 50 ft en pies. La tabla Fig. 5-10 viene en PIES. Conviértela a METROS (divide entre 3.28084 y resta 10% de viento).`;
-        } else if (!isNaN(userLd50) && userLd50 > 900) {
-          newErrors.landing50ft = `¡Cuidado con las unidades! Has introducido un valor en pies (> 900 ft). F.OPS.02 requiere la distancia en METROS [m] (divide entre 3.28084).`;
+        if (!isNaN(userLd50) && userLd50 > 900) {
+          newErrors.landing50ft = `¡Cuidado! Has introducido un valor excesivamente alto (> 900 m). F.OPS.02 requiere la distancia sobre obstáculo de 50 ft en METROS según la tabla del AFM.`;
         } else {
           newErrors.landing50ft =
             attempts >= 1
-              ? `Solución ${scenario.icao}: Distancia sobre 50 ft = ${scenario.ld50ft} m. En Fig. 5-10: columna 'TOTAL 50 FT OBS' = ${Math.round(scenario.baseLd50 * 3.28084)} ft ÷ 3.28 = ${scenario.baseLd50} m; con -6% viento = ${scenario.ld50ft} m.`
-              : `Columna 'TOTAL 50 FT OBS' (no 'GRND ROLL') y convierte pies a metros (÷ 3.28084): ${scenario.baseLd50} m con ${scenario.windDesc}.`;
+              ? `Solución ${scenario.icao}: Distancia sobre 50 ft = ${scenario.ld50ft} m. En tabla AFM Fig. 5.3.11: base ${scenario.baseLd50} m; con -6% viento = ${scenario.ld50ft} m.`
+              : `Consulta la tabla AFM Fig. 5.3.11 (distancia sobre obstáculo de 50 ft en metros) y aplica -6% por viento: base ${scenario.baseLd50} m con ${scenario.windDesc}.`;
         }
       }
 
@@ -335,48 +331,50 @@ export function DA40PerformanceWidget({
 
           {/* Form Content - Aligned to top */}
           <div className="flex-1 min-h-0 flex flex-col justify-start space-y-2 pt-1 overflow-y-auto">
-            {/* Solved Example Alert (for GCXO) */}
-            {selectedScenarioIndex === 0 && (
-              <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 text-xs flex items-center justify-between gap-2 shadow-2xs">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-sm">🟢</span>
-                  <span>
-                    <strong>EJEMPLO RESUELTO · GCXO (Referencia):</strong> Este primer cálculo se muestra completado como modelo oficial. Para avanzar, calcula los otros dos aeródromos (<strong>GCTS</strong> y <strong>GCGM</strong>).
-                  </span>
-                </div>
+
+
+
+            {/* Direct Link to Relevant AFM Table */}
+            <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-sky-50/70 dark:bg-slate-800/90 border border-sky-200 dark:border-slate-700 shadow-2xs">
+              <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
+                <span>📖</span>
+                <span>{currentStep === "takeoff" ? "TABLA AFM DESPEGUE:" : "TABLA AFM ATERRIZAJE:"}</span>
+              </span>
+              <div className="flex items-center gap-1.5">
                 <button
                   type="button"
-                  onClick={() => switchScenario(1)}
+                  onClick={() => setIsChartModalOpen(true)}
                   style={{
-                    backgroundColor: "#059669",
+                    backgroundColor: "#0B2E59",
                     color: "#ffffff",
                     fontSize: "1.125rem",
                     fontWeight: 700,
                   }}
-                  className="px-3 py-1.5 rounded-lg font-bold shrink-0 transition-all cursor-pointer hover:bg-emerald-700 shadow-2xs"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#0B2E59] hover:bg-[#082242] transition-all cursor-pointer shadow-2xs"
+                  title="Ver Gráfica en Pantalla"
                 >
                   <span style={{ color: "#ffffff", fontSize: "1.125rem", fontWeight: 700 }}>
-                    Ir a GCTS ➔
+                    {currentStep === "takeoff" ? "🛫 Ver Tabla Takeoff Distance 50ft" : "🛬 Ver Tabla Landing Distance"}
                   </span>
+                  <span>🔍</span>
                 </button>
+                <a
+                  href={chartSrc}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    backgroundColor: "#f1f5f9",
+                    color: "#000000",
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
+                  }}
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
+                  title="Abrir imagen en nueva pestaña"
+                >
+                  <span style={{ color: "#000000", fontSize: "1.125rem", fontWeight: 700 }}>↗</span>
+                </a>
               </div>
-            )}
-
-
-            {/* Landing Unit Conversion Reminder */}
-            {currentStep === "landing" && (
-              <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700 text-xs sm:text-[13px] text-amber-950 dark:text-amber-100 flex items-center justify-between gap-2 shadow-xs">
-                <div className="flex items-center gap-2">
-                  <span className="text-base">⚠️</span>
-                  <span>
-                    <strong>CONVERSIÓN:</strong> Fig. 5-10 viene en <strong>PIES [ft]</strong>. Divide entre <strong>3.28084</strong> para obtener <strong>METROS [m]</strong>.
-                  </span>
-                </div>
-                <span className="font-mono font-bold bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-amber-300 dark:border-amber-700 shrink-0 text-xs sm:text-[12px]">
-                  ft ÷ 3.28084 = m
-                </span>
-              </div>
-            )}
+            </div>
 
             {/* Calculation Cards */}
             {currentStep === "takeoff" ? (
@@ -389,7 +387,7 @@ export function DA40PerformanceWidget({
                         1. Take-off run (Carrera en suelo)
                       </span>
                       <div className="text-xs text-slate-500 dark:text-slate-400 font-normal">
-                        POH Fig. 5-1a · Columna &apos;GRND ROLL&apos; (con -6% por viento)
+                        AFM Fig. 5.3.5 · Carrera en suelo en metros (con -6% por viento)
                       </div>
                     </div>
                     <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 shrink-0">
@@ -424,7 +422,7 @@ export function DA40PerformanceWidget({
                         2. Take-off distance (Obstáculo 50 ft / 15 m)
                       </span>
                       <div className="text-xs text-slate-500 dark:text-slate-400 font-normal">
-                        POH Fig. 5-1a · &apos;TOTAL TO CLEAR 50 FT OBS&apos; (con -6% viento)
+                        AFM Fig. 5.3.5 · Distancia sobre 50 ft en metros (con -6% viento)
                       </div>
                     </div>
                     <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2 py-0.5 rounded-lg bg-white dark:bg-slate-900 border border-sky-300 dark:border-sky-700 text-blue-700 dark:text-sky-300 shrink-0">
@@ -460,7 +458,7 @@ export function DA40PerformanceWidget({
                       Landing distance (Obstáculo 50 ft / 15 m)
                     </span>
                     <div className="text-xs text-slate-500 dark:text-slate-400 font-normal">
-                      POH Fig. 5-10 · &apos;TOTAL 50 FT OBS&apos; en pies &divide; 3.28084 (con -6% viento)
+                      AFM Fig. 5.3.11 · Distancia sobre 50 ft en metros (con -6% viento)
                     </div>
                   </div>
                   <span className="inline-flex items-center gap-1 font-mono text-xs sm:text-[13px] font-bold px-2 py-0.5 rounded-lg bg-white dark:bg-slate-900 border border-emerald-300 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 shrink-0">
@@ -625,47 +623,6 @@ export function DA40PerformanceWidget({
               </div>
             </div>
 
-            {/* Direct Link to Relevant AFM Table */}
-            <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-sky-50/70 dark:bg-slate-800/90 border border-sky-200 dark:border-slate-700 shadow-2xs">
-              <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
-                <span>📖</span>
-                <span>{currentStep === "takeoff" ? "TABLA AFM DESPEGUE:" : "TABLA AFM ATERRIZAJE:"}</span>
-              </span>
-              <div className="flex items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => setIsChartModalOpen(true)}
-                  style={{
-                    backgroundColor: "#0B2E59",
-                    color: "#ffffff",
-                    fontSize: "1.125rem",
-                    fontWeight: 700,
-                  }}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#0B2E59] hover:bg-[#082242] transition-all cursor-pointer shadow-2xs"
-                  title="Ver Gráfica en Pantalla"
-                >
-                  <span style={{ color: "#ffffff", fontSize: "1.125rem", fontWeight: 700 }}>
-                    {currentStep === "takeoff" ? "🛫 Ver Tabla Takeoff Distance 50ft" : "🛬 Ver Tabla Landing Distance"}
-                  </span>
-                  <span>🔍</span>
-                </button>
-                <a
-                  href={chartSrc}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    backgroundColor: "#f1f5f9",
-                    color: "#000000",
-                    fontSize: "1.125rem",
-                    fontWeight: 700,
-                  }}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
-                  title="Abrir imagen en nueva pestaña"
-                >
-                  <span style={{ color: "#000000", fontSize: "1.125rem", fontWeight: 700 }}>↗</span>
-                </a>
-              </div>
-            </div>
 
             {/* Dynamic Bottom Area: Step instructions or Graphical Runway Scale */}
             {!isCurrentStepPassed ? (

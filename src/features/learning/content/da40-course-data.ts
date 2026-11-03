@@ -8004,7 +8004,7 @@ export const DA40_LESSON_6 = {
 
         <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-amber-900 dark:text-amber-200 text-xs leading-relaxed flex items-start gap-2">
           <span class="font-bold shrink-0">⚠️ NOTA BEW:</span>
-          <span>El <strong>BEW (Empty Weight)</strong> indicado aquí se incluye como <strong>referencia</strong> (ejemplo AFM Sección 6.3). El BEW es distinto para cada aeronave; para el cálculo operacional se debe utilizar obligatoriamente el BEW que figura en el <strong>informe de masa y centrado de cada avión</strong>.</span>
+          <span>El <strong>BEW (Empty Weight)</strong> indicado aquí se incluye como <strong>referencia</strong> (ejemplo orientativo). El BEW es distinto para cada aeronave; para el cálculo operacional se debe utilizar obligatoriamente el BEW que figura en el <strong>informe de masa y centrado de cada avión</strong>.</span>
         </div>
 
         <div class="space-y-1.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300">
@@ -8108,7 +8108,7 @@ export const DA40_LESSON_6 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE DE CG (AFM)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE DE CENTRO DE GRAVEDAD</span>
         </div>
 
         <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
@@ -8132,7 +8132,7 @@ export const DA40_LESSON_6 = {
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI (TAE 125-01) · TALLER INTERACTIVO 1A</div>
       <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.5 Ejercicio Práctico 1A: Masa y Centrado al Despegue (TOM & CG)</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Hoja AFM Cap. 6 · Parte 1</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Masa y Centrado · Parte 1</span>
   </div>
 
   <div class="py-0.5" data-interactive-exercise="loadsheet_takeoff" data-aircraft="da40"></div>
@@ -8147,7 +8147,7 @@ export const DA40_LESSON_6 = {
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI (TAE 125-01) · TALLER INTERACTIVO 1B</div>
       <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.6 Ejercicio Práctico 1B: Consumo de Ruta y Aterrizaje (LM & Envolvente)</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Hoja AFM Cap. 6 · Parte 2</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Masa y Centrado · Parte 2</span>
   </div>
 
   <div class="py-0.5" data-interactive-exercise="loadsheet_landing" data-aircraft="da40"></div>
@@ -8170,7 +8170,7 @@ export const DA40_LESSON_6 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">REGÍMENES DE CRUCERO Y CONSUMO (AFM SECCIÓN 5)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">REGÍMENES DE CRUCERO Y CONSUMO</span>
         </div>
 
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">

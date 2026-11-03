@@ -1194,7 +1194,7 @@ export function DA40LoadsheetWidget({
                   onClick={() => loadMissionScenario(DA40_PREFLIGHT_MISSIONS[1], 1)}
                   className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-[13px] shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95 flex items-center gap-1.5"
                 >
-                  <span>Ejemplo Resuelto · Pulsa aquí para ir a M2</span>
+                  <span>Pulsa aquí para ir a M2</span>
                   <span>➔</span>
                 </button>
               ) : (

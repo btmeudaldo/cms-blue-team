@@ -341,7 +341,7 @@ export function DA40FuelChartWidget() {
         <span className="text-[11px] text-slate-600 dark:text-slate-400 font-medium flex items-center gap-1">
           <span className="text-base">👆</span> Haz clic o mueve el cursor por la gráfica:
         </span>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 flex-wrap">
           {[
             { label: "60% Eco", load: 60 },
             { label: "70% Normal", load: 70 },
@@ -357,7 +357,7 @@ export function DA40FuelChartWidget() {
                 style={{
                   backgroundColor: isActive ? "#0B2E59" : "#f1f5f9",
                   color: isActive ? "#ffffff" : "#000000",
-                  fontSize: "12px",
+                  fontSize: "18px",
                   fontWeight: 800,
                 }}
                 className={`px-3 py-1 rounded-lg transition-all cursor-pointer border ${
