@@ -4,10 +4,16 @@ Este archivo define las directrices y criterios obligatorios para la creación y
 
 ---
 
-## 1. Referencias al AFM (Manual de Vuelo)
-- **Prohibido saturar las diapositivas con referencias de capítulos o secciones**: No incluir menciones continuas a números de sección o checklist tipo `(AFM 4A.6, 4B.3 & 7.9)`, `(SECCIÓN 4A Y 4B):`, `(AFM 4A.6)`, etc., en los encabezados, tarjetas o puntos clave.
-- **Excepción estricta**: Solo se mencionará la referencia exacta al manual en casos muy necesarios o cuando el usuario lo solicite expresamente.
-- El contenido debe estar redactado de forma limpia, pedagógica y directa para el alumno/piloto.
+## 1. Referencias al AFM y Títulos Limpios
+- **Prohibición estricta de números de sección o capítulos del AFM**:
+  - No incluir números de sección o subapartados del manual (p. ej. `3.2.5`, `3.2.2(b)`, `4B.3.2`, `3.5.1`, `AFM 3.1.2`, `4B.1`, etc.) en subtítulos, cabeceras de recuadros, títulos de tarjetas ni notas.
+  - Los títulos de las checklists y tarjetas deben mostrar **únicamente el nombre operativo y claro** de la maniobra o sistema en mayúsculas (p. ej., `TAKE-OFF CAN NO LONGER BE ABORTED`, `WINDMILLING PROPELLER`, `STATIONARY PROPELLER`, `EMERGENCY LANDING WITH ENGINE OFF`).
+  - En las notas y remisiones, no usar números de sección (evitar *"in accordance with 3.5.1"*); redactar en su lugar el nombre de la maniobra: *"in accordance with EMERGENCY LANDING WITH ENGINE OFF"*.
+  - **Diferenciación crítica**: Esta prohibición aplica exclusivamente a los códigos de sección del AFM; nunca debe afectar a distancias métricas (como `3.14 km`), pesos (`1150 kg`, `1000 kg`, `850 kg`), velocidades (`73 KIAS`), números de paso (`1.`, `2.`) ni a la numeración correlativa de las diapositivas (`5.1`, `5.2`, etc.).
+- **Terminología aeronáutica**:
+  - Usar siempre **«ala izquierda»** y **«ala derecha»** (Left Wing / Right Wing). Queda prohibido el uso del término académico de ingeniería *«semiala»*.
+- **Sin insignias artificiales**:
+  - No incluir badges o bloques decorativos artificiales tipo `✅ END OF CHECKLIST` o `✅ NORMAL OPERATING PROCEDURES COMPLETE`. El contenido debe limitarse a la lista y notas técnicas operacionales.
 
 ---
 
