@@ -3174,7 +3174,7 @@ export const DA40_LESSON_3 = {
               <span class="text-[9px] font-bold text-emerald-800 bg-emerald-100 dark:bg-emerald-950 dark:text-emerald-300 px-1.5 py-0.5 rounded">Tach / Press / Temp / Load</span>
             </div>
             <div class="w-full flex-1 min-h-0 bg-white dark:bg-slate-900/50 rounded-lg flex items-center justify-center overflow-hidden p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-ced125.jpg" alt="Compact Engine Display CED 125 Thielert TAE 125 Diamond DA40 TDI" class="w-full h-full max-h-[195px] object-contain rounded-md" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 195px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+              <img src="/images/da40/CED125.jpg" alt="Compact Engine Display CED 125 Thielert TAE 125 Diamond DA40 TDI" class="w-full h-full max-h-[195px] object-contain rounded-md" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 195px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
             </div>
           </div>
 
@@ -3188,7 +3188,7 @@ export const DA40_LESSON_3 = {
               <span class="text-[9px] font-bold text-sky-800 bg-sky-100 dark:bg-sky-950 dark:text-sky-300 px-1.5 py-0.5 rounded">Fuel / Volt / Amps / Flow / Level</span>
             </div>
             <div class="w-full flex-1 min-h-0 bg-white dark:bg-slate-900/50 rounded-lg flex items-center justify-center overflow-hidden p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-aed125.jpg" alt="Auxiliary Engine Display AED 125 Thielert TAE 125 Diamond DA40 TDI" class="w-full h-full max-h-[195px] object-contain rounded-md" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 195px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+              <img src="/images/da40/AED125.jpg" alt="Auxiliary Engine Display AED 125 Thielert TAE 125 Diamond DA40 TDI" class="w-full h-full max-h-[195px] object-contain rounded-md" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 195px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
             </div>
           </div>
         </div>
