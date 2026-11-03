@@ -3703,12 +3703,12 @@ export const DA40_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.3: 4.3 Inspección Exterior II: Semiala Izquierda, Pitot y Mandos -->
+<!-- DIAPOSITIVA 4.3: 4.3 Inspección Exterior II: Ala Izquierda, Pitot y Mandos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.3 Inspección Exterior II: Semiala Izquierda, Pitot y Mandos</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.3 Inspección Exterior II: Ala Izquierda, Pitot y Mandos</h1>
     </div>
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estación 2: Borde de Ataque, Sonda Pitot, Alerón, Flap y Descargadores</span>
   </div>
@@ -3840,7 +3840,7 @@ export const DA40_LESSON_4 = {
           <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
             📷
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Semiala Izquierda y Mandos</span>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Ala Izquierda y Mandos</span>
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Sonda Pitot-estática calefactada, toma de pérdida (aspirar para verificar sonido), bandas de pérdida (stall strips), varillas con laca de seguridad en alerón y flap, y descargadores estáticos en punta alar.
           </p>
@@ -3955,14 +3955,14 @@ export const DA40_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.5: 4.5 Inspección Exterior IV: Semiala Derecha y Combustible -->
+<!-- DIAPOSITIVA 4.5: 4.5 Inspección Exterior IV: Ala Derecha y Combustible -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS NORMALES</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.5 Inspección Exterior IV: Semiala Derecha y Combustible</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.5 Inspección Exterior IV: Ala Derecha y Combustible</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estaciones 5 y 6: Fuselaje Derecho, Semiala Derecha y Deflector Alar</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Estaciones 5 y 6: Fuselaje Derecho, Ala Derecha y Deflector Alar</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -4097,7 +4097,7 @@ export const DA40_LESSON_4 = {
           <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
             📷
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Semiala Derecha y Stub Wing</span>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Ala Derecha y Stub Wing</span>
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
             Toma de aire del refrigerador de combustible en la raíz alar derecha con su deflector estacional (baffle), tapón del depósito y varilla graduada de comprobación visual.
           </p>
