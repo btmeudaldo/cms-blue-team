@@ -507,7 +507,7 @@ export function DA40CruiseWidget({
                   }}
                   className="px-4 py-2 rounded-xl shadow-xs cursor-pointer transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5"
                 >
-                  <span style={{ color: "#ffffff" }}>Ejemplo Resuelto · Pulsa aquí para ir a M2</span>
+                  <span style={{ color: "#ffffff" }}>Pulsa aquí para ir a M2</span>
                   <span style={{ color: "#ffffff" }}>➔</span>
                 </button>
               ) : (
