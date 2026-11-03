@@ -1688,7 +1688,7 @@ export const DA40_LESSON_2 = {
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2">
           <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.7-v2.jpg?v=2" alt="Display Digital CED 125 DA40 TDI" class="w-full h-full max-h-[385px] object-contain rounded-lg" />
+            <img src="/images/da40/CED125.jpg" alt="Display Digital CED 125 DA40 TDI" class="w-full h-full max-h-[385px] object-contain rounded-lg" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
             <strong class="text-[#0B2E59] dark:text-sky-300">CED 125</strong> · Compact Engine Display (Motor y Reductora)
@@ -1824,7 +1824,7 @@ export const DA40_LESSON_2 = {
             <div class="flex-1 min-h-0 grid grid-cols-12 gap-3 items-center">
               <!-- AED 125 a la izquierda -->
               <div class="col-span-6 h-full flex items-center justify-center overflow-hidden py-0.5">
-                <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125 DA40 TDI" class="w-full h-full max-h-[205px] object-contain rounded-md" />
+                <img src="/images/da40/AED125.jpg" alt="Auxiliary Engine Display AED 125 DA40 TDI" class="w-full h-full max-h-[205px] object-contain rounded-md" />
               </div>
 
               <!-- NOTA en cuadro a la derecha -->
@@ -1849,7 +1849,7 @@ export const DA40_LESSON_2 = {
             </div>
 
             <div class="w-full flex-1 min-h-0 bg-white dark:bg-white flex items-center justify-center overflow-hidden py-0.5">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina DA40 TDI" class="w-full h-full max-h-[165px] object-contain rounded-md" />
+              <img src="/images/da40/da40-annunciator-panel-realistic.jpg" alt="Panel Anunciador de Cabina DA40 TDI" class="w-full h-full max-h-[165px] object-contain rounded-md" />
             </div>
           </div>
         </div>
