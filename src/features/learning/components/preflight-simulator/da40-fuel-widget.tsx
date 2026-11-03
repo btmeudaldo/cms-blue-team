@@ -38,6 +38,8 @@ export function DA40FuelWidget({
   const [missionInputs, setMissionInputs] = useState<Record<number, FuelInputs>>(INITIAL_FUEL_INPUTS);
   const [solvedMissions, setSolvedMissions] = useState<Record<number, boolean>>({});
 
+  const isM1 = selectedMissionIndex === 0;
+
   const currentInputs = missionInputs[selectedMissionIndex] || {
     tripFuel: "",
     reserveFuel: "",
@@ -46,6 +48,7 @@ export function DA40FuelWidget({
   };
 
   const updateCurrentInput = (field: keyof FuelInputs, value: string) => {
+    if (isM1) return; // M1 is the solved reference model (read-only)
     setMissionInputs((prev) => ({
       ...prev,
       [selectedMissionIndex]: {
@@ -58,6 +61,10 @@ export function DA40FuelWidget({
         [field]: value,
       },
     }));
+    // If student edits an already solved mission, clear solved status to allow re-validation
+    if (solvedMissions[selectedMissionIndex]) {
+      setSolvedMissions((prev) => ({ ...prev, [selectedMissionIndex]: false }));
+    }
   };
 
   // Feedback states
@@ -73,11 +80,11 @@ export function DA40FuelWidget({
   const taxiFuelL = 3.0;
   const expectedTripL = Math.round(mission.scenario.flightTimeHrs * hourlyRate * 10) / 10;
   const expectedTripGal = Math.round(mission.scenario.flightTimeHrs * hourlyRateGal * 10) / 10;
-  
+
   // Reservas: EASA 45 min (11.3 L) vs. Blue Team OM 1h 30min (22.7 L total, que ya incluye los 45 min)
   const expectedEasaReserveL = 11.3; // 45 min = 0.75 h × 15.1 L/h
   const expectedBlueTeamReserveL = 22.7; // 1h 30min = 1.5 h × 15.1 L/h (Reserva Final OM completa)
-  const expectedBlueTeamReserveGal = 6.00;
+  const expectedBlueTeamReserveGal = 6.0;
   const expectedAlternateL = 5.1; // Desvío a alternativo ~20 min
   const expectedBlueTeamTotalReserveL = 27.8; // 22.7 + 5.1 L con alternativo
 
@@ -87,7 +94,7 @@ export function DA40FuelWidget({
   const expectedRampGal = Math.round((expectedRampL / 3.78541) * 10) / 10;
 
   const solvedPracticeCount = (solvedMissions[1] ? 1 : 0) + (solvedMissions[2] ? 1 : 0);
-  const isCurrentMissionSolved = selectedMissionIndex === 0 || Boolean(solvedMissions[selectedMissionIndex]);
+  const isCurrentMissionSolved = isM1 || Boolean(solvedMissions[selectedMissionIndex]);
 
   const switchMission = (idx: number) => {
     setSelectedMissionIndex(idx);
@@ -97,9 +104,17 @@ export function DA40FuelWidget({
   };
 
   const handleValidate = () => {
-    // If student is on M1 (Example), validate is not needed; guide to M2
-    if (selectedMissionIndex === 0) {
+    // If student is on M1 (Example), advance to M2
+    if (isM1) {
       switchMission(1);
+      return;
+    }
+
+    // If current mission is already solved and user clicks advance
+    if (solvedMissions[selectedMissionIndex]) {
+      if (selectedMissionIndex === 1) {
+        switchMission(2);
+      }
       return;
     }
 
@@ -138,7 +153,7 @@ export function DA40FuelWidget({
     } else if (isBlueTeamGallons) {
       newWarnings.push(`Reserva final introducida en US Galones: ${userReserve} Gal (equivale a ${expectedBlueTeamReserveL} L).`);
     } else if (isEasaMatch) {
-      newWarnings.push(`ℹ️ Has introducido el mínimo EASA de 45 min (${expectedEasaReserveL} L). Recuerda que por Manual OM Blue Team nuestra reserva final es de 1h 30min (${expectedBlueTeamReserveL} L).`);
+      newWarnings.push(`Aviso: Has introducido el mínimo EASA de 45 min (${expectedEasaReserveL} L). Recuerda que por Manual OM Blue Team nuestra reserva final es de 1h 30min (${expectedBlueTeamReserveL} L).`);
     }
 
     // Check Landing Fuel (must be at least userReserve or minimum 22.7 L)
@@ -189,6 +204,35 @@ export function DA40FuelWidget({
     }
   };
 
+  const getInputClass = (hasError: boolean) => {
+    if (isM1) {
+      return "border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold cursor-not-allowed";
+    }
+    if (hasError) {
+      return "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300";
+    }
+    if (isCurrentMissionSolved) {
+      return "border-emerald-500 bg-emerald-50/80 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold";
+    }
+    return "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100";
+  };
+
+  let actionButtonLabel = "Validar Combustible F.OPS.02 ➔";
+  let actionButtonStyle = "bg-[#1a80ff] hover:bg-[#0066e6]";
+
+  if (isM1) {
+    actionButtonLabel = "Pasar a Misión 2 (Ejercicio) ➔";
+    actionButtonStyle = "bg-emerald-600 hover:bg-emerald-700";
+  } else if (solvedMissions[selectedMissionIndex]) {
+    if (selectedMissionIndex === 1) {
+      actionButtonLabel = "✓ Correcto · Pasar a Misión 3 ➔";
+      actionButtonStyle = "bg-emerald-600 hover:bg-emerald-700";
+    } else {
+      actionButtonLabel = "✓ Ejercicios M2 y M3 Completados";
+      actionButtonStyle = "bg-emerald-600 cursor-default";
+    }
+  }
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
       {/* Columna Izquierda (lg:col-span-7): Formulario F.OPS.02 (Altura Fija 590px) */}
@@ -201,10 +245,11 @@ export function DA40FuelWidget({
           <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">
-                ⛽ PLANIFICACIÓN DE COMBUSTIBLE F.OPS.02
+                PLANIFICACIÓN DE COMBUSTIBLE F.OPS.02
               </span>
               <div className="text-[10px] text-slate-500 font-medium">
                 {mission.name} · {mission.scenario.flightTimeHrs} h vuelo · 50% Potencia ({hourlyRate} L/h · {hourlyRateGal} US Gal/h)
+                {isM1 && <span className="ml-1 text-emerald-700 dark:text-emerald-400 font-bold">(Ejemplo guiado - solo lectura)</span>}
               </div>
             </div>
             <div className="flex items-center gap-1 shrink-0">
@@ -236,7 +281,7 @@ export function DA40FuelWidget({
                     }`}
                   >
                     <span>M{idx + 1}</span>
-                    <span>{isSolved ? "✓" : "⏳"}</span>
+                    {isSolved && <span className="font-bold text-emerald-600 dark:text-emerald-400">✓</span>}
                   </button>
                 );
               })}
@@ -267,14 +312,14 @@ export function DA40FuelWidget({
                 <div className="flex items-center gap-1.5">
                   <input
                     type="text"
+                    disabled={isM1}
+                    readOnly={isM1}
                     placeholder={`Litros o Galones (Ej: ${expectedTripL})`}
                     value={currentInputs.tripFuel}
                     onChange={(e) => updateCurrentInput("tripFuel", e.target.value)}
-                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
-                      errors.trip
-                        ? "border-rose-500 bg-rose-50 text-rose-700"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
-                    }`}
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs transition-colors ${getInputClass(
+                      Boolean(errors.trip)
+                    )}`}
                   />
                   <span className="text-xs font-bold text-slate-500 shrink-0">L / Gal</span>
                 </div>
@@ -291,14 +336,14 @@ export function DA40FuelWidget({
                 <div className="flex items-center gap-1.5">
                   <input
                     type="text"
+                    disabled={isM1}
+                    readOnly={isM1}
                     placeholder={`Litros o Galones (Ej: ${expectedBlueTeamReserveL})`}
                     value={currentInputs.reserveFuel}
                     onChange={(e) => updateCurrentInput("reserveFuel", e.target.value)}
-                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
-                      errors.reserve
-                        ? "border-rose-500 bg-rose-50 text-rose-700"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
-                    }`}
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs transition-colors ${getInputClass(
+                      Boolean(errors.reserve)
+                    )}`}
                   />
                   <span className="text-xs font-bold text-slate-500 shrink-0">L / Gal</span>
                 </div>
@@ -313,14 +358,14 @@ export function DA40FuelWidget({
                 <div className="flex items-center gap-1.5">
                   <input
                     type="text"
+                    disabled={isM1}
+                    readOnly={isM1}
                     placeholder={`Litros o Galones (Ej: ${expectedLandingL})`}
                     value={currentInputs.landingFuel}
                     onChange={(e) => updateCurrentInput("landingFuel", e.target.value)}
-                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs ${
-                      errors.landing
-                        ? "border-rose-500 bg-rose-50 text-rose-700"
-                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
-                    }`}
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs transition-colors ${getInputClass(
+                      Boolean(errors.landing)
+                    )}`}
                   />
                   <span className="text-xs font-bold text-slate-500 shrink-0">L / Gal</span>
                 </div>
@@ -336,12 +381,18 @@ export function DA40FuelWidget({
               <div className="flex items-center gap-2">
                 <input
                   type="text"
+                  disabled={isM1}
+                  readOnly={isM1}
                   placeholder={`Combustible total rampa (Ej: ${expectedRampL})`}
                   value={currentInputs.rampFuel}
                   onChange={(e) => updateCurrentInput("rampFuel", e.target.value)}
-                  className={`flex-1 px-2.5 py-1.5 rounded-lg border font-mono text-xs font-bold ${
-                    errors.ramp
-                      ? "border-rose-500 bg-rose-50 text-rose-700"
+                  className={`flex-1 px-2.5 py-1.5 rounded-lg border font-mono text-xs font-bold transition-colors ${
+                    isM1
+                      ? "border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 cursor-not-allowed"
+                      : errors.ramp
+                      ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                      : isCurrentMissionSolved
+                      ? "border-emerald-500 bg-emerald-50/80 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200"
                       : "border-blue-300 dark:border-blue-700 bg-white dark:bg-slate-900 text-blue-900 dark:text-blue-100"
                   }`}
                 />
@@ -355,9 +406,9 @@ export function DA40FuelWidget({
           <div className="space-y-1.5 pt-1 border-t border-slate-200 dark:border-slate-800 shrink-0">
             <div className="flex items-center justify-between">
               <span className="text-[11px] text-slate-500">
-                {selectedMissionIndex === 0 ? (
+                {isM1 ? (
                   <span className="text-emerald-700 dark:text-emerald-400 font-bold">
-                    ✓ Modelo de referencia resuelto
+                    ✓ Modelo de referencia resuelto (M1)
                   </span>
                 ) : (
                   <span>
@@ -368,20 +419,16 @@ export function DA40FuelWidget({
               <button
                 type="button"
                 onClick={handleValidate}
-                className={`px-4 py-1.5 rounded-xl font-bold text-xs text-white shadow-xs cursor-pointer transition-all ${
-                  selectedMissionIndex === 0
-                    ? "bg-emerald-600 hover:bg-emerald-700"
-                    : "bg-[#1a80ff] hover:bg-[#0066e6]"
-                }`}
+                className={`px-4 py-1.5 rounded-xl font-bold text-xs text-white shadow-xs cursor-pointer transition-all ${actionButtonStyle}`}
               >
-                {selectedMissionIndex === 0 ? "Pasar a Misión 2 (Ejercicio) ➔" : "Validar Combustible F.OPS.02 ➔"}
+                {actionButtonLabel}
               </button>
             </div>
 
             {warnings.length > 0 && (
               <div className="p-1.5 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200 text-[10px]">
                 {warnings.map((w, idx) => (
-                  <div key={idx}>ℹ️ {w}</div>
+                  <div key={idx}>{w}</div>
                 ))}
               </div>
             )}
@@ -389,12 +436,18 @@ export function DA40FuelWidget({
             {isCurrentMissionSolved && (
               <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs">
                 <strong className="font-bold">
-                  {selectedMissionIndex === 0
-                    ? "✓ MODELO OFICIAL RESUELTO (M1):"
-                    : `✓ ¡PLANIFICACIÓN DE COMBUSTIBLE VÁLIDA (M${selectedMissionIndex + 1})!`}
+                  {isM1
+                    ? "✓ MODELO DE REFERENCIA RESUELTO (M1):"
+                    : selectedMissionIndex === 1
+                    ? "✓ CÁLCULO CORRECTO · MISIÓN 2:"
+                    : "✓ CÁLCULO CORRECTO · MISIÓN 3:"}
                 </strong>
                 <p className="text-[10px] mt-0.5">
-                  Ramp: {expectedRampL} L ({(expectedRampL / 3.78541).toFixed(1)} Gal) · Trip: {expectedTripL} L ({(expectedTripL / 3.78541).toFixed(1)} Gal) · Reserva Final OM: {expectedBlueTeamReserveL} L ({(expectedBlueTeamReserveL / 3.78541).toFixed(1)} Gal) · Landing: {expectedLandingL} L ({(expectedLandingL / 3.78541).toFixed(1)} Gal).
+                  {selectedMissionIndex === 2 && solvedPracticeCount === 2
+                    ? `¡Enhorabuena! Has completado con éxito todas las misiones prácticas. Ramp: ${expectedRampL} L · Trip: ${expectedTripL} L · Reserva Final OM: ${expectedBlueTeamReserveL} L · Landing: ${expectedLandingL} L.`
+                    : selectedMissionIndex === 1
+                    ? `Ramp: ${expectedRampL} L (${(expectedRampL / 3.78541).toFixed(1)} Gal) · Trip: ${expectedTripL} L (${(expectedTripL / 3.78541).toFixed(1)} Gal) · Reserva Final OM: ${expectedBlueTeamReserveL} L (${(expectedBlueTeamReserveL / 3.78541).toFixed(1)} Gal) · Landing: ${expectedLandingL} L (${(expectedLandingL / 3.78541).toFixed(1)} Gal). Pulsa el botón para continuar a la Misión 3.`
+                    : `Ramp: ${expectedRampL} L (${(expectedRampL / 3.78541).toFixed(1)} Gal) · Trip: ${expectedTripL} L (${(expectedTripL / 3.78541).toFixed(1)} Gal) · Reserva Final OM: ${expectedBlueTeamReserveL} L (${(expectedBlueTeamReserveL / 3.78541).toFixed(1)} Gal) · Landing: ${expectedLandingL} L (${(expectedLandingL / 3.78541).toFixed(1)} Gal).`}
                 </p>
               </div>
             )}
@@ -411,7 +464,7 @@ export function DA40FuelWidget({
           <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm block">
-                📊 DESGLOSE F.OPS.02 & PART-NCO
+                DESGLOSE F.OPS.02 & PART-NCO
               </span>
               <span className="text-[10px] text-slate-500 font-medium">
                 Verificación de Bloques de Combustible
@@ -430,36 +483,37 @@ export function DA40FuelWidget({
                 Proporción de Depósitos ({mission.scenario.takeoffFuelLiters} L / {(mission.scenario.takeoffFuelLiters / 3.78541).toFixed(1)} US Gal Cargados)
               </span>
 
-              <div className="w-full bg-slate-100 dark:bg-slate-900 rounded-xl overflow-hidden h-7 flex border border-slate-300 dark:border-slate-700">
+              {/* Contenedor de barra de combustible con anchos mínimos que impiden la compresión de texto sin reducir tipografía */}
+              <div className="w-full bg-slate-100 dark:bg-slate-900 rounded-xl overflow-hidden h-8 flex border border-slate-300 dark:border-slate-700">
                 <div
-                  style={{ width: `${(taxiFuelL / mission.scenario.takeoffFuelLiters) * 100}%` }}
-                  className="bg-amber-400 flex items-center justify-center text-[10px] font-bold text-amber-950"
+                  style={{ minWidth: "46px", width: `${(taxiFuelL / mission.scenario.takeoffFuelLiters) * 100}%` }}
+                  className="bg-amber-400 shrink-0 flex items-center justify-center text-[10px] font-bold text-amber-950 px-1 whitespace-nowrap"
                   title={`Taxi: ${taxiFuelL} L`}
                 >
                   Taxi
                 </div>
                 <div
-                  style={{ width: `${(expectedTripL / mission.scenario.takeoffFuelLiters) * 100}%` }}
-                  className="bg-blue-500 flex items-center justify-center text-[10px] font-bold text-white"
+                  style={{ minWidth: "86px", width: `${(expectedTripL / mission.scenario.takeoffFuelLiters) * 100}%` }}
+                  className="bg-blue-500 shrink-0 flex items-center justify-center text-[10px] font-bold text-white px-1 whitespace-nowrap"
                   title={`Trip: ${expectedTripL} L`}
                 >
                   Trip ({expectedTripL} L)
                 </div>
                 <div
-                  style={{ width: `${(expectedBlueTeamReserveL / mission.scenario.takeoffFuelLiters) * 100}%` }}
-                  className="bg-purple-600 flex items-center justify-center text-[10px] font-bold text-white"
+                  style={{ minWidth: "130px", width: `${(expectedBlueTeamReserveL / mission.scenario.takeoffFuelLiters) * 100}%` }}
+                  className="bg-purple-600 shrink-0 flex items-center justify-center text-[10px] font-bold text-white px-1 whitespace-nowrap"
                   title={`Reserva Final OM 1h 30m: ${expectedBlueTeamReserveL} L (incluye los 45 min legales)`}
                 >
                   Reserva 1:30 ({expectedBlueTeamReserveL} L)
                 </div>
                 <div
-                  style={{ width: `${(expectedAlternateL / mission.scenario.takeoffFuelLiters) * 100}%` }}
-                  className="bg-teal-600 flex items-center justify-center text-[9.5px] font-bold text-white"
+                  style={{ minWidth: "68px", width: `${(expectedAlternateL / mission.scenario.takeoffFuelLiters) * 100}%` }}
+                  className="bg-teal-600 shrink-0 flex items-center justify-center text-[10px] font-bold text-white px-1 whitespace-nowrap"
                   title={`Alternativo: ${expectedAlternateL} L (~20 min)`}
                 >
                   Alt ({expectedAlternateL} L)
                 </div>
-                <div className="flex-1 bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold text-slate-600 dark:text-slate-300">
+                <div className="flex-1 min-w-[42px] bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold text-slate-600 dark:text-slate-300 px-1 whitespace-nowrap">
                   Extra
                 </div>
               </div>
