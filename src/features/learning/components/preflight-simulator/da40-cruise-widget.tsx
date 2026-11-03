@@ -9,18 +9,52 @@ type Props = {
 };
 
 // Official data points from DA40 AFM Section 5.3.10 & 5.3.11 (Doc # 6.01.05-E)
-const CRUISE_TABLE_DATA = [
-  // 60% Load (Estándar Escuela): 15.1 l/h (4.0 US Gal/h)
+export type PowerSetting = 50 | 60 | 70 | 80 | 90 | 100;
+
+const CRUISE_TABLE_DATA: Array<{
+  alt: number;
+  load: PowerSetting;
+  ktas: number;
+  fuelFlowLh: number;
+  fuelFlowGal: number;
+  rangeNm: number;
+  enduranceHrs: number;
+}> = [
+  // 50% Load (Económico / Máxima Autonomía): 12.5 L/h (3.3 US Gal/h)
+  { alt: 2000, load: 50, ktas: 101, fuelFlowLh: 12.5, fuelFlowGal: 3.3, rangeNm: 856, enduranceHrs: 8.5 },
+  { alt: 4000, load: 50, ktas: 104, fuelFlowLh: 12.5, fuelFlowGal: 3.3, rangeNm: 882, enduranceHrs: 8.5 },
+  { alt: 6000, load: 50, ktas: 106, fuelFlowLh: 12.5, fuelFlowGal: 3.3, rangeNm: 899, enduranceHrs: 8.5 },
+  { alt: 8000, load: 50, ktas: 108, fuelFlowLh: 12.5, fuelFlowGal: 3.3, rangeNm: 916, enduranceHrs: 8.5 },
+
+  // 60% Load (Estándar Escuela): 15.1 L/h (4.0 US Gal/h)
   { alt: 2000, load: 60, ktas: 111, fuelFlowLh: 15.1, fuelFlowGal: 4.0, rangeNm: 777, enduranceHrs: 7.0 },
   { alt: 4000, load: 60, ktas: 113, fuelFlowLh: 15.1, fuelFlowGal: 4.0, rangeNm: 791, enduranceHrs: 7.0 },
   { alt: 6000, load: 60, ktas: 116, fuelFlowLh: 15.1, fuelFlowGal: 4.0, rangeNm: 812, enduranceHrs: 7.0 },
   { alt: 8000, load: 60, ktas: 118, fuelFlowLh: 15.1, fuelFlowGal: 4.0, rangeNm: 826, enduranceHrs: 7.0 },
 
-  // 70% Load (Crucero Rápido): 18.5 l/h (4.9 US Gal/h)
+  // 70% Load (Crucero Normal): 18.5 L/h (4.9 US Gal/h)
   { alt: 2000, load: 70, ktas: 118, fuelFlowLh: 18.5, fuelFlowGal: 4.9, rangeNm: 673, enduranceHrs: 5.7 },
   { alt: 4000, load: 70, ktas: 121, fuelFlowLh: 18.5, fuelFlowGal: 4.9, rangeNm: 690, enduranceHrs: 5.7 },
   { alt: 6000, load: 70, ktas: 124, fuelFlowLh: 18.5, fuelFlowGal: 4.9, rangeNm: 707, enduranceHrs: 5.7 },
   { alt: 8000, load: 70, ktas: 127, fuelFlowLh: 18.5, fuelFlowGal: 4.9, rangeNm: 724, enduranceHrs: 5.7 },
+
+  // 80% Load (Crucero Rápido): 22.0 L/h (5.8 US Gal/h)
+  { alt: 2000, load: 80, ktas: 125, fuelFlowLh: 22.0, fuelFlowGal: 5.8, rangeNm: 602, enduranceHrs: 4.8 },
+  { alt: 4000, load: 80, ktas: 128, fuelFlowLh: 22.0, fuelFlowGal: 5.8, rangeNm: 617, enduranceHrs: 4.8 },
+  { alt: 6000, load: 80, ktas: 131, fuelFlowLh: 22.0, fuelFlowGal: 5.8, rangeNm: 631, enduranceHrs: 4.8 },
+  { alt: 8000, load: 80, ktas: 134, fuelFlowLh: 22.0, fuelFlowGal: 5.8, rangeNm: 646, enduranceHrs: 4.8 },
+
+  // 90% Load (Alta Potencia): 25.4 L/h (6.7 US Gal/h)
+  { alt: 2000, load: 90, ktas: 131, fuelFlowLh: 25.4, fuelFlowGal: 6.7, rangeNm: 547, enduranceHrs: 4.2 },
+  { alt: 4000, load: 90, ktas: 134, fuelFlowLh: 25.4, fuelFlowGal: 6.7, rangeNm: 559, enduranceHrs: 4.2 },
+  { alt: 6000, load: 90, ktas: 137, fuelFlowLh: 25.4, fuelFlowGal: 6.7, rangeNm: 572, enduranceHrs: 4.2 },
+  { alt: 8000, load: 90, ktas: 138, fuelFlowLh: 25.4, fuelFlowGal: 6.7, rangeNm: 576, enduranceHrs: 4.2 },
+
+  // 100% Load (Máxima Potencia Continua / Despegue): 29.1 L/h (7.7 US Gal/h)
+  { alt: 2000, load: 100, ktas: 136, fuelFlowLh: 29.1, fuelFlowGal: 7.7, rangeNm: 495, enduranceHrs: 3.6 },
+  { alt: 4000, load: 100, ktas: 139, fuelFlowLh: 29.1, fuelFlowGal: 7.7, rangeNm: 506, enduranceHrs: 3.6 },
+  { alt: 6000, load: 100, ktas: 141, fuelFlowLh: 29.1, fuelFlowGal: 7.7, rangeNm: 514, enduranceHrs: 3.6 },
+  { alt: 8000, load: 100, ktas: 138, fuelFlowLh: 29.1, fuelFlowGal: 7.7, rangeNm: 503, enduranceHrs: 3.6 },
 ];type MissionInputs = {
   ktas: string;
   fuelFlow: string;
@@ -49,7 +83,7 @@ export function DA40CruiseWidget({
   isAlreadyCompleted = false,
 }: Props) {
   const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on Mission 1 (Solved Example)
-  const [selectedTablePower, setSelectedTablePower] = useState<60 | 70>(60); // Filter for right table
+  const [selectedTablePower, setSelectedTablePower] = useState<PowerSetting>(60); // Filter for right table
   const mission = DA40_PREFLIGHT_MISSIONS[selectedMissionIndex];
 
   // Per-mission input states so student work is kept across tab switches
@@ -115,6 +149,7 @@ export function DA40CruiseWidget({
 
   const switchMission = (idx: number) => {
     setSelectedMissionIndex(idx);
+    setSelectedTablePower(idx === 2 ? 70 : 60);
     setAttempts(0);
     setErrors({});
     setWarnings([]);
@@ -567,14 +602,14 @@ export function DA40CruiseWidget({
         </div>
       </div>
 
-      {/* Columna Derecha (lg:col-span-5): Tabla Fig. 5-4a + Panel de Correcciones Didácticas (Altura Fija 590px) */}
+      {/* Columna Derecha (lg:col-span-5): Tabla AFM 5.3.10 + Panel de Correcciones Didácticas (Altura Fija 590px) */}
       <div className="lg:col-span-5 flex flex-col">
         <div
-          className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
+          className="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
           style={{ height: "590px" }}
         >
           {/* Header con selector de potencia */}
-          <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0 gap-1.5">
             <div>
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px] block">
                 📖 TABLA AFM 5.3.10 CRUCERO
@@ -583,62 +618,43 @@ export function DA40CruiseWidget({
                 DA40 TDI · Standard Tanks (106.0 L / 28.00 Gal)
               </span>
             </div>
-            <div className="flex items-center gap-1.5 shrink-0">
-              <button
-                type="button"
-                onClick={() => setSelectedTablePower(60)}
-                style={{
-                  backgroundColor: selectedTablePower === 60 ? "#0B2E59" : "#f1f5f9",
-                  color: selectedTablePower === 60 ? "#ffffff" : "#000000",
-                  fontSize: "1.125rem",
-                  fontWeight: 700,
-                }}
-                className={`px-3 py-1.5 rounded-md transition-all cursor-pointer border ${
-                  selectedTablePower === 60
-                    ? "border-[#0B2E59] shadow-2xs"
-                    : "border-slate-300 hover:bg-slate-200"
-                }`}
-              >
-                <span
-                  style={{
-                    color: selectedTablePower === 60 ? "#ffffff" : "#000000",
-                    fontSize: "1.125rem",
-                    fontWeight: 700,
-                  }}
-                >
-                  60%
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setSelectedTablePower(70)}
-                style={{
-                  backgroundColor: selectedTablePower === 70 ? "#0B2E59" : "#f1f5f9",
-                  color: selectedTablePower === 70 ? "#ffffff" : "#000000",
-                  fontSize: "1.125rem",
-                  fontWeight: 700,
-                }}
-                className={`px-3 py-1.5 rounded-md transition-all cursor-pointer border ${
-                  selectedTablePower === 70
-                    ? "border-[#0B2E59] shadow-2xs"
-                    : "border-slate-300 hover:bg-slate-200"
-                }`}
-              >
-                <span
-                  style={{
-                    color: selectedTablePower === 70 ? "#ffffff" : "#000000",
-                    fontSize: "1.125rem",
-                    fontWeight: 700,
-                  }}
-                >
-                  70%
-                </span>
-              </button>
+            <div className="flex flex-wrap items-center gap-1 shrink-0 justify-end">
+              {([50, 60, 70, 80, 90, 100] as const).map((p) => {
+                const isActive = selectedTablePower === p;
+                return (
+                  <button
+                    key={p}
+                    type="button"
+                    onClick={() => setSelectedTablePower(p)}
+                    style={{
+                      backgroundColor: isActive ? "#0B2E59" : "#f1f5f9",
+                      color: isActive ? "#ffffff" : "#000000",
+                      fontSize: "14px",
+                      fontWeight: 700,
+                    }}
+                    className={`px-2 py-1 rounded-md transition-all cursor-pointer border ${
+                      isActive
+                        ? "border-[#0B2E59] shadow-2xs"
+                        : "border-slate-300 hover:bg-slate-200"
+                    }`}
+                  >
+                    <span
+                      style={{
+                        color: isActive ? "#ffffff" : "#000000",
+                        fontSize: "14px",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {p}%
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Tabla Fig. 5-4a compacta y clara */}
-          <div className="shrink-0 my-1">
+          {/* Tabla Fig. 5.3.10 compacta y clara - Alineada arriba */}
+          <div className="shrink-0 my-1.5">
             <table className="w-full text-left text-xs sm:text-[12px] border-collapse">
               <thead>
                 <tr className="border-b border-slate-200 dark:border-slate-700 font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60 text-[11px]">
@@ -653,7 +669,7 @@ export function DA40CruiseWidget({
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-mono text-xs">
                 {displayedRows.map((row, idx) => {
-                  const isHighlighted = row.alt === alt && row.load === 60;
+                  const isHighlighted = row.alt === alt && row.load === loadPct && row.load === selectedTablePower;
                   return (
                     <tr
                       key={idx}
@@ -691,7 +707,7 @@ export function DA40CruiseWidget({
 
           {/* Zona inferior dinámica: Panel de Correcciones cuando hay errores O Explicación didáctica si está correcto */}
           {errorCount > 0 ? (
-            <div className="flex-1 min-h-0 overflow-y-auto mt-1 p-2 rounded-xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/80 dark:bg-rose-950/30 space-y-1.5 shadow-2xs">
+            <div className="flex-1 min-h-0 overflow-y-auto mt-auto p-2 rounded-xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/80 dark:bg-rose-950/30 space-y-1.5 shadow-2xs">
               <div className="flex items-center justify-between border-b border-rose-200/80 dark:border-rose-800/60 pb-1">
                 <span className="text-xs font-bold text-rose-900 dark:text-rose-200 flex items-center gap-1.5">
                   <span>💡</span>
@@ -742,7 +758,7 @@ export function DA40CruiseWidget({
               </div>
             </div>
           ) : (
-            <div className="p-2.5 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-xs sm:text-[13px] space-y-1 text-slate-700 dark:text-slate-300 shrink-0">
+            <div className="mt-auto p-2.5 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-xs sm:text-[13px] space-y-1 text-slate-700 dark:text-slate-300 shrink-0">
               <div className="text-[11px] sm:text-xs text-sky-900 dark:text-sky-300 font-medium flex items-center gap-1.5">
                 ⛽ Puedes introducir el combustible tanto en <strong>Litros</strong> como en <strong>US Galones</strong>, y la masa en <strong>Kg</strong> o <strong>Libras</strong>.
               </div>
