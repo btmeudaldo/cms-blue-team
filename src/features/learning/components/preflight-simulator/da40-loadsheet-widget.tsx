@@ -569,7 +569,7 @@ export function DA40LoadsheetWidget({
       const vp = viewportRef.current;
       const w = vp ? vp.clientWidth : 610;
       const h = vp ? vp.clientHeight : 477;
-      const scale = Math.min(w / 1140, h / 880);
+      const scale = Math.min(w / 961, h / 705);
 
       const targetMidX = currentStep === "takeoff"
         ? (zfmCoords.x + tomCoords.x) / 2
@@ -578,8 +578,8 @@ export function DA40LoadsheetWidget({
         ? (zfmCoords.y + tomCoords.y) / 2
         : (tomCoords.y + lmCoords.y) / 2;
 
-      const panX = - (targetMidX - 570) * scale * 1.5;
-      const panY = - (targetMidY - 440) * scale * 1.5;
+      const panX = - (targetMidX - 480.5) * scale * 1.5;
+      const panY = - (targetMidY - 352.5) * scale * 1.5;
 
       setZoomLevel(1.5);
       setPanOffset(clampPan(panX, panY, 1.5));
@@ -1363,7 +1363,7 @@ export function DA40LoadsheetWidget({
               className="w-full h-full rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 shadow-2xs overflow-hidden flex p-1 relative select-none"
             >
               <div
-                className="relative aspect-[1140/880] h-full max-h-full max-w-full m-auto shrink-0 select-none"
+                className="relative aspect-[961/705] h-full max-h-full max-w-full m-auto shrink-0 select-none"
                 style={{
                   height: "100%",
                   width: "auto",
@@ -1373,13 +1373,13 @@ export function DA40LoadsheetWidget({
                 }}
               >
                 <img
-                  src="/images/da40/da40-cg-limits-envelope.png"
-                  alt="Center of Gravity Limits SVG"
+                  src="/images/da40/da40-cg-limits.png"
+                  alt="Envolvente de masa y centrado oficial Diamond DA40 TDI"
                   className="w-full h-full object-contain pointer-events-none select-none"
                 />
 
               <svg
-                viewBox="0 0 1050 870"
+                viewBox="0 0 961 705"
                 className={`absolute inset-0 w-full h-full select-none ${
                   isPanning ? "cursor-grabbing" : zoomLevel > 1 ? "cursor-grab" : "cursor-crosshair"
                 }`}
@@ -1402,9 +1402,9 @@ export function DA40LoadsheetWidget({
                   }
 
                   const rect = e.currentTarget.getBoundingClientRect();
-                  const clickX = ((e.clientX - rect.left) / rect.width) * 1140;
-                  const clickY = ((e.clientY - rect.top) / rect.height) * 880;
-                  if (clickX >= 130 && clickX <= 1015 && clickY >= 120 && clickY <= 695) {
+                  const clickX = ((e.clientX - rect.left) / rect.width) * 961;
+                  const clickY = ((e.clientY - rect.top) / rect.height) * 705;
+                  if (clickX >= 160 && clickX <= 730 && clickY >= 130 && clickY <= 620) {
                     setHoverPoint({ x: clickX, y: clickY });
                   } else {
                     setHoverPoint(null);
@@ -1419,9 +1419,9 @@ export function DA40LoadsheetWidget({
                   if (wasDragging || selectedMissionIndex === 0) return;
 
                   const rect = e.currentTarget.getBoundingClientRect();
-                  const clickX = ((e.clientX - rect.left) / rect.width) * 1140;
-                  const clickY = ((e.clientY - rect.top) / rect.height) * 880;
-                  if (clickX >= 130 && clickX <= 1015 && clickY >= 120 && clickY <= 695) {
+                  const clickX = ((e.clientX - rect.left) / rect.width) * 961;
+                  const clickY = ((e.clientY - rect.top) / rect.height) * 705;
+                  if (clickX >= 160 && clickX <= 730 && clickY >= 130 && clickY <= 620) {
                     if (currentStep === "takeoff") {
                       if (activePlotPoint === "zfm") {
                         setInteractiveZfmPoint({ x: clickX, y: clickY });
@@ -1477,9 +1477,9 @@ export function DA40LoadsheetWidget({
 
                   const touch = e.changedTouches[0];
                   const rect = e.currentTarget.getBoundingClientRect();
-                  const clickX = ((touch.clientX - rect.left) / rect.width) * 1140;
-                  const clickY = ((touch.clientY - rect.top) / rect.height) * 880;
-                  if (clickX >= 130 && clickX <= 1015 && clickY >= 120 && clickY <= 695) {
+                  const clickX = ((touch.clientX - rect.left) / rect.width) * 961;
+                  const clickY = ((touch.clientY - rect.top) / rect.height) * 705;
+                  if (clickX >= 160 && clickX <= 730 && clickY >= 130 && clickY <= 620) {
                     if (currentStep === "takeoff") {
                       if (activePlotPoint === "zfm") {
                         setInteractiveZfmPoint({ x: clickX, y: clickY });
@@ -1504,64 +1504,64 @@ export function DA40LoadsheetWidget({
                 {/* 1. LÍNEAS GUÍA DE MOUSE HOVER A LOS EJES (Arriba: CG, Derecha: Masa en kg) - TAMAÑO GRANDE */}
                 {hoverPoint && hoverData && (
                   <g pointerEvents="none">
-                    {/* Línea horizontal hacia el eje vertical DERECHO (Masa en kg) */}
+                    {/* Línea horizontal hacia el eje vertical IZQUIERDO (Masa en kg) */}
                     <line
                       x1={hoverPoint.x}
                       y1={hoverPoint.y}
-                      x2={1013.3}
+                      x2={190}
                       y2={hoverPoint.y}
                       stroke="#1d4ed8"
-                      strokeWidth="5"
-                      strokeDasharray="10 6"
+                      strokeWidth="3.5"
+                      strokeDasharray="8 5"
                     />
-                    {/* Badge indicador en el eje derecho (Masa en kg) */}
+                    {/* Badge indicador en el eje izquierdo (Masa en kg) */}
                     <rect
-                      x={1014}
-                      y={hoverPoint.y - 26}
-                      width="145"
-                      height="52"
-                      rx="10"
+                      x={75}
+                      y={hoverPoint.y - 18}
+                      width="110"
+                      height="36"
+                      rx="8"
                       fill="#1d4ed8"
                       stroke="#ffffff"
-                      strokeWidth="3"
+                      strokeWidth="2.5"
                     />
                     <text
-                      x={1086}
-                      y={hoverPoint.y + 11}
+                      x={130}
+                      y={hoverPoint.y + 7}
                       fill="#ffffff"
-                      fontSize="26"
+                      fontSize="18"
                       fontWeight="900"
                       textAnchor="middle"
                     >
                       {hoverData.massKg} kg
                     </text>
 
-                    {/* Línea vertical hacia el eje horizontal SUPERIOR (CG) */}
+                    {/* Línea vertical hacia el eje horizontal INFERIOR (CG en m) */}
                     <line
                       x1={hoverPoint.x}
                       y1={hoverPoint.y}
                       x2={hoverPoint.x}
-                      y2={120.3}
+                      y2={605}
                       stroke="#1d4ed8"
-                      strokeWidth="5"
-                      strokeDasharray="10 6"
+                      strokeWidth="3.5"
+                      strokeDasharray="8 5"
                     />
-                    {/* Badge indicador en el eje superior (Brazo CG en m) */}
+                    {/* Badge indicador en el eje inferior (Brazo CG en m) */}
                     <rect
-                      x={Math.max(135, Math.min(845, hoverPoint.x - 85))}
-                      y={56}
-                      width="170"
-                      height="54"
-                      rx="10"
+                      x={Math.max(160, Math.min(600, hoverPoint.x - 60))}
+                      y={610}
+                      width="120"
+                      height="36"
+                      rx="8"
                       fill="#1d4ed8"
                       stroke="#ffffff"
-                      strokeWidth="3"
+                      strokeWidth="2.5"
                     />
                     <text
-                      x={Math.max(220, Math.min(930, hoverPoint.x))}
-                      y={94}
+                      x={Math.max(220, Math.min(660, hoverPoint.x))}
+                      y={635}
                       fill="#ffffff"
-                      fontSize="26"
+                      fontSize="18"
                       fontWeight="900"
                       textAnchor="middle"
                     >
@@ -1589,7 +1589,7 @@ export function DA40LoadsheetWidget({
                         <line
                           x1={interactiveZfmPoint.x}
                           y1={interactiveZfmPoint.y}
-                          x2={1013.3}
+                          x2={190}
                           y2={interactiveZfmPoint.y}
                           stroke="#9333ea"
                           strokeWidth="2.5"
@@ -1600,7 +1600,7 @@ export function DA40LoadsheetWidget({
                           x1={interactiveZfmPoint.x}
                           y1={interactiveZfmPoint.y}
                           x2={interactiveZfmPoint.x}
-                          y2={120.3}
+                          y2={605}
                           stroke="#9333ea"
                           strokeWidth="2.5"
                           strokeDasharray="6 4"
@@ -1615,7 +1615,7 @@ export function DA40LoadsheetWidget({
                         <line
                           x1={interactiveTomPoint.x}
                           y1={interactiveTomPoint.y}
-                          x2={1013.3}
+                          x2={190}
                           y2={interactiveTomPoint.y}
                           stroke="#d97706"
                           strokeWidth="2.5"
@@ -1626,7 +1626,7 @@ export function DA40LoadsheetWidget({
                           x1={interactiveTomPoint.x}
                           y1={interactiveTomPoint.y}
                           x2={interactiveTomPoint.x}
-                          y2={120.3}
+                          y2={605}
                           stroke="#d97706"
                           strokeWidth="2.5"
                           strokeDasharray="6 4"
@@ -1831,7 +1831,7 @@ export function DA40LoadsheetWidget({
                         <line
                           x1={interactiveClickPoint.x}
                           y1={interactiveClickPoint.y}
-                          x2={1013.3}
+                          x2={190}
                           y2={interactiveClickPoint.y}
                           stroke="#059669"
                           strokeWidth="2.5"
@@ -1842,7 +1842,7 @@ export function DA40LoadsheetWidget({
                           x1={interactiveClickPoint.x}
                           y1={interactiveClickPoint.y}
                           x2={interactiveClickPoint.x}
-                          y2={120.3}
+                          y2={605}
                           stroke="#059669"
                           strokeWidth="2.5"
                           strokeDasharray="6 4"

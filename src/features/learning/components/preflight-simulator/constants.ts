@@ -279,10 +279,10 @@ export function isCgInsideUtilityDA40(massKg: number, cgM: number): boolean {
  */
 export function mapCgToSvgCoordsDA40(massKg: number, cgM: number): { x: number; y: number } {
   const clampedCg = Math.max(2.38, Math.min(2.62, cgM));
-  const x = 184 + (clampedCg - 2.40) * 3557.89;
+  const x = 190 + (clampedCg - 2.40) * 2480;
 
-  const clampedMass = Math.max(740, Math.min(1200, massKg));
-  const y = 680 - (clampedMass - 780) * 1.5027;
+  const clampedMass = Math.max(730, Math.min(1200, massKg));
+  const y = 605 - (clampedMass - 750) * 1.04889;
 
   return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 };
 }
@@ -291,8 +291,8 @@ export function mapCgToSvgCoordsDA40(massKg: number, cgM: number): { x: number; 
  * Inverse mapping for DA40: maps (x, y) on SVG to Mass (kg) and CG (m)
  */
 export function mapSvgCoordsToCgDA40(x: number, y: number): { massKg: number; cgM: number } {
-  const cgM = 2.40 + (x - 184) / 3557.89;
-  const massKg = 780 + (680 - y) / 1.5027;
+  const cgM = 2.40 + (x - 190) / 2480;
+  const massKg = 750 + (605 - y) / 1.04889;
 
   return {
     massKg: Math.round(massKg),
