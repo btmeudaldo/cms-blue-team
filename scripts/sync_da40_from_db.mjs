@@ -2,7 +2,6 @@ import { createClient } from "@supabase/supabase-js";
 import * as dotenv from "dotenv";
 import * as fs from "fs";
 import * as path from "path";
-import { DA40_COURSE_ID } from "../src/features/learning/content/da40-course-data.ts";
 
 dotenv.config({ path: ".env.local" });
 
@@ -14,10 +13,11 @@ if (!supabaseUrl || !supabaseKey) {
   process.exit(1);
 }
 
+const DA40_COURSE_ID = "da400000-0000-0000-0000-000000000040";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 async function main() {
-  console.log(`🔍 Consultando estado de lecciones y visibilidad en Supabase para DA40 (${DA40_COURSE_ID})...`);
+  console.log(`📥 Descargando lecciones actualizadas desde Supabase para DA40 (${DA40_COURSE_ID})...`);
 
   const { data: dbLessons, error } = await supabase
     .from("lessons")
@@ -30,42 +30,70 @@ async function main() {
     process.exit(1);
   }
 
+  console.log(`✅ Obtenidas ${dbLessons.length} lecciones de Supabase.`);
+
   const localFile = path.resolve(process.cwd(), "src/features/learning/content/da40-course-data.ts");
   let fileContent = fs.readFileSync(localFile, "utf8");
 
-  const pagebreakRegex = /(?:<!--\s*(?:pagebreak|slidebreak|page-break|slide-break)\s*-->)/gi;
-
-  let totalUpdated = 0;
-
   for (const dbLesson of dbLessons) {
-    if (!dbLesson.content_html) continue;
+    const seq = dbLesson.sequence_order;
+    const lessonMarker = `export const DA40_LESSON_${seq} = {`;
+    const nextLessonMarker = seq < 6 ? `export const DA40_LESSON_${seq + 1} = {` : `export const DA40_LESSONS = [`;
 
-    const remoteSlides = dbLesson.content_html.split(pagebreakRegex);
-    const privateRemoteSlides = [];
+    const startIdx = fileContent.indexOf(lessonMarker);
+    const endIdx = fileContent.indexOf(nextLessonMarker);
 
-    remoteSlides.forEach((slide, idx) => {
-      const isPrivate =
-        /data-slide-visibility=["'](?:private|only-me)["']/i.test(slide) ||
-        /class=["'][^"']*\bslide-private\b[^"']*["']/i.test(slide);
-
-      if (isPrivate) {
-        // Extraer número o título
-        const numMatch = slide.match(/<!--\s*DIAPOSITIVA\s+([0-9.]+)/i) || slide.match(/<h[1-4][^>]*>\s*([0-9.]+)/i);
-        const slideId = numMatch ? numMatch[1] : `índice ${idx + 1}`;
-        privateRemoteSlides.push({ idx, slideId, raw: slide });
-      }
-    });
-
-    if (privateRemoteSlides.length > 0) {
-      console.log(`🔒 Lección "${dbLesson.title}" tiene ${privateRemoteSlides.length} diapositiva(s) privadas en Supabase:`);
-      privateRemoteSlides.forEach((p) => {
-        console.log(`   - Diapositiva ${p.slideId}`);
-      });
+    if (startIdx === -1 || endIdx === -1) {
+      console.warn(`⚠️ No se pudo localizar el bloque DA40_LESSON_${seq} en el archivo local.`);
+      continue;
     }
+
+    const lessonChunk = fileContent.slice(startIdx, endIdx);
+    
+    // Find content_html start backtick and end backtick
+    const htmlKey = "content_html: `";
+    const keyIdx = lessonChunk.indexOf(htmlKey);
+    if (keyIdx === -1) {
+      console.warn(`⚠️ No se pudo encontrar content_html en DA40_LESSON_${seq}.`);
+      continue;
+    }
+
+    const htmlStart = keyIdx + htmlKey.length;
+    // The closing backtick is before the closing curly brace or visibility_settings
+    const afterHtmlStart = lessonChunk.slice(htmlStart);
+    const closingBacktickRel = afterHtmlStart.lastIndexOf("`");
+    if (closingBacktickRel === -1) {
+      console.warn(`⚠️ No se pudo encontrar backtick de cierre en DA40_LESSON_${seq}.`);
+      continue;
+    }
+
+    let remoteHtml = dbLesson.content_html || "";
+
+    // Clean up any editor artifact like `dark:text-slate-100 data-slide-visibility="private"">`
+    remoteHtml = remoteHtml.replace(/dark:text-slate-100\s+data-slide-visibility=["']([^"']+)["']["']>/g, 'dark:text-slate-100" data-slide-visibility="$1">');
+
+    // Escape any raw backticks or string interpolation inside HTML if not already escaped
+    // Note: in template strings, `${...}` must be `\${...}` and unescaped ` must be \`
+    let escapedHtml = remoteHtml.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
+    // But wait: if remoteHtml already had clean text without backticks, let's make sure backslashes are not doubled
+    // Actually, HTML in lessons only contains standard HTML tags.
+    // Let's do:
+    escapedHtml = remoteHtml.replace(/`/g, "\\`").replace(/\${/g, "\\${");
+
+    // Convert line endings to CRLF to preserve Windows format
+    escapedHtml = escapedHtml.replace(/\r\n/g, "\n").replace(/\n/g, "\r\n");
+
+    const beforeChunk = lessonChunk.slice(0, htmlStart);
+    const afterChunk = lessonChunk.slice(htmlStart + closingBacktickRel);
+
+    const updatedChunk = beforeChunk + escapedHtml + afterChunk;
+
+    fileContent = fileContent.slice(0, startIdx) + updatedChunk + fileContent.slice(endIdx);
+    console.log(`  🔄 Lección #${seq} ("${dbLesson.title}"): sincronizada.`);
   }
 
-  console.log("\n✅ Verificación completada.");
+  fs.writeFileSync(localFile, fileContent, "utf8");
+  console.log("\n🎉 Sincronización completada con éxito. Archivo local da40-course-data.ts actualizado.");
 }
 
 main().catch(console.error);
-

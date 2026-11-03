@@ -58,7 +58,7 @@ export const DA40_LESSON_1 = {
           <!-- Simbología de Seguridad AFM -->
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-sm sm:text-base border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">SIMBOLOGÍA OFICIAL DE SEGURIDAD AFM</strong>
-            
+
             <div class="flex items-start gap-2 text-xs sm:text-sm leading-tight">
               <span class="font-bold text-red-600 dark:text-red-400 shrink-0 uppercase tracking-wide min-w-[85px]">WARNING:</span>
               <span class="text-slate-800 dark:text-slate-200">El incumplimiento de estas normas de seguridad puede provocar lesiones graves o incluso la muerte.</span>
@@ -153,10 +153,10 @@ export const DA40_LESSON_1 = {
             <div>
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">MOTOR THIELERT TAE 125</strong>
               <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed mt-1">
-                Motor de 4 cilindros en línea, cuatro tiempos, refrigeración líquida con cárter húmedo, doble árbol de levas en cabeza (DOHC), inyección directa Common-Rail y turbocompresor con intercooler. Cilindrada: 1.689 cm³ (TAE 125-01) / 1.991 cm³ (TAE 125-02-99).
+                Motor de 4 cilindros en línea, cuatro tiempos, refrigeración líquida con cárter húmedo, doble árbol de levas en cabeza (DOHC), inyección directa Common-Rail y turbocompresor con intercooler. Cilindrada: 1.689 cm³ (TAE 125-01) / 1.991 cm³ (TAE 125-02-99/114).
               </p>
               <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed mt-1">
-                Potencia máxima de 99 kW (135 CV DIN) a 2300 RPM al nivel del mar (ISA). Controlado íntegramente por sistema digital FADEC (ECU). La hélice es accionada mediante caja reductora integrada (relación i = 1.69) con amortiguador mecánico de vibraciones y embrague de sobrecarga.
+                Potencia máxima de 99/114 kW (135/155 CV DIN) a 2300 RPM al nivel del mar (ISA). Controlado íntegramente por sistema digital FADEC (ECU). La hélice es accionada mediante caja reductora integrada (relación i = 1.69) con amortiguador mecánico de vibraciones y embrague de sobrecarga.
               </p>
             </div>
 
@@ -537,8 +537,7 @@ export const DA40_LESSON_1 = {
       </div>
     </div>
   </div>
-</div>
-`,
+</div>`,
 };
 
 // ============================================================================
@@ -552,8 +551,7 @@ export const DA40_LESSON_2 = {
   sequence_order: 2,
   lesson_order: 2,
   min_seconds: 1,
-  content_html: `
-<!-- DIAPOSITIVA 2.1: 2.1 Limitaciones de Velocidad de la Célula (Airspeed Limitations) -->
+  content_html: `<!-- DIAPOSITIVA 2.1: 2.1 Limitaciones de Velocidad de la Célula (Airspeed Limitations) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
@@ -653,7 +651,7 @@ export const DA40_LESSON_2 = {
           <!-- Introducción KIAS -->
           <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
             <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-              El anemómetro presenta lecturas en <strong>KIAS</strong> (Knots Indicated Airspeed). En vuelo, todas las limitaciones estructurales y de operación se comprueban directamente sobre el indicador analógico en cabina.
+              El anemómetro presenta lecturas en <strong>KIAS</strong> (Knots Indicated Airspeed). En vuelo, todas las limitaciones estructurales y de operación se comprueban directamente sobre el indicador de velocidad en cabina.
             </p>
           </div>
 
@@ -1063,6 +1061,7 @@ export const DA40_LESSON_2 = {
     </div>
   </div>
 </div>
+
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 2.5: 2.5 Límites de Maniobra y Factores de Carga -->
@@ -2059,8 +2058,7 @@ export const DA40_LESSON_2 = {
       </div>
     </div>
   </div>
-</div>
-`,
+</div>`,
 };
 
 export const DA40_LESSON_3 = {
@@ -3730,7 +3728,7 @@ export const DA40_LESSON_4 = {
           <!-- LISTA VERBATIM AFM (20 ÍTEMS EN 2 COLUMNAS a-j y k-t) -->
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">2. Left wing:</strong>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-0.5">
               <!-- Subcolumna 1: Ítems a - j -->
               <div class="space-y-0.5">
@@ -4227,7 +4225,7 @@ export const DA40_LESSON_4 = {
           <!-- LISTA VERBATIM AFM (17 ÍTEMS EN 2 COLUMNAS a-i y j-q) -->
           <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">8. Front fuselage:</strong>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-0.5">
               <!-- Subcolumna 1: Ítems a - i (9 ítems) -->
               <div class="space-y-0.5">
@@ -4443,7 +4441,7 @@ export const DA40_LESSON_4 = {
           <!-- LISTA VERBATIM AFM (19 ÍTEMS EN 2 COLUMNAS 1-10 y 11-19) -->
           <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">Before Starting Engine:</strong>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-0.5">
               <!-- Subcolumna 1: Ítems 1 - 10 -->
               <div class="space-y-0.5">
@@ -4568,6 +4566,7 @@ export const DA40_LESSON_4 = {
 </div>
 
 <!-- pagebreak -->
+
 <!-- DIAPOSITIVA 4.10: 4.10 Puesta en Marcha: Procedimiento de Arranque Diésel -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -4590,7 +4589,7 @@ export const DA40_LESSON_4 = {
           <!-- LISTA VERBATIM AFM (ÍTEMS 1 - 9 EN 2 COLUMNAS 1-5 y 6-9) -->
           <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">Starting Engine Checklist:</strong>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-0.5">
               <!-- Subcolumna 1: Ítems 1 - 5 -->
               <div class="space-y-0.5">
@@ -4679,6 +4678,7 @@ export const DA40_LESSON_4 = {
 </div>
 
 <!-- pagebreak -->
+
 <!-- DIAPOSITIVA 4.11: 4.11 Calentamiento del Motor y Rodaje -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -4812,6 +4812,7 @@ export const DA40_LESSON_4 = {
 </div>
 
 <!-- pagebreak -->
+
 <!-- DIAPOSITIVA 4.12: 4.12 Antes del Despegue I: Cabina, Mandos y Parámetros -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -4834,7 +4835,7 @@ export const DA40_LESSON_4 = {
           <!-- LISTA VERBATIM AFM (ÍTEMS 1 - 16 EN 2 COLUMNAS 1-8 y 9-16) -->
           <div class="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">Before Take-Off (Part 1):</strong>
-            
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-0.5">
               <!-- Subcolumna 1: Ítems 1 - 8 -->
               <div class="space-y-0.5">
@@ -4941,6 +4942,7 @@ export const DA40_LESSON_4 = {
 </div>
 
 <!-- pagebreak -->
+
 <!-- DIAPOSITIVA 4.13: 4.13 Antes del Despegue II: ECU Test, ECU Swap y Lista Final (Ítems 17 al 32) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -5303,6 +5305,7 @@ export const DA40_LESSON_4 = {
 </div>
 
 <!-- pagebreak -->
+
 <!-- DIAPOSITIVA 4.16: 4.16 Vuelo de Crucero y Gestión de Combustible -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -5526,6 +5529,7 @@ export const DA40_LESSON_4 = {
 </div>
 
 <!-- pagebreak -->
+
 <!-- DIAPOSITIVA 4.18: 4.18 Maniobra de Escape: Motor y al Aire -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -5790,6 +5794,7 @@ export const DA40_LESSON_4 = {
 </div>
 
 <!-- pagebreak -->
+
 <!-- DIAPOSITIVA 4.20: 4.20 Procedimientos Especiales y Operación en Tiempo Frío -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -6083,7 +6088,7 @@ export const DA40_LESSON_5 = {
 
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CHECKLIST OFICIAL VERBATIM AFM</strong>
-            
+
             <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
               <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-bold text-[#1a80ff] dark:text-sky-400">72 KIAS (1150 kg, 2535 lb)</span> / <span class="italic font-semibold">66 KIAS (1000 kg, 2205 lb)</span> / <span class="italic font-semibold">59 KIAS (850 kg, 1874 lb)</span></span>
@@ -6162,7 +6167,7 @@ export const DA40_LESSON_5 = {
 
           <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ENGINE RUNNING ROUGHLY & LOSS OF POWER</strong>
-            
+
             <div lang="en" class="flex items-start gap-2 py-0.5 text-xs sm:text-[13px] leading-snug">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
               <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-bold text-[#1a80ff] dark:text-sky-400">73 KIAS (1150 kg, 2535 lb)</span> / <span class="italic font-semibold">68 KIAS (1000 kg, 2205 lb)</span> / <span class="italic font-semibold">60 KIAS (850 kg, 1874 lb)</span></span>
@@ -6256,7 +6261,7 @@ export const DA40_LESSON_5 = {
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">WINDMILLING PROPELLER (73-110 KIAS)</strong>
               <div class="text-[10px] text-slate-500 dark:text-slate-400 italic">Altitudes below 6500 ft (TAE 125-01) / 8000 ft (-02-99)</div>
-              
+
               <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">1.</span>
                 <span>Airspeed for best glide &mdash; <span class="italic font-semibold">73 / 68 / 60 KIAS</span></span>
@@ -6304,7 +6309,7 @@ export const DA40_LESSON_5 = {
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">STATIONARY PROPELLER (STARTER)</strong>
               <div class="text-[10px] text-slate-500 dark:text-slate-400 italic">Altitudes below 6500 ft (TAE 125-01) / 8000 ft (-02-99)</div>
-              
+
               <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">1.</span>
                 <span>Airspeed for best glide &mdash; <span class="italic font-semibold">73 / 68 / 60 KIAS</span></span>
@@ -6839,7 +6844,7 @@ export const DA40_LESSON_5 = {
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">DEFECTIVE TIRE ON MLG</strong>
               <div class="text-[10px] text-slate-500 dark:text-slate-400 italic">CAUTION: Swerve occurs during roll-out. Rapid, determined action required.</div>
-              
+
               <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">1.</span>
                 <span>Advise ATC.</span>
@@ -7339,7 +7344,7 @@ export const DA40_LESSON_5 = {
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ECU A FAILURE (ECU A)</strong>
               <div class="text-[10px] font-semibold text-slate-600 dark:text-slate-300">(a) On the Ground:</div>
               <div class="text-[11px] text-red-600 dark:text-red-400 font-medium pb-0.5">&bull; Terminate flight preparation.</div>
-              
+
               <div class="text-[10px] font-semibold text-slate-600 dark:text-slate-300 pt-0.5 border-t border-slate-100 dark:border-slate-700/60">(b) During Flight:</div>
               <div class="text-[10px] text-slate-500 dark:text-slate-400 italic">In case of failure in ECU A, system automatically switches to ECU B.</div>
               <div lang="en" class="flex items-start gap-1 py-0.5 text-xs sm:text-[12px] leading-tight">
@@ -7361,7 +7366,7 @@ export const DA40_LESSON_5 = {
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ECU B FAILURE (ECU B)</strong>
               <div class="text-[10px] font-semibold text-slate-600 dark:text-slate-300">(a) On the Ground:</div>
               <div class="text-[11px] text-red-600 dark:text-red-400 font-medium pb-0.5">&bull; Terminate flight preparation.</div>
-              
+
               <div class="text-[10px] font-semibold text-slate-600 dark:text-slate-300 pt-0.5 border-t border-slate-100 dark:border-slate-700/60">(b) During Flight:</div>
               <div lang="en" class="flex items-start gap-1 py-0.5 text-xs sm:text-[12px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">1.</span>
@@ -7514,7 +7519,7 @@ export const DA40_LESSON_5 = {
             <!-- LOW VOLTS -->
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LOW VOLTS CAUTION</strong>
-              
+
               <div class="text-[10px] font-semibold text-slate-600 dark:text-slate-300">(a) On the Ground:</div>
               <div class="text-[11px] text-slate-700 dark:text-slate-300 leading-tight space-y-0.5">
                 <div>1. Power lever &mdash; <strong>1400 RPM</strong></div>
@@ -7535,7 +7540,7 @@ export const DA40_LESSON_5 = {
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ALTERNATOR FAILURE & HIGH LOAD</strong>
               <div class="text-[10px] text-slate-500 dark:text-slate-400 italic">Illuminated or blinking caution. Battery supplies min. 30 min.</div>
-              
+
               <div lang="en" class="flex items-start gap-1.5 py-0.5 text-xs sm:text-[12px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[16px]">1.</span>
                 <span>Circuit breakers &mdash; check; if all O.K. proceed:</span>
@@ -7607,7 +7612,7 @@ export const DA40_LESSON_5 = {
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HIGH COOLANT TEMP (CT)</strong>
               <div class="text-[11px] font-semibold text-slate-700 dark:text-slate-200">&bull; Check WATER LEVEL caution light:</div>
-              
+
               <div class="p-1.5 rounded-lg bg-red-50/70 dark:bg-red-950/20 border border-red-200 dark:border-red-800/40 text-[11px] leading-tight space-y-0.5">
                 <strong class="text-red-700 dark:text-red-300">If WATER LEVEL light ON:</strong>
                 <div>1. Power lever &mdash; reduce to min. necessary</div>
@@ -7627,7 +7632,7 @@ export const DA40_LESSON_5 = {
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HIGH OIL TEMP (OT)</strong>
               <div class="text-[11px] font-semibold text-slate-700 dark:text-slate-200">&bull; Check oil pressure (OP):</div>
-              
+
               <div class="p-1.5 rounded-lg bg-red-50/70 dark:bg-red-950/20 border border-red-200 dark:border-red-800/40 text-[11px] leading-tight space-y-0.5">
                 <strong class="text-red-700 dark:text-red-300">If oil pressure LOW:</strong>
                 <div>1. Power lever &mdash; reduce to min. necessary</div>
@@ -7691,7 +7696,7 @@ export const DA40_LESSON_5 = {
             <!-- OIL PRESSURE -->
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">OIL PRESSURE (OP)</strong>
-              
+
               <div class="text-[10px] font-semibold text-slate-700 dark:text-slate-200">High Oil Pressure:</div>
               <div class="text-[10px] text-slate-600 dark:text-slate-300 leading-tight space-y-0.5">
                 <div>&bull; Check oil & coolant temp.</div>
@@ -7710,7 +7715,7 @@ export const DA40_LESSON_5 = {
             <!-- GEARBOX & FUEL TEMP -->
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">GEARBOX & FUEL TEMP</strong>
-              
+
               <div class="text-[10px] font-semibold text-slate-700 dark:text-slate-200">High Gearbox Temp (GT):</div>
               <div class="text-[10px] text-slate-600 dark:text-slate-300 leading-tight space-y-0.5 pb-1">
                 <div>1. Power lever &mdash; reduce power</div>
@@ -7752,7 +7757,7 @@ export const DA40_LESSON_5 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 5.22: 5.22 Combustible y Malfunción del Sistema de Flaps -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
@@ -7773,7 +7778,7 @@ export const DA40_LESSON_5 = {
             <!-- FUEL ANOMALIES -->
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FUEL TRANSFER & LOW FUEL</strong>
-              
+
               <div class="text-[10px] font-semibold text-slate-700 dark:text-slate-200">Transfer Pump Failure:</div>
               <div class="text-[10px] text-slate-600 dark:text-slate-300 leading-tight space-y-0.5">
                 <div>1. Fuel transfer pump &mdash; <strong>OFF - ON</strong></div>
@@ -7794,7 +7799,7 @@ export const DA40_LESSON_5 = {
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FLAP SYSTEM FAILURE</strong>
               <div class="text-[10px] text-slate-500 dark:text-slate-400 italic">Check visually &bull; Airspeed in white arc &bull; Re-check switch.</div>
-              
+
               <div class="text-[10px] text-slate-700 dark:text-slate-200 pt-0.5 leading-tight space-y-1">
                 <div><strong>(a) Only UP available:</strong><br>
                 Airspeed: <strong>73 KIAS (1150 kg)</strong> / 68 KIAS (1000 kg) / 60 KIAS (850 kg). Flat approach, use power for speed/descent.</div>
@@ -7843,7 +7848,7 @@ export const DA40_LESSON_6 = {
   lesson_order: 6,
   min_seconds: 1,
   content_html: `<!-- DIAPOSITIVA 6.1: 6.1 Despacho Operativo y Documentación Prevuelo F.OPS.02 -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · DESPACHO OPERATIVO</div>
@@ -7910,7 +7915,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.2: 6.2 Teoría de Carga y Centrado: Datum, Brazos y Momentos -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · CARGA Y CENTRADO</div>
@@ -7975,7 +7980,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.3: 6.3 Estructura del Loadsheet Oficial DA40 (F.OPS.04) -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LOAD SHEET F.OPS.04</div>
@@ -8059,7 +8064,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.4: 6.4 La Envolvente de Centro de Gravedad (CG Envelope) -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · ENVOLVENTE DE CENTRADO</div>
@@ -8131,7 +8136,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.5: 6.5 Ejercicio Práctico 1A: Masa y Centrado al Despegue (TOM & CG) -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI (TAE 125-01) · TALLER INTERACTIVO 1A</div>
@@ -8146,7 +8151,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.6: 6.6 Ejercicio Práctico 1B: Consumo de Ruta y Aterrizaje (LM & Envolvente) -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI (TAE 125-01) · TALLER INTERACTIVO 1B</div>
@@ -8161,7 +8166,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.7: 6.7 Régimen de Crucero: Rendimiento y Consumo de Combustible -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · RENDIMIENTO DE CRUCERO</div>
@@ -8250,7 +8255,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.8: 6.8 Ground Speed, Viento y Cálculo de Combustible Horario -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · NAVEGACIÓN Y VIENTO</div>
@@ -8320,7 +8325,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.9: 6.9 Ejercicio Práctico: Tablas de Crucero y Autonomía -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER INTERACTIVO 2</div>
@@ -8335,7 +8340,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.10: 6.10 Política de Combustible: Part-NCO.OP.125 & Manual OM Blue Team -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · POLÍTICA DE COMBUSTIBLE</div>
@@ -8417,7 +8422,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.11: 6.11 Ejercicio Práctico: Planificación de Combustible F.OPS.02 -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER INTERACTIVO 3</div>
@@ -8432,7 +8437,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.12: 6.12 Performance de Despegue: Parámetros y Factores de Corrección -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PERFORMANCE DE DESPEGUE</div>
@@ -8490,7 +8495,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.13: 6.13 Performance de Aterrizaje: Parámetros y Factores de Corrección -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PERFORMANCE DE ATERRIZAJE</div>
@@ -8555,7 +8560,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.14: 6.14 Ejercicio Práctico 4A: Distancias de Despegue (TORA & TODA) -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER INTERACTIVO 4A</div>
@@ -8570,7 +8575,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.15: 6.15 Ejercicio Práctico 4B: Distancia de Aterrizaje y Margen (LDA) -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · TALLER INTERACTIVO 4B</div>
@@ -8585,7 +8590,7 @@ export const DA40_LESSON_6 = {
 <!-- pagebreak -->
 
 <!-- DIAPOSITIVA 6.16: 6.16 Validación Final del Despacho y Firma Operativa -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · DESPACHO OPERATIVO</div>
