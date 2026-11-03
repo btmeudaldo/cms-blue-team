@@ -520,8 +520,13 @@ export const DA40_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DISPLAYS CED 125, AED 125 Y LIGHTPANEL</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-black flex items-center justify-center p-2 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/cockpit-instruments.jpg" alt="Displays CED 125, AED 125 y Lightpanel FADEC" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-950 flex items-center justify-center p-1.5 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
+            <img
+              src="/images/da40/da40-engine-instruments-composite.jpg"
+              alt="Displays CED 125, AED 125 y Annunciator Panel (Lightpanel) DA40 TDI"
+              class="w-full h-full max-h-[400px] object-contain rounded-lg"
+              style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
+            />
           </div>
 
           <!-- Nota Técnica de Instrumentación -->
