@@ -8617,7 +8617,7 @@ export const DA40_LESSON_6 = {
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-between">
             <div>
               <strong class="text-[#0B2E59] dark:text-sky-300 block">3. Pilar Performance de Despegue:</strong>
-              <span class="text-slate-600 dark:text-slate-400">Distancia sobre 50 ft (600 m) &le; TORA disponible (850 m).</span>
+              <span class="text-slate-600 dark:text-slate-400">Distancia sobre 50 ft (512 m) &le; TORA disponible (3.171 m en GCXO).</span>
             </div>
             <span class="text-emerald-600 dark:text-emerald-400 font-bold font-mono">CONFORME ✓</span>
           </div>
@@ -8625,7 +8625,7 @@ export const DA40_LESSON_6 = {
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-between">
             <div>
               <strong class="text-[#0B2E59] dark:text-sky-300 block">4. Pilar Performance de Aterrizaje:</strong>
-              <span class="text-slate-600 dark:text-slate-400">Distancia factorizada (715 m) &le; LDA disponible (900 m).</span>
+              <span class="text-slate-600 dark:text-slate-400">Distancia sobre 50 ft (620 m) &le; LDA disponible (3.171 m en GCXO).</span>
             </div>
             <span class="text-emerald-600 dark:text-emerald-400 font-bold font-mono">CONFORME ✓</span>
           </div>
@@ -8644,14 +8644,29 @@ export const DA40_LESSON_6 = {
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">EJEMPLO DE F.OPS.02 COMPLETADO</span>
-          <span class="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-[11px]">GO / AUTORIZADO</span>
+          <div>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm block">F.OPS.02 · MODELO CUMPLIMENTADO</span>
+            <span class="text-[10px] text-slate-500 font-medium">Vuelo BTM26D · EC-OKC (Despacho Prevuelo)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-[11px]">GO / AUTORIZADO</span>
+            <a
+              href="/images/da40/f-ops-02-ejemplo-rellenado-da40.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-0.5 shrink-0"
+              title="Abrir PDF cumplimentado en nueva pestaña"
+            >
+              <span>Abrir PDF</span>
+              <span>↗</span>
+            </a>
+          </div>
         </div>
 
         <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
           <img
-            src="/images/c172/f-ops-02-ejemplo-rellenado-btm26c.png"
-            alt="Ejemplo de despacho completado y firmado F.OPS.02"
+            src="/images/da40/f-ops-02-ejemplo-rellenado-da40.png"
+            alt="Ejemplo de despacho completado y firmado F.OPS.02 para DA40 TDI (EC-OKC)"
             class="w-full h-auto block rounded-lg shadow-xs"
           />
         </div>
