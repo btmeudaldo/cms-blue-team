@@ -8380,9 +8380,9 @@ export const DA40_LESSON_6 = {
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <div class="flex justify-between items-center mb-0.5">
               <strong class="text-[#0B2E59] dark:text-sky-300">4. Reserva Final Obligatoria OM Blue Team:</strong>
-              <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">22,7 L (6,0 US gal)</span>
+              <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">23,0 L (6,08 US gal)</span>
             </div>
-            <div>El reglamento EASA Part-NCO exige 45 minutos (11,3 L). <strong>Blue Team exige por Manual de Operaciones 1 hora 30 minutos obligatoria</strong> (22,65 L) para máxima seguridad de instrucción.</div>
+            <div>El reglamento EASA Part-NCO exige 45 minutos (11,3 L). <strong>Blue Team exige por Manual de Operaciones 1 hora 30 minutos obligatoria</strong> (23,0 L / 22,65 L exactos) para máxima seguridad de instrucción.</div>
           </div>
         </div>
 
@@ -8390,7 +8390,7 @@ export const DA40_LESSON_6 = {
           <strong class="text-amber-800 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
             <span>⚠️</span> RAMP FUEL MÍNIMO
           </strong>
-          <span><strong>Ramp Fuel Mínimo = Taxi (3,0 L) + Trip + Alternativo (5,1 L) + Reserva OM 1:30 (22,7 L)</strong>. Nunca se despegará si la cantidad a bordo es inferior a este total.</span>
+          <span><strong>Ramp Fuel Mínimo = Taxi (3,0 L) + Trip + Alternativo (5,1 L) + Reserva OM 1:30 (23,0 L)</strong>. Nunca se despegará si la cantidad a bordo es inferior a este total.</span>
         </div>
       </div>
     </div>
@@ -8404,7 +8404,7 @@ export const DA40_LESSON_6 = {
 
         <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
           <img
-            src="/images/c172/6.10.jpg"
+            src="/images/da40/da40-fuel-planning-blocks.jpg"
             alt="Esquema reglamentario de política de combustible EASA Part-NCO"
             class="max-w-full max-h-full object-contain rounded-lg"
           />
