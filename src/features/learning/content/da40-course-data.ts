@@ -7773,7 +7773,7 @@ export const DA40_LESSON_5 = {
               <div>
                 <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.7.4 'DOOR' LIGHT ON</strong>
                 
-                <div lang="en" class="space-y-1 text-[18px] mt-1.5">
+                <div lang="en" class="space-y-1.5 text-[18px] mt-1.5">
                   <div class="flex items-start gap-1.5 leading-snug">
                     <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                     <span>Airspeed &mdash; <span class="italic font-bold">reduce immediately</span></span>
@@ -7787,13 +7787,13 @@ export const DA40_LESSON_5 = {
                     <span>Rear passenger door &mdash; <span class="italic font-medium">check visually if closed</span></span>
                   </div>
 
-                  <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5 mt-1">
+                  <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-1 mt-1">
                     <div class="font-semibold text-[#0B2E59] dark:text-sky-300">Canopy Unlocked:</div>
                     <div class="pl-2">4. Airspeed &mdash; <span class="italic font-bold">below 140 KIAS</span></div>
                     <div class="pl-2">5. Land at the next suitable airfield.</div>
                   </div>
 
-                  <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5">
+                  <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-1">
                     <div class="font-semibold text-[#0B2E59] dark:text-sky-300">Rear Door Unlocked:</div>
                     <div class="pl-2">4. Airspeed &mdash; <span class="italic font-bold">below 140 KIAS</span></div>
                     <div class="pl-2">5. Land at the next suitable airfield.</div>
@@ -7801,22 +7801,13 @@ export const DA40_LESSON_5 = {
                 </div>
               </div>
 
-              <!-- WARNING & NOTE AFM 3.7.4 -->
-              <div class="space-y-1.5 mt-2">
-                <div class="w-full p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs">
-                  <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
-                    <span>⚠️</span>
-                    <span>WARNING:</span>
-                  </strong>
-                  <div>Do not try to lock the rear door in flight. The safety latch may disengage and the door opens. Usually this results in a separation of the door from the airplane.</div>
-                </div>
-                <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs">
-                  <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
-                    <span>ℹ️</span>
-                    <span>NOTE:</span>
-                  </strong>
-                  <div>If the rear door has been lost the airplane can be safely flown to the next suitable airfield.</div>
-                </div>
+              <!-- WARNING AFM 3.7.4 -->
+              <div class="w-full p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs mt-2">
+                <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                  <span>⚠️</span>
+                  <span>WARNING:</span>
+                </strong>
+                <div>Do not try to lock the rear door in flight. The safety latch may disengage and the door opens. Usually this results in a separation of the door from the airplane.</div>
               </div>
             </div>
           </div>
@@ -7824,11 +7815,20 @@ export const DA40_LESSON_5 = {
       </div>
     </div>
 
-    <!-- RIGHT COLUMN: RESERVED FOR SYSTEMS DIAGRAM (50%) -->
+    <!-- RIGHT COLUMN: NOTE & RESERVED FOR SYSTEMS DIAGRAM (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-2">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">DIAGRAMAS DE SISTEMAS · VENTILACIÓN, CÚPULA Y PUERTA POSTERIOR</span>
+        </div>
+
+        <!-- NOTE AFM 3.7.4 EN COLUMNA DERECHA -->
+        <div class="w-full p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs mb-2 shrink-0">
+          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+            <span>ℹ️</span>
+            <span>NOTE:</span>
+          </strong>
+          <div>If the rear door has been lost the airplane can be safely flown to the next suitable airfield.</div>
         </div>
 
         <div class="w-full flex-1 flex flex-col justify-center items-center p-6 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
@@ -7839,7 +7839,7 @@ export const DA40_LESSON_5 = {
             Espacio Reservado para Esquema Técnico
           </strong>
           <p class="text-slate-600 dark:text-slate-400 text-[18px] max-w-md">
-            Mecanismo de apertura en 'Cooling Gap' de cúpula frontal, cerrojo de puerta posterior de pasajeros con microinterruptor sensor y detector de CO en cabina.
+            Mecanismo de apertura en 'Cooling Gap' de cúpula frontal, cerrojo de puerta posterior de pasajeros con microinterruptor sensor y detector químico de CO en panel.
           </p>
         </div>
       </div>
