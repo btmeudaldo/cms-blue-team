@@ -6813,9 +6813,9 @@ export const DA40_LESSON_5 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">SMOKE AND FIRE PROCEDURES</span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 items-start justify-start w-full">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 items-stretch justify-start w-full">
             <!-- (A) EN TIERRA Y DESPEGUE ABORTADO -->
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 flex flex-col justify-start w-full">
+            <div class="w-full h-full p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">FUEGO EN TIERRA / ABORTO</strong>
               
               <div class="text-[18px] font-semibold text-slate-700 dark:text-slate-300">Si el despegue puede abortarse:</div>
@@ -6862,7 +6862,7 @@ export const DA40_LESSON_5 = {
             </div>
 
             <!-- (B) DURANTE EL DESPEGUE SI NO PUEDE ABORTARSE -->
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 flex flex-col justify-start w-full">
+            <div class="w-full h-full p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">DESPEGUE NO ABORTABLE</strong>
               
               <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-tight">
@@ -6963,7 +6963,7 @@ export const DA40_LESSON_5 = {
     <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Engine Fire in Flight (AFM 3.3.3a)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
     <!-- Columna izquierda: Checklist en 2 subcolumnas + WARNING abajo -->
     <div class="lg:col-span-7 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
@@ -7063,85 +7063,102 @@ export const DA40_LESSON_5 = {
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.11 Humo e Incendio Eléctrico en Vuelo</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Electrical Fire with Smoke in Flight</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Electrical Fire with Smoke in Flight (AFM 3.3.3b)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="52" style="--col-left: 52fr; --col-right: 48fr;">
+    <!-- Columna izquierda: Listas primero en 2 subcolumnas + WARNING + CAUTION abajo -->
     <div class="lg:col-span-7 flex flex-col justify-start">
-      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-3 w-full flex flex-col justify-start items-start text-[18px]">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">ELECTRICAL FIRE WITH SMOKE IN FLIGHT</span>
+      <div class="h-[590px] flex flex-col justify-start p-2.5 sm:p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
+        <div class="space-y-2.5 w-full flex flex-col justify-start items-start text-[18px]">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">CHECKLIST ELECTRICAL FIRE IN FLIGHT (AFM 3.3.3b)</span>
           </div>
 
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CHECKLIST ELECTRICAL FIRE IN FLIGHT</strong>
+          <!-- Cuadrícula de 2 subcolumnas de igual altura -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 items-stretch justify-start w-full">
+            <!-- Subcolumna 1: Pasos en vuelo 1 a 6 -->
+            <div class="w-full h-full p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">PROCEDIMIENTO EN VUELO</strong>
 
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1.</span>
-              <span>EMERGENCY switch &mdash; <span class="italic font-bold">ON, if installed</span></span>
+              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1.</span>
+                <span>EMERGENCY switch &mdash; <span class="italic font-bold">ON, if installed</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2.</span>
+                <span>AVIONIC MASTER &mdash; <span class="italic font-bold">OFF</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3.</span>
+                <span>ELECTRIC MASTER &mdash; <span class="italic font-bold">OFF</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4.</span>
+                <span>Cabin heat &mdash; <span class="italic font-bold">OFF</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5.</span>
+                <span>Emergency windows &mdash; <span class="italic font-bold">open if required</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6.</span>
+                <span>Land at an appropriate airfield immediately</span>
+              </div>
             </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2.</span>
-              <span>AVIONIC MASTER &mdash; <span class="italic font-bold">OFF</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3.</span>
-              <span>ELECTRIC MASTER &mdash; <span class="italic font-bold">OFF</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4.</span>
-              <span>Cabin heat &mdash; <span class="italic font-bold">OFF</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5.</span>
-              <span>Emergency windows &mdash; <span class="italic font-bold">open if required</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6.</span>
-              <span>Land at an appropriate airfield immediately</span>
-            </div>
-            <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pt-1">Tras detener el avión en tierra:</div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7.</span>
-              <span>Canopy &mdash; <span class="italic font-bold">open</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">8.</span>
-              <span>Airplane &mdash; <span class="italic font-bold text-red-600 dark:text-red-400">evacuate immediately</span></span>
+
+            <!-- Subcolumna 2: Tras detener el avión -->
+            <div class="w-full h-full p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">TRAS DETENER EL AVIÓN</strong>
+
+              <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pb-0.5">When airplane has stopped:</div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7.</span>
+                <span>Canopy &mdash; <span class="italic font-bold">open</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">8.</span>
+                <span>Airplane &mdash; <span class="italic font-bold text-red-600 dark:text-red-400">evacuate immediately</span></span>
+              </div>
             </div>
           </div>
 
           <!-- WARNING AFM 3.3.3b -->
-          <div class="w-full p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs">
-            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-1 text-[18px] shrink-0">
+          <div class="w-full p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
               <span>⚠️</span>
               <span>WARNING:</span>
             </strong>
             <div>Switching OFF the ELECTRIC MASTER will lead to total failure of all electronic and electric equipment. Also affected from this are the attitude gyro (artificial horizon) and the directional gyro, if installed. However, by switching the EMERGENCY switch ON, the emergency battery will supply power to the attitude gyro (artificial horizon) and the flood light.</div>
           </div>
+
+          <!-- CAUTION AFM 3.3.3b -->
+          <div class="w-full p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION:</span>
+            </strong>
+            <div>In case of extreme smoke development, the front canopy may be unlatched during flight. This allows it to partially open, in order to improve ventilation. The canopy will remain open in this position. Flight characteristics will not be affected significantly.</div>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Columna derecha: Espacio reservado para diagrama/imagen -->
     <div class="lg:col-span-5 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PROTECCIÓN ELÉCTRICA Y CONTINUIDAD MOTOR</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">DIAGRAMA Y SISTEMAS (AFM 3.3.3b)</span>
         </div>
 
         <div class="w-full flex flex-col justify-start items-start space-y-3 text-[18px] leading-relaxed mt-1">
-          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">CONTINUIDAD FADEC Y MOTOR:</strong>
-            <div>Incluso con <strong>ELECTRIC MASTER OFF</strong>, el motor continúa en funcionamiento normal, ya que las ECU A y B cuentan con generadores dedicados independientes de la red de aviónica general.</div>
-          </div>
-          <div class="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900/50">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">BATERÍA DE EMERGENCIA (1.5 HORAS):</strong>
-            <div>Al activar <strong>EMERGENCY switch ON</strong> (bajo guarda de seguridad), la batería seca de 12V alimenta el horizonte artificial y la iluminación flood durante al menos 90 minutos.</div>
-          </div>
-          <div class="w-full p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 text-amber-900 dark:text-amber-200 shadow-2xs space-y-1">
-            <strong class="block mb-1">VENTILACIÓN DE CÚPULA:</strong>
-            <div>La cúpula frontal puede desenclavarse en vuelo. Se abrirá parcialmente mejorando el desalojo de gases tóxicos sin degradar significativamente la controlabilidad.</div>
+          <!-- Espacio reservado para diagrama/imagen -->
+          <div class="w-full p-4 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 min-h-[480px]">
+            <svg class="w-12 h-12 mb-2 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            <span class="text-[18px] font-semibold">Espacio reservado para Diagrama de Sistemas</span>
+            <span class="text-sm text-slate-400">Red eléctrica y conmutación de emergencia DA40 TDI</span>
           </div>
         </div>
       </div>

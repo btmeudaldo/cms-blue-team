@@ -258,6 +258,22 @@ article::after,
   --col-left: 50fr;
   --col-right: 50fr;
 }
+[data-left-pct="50"] {
+  --col-left: 50fr;
+  --col-right: 50fr;
+}
+[data-left-pct="52"] {
+  --col-left: 52fr;
+  --col-right: 48fr;
+}
+[data-left-pct="54"] {
+  --col-left: 54fr;
+  --col-right: 46fr;
+}
+[data-left-pct="55"] {
+  --col-left: 55fr;
+  --col-right: 45fr;
+}
 [data-left-pct="58"] {
   --col-left: 58fr;
   --col-right: 42fr;
@@ -265,6 +281,14 @@ article::after,
 [data-left-pct="60"] {
   --col-left: 60fr;
   --col-right: 40fr;
+}
+[data-left-pct="62"] {
+  --col-left: 62fr;
+  --col-right: 38fr;
+}
+[data-left-pct="65"] {
+  --col-left: 65fr;
+  --col-right: 35fr;
 }
 @media (min-width: 1024px) {
   [data-left-pct] {
