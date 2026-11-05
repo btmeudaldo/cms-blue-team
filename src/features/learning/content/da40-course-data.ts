@@ -9123,13 +9123,24 @@ export const DA40_LESSON_6 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TABLA OFICIAL DE CARGA AFM</span>
+          <a
+            href="/images/da40/da40-loadsheet-table.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-0.5 shrink-0"
+            title="Abrir imagen en nueva pestaña"
+          >
+            <span>Ver completa</span>
+            <span>↗</span>
+          </a>
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 flex items-center justify-center p-1 shadow-xs">
           <img
             src="/images/da40/da40-loadsheet-table.png"
             alt="Hoja oficial de cálculo de carga del Diamond DA40 TDI"
-            class="w-full h-full object-contain rounded-lg"
+            class="max-h-full max-w-full w-auto h-full object-contain rounded-lg"
+            style="height: 100%; max-height: 100%; width: auto; max-width: 100%; object-fit: contain;"
           />
         </div>
       </div>
