@@ -8786,11 +8786,11 @@ export const DA40_LESSON_5 = {
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-stretch justify-start w-full flex-1">
-            <!-- Subcolumna 1: AFM 3.2.7 FUEL TRANSFER PUMP FAILURE -->
-            <div class="w-full h-full py-1.5 px-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 flex flex-col justify-start">
+            <!-- Subcolumna 1: AFM 3.2.7 FUEL TRANSFER PUMP FAILURE + WARNING & CAUTION -->
+            <div class="w-full h-full py-1.5 px-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">3.2.7 FUEL TRANSFER FAILURE</strong>
 
-              <div lang="en" class="space-y-1 text-[18px] mt-0.5">
+              <div lang="en" class="space-y-1 text-[18px]">
                 <div class="flex items-start gap-1.5 py-0.5 leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                   <span>Emergency fuel valve &mdash; <span class="italic font-bold text-amber-600 dark:text-amber-400">EMERG. TRANSFER</span></span>
@@ -8806,6 +8806,25 @@ export const DA40_LESSON_5 = {
                 <div class="flex items-start gap-1.5 py-0.5 leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
                   <span>Emergency fuel valve &mdash; <span class="italic font-bold text-[#0B2E59] dark:text-sky-300">NORMAL</span></span>
+                </div>
+              </div>
+
+              <!-- WARNING & CAUTION AFM 3.2.7 UBICADOS DEBAJO DE LA LISTA -->
+              <div class="space-y-1.5 mt-1 pt-1 border-t border-slate-100 dark:border-slate-700">
+                <div class="w-full p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs">
+                  <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                    <span>⚠️</span>
+                    <span>WARNING:</span>
+                  </strong>
+                  <div>The emergency fuel valve must be switched back to NORMAL before the auxiliary tank indication reads zero! Otherwise, the engine will stop during flight when the auxiliary tank is empty.</div>
+                </div>
+
+                <div class="w-full p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs">
+                  <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                    <span>⚠️</span>
+                    <span>CAUTION:</span>
+                  </strong>
+                  <div>When set to EMERG. TRANSFER, the emergency fuel valve transfers fuel using the engine driven fuel pump from the auxiliary tank to the main tank at a rate of approximately 18 to 21 US gal/h (70 to 80 liters/h).</div>
                 </div>
               </div>
             </div>
@@ -8858,33 +8877,15 @@ export const DA40_LESSON_5 = {
       </div>
     </div>
 
-    <!-- Columna Derecha: WARNING, CAUTION & NOTE AFM 3.2.7 y Esquema Técnico (50%) -->
+    <!-- Columna Derecha: NOTE AFM 3.2.7 y Esquema Técnico de Combustible y Flaps (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-2">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">SISTEMAS · TRASVASE DE COMBUSTIBLE Y ACTUACIÓN DE FLAPS</span>
         </div>
 
-        <!-- WARNING AFM 3.2.7 -->
-        <div class="w-full p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs mb-1.5 shrink-0">
-          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
-            <span>⚠️</span>
-            <span>WARNING (AFM 3.2.7):</span>
-          </strong>
-          <div>The emergency fuel valve must be switched back to NORMAL before the auxiliary tank indication reads zero! Otherwise, the engine will stop during flight when the auxiliary tank is empty.</div>
-        </div>
-
-        <!-- CAUTION AFM 3.2.7 -->
-        <div class="w-full p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs mb-1.5 shrink-0">
-          <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
-            <span>⚠️</span>
-            <span>CAUTION (AFM 3.2.7):</span>
-          </strong>
-          <div>When set to EMERG. TRANSFER, the emergency fuel valve transfers fuel using the engine driven fuel pump from the auxiliary tank to the main tank at a rate of approximately 18 to 21 US gal/h (70 to 80 liters/h).</div>
-        </div>
-
         <!-- NOTE AFM 3.2.7 -->
-        <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs mb-1.5 shrink-0">
+        <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs mb-2 shrink-0">
           <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
             <span>ℹ️</span>
             <span>NOTE (AFM 3.2.7):</span>
@@ -8893,15 +8894,15 @@ export const DA40_LESSON_5 = {
         </div>
 
         <!-- Placeholder Esquema Técnico de Combustible y Flaps -->
-        <div class="w-full flex-1 flex flex-col justify-center items-center p-3 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
-          <div class="w-12 h-12 mb-1 rounded-full bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-xl font-bold">
+        <div class="w-full flex-1 flex flex-col justify-center items-center p-4 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
+          <div class="w-16 h-16 mb-2 rounded-full bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl font-bold">
             ⛽
           </div>
-          <strong class="text-[#0B2E59] dark:text-sky-300 text-[18px] block mb-0.5">
+          <strong class="text-[#0B2E59] dark:text-sky-300 text-[18px] block mb-1">
             Espacio Reservado para Esquema Técnico
           </strong>
           <p class="text-slate-600 dark:text-slate-400 text-[18px] max-w-md">
-            Mando de válvula de combustible de emergencia (posición EMERG. TRANSFER) y selector eléctrico de flaps (UP, T/O, LDG con varillaje de empuje).
+            Mando de válvula de combustible de emergencia (posición EMERG. TRANSFER) y selector eléctrico de flaps (posiciones UP, T/O, LDG con varillaje de empuje).
           </p>
         </div>
       </div>
