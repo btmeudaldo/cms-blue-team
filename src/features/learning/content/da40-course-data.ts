@@ -8412,130 +8412,126 @@ export const DA40_LESSON_5 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
     <!-- Columna Izquierda: Listas AFM 4B.2.2 y 4B.2.3 (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
-      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-2 w-full flex flex-col justify-start items-start text-[18px] h-full">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
+        <div class="space-y-1.5 w-full flex flex-col justify-start items-start text-[18px] h-full">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PROCEDIMIENTOS TÉRMICOS DE MOTOR (AFM 4B.2.2 &amp; 4B.2.3)</span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 items-stretch justify-start w-full flex-1">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-stretch justify-start w-full flex-1">
             <!-- Subcolumna 1: AFM 4B.2.2 COOLANT TEMPERATURE CT -->
-            <div class="w-full h-full p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between">
-              <div class="space-y-1.5">
-                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.2.2 COOLANT TEMP (CT)</strong>
+            <div class="w-full h-full py-1.5 px-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">4B.2.2 COOLANT TEMP (CT)</strong>
 
-                <div lang="en" class="space-y-1 text-[18px]">
-                  <div class="font-semibold text-[#0B2E59] dark:text-sky-300 text-[18px]">High Coolant Temperature:</div>
-                  <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-1">
+              <div lang="en" class="space-y-0.5 text-[18px]">
+                <div class="font-semibold text-[#0B2E59] dark:text-sky-300 text-[18px] leading-tight">High Coolant Temperature:</div>
+                <div class="flex items-start gap-1 py-0.5 leading-tight pl-1">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                  <span>Check coolant qty. caution light <strong class="font-semibold">(WATER LEVEL)</strong>.</span>
+                </div>
+
+                <!-- If off -->
+                <div class="pt-0.5 border-t border-slate-100 dark:border-slate-700 space-y-0.5">
+                  <div class="font-semibold text-slate-600 dark:text-slate-300 text-[18px] leading-tight">If off:</div>
+                  <div class="text-[18px] font-medium text-slate-700 dark:text-slate-300 pl-1.5 italic leading-tight">During climb:</div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-2.5">
                     <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                    <span>Check coolant qty. caution light <strong class="font-semibold">(WATER LEVEL)</strong>.</span>
+                    <span>Reduce power by 10 %.</span>
+                  </div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-2.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Increase airspeed by 10 KIAS.</span>
+                  </div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-2.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>If temp does not reach green range within 60 s, reduce power as far as possible and increase airspeed.</span>
                   </div>
 
-                  <!-- If off -->
-                  <div class="pt-1 border-t border-slate-100 dark:border-slate-700 space-y-1">
-                    <div class="font-semibold text-slate-600 dark:text-slate-300 text-[18px]">If off:</div>
-                    <div class="text-[18px] font-medium text-slate-700 dark:text-slate-300 pl-2 italic">During climb:</div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Reduce power by 10 %.</span>
-                    </div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Increase airspeed by 10 KIAS.</span>
-                    </div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>If temp does not reach green range within 60 s, reduce power as far as possible and increase airspeed.</span>
-                    </div>
-
-                    <div class="text-[18px] font-medium text-slate-700 dark:text-slate-300 pl-2 italic pt-0.5">During cruise:</div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Reduce power.</span>
-                    </div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Increase airspeed.</span>
-                    </div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Check coolant temperature in green range.</span>
-                    </div>
+                  <div class="text-[18px] font-medium text-slate-700 dark:text-slate-300 pl-1.5 italic leading-tight pt-0.5">During cruise:</div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-2.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Reduce power.</span>
                   </div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-2.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Increase airspeed.</span>
+                  </div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-2.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Check coolant temperature in green range.</span>
+                  </div>
+                </div>
 
-                  <!-- If on -->
-                  <div class="pt-1 border-t border-slate-100 dark:border-slate-700 space-y-1">
-                    <div class="font-semibold text-red-600 dark:text-red-400 text-[18px]">If on:</div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Reduce power.</span>
-                    </div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Expect loss of coolant.</span>
-                    </div>
+                <!-- If on -->
+                <div class="pt-0.5 border-t border-slate-100 dark:border-slate-700 space-y-0.5">
+                  <div class="font-semibold text-red-600 dark:text-red-400 text-[18px] leading-tight">If on:</div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-1.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Reduce power.</span>
+                  </div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-1.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Expect loss of coolant.</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Subcolumna 2: AFM 4B.2.3 OIL TEMPERATURE OT -->
-            <div class="w-full h-full p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between">
-              <div class="space-y-1.5">
-                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.2.3 OIL TEMP (OT)</strong>
+            <div class="w-full h-full py-1.5 px-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">4B.2.3 OIL TEMP (OT)</strong>
 
-                <div lang="en" class="space-y-1 text-[18px]">
-                  <div class="font-semibold text-[#0B2E59] dark:text-sky-300 text-[18px]">High Oil Temperature:</div>
-                  <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-1">
+              <div lang="en" class="space-y-0.5 text-[18px]">
+                <div class="font-semibold text-[#0B2E59] dark:text-sky-300 text-[18px] leading-tight">High Oil Temperature:</div>
+                <div class="flex items-start gap-1 py-0.5 leading-tight pl-1">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                  <span>Check oil pressure.</span>
+                </div>
+
+                <!-- If oil pressure is low -->
+                <div class="pt-0.5 border-t border-slate-100 dark:border-slate-700 space-y-0.5">
+                  <div class="font-semibold text-red-600 dark:text-red-400 text-[18px] leading-tight">If the oil pressure is low:</div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-1.5">
                     <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                    <span>Check oil pressure.</span>
+                    <span>Reduce power.</span>
                   </div>
-
-                  <!-- If oil pressure is low -->
-                  <div class="pt-1 border-t border-slate-100 dark:border-slate-700 space-y-1">
-                    <div class="font-semibold text-red-600 dark:text-red-400 text-[18px]">If the oil pressure is low:</div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Reduce power.</span>
-                    </div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Expect loss of oil with engine failure. Prepare for an emergency landing in accordance with 3.5.1 - EMERGENCY LANDING WITH ENGINE OFF.</span>
-                    </div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-1.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Expect loss of oil with engine failure. Prepare for an emergency landing in accordance with 3.5.1 - EMERGENCY LANDING WITH ENGINE OFF.</span>
                   </div>
+                </div>
 
-                  <!-- If oil pressure is within green range -->
-                  <div class="pt-1 border-t border-slate-100 dark:border-slate-700 space-y-1">
-                    <div class="font-semibold text-slate-600 dark:text-slate-300 text-[18px]">If oil pressure is within green range:</div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Reduce power.</span>
-                    </div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Increase airspeed.</span>
-                    </div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Monitor oil temperature (OT).</span>
-                    </div>
+                <!-- If oil pressure is within green range -->
+                <div class="pt-0.5 border-t border-slate-100 dark:border-slate-700 space-y-0.5">
+                  <div class="font-semibold text-slate-600 dark:text-slate-300 text-[18px] leading-tight">If oil pressure is within green range:</div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-1.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Reduce power.</span>
                   </div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-1.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Increase airspeed.</span>
+                  </div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-1.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Monitor oil temperature (OT).</span>
+                  </div>
+                </div>
 
-                  <!-- Low Oil Temperature -->
-                  <div class="pt-1 border-t border-slate-100 dark:border-slate-700 space-y-1">
-                    <div class="font-semibold text-sky-700 dark:text-sky-300 text-[18px]">Low Oil Temperature:</div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Increase power.</span>
-                    </div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Reduce airspeed.</span>
-                    </div>
-                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                      <span>Monitor oil temperature (OT).</span>
-                    </div>
+                <!-- Low Oil Temperature -->
+                <div class="pt-0.5 border-t border-slate-100 dark:border-slate-700 space-y-0.5">
+                  <div class="font-semibold text-sky-700 dark:text-sky-300 text-[18px] leading-tight">Low Oil Temperature:</div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-1.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Increase power.</span>
+                  </div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-1.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Reduce airspeed.</span>
+                  </div>
+                  <div class="flex items-start gap-1 py-0.5 leading-tight pl-1.5">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Monitor oil temperature (OT).</span>
                   </div>
                 </div>
               </div>
