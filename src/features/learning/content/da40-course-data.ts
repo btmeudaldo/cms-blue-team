@@ -7751,11 +7751,19 @@ export const DA40_LESSON_5 = {
 
               <!-- NOTE & CAUTION AFM 3.7.3 -->
               <div class="space-y-1.5 mt-2">
-                <div class="p-2 rounded-lg border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-snug">
-                  <span class="font-bold text-blue-700 dark:text-blue-400">NOTE:</span> The maximum demonstrated airspeed for opening the front canopy in flight is 120 KIAS.
+                <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs">
+                  <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                    <span>ℹ️</span>
+                    <span>NOTE:</span>
+                  </strong>
+                  <div>The maximum demonstrated airspeed for opening the front canopy in flight is 120 KIAS.</div>
                 </div>
-                <div class="p-2 rounded-lg border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug">
-                  <span class="font-bold text-amber-700 dark:text-amber-400">CAUTION:</span> In case of suspicion of carbon monoxide contamination in the cabin, the front canopy may be unlatched during flight. This allows it to partially open, in order to improve ventilation. The canopy will remain open in this position. Flight characteristics will not be affected significantly.
+                <div class="w-full p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs">
+                  <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                    <span>⚠️</span>
+                    <span>CAUTION:</span>
+                  </strong>
+                  <div>In case of suspicion of carbon monoxide contamination in the cabin, the front canopy may be unlatched during flight. This allows it to partially open, in order to improve ventilation. The canopy will remain open in this position. Flight characteristics will not be affected significantly.</div>
                 </div>
               </div>
             </div>
@@ -7795,11 +7803,19 @@ export const DA40_LESSON_5 = {
 
               <!-- WARNING & NOTE AFM 3.7.4 -->
               <div class="space-y-1.5 mt-2">
-                <div class="p-2 rounded-lg border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug">
-                  <span class="font-bold text-red-700 dark:text-red-400">WARNING:</span> Do not try to lock the rear door in flight. The safety latch may disengage and the door opens. Usually this results in a separation of the door from the airplane.
+                <div class="w-full p-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs">
+                  <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                    <span>⚠️</span>
+                    <span>WARNING:</span>
+                  </strong>
+                  <div>Do not try to lock the rear door in flight. The safety latch may disengage and the door opens. Usually this results in a separation of the door from the airplane.</div>
                 </div>
-                <div class="p-2 rounded-lg border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-snug">
-                  <span class="font-bold text-blue-700 dark:text-blue-400">NOTE:</span> If the rear door has been lost the airplane can be safely flown to the next suitable airfield.
+                <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs">
+                  <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                    <span>ℹ️</span>
+                    <span>NOTE:</span>
+                  </strong>
+                  <div>If the rear door has been lost the airplane can be safely flown to the next suitable airfield.</div>
                 </div>
               </div>
             </div>
@@ -7846,60 +7862,98 @@ export const DA40_LESSON_5 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-3 w-full flex flex-col justify-start items-start text-[18px]">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PRECAUTIONARY LANDING CHECKLIST</span>
+        <div class="space-y-2 w-full flex flex-col justify-start items-start text-[18px] h-full">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PRECAUTIONARY LANDING CHECKLIST (AFM 4B.1)</span>
           </div>
 
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1.</span>
-              <span>Select suitable landing area</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2.</span>
-              <span>Consider wind</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3.</span>
-              <span>Radio &mdash; <span class="italic font-bold">advise ATC</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4.</span>
-              <span>Overfly field at safe height</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5.</span>
-              <span>Perform normal landing circuit of shortened size</span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">6.</span>
-              <span>Flaps &mdash; <span class="italic font-bold">T/O</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">7.</span>
-              <span>Airspeed &mdash; <span class="italic font-bold text-[#1a80ff] dark:text-sky-400">73 KIAS (1150 kg) / 68 KIAS (1000 kg) / 60 KIAS (850 kg)</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">8.</span>
-              <span>Flaps &mdash; <span class="italic font-bold">LDG</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">9.</span>
-              <span>Approach speed &mdash; <span class="italic font-bold">67 KIAS (1092 kg) / 63 KIAS (1000 kg) / 58 KIAS (850 kg)</span></span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-stretch justify-start w-full flex-1">
+            <!-- SUBCOL 1: AFM 4B.1 DECISION, CIRCUIT & APPROACH -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between h-full">
+              <div>
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.1 CIRCUIT &amp; RECONNAISSANCE</strong>
+                
+                <div lang="en" class="space-y-1 text-[18px] mt-1.5">
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                    <span>Select appropriate landing area.</span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                    <span>Consider wind.</span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                    <span><strong class="font-semibold">Approach:</strong> If possible, the landing area should be overflown at a suitable height in order to recognize obstacles. The degree of offset at each part of the circuit will allow the wind speed and direction to be assessed.</span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
+                    <span>Airspeed &mdash; <span class="italic font-bold text-[#1a80ff] dark:text-sky-400">73 KIAS (1150 kg) / 68 KIAS (1000 kg) / 60 KIAS (850 kg)</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">5.</span>
+                    <span>ATC &mdash; <span class="italic font-bold">advise</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- NOTEs AFM 4B.1 -->
+              <div class="space-y-1 mt-1.5">
+                <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs">
+                  <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                    <span>ℹ️</span>
+                    <span>NOTE:</span>
+                  </strong>
+                  <div>A landing of this type is only necessary when due to fuel shortage, weather, or nightfall continuing flight endangers occupants. Decide whether field landing represents lower risk than attempting destination airfield.</div>
+                </div>
+                <div class="w-full p-1.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs">
+                  <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                    <span>ℹ️</span>
+                    <span>NOTE:</span>
+                  </strong>
+                  <div>If no level landing area is available, a landing on an upward slope should be sought.</div>
+                </div>
+              </div>
             </div>
 
-            <!-- CAUTION AFM 4B.1 -->
-            <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-tight shadow-2xs shrink-0 mt-1">
-              <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-[18px] shrink-0">
-                <span>⚠️</span>
-                <span>CAUTION:</span>
-              </strong>
-              <div>If sufficient time is remaining, the risk of fire in the event of a collision with obstacles can be reduced as follows after a safe touch-down:
-                <div class="mt-0.5 font-medium">
-                  <div>&ndash; Emergency fuel valve . . . . . . . . . <span class="italic font-bold">OFF</span></div>
-                  <div>&ndash; ENGINE MASTER . . . . . . . . . . . <span class="italic font-bold">OFF</span></div>
-                  <div>&ndash; ELECTRIC MASTER . . . . . . . . . . <span class="italic font-bold">OFF</span></div>
+            <!-- SUBCOL 2: AFM 4B.1 FINAL APPROACH, TOUCHDOWN & CAUTION -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between h-full">
+              <div>
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">FINAL APPROACH &amp; TOUCHDOWN</strong>
+                
+                <div lang="en" class="space-y-1.5 text-[18px] mt-1.5">
+                  <div class="font-semibold text-[#0B2E59] dark:text-sky-300 italic">On final approach:</div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">6.</span>
+                    <span>Flaps &mdash; <span class="italic font-bold">LDG</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">7.</span>
+                    <span>Approach speed &mdash; <span class="italic font-bold text-[#1a80ff] dark:text-sky-400">67 KIAS (1092 kg) / 63 KIAS (1000 kg) / 58 KIAS (850 kg)</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">8.</span>
+                    <span>Safety harnesses &mdash; <span class="italic font-bold">tighten</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">9.</span>
+                    <span>Touchdown &mdash; <span class="italic font-medium">with the lowest possible airspeed</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CAUTION AFM 4B.1 -->
+              <div class="w-full p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs mt-2">
+                <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 uppercase tracking-wide mb-1 text-[18px] shrink-0">
+                  <span>⚠️</span>
+                  <span>CAUTION:</span>
+                </strong>
+                <div>If sufficient time is remaining, the risk of fire in the event of a collision with obstacles can be reduced as follows after a safe touch-down:
+                  <div class="mt-1 space-y-0.5 font-medium pl-1">
+                    <div>&bull; Emergency fuel valve &mdash; <span class="italic font-bold">OFF</span></div>
+                    <div>&bull; ENGINE MASTER &mdash; <span class="italic font-bold">OFF</span></div>
+                    <div>&bull; ELECTRIC MASTER &mdash; <span class="italic font-bold">OFF</span></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -7908,25 +7962,23 @@ export const DA40_LESSON_5 = {
       </div>
     </div>
 
+    <!-- RIGHT COLUMN: RESERVED FOR PRECAUTIONARY LANDING DIAGRAM (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PROCEDIMIENTO OPERATIVO Y DIFERENCIAS</span>
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-2">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PROCEDIMIENTO OPERATIVO · CIRCUITO DE PRECAUCIÓN</span>
         </div>
 
-        <div class="w-full flex flex-col justify-start items-start space-y-3 text-[18px] leading-relaxed mt-1">
-          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">DISPONIBILIDAD DE POTENCIA:</strong>
-            <div>A diferencia del aterrizaje forzoso sin motor, el aterrizaje de precaución permite sobrevolar el campo a baja cota para evaluar surcos, cables, ganado y pendiente antes de comprometer la toma.</div>
+        <div class="w-full flex-1 flex flex-col justify-center items-center p-6 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
+          <div class="w-16 h-16 mb-3 rounded-full bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl font-bold">
+            🛬
           </div>
-          <div class="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900/50">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">APROXIMACIÓN CON MOTOR:</strong>
-            <div>Permite volar un perfil estabilizado a 67 KIAS (peso máximo) con flaps LDG y potencia de ajuste fino, reduciendo la carrera de aterrizaje al mínimo.</div>
-          </div>
-          <div class="w-full p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 text-amber-900 dark:text-amber-200 shadow-2xs space-y-1">
-            <strong class="block mb-1">CAPACIDAD DE FRUSTRADA:</strong>
-            <div>Si la superficie no ofrece garantías durante el sobrevuelo, se mantiene la potencia disponible para iniciar ascenso de frustrada y buscar una zona más propicia.</div>
-          </div>
+          <strong class="text-[#0B2E59] dark:text-sky-300 text-[18px] block mb-1">
+            Espacio Reservado para Esquema Operativo
+          </strong>
+          <p class="text-slate-600 dark:text-slate-400 text-[18px] max-w-md">
+            Patrón de sobrevuelo para evaluación de obstáculos, reconocimiento de deriva/viento y toma en pendiente ascendente (*upward slope*) con motor operativo.
+          </p>
         </div>
       </div>
     </div>
