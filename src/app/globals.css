@@ -258,6 +258,14 @@ article::after,
   --col-left: 50fr;
   --col-right: 50fr;
 }
+[data-left-pct="58"] {
+  --col-left: 58fr;
+  --col-right: 42fr;
+}
+[data-left-pct="60"] {
+  --col-left: 60fr;
+  --col-right: 40fr;
+}
 @media (min-width: 1024px) {
   [data-left-pct] {
     display: grid !important;
