@@ -7994,50 +7994,106 @@ export const DA40_LESSON_5 = {
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.19 Luces de Aviso FADEC: ECU A y ECU B en Vuelo</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">ECU A / ECU B Caution Lights (AFM 4B.3.2 & 4B.3.3)</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">ECU A / ECU B Caution Lights (AFM 4B.3.2 &amp; 4B.3.3)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-3 w-full flex flex-col justify-start items-start text-[18px]">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">FADEC CAUTION LIGHT PROCEDURES</span>
+        <div class="space-y-2 w-full flex flex-col justify-start items-start text-[18px] h-full">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">FADEC CAUTION LIGHT PROCEDURES (AFM 4B.3.2 &amp; 4B.3.3)</span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-start justify-start">
-            <!-- LUZ FIJA ECU A / ECU B -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">LUZ FIJA (ILLUMINATED)</strong>
-              
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1.</span>
-                <span>Pulsar botón <strong>ECU TEST</strong> durante más de 2 segundos (intento de reset)</span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-stretch justify-start w-full flex-1">
+            <!-- SUBCOL 1: AFM 4B.3.2 ECU A FAILURE -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between h-full">
+              <div>
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.2 ECU A FAILURE (ECU A)</strong>
+                
+                <div lang="en" class="space-y-1.5 text-[18px] mt-1.5">
+                  <!-- (a) On Ground -->
+                  <div class="p-1.5 rounded-lg bg-red-50/80 dark:bg-red-950/30 border border-red-200 dark:border-red-900/40 text-red-950 dark:text-red-200 leading-snug">
+                    <span class="font-bold text-red-700 dark:text-red-400 block text-[18px]">(a) 'ECU A' Caution on the Ground:</span>
+                    <div class="pl-2 mt-0.5 font-medium">&bull; Terminate flight preparation.</div>
+                  </div>
+
+                  <!-- (b) During Flight -->
+                  <div class="pt-0.5 space-y-1">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-[18px]">(b) 'ECU A' Caution During Flight:</span>
+                    
+                    <!-- NOTE AFM 4B.3.2 -->
+                    <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs">
+                      <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                        <span>ℹ️</span>
+                        <span>NOTE:</span>
+                      </strong>
+                      <div>In case of a failure in the electronic ECU (Engine Control Unit) 'A' the system automatically switches to ECU 'B'.</div>
+                    </div>
+
+                    <div class="flex items-start gap-1.5 leading-snug pt-1">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                      <span>Press the <strong class="font-bold">ECU TEST</strong> button for more than 2 seconds to reset the caution message.</span>
+                    </div>
+
+                    <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5 mt-1">
+                      <div class="font-semibold text-red-600 dark:text-red-400">If the ECU A caution re-appears or cannot be reset:</div>
+                      <div class="pl-2">2. Land on nearest suitable airfield.</div>
+                      <div class="pl-2">3. The engine must be serviced after landing.</div>
+                    </div>
+
+                    <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5">
+                      <div class="font-semibold text-emerald-600 dark:text-emerald-400">If the ECU A caution can be reset:</div>
+                      <div class="pl-2">2. Continue flight.</div>
+                      <div class="pl-2">3. The engine must be serviced after landing.</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="text-[18px] text-slate-700 dark:text-slate-300 pt-1 border-t border-slate-100 dark:border-slate-700 leading-snug space-y-1">
-                <div>&bull; <strong>Si la luz se apaga:</strong> continuar vuelo; revisar motor tras el aterrizaje.</div>
-                <div>&bull; <strong>Si la luz permanece encendida:</strong> aterrizar en el aeródromo adecuado más cercano.</div>
-              </div>
-              <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pt-1">En tierra antes del vuelo:</div>
-              <div class="text-[18px] text-red-600 dark:text-red-400 font-medium">
-                &bull; Terminar la preparación del vuelo; el avión no debe despegar.
+
+              <div class="text-right text-[18px] text-slate-400 font-bold uppercase tracking-wider pt-1">
+                END OF CHECKLIST
               </div>
             </div>
 
-            <!-- PARPADEO ECU A / ECU B -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">LUZ PARPADEANDO (FLASHING)</strong>
-              
-              <div class="text-[18px] text-slate-700 dark:text-slate-300 leading-snug space-y-1.5">
-                <div>&bull; <strong>Parpadeo de una sola ECU:</strong> fallo menor no crítico (sensor secundario o divergencia tolerable). Continuar vuelo y revisar motor tras aterrizar.</div>
-                <!-- WARNING AFM 4B.3.2 & 4B.3.3 -->
-                <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs mt-1">
-                  <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-1 text-[18px] shrink-0">
-                    <span>⚠️</span>
-                    <span>WARNING:</span>
-                  </strong>
-                  <div>In case of simultaneous flashing of both ECU caution lights, a serious malfunction of the engine control system must be expected. Expect engine failure and prepare for an emergency landing in accordance with <strong>EMERGENCY LANDING WITH ENGINE OFF</strong>.</div>
+            <!-- SUBCOL 2: AFM 4B.3.3 ECU B FAILURE -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between h-full">
+              <div>
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.3 ECU B FAILURE (ECU B)</strong>
+                
+                <div lang="en" class="space-y-1.5 text-[18px] mt-1.5">
+                  <!-- (a) On Ground -->
+                  <div class="p-1.5 rounded-lg bg-red-50/80 dark:bg-red-950/30 border border-red-200 dark:border-red-900/40 text-red-950 dark:text-red-200 leading-snug">
+                    <span class="font-bold text-red-700 dark:text-red-400 block text-[18px]">(a) 'ECU B' Caution on the Ground:</span>
+                    <div class="pl-2 mt-0.5 font-medium">&bull; Terminate flight preparation.</div>
+                  </div>
+
+                  <!-- (b) During Flight -->
+                  <div class="pt-0.5 space-y-1">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-[18px]">(b) 'ECU B' Caution During Flight:</span>
+
+                    <div class="flex items-start gap-1.5 leading-snug pt-1">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                      <span>Press the <strong class="font-bold">ECU TEST</strong> button for more than 2 seconds to reset the caution message.</span>
+                    </div>
+
+                    <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5 mt-1">
+                      <div class="font-semibold text-red-600 dark:text-red-400">If the ECU B caution re-appears, or cannot be reset:</div>
+                      <div class="pl-2">2. Land on nearest suitable airfield.</div>
+                      <div class="pl-2">3. The engine must be serviced after landing.</div>
+                    </div>
+
+                    <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5">
+                      <div class="font-semibold text-emerald-600 dark:text-emerald-400">If the ECU B caution can be reset:</div>
+                      <div class="pl-2">2. Continue flight.</div>
+                      <div class="pl-2">3. The engine must be serviced after landing.</div>
+                    </div>
+                  </div>
                 </div>
+              </div>
+
+              <div class="text-right text-[18px] text-slate-400 font-bold uppercase tracking-wider pt-1">
+                END OF CHECKLIST
               </div>
             </div>
           </div>
@@ -8045,25 +8101,32 @@ export const DA40_LESSON_5 = {
       </div>
     </div>
 
+    <!-- RIGHT COLUMN: WARNING & RESERVED FOR FADEC ARCHITECTURE DIAGRAM (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PANEL ANUNCIADOR Y BOTÓN ECU TEST</span>
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-2">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">SISTEMA FADEC · ARQUITECTURA DE DOBLE CANAL</span>
         </div>
 
-        <div class="w-full flex flex-col justify-start items-start space-y-3 text-[18px] leading-relaxed mt-1">
-          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">BOTÓN ECU TEST EN VUELO:</strong>
-            <div>Pulsar durante &gt; 2 segundos ordena un intento de reset del registro de fallos transitorios en la memoria no volátil del FADEC.</div>
+        <!-- WARNING SISTEMA TAE 125 EN COLUMNA DERECHA -->
+        <div class="w-full p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs mb-2 shrink-0">
+          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+            <span>⚠️</span>
+            <span>WARNING (TAE 125 SYSTEM):</span>
+          </strong>
+          <div>In case of simultaneous flashing of both ECU caution lights, a serious malfunction of the engine control system must be expected. Expect engine failure and prepare for an emergency landing in accordance with 3.5 EMERGENCY LANDING WITH ENGINE OFF.</div>
+        </div>
+
+        <div class="w-full flex-1 flex flex-col justify-center items-center p-6 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
+          <div class="w-16 h-16 mb-3 rounded-full bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl font-bold">
+            ⚡
           </div>
-          <div class="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900/50">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">CONMUTACIÓN AUTOMÁTICA FADEC:</strong>
-            <div>Si una ECU activa detecta un fallo crítico interno, el sistema conmuta automáticamente a la otra ECU activa sin intervención del piloto.</div>
-          </div>
-          <div class="w-full p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 text-amber-900 dark:text-amber-200 shadow-2xs space-y-1">
-            <strong class="block mb-1">REGISTRO DE MANTENIMIENTO:</strong>
-            <div>Cualquier iluminación de aviso de ECU requiere descarga de datos y revisión técnica antes del siguiente vuelo.</div>
-          </div>
+          <strong class="text-[#0B2E59] dark:text-sky-300 text-[18px] block mb-1">
+            Espacio Reservado para Esquema Técnico
+          </strong>
+          <p class="text-slate-600 dark:text-slate-400 text-[18px] max-w-md">
+            Arquitectura redundante FADEC: Canales A y B, cableado independiente de inyectores, sensores dobles (cigüeñal, levas, MAP, temperatura) y lógica de test/reset.
+          </p>
         </div>
       </div>
     </div>
@@ -8071,8 +8134,6 @@ export const DA40_LESSON_5 = {
 </div>
 
 <!-- pagebreak -->
-
-
 
 <!-- DIAPOSITIVA 5.20: 5.20 Conmutación Manual de ECU (ECU SWAP en Vuelo) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
