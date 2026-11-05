@@ -8770,67 +8770,87 @@ export const DA40_LESSON_5 = {
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
+      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS Y DE EMERGENCIA</div>
       <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.24 Combustible y Malfunción del Sistema de Flaps</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Fuel Transfer Failure & Flap Malfunction (AFM 3.2.7 & 4B.6)</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Fuel Transfer Pump Failure &amp; Flap System (AFM 3.2.7 &amp; 4B.6)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+    <!-- Columna Izquierda: Listas AFM 3.2.7 y 4B.6 (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
-      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-3 w-full flex flex-col justify-start items-start text-[18px]">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">FUEL PUMP FAILURE & FLAP MALFUNCTION</span>
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
+        <div class="space-y-1.5 w-full flex flex-col justify-start items-start text-[18px] h-full">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PROCEDIMIENTOS DE TRASVASE Y FLAPS (AFM 3.2.7 &amp; 4B.6)</span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-start justify-start">
-            <!-- FUEL TRANSFER PUMP FAILURE -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">FALLO BOMBA TRASVASE</strong>
-              
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1.</span>
-                <span>Fuel transfer pump &mdash; <span class="italic font-bold">OFF - ON</span></span>
-              </div>
-              <div class="text-[18px] font-semibold text-slate-700 dark:text-slate-300 pt-0.5">Si la bomba no arranca:</div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2.</span>
-                <span>Emergency valve &mdash; <span class="italic font-bold">EMERGENCY TRANSFER</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3.</span>
-                <span>Main tank fuel qty &mdash; <span class="italic font-bold">monitor</span></span>
-              </div>
-              <!-- NOTE AFM 3.2.7 -->
-              <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-tight shadow-2xs mt-1">
-                <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-[18px] shrink-0">
-                  <span>ℹ️</span>
-                  <span>NOTE:</span>
-                </strong>
-                <div>In the EMERGENCY TRANSFER position, fuel flows from the auxiliary tank into the main tank by gravity.</div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-stretch justify-start w-full flex-1">
+            <!-- Subcolumna 1: AFM 3.2.7 FUEL TRANSFER PUMP FAILURE -->
+            <div class="w-full h-full py-1.5 px-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">3.2.7 FUEL TRANSFER FAILURE</strong>
+
+              <div lang="en" class="space-y-1 text-[18px] mt-0.5">
+                <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                  <span>Emergency fuel valve &mdash; <span class="italic font-bold text-amber-600 dark:text-amber-400">EMERG. TRANSFER</span></span>
+                </div>
+                <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                  <span>AUX tank &mdash; <span class="italic font-medium">monitor quantity</span></span>
+                </div>
+                <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                  <span>MAIN tank &mdash; <span class="italic font-medium">monitor quantity</span></span>
+                </div>
+                <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
+                  <span>Emergency fuel valve &mdash; <span class="italic font-bold text-[#0B2E59] dark:text-sky-300">NORMAL</span></span>
+                </div>
               </div>
             </div>
 
-            <!-- DEFECTIVE FLAP SYSTEM -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">MALFUNCIÓN DE FLAPS</strong>
-              
-              <div class="text-[18px] font-semibold text-slate-700 dark:text-slate-300">Límites de Velocidad según Posición:</div>
-              <div class="space-y-0.5 text-[18px]">
-                <div>&bull; <strong>Flaps bloqueados en T/O:</strong> máx. 108 KIAS</div>
-                <div>&bull; <strong>Flaps bloqueados en LDG:</strong> máx. 91 KIAS</div>
-                <div>&bull; <strong>Aproximación con Flaps UP:</strong></div>
-                <div class="pl-3 font-mono font-bold">73 KIAS (1150 kg) / 68 KIAS (1000 kg) / 60 KIAS (850 kg)</div>
-              </div>
+            <!-- Subcolumna 2: AFM 4B.6 FAILURES IN FLAP OPERATING SYSTEM -->
+            <div class="w-full h-full py-1.5 px-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">4B.6 FLAP SYSTEM FAILURES</strong>
 
-              <!-- NOTE AFM 4B.6 -->
-              <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-tight shadow-2xs mt-1">
-                <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-[18px] shrink-0">
-                  <span>⚠️</span>
-                  <span>CAUTION:</span>
-                </strong>
-                <div>With flaps UP, approach angle will be flat. Control airspeed with pitch, and flight path with engine power. Long roll-out distance must be anticipated.</div>
+              <div lang="en" class="space-y-0.5 text-[18px]">
+                <div class="font-semibold text-[#0B2E59] dark:text-sky-300 text-[18px] leading-tight">Failure in Position Indication or Function:</div>
+                <div class="flex items-start gap-1 py-0.5 leading-tight pl-1">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                  <span>Check flap position visually.</span>
+                </div>
+                <div class="flex items-start gap-1 py-0.5 leading-tight pl-1">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                  <span>Keep airspeed in white sector.</span>
+                </div>
+                <div class="flex items-start gap-1 py-0.5 leading-tight pl-1">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                  <span>Re-check all positions of the flap switch.</span>
+                </div>
+
+                <!-- Modified Approach Procedure -->
+                <div class="pt-0.5 border-t border-slate-100 dark:border-slate-700 space-y-0.5">
+                  <div class="font-semibold text-slate-700 dark:text-slate-300 text-[18px] leading-tight">Approach Depending on Available Setting:</div>
+                  
+                  <div class="text-[18px] font-medium text-slate-600 dark:text-slate-300 pl-1 italic leading-tight">(a) Only UP available:</div>
+                  <div class="text-[18px] pl-2 font-mono leading-tight text-[#0B2E59] dark:text-sky-300">
+                    73 KIAS (1150 kg) / 68 KIAS (1000 kg) / 60 KIAS (850 kg)
+                  </div>
+                  <div class="text-[18px] pl-2 leading-tight text-slate-600 dark:text-slate-400">
+                    Land at flat approach angle, use power lever to control speed and rate of descent.
+                  </div>
+
+                  <div class="text-[18px] font-medium text-slate-600 dark:text-slate-300 pl-1 italic leading-tight pt-0.5">(b) Only T/O available:</div>
+                  <div class="text-[18px] pl-2 font-mono leading-tight text-[#0B2E59] dark:text-sky-300">
+                    73 KIAS (1150 kg) / 68 KIAS (1000 kg) / 60 KIAS (850 kg)
+                  </div>
+
+                  <div class="text-[18px] font-medium text-slate-600 dark:text-slate-300 pl-1 italic leading-tight pt-0.5">(c) Only LDG available:</div>
+                  <div class="text-[18px] pl-2 leading-tight text-emerald-700 dark:text-emerald-400 font-semibold">
+                    &bull; Perform normal landing.
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -8838,25 +8858,51 @@ export const DA40_LESSON_5 = {
       </div>
     </div>
 
+    <!-- Columna Derecha: WARNING, CAUTION & NOTE AFM 3.2.7 y Esquema Técnico (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">SISTEMAS DE TRASVASE Y FLAPS</span>
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-2">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">SISTEMAS · TRASVASE DE COMBUSTIBLE Y ACTUACIÓN DE FLAPS</span>
         </div>
 
-        <div class="w-full flex flex-col justify-start items-start space-y-3 text-[18px] leading-relaxed mt-1">
-          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">POSICIÓN EMERGENCY TRANSFER:</strong>
-            <div>Conecta por gravedad el depósito auxiliar derecho con la cámara del depósito principal izquierdo, permitiendo alimentar el motor sin bomba eléctrica.</div>
+        <!-- WARNING AFM 3.2.7 -->
+        <div class="w-full p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs mb-1.5 shrink-0">
+          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+            <span>⚠️</span>
+            <span>WARNING (AFM 3.2.7):</span>
+          </strong>
+          <div>The emergency fuel valve must be switched back to NORMAL before the auxiliary tank indication reads zero! Otherwise, the engine will stop during flight when the auxiliary tank is empty.</div>
+        </div>
+
+        <!-- CAUTION AFM 3.2.7 -->
+        <div class="w-full p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs mb-1.5 shrink-0">
+          <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+            <span>⚠️</span>
+            <span>CAUTION (AFM 3.2.7):</span>
+          </strong>
+          <div>When set to EMERG. TRANSFER, the emergency fuel valve transfers fuel using the engine driven fuel pump from the auxiliary tank to the main tank at a rate of approximately 18 to 21 US gal/h (70 to 80 liters/h).</div>
+        </div>
+
+        <!-- NOTE AFM 3.2.7 -->
+        <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs mb-1.5 shrink-0">
+          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+            <span>ℹ️</span>
+            <span>NOTE (AFM 3.2.7):</span>
+          </strong>
+          <div>AUX tank quantity must not be less than 1 US gal and MAIN tank quantity must not be more than 15 US gal.</div>
+        </div>
+
+        <!-- Placeholder Esquema Técnico de Combustible y Flaps -->
+        <div class="w-full flex-1 flex flex-col justify-center items-center p-3 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
+          <div class="w-12 h-12 mb-1 rounded-full bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-xl font-bold">
+            ⛽
           </div>
-          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">CARRERA DE ATERRIZAJE FLAPS UP:</strong>
-            <div>Sin flaps, la velocidad de toma aumenta significativamente. La distancia requerida de pista sobrepasar un 40% adicional frente a la configuración de aterrizaje normal.</div>
-          </div>
-          <div class="w-full p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 text-amber-900 dark:text-amber-200 shadow-2xs space-y-1">
-            <strong class="block mb-1">ASIMETRÍA DE FLAPS:</strong>
-            <div>Ante cualquier asimetría entre semialas, no forzar el mando. Retornar a la última posición simétrica segura y volar con alerón compensador.</div>
-          </div>
+          <strong class="text-[#0B2E59] dark:text-sky-300 text-[18px] block mb-0.5">
+            Espacio Reservado para Esquema Técnico
+          </strong>
+          <p class="text-slate-600 dark:text-slate-400 text-[18px] max-w-md">
+            Mando de válvula de combustible de emergencia (posición EMERG. TRANSFER) y selector eléctrico de flaps (UP, T/O, LDG con varillaje de empuje).
+          </p>
         </div>
       </div>
     </div>
