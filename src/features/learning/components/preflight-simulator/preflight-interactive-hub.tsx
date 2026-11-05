@@ -73,6 +73,7 @@ export function PreflightInteractiveHub({
       case "cruise":
         return (
           <DA40CruiseWidget
+            leftPct={leftPct}
             onExerciseCompleted={onExerciseCompleted}
             isAlreadyCompleted={isAlreadyCompleted}
           />
@@ -84,6 +85,7 @@ export function PreflightInteractiveHub({
       case "fuel":
         return (
           <DA40FuelWidget
+            leftPct={leftPct}
             onExerciseCompleted={onExerciseCompleted}
             isAlreadyCompleted={isAlreadyCompleted}
           />
@@ -92,6 +94,7 @@ export function PreflightInteractiveHub({
         return (
           <DA40PerformanceWidget
             mode="all"
+            leftPct={leftPct}
             onExerciseCompleted={onExerciseCompleted}
             isAlreadyCompleted={isAlreadyCompleted}
           />
@@ -100,6 +103,7 @@ export function PreflightInteractiveHub({
         return (
           <DA40PerformanceWidget
             mode="takeoff"
+            leftPct={leftPct}
             onExerciseCompleted={onExerciseCompleted}
             isAlreadyCompleted={isAlreadyCompleted}
           />
@@ -108,6 +112,7 @@ export function PreflightInteractiveHub({
         return (
           <DA40PerformanceWidget
             mode="landing"
+            leftPct={leftPct}
             onExerciseCompleted={onExerciseCompleted}
             isAlreadyCompleted={isAlreadyCompleted}
           />

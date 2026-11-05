@@ -9591,7 +9591,92 @@ export const DA40_LESSON_6 = {
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla a 60% de Potencia</span>
   </div>
 
-  <div class="py-0.5" data-interactive-exercise="cruise" data-aircraft="da40"></div>
+  <div data-interactive-exercise="cruise" data-aircraft="da40">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+      <!-- Columna Izquierda (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+                📊 AFM CAP. 5 · CRUCERO AL 60% LOAD
+              </span>
+              <div class="text-xs sm:text-[13px] text-slate-500 font-medium mt-0.5">
+                Régimen Estándar de Escuela DA40 TDI
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-100 text-[#0B2E59] border border-sky-300">
+              SIMULADOR
+            </span>
+          </div>
+
+          <!-- Tabla de Datos -->
+          <div class="space-y-1.5 my-auto">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
+                Datos AFM Sección 5.3.11 (60% Carga de Motor)
+              </strong>
+              <div class="grid grid-cols-5 gap-1 text-[11px] font-mono text-slate-700 dark:text-slate-200 pt-0.5">
+                <span class="font-bold">Altitud</span>
+                <span class="text-center font-bold">KTAS</span>
+                <span class="text-center font-bold">Consumo</span>
+                <span class="text-center font-bold">Alcance</span>
+                <span class="text-right font-bold">Autonomía</span>
+                <span>2000 ft</span><span class="text-center">111</span><span class="text-center">15,1 L/h</span><span class="text-center">777 NM</span><span class="text-right">7,0 h</span>
+                <span>4000 ft</span><span class="text-center">113</span><span class="text-center">15,1 L/h</span><span class="text-center">791 NM</span><span class="text-right">7,0 h</span>
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300">6000 ft</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">116</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">15,1 L/h</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">812 NM</span><span class="text-right font-bold text-[#0B2E59] dark:text-sky-300">7,0 h</span>
+                <span>8000 ft</span><span class="text-center">118</span><span class="text-center">15,1 L/h</span><span class="text-center">826 NM</span><span class="text-right">7,0 h</span>
+              </div>
+            </div>
+
+            <div class="p-2 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/60 text-xs text-sky-900 dark:text-sky-200 space-y-0.5">
+              <strong>Simulador Interactivo para el Alumno:</strong>
+              <div>Permite seleccionar el régimen de potencia (50% a 100%) y altitud de vuelo para calcular automáticamente la velocidad verdadera (KTAS), gasto horario en litros y galones, y tiempo estimado en ruta.</div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>Régimen Estándar: <strong>60% Load</strong></span>
+            <span>Consumo Fijo: <strong>15,1 L/h (4,0 US gal/h)</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+              🎯 RESOLUCIÓN OPERATIVA DE RUTA
+            </span>
+            <span class="text-xs text-slate-500 font-semibold">AFM Doc. 6.01.05-E</span>
+          </div>
+
+          <!-- Centro Visual Gráfica -->
+          <div class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs my-2 text-center">
+            <div class="w-16 h-16 rounded-full bg-sky-100 dark:bg-sky-950/60 flex items-center justify-center text-[#2361A8] dark:text-sky-300 mb-2">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <strong class="text-sm text-[#0B2E59] dark:text-sky-300">Módulo de Planificación de Crucero</strong>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 max-w-sm">
+              En el reproductor interactivo este panel compara el consumo a diferentes regímenes, permitiendo verificar la autonomía y la reserva de seguridad requerida antes del vuelo.
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>Tanque Principal: <strong>106 L utilizables</strong></span>
+            <span>Autonomía Máxima: <strong>7,0 horas</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- pagebreak -->
@@ -9688,7 +9773,91 @@ export const DA40_LESSON_6 = {
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Part-NCO.OP.125 & Manual OM</span>
   </div>
 
-  <div class="py-0.5" data-interactive-exercise="fuel" data-aircraft="da40"></div>
+  <div data-interactive-exercise="fuel" data-aircraft="da40">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+      <!-- Columna Izquierda (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+                ⛽ F.OPS.02 · HOJA DE CARGA DE COMBUSTIBLE
+              </span>
+              <div class="text-xs sm:text-[13px] text-slate-500 font-medium mt-0.5">
+                Cálculo de Despacho Operativo DA40 TDI
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-100 text-[#0B2E59] border border-sky-300">
+              SIMULADOR
+            </span>
+          </div>
+
+          <!-- Tabla de Datos -->
+          <div class="space-y-1.5 my-auto">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
+                Desglose F.OPS.02 de Combustible Mínimo
+              </strong>
+              <div class="grid grid-cols-3 gap-1 text-[11px] font-mono text-slate-700 dark:text-slate-200 pt-0.5">
+                <span class="font-bold">Concepto</span>
+                <span class="text-center font-bold">Tiempo</span>
+                <span class="text-right font-bold">Litros (60%)</span>
+                <span>Combustible de Ruta (Trip)</span><span class="text-center">1h 00min</span><span class="text-right">15,1 L</span>
+                <span class="font-bold text-amber-700 dark:text-amber-400">Reserva Final Blue Team</span><span class="text-center font-bold text-amber-700 dark:text-amber-400">1h 30min</span><span class="text-right font-bold text-amber-700 dark:text-amber-400">22,7 L</span>
+                <span>Proceder a Alternativo</span><span class="text-center">20min</span><span class="text-right">5,1 L</span>
+                <span>Rodaje y Calentamiento (Taxi)</span><span class="text-center">-</span><span class="text-right">3,0 L</span>
+                <span class="font-bold text-emerald-700 dark:text-emerald-400">Combustible Mínimo Rampa</span><span class="text-center font-bold text-emerald-700 dark:text-emerald-400">2h 50min</span><span class="text-right font-bold text-emerald-700 dark:text-emerald-400">45,9 L</span>
+              </div>
+            </div>
+
+            <div class="p-2 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 text-xs text-amber-900 dark:text-amber-200 space-y-0.5">
+              <strong>Regla OM Blue Team:</strong>
+              <div>La escuela exige un mínimo de <strong>1h 30min de reserva final</strong> (22,7 L), superando el mínimo legal de 30 minutos de EASA Part-NCO para garantizar la máxima seguridad en la operación de instrucción.</div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>Reserva Final OM: <strong>22,7 L (6,0 US gal)</strong></span>
+            <span>Densidad Jet A-1: <strong>0,84 kg/L</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+              📋 VERIFICACIÓN REGISTRAL F.OPS.02
+            </span>
+            <span class="text-xs text-slate-500 font-semibold">Validación Automática</span>
+          </div>
+
+          <!-- Centro Visual Gráfica -->
+          <div class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs my-2 text-center">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/60 flex items-center justify-center text-emerald-700 dark:text-emerald-300 mb-2">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <strong class="text-sm text-[#0B2E59] dark:text-sky-300">Simulador de Planificación F.OPS.02</strong>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 max-w-sm">
+              En el reproductor interactivo este panel comprueba que el combustible embarcado sea suficiente para la ruta, la reserva final Blue Team (1h 30min) y la aproximación al aeródromo alternativo.
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>Part-NCO.OP.125: <strong>CUMPLIDO</strong></span>
+            <span>Manual OM Blue Team: <strong>CONFORME</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- pagebreak -->
@@ -9826,7 +9995,91 @@ export const DA40_LESSON_6 = {
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distancias Prevuelo · Parte 1</span>
   </div>
 
-  <div class="py-0.5" data-interactive-exercise="performance_takeoff" data-aircraft="da40"></div>
+  <div data-interactive-exercise="performance_takeoff" data-aircraft="da40">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+      <!-- Columna Izquierda (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+                🛫 AFM CAP. 5 · PERFORMANCE DE DESPEGUE
+              </span>
+              <div class="text-xs sm:text-[13px] text-slate-500 font-medium mt-0.5">
+                Cálculo de Carrera (TORA) y Distancia sobre 50 ft (TODA)
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-100 text-[#0B2E59] border border-sky-300">
+              SIMULADOR
+            </span>
+          </div>
+
+          <!-- Tabla de Datos -->
+          <div class="space-y-1.5 my-auto">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
+                Modelo de Cálculo GCXO (Tenerife Norte · RWY 30)
+              </strong>
+              <div class="grid grid-cols-3 gap-1 text-[11px] font-mono text-slate-700 dark:text-slate-200 pt-0.5">
+                <span class="font-bold">Parámetro</span>
+                <span class="text-center font-bold">Valor</span>
+                <span class="text-right font-bold">Distancia</span>
+                <span>Elevación Aeródromo</span><span class="text-center">2076 ft</span><span class="text-right">-</span>
+                <span>Temperatura</span><span class="text-center">ISA+10°C (21°C)</span><span class="text-right">-</span>
+                <span>Viento de Cara</span><span class="text-center">10 kt</span><span class="text-right">-</span>
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300">Carrera en Suelo (Ground Roll)</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">Flaps T/O</span><span class="text-right font-bold text-[#0B2E59] dark:text-sky-300">211 m</span>
+                <span class="font-bold text-emerald-700 dark:text-emerald-400">Distancia sobre 50 ft</span><span class="text-center font-bold text-emerald-700 dark:text-emerald-400">Flaps T/O</span><span class="text-right font-bold text-emerald-700 dark:text-emerald-400">329 m</span>
+              </div>
+            </div>
+
+            <div class="p-2 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/60 text-xs text-sky-900 dark:text-sky-200 space-y-0.5">
+              <strong>Factores de Corrección AFM 5.3.5:</strong>
+              <div>Hierba seca: +10% en carrera; hierba mojada/alta: +20%; por cada 2 kt de viento en cola: +10% en distancias; pendiente ascendente 1%: +5%.</div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>TODA Requerida: <strong>329 m</strong></span>
+            <span>TORA Disponible GCXO RWY 30: <strong>3171 m</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+              📈 MARGEN DE DESPEGUE Y SEGURIDAD
+            </span>
+            <span class="text-xs text-slate-500 font-semibold">AFM Figura 5.3.5</span>
+          </div>
+
+          <!-- Centro Visual Gráfica -->
+          <div class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs my-2 text-center">
+            <div class="w-16 h-16 rounded-full bg-sky-100 dark:bg-sky-950/60 flex items-center justify-center text-[#2361A8] dark:text-sky-300 mb-2">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+            </div>
+            <strong class="text-sm text-[#0B2E59] dark:text-sky-300">Simulador de Performance 4A</strong>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 max-w-sm">
+              En el reproductor interactivo este panel valida que la distancia requerida con factores no supere la longitud física de la pista disponible (TODA disponible ≥ TODA requerida).
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>Margen de Pista: <strong>&gt; 2800 m</strong></span>
+            <span>Despacho: <strong>AUTORIZADO</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- pagebreak -->
@@ -9841,7 +10094,91 @@ export const DA40_LESSON_6 = {
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distancias Prevuelo · Parte 2</span>
   </div>
 
-  <div class="py-0.5" data-interactive-exercise="performance_landing" data-aircraft="da40"></div>
+  <div data-interactive-exercise="performance_landing" data-aircraft="da40">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+      <!-- Columna Izquierda (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+                🛬 AFM CAP. 5 · PERFORMANCE DE ATERRIZAJE
+              </span>
+              <div class="text-xs sm:text-[13px] text-slate-500 font-medium mt-0.5">
+                Cálculo de Carrera en Tierra y Parada sobre 50 ft
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300">
+              SIMULADOR
+            </span>
+          </div>
+
+          <!-- Tabla de Datos -->
+          <div class="space-y-1.5 my-auto">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
+                Cálculo AFM 5.3.14 (Masa al Aterrizaje ≤ 1150 kg)
+              </strong>
+              <div class="grid grid-cols-3 gap-1 text-[11px] font-mono text-slate-700 dark:text-slate-200 pt-0.5">
+                <span class="font-bold">Parámetro</span>
+                <span class="text-center font-bold">Condición</span>
+                <span class="text-right font-bold">Distancia</span>
+                <span>Configuración Flaps</span><span class="text-center">LDG (Totalmente abajo)</span><span class="text-right">-</span>
+                <span>Velocidad de Referencia</span><span class="text-center">Vref = 73 KIAS</span><span class="text-right">-</span>
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300">Carrera en Suelo (Ground Roll)</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">Frenada Máxima</span><span class="text-right font-bold text-[#0B2E59] dark:text-sky-300">224 m</span>
+                <span class="font-bold text-emerald-700 dark:text-emerald-400">Distancia sobre 50 ft</span><span class="text-center font-bold text-emerald-700 dark:text-emerald-400">Obstáculo 15 m</span><span class="text-right font-bold text-emerald-700 dark:text-emerald-400">366 m</span>
+                <span class="font-bold text-sky-700 dark:text-sky-300">Distancia con Factor x1,43</span><span class="text-center font-bold text-sky-700 dark:text-sky-300">Margen EASA NCO</span><span class="text-right font-bold text-sky-700 dark:text-sky-300">523 m</span>
+              </div>
+            </div>
+
+            <div class="p-2 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/60 text-xs text-sky-900 dark:text-sky-200 space-y-0.5">
+              <strong>Factores de Corrección AFM 5.3.14:</strong>
+              <div>Hierba seca: +15%; hierba mojada: +25%; asfalto mojado: +15%; cada 2 kt de viento en cola: +10% en distancia de parada.</div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>Distancia Requerida con Margen: <strong>523 m</strong></span>
+            <span>LDA Disponible GCXO RWY 30: <strong>3171 m</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+              📉 COMPROBACIÓN DE MARGEN LDA
+            </span>
+            <span class="text-xs text-slate-500 font-semibold">AFM Figura 5.3.14</span>
+          </div>
+
+          <!-- Centro Visual Gráfica -->
+          <div class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs my-2 text-center">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/60 flex items-center justify-center text-emerald-700 dark:text-emerald-300 mb-2">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </div>
+            <strong class="text-sm text-[#0B2E59] dark:text-sky-300">Simulador de Performance 4B</strong>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 max-w-sm">
+              En el reproductor interactivo este panel valida que la distancia de aterrizaje requerida con factores multiplicadores no exceda la LDA disponible de la pista elegida.
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>Margen de Parada: <strong>&gt; 2600 m</strong></span>
+            <span>Aterrizaje: <strong>SEGURO Y AUTORIZADO</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- pagebreak -->

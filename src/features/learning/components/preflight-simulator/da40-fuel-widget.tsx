@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { DA40_PREFLIGHT_MISSIONS, checkValueTolerance } from "./da40-constants";
 
 type Props = {
+  leftPct?: number;
   onExerciseCompleted?: () => void;
   isAlreadyCompleted?: boolean;
 };
@@ -28,9 +29,12 @@ const INITIAL_FUEL_INPUTS: Record<number, FuelInputs> = {
 };
 
 export function DA40FuelWidget({
+  leftPct = 50,
   onExerciseCompleted,
   isAlreadyCompleted = false,
 }: Props) {
+  const clampedLeftPct = Math.max(15, Math.min(85, Math.round(leftPct || 50)));
+  const rightPct = 100 - clampedLeftPct;
   const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on M1 (Solved Example)
   const mission = DA40_PREFLIGHT_MISSIONS[selectedMissionIndex];
 
@@ -234,7 +238,14 @@ export function DA40FuelWidget({
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <div
+      className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5"
+      data-left-pct={clampedLeftPct}
+      style={{
+        "--col-left": `${clampedLeftPct}fr`,
+        "--col-right": `${rightPct}fr`,
+      } as React.CSSProperties}
+    >
       {/* Columna Izquierda (lg:col-span-7): Formulario F.OPS.02 (Altura Fija 590px) */}
       <div className="lg:col-span-7 flex flex-col">
         <div

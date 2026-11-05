@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { DA40_PREFLIGHT_MISSIONS, checkValueTolerance } from "./da40-constants";
 
 type Props = {
+  leftPct?: number;
   onExerciseCompleted?: () => void;
   isAlreadyCompleted?: boolean;
 };
@@ -79,9 +80,12 @@ const INITIAL_MISSION_INPUTS: Record<number, MissionInputs> = {
 };
 
 export function DA40CruiseWidget({
+  leftPct = 50,
   onExerciseCompleted,
   isAlreadyCompleted = false,
 }: Props) {
+  const clampedLeftPct = Math.max(15, Math.min(85, Math.round(leftPct || 50)));
+  const rightPct = 100 - clampedLeftPct;
   const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on Mission 1 (Solved Example)
   const [selectedTablePower, setSelectedTablePower] = useState<PowerSetting>(60); // Filter for right table
   const mission = DA40_PREFLIGHT_MISSIONS[selectedMissionIndex];
@@ -255,7 +259,14 @@ export function DA40CruiseWidget({
   const isCurrentMissionSolved = selectedMissionIndex === 0 || Boolean(solvedMissions[selectedMissionIndex]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <div
+      className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5"
+      data-left-pct={clampedLeftPct}
+      style={{
+        "--col-left": `${clampedLeftPct}fr`,
+        "--col-right": `${rightPct}fr`,
+      } as React.CSSProperties}
+    >
       {/* Columna Izquierda (lg:col-span-7): Formulario de Crucero (Altura Fija 590px) */}
       <div className="lg:col-span-7 flex flex-col">
         <div

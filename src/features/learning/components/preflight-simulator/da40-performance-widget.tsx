@@ -6,6 +6,7 @@ import { DA40_PERFORMANCE_SCENARIOS, checkValueTolerance } from "./da40-constant
 
 type Props = {
   mode?: "all" | "takeoff" | "landing";
+  leftPct?: number;
   onExerciseCompleted?: () => void;
   isAlreadyCompleted?: boolean;
 };
@@ -29,9 +30,12 @@ const INITIAL_PERF_INPUTS: Record<number, PerfInputs> = {
 
 export function DA40PerformanceWidget({
   mode = "all",
+  leftPct = 50,
   onExerciseCompleted,
   isAlreadyCompleted = false,
 }: Props) {
+  const clampedLeftPct = Math.max(15, Math.min(85, Math.round(leftPct || 50)));
+  const rightPct = 100 - clampedLeftPct;
   const [selectedScenarioIndex, setSelectedScenarioIndex] = useState(0); // Starts on GCXO (Solved Example)
   const scenario = DA40_PERFORMANCE_SCENARIOS[selectedScenarioIndex];
 
@@ -185,7 +189,14 @@ export function DA40PerformanceWidget({
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch py-0.5">
+    <div
+      className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch py-0.5"
+      data-left-pct={clampedLeftPct}
+      style={{
+        "--col-left": `${clampedLeftPct}fr`,
+        "--col-right": `${rightPct}fr`,
+      } as React.CSSProperties}
+    >
       {/* Columna Izquierda (lg:col-span-6): Formulario de Cálculo F.OPS.02 */}
       <div className="lg:col-span-6 flex flex-col">
         <div
