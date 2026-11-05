@@ -7897,21 +7897,15 @@ export const DA40_LESSON_5 = {
                 </div>
               </div>
 
-              <!-- NOTEs AFM 4B.1 -->
-              <div class="space-y-1 mt-1.5">
-                <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs">
-                  <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
-                    <span>ℹ️</span>
-                    <span>NOTE:</span>
-                  </strong>
-                  <div>A landing of this type is only necessary when due to fuel shortage, weather, or nightfall continuing flight endangers occupants. Decide whether field landing represents lower risk than attempting destination airfield.</div>
-                </div>
-                <div class="w-full p-1.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs">
-                  <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
-                    <span>ℹ️</span>
-                    <span>NOTE:</span>
-                  </strong>
-                  <div>If no level landing area is available, a landing on an upward slope should be sought.</div>
+              <!-- NOTEs AFM 4B.1 UNIFICADAS CON VIÑETAS Y TEXTO LITERAL -->
+              <div class="w-full p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs mt-2">
+                <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-1 text-[18px] shrink-0">
+                  <span>ℹ️</span>
+                  <span>NOTES:</span>
+                </strong>
+                <div class="space-y-1.5 pl-1">
+                  <div>&bull; A landing of this type is only necessary when there is a reasonable suspicion that due to fuel shortage, weather conditions, or at nightfall the possibility of endangering the airplane and its occupants by continuing the flight cannot be excluded. The pilot is required to decide whether or not a controlled landing in a field represents a lower risk than the attempt to reach the target airfield under all circumstances.</div>
+                  <div>&bull; If no level landing area is available, a landing on an upward slope should be sought.</div>
                 </div>
               </div>
             </div>
