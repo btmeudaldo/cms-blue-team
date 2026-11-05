@@ -653,8 +653,8 @@ export function DA40LoadsheetWidget({
             <div>
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
                 {currentStep === "takeoff"
-                  ? "📋 AFM CAP. 6 · PARTE 1: DESPEGUE (TOM & CG)"
-                  : "🛬 AFM CAP. 6 · PARTE 2: ATERRIZAJE (LM & CG)"}
+                  ? "📋 PARTE 1: DESPEGUE (TOM & CG)"
+                  : "🛬 PARTE 2: ATERRIZAJE (LM & CG)"}
               </span>
               <div className="flex items-center gap-2 mt-0.5">
                 <span className="text-xs sm:text-[13px] text-slate-500 font-medium">

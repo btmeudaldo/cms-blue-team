@@ -9122,7 +9122,7 @@ export const DA40_LESSON_6 = {
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TABLA OFICIAL DE CARGA AFM</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TABLA OFICIAL DE CARGA</span>
           <a
             href="/images/da40/da40-loadsheet-table.png"
             target="_blank"
@@ -9241,7 +9241,7 @@ export const DA40_LESSON_6 = {
           <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
-                📋 AFM CAP. 6 · PARTE 1: DESPEGUE (TOM & CG)
+                📋 PARTE 1: DESPEGUE (TOM & CG)
               </span>
               <div class="text-xs sm:text-[13px] text-slate-500 font-medium mt-0.5">
                 Cálculo de Masa de Despegue (TOM) y Brazo de Palanca
@@ -9295,7 +9295,7 @@ export const DA40_LESSON_6 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
               📈 ENVOLVENTE DE CENTRO DE GRAVEDAD (CG)
             </span>
-            <span class="text-xs text-slate-500 font-semibold">AFM Figura 6.4</span>
+            <span class="text-xs text-slate-500 font-semibold">Envolvente de Centrado</span>
           </div>
 
           <!-- Centro Visual Gráfica -->
@@ -9343,7 +9343,7 @@ export const DA40_LESSON_6 = {
           <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
-                🛬 AFM CAP. 6 · PARTE 2: ATERRIZAJE (LM & CG)
+                🛬 PARTE 2: ATERRIZAJE (LM & CG)
               </span>
               <div class="text-xs sm:text-[13px] text-slate-500 font-medium mt-0.5">
                 Consumo de Ruta (Trip Fuel) y Masa al Aterrizaje (LM)
@@ -9429,7 +9429,7 @@ export const DA40_LESSON_6 = {
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · RENDIMIENTO DE CRUCERO</div>
       <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.7 Régimen de Crucero: Rendimiento y Consumo de Combustible</h1>
     </div>
-    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tablas y Gráficas de Rendimiento AFM</span>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tablas y Gráficas de Rendimiento</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
@@ -9452,7 +9452,7 @@ export const DA40_LESSON_6 = {
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <span class="font-bold text-sky-600 dark:text-sky-400 block uppercase text-[11px]">60% LOAD (ECONÓMICO)</span>
             <div class="text-[11px] text-slate-700 dark:text-slate-300">
-              Crucero económico AFM:<br>
+              Crucero económico:<br>
               <strong>4,0 US gal/h (15,1 L/h)</strong><br>
               TAS: ~118 a 120 kts a FL60<br>
               <span class="text-slate-500 dark:text-slate-400 text-[10px]">Máximo alcance y autonomía</span>
@@ -9463,7 +9463,7 @@ export const DA40_LESSON_6 = {
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 block uppercase text-[11px]">70% LOAD (NORMAL)</span>
             <div class="text-[11px] text-slate-700 dark:text-slate-300">
-              Crucero normal AFM:<br>
+              Crucero normal:<br>
               <strong>4,9 US gal/h (18,5 L/h)</strong><br>
               TAS: ~124 a 126 kts a FL60<br>
               <span class="text-slate-500 dark:text-slate-400 text-[10px]">Equilibrio estándar de crucero</span>
@@ -9474,7 +9474,7 @@ export const DA40_LESSON_6 = {
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <span class="font-bold text-amber-600 dark:text-amber-400 block uppercase text-[11px]">80% LOAD (RÁPIDO)</span>
             <div class="text-[11px] text-slate-700 dark:text-slate-300">
-              Crucero rápido AFM:<br>
+              Crucero rápido:<br>
               <strong>5,8 US gal/h (22,0 L/h)</strong><br>
               TAS: ~130 a 132 kts a FL60<br>
               <span class="text-slate-500 dark:text-slate-400 text-[10px]">Máximo crucero continuo</span>
@@ -9484,7 +9484,7 @@ export const DA40_LESSON_6 = {
 
         <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
           <strong class="text-sky-800 dark:text-sky-300 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
-            <span>ℹ️</span> LECTURA DIRECTA DEL ÁBACO AFM (FUEL FLOW)
+            <span>ℹ️</span> LECTURA DIRECTA DEL ÁBACO (FUEL FLOW)
           </strong>
           <span>Conforme al ábaco oficial de consumo horario del AFM (figura derecha), a un <strong>60% LOAD</strong> el consumo resultante es exactamente de <strong>4,0 US gal/h (15,1 L/h)</strong>. A <strong>70% LOAD</strong> es de <strong>4,9 US gal/h (18,5 L/h)</strong> y a <strong>80% LOAD</strong> asciende a <strong>5,8 US gal/h (22,0 L/h)</strong>.</span>
         </div>
@@ -9495,7 +9495,7 @@ export const DA40_LESSON_6 = {
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO INTERACTIVO AFM: FUEL FLOW</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO INTERACTIVO: FUEL FLOW</span>
           <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950/80 dark:text-sky-300 border border-sky-300">INTERACTIVO</span>
         </div>
 
@@ -9600,7 +9600,7 @@ export const DA40_LESSON_6 = {
           <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
-                📊 AFM CAP. 5 · CRUCERO AL 60% LOAD
+                📊 CRUCERO AL 60% LOAD
               </span>
               <div class="text-xs sm:text-[13px] text-slate-500 font-medium mt-0.5">
                 Régimen Estándar de Escuela DA40 TDI
@@ -9652,7 +9652,7 @@ export const DA40_LESSON_6 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
               🎯 RESOLUCIÓN OPERATIVA DE RUTA
             </span>
-            <span class="text-xs text-slate-500 font-semibold">AFM Doc. 6.01.05-E</span>
+            <span class="text-xs text-slate-500 font-semibold">Régimen de Crucero Oficial</span>
           </div>
 
           <!-- Centro Visual Gráfica -->
@@ -10004,7 +10004,7 @@ export const DA40_LESSON_6 = {
           <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
-                🛫 AFM CAP. 5 · PERFORMANCE DE DESPEGUE
+                🛫 PERFORMANCE DE DESPEGUE
               </span>
               <div class="text-xs sm:text-[13px] text-slate-500 font-medium mt-0.5">
                 Cálculo de Carrera (TORA) y Distancia sobre 50 ft (TODA)
@@ -10034,7 +10034,7 @@ export const DA40_LESSON_6 = {
             </div>
 
             <div class="p-2 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/60 text-xs text-sky-900 dark:text-sky-200 space-y-0.5">
-              <strong>Factores de Corrección AFM 5.3.5:</strong>
+              <strong>Factores de Corrección de Pista:</strong>
               <div>Hierba seca: +10% en carrera; hierba mojada/alta: +20%; por cada 2 kt de viento en cola: +10% en distancias; pendiente ascendente 1%: +5%.</div>
             </div>
           </div>
@@ -10055,7 +10055,7 @@ export const DA40_LESSON_6 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
               📈 MARGEN DE DESPEGUE Y SEGURIDAD
             </span>
-            <span class="text-xs text-slate-500 font-semibold">AFM Figura 5.3.5</span>
+            <span class="text-xs text-slate-500 font-semibold">Ábaco de Despegue (Fig. 5.3.5)</span>
           </div>
 
           <!-- Centro Visual Gráfica -->
@@ -10103,7 +10103,7 @@ export const DA40_LESSON_6 = {
           <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
-                🛬 AFM CAP. 5 · PERFORMANCE DE ATERRIZAJE
+                🛬 PERFORMANCE DE ATERRIZAJE
               </span>
               <div class="text-xs sm:text-[13px] text-slate-500 font-medium mt-0.5">
                 Cálculo de Carrera en Tierra y Parada sobre 50 ft
@@ -10118,7 +10118,7 @@ export const DA40_LESSON_6 = {
           <div class="space-y-1.5 my-auto">
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
-                Cálculo AFM 5.3.14 (Masa al Aterrizaje ≤ 1150 kg)
+                Cálculo de Aterrizaje (MLM ≤ 1150 kg)
               </strong>
               <div class="grid grid-cols-3 gap-1 text-[11px] font-mono text-slate-700 dark:text-slate-200 pt-0.5">
                 <span class="font-bold">Parámetro</span>
@@ -10133,7 +10133,7 @@ export const DA40_LESSON_6 = {
             </div>
 
             <div class="p-2 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/60 text-xs text-sky-900 dark:text-sky-200 space-y-0.5">
-              <strong>Factores de Corrección AFM 5.3.14:</strong>
+              <strong>Factores de Corrección de Parada:</strong>
               <div>Hierba seca: +15%; hierba mojada: +25%; asfalto mojado: +15%; cada 2 kt de viento en cola: +10% en distancia de parada.</div>
             </div>
           </div>
@@ -10154,7 +10154,7 @@ export const DA40_LESSON_6 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
               📉 COMPROBACIÓN DE MARGEN LDA
             </span>
-            <span class="text-xs text-slate-500 font-semibold">AFM Figura 5.3.14</span>
+            <span class="text-xs text-slate-500 font-semibold">Ábaco de Aterrizaje (Fig. 5.3.14)</span>
           </div>
 
           <!-- Centro Visual Gráfica -->

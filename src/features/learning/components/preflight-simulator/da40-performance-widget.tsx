@@ -349,7 +349,7 @@ export function DA40PerformanceWidget({
             <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-sky-50/70 dark:bg-slate-800/90 border border-sky-200 dark:border-slate-700 shadow-2xs">
               <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
                 <span>📖</span>
-                <span>{currentStep === "takeoff" ? "TABLA AFM DESPEGUE:" : "TABLA AFM ATERRIZAJE:"}</span>
+                <span>{currentStep === "takeoff" ? "TABLA DE DESPEGUE:" : "TABLA DE ATERRIZAJE:"}</span>
               </span>
               <div className="flex items-center gap-1.5">
                 <button

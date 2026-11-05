@@ -623,7 +623,7 @@ export function DA40CruiseWidget({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0 gap-1.5">
             <div>
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px] block">
-                📖 TABLA AFM 5.3.10 CRUCERO
+                📖 TABLA DE CRUCERO (5.3.10)
               </span>
               <span className="text-[11px] sm:text-xs text-slate-500 font-medium">
                 DA40 TDI · Standard Tanks (106.0 L / 28.00 Gal)
