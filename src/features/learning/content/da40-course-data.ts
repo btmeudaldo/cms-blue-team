@@ -7907,7 +7907,7 @@ export const DA40_LESSON_5 = {
               </div>
             </div>
 
-            <!-- SUBCOL 2: AFM 4B.1 FINAL APPROACH, TOUCHDOWN, NOTE 2 & CAUTION -->
+            <!-- SUBCOL 2: AFM 4B.1 FINAL APPROACH, TOUCHDOWN & CAUTION -->
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between h-full">
               <div>
                 <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">FINAL APPROACH &amp; TOUCHDOWN</strong>
@@ -7933,29 +7933,17 @@ export const DA40_LESSON_5 = {
                 </div>
               </div>
 
-              <!-- NOTE 2 & CAUTION AFM 4B.1 -->
-              <div class="space-y-1.5 mt-2">
-                <!-- NOTE 2 AFM 4B.1 (UPWARD SLOPE) -->
-                <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs">
-                  <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
-                    <span>ℹ️</span>
-                    <span>NOTE:</span>
-                  </strong>
-                  <div>If no level landing area is available, a landing on an upward slope should be sought.</div>
-                </div>
-
-                <!-- CAUTION AFM 4B.1 (POST-LANDING FIRE RISK) -->
-                <div class="w-full p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs">
-                  <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 uppercase tracking-wide mb-1 text-[18px] shrink-0">
-                    <span>⚠️</span>
-                    <span>CAUTION:</span>
-                  </strong>
-                  <div>If sufficient time is remaining, the risk of fire in the event of a collision with obstacles can be reduced as follows after a safe touch-down:
-                    <div class="mt-1 space-y-0.5 font-medium pl-1">
-                      <div>&bull; Emergency fuel valve &mdash; <span class="italic font-bold">OFF</span></div>
-                      <div>&bull; ENGINE MASTER &mdash; <span class="italic font-bold">OFF</span></div>
-                      <div>&bull; ELECTRIC MASTER &mdash; <span class="italic font-bold">OFF</span></div>
-                    </div>
+              <!-- CAUTION AFM 4B.1 (POST-LANDING FIRE RISK) -->
+              <div class="w-full p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs mt-2">
+                <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 uppercase tracking-wide mb-1 text-[18px] shrink-0">
+                  <span>⚠️</span>
+                  <span>CAUTION:</span>
+                </strong>
+                <div>If sufficient time is remaining, the risk of fire in the event of a collision with obstacles can be reduced as follows after a safe touch-down:
+                  <div class="mt-1 space-y-0.5 font-medium pl-1">
+                    <div>&bull; Emergency fuel valve &mdash; <span class="italic font-bold">OFF</span></div>
+                    <div>&bull; ENGINE MASTER &mdash; <span class="italic font-bold">OFF</span></div>
+                    <div>&bull; ELECTRIC MASTER &mdash; <span class="italic font-bold">OFF</span></div>
                   </div>
                 </div>
               </div>
@@ -7965,11 +7953,20 @@ export const DA40_LESSON_5 = {
       </div>
     </div>
 
-    <!-- RIGHT COLUMN: RESERVED FOR PRECAUTIONARY LANDING DIAGRAM (50%) -->
+    <!-- RIGHT COLUMN: NOTE 2 & RESERVED FOR PRECAUTIONARY LANDING DIAGRAM (42%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-2">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PROCEDIMIENTO OPERATIVO · CIRCUITO DE PRECAUCIÓN</span>
+        </div>
+
+        <!-- NOTE 2 AFM 4B.1 EN COLUMNA DERECHA -->
+        <div class="w-full p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs mb-2 shrink-0">
+          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+            <span>ℹ️</span>
+            <span>NOTE:</span>
+          </strong>
+          <div>If no level landing area is available, a landing on an upward slope should be sought.</div>
         </div>
 
         <div class="w-full flex-1 flex flex-col justify-center items-center p-6 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
