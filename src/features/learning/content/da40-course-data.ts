@@ -8005,95 +8005,95 @@ export const DA40_LESSON_5 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">FADEC CAUTION LIGHT PROCEDURES (AFM 4B.3.2 &amp; 4B.3.3)</span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-stretch justify-start w-full flex-1">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 items-stretch justify-start w-full flex-1">
             <!-- SUBCOL 1: AFM 4B.3.2 ECU A FAILURE -->
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between h-full">
-              <div>
-                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.2 ECU A FAILURE (ECU A)</strong>
-                
-                <div lang="en" class="space-y-1.5 text-[18px] mt-1.5">
-                  <!-- (a) On Ground -->
-                  <div class="p-1.5 rounded-lg bg-red-50/80 dark:bg-red-950/30 border border-red-200 dark:border-red-900/40 text-red-950 dark:text-red-200 leading-snug">
-                    <span class="font-bold text-red-700 dark:text-red-400 block text-[18px]">(a) 'ECU A' Caution on the Ground:</span>
-                    <div class="pl-2 mt-0.5 font-medium">&bull; Terminate flight preparation.</div>
-                  </div>
-
-                  <!-- (b) During Flight -->
-                  <div class="pt-0.5 space-y-1">
-                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-[18px]">(b) 'ECU A' Caution During Flight:</span>
-                    
-                    <!-- NOTE AFM 4B.3.2 -->
-                    <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs">
-                      <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
-                        <span>ℹ️</span>
-                        <span>NOTE:</span>
-                      </strong>
-                      <div>In case of a failure in the electronic ECU (Engine Control Unit) 'A' the system automatically switches to ECU 'B'.</div>
-                    </div>
-
-                    <div class="flex items-start gap-1.5 leading-snug pt-1">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
-                      <span>Press the <strong class="font-bold">ECU TEST</strong> button for more than 2 seconds to reset the caution message.</span>
-                    </div>
-
-                    <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5 mt-1">
-                      <div class="font-semibold text-red-600 dark:text-red-400">If the ECU A caution re-appears or cannot be reset:</div>
-                      <div class="pl-2">2. Land on nearest suitable airfield.</div>
-                      <div class="pl-2">3. The engine must be serviced after landing.</div>
-                    </div>
-
-                    <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5">
-                      <div class="font-semibold text-emerald-600 dark:text-emerald-400">If the ECU A caution can be reset:</div>
-                      <div class="pl-2">2. Continue flight.</div>
-                      <div class="pl-2">3. The engine must be serviced after landing.</div>
-                    </div>
-                  </div>
-                </div>
+            <div class="w-full h-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.2 ECU A FAILURE (ECU A)</strong>
+              
+              <!-- (a) On Ground -->
+              <div class="space-y-1">
+                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pb-0.5">(a) 'ECU A' Caution on the Ground:</div>
+                <div class="text-[18px] font-bold text-red-600 dark:text-red-400 pl-3 py-0.5 leading-snug">&bull; Terminate flight preparation.</div>
               </div>
 
-              <div class="text-right text-[18px] text-slate-400 font-bold uppercase tracking-wider pt-1">
-                END OF CHECKLIST
+              <!-- (b) During Flight -->
+              <div class="pt-1.5 border-t border-slate-100 dark:border-slate-700 space-y-1">
+                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pb-0.5">(b) 'ECU A' Caution During Flight:</div>
+                
+                <!-- NOTE AFM 4B.3.2 -->
+                <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs mb-1">
+                  <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                    <span>ℹ️</span>
+                    <span>NOTE:</span>
+                  </strong>
+                  <div>In case of a failure in the electronic ECU (Engine Control Unit) 'A' the system automatically switches to ECU 'B'.</div>
+                </div>
+
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                  <span>Press the <strong class="font-bold">ECU TEST</strong> button for more than 2 seconds to reset the caution message.</span>
+                </div>
+
+                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pt-1 pb-0.5">If the ECU A caution re-appears or cannot be reset:</div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                  <span>Land on nearest suitable airfield.</span>
+                </div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                  <span>The engine must be serviced after landing.</span>
+                </div>
+
+                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pt-1 pb-0.5">If the ECU A caution can be reset:</div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                  <span>Continue flight.</span>
+                </div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                  <span>The engine must be serviced after landing.</span>
+                </div>
               </div>
             </div>
 
             <!-- SUBCOL 2: AFM 4B.3.3 ECU B FAILURE -->
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between h-full">
-              <div>
-                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.3 ECU B FAILURE (ECU B)</strong>
-                
-                <div lang="en" class="space-y-1.5 text-[18px] mt-1.5">
-                  <!-- (a) On Ground -->
-                  <div class="p-1.5 rounded-lg bg-red-50/80 dark:bg-red-950/30 border border-red-200 dark:border-red-900/40 text-red-950 dark:text-red-200 leading-snug">
-                    <span class="font-bold text-red-700 dark:text-red-400 block text-[18px]">(a) 'ECU B' Caution on the Ground:</span>
-                    <div class="pl-2 mt-0.5 font-medium">&bull; Terminate flight preparation.</div>
-                  </div>
-
-                  <!-- (b) During Flight -->
-                  <div class="pt-0.5 space-y-1">
-                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 block text-[18px]">(b) 'ECU B' Caution During Flight:</span>
-
-                    <div class="flex items-start gap-1.5 leading-snug pt-1">
-                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
-                      <span>Press the <strong class="font-bold">ECU TEST</strong> button for more than 2 seconds to reset the caution message.</span>
-                    </div>
-
-                    <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5 mt-1">
-                      <div class="font-semibold text-red-600 dark:text-red-400">If the ECU B caution re-appears, or cannot be reset:</div>
-                      <div class="pl-2">2. Land on nearest suitable airfield.</div>
-                      <div class="pl-2">3. The engine must be serviced after landing.</div>
-                    </div>
-
-                    <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5">
-                      <div class="font-semibold text-emerald-600 dark:text-emerald-400">If the ECU B caution can be reset:</div>
-                      <div class="pl-2">2. Continue flight.</div>
-                      <div class="pl-2">3. The engine must be serviced after landing.</div>
-                    </div>
-                  </div>
-                </div>
+            <div class="w-full h-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.3 ECU B FAILURE (ECU B)</strong>
+              
+              <!-- (a) On Ground -->
+              <div class="space-y-1">
+                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pb-0.5">(a) 'ECU B' Caution on the Ground:</div>
+                <div class="text-[18px] font-bold text-red-600 dark:text-red-400 pl-3 py-0.5 leading-snug">&bull; Terminate flight preparation.</div>
               </div>
 
-              <div class="text-right text-[18px] text-slate-400 font-bold uppercase tracking-wider pt-1">
-                END OF CHECKLIST
+              <!-- (b) During Flight -->
+              <div class="pt-1.5 border-t border-slate-100 dark:border-slate-700 space-y-1">
+                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pb-0.5">(b) 'ECU B' Caution During Flight:</div>
+
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                  <span>Press the <strong class="font-bold">ECU TEST</strong> button for more than 2 seconds to reset the caution message.</span>
+                </div>
+
+                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pt-1 pb-0.5">If the ECU B caution re-appears, or cannot be reset:</div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                  <span>Land on nearest suitable airfield.</span>
+                </div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                  <span>The engine must be serviced after landing.</span>
+                </div>
+
+                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pt-1 pb-0.5">If the ECU B caution can be reset:</div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                  <span>Continue flight.</span>
+                </div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                  <span>The engine must be serviced after landing.</span>
+                </div>
               </div>
             </div>
           </div>
