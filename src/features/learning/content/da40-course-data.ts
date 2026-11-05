@@ -7581,79 +7581,117 @@ export const DA40_LESSON_5 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.16: 5.16 Fallo Eléctrico Total y Switch EMERGENCY -->
+<!-- DIAPOSITIVA 5.16: 5.16 Fallos del Sistema Eléctrico (AFM 3.7.2) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
-      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.16 Fallo Eléctrico Total y Switch EMERGENCY</h1>
+      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.16 Fallos del Sistema Eléctrico (AFM 3.7.2)</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Complete Failure of the Electrical System</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Failures in the Electrical System (AFM 3.7.2)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+    <!-- Columna izquierda: 2 subcolumnas de igual altura con las 3 emergencias oficiales (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="space-y-3 w-full flex flex-col justify-start items-start text-[18px]">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">COMPLETE ELECTRICAL SYSTEM FAILURE</span>
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">CHECKLIST FAILURES IN THE ELECTRICAL SYSTEM (AFM 3.7.2)</span>
           </div>
 
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">CHECKLIST COMPLETE ELECTRICAL SYSTEM FAILURE</strong>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-stretch justify-start w-full">
+            <!-- Subcolumna 1: (a) Complete Failure of the Electrical System -->
+            <div class="w-full h-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(a) COMPLETE ELECTRICAL FAILURE</strong>
 
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1.</span>
-              <span>EMERGENCY switch &mdash; <span class="italic font-bold">ON (if installed)</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2.</span>
-              <span>Circuit breakers &mdash; <span class="italic font-bold">check</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3.</span>
-              <span>Electrical equipment &mdash; <span class="italic font-bold">switch OFF unneeded equipment</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4.</span>
-              <span>Flood light &mdash; <span class="italic font-bold">ON, if required</span></span>
-            </div>
-            <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5.</span>
-              <span>Land on nearest suitable airfield</span>
-            </div>
-          </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                <span>Circuit breakers &mdash; <span class="italic font-bold">check if all OK (pressed in)</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                <span>ESSENTIAL BUS &mdash; <span class="italic font-bold">ON</span></span>
+              </div>
 
-          <!-- CAUTION AFM 4B.3.1 -->
-          <div class="w-full p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs">
-            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 uppercase tracking-wide mb-1 text-[18px] shrink-0">
-              <span>⚠️</span>
-              <span>CAUTION:</span>
-            </strong>
-            <div>For cases, in which the battery capacity is not sufficient to reach a suitable airfield, an emergency battery is installed in the IFR model, serving as an additional back-up system for the attitude gyro (artificial horizon) and flood light. This battery is switched on with the Emergency Switch, located on the left side of the instrument panel.</div>
+              <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pt-1 pb-0.5 border-t border-slate-100 dark:border-slate-700">If there is still no electrical power available:</div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                <span>EMERGENCY switch &mdash; <span class="italic font-bold">ON, if installed</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
+                <span>Flood light, if necessary &mdash; <span class="italic font-bold">ON</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">5.</span>
+                <span>Power &mdash; <span class="italic font-medium">set based on lever positions and engine noise</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">6.</span>
+                <span>Prepare landing with flaps in given position &mdash; <span class="italic font-medium">refer to 4B.6</span></span>
+              </div>
+              <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">7.</span>
+                <span>Land on nearest appropriate airfield</span>
+              </div>
+            </div>
+
+            <!-- Subcolumna 2: (b) Starter Malfunction & (c) Voltage -->
+            <div class="w-full h-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 flex flex-col justify-start">
+              <!-- (b) Starter Malfunction -->
+              <div class="space-y-1">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(b) STARTER MALFUNCTION</strong>
+                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pb-0.5">If starter warning light (START) remains illuminated or blinking:</div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                  <span>Power lever &mdash; <span class="italic font-bold">IDLE</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                  <span>ENGINE MASTER &mdash; <span class="italic font-bold">OFF</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                  <span>ELECTRIC MASTER &mdash; <span class="italic font-bold">OFF</span></span>
+                </div>
+                <div class="text-[18px] font-bold text-red-600 dark:text-red-400 pt-0.5">Terminate flight preparation!</div>
+              </div>
+
+              <!-- (c) Voltage -->
+              <div class="pt-2 border-t border-slate-200 dark:border-slate-700 space-y-1">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(c) VOLTAGE (RED RANGE)</strong>
+                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pb-0.5">If voltage in red range (&gt;15.5 V or &lt;11 V) is indicated:</div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                  <span>Essential bus &mdash; <span class="italic font-bold">ON</span></span>
+                </div>
+                <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
+                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                  <span>Land on the nearest appropriate airfield</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Columna derecha: Espacio reservado para diagrama/imagen (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">ARQUITECTURA DE POTENCIA DE RESPALDO</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">DIAGRAMA Y SISTEMAS (AFM 3.7.2)</span>
         </div>
 
         <div class="w-full flex flex-col justify-start items-start space-y-3 text-[18px] leading-relaxed mt-1">
-          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">SWITCH EMERGENCY:</strong>
-            <div>Ubicado en el panel de interruptores bajo guarda de seguridad precintada. Conecta directamente la batería de emergencia al horizonte artificial.</div>
-          </div>
-          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">GESTIÓN DE CARGAS:</strong>
-            <div>Desconectar luces exteriores, calefacción pitot y equipos de radio no esenciales para preservar la batería principal y bus esencial.</div>
-          </div>
-          <div class="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900/50">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">INSTRUMENTOS DE RESPALDO:</strong>
-            <div>Anemómetro, altímetro y brújula magnética operan por presión neumática sin necesidad de corriente eléctrica.</div>
+          <!-- Espacio reservado para diagrama/imagen -->
+          <div class="w-full p-4 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 min-h-[480px]">
+            <svg class="w-12 h-12 mb-2 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            <span class="text-[18px] font-semibold">Espacio reservado para Diagrama de Sistemas</span>
+            <span class="text-sm text-slate-400">Esquema de distribución eléctrica: Batería, Essential Bus, Switch EMERGENCY y Relé de Arranque</span>
           </div>
         </div>
       </div>
@@ -7670,69 +7708,99 @@ export const DA40_LESSON_5 = {
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.17 Monóxido de Carbono (CO) y Aviso DOOR en Vuelo</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Suspicion of CO & DOOR Warning Light</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Suspicion of CO &amp; DOOR Warning Light</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-3 w-full flex flex-col justify-start items-start text-[18px]">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PROCEDIMIENTOS DE CABINA Y AVISO DE PUERTA</span>
+        <div class="space-y-2 w-full flex flex-col justify-start items-start text-[18px] h-full">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PROCEDIMIENTOS DE CABINA Y AVISO DE PUERTA (AFM 3.7.3 &amp; 3.7.4)</span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-start justify-start">
-            <!-- SUSPICION OF CO -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">SUSPICION OF CO</strong>
-              
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1.</span>
-                <span>Cabin heat &mdash; <span class="italic font-bold">OFF</span></span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 items-stretch justify-start w-full flex-1">
+            <!-- SUBCOL 1: AFM 3.7.3 SUSPICION OF CO -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between h-full">
+              <div>
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.7.3 SUSPICION OF CO</strong>
+                
+                <div lang="en" class="space-y-1 text-[18px] mt-1.5">
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                    <span>Cabin heat &mdash; <span class="italic font-bold">OFF</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                    <span>Ventilation &mdash; <span class="italic font-bold">open</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                    <span>Emergency windows &mdash; <span class="italic font-bold">open</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
+                    <span>Airspeed &mdash; <span class="italic font-bold">reduce below 120 KIAS</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">5.</span>
+                    <span>Forward canopy &mdash; <span class="italic font-medium">unlatch, push up and lock in 'Cooling Gap' position</span></span>
+                  </div>
+                </div>
               </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2.</span>
-                <span>Emergency windows &mdash; <span class="italic font-bold">open</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3.</span>
-                <span>Air vents &mdash; <span class="italic font-bold">open</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">4.</span>
-                <span>Canopy &mdash; <span class="italic font-medium">unlatch if smoke extreme</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">5.</span>
-                <span>Land &mdash; <span class="italic font-bold text-red-600 dark:text-red-400">immediately</span></span>
+
+              <!-- NOTE & CAUTION AFM 3.7.3 -->
+              <div class="space-y-1.5 mt-2">
+                <div class="p-2 rounded-lg border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-snug">
+                  <span class="font-bold text-blue-700 dark:text-blue-400">NOTE:</span> The maximum demonstrated airspeed for opening the front canopy in flight is 120 KIAS.
+                </div>
+                <div class="p-2 rounded-lg border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug">
+                  <span class="font-bold text-amber-700 dark:text-amber-400">CAUTION:</span> In case of suspicion of carbon monoxide contamination in the cabin, the front canopy may be unlatched during flight. This allows it to partially open, in order to improve ventilation. The canopy will remain open in this position. Flight characteristics will not be affected significantly.
+                </div>
               </div>
             </div>
 
-            <!-- DOOR WARNING -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">DOOR WARNING LIGHT ON</strong>
-              
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1.</span>
-                <span>Airspeed &mdash; <span class="italic font-bold">reduce immediately</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2.</span>
-                <span>Check canopy and passenger door</span>
+            <!-- SUBCOL 2: AFM 3.7.4 'DOOR'-WARNING LIGHT ON -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between h-full">
+              <div>
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.7.4 'DOOR' LIGHT ON</strong>
+                
+                <div lang="en" class="space-y-1 text-[18px] mt-1.5">
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                    <span>Airspeed &mdash; <span class="italic font-bold">reduce immediately</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                    <span>Canopy &mdash; <span class="italic font-medium">check visually if closed</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                    <span>Rear passenger door &mdash; <span class="italic font-medium">check visually if closed</span></span>
+                  </div>
+
+                  <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5 mt-1">
+                    <div class="font-semibold text-[#0B2E59] dark:text-sky-300">Canopy Unlocked:</div>
+                    <div class="pl-2">4. Airspeed &mdash; <span class="italic font-bold">below 140 KIAS</span></div>
+                    <div class="pl-2">5. Land at the next suitable airfield.</div>
+                  </div>
+
+                  <div class="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] space-y-0.5">
+                    <div class="font-semibold text-[#0B2E59] dark:text-sky-300">Rear Door Unlocked:</div>
+                    <div class="pl-2">4. Airspeed &mdash; <span class="italic font-bold">below 140 KIAS</span></div>
+                    <div class="pl-2">5. Land at the next suitable airfield.</div>
+                  </div>
+                </div>
               </div>
 
-              <div class="text-[18px] text-slate-700 dark:text-slate-300 pt-1 border-t border-slate-100 dark:border-slate-700 leading-snug space-y-1">
-                <div>&bull; <strong>Canopy Unlocked:</strong> Airspeed &le; 140 KIAS. Land at next suitable airfield.</div>
-                <div>&bull; <strong>Rear Door Unlocked:</strong> Airspeed &le; 140 KIAS. Land at next suitable airfield.</div>
-              </div>
-
-              <!-- WARNING AFM 3.7.4 -->
-              <div class="p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs mt-1">
-                <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-1 text-[18px] shrink-0">
-                  <span>⚠️</span>
-                  <span>WARNING:</span>
-                </strong>
-                <div>Do not attempt to lock the rear passenger door in flight. The latch has to be pulled back to the lock position, potentially opening the door completely.</div>
+              <!-- WARNING & NOTE AFM 3.7.4 -->
+              <div class="space-y-1.5 mt-2">
+                <div class="p-2 rounded-lg border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug">
+                  <span class="font-bold text-red-700 dark:text-red-400">WARNING:</span> Do not try to lock the rear door in flight. The safety latch may disengage and the door opens. Usually this results in a separation of the door from the airplane.
+                </div>
+                <div class="p-2 rounded-lg border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-snug">
+                  <span class="font-bold text-blue-700 dark:text-blue-400">NOTE:</span> If the rear door has been lost the airplane can be safely flown to the next suitable airfield.
+                </div>
               </div>
             </div>
           </div>
@@ -7740,25 +7808,23 @@ export const DA40_LESSON_5 = {
       </div>
     </div>
 
+    <!-- RIGHT COLUMN: RESERVED FOR SYSTEMS DIAGRAM (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">MONITORIZACIÓN Y DETECTOR DE CO</span>
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-2">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">DIAGRAMAS DE SISTEMAS · VENTILACIÓN, CÚPULA Y PUERTA POSTERIOR</span>
         </div>
 
-        <div class="w-full flex flex-col justify-start items-start space-y-3 text-[18px] leading-relaxed mt-1">
-          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">DETECTOR QUÍMICO DE CO:</strong>
-            <div>Punto químico adhesivo en panel de instrumentos. El viraje de tono naranja a gris/negro confirma la presencia de monóxido de carbono en el aire circulante.</div>
+        <div class="w-full flex-1 flex flex-col justify-center items-center p-6 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
+          <div class="w-16 h-16 mb-3 rounded-full bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl font-bold">
+            🚪
           </div>
-          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">CERROJOS DE CÚPULA:</strong>
-            <div>La luz DOOR en el panel anunciador monitoriza los microinterruptores de la cúpula frontal y de la puerta de acceso posterior para pasajeros.</div>
-          </div>
-          <div class="w-full p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 text-amber-900 dark:text-amber-200 shadow-2xs space-y-1">
-            <strong class="block mb-1">LÍMITE DE VELOCIDAD 140 KIAS:</strong>
-            <div>Mantener la velocidad estrictamente por debajo de <strong>140 KIAS</strong> reduce la succión aerodinámica sobre los marcos evitando deformaciones o aperturas accidentales.</div>
-          </div>
+          <strong class="text-[#0B2E59] dark:text-sky-300 text-[18px] block mb-1">
+            Espacio Reservado para Esquema Técnico
+          </strong>
+          <p class="text-slate-600 dark:text-slate-400 text-[18px] max-w-md">
+            Mecanismo de apertura en 'Cooling Gap' de cúpula frontal, cerrojo de puerta posterior de pasajeros con microinterruptor sensor y detector de CO en cabina.
+          </p>
         </div>
       </div>
     </div>
