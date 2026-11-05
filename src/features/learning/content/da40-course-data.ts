@@ -8403,75 +8403,141 @@ export const DA40_LESSON_5 = {
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
-      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
+      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
       <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.22 Anomalías de Temperatura: Refrigerante y Aceite</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Coolant & Oil Temperature (AFM 4B.2.2 & 4B.2.3)</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Coolant &amp; Oil Temperature (AFM 4B.2.2 &amp; 4B.2.3)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+    <!-- Columna Izquierda: Listas AFM 4B.2.2 y 4B.2.3 (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-3 w-full flex flex-col justify-start items-start text-[18px]">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">COOLANT & OIL TEMPERATURE IN RED RANGE</span>
+        <div class="space-y-2 w-full flex flex-col justify-start items-start text-[18px] h-full">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">PROCEDIMIENTOS TÉRMICOS DE MOTOR (AFM 4B.2.2 &amp; 4B.2.3)</span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-start justify-start">
-            <!-- COOLANT TEMPERATURE CT -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">TEMPERATURA REFRIGERANTE (CT)</strong>
-              
-              <div class="text-[18px] font-semibold text-red-600 dark:text-red-400">Si WATER LEVEL encendida:</div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1.</span>
-                <span>Power lever &mdash; <span class="italic font-bold">reduce to min. necessary</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2.</span>
-                <span>Prever parada de motor y preparar aterrizaje de emergencia con motor parado</span>
-              </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 items-stretch justify-start w-full flex-1">
+            <!-- Subcolumna 1: AFM 4B.2.2 COOLANT TEMPERATURE CT -->
+            <div class="w-full h-full p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between">
+              <div class="space-y-1.5">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.2.2 COOLANT TEMP (CT)</strong>
 
-              <div class="text-[18px] font-semibold text-slate-700 dark:text-slate-300 pt-1 border-t border-slate-100 dark:border-slate-700">Si WATER LEVEL apagada:</div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1.</span>
-                <span>Airspeed &mdash; <span class="italic font-bold">increase</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2.</span>
-                <span>Power lever &mdash; <span class="italic font-bold">reduce to min. necessary</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3.</span>
-                <span>Aterrizar en el aeródromo adecuado más cercano</span>
+                <div lang="en" class="space-y-1 text-[18px]">
+                  <div class="font-semibold text-[#0B2E59] dark:text-sky-300 text-[18px]">High Coolant Temperature:</div>
+                  <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-1">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Check coolant qty. caution light <strong class="font-semibold">(WATER LEVEL)</strong>.</span>
+                  </div>
+
+                  <!-- If off -->
+                  <div class="pt-1 border-t border-slate-100 dark:border-slate-700 space-y-1">
+                    <div class="font-semibold text-slate-600 dark:text-slate-300 text-[18px]">If off:</div>
+                    <div class="text-[18px] font-medium text-slate-700 dark:text-slate-300 pl-2 italic">During climb:</div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Reduce power by 10 %.</span>
+                    </div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Increase airspeed by 10 KIAS.</span>
+                    </div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>If temp does not reach green range within 60 s, reduce power as far as possible and increase airspeed.</span>
+                    </div>
+
+                    <div class="text-[18px] font-medium text-slate-700 dark:text-slate-300 pl-2 italic pt-0.5">During cruise:</div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Reduce power.</span>
+                    </div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Increase airspeed.</span>
+                    </div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Check coolant temperature in green range.</span>
+                    </div>
+                  </div>
+
+                  <!-- If on -->
+                  <div class="pt-1 border-t border-slate-100 dark:border-slate-700 space-y-1">
+                    <div class="font-semibold text-red-600 dark:text-red-400 text-[18px]">If on:</div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Reduce power.</span>
+                    </div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Expect loss of coolant.</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- OIL TEMPERATURE OT -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">TEMPERATURA DE ACEITE (OT)</strong>
-              
-              <div class="text-[18px] font-semibold text-slate-700 dark:text-slate-300">Si OT en rango rojo (&gt; 140 &deg;C):</div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">1.</span>
-                <span>Airspeed &mdash; <span class="italic font-bold">increase</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">2.</span>
-                <span>Power lever &mdash; <span class="italic font-bold">reduce to min. necessary</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-2 py-0.5 leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[24px]">3.</span>
-                <span>Aterrizar en el aeródromo adecuado más cercano</span>
-              </div>
+            <!-- Subcolumna 2: AFM 4B.2.3 OIL TEMPERATURE OT -->
+            <div class="w-full h-full p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between">
+              <div class="space-y-1.5">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.2.3 OIL TEMP (OT)</strong>
 
-              <!-- CAUTION AFM 4B.2.2 & 4B.2.3 -->
-              <div class="p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-tight shadow-2xs mt-1">
-                <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-[18px] shrink-0">
-                  <span>⚠️</span>
-                  <span>CAUTION:</span>
-                </strong>
-                <div>If temperature does not return to green range, perform a precautionary landing (4B.1). Expect engine failure and prepare for an emergency landing in accordance with <strong>EMERGENCY LANDING WITH ENGINE OFF</strong>.</div>
+                <div lang="en" class="space-y-1 text-[18px]">
+                  <div class="font-semibold text-[#0B2E59] dark:text-sky-300 text-[18px]">High Oil Temperature:</div>
+                  <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-1">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                    <span>Check oil pressure.</span>
+                  </div>
+
+                  <!-- If oil pressure is low -->
+                  <div class="pt-1 border-t border-slate-100 dark:border-slate-700 space-y-1">
+                    <div class="font-semibold text-red-600 dark:text-red-400 text-[18px]">If the oil pressure is low:</div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Reduce power.</span>
+                    </div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Expect loss of oil with engine failure. Prepare for an emergency landing in accordance with 3.5.1 - EMERGENCY LANDING WITH ENGINE OFF.</span>
+                    </div>
+                  </div>
+
+                  <!-- If oil pressure is within green range -->
+                  <div class="pt-1 border-t border-slate-100 dark:border-slate-700 space-y-1">
+                    <div class="font-semibold text-slate-600 dark:text-slate-300 text-[18px]">If oil pressure is within green range:</div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Reduce power.</span>
+                    </div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Increase airspeed.</span>
+                    </div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Monitor oil temperature (OT).</span>
+                    </div>
+                  </div>
+
+                  <!-- Low Oil Temperature -->
+                  <div class="pt-1 border-t border-slate-100 dark:border-slate-700 space-y-1">
+                    <div class="font-semibold text-sky-700 dark:text-sky-300 text-[18px]">Low Oil Temperature:</div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Increase power.</span>
+                    </div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Reduce airspeed.</span>
+                    </div>
+                    <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-2">
+                      <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
+                      <span>Monitor oil temperature (OT).</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -8479,25 +8545,42 @@ export const DA40_LESSON_5 = {
       </div>
     </div>
 
+    <!-- Columna Derecha: WARNING & CAUTION AFM 4B.2.2 y Diagrama Térmico CED 125 (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">INDICADORES CED Y LÍMITES TÉRMICOS</span>
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-2">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">SISTEMAS TÉRMICOS · REFRIGERANTE Y LUBRICACIÓN</span>
         </div>
 
-        <div class="w-full flex flex-col justify-start items-start space-y-3 text-[18px] leading-relaxed mt-1">
-          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">AVISO WATER LEVEL:</strong>
-            <div>Indica pérdida física de líquido refrigerante en el vaso de expansión. Sin líquido, el intercambio térmico colapsa en menos de 2 minutos.</div>
+        <!-- WARNING AFM 4B.2.2 -->
+        <div class="w-full p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs mb-2 shrink-0">
+          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+            <span>⚠️</span>
+            <span>WARNING (AFM 4B.2.2):</span>
+          </strong>
+          <div>A further increase in coolant temperature must be expected. Prepare for an emergency landing in accordance with 3.5.1 - EMERGENCY LANDING WITH ENGINE OFF.</div>
+        </div>
+
+        <!-- CAUTION AFM 4B.2.2 -->
+        <div class="w-full p-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs mb-2 shrink-0">
+          <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+            <span>⚠️</span>
+            <span>CAUTION (AFM 4B.2.2):</span>
+          </strong>
+          <div>If the coolant temperature does not return to the green range, perform a precautionary landing on the nearest airfield in accordance with 4B.1 - PRECAUTIONARY LANDING.</div>
+        </div>
+
+        <!-- Placeholder Esquema Técnico CED 125 -->
+        <div class="w-full flex-1 flex flex-col justify-center items-center p-4 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
+          <div class="w-14 h-14 mb-2 rounded-full bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl font-bold">
+            🌡️
           </div>
-          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block mb-1">AUMENTO DE VELOCIDAD INDICADA:</strong>
-            <div>Acelerar el avión mejora el flujo de aire dinámico a través del radiador ventral, bajando la temperatura siempre que quede fluido en el circuito.</div>
-          </div>
-          <div class="w-full p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 text-amber-900 dark:text-amber-200 shadow-2xs space-y-1">
-            <strong class="block mb-1">LÍMITES MÁXIMOS AFM:</strong>
-            <div>Temperatura de refrigerante (CT): <strong>105 &deg;C</strong>. Temperatura de aceite (OT): <strong>140 &deg;C</strong>. Superar estos valores degrada la película de lubricación.</div>
-          </div>
+          <strong class="text-[#0B2E59] dark:text-sky-300 text-[18px] block mb-1">
+            Espacio Reservado para Esquema Térmico
+          </strong>
+          <p class="text-slate-600 dark:text-slate-400 text-[18px] max-w-md">
+            Instrumentación central CED 125: Indicador de temperatura de refrigerante (CT, máx 105 &deg;C), temperatura de aceite (OT, máx 140 &deg;C) y aviso WATER LEVEL en panel anunciador.
+          </p>
         </div>
       </div>
     </div>
