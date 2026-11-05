@@ -14,6 +14,7 @@ import { PreflightMission } from "./types";
 
 type Props = {
   mode?: "all" | "takeoff" | "landing";
+  leftPct?: number;
   onExerciseCompleted?: () => void;
   isAlreadyCompleted?: boolean;
 };
@@ -82,9 +83,12 @@ const INITIAL_LOADSHEET_STORE: Record<number, LoadsheetMissionInputs> = {
 
 export function DA40LoadsheetWidget({
   mode = "all",
+  leftPct = 50,
   onExerciseCompleted,
   isAlreadyCompleted = false,
 }: Props) {
+  const clampedLeftPct = Math.max(15, Math.min(85, Math.round(leftPct || 50)));
+  const rightPct = 100 - clampedLeftPct;
   const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on Mission 1 (Solved Example)
   const mission = DA40_PREFLIGHT_MISSIONS[selectedMissionIndex];
 
@@ -630,7 +634,14 @@ export function DA40LoadsheetWidget({
   }, [hoverPoint]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <div
+      className="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5"
+      data-left-pct={clampedLeftPct}
+      style={{
+        "--col-left": `${clampedLeftPct}fr`,
+        "--col-right": `${rightPct}fr`,
+      } as React.CSSProperties}
+    >
       {/* Columna Izquierda (lg:col-span-7): Altura Estricta 590px */}
       <div className="lg:col-span-7 flex flex-col">
         <div

@@ -71,7 +71,10 @@ export async function createLessonAction(
     throw new Error("Título, slug y contenido son requeridos.");
   }
 
-  const wordCount = contentHtml.split(/\s+/).filter(Boolean).length;
+  const wordCount = contentHtml
+    .replace(/<[^>]*>/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
   const calculatedSeconds = calculateReadingTime(contentHtml);
   const minSeconds =
     customMinSeconds && String(customMinSeconds).trim() !== ""
@@ -125,7 +128,10 @@ export async function updateLessonAction(
     throw new Error("Título, slug y contenido son requeridos.");
   }
 
-  const wordCount = contentHtml.split(/\s+/).filter(Boolean).length;
+  const wordCount = contentHtml
+    .replace(/<[^>]*>/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
   const calculatedSeconds = calculateReadingTime(contentHtml);
   const minSeconds =
     customMinSeconds && String(customMinSeconds).trim() !== ""

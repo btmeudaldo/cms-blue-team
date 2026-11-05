@@ -9232,7 +9232,94 @@ export const DA40_LESSON_6 = {
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Masa y Centrado · Parte 1</span>
   </div>
 
-  <div class="py-0.5" data-interactive-exercise="loadsheet_takeoff" data-aircraft="da40"></div>
+  <div data-interactive-exercise="loadsheet_takeoff" data-aircraft="da40">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+      <!-- Columna Izquierda (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+                📋 AFM CAP. 6 · PARTE 1: DESPEGUE (TOM & CG)
+              </span>
+              <div class="text-xs sm:text-[13px] text-slate-500 font-medium mt-0.5">
+                Cálculo de Masa de Despegue (TOM) y Brazo de Palanca
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-100 text-[#0B2E59] border border-sky-300">
+              SIMULADOR
+            </span>
+          </div>
+
+          <!-- Tabla de Datos -->
+          <div class="space-y-1.5 my-auto">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
+                Tabla de Carga y Momentos DA40
+              </strong>
+              <div class="grid grid-cols-4 gap-1 text-[11px] font-mono text-slate-700 dark:text-slate-200 pt-0.5">
+                <span class="font-bold">Elemento</span>
+                <span class="text-center font-bold">Masa (kg)</span>
+                <span class="text-center font-bold">Brazo (m)</span>
+                <span class="text-right font-bold">Momento (kg·m)</span>
+                <span>Masa Vacía Básica</span><span class="text-center">804,0</span><span class="text-center">2,410</span><span class="text-right">1937,64</span>
+                <span>Piloto + Copiloto</span><span class="text-center">160,0</span><span class="text-center">2,300</span><span class="text-right">368,00</span>
+                <span>Pasajeros Traseros</span><span class="text-center">0,0</span><span class="text-center">3,250</span><span class="text-right">0,00</span>
+                <span>Equipaje Estándar</span><span class="text-center">15,0</span><span class="text-center">3,680</span><span class="text-right">55,20</span>
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300">Zero Fuel Mass (ZFM)</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">979,0</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">2,411</span><span class="text-right font-bold text-[#0B2E59] dark:text-sky-300">2360,84</span>
+                <span>Fuel Despegue (Main)</span><span class="text-center">70,0</span><span class="text-center">2,630</span><span class="text-right">184,10</span>
+                <span class="font-bold text-emerald-700 dark:text-emerald-400">Takeoff Mass (TOM)</span><span class="text-center font-bold text-emerald-700 dark:text-emerald-400">1049,0</span><span class="text-center font-bold text-emerald-700 dark:text-emerald-400">2,426</span><span class="text-right font-bold text-emerald-700 dark:text-emerald-400">2544,94</span>
+              </div>
+            </div>
+
+            <div class="p-2 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 text-xs text-amber-900 dark:text-amber-200 space-y-0.5">
+              <strong>Taller Interactivo para el Alumno:</strong>
+              <div>Los campos se completan y verifican paso a paso en el reproductor web con tolerancia técnica estricta. El simulador activa la comprobación de la envolvente automáticamente al completar la tabla.</div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>MTOM Máxima: <strong>1150 kg</strong></span>
+            <span>Límites CG: <strong>2,40 m - 2,59 m</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+              📈 ENVOLVENTE DE CENTRO DE GRAVEDAD (CG)
+            </span>
+            <span class="text-xs text-slate-500 font-semibold">AFM Figura 6.4</span>
+          </div>
+
+          <!-- Centro Visual Gráfica -->
+          <div class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs my-2 text-center">
+            <div class="w-16 h-16 rounded-full bg-sky-100 dark:bg-sky-950/60 flex items-center justify-center text-[#2361A8] dark:text-sky-300 mb-2">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+              </svg>
+            </div>
+            <strong class="text-sm text-[#0B2E59] dark:text-sky-300">Gráfico Dinámico de Envolvente DA40</strong>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 max-w-sm">
+              En el simulador interactivo este panel traza con precisión vectorial el punto de despegue (TOM: 1049 kg, CG: 2,426 m) dentro de los límites certificados de la categoría Normal DA40.
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>Límite Delantero: <strong>2,40 m</strong> (hasta 980 kg)</span>
+            <span>Límite Trasero: <strong>2,59 m</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- pagebreak -->
@@ -9247,7 +9334,90 @@ export const DA40_LESSON_6 = {
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Masa y Centrado · Parte 2</span>
   </div>
 
-  <div class="py-0.5" data-interactive-exercise="loadsheet_landing" data-aircraft="da40"></div>
+  <div data-interactive-exercise="loadsheet_landing" data-aircraft="da40">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+      <!-- Columna Izquierda (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+                🛬 AFM CAP. 6 · PARTE 2: ATERRIZAJE (LM & CG)
+              </span>
+              <div class="text-xs sm:text-[13px] text-slate-500 font-medium mt-0.5">
+                Consumo de Ruta (Trip Fuel) y Masa al Aterrizaje (LM)
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300">
+              SIMULADOR
+            </span>
+          </div>
+
+          <!-- Tabla de Datos -->
+          <div class="space-y-1.5 my-auto">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
+                Balance de Consumo en Ruta y Aterrizaje
+              </strong>
+              <div class="grid grid-cols-4 gap-1 text-[11px] font-mono text-slate-700 dark:text-slate-200 pt-0.5">
+                <span class="font-bold">Parámetro</span>
+                <span class="text-center font-bold">Masa (kg)</span>
+                <span class="text-center font-bold">Brazo (m)</span>
+                <span class="text-right font-bold">Momento (kg·m)</span>
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300">Takeoff Mass (TOM)</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">1049,0</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">2,426</span><span class="text-right font-bold text-[#0B2E59] dark:text-sky-300">2544,94</span>
+                <span class="text-rose-600 dark:text-rose-400">(-) Trip Fuel (Ruta)</span><span class="text-center text-rose-600 dark:text-rose-400">-18,9</span><span class="text-center text-rose-600 dark:text-rose-400">2,630</span><span class="text-right text-rose-600 dark:text-rose-400">-49,71</span>
+                <span class="font-bold text-emerald-700 dark:text-emerald-400">Landing Mass (LM)</span><span class="text-center font-bold text-emerald-700 dark:text-emerald-400">1030,1</span><span class="text-center font-bold text-emerald-700 dark:text-emerald-400">2,422</span><span class="text-right font-bold text-emerald-700 dark:text-emerald-400">2495,23</span>
+              </div>
+            </div>
+
+            <div class="p-2 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/60 text-xs text-sky-900 dark:text-sky-200 space-y-0.5">
+              <strong>Desplazamiento del Centro de Gravedad:</strong>
+              <div>Al consumir combustible del depósito alar (brazo 2,63 m, situado por detrás del CG inicial), el CG se desplaza ligeramente hacia delante (<strong>ΔX = -0,004 m</strong>), manteniendo total estabilidad longitudinal en aproximación.</div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>MLM Máxima: <strong>1150 kg</strong></span>
+            <span>Variación CG: <strong>2,426 m → 2,422 m</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+              📉 COMPROBACIÓN DE ENVOLVENTE FINAL
+            </span>
+            <span class="text-xs text-slate-500 font-semibold">Desplazamiento en Vuelo</span>
+          </div>
+
+          <!-- Centro Visual Gráfica -->
+          <div class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs my-2 text-center">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/60 flex items-center justify-center text-emerald-700 dark:text-emerald-300 mb-2">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <strong class="text-sm text-[#0B2E59] dark:text-sky-300">Verificación Bipolar de Envolvente</strong>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-1 max-w-sm">
+              En el simulador interactivo se representa el vector que une el punto de despegue con el punto de aterrizaje, confirmando que la aeronave permanece 100% dentro de límites certificados durante todo el vuelo.
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <span>Punto Despegue: <strong>DENTRO</strong></span>
+            <span>Punto Aterrizaje: <strong>DENTRO</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- pagebreak -->

@@ -30,6 +30,7 @@ type Props = {
   aircraft?: "c172" | "da40";
   onExerciseCompleted?: () => void;
   isAlreadyCompleted?: boolean;
+  leftPct?: number;
 };
 
 export function PreflightInteractiveHub({
@@ -37,6 +38,7 @@ export function PreflightInteractiveHub({
   aircraft = "c172",
   onExerciseCompleted,
   isAlreadyCompleted = false,
+  leftPct,
 }: Props) {
   if (aircraft === "da40") {
     switch (exerciseType) {
@@ -44,6 +46,7 @@ export function PreflightInteractiveHub({
         return (
           <DA40LoadsheetWidget
             mode="all"
+            leftPct={leftPct}
             onExerciseCompleted={onExerciseCompleted}
             isAlreadyCompleted={isAlreadyCompleted}
           />
@@ -52,6 +55,7 @@ export function PreflightInteractiveHub({
         return (
           <DA40LoadsheetWidget
             mode="takeoff"
+            leftPct={leftPct}
             onExerciseCompleted={onExerciseCompleted}
             isAlreadyCompleted={isAlreadyCompleted}
           />
@@ -61,6 +65,7 @@ export function PreflightInteractiveHub({
         return (
           <DA40LoadsheetWidget
             mode="landing"
+            leftPct={leftPct}
             onExerciseCompleted={onExerciseCompleted}
             isAlreadyCompleted={isAlreadyCompleted}
           />

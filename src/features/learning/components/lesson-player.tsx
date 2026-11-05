@@ -181,6 +181,7 @@ export function LessonPlayer({
 
   // Interactive simulator widget state & gating
   const [exerciseContainer, setExerciseContainer] = useState<HTMLElement | null>(null);
+  const [exerciseLeftPct, setExerciseLeftPct] = useState<number>(50);
   const [completedExercises, setCompletedExercises] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
@@ -189,7 +190,17 @@ export function LessonPlayer({
       return;
     }
     const container = contentRef.current.querySelector<HTMLElement>("[data-interactive-exercise]");
-    setExerciseContainer(container);
+    if (container) {
+      const grid = container.querySelector<HTMLElement>("[data-left-pct]") || (container.hasAttribute("data-left-pct") ? container : null);
+      const rawPct = grid?.getAttribute("data-left-pct");
+      const parsedPct = rawPct ? parseInt(rawPct, 10) : 50;
+      const validPct = !isNaN(parsedPct) && parsedPct >= 15 && parsedPct <= 85 ? parsedPct : 50;
+      setExerciseLeftPct(validPct);
+      container.replaceChildren();
+      setExerciseContainer(container);
+    } else {
+      setExerciseContainer(null);
+    }
   }, [effectivePageIndex, safeContentHtml]);
 
   const activeExerciseType = useMemo(() => {
@@ -1474,6 +1485,7 @@ export function LessonPlayer({
                     key={`${activeAircraft}_${activeExerciseType}_slide_${effectivePageIndex}`}
                     exerciseType={activeExerciseType}
                     aircraft={activeAircraft}
+                    leftPct={exerciseLeftPct}
                     onExerciseCompleted={handleExerciseCompleted}
                     isAlreadyCompleted={false}
                   />,
