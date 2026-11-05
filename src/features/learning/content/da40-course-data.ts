@@ -8137,106 +8137,93 @@ export const DA40_LESSON_5 = {
 
 <!-- DIAPOSITIVA 5.20: 5.20 Conmutación Manual de ECU (ECU SWAP en Vuelo) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <!-- Header de Diapositiva -->
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
       <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.20 Conmutación Manual de ECU (ECU SWAP en Vuelo)</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimiento de Conmutación Manual de ECU</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Manual ECU Switch-over (AFM 3.2.3, 3.2.4 &amp; 7.9.2)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch pt-1" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
-    <!-- Columna Izquierda (lg:col-span-6): Checklist 3.2.3 (a) en 2 Columnas a 18px -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+    <!-- Columna Izquierda: Checklist 3.2.3(a) en 2 subcolumnas -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">ENGINE PROBLEMS IN FLIGHT — ENGINE RUNNING ROUGHLY</span>
+        <div class="space-y-2 w-full flex flex-col justify-start items-start text-[18px] h-full">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">ENGINE RUNNING ROUGHLY (AFM 3.2.3)</span>
           </div>
 
-          <!-- Estructura en 2 Columnas -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 flex-1 min-h-0">
-            <!-- Subcolumna 1: Pasos 1 a 4 -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2.5 flex flex-col justify-start">
-              <!-- 1. Airspeed -->
-              <div lang="en" class="text-[18px] leading-snug">
-                <div class="flex items-start gap-2">
-                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">1.</span>
-                  <span class="text-slate-800 dark:text-slate-200 font-bold">Airspeed</span>
-                </div>
-                <div class="ml-6 space-y-1 font-mono text-[18px] text-sky-700 dark:text-sky-300 font-bold mt-1">
-                  <div>&bull; 73 KIAS <span class="text-slate-500 font-normal font-sans text-[18px]">(1150 kg, 2535 lb)</span></div>
-                  <div>&bull; 68 KIAS <span class="text-slate-500 font-normal font-sans text-[18px]">(1000 kg, 2205 lb)</span></div>
-                  <div>&bull; 60 KIAS <span class="text-slate-500 font-normal font-sans text-[18px]">(850 kg, 1874 lb)</span></div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 items-stretch justify-start w-full flex-1">
+            <!-- Subcolumna 1: Pasos 1 al 4 -->
+            <div class="w-full h-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between">
+              <div class="space-y-1.5">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">INITIAL ACTIONS</strong>
+
+                <div lang="en" class="space-y-1 text-[18px]">
+                  <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                    <div>
+                      <span>Airspeed &mdash; <span class="italic font-bold text-[#1a80ff] dark:text-sky-400">73 KIAS (1150 kg) / 68 KIAS (1000 kg) / 60 KIAS (850 kg)</span></span>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                    <span>Power lever &mdash; <span class="italic font-bold text-sky-600 dark:text-sky-400">MAX</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
+                    <span>Engine caution light &mdash; <span class="italic font-medium">check</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
+                    <span>If in icing conditions &mdash; <span class="italic font-bold text-sky-600 dark:text-sky-400">Alternate Air ON</span></span>
+                  </div>
                 </div>
               </div>
 
-              <!-- 2. Power lever -->
-              <div lang="en" class="flex items-start gap-2 text-[18px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">2.</span>
-                <span class="text-slate-800 dark:text-slate-200">Power lever &mdash; <strong class="text-sky-600 dark:text-sky-400">MAX</strong></span>
-              </div>
-
-              <!-- 3. Engine caution light -->
-              <div lang="en" class="space-y-1 text-[18px] leading-snug">
-                <div class="flex items-start gap-2">
-                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">3.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Engine caution light &mdash; <span class="italic font-medium">check</span></span>
-                </div>
-                <div class="ml-6 p-2 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-700 text-[18px] text-slate-700 dark:text-slate-300 leading-snug">
-                  <strong>NOTE:</strong> If caution light is on, check engine instruments.
-                </div>
-              </div>
-
-              <!-- 4. Alternate Air -->
-              <div lang="en" class="flex items-start gap-2 text-[18px] leading-snug">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">4.</span>
-                <span class="text-slate-800 dark:text-slate-200">If in icing conditions &mdash; <strong class="text-sky-600 dark:text-sky-400">Alternate Air ON</strong></span>
+              <!-- NOTE AFM 3.2.3 paso 3 -->
+              <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs mt-2">
+                <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                  <span>ℹ️</span>
+                  <span>NOTE:</span>
+                </strong>
+                <div>If caution light is on, check engine instruments for indications outside the green range.</div>
               </div>
             </div>
 
-            <!-- Subcolumna 2: Pasos 5 a 8 + Warning -->
-            <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2 flex flex-col justify-start">
-              <div class="space-y-2">
-                <!-- 5. Fuel qty. MAIN tank -->
-                <div lang="en" class="flex items-start gap-2 text-[18px] leading-snug">
-                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">5.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Fuel qty. MAIN tank &mdash; <span class="italic font-medium">check</span></span>
-                </div>
+            <!-- Subcolumna 2: Pasos 5 al 8 + WARNING -->
+            <div class="w-full h-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between">
+              <div class="space-y-1.5">
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">ECU SWITCH-OVER</strong>
 
-                <!-- 6. Fuel transfer pump -->
-                <div lang="en" class="flex items-start gap-2 text-[18px] leading-snug">
-                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">6.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Fuel transfer pump &mdash; <strong class="text-sky-600 dark:text-sky-400">ON</strong></span>
-                </div>
-
-                <!-- 7. Emergency fuel valve -->
-                <div lang="en" class="flex items-start gap-2 text-[18px] leading-snug">
-                  <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">7.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Emergency fuel valve &mdash; <strong class="text-sky-600 dark:text-sky-400">check NORMAL</strong></span>
-                </div>
-
-                <!-- 8. ECU SWAP -->
-                <div lang="en" class="space-y-1 text-[18px] leading-snug">
-                  <div class="flex items-start gap-2">
-                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">8.</span>
-                    <span class="text-slate-800 dark:text-slate-200">ECU SWAP &mdash; <strong class="text-red-600 dark:text-red-400">ECU B</strong></span>
+                <div lang="en" class="space-y-1 text-[18px]">
+                  <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">5.</span>
+                    <span>Fuel shut-off valve &mdash; <span class="italic font-medium">check NORMAL</span></span>
                   </div>
-                  <div class="ml-6 p-2 rounded-lg bg-amber-50/80 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-[18px] text-amber-950 dark:text-amber-200 leading-snug">
-                    <strong>NOTE:</strong> If selecting ECU B does not solve the problem, switch back to <strong>AUTOMATIC</strong>.
+                  <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">6.</span>
+                    <span>Fuel pump &mdash; <span class="italic font-bold text-sky-600 dark:text-sky-400">ON</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">7.</span>
+                    <span>ECU SWAP &mdash; <span class="italic font-bold text-red-600 dark:text-red-400">ECU B</span></span>
+                  </div>
+                  <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                    <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">8.</span>
+                    <span>If engine continues to run roughly &mdash; <span class="italic font-bold">ECU SWAP AUTOMATIC</span></span>
                   </div>
                 </div>
               </div>
 
-              <!-- WARNING -->
-              <div class="p-2 rounded-lg border-l-4 border-red-500 bg-red-50 dark:bg-red-950/40 text-[18px] text-red-950 dark:text-red-200 leading-snug">
-                <strong class="text-red-700 dark:text-red-400 block mb-0.5 font-bold uppercase">WARNING:</strong>
-                If the problem does not clear itself immediately, and the engine is no longer producing sufficient power, perform a precautionary landing on the nearest airfield, but be prepared for an emergency landing with engine off.
-              </div>
-
-              <div class="text-right text-[18px] text-slate-500 font-bold uppercase tracking-wider">
-                END OF CHECKLIST
+              <!-- WARNING AFM 3.2.3 -->
+              <div class="w-full p-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[18px] leading-snug shadow-2xs mt-2">
+                <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                  <span>⚠️</span>
+                  <span>WARNING:</span>
+                </strong>
+                <div>If the problem does not clear itself immediately, and the engine is no longer producing sufficient power, perform a precautionary landing on the nearest airfield, but be prepared for an emergency landing with engine off.</div>
               </div>
             </div>
           </div>
@@ -8244,48 +8231,53 @@ export const DA40_LESSON_5 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): Fundamento del Sistema y Procedimiento de RPM Oscilantes a 18px -->
+    <!-- Columna Derecha: Lógica de Control (7.9.2) y Oscillating RPM (3.2.4) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
-        <div class="space-y-3 w-full flex flex-col justify-start items-start">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-0.5">
+        <div class="space-y-3 w-full flex flex-col justify-start items-start text-[18px]">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">SISTEMA ECU SWAP Y LÓGICA DE CONTROL</span>
           </div>
 
-          <!-- Lógica de Control del Sistema -->
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
+          <!-- Lógica Operacional AFM 7.9.2 -->
+          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">
-              LÓGICA OPERACIONAL DEL CONMUTADOR
+              LÓGICA OPERACIONAL DEL CONMUTADOR (AFM 7.9.2)
             </strong>
-            <p class="text-[18px] text-slate-700 dark:text-slate-200 leading-relaxed italic">
+            <p class="text-[18px] text-slate-700 dark:text-slate-300 leading-relaxed italic">
               &ldquo;For normal operation this switch is set to AUTOMATIC. The engine is controlled by ECU A. In case of a failure of the active engine control unit (ECU) there should be an automatic switch-over to the ECU B. If the automatic switch-over fails, switch-over can be done manually by switching to ECU B. This procedure should only be applied in an emergency.&rdquo;
             </p>
-            <div class="p-2.5 rounded-lg bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-[18px] text-slate-700 dark:text-slate-200 space-y-1.5 leading-snug">
-              <div><strong>Posición AUTOMATIC:</strong> Control activo por ECU A. Conmutación automática a ECU B si se detecta fallo interno crítico.</div>
-              <div><strong>Posición ECU B:</strong> Conmutación manual forzada a ECU B si el sistema automático no conmuta ante funcionamiento irregular.</div>
+            <div class="p-2 rounded-lg bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-[18px] text-slate-700 dark:text-slate-200 space-y-1 leading-snug">
+              <div>&bull; <strong>Posición AUTOMATIC:</strong> Control activo por ECU A con conmutación automática a ECU B ante fallo crítico detectado.</div>
+              <div>&bull; <strong>Posición ECU B:</strong> Conmutación manual forzada a ECU B si el sistema automático no conmuta ante marcha irregular.</div>
             </div>
           </div>
 
-          <!-- Procedimiento en caso de RPM Oscilantes -->
-          <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
+          <!-- Oscillating RPM AFM 3.2.4(a) -->
+          <div class="w-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">
-              OSCILLATING RPM (RPM OSCILANTES)
+              OSCILLATING RPM (AFM 3.2.4)
             </strong>
 
-            <div lang="en" class="flex items-start gap-2 text-[18px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">1.</span>
-              <span class="text-slate-800 dark:text-slate-200">Power setting &mdash; <span class="italic font-medium">change</span></span>
+            <div lang="en" class="space-y-1">
+              <div class="flex items-start gap-1.5 py-0.5 leading-snug">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
+                <span>Power setting &mdash; <span class="italic font-medium">change</span></span>
+              </div>
+              <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pt-0.5">If the problem does not clear:</div>
+              <div class="flex items-start gap-1.5 py-0.5 leading-snug pl-3">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
+                <span>ECU SWAP &mdash; <span class="italic font-bold text-red-600 dark:text-red-400">ECU B</span></span>
+              </div>
             </div>
-            <div class="text-[18px] text-slate-500 italic pl-6">If the problem does not clear:</div>
-            <div lang="en" class="flex items-start gap-2 text-[18px] leading-snug">
-              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">2.</span>
-              <span class="text-slate-800 dark:text-slate-200">ECU SWAP &mdash; <strong class="text-red-600 dark:text-red-400">ECU B</strong></span>
-            </div>
-            <div class="ml-6 p-2 rounded-lg bg-amber-50/80 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-[18px] text-amber-950 dark:text-amber-200 leading-snug">
-              <strong>NOTE:</strong> If the problem does not clear itself, switch back to <strong>AUTOMATIC</strong> and land on the nearest airfield.
-            </div>
-            <div class="text-right text-[18px] text-slate-500 font-bold uppercase tracking-wider pt-0.5">
-              END OF CHECKLIST
+
+            <!-- NOTE AFM 3.2.4 -->
+            <div class="w-full p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs mt-1">
+              <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 uppercase tracking-wide mb-0.5 text-[18px] shrink-0">
+                <span>ℹ️</span>
+                <span>NOTE:</span>
+              </strong>
+              <div>If the problem does not clear itself, switch back to AUTOMATIC and land on the nearest airfield.</div>
             </div>
           </div>
         </div>
@@ -8293,8 +8285,6 @@ export const DA40_LESSON_5 = {
     </div>
   </div>
 </div>
-
-
 
 <!-- pagebreak -->
 
