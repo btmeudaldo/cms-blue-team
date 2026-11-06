@@ -364,10 +364,29 @@ article::after,
 
 
 
-/* Force pure white numbers for exercise modal step badges */
-.exercise-step-badge,
-.exercise-step-badge * {
-  background-color: #0f172a !important;
+/* Force pure white numbers for exercise modal step badges with individual colors */
+.exercise-badge-1, .exercise-badge-1 * {
+  background-color: #047857 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+.exercise-badge-2, .exercise-badge-2 * {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+.exercise-badge-3, .exercise-badge-3 * {
+  background-color: #7c3aed !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+.exercise-badge-4, .exercise-badge-4 * {
+  background-color: #0f766e !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+.exercise-badge-5, .exercise-badge-5 * {
+  background-color: #d97706 !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
