@@ -363,3 +363,11 @@ article::after,
 
 
 
+
+/* Force pure white numbers for exercise modal step badges */
+.exercise-step-badge,
+.exercise-step-badge * {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
