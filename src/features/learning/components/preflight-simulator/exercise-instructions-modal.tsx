@@ -66,7 +66,10 @@ export function ExerciseInstructionsModal({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
           {/* Step 1 */}
           <div className="p-2.5 rounded-xl bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 flex items-start gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-emerald-800 dark:bg-emerald-400 text-white dark:text-slate-950 font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs ring-1 ring-emerald-950/20 dark:ring-emerald-300">
+            <span
+              style={{ backgroundColor: "#0f172a", color: "#ffffff" }}
+              className="w-7 h-7 rounded-full font-black text-xs sm:text-sm flex items-center justify-center shrink-0 mt-0.5 shadow-sm border border-slate-700"
+            >
               1
             </span>
             <div>
@@ -83,7 +86,10 @@ export function ExerciseInstructionsModal({
 
           {/* Step 2 */}
           <div className="p-2.5 rounded-xl bg-sky-50/90 dark:bg-sky-950/40 border border-sky-300 dark:border-sky-800 flex items-start gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-blue-800 dark:bg-sky-400 text-white dark:text-slate-950 font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs ring-1 ring-blue-950/20 dark:ring-sky-300">
+            <span
+              style={{ backgroundColor: "#0f172a", color: "#ffffff" }}
+              className="w-7 h-7 rounded-full font-black text-xs sm:text-sm flex items-center justify-center shrink-0 mt-0.5 shadow-sm border border-slate-700"
+            >
               2
             </span>
             <div>
@@ -100,7 +106,10 @@ export function ExerciseInstructionsModal({
 
           {/* Step 3 */}
           <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-300 dark:border-slate-700 flex items-start gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs ring-1 ring-slate-950/20">
+            <span
+              style={{ backgroundColor: "#0f172a", color: "#ffffff" }}
+              className="w-7 h-7 rounded-full font-black text-xs sm:text-sm flex items-center justify-center shrink-0 mt-0.5 shadow-sm border border-slate-700"
+            >
               3
             </span>
             <div>
@@ -115,7 +124,10 @@ export function ExerciseInstructionsModal({
 
           {/* Step 4 */}
           <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-300 dark:border-slate-700 flex items-start gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs ring-1 ring-slate-950/20">
+            <span
+              style={{ backgroundColor: "#0f172a", color: "#ffffff" }}
+              className="w-7 h-7 rounded-full font-black text-xs sm:text-sm flex items-center justify-center shrink-0 mt-0.5 shadow-sm border border-slate-700"
+            >
               4
             </span>
             <div>
@@ -130,7 +142,10 @@ export function ExerciseInstructionsModal({
 
           {/* Step 5 (Full Width across 2 columns) */}
           <div className="md:col-span-2 p-2.5 rounded-xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 flex items-start gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-amber-900 dark:bg-amber-400 text-white dark:text-slate-950 font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs ring-1 ring-amber-950/20 dark:ring-amber-300">
+            <span
+              style={{ backgroundColor: "#0f172a", color: "#ffffff" }}
+              className="w-7 h-7 rounded-full font-black text-xs sm:text-sm flex items-center justify-center shrink-0 mt-0.5 shadow-sm border border-slate-700"
+            >
               5
             </span>
             <div>
