@@ -65,12 +65,12 @@ export function ExerciseInstructionsModal({
         {/* Steps Grid: 2 columns on desktop so everything fits without scrolling */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
           {/* Step 1 */}
-          <div className="p-2.5 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 flex items-start gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+          <div className="p-2.5 rounded-xl bg-emerald-50/90 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 flex items-start gap-2.5">
+            <span className="w-6 h-6 rounded-full bg-emerald-800 dark:bg-emerald-400 text-white dark:text-slate-950 font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs ring-1 ring-emerald-950/20 dark:ring-emerald-300">
               1
             </span>
             <div>
-              <strong className="text-emerald-900 dark:text-emerald-200 block font-bold mb-0.5">
+              <strong className="text-emerald-950 dark:text-emerald-300 block font-bold mb-0.5">
                 {isPerformance ? "GCXO — Ejemplo Guiado Resuelto" : "Misión 1 (M1) — Tu Ejemplo Guiado Resuelto"}
               </strong>
               <span>
@@ -82,12 +82,12 @@ export function ExerciseInstructionsModal({
           </div>
 
           {/* Step 2 */}
-          <div className="p-2.5 rounded-xl bg-sky-50/80 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/60 flex items-start gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-[#1a80ff] text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+          <div className="p-2.5 rounded-xl bg-sky-50/90 dark:bg-sky-950/40 border border-sky-300 dark:border-sky-800 flex items-start gap-2.5">
+            <span className="w-6 h-6 rounded-full bg-blue-800 dark:bg-sky-400 text-white dark:text-slate-950 font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs ring-1 ring-blue-950/20 dark:ring-sky-300">
               2
             </span>
             <div>
-              <strong className="text-sky-900 dark:text-sky-200 block font-bold mb-0.5">
+              <strong className="text-blue-950 dark:text-sky-300 block font-bold mb-0.5">
                 {isPerformance ? "Aeropuertos de Examen — Tus Dos Ejercicios" : "Botones M2 y M3 — Tus Dos Ejercicios Prácticos"}
               </strong>
               <span>
@@ -99,8 +99,8 @@ export function ExerciseInstructionsModal({
           </div>
 
           {/* Step 3 */}
-          <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex items-start gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-slate-700 dark:bg-slate-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+          <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-300 dark:border-slate-700 flex items-start gap-2.5">
+            <span className="w-6 h-6 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs ring-1 ring-slate-950/20">
               3
             </span>
             <div>
@@ -114,8 +114,8 @@ export function ExerciseInstructionsModal({
           </div>
 
           {/* Step 4 */}
-          <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex items-start gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-slate-700 dark:bg-slate-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+          <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-300 dark:border-slate-700 flex items-start gap-2.5">
+            <span className="w-6 h-6 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs ring-1 ring-slate-950/20">
               4
             </span>
             <div>
@@ -129,12 +129,12 @@ export function ExerciseInstructionsModal({
           </div>
 
           {/* Step 5 (Full Width across 2 columns) */}
-          <div className="md:col-span-2 p-2.5 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 flex items-start gap-2.5">
-            <span className="w-6 h-6 rounded-full bg-amber-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+          <div className="md:col-span-2 p-2.5 rounded-xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 flex items-start gap-2.5">
+            <span className="w-6 h-6 rounded-full bg-amber-900 dark:bg-amber-400 text-white dark:text-slate-950 font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs ring-1 ring-amber-950/20 dark:ring-amber-300">
               5
             </span>
             <div>
-              <strong className="text-amber-900 dark:text-amber-200 block font-bold mb-0.5">
+              <strong className="text-amber-950 dark:text-amber-300 block font-bold mb-0.5">
                 Comprueba y valida ambas misiones
               </strong>
               <span>
