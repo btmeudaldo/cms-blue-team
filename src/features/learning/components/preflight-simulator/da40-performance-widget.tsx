@@ -363,6 +363,26 @@ export function DA40PerformanceWidget({
             </div>
           </div>
 
+          {/* Cuadro de Enunciado del Escenario de Pista */}
+          <div className="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs my-1 shrink-0">
+            <div className="flex items-center justify-between gap-2">
+              <strong className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
+                <span>📍</span>
+                <span>{scenario.name} · {scenario.runway}</span>
+              </strong>
+              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md border shrink-0 ${
+                selectedScenarioIndex === 0
+                  ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-300 dark:border-emerald-700"
+                  : "bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-sky-300 border-blue-200 dark:border-blue-800"
+              }`}>
+                {selectedScenarioIndex === 0 ? "Ejemplo Guiado Resuelto" : "Ejercicio Evaluable"}
+              </span>
+            </div>
+            <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-snug m-0 mt-0.5">
+              {scenario.elevationDesc} · OAT: {scenario.oatC} °C · Viento: {scenario.windDesc} · {scenario.surfaceDesc}
+            </p>
+          </div>
+
           {/* Form Content - Aligned to top */}
           <div className="flex-1 min-h-0 flex flex-col justify-start space-y-2 pt-1 overflow-y-auto">
 

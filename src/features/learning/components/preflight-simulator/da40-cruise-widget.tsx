@@ -292,11 +292,6 @@ export function DA40CruiseWidget({
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
                 ⏱️ CRUCERO Y AUTONOMÍA
               </span>
-              <div className="flex items-center gap-2 mt-0.5">
-                <span className="text-xs sm:text-[13px] text-slate-500 font-medium">
-                  {mission.name} · {alt} ft · {loadPct}% Potencia · {mission.scenario.distanceNm} NM
-                </span>
-              </div>
             </div>
             <div className="flex items-center gap-1.5 shrink-0">
               <button
@@ -378,6 +373,24 @@ export function DA40CruiseWidget({
                 );
               })}
             </div>
+          </div>
+
+          {/* Cuadro de Enunciado de la Misión */}
+          <div className="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs my-1 shrink-0">
+            <div className="flex items-center justify-between gap-2">
+              <strong className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
+                <span>🎯</span>
+                <span>{mission.name}</span>
+              </strong>
+              {mission.badge && (
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-sky-300 border border-blue-200 dark:border-blue-800 shrink-0">
+                  {mission.badge}
+                </span>
+              )}
+            </div>
+            <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-snug m-0 mt-0.5">
+              {mission.description} · <span className="font-semibold text-sky-700 dark:text-sky-300">Altitud: {alt} ft · Potencia: {loadPct}% · Distancia: {mission.scenario.distanceNm} NM</span>
+            </p>
           </div>
 
           {/* Form Content - Ajustado para no requerir scroll */}
