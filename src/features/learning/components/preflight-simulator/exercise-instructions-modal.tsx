@@ -54,19 +54,25 @@ export function ExerciseInstructionsModal({
           ✕
         </button>
 
-        {/* Header */}
-        <div className="flex items-center gap-3.5 border-b border-slate-100 dark:border-slate-800 pb-3 pr-8">
-          <div className="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-2xl shrink-0 shadow-inner">
-            🧭
+        {/* Header con el anuncio principal en negrita y grande */}
+        <div className="border-b border-slate-100 dark:border-slate-800 pb-3.5 pr-8 space-y-1.5">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-blue-100 dark:bg-blue-950/80 text-[#0B2E59] dark:text-sky-300 border border-blue-200 dark:border-blue-800">
+              <span>🚀</span>
+              <span>ZONA DE EJERCICIOS PRÁCTICOS</span>
+            </span>
+            <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+              · {title}
+            </span>
           </div>
-          <div>
-            <h3 className="text-[22px] sm:text-[24px] font-black text-slate-900 dark:text-white leading-tight">
-              {title}
-            </h3>
-            <p className="text-[18px] text-slate-600 dark:text-slate-400 mt-0.5">
-              Cómo resolver y validar las misiones de despacho operativo
-            </p>
-          </div>
+
+          <h2 className="text-[23px] sm:text-[26px] font-black text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight m-0">
+            ¡Vamos a entrar en una zona de ejercicios! Estas son las instrucciones:
+          </h2>
+
+          <p className="text-[18px] text-slate-600 dark:text-slate-300 font-medium m-0 leading-normal">
+            Sigue estos pasos para resolver las misiones de despacho operativo y validar tu avance:
+          </p>
         </div>
 
         {/* Steps Grid: 2 columns with 18px typography and colorful balloons */}
