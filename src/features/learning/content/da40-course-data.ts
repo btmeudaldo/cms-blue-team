@@ -17,7 +17,7 @@ export const DA40_DOCUMENTATION: CourseDocumentationItem[] = [
 ];
 
 // ============================================================================
-// LECCIÓN 1: GENERALIDADES Y ESPECIFICACIONES TÉCNICAS
+// 1. GENERALIDADES Y ESPECIFICACIONES TÉCNICAS
 // ============================================================================
 export const DA40_LESSON_1 = {
   id: "da400000-0000-0000-0000-000000000010",
@@ -128,7 +128,11 @@ export const DA40_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.2: 1.2 Especificaciones del Motor Continental CD-155 -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -177,7 +181,7 @@ export const DA40_LESSON_1 = {
           <!-- Warning eléctrico AFM -->
           <div class="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200">
             <span class="text-base shrink-0">🚨</span>
-            <span><strong>WARNING (AFM):</strong> El motor requiere energía eléctrica continua para operar (bomba de alta presión e inyección Common Rail). Si fallan la batería principal y el alternador, el motor dependerá exclusivamente de la batería de reserva FADEC (ECU Backup Battery). Prestar máxima atención a las indicaciones de fallo del alternador en el Annunciator Panel.</span>
+            <span><strong>WARNING (AFM):</strong> El motor requiere energía eléctrica continua para operar (bomba de alta presión e inyección Common Rail). Si fallan la batería principal y el alternador, el motor dependerá exclusivamente de la batería de reserva FADEC (ECU Backup Battery). Prestar máxima atención a los mensajes de fallo del alternador (ALT FAIL) y voltaje (LOW VOLTS) en el sistema de alertas del Garmin G1000 (PFD/MFD).</span>
           </div>
         </div>
       </div>
@@ -200,7 +204,11 @@ export const DA40_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.3: 1.3 Hélice MT-Propeller Tripala de Paso Constante -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -285,7 +293,11 @@ export const DA40_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.4: 1.4 Combustibles Autorizados y Sistema de Depósitos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -366,7 +378,11 @@ export const DA40_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.5: 1.5 Fluidos de Servicio: Aceite, Reductora y Refrigerante -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -422,10 +438,10 @@ export const DA40_LESSON_1 = {
             <div class="border-t border-slate-100 dark:border-slate-700 pt-1.5">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs pb-0.5 uppercase tracking-wide">PAUTAS DE INSPECCIÓN PREVUELO Y SERVICIO</strong>
               <div class="space-y-1 text-[11px] text-slate-700 dark:text-slate-200 pt-0.5">
-                <p>• <strong>Inspección exterior y cabina:</strong> En la inspección prevuelo exterior se verifican dos fluidos de forma manual en el morro: el nivel de aceite motor con la varilla (portezuela superior) y el nivel de reductora en la mirilla (portezuela inferior). El refrigerante se supervisa en cabina mediante la indicación <code>WATER LEVEL</code> (debe estar apagada).</p>
+                <p>• <strong>Inspección exterior y cabina:</strong> En la inspección prevuelo exterior se verifican dos fluidos de forma manual en el morro: el nivel de aceite motor con la varilla (portezuela superior) y el nivel de reductora en la mirilla (portezuela inferior). El refrigerante se supervisa en cabina mediante la alerta <code>WATER LEVEL</code> en el Garmin G1000 (debe estar ausente/apagada).</p>
                 <p>• <strong>Curva de retorno de aceite al cárter:</strong> Esperar entre 5 y 15 minutos tras la parada de motor para medir el nivel con la varilla (a los 5 min retorna el 80%, a los 15 min el 90% y a los 30 min el 100%). No sobrellenar el cárter.</p>
                 <p>• <strong>Líquido de frenos:</strong> Emplear exclusivamente fluido hidráulico mineral <code>AeroShell Fluid 41</code> (MIL-PRF-5606).</p>
-                <p>• <strong>Supervisión de niveles:</strong> En la mirilla de la caja reductora el nivel debe situarse por encima de la mitad de la mirilla de inspección; si se observa por debajo de la mitad, se debe informar al instructor. Igualmente, si se enciende el aviso <code>WATER LEVEL</code>, el vuelo no está permitido y debe intervenir personal de mantenimiento autorizado.</p>
+                <p>• <strong>Supervisión de niveles:</strong> En la mirilla de la caja reductora el nivel debe situarse por encima de la mitad de la mirilla de inspección; si se observa por debajo de la mitad, se debe informar al instructor. Igualmente, si se activa la alerta <code>WATER LEVEL</code> en el G1000, el vuelo no está permitido y debe intervenir personal de mantenimiento autorizado.</p>
               </div>
             </div>
           </div>
@@ -448,7 +464,7 @@ export const DA40_LESSON_1 = {
           <!-- Warning Niveles de Fluido -->
           <div class="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0">
             <span class="text-base shrink-0">🚨</span>
-            <span><strong>WARNING:</strong> El motor no debe arrancarse bajo ninguna circunstancia si el nivel de cualquiera de los fluidos es inferior al mínimo admisible o si la indicación WATER LEVEL permanece encendida en cabina.</span>
+            <span><strong>WARNING:</strong> El motor no debe arrancarse bajo ninguna circunstancia si el nivel de cualquiera de los fluidos es inferior al mínimo admisible o si la alerta WATER LEVEL permanece activa en el Garmin G1000.</span>
           </div>
         </div>
       </div>
@@ -456,7 +472,11 @@ export const DA40_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.6: 1.6 Mandos e Instrumentación de Motor en Cabina -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -466,7 +486,7 @@ export const DA40_LESSON_1 = {
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · CD-155</div>
       <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">1.6 Mandos e Instrumentación de Motor en Cabina</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Disposición de Instrumentos y Panel Anunciador</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Mandos de Motor y Sistema de Instrumentación Integrada Garmin G1000 (EIS)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -494,17 +514,17 @@ export const DA40_LESSON_1 = {
               </div>
             </div>
 
-            <!-- Instrumentos y avisadores -->
+            <!-- Instrumentación y avisadores G1000 -->
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">DISPLAYS CED 125, AED 125 Y PANEL ANUNCIADOR</strong>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">GARMIN G1000 EIS Y SISTEMA DE ALERTAS (CAS)</strong>
               <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-tight">
-                • <strong>CED 125:</strong> RPM de hélice, presión de aceite (OP), temperatura de aceite (OT), refrigerante (CT), reductora (GT) y carga (LOAD, %).
+                • <strong>G1000 EIS (Engine Indication System):</strong> Barra vertical permanente en MFD (o PFD en reversión) con % LOAD (potencia), RPM de hélice, presión y temperatura de aceite (OP/OT), refrigerante (CT), reductora (GT), combustible Main/Aux (gal), flujo (FF, US gal/h), temperatura de combustible y parámetros eléctricos (Volts y Amps).
               </p>
               <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-tight">
-                • <strong>AED 125:</strong> Combustible Main y Aux (gal), aviso Water Level, temperaturas de depósitos (°C), generador (A), voltios (V) y consumo horario (Fuel Flow, US gal/h).
+                • <strong>Sistema de Alertas CAS (Sustituye al panel anunciador):</strong> Warnings en rojo con alarma sonora continua (DOORS, START, TRIM FAIL), Cautions en ámbar con tono acústico (LOW VOLTS, ALT FAIL, ECU A/B, LOW FUEL, WATER LEVEL, PITOT) y Avisos de estado en blanco (FUEL TRANS, GLOW).
               </p>
               <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-tight">
-                • <strong>Annunciator Panel:</strong> Warnings en rojo con alarma sonora continua (DOORS, START, TRIM FAIL), Cautions en ámbar con pitido (ALTERNATOR, LOW VOLTS, ECU A/B, LOW FUEL, PITOT, ENGINE) y Status (FUEL TRANS, GLOW).
+                • <strong>Gestión en pantalla:</strong> Los avisos se leen y confirman mediante la tecla programable <code>ALERTS</code> en el marco inferior del PFD/MFD.
               </p>
             </div>
           </div>
@@ -512,26 +532,21 @@ export const DA40_LESSON_1 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Instrumentación de Motor CED/AED (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-5): Instrumentación de Motor G1000 EIS (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 w-full flex flex-col justify-start items-start">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DISPLAYS CED 125, AED 125 Y LIGHTPANEL</span>
+        <div class="space-y-2 w-full flex-1 flex flex-col justify-start items-start min-h-0">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GARMIN G1000 · PFD, MFD Y BARRA EIS</span>
           </div>
 
-          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-950 flex flex-col justify-start items-center p-1.5 lesson-img-wrapper mt-1" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-900/60 flex flex-col justify-center items-center p-1.5 lesson-img-wrapper" draggable="false" style="position: relative;">
             <img
-              src="/images/da40/da40-engine-instruments-composite.jpg"
-              alt="Displays CED 125, AED 125 y Annunciator Panel (Lightpanel) DA40 TDI"
-              class="w-full h-full max-h-[400px] object-contain rounded-lg"
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-g1000-cockpit-1-6.jpg"
+              alt="Garmin G1000 EIS (Engine, System, Fuel Display) y Sistema de Alertas CAS Diamond DA40 TDI CD-155"
+              class="w-full h-full max-h-[520px] object-contain rounded-lg"
               style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
             />
-          </div>
-
-          <!-- Nota Técnica de Instrumentación -->
-          <div class="w-full shrink-0 p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 text-[11px] leading-relaxed text-slate-700 dark:text-slate-300 shadow-2xs">
-            <strong class="text-[#0B2E59] dark:text-sky-300">Instrumentación Digital:</strong> El indicador <strong>CED 125</strong> centraliza los parámetros vitales del motor en barras analógicas y display numérico, el <strong>AED 125</strong> supervisa depósitos, sistema eléctrico y Water Level, y el <strong>Lightpanel</strong> alberga los avisadores de estado y prueba de FADEC.
           </div>
         </div>
       </div>
@@ -541,7 +556,7 @@ export const DA40_LESSON_1 = {
 };
 
 // ============================================================================
-// LECCIÓN 2: LIMITACIONES OPERACIONALES AFM
+// 2. LIMITACIONES OPERACIONALES AFM
 // ============================================================================
 export const DA40_LESSON_2 = {
   id: "da400000-0000-0000-0000-000000000020",
@@ -564,7 +579,7 @@ export const DA40_LESSON_2 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Tablas Oficiales AFM 2.2 (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-3">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AIRSPEED LIMITATIONS (VELOCIDADES LÍMITE)</span>
@@ -628,14 +643,15 @@ export const DA40_LESSON_2 = {
               </tbody>
             </table>
           </div>
-          <!-- NOTA OFICIAL FORMATO C172 (border-l-4) -->
-          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-[#2361A8] dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs shrink-0">
-              <span>ℹ️</span>
-              <span>NOTE:</span>
-            </strong>
-            <div>La velocidad de maniobra (v<sub>A</sub>) es la velocidad máxima a la cual la deflexión aerodinámica total o brusca de los mandos no excederá los límites estructurales de diseño. Recuerda que v<sub>A</sub> disminuye al reducir la masa del avión (108 KIAS hasta 1.150 kg; 94 KIAS hasta 980 kg).</div>
-          </div>
+        </div>
+
+        <!-- NOTA OFICIAL FORMATO C172 (border-l-4) -->
+        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
+          <strong class="text-[#2361A8] dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs shrink-0">
+            <span>ℹ️</span>
+            <span>NOTE:</span>
+          </strong>
+          <div>La velocidad de maniobra (v<sub>A</sub>) es la velocidad máxima a la cual la deflexión aerodinámica total o brusca de los mandos no excederá los límites estructurales de diseño. Recuerda que v<sub>A</sub> disminuye al reducir la masa del avión (108 KIAS hasta 1.150 kg; 94 KIAS hasta 980 kg).</div>
         </div>
       </div>
     </div>
@@ -645,19 +661,37 @@ export const DA40_LESSON_2 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INDICADOR DE VELOCIDAD Y LÍMITES</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INDICADORES DE VELOCIDAD (STANDBY Y GARMIN G1000)</span>
           </div>
 
           <!-- Introducción KIAS -->
           <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
             <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-              El anemómetro presenta lecturas en <strong>KIAS</strong> (Knots Indicated Airspeed). En vuelo, todas las limitaciones estructurales y de operación se comprueban directamente sobre el indicador de velocidad en cabina.
+              Las lecturas se presentan en <strong>KIAS</strong> (Knots Indicated Airspeed). En vuelo, las limitaciones de velocidad se comprueban en la cinta del PFD del Garmin G1000 y en el anemómetro analógico de respaldo (standby).
             </p>
           </div>
 
-          <!-- Imagen del Anemómetro (idéntica a 2.2) -->
-          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-anemometro.jpg" alt="Anemómetro oficial Diamond DA40 TDI con arcos de colores" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+          <!-- Imágenes de Velocidad: G1000 PFD (Digital) y Standby (Analógico) lado a lado -->
+          <div class="w-full flex-1 min-h-0 grid grid-cols-2 gap-2 items-center mt-1">
+            <!-- Cinta de Velocidad Garmin G1000 PFD (Digital) -->
+            <div class="h-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-between items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+              <div class="w-full flex-1 flex items-center justify-center min-h-0">
+                <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-g1000-airspeed-indicator.png" alt="Cinta de Velocidad Garmin G1000 Airspeed Indicator" class="w-full h-full max-h-[350px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+              </div>
+              <figcaption class="mt-1 text-center text-[10px] text-[#0B2E59] font-bold uppercase tracking-wide shrink-0">
+                Garmin G1000 PFD (Digital)
+              </figcaption>
+            </div>
+
+            <!-- Anemómetro Convencional / Standby (Analógico) -->
+            <div class="h-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-between items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+              <div class="w-full flex-1 flex items-center justify-center min-h-0">
+                <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-anemometro.jpg" alt="Anemómetro oficial Diamond DA40 TDI con arcos de colores" class="w-full h-full max-h-[350px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+              </div>
+              <figcaption class="mt-1 text-center text-[10px] text-slate-600 font-bold uppercase tracking-wide shrink-0">
+                Anemómetro Standby (Analógico)
+              </figcaption>
+            </div>
           </div>
         </div>
       </div>
@@ -665,7 +699,11 @@ export const DA40_LESSON_2 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 2.2: 2.2 Marcas del Indicador de Velocidad (Airspeed Indicator Markings) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -680,38 +718,39 @@ export const DA40_LESSON_2 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Tablas Oficiales AFM 2.3 (Altura Fija 590px) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-3">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-2">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AIRSPEED INDICATOR MARKINGS (ARCOS DEL ANEMÓMETRO)</span>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">AFM Tabla 2.3</span>
           </div>
 
           <!-- Tabla de Arcos del Anemómetro (Formato AFM Oficial 2.3) -->
           <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
-            <table class="w-full text-left text-[11px] leading-snug">
+            <table class="w-full text-left text-[11px] leading-tight">
               <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
                 <tr>
-                  <th class="py-2.5 px-3 w-[19%]">MARCA</th>
-                  <th class="py-2.5 px-2 text-center w-[15%] font-mono">RANGO KIAS</th>
-                  <th class="py-2.5 px-3 w-[66%]">SIGNIFICADO OFICIAL AFM</th>
+                  <th class="py-1.5 px-2.5 w-[19%]">MARCA</th>
+                  <th class="py-1.5 px-2 text-center w-[15%] font-mono">RANGO KIAS</th>
+                  <th class="py-1.5 px-2.5 w-[66%]">SIGNIFICADO OFICIAL AFM</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
                 <!-- Arco Blanco -->
                 <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
-                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
+                  <td class="py-1.5 px-2.5 align-top font-bold whitespace-nowrap">
                     <div class="flex items-center gap-2">
                       <span class="w-2.5 h-2.5 rounded-full bg-white border-2 border-slate-400 shrink-0 shadow-xs"></span>
                       <span class="text-xs text-slate-900 dark:text-white">Arco Blanco</span>
                     </div>
                     <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">White Arc</span>
                   </td>
-                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-slate-800 dark:text-slate-100 whitespace-nowrap">
+                  <td class="py-1.5 px-2 text-center align-middle font-mono font-bold text-sm text-slate-800 dark:text-slate-100 whitespace-nowrap">
                     49 – 91
                   </td>
-                  <td class="py-2.5 px-3 align-top">
+                  <td class="py-1.5 px-2.5 align-top">
                     <strong class="text-[#0B2E59] dark:text-sky-300 block mb-0.5">Operating range with flaps fully extended:</strong>
-                    <div class="text-[11px] text-slate-600 dark:text-slate-300 space-y-0.5">
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300 space-y-0">
                       <div>• <strong>Límite inferior (49 KIAS):</strong> v<sub>SO</sub> a masa máxima (1.150 kg) en configuración LDG.</div>
                       <div>• <strong>Límite superior (91 KIAS):</strong> v<sub>FE</sub> máxima con flaps en posición LDG. (Flaps T/O hasta 108 KIAS).</div>
                     </div>
@@ -720,19 +759,19 @@ export const DA40_LESSON_2 = {
 
                 <!-- Arco Verde -->
                 <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
-                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
+                  <td class="py-1.5 px-2.5 align-top font-bold whitespace-nowrap">
                     <div class="flex items-center gap-2">
                       <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 border border-emerald-600 shrink-0 shadow-xs"></span>
                       <span class="text-xs text-emerald-700 dark:text-emerald-400">Arco Verde</span>
                     </div>
                     <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">Green Arc</span>
                   </td>
-                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
+                  <td class="py-1.5 px-2 text-center align-middle font-mono font-bold text-sm text-emerald-600 dark:text-emerald-400 whitespace-nowrap">
                     52 – 129
                   </td>
-                  <td class="py-2.5 px-3 align-top">
+                  <td class="py-1.5 px-2.5 align-top">
                     <strong class="text-emerald-800 dark:text-emerald-300 block mb-0.5">Normal operating range:</strong>
-                    <div class="text-[11px] text-slate-600 dark:text-slate-300 space-y-0.5">
+                    <div class="text-[11px] text-slate-600 dark:text-slate-300 space-y-0">
                       <div>• <strong>Límite inferior (52 KIAS):</strong> v<sub>S</sub> con flaps retraídos (UP) a masa máxima.</div>
                       <div>• <strong>Límite superior (129 KIAS):</strong> v<sub>NO</sub> = v<sub>C</sub> crucero estructural máximo.</div>
                     </div>
@@ -741,17 +780,17 @@ export const DA40_LESSON_2 = {
 
                 <!-- Arco Amarillo -->
                 <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
-                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
+                  <td class="py-1.5 px-2.5 align-top font-bold whitespace-nowrap">
                     <div class="flex items-center gap-2">
                       <span class="w-2.5 h-2.5 rounded-full bg-amber-400 border border-amber-500 shrink-0 shadow-xs"></span>
                       <span class="text-xs text-amber-700 dark:text-amber-400">Arco Amarillo</span>
                     </div>
                     <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">Yellow Arc</span>
                   </td>
-                  <td class="py-2.5 px-2 text-center align-middle font-mono font-bold text-sm text-amber-600 dark:text-amber-400 whitespace-nowrap">
+                  <td class="py-1.5 px-2 text-center align-middle font-mono font-bold text-sm text-amber-600 dark:text-amber-400 whitespace-nowrap">
                     129 – 178
                   </td>
-                  <td class="py-2.5 px-3 align-top">
+                  <td class="py-1.5 px-2.5 align-top">
                     <strong class="text-amber-800 dark:text-amber-300 block mb-0.5">Caution range ("Only in smooth air"):</strong>
                     <div class="text-[11px] text-slate-600 dark:text-slate-300">
                       Operaciones exclusivamente con precaución y en aire en calma.
@@ -761,17 +800,17 @@ export const DA40_LESSON_2 = {
 
                 <!-- Línea Roja -->
                 <tr class="hover:bg-slate-50/60 dark:hover:bg-slate-800/40">
-                  <td class="py-2.5 px-3 align-top font-bold whitespace-nowrap">
+                  <td class="py-1.5 px-2.5 align-top font-bold whitespace-nowrap">
                     <div class="flex items-center gap-2">
                       <span class="w-2.5 h-2.5 rounded-full bg-red-600 border border-red-700 shrink-0 shadow-xs"></span>
                       <span class="text-xs text-red-600 dark:text-red-400">Línea Roja</span>
                     </div>
                     <span class="text-[10px] text-slate-500 dark:text-slate-400 font-normal block pl-4 mt-0.5">Red Line</span>
                   </td>
-                  <td class="py-2.5 px-2 text-center align-middle font-mono font-extrabold text-sm text-red-600 dark:text-red-400 whitespace-nowrap">
+                  <td class="py-1.5 px-2 text-center align-middle font-mono font-extrabold text-sm text-red-600 dark:text-red-400 whitespace-nowrap">
                     178
                   </td>
-                  <td class="py-2.5 px-3 align-top">
+                  <td class="py-1.5 px-2.5 align-top">
                     <strong class="text-red-700 dark:text-red-400 block mb-0.5">Maximum speed for all operations (v<sub>NE</sub>):</strong>
                     <div class="text-[11px] text-slate-600 dark:text-slate-300">
                       Velocidad máxima admisible en todas las operaciones. Prohibido superarla.
@@ -782,6 +821,23 @@ export const DA40_LESSON_2 = {
             </table>
           </div>
         </div>
+
+        <!-- Criterio Operacional del AFM (Movido a columna izquierda) -->
+        <div class="w-full shrink-0 p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-1 text-xs">
+          <div class="font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5 text-xs border-b border-slate-100 dark:border-slate-700 pb-1">
+            <span>Criterio Operacional del AFM:</span>
+          </div>
+          <div class="text-[11px] text-slate-700 dark:text-slate-300 leading-tight space-y-1 pt-0.5">
+            <div>
+              <strong class="text-slate-900 dark:text-white">• Régimen con Flaps (&lt; 91 KIAS):</strong>
+              Mantener la velocidad estrictamente dentro del Arco Blanco al operar en configuración LDG (flaps de aterrizaje) para evitar sobrecargas aerodinámicas.
+            </div>
+            <div>
+              <strong class="text-slate-900 dark:text-white">• Vuelo en Turbulencia (&lt; 129 KIAS):</strong>
+              Al encontrar aire turbulento, reducir inmediatamente por debajo del Arco Amarillo (dentro del régimen normal de operación, Arco Verde).
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -790,27 +846,29 @@ export const DA40_LESSON_2 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ANEMÓMETRO DA40 TDI (CALIBRADO EN KNOTS)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ANEMÓMETRO STANDBY & CINTA GARMIN G1000 (KIAS)</span>
           </div>
 
-          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-anemometro.jpg" alt="Anemómetro oficial Diamond DA40 TDI con arcos de colores" class="w-full h-full max-h-[250px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
-          </div>
-
-          <!-- Criterio Operacional del AFM -->
-          <div class="w-full shrink-0 p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-2xs space-y-1 text-xs">
-            <div class="font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5 text-xs">
-              <span>Criterio Operacional del AFM:</span>
+          <!-- Imágenes de Velocidad: G1000 PFD (Digital) y Standby (Analógico) lado a lado -->
+          <div class="w-full flex-1 min-h-0 grid grid-cols-2 gap-2 items-center mt-1">
+            <!-- Cinta de Velocidad Garmin G1000 PFD (Digital) -->
+            <div class="h-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-between items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+              <div class="w-full flex-1 flex items-center justify-center min-h-0">
+                <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-g1000-airspeed-indicator.png" alt="Cinta de Velocidad Garmin G1000 Airspeed Indicator" class="w-full h-full max-h-[350px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
+              </div>
+              <figcaption class="mt-1 text-center text-[10px] text-[#0B2E59] font-bold uppercase tracking-wide shrink-0">
+                Garmin G1000 PFD (Digital)
+              </figcaption>
             </div>
-            <div class="text-[11px] text-slate-700 dark:text-slate-300 leading-snug space-y-1">
-              <div>
-                <strong class="text-slate-900 dark:text-white">• Régimen con Flaps (&lt; 91 KIAS):</strong>
-                Mantener la velocidad estrictamente dentro del Arco Blanco al operar en configuración LDG (flaps de aterrizaje) para evitar sobrecargas aerodinámicas.
+
+            <!-- Anemómetro Convencional / Standby (Analógico) -->
+            <div class="h-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-between items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+              <div class="w-full flex-1 flex items-center justify-center min-h-0">
+                <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-anemometro.jpg" alt="Anemómetro oficial Diamond DA40 TDI con arcos de colores" class="w-full h-full max-h-[350px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
               </div>
-              <div>
-                <strong class="text-slate-900 dark:text-white">• Vuelo en Turbulencia (&lt; 129 KIAS):</strong>
-                Al encontrar aire turbulento, reducir inmediatamente por debajo del Arco Amarillo (dentro del régimen normal de operación, Arco Verde).
-              </div>
+              <figcaption class="mt-1 text-center text-[10px] text-slate-600 font-bold uppercase tracking-wide shrink-0">
+                Anemómetro Standby (Analógico)
+              </figcaption>
             </div>
           </div>
         </div>
@@ -819,7 +877,11 @@ export const DA40_LESSON_2 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 2.3: 2.3 Límites de Peso Estructural (Weight Limits) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -944,7 +1006,11 @@ export const DA40_LESSON_2 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 2.4: 2.4 Compartimento de Equipaje y Categorías de Vuelo (Normal vs Utilidad) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1062,7 +1128,11 @@ export const DA40_LESSON_2 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 2.5: 2.5 Límites de Maniobra y Factores de Carga -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1164,7 +1234,11 @@ export const DA40_LESSON_2 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 2.6: 2.6 Límites de Motor: Potencia, RPM y Techo Operativo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1275,7 +1349,11 @@ export const DA40_LESSON_2 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 2.7: 2.7 Límites Operacionales de Temperatura -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1381,10 +1459,14 @@ export const DA40_LESSON_2 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
 
+
+
 <!-- DIAPOSITIVA 2.8: 2.8 Límites de Presión y Consumo de Aceite -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
@@ -1482,10 +1564,14 @@ export const DA40_LESSON_2 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
 
+
+
 <!-- DIAPOSITIVA 2.9: 2.9 Límites Térmicos de Combustible en Depósito -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
@@ -1574,16 +1660,20 @@ export const DA40_LESSON_2 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.10: 2.10 Marcas de Instrumentos CED 125 (Motor y Reductora) -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+
+
+<!-- DIAPOSITIVA 2.10: 2.10 Marcas de Instrumentación de Motor G1000 EIS -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.10 Marcas de Instrumentos CED 125 (Motor y Reductora)</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.10 Marcas de Instrumentación de Motor G1000 EIS</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla Oficial AFM: Rangos Verde, Amarillo y Rojo en el Display Compacto</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla Oficial AFM: Rangos Verde, Ámbar y Rojo en la Barra de Instrumentos del Motor</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -1591,13 +1681,13 @@ export const DA40_LESSON_2 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800 mb-2">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CED 125 INSTRUMENT MARKINGS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GARMIN G1000 EIS INSTRUMENT MARKINGS</span>
         </div>
         <div class="space-y-3 py-1">
-          <!-- TABLA 1: TACÓMETRO, PRESIÓN Y CARGA (CED 125) -->
+          <!-- TABLA 1: TACÓMETRO, PRESIÓN Y CARGA (GARMIN G1000 EIS) -->
           <div class="p-2.5 px-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
             <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-1">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">TACÓMETRO, PRESIÓN Y CARGA (CED 125)</strong>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">TACÓMETRO, PRESIÓN Y CARGA (GARMIN G1000 EIS)</strong>
               <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">AFM Tabla 2.5</span>
             </div>
 
@@ -1679,15 +1769,15 @@ export const DA40_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Instrumento Digital CED 125 y NOTA (Altura Fija 590px sin scroll) -->
+    <!-- Columna Derecha (lg:col-span-5): Instrumentación Garmin G1000 EIS y NOTA (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-900/60 flex flex-col items-center justify-between p-2">
           <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-            <img src="/images/da40/CED125.jpg" alt="Display Digital CED 125 DA40 TDI" class="w-full h-full max-h-[385px] object-contain rounded-lg" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/Gemini_Generated_Image_pj8g2tpj8g2tpj8g.jpg" alt="Garmin G1000 EIS y Sistema de Alertas CAS Diamond DA40 TDI CD-155" class="w-full h-full max-h-[385px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
           </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
-            <strong class="text-[#0B2E59] dark:text-sky-300">CED 125</strong> · Compact Engine Display (Motor y Reductora)
+          <figcaption class="mt-1 text-center text-xs text-slate-700 dark:text-slate-300 font-medium shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300">Garmin G1000</strong> · PFD, MFD y Barra EIS
           </figcaption>
         </div>
 
@@ -1704,30 +1794,35 @@ export const DA40_LESSON_2 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.11: 2.11 Marcas de Instrumentos AED 125 y Panel Anunciador -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+
+
+<!-- DIAPOSITIVA 2.11: 2.11 Parámetros Eléctricos, Combustible y Sistema de Alertas CAS (G1000) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.11 Marcas de Instrumentos AED 125 y Panel Anunciador</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.11 Parámetros Eléctricos, Combustible y Sistema de Alertas CAS (G1000)</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Parámetros Eléctricos, Combustible y Lógica de Rearme de Alarmas</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Límites de Sistema Eléctrico, Combustible y Gestión de Avisos en Garmin G1000</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
-    <!-- Columna Izquierda (lg:col-span-6): AED 125 y Lógica Confirm/Test (Altura Fija 590px sin scroll) -->
+    <!-- Columna Izquierda (lg:col-span-6): G1000 EIS Auxiliar y Lógica CAS (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AED 125 & CONFIRM/TEST LOGIC</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">G1000 EIS AUXILIAR & LÓGICA DE ALERTAS CAS</span>
         </div>
 
-        <!-- TABLA DE MARCAS DE INSTRUMENTOS AED 125 -->
+        <!-- TABLA DE PARÁMETROS ELÉCTRICOS Y COMBUSTIBLE (G1000 EIS) -->
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 w-full shrink-0">
           <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-0.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">MARCAS DE INSTRUMENTOS AUXILIARES (AED 125)</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">PARÁMETROS ELÉCTRICOS Y COMBUSTIBLE (G1000 EIS)</strong>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">AFM Tabla 2.6</span>
           </div>
 
           <div class="overflow-x-auto">
@@ -1770,94 +1865,114 @@ export const DA40_LESSON_2 = {
           </div>
         </div>
 
-        <!-- LÓGICA CONFIRM / TEST -->
+        <!-- LÓGICA DE GESTIÓN DE ALERTAS CAS EN GARMIN G1000 -->
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
-          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">LÓGICA OPERATIVA DEL BOTÓN CONFIRM / TEST</strong>
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">GESTIÓN Y LÓGICA DE ALERTAS EN GARMIN G1000 (CAS)</strong>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1.5 pt-0.5 text-[11px] leading-tight">
             <div class="flex items-start gap-1.5">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-              <span class="text-slate-800 dark:text-slate-200"><strong>Activación de aviso:</strong> La luz <strong>ENGINE</strong> se enciende si cualquier indicación entra en ámbar o rojo.</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Alertas Integradas CAS:</strong> Sustituyen al panel anunciador físico; se notifican en la ventana de anuncios del PFD y en la barra EIS.</span>
             </div>
             <div class="flex items-start gap-1.5">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-              <span class="text-slate-800 dark:text-slate-200"><strong>Memorización:</strong> Permanece encendida aunque el parámetro retorne a la zona verde de operación.</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Niveles de Prioridad:</strong> <code>WARNING</code> en rojo con aviso acústico continuo, <code>CAUTION</code> en ámbar con tono breve y Notificaciones en blanco.</span>
             </div>
             <div class="flex items-start gap-1.5">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-              <span class="text-slate-800 dark:text-slate-200"><strong>Confirmación:</strong> El piloto debe presionar el pulsador Confirm / Test para apagar y acusar la alarma.</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Acuse con Softkey ALERTS:</strong> El piloto presiona la tecla <code>ALERTS</code> en el marco inferior del PFD para consultar la causa exacta.</span>
             </div>
             <div class="flex items-start gap-1.5">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-              <span class="text-slate-800 dark:text-slate-200"><strong>Rearme automático:</strong> Tras confirmarse, volverá a iluminarse si otro parámetro se desvía de los límites.</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Autodescarte:</strong> Si el parámetro monitorizado retorna a su rango normal verde, el mensaje se retira automáticamente.</span>
             </div>
             <div class="flex items-start gap-1.5 sm:col-span-2">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-              <span class="text-slate-800 dark:text-slate-200"><strong>Prueba de encendido:</strong> Mantener presionado el botón más de 1 segundo inicia el barrido de autotest en todos los displays.</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Revisión de Historial:</strong> La ventana de alertas guarda los avisos activos ordenados por criticidad para su monitorización continua.</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): AED 125 + NOTA / Panel Anunciador (Altura Fija 590px sin scroll) -->
+    <!-- Columna Derecha (lg:col-span-6): G1000 EIS (3 Páginas) y Alertas CAS (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AED 125 & PANEL ANUNCIADOR</span>
-        </div>
-
-        <div class="flex flex-col gap-2 flex-1 min-h-0">
-          <!-- 1. PARTE SUPERIOR: AED 125 + NOTA -->
-          <div class="flex-[1.18] min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-white p-2.5 shadow-2xs">
-            <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
-              <span class="text-[11px] font-bold text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-sky-600"></span>
-                AED 125 · Auxiliary Engine Display
+        <!-- Dos cuadros verticales lado a lado (2 columnas) -->
+        <div class="grid grid-cols-2 gap-2 flex-1 min-h-0">
+          
+          <!-- Cuadro 1: Las 3 Páginas del G1000 EIS -->
+          <div class="h-full flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-900/60 p-2 shadow-2xs overflow-hidden">
+            <div class="flex items-center justify-between shrink-0 pb-1 mb-1 border-b border-slate-100 dark:border-slate-800">
+              <span class="text-[18px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide">
+                G1000 EIS · 3 PÁGINAS
               </span>
-              <span class="text-[9px] font-bold text-sky-800 bg-sky-100 px-1.5 py-0.5 rounded">Fuel Temp / V / A / Qty</span>
             </div>
 
-            <div class="flex-1 min-h-0 grid grid-cols-12 gap-3 items-center">
-              <!-- AED 125 a la izquierda -->
-              <div class="col-span-6 h-full flex items-center justify-center overflow-hidden py-0.5">
-                <img src="/images/da40/AED125.jpg" alt="Auxiliary Engine Display AED 125 DA40 TDI" class="w-full h-full max-h-[205px] object-contain rounded-md" />
+            <!-- Las 3 tiras verticales del EIS: Engine, System y Fuel -->
+            <div class="flex-1 min-h-0 grid grid-cols-3 gap-1.5 items-center justify-center overflow-hidden py-1">
+              <!-- 1. Engine Display -->
+              <div class="h-full flex flex-col items-center justify-between min-h-0">
+                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden">
+                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/g1000-eis-engine.png" alt="Garmin G1000 EIS Engine Display" class="w-full h-full object-contain rounded" style="max-height: 460px;" />
+                </div>
+                <span class="text-[18px] font-bold text-slate-700 dark:text-slate-300 mt-1 shrink-0">ENGINE</span>
               </div>
 
-              <!-- NOTA en cuadro a la derecha -->
-              <div class="col-span-6 p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-relaxed shadow-2xs">
-                <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs">
-                  <span>ℹ️</span>
-                  <span>NOTE:</span>
-                </strong>
-                <div>Si una indicación sale del rango verde, se ilumina la luz ámbar <strong>ENGINE</strong> en el panel anunciador. Permanece encendida incluso cuando la indicación regresa a verde y debe ser confirmada mediante el pulsador Confirm/Test.</div>
+              <!-- 2. System Display -->
+              <div class="h-full flex flex-col items-center justify-between min-h-0">
+                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden">
+                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/g1000-eis-system.png" alt="Garmin G1000 EIS System Display" class="w-full h-full object-contain rounded" style="max-height: 460px;" />
+                </div>
+                <span class="text-[18px] font-bold text-slate-700 dark:text-slate-300 mt-1 shrink-0">SYSTEM</span>
+              </div>
+
+              <!-- 3. Fuel Display -->
+              <div class="h-full flex flex-col items-center justify-between min-h-0">
+                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden">
+                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/g1000-eis-fuel.png" alt="Garmin G1000 EIS Fuel Display" class="w-full h-full object-contain rounded" style="max-height: 460px;" />
+                </div>
+                <span class="text-[18px] font-bold text-slate-700 dark:text-slate-300 mt-1 shrink-0">FUEL</span>
               </div>
             </div>
           </div>
 
-          <!-- 2. PARTE INFERIOR: Panel Anunciador de Alarmas -->
-          <div class="flex-1 min-h-0 flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-white p-2 shadow-2xs">
-            <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-200/20">
-              <span class="text-[11px] font-bold text-[#0B2E59] uppercase tracking-wide flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                Panel Anunciador · Luces de Motor y Sistemas
+          <!-- Cuadro 2: Ventana de Alertas CAS y Criterio de Consulta -->
+          <div class="h-full flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-900/60 p-2 shadow-2xs overflow-hidden">
+            <div class="flex items-center justify-between shrink-0 pb-1 mb-1 border-b border-slate-100 dark:border-slate-800">
+              <span class="text-[18px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide">
+                ALERTAS CAS (G1000)
               </span>
-              <span class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded">ENGINE Caution</span>
             </div>
 
-            <div class="w-full flex-1 min-h-0 bg-white dark:bg-white flex items-center justify-center overflow-hidden py-0.5">
-              <img src="/images/da40/da40-annunciator-panel-realistic.jpg" alt="Panel Anunciador de Cabina DA40 TDI" class="w-full h-full max-h-[165px] object-contain rounded-md" />
+            <!-- Imagen de la ventana de Alertas CAS -->
+            <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden p-1">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/g1000-cas-alerts.png" alt="Sistema de Alertas CAS Garmin G1000 DA40 TDI" class="w-full h-full max-h-[260px] object-contain rounded-lg" />
+            </div>
+
+            <!-- NOTA con tipografía a 18px -->
+            <div class="w-full p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[18px] leading-snug shadow-2xs shrink-0 mt-1">
+              <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-[18px]">
+                <span>ℹ️</span>
+                <span>NOTE:</span>
+              </strong>
+              <div>Los parámetros eléctricos (Voltios y Amperios) y las páginas detalladas de motor (presión y temperaturas) se consultan en el EIS del MFD seleccionando las teclas de función rápida <strong>ENGINE &gt; SYSTEM</strong> o <strong>FUEL</strong>.</div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
 
+
+
 <!-- DIAPOSITIVA 2.12: 2.12 Combustibles Autorizados y Capacidades de Depósitos -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
@@ -1976,10 +2091,14 @@ export const DA40_LESSON_2 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
 
+
+
 <!-- DIAPOSITIVA 2.13: 2.13 Fluidos de Servicio, Placards y Limitaciones Operacionales -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100" data-slide-visibility="private">
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · LIMITACIONES AFM (SECCIÓN 2)</div>
@@ -2030,7 +2149,7 @@ export const DA40_LESSON_2 = {
               <span>🚨</span>
               <span>BATERÍA DE RESERVA ECU & VIGENCIA DE LETREROS:</span>
             </strong>
-            <p>La luz roja <code>ECU BACKUP UNSAFE</code> en el Annunciator Panel indica carga insuficiente en la batería de reserva FADEC. En esta condición, los vuelos en reglas IFR quedan terminantemente prohibidos. Todos los letreros y placards contenidos en el AFM deben permanecer perfectamente legibles e instalados.</p>
+            <p>El aviso rojo <code>ECU BACKUP UNSAFE</code> en el sistema de alertas Garmin G1000 indica carga insuficiente en la batería de reserva FADEC. En esta condición, los vuelos en reglas IFR quedan terminantemente prohibidos. Todos los letreros y placards contenidos en el AFM deben permanecer perfectamente legibles e instalados.</p>
           </div>
         </div>
       </div>
@@ -2057,6 +2176,9 @@ export const DA40_LESSON_2 = {
 </div>`,
 };
 
+// ============================================================================
+// 3. INGENIERÍA DEL AVIÓN Y SISTEMAS CONTINENTAL CD-155
+// ============================================================================
 export const DA40_LESSON_3 = {
   id: "da400000-0000-0000-0000-000000000030",
   course_id: DA40_COURSE_ID,
@@ -2122,7 +2244,7 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Instrumentación de motor: Monitorización integrada mediante los displays CED 125 y AED 125</span>
+                <span class="text-slate-800 dark:text-slate-200">Instrumentación de motor: Monitorización integrada mediante la barra Garmin G1000 EIS (Engine Indication System) en el MFD</span>
               </div>
             </div>
           </div>
@@ -2162,7 +2284,11 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 3.2: 3.2 Reductora Integrada y Hélice MT-Propeller -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2261,7 +2387,11 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 3.3: 3.3 Sistema FADEC: Control Digital y Redundancia Dual -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2354,7 +2484,7 @@ export const DA40_LESSON_3 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/90 flex flex-col items-center justify-center p-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/3.3-fadec.jpg?v=1" alt="Arquitectura del Sistema FADEC Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/Gemini_Generated_Image_8v05wd8v05wd8v05.jpg" alt="Arquitectura del Sistema FADEC Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
           </div>
         </div>
       </div>
@@ -2362,7 +2492,11 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 3.4: 3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y Conmutador ECU SWAP -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2480,7 +2614,11 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 3.5: 3.5 Sistema Eléctrico I: Fuentes de Potencia y Alternador -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2573,7 +2711,11 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 3.6: 3.6 Sistema Eléctrico II: Batería de Respaldo ECU y Red de Barras -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2677,7 +2819,11 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 3.7: 3.7 Sistema de Combustible I: Depósitos y Alimentación -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2771,7 +2917,11 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 3.8: 3.8 Sistema de Combustible II: Bombas, Retorno y Enfriador -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2876,7 +3026,11 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 3.9: 3.9 Sistema de Refrigeración Líquida (Cooling System) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2927,7 +3081,7 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Sensor en culata (CT): Mide la temperatura de refrigerante junto al termostato y la transmite a la ECU y al CED 125</span>
+                <span class="text-slate-800 dark:text-slate-200">Sensor en culata (CT): Mide la temperatura de refrigerante junto al termostato y la transmite a la ECU y a la barra Garmin G1000 EIS (indicador COOLANT TEMP)</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
@@ -2970,7 +3124,11 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 3.10: 3.10 Sistemas de Lubricación: Motor y Caja Reductora -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3008,7 +3166,7 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Vigilancia en CED 125: Presión normal entre 2.3 y 5.2 bar (mín. 1.2 bar en ralentí); máx. temp. 140°C</span>
+                <span class="text-slate-800 dark:text-slate-200">Vigilancia en G1000 EIS: Presión normal de aceite (OIL PRES) entre 2.3 y 5.2 bar (mín. 1.2 bar en ralentí); máx. temp. (OIL TEMP) 140°C</span>
               </div>
             </div>
 
@@ -3029,7 +3187,7 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Vigilancia en CED 125: Temperatura normal hasta 115°C (precaución 115-120°C; límite máximo 120°C)</span>
+                <span class="text-slate-800 dark:text-slate-200">Vigilancia en G1000 EIS: Temperatura de caja reductora (GEARBOX) normal hasta 115°C (precaución 115-120°C; límite máximo 120°C)</span>
               </div>
             </div>
           </div>
@@ -3064,16 +3222,20 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.11: 3.11 Instrumentación de Motor: CED 125 y AED 125 -->
+
+
+<!-- DIAPOSITIVA 3.11: 3.11 Instrumentación de Motor Integrada: Garmin G1000 EIS -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.11 Instrumentación de Motor: CED 125 y AED 125</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.11 Instrumentación de Motor Integrada: Garmin G1000 EIS</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Indicación Digital Compacta de Parámetros de Motor y Datos Auxiliares</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Engine Indication System: Páginas ENGINE, SYSTEM y FUEL en MFD/PFD</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
@@ -3081,24 +3243,24 @@ export const DA40_LESSON_3 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIGITAL ENGINE INSTRUMENTS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GARMIN G1000 ENGINE INDICATION SYSTEM (EIS)</span>
         </div>
         <div class="space-y-1 py-0.5">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
-            <!-- CED 125 -->
+            <!-- PÁGINA ENGINE (MODO PRINCIPAL) -->
             <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CED 125 (COMPACT ENGINE DISPLAY)</strong>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PÁGINA ENGINE (MONITORIZACIÓN PRIMARIA)</strong>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Propeller Rotary Speed: RPM de la hélice en indicación digital numérica y de barra</span>
+                <span class="text-slate-800 dark:text-slate-200">Load Display (%): Porcentaje de potencia desarrollada (0% a 100%) en indicación de arco y digital</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Engine Oil Pressure (OP): Presión de aceite (bar, normal 2.3 - 5.2 bar, mín. 1.2 bar)</span>
+                <span class="text-slate-800 dark:text-slate-200">Propeller Tachometer (RPM): Régimen de giro de hélice en barra graduada y dígitos directos</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Engine Oil Temp (OT): Temperatura de aceite de motor (°C, normal 50 - 125 °C, máx. 140 °C)</span>
+                <span class="text-slate-800 dark:text-slate-200">Oil Temp &amp; Pres: Temperatura (°C) y presión de aceite (bar) con código de color dinámico</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
@@ -3106,36 +3268,36 @@ export const DA40_LESSON_3 = {
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Gearbox Temp (GT): Temperatura de aceite de reductora (°C, normal hasta 115 °C, máx. 120 °C)</span>
+                <span class="text-slate-800 dark:text-slate-200">Gearbox Temp: Temperatura de aceite de caja reductora (°C, normal hasta 115 °C, máx. 120 °C)</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Load Display: Porcentaje de potencia de motor desarrollada (0% a 100%)</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel Quantity: Indicadores analógico-digitales para depósitos MAIN y AUX (galones US)</span>
               </div>
             </div>
 
-            <!-- AED 125 -->
+            <!-- PÁGINAS SYSTEM & FUEL -->
             <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">AED 125 (AUXILIARY ENGINE DISPLAY)</strong>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PÁGINAS SYSTEM Y FUEL (SUB-PANELES)</strong>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Fuel Quantity (MAIN &amp; AUX): Cantidad de combustible en galones US para ambos depósitos</span>
+                <span class="text-slate-800 dark:text-slate-200">Sistema Eléctrico: Tensión de barra principal (Volts) y corriente de carga del alternador (Amps)</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Fuel Temperature: Temperatura de combustible (°C) en depósito principal y auxiliar</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel Flow (FFLOW): Caudal de consumo de combustible continuo en galones US por hora (GPH)</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Bus Voltage &amp; Amps: Tensión de barra eléctrica (V) e intensidad del generador (A)</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel Temperature: Indicación numérica de temperatura de combustible en depósito (°C)</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Aviso Water Level: Indicador ámbar de precaución que alerta de nivel bajo de refrigerante</span>
+                <span class="text-slate-800 dark:text-slate-200">Fuel Totalizer: Cálculo de combustible consumido (GAL USED) y remanente (GAL REM)</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">Fuel Flow: Caudal horario de consumo de combustible (US gal/h)</span>
+                <span class="text-slate-800 dark:text-slate-200">Nivel de Refrigerante: Detección digital integrada con aviso CAS inmediato si el nivel cae</span>
               </div>
             </div>
           </div>
@@ -3146,45 +3308,42 @@ export const DA40_LESSON_3 = {
               <span>ℹ️</span>
               <span>NOTE:</span>
             </strong>
-            <div>Si el conmutador ENGINE MASTER está en posición OFF, la indicación de carga (LOAD) no muestra ningún valor numérico aunque la hélice esté girando.</div>
+            <div>En el Garmin G1000, los datos de instrumentación de motor se muestran permanentemente en la franja izquierda del MFD en vuelo normal, y se transfieren automáticamente al PFD en caso de fallo de pantalla (Modo Reversionary).</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Displays Digitales CED 125 y AED 125 (Altura Fija 590px sin scroll) -->
+    <!-- Columna Derecha (lg:col-span-5): Franjas EIS Garmin G1000 (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INSTRUMENTACIÓN DIGITAL CED &amp; AED</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GARMIN G1000 EIS STRIPS</span>
+          <span class="text-[9px] font-bold text-sky-800 bg-sky-100 dark:bg-sky-950 dark:text-sky-300 px-1.5 py-0.5 rounded">Engine · System · Fuel</span>
         </div>
 
-        <div class="flex flex-col gap-2 flex-1 min-h-0">
-          <!-- 1. CED 125 Display Compacto de Motor -->
-          <div class="flex-1 min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 p-2 shadow-2xs">
-            <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-700">
-              <span class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
-                CED 125 · Compact Engine Display
-              </span>
-              <span class="text-[9px] font-bold text-emerald-800 bg-emerald-100 dark:bg-emerald-950 dark:text-emerald-300 px-1.5 py-0.5 rounded">Tach / Press / Temp / Load</span>
-            </div>
-            <div class="w-full flex-1 min-h-0 bg-white dark:bg-slate-900/50 rounded-lg flex items-center justify-center overflow-hidden p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
-              <img src="/images/da40/CED125.jpg" alt="Compact Engine Display CED 125 Continental CD-155 Diamond DA40 TDI" class="w-full h-full max-h-[195px] object-contain rounded-md" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 195px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+        <div class="grid grid-cols-3 gap-1.5 flex-1 min-h-0">
+          <!-- 1. Engine Strip -->
+          <div class="h-full flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 p-1 shadow-2xs min-h-0">
+            <span class="text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase text-center pb-0.5 border-b border-slate-100 dark:border-slate-700 mb-0.5 shrink-0">ENGINE</span>
+            <div class="w-full flex-1 min-h-0 bg-white rounded-lg flex items-center justify-center overflow-hidden p-0.5" style="background-color: #ffffff;">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/g1000-eis-engine.png" alt="Garmin G1000 EIS Engine Strip Diamond DA40 TDI" class="h-full w-auto object-contain rounded" style="max-height: 480px; height: 100%; width: auto; object-fit: contain; background-color: #ffffff; object-position: center;" />
             </div>
           </div>
 
-          <!-- 2. AED 125 Display Auxiliar -->
-          <div class="flex-1 min-h-0 flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 p-2 shadow-2xs">
-            <div class="flex items-center justify-between shrink-0 pb-0.5 mb-1 border-b border-slate-100 dark:border-slate-700">
-              <span class="text-[11px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-sky-600"></span>
-                AED 125 · Auxiliary Engine Display
-              </span>
-              <span class="text-[9px] font-bold text-sky-800 bg-sky-100 dark:bg-sky-950 dark:text-sky-300 px-1.5 py-0.5 rounded">Fuel / Volt / Amps / Flow / Level</span>
+          <!-- 2. System Strip -->
+          <div class="h-full flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 p-1 shadow-2xs min-h-0">
+            <span class="text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase text-center pb-0.5 border-b border-slate-100 dark:border-slate-700 mb-0.5 shrink-0">SYSTEM</span>
+            <div class="w-full flex-1 min-h-0 bg-white rounded-lg flex items-center justify-center overflow-hidden p-0.5" style="background-color: #ffffff;">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/g1000-eis-system.png" alt="Garmin G1000 EIS System Strip Diamond DA40 TDI" class="h-full w-auto object-contain rounded" style="max-height: 480px; height: 100%; width: auto; object-fit: contain; background-color: #ffffff; object-position: center;" />
             </div>
-            <div class="w-full flex-1 min-h-0 bg-white dark:bg-slate-900/50 rounded-lg flex items-center justify-center overflow-hidden p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
-              <img src="/images/da40/AED125.jpg" alt="Auxiliary Engine Display AED 125 Continental CD-155 Diamond DA40 TDI" class="w-full h-full max-h-[195px] object-contain rounded-md" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 195px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+
+          <!-- 3. Fuel Strip -->
+          <div class="h-full flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 p-1 shadow-2xs min-h-0">
+            <span class="text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase text-center pb-0.5 border-b border-slate-100 dark:border-slate-700 mb-0.5 shrink-0">FUEL</span>
+            <div class="w-full flex-1 min-h-0 bg-white rounded-lg flex items-center justify-center overflow-hidden p-0.5" style="background-color: #ffffff;">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/g1000-eis-fuel.png" alt="Garmin G1000 EIS Fuel Strip Diamond DA40 TDI" class="h-full w-auto object-contain rounded" style="max-height: 480px; height: 100%; width: auto; object-fit: contain; background-color: #ffffff; object-position: center;" />
             </div>
           </div>
         </div>
@@ -3193,61 +3352,57 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 3.12: 3.12 Panel de Alarmas (Lightpanel) y Mandos de Cabina -->
+
+
+<!-- DIAPOSITIVA 3.12: 3.12 Sistema de Alertas CAS Garmin G1000 y Mandos de Cabina -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · INGENIERÍA Y SISTEMAS</div>
-      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.12 Panel de Alarmas (Lightpanel) y Mandos de Cabina</h1>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.12 Sistema de Alertas CAS Garmin G1000 y Mandos de Cabina</h1>
     </div>
-    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Luces Avisadoras de FADEC, Alternador, Nivel Bajo y Mandos de Motor</span>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Crew Alerting System (CAS), Jerarquía de Avisos y Mandos de Motor</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ANNUNCIATOR LIGHTPANEL &amp; ENGINE CONTROLS</span>
-        </div>
-        <div class="space-y-1 py-0.5">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
-            <!-- PANEL DE LUCES AVISADORAS -->
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GARMIN G1000 CAS ALERTS &amp; ENGINE CONTROLS</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch flex-1 min-h-0">
+            <!-- SISTEMA DE ALERTAS CAS -->
             <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PANEL DE LUCES AVISADORAS (LIGHTPANEL)</strong>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">SISTEMA DE ALERTAS CAS (CREW ALERTING)</strong>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">DOORS (Roja): Capota delantera o puerta trasera no bloqueada o mal cerrada</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong class="text-red-600 dark:text-red-400">WARNINGS (Rojo):</strong> Peligro crítico que exige acción inmediata (OIL PRES, ENGINE FIRE, DOOR OPEN, START ENGD)</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">START (Roja/Ámbar): Piñón de arranque engranado o relé energizado indebidamente</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong class="text-amber-600 dark:text-amber-400">CAUTIONS (Ámbar):</strong> Atención urgente requerida (ECU A/B FAIL, LOW FUEL, OIL TEMP, COOLANT LEVEL, PITOT FAIL)</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">ALTERNATOR &amp; LOW VOLTS (Ámbar): Fallo del alternador o tensión &lt; 12.6 V</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong class="text-slate-600 dark:text-slate-300">ADVISORIES (Blanco):</strong> Información operacional de estado y sistemas (FUEL TRANSFER, GLOW ON, PFD FAN FAIL)</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">ECU A / ECU B (Ámbar): Mal funcionamiento en el canal ECU activo</span>
+                <span class="text-slate-800 dark:text-slate-200">Alerta Sonora y Chime: Tono acústico distintivo integrado en auriculares ante apariciones de Warning y Caution</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">ENGINE (Ámbar): Parámetro en instrumentos digitales CED/AED fuera de arco verde</span>
+                <span class="text-slate-800 dark:text-slate-200">Softkey ALERTS: Pulsador en bisel inferior del PFD para confirmar (acknowledge) y consultar historial de mensajes</span>
               </div>
               <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">LOW FUEL (Ámbar): Combustible utilizable en depósito MAIN inferior a 3 US gal</span>
-              </div>
-              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">PITOT, FUEL TRANS &amp; GLOW: Calefacción pitot (ámbar), trasvase activo y bujías diésel</span>
-              </div>
-              <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-                <span class="text-slate-800 dark:text-slate-200">ACKNOWLEDGE (Verde): Pulsador para silenciar alarma y fijar luces intermitentes</span>
+                <span class="text-slate-800 dark:text-slate-200">Integración FADEC: Ambas ECU reportan anomalías de inyección, sensores y actuadores directamente al bus CAS</span>
               </div>
             </div>
 
@@ -3281,22 +3436,8 @@ export const DA40_LESSON_3 = {
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Columna Derecha (lg:col-span-5): Panel Anunciador de Alarmas (Altura Fija 590px sin scroll) -->
-    <div class="lg:col-span-5 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PANEL ANUNCIADOR DE ALARMAS</span>
-          <span class="text-[9px] font-bold text-amber-800 bg-amber-100 dark:bg-amber-950/70 dark:text-amber-300 px-1.5 py-0.5 rounded">Annunciator Panel</span>
-        </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-annunciator-panel-realistic.jpg" alt="Panel Anunciador de Cabina Diamond DA40 TDI Continental CD-155" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 380px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
-        </div>
-
-        <!-- NOTA / WARNING AFM EN COLUMNA DERECHA -->
+        <!-- NOTA / WARNING AFM EN COLUMNA IZQUIERDA -->
         <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight mt-1 shadow-2xs shrink-0">
           <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs sm:text-[13px] shrink-0">
             <span>⚠️</span>
@@ -3309,10 +3450,25 @@ export const DA40_LESSON_3 = {
         </div>
       </div>
     </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Ventana de Alertas CAS G1000 (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">VENTANA DE ALERTAS CAS (GARMIN G1000)</span>
+          <span class="text-[18px] font-bold text-amber-800 bg-amber-100 dark:bg-amber-950/70 dark:text-amber-300 px-2 py-0.5 rounded">CAS Alerts Window</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-2" draggable="false" style="position: relative; background-color: #ffffff;">
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/g1000-cas-alerts.png" alt="Ventana de Alertas CAS Garmin G1000 Diamond DA40 TDI" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: #ffffff; object-position: center;" />
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 3.13: 3.13 Sistemas de Célula I: Mandos de Vuelo, Compensación y Flaps Eléctricos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3392,7 +3548,11 @@ export const DA40_LESSON_3 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 3.14: 3.14 Sistemas de Célula II: Tren, Frenos, Dirección en Tierra y Aviso de Pérdida -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3457,6 +3617,9 @@ export const DA40_LESSON_3 = {
 `,
 };
 
+// ============================================================================
+// 4. PROCEDIMIENTOS NORMALES Y OPERACIÓN DIÉSEL
+// ============================================================================
 export const DA40_LESSON_4 = {
   id: "da400000-0000-0000-0000-000000000040",
   course_id: DA40_COURSE_ID,
@@ -3609,7 +3772,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.2: 4.2 Inspección Exterior I: Raíz Alar y Tren Principal Izquierdo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3700,7 +3867,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.3: 4.3 Inspección Exterior II: Ala Izquierda, Pitot y Mandos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3849,7 +4020,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.4: 4.4 Inspección Exterior III: Fuselaje Izquierdo y Empenaje en T -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3952,7 +4127,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.5: 4.5 Inspección Exterior IV: Ala Derecha y Combustible -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4106,7 +4285,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.6: 4.6 Inspección Exterior V: Tren Principal Derecho y Drenajes -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4197,7 +4380,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.7: 4.7 Inspección Exterior VI: Morro, Aceites (Motor y Caja), Hélice y Tren -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4337,7 +4524,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.8: 4.8 Inspección Exterior VII: Filtro Principal (Gascolator) y Cierre -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4413,7 +4604,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.9: 4.9 Antes del Arranque del Motor -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4507,15 +4702,15 @@ export const DA40_LESSON_4 = {
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">16.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Annunciator panel / engine instruments &mdash; <span class="italic font-medium">check</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">G1000 CAS alerts / Engine instruments (EIS) &mdash; <span class="italic font-medium">check</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">17.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Acknowledge button &mdash; <span class="italic font-medium">press</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">ALERTS softkey (PFD) &mdash; <span class="italic font-medium">press / acknowledge</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">18.</span>
-                  <span class="text-slate-800 dark:text-slate-200">WATER LEVEL caution light &mdash; <span class="italic font-medium">check OFF</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">COOL LVL advisory/caution (CAS) &mdash; <span class="italic font-medium">check OFF</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">19.</span>
@@ -4561,7 +4756,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.10: 4.10 Puesta en Marcha: Procedimiento de Arranque Diésel -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4623,11 +4822,11 @@ export const DA40_LESSON_4 = {
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">8.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Annunciator panel / engine instruments &mdash; <span class="italic font-medium">check</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">G1000 CAS alerts / EIS engine instruments &mdash; <span class="italic font-medium">check</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">9.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Acknowledge button &mdash; <span class="italic font-medium">press</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">ALERTS softkey (PFD) &mdash; <span class="italic font-medium">press / acknowledge</span></span>
                 </div>
               </div>
             </div>
@@ -4637,7 +4836,7 @@ export const DA40_LESSON_4 = {
           <div class="space-y-1 shrink-0">
             <div class="p-2 rounded-xl bg-sky-50/90 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-slate-800 dark:text-slate-200 text-[11px] leading-tight shadow-2xs">
               <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide text-xs block mb-0.5">Indicación GLOW (Bujías):</strong>
-              Al conectar el ENGINE MASTER, el FADEC activa el calentamiento de las bujías de incandescencia. Espere a que la luz GLOW se apague por completo en el panel antes de accionar la llave START.
+              Al conectar el ENGINE MASTER, el FADEC activa el calentamiento de las bujías de incandescencia. Espere a que el aviso GLOW ON se apague en el sistema CAS del G1000 antes de accionar la llave START.
             </div>
             <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs">
               <strong class="text-amber-700 dark:text-amber-400 uppercase tracking-wide text-xs">CAUTION (Starter Motor Duty Cycle):</strong>
@@ -4663,9 +4862,9 @@ export const DA40_LESSON_4 = {
           <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
             📷
           </div>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Panel de Arranque y Luces GLOW</span>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Arranque y Aviso CAS GLOW</span>
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Panel de anunciadores con indicación GLOW encendida durante precalentamiento, interruptores Engine Master y Electric Master (Start).
+            Sistema Garmin G1000 con aviso CAS GLOW ON activo durante precalentamiento, interruptores Engine Master y Electric Master (Start).
           </p>
         </div>
       </div>
@@ -4673,7 +4872,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.11: 4.11 Calentamiento del Motor y Rodaje -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4807,7 +5010,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.12: 4.12 Antes del Despegue I: Cabina, Mandos y Parámetros -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4857,11 +5064,11 @@ export const DA40_LESSON_4 = {
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">6.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Door light (DOOR) &mdash; <span class="italic font-medium">check no indication</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">DOOR OPEN CAS warning &mdash; <span class="italic font-medium">check no indication</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-tight">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">7.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Engine instruments &mdash; <span class="italic font-medium">check in green</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">Engine instruments (G1000 EIS) &mdash; <span class="italic font-medium">check in green range</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">8.</span>
@@ -4937,7 +5144,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.13: 4.13 Antes del Despegue II: ECU Test, ECU Swap y Lista Final (Ítems 17 al 32) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4970,15 +5181,15 @@ export const DA40_LESSON_4 = {
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">18.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Caution lights (ECU A, B, CAUTION) &mdash; <span class="italic font-medium">blinking</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">CAS caution alerts (ECU A FAIL, ECU B FAIL) &mdash; <span class="italic font-medium">blinking</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">19.</span>
-                  <span class="text-slate-800 dark:text-slate-200">'ECU BACKUP UNSAFE' &mdash; <span class="italic font-medium">blinking, if installed</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">CAS message 'ECU BACKUP UNSAFE' &mdash; <span class="italic font-medium">blinking, if installed</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">20.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Caution lights (ECU B, CAUTION) &mdash; <span class="italic font-medium">blinking</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">CAS caution alert (ECU B FAIL) &mdash; <span class="italic font-medium">blinking</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">21.</span>
@@ -4986,7 +5197,7 @@ export const DA40_LESSON_4 = {
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">22.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Caution lights (ECU A, CAUTION) &mdash; <span class="italic font-medium">blinking</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">CAS caution alert (ECU A FAIL) &mdash; <span class="italic font-medium">blinking</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">23.</span>
@@ -4994,7 +5205,7 @@ export const DA40_LESSON_4 = {
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">24.</span>
-                  <span class="text-slate-800 dark:text-slate-200">Caution lights &mdash; <span class="italic font-medium">extinguished</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">CAS caution alerts &mdash; <span class="italic font-medium">extinguished</span></span>
                 </div>
               </div>
 
@@ -5003,7 +5214,7 @@ export const DA40_LESSON_4 = {
                 <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ECU SWAP &amp; FINAL:</strong>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">25.</span>
-                  <span class="text-slate-800 dark:text-slate-200">'ECU BACKUP UNSAFE' &mdash; <span class="italic font-medium">extinguished</span></span>
+                  <span class="text-slate-800 dark:text-slate-200">CAS message 'ECU BACKUP UNSAFE' &mdash; <span class="italic font-medium">extinguished</span></span>
                 </div>
                 <div lang="en" class="flex items-start gap-1 py-0.2 text-[11px] leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">26.</span>
@@ -5041,7 +5252,7 @@ export const DA40_LESSON_4 = {
           <div class="space-y-1 shrink-0">
             <div class="p-2 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[11px] leading-tight shadow-2xs">
               <strong class="text-rose-700 dark:text-rose-400 uppercase tracking-wide text-xs">WARNING (ECU Backup Unsafe):</strong>
-              If caution lights or 'ECU BACKUP UNSAFE' do not illuminate, error in test. If 'ECU BACKUP UNSAFE' does not extinguish after test, backup battery lacks sufficient power. <strong>IFR-flights are prohibited!</strong>
+              If CAS caution alerts or 'ECU BACKUP UNSAFE' do not illuminate, error in test. If 'ECU BACKUP UNSAFE' does not extinguish after test, backup battery lacks sufficient power. <strong>IFR-flights are prohibited!</strong>
             </div>
             <div class="p-1.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs">
               <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide text-xs">NOTE (Engine Shake on ECU Swap):</strong>
@@ -5065,7 +5276,7 @@ export const DA40_LESSON_4 = {
           </div>
           <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Autoprueba FADEC y ECU Swap</span>
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Panel de control FADEC con pulsador ECU TEST, interruptor conmutable ECU SWAP con guarda de seguridad y anunciadores ECU A / ECU B.
+            Panel de control FADEC con pulsador ECU TEST, interruptor conmutable ECU SWAP con guarda de seguridad y avisos CAS de ECU en Garmin G1000.
           </p>
         </div>
       </div>
@@ -5073,7 +5284,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.14: 4.14 Velocidades Operativas de Vuelo y Viento Cruzado Demostrado -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5179,7 +5394,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.15: 4.15 Despegue y Ascenso -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5300,7 +5519,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.16: 4.16 Vuelo de Crucero y Gestión de Combustible -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5373,8 +5596,8 @@ export const DA40_LESSON_4 = {
               During normal operation fuel is taken from the main tank only. Therefore fuel must be transferred from auxiliary tank to main tank. The transfer rate is approx. 60 US gal/h (227 liters/h).
             </div>
             <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs leading-tight shadow-2xs">
-              <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide text-xs">NOTE (Automatic Turn-Off & Blinking):</strong>
-              The transfer pump turns off automatically to avoid overfilling main tank. Status light is illuminated only while running. <strong>If status light blinks, pump must be switched OFF!</strong>
+              <strong class="text-sky-700 dark:text-sky-400 uppercase tracking-wide text-xs">NOTE (Automatic Turn-Off &amp; CAS Advisory):</strong>
+              The transfer pump turns off automatically to avoid overfilling main tank. En Garmin G1000 el trasvase activo se indica mediante el aviso blanco de advisory FUEL TRANSFER en el PFD CAS. <strong>If transfer light blinks, pump must be switched OFF!</strong>
             </div>
           </div>
         </div>
@@ -5402,7 +5625,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.17: 4.17 Descenso y Aterrizaje Normal -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5524,7 +5751,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.18: 4.18 Maniobra de Escape: Motor y al Aire -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5607,7 +5838,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.19: 4.19 Tras el Aterrizaje y Parada de Motor -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5789,7 +6024,11 @@ export const DA40_LESSON_4 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 4.20: 4.20 Procedimientos Especiales y Operación en Tiempo Frío -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5864,6 +6103,9 @@ export const DA40_LESSON_4 = {
 `,
 };
 
+// ============================================================================
+// 5. PROCEDIMIENTOS DE EMERGENCIA Y CASOS ANÓMALOS
+// ============================================================================
 export const DA40_LESSON_5 = {
   id: "da400000-0000-0000-0000-000000000050",
   course_id: DA40_COURSE_ID,
@@ -5988,7 +6230,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.2: 5.2 Fallo de Motor en Tierra y Aborto de Despegue -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6102,7 +6348,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.3: 5.3 Fallo de Motor Tras el Despegue (EFATO) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6177,7 +6427,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.4: 5.4 Fallo de Motor en Vuelo (Engine Running Roughly) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6208,7 +6462,7 @@ export const DA40_LESSON_5 = {
             </div>
             <div lang="en" class="flex items-start gap-2 py-0.5 leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
-              <span class="text-slate-800 dark:text-slate-200">Engine caution light &mdash; <span class="italic font-bold">check</span></span>
+              <span class="text-slate-800 dark:text-slate-200">G1000 CAS alerts / EIS engine parameters &mdash; <span class="italic font-bold">check</span></span>
             </div>
             <div lang="en" class="flex items-start gap-2 py-0.5 leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
@@ -6271,7 +6525,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.5: 5.5 Fallo de Motor en Vuelo (Loss of Power) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6381,7 +6639,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.6: 5.6 Reencendido de Motor en Vuelo (Molinete y Arrancador) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6546,7 +6808,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.7: 5.7 Malfunción del Regulador de RPM: Oscilaciones y Subvelocidad -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6658,7 +6924,7 @@ export const DA40_LESSON_5 = {
         <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 flex flex-col justify-start items-start p-1 mt-1">
           <img
             src="/images/da40/da40-engine-failure-flight.jpg"
-            alt="Control de tacómetro CED 125 y regulador DA40 TDI"
+            alt="Indicación de tacómetro en Garmin G1000 EIS y regulador DA40 TDI"
             class="w-full h-auto max-h-[500px] object-contain rounded-lg"
           />
         </div>
@@ -6667,7 +6933,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.8: 5.8 Malfunción del Regulador de RPM: Sobrevelocidad -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6789,7 +7059,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.9: 5.9 Humo y Fuego en Tierra y Durante el Despegue -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6947,7 +7221,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.10: 5.10 Incendio de Motor en Vuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7050,7 +7328,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.11: 5.11 Humo e Incendio Eléctrico en Vuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7162,7 +7444,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.12: 5.12 Aterrizaje de Emergencia con Motor Parado -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7257,7 +7543,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.13: 5.13 Aterrizaje con Neumático Desinflado o Frenos Fallidos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7360,7 +7650,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.14: 5.14 Recuperación de Barrena Inadvertida (Unintentional Spin) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7462,7 +7756,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.15: 5.15 Vuelo Inadvertido en Condiciones de Engelamiento -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7575,7 +7873,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.16: 5.16 Fallos del Sistema Eléctrico (AFM 3.7.2) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7638,7 +7940,7 @@ export const DA40_LESSON_5 = {
               <!-- (b) Starter Malfunction -->
               <div class="space-y-1">
                 <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">(b) STARTER MALFUNCTION</strong>
-                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pb-0.5">If starter warning light (START) remains illuminated or blinking:</div>
+                <div class="text-[18px] font-semibold text-slate-600 dark:text-slate-300 pb-0.5">If START ENGD CAS warning alert remains illuminated or blinking:</div>
                 <div lang="en" class="flex items-start gap-1.5 py-0.5 leading-snug">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
                   <span>Power lever &mdash; <span class="italic font-bold">IDLE</span></span>
@@ -7695,7 +7997,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.17: 5.17 Monóxido de Carbono (CO) y Aviso DOOR en Vuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7704,7 +8010,7 @@ export const DA40_LESSON_5 = {
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS DE EMERGENCIA</div>
       <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.17 Monóxido de Carbono (CO) y Aviso DOOR en Vuelo</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Suspicion of CO &amp; DOOR Warning Light</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Suspicion of CO &amp; DOOR OPEN CAS Alert</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="52" style="--col-left: 52fr; --col-right: 48fr;">
@@ -7767,7 +8073,7 @@ export const DA40_LESSON_5 = {
             <!-- SUBCOL 2: AFM 3.7.4 'DOOR'-WARNING LIGHT ON -->
             <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between h-full">
               <div>
-                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.7.4 'DOOR' LIGHT ON</strong>
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">3.7.4 'DOOR OPEN' CAS ALERT ON</strong>
                 
                 <div lang="en" class="space-y-1.5 text-[18px] mt-1.5">
                   <div class="flex items-start gap-1.5 leading-snug">
@@ -7843,7 +8149,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.18: 5.18 Aterrizaje de Precaución con Motor Operativo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7981,7 +8291,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.19: 5.19 Luces de Aviso FADEC: ECU A y ECU B en Vuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7998,7 +8312,7 @@ export const DA40_LESSON_5 = {
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="space-y-2 w-full flex flex-col justify-start items-start text-[18px] h-full">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">FADEC CAUTION LIGHT PROCEDURES</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">FADEC CAS CAUTION PROCEDURES (ECU A FAIL / ECU B FAIL)</span>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 items-stretch justify-start w-full flex-1">
@@ -8129,16 +8443,20 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 5.20: 5.20 RPM Anómalas (High RPM) y Aviso ENGINE en Panel -->
+
+
+<!-- DIAPOSITIVA 5.20: 5.20 RPM Anómalas (High RPM) y Parámetros de Motor Fuera de Rango (G1000 EIS) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA40 TDI · PROCEDIMIENTOS ANÓMALOS</div>
-      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.20 RPM Anómalas (High RPM) y Aviso ENGINE en Panel</h1>
+      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">5.20 RPM Anómalas (High RPM) y Parámetros de Motor Fuera de Rango (G1000 EIS)</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">High RPM &amp; ENGINE Caution Light (AFM 4B.2.1 &amp; 4B.3.5)</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">High RPM &amp; Engine Parameter Outside Green Range (AFM 4B.2.1 &amp; 4B.3.5)</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
@@ -8191,20 +8509,20 @@ export const DA40_LESSON_5 = {
             <!-- Subcolumna 2: AFM 4B.3.5 ENGINE FAILURE (ENGINE) -->
             <div class="w-full h-full p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 flex flex-col justify-between">
               <div class="space-y-1.5">
-                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.5 ENGINE CAUTION LIGHT</strong>
+                <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.5 ENGINE PARAMETER OUTSIDE GREEN RANGE</strong>
 
                 <div lang="en" class="space-y-1.5 text-[18px] mt-1.5">
                   <div class="flex items-start gap-1.5 py-0.5 leading-snug">
                     <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
-                    <span>Engine instrument CED 125 &mdash; <span class="italic font-medium">check</span></span>
+                    <span>Garmin G1000 EIS (Engine Display) &mdash; <span class="italic font-medium">check</span></span>
                   </div>
                   <div class="flex items-start gap-1.5 py-0.5 leading-snug">
                     <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
-                    <span>Engine instrument AED 125 &mdash; <span class="italic font-medium">check</span></span>
+                    <span>Garmin G1000 EIS (System / Fuel Display) &mdash; <span class="italic font-medium">check</span></span>
                   </div>
                   <div class="flex items-start gap-1.5 py-0.5 leading-snug">
                     <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
-                    <span>Acknowledge button &mdash; <span class="italic font-bold">press</span></span>
+                    <span>ALERTS softkey (PFD) &mdash; <span class="italic font-bold">press / acknowledge</span></span>
                   </div>
                 </div>
               </div>
@@ -8216,8 +8534,8 @@ export const DA40_LESSON_5 = {
                   <span>NOTES:</span>
                 </strong>
                 <div class="space-y-1.5 pl-1">
-                  <div>&bull; If an indication either on the CED 125 or AED 125 is near the end of the green range, it may happen that it switches over to the yellow or red range for a short time. This will also cause the ENGINE caution light to illuminate.</div>
-                  <div>&bull; If an indication either on the CED 125 or AED 125 is outside of the green range, proceed in accordance with 4B.2 - INSTRUMENT INDICATIONS OUTSIDE OF THE GREEN RANGE.</div>
+                  <div>&bull; If an engine parameter indication on the G1000 EIS is near the end of the green range, it may happen that it switches over to the yellow or red range for a short time. This will also cause an amber or red CAS alert to illuminate.</div>
+                  <div>&bull; If an engine parameter indication on the G1000 EIS is outside of the green range, proceed in accordance with 4B.2 - INSTRUMENT INDICATIONS OUTSIDE OF THE GREEN RANGE.</div>
                 </div>
               </div>
             </div>
@@ -8226,30 +8544,31 @@ export const DA40_LESSON_5 = {
       </div>
     </div>
 
-    <!-- Columna Derecha: Reservada para Instrumentos CED 125 / AED 125 y Panel Anunciador (50%) -->
+    <!-- Columna Derecha: Garmin G1000 EIS Engine Display (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-2">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">INSTRUMENTOS DE MOTOR (CED 125 &amp; AED 125)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">INSTRUMENTACIÓN DE MOTOR (GARMIN G1000 EIS)</span>
         </div>
 
-        <div class="w-full flex-1 flex flex-col justify-center items-center p-6 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
-          <div class="w-16 h-16 mb-3 rounded-full bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl font-bold">
-            📟
-          </div>
-          <strong class="text-[#0B2E59] dark:text-sky-300 text-[18px] block mb-1">
-            Espacio Reservado para Esquema de Instrumentos
-          </strong>
-          <p class="text-slate-600 dark:text-slate-400 text-[18px] max-w-md">
-            Pantalla central de motor CED 125 (tacómetro, presiones y temperaturas principales) y auxiliar AED 125, junto con la luz de aviso ENGINE y el pulsador ACKNOWLEDGE.
-          </p>
+        <div class="w-full flex-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-white flex flex-col items-center justify-center p-2 overflow-hidden shadow-xs">
+          <img
+            src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/g1000-eis-engine.png"
+            alt="Garmin G1000 EIS Engine Display"
+            style="max-height: 480px; height: 100%; width: auto; object-fit: contain; background-color: #ffffff;"
+            class="rounded-lg"
+          />
         </div>
       </div>
     </div>
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.21: 5.21 Fallo de Alternador y Aviso LOW VOLTS -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -8324,7 +8643,7 @@ export const DA40_LESSON_5 = {
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-1 uppercase tracking-wide">4B.3.4 ALTERNATOR FAILURE</strong>
 
               <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-[18px] leading-snug">
-                An alternator failure is indicated by an illuminated or blinking alternator caution light (ALTERNATOR) on the annunciator panel. The batteries are the last remaining source of electrical power for a minimum of 30 minutes.
+                An alternator failure is indicated by an illuminated amber caution alert (LOW VOLTS / ALTERNATOR FAIL) on the PFD CAS display and zero alternator load indication on the G1000 EIS System page. The batteries are the last remaining source of electrical power for a minimum of 30 minutes.
               </div>
 
               <div lang="en" class="space-y-1.5 text-[18px] mt-1">
@@ -8393,7 +8712,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.22: 5.22 Anomalías de Temperatura: Refrigerante y Aceite -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -8423,7 +8746,7 @@ export const DA40_LESSON_5 = {
                 <div class="font-semibold text-[#0B2E59] dark:text-sky-300 text-[18px] leading-tight">High Coolant Temperature:</div>
                 <div class="flex items-start gap-1 py-0.5 leading-tight pl-1">
                   <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">&bull;</span>
-                  <span>Check coolant qty. caution light <strong class="font-semibold">(WATER LEVEL)</strong>.</span>
+                  <span>Check coolant level CAS alert <strong class="font-semibold">(COOL LVL)</strong>.</span>
                 </div>
 
                 <!-- If off -->
@@ -8537,7 +8860,7 @@ export const DA40_LESSON_5 = {
       </div>
     </div>
 
-    <!-- Columna Derecha: WARNING & CAUTION AFM 4B.2.2 y Diagrama Térmico CED 125 (50%) -->
+    <!-- Columna Derecha: WARNING & CAUTION AFM 4B.2.2 y Esquema Térmico G1000 EIS (50%) -->
     <div class="lg:col-span-6 flex flex-col justify-start">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-2">
@@ -8562,7 +8885,7 @@ export const DA40_LESSON_5 = {
           <div>If the coolant temperature does not return to the green range, perform a precautionary landing on the nearest airfield in accordance with 4B.1 - PRECAUTIONARY LANDING.</div>
         </div>
 
-        <!-- Placeholder Esquema Técnico CED 125 -->
+        <!-- Placeholder Esquema Técnico G1000 EIS -->
         <div class="w-full flex-1 flex flex-col justify-center items-center p-4 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
           <div class="w-14 h-14 mb-2 rounded-full bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-2xl font-bold">
             🌡️
@@ -8571,7 +8894,7 @@ export const DA40_LESSON_5 = {
             Espacio Reservado para Esquema Térmico
           </strong>
           <p class="text-slate-600 dark:text-slate-400 text-[18px] max-w-md">
-            Instrumentación central CED 125: Indicador de temperatura de refrigerante (CT, máx 105 &deg;C), temperatura de aceite (OT, máx 140 &deg;C) y aviso WATER LEVEL en panel anunciador.
+            Indicación de temperaturas en Garmin G1000 EIS: Indicador de temperatura de refrigerante (COOLANT TEMP, máx 105 &deg;C), temperatura de aceite (OIL TEMP, máx 140 &deg;C) y aviso CAS COOL LVL en pantalla PFD.
           </p>
         </div>
       </div>
@@ -8579,7 +8902,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.23: 5.23 Anomalías de Presión de Aceite, Reductora y Combustible -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -8731,7 +9058,7 @@ export const DA40_LESSON_5 = {
             <span>ℹ️</span>
             <span>NOTE:</span>
           </strong>
-          <div>If the RPM indication is less than 1500 RPM with the power lever at IDLE, the oil pressure must drop into the red range to cause the caution light to illuminate.</div>
+          <div>If the RPM indication is less than 1500 RPM with the power lever at IDLE, the oil pressure must drop into the red range to cause the OIL PRES CAS warning alert to illuminate.</div>
         </div>
 
         <!-- NOTE AFM 4B.2.6 -->
@@ -8743,7 +9070,7 @@ export const DA40_LESSON_5 = {
           <div>Increased fuel temperature can occur when the fuel quantity in the main tank is low. The fuel temperature can be decreased by transferring fuel from the auxiliary to the main tank.</div>
         </div>
 
-        <!-- Placeholder Esquema Técnico CED 125 -->
+        <!-- Placeholder Esquema Técnico G1000 EIS -->
         <div class="w-full flex-1 flex flex-col justify-center items-center p-3 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl bg-white/50 dark:bg-slate-800/50 text-center">
           <div class="w-12 h-12 mb-1 rounded-full bg-blue-50 dark:bg-blue-950/50 flex items-center justify-center text-blue-600 dark:text-blue-400 text-xl font-bold">
             ⚙️
@@ -8752,7 +9079,7 @@ export const DA40_LESSON_5 = {
             Espacio Reservado para Esquema de Instrumentos
           </strong>
           <p class="text-slate-600 dark:text-slate-400 text-[18px] max-w-md">
-            Indicadores de presión de aceite (OP, mín 0.9 bar), temperatura de reductora (GT, máx 120 &deg;C) y temperatura de combustible (FUEL TEMP) en CED 125.
+            Indicadores de presión de aceite (OIL PRES, mín 0.9 bar), temperatura de reductora (GEARBOX, máx 120 &deg;C) y temperatura de combustible (FUEL TEMP) en Garmin G1000 EIS.
           </p>
         </div>
       </div>
@@ -8760,7 +9087,11 @@ export const DA40_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.24: 5.24 Combustible y Malfunción del Sistema de Flaps -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -8908,14 +9239,13 @@ export const DA40_LESSON_5 = {
 };
 
 // ============================================================================
-// LECCIÓN 6: DOCUMENTACIÓN PREVUELO, M&B, COMBUSTIBLE Y PERFORMANCE (16 DIAPOSITIVAS)
+// 6. DOCUMENTACIÓN PREVUELO, MASA Y CENTRADO, COMBUSTIBLE Y PERFORMANCE
 // ============================================================================
 export const DA40_LESSON_6 = {
   id: "da400000-0000-0000-0000-000000000060",
   course_id: DA40_COURSE_ID,
   title: "6. Documentación Prevuelo, Masa y Centrado, Combustible y Performance",
-  slug: "despacho-operativo-da40-prevuelo",
-  description: "Dominio integral del despacho operacional en la aeronave Diamond DA40 TDI. Incluye cumplimentación paso a paso de la documentación oficial F.OPS.02, cálculo de Masa y Centrado con hoja de carga según AFM Capítulo 6 (BEW 735 kg, brazos 2,30 m / 3,25 m / 2,63 m / 3,65 m) y envolvente de CG (MTOM y MLM 1150 kg), régimen de crucero y consumo horario al 60% (15,1 L/h) y 70% (18,5 L/h), política de combustible EASA Part-NCO.OP.125 y Manual OM Blue Team (1h 30m de reserva obligatoria), y cálculo de performance de despegue y aterrizaje según AFM Capítulo 5 con factores de corrección de viento, pendiente y superficie de hierba.",
+  slug: "performance-masa-centrado-da40",
   sequence_order: 6,
   lesson_order: 6,
   min_seconds: 1,
@@ -8984,7 +9314,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.2: 6.2 Teoría de Carga y Centrado: Datum, Brazos y Momentos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9049,7 +9383,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.3: 6.3 Estructura del Loadsheet Oficial DA40 (F.OPS.04) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9144,7 +9482,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.4: 6.4 La Envolvente de Centro de Gravedad (CG Envelope) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9216,7 +9558,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.5: 6.5 Ejercicio Práctico 1A: Masa y Centrado al Despegue (TOM & CG) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9318,7 +9664,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.6: 6.6 Ejercicio Práctico 1B: Consumo de Ruta y Aterrizaje (LM & Envolvente) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9416,7 +9766,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.7: 6.7 Régimen de Crucero: Rendimiento y Consumo de Combustible -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9505,7 +9859,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.8: 6.8 Ground Speed, Viento y Cálculo de Combustible Horario -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9575,7 +9933,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.9: 6.9 Ejercicio Práctico: Tablas de Crucero y Autonomía -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9675,7 +10037,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.10: 6.10 Política de Combustible: Part-NCO.OP.125 & Manual OM Blue Team -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9757,7 +10123,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.11: 6.11 Ejercicio Práctico: Planificación de Combustible F.OPS.02 -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9856,7 +10226,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.12: 6.12 Performance de Despegue: Parámetros y Factores de Corrección -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9914,7 +10288,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.13: 6.13 Performance de Aterrizaje: Parámetros y Factores de Corrección -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -9979,7 +10357,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.14: 6.14 Ejercicio Práctico 4A: Distancias de Despegue (TORA & TODA) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -10078,7 +10460,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.15: 6.15 Ejercicio Práctico 4B: Distancia de Aterrizaje y Margen (LDA) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -10177,7 +10563,11 @@ export const DA40_LESSON_6 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 6.16: 6.16 Validación Final del Despacho y Firma Operativa -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -10273,11 +10663,14 @@ export const DA40_LESSON_6 = {
       </div>
     </div>
   </div>
-</div>`
+</div>`,
 };
 
-export const DA40_LESSONS = [DA40_LESSON_1, DA40_LESSON_2, DA40_LESSON_3, DA40_LESSON_4, DA40_LESSON_5, DA40_LESSON_6];
-
-
-
-
+export const DA40_LESSONS = [
+  DA40_LESSON_1,
+  DA40_LESSON_2,
+  DA40_LESSON_3,
+  DA40_LESSON_4,
+  DA40_LESSON_5,
+  DA40_LESSON_6,
+];

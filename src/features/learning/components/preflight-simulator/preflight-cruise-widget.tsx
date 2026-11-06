@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { ExerciseInstructionsModal } from "./exercise-instructions-modal";
 import { PREFLIGHT_MISSIONS, checkValueTolerance } from "./constants";
 
 type Props = {
@@ -49,6 +50,18 @@ export function PreflightCruiseWidget({
   onExerciseCompleted,
   isAlreadyCompleted = false,
 }: Props) {
+  const [showGuideModal, setShowGuideModal] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hasSeen = sessionStorage.getItem("preflight_guide_modal_seen");
+      if (!hasSeen) {
+        setShowGuideModal(true);
+        sessionStorage.setItem("preflight_guide_modal_seen", "true");
+      }
+    }
+  }, []);
+
   const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on Mission 1 (Solved Example)
   const [selectedTablePower, setSelectedTablePower] = useState<50 | 55>(50); // Filter for right table
   const mission = PREFLIGHT_MISSIONS[selectedMissionIndex];
@@ -674,6 +687,12 @@ export function PreflightCruiseWidget({
           )}
         </div>
       </div>
+
+      <ExerciseInstructionsModal
+        isOpen={showGuideModal}
+        onClose={() => setShowGuideModal(false)}
+        title="Guía de Procedimiento: Rendimiento y Crucero (C172)"
+      />
     </div>
   );
 }

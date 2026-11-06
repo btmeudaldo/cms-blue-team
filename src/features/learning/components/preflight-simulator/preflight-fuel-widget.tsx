@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { ExerciseInstructionsModal } from "./exercise-instructions-modal";
 import { PREFLIGHT_MISSIONS, checkValueTolerance } from "./constants";
 
 type Props = {
@@ -31,6 +32,18 @@ export function PreflightFuelWidget({
   onExerciseCompleted,
   isAlreadyCompleted = false,
 }: Props) {
+  const [showGuideModal, setShowGuideModal] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hasSeen = sessionStorage.getItem("preflight_guide_modal_seen");
+      if (!hasSeen) {
+        setShowGuideModal(true);
+        sessionStorage.setItem("preflight_guide_modal_seen", "true");
+      }
+    }
+  }, []);
+
   const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on M1 (Solved Example)
   const mission = PREFLIGHT_MISSIONS[selectedMissionIndex];
 
@@ -208,6 +221,15 @@ export function PreflightFuelWidget({
               </div>
             </div>
             <div className="flex items-center gap-1 shrink-0">
+              <button
+                type="button"
+                onClick={() => setShowGuideModal(true)}
+                className="px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-all cursor-pointer flex items-center gap-1 shadow-2xs mr-1"
+                title="Ver guía de procedimiento e instrucciones"
+              >
+                <span>💡</span>
+                <span className="hidden sm:inline">Cómo proceder</span>
+              </button>
               <button
                 type="button"
                 onClick={() => switchMission(0)}
@@ -526,6 +548,12 @@ export function PreflightFuelWidget({
           </div>
         </div>
       </div>
+
+      <ExerciseInstructionsModal
+        isOpen={showGuideModal}
+        onClose={() => setShowGuideModal(false)}
+        title="Guía de Procedimiento: Planificación de Combustible (C172)"
+      />
     </div>
   );
 }

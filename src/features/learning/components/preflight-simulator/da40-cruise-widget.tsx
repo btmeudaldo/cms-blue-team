@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DA40_PREFLIGHT_MISSIONS, checkValueTolerance } from "./da40-constants";
+import { ExerciseInstructionsModal } from "./exercise-instructions-modal";
 
 type Props = {
   leftPct?: number;
@@ -86,6 +87,18 @@ export function DA40CruiseWidget({
 }: Props) {
   const clampedLeftPct = Math.max(15, Math.min(85, Math.round(leftPct || 50)));
   const rightPct = 100 - clampedLeftPct;
+  const [showGuideModal, setShowGuideModal] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hasSeen = sessionStorage.getItem("preflight_guide_modal_seen");
+      if (!hasSeen) {
+        setShowGuideModal(true);
+        sessionStorage.setItem("preflight_guide_modal_seen", "true");
+      }
+    }
+  }, []);
+
   const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on Mission 1 (Solved Example)
   const [selectedTablePower, setSelectedTablePower] = useState<PowerSetting>(60); // Filter for right table
   const mission = DA40_PREFLIGHT_MISSIONS[selectedMissionIndex];
@@ -286,6 +299,15 @@ export function DA40CruiseWidget({
               </div>
             </div>
             <div className="flex items-center gap-1.5 shrink-0">
+              <button
+                type="button"
+                onClick={() => setShowGuideModal(true)}
+                className="px-2.5 py-1.5 rounded-lg text-xs sm:text-[12px] font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-all cursor-pointer flex items-center gap-1 shadow-2xs mr-1"
+                title="Ver guía de procedimiento e instrucciones"
+              >
+                <span>💡</span>
+                <span className="hidden sm:inline">Cómo proceder</span>
+              </button>
               <button
                 type="button"
                 onClick={() => switchMission(0)}
@@ -777,6 +799,12 @@ export function DA40CruiseWidget({
           )}
         </div>
       </div>
+
+      <ExerciseInstructionsModal
+        isOpen={showGuideModal}
+        onClose={() => setShowGuideModal(false)}
+        title="Guía de Procedimiento: Rendimiento y Crucero"
+      />
     </div>
   );
 }

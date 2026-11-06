@@ -11,6 +11,7 @@ import {
   checkValueTolerance,
 } from "./da40-constants";
 import { PreflightMission } from "./types";
+import { ExerciseInstructionsModal } from "./exercise-instructions-modal";
 
 type Props = {
   mode?: "all" | "takeoff" | "landing";
@@ -89,6 +90,18 @@ export function DA40LoadsheetWidget({
 }: Props) {
   const clampedLeftPct = Math.max(15, Math.min(85, Math.round(leftPct || 50)));
   const rightPct = 100 - clampedLeftPct;
+  const [showGuideModal, setShowGuideModal] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hasSeen = sessionStorage.getItem("preflight_guide_modal_seen");
+      if (!hasSeen) {
+        setShowGuideModal(true);
+        sessionStorage.setItem("preflight_guide_modal_seen", "true");
+      }
+    }
+  }, []);
+
   const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on Mission 1 (Solved Example)
   const mission = DA40_PREFLIGHT_MISSIONS[selectedMissionIndex];
 
@@ -711,6 +724,16 @@ export function DA40LoadsheetWidget({
 
               <button
                 type="button"
+                onClick={() => setShowGuideModal(true)}
+                className="px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-all cursor-pointer flex items-center gap-1 shadow-2xs mr-1"
+                title="Ver guía de procedimiento e instrucciones"
+              >
+                <span>💡</span>
+                <span className="hidden sm:inline">Cómo proceder</span>
+              </button>
+
+              <button
+                type="button"
                 onClick={() => loadMissionScenario(DA40_PREFLIGHT_MISSIONS[0], 0)}
                 className={`px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
                   selectedMissionIndex === 0
@@ -1200,14 +1223,18 @@ export function DA40LoadsheetWidget({
               </span>
 
               {selectedMissionIndex === 0 ? (
-                <button
-                  type="button"
-                  onClick={() => loadMissionScenario(DA40_PREFLIGHT_MISSIONS[1], 1)}
-                  className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-[13px] shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95 flex items-center gap-1.5"
-                >
-                  <span>Pulsa aquí para ir a M2</span>
-                  <span>➔</span>
-                </button>
+                <div className="flex items-center gap-2">
+                  <div className="text-[11px] text-emerald-800 dark:text-emerald-300 font-semibold hidden md:block">
+                    ✓ M1 es tu ejemplo resuelto de referencia. Pulsa en M2 para resolver tu ejercicio:
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => loadMissionScenario(DA40_PREFLIGHT_MISSIONS[1], 1)}
+                    className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-[13px] shadow-xs transition-all cursor-pointer hover:scale-105 active:scale-95 flex items-center gap-1.5"
+                  >
+                    <span>Ir a M2 ➔</span>
+                  </button>
+                </div>
               ) : (
                 <button
                   type="button"
@@ -1999,6 +2026,12 @@ export function DA40LoadsheetWidget({
           )}
         </div>
       </div>
+
+      <ExerciseInstructionsModal
+        isOpen={showGuideModal}
+        onClose={() => setShowGuideModal(false)}
+        title="Guía de Procedimiento: Masa y Centrado"
+      />
     </div>
   );
 }
