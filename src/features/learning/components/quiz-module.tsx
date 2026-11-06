@@ -22,6 +22,7 @@ import type {
   QuizAttemptResult,
 } from "../domain/quiz-types";
 import { C172_QUIZZES } from "../content/c172-quizzes-data";
+import { DA40_QUIZZES } from "../content/da40-quizzes-data";
 
 type QuizModuleProps = {
   quiz: StudentQuiz;
@@ -152,7 +153,9 @@ export function QuizModule({
   // --- RESULT VIEW ---
   if (attemptResult) {
     const passed = attemptResult.passed;
-    const enrichedQuiz = C172_QUIZZES.find((q) => q.id === quiz.id);
+    const enrichedQuiz =
+      C172_QUIZZES.find((q) => q.id === quiz.id) ||
+      DA40_QUIZZES.find((q) => q.id === quiz.id);
 
     // Parse user answers from current session state or persisted attempt
     let userAnswers: Record<string, number> = {};
