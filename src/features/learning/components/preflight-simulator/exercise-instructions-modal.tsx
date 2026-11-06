@@ -34,22 +34,22 @@ export function ExerciseInstructionsModal({
       onClick={onClose}
     >
       <div
-        className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-7 max-w-lg w-full shadow-2xl space-y-4 text-left relative max-h-[90vh] overflow-y-auto"
+        className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 max-w-3xl lg:max-w-4xl w-full shadow-2xl space-y-3.5 text-left relative max-h-[95vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close cross */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xl font-bold p-1 cursor-pointer"
+          className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xl font-bold p-1 cursor-pointer transition-colors"
           title="Cerrar guía"
         >
           ✕
         </button>
 
         {/* Header */}
-        <div className="flex items-start gap-3 border-b border-slate-100 dark:border-slate-800 pb-3 pr-6">
-          <div className="w-11 h-11 rounded-2xl bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-2xl shrink-0 shadow-inner">
+        <div className="flex items-center gap-3 border-b border-slate-100 dark:border-slate-800 pb-2.5 pr-8">
+          <div className="w-10 h-10 rounded-2xl bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl shrink-0 shadow-inner">
             🧭
           </div>
           <div>
@@ -62,8 +62,8 @@ export function ExerciseInstructionsModal({
           </div>
         </div>
 
-        {/* Steps List */}
-        <div className="space-y-2.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
+        {/* Steps Grid: 2 columns on desktop so everything fits without scrolling */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-snug">
           {/* Step 1 */}
           <div className="p-2.5 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 flex items-start gap-2.5">
             <span className="w-6 h-6 rounded-full bg-emerald-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
@@ -123,13 +123,13 @@ export function ExerciseInstructionsModal({
                 Coloca los puntos en la gráfica interactiva
               </strong>
               <span>
-                Haz clic directamente sobre la gráfica o envolvente para situar los puntos en las coordenadas calculadas (ej. punto TOW/LW en la envolvente o distancias de despegue/aterrizaje).
+                Haz clic directamente sobre la gráfica o envolvente para situar los puntos en las coordenadas calculadas (ej. punto TOW/LW o distancias).
               </span>
             </div>
           </div>
 
-          {/* Step 5 */}
-          <div className="p-2.5 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 flex items-start gap-2.5">
+          {/* Step 5 (Full Width across 2 columns) */}
+          <div className="md:col-span-2 p-2.5 rounded-xl bg-amber-50/80 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 flex items-start gap-2.5">
             <span className="w-6 h-6 rounded-full bg-amber-600 text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
               5
             </span>
@@ -145,11 +145,11 @@ export function ExerciseInstructionsModal({
         </div>
 
         {/* Action Button */}
-        <div className="pt-1">
+        <div className="pt-0.5">
           <button
             type="button"
             onClick={onClose}
-            className="w-full rounded-2xl bg-[#1a80ff] hover:bg-[#0066e6] text-white py-3 text-xs sm:text-sm font-bold transition shadow-md shadow-blue-500/20 cursor-pointer flex items-center justify-center gap-2"
+            className="w-full rounded-2xl bg-[#1a80ff] hover:bg-[#0066e6] text-white py-2.5 text-xs sm:text-sm font-bold transition shadow-md shadow-blue-500/20 cursor-pointer flex items-center justify-center gap-2"
           >
             <span>¡Entendido, comenzar ejercicio!</span>
             <span>➔</span>
@@ -159,4 +159,3 @@ export function ExerciseInstructionsModal({
     </div>
   );
 }
-
