@@ -771,7 +771,7 @@ export const DA42_LESSON_2 = {
 
           <div class="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 flex items-start gap-2 text-[11px] leading-tight text-[#0B2E59] dark:text-sky-200 shrink-0">
             <span class="text-base shrink-0">ℹ️</span>
-            <span><strong>NOTE (AFM):</strong> La línea radial azul (82 KIAS) es la velocidad de supervivencia inmediata en despegue monomotor. Tras fallo de motor, alcanzar y clavar 82 KIAS asegura la máxima tasa de ascenso posible (o menor pérdida de altitud).</span>
+            <span><strong>NOTA:</strong> La línea radial azul (82 KIAS) marca v<sub>YSE</sub>. Con un motor inoperativo, mantener 82 KIAS proporciona el mejor régimen de ascenso (o menor régimen de descenso) del avión.</span>
           </div>
         </div>
       </div>
