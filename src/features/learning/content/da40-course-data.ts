@@ -5811,7 +5811,7 @@ export const DA40_LESSON_4 = {
             </strong>
             <div>1. <strong>Potencia:</strong> Palanca a MAX sin vacilar.<br/>
             2. <strong>Actitud:</strong> Levantar el morro para frenar el descenso y adoptar velocidad de mejor régimen (66 KIAS a 1150 kg).<br/>
-            3. <strong>Flaps:</strong> Retraer de LDG a T/O inmediatamente. No subirlos a UP hasta tener tasa positiva y superar altitud de seguridad (mínimo 300 ft AGL) a 73 KIAS.</div>
+            3. <strong>Flaps:</strong> Retraer de LDG a T/O inmediatamente. No subirlos a UP hasta tener tasa positiva y superar la altitud de seguridad (500 ft AGL según SOPs Blue Team) a 73 KIAS.</div>
           </div>
         </div>
       </div>
