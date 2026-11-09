@@ -979,8 +979,8 @@ export const DA42_LESSON_2 = {
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
             <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-cg-envelope.png"
-              alt="Envolvente de Centro de Gravedad Diamond DA42"
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-cg-datum-screenshot.png"
+              alt="Plano de Referencia y Envolvente de Centro de Gravedad Diamond DA42"
               class="w-full h-full max-h-[500px] object-contain rounded-lg"
               style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
             />
