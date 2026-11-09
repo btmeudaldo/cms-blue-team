@@ -456,6 +456,12 @@ export const DA42_LESSON_1 = {
               <p>• <strong>Sistema De-Ice TKS:</strong> Fluido <code>AL-5 (DTD 406B)</code>. En nuestra flota se encuentra <strong>inoperativo / sin carga de fluido</strong>; no estamos despachados para vuelo en condiciones de engelamiento conocido (Known Icing).</p>
             </div>
           </div>
+
+          <!-- Warning Niveles de Fluido AFM 2.4 -->
+          <div class="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0">
+            <span class="text-base shrink-0">🚨</span>
+            <span><strong>WARNING (AFM 2.4):</strong> Los motores no deben arrancarse bajo ninguna circunstancia si el nivel de aceite motor o de reductora es inferior al mínimo admisible, o si la alerta WATER LEVEL permanece activa en el G1000. Notificar a mantenimiento para corregir la causa de la fuga antes de cualquier vuelo.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -463,19 +469,13 @@ export const DA42_LESSON_1 = {
     <!-- Columna Derecha (lg:col-span-5): Supervisión en Prevuelo (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 w-full flex flex-col justify-start items-start">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+        <div class="space-y-2 w-full flex-1 flex flex-col justify-start items-start min-h-0">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">SUPERVISIÓN DE FLUIDOS EN PREVUELO</span>
           </div>
 
-          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.5-fluidos.jpg?v=1" alt="Supervisión de Fluidos de Servicio" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
-          </div>
-
-          <!-- Warning Niveles de Fluido -->
-          <div class="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0">
-            <span class="text-base shrink-0">🚨</span>
-            <span><strong>WARNING (AFM 2.4):</strong> Los motores no deben arrancarse bajo ninguna circunstancia si el nivel de aceite motor o de reductora es inferior al mínimo admisible, o si la alerta WATER LEVEL permanece activa en el G1000. Notificar a mantenimiento para corregir la causa de la fuga antes de cualquier vuelo.</span>
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col justify-center items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.5-fluidos.jpg?v=1" alt="Supervisión de Fluidos de Servicio" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
         </div>
       </div>
