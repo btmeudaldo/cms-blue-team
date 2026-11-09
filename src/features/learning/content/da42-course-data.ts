@@ -119,7 +119,7 @@ export const DA42_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">DIAMOND DA42 TWIN STAR</span>
           </div>
 
-          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
+          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
             <img src="/images/DA42/exterior/Gemini_Generated_Image_4l5w9r4l5w9r4l5w.png" alt="Diamond DA42 Twin Star" class="w-full h-full max-h-[360px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
 
@@ -203,7 +203,7 @@ export const DA42_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">PLANTA DE POTENCIA CONTINENTAL CD-135 / CD-155</span>
           </div>
 
-          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
+          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/Continental-Engine-Jet-A-CD-155-View-latest.png" alt="Motor Continental Turbo Diésel" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
 
@@ -381,7 +381,7 @@ export const DA42_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">BOCA DE LLENADO Y RÓTULO OFICIAL</span>
           </div>
 
-          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
+          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/jet-fuel-only.jpg" alt="Rótulo JET FUEL ONLY" class="w-full h-full max-h-[350px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
 
@@ -474,7 +474,7 @@ export const DA42_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">SUPERVISIÓN DE FLUIDOS EN PREVUELO</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col justify-center items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.5-fluidos.jpg?v=1" alt="Supervisión de Fluidos de Servicio" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
         </div>
@@ -551,7 +551,7 @@ export const DA42_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GARMIN G1000 · PFD, MFD Y BARRA EIS BIMOTOR</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-900/60 flex flex-col justify-center items-center p-1.5 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-1.5 lesson-img-wrapper" draggable="false" style="position: relative;">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/Gemini_Generated_Image_qdo2epqdo2epqdo2.jpg"
               alt="Cabina, Pedestal Central Bimotor y Sistema Garmin G1000 Diamond DA42 Twin Star"
@@ -785,10 +785,10 @@ export const DA42_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CINTA DE VELOCIDAD PFD (GARMIN G1000)</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-950 flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
             <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-g1000-airspeed-tape.png"
-              alt="Cinta Anemométrica Garmin G1000 DA42 con marcas vMCA 68 KIAS y vYSE 82 KIAS"
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/Gemini_Generated_Image_o30fd0o30fd0o30f.jpg"
+              alt="Marcas del Anemómetro Garmin G1000 Diamond DA42"
               class="w-full h-full max-h-[500px] object-contain rounded-lg"
               style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
             />
@@ -973,7 +973,7 @@ export const DA42_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE DE CENTRO DE GRAVEDAD</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-cg-envelope.png"
               alt="Envolvente de Centro de Gravedad Diamond DA42"
@@ -1452,7 +1452,7 @@ export const DA42_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SUPERVISIÓN EN PÁGINAS ENGINE, SYSTEM Y FUEL</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-950 flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-g1000-eis-cas-composite.png"
               alt="Páginas de Instrumentación de Motor G1000 EIS y Alertas CAS Diamond DA42"
@@ -1737,7 +1737,7 @@ export const DA42_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLACARDS OFICIALES DEL INSTRUMENT PANEL</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-placards-instrument-panel.png"
               alt="Placards Oficiales de Cabina Diamond DA42"
