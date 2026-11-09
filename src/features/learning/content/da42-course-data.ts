@@ -850,13 +850,18 @@ export const DA42_LESSON_2 = {
             </div>
           </div>
 
-          <!-- Desglose de Compartimentos de Carga -->
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">COMPARTIMENTOS DE EQUIPAJE AUTORIZADOS</strong>
-            <div class="space-y-1 text-[11px] text-slate-700 dark:text-slate-200">
-              <p>• <strong>Morro del avión (Nose Baggage):</strong> Máximo <strong>30 kg (66 lb)</strong> (dividido en compartimentos izquierdo y derecho).</p>
-              <p>• <strong>Cabina posterior y extensión:</strong> Máximo total combinado de <strong>45 kg (100 lb)</strong> con red de retención instalada (con un submáximo de <strong>18 kg / 40 lb</strong> en la extensión trasera).</p>
-            </div>
+          <!-- Pautas de Embarque y Sujeción -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 w-full text-xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PAUTAS DE EMBARQUE Y SUJECIÓN</strong>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
+              • <strong>Límite por asiento:</strong> Máximo 110 kg (242 lb) por plaza en asientos delanteros y traseros.
+            </p>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
+              • <strong>Redes de retención (Baggage Nets):</strong> Es obligatorio colocar y tensar las redes de equipaje tanto en el morro como detrás de los asientos traseros antes del rodaje.
+            </p>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
+              • <strong>Aterrizaje con sobrepeso (MTOM 1785 kg):</strong> Si se despega a masas entre 1700 kg y 1785 kg, la planificación de combustible debe asegurar llegar al aeródromo de destino por debajo de 1700 kg MLM.
+            </p>
           </div>
         </div>
       </div>
@@ -870,17 +875,13 @@ export const DA42_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DISTRIBUCIÓN Y SEGURIDAD DE CARGA</span>
           </div>
 
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 w-full text-xs">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PAUTAS DE EMBARQUE Y SUJECIÓN</strong>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
-              • <strong>Límite por asiento:</strong> Máximo 110 kg (242 lb) por plaza en asientos delanteros y traseros.
-            </p>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
-              • <strong>Redes de retención (Baggage Nets):</strong> Es obligatorio colocar y tensar las redes de equipaje tanto en el morro como detrás de los asientos traseros antes del rodaje.
-            </p>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
-              • <strong>Aterrizaje con sobrepeso (MTOM 1785 kg):</strong> Si se despega a masas entre 1700 kg y 1785 kg, la planificación de combustible debe asegurar llegar al aeródromo de destino por debajo de 1700 kg MLM.
-            </p>
+          <!-- Desglose de Compartimentos de Carga -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">COMPARTIMENTOS DE EQUIPAJE AUTORIZADOS</strong>
+            <div class="space-y-1.5 text-[11px] text-slate-700 dark:text-slate-200">
+              <p>• <strong>Morro del avión (Nose Baggage):</strong> Máximo <strong>30 kg (66 lb)</strong> (dividido en compartimentos izquierdo y derecho).</p>
+              <p>• <strong>Cabina posterior y extensión:</strong> Máximo total combinado de <strong>45 kg (100 lb)</strong> con red de retención instalada (con un submáximo de <strong>18 kg / 40 lb</strong> en la extensión trasera).</p>
+            </div>
           </div>
         </div>
       </div>
