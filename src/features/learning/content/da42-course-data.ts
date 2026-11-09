@@ -232,7 +232,7 @@ export const DA42_LESSON_1 = {
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CONTINENTAL CD-135 / CD-155</div>
       <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">1.3 Hélices MT-Propeller Tripala de Paso Constante</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Gobernador Hidráulico, FADEC y Sistema de Embanderado</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Gobernador Hidráulico, FADEC y Sistema de Abanderado</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="56" style="--col-left: 56fr; --col-right: 44fr; grid-template-columns: minmax(0px, 56fr) minmax(0px, 44fr) !important;">
@@ -269,9 +269,9 @@ export const DA42_LESSON_1 = {
             </p>
           </div>
 
-          <!-- Principio de Funcionamiento y Embanderado -->
+          <!-- Principio de Funcionamiento y Abanderado -->
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FUNCIONAMIENTO CONSTANT SPEED Y EMBANDERADO (FEATHERING)</strong>
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FUNCIONAMIENTO CONSTANT SPEED Y ABANDERADO (FEATHERING)</strong>
             <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
               La hélice es de velocidad constante gobernada por la ECU con presión de aceite. No existe palanca de paso en cabina: la ECU mantiene el régimen óptimo (2.300 RPM en despegue y crucero continuo).
             </p>
@@ -282,7 +282,7 @@ export const DA42_LESSON_1 = {
               • <strong>Feathering:</strong> Al apagar el motor en vuelo, la pérdida de presión de aceite permite que contrapesos centrífugos y muelles lleven las palas a bandera (81°), eliminando la resistencia de molinete.
             </p>
             <p class="text-slate-700 dark:text-slate-200 text-[11px] leading-relaxed">
-              • <strong>Start Locks:</strong> Por debajo de ~1300 RPM en tierra, pestillos centrífugos bloquean las palas en 15° (Start Lock), impidiendo el embanderado en plataforma para facilitar el arranque posterior.
+              • <strong>Start Locks:</strong> Por debajo de ~1300 RPM en tierra, pestillos centrífugos bloquean las palas en 15° (Start Lock), impidiendo el abanderado en plataforma para facilitar el arranque posterior.
             </p>
           </div>
         </div>
@@ -685,7 +685,7 @@ export const DA42_LESSON_2 = {
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">OPERACIÓN CON UN MOTOR INOPERATIVO (OEI)</strong>
             <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-relaxed">
-              • <strong>v<sub>MCA</sub> = 68 KIAS:</strong> Es la velocidad mínima a la que el avión es gobernable direccionalmente con el motor crítico inoperativo (hélice embanderada), el motor operativo a máxima potencia de despegue (100% Load), flaps en posición UP, tren arriba y un banqueo de hasta 5° hacia el motor vivo.
+              • <strong>v<sub>MCA</sub> = 68 KIAS:</strong> Es la velocidad mínima a la que el avión es gobernable direccionalmente con el motor crítico inoperativo (hélice abanderada), el motor operativo a máxima potencia de despegue (100% Load), flaps en posición UP, tren arriba y un banqueo de hasta 5° hacia el motor vivo.
             </p>
           </div>
 
@@ -1151,7 +1151,7 @@ export const DA42_LESSON_2 = {
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HÉLICES Y REGULACIÓN DE PASO</strong>
             <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>RPM continuas máximas:</strong> <strong>2300 RPM</strong> de hélice (mostradas en el tacómetro del G1000).</p>
             <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Sobrerrégimen máximo (Overspeed):</strong> <strong>2500 RPM</strong> durante un máximo de <strong>20 segundos</strong>.</p>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Hélices MT-Propeller:</strong> Modelo MTV-6-A-C-F/CF 187-129 tripala constante con paso variable y embanderamiento.</p>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Hélices MT-Propeller:</strong> Modelo MTV-6-A-C-F/CF 187-129 tripala constante con paso variable y abanderamiento.</p>
           </div>
         </div>
       </div>
@@ -1344,7 +1344,7 @@ export const DA42_LESSON_2 = {
 
           <div class="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0 w-full">
             <span class="text-base shrink-0">🚨</span>
-            <span><strong>WARNING (AFM):</strong> Si la presión de aceite desciende por debajo de 1.0 bar en vuelo (alerta roja <code>L/R OIL PRES</code>), reducir potencia de inmediato en el motor afectado y vigilar la temperatura de aceite. Si la temperatura aumenta o la presión no recupera, proceder a parada y embanderamiento según la lista de emergencia monomotor.</span>
+            <span><strong>WARNING (AFM):</strong> Si la presión de aceite desciende por debajo de 1.0 bar en vuelo (alerta roja <code>L/R OIL PRES</code>), reducir potencia de inmediato en el motor afectado y vigilar la temperatura de aceite. Si la temperatura aumenta o la presión no recupera, proceder a parada y abanderamiento según la lista de emergencia monomotor.</span>
           </div>
         </div>
       </div>
