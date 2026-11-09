@@ -189,7 +189,7 @@ export const DA42_LESSON_1 = {
           <!-- Warning eléctrico AFM -->
           <div class="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200">
             <span class="text-base shrink-0">🚨</span>
-            <span><strong>WARNING (AFM):</strong> Ambos motores requieren energía eléctrica continua para operar. Si fallan alternador y batería principal de una barquilla, el motor opera con su batería de reserva FADEC (ECU Backup Battery, mín. 30 minutos). Prestar máxima atención a los avisos L/R ALTN FAIL y LOW VOLTS.</span>
+            <span><strong>WARNING (AFM):</strong> Ambos motores requieren energía eléctrica continua para los inyectores Common Rail y la ECU (FADEC). Si fallan el alternador de un motor y la alimentación de la batería principal del avión, el motor continúa operando con su batería de reserva FADEC (ECU Backup Battery, mín. 30 minutos). Prestar máxima atención inmediata a las alertas L/R ALTN FAIL y LOW VOLTS.</span>
           </div>
         </div>
       </div>
@@ -553,8 +553,8 @@ export const DA42_LESSON_1 = {
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-900/60 flex flex-col justify-center items-center p-1.5 lesson-img-wrapper" draggable="false" style="position: relative;">
             <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-g1000-eis-cas-composite.png"
-              alt="Garmin G1000 EIS (Engine Display, System Display, Fuel Display) y Sistema de Alertas CAS Diamond DA42 Twin Star"
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/Gemini_Generated_Image_qdo2epqdo2epqdo2.jpg"
+              alt="Cabina, Pedestal Central Bimotor y Sistema Garmin G1000 Diamond DA42 Twin Star"
               class="w-full h-full max-h-[380px] object-contain rounded-lg"
               style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
             />
