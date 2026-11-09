@@ -107,12 +107,6 @@ export const DA42_LESSON_1 = {
               </div>
             </div>
           </div>
-
-          <!-- Advertencia AFM Documentación -->
-          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-xs sm:text-sm leading-tight text-amber-900 dark:text-amber-200">
-            <span class="text-base shrink-0">⚠️</span>
-            <span><strong>CAUTION (AFM 1.2):</strong> La DA42 es un bimotor ligero con alta fiabilidad certificada. No obstante, un fallo de motor no es imposible. El cumplimiento de las limitaciones operacionales y el transporte del AFM oficial (bolsa lateral delantera izquierda) y de la G1000 CRG (bolsa trasera delantera izquierda) son obligatorios.</span>
-          </div>
         </div>
       </div>
     </div>
@@ -120,13 +114,19 @@ export const DA42_LESSON_1 = {
     <!-- Columna Derecha (lg:col-span-5): Aeronave DA42 Twin Star (Altura Fija 590px) -->
     <div class="lg:col-span-5 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start items-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">DIAMOND DA42 TWIN STAR</span>
           </div>
 
           <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both;">
-            <img src="/images/DA42/exterior/Gemini_Generated_Image_4l5w9r4l5w9r4l5w.png" alt="Diamond DA42 Twin Star" class="w-full h-full max-h-[440px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
+            <img src="/images/DA42/exterior/Gemini_Generated_Image_4l5w9r4l5w9r4l5w.png" alt="Diamond DA42 Twin Star" class="w-full h-full max-h-[360px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
+          </div>
+
+          <!-- Caution AFM Documentación -->
+          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200 shrink-0">
+            <span class="text-base shrink-0">⚠️</span>
+            <span><strong>CAUTION (AFM 1.2):</strong> La DA42 es un bimotor ligero con alta fiabilidad certificada. No obstante, un fallo de motor no es imposible. El cumplimiento de las limitaciones operacionales y el transporte del AFM oficial (bolsa lateral delantera izquierda) y de la G1000 CRG (bolsa trasera delantera izquierda) son obligatorios.</span>
           </div>
         </div>
       </div>
