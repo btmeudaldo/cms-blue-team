@@ -1098,7 +1098,7 @@ export const DA42_LESSON_2 = {
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
-    <!-- Columna Izquierda (lg:col-span-6): Potencia y Motor de Arranque (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-6): Potencia, Hélices y Arranque (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
@@ -1122,7 +1122,15 @@ export const DA42_LESSON_2 = {
             </div>
           </div>
 
-          <!-- Ciclo Operativo del Motor de Arranque (movido a la izquierda) -->
+          <!-- Hélices y Regulación de Paso -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HÉLICES Y REGULACIÓN DE PASO</strong>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>RPM continuas máximas:</strong> <strong>2300 RPM</strong> de hélice (mostradas en el tacómetro del G1000).</p>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Sobrerrégimen máximo (Overspeed):</strong> <strong>2500 RPM</strong> durante un máximo de <strong>20 segundos</strong>.</p>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Hélices MT-Propeller:</strong> Modelo MTV-6-A-C-F/CF 187-129 tripala constante con paso variable y abanderamiento.</p>
+          </div>
+
+          <!-- Ciclo Operativo del Motor de Arranque -->
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CICLO OPERATIVO DEL MOTOR DE ARRANQUE</strong>
             <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Tiempo máx. de accionamiento:</strong> 10 segundos continuos con la llave en <code>START</code>.</p>
@@ -1130,7 +1138,7 @@ export const DA42_LESSON_2 = {
             <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Límite de intentos:</strong> Tras 6 intentos consecutivos, dejar enfriar el arrancador al menos 30 minutos.</p>
           </div>
 
-          <!-- Warning FADEC / ECU TEST (movido a la izquierda) -->
+          <!-- Warning FADEC / ECU TEST -->
           <div class="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0 w-full">
             <span class="text-base shrink-0">🚨</span>
             <span><strong>WARNING (AFM):</strong> No iniciar el vuelo si el autotest en ralentí (pulsador <code>ECU TEST</code>) no se completa de forma satisfactoria o si permanece activa cualquier alerta <code>L/R ECU A FAIL</code> o <code>L/R ECU B FAIL</code>. El despegue con anomalías en FADEC está estrictamente prohibido.</span>
@@ -1139,19 +1147,12 @@ export const DA42_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): Hélices y Sobrerrégimen (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-6): (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start items-start w-full">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">LÍMITES DE HÉLICE Y SOBRERRÉGIMEN</span>
-          </div>
-
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HÉLICES Y REGULACIÓN DE PASO</strong>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>RPM continuas máximas:</strong> <strong>2300 RPM</strong> de hélice (mostradas en el tacómetro del G1000).</p>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Sobrerrégimen máximo (Overspeed):</strong> <strong>2500 RPM</strong> durante un máximo de <strong>20 segundos</strong>.</p>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Hélices MT-Propeller:</strong> Modelo MTV-6-A-C-F/CF 187-129 tripala constante con paso variable y abanderamiento.</p>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SUPERVISIÓN DE PLANTA DE POTENCIA (AFM 2.4)</span>
           </div>
         </div>
       </div>
