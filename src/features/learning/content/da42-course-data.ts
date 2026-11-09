@@ -1006,16 +1006,16 @@ export const DA42_LESSON_2 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
     <!-- Columna Izquierda (lg:col-span-6): Maniobras y Factores de Carga (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
+      <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">MANIOBRAS APROBADAS Y FACTORES DE CARGA</span>
           </div>
 
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
+          <div class="p-2 py-1.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 text-xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CATEGORÍA NORMAL (JAR-23)</strong>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Maniobras aprobadas:</strong> Maniobras normales de vuelo, pérdidas simétricas convencionales, virajes escarpados, Chandelles y Lazy Eights con banqueo no superior a 60°.</p>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Prohibiciones estrictas:</strong> Maniobras acrobáticas, barrenas (spins) intencionadas, banqueos superiores a 60° y pérdidas con potencia asimétrica o monomotor.</p>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Maniobras aprobadas:</strong> Vuelo normal, pérdidas simétricas, virajes escarpados, Chandelles y Lazy Eights (máx. 60° banqueo).</p>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <strong>Prohibiciones estrictas:</strong> Acrobacia, barrenas (spins), banqueos &gt; 60° y pérdidas con potencia asimétrica.</p>
           </div>
 
           <!-- Tabla de Factores de Carga Estructural -->
@@ -1023,26 +1023,26 @@ export const DA42_LESSON_2 = {
             <table class="w-full text-left text-[11px] leading-tight">
               <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
                 <tr>
-                  <th class="p-2 px-2.5">CONFIGURACIÓN</th>
-                  <th class="p-2 px-2 text-center font-bold text-emerald-600 dark:text-emerald-400">POSITIVO</th>
-                  <th class="p-2 px-2 text-center font-bold text-amber-600 dark:text-amber-400">NEGATIVO</th>
+                  <th class="py-1 px-2 w-[52%]">CONFIGURACIÓN</th>
+                  <th class="py-1 px-1.5 text-center w-[24%] font-bold text-emerald-600 dark:text-emerald-400">POSITIVO</th>
+                  <th class="py-1 px-1.5 text-center w-[24%] font-bold text-amber-600 dark:text-amber-400">NEGATIVO</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
                 <tr>
-                  <td class="p-2 px-2.5">A velocidad de maniobra (v<sub>A</sub>) · Flaps UP</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold">+3.8 g</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold">-1.52 g</td>
+                  <td class="py-1 px-2">v<sub>A</sub> (Maniobra) · Flaps UP</td>
+                  <td class="py-1 px-1.5 text-center font-mono font-bold">+3.8 g</td>
+                  <td class="py-1 px-1.5 text-center font-mono font-bold">-1.52 g</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5">A velocidad de nunca exceder (v<sub>NE</sub>) · Flaps UP</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold">+3.8 g</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold">0 g</td>
+                  <td class="py-1 px-2">v<sub>NE</sub> (Nunca exceder) · Flaps UP</td>
+                  <td class="py-1 px-1.5 text-center font-mono font-bold">+3.8 g</td>
+                  <td class="py-1 px-1.5 text-center font-mono font-bold">0 g</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5">Con flaps extendidos (Flaps APP o LDG)</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold text-[#1a80ff] dark:text-sky-400">+2.0 g</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold">0 g</td>
+                  <td class="py-1 px-2">Flaps extendidos (APP / LDG)</td>
+                  <td class="py-1 px-1.5 text-center font-mono font-bold text-[#1a80ff] dark:text-sky-400">+2.0 g</td>
+                  <td class="py-1 px-1.5 text-center font-mono font-bold">0 g</td>
                 </tr>
               </tbody>
             </table>
@@ -1053,35 +1053,38 @@ export const DA42_LESSON_2 = {
             <table class="w-full text-left text-[11px] leading-tight">
               <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
                 <tr>
-                  <th class="p-2 px-2.5">FACTOR DE CARGA NEGATIVO</th>
-                  <th class="p-2 px-2 text-center font-bold text-amber-600 dark:text-amber-400">TIEMPO LÍMITE</th>
-                  <th class="p-2 px-2.5">CONSECUENCIA</th>
+                  <th class="py-1 px-2 w-[28%]">CARGA NEGATIVA</th>
+                  <th class="py-1 px-1.5 text-center w-[24%] font-bold text-amber-600 dark:text-amber-400">TIEMPO MÁX.</th>
+                  <th class="py-1 px-2 w-[48%]">CONSECUENCIA</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200 font-mono">
                 <tr>
-                  <td class="p-2 px-2.5 font-bold">-0.2 g</td>
-                  <td class="p-2 px-2 text-center">5 segundos</td>
-                  <td class="p-2 px-2.5 font-sans text-[10px]">Caída de presión y alerta L/R OIL PRES.</td>
+                  <td class="py-1 px-2 font-bold">-0.2 g</td>
+                  <td class="py-1 px-1.5 text-center">5 s</td>
+                  <td class="py-1 px-2 font-sans text-[10px]">Caída de presión y alerta L/R OIL PRES.</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold">-0.3 g</td>
-                  <td class="p-2 px-2 text-center">4 segundos</td>
-                  <td class="p-2 px-2.5 font-sans text-[10px]">Descebe de bomba de lubricación.</td>
+                  <td class="py-1 px-2 font-bold">-0.3 g</td>
+                  <td class="py-1 px-1.5 text-center">4 s</td>
+                  <td class="py-1 px-2 font-sans text-[10px]">Descebe de bomba de lubricación.</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold">-0.4 g</td>
-                  <td class="p-2 px-2 text-center">3 segundos</td>
-                  <td class="p-2 px-2.5 font-sans text-[10px]">Riesgo de daño en cojinetes.</td>
+                  <td class="py-1 px-2 font-bold">-0.4 g</td>
+                  <td class="py-1 px-1.5 text-center">3 s</td>
+                  <td class="py-1 px-2 font-sans text-[10px]">Riesgo de daño en cojinetes.</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold text-red-600 dark:text-red-400">-0.5 g</td>
-                  <td class="p-2 px-2 text-center text-red-600 dark:text-red-400">2 segundos</td>
-                  <td class="p-2 px-2.5 font-sans text-[10px]">Daño crítico en motor y reductora.</td>
+                  <td class="py-1 px-2 font-bold text-red-600 dark:text-red-400">-0.5 g</td>
+                  <td class="py-1 px-1.5 text-center text-red-600 dark:text-red-400">2 s</td>
+                  <td class="py-1 px-2 font-sans text-[10px]">Daño crítico en motor y reductora.</td>
                 </tr>
               </tbody>
             </table>
           </div>
+        </div>
+      </div>
+    </div>
         </div>
       </div>
     </div>
