@@ -301,10 +301,10 @@ export const DA42_LESSON_1 = {
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.3-propeller.jpg?v=1" alt="Hélice MT-Propeller Tripala MTV-6" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
 
-          <!-- Caution AFM Desembanderado en Vuelo -->
+          <!-- Caution AFM Manejo de Potencia y Sobrevelocidad -->
           <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200 shrink-0">
             <span class="text-base shrink-0">⚠️</span>
-            <span><strong>CAUTION (AFM 2.4):</strong> Si un motor se apaga en vuelo, embandera automáticamente. Para reencendido en vuelo (Unfeathering) se requiere accionar el arrancador dentro de la envolvente oficial AFM de reencendido: velocidad indicada entre 80 y 120 KIAS y altitud máxima de 6000 ft.</span>
+            <span><strong>CAUTION (AFM 3.9.3):</strong> Las Power Levers deben accionarse de forma suave y lenta para evitar overspeeding y variaciones bruscas de RPM. Las palas de madera ligera producen cambios de RPM más rápidos que las palas metálicas. Límite transitorio máximo: 2500 RPM (máx. 20 seg, AFM 2.4).</span>
           </div>
         </div>
       </div>
