@@ -687,9 +687,6 @@ export const DA42_LESSON_2 = {
             <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-relaxed">
               • <strong>v<sub>MCA</sub> = 68 KIAS:</strong> Es la velocidad mínima a la que el avión es gobernable direccionalmente con el motor crítico inoperativo (hélice embanderada), el motor operativo a máxima potencia de despegue (100% Load), flaps en posición UP, tren arriba y un banqueo de hasta 5° hacia el motor vivo.
             </p>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-relaxed">
-              • <strong>Pérdida de control:</strong> Si la velocidad en vuelo cae por debajo de 68 KIAS en condición monomotor, el timón de dirección pierde efectividad para contrarrestar la guiñada asimétrica.
-            </p>
           </div>
 
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
