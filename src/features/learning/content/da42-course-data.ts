@@ -553,8 +553,8 @@ export const DA42_LESSON_1 = {
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-900/60 flex flex-col justify-center items-center p-1.5 lesson-img-wrapper" draggable="false" style="position: relative;">
             <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-g1000-cockpit-1-6.jpg"
-              alt="Garmin G1000 EIS (Engine, System, Fuel Display) y Sistema de Alertas CAS Diamond DA42 Twin Star"
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-g1000-eis-cas-composite.png"
+              alt="Garmin G1000 EIS (Engine Display, System Display, Fuel Display) y Sistema de Alertas CAS Diamond DA42 Twin Star"
               class="w-full h-full max-h-[380px] object-contain rounded-lg"
               style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
             />
