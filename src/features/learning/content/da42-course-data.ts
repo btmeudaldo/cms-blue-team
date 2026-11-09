@@ -599,7 +599,7 @@ export const DA42_LESSON_2 = {
     <!-- Columna Izquierda (lg:col-span-6): Tablas Oficiales (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AIRSPEED LIMITATIONS (VELOCIDADES LÍMITE)</span>
           </div>
@@ -663,6 +663,12 @@ export const DA42_LESSON_2 = {
               </tbody>
             </table>
           </div>
+
+          <!-- Warning vMCA -->
+          <div class="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0">
+            <span class="text-base shrink-0">🚨</span>
+            <span><strong>WARNING (AFM):</strong> Volar por debajo de v<sub>MCA</sub> (68 KIAS) con un motor inoperativo y potencia asimétrica provoca pérdida inmediata de control direccional (Roll/Yaw invertido). Si la velocidad cae hacia 68 KIAS, reducir potencia del motor operativo y bajar el morro de inmediato.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -694,12 +700,6 @@ export const DA42_LESSON_2 = {
             <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-relaxed">
               • <strong>Extensión de emergencia:</strong> La palanca roja <code>EMERGENCY GEAR EXTENSION</code> debe accionarse a una velocidad no superior a <strong>156 KIAS</strong> para garantizar la apertura por gravedad y bloqueo seguro.
             </p>
-          </div>
-
-          <!-- Warning vMCA -->
-          <div class="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0 w-full">
-            <span class="text-base shrink-0">🚨</span>
-            <span><strong>WARNING (AFM):</strong> Volar por debajo de v<sub>MCA</sub> (68 KIAS) con un motor inoperativo y potencia asimétrica provoca pérdida inmediata de control direccional (Roll/Yaw invertido). Si la velocidad cae hacia 68 KIAS, reducir potencia del motor operativo y bajar el morro de inmediato.</span>
           </div>
         </div>
       </div>
