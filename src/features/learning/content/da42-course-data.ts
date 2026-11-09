@@ -1138,12 +1138,16 @@ export const DA42_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-6): Régimen de Potencia y Monomando FADEC (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start items-start w-full">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SUPERVISIÓN DE PLANTA DE POTENCIA (AFM 2.4)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RÉGIMEN DE POTENCIA Y MONOMANDO FADEC</span>
+          </div>
+
+          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper mt-1 flex-1 min-h-0" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/potencia-altitud-fadec.jpg" alt="Régimen de Potencia vs Altitud y Monomando FADEC" class="w-full h-full max-h-[500px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
