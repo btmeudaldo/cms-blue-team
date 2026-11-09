@@ -1106,20 +1106,11 @@ export const DA42_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RÉGIMEN Y POTENCIA MÁXIMA DE LOS MOTORES</span>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-            <!-- CD-135 -->
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide border-b border-slate-100 dark:border-slate-700 pb-0.5">Continental CD-135</strong>
-              <p class="text-[13px] font-mono font-bold text-[#1a80ff] dark:text-sky-400">99 kW (135 CV DIN)</p>
-              <p class="text-[10px] text-slate-600 dark:text-slate-400 leading-tight">Máx. potencia al 100% Load a 2300 RPM (límite continuo y despegue máx. 5 min).</p>
-            </div>
-
-            <!-- CD-155 -->
-            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide border-b border-slate-100 dark:border-slate-700 pb-0.5">Continental CD-155</strong>
-              <p class="text-[13px] font-mono font-bold text-emerald-600 dark:text-emerald-400">114 kW (155 CV DIN)</p>
-              <p class="text-[10px] text-slate-600 dark:text-slate-400 leading-tight">Máx. potencia al 100% Load a 2300 RPM (límite continuo y despegue máx. 5 min).</p>
-            </div>
+          <!-- Continental CD-135 / CD-155 -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide border-b border-slate-100 dark:border-slate-700 pb-0.5">Continental CD-135 / CD-155</strong>
+            <p class="text-[13px] font-mono font-bold text-[#1a80ff] dark:text-sky-400">99 / 114 kW <span class="text-xs font-normal text-slate-600 dark:text-slate-300">(135 / 155 CV DIN)</span></p>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">Máx. potencia al <strong>100% Load a 2300 RPM</strong> (límite continuo y despegue máx. 5 min).</p>
           </div>
 
           <!-- Hélices y Regulación de Paso -->
