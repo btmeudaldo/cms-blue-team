@@ -876,12 +876,22 @@ export const DA42_LESSON_2 = {
           </div>
 
           <!-- Desglose de Compartimentos de Carga -->
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs shrink-0">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">COMPARTIMENTOS DE EQUIPAJE AUTORIZADOS</strong>
             <div class="space-y-1.5 text-[11px] text-slate-700 dark:text-slate-200">
               <p>• <strong>Morro del avión (Nose Baggage):</strong> Máximo <strong>30 kg (66 lb)</strong> (dividido en compartimentos izquierdo y derecho).</p>
               <p>• <strong>Cabina posterior y extensión:</strong> Máximo total combinado de <strong>45 kg (100 lb)</strong> con red de retención instalada (con un submáximo de <strong>18 kg / 40 lb</strong> en la extensión trasera).</p>
             </div>
+          </div>
+
+          <!-- Imagen de Límites de Masa AFM -->
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-mass-limits-table.png"
+              alt="Tabla de Masas Máximas y Compartimentos de Equipaje Diamond DA42"
+              class="w-full h-full max-h-[380px] object-contain rounded-lg"
+              style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
+            />
           </div>
         </div>
       </div>
