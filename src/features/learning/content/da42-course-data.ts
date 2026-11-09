@@ -1007,9 +1007,9 @@ export const DA42_LESSON_2 = {
     <!-- Columna Izquierda (lg:col-span-6): Maniobras y Factores de Carga (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">MANIOBRAS APROBADAS Y PROHIBICIONES ESTRICTAS</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">MANIOBRAS APROBADAS Y FACTORES DE CARGA</span>
           </div>
 
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
@@ -1052,55 +1052,30 @@ export const DA42_LESSON_2 = {
             <span class="text-base shrink-0">🚨</span>
             <span><strong>WARNING (AFM):</strong> Exceder los factores de carga estructurales conduce a deformaciones permanentes de la célula de composite o fallo catastrófico en vuelo.</span>
           </div>
+
+          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200 shrink-0">
+            <span class="text-base shrink-0">⚠️</span>
+            <span><strong>CAUTION (AFM):</strong> El sistema de lubricación por cárter húmedo de los motores Continental CD-135 / CD-155 no dispone de bomba invertida. Maniobras con Gs negativas prolongadas cortan el suministro de aceite a los cojinetes y al gobernador de hélice.</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): Gs Negativas en Motores (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-6): Gráfico de Factores de Carga (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start items-start">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start items-start w-full">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">LÍMITES DE Gs NEGATIVAS EN PLANTA MOTRIZ</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA DE FACTORES DE CARGA EN VUELO</span>
           </div>
 
-          <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs w-full">
-            <table class="w-full text-left text-[11px] leading-tight">
-              <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  <th class="p-2 px-2.5">FACTOR DE CARGA NEGATIVO</th>
-                  <th class="p-2 px-2 text-center font-bold text-amber-600 dark:text-amber-400">TIEMPO LÍMITE</th>
-                  <th class="p-2 px-2.5">CONSECUENCIA</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200 font-mono">
-                <tr>
-                  <td class="p-2 px-2.5 font-bold">-0.2 g</td>
-                  <td class="p-2 px-2 text-center">5 segundos</td>
-                  <td class="p-2 px-2.5 font-sans text-[10px]">Caída de presión y alerta L/R OIL PRES.</td>
-                </tr>
-                <tr>
-                  <td class="p-2 px-2.5 font-bold">-0.3 g</td>
-                  <td class="p-2 px-2 text-center">4 segundos</td>
-                  <td class="p-2 px-2.5 font-sans text-[10px]">Descebe de bomba de lubricación.</td>
-                </tr>
-                <tr>
-                  <td class="p-2 px-2.5 font-bold">-0.4 g</td>
-                  <td class="p-2 px-2 text-center">3 segundos</td>
-                  <td class="p-2 px-2.5 font-sans text-[10px]">Riesgo de daño en cojinetes.</td>
-                </tr>
-                <tr>
-                  <td class="p-2 px-2.5 font-bold text-red-600 dark:text-red-400">-0.5 g</td>
-                  <td class="p-2 px-2 text-center text-red-600 dark:text-red-400">2 segundos</td>
-                  <td class="p-2 px-2.5 font-sans text-[10px]">Daño crítico en motor y reductora.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200 shrink-0 w-full">
-            <span class="text-base shrink-0">⚠️</span>
-            <span><strong>CAUTION (AFM):</strong> El sistema de lubricación por cárter húmedo de los motores Continental CD-135 / CD-155 no dispone de bomba invertida. Maniobras con Gs negativas prolongadas cortan el suministro de aceite a los cojinetes y al gobernador de hélice.</span>
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-flight-load-factors-screenshot.png"
+              alt="Diagrama de Factores de Carga en Vuelo Diamond DA42"
+              class="w-full h-full max-h-[500px] object-contain rounded-lg"
+              style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
+            />
           </div>
         </div>
       </div>
