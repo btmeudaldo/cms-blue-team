@@ -720,7 +720,7 @@ export const DA42_LESSON_2 = {
     <!-- Columna Izquierda (lg:col-span-6): Tablas de Marcas Oficiales (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">MARCAS DEL ANEMÓMETRO Y SIGNIFICADO OPERACIONAL</span>
           </div>
@@ -768,11 +768,6 @@ export const DA42_LESSON_2 = {
               </tbody>
             </table>
           </div>
-
-          <div class="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 flex items-start gap-2 text-[11px] leading-tight text-[#0B2E59] dark:text-sky-200 shrink-0">
-            <span class="text-base shrink-0">ℹ️</span>
-            <span><strong>NOTA:</strong> La línea radial azul (82 KIAS) marca v<sub>YSE</sub>. Con un motor inoperativo, mantener 82 KIAS proporciona el mejor régimen de ascenso (o menor régimen de descenso) del avión.</span>
-          </div>
         </div>
       </div>
     </div>
@@ -789,9 +784,14 @@ export const DA42_LESSON_2 = {
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-g1000-airspeed-tape.png"
               alt="Cinta Anemométrica Garmin G1000 DA42 con marcas vMCA 68 KIAS y vYSE 82 KIAS"
-              class="w-full h-full max-h-[500px] object-contain rounded-lg"
+              class="w-full h-full max-h-[440px] object-contain rounded-lg"
               style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
             />
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 flex items-start gap-2 text-[11px] leading-tight text-[#0B2E59] dark:text-sky-200 shrink-0 w-full">
+            <span class="text-base shrink-0">ℹ️</span>
+            <span><strong>NOTA:</strong> La línea radial azul (82 KIAS) marca v<sub>YSE</sub>. Con un motor inoperativo, mantener 82 KIAS proporciona el mejor régimen de ascenso (o menor régimen de descenso) del avión.</span>
           </div>
         </div>
       </div>
