@@ -1168,10 +1168,10 @@ export const DA42_LESSON_2 = {
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
-    <!-- Columna Izquierda (lg:col-span-6): Tabla de Temperaturas (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-6): Tabla de Temperaturas y Alertas (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RANGOS Y LÍMITES TÉRMICOS DE FLUIDOS</span>
           </div>
@@ -1180,69 +1180,80 @@ export const DA42_LESSON_2 = {
             <table class="w-full text-left text-[11px] leading-tight">
               <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
                 <tr>
-                  <th class="p-2 px-2.5 w-[30%]">FLUIDO</th>
-                  <th class="p-2 px-2 text-center w-[20%]">MÍN. ARRANQUE</th>
-                  <th class="p-2 px-2 text-center w-[25%] font-extrabold text-emerald-600 dark:text-emerald-400">NORMAL</th>
-                  <th class="p-2 px-2 text-center w-[25%] font-extrabold text-red-600 dark:text-red-400">MÁXIMO</th>
+                  <th class="p-1.5 px-2 w-[30%]">FLUIDO</th>
+                  <th class="p-1.5 px-2 text-center w-[20%]">MÍN. ARRANQUE</th>
+                  <th class="p-1.5 px-2 text-center w-[25%] font-extrabold text-emerald-600 dark:text-emerald-400">NORMAL</th>
+                  <th class="p-1.5 px-2 text-center w-[25%] font-extrabold text-red-600 dark:text-red-400">MÁXIMO</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
                 <tr>
-                  <td class="p-2 px-2.5 font-bold">Aceite Motor (Oil Temp)</td>
-                  <td class="p-2 px-2 text-center font-mono">-32 °C</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">50 a 125 °C</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">140 °C</td>
+                  <td class="p-1.5 px-2 font-bold">Aceite Motor (Oil Temp)</td>
+                  <td class="p-1.5 px-2 text-center font-mono">-32 °C</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">50 a 125 °C</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">140 °C</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold">Refrigerante (Coolant Temp)</td>
-                  <td class="p-2 px-2 text-center font-mono">-32 °C</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">60 a 101 °C</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">105 °C</td>
+                  <td class="p-1.5 px-2 font-bold">Refrigerante (Coolant Temp)</td>
+                  <td class="p-1.5 px-2 text-center font-mono">-32 °C</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">60 a 101 °C</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">105 °C</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold">Reductora (Gearbox Temp)</td>
-                  <td class="p-2 px-2 text-center font-mono">--</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">Hasta 115 °C</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">120 °C</td>
+                  <td class="p-1.5 px-2 font-bold">Reductora (Gearbox Temp)</td>
+                  <td class="p-1.5 px-2 text-center font-mono">--</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">Hasta 115 °C</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">120 °C</td>
                 </tr>
                 <tr>
-                  <td class="p-2 px-2.5 font-bold">Combustible en Depósito</td>
-                  <td class="p-2 px-2 text-center font-mono text-blue-600 dark:text-sky-400">-30 °C</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">10 a 65 °C</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">+75 °C</td>
+                  <td class="p-1.5 px-2 font-bold">Combustible en Depósito</td>
+                  <td class="p-1.5 px-2 text-center font-mono text-blue-600 dark:text-sky-400">-30 °C</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-bold text-emerald-600 dark:text-emerald-400">10 a 65 °C</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">+75 °C</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200 shrink-0">
+          <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200 shrink-0">
             <span class="text-base shrink-0">⚠️</span>
             <span><strong>CAUTION (AFM):</strong> No aplicar potencia de despegue (100% Load) hasta que la temperatura de aceite alcance al menos <strong>50 °C</strong> y el refrigerante alcance <strong>60 °C</strong> (ambos en arco verde). El motor CD-155 tolera hasta 130 °C en crucero continuo normal.</span>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Columna Derecha (lg:col-span-6): Supervisión Térmica en Cabina (Altura Fija 590px) -->
-    <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start items-start">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SUPERVISIÓN Y PROTOCOLO ANTE ALARMAS TÉRMICAS</span>
-          </div>
-
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
+          <!-- Alerta Cool LVL (movida a la izquierda) -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 w-full text-xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ALERTA COOL LVL (WATER LEVEL)</strong>
             <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
               Indica bajo nivel en el depósito de compensación del sistema de refrigeración de motor. Si la alerta permanece activa en tierra, no se permite el despegue. En vuelo, vigilar la subida de temperatura de refrigerante y aceite.
             </p>
           </div>
 
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
+          <!-- Temperatura de Caja Reductora (movida a la izquierda) -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 w-full text-xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TEMPERATURA DE CAJA REDUCTORA (L/R GBOX TEMP)</strong>
             <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
               Aviso en ámbar si la temperatura supera 115 °C y rojo a 120 °C. La reductora cuenta con intercambiador de calor independiente. Una temperatura elevada exige reducir la potencia del motor afectado de inmediato.
             </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6): Tabla Oficial AFM 2.4 (Altura Fija 590px) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start items-start w-full">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">LÍMITES OPERACIONALES DE MOTOR Y FLUIDOS (AFM 2.4)</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-engine-operating-limits-table.png"
+              alt="Límites Operacionales de Motor y Fluidos AFM Diamond DA42"
+              class="w-full h-full max-h-[500px] object-contain rounded-lg"
+              style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
+            />
           </div>
         </div>
       </div>
