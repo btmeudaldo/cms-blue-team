@@ -854,9 +854,8 @@ export const DA42_LESSON_2 = {
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">COMPARTIMENTOS DE EQUIPAJE AUTORIZADOS</strong>
             <div class="space-y-1 text-[11px] text-slate-700 dark:text-slate-200">
-              <p>• <strong>Morro del avión (Nose Baggage):</strong> Máximo <strong>30 kg (66 lb)</strong>. Dividido en compartimentos izquierdo y derecho.</p>
-              <p>• <strong>Cabina tras asientos traseros:</strong> Máximo <strong>45 kg (100 lb)</strong> con red de carga instalada.</p>
-              <p>• <strong>Extensión de equipaje posterior:</strong> Máximo <strong>18 kg (40 lb)</strong>. Carga combinada en cabina (maletero + extensión) no debe exceder <strong>45 kg</strong>.</p>
+              <p>• <strong>Morro del avión (Nose Baggage):</strong> Máximo <strong>30 kg (66 lb)</strong> (dividido en compartimentos izquierdo y derecho).</p>
+              <p>• <strong>Cabina posterior y extensión:</strong> Máximo total combinado de <strong>45 kg (100 lb)</strong> con red de retención instalada (con un submáximo de <strong>18 kg / 40 lb</strong> en la extensión trasera).</p>
             </div>
           </div>
         </div>
@@ -882,12 +881,6 @@ export const DA42_LESSON_2 = {
             <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
               • <strong>Aterrizaje con sobrepeso (MTOM 1785 kg):</strong> Si se despega a masas entre 1700 kg y 1785 kg, la planificación de combustible debe asegurar llegar al aeródromo de destino por debajo de 1700 kg MLM.
             </p>
-          </div>
-
-          <!-- Caution Aterrizaje MTOM 1785 kg -->
-          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200 shrink-0 w-full">
-            <span class="text-base shrink-0">⚠️</span>
-            <span><strong>CAUTION (AFM):</strong> Aterrizar por encima de 1700 kg solo está permitido en caso de aterrizaje forzoso o emergencia inmediata. Si ocurre un aterrizaje con más de 1700 kg, el avión queda en tierra hasta que personal de mantenimiento autorizado complete una inspección estructural de sobrepeso.</span>
           </div>
         </div>
       </div>
