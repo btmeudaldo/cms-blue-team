@@ -2029,14 +2029,14 @@ export const DA42_LESSON_2 = {
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
           <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
             <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-placards-instrument-panel.png"
-              alt="Placards Oficiales de Cabina Diamond DA42 Twin Star"
+              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-afm-placards-overview.png"
+              alt="Placards y Carteles Mandatorios Oficiales Diamond DA42 Twin Star"
               class="w-full h-full max-h-[460px] object-contain rounded-lg"
               style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;"
             />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
-            <strong class="text-[#0B2E59] dark:text-sky-300">Diamond DA42 Twin Star</strong> · Placards Oficiales del Panel de Instrumentos, Tren de Aterrizaje e Interruptor EMERGENCY
+            <strong class="text-[#0B2E59] dark:text-sky-300">Diamond DA42 Twin Star</strong> · Placards y Carteles Mandatorios de Cabina (AFM Sección 2.15)
           </figcaption>
         </div>
       </div>
