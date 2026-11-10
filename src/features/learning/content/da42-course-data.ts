@@ -1217,7 +1217,7 @@ export const DA42_LESSON_2 = {
 
           <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200 shrink-0">
             <span class="text-base shrink-0">⚠️</span>
-            <span><strong>CAUTION (AFM):</strong> No aplicar potencia de despegue (100% Load) hasta que la temperatura de aceite alcance al menos <strong>50 °C</strong> y el refrigerante alcance <strong>60 °C</strong> (ambos en arco verde). El motor CD-155 tolera hasta 130 °C en crucero continuo normal.</span>
+            <span><strong>CAUTION (AFM):</strong> No aplicar potencia de despegue (100% Load) hasta que la temperatura de aceite alcance al menos <strong>50 °C</strong> y el refrigerante alcance <strong>60 °C</strong> (ambos en arco verde). El motor tolera hasta 130 °C en crucero continuo normal.</span>
           </div>
 
           <!-- Alerta Cool LVL (movida a la izquierda) -->
