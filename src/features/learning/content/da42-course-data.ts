@@ -1333,7 +1333,13 @@ export const DA42_LESSON_2 = {
             </div>
           </div>
 
-          <!-- Warning AFM Presión de Aceite -->
+          <!-- Caution Presión y Altitud (AFM) -->
+          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-2 text-[11px] leading-tight text-amber-900 dark:text-amber-200 shrink-0 w-full">
+            <span class="text-base shrink-0">⚠️</span>
+            <span><strong>CAUTION (AFM):</strong> Los valores indicados de presión de aceite se corrigen por altitud de presión. Presiones inferiores a 2.3 bar en vuelo de crucero requieren comprobación inmediata de la temperatura de aceite y reducción de potencia.</span>
+          </div>
+
+          <!-- Warning AFM Presión de Aceite (debajo del Caution) -->
           <div class="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0 w-full">
             <span class="text-base shrink-0">🚨</span>
             <span><strong>WARNING (AFM):</strong> Si la presión de aceite desciende por debajo de 1.0 bar en vuelo (alerta roja <code>L/R OIL PRES</code>), reducir potencia de inmediato en el motor afectado y vigilar la temperatura de aceite. Si la temperatura aumenta o la presión no recupera, proceder a parada y abanderamiento según la lista de emergencia monomotor.</span>
