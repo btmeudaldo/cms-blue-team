@@ -1941,99 +1941,16 @@ export const DA42_LESSON_2 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): Esquema / Imagen Oficial de Operaciones y Techo (Altura Fija 590px sin scroll) -->
+    <!-- Columna Derecha (lg:col-span-6): Gráfico Oficial de Placards y Limitaciones (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">AFM SECCIÓN 2 · OPERACIONES, TECHO Y ENGELAMIENTO</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLACARDS OFICIALES Y LIMITACIONES OPERACIONALES</span>
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
           <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-operations-ceiling-icing.png" alt="Operaciones Autorizadas, Techo Máximo y Limitaciones de Engelamiento Diamond DA42" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
-          </div>
-          <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
-            <strong class="text-[#0B2E59] dark:text-sky-300">Diamond DA42 Twin Star</strong> · Tipos de Operación Autorizada (AFM 2.13), Techo Máximo Operativo de 18.000 ft y Limitaciones de Engelamiento TKS
-          </figcaption>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- pagebreak -->
-
-<!-- DIAPOSITIVA 2.14: 2.14 Placards Oficiales y Limitaciones de Sistemas -->
-<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
-  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
-    <div>
-      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · LIMITACIONES AFM (SECCIÓN 2)</div>
-      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.14 Placards Oficiales y Limitaciones de Sistemas</h1>
-    </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Placards Mandatorios de Cabina, Interruptor EMERGENCY, Aviónica G1000 y FADEC</span>
-  </div>
-
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
-    <!-- Columna Izquierda (lg:col-span-6): Carteles y Placards AFM 2.15 / 2.16 (Altura Fija 590px sin scroll) -->
-    <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5 overflow-hidden" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-0.5">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLACARDS MANDATORIOS & LIMITACIONES DE SISTEMAS</span>
-        </div>
-
-        <div class="space-y-1.5 py-0.5">
-          <!-- TARJETA 1: CARTELES EN PANEL DE INSTRUMENTOS -->
-          <div class="p-1.5 px-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PLACARDS MANDATORIOS DEL PANEL DE INSTRUMENTOS (AFM 2.15)</strong>
-            <div class="space-y-1 text-[11px] leading-tight text-slate-800 dark:text-slate-200 pt-0.5">
-              <p>• <strong>Categoría Normal:</strong> Cartel frontal en panel que prohíbe taxativamente acrobacias y barrenas intencionadas.</p>
-              <p>• <strong>Tren de aterrizaje:</strong> v<sub>LE</sub> / v<sub>LOE</sub> = 194 KIAS; v<sub>LOR</sub> = 156 KIAS; Extensión de emergencia = máx. 156 KIAS.</p>
-              <p>• <strong>Selector de flaps:</strong> Rótulos de posición UP, APP (137 KIAS) y LDG (111 KIAS).</p>
-              <p>• <strong>Combustible y no fumar:</strong> Rótulos obligatorios <code>APPROVED FUEL JET-A1</code> junto a los aforadores y <code>NO SMOKING</code> en cabina.</p>
-            </div>
-          </div>
-
-          <!-- TARJETA 2: SISTEMAS DE EMERGENCIA Y CABINA -->
-          <div class="p-1.5 px-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">SISTEMAS DE EMERGENCIA Y CABINA (AFM 2.16)</strong>
-            <div class="space-y-1 text-[11px] leading-tight text-slate-800 dark:text-slate-200 pt-0.5">
-              <p>• <strong>Interruptor EMERGENCY:</strong> Precinto protector de alambre obligatorio e intacto; si está roto o retirado, el vuelo IFR queda terminantemente prohibido (alimenta el horizonte artificial de respaldo y la luz de inundación durante 1,5 horas).</p>
-              <p>• <strong>Cerraduras de cabina:</strong> Prohibido bloquear con llave la cúpula delantera o la puerta de pasajeros durante el vuelo (<code>DO NOT LOCK IN FLIGHT</code>).</p>
-              <p>• <strong>Dispositivos portátiles (PED):</strong> Prohibido el uso de transmisores o equipos electrónicos no autorizados por riesgo de interferencia electromagnética con el G1000.</p>
-            </div>
-          </div>
-
-          <!-- TARJETA 3: AVIÓNICA G1000 Y BATERÍAS FADEC -->
-          <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
-              <span>⚠️</span>
-              <span>AVIÓNICA GARMIN G1000 & BATERÍAS FADEC (AFM 2.16.6 / 7.9):</span>
-            </strong>
-            <div class="space-y-1 text-[11px] leading-tight pt-0.5">
-              <p>• <strong>Baterías de reserva ECU:</strong> 2 baterías auxiliares independientes de 12V que garantizan un mínimo de 30 minutos de operación FADEC ante fallo eléctrico total.</p>
-              <p>• <strong>Navegación GPS IFR:</strong> Obligatorio verificar la vigencia de la base de datos de navegación en el MFD. Prohibido sustituir aproximaciones ILS/LOC por GPS sin overlay certificado.</p>
-              <p>• <strong>Vigencia de letreros:</strong> Todos los carteles mandatorios deben permanecer perfectamente legibles e instalados para la validez de la aeronavegabilidad.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Columna Derecha (lg:col-span-6): Gráfico Oficial de Placards (Altura Fija 590px sin scroll) -->
-    <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLACARDS OFICIALES DEL INSTRUMENT PANEL DA42</span>
-        </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-          <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-            <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-afm-placards-overview.png"
-              alt="Placards y Carteles Mandatorios Oficiales Diamond DA42 Twin Star"
-              class="w-full h-full max-h-[460px] object-contain rounded-lg"
-              style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;"
-            />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-afm-placards-overview.png" alt="Placards y Carteles Mandatorios Oficiales Diamond DA42 Twin Star" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
             <strong class="text-[#0B2E59] dark:text-sky-300">Diamond DA42 Twin Star</strong> · Placards y Carteles Mandatorios de Cabina (AFM Sección 2.15)
