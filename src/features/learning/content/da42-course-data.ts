@@ -2095,6 +2095,139 @@ export const DA42_LESSON_3 = {
       </div>
     </div>
   </div>
+</div>
+
+
+
+<!-- pagebreak -->
+
+
+
+<!-- DIAPOSITIVA 3.2: 3.2 Reductora Integrada y Hélice MT-Propeller -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.2 Reductora Integrada y Hélice MT-Propeller</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Reducción (CD-135 i=1.69 / CD-155 i=1.66) y Hélices Abanderables Constant Speed</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): Manual POH Suplemento Continental (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-0.5 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GEARBOX & PROPELLER (AFM SECCIÓN 7.9.2)</span>
+        </div>
+
+        <div class="space-y-1.5 py-0">
+          <!-- CUADRO LADO A LADO: REDUCTORA Y HÉLICE (ESTILO C172) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- CAJA REDUCTORA INTEGRADA -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CAJA REDUCTORA INTEGRADA (GEARBOX)</strong>
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Relación de reducción:</strong> <span class="font-mono">i = 1:1,69</span> (CD-135) | <span class="font-mono">i = 1:1,66</span> (CD-155), reduciendo a 2.300 RPM de hélice.</span>
+              </div>
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Amortiguación torsional:</strong> Amortiguador elástico mecánico integrado que absorbe las pulsaciones cíclicas del diésel.</span>
+              </div>
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Embrague de sobrecarga (overload release):</strong> Desacopla la hélice ante picos de par o impactos con el terreno.</span>
+              </div>
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Lubricación independiente:</strong> Circuito de aceite propio con bomba e intercambiador agua/aceite (separado del motor).</span>
+              </div>
+            </div>
+
+            <!-- HÉLICE MT-PROPELLER ABANDERABLE -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HÉLICE TRIPALA CONSTANT SPEED</strong>
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Fabricante y modelo:</strong> 2 hélices MT-Propeller MTV-6-A-C-F / CF 187-129 (Ø 1,87 m, una por motor).</span>
+              </div>
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Construcción:</strong> 3 palas de compuesto (madera laminada recubierta de fibra y borde de acero inoxidable).</span>
+              </div>
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Gobierno electrohidráulico:</strong> La ECU modula una válvula gobernadora con aceite de reductora para fijar el paso fino.</span>
+              </div>
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Acumulador de presión:</strong> Tipo nitrógeno/aceite a 20 bar (290 psi) para desabanderar en vuelo (air restart).</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MECANISMO DE ABANDERAMIENTO Y SEGUROS CENTRÍFUGOS -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">MECANISMO DE ABANDERAMIENTO Y SEGUROS CENTRÍFUGOS (AFM 7.9.2)</strong>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-0.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+              <div class="flex items-start gap-1">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span><strong>Abanderamiento (Feathering):</strong> Al situar <code>ENGINE MASTER</code> en OFF, la válvula se abre, drena el aceite y los contrapesos junto a la presión de nitrógeno llevan las palas a bandera (<strong>81° ± 1°</strong>).</span>
+              </div>
+              <div class="flex items-start gap-1">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span><strong>Seguros centrífugos (Start Locks):</strong> Por debajo de aprox. 950 - 1.300 RPM de hélice en tierra, entran topes mecánicos que <strong>impiden el abanderamiento</strong>, manteniéndola en paso fino para el arranque.</span>
+              </div>
+              <div class="flex items-start gap-1">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span><strong>Desabanderamiento (Unfeathering):</strong> Al poner <code>ENGINE MASTER</code> en ON en vuelo, la válvula del acumulador inyecta 20 bar de aceite sacando la pala de bandera para el rearranque.</span>
+              </div>
+              <div class="flex items-start gap-1">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span><strong>Alimentación continua:</strong> El acumulador asegura presión de aceite hidráulico constante ante maniobras o aceleraciones verticales negativas transitorias.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- WARNING DIFERENCIA VITAL RESPECTO A MONOMOTOR -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>WARNING (AFM SECCIÓN 7.9.2):</span>
+            </strong>
+            <div>A diferencia de los monomotores (donde la pérdida de aceite lleva a paso fino), en el DA42 bimotor la falta de presión de aceite o el corte del <code>ENGINE MASTER</code> lleva automáticamente las palas a <strong>bandera</strong> para proteger el vuelo asimétrico (OEI). Para lograr el abanderamiento completo al apagar el motor en vuelo, el régimen debe ser superior a 950 - 1.300 RPM antes de cortar. ¡Nunca mover la hélice con la mano!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6): Reductora Integrada y Hélice MT-Propeller (Altura Fija 590px - Imagen Máxima) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CAJA REDUCTORA Y HÉLICE MT-PROPELLER</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 px-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-snug font-medium">
+              Arquitectura de la caja reductora integrada (i=1.69 / 1.66), amortiguador torsional, embrague de sobrecarga y sistema electrohidráulico de hélice MTV-6 abanderable con acumulador de nitrógeno.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.2-gearbox-propeller.jpg?v=1" alt="Reductora Integrada y Hélice MT-Propeller" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
+            </div>
+            <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
+              <strong class="text-[#0B2E59] dark:text-sky-300">Diamond DA42 Twin Star</strong> · Caja Reductora Integrada y Hélice MT-Propeller MTV-6 Abanderable (AFM 7.9.2)
+            </figcaption>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
 };
 
