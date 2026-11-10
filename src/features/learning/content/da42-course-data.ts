@@ -1983,74 +1983,74 @@ export const DA42_LESSON_3 = {
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-7 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+      <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-0.5 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENGINE SPECIFICATIONS</span>
         </div>
 
-        <div class="space-y-1.5 py-0.5">
+        <div class="space-y-1 py-0">
           <!-- CUADRO COMPARATIVO LADO A LADO CD-135 y CD-155 (ESTILO C172) -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- CONTINENTAL CD-135 (TAE 125-02-99) -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+            <div class="p-1.5 px-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONTINENTAL CD-135 (TAE 125-02-99)</strong>
-              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Potencia máxima:</strong> 99 kW (135 HP / 133 BHP) a 2.300 RPM de hélice (Take-off y Max. Continuous).</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Potencia máx:</strong> 99 kW (135 HP) a 2.300 RPM de hélice (Take-off / Cont.).</span>
               </div>
-              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Cilindrada:</strong> 1.991 cm³ (121.5 in³) [variante TAE 125-01: 1.689 cm³].</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Cilindrada:</strong> 1.991 cm³ (121.5 in³) [TAE 125-01: 1.689 cm³].</span>
               </div>
-              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Arquitectura:</strong> 4 cilindros en línea, 4 tiempos, refrigeración líquida, DOHC (doble árbol de levas).</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Arquitectura:</strong> 4 cilindros en línea, 4T, refrig. líquida, DOHC.</span>
               </div>
-              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Inyección:</strong> Directa Diésel con tecnología Common Rail y turbocompresor con intercooler.</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Inyección:</strong> Directa Common Rail y turbo con intercooler.</span>
               </div>
             </div>
 
             <!-- CONTINENTAL CD-155 (TAE 125-02-114) -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+            <div class="p-1.5 px-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONTINENTAL CD-155 (TAE 125-02-114)</strong>
-              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Potencia máxima:</strong> 114 kW (155 HP / 153 BHP) a 2.300 RPM de hélice (Take-off y Max. Continuous).</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Potencia máx:</strong> 114 kW (155 HP) a 2.300 RPM de hélice (Take-off / Cont.).</span>
               </div>
-              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
                 <span class="text-slate-800 dark:text-slate-200"><strong>Cilindrada:</strong> 1.991 cm³ (121.5 in³).</span>
               </div>
-              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Arquitectura:</strong> 4 cilindros en línea, 4 tiempos, refrigeración líquida, DOHC (doble árbol de levas).</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Arquitectura:</strong> 4 cilindros en línea, 4T, refrig. líquida, DOHC.</span>
               </div>
-              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+              <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Inyección:</strong> Directa Diésel con tecnología Common Rail y turbocompresor con intercooler.</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Inyección:</strong> Directa Common Rail y turbo con intercooler.</span>
               </div>
             </div>
           </div>
 
           <!-- ARQUITECTURA COMÚN Y DISTRIBUCIÓN EN CÉLULA -->
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <div class="p-1.5 px-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ARQUITECTURA COMÚN Y DISTRIBUCIÓN EN CÉLULA</strong>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-0.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
-              <div class="flex items-start gap-1.5">
+              <div class="flex items-start gap-1">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
                 <span><strong>Disposición bimotor:</strong> 2 plantas gemelas independientes montadas en góndolas alares mediante bancadas de acero y fibra.</span>
               </div>
-              <div class="flex items-start gap-1.5">
+              <div class="flex items-start gap-1">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
                 <span><strong>Ciclo térmico:</strong> Diésel 4 tiempos, 4 cilindros en línea, refrigeración líquida y cárter húmedo (wet sump).</span>
               </div>
-              <div class="flex items-start gap-1.5">
+              <div class="flex items-start gap-1">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
                 <span><strong>Sobrealimentación:</strong> Turbocompresor accionado por gases de escape con intercooler de refrigeración de aire de admisión.</span>
               </div>
-              <div class="flex items-start gap-1.5">
+              <div class="flex items-start gap-1">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
                 <span><strong>Control FADEC:</strong> 2 canales digitales redundantes independientes por cada motor (ECU A y ECU B).</span>
               </div>
@@ -2058,12 +2058,12 @@ export const DA42_LESSON_3 = {
           </div>
 
           <!-- NOTA FADEC Y COMPONENTES SUPRIMIDOS -->
-          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight my-0.5 shadow-2xs shrink-0">
+          <div class="p-1.5 px-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
             <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
               <span>ℹ️</span>
               <span>NOTE:</span>
             </strong>
-            <p>Debido a la tecnología Common Rail con FADEC y combustión diésel, quedan suprimidos en ambas motorizaciones: carburador y calefacción de carburador, magnetos de encendido y bujías, palanca manual de mezcla (<code>Mixture</code>), palanca de paso de hélice (<code>Propeller</code>) y sistema de cebador (<code>Primer</code>). Cada motor se controla exclusivamente mediante su correspondiente palanca monomando (<code>Power Lever</code>).</p>
+            <div>Debido a la tecnología Common Rail con FADEC, quedan suprimidos en ambas motorizaciones: carburador y calefacción de carburador, magnetos de encendido y bujías, palanca de mezcla (mixture), paso de hélice manual y cebador manual (primer). Cada motor se controla exclusivamente mediante su palanca monomando (Power Lever).</div>
           </div>
         </div>
       </div>
