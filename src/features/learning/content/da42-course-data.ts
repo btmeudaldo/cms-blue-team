@@ -1279,64 +1279,58 @@ export const DA42_LESSON_2 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RANGOS DE PRESIÓN DE ACEITE MOTOR (OIL PRESSURE)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">OIL PRESSURE & CONSUMPTION LIMITS (AFM 2.4)</span>
           </div>
 
-          <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
-            <table class="w-full text-left text-[11px] leading-tight">
-              <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  <th class="p-2 px-2.5 w-[35%]">ESTADO</th>
-                  <th class="p-2 px-2 text-center w-[25%] font-extrabold text-[#1a80ff] dark:text-sky-400">VALOR</th>
-                  <th class="p-2 px-2.5 w-[40%]">COLOR / ACCIÓN</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
-                <tr>
-                  <td class="p-2 px-2.5 font-bold text-red-600 dark:text-red-400">Mínimo Absoluto</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">&lt; 1.0 bar</td>
-                  <td class="p-2 px-2.5 font-bold text-red-600 dark:text-red-400">Arco Rojo (L/R OIL PRES).</td>
-                </tr>
-                <tr>
-                  <td class="p-2 px-2.5 font-bold text-amber-600 dark:text-amber-400">Baja Presión</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold text-amber-600 dark:text-amber-400">1.0 a 2.3 bar</td>
-                  <td class="p-2 px-2.5">Arco Amarillo (Precaución).</td>
-                </tr>
-                <tr>
-                  <td class="p-2 px-2.5 font-bold text-emerald-600 dark:text-emerald-400">Operación Normal</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold text-emerald-600 dark:text-emerald-400">2.3 a 5.2 bar</td>
-                  <td class="p-2 px-2.5">Arco Verde (Crucero continuo).</td>
-                </tr>
-                <tr>
-                  <td class="p-2 px-2.5 font-bold text-amber-600 dark:text-amber-400">Alta Presión</td>
-                  <td class="p-2 px-2 text-center font-mono font-bold text-amber-600 dark:text-amber-400">5.2 a 6.5 bar</td>
-                  <td class="p-2 px-2.5">Arco Amarillo (Permitido arranque).</td>
-                </tr>
-                <tr>
-                  <td class="p-2 px-2.5 font-bold text-red-600 dark:text-red-400">Máximo Absoluto</td>
-                  <td class="p-2 px-2 text-center font-mono font-extrabold text-red-600 dark:text-red-400">&gt; 6.5 bar</td>
-                  <td class="p-2 px-2.5 font-bold text-red-600 dark:text-red-400">Arco Rojo (Sobrepresión).</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+            <!-- RANGOS DE PRESIÓN -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">RANGOS DE PRESIÓN</strong>
+              <div class="space-y-1 pt-0.5 text-[11px] leading-tight">
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Mínimo absoluto:</span>
+                  <span class="font-mono font-bold text-red-600 dark:text-red-400">&lt; 1.0 bar</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Margen bajo (amarillo):</span>
+                  <span class="font-mono font-bold text-amber-600 dark:text-amber-400">1.0 a 2.3 bar</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Régimen normal (verde):</span>
+                  <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">2.3 a 5.2 bar</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Margen alto (amarillo):</span>
+                  <span class="font-mono font-bold text-amber-600 dark:text-amber-400">5.2 a 6.5 bar</span>
+                </div>
+                <div class="flex justify-between py-0.5">
+                  <span class="text-slate-700 dark:text-slate-300">Máximo absoluto:</span>
+                  <span class="font-mono font-bold text-red-600 dark:text-red-400">&gt; 6.5 bar</span>
+                </div>
+              </div>
+            </div>
 
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 text-xs">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONSUMO MÁXIMO DE ACEITE ADMISIBLE</strong>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
-              El consumo máximo admisible es de <strong>0,1 litros por hora</strong> (0,1 US qt/h) por motor. Si el consumo en vuelo supera este límite, debe notificarse a mantenimiento para verificar fugas o desgaste antes del siguiente despegue.
-            </p>
-          </div>
-
-          <!-- Nivel de Cárter Motor (Dipstick) -->
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">NIVEL DE CÁRTER MOTOR (DIPSTICK)</strong>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
-              • <strong>Capacidad del cárter:</strong> Mínimo <strong>4,5 litros</strong> / Máximo <strong>6,0 litros</strong>.
-            </p>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
-              • <strong>Tiempo de reposo:</strong> Esperar entre 5 y 15 minutos tras la parada de los motores antes de extraer la varilla para permitir el retorno del aceite al cárter.
-            </p>
+            <!-- CAPACIDAD Y CONSUMO -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CAPACIDAD Y CONSUMO DE ACEITE</strong>
+              <div class="space-y-1 pt-0.5 text-[11px] leading-tight">
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Cantidad mínima en cárter:</span>
+                  <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">4,5 L (4.8 US qts)</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Cantidad máxima en cárter:</span>
+                  <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">6,0 L (6.3 US qts)</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Consumo máximo admisible:</span>
+                  <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">0,1 L/h (0.1 US qt/h)</span>
+                </div>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 pt-1 leading-relaxed">
+                  Sistema de lubricación por cárter húmedo accionado por bomba mecánica en cada motor CD-135 / CD-155.
+                </p>
+              </div>
+            </div>
           </div>
 
           <!-- Warning AFM Presión de Aceite -->
