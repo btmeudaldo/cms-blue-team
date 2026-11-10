@@ -1962,4 +1962,143 @@ export const DA42_LESSON_2 = {
 </div>`,
 };
 
-export const DA42_LESSONS = [DA42_LESSON_1, DA42_LESSON_2];
+export const DA42_LESSON_3 = {
+  id: "da420000-0000-0000-0000-000000000030",
+  course_id: DA42_COURSE_ID,
+  title: "3. Descripción del Avión y sus Sistemas (AFM Sección 7)",
+  slug: "descripcion-avion-sistemas-da42",
+  sequence_order: 3,
+  lesson_order: 3,
+  min_seconds: 1,
+  content_html: `<!-- DIAPOSITIVA 3.1: 3.1 Motores Continental CD-135 / CD-155: Arquitectura Bimotor y Especificaciones -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · INGENIERÍA Y SISTEMAS (AFM SECCIÓN 7)</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.1 Motores Continental CD-135 / CD-155: Arquitectura Bimotor y Especificaciones</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Modelos CD-135 (TAE 125-01 / -02-99) y CD-155 (TAE 125-02-114)</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Especificaciones de los Motores AFM 7.9.1 (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENGINE SPECIFICATIONS (AFM SECCIÓN 7.9.1)</span>
+        </div>
+
+        <div class="space-y-1.5 py-0.5">
+          <!-- TABLA COMPARATIVA: CONTINENTAL CD-135 vs CD-155 -->
+          <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
+            <div class="bg-slate-100 dark:bg-slate-700/80 px-2.5 py-1 border-b border-slate-200 dark:border-slate-700">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">ESPECIFICACIONES COMPARATIVAS CD-135 / CD-155</strong>
+            </div>
+            <table class="w-full text-left text-[11px] leading-tight">
+              <thead class="bg-slate-50 dark:bg-slate-800 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
+                <tr>
+                  <th class="p-1.5 px-2.5 w-[36%]">PARÁMETRO</th>
+                  <th class="p-1.5 px-2 text-center w-[32%] text-[#1a80ff] dark:text-sky-400">CD-135 (TAE 125-01 / -02-99)</th>
+                  <th class="p-1.5 px-2 text-center w-[32%] text-[#2361A8] dark:text-sky-300">CD-155 (TAE 125-02-114)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200">
+                <tr>
+                  <td class="p-1.5 px-2.5 font-medium">Potencia máx. (Take-off / Cont.)</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-bold text-slate-900 dark:text-white">99 kW (135 CV DIN)</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-bold text-[#0B2E59] dark:text-sky-300">114 kW (155 CV DIN)</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2.5 font-medium">Régimen máx. cigüeñal / hélice</td>
+                  <td class="p-1.5 px-2 text-center font-mono">3.900 RPM / 2.300 RPM</td>
+                  <td class="p-1.5 px-2 text-center font-mono">3.900 RPM / 2.300 RPM</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2.5 font-medium">Cilindrada total</td>
+                  <td class="p-1.5 px-2 text-center font-mono">1.689 cm³ (o 1.991 cm³ en -02-99)</td>
+                  <td class="p-1.5 px-2 text-center font-mono">1.991 cm³ (121.5 in³)</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2.5 font-medium">Relación de reductora (<span class="italic">i</span>)</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-bold">1 : 1,69</td>
+                  <td class="p-1.5 px-2 text-center font-mono font-bold">1 : 1,66</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2.5 font-medium">Presión máx. inyección Common Rail</td>
+                  <td class="p-1.5 px-2 text-center font-mono">1.350 bar</td>
+                  <td class="p-1.5 px-2 text-center font-mono">1.600 bar</td>
+                </tr>
+                <tr>
+                  <td class="p-1.5 px-2.5 font-medium">Alternador de servicio (por motor)</td>
+                  <td class="p-1.5 px-2 text-center font-mono">28 V / 60 A</td>
+                  <td class="p-1.5 px-2 text-center font-mono">28 V / 70 A</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ARQUITECTURA COMÚN BIMOTOR -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ARQUITECTURA COMÚN Y DISTRIBUCIÓN EN CÉLULA</strong>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-0.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+              <div class="flex items-start gap-1.5">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span><strong>Disposición bimotor:</strong> 2 plantas gemelas independientes montadas en góndolas alares mediante bancadas de acero y fibra.</span>
+              </div>
+              <div class="flex items-start gap-1.5">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span><strong>Ciclo térmico:</strong> Diésel 4 tiempos, 4 cilindros en línea, refrigeración líquida y cárter húmedo (wet sump).</span>
+              </div>
+              <div class="flex items-start gap-1.5">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span><strong>Sobrealimentación:</strong> Turbocompresor accionado por gases de escape con intercooler de refrigeración de aire de admisión.</span>
+              </div>
+              <div class="flex items-start gap-1.5">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+                <span><strong>Control FADEC:</strong> 2 canales digitales redundantes independientes por cada motor (ECU A y ECU B).</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA FADEC Y COMPONENTES SUPRIMIDOS -->
+          <div class="p-2 px-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE (SIMPLIFICACIÓN OPERACIONAL DE CABINA):</span>
+            </strong>
+            <p>Debido a la tecnología diésel Common Rail con gestión electrónica FADEC y combustión por autoencendido, en ambas góndolas quedan totalmente suprimidos: carburadores y calefacción de carburador, magnetos de encendido y bujías, palancas de mezcla (<code>Mixture</code>), palancas de paso de hélice (<code>Propeller</code>) y bombas manuales de cebado (<code>Primer</code>). Cada motor se controla exclusivamente mediante su correspondiente palanca monomando (<code>LH y RH Power Levers</code>).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Planta Motriz Continental CD-135 / CD-155 (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLANTA MOTRIZ CONTINENTAL CD-135 / CD-155</span>
+          </div>
+
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight font-medium">
+              Arquitectura general de la planta motriz Continental instalada en las góndolas alares del DA42: 4 cilindros en línea, refrigeración líquida, inyección directa Common Rail, turbocompresor con intercooler y caja reductora integrada gobernada electrónicamente.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.1-cd155-engine.png?v=1" alt="Motor Continental CD-135 / CD-155 Turbo Diésel" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
+            </div>
+            <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
+              <strong class="text-[#0B2E59] dark:text-sky-300">Continental CD-135 / CD-155</strong> · Arquitectura de la Planta Motriz en Góndola Alar (AFM Sección 7.9)
+            </figcaption>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+};
+
+export const DA42_LESSONS = [DA42_LESSON_1, DA42_LESSON_2, DA42_LESSON_3];
