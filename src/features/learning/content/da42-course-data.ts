@@ -1367,94 +1367,97 @@ export const DA42_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.9: 2.9 Marcas de Instrumentación de Motor G1000 EIS -->
+<!-- DIAPOSITIVA 2.9: 2.9 Límites Térmicos de Combustible en Depósito -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · LIMITACIONES AFM (SECCIÓN 2)</div>
-      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.9 Marcas de Instrumentación de Motor G1000 EIS</h1>
+      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.9 Límites Térmicos de Combustible en Depósito</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Códigos de Color y Rangos Operativos en Pantalla Multifunción</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Temperaturas Mínimas y Máximas para JET A-1 y Diésel EN 590</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
-    <!-- Columna Izquierda (lg:col-span-6): Tabla de Códigos de Color AFM 2.5 (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-6): AFM Sección 2 (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">MARCAS DE INSTRUMENTACIÓN (AFM 2.5)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FUEL TEMPERATURE LIMITS</span>
           </div>
 
-          <div class="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/90 shadow-2xs">
-            <table class="w-full text-left text-[11px] leading-tight">
-              <thead class="bg-slate-100 dark:bg-slate-700/80 font-bold text-[#0B2E59] dark:text-sky-300 border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  <th class="p-2 px-2.5 w-[25%]">PARÁMETRO</th>
-                  <th class="p-2 px-2 text-center w-[20%] text-red-600 dark:text-red-400">PROHIB. INF.</th>
-                  <th class="p-2 px-2 text-center w-[20%] text-amber-600 dark:text-amber-400">PRECAUCIÓN</th>
-                  <th class="p-2 px-2 text-center w-[20%] text-emerald-600 dark:text-emerald-400">NORMAL</th>
-                  <th class="p-2 px-2 text-center w-[15%] text-red-600 dark:text-red-400">MÁXIMO</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-slate-700/60 text-slate-800 dark:text-slate-200 font-mono text-[10px]">
-                <tr>
-                  <td class="p-2 px-2.5 font-bold font-sans">Tacómetro (RPM)</td>
-                  <td class="p-2 px-2 text-center">--</td>
-                  <td class="p-2 px-2 text-center">--</td>
-                  <td class="p-2 px-2 text-center font-bold text-emerald-600 dark:text-emerald-400">Hasta 2300</td>
-                  <td class="p-2 px-2 text-center font-extrabold text-red-600 dark:text-red-400">&gt; 2300</td>
-                </tr>
-                <tr>
-                  <td class="p-2 px-2.5 font-bold font-sans">Presión Aceite</td>
-                  <td class="p-2 px-2 text-center text-red-600 dark:text-red-400">&lt; 1.0 bar</td>
-                  <td class="p-2 px-2 text-center text-amber-600 dark:text-amber-400">1.0 a 2.3 bar</td>
-                  <td class="p-2 px-2 text-center font-bold text-emerald-600 dark:text-emerald-400">2.3 a 5.2 bar</td>
-                  <td class="p-2 px-2 text-center text-red-600 dark:text-red-400">&gt; 6.5 bar</td>
-                </tr>
-                <tr>
-                  <td class="p-2 px-2.5 font-bold font-sans">Temp. Aceite</td>
-                  <td class="p-2 px-2 text-center text-red-600 dark:text-red-400">&lt; -32 °C</td>
-                  <td class="p-2 px-2 text-center text-amber-600 dark:text-amber-400">-32 a 50 °C</td>
-                  <td class="p-2 px-2 text-center font-bold text-emerald-600 dark:text-emerald-400">50 a 125 °C</td>
-                  <td class="p-2 px-2 text-center text-red-600 dark:text-red-400">&gt; 140 °C</td>
-                </tr>
-                <tr>
-                  <td class="p-2 px-2.5 font-bold font-sans">Refrigerante</td>
-                  <td class="p-2 px-2 text-center text-red-600 dark:text-red-400">&lt; -32 °C</td>
-                  <td class="p-2 px-2 text-center text-amber-600 dark:text-amber-400">-32 a 60 °C</td>
-                  <td class="p-2 px-2 text-center font-bold text-emerald-600 dark:text-emerald-400">60 a 101 °C</td>
-                  <td class="p-2 px-2 text-center text-red-600 dark:text-red-400">&gt; 105 °C</td>
-                </tr>
-                <tr>
-                  <td class="p-2 px-2.5 font-bold font-sans">Reductora</td>
-                  <td class="p-2 px-2 text-center">--</td>
-                  <td class="p-2 px-2 text-center text-amber-600 dark:text-amber-400">115 a 120 °C</td>
-                  <td class="p-2 px-2 text-center font-bold text-emerald-600 dark:text-emerald-400">Hasta 115 °C</td>
-                  <td class="p-2 px-2 text-center text-red-600 dark:text-red-400">&gt; 120 °C</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
+            <!-- JET FUEL -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">QUEROSENO JET A-1 / JET A / JP-8</strong>
+              <div class="space-y-1 pt-0.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Temp. mínima operativa:</span>
+                  <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">-30 °C (-22 °F)</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Mín. despegue (CD-135):</span>
+                  <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">-22 °C (-8 °F)</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Mín. despegue (CD-155):</span>
+                  <span class="font-mono font-bold text-amber-600 dark:text-amber-400">+5 °C (+41 °F)</span>
+                </div>
+                <div class="flex justify-between py-0.5">
+                  <span class="text-slate-700 dark:text-slate-300">Temp. máxima de combustible:</span>
+                  <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">+75 °C (+167 °F)</span>
+                </div>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 pt-1 leading-relaxed">
+                  Excelente fluidez en frío. No requiere aditivos anticongelantes bajo condiciones operativas estándar.
+                </p>
+              </div>
+            </div>
+
+            <!-- AUTOMOCIÓN DIÉSEL -->
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">AUTOMOCIÓN DIÉSEL (EN 590)</strong>
+              <div class="space-y-1 pt-0.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Mínima para arranque:</span>
+                  <span class="font-mono font-bold text-amber-600 dark:text-amber-400">-5 °C (+23 °F)</span>
+                </div>
+                <div class="flex justify-between py-0.5 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-700 dark:text-slate-300">Mínima para despegue (Main):</span>
+                  <span class="font-mono font-bold text-amber-600 dark:text-amber-400">+5 °C (+41 °F)</span>
+                </div>
+                <div class="flex justify-between py-0.5">
+                  <span class="text-slate-700 dark:text-slate-300">Temperatura máxima:</span>
+                  <span class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">+65 °C / +75 °C</span>
+                </div>
+                <p class="text-[10px] text-slate-500 dark:text-slate-400 pt-1 leading-relaxed">
+                  Riesgo de precipitación de parafinas sólidas con combustible frío que colmatarían el filtro de combustible.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA FUEL COOLER -->
+          <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>ℹ️</span>
+              <span>INTERCAMBIADORES TÉRMICOS DE COMBUSTIBLE (FUEL COOLERS):</span>
+            </strong>
+            <p>El combustible sobrante de alta presión de las bombas Common-Rail regresa a los tanques principales a través de los Fuel Coolers situados en las góndolas. Este circuito continuo templa el combustible en los depósitos alares durante el vuelo para mantenerlo por encima del punto de parafina.</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): Imagen EIS Compuesta (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-6): Temperatura de Combustible y Retorno (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 w-full flex-1 flex flex-col justify-start items-start min-h-0">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SUPERVISIÓN EN PÁGINAS ENGINE, SYSTEM Y FUEL</span>
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TEMPERATURA DE COMBUSTIBLE Y RETORNO</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-g1000-eis-cas-composite.png"
-              alt="Páginas de Instrumentación de Motor G1000 EIS y Alertas CAS Diamond DA42"
-              class="w-full h-full max-h-[500px] object-contain rounded-lg"
-              style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
-            />
+          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/temperatura-combustible-retorno.jpg" alt="Temperatura de Combustible y Circuito de Retorno DA42 Twin Star" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
