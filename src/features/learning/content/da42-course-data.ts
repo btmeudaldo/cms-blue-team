@@ -2168,31 +2168,31 @@ export const DA42_LESSON_3 = {
           </div>
 
           <!-- MECANISMO DE ABANDERAMIENTO Y SEGUROS CENTRÍFUGOS -->
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">MECANISMO DE ABANDERAMIENTO Y SEGUROS CENTRÍFUGOS (AFM 7.9.2)</strong>
-            <div class="space-y-1 text-[11px] leading-tight text-slate-800 dark:text-slate-200 pt-0.5">
+          <div class="p-1.5 px-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ABANDERAMIENTO Y SEGUROS CENTRÍFUGOS (AFM 7.9.2)</strong>
+            <div class="space-y-0.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200 pt-0.5">
               <div class="flex items-start gap-1">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span><strong>Abanderamiento (Feathering):</strong> Al situar <code>ENGINE MASTER</code> en OFF, la válvula se abre, drena el aceite y los contrapesos junto al nitrógeno a presión llevan las palas a bandera (<strong>81° ± 1°</strong>) para minimizar resistencia (OEI).</span>
+                <span><strong>Abanderamiento (Feathering):</strong> Con <code>ENGINE MASTER</code> en OFF, la válvula drena aceite y los contrapesos con gas nitrógeno abanderan las palas a <strong>81° ± 1°</strong> (mínima resistencia OEI).</span>
               </div>
               <div class="flex items-start gap-1">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span><strong>Seguros centrífugos (Start Locks):</strong> A menos de aprox. 950 - 1.300 RPM en tierra, entran topes mecánicos que <strong>impiden el abanderamiento</strong>, manteniéndola en paso fino para el próximo arranque.</span>
+                <span><strong>Seguros centrífugos (Start Locks):</strong> A menos de 950 - 1.300 RPM en tierra, fiadores mecánicos <strong>impiden el abanderamiento</strong> para dejar la hélice en paso fino para el próximo arranque.</span>
               </div>
               <div class="flex items-start gap-1">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span><strong>Desabanderamiento (Unfeathering):</strong> Al rearmar <code>ENGINE MASTER</code> en ON en vuelo, los 20 bar del acumulador hidráulico sacan las palas de bandera para el rearranque en vuelo (air restart).</span>
+                <span><strong>Desabanderamiento (Unfeathering):</strong> Al poner <code>ENGINE MASTER</code> en ON en vuelo, los 20 bar del acumulador inyectan aceite sacando las palas de bandera para el rearranque.</span>
               </div>
             </div>
           </div>
 
           <!-- WARNING DIFERENCIA VITAL RESPECTO A MONOMOTOR -->
-          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
+          <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
             <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
               <span>⚠️</span>
-              <span>WARNING (AFM SECCIÓN 7.9.2):</span>
+              <span>WARNING:</span>
             </strong>
-            <div>En el DA42 bimotor, la falta de presión de aceite o cortar <code>ENGINE MASTER</code> lleva automáticamente las palas a <strong>bandera</strong> para proteger el vuelo monomotor (OEI). Para lograr el abanderamiento completo en vuelo, el régimen debe superar 950 - 1.300 RPM antes de cortar el switch. ¡Nunca mover la hélice con la mano!</div>
+            <div>En el DA42 bimotor, la falta de aceite o cortar <code>ENGINE MASTER</code> lleva automáticamente las palas a <strong>bandera</strong>. Para abanderar en vuelo, cortar con RPM &gt;950 - 1.300. ¡Prohibido girar la hélice con la mano!</div>
           </div>
         </div>
       </div>
