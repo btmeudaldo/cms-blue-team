@@ -1582,13 +1582,13 @@ export const DA42_LESSON_2 = {
           </figcaption>
         </div>
 
-        <!-- NOTA: Lectura de Load y Engine Master -->
+        <!-- NOTA: Indicación de % LOAD y Engine Master AFM 2.5 -->
         <div class="w-full p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0 mt-2">
           <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
             <span>ℹ️</span>
-            <span>NOTE:</span>
+            <span>NOTE (AFM 2.5):</span>
           </strong>
-          <div>'Load' describe el porcentaje disponible de la potencia máxima del motor en cada planta motriz. Si el interruptor Electric Master o Engine Master está en OFF, la indicación de carga no muestra ningún valor aunque la hélice esté girando por molinete (windmilling).</div>
+          <div>'Load' es el porcentaje de potencia máxima disponible en las condiciones ambientales actuales. Si el interruptor <code>ENGINE MASTER</code> se sitúa en <code>OFF</code>, la indicación de carga mostrará 0% (o «<code>---</code>») con independencia de la rotación de la hélice.</div>
         </div>
       </div>
     </div>
