@@ -1848,16 +1848,16 @@ export const DA42_LESSON_2 = {
           </div>
 
           <!-- TARJETA 3: LIMITACIONES OPERACIONALES, DESBALANCE Y CROSSFEED AFM 2.6 / 2.14 -->
-          <div class="p-1.5 px-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+          <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-1 uppercase tracking-wide text-xs shrink-0">
               <span>⚡</span>
               <span>LIMITACIONES OPERATIVAS, DESBALANCE Y CROSSFEED (AFM 2.6 / 2.14):</span>
             </strong>
             <ul class="list-disc pl-3 space-y-0.5 text-[11px] leading-tight">
-              <li><strong>Desbalance máximo:</strong> Máx. <strong>5.0 US gal (~19 L)</strong> entre depósitos principales para preservar estabilidad y control en OEI.</li>
-              <li><strong>Válvulas selectoras:</strong> Cada motor dispone de válvula independiente con posiciones <code>ON</code>, <code>CROSSFEED</code> y <code>OFF</code>.</li>
-              <li><strong>Alimentación cruzada:</strong> <code>CROSSFEED</code> autorizado solo en monomotor (OEI) o para rebalancear depósitos principales.</li>
-              <li><strong>Warning despegue / aterrizaje:</strong> Obligatorio verificar ambas válvulas en <code>ON</code>. Prohibido operar en <code>CROSSFEED</code>.</li>
+              <li><strong>Desbalance máximo admisible:</strong> Diferencia máxima de <strong>5.0 US gal (~19 litros)</strong> entre depósitos principales para preservar la autoridad de alerones y estabilidad.</li>
+              <li><strong>Válvulas selectoras (Fuel Valves):</strong> Cada motor dispone de válvula independiente con posiciones <code>ON</code>, <code>CROSSFEED</code> y <code>OFF</code>.</li>
+              <li><strong>Alimentación cruzada (CROSSFEED):</strong> Autorizada solo en vuelo monomotor (OEI) para alimentar el motor operativo desde el ala opuesta o para corregir desbalances.</li>
+              <li><strong>Warning de despegue y aterrizaje:</strong> Obligatorio verificar ambas válvulas en posición <code>ON</code>. Prohibido despegar o aterrizar en <code>CROSSFEED</code>.</li>
             </ul>
           </div>
         </div>
