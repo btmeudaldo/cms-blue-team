@@ -1597,12 +1597,179 @@ export const DA42_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.11: 2.11 Limitaciones de Combustible y Desbalance Máximo -->
+<!-- DIAPOSITIVA 2.11: 2.11 Parámetros Eléctricos, Combustible y Sistema de Alertas CAS (G1000) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · LIMITACIONES AFM (SECCIÓN 2)</div>
-      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.11 Limitaciones de Combustible y Desbalance Máximo</h1>
+      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.11 Parámetros Eléctricos, Combustible y Sistema de Alertas CAS (G1000)</h1>
+    </div>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Límites de Sistema Eléctrico 28V, Combustible y Gestión de Avisos en Garmin G1000</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+    <!-- Columna Izquierda (lg:col-span-6): G1000 EIS Auxiliar y Lógica CAS (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">G1000 EIS AUXILIAR & LÓGICA DE ALERTAS CAS</span>
+        </div>
+
+        <!-- TABLA DE PARÁMETROS ELÉCTRICOS Y COMBUSTIBLE (G1000 EIS) -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 w-full shrink-0">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-0.5">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">PARÁMETROS ELÉCTRICOS Y COMBUSTIBLE (G1000 EIS)</strong>
+            <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">AFM Tabla 2.5</span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-[11px] leading-tight">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
+                  <th class="py-1 px-1.5 font-bold text-[#0B2E59] dark:text-sky-300">Parámetro</th>
+                  <th class="py-1 px-1.5 font-bold text-emerald-700 dark:text-emerald-400">Verde</th>
+                  <th class="py-1 px-1.5 font-bold text-amber-700 dark:text-amber-400">Ámbar</th>
+                  <th class="py-1 px-1.5 font-bold text-red-700 dark:text-red-400">Roja</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Voltímetro (28V) [V]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">24.1 - 32.0 V</td>
+                  <td class="py-1.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">20.0 - 24.1 V</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&lt; 20.0 | &gt; 32.0 V</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Amperímetros L / R [A]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">hasta 60 A <span class="text-[10px] text-slate-500">(70A)</span></td>
+                  <td class="py-1.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">60 - 70 A</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&gt; 70 A</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Fuel Temp L y R [°C]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">+5 a 69 °C <span class="text-[10px] text-slate-500">(Jet A-1)</span></td>
+                  <td class="py-1.5 px-1.5 text-amber-700 dark:text-amber-400 font-medium font-mono">-30...+4 | 70 - 75 °C</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -30 | &gt; 75 °C</td>
+                </tr>
+                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                  <td class="py-1.5 px-1.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Fuel Qty (L y R) [USG]</td>
+                  <td class="py-1.5 px-1.5 text-emerald-700 dark:text-emerald-400 font-medium font-mono">1.0 a 25.0 USG</td>
+                  <td class="py-1.5 px-1.5 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                  <td class="py-1.5 px-1.5 text-red-700 dark:text-red-400 font-medium font-mono">&lt; 1.0 USG</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- LÓGICA DE GESTIÓN DE ALERTAS CAS EN GARMIN G1000 -->
+        <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">GESTIÓN Y LÓGICA DE ALERTAS EN GARMIN G1000 (CAS)</strong>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1.5 pt-0.5 text-[11px] leading-tight">
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Alertas Integradas CAS:</strong> Sustituyen al panel anunciador físico; se notifican en la ventana de anuncios del PFD y en la barra EIS.</span>
+            </div>
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Niveles de Prioridad:</strong> <code>WARNING</code> en rojo con aviso acústico continuo, <code>CAUTION</code> en ámbar con tono breve y Advisories en blanco/azul.</span>
+            </div>
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Acuse con Softkey ALERTS:</strong> El piloto presiona la tecla <code>ALERTS</code> en el marco inferior del PFD para consultar la causa exacta y silenciar el tono.</span>
+            </div>
+            <div class="flex items-start gap-1.5">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Autodescarte:</strong> Si el parámetro monitorizado retorna a su rango normal verde, el mensaje se retira automáticamente.</span>
+            </div>
+            <div class="flex items-start gap-1.5 sm:col-span-2">
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
+              <span class="text-slate-800 dark:text-slate-200"><strong>Revisión de Historial:</strong> La ventana de alertas guarda los avisos activos ordenados por criticidad para su monitorización continua.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6): G1000 EIS (3 Páginas) y Alertas CAS (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <!-- Dos cuadros verticales lado a lado (2 columnas) -->
+        <div class="grid grid-cols-2 gap-2 flex-1 min-h-0">
+          
+          <!-- Cuadro 1: Las 3 Páginas del G1000 EIS -->
+          <div class="h-full flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-900/60 p-2 shadow-2xs overflow-hidden">
+            <div class="flex items-center justify-between shrink-0 pb-1 mb-1 border-b border-slate-100 dark:border-slate-800">
+              <span class="text-xs font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide">
+                G1000 EIS · 3 PÁGINAS
+              </span>
+            </div>
+
+            <!-- Las 3 tiras verticales del EIS: Engine, System y Fuel -->
+            <div class="flex-1 min-h-0 grid grid-cols-3 gap-1 items-center justify-center overflow-hidden py-1">
+              <!-- 1. Engine Display -->
+              <div class="h-full flex flex-col items-center justify-between min-h-0">
+                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden bg-white dark:bg-white rounded p-0.5 lesson-img-wrapper">
+                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-engine.png" alt="Garmin G1000 EIS Engine Display DA42" class="w-full h-full object-contain rounded" style="max-height: 460px;" />
+                </div>
+                <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 mt-1 shrink-0">ENGINE</span>
+              </div>
+
+              <!-- 2. System Display -->
+              <div class="h-full flex flex-col items-center justify-between min-h-0">
+                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden bg-white dark:bg-white rounded p-0.5 lesson-img-wrapper">
+                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-system.png" alt="Garmin G1000 EIS System Display DA42" class="w-full h-full object-contain rounded" style="max-height: 460px;" />
+                </div>
+                <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 mt-1 shrink-0">SYSTEM</span>
+              </div>
+
+              <!-- 3. Fuel Display -->
+              <div class="h-full flex flex-col items-center justify-between min-h-0">
+                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden bg-white dark:bg-white rounded p-0.5 lesson-img-wrapper">
+                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-fuel.png" alt="Garmin G1000 EIS Fuel Display DA42" class="w-full h-full object-contain rounded" style="max-height: 460px;" />
+                </div>
+                <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 mt-1 shrink-0">FUEL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cuadro 2: Ventana de Alertas CAS y Criterio de Consulta -->
+          <div class="h-full flex flex-col justify-between rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-900/60 p-2 shadow-2xs overflow-hidden">
+            <div class="flex items-center justify-between shrink-0 pb-1 mb-1 border-b border-slate-100 dark:border-slate-800">
+              <span class="text-xs font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide">
+                ALERTAS CAS (G1000)
+              </span>
+            </div>
+
+            <!-- Imagen de la ventana de Alertas CAS -->
+            <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden p-1 bg-white dark:bg-white rounded-lg lesson-img-wrapper">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-cas-alerts.png" alt="Sistema de Alertas CAS Garmin G1000 DA42" class="w-full h-full max-h-[360px] object-contain rounded-lg" />
+            </div>
+
+            <!-- NOTA -->
+            <div class="w-full p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-snug shadow-2xs shrink-0 mt-1">
+              <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
+                <span>ℹ️</span>
+                <span>NOTE:</span>
+              </strong>
+              <div>Los parámetros eléctricos individuales (Voltios y Amperios de cada alternador L/R) y la gestión de depósitos auxiliares se consultan en el MFD mediante las teclas de función rápida <strong>ENGINE &gt; SYSTEM</strong> o <strong>FUEL</strong>.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 2.12: 2.12 Limitaciones de Combustible y Desbalance Máximo -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · LIMITACIONES AFM (SECCIÓN 2)</div>
+      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.12 Limitaciones de Combustible y Desbalance Máximo</h1>
     </div>
     <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Capacidades de Depósitos, Combustibles Autorizados y Límite de 5.0 US gal</span>
   </div>
@@ -1692,12 +1859,12 @@ export const DA42_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.12: 2.12 Tipos de Operación Autorizada y Techo de Servicio -->
+<!-- DIAPOSITIVA 2.13: 2.13 Tipos de Operación Autorizada y Techo de Servicio -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · LIMITACIONES AFM (SECCIÓN 2)</div>
-      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.12 Tipos de Operación Autorizada y Techo de Servicio</h1>
+      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.13 Tipos de Operación Autorizada y Techo de Servicio</h1>
     </div>
     <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Reglas de Vuelo, Tripulación Mínima y Techo Máximo</span>
   </div>
@@ -1755,12 +1922,12 @@ export const DA42_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.13: 2.13 Placards Oficiales y Limitaciones de Sistemas -->
+<!-- DIAPOSITIVA 2.14: 2.14 Placards Oficiales y Limitaciones de Sistemas -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · LIMITACIONES AFM (SECCIÓN 2)</div>
-      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.13 Placards Oficiales y Limitaciones de Sistemas</h1>
+      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.14 Placards Oficiales y Limitaciones de Sistemas</h1>
     </div>
     <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Placards Obligatorios de Cabina, Interruptores e Integridad Operacional</span>
   </div>
