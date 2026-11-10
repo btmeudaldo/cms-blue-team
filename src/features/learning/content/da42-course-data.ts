@@ -1467,66 +1467,128 @@ export const DA42_LESSON_2 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 2.10: 2.10 Sistema de Alertas CAS en G1000 (Warnings, Cautions & Advisories) -->
+<!-- DIAPOSITIVA 2.10: 2.10 Marcas de Instrumentación de Motor G1000 EIS -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · LIMITACIONES AFM (SECCIÓN 2)</div>
-      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.10 Sistema de Alertas CAS en G1000 (Warnings, Cautions & Advisories)</h1>
+      <h1 class="text-[25px] font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">2.10 Marcas de Instrumentación de Motor G1000 EIS</h1>
     </div>
-    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Avisos Visuales y Acústicos del Crew Alerting System</span>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tabla Oficial AFM: Rangos Verde, Ámbar y Rojo en la Barra de Instrumentos del Motor</span>
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
-    <!-- Columna Izquierda (lg:col-span-6): Warnings y Cautions (Altura Fija 590px) -->
+    <!-- Columna Izquierda (lg:col-span-6): AFM Sección 2 (Tablas estructuradas, Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ALERTAS DE WARNING (ROJO) Y CAUTION (ÁMBAR)</span>
+      <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1.5 border-b border-slate-200 dark:border-slate-800 mb-2">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GARMIN G1000 EIS INSTRUMENT MARKINGS</span>
+        </div>
+        <div class="space-y-3 py-1">
+          <!-- TABLA 1: TACÓMETRO, PRESIÓN Y CARGA (GARMIN G1000 EIS) -->
+          <div class="p-2.5 px-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">TACÓMETRO, PRESIÓN Y CARGA (GARMIN G1000 EIS)</strong>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">AFM Tabla 2.5</span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-[11px] leading-tight">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
+                    <th class="py-1.5 px-2 font-bold text-[#0B2E59] dark:text-sky-300 w-[24%] whitespace-nowrap">Parámetro</th>
+                    <th class="py-1.5 px-2 font-bold text-emerald-700 dark:text-emerald-400 w-[22%] whitespace-nowrap">Verde</th>
+                    <th class="py-1.5 px-2 font-bold text-amber-700 dark:text-amber-400 w-[30%] whitespace-nowrap">Ámbar</th>
+                    <th class="py-1.5 px-2 font-bold text-red-700 dark:text-red-400 w-[24%] whitespace-nowrap">Roja</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Tachometer [RPM]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0 - 2.300 RPM</td>
+                    <td class="py-1.5 px-2 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono whitespace-nowrap">&gt; 2.300 RPM</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Pressure [bar]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">2.3 - 5.2 bar</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">1.0 - 2.3 | 5.2 - 6.5</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&lt; 1.0 | &gt; 6.5 bar</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Load [%]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">0% - 100%</td>
+                    <td class="py-1.5 px-2 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                    <td class="py-1.5 px-2 text-slate-400 dark:text-slate-500 font-mono">—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
-          <!-- Avisos Rojos -->
-          <div class="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 space-y-1 text-xs">
-            <strong class="text-red-700 dark:text-red-300 block text-xs border-b border-red-200 dark:border-red-800 pb-0.5 uppercase tracking-wide">WARNINGS CRÍTICOS (ALERTA ROJA + TONO CONTINUO)</strong>
-            <p class="text-[11px] text-red-900 dark:text-red-200 leading-tight">• <code>L/R ENG FIRE</code>: Fuego detectado en motor izquierdo o derecho.</p>
-            <p class="text-[11px] text-red-900 dark:text-red-200 leading-tight">• <code>L/R STARTER</code>: Arrancador acoplado con motor en marcha.</p>
-            <p class="text-[11px] text-red-900 dark:text-red-200 leading-tight">• <code>DOOR OPEN</code>: Cúpula o puerta de pasajeros no bloqueada.</p>
-            <p class="text-[11px] text-red-900 dark:text-red-200 leading-tight">• <code>GEAR UNSAFE</code>: Tren de aterrizaje en posición no segura / asimétrica.</p>
-          </div>
+          <!-- TABLA 2: TEMPERATURAS: REFRIGERANTE, ACEITE Y REDUCTORA -->
+          <div class="p-2.5 px-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full shrink-0">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase tracking-wide">TEMPERATURAS: REFRIGERANTE, ACEITE Y REDUCTORA</strong>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium">AFM Tabla 2.5</span>
+            </div>
 
-          <!-- Avisos Ámbar -->
-          <div class="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 space-y-1 text-xs">
-            <strong class="text-amber-800 dark:text-amber-300 block text-xs border-b border-amber-200 dark:border-amber-800 pb-0.5 uppercase tracking-wide">CAUTIONS (ALERTA ÁMBAR + TONO ÚNICO)</strong>
-            <p class="text-[11px] text-amber-900 dark:text-amber-200 leading-tight">• <code>L/R ECU A/B FAIL</code>: Anomalía en canal A o B del FADEC.</p>
-            <p class="text-[11px] text-amber-900 dark:text-amber-200 leading-tight">• <code>L/R ALTN FAIL</code> / <code>LOW VOLTS</code>: Fallo de alternador o tensión de bus &lt; 25 V.</p>
-            <p class="text-[11px] text-amber-900 dark:text-amber-200 leading-tight">• <code>L/R FUEL LOW</code>: Remanente principal inferior a 3-4 US gal.</p>
-            <p class="text-[11px] text-amber-900 dark:text-amber-200 leading-tight">• <code>L/R OIL PRES</code> / <code>L/R OIL TEMP</code>: Parámetros de lubricación fuera de límites.</p>
-            <p class="text-[11px] text-amber-900 dark:text-amber-200 leading-tight">• <code>COOL LVL</code>: Nivel bajo de refrigerante en depósito de compensación.</p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-[11px] leading-tight">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider">
+                    <th class="py-1.5 px-2 font-bold text-[#0B2E59] dark:text-sky-300 w-[24%] whitespace-nowrap">Parámetro</th>
+                    <th class="py-1.5 px-2 font-bold text-emerald-700 dark:text-emerald-400 w-[22%] whitespace-nowrap">Verde</th>
+                    <th class="py-1.5 px-2 font-bold text-amber-700 dark:text-amber-400 w-[30%] whitespace-nowrap">Ámbar</th>
+                    <th class="py-1.5 px-2 font-bold text-red-700 dark:text-red-400 w-[24%] whitespace-nowrap">Roja</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Coolant Temp [°C]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">60 - 96 °C <span class="text-[10px] text-slate-500">(101° CD-155)</span></td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+60 | 96 - 105 °C</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 105 °C</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Oil Temp [°C]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">50 - 125 °C <span class="text-[10px] text-slate-500">(130° CD-155)</span></td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">-32...+50 | 125 - 140 °C</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&lt; -32 | &gt; 140 °C</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/50">
+                    <td class="py-1.5 px-2 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">Gearbox Temp [°C]</td>
+                    <td class="py-1.5 px-2 text-emerald-700 dark:text-emerald-400 font-medium font-mono">&lt; 115 °C</td>
+                    <td class="py-1.5 px-2 text-amber-700 dark:text-amber-400 font-medium font-mono">115 - 120 °C</td>
+                    <td class="py-1.5 px-2 text-red-700 dark:text-red-400 font-medium font-mono">&gt; 120 °C</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): Advisories y Operativa (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-6): Instrumentación Garmin G1000 EIS y NOTA (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start items-start">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ADVISORIES (BLANCO) Y PROTOCOLO CAS</span>
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper">
+          <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/Gemini_Generated_Image_qdo2epqdo2epqdo2.jpg" alt="Garmin G1000 EIS y Sistema de Alertas CAS Diamond DA42 Twin Star" class="w-full h-full max-h-[385px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
           </div>
+          <figcaption class="mt-1 text-center text-xs text-slate-700 dark:text-slate-300 font-medium shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300">Garmin G1000 EIS</strong> · Sistema de Alertas CAS, Fuel, System y Engine Display
+          </figcaption>
+        </div>
 
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">AVISOS DE ESTADO (BLANCO)</strong>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <code>L/R GLOW ON</code>: Bujías de precalentamiento diésel activadas.</p>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <code>L/R FUEL XFER</code>: Bomba auxiliar de trasvase de combustible en funcionamiento.</p>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">• <code>PFD/MFD/GIA FAN FAIL</code>: Fallo de ventilador de refrigeración de pantallas o aviónica integrada.</p>
-          </div>
-
-          <div class="p-2.5 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 flex items-start gap-2 text-[11px] leading-tight text-[#0B2E59] dark:text-sky-200 shrink-0 w-full">
-            <span class="text-base shrink-0">ℹ️</span>
-            <span><strong>NOTE (GARMIN CRG):</strong> Los avisos nuevos destellan en la ventana de alertas hasta pulsar la tecla <code>ALERTS</code> en el marco inferior del PFD. Al confirmarse, el texto pasa a fijo y el tono acústico se silencia.</span>
-          </div>
+        <!-- NOTA: Lectura de Load y Engine Master -->
+        <div class="w-full p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0 mt-2">
+          <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+            <span>ℹ️</span>
+            <span>NOTE:</span>
+          </strong>
+          <div>'Load' describe el porcentaje disponible de la potencia máxima del motor en cada planta motriz. Si el interruptor Electric Master o Engine Master está en OFF, la indicación de carga no muestra ningún valor aunque la hélice esté girando por molinete (windmilling).</div>
         </div>
       </div>
     </div>
