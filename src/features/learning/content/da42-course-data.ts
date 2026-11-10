@@ -1327,6 +1327,17 @@ export const DA42_LESSON_2 = {
               El consumo máximo admisible es de <strong>0,1 litros por hora</strong> (0,1 US qt/h) por motor. Si el consumo en vuelo supera este límite, debe notificarse a mantenimiento para verificar fugas o desgaste antes del siguiente despegue.
             </p>
           </div>
+
+          <!-- Nivel de Cárter Motor (Dipstick) (movido a la izquierda) -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">NIVEL DE CÁRTER MOTOR (DIPSTICK)</strong>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
+              • <strong>Capacidad del cárter:</strong> Mínimo <strong>4,5 litros</strong> / Máximo <strong>6,0 litros</strong>.
+            </p>
+            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
+              • <strong>Tiempo de reposo:</strong> Esperar entre 5 y 15 minutos tras la parada de los motores antes de extraer la varilla para permitir el retorno del aceite al cárter.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -1336,17 +1347,7 @@ export const DA42_LESSON_2 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col justify-start items-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PAUTAS DE COMPROBACIÓN FÍSICA EN PREVUELO</span>
-          </div>
-
-          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">NIVEL DE CÁRTER MOTOR (DIPSTICK)</strong>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
-              • <strong>Capacidad del cárter:</strong> Mínimo <strong>4,5 litros</strong> / Máximo <strong>6,0 litros</strong>.
-            </p>
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
-              • <strong>Tiempo de reposo:</strong> Esperar entre 5 y 15 minutos tras la parada de los motores antes de extraer la varilla para permitir el retorno del aceite al cárter.
-            </p>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SUPERVISIÓN EN VUELO Y PROCEDIMIENTOS</span>
           </div>
 
           <div class="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0 w-full">
