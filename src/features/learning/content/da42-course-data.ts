@@ -2125,44 +2125,44 @@ export const DA42_LESSON_3 = {
           <!-- CUADRO LADO A LADO: REDUCTORA Y HÉLICE (ESTILO C172) -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
             <!-- CAJA REDUCTORA INTEGRADA -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+            <div class="p-1.5 px-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CAJA REDUCTORA INTEGRADA (GEARBOX)</strong>
               <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Relación de reducción:</strong> <span class="font-mono">i = 1:1,69</span> (CD-135) | <span class="font-mono">i = 1:1,66</span> (CD-155), reduciendo a 2.300 RPM de hélice.</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Relación de reducción:</strong> <span class="font-mono">i = 1:1,69</span> (CD-135) | <span class="font-mono">i = 1:1,66</span> (CD-155), reduciendo a 2.300 RPM hélice.</span>
               </div>
               <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Amortiguación torsional:</strong> Amortiguador elástico mecánico integrado que absorbe las pulsaciones cíclicas del diésel.</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Amortiguador torsional:</strong> Absorbe las pulsaciones cíclicas del par motor diésel.</span>
               </div>
               <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Embrague de sobrecarga (overload release):</strong> Desacopla la hélice ante picos de par o impactos con el terreno.</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Embrague de sobrecarga:</strong> Desacopla la hélice ante impactos bruscos o sobrepar.</span>
               </div>
               <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Lubricación independiente:</strong> Circuito de aceite propio con bomba e intercambiador agua/aceite (separado del motor).</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Lubricación independiente:</strong> Circuito de aceite propio con bomba e intercambiador agua/aceite.</span>
               </div>
             </div>
 
             <!-- HÉLICE MT-PROPELLER ABANDERABLE -->
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+            <div class="p-1.5 px-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">HÉLICE TRIPALA CONSTANT SPEED</strong>
               <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Fabricante y modelo:</strong> 2 hélices MT-Propeller MTV-6-A-C-F / CF 187-129 (Ø 1,87 m, una por motor).</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Modelo:</strong> 2 hélices MT-Propeller MTV-6-A-C-F / CF 187-129 (Ø 1,87 m, una por motor).</span>
               </div>
               <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Construcción:</strong> 3 palas de compuesto (madera laminada recubierta de fibra y borde de acero inoxidable).</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Construcción:</strong> 3 palas de compuesto (madera laminada, fibra y protección inox).</span>
               </div>
               <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Gobierno electrohidráulico:</strong> La ECU modula una válvula gobernadora con aceite de reductora para fijar el paso fino.</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Gobierno FADEC:</strong> Regulación electrohidráulica mediante aceite de reductora.</span>
               </div>
               <div class="flex items-start gap-1 py-0 text-[11px] leading-tight">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span class="text-slate-800 dark:text-slate-200"><strong>Acumulador de presión:</strong> Tipo nitrógeno/aceite a 20 bar (290 psi) para desabanderar en vuelo (air restart).</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Acumulador de presión:</strong> Reserva de nitrógeno/aceite a 20 bar para desabanderar en vuelo.</span>
               </div>
             </div>
           </div>
@@ -2170,22 +2170,18 @@ export const DA42_LESSON_3 = {
           <!-- MECANISMO DE ABANDERAMIENTO Y SEGUROS CENTRÍFUGOS -->
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">MECANISMO DE ABANDERAMIENTO Y SEGUROS CENTRÍFUGOS (AFM 7.9.2)</strong>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-2 gap-y-0.5 text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+            <div class="space-y-1 text-[11px] leading-tight text-slate-800 dark:text-slate-200 pt-0.5">
               <div class="flex items-start gap-1">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span><strong>Abanderamiento (Feathering):</strong> Al situar <code>ENGINE MASTER</code> en OFF, la válvula se abre, drena el aceite y los contrapesos junto a la presión de nitrógeno llevan las palas a bandera (<strong>81° ± 1°</strong>).</span>
+                <span><strong>Abanderamiento (Feathering):</strong> Al situar <code>ENGINE MASTER</code> en OFF, la válvula se abre, drena el aceite y los contrapesos junto al nitrógeno a presión llevan las palas a bandera (<strong>81° ± 1°</strong>) para minimizar resistencia (OEI).</span>
               </div>
               <div class="flex items-start gap-1">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span><strong>Seguros centrífugos (Start Locks):</strong> Por debajo de aprox. 950 - 1.300 RPM de hélice en tierra, entran topes mecánicos que <strong>impiden el abanderamiento</strong>, manteniéndola en paso fino para el arranque.</span>
+                <span><strong>Seguros centrífugos (Start Locks):</strong> A menos de aprox. 950 - 1.300 RPM en tierra, entran topes mecánicos que <strong>impiden el abanderamiento</strong>, manteniéndola en paso fino para el próximo arranque.</span>
               </div>
               <div class="flex items-start gap-1">
                 <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span><strong>Desabanderamiento (Unfeathering):</strong> Al poner <code>ENGINE MASTER</code> en ON en vuelo, la válvula del acumulador inyecta 20 bar de aceite sacando la pala de bandera para el rearranque.</span>
-              </div>
-              <div class="flex items-start gap-1">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0">•</span>
-                <span><strong>Alimentación continua:</strong> El acumulador asegura presión de aceite hidráulico constante ante maniobras o aceleraciones verticales negativas transitorias.</span>
+                <span><strong>Desabanderamiento (Unfeathering):</strong> Al rearmar <code>ENGINE MASTER</code> en ON en vuelo, los 20 bar del acumulador hidráulico sacan las palas de bandera para el rearranque en vuelo (air restart).</span>
               </div>
             </div>
           </div>
@@ -2196,7 +2192,7 @@ export const DA42_LESSON_3 = {
               <span>⚠️</span>
               <span>WARNING (AFM SECCIÓN 7.9.2):</span>
             </strong>
-            <div>A diferencia de los monomotores (donde la pérdida de aceite lleva a paso fino), en el DA42 bimotor la falta de presión de aceite o el corte del <code>ENGINE MASTER</code> lleva automáticamente las palas a <strong>bandera</strong> para proteger el vuelo asimétrico (OEI). Para lograr el abanderamiento completo al apagar el motor en vuelo, el régimen debe ser superior a 950 - 1.300 RPM antes de cortar. ¡Nunca mover la hélice con la mano!</div>
+            <div>En el DA42 bimotor, la falta de presión de aceite o cortar <code>ENGINE MASTER</code> lleva automáticamente las palas a <strong>bandera</strong> para proteger el vuelo monomotor (OEI). Para lograr el abanderamiento completo en vuelo, el régimen debe superar 950 - 1.300 RPM antes de cortar el switch. ¡Nunca mover la hélice con la mano!</div>
           </div>
         </div>
       </div>
