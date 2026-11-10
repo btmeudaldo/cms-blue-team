@@ -1328,7 +1328,7 @@ export const DA42_LESSON_2 = {
             </p>
           </div>
 
-          <!-- Nivel de Cárter Motor (Dipstick) (movido a la izquierda) -->
+          <!-- Nivel de Cárter Motor (Dipstick) -->
           <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 w-full text-xs">
             <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">NIVEL DE CÁRTER MOTOR (DIPSTICK)</strong>
             <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-tight">
@@ -1338,30 +1338,26 @@ export const DA42_LESSON_2 = {
               • <strong>Tiempo de reposo:</strong> Esperar entre 5 y 15 minutos tras la parada de los motores antes de extraer la varilla para permitir el retorno del aceite al cárter.
             </p>
           </div>
+
+          <!-- Warning AFM Presión de Aceite -->
+          <div class="p-2.5 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-2 text-[11px] leading-tight text-red-900 dark:text-red-200 shrink-0 w-full">
+            <span class="text-base shrink-0">🚨</span>
+            <span><strong>WARNING (AFM):</strong> Si la presión de aceite desciende por debajo de 1.0 bar en vuelo (alerta roja <code>L/R OIL PRES</code>), reducir potencia de inmediato en el motor afectado y vigilar la temperatura de aceite. Si la temperatura aumenta o la presión no recupera, proceder a parada y abanderamiento según la lista de emergencia monomotor.</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6): Circuito de Lubricación y Supervisión (Altura Fija 590px) -->
+    <!-- Columna Derecha (lg:col-span-6): Circuito de Lubricación y Manómetro (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col justify-start items-start w-full">
-          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CIRCUITO DE LUBRICACIÓN Y CONTROL</span>
           </div>
 
-          <div class="p-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/60 flex items-start gap-1.5 text-[10.5px] leading-tight text-red-900 dark:text-red-200 shrink-0 w-full">
-            <span class="text-sm shrink-0">🚨</span>
-            <span><strong>WARNING (AFM):</strong> Si la presión de aceite desciende por debajo de 1.0 bar en vuelo (alerta roja <code>L/R OIL PRES</code>), reducir potencia de inmediato en el motor afectado y vigilar la temperatura de aceite. Si la temperatura aumenta o la presión no recupera, proceder a parada y abanderamiento según la lista de emergencia monomotor.</span>
-          </div>
-
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/presion-aceite-lubricacion.jpg"
-              alt="Circuito de Lubricación y Manómetro"
-              class="max-h-full max-w-full object-contain rounded-lg"
-              style="object-fit: contain; max-height: 100%; max-width: 100%; width: auto; height: auto;"
-            />
+          <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-start items-center p-2 lesson-img-wrapper mt-1" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/presion-aceite-lubricacion.jpg" alt="Circuito de Lubricación y Manómetro" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
       </div>
