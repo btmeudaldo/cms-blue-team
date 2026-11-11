@@ -2460,7 +2460,7 @@ export const DA42_LESSON_4 = {
             <span>⚠️</span>
             <span>CAUTION:</span>
           </strong>
-          <ul class="list-disc pl-5 space-y-1 text-[18px] leading-snug">
+          <ul class="list-disc pl-6 space-y-1 text-[18px] leading-snug" style="padding-left: 1.5rem;">
             <li>The gear pump may run for up to 20 seconds to build up system pressure. Do not turn the ELECT. MASTER switch OFF while the gear pump is running.</li>
             <li>The variable elevator backstop limits elevator up-travel when power levers are advanced beyond ~20%. Ensure free and correct travel when power levers are in IDLE.</li>
           </ul>
@@ -2556,7 +2556,7 @@ export const DA42_LESSON_4 = {
             <span>⚠️</span>
             <span>WARNING:</span>
           </strong>
-          <ul class="list-disc pl-5 space-y-1 text-[18px] leading-snug">
+          <ul class="list-disc pl-6 space-y-1 text-[18px] leading-snug" style="padding-left: 1.5rem;">
             <li>The exhaust can cause burns when hot.</li>
             <li>Never move the propeller by hand while the ENGINE MASTER switch is ON! Also do not move the propeller by hand while the ENGINE MASTER is OFF immediately after operation (remaining pressure in the injection system rail). Serious personal injury may result.</li>
           </ul>
@@ -2656,7 +2656,7 @@ export const DA42_LESSON_4 = {
             <span>⚠️</span>
             <span>CAUTION:</span>
           </strong>
-          <ul class="list-disc pl-5 space-y-1 text-[18px] leading-snug">
+          <ul class="list-disc pl-6 space-y-1 text-[18px] leading-snug" style="padding-left: 1.5rem;">
             <li>If water or sediment is found in fuel, drain off further samples until clear. If fuel contamination persists, flight is prohibited.</li>
             <li>Do not blow into Pitot probe or static ports, as this may damage instruments.</li>
           </ul>
@@ -2942,7 +2942,7 @@ export const DA42_LESSON_4 = {
             <span>⚠️</span>
             <span>WARNING:</span>
           </strong>
-          <ul class="list-disc pl-5 space-y-1 text-[18px] leading-snug">
+          <ul class="list-disc pl-6 space-y-1 text-[18px] leading-snug" style="padding-left: 1.5rem;">
             <li>The exhaust can cause burns when hot.</li>
             <li>Never move the propeller by hand while the ENGINE MASTER switch is ON! Also do not move the propeller by hand while the ENGINE MASTER is OFF immediately after operation (remaining pressure in the injection system rail). Serious personal injury may result.</li>
           </ul>
