@@ -2757,7 +2757,7 @@ export const C172_LESSON_3 = {
             <span>CAUTION:</span>
           </strong>
           <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight text-[11px] leading-tight">
-            <li class="pl-0.5">En condiciones de vuelo con semiala hacia abajo prolongada, coloque el selector en el depósito superior o en BOTH.</li>
+            <li class="pl-0.5">En condiciones de vuelo con ala hacia abajo prolongada, coloque el selector en el depósito superior o en BOTH.</li>
             <li class="pl-0.5">En aire turbulento se recomienda encarecidamente utilizar la posición BOTH para asegurar una alimentación simétrica.</li>
           </ul>
         </div>
@@ -3209,7 +3209,7 @@ export const C172_LESSON_3 = {
             </div>
             <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
-              <span class="text-slate-800 dark:text-slate-200">Fuel L / Fuel R (Ámbar): Aviso de nivel bajo de combustible en cada semiala</span>
+              <span class="text-slate-800 dark:text-slate-200">Fuel L / Fuel R (Ámbar): Aviso de nivel bajo de combustible en cada ala</span>
             </div>
             <div class="flex items-start gap-2 py-0 text-[11px] leading-tight">
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">•</span>
@@ -3317,7 +3317,7 @@ export const C172_LESSON_3 = {
           </div>
           <div class="flex items-start gap-2 text-[11px] leading-tight">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
-            <div><strong>Accionamiento Eléctrico:</strong> Operados por un motor eléctrico de corriente continua instalado en la semiala derecha, acoplado mediante varillas mecánicas y cables sincronizadores a ambas superficies.</div>
+            <div><strong>Accionamiento Eléctrico:</strong> Operados por un motor eléctrico de corriente continua instalado en el ala derecha, acoplado mediante varillas mecánicas y cables sincronizadores a ambas superficies.</div>
           </div>
           <div class="flex items-start gap-2 text-[11px] leading-tight">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[18px]">•</span>
@@ -3765,7 +3765,7 @@ export const C172_LESSON_4 = {
           </div>
           <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Semiala derecha: puntos de purga de combustible alar con vaso muestreador, tapón de llenado y tren principal
+            Ala derecha: puntos de purga de combustible alar con vaso muestreador, tapón de llenado y tren principal
           </p>
         </div>
       </div>
@@ -3972,12 +3972,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.7: 4.7 Inspección Exterior V: Semiala Izquierda (Combustible y Tren) -->
+<!-- DIAPOSITIVA 4.7: 4.7 Inspección Exterior V: ala Izquierda (Combustible y Tren) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.7 Inspección Exterior V: Semiala Izquierda (Combustible y Tren)</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.7 Inspección Exterior V: ala Izquierda (Combustible y Tren)</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Drenaje de Combustible, Tapón y Tren Principal</span>
   </div>
@@ -4035,7 +4035,7 @@ export const C172_LESSON_4 = {
           </div>
           <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Semiala izquierda: tapón de llenado de combustible, válvulas de drenaje alares con vaso muestreador y tren principal
+            Ala izquierda: tapón de llenado de combustible, válvulas de drenaje alares con vaso muestreador y tren principal
           </p>
         </div>
       </div>
@@ -4045,12 +4045,12 @@ export const C172_LESSON_4 = {
 
 <!-- pagebreak -->
 
-<!-- DIAPOSITIVA 4.8: 4.8 Inspección Exterior VI: Semiala Izquierda (Bordes de Ataque y Salida) -->
+<!-- DIAPOSITIVA 4.8: 4.8 Inspección Exterior VI: ala Izquierda (Bordes de Ataque y Salida) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
       <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">C172 · CD135 / CD155</div>
-      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.8 Inspección Exterior VI: Semiala Izquierda (Bordes de Ataque y Salida)</h1>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">4.8 Inspección Exterior VI: ala Izquierda (Bordes de Ataque y Salida)</h1>
     </div>
     <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pitot, Bocina de Pérdida, Alerón y Flaps</span>
   </div>
@@ -4115,7 +4115,7 @@ export const C172_LESSON_4 = {
           </div>
           <span class="text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
           <p class="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 max-w-xs leading-snug">
-            Semiala izquierda: tubo pitot, toma de ventilación, bocina de aviso de pérdida en borde de ataque, alerón y flap
+            Ala izquierda: tubo pitot, toma de ventilación, bocina de aviso de pérdida en borde de ataque, alerón y flap
           </p>
         </div>
       </div>

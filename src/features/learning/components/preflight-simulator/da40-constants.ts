@@ -6,7 +6,7 @@ export { checkValueTolerance };
 export const DA40_DATA = {
   registration: "EC-XXX",
   model: "Diamond DA40 TDI",
-  engine: "Thielert TAE 125-01 / CD-135 (99 kW / 135 HP)",
+  engine: "Continental TAE 125-01 / CD-135 (99 kW / 135 HP)",
   mtomKg: 1150,
   mtomLbs: 2535,
   mlmKg: 1150,

@@ -89,7 +89,7 @@ export function DA40FuelWidget({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [warnings, setWarnings] = useState<string[]>([]);
 
-  // Flight school cruise power: 60% Load = 15.1 L/h (Diamond DA40 TDI Thielert TAE 125-01)
+  // Flight school cruise power: 60% Load = 15.1 L/h (Diamond DA40 TDI Continental TAE 125-01)
   const hourlyRate = 15.1;
   const hourlyRateGal = 4.0;
 

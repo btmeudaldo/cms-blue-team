@@ -2,6 +2,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
+import { execSync } from "node:child_process";
+import dotenv from "dotenv";
+
+dotenv.config({ path: ".env.local" });
+dotenv.config();
 
 /**
  * @file clean-vercel-deployments.mjs
@@ -125,6 +130,74 @@ async function fetchAllDeployments({ token, teamId, projectId, appName }) {
   return allDeployments;
 }
 
+function runViaGitHubActions({ projectName = "all", dryRun = false } = {}) {
+  try {
+    execSync("gh auth status", { stdio: "ignore" });
+  } catch {
+    return false;
+  }
+
+  console.log("ℹ️ VERCEL_TOKEN no encontrado en el entorno local ni en .env.local.");
+  console.log("🚀 Delegando automáticamente en el workflow oficial de GitHub Actions (clean-vercel-storage.yml) con secrets.VERCEL_TOKEN...");
+
+  try {
+    const dryRunStr = dryRun ? "true" : "false";
+    const projStr = projectName || "all";
+    execSync(
+      `gh workflow run clean-vercel-storage.yml -f project_name="${projStr}" -f dry_run="${dryRunStr}"`,
+      { stdio: "inherit" },
+    );
+    console.log("⏳ Disparo registrado. Esperando a que el runner inicie el trabajo...");
+
+    let runId = null;
+    for (let attempt = 0; attempt < 8; attempt++) {
+      try {
+        const out = execSync(
+          "gh run list --workflow=clean-vercel-storage.yml --limit 1 --json databaseId,status",
+          { encoding: "utf8" },
+        );
+        const runs = JSON.parse(out);
+        if (runs && runs.length > 0) {
+          runId = runs[0].databaseId;
+          break;
+        }
+      } catch {}
+      // Pequeña espera sincrónica de 2s
+      const end = Date.now() + 2000;
+      while (Date.now() < end) {}
+    }
+
+    if (runId) {
+      console.log(`🔗 Monitorizando ejecución en tiempo real (ID: ${runId})...`);
+      execSync(`gh run watch ${runId}`, { stdio: "inherit" });
+      try {
+        console.log("\n📄 Resumen del registro de ejecución:");
+        const logOutput = execSync(`gh run view ${runId} --log`, {
+          encoding: "utf8",
+        });
+        const relevantLines = logOutput
+          .split("\n")
+          .filter(
+            (l) =>
+              l.includes("Procesando") ||
+              l.includes("Total de despliegues") ||
+              l.includes("Eliminado:") ||
+              l.includes("Limpieza finalizada") ||
+              l.includes("Completado para"),
+          )
+          .map((l) => l.replace(/^.*?\t.*?\t/, "   "));
+        console.log(relevantLines.join("\n"));
+      } catch {}
+    } else {
+      console.log("✅ El workflow de limpieza ha sido encolado en GitHub Actions.");
+    }
+    return true;
+  } catch (err) {
+    console.warn("⚠️ No se pudo completar la ejecución vía GitHub Actions:", err.message);
+    return false;
+  }
+}
+
 /**
  * Consulta los despliegues de Vercel y ejecuta la purga de los obsoletos.
  */
@@ -137,7 +210,17 @@ export async function cleanVercelDeployments({
   dryRun = process.env.DRY_RUN === "true",
 } = {}) {
   if (!token) {
-    throw new Error("Falta el token de autenticación VERCEL_TOKEN");
+    if (runViaGitHubActions({ projectName, dryRun })) {
+      return {
+        totalFound: 0,
+        keptCount: 0,
+        deletedCount: 0,
+        delegatedToGitHub: true,
+      };
+    }
+    throw new Error(
+      "Falta el token de autenticación VERCEL_TOKEN (no encontrado en variables de entorno, .env.local, auth.json ni vía GitHub CLI)",
+    );
   }
 
   const headers = {
@@ -269,9 +352,15 @@ if (
     projectName: projectArg,
   })
     .then((result) => {
-      console.log(
-        `\n✨ Limpieza finalizada: ${result.deletedCount} eliminados, ${result.keptCount} conservados.`,
-      );
+      if (result.delegatedToGitHub) {
+        console.log(
+          "\n✨ Limpieza de Vercel finalizada con éxito a través de GitHub Actions.",
+        );
+      } else {
+        console.log(
+          `\n✨ Limpieza finalizada: ${result.deletedCount} eliminados, ${result.keptCount} conservados.`,
+        );
+      }
       process.exit(0);
     })
     .catch((err) => {

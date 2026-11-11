@@ -409,7 +409,7 @@ export const C172_LESSON_3_QUIZ: Quiz = {
       question: "¿Qué tipo aerodinámico y mecanismo de actuación tienen los flaps del Cessna 172 y cuál es la particularidad de diseño de sus alerones convencionales?",
       options: [
         "Son flaps de intradós mecánicos operados por palanca manual; los alerones son simétricos para vuelo acrobático.",
-        "Son flaps Fowler de ranura simple (single-slot) accionados eléctricamente por un motor en la semiala derecha (con posiciones de 10°, 20°, 30° y 40° protegidos por breaker de 15A); los alerones son de tipo diferencial (el alerón que sube deflexiona más que el que baja) para mitigar la guiñada adversa.",
+        "Son flaps Fowler de ranura simple (single-slot) accionados eléctricamente por un motor en el ala derecha (con posiciones de 10°, 20°, 30° y 40° protegidos por breaker de 15A); los alerones son de tipo diferencial (el alerón que sube deflexiona más que el que baja) para mitigar la guiñada adversa.",
         "Son flaps ranurados dobles de accionamiento hidráulico; los alerones actúan simultáneamente como frenos aerodinámicos (flaperones).",
         "Son slats de borde de ataque automáticos; el trim de profundidad se acciona mediante servomotores neumáticos de vacío.",
       ],
@@ -481,7 +481,7 @@ export const C172_LESSON_4_QUIZ: Quiz = {
     },
     {
       id: "c172-4-4",
-      question: "Si tras tomar muestras repetidas de combustible en las válvulas de purga (sumideros) del semiala continúa habiendo indicios de agua, turbidez o contaminación, ¿cuál es la decisión operativa y procedimiento reglamentario que exige el POH?",
+      question: "Si tras tomar muestras repetidas de combustible en las válvulas de purga (sumideros) del ala continúa habiendo indicios de agua, turbidez o contaminación, ¿cuál es la decisión operativa y procedimiento reglamentario que exige el POH?",
       options: [
         "Aplicar potencia plena en tierra con frenos pisados durante 2 minutos para que el filtro de combustible centrifugue las impurezas.",
         "No debe volarse el avión bajo ninguna circunstancia; personal de mantenimiento cualificado debe vaciar los depósitos y purgar el sistema por completo antes del vuelo.",
@@ -517,7 +517,7 @@ export const C172_LESSON_4_QUIZ: Quiz = {
     },
     {
       id: "c172-4-7",
-      question: "Durante la inspección del semiala izquierda y tren principal, ¿qué comprobación es requerida en el neumático de la rueda principal (Main Wheel Tire)?",
+      question: "Durante la inspección del ala izquierda y tren principal, ¿qué comprobación es requerida en el neumático de la rueda principal (Main Wheel Tire)?",
       options: [
         "Desinflar completamente la cámara para comprobar que la llanta no esté fisurada.",
         "Lubricar la superficie de la banda de rodadura con grasa aeronáutica antes de salir a pista.",
@@ -529,7 +529,7 @@ export const C172_LESSON_4_QUIZ: Quiz = {
     },
     {
       id: "c172-4-8",
-      question: "Al inspeccionar el borde de ataque del semiala izquierda, ¿cómo se comprueba de forma correcta el funcionamiento del avisador de pérdida (Stall Warning)?",
+      question: "Al inspeccionar el borde de ataque del ala izquierda, ¿cómo se comprueba de forma correcta el funcionamiento del avisador de pérdida (Stall Warning)?",
       options: [
         "Conectando la calefacción Pitot durante 2 minutos hasta escuchar el zumbador.",
         "Colocando un pañuelo limpio sobre la abertura del avisador y aplicando una suave succión con la boca, verificando que la bocina emita sonido en cabina.",
@@ -693,7 +693,7 @@ export const C172_LESSON_4_QUIZ: Quiz = {
         "Para evitar el flujo cruzado o trasvase por gravedad entre los depósitos alares si el avión queda estacionado en terreno inclinado.",
       ],
       correctAnswerIndex: 3,
-      explanation: "El paso (8) de SECURING AIRPLANE estipula: \"Fuel Selector Valve - LEFT or RIGHT (to prevent crossfeeding between tanks)\". Si el selector quedara en BOTH en un estacionamiento con pendiente o desnivel lateral, el combustible drenaría por gravedad desde el depósito del semiala elevada hacia el semiala baja provocando asimetría o derrame por venteo.",
+      explanation: "El paso (8) de SECURING AIRPLANE estipula: \"Fuel Selector Valve - LEFT or RIGHT (to prevent crossfeeding between tanks)\". Si el selector quedara en BOTH en un estacionamiento con pendiente o desnivel lateral, el combustible drenaría por gravedad desde el depósito del ala elevada hacia el ala baja provocando asimetría o derrame por venteo.",
     },
     {
       id: "c172-4-22",
