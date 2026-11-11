@@ -2399,6 +2399,8 @@ export const DA42_LESSON_4 = {
   </div>
 </div>
 
+<!-- pagebreak -->
+
 <!-- DIAPOSITIVA 4.2: 4.2 Inspección Prevuelo II: Comprobación Eléctrica de Cabina -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -2537,6 +2539,8 @@ export const DA42_LESSON_4 = {
     </div>
   </div>
 </div>
+
+<!-- pagebreak -->
 
 <!-- DIAPOSITIVA 4.3: 4.3 Inspección Exterior I: Tren Principal y Góndola Motor Izquierdo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2693,6 +2697,8 @@ export const DA42_LESSON_4 = {
   </div>
 </div>
 
+<!-- pagebreak -->
+
 <!-- DIAPOSITIVA 4.4: 4.4 Inspección Exterior II: Ala Izquierda, Pitot y Mandos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -2840,6 +2846,8 @@ export const DA42_LESSON_4 = {
   </div>
 </div>
 
+<!-- pagebreak -->
+
 <!-- DIAPOSITIVA 4.5: 4.5 Inspección Exterior III: Fuselaje y Empenaje en T -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -2976,6 +2984,8 @@ export const DA42_LESSON_4 = {
   </div>
 </div>
 
+<!-- pagebreak -->
+
 <!-- DIAPOSITIVA 4.6: 4.6 Inspección Exterior IV: Ala Derecha -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -3109,6 +3119,8 @@ export const DA42_LESSON_4 = {
     </div>
   </div>
 </div>
+
+<!-- pagebreak -->
 
 <!-- DIAPOSITIVA 4.7: 4.7 Inspección Exterior V: Tren Principal Derecho y Góndola Motor Derecho -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3264,6 +3276,8 @@ export const DA42_LESSON_4 = {
     </div>
   </div>
 </div>
+
+<!-- pagebreak -->
 
 <!-- DIAPOSITIVA 4.8: 4.8 Inspección Exterior VI: Morro, Equipajes y Tren Delantero -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
