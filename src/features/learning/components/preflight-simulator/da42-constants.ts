@@ -31,12 +31,19 @@ export const DA42_DATA = {
   maxFuelAuxL: 52,
 };
 
-export const DA42_PREFLIGHT_MISSIONS: PreflightMission[] = [
+export type DA42PreflightMission = PreflightMission & {
+  baggageNoseKg: number;
+  baggageCabinKg: number;
+};
+
+export const DA42_PREFLIGHT_MISSIONS: DA42PreflightMission[] = [
   {
     id: "da42-mision-1",
     name: "Misión 1: Vuelo Local Multimotor (GCXO - Tenerife Norte)",
     badge: "Básico · Normal",
     description: "Vuelo de maniobras multimotor en zona local de Tenerife Norte (GCXO) con Instructor y Alumno (160 kg total), 10 kg equipaje en morro y 15 kg en cabina. 140 kg (166,7 L) de Jet A-1 en tanques principales. Crucero bimotor al 60% de carga (21 kg/h).",
+    baggageNoseKg: 10,
+    baggageCabinKg: 15,
     scenario: {
       origin: "GCXO (Tenerife Norte)",
       destination: "GCXO (Tenerife Norte)",
@@ -60,6 +67,8 @@ export const DA42_PREFLIGHT_MISSIONS: PreflightMission[] = [
     name: "Misión 2: Navegación Interinsular (GCXO - GCGM)",
     badge: "Intermedio · Travesía",
     description: "Travesía interinsular desde Tenerife Norte (GCXO) a La Gomera (GCGM) con 3 ocupantes (155 kg delante, 75 kg detrás) y 40 kg de equipaje repartido (15 kg morro, 25 kg cabina). 150 L de combustible al despegue.",
+    baggageNoseKg: 15,
+    baggageCabinKg: 25,
     scenario: {
       origin: "GCXO (Tenerife Norte)",
       destination: "GCGM (La Gomera)",
@@ -83,6 +92,8 @@ export const DA42_PREFLIGHT_MISSIONS: PreflightMission[] = [
     name: "Misión 3: Desafío de Carga y Centrado (GCTS - GCXO)",
     badge: "Desafío · Alerta de Límites",
     description: "Travesía interinsular desde Tenerife Sur (GCTS) hacia Tenerife Norte (GCXO) con 4 ocupantes (160 kg delante, 150 kg detrás) y equipaje pesado (20 kg morro, 30 kg cabina). Crucero bimotor al 70% de potencia.",
+    baggageNoseKg: 20,
+    baggageCabinKg: 30,
     scenario: {
       origin: "GCTS (Tenerife Sur)",
       destination: "GCXO (Tenerife Norte)",
@@ -102,6 +113,72 @@ export const DA42_PREFLIGHT_MISSIONS: PreflightMission[] = [
     },
   },
 ];
+
+export type DA42LoadsheetInputs = {
+  pilotsMoment: string;
+  paxMoment: string;
+  baggageNoseMoment: string;
+  baggageCabinMoment: string;
+  zfmMass: string;
+  zfmCg: string;
+  zfmMoment: string;
+  fuelMass: string;
+  fuelMoment: string;
+  tomMass: string;
+  tomMoment: string;
+  tomCg: string;
+  tripFuelMassInput: string;
+  tripFuelMoment: string;
+  lmMass: string;
+  lmMoment: string;
+  lmCg: string;
+  interactiveZfmPoint: { x: number; y: number } | null;
+  interactiveTomPoint: { x: number; y: number } | null;
+  interactiveClickPoint: { x: number; y: number } | null;
+};
+
+export const M1_DA42_ZFM_POINT = { x: 466.6, y: 644.9 };
+export const M1_DA42_TOM_POINT = { x: 565.8, y: 498.0 };
+export const M1_DA42_LM_POINT = { x: 551.0, y: 520.1 };
+
+export const DA42_INITIAL_LOADSHEET_STORE: Record<number, DA42LoadsheetInputs> = {
+  0: {
+    pilotsMoment: "368.00",
+    paxMoment: "0",
+    baggageNoseMoment: "6.00",
+    baggageCabinMoment: "58.35",
+    zfmMass: "1435.00",
+    zfmCg: "2.409",
+    zfmMoment: "3457.35",
+    fuelMass: "140.00",
+    fuelMoment: "368.20",
+    tomMass: "1575.00",
+    tomMoment: "3825.55",
+    tomCg: "2.429",
+    tripFuelMassInput: "21.00",
+    tripFuelMoment: "55.23",
+    lmMass: "1554.00",
+    lmMoment: "3770.32",
+    lmCg: "2.426",
+    interactiveZfmPoint: M1_DA42_ZFM_POINT,
+    interactiveTomPoint: M1_DA42_TOM_POINT,
+    interactiveClickPoint: M1_DA42_LM_POINT,
+  },
+  1: {
+    pilotsMoment: "", paxMoment: "", baggageNoseMoment: "", baggageCabinMoment: "",
+    zfmMass: "", zfmCg: "", zfmMoment: "",
+    fuelMass: "", fuelMoment: "", tomMass: "", tomMoment: "", tomCg: "",
+    tripFuelMassInput: "", tripFuelMoment: "", lmMass: "", lmMoment: "", lmCg: "",
+    interactiveZfmPoint: null, interactiveTomPoint: null, interactiveClickPoint: null,
+  },
+  2: {
+    pilotsMoment: "", paxMoment: "", baggageNoseMoment: "", baggageCabinMoment: "",
+    zfmMass: "", zfmCg: "", zfmMoment: "",
+    fuelMass: "", fuelMoment: "", tomMass: "", tomMoment: "", tomCg: "",
+    tripFuelMassInput: "", tripFuelMoment: "", lmMass: "", lmMoment: "", lmCg: "",
+    interactiveZfmPoint: null, interactiveTomPoint: null, interactiveClickPoint: null,
+  },
+};
 
 /**
  * Checks whether a given (massKg, cgM) coordinate is within the DA42 Certified Envelope
