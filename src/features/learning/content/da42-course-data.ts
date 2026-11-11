@@ -3760,6 +3760,20 @@ export const DA42_LESSON_4 = {
         </div>
 
         <div class="mt-1 shrink-0">
+          <div class="p-1.5 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[18px] leading-tight shadow-2xs">
+            <strong class="text-rose-700 dark:text-rose-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
+              <span>🛑</span>
+              <span>WARNING:</span>
+            </strong>
+            <div>If Diesel fuel or blend with Jet A-1 is used (approved only if M&Auml;M 42-037 is carried out), or if fuel grade is unknown, engine must not be started if fuel temperature indication prior to operation is below -5 &deg;C (+23 &deg;F). Operation below -5 &deg;C is not permitted as safe engine operation cannot be ensured and engine can stop.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1 flex flex-col justify-start shrink-0">
           <div class="p-1.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-tight shadow-2xs">
             <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
               <span>⚠️</span>
@@ -3769,20 +3783,6 @@ export const DA42_LESSON_4 = {
               <li>When operating canopy, ensure no obstructions between canopy and mating frame (seat belts, clothing). Do NOT apply undue force to locking handle. Slight downward pressure may ease handle operation.</li>
               <li>When switching ELECT. MASTER ON, hydraulic gear pump may activate for 5&ndash;20 s. If pump operates continuously or periodically, terminate flight preparation (landing gear malfunction).</li>
             </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="space-y-1.5 flex flex-col justify-start shrink-0">
-          <div class="p-1.5 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[18px] leading-tight shadow-2xs">
-            <strong class="text-rose-700 dark:text-rose-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
-              <span>🛑</span>
-              <span>WARNING:</span>
-            </strong>
-            <div>If Diesel fuel or blend with Jet A-1 is used (approved only if M&Auml;M 42-037 is carried out), or if fuel grade is unknown, engine must not be started if fuel temperature indication prior to operation is below -5 &deg;C (+23 &deg;F). Operation below -5 &deg;C is not permitted as safe engine operation cannot be ensured and engine can stop.</div>
           </div>
 
           <div class="p-1.5 rounded-xl border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-tight shadow-2xs">
@@ -3798,8 +3798,8 @@ export const DA42_LESSON_4 = {
           </div>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-3 text-center mt-1">
-          <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shadow-xs mb-1">
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-2 text-center mt-1">
+          <div class="w-9 h-9 rounded-xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-lg shadow-xs mb-0.5">
             📷
           </div>
           <span class="text-[18px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-0.5">Imagen Recomendada</span>
