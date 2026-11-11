@@ -3826,7 +3826,7 @@ export const DA42_LESSON_4 = {
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+      <div class="h-full min-h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden">
         <div class="space-y-1 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">4A.6.3 STARTING ENGINE</span>
@@ -3898,13 +3898,7 @@ export const DA42_LESSON_4 = {
               <li>If oil pressure has not moved from red range within 3 seconds after starting, set ENGINE MASTER switch to OFF and investigate. When starting cold engine, oil pressure can reach 6.5 bar for max 20 seconds.</li>
             </ul>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="space-y-1 flex flex-col justify-start shrink-0">
           <div class="p-1.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-tight shadow-2xs">
             <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
               <span>⚠️</span>
@@ -3915,7 +3909,13 @@ export const DA42_LESSON_4 = {
               <li>If &ldquo;L/R STARTER&rdquo; annunciation does not extinguish after engine started and START KEY released, set ENGINE MASTER to OFF and investigate.</li>
             </ul>
           </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-full min-h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden">
+        <div class="space-y-1 flex flex-col justify-start shrink-0">
           <div class="p-1.5 rounded-xl border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-tight shadow-2xs">
             <strong class="text-blue-700 dark:text-blue-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
               <span>ℹ️</span>
@@ -3953,7 +3953,7 @@ export const DA42_LESSON_4 = {
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+      <div class="h-full min-h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden">
         <div class="space-y-1 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">4A.6.4 BEFORE TAXIING &amp; 4A.6.5 TAXIING</span>
@@ -4026,17 +4026,7 @@ export const DA42_LESSON_4 = {
           </div>
         </div>
 
-        
-      </div>
-    </div>
-
-    <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">RODAJE Y MANDOS DE VUELO</span>
-        </div>
-
-        <div class="space-y-1 flex flex-col justify-start shrink-0 mb-1"><div class="mt-1 shrink-0">
+        <div class="mt-1 shrink-0">
           <div class="p-1.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-tight shadow-2xs">
             <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
               <span>⚠️</span>
@@ -4048,7 +4038,16 @@ export const DA42_LESSON_4 = {
               <li>When taxiing on poor surface select lowest possible RPM to avoid damage to propeller from stones or similar items.</li>
             </ul>
           </div>
-        </div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-full min-h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">RODAJE Y MANDOS DE VUELO</span>
+        </div>
+
         <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-6 text-center">
           <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2.5">
             📷
@@ -4196,7 +4195,7 @@ export const DA42_LESSON_4 = {
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+      <div class="h-full min-h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden">
         <div class="space-y-1 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">4A.6.6 FADEC TEST SEQUENCE</span>
@@ -4288,13 +4287,7 @@ export const DA42_LESSON_4 = {
               <li>When switching ECUs slight shake may occur. In case of longer dropouts or if engine stops, terminate flight preparation. Running with ECU SWAP on ECU B prohibited except test/emergency.</li>
             </ul>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="space-y-1 flex flex-col justify-start shrink-0">
           <div class="p-1.5 rounded-xl border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-tight shadow-2xs">
             <strong class="text-blue-700 dark:text-blue-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
               <span>ℹ️</span>
@@ -4303,6 +4296,22 @@ export const DA42_LESSON_4 = {
             <div>The test sequence can be executed for both engines simultaneously, or in sequence. When switching from one ECU to the other a slight shake of the engine may occur. System redundancy is only given with ECU SWAP on AUTO.</div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-full min-h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden">
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-3 text-center">
+          <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shadow-xs mb-1">
+            📷
+          </div>
+          <span class="text-[18px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-0.5">Imagen Recomendada</span>
+          <p class="text-[18px] font-semibold text-slate-700 dark:text-slate-200 max-w-sm leading-snug">
+            Pulsador ECU TEST en consola izquierda inferior y luces anunciadoras ECU A / ECU B FAIL durante los ciclos automáticos de autoprueba FADEC.
+          </p>
+        </div>
+      </div>
+    </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-3 text-center mt-1">
           <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shadow-xs mb-1">
@@ -4544,7 +4553,7 @@ export const DA42_LESSON_4 = {
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
     <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+      <div class="h-full min-h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden">
         <div class="space-y-1 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">4A.6.7 TAKE-OFF &amp; 4A.6.8 CLIMB</span>
@@ -4625,13 +4634,7 @@ export const DA42_LESSON_4 = {
             </strong>
             <div>If oil temperature and/or coolant temperature reaches yellow range during climb, flight should be continued with airspeed increased by 10 kts and power reduced by 10 % (reduced climb rate) for better engine cooling.</div>
           </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="lg:col-span-6 flex flex-col">
-      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="space-y-1 flex flex-col justify-start shrink-0">
           <div class="p-1.5 rounded-xl border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-tight shadow-2xs">
             <strong class="text-blue-700 dark:text-blue-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
               <span>ℹ️</span>
@@ -4644,6 +4647,22 @@ export const DA42_LESSON_4 = {
             </ul>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-full min-h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden">
+        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-3 text-center">
+          <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shadow-xs mb-1">
+            📷
+          </div>
+          <span class="text-[18px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-0.5">Imagen Recomendada</span>
+          <p class="text-[18px] font-semibold text-slate-700 dark:text-slate-200 max-w-sm leading-snug">
+            Despegue de la DA42 en rotaci&oacute;n y ascenso inicial: tren de aterrizaje retrayéndose, velocidad vySE (82 KIAS) y palancas de potencia al 100%.
+          </p>
+        </div>
+      </div>
+    </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-3 text-center mt-1">
           <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shadow-xs mb-1">
