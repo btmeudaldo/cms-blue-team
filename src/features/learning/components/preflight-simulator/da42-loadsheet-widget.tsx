@@ -1512,25 +1512,25 @@ export function DA42LoadsheetWidget({
                         x2={174}
                         y2={hoverPoint.y}
                         stroke="#1d4ed8"
-                        strokeWidth="3.5"
-                        strokeDasharray="8 5"
+                        strokeWidth="4.5"
+                        strokeDasharray="10 6"
                       />
                       {/* Badge indicador en el eje izquierdo (Masa en kg) */}
                       <rect
-                        x={45}
-                        y={hoverPoint.y - 18}
-                        width="120"
-                        height="36"
-                        rx="8"
+                        x={18}
+                        y={hoverPoint.y - 24}
+                        width="148"
+                        height="48"
+                        rx="10"
                         fill="#1d4ed8"
                         stroke="#ffffff"
-                        strokeWidth="2.5"
+                        strokeWidth="3"
                       />
                       <text
-                        x={105}
-                        y={hoverPoint.y + 7}
+                        x={92}
+                        y={hoverPoint.y + 8}
                         fill="#ffffff"
-                        fontSize="18"
+                        fontSize="23"
                         fontWeight="900"
                         textAnchor="middle"
                       >
@@ -1544,25 +1544,25 @@ export function DA42LoadsheetWidget({
                         x2={hoverPoint.x}
                         y2={839}
                         stroke="#1d4ed8"
-                        strokeWidth="3.5"
-                        strokeDasharray="8 5"
+                        strokeWidth="4.5"
+                        strokeDasharray="10 6"
                       />
                       {/* Badge indicador en el eje inferior (Brazo CG en m) */}
                       <rect
-                        x={Math.max(174, Math.min(840, hoverPoint.x - 65))}
-                        y={845}
-                        width="130"
-                        height="36"
-                        rx="8"
+                        x={Math.max(174, Math.min(790, hoverPoint.x - 80))}
+                        y={846}
+                        width="160"
+                        height="48"
+                        rx="10"
                         fill="#1d4ed8"
                         stroke="#ffffff"
-                        strokeWidth="2.5"
+                        strokeWidth="3"
                       />
                       <text
-                        x={Math.max(239, Math.min(905, hoverPoint.x))}
-                        y={870}
+                        x={Math.max(254, Math.min(870, hoverPoint.x))}
+                        y={878}
                         fill="#ffffff"
-                        fontSize="18"
+                        fontSize="23"
                         fontWeight="900"
                         textAnchor="middle"
                       >
@@ -1573,10 +1573,10 @@ export function DA42LoadsheetWidget({
                       <circle
                         cx={hoverPoint.x}
                         cy={hoverPoint.y}
-                        r="9"
+                        r="12"
                         fill="#2563eb"
                         stroke="#ffffff"
-                        strokeWidth="3.5"
+                        strokeWidth="4"
                       />
                     </g>
                   )}
@@ -1593,9 +1593,9 @@ export function DA42LoadsheetWidget({
                             x2={174}
                             y2={interactiveZfmPoint.y}
                             stroke="#9333ea"
-                            strokeWidth="2.5"
-                            strokeDasharray="6 4"
-                            opacity="0.85"
+                            strokeWidth="3.5"
+                            strokeDasharray="8 5"
+                            opacity="0.9"
                           />
                           <line
                             x1={interactiveZfmPoint.x}
@@ -1603,9 +1603,9 @@ export function DA42LoadsheetWidget({
                             x2={interactiveZfmPoint.x}
                             y2={839}
                             stroke="#9333ea"
-                            strokeWidth="2.5"
-                            strokeDasharray="6 4"
-                            opacity="0.85"
+                            strokeWidth="3.5"
+                            strokeDasharray="8 5"
+                            opacity="0.9"
                           />
                         </g>
                       )}
@@ -1619,9 +1619,9 @@ export function DA42LoadsheetWidget({
                             x2={174}
                             y2={interactiveTomPoint.y}
                             stroke="#d97706"
-                            strokeWidth="2.5"
-                            strokeDasharray="6 4"
-                            opacity="0.85"
+                            strokeWidth="3.5"
+                            strokeDasharray="8 5"
+                            opacity="0.9"
                           />
                           <line
                             x1={interactiveTomPoint.x}
@@ -1629,9 +1629,9 @@ export function DA42LoadsheetWidget({
                             x2={interactiveTomPoint.x}
                             y2={839}
                             stroke="#d97706"
-                            strokeWidth="2.5"
-                            strokeDasharray="6 4"
-                            opacity="0.85"
+                            strokeWidth="3.5"
+                            strokeDasharray="8 5"
+                            opacity="0.9"
                           />
                         </g>
                       )}
@@ -1639,16 +1639,16 @@ export function DA42LoadsheetWidget({
                       {/* Punto estimado fijado por el alumno para ZFM */}
                       {interactiveZfmPoint && studentZfmEstimated && (
                         <g transform={`translate(${interactiveZfmPoint.x}, ${interactiveZfmPoint.y})`}>
-                          <circle r="22" fill="none" stroke="#9333ea" strokeWidth="3" opacity="0.6" className="animate-pulse" />
-                          <circle r="13" fill="#a855f7" stroke="#ffffff" strokeWidth="3" />
+                          <circle r="30" fill="none" stroke="#9333ea" strokeWidth="4" opacity="0.6" className="animate-pulse" />
+                          <circle r="18" fill="#a855f7" stroke="#ffffff" strokeWidth="4" />
                           {/* Cuadro a la IZQUIERDA del punto ZFM para nunca solaparse con TOW */}
                           {!isStepPassed && !showTargetHint && (
-                            <g transform="translate(-24, 0)">
-                              <rect x="-220" y="-30" width="220" height="60" rx="10" fill="#7e22ce" stroke="#ffffff" strokeWidth="2.5" />
-                              <text x="-110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
+                            <g transform="translate(-28, 0)">
+                              <rect x="-260" y="-39" width="260" height="78" rx="14" fill="#7e22ce" stroke="#ffffff" strokeWidth="3" />
+                              <text x="-130" y="-8" fill="#ffffff" fontSize="22" fontWeight="900" textAnchor="middle">
                                 TU PUNTO ZFM
                               </text>
-                              <text x="-110" y="18" fill="#f3e8ff" fontSize="16" fontWeight="800" textAnchor="middle">
+                              <text x="-130" y="23" fill="#f3e8ff" fontSize="19" fontWeight="800" textAnchor="middle">
                                 ~{studentZfmEstimated.massKg} kg · {studentZfmEstimated.cgM.toFixed(3)} m
                               </text>
                             </g>
@@ -1659,16 +1659,16 @@ export function DA42LoadsheetWidget({
                       {/* Punto estimado fijado por el alumno para TOW */}
                       {interactiveTomPoint && studentTomEstimated && (
                         <g transform={`translate(${interactiveTomPoint.x}, ${interactiveTomPoint.y})`}>
-                          <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
-                          <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
+                          <circle r="30" fill="none" stroke="#d97706" strokeWidth="4" opacity="0.6" className="animate-pulse" />
+                          <circle r="18" fill="#f59e0b" stroke="#ffffff" strokeWidth="4" />
                           {/* Cuadro a la DERECHA del punto TOW para nunca solaparse con ZFM */}
                           {!isStepPassed && !showTargetHint && (
-                            <g transform="translate(24, 0)">
-                              <rect x="0" y="-30" width="220" height="60" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
-                              <text x="110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
+                            <g transform="translate(28, 0)">
+                              <rect x="0" y="-39" width="260" height="78" rx="14" fill="#b45309" stroke="#ffffff" strokeWidth="3" />
+                              <text x="130" y="-8" fill="#ffffff" fontSize="22" fontWeight="900" textAnchor="middle">
                                 TU PUNTO TOW
                               </text>
-                              <text x="110" y="18" fill="#fef3c7" fontSize="16" fontWeight="800" textAnchor="middle">
+                              <text x="130" y="23" fill="#fef3c7" fontSize="19" fontWeight="800" textAnchor="middle">
                                 ~{studentTomEstimated.massKg} kg · {studentTomEstimated.cgM.toFixed(3)} m
                               </text>
                             </g>
@@ -1684,8 +1684,8 @@ export function DA42LoadsheetWidget({
                           x2={interactiveTomPoint.x}
                           y2={interactiveTomPoint.y}
                           stroke="#d97706"
-                          strokeWidth="3"
-                          strokeDasharray="6 4"
+                          strokeWidth="4"
+                          strokeDasharray="8 5"
                         />
                       )}
 
@@ -1697,8 +1697,8 @@ export function DA42LoadsheetWidget({
                           x2={tomCoords.x}
                           y2={tomCoords.y}
                           stroke="#2563eb"
-                          strokeWidth="3.5"
-                          strokeDasharray="7 5"
+                          strokeWidth="4.5"
+                          strokeDasharray="9 6"
                         />
                       )}
 
@@ -1710,8 +1710,8 @@ export function DA42LoadsheetWidget({
                           x2={zfmCoords.x}
                           y2={zfmCoords.y}
                           stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#9333ea"}
-                          strokeWidth="3"
-                          strokeDasharray="5 3"
+                          strokeWidth="4"
+                          strokeDasharray="7 4"
                         />
                       )}
                       {(isStepPassed || showTargetHint) && interactiveTomPoint && (
@@ -1721,23 +1721,23 @@ export function DA42LoadsheetWidget({
                           x2={tomCoords.x}
                           y2={tomCoords.y}
                           stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#f59e0b"}
-                          strokeWidth="3"
-                          strokeDasharray="5 3"
+                          strokeWidth="4"
+                          strokeDasharray="7 4"
                         />
                       )}
 
                       {/* Punto exacto calculado ZFM - Cuadro a la IZQUIERDA */}
                       {(isStepPassed || showTargetHint) && (
                         <g transform={`translate(${zfmCoords.x}, ${zfmCoords.y})`}>
-                          <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#7c3aed"} strokeWidth="3" opacity="0.8" className="animate-ping" />
-                          <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#6d28d9"} stroke="#ffffff" strokeWidth="3" />
+                          <circle r="32" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#7c3aed"} strokeWidth="4" opacity="0.8" className="animate-ping" />
+                          <circle r="18" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#6d28d9"} stroke="#ffffff" strokeWidth="4" />
                           {/* Cuadro de ZFM hacia la IZQUIERDA */}
-                          <g transform="translate(-24, 0)">
-                            <rect x="-225" y="-30" width="225" height="60" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#581c87"} stroke="#ffffff" strokeWidth="2.5" />
-                            <text x="-112" y="-6" fill="#ffffff" fontSize="17" fontWeight="900" textAnchor="middle">
+                          <g transform="translate(-28, 0)">
+                            <rect x="-270" y="-39" width="270" height="78" rx="14" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#581c87"} stroke="#ffffff" strokeWidth="3" />
+                            <text x="-135" y="-8" fill="#ffffff" fontSize="21" fontWeight="900" textAnchor="middle">
                               {showTargetHint && !isStepPassed ? "ZFM CALCULADO (AQUÍ)" : "ZFM (Zero Fuel)"}
                             </text>
-                            <text x="-112" y="18" fill="#e9d5ff" fontSize="15" fontWeight="800" textAnchor="middle">
+                            <text x="-135" y="23" fill="#e9d5ff" fontSize="19" fontWeight="800" textAnchor="middle">
                               {expected.zfmMass} kg · {expected.zfmCg} m
                             </text>
                           </g>
@@ -1747,15 +1747,15 @@ export function DA42LoadsheetWidget({
                       {/* Punto exacto calculado TOW - Cuadro a la DERECHA */}
                       {(isStepPassed || showTargetHint) && (
                         <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
-                          <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#2563eb"} strokeWidth="3" opacity="0.8" className="animate-ping" />
-                          <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#1d4ed8"} stroke="#ffffff" strokeWidth="3" />
+                          <circle r="32" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#2563eb"} strokeWidth="4" opacity="0.8" className="animate-ping" />
+                          <circle r="18" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#1d4ed8"} stroke="#ffffff" strokeWidth="4" />
                           {/* Cuadro de TOW hacia la DERECHA */}
-                          <g transform="translate(24, 0)">
-                            <rect x="0" y="-30" width="225" height="60" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#1e40af"} stroke="#ffffff" strokeWidth="2.5" />
-                            <text x="112" y="-6" fill="#ffffff" fontSize="17" fontWeight="900" textAnchor="middle">
+                          <g transform="translate(28, 0)">
+                            <rect x="0" y="-39" width="270" height="78" rx="14" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#1e40af"} stroke="#ffffff" strokeWidth="3" />
+                            <text x="135" y="-8" fill="#ffffff" fontSize="21" fontWeight="900" textAnchor="middle">
                               {showTargetHint && !isStepPassed ? "TOW CALCULADO (AQUÍ)" : "TOW (Despegue)"}
                             </text>
-                            <text x="112" y="18" fill="#bfdbfe" fontSize="15" fontWeight="800" textAnchor="middle">
+                            <text x="135" y="23" fill="#bfdbfe" fontSize="19" fontWeight="800" textAnchor="middle">
                               {expected.tomMass} kg · {expected.tomCg} m
                             </text>
                           </g>
@@ -1770,13 +1770,13 @@ export function DA42LoadsheetWidget({
                       {/* Punto ZFW (de 6.5) - Cuadro a la IZQUIERDA */}
                       {(isStepPassed || showTargetHint) && (
                         <g transform={`translate(${zfmCoords.x}, ${zfmCoords.y})`}>
-                          <circle r="12" fill="#7c3aed" stroke="#ffffff" strokeWidth="3" />
-                          <g transform="translate(-24, 0)">
-                            <rect x="-205" y="-28" width="205" height="56" rx="9" fill="#6d28d9" stroke="#ffffff" strokeWidth="2.5" />
-                            <text x="-102" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
+                          <circle r="16" fill="#7c3aed" stroke="#ffffff" strokeWidth="3.5" />
+                          <g transform="translate(-28, 0)">
+                            <rect x="-250" y="-36" width="250" height="72" rx="12" fill="#6d28d9" stroke="#ffffff" strokeWidth="3" />
+                            <text x="-125" y="-7" fill="#ffffff" fontSize="19" fontWeight="bold" textAnchor="middle">
                               ZFW (de 6.5)
                             </text>
-                            <text x="-102" y="15" fill="#e9d5ff" fontSize="13" fontWeight="bold" textAnchor="middle">
+                            <text x="-125" y="21" fill="#e9d5ff" fontSize="17" fontWeight="bold" textAnchor="middle">
                               {expected.zfmMass} kg · {expected.zfmCg} m
                             </text>
                           </g>
@@ -1791,21 +1791,21 @@ export function DA42LoadsheetWidget({
                           x2={tomCoords.x}
                           y2={tomCoords.y}
                           stroke="#7c3aed"
-                          strokeWidth="2.5"
-                          strokeDasharray="5 4"
+                          strokeWidth="3.5"
+                          strokeDasharray="7 5"
                         />
                       )}
 
                       {/* Punto de Despegue (TOW) - Cuadro ARRIBA */}
                       {(isStepPassed || showTargetHint) && (
                         <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
-                          <circle r="13" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3" />
-                          <g transform="translate(0, -68)">
-                            <rect x="-105" y="-28" width="210" height="56" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
-                            <text x="0" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
+                          <circle r="17" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3.5" />
+                          <g transform="translate(0, -88)">
+                            <rect x="-130" y="-36" width="260" height="72" rx="12" fill="#1e40af" stroke="#ffffff" strokeWidth="3" />
+                            <text x="0" y="-7" fill="#ffffff" fontSize="19" fontWeight="bold" textAnchor="middle">
                               TOW (Despegue)
                             </text>
-                            <text x="0" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
+                            <text x="0" y="21" fill="#bfdbfe" fontSize="17" fontWeight="bold" textAnchor="middle">
                               {expected.tomMass} kg · {expected.tomCg} m
                             </text>
                           </g>
@@ -1820,8 +1820,8 @@ export function DA42LoadsheetWidget({
                           x2={lmCoords.x}
                           y2={lmCoords.y}
                           stroke="#1a80ff"
-                          strokeWidth="3.5"
-                          strokeDasharray="7 5"
+                          strokeWidth="4.5"
+                          strokeDasharray="9 6"
                         />
                       )}
 
@@ -1834,9 +1834,9 @@ export function DA42LoadsheetWidget({
                             x2={174}
                             y2={interactiveClickPoint.y}
                             stroke="#059669"
-                            strokeWidth="2.5"
-                            strokeDasharray="6 4"
-                            opacity="0.85"
+                            strokeWidth="3.5"
+                            strokeDasharray="8 5"
+                            opacity="0.9"
                           />
                           <line
                             x1={interactiveClickPoint.x}
@@ -1844,9 +1844,9 @@ export function DA42LoadsheetWidget({
                             x2={interactiveClickPoint.x}
                             y2={839}
                             stroke="#059669"
-                            strokeWidth="2.5"
-                            strokeDasharray="6 4"
-                            opacity="0.85"
+                            strokeWidth="3.5"
+                            strokeDasharray="8 5"
+                            opacity="0.9"
                           />
                         </g>
                       )}
@@ -1854,15 +1854,15 @@ export function DA42LoadsheetWidget({
                       {/* Punto estimado fijado por el alumno para LW */}
                       {interactiveClickPoint && studentEstimated && (
                         <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
-                          <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
-                          <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
+                          <circle r="30" fill="none" stroke="#d97706" strokeWidth="4" opacity="0.6" className="animate-pulse" />
+                          <circle r="18" fill="#f59e0b" stroke="#ffffff" strokeWidth="4" />
                           {!isStepPassed && !showTargetHint && (
-                            <g transform="translate(24, 0)">
-                              <rect x="0" y="-30" width="220" height="60" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
-                              <text x="110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
+                            <g transform="translate(28, 0)">
+                              <rect x="0" y="-39" width="260" height="78" rx="14" fill="#b45309" stroke="#ffffff" strokeWidth="3" />
+                              <text x="130" y="-8" fill="#ffffff" fontSize="22" fontWeight="900" textAnchor="middle">
                                 TU PUNTO LW
                               </text>
-                              <text x="110" y="18" fill="#fef3c7" fontSize="16" fontWeight="800" textAnchor="middle">
+                              <text x="130" y="23" fill="#fef3c7" fontSize="19" fontWeight="800" textAnchor="middle">
                                 ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
                               </text>
                             </g>
@@ -1878,22 +1878,22 @@ export function DA42LoadsheetWidget({
                           x2={lmCoords.x}
                           y2={lmCoords.y}
                           stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#f59e0b"}
-                          strokeWidth="3.5"
-                          strokeDasharray="6 4"
+                          strokeWidth="4"
+                          strokeDasharray="7 4"
                         />
                       )}
 
                       {/* Punto exacto de aterrizaje (LW) */}
                       {(isStepPassed || showTargetHint) && (
                         <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
-                          <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#059669"} strokeWidth="3" opacity="0.8" className="animate-ping" />
-                          <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#059669"} stroke="#ffffff" strokeWidth="3" />
-                          <g transform="translate(24, 0)">
-                            <rect x="0" y="-28" width="220" height="56" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#065f46"} stroke="#ffffff" strokeWidth="2.5" />
-                            <text x="110" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                          <circle r="32" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#059669"} strokeWidth="4" opacity="0.8" className="animate-ping" />
+                          <circle r="18" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#059669"} stroke="#ffffff" strokeWidth="4" />
+                          <g transform="translate(28, 0)">
+                            <rect x="0" y="-37" width="270" height="74" rx="14" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#065f46"} stroke="#ffffff" strokeWidth="3" />
+                            <text x="135" y="-7" fill="#ffffff" fontSize="20" fontWeight="900" textAnchor="middle">
                               {showTargetHint && !isStepPassed ? "LW CALCULADO (AQUÍ)" : "LW (Aterrizaje)"}
                             </text>
-                            <text x="110" y="17" fill="#a7f3d0" fontSize="14" fontWeight="800" textAnchor="middle">
+                            <text x="135" y="22" fill="#a7f3d0" fontSize="18" fontWeight="800" textAnchor="middle">
                               {expected.lmMass} kg · {expected.lmCg} m
                             </text>
                           </g>
