@@ -11,6 +11,7 @@ import { DA40FuelWidget } from "./da40-fuel-widget";
 import { DA40PerformanceWidget } from "./da40-performance-widget";
 import { DA40FuelChartWidget } from "./da40-fuel-chart-widget";
 import { DA40TakeoffChartsWidget } from "./da40-takeoff-charts-widget";
+import { DA42LoadsheetWidget } from "./da42-loadsheet-widget";
 
 export type ExerciseType =
   | "loadsheet"
@@ -27,7 +28,7 @@ export type ExerciseType =
 
 type Props = {
   exerciseType: ExerciseType;
-  aircraft?: "c172" | "da40";
+  aircraft?: "c172" | "da40" | "da42";
   onExerciseCompleted?: () => void;
   isAlreadyCompleted?: boolean;
   leftPct?: number;
@@ -40,6 +41,41 @@ export function PreflightInteractiveHub({
   isAlreadyCompleted = false,
   leftPct,
 }: Props) {
+  if (aircraft === "da42") {
+    switch (exerciseType) {
+      case "loadsheet":
+        return (
+          <DA42LoadsheetWidget
+            mode="all"
+            leftPct={leftPct}
+            onExerciseCompleted={onExerciseCompleted}
+            isAlreadyCompleted={isAlreadyCompleted}
+          />
+        );
+      case "loadsheet_takeoff":
+        return (
+          <DA42LoadsheetWidget
+            mode="takeoff"
+            leftPct={leftPct}
+            onExerciseCompleted={onExerciseCompleted}
+            isAlreadyCompleted={isAlreadyCompleted}
+          />
+        );
+      case "loadsheet_landing":
+      case "loadsheet-exam":
+        return (
+          <DA42LoadsheetWidget
+            mode="landing"
+            leftPct={leftPct}
+            onExerciseCompleted={onExerciseCompleted}
+            isAlreadyCompleted={isAlreadyCompleted}
+          />
+        );
+      default:
+        return null;
+    }
+  }
+
   if (aircraft === "da40") {
     switch (exerciseType) {
       case "loadsheet":

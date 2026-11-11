@@ -10,7 +10,7 @@ test-results/
 playwright-report/
 
 .vercel
-Manuales/
+/Manuales/
 scratch/
 *.pptx
 backups/

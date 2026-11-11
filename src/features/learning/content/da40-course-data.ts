@@ -9600,19 +9600,31 @@ export const DA40_LESSON_6 = {
               <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
                 Tabla de Carga y Momentos DA40
               </strong>
-              <div class="grid grid-cols-4 gap-1 text-[11px] font-mono text-slate-700 dark:text-slate-200 pt-0.5">
-                <span class="font-bold">Elemento</span>
-                <span class="text-center font-bold">Masa (kg)</span>
-                <span class="text-center font-bold">Brazo (m)</span>
-                <span class="text-right font-bold">Momento (kg·m)</span>
-                <span>Masa Vacía Básica</span><span class="text-center">804,0</span><span class="text-center">2,410</span><span class="text-right">1937,64</span>
-                <span>Piloto + Copiloto</span><span class="text-center">160,0</span><span class="text-center">2,300</span><span class="text-right">368,00</span>
-                <span>Pasajeros Traseros</span><span class="text-center">0,0</span><span class="text-center">3,250</span><span class="text-right">0,00</span>
-                <span>Equipaje Estándar</span><span class="text-center">15,0</span><span class="text-center">3,680</span><span class="text-right">55,20</span>
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300">Zero Fuel Mass (ZFM)</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">979,0</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">2,411</span><span class="text-right font-bold text-[#0B2E59] dark:text-sky-300">2360,84</span>
-                <span>Fuel Despegue (Main)</span><span class="text-center">70,0</span><span class="text-center">2,630</span><span class="text-right">184,10</span>
-                <span class="font-bold text-emerald-700 dark:text-emerald-400">Takeoff Mass (TOM)</span><span class="text-center font-bold text-emerald-700 dark:text-emerald-400">1049,0</span><span class="text-center font-bold text-emerald-700 dark:text-emerald-400">2,426</span><span class="text-right font-bold text-emerald-700 dark:text-emerald-400">2544,94</span>
-              </div>
+              <table class="w-full text-[11px] font-mono leading-none table-fixed">
+                <colgroup>
+                  <col style="width: 38%;" />
+                  <col style="width: 20%;" />
+                  <col style="width: 20%;" />
+                  <col style="width: 22%;" />
+                </colgroup>
+                <thead>
+                  <tr class="text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-700">
+                    <th class="text-left font-bold pb-0.5 whitespace-nowrap">Elemento</th>
+                    <th class="text-center font-bold pb-0.5 whitespace-nowrap">Masa (kg)</th>
+                    <th class="text-center font-bold pb-0.5 whitespace-nowrap">Brazo (m)</th>
+                    <th class="text-right font-bold pb-0.5 whitespace-nowrap">Momento (kg·m)</th>
+                  </tr>
+                </thead>
+                <tbody class="text-slate-700 dark:text-slate-200 divide-y divide-slate-50 dark:divide-slate-800">
+                  <tr><td class="py-0.5 whitespace-nowrap">Masa Vacía Básica</td><td class="text-center py-0.5 whitespace-nowrap">804,0</td><td class="text-center py-0.5 whitespace-nowrap">2,410</td><td class="text-right py-0.5 whitespace-nowrap">1937,64</td></tr>
+                  <tr><td class="py-0.5 whitespace-nowrap">Piloto + Copiloto</td><td class="text-center py-0.5 whitespace-nowrap">160,0</td><td class="text-center py-0.5 whitespace-nowrap">2,300</td><td class="text-right py-0.5 whitespace-nowrap">368,00</td></tr>
+                  <tr><td class="py-0.5 whitespace-nowrap">Pasajeros Traseros</td><td class="text-center py-0.5 whitespace-nowrap">0,0</td><td class="text-center py-0.5 whitespace-nowrap">3,250</td><td class="text-right py-0.5 whitespace-nowrap">0,00</td></tr>
+                  <tr><td class="py-0.5 whitespace-nowrap">Equipaje Estándar</td><td class="text-center py-0.5 whitespace-nowrap">15,0</td><td class="text-center py-0.5 whitespace-nowrap">3,680</td><td class="text-right py-0.5 whitespace-nowrap">55,20</td></tr>
+                  <tr class="font-bold text-[#0B2E59] dark:text-sky-300 bg-slate-50/80 dark:bg-slate-700/50"><td class="py-0.5 whitespace-nowrap">Zero Fuel Mass (ZFM)</td><td class="text-center py-0.5 whitespace-nowrap">979,0</td><td class="text-center py-0.5 whitespace-nowrap">2,411</td><td class="text-right py-0.5 whitespace-nowrap">2360,84</td></tr>
+                  <tr><td class="py-0.5 whitespace-nowrap">Fuel Despegue (Main)</td><td class="text-center py-0.5 whitespace-nowrap">70,0</td><td class="text-center py-0.5 whitespace-nowrap">2,630</td><td class="text-right py-0.5 whitespace-nowrap">184,10</td></tr>
+                  <tr class="font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-950/30"><td class="py-0.5 whitespace-nowrap">Takeoff Mass (TOM)</td><td class="text-center py-0.5 whitespace-nowrap">1049,0</td><td class="text-center py-0.5 whitespace-nowrap">2,426</td><td class="text-right py-0.5 whitespace-nowrap">2544,94</td></tr>
+                </tbody>
+              </table>
             </div>
 
             <div class="p-2 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 text-xs text-amber-900 dark:text-amber-200 space-y-0.5">

@@ -785,39 +785,45 @@ export function DA40LoadsheetWidget({
 
             {currentStep === "takeoff" ? (
               /* PARTE 1: TABLA DE DESPEGUE (7 FILAS) */
-              <table className="w-full text-left text-xs sm:text-[13px] border-collapse">
+              <table className="w-full text-left text-xs border-collapse table-fixed">
+                <colgroup>
+                  <col className="w-[38%]" />
+                  <col className="w-[20%]" />
+                  <col className="w-[18%]" />
+                  <col className="w-[24%]" />
+                </colgroup>
                 <thead>
                   <tr className="border-b border-slate-200 dark:border-slate-700 font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
-                    <th className="py-1.5 px-2">ITEM</th>
-                    <th className="py-1.5 px-2 text-right">MASA (KG)</th>
-                    <th className="py-1.5 px-2 text-right">BRAZO (M)</th>
-                    <th className="py-1.5 px-2 text-right">MOMENTO (KGM)</th>
+                    <th className="py-1 px-1.5 whitespace-nowrap">ITEM</th>
+                    <th className="py-1 px-1.5 text-right whitespace-nowrap">MASA (KG)</th>
+                    <th className="py-1 px-1.5 text-right whitespace-nowrap">BRAZO (M)</th>
+                    <th className="py-1 px-1.5 text-right whitespace-nowrap">MOMENTO (KGM)</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                   {/* EMPTY WEIGHT */}
                   <tr className="bg-slate-50/50 dark:bg-slate-800/30 font-semibold">
-                    <td className="py-1.5 px-2">EMPTY WEIGHT (EC-NNA)</td>
-                    <td className="py-1.5 px-2 text-right font-mono text-slate-600 dark:text-slate-300">755,44</td>
-                    <td className="py-1.5 px-2 text-right font-mono text-slate-600 dark:text-slate-300">1,042</td>
-                    <td className="py-1.5 px-2 text-right font-mono text-slate-600 dark:text-slate-300">787,23</td>
+                    <td className="py-1 px-1.5 whitespace-nowrap">EMPTY WEIGHT (DA40)</td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-600 dark:text-slate-300">735,00</td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-600 dark:text-slate-300">2,476</td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-600 dark:text-slate-300">1820,00</td>
                   </tr>
 
                   {/* PILOTS */}
                   <tr>
-                    <td className="py-1.5 px-2 font-medium">PILOTS (FRONT)</td>
-                    <td className="py-1.5 px-2 text-right font-mono font-bold text-slate-700 dark:text-slate-200">
+                    <td className="py-1 px-1.5 font-medium whitespace-nowrap">PILOTS (FRONT)</td>
+                    <td className="py-1 px-1.5 text-right font-mono font-bold text-slate-700 dark:text-slate-200">
                       {expected.pilotsMass} kg
                     </td>
-                    <td className="py-1.5 px-2 text-right font-mono text-slate-500">0,940</td>
-                    <td className="py-1.5 px-2 text-right">
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">2,300</td>
+                    <td className="py-1 px-1.5 text-right">
                       <input
                         type="text"
                         placeholder="Momento"
                         value={pilotsMoment}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setPilotsMoment(e.target.value)}
-                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
                           selectedMissionIndex === 0
                             ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.pilotsMoment
@@ -830,19 +836,19 @@ export function DA40LoadsheetWidget({
 
                   {/* PASSENGERS */}
                   <tr>
-                    <td className="py-1.5 px-2 font-medium">PASSENGERS (REAR)</td>
-                    <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-200">
+                    <td className="py-1 px-1.5 font-medium whitespace-nowrap">PASSENGERS (REAR)</td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-700 dark:text-slate-200">
                       {expected.paxMass > 0 ? `${expected.paxMass} kg` : "0 kg"}
                     </td>
-                    <td className="py-1.5 px-2 text-right font-mono text-slate-500">1,854</td>
-                    <td className="py-1.5 px-2 text-right">
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">3,250</td>
+                    <td className="py-1 px-1.5 text-right">
                       <input
                         type="text"
                         disabled={selectedMissionIndex === 0 || expected.paxMass === 0}
                         placeholder={expected.paxMass === 0 ? "0" : "Momento"}
                         value={expected.paxMass === 0 ? "0" : paxMoment}
                         onChange={(e) => setPaxMoment(e.target.value)}
-                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
                           selectedMissionIndex === 0
                             ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.paxMoment
@@ -855,19 +861,19 @@ export function DA40LoadsheetWidget({
 
                   {/* BAGGAGE */}
                   <tr>
-                    <td className="py-1.5 px-2 font-medium">BAGGAGE AREA 1</td>
-                    <td className="py-1.5 px-2 text-right font-mono text-slate-700 dark:text-slate-200">
+                    <td className="py-1 px-1.5 font-medium whitespace-nowrap">BAGGAGE AREA 1</td>
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-700 dark:text-slate-200">
                       {expected.baggageMass} kg
                     </td>
-                    <td className="py-1.5 px-2 text-right font-mono text-slate-500">2,413</td>
-                    <td className="py-1.5 px-2 text-right">
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">3,650</td>
+                    <td className="py-1 px-1.5 text-right">
                       <input
                         type="text"
                         placeholder="Momento"
                         value={baggageMoment}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setBaggageMoment(e.target.value)}
-                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
                           selectedMissionIndex === 0
                             ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.baggageMoment
@@ -880,15 +886,15 @@ export function DA40LoadsheetWidget({
 
                   {/* ZERO FUEL MASS (ZFM & CG) */}
                   <tr className="bg-sky-50/60 dark:bg-sky-950/30 font-bold text-[#0B2E59] dark:text-sky-300">
-                    <td className="py-1.5 px-2 uppercase text-xs sm:text-[13px]">ZERO FUEL MASS (ZFM & CG)</td>
-                    <td className="py-1.5 px-2 text-right">
+                    <td className="py-1 px-1.5 uppercase text-xs whitespace-nowrap">ZERO FUEL MASS (ZFM)</td>
+                    <td className="py-1 px-1.5 text-right">
                       <input
                         type="text"
-                        placeholder="Suma Masa"
+                        placeholder="Masa"
                         value={zfmMass}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setZfmMass(e.target.value)}
-                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
                           selectedMissionIndex === 0
                             ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.zfmMass
@@ -897,14 +903,14 @@ export function DA40LoadsheetWidget({
                         }`}
                       />
                     </td>
-                    <td className="py-1.5 px-2 text-right">
+                    <td className="py-1 px-1.5 text-right">
                       <input
                         type="text"
-                        placeholder="CG (m)"
+                        placeholder="CG"
                         value={zfmCg}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setZfmCg(e.target.value)}
-                        className={`w-20 text-right px-1.5 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
+                        className={`w-full text-right px-1 py-0.5 rounded border font-mono text-xs font-bold ${
                           selectedMissionIndex === 0
                             ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.zfmCg
@@ -913,14 +919,14 @@ export function DA40LoadsheetWidget({
                         }`}
                       />
                     </td>
-                    <td className="py-1.5 px-2 text-right">
+                    <td className="py-1 px-1.5 text-right">
                       <input
                         type="text"
-                        placeholder="Suma Momento"
+                        placeholder="Momento"
                         value={zfmMoment}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setZfmMoment(e.target.value)}
-                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
                           selectedMissionIndex === 0
                             ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.zfmMoment
@@ -933,17 +939,17 @@ export function DA40LoadsheetWidget({
 
                   {/* TAKEOFF FUEL */}
                   <tr>
-                    <td className="py-1.5 px-2 font-medium">
-                      TAKEOFF FUEL ({expected.fuelLiters} L / {(expected.fuelLiters / 3.78541).toFixed(1)} US Gal Jet-A1)
+                    <td className="py-1 px-1.5 font-medium whitespace-nowrap">
+                      TAKEOFF FUEL ({expected.fuelLiters} L)
                     </td>
-                    <td className="py-1.5 px-2 text-right">
+                    <td className="py-1 px-1.5 text-right">
                       <input
                         type="text"
-                        placeholder="Kg (L × 0.84)"
+                        placeholder="Fuel (kg)"
                         value={fuelMass}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setFuelMass(e.target.value)}
-                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
                           selectedMissionIndex === 0
                             ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.fuelMass
@@ -952,15 +958,15 @@ export function DA40LoadsheetWidget({
                         }`}
                       />
                     </td>
-                    <td className="py-1.5 px-2 text-right font-mono text-slate-500">1,168</td>
-                    <td className="py-1.5 px-2 text-right">
+                    <td className="py-1 px-1.5 text-right font-mono text-slate-500">2,630</td>
+                    <td className="py-1 px-1.5 text-right">
                       <input
                         type="text"
                         placeholder="Momento"
                         value={fuelMoment}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setFuelMoment(e.target.value)}
-                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
                           selectedMissionIndex === 0
                             ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.fuelMoment
@@ -973,17 +979,17 @@ export function DA40LoadsheetWidget({
 
                   {/* TAKEOFF MASS (TOM) */}
                   <tr className="bg-emerald-50/70 dark:bg-emerald-950/30 font-bold text-emerald-900 dark:text-emerald-300">
-                    <td className="py-1.5 px-2 uppercase text-xs sm:text-[13px]">
-                      TAKEOFF MASS (TOM & CG)
+                    <td className="py-1 px-1.5 uppercase text-xs whitespace-nowrap">
+                      TAKEOFF MASS (TOM)
                     </td>
-                    <td className="py-1.5 px-2 text-right">
+                    <td className="py-1 px-1.5 text-right">
                       <input
                         type="text"
                         placeholder="TOM (kg)"
                         value={tomMass}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setTomMass(e.target.value)}
-                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${
                           selectedMissionIndex === 0
                             ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.tomMass
@@ -992,14 +998,14 @@ export function DA40LoadsheetWidget({
                         }`}
                       />
                     </td>
-                    <td className="py-1.5 px-2 text-right">
+                    <td className="py-1 px-1.5 text-right">
                       <input
                         type="text"
                         placeholder="CG (m)"
                         value={tomCg}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setTomCg(e.target.value)}
-                        className={`w-20 text-right px-1.5 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
+                        className={`w-full text-right px-1 py-0.5 rounded border font-mono text-xs font-bold ${
                           selectedMissionIndex === 0
                             ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.tomCg
@@ -1008,14 +1014,14 @@ export function DA40LoadsheetWidget({
                         }`}
                       />
                     </td>
-                    <td className="py-1.5 px-2 text-right">
+                    <td className="py-1 px-1.5 text-right">
                       <input
                         type="text"
-                        placeholder="Momento TOM"
+                        placeholder="Momento"
                         value={tomMoment}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setTomMoment(e.target.value)}
-                        className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${
                           selectedMissionIndex === 0
                             ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.tomMoment
@@ -1045,43 +1051,49 @@ export function DA40LoadsheetWidget({
                   </span>
                 </div>
 
-                <table className="w-full text-left text-xs sm:text-[13px] border-collapse">
+                <table className="w-full text-left text-xs border-collapse table-fixed">
+                  <colgroup>
+                    <col className="w-[38%]" />
+                    <col className="w-[20%]" />
+                    <col className="w-[18%]" />
+                    <col className="w-[24%]" />
+                  </colgroup>
                   <thead>
                     <tr className="border-b border-slate-200 dark:border-slate-700 font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60">
-                      <th className="py-1.5 px-2">ITEM</th>
-                      <th className="py-1.5 px-2 text-right">MASA (KG)</th>
-                      <th className="py-1.5 px-2 text-right">BRAZO (M)</th>
-                      <th className="py-1.5 px-2 text-right">MOMENTO (KGM)</th>
+                      <th className="py-1 px-1.5 whitespace-nowrap">ITEM</th>
+                      <th className="py-1 px-1.5 text-right whitespace-nowrap">MASA (KG)</th>
+                      <th className="py-1 px-1.5 text-right whitespace-nowrap">BRAZO (M)</th>
+                      <th className="py-1 px-1.5 text-right whitespace-nowrap">MOMENTO (KGM)</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                     {/* TAKEOFF MASS */}
                     <tr className="bg-slate-50/50 dark:bg-slate-800/30 font-semibold">
-                      <td className="py-2 px-2">TAKEOFF MASS (TOM)</td>
-                      <td className="py-2 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
+                      <td className="py-1 px-1.5 whitespace-nowrap">TAKEOFF MASS (TOM)</td>
+                      <td className="py-1 px-1.5 text-right font-mono text-slate-700 dark:text-slate-300">
                         {expected.tomMass}
                       </td>
-                      <td className="py-2 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
+                      <td className="py-1 px-1.5 text-right font-mono text-slate-700 dark:text-slate-300">
                         {expected.tomCg}
                       </td>
-                      <td className="py-2 px-2 text-right font-mono text-slate-700 dark:text-slate-300">
+                      <td className="py-1 px-1.5 text-right font-mono text-slate-700 dark:text-slate-300">
                         {expected.tomMoment}
                       </td>
                     </tr>
 
                     {/* TRIP FUEL */}
                     <tr className="text-amber-900 dark:text-amber-300 font-medium">
-                      <td className="py-2 px-2">
-                        (-) TRIP FUEL ({expected.tripFuelLiters} L / {(expected.tripFuelLiters / 3.78541).toFixed(1)} US Gal a 50% Potencia)
+                      <td className="py-1 px-1.5 whitespace-nowrap">
+                        (-) TRIP FUEL ({expected.tripFuelLiters} L)
                       </td>
-                      <td className="py-2 px-2 text-right">
+                      <td className="py-1 px-1.5 text-right">
                         <input
                           type="text"
-                          placeholder="-Kg (L × 0.84)"
+                          placeholder="Fuel (kg)"
                           value={tripFuelMassInput}
                           disabled={selectedMissionIndex === 0}
                           onChange={(e) => setTripFuelMassInput(e.target.value)}
-                          className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
+                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${
                             selectedMissionIndex === 0
                               ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
                               : errors.tripFuelMass
@@ -1090,20 +1102,20 @@ export function DA40LoadsheetWidget({
                           }`}
                         />
                       </td>
-                      <td className="py-2 px-2 text-right font-mono text-slate-500">1,168</td>
-                      <td className="py-2 px-2 text-right">
+                      <td className="py-1 px-1.5 text-right font-mono text-slate-500">2,630</td>
+                      <td className="py-1 px-1.5 text-right">
                         <input
                           type="text"
-                          placeholder="Ej: 15.01"
+                          placeholder="Momento"
                           value={tripFuelMoment}
                           disabled={selectedMissionIndex === 0}
                           onChange={(e) => setTripFuelMoment(e.target.value)}
-                          className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] ${
+                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
                             selectedMissionIndex === 0
                               ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                              : errors.tripFuelMoment
-                                ? "border-rose-500 bg-rose-50 text-rose-700"
-                                : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                            : errors.tripFuelMoment
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
                           }`}
                         />
                       </td>
@@ -1111,17 +1123,17 @@ export function DA40LoadsheetWidget({
 
                     {/* LANDING MASS (LM) */}
                     <tr className="bg-emerald-50/70 dark:bg-emerald-950/30 font-bold text-emerald-900 dark:text-emerald-300">
-                      <td className="py-2 px-2 uppercase text-xs sm:text-[13px]">
-                        LANDING MASS (LM & CG)
+                      <td className="py-1 px-1.5 uppercase text-xs whitespace-nowrap">
+                        LANDING MASS (LM)
                       </td>
-                      <td className="py-2 px-2 text-right">
+                      <td className="py-1 px-1.5 text-right">
                         <input
                           type="text"
                           placeholder="LM (kg)"
                           value={lmMass}
                           disabled={selectedMissionIndex === 0}
                           onChange={(e) => setLmMass(e.target.value)}
-                          className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
+                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${
                             selectedMissionIndex === 0
                               ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
                               : errors.lmMass
@@ -1130,14 +1142,14 @@ export function DA40LoadsheetWidget({
                           }`}
                         />
                       </td>
-                      <td className="py-2 px-2 text-right">
+                      <td className="py-1 px-1.5 text-right">
                         <input
                           type="text"
                           placeholder="CG (m)"
                           value={lmCg}
                           disabled={selectedMissionIndex === 0}
                           onChange={(e) => setLmCg(e.target.value)}
-                          className={`w-20 text-right px-1.5 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
+                          className={`w-full text-right px-1 py-0.5 rounded border font-mono text-xs font-bold ${
                             selectedMissionIndex === 0
                               ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
                               : errors.lmCg
@@ -1146,14 +1158,14 @@ export function DA40LoadsheetWidget({
                           }`}
                         />
                       </td>
-                      <td className="py-2 px-2 text-right">
+                      <td className="py-1 px-1.5 text-right">
                         <input
                           type="text"
-                          placeholder="Momento LM"
+                          placeholder="Momento"
                           value={lmMoment}
                           disabled={selectedMissionIndex === 0}
                           onChange={(e) => setLmMoment(e.target.value)}
-                          className={`w-28 text-right px-2 py-0.5 rounded border font-mono text-xs sm:text-[13px] font-bold ${
+                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${
                             selectedMissionIndex === 0
                               ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
                               : errors.lmMoment
@@ -1232,7 +1244,7 @@ export function DA40LoadsheetWidget({
 
             <div className="flex items-center justify-between">
               <span className="text-xs sm:text-[13px] text-slate-500 italic">
-                * Densidad Jet A-1 = 0,84 kg/L · Brazo Fuel = 1,168 m · MTOM = 1.043 kg
+                * Densidad Jet A-1 = 0,84 kg/L · Brazo Fuel = 2,630 m · MTOM = 1.150 kg
               </span>
 
               {selectedMissionIndex === 0 ? (

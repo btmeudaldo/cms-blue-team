@@ -207,11 +207,14 @@ export function LessonPlayer({
     return (exerciseContainer?.getAttribute("data-interactive-exercise") as ExerciseType) || null;
   }, [exerciseContainer]);
 
-  const activeAircraft = useMemo<"c172" | "da40">(() => {
+  const activeAircraft = useMemo<"c172" | "da40" | "da42">(() => {
     const attr = exerciseContainer?.getAttribute("data-aircraft");
-    if (attr === "da40" || attr === "c172") return attr;
+    if (attr === "da42" || attr === "da40" || attr === "c172") return attr;
     const lowerCourse = (courseTitle || "").toLowerCase();
     const lowerLesson = (lessonTitle || "").toLowerCase();
+    if (lowerCourse.includes("da42") || lowerLesson.includes("da42")) {
+      return "da42";
+    }
     if (lowerCourse.includes("da40") || lowerCourse.includes("diamond") || lowerLesson.includes("da40")) {
       return "da40";
     }

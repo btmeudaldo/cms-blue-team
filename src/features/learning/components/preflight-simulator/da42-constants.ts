@@ -1,0 +1,155 @@
+import { PreflightMission } from "./types";
+import { checkValueTolerance } from "./constants";
+
+export { checkValueTolerance };
+
+export const DA42_DATA = {
+  registration: "DA42",
+  model: "Diamond DA42 Twin Star",
+  engines: "Continental CD-135 / CD-155",
+  mtomKg: 1700,
+  mtomMAMKg: 1785, // con MÄM 42-088
+  mlmKg: 1700,
+  mzfwKg: 1650,
+  minFlightMassKg: 1250,
+  emptyWeightKg: 1250.0,
+  emptyWeightArm: 2.420,
+  emptyWeightMoment: 3025.0,
+  arms: {
+    pilotsFront: 2.30,
+    passengersRear: 3.25,
+    baggageNose: 0.60, // Morro (máx 30 kg)
+    baggageCabin: 3.89, // Cabina (máx 45 kg)
+    baggageExt: 4.54, // Extensión (máx 20 kg)
+    fuelMain: 2.63, // Tanques principales (189 L utilizables)
+    fuelAux: 3.20, // Tanques auxiliares (52 L utilizables)
+    deiceTks: 1.00, // Fluido TKS (máx 30 L / 33 kg)
+  },
+  fuelDensityKgL: 0.84, // Jet A-1 / Diésel EN 590
+  tksDensityKgL: 1.10, // Fluido TKS DTD 406B
+  maxFuelMainL: 189,
+  maxFuelAuxL: 52,
+};
+
+export const DA42_PREFLIGHT_MISSIONS: PreflightMission[] = [
+  {
+    id: "da42-mision-1",
+    name: "Misión 1: Vuelo Local Multimotor (GCXO - Tenerife Norte)",
+    badge: "Básico · Normal",
+    description: "Vuelo de maniobras multimotor en zona local de Tenerife Norte (GCXO) con Instructor y Alumno (160 kg total), 10 kg equipaje en morro y 15 kg en cabina. 140 kg (166,7 L) de Jet A-1 en tanques principales. Crucero bimotor al 60% de carga (21 kg/h).",
+    scenario: {
+      origin: "GCXO (Tenerife Norte)",
+      destination: "GCXO (Tenerife Norte)",
+      distanceNm: 60,
+      altPressFt: 2000,
+      oatC: 20,
+      windKt: 9,
+      runwayType: "asphalt",
+      runwayToraM: 3171,
+      runwayLdaM: 3171,
+      pilotsFrontKg: 160, // 2 ocupantes delante (80 kg + 80 kg)
+      passengersRearKg: 0,
+      baggageKg: 25, // 10 kg morro + 15 kg cabina
+      takeoffFuelLiters: 166.7, // 140.0 kg
+      cruiseLoadPct: 60,
+      flightTimeHrs: 1.0,
+    },
+  },
+  {
+    id: "da42-mision-2",
+    name: "Misión 2: Navegación Interinsular (GCXO - GCGM)",
+    badge: "Intermedio · Travesía",
+    description: "Travesía interinsular desde Tenerife Norte (GCXO) a La Gomera (GCGM) con 3 ocupantes (155 kg delante, 75 kg detrás) y 40 kg de equipaje repartido (15 kg morro, 25 kg cabina). 150 L de combustible al despegue.",
+    scenario: {
+      origin: "GCXO (Tenerife Norte)",
+      destination: "GCGM (La Gomera)",
+      distanceNm: 60,
+      altPressFt: 1000,
+      oatC: 22,
+      windKt: 5,
+      runwayType: "asphalt",
+      runwayToraM: 1500,
+      runwayLdaM: 1500,
+      pilotsFrontKg: 155, // 78 kg + 77 kg
+      passengersRearKg: 75,
+      baggageKg: 40, // 15 kg morro + 25 kg cabina
+      takeoffFuelLiters: 150, // 126.0 kg
+      cruiseLoadPct: 60,
+      flightTimeHrs: 0.6,
+    },
+  },
+  {
+    id: "da42-mision-3",
+    name: "Misión 3: Desafío de Carga y Centrado (GCTS - GCXO)",
+    badge: "Desafío · Alerta de Límites",
+    description: "Travesía interinsular desde Tenerife Sur (GCTS) hacia Tenerife Norte (GCXO) con 4 ocupantes (160 kg delante, 150 kg detrás) y equipaje pesado (20 kg morro, 30 kg cabina). Crucero bimotor al 70% de potencia.",
+    scenario: {
+      origin: "GCTS (Tenerife Sur)",
+      destination: "GCXO (Tenerife Norte)",
+      distanceNm: 45,
+      altPressFt: 0,
+      oatC: 24,
+      windKt: -4,
+      runwayType: "asphalt",
+      runwayToraM: 3200,
+      runwayLdaM: 3171,
+      pilotsFrontKg: 160,
+      passengersRearKg: 150,
+      baggageKg: 50, // 20 kg morro + 30 kg cabina
+      takeoffFuelLiters: 100, // 84.0 kg
+      cruiseLoadPct: 70,
+      flightTimeHrs: 0.5,
+    },
+  },
+];
+
+/**
+ * Checks whether a given (massKg, cgM) coordinate is within the DA42 Certified Envelope
+ */
+export function isCgInsideEnvelopeDA42(massKg: number, cgM: number, hasMAM42088: boolean = false): boolean {
+  const maxMass = hasMAM42088 ? DA42_DATA.mtomMAMKg : DA42_DATA.mtomKg;
+  if (massKg < DA42_DATA.minFlightMassKg || massKg > maxMass) return false;
+
+  let fwdLimit: number;
+  if (massKg <= 1468) {
+    fwdLimit = 2.35;
+  } else if (massKg <= 1700) {
+    fwdLimit = 2.35 + ((massKg - 1468) / (1700 - 1468)) * (2.40 - 2.35);
+  } else {
+    // MÄM 42-088 extension up to 1785 kg
+    fwdLimit = 2.40 + ((massKg - 1700) / (1785 - 1700)) * (2.418 - 2.40);
+  }
+
+  const aftLimit = 2.48;
+  return cgM >= fwdLimit && cgM <= aftLimit;
+}
+
+/**
+ * Maps Mass (kg) and CG (m) into DA42 SVG viewBox (1081 x 947) coordinates
+ * based on the official DA42 mass & balance chart (da42-mass-limits-table.png)
+ */
+export function mapCgToSvgCoordsDA42(massKg: number, cgM: number): { x: number; y: number } {
+  const clampedCg = Math.max(2.34, Math.min(2.51, cgM));
+  // 2.35 m at x = 174, 2.50 m at x = 918 (4960 px per meter, 49.6 px per 0.01 m)
+  const x = 174 + (clampedCg - 2.35) * 4960;
+
+  // 1250 kg at y = 839, 1800 kg at y = 262 (1.04909 px per kg, ~52.5 px per 50 kg)
+  const clampedMass = Math.max(1200, Math.min(1820, massKg));
+  const y = 839 - (clampedMass - 1250) * 1.04909;
+
+  return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 };
+}
+
+/**
+ * Inverse mapping for DA42: maps (x, y) on SVG to Mass (kg) and CG (m)
+ */
+export function mapSvgCoordsToCgDA42(x: number, y: number): { massKg: number; cgM: number } {
+  const cgM = 2.35 + (x - 174) / 4960;
+  const massKg = 1250 + (839 - y) / 1.04909;
+
+  return {
+    massKg: Math.round(massKg),
+    cgM: Math.round(cgM * 1000) / 1000,
+  };
+}
+
