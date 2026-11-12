@@ -300,7 +300,7 @@ export const DA42_LESSON_3_QUIZ: Quiz = {
   title:
     "Examen de Verificación: 3. Descripción del Avión y sus Sistemas (AFM Sección 7)",
   description:
-    "Evaluación teórica de verificación sobre la planta de potencia Continental CD-135 / CD-155, caja reductora integrada y hélices MT-Propeller abanderables de la Diamond DA42 Twin Star.",
+    "Evaluación teórica oficial de verificación sobre plantas motrices Continental CD-135 / CD-155, FADEC dual, sistema eléctrico bimotor de 28 VDC, combustible con Crossfeed, instrumentación Garmin G1000 EIS/CAS y tren retráctil de la Diamond DA42 Twin Star.",
   minPassScorePercentage: 75,
   questions: [
     {
@@ -330,6 +330,174 @@ export const DA42_LESSON_3_QUIZ: Quiz = {
       correctAnswerIndex: 1,
       explanation:
         "Al cortar el ENGINE MASTER en vuelo (con RPM > 950-1.300), la válvula drena aceite y los contrapesos junto al nitrógeno colocan las palas a 81° ± 1°. En tierra a bajas RPM (< 950-1.300 RPM), los fiadores mecánicos de bloqueo centrífugo impiden que las palas entren en bandera para permitir el arranque con baja resistencia de paso fino.",
+    },
+    {
+      id: "da42-3-3",
+      question:
+        "¿Cómo está estructurada la redundancia digital del sistema FADEC en cada una de las dos plantas motrices de la Diamond DA42?",
+      options: [
+        "Cada motor cuenta con dos unidades de control electrónico independientes (ECU A activa y ECU B en espera activa) con sensórica duplicada (RPM, MAP, raíl y temperaturas), conmutando automáticamente de canal si se detecta un fallo crítico.",
+        "Existe una única ECU central compartida en el morro que controla simultáneamente ambos motores mediante cables Bowden.",
+        "El motor izquierdo opera con control digital ECU A y el motor derecho únicamente mediante control mecánico manual analógico.",
+        "Cada motor tiene tres ECUs alimentadas exclusivamente por la batería del teléfono móvil de la tripulación.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM 7.9.2 describe que cada motor bimotor dispone de su propia arquitectura FADEC con dos canales independientes (ECU A y ECU B) y sensores duplicados. En operación normal manda la ECU A y, ante cualquier fallo crítico, conmuta automáticamente a la ECU B sin interrupción de potencia.",
+    },
+    {
+      id: "da42-3-4",
+      question:
+        "En relación con la comprobación de motores previa al despegue, ¿cuáles son los requisitos de régimen de motor para iniciar el ECU TEST y cuál es el procedimiento ante avisos de ECU en vuelo?",
+      options: [
+        "El ECU TEST exige 100% de potencia y en vuelo se debe apagar inmediatamente el motor ante cualquier aviso.",
+        "El ECU TEST solo se activa con las palancas en ralentí (IDLE) y régimen de RPM < 900; en vuelo, sobre IDLE, pulsar ECU TEST más de 2 segundos resetea avisos menores una sola vez, debiendo aterrizar en el aeródromo adecuado más próximo si la luz persiste o reaparece.",
+        "El ECU TEST se realiza a velocidad de crucero pulsando el interruptor de los flaps eléctricos.",
+        "El botón ECU TEST desconecta los inyectores Common Rail durante 30 segundos para limpiar carbonilla en la cámara de combustión.",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "El AFM 4A.6.8 y 7.9.2 establecen que la prueba de autoprueba FADEC solo inicia con Power Levers en IDLE y RPM < 900 (en caso contrario no arranca). En vuelo (RPM > 900), mantener presionado el botón más de 2 segundos resetea avisos menores una sola vez; si no se extingue o vuelve a encenderse, exige aterrizar en el aeródromo adecuado más cercano.",
+    },
+    {
+      id: "da42-3-5",
+      question:
+        "¿Cuáles son las características principales del sistema eléctrico de generación primaria de la DA42 bimotor según el AFM Sección 7.10?",
+      options: [
+        "Red de 28 Vcc alimentada por dos alternadores independientes movidos por correa de 28 V / 60 A cada uno (120 A combinados) y una batería principal de plomo-ácido de 24 V / 13.6 Ah ubicada en el compartimento de morro.",
+        "Red de 12 Vcc con un único alternador de 40 A en el motor izquierdo y dínamo manual en el derecho.",
+        "Red de corriente alterna de 115 V a 400 Hz con turbina de aire de impacto permanente.",
+        "Red de 48 Vcc alimentada exclusivamente por paneles solares instalados en el intradós alar.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM Sección 7.10 especifica una red de corriente continua de 28 VDC, dos alternadores independientes de 28 V / 60 A instalados uno en cada motor y una batería principal de 24 V / 13.6 Ah situada en el morro del avión.",
+    },
+    {
+      id: "da42-3-6",
+      question:
+        "En caso de un fallo eléctrico grave con pérdida de ambos alternadores y de la batería principal en la DA42, ¿qué función cumplen las baterías de respaldo ECU (ECU Backup Batteries) y qué advertencia crítica debe respetarse con el conmutador ECU SWAP?",
+      options: [
+        "Alimentan todas las luces exteriores y pantallas durante 5 horas, y el conmutador ECU SWAP debe colocarse en OFF.",
+        "Suministran energía eléctrica exclusiva a la ECU B de cada motor durante un mínimo de 30 minutos; el conmutador ECU SWAP debe permanecer en AUTOMATIC o ECU B, ya que seleccionar manualmente ECU A provocaría la parada inmediata del motor por carecer de alimentación eléctrica.",
+        "Alimentan el motor de arranque en vuelo para reencendidos continuos, con el conmutador ECU SWAP forzado en ECU A.",
+        "Conectan automáticamente la radio de emergencia con la torre de control desconectando los motores.",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "El AFM 7.10 indica que las baterías de respaldo de la ECU (dos bloques de 24 V) alimentan exclusivamente a la ECU B de cada motor durante al menos 30 minutos. Dado que la ECU A queda desenergizada en fallo eléctrico total, cambiar el conmutador a ECU A apagará inmediatamente el motor.",
+    },
+    {
+      id: "da42-3-7",
+      question:
+        "Respecto a los depósitos y válvulas de combustible de la DA42, ¿cuáles son las capacidades utilizables estándar y en qué circunstancias está autorizado el uso de la posición CROSSFEED?",
+      options: [
+        "26.0 US gal utilizables por cada Main Tank alar (52.0 US gal en total) más 13.7 US gal utilizables por cada Aux Tank de góndola (79.4 US gal utilizables totales); CROSSFEED se emplea para corregir desbalances en vuelo nivelado o alimentar el motor operativo con el ala contraria en vuelo monomotor (nunca en ambos motores a la vez).",
+        "10 US gal por ala; CROSSFEED es mandatorio en despegue y aterrizaje simultáneamente en ambos motores.",
+        "50 US gal en un único depósito central; CROSSFEED no existe en la DA42.",
+        "100 US gal utilizables por depósito con transferencia automática por gravedad sin válvulas selectoras.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM 7.9.5 certifica 26.0 US gal utilizables en cada depósito principal alar y 13.7 US gal en cada depósito auxiliar de góndola (total 79.4 US gal). La posición CROSSFEED solo debe usarse para reequilibrar combustible en vuelo o en operación monomotor (OEI), estando terminantemente prohibido seleccionar CROSSFEED en ambos selectores a la vez.",
+    },
+    {
+      id: "da42-3-8",
+      question:
+        "En el circuito de combustible de los motores Continental CD-135/CD-155 de la DA42, ¿qué bombas intervienen en la alimentación de alta presión y qué función cumple el retorno y enfriador de combustible (Fuel Cooler)?",
+      options: [
+        "Una bomba mecánica de baja presión (LP) y una bomba mecánica de alta presión (HP) Common Rail asistidas por bombas eléctricas auxiliares (FUEL PUMP L/R); el exceso de combustible caliente retorna al depósito que alimenta al motor pasando por un Fuel Cooler para evitar vaporizaciones si la temperatura exterior no supera 20 °C con deflectores.",
+        "Solo existen bombas manuales de pie bajo los pedales del copiloto sin circuito de retorno ni enfriador.",
+        "Una bomba eléctrica sumergida de 200 bar que inyecta directamente gasolina de aviación en el colector de admisión sin retorno.",
+        "Una bomba de vacío accionada por el horizonte artificial que presuriza los depósitos a 15 psi.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El sistema Common Rail cuenta con una bomba LP mecánica, una bomba HP mecánica y bombas auxiliares eléctricas (L/R FUEL PUMP). El caudal no inyectado regresa caliente al depósito correspondiente a través del intercambiador Fuel Cooler (limitado operacionalmente respecto a sus deflectores invernales si OAT > 20 °C).",
+    },
+    {
+      id: "da42-3-9",
+      question:
+        "En el sistema de refrigeración líquida (Cooling System) de la DA42, ¿qué elementos componen el circuito de cada motor y qué implicación operativa tiene la alerta 'WATER LEVEL' en el G1000?",
+      options: [
+        "El sistema es puramente por aire mediante aletas en los cilindros y no dispone de alerta WATER LEVEL.",
+        "Cada motor dispone de un circuito presurizado con mezcla 50/50 agua-refrigerante con intercambiador frontal, termostato y depósito de compensación; si la alerta WATER LEVEL se ilumina fija en tierra, el nivel de líquido refrigerante es bajo y el despegue está prohibido.",
+        "El refrigerante es combustible JET A-1 que circula por el cárter y WATER LEVEL indica agua en el depósito de aceite de la reductora.",
+        "Usa nitrógeno líquido criogénico que debe rellenarse cada 20 minutos de vuelo si se apaga la alerta WATER LEVEL.",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "El motor Continental emplea refrigeración líquida con mezcla 50:50 de agua y anticongelante (G48 o G30). Un sensor en el depósito de compensación activa la alerta WATER LEVEL en el G1000 ante bajo nivel; si permanece activa en tierra, no se autoriza el vuelo.",
+    },
+    {
+      id: "da42-3-10",
+      question:
+        "En cuanto a los sistemas de lubricación de la DA42, ¿qué circuitos independientes existen en cada góndola de motor y qué indica la alerta ámbar 'L/R GBOX TEMP'?",
+      options: [
+        "El circuito de aceite de motor (cárter húmedo, 4,5 a 6,0 L) y el circuito de aceite de la caja reductora (lubricación y gobierno de hélice) son independientes con sus propios radiadores; L/R GBOX TEMP alerta de sobretemperatura en la reductora (>115 °C) exigiendo reducción de potencia.",
+        "El motor y la reductora comparten un único depósito de líquido de frenos sintético de 2 litros sin indicación térmica.",
+        "No existe aceite en la reductora porque emplea engranajes secos de teflón autolubricados.",
+        "Indica que el cárter de motor se ha quedado sin combustible y la hélice se abanderará en 5 segundos.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El aceite motor (AeroShell Diesel Ultra) y el aceite de reductora (Shell Spirax 75W-90) son totalmente independientes. La reductora dispone de su propio intercambiador térmico y sonda de temperatura, activando L/R GBOX TEMP en ámbar si supera 115 °C (rojo a 120 °C).",
+    },
+    {
+      id: "da42-3-11",
+      question:
+        "En la instrumentación de motor Garmin G1000 EIS de la DA42 bimotor, ¿cómo se presentan los parámetros de potencia y motor en la barra vertical del MFD?",
+      options: [
+        "Muestra agujas analógicas convencionales de presión de admisión (Manifold Pressure en inHg) y flujo de mezcla en galones por hora.",
+        "Presenta lecturas duales independientes para motor izquierdo (L) y derecho (R), encabezadas por los indicadores digitales y arcos de % LOAD (potencia efectiva) y RPM de hélice, seguidos de presión/temperatura de aceite, refrigerante, reductora, combustible y parámetros eléctricos.",
+        "Muestra únicamente el estado del piloto automático y oculta los parámetros de motor hasta que se produce una avería catastrófica.",
+        "Presenta una sola aguja combinada que hace el promedio de los dos motores sin diferenciar entre el izquierdo y el derecho.",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "La barra EIS (Engine Indication System) del G1000 en la DA42 bimotor muestra permanentemente columnas dobles (L y R) con % LOAD y RPM en la parte superior, integrando las lecturas analógicas digitales de todos los parámetros de planta de potencia y sistemas de vuelo.",
+    },
+    {
+      id: "da42-3-12",
+      question:
+        "En el sistema de alertas CAS (Crew Alerting System) del Garmin G1000 en la DA42, ¿cómo se categorizan jerárquicamente las alertas en pantalla y cómo se reconoce su recepción en cabina?",
+      options: [
+        "Warnings en rojo con señal acústica continua para fallos críticos (ej. L/R OIL PRES, DOOR UNLOCKED); Cautions en amarillo con tono sonoro para condiciones anormales (ej. L/R ALTN FAIL, LOW FUEL); y Avisos en blanco para información operativa; se silencian y consultan con la tecla ALERTS del PFD.",
+        "Todas las alertas se muestran en verde y se apagan automáticamente girando los mandos de compensación de dirección.",
+        "Solo existen avisos sonoros por voz sintética en alemán sin indicación de texto en pantalla.",
+        "Las alertas rojas solo pueden cancelarse cortando la llave Electric Master en vuelo.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El sistema CAS del G1000 clasifica los avisos en Warnings rojos (máxima prioridad y peligro inmediato con alarma continua), Cautions amarillos (precaución con tono breve) y Avisos blancos de estado, gestionados a través de la tecla de función ALERTS del PFD.",
+    },
+    {
+      id: "da42-3-13",
+      question:
+        "Respecto a los mandos de vuelo y superficies hipersustentadoras de la DA42, ¿qué arquitectura mecánica y eléctrica presentan los alerones, timones y flaps?",
+      options: [
+        "Mandos de vuelo primarios accionados por varillas rígidas de empuje y tracción (push-pull rods) y cables; flaps eléctricos con selector de 3 posiciones (UP, APP a 156 KIAS, LDG a 136 KIAS) provistos de compensación aerodinámica automática en timón de profundidad.",
+        "Mandos fly-by-wire puramente electrónicos sin conexión física entre la palanca de mando y las superficies de control.",
+        "Flaps hidráulicos de accionamiento manual mediante palanca de bombeo continuo entre los asientos delanteros.",
+        "Alerones y timón de profundidad accionados exclusivamente por presión neumática del sistema de vacío.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM 7.7 describe mandos de vuelo primarios operados mediante varillas rígidas de empuje (push-pull rods) para alerones y timón de profundidad, y cables para dirección. Los flaps son eléctricos de tres posiciones (UP, APP con VFE 156 KIAS y LDG con VFE 136 KIAS) con compuerta de compensación integrada.",
+    },
+    {
+      id: "da42-3-14",
+      question:
+        "En el sistema de tren de aterrizaje retráctil de la DA42 (AFM Sección 7.5), ¿qué tecnología acciona el tren, cuál es la velocidad máxima de retracción (vLO RET) y cómo se opera la extensión de emergencia?",
+      options: [
+        "Tren retráctil triciclo accionado electrohidráulicamente mediante bomba reversible con acumulador de nitrógeno; retracción autorizada hasta vLO RET = 156 KIAS (extensión hasta 194 KIAS); la extensión de emergencia se realiza tirando de la palanca roja EMERGENCY GEAR EXTENSION, que alivia la presión hidráulica permitiendo la caída libre por gravedad asistida por resortes.",
+        "Tren de retracción manual por manivela de 50 vueltas con velocidad máxima de 80 KIAS y extensión neumática con cartucho pirotécnico.",
+        "Tren fijo no retráctil cubierto por carenados aerodinámicos de composite con rueda de morro loca sin freno.",
+        "Tren eléctrico con motor paso a paso sin posibilidad de extensión de emergencia si falla el alternador.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM 7.5 especifica un tren triciclo retráctil electrohidráulico con montantes oleoneumáticos, rueda de morro orientable enlazada a pedales, velocidad de retracción hasta 156 KIAS (vLO RET) y extensión hasta 194 KIAS (vLE / vLO EXT). El tirador EMERGENCY GEAR alivia la presión del circuito hidráulico para que el tren caiga por gravedad y bloquee mecánicamente con asistencia de muelles.",
     },
   ],
 };

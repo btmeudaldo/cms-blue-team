@@ -2097,11 +2097,7 @@ export const DA42_LESSON_3 = {
   </div>
 </div>
 
-
-
 <!-- pagebreak -->
-
-
 
 <!-- DIAPOSITIVA 3.2: 3.2 Reductora Integrada y Hélice MT-Propeller -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2219,6 +2215,1248 @@ export const DA42_LESSON_3 = {
             <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
               <strong class="text-[#0B2E59] dark:text-sky-300">Diamond DA42 Twin Star</strong> · Caja Reductora Integrada y Hélice MT-Propeller MTV-6 Abanderable (AFM 7.9.2)
             </figcaption>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.3: 3.3 Sistema FADEC: Control Digital y Redundancia Dual -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.3 Sistema FADEC: Control Digital y Redundancia Dual</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Arquitectura Bimotor, Doble ECU (A y B) por Motor y Gobierno Monomando</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Arquitectura FADEC Bimotor (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ARQUITECTURA FADEC BIMOTOR (AFM 7.9.2)</span>
+        </div>
+        <div class="space-y-1.5 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- CANALES FADEC A Y B REDUNDANTES -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CANALES FADEC INDEPENDIENTES</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Doble ECU por motor:</strong> Dos canales de control digital independientes (ECU A activa y ECU B en espera activa) instalados en cada góndola de motor.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Sensórica duplicada:</strong> Doble captador de RPM (cigüeñal y árbol de levas), presión en colector (MAP), presión en raíl común y temperaturas de refrigerante.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Conmutación automática (Voter):</strong> Si el canal activo detecta un fallo interno crítico o pérdida de señal de sensor, transfiere el control de inmediato al canal de respaldo.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Mandos de potencia (Power Levers):</strong> Dobles potenciómetros envían consigna de empuje (% LOAD) directamente a las ECUs de cada motor.</span>
+              </div>
+            </div>
+
+            <!-- GOBIERNO INTEGRAL Y ALIMENTACIÓN -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">GOBIERNO INTEGRAL Y ALIMENTACIÓN</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Sin mandos mecánicos analógicos:</strong> El FADEC modula electrónicamente la inyección directa Common Rail y la presión de aceite al gobernador de la hélice MTV-6.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Dependencia eléctrica total:</strong> Motores diésel sin magnetos; inyectores y ordenadores de control exigen suministro ininterrumpido de energía continua (28 VDC).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Fuentes primarias:</strong> Cada motor dispone de su propio alternador de 28 V / 60 A y acceso a la batería principal de morro (24 V / 13.6 Ah).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Baterías de respaldo ECU:</strong> Baterías auxiliares dedicadas (ECU Backup Batteries) que aseguran mínimo 30 min de operación ante fallo eléctrico total.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA INFORMATIVA AFM -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE (AFM 7.9.2):</span>
+            </strong>
+            <ul class="list-disc pl-3 space-y-0.5 text-[11px] leading-tight">
+              <li>Cada planta motriz de la DA42 cuenta con su propio sistema FADEC redundante e independiente. En vuelo normal, la ECU A controla el motor y la ECU B permanece en espera activa (hot standby).</li>
+              <li>Al colocar el interruptor <code>ENGINE MASTER</code> en OFF, se desenergizan los inyectores y la ECU del motor respectivo, provocando su parada inmediata y el abanderamiento automático de la hélice.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema FADEC (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ARQUITECTURA DEL SISTEMA FADEC</span>
+        </div>
+        <div class="w-full flex-1 min-h-0 flex flex-col justify-start space-y-1.5 overflow-hidden">
+          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
+            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              Esquema de control digital redundante bimotor: doble ECU (A y B) por motor, sensórica duplicada y regulación automática monomando de inyección y hélice abanderable.
+            </p>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/90 flex flex-col items-center justify-center p-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/Gemini_Generated_Image_8v05wd8v05wd8v05.jpg" alt="Arquitectura del Sistema FADEC Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.4: 3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y Conmutador ECU SWAP -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y Conmutadores ECU SWAP</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Pulsadores L/R ECU TEST, Conmutadores AUTOMATIC / ECU B y Reseteo en Vuelo</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">L/R ECU TEST &amp; ECU SWAP (AFM 4A.6.8 / 7.9.2)</span>
+        </div>
+        <div class="space-y-1.5 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- PULSADORES ECU TEST (L/R) -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PULSADORES ECU TEST (DOBLE FUNCIÓN)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Autoprueba en ralentí (IDLE):</strong> Con Power Levers en IDLE y RPM &lt; 900, pulsar y mantener pulsado el botón ECU TEST (L o R) ejecuta la autoprueba de dicho motor.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Secuencia del ciclo:</strong> Conmuta a ECU B, cicla gobernador de hélice (las RPM bajan levemente por aumento de paso), sacudida suave de motor y retorno a ECU A apagando las luces de aviso.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Reseteo en vuelo (RPM &gt; 900):</strong> Presionar durante más de 2 segundos resetea avisos menores de ECU A o B una sola vez. Si la causa persiste, la luz se enciende de nuevo.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Obligatorio prevuelo:</strong> Ambos motores deben probarse antes del despegue para asegurar la integridad de ambos canales y sus baterías de reserva.</span>
+              </div>
+            </div>
+
+            <!-- CONMUTADORES ECU SWAP (L/R) -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONMUTADORES ECU SWAP (AUTOMATIC / ECU B)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Posición AUTOMATIC:</strong> Operación estándar gobernada por el canal activo con conmutación automática instantánea ante anomalía.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Conmutación manual (solo emergencia):</strong> Los interruptores protegidos L/R ECU SWAP permiten seleccionar manualmente ECU B si la conmutación automática falla.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Criterio de reversión:</strong> Si al seleccionar ECU B el comportamiento del motor no mejora o empeora, restablecer inmediatamente el conmutador a AUTOMATIC.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Avisos no reseteables:</strong> Si la alerta ECU A/B permanece encendida o reaparece en vuelo, aterrizar en el aeródromo adecuado más próximo.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA / WARNING AFM -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>WARNING / CAUTION (AFM):</span>
+            </strong>
+            <ul class="list-disc pl-3 space-y-0.5 text-[11px] leading-tight">
+              <li><strong>WARNING:</strong> Si durante la prueba las luces de ECU no se encienden, o si la luz de aviso de batería de reserva permanece encendida, se prohíbe el despegue (batería de respaldo insuficiente ante fallo eléctrico).</li>
+              <li><strong>CAUTION:</strong> Durante la alternancia de ECUs es completamente normal percibir una sacudida leve del motor. Si se producen caídas prolongadas de potencia o parada, cancelar el vuelo de inmediato.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Panel de Control y Mandos (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">MANDOS DE PRUEBA Y CONMUTACIÓN FADEC</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 flex flex-col items-center justify-start space-y-2 p-2">
+          <div class="w-full p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-2xs text-left space-y-1">
+            <span class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wide">Puntos Clave de la Prueba ECU TEST DA42:</span>
+            <ul class="text-[11px] text-slate-700 dark:text-slate-300 space-y-1 list-disc pl-4">
+              <li>Ambas palancas Power Levers fijadas en <strong>IDLE</strong> (RPM &lt; 900).</li>
+              <li>Pulsar y mantener el botón <strong>ECU TEST L</strong> hasta completar el ciclo; luego repetir con <strong>ECU TEST R</strong>.</li>
+              <li>Observar encendido y extinción de las alertas <code>L/R ECU A FAIL</code> y <code>L/R ECU B FAIL</code> en el panel/G1000.</li>
+              <li>Verificar la caída transitoria de RPM por paso de hélice y recuperación suave del régimen de ralentí.</li>
+            </ul>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-900/60 flex flex-col justify-center items-center p-1.5 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-cas-alerts.png" alt="Mandos FADEC y Sistema de Alertas CAS Diamond DA42" class="w-full h-full max-h-[340px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.5: 3.5 Sistema Eléctrico I: Fuentes de Potencia y Alternadores Bimotor -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.5 Sistema Eléctrico I: Fuentes de Potencia y Alternadores Bimotor</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Red de 28 Vcc, Dos Alternadores de 60 A, Batería Principal y Toma Externa (GPU)</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GENERACIÓN Y BATERÍA PRINCIPAL (AFM 7.10)</span>
+        </div>
+        <div class="space-y-1.5 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- GENERACIÓN BIMOTOR (2x 60A) -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">GENERACIÓN BIMOTOR (28 Vcc)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Red principal de 28 Vcc:</strong> Sistema de distribución eléctrica continua para FADEC, aviónica Garmin G1000, tren retráctil y bombas auxiliares.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Dos alternadores de 60 A:</strong> Cada motor Continental acciona por correa un alternador de 28 V / 60 A (capacidad conjunta total de 120 A).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Regulación y monitorización:</strong> Reguladores de voltaje independientes; indicación de corriente de carga y tensión de barra en el G1000 EIS.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Capacidad monomotor (OEI):</strong> Un solo alternador de 60 A es capaz de suministrar energía a toda la carga eléctrica esencial del avión en vuelo.</span>
+              </div>
+            </div>
+
+            <!-- BATERÍA PRINCIPAL Y TOMA GPU -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">BATERÍA PRINCIPAL Y TOMA EXTERNA</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Batería principal (24 V / 13.6 Ah):</strong> Batería sellada de plomo-ácido situada en el compartimento de morro; proporciona energía para el arranque y respaldo de barras.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Baterías de excitación:</strong> Baterías auxiliares de 12 V / 1.3 Ah para asegurar la excitación inicial de los alternadores al accionar ENGINE MASTER.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Toma de corriente externa (GPU):</strong> Receptáculo en fuselaje delantero para conectar unidad externa de 28 Vcc en arranque en frío y mantenimiento.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Llave Electric Master:</strong> Conecta la batería principal al Battery Bus energizando las barras principales y relés de arranque.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- WARNING ELÉCTRICO AFM -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>🚨</span>
+              <span>WARNING (AFM 7.10):</span>
+            </strong>
+            <div class="text-[11px] leading-tight">
+              La inyección Common Rail y las unidades FADEC requieren energía eléctrica continua. En caso de avería de un alternador (alerta <code>L/R ALTN FAIL</code>), reducir consumo. Si fallan ambos alternadores y la tensión cae (<code>LOW VOLTS</code>), conectar de inmediato el conmutador <strong>ESSENTIAL BUS en ON</strong> y aterrizar en el aeródromo adecuado más cercano (mín. 30 minutos de autonomía eléctrica).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema de Fuentes Eléctricas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FUENTES DE POTENCIA Y DISTRIBUCIÓN</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 flex flex-col justify-between items-center space-y-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-electrical-sources.png" alt="Esquema Oficial del Sistema Eléctrico Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+
+          <div class="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 flex items-start gap-1.5 text-[11px] leading-tight text-amber-900 dark:text-amber-200 shrink-0 w-full">
+            <span class="text-xs shrink-0">⚠️</span>
+            <span><strong>CAUTION (AFM):</strong> Durante operaciones monomotor en vuelo nocturno o con sistemas de deshielo (TKS) activados, vigilar el amperímetro del alternador operativo para no superar los 60 A continuos.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.6: 3.6 Sistema Eléctrico II: Baterías de Respaldo ECU y Red de Barras -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.6 Sistema Eléctrico II: Baterías de Respaldo ECU y Red de Barras</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Baterías de Reserva L/R ECU B, Conmutador ESSENTIAL BUS y Batería de Emergencia</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DISTRIBUCIÓN Y RESPALDO ELÉCTRICO (AFM 7.10)</span>
+        </div>
+        <div class="space-y-1.5 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- BATERÍAS DE RESPALDO ECU (L/R ECU B ONLY) -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">BATERÍAS DE RESPALDO ECU (2x 24V)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Alimentación exclusiva a ECU B:</strong> Dos bloques de baterías selladas (12V en serie = 24V / 7.2Ah) conectadas exclusivamente a la ECU B de cada motor.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Conmutación automática:</strong> Si caen el alternador y la barra de batería, el relé conecta de inmediato la batería de reserva a su ECU B evitando la parada de motor.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Autonomía mínima de 30 minutos:</strong> Diseñada para sostener la inyección y el control del motor durante el descenso y aproximación para aterrizaje forzoso o inmediato.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Aislamiento completo:</strong> No suministra energía a aviónica, luces ni bombas secundarias; salvaguarda el 100% de su carga para mantener los motores vivos.</span>
+              </div>
+            </div>
+
+            <!-- RED DE BARRAS Y ESSENTIAL BUS -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">BARRAS Y CONMUTADOR ESSENTIAL BUS</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Hot Battery y Battery Bus:</strong> Hot Battery Bus con alimentación permanente para reloj y luces de emergencia; Battery Bus energiza arranque y barras de distribución.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Barras dedicadas L/R ECU:</strong> Activadas por ENGINE MASTER L y R; energizan tanto la ECU A como la B de cada planta motriz.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Conmutador ESSENTIAL BUS:</strong> En fallo de alternadores, activar en ON desconecta Main Bus y alimenta la Essential Bus (PFD, COM1/NAV1, Pitot) garantizando mín. 30 min.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Batería de emergencia (1h 30 min):</strong> Batería no recargable dedicada al horizonte artificial de actitud de reserva (Standby Attitude Indicator) y luz de cabina.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- WARNING CRÍTICO ECU B Y SUMINISTRO -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>🚨</span>
+              <span>WARNING: AL OPERAR CON BATERÍA DE RESPALDO</span>
+            </strong>
+            <div class="text-[11px] leading-tight">
+              Al operar un motor con su batería de respaldo FADEC, <strong>el conmutador ECU SWAP debe permanecer en AUTOMATIC o ECU B</strong>. No seleccionar la posición ECU A bajo ningún concepto: la ECU A carece de alimentación en este modo y el motor <strong>se apagará inmediatamente en vuelo</strong> sin posibilidad de rearranque.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema Eléctrico y Distribución (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESQUEMA DE BARRAS Y PROTECCIONES (AFM 7.10)</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 flex flex-col justify-between items-center space-y-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-electrical-sources.png" alt="Esquema Eléctrico Oficial de Barras y Distribución Diamond DA42" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+
+          <div class="p-2 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-950 dark:text-sky-200 flex items-start gap-1.5 text-[11px] leading-tight shrink-0 w-full">
+            <span class="text-xs shrink-0">ℹ️</span>
+            <span><strong>Panel de Disyuntores (Circuit Breakers):</strong> Situado en el subpanel lateral izquierdo de la cabina. Todos los disyuntores son del tipo "pullable" para aislar rápidamente circuitos en caso de cortocircuito o humo.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.7: 3.7 Sistema de Combustible I: Depósitos Principales, Auxiliares y Válvulas Crossfeed -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.7 Sistema de Combustible I: Depósitos Principales, Auxiliares y Válvulas Crossfeed</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Depósitos Alares y Góndolas, Selectores L/R (ON, CROSSFEED, OFF) y Bombas de Trasvase</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DEPÓSITOS Y ALIMENTACIÓN CRUZADA (AFM 7.9.5)</span>
+        </div>
+        <div class="space-y-1.5 py-0.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- CAPACIDADES DE DEPÓSITOS -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CAPACIDADES DE DEPÓSITOS</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Main Tanks (Alas):</strong> Dos depósitos estructurales de <strong>26.0 US gal utilizables</strong> (98.4 L) cada uno (52.0 US gal utilizables en total). Inutilizable: 1.0 US gal por ala.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Aux Tanks (Góndolas):</strong> Depósitos opcionales tras cada motor de <strong>13.7 US gal utilizables</strong> (52.0 L) cada uno (27.4 US gal utilizables adicionales).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Capacidad total utilizable:</strong> <strong>79.4 US gal (300.5 L)</strong> con depósitos auxiliares. Densidad estándar JET A-1: <strong>0.84 kg/L</strong>.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Desbalance admisible de combustible:</strong> Máximo <strong>5.0 US gal</strong> de diferencia entre el depósito principal izquierdo y derecho.</span>
+              </div>
+            </div>
+
+            <!-- VÁLVULAS Y ALIMENTACIÓN CRUZADA -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">VÁLVULAS L/R Y CROSSFEED</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Selectores de combustible L/R:</strong> Dos válvulas mecánicas independientes situadas en la consola central entre los asientos.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Posición ON (Normal):</strong> Cada motor se alimenta de su propio depósito principal alar y el sobrante del Common Rail retorna a ese mismo depósito.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Posición CROSSFEED:</strong> El motor se alimenta del depósito principal del ala contraria; el retorno de combustible se dirige también al depósito opuesto.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Posición OFF:</strong> Corta totalmente el paso de combustible al motor. Protegida con trinquete de seguridad que debe levantarse para seleccionar OFF.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CAUTION OPERACIONAL AFM -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>CAUTION (AFM 7.9.5):</span>
+            </strong>
+            <ul class="list-disc pl-3 space-y-0.5 text-[11px] leading-tight">
+              <li><strong>Jamás seleccionar CROSSFEED en ambas válvulas al mismo tiempo:</strong> Ambos motores quedarían alimentados de forma cruzada, aumentando el riesgo de desbalance o interrupción de combustible.</li>
+              <li>La posición CROSSFEED solo debe emplearse para equilibrar asimetrías de combustible en vuelo nivelado o durante vuelo monomotor prolongado (OEI) para alimentar el motor operativo con el combustible del ala del motor inoperativo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema de Depósitos y Válvulas (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESQUEMA DE COMBUSTIBLE · DEPÓSITOS Y CROSSFEED</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 flex flex-col justify-between items-center space-y-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-fuel-schematic-afm.png" alt="Esquema Oficial del Sistema de Combustible Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+
+          <div class="p-2 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-950 dark:text-sky-200 flex items-start gap-1.5 text-[11px] leading-tight shrink-0 w-full">
+            <span class="text-xs shrink-0">ℹ️</span>
+            <span><strong>Bombas de Trasvase Auxiliares (AUX PUMP L / R):</strong> Bombas eléctricas en las góndolas accionadas por interruptores en cabina. Transfieren a un régimen de aprox. 15-20 US gal/h desde el depósito auxiliar hacia el principal correspondiente.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.8: 3.8 Sistema de Combustible II: Bombas, Inyección Common Rail, Retorno y Enfriadores -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.8 Sistema de Combustible II: Bombas, Retorno y Enfriadores</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Bombas Mecánicas (LP/HP), Bombas Eléctricas Auxiliares (L/R), Common Rail, Retorno y Enfriadores (&gt;20°C)</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BOMBAS, COMMON RAIL Y RETORNO BIMOTOR (AFM 7.9.5)</span>
+        </div>
+        <div class="space-y-1.5 py-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- BOMBAS MECÁNICAS Y ELÉCTRICAS -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">BOMBAS MECÁNICAS Y ELÉCTRICAS</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Bomba mecánica de baja presión (LP):</strong> Accionada por el motor (árbol de levas); succiona combustible desde el filtro principal y gascolator del ala.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Bomba mecánica de alta presión (HP):</strong> Eleva la presión de inyección y alimenta el raíl común (Common Rail) de inyección directa de cada motor.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Bombas auxiliares (FUEL PUMP L / R):</strong> Bombas eléctricas en paralelo. Mandatorias en arranque, despegue, aterrizaje, vuelo monomotor (OEI) y modo CROSSFEED.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Bombas de trasvase (AUX PUMP L / R):</strong> Bombas eléctricas para transferir combustible desde los depósitos auxiliares (góndolas) hacia los depósitos principales.</span>
+              </div>
+            </div>
+
+            <!-- RETORNO Y ENFRIADORES -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">RETORNO Y ENFRIADORES (FUEL COOLERS)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Retorno Common Rail:</strong> El exceso de combustible caliente no inyectado a alta presión retorna continuamente hacia los depósitos de combustible.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Retorno en alimentación cruzada:</strong> El retorno de combustible vuelve siempre al depósito desde el cual se está alimentando el motor (lógica crossfeed).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Radiadores Fuel Cooler:</strong> Enfriadores dedicados en cada góndola/ala para refrigerar el combustible caliente antes de regresar al depósito principal.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Deflectores de invierno (Baffles):</strong> Placas deflectoras que <strong>DEBEN RETIRARSE</strong> obligatoriamente cuando la OAT supere los <strong>20 °C (68 °F)</strong>.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA / CAUTION AFM -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚡</span>
+              <span>CAUTION / PROCEDIMIENTOS AFM (7.9.5):</span>
+            </strong>
+            <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
+              <li class="pl-0.5"><strong>Activación de FUEL PUMP:</strong> Ante fluctuación o caída de presión de combustible, activar inmediatamente la bomba auxiliar eléctrica correspondiente para asegurar el cebado continuo de la bomba de alta presión.</li>
+              <li class="pl-0.5"><strong>Operación de trasvase AUX:</strong> Las bombas eléctricas de trasvase solo deben activarse en vuelo de crucero nivelado cuando haya espacio suficiente en los depósitos principales para recibir el combustible trasvasado.</li>
+              <li class="pl-0.5"><strong>Inspección por descebado:</strong> Si una bomba mecánica aspira aire por agotamiento completo del depósito, es mandatorio realizar una purga e inspección técnica reglamentaria antes del siguiente vuelo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema y Limitaciones (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESQUEMA DE BOMBEO, RETORNO Y ENFRIADORES</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-fuel-schematic-afm.png" alt="Esquema Oficial del Sistema de Combustible (AFM 7.9.5) Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+
+          <!-- CAUTION LIMITACIÓN TÉRMICA AFM -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>LIMITACIÓN OPERACIONAL: DEFLECTORES FUEL COOLER</span>
+            </strong>
+            <div class="text-[11px] leading-tight mt-0.5">
+              Operar con los deflectores invernales del Fuel Cooler colocados con temperaturas exteriores (OAT) superiores a <strong>20 °C (68 °F)</strong> puede provocar sobretemperatura del combustible retornado, riesgo de vaporización y degradación en las bombas de alta presión.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.9: 3.9 Sistema de Refrigeración Líquida (Cooling System) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.9 Sistema de Refrigeración Líquida (Cooling System)</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Termostato (~88°C / 190°F), Radiador en Góndola, Vaso de Expansión, Calefacción y Alertas L/R WATER LEVEL</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SISTEMA DE REFRIGERACIÓN LÍQUIDA (AFM 7.9.6)</span>
+        </div>
+        <div class="space-y-1.5 py-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- TERMOSTATO Y CIRCUITOS DE FLUJO -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">TERMOSTATO Y CIRCUITOS (CD-135 / CD-155)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Circuito Bypass (&lt; 80 °C):</strong> El refrigerante recircula exclusivamente por el bloque del motor permitiendo un calentamiento rápido.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Circuito Mixto (80 °C - 94 °C):</strong> La válvula termostática abre a ~88 °C (190 °F), derivando caudal progresivo al radiador en góndola.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Circuito Principal (&gt; 94 °C):</strong> Todo el flujo pasa por el radiador frontal de la góndola. Límite máximo operativo: <strong>105 °C (221 °F)</strong>.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Líquido refrigerante:</strong> Mezcla 50% agua destilada y 50% anticongelante (Glysantin Protect Plus / G48), con protección hasta -36 °C (-38 °F).</span>
+              </div>
+            </div>
+
+            <!-- VASO DE EXPANSIÓN, CALEFACCIÓN Y SENSORES -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">VASO DE EXPANSIÓN Y CALEFACCIÓN</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Vaso y aviso L/R WATER LEVEL:</strong> Botella de expansión con tapón de sobrepresión y presostato/sensor de nivel conectado al panel CAS de la G1000.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Sensor en culata (CT):</strong> Transmite la lectura directamente a ambos canales FADEC y al indicador digital <code>COOLANT TEMP</code> del EIS G1000.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Intercambiador reductora:</strong> Refrigeración del aceite de caja reductora mediante intercambiador integrado refrigerante/aceite.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Calefacción de cabina:</strong> Intercambiador líquido-aire de flujo continuo alimentado por refrigerante; regulable por el piloto con <code>CABIN HEAT</code>.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA / CAUTION AFM -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚡</span>
+              <span>CAUTION / PROCEDIMIENTOS DE ANOMALÍA AFM (3.5.1 / 3.5.2):</span>
+            </strong>
+            <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
+              <li class="pl-0.5"><strong>Aviso L/R WATER LEVEL:</strong> Pérdida de refrigerante en el motor indicado. Reduzca potencia de inmediato y vigile temperaturas; prepararse para posible parada en vuelo (OEI) o aterrizaje preventivo.</li>
+              <li class="pl-0.5"><strong>Sobretemperatura sin aviso de nivel:</strong> Reduzca potencia un 10 % e incremente la velocidad indicada en 10 KIAS; si no entra en arco verde en 60 s, aterrice en el aeródromo adecuado más cercano.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema del Sistema de Refrigeración (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESQUEMA DE REFRIGERACIÓN (CD-135 / CD-155)</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-cooling-system.png" alt="Esquema del Sistema de Refrigeración Líquida Continental CD-135 / CD-155 Diamond DA42" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+
+          <!-- PRECAUCIÓN DE SEGURIDAD AFM -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>PRECAUCIÓN DE SEGURIDAD (AFM 7.9.6):</span>
+            </strong>
+            <div class="text-[11px] leading-tight mt-0.5">
+              El circuito presurizado no debe abrirse en caliente bajo ningún concepto. Compruebe el nivel visual en las botellas de expansión a través de las mirillas de las góndolas en la inspección pre-vuelo antes del encendido.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.10: 3.10 Sistemas de Lubricación: Motor y Caja Reductora -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.10 Sistemas de Lubricación: Motor y Caja Reductora</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Circuitos Independientes por Motor: Cárter Húmedo de Motor y Circuito de Caja Reductora / Gobernador</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SISTEMAS DE LUBRICACIÓN (AFM 7.9.7)</span>
+        </div>
+        <div class="space-y-1.5 py-0">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- ACEITE DE MOTOR -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ACEITE DE MOTOR (ENGINE OIL)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Aceites aprobados:</strong> AeroShell Oil Diesel Ultra 5W-30, Shell Helix Ultra 5W-30 / 5W-40 y AeroShell Diesel 10W-40.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Capacidad por motor:</strong> Entre 4,5 l (mín.) y 6,0 l (máx.) en cárter húmedo; radiador inferior. Consumo máx.: 0,1 l/h.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Comprobación prevuelo:</strong> Varilla en orificio del capó superior; esperar de 5 a 30 min tras la parada del motor.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Límites G1000 EIS:</strong> Presión normal <code>OIL PRES</code> 2,3 - 5,2 bar (mín. 1,2 bar en ralentí); temp. máx. <code>OIL TEMP</code> 140 °C.</span>
+              </div>
+            </div>
+
+            <!-- ACEITE DE REDUCTORA Y GOBERNADOR -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">ACEITE DE REDUCTORA Y GOBERNADOR</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Circuito independiente:</strong> Lubrica reductora y alimenta el gobernador de hélice MT-Propeller y acumulador de bandera.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Aceites aprobados:</strong> Shell EP 75W-90 API GL-4, Shell Spirax S4 G 75W-90, Spirax GSX y S6 GXME 75W-80.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Capacidad y mirilla:</strong> Aprox. 1,0 l; inspección visual mediante mirilla de cristal en el frontal del capó inferior.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Límites G1000 EIS:</strong> Temp. normal <code>GEARBOX</code> hasta 115 °C (aviso precaución 115 - 120 °C; límite máx. 120 °C).</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA / CAUTION AFM -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚡</span>
+              <span>CAUTION / PROCEDIMIENTOS DE ANOMALÍA AFM (7.9.7 / 3.5.3):</span>
+            </strong>
+            <ul class="list-disc pl-3 space-y-0.5 mt-0.5 text-[11px] leading-tight">
+              <li class="pl-0.5"><strong>Incompatibilidad absoluta:</strong> Utilice exclusivamente los lubricantes autorizados con su designación exacta. Jamás mezcle aceite de motor con aceite de reductora ni emplee especificaciones no certificadas.</li>
+              <li class="pl-0.5"><strong>Nivel bajo en reductora:</strong> El nivel de aceite de caja reductora no debe disminuir entre revisiones. Si la mirilla está vacía o el nivel es bajo, se prohíbe el vuelo y se requiere mantenimiento técnico inmediato.</li>
+              <li class="pl-0.5"><strong>Baja presión de aceite de motor:</strong> Si <code>OIL PRES</code> desciende por debajo de 1,2 bar en vuelo, reduzca potencia inmediatamente y prepárese para parada de motor y procedimiento OEI.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema de Circuitos de Lubricación (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CIRCUITOS DE LUBRICACIÓN (CD-135 / CD-155)</span>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-lubrication-system.jpg" alt="Esquema de Circuitos de Aceite de Motor y Caja Reductora Continental CD-135 / CD-155 Diamond DA42" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+
+          <!-- PRECAUCIÓN DE GOBERNADOR Y HÉLICE AFM -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>PRECAUCIÓN: PRESIÓN DE ACEITE Y PASO DE HÉLICE</span>
+            </strong>
+            <div class="text-[11px] leading-tight mt-0.5">
+              La presión de aceite de la caja reductora mantiene la hélice en paso fino. La pérdida de presión en este circuito provocará que los contrapesos y muelles lleven la hélice hacia la posición de paso grueso o bandera (feather).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.11: 3.11 Instrumentación de Motor Integrada: Garmin G1000 EIS -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.11 Instrumentación de Motor Integrada: Garmin G1000 EIS</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Engine Indication System Bimotor: Páginas ENGINE, SYSTEM y FUEL en MFD/PFD</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GARMIN G1000 ENGINE INDICATION SYSTEM (EIS)</span>
+        </div>
+        <div class="space-y-1.5 py-0 flex-1 min-h-0 flex flex-col justify-between">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch">
+            <!-- PÁGINA ENGINE (MODO PRINCIPAL) -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PÁGINA ENGINE (MONITORIZACIÓN PRIMARIA)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Load Display (%):</strong> Arcos y lectura digital dual (0% a 100%) de potencia desarrollada por cada motor.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Tachometer (RPM):</strong> Tacómetros de hélice bimotor en barra graduada y dígitos directos (máx. 2.300 RPM).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Oil Temp &amp; Pres:</strong> Presión (bar) y temperatura (°C) de aceite por motor con código de colores dinámico.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Coolant Temp (CT):</strong> Temperatura de refrigerante por motor (normal 60 - 96 °C, límite máx. 105 °C).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Gearbox Temp:</strong> Temperatura de reductora izquierda y derecha (normal hasta 115 °C, máx. 120 °C).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Fuel Quantity:</strong> Niveles analógico-digitales para depósitos principales <code>LH MAIN</code> y <code>RH MAIN</code> (US gal).</span>
+              </div>
+            </div>
+
+            <!-- PÁGINAS SYSTEM & FUEL -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">PÁGINAS SYSTEM Y FUEL (SUB-PANELES)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Voltímetros de barras:</strong> Tensión digital para <code>MAIN BUS</code>, <code>LH ECU BUS</code> y <code>RH ECU BUS</code> (nominal 28 V).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Amperímetros alternadores:</strong> Carga independiente generada por <code>LH ALT</code> y <code>RH ALT</code> (hasta 60 A/motor).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Sistema de deshielo (DEICE):</strong> Nivel de fluido TKS en galones US (si el sistema opcional está instalado).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Fuel Flow LH / RH:</strong> Caudalímetros independientes en tiempo real (en US gal/h para cada motor).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Totalizador combustible:</strong> Combustible consumido (<code>USED</code>), restante (<code>REM</code>), autonomía y alcance.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Depósitos auxiliares:</strong> Cantidad en depósitos de góndola <code>AUX L</code> y <code>AUX R</code> (máx. 13,2 US gal util/lado).</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA AFM -->
+          <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE (AFM 7.9.4):</span>
+            </strong>
+            <div class="text-[11px] leading-tight mt-0.5">
+              En el Garmin G1000, los parámetros de motor se presentan permanentemente en la franja izquierda del MFD en vuelo normal, y se transfieren automáticamente al PFD en caso de fallo de pantalla (Modo Reversionary).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Franjas EIS Garmin G1000 Bimotor (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GARMIN G1000 EIS STRIPS (BIMOTOR)</span>
+          <span class="text-[9px] font-bold text-sky-800 bg-sky-100 dark:bg-sky-950 dark:text-sky-300 px-1.5 py-0.5 rounded">Engine · System · Fuel</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-1.5 flex-1 min-h-0">
+          <!-- 1. Engine Strip -->
+          <div class="h-full flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 p-1 shadow-2xs min-h-0">
+            <span class="text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase text-center pb-0.5 border-b border-slate-100 dark:border-slate-700 mb-0.5 shrink-0">ENGINE</span>
+            <div class="w-full flex-1 min-h-0 bg-white rounded-lg flex items-center justify-center overflow-hidden p-0.5" style="background-color: #ffffff;">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-engine.png" alt="Garmin G1000 EIS Engine Strip Diamond DA42" class="h-full w-auto object-contain rounded" style="max-height: 480px; height: 100%; width: auto; object-fit: contain; background-color: #ffffff; object-position: center;" />
+            </div>
+          </div>
+
+          <!-- 2. System Strip -->
+          <div class="h-full flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 p-1 shadow-2xs min-h-0">
+            <span class="text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase text-center pb-0.5 border-b border-slate-100 dark:border-slate-700 mb-0.5 shrink-0">SYSTEM</span>
+            <div class="w-full flex-1 min-h-0 bg-white rounded-lg flex items-center justify-center overflow-hidden p-0.5" style="background-color: #ffffff;">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-system.png" alt="Garmin G1000 EIS System Strip Diamond DA42" class="h-full w-auto object-contain rounded" style="max-height: 480px; height: 100%; width: auto; object-fit: contain; background-color: #ffffff; object-position: center;" />
+            </div>
+          </div>
+
+          <!-- 3. Fuel Strip -->
+          <div class="h-full flex flex-col rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 p-1 shadow-2xs min-h-0">
+            <span class="text-[10px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase text-center pb-0.5 border-b border-slate-100 dark:border-slate-700 mb-0.5 shrink-0">FUEL</span>
+            <div class="w-full flex-1 min-h-0 bg-white rounded-lg flex items-center justify-center overflow-hidden p-0.5" style="background-color: #ffffff;">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-fuel.png" alt="Garmin G1000 EIS Fuel Strip Diamond DA42" class="h-full w-auto object-contain rounded" style="max-height: 480px; height: 100%; width: auto; object-fit: contain; background-color: #ffffff; object-position: center;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.12: 3.12 Sistema de Alertas CAS Garmin G1000 y Mandos de Cabina -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.12 Sistema de Alertas CAS Garmin G1000 y Mandos de Cabina</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Crew Alerting System (CAS) Bimotor, Jerarquía de Avisos y Mandos de Motor en Consola Central</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1 flex-1 min-h-0 flex flex-col justify-start">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GARMIN G1000 CAS ALERTS &amp; ENGINE CONTROLS</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 items-stretch flex-1 min-h-0">
+            <!-- SISTEMA DE ALERTAS CAS -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">SISTEMA DE ALERTAS CAS (CREW ALERTING)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong class="text-red-600 dark:text-red-400">WARNINGS (Rojo):</strong> Peligro crítico que exige acción inmediata (<code>L/R ENG FIRE</code>, <code>L/R OIL PRES</code>, <code>DOOR OPEN</code>, <code>GEAR UNSAFE</code>).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong class="text-amber-600 dark:text-amber-400">CAUTIONS (Ámbar):</strong> Atención urgente requerida (<code>L/R ECU A/B FAIL</code>, <code>L/R FUEL PRES</code>, <code>L/R OIL TEMP</code>, <code>L/R WATER LEVEL</code>).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong class="text-slate-600 dark:text-slate-300">ADVISORIES (Blanco):</strong> Información operacional de estado (<code>L/R GLOW ON</code>, <code>L/R AUX PUMP ON</code>, <code>PFD/MFD FAN FAIL</code>).</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Alerta sonora y Chime:</strong> Tono acústico distintivo integrado en auriculares ante aparición de avisos Warning y Caution.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Softkey ALERTS:</strong> Pulsador en bisel inferior del PFD para confirmar (acknowledge) y consultar la ventana de mensajes.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Integración FADEC bimotor:</strong> Ambas ECUs de cada motor envían su estado y anomalías directamente al bus del CAS.</span>
+              </div>
+            </div>
+
+            <!-- MANDOS ESPECÍFICOS DEL MOTOR -->
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 h-full flex flex-col justify-start">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">MANDOS DE MOTOR (BIMOTOR)</strong>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Power Levers L &amp; R:</strong> Mandos de empuje independientes en consola central con ruleta de ajuste de fricción.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Engine Master L &amp; R:</strong> Interruptores con guarda independiente que energizan las ECUs y permiten el encendido.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Conmutadores ECU SWAP:</strong> Mandos protegidos para seleccionar <code>AUTOMATIC</code> o forzar <code>ECU B</code> por motor.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Pulsadores ECU TEST:</strong> Autocomprobación FADEC bimotor en ralentí (&lt; 900 RPM) y test de baterías de respaldo.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Alternate Air L &amp; R:</strong> Tiradores independientes para aportar aire no filtrado al motor ante bloqueo de admisión.</span>
+              </div>
+              <div class="flex items-start gap-1.5 py-0 text-[11px] leading-tight">
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+                <span class="text-slate-800 dark:text-slate-200"><strong>Electric Master y Starters:</strong> Conmutador general de batería y pulsadores independientes <code>LEFT / RIGHT START</code>.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOTA / WARNING AFM EN COLUMNA IZQUIERDA -->
+        <div class="p-1.5 px-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight mt-1 shadow-2xs shrink-0">
+          <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+            <span>⚠️</span>
+            <span>WARNING (AFM 7.9.4 / 3.7):</span>
+          </strong>
+          <ul class="list-disc pl-3 space-y-0.5 text-[11px] leading-tight">
+            <li class="pl-0.5">Si se enciende la luz <code>ECU A</code> o <code>ECU B</code>, o tras registrarse un fallo de FADEC (incluso si se restablece con el botón <code>ECU TEST</code>), se prohíbe el vuelo y se requiere mantenimiento técnico reglamentario.</li>
+            <li class="pl-0.5">Ante fallo de FADEC o pérdida de presión de reductora, la hélice puede bloquearse en paso alto o bandera, reduciendo las prestaciones y requiriendo compensación asimétrica y procedimientos OEI.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Ventana de Alertas CAS G1000 Bimotor (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">VENTANA DE ALERTAS CAS (GARMIN G1000)</span>
+          <span class="text-[10px] font-bold text-amber-800 bg-amber-100 dark:bg-amber-950/70 dark:text-amber-300 px-2 py-0.5 rounded">CAS Alerts Window</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative; background-color: #ffffff;">
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-cas-alerts.png" alt="Ventana de Alertas CAS Garmin G1000 Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: #ffffff; object-position: center;" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.13: 3.13 Sistemas de Célula I: Mandos de Vuelo, Compensación y Flaps Eléctricos -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.13 Sistemas de Célula I: Mandos de Vuelo, Compensación y Flaps Eléctricos</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Flight Controls, Doble Compensación (Elevator &amp; Rudder), Tope Variable y Flaps de 2 Tramos</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Mandos y Flaps (Altura Fija 590px, Sin Scroll) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5 overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FLIGHT CONTROLS &amp; TRIM SYSTEM (AFM 7.3)</span>
+        </div>
+
+        <!-- Mandos Primarios, Compensación y Tope Variable -->
+        <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Palancas de Mando y Varillas Rígidas:</strong> Mandos dobles mediante palancas (<span class="italic">control sticks</span>). Alerones y timón de profundidad accionados por varillas de acero (<span class="italic">push-rods</span>) con rótulas selladas con barniz de seguridad (<span class="italic">locking varnish</span>). Alerones con 4 bisagras y pasadores elásticos (<span class="italic">roll pins</span>).</div>
+          </div>
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Timón de Dirección y Pedales:</strong> Accionado por cables de acero guiados por poleas. Los pedales incorporan tirador de regulación longitudinal para ajuste exclusivo en tierra (prohibido regular en vuelo).</div>
+          </div>
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Doble Compensación (Pitch &amp; Rudder Trim):</strong> Ruedas independientes en consola central asistidas por cables Bowden. El <strong>Rudder Trim</strong> es crítico en bimotor para compensar el empuje asimétrico en vuelo monomotor (OEI). Compensación de profundidad eléctrica opcional en palanca.</div>
+          </div>
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Tope Variable de Profundidad (<span class="italic">Variable Elevator Stop</span>):</strong> Actuador eléctrico lineal que limita el recorrido a subir a 13° (2,5° menos de los 15,5° totales) cuando ambos motores superan el 20% de potencia y los flaps están en LDG. Alerta CAS ámbar <code>STICK LIMIT</code> ante avería.</div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between shrink-0 pt-0.5 pb-0.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">WING FLAP SYSTEM (AFM 7.3)</span>
+        </div>
+
+        <!-- Flaps Eléctricos -->
+        <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Flaps Divididos de Dos Secciones:</strong> Construcción sándwich GFRP/CFRP en 2 tramos por ala (cajón central y ala exterior) interconectados mecánicamente, con 10 bisagras por lado (4 interior + 6 exterior).</div>
+          </div>
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Accionamiento Eléctrico y Protección:</strong> Motor eléctrico central y eje de torsión transversal continuo a través del fuselaje que impide deflexiones asimétricas. Disyuntor automático <code class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">FLAP</code>.</div>
+          </div>
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Límites de Velocidad AFM:</strong> Velocidad máxima en aproximación <strong class="text-emerald-700 dark:text-emerald-400">V<sub>FE</sub> APP = 137 KIAS</strong> y en aterrizaje <strong class="text-amber-700 dark:text-amber-400">V<sub>FE</sub> LDG = 111 KIAS</strong>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema y Datos Técnicos (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SISTEMA DE FLAPS (DA42 TWIN STAR)</span>
+          </div>
+
+          <div class="w-full shrink-0 flex items-start gap-2 rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Posiciones e Indicador Lumínico:</strong> Tres posiciones: Cruise UP (0°, luz verde), Approach APP (20°, luz blanca, V<sub>FE</sub> = 137 KIAS) y Landing LDG (42°, luz blanca, V<sub>FE</sub> = 111 KIAS). El encendido de dos luces simultáneas indica flaps en movimiento de tránsito.</div>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-flaps-system.jpg" alt="Sistema de Flaps y Mandos de Vuelo Diamond DA42 Twin Star" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 460px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 3.14: 3.14 Sistemas de Célula II: Tren Retráctil, Frenos, Dirección en Tierra y Aviso de Pérdida -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[10px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 · CD-135 / CD-155</div>
+      <h1 class="text-lg sm:text-xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">3.14 Sistemas de Célula II: Tren Retráctil, Frenos, Dirección en Tierra y Aviso de Pérdida</h1>
+    </div>
+    <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tren Retráctil Electrohidráulico, Rueda de Morro Orientable, Frenos y Stall Warning</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+    <!-- Columna Izquierda (lg:col-span-7): Tren Retráctil y Frenos (Altura Fija 590px, Sin Scroll) -->
+    <div class="lg:col-span-7 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5 overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">TREN RETRÁCTIL Y ACTUACIÓN (AFM 7.5)</span>
+        </div>
+
+        <!-- Tren de Aterrizaje Retráctil -->
+        <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Arquitectura y Amortiguación:</strong> Triciclo totalmente retráctil con montantes oleoneumáticos de aire-aceite. Presión suministrada por electrobomba hidráulica con presostato y acumulador de nitrógeno para evitar ciclado constante en vuelo.</div>
+          </div>
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Mando y Retracción:</strong> Palanca en cabina con fiador de seguridad (debe tirarse hacia afuera para mover a <code>UP</code> o <code>DOWN</code>). El tren principal retrae hacia adentro en el cajón central y el morro hacia adelante (tiempo de maniobra: 6 a 10 s).</div>
+          </div>
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Límites de Velocidad AFM:</strong> Retracción autorizada hasta <strong class="text-amber-700 dark:text-amber-400">V<sub>LO RET</sub> = 156 KIAS</strong>; extensión y vuelo con tren extendido hasta <strong class="text-emerald-700 dark:text-emerald-400">V<sub>LE</sub> / V<sub>LO EXT</sub> = 194 KIAS</strong>.</div>
+          </div>
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Seguridad y Extensión de Emergencia:</strong> Micro de peso (<em>squat switch</em>) que bloquea la retracción en tierra. Tirador de emergencia bajo el panel que alivia la presión hidráulica para extensión por gravedad asistida por muelles de bloqueo.</div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between shrink-0 pt-0.5 pb-0.5 border-b border-slate-200 dark:border-slate-800">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FRENOS, DIRECCIÓN Y AVISO DE PÉRDIDA</span>
+        </div>
+
+        <!-- Frenos, Dirección y Pérdida -->
+        <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Rueda de Morro Orientable (Steerable):</strong> A diferencia de la DA40 (rueda loca), la DA42 dispone de rueda de morro orientable enlazada mecánicamente al recorrido de los pedales de dirección, equipada con amortiguador telescópico.</div>
+          </div>
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Frenos Hidráulicos y de Estacionamiento:</strong> Frenos de disco individuales accionados hidráulicamente mediante cilindros en las punteras de los pedales (<em>toe brakes</em>). Freno de estacionamiento accionado por palanca bajo la consola central.</div>
+          </div>
+          <div class="flex items-start gap-1.5 text-[11px] leading-tight">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Aviso Acústico de Pérdida (Stall Warning):</strong> Sistema por depresión en el borde de ataque del ala izquierda con bocina acústica en cabina; se activa entre 5 y 10 KIAS antes de la pérdida en cualquier configuración de vuelo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-5): Esquema y Datos Técnicos (Altura Fija 590px sin scroll) -->
+    <div class="lg:col-span-5 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
+        <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
+          <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SISTEMA DE TREN RETRÁCTIL (AFM 7.5)</span>
+          </div>
+
+          <div class="w-full shrink-0 flex items-start gap-2 rounded-xl bg-white dark:bg-slate-800/80 p-2 border border-slate-200 dark:border-slate-700/80 shadow-2xs text-[11px] leading-tight text-slate-800 dark:text-slate-200">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[14px]">•</span>
+            <div><strong>Indicación 3 Greens y Avisos Sonoros:</strong> Tres luces verdes confirman tren abajo y bloqueado. Alarma acústica continua si la potencia cae bajo el 20-25% con tren arriba o si se seleccionan flaps en LDG con el tren recogido.</div>
+          </div>
+
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-landing-gear-afm.png" alt="Esquema del Sistema de Tren de Aterrizaje Retráctil Diamond DA42 Twin Star" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 460px; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
           </div>
         </div>
       </div>
