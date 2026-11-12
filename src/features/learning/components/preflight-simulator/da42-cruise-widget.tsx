@@ -102,7 +102,7 @@ export function DA42CruiseWidget({
     }
   }, []);
 
-  const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on M1 (Solved Example)
+  const [selectedMissionIndex, setSelectedMissionIndex] = useState(0); // Starts on Mission 1 (Solved Example)
   const [selectedTablePower, setSelectedTablePower] = useState<PowerSetting>(60);
   const mission = DA42_PREFLIGHT_MISSIONS[selectedMissionIndex];
 
@@ -185,20 +185,20 @@ export function DA42CruiseWidget({
       newErrors.ktas =
         attempts >= 1
           ? `En la tabla AFM a ${alt} ft y ${loadPct}% Load, la velocidad es de ${expectedKtas} KTAS.`
-          : `Revisa la tabla oficial: busca la fila de ${alt} ft y columna KTAS al ${loadPct}% de potencia.`;
+          : `Revisa la tabla oficial: busca la fila de ${alt} ft y columna KTAS al ${loadPct}% de carga.`;
     }
 
-    // 2. Check Fuel Flow
+    // 2. Check Fuel Flow (supports L/h or US Gal/h)
     const userFf = num(currentInputs.fuelFlow);
-    const isFfLiters = checkValueTolerance(userFf, expectedFuelFlow, 0.03, 0.6).isOk;
+    const isFfLiters = checkValueTolerance(userFf, expectedFuelFlow, 0.02, 0.6).isOk;
     const isFfGallons = checkValueTolerance(userFf, expectedFuelFlowGal, 0.05, 0.3).isOk;
     if (isNaN(userFf) || (!isFfLiters && !isFfGallons)) {
       newErrors.fuelFlow =
         attempts >= 1
-          ? `En la tabla figura ${expectedFuelFlow} L/h total (o ${expectedFuelFlowGal} Gal/h). Ambas unidades son válidas.`
-          : `Consulta la columna de consumo total bimotor: ${expectedFuelFlow} L/h o ${expectedFuelFlowGal} Gal/h.`;
+          ? `En la tabla figura ${expectedFuelFlow} L/h (o ${expectedFuelFlowGal} US Gal/h). Ambas unidades son válidas.`
+          : `Consulta la columna de consumo en la tabla: ${expectedFuelFlow} L/h o ${expectedFuelFlowGal} Gal/h.`;
     } else if (isFfGallons) {
-      newWarnings.push(`Consumo en Galones: ${userFf} Gal/h (equivale a ${expectedFuelFlow} L/h).`);
+      newWarnings.push(`Gasto horario introducido en US Galones: ${userFf} Gal/h (equivale a ${expectedFuelFlow} L/h).`);
     }
 
     // 3. Check Time in Hours
@@ -207,10 +207,10 @@ export function DA42CruiseWidget({
       newErrors.timeHrs =
         attempts >= 1
           ? `Tiempo = ${mission.scenario.distanceNm} NM / ${expectedKtas} KTAS = ${expectedTimeHrs} h (~${Math.round(expectedTimeHrs * 60)} min).`
-          : `Divide la distancia de ${mission.scenario.distanceNm} NM entre la KTAS (${expectedKtas} kt).`;
+          : `Divide la distancia de ${mission.scenario.distanceNm} NM entre la velocidad verdadera (${expectedKtas} kt).`;
     }
 
-    // 4. Check Trip Fuel
+    // 4. Check Trip Fuel (supports Liters OR Gallons)
     const userTrip = num(currentInputs.tripLiters);
     const isTripLiters = checkValueTolerance(userTrip, expectedTripLiters, 0.06, 0.8).isOk;
     const isTripGallons =
@@ -219,23 +219,23 @@ export function DA42CruiseWidget({
     if (isNaN(userTrip) || (!isTripLiters && !isTripGallons)) {
       newErrors.tripLiters =
         attempts >= 1
-          ? `Trip Fuel = ${expectedTimeHrs} h × ${expectedFuelFlow} L/h = ${expectedTripLiters} L (o ${expectedTripGallons} Gal).`
-          : `Combustible de ruta = Tiempo en horas (${expectedTimeHrs} h) × Consumo (${expectedFuelFlow} L/h).`;
+          ? `Trip Fuel = ${expectedTimeHrs} h × ${expectedFuelFlow} L/h = ${expectedTripLiters} L (o en galones: ${expectedTimeHrs} h × ${expectedFuelFlowGal} Gal/h = ${expectedTripGallons} Gal).`
+          : `Combustible de ruta = Tiempo en horas (${expectedTimeHrs} h) × Gasto horario (${expectedFuelFlow} L/h o ${expectedFuelFlowGal} Gal/h).`;
     } else if (isTripGallons) {
-      newWarnings.push(`Trip Fuel en Galones: ${userTrip} Gal (equivale a ${expectedTripLiters} L).`);
+      newWarnings.push(`Trip Fuel introducido en US Galones: ${userTrip} Gal (equivale a ${expectedTripLiters} L).`);
     }
 
-    // 5. Check Trip Mass
+    // 5. Check Trip Fuel Mass (supports Kg OR Lbs)
     const userTripMass = num(currentInputs.tripKg);
     const isMassKg = checkValueTolerance(userTripMass, expectedTripKg, 0.06, 0.8).isOk;
     const isMassLbs = checkValueTolerance(userTripMass, expectedTripLbs, 0.06, 1.5).isOk;
     if (isNaN(userTripMass) || (!isMassKg && !isMassLbs)) {
       newErrors.tripKg =
         attempts >= 1
-          ? `Masa = ${expectedTripLiters} L × 0.84 = ${expectedTripKg} kg (o ${expectedTripLbs} lbs).`
-          : "Multiplica los litros por la densidad de 0.84 kg/L.";
+          ? `Masa = ${expectedTripLiters} L × 0.84 = ${expectedTripKg} kg (o en libras: ${expectedTripLbs} lbs).`
+          : "Multiplica los litros por la densidad de 0.84 kg/L (o galones por 7.01 lbs/Gal).";
     } else if (isMassLbs) {
-      newWarnings.push(`Masa en Libras: ${userTripMass} lbs (equivale a ${expectedTripKg} kg).`);
+      newWarnings.push(`Masa de combustible introducida en Libras: ${userTripMass} lbs (equivale a ${expectedTripKg} kg).`);
     }
 
     // 6. Check Max Range
@@ -243,8 +243,8 @@ export function DA42CruiseWidget({
     if (isNaN(userRange) || !checkValueTolerance(userRange, expectedMaxRange, 0.03, 10).isOk) {
       newErrors.maxRange =
         attempts >= 1
-          ? `En la tabla a ${alt} ft y ${loadPct}% Load figura ${expectedMaxRange} NM.`
-          : "Consulta la columna 'Alcance [NM]' con depósitos principales (189 L).";
+          ? `En la columna 'Distance Range [NM]' a ${alt} ft y ${loadPct}% de Load figura ${expectedMaxRange} NM.`
+          : "Busca en la columna 'Distance Range [NM]' el alcance máximo con depósitos principales (189 L).";
     }
 
     setErrors(newErrors);
@@ -264,7 +264,7 @@ export function DA42CruiseWidget({
   };
 
   const displayedRows = CRUISE_TABLE_DATA.filter((r) => r.load === selectedTablePower);
-  const isCurrentMissionSolved = selectedMissionIndex === 0 || Boolean(solvedMissions[selectedMissionIndex]);
+  const errorCount = Object.keys(errors).length;
 
   return (
     <div
@@ -275,25 +275,28 @@ export function DA42CruiseWidget({
         "--col-right": `${rightPct}fr`,
       } as React.CSSProperties}
     >
-      {/* Columna Izquierda (Formulario de Crucero) */}
+      {/* Columna Izquierda (lg:col-span-7): Formulario de Crucero (Altura Fija 590px) */}
       <div className="lg:col-span-7 flex flex-col">
         <div
-          className="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden"
+          className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
           style={{ height: "590px" }}
         >
           {/* Header & Mission Selector */}
           <div className="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
-            <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">
-              ⏱️ CRUCERO Y AUTONOMÍA DA42
-            </span>
+            <div>
+              <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
+                ⏱️ CRUCERO Y AUTONOMÍA
+              </span>
+            </div>
             <div className="flex items-center gap-1.5 shrink-0">
               <button
                 type="button"
                 onClick={() => setShowGuideModal(true)}
-                className="px-2.5 py-1 rounded-lg text-[18px] font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60 hover:bg-amber-100 cursor-pointer flex items-center gap-1 shadow-2xs mr-1"
+                className="px-2.5 py-1.5 rounded-lg text-xs sm:text-[12px] font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700/60 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-all cursor-pointer flex items-center gap-1 shadow-2xs mr-1"
+                title="Ver guía de procedimiento e instrucciones"
               >
                 <span>💡</span>
-                <span className="hidden sm:inline">Guía</span>
+                <span className="hidden sm:inline">Cómo proceder</span>
               </button>
               <button
                 type="button"
@@ -301,16 +304,25 @@ export function DA42CruiseWidget({
                 style={{
                   backgroundColor: selectedMissionIndex === 0 ? "#059669" : "#ecfdf5",
                   color: selectedMissionIndex === 0 ? "#ffffff" : "#065f46",
-                  fontSize: "18px",
-                  fontWeight: 800,
+                  fontSize: "1.125rem",
+                  fontWeight: 700,
                 }}
-                className={`px-3 py-1 rounded-lg transition-all cursor-pointer border ${
+                className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1 border ${
                   selectedMissionIndex === 0
                     ? "border-emerald-600 shadow-2xs"
                     : "border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
                 }`}
+                title="Misión 1: Ejemplo guiado resuelto"
               >
-                M1
+                <span
+                  style={{
+                    color: selectedMissionIndex === 0 ? "#ffffff" : "#065f46",
+                    fontSize: "1.125rem",
+                    fontWeight: 700,
+                  }}
+                >
+                  M1
+                </span>
               </button>
               {[1, 2].map((idx) => {
                 const isSolved = Boolean(solvedMissions[idx]);
@@ -323,10 +335,10 @@ export function DA42CruiseWidget({
                     style={{
                       backgroundColor: isSelected ? "#0B2E59" : isSolved ? "#ecfdf5" : "#f1f5f9",
                       color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000",
-                      fontSize: "18px",
-                      fontWeight: 800,
+                      fontSize: "1.125rem",
+                      fontWeight: 700,
                     }}
-                    className={`px-3 py-1 rounded-lg transition-all cursor-pointer border ${
+                    className={`px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1 border ${
                       isSelected
                         ? "border-[#0B2E59] shadow-2xs"
                         : isSolved
@@ -334,220 +346,386 @@ export function DA42CruiseWidget({
                           : "border-slate-300 hover:bg-slate-200"
                     }`}
                   >
-                    M{idx + 1}
+                    <span
+                      style={{
+                        color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000",
+                        fontSize: "1.125rem",
+                        fontWeight: 700,
+                      }}
+                    >
+                      M{idx + 1}
+                    </span>
+                    <span
+                      style={{
+                        color: isSelected ? "#ffffff" : isSolved ? "#047857" : "#000000",
+                        fontSize: "1.125rem",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {isSolved ? "✓" : "⏳"}
+                    </span>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Mission Info Card */}
-          <div className="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs shrink-0 space-y-0.5">
-            <div className="flex items-center justify-between">
-              <strong className="text-[#0B2E59] dark:text-sky-300 text-[18px]">
-                {mission.name}
+          {/* Cuadro de Enunciado de la Misión */}
+          <div className="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs my-1 shrink-0">
+            <div className="flex items-center justify-between gap-2">
+              <strong className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
+                <span>🎯</span>
+                <span>{mission.name}</span>
               </strong>
-              <span className="text-[18px] font-bold text-sky-700 dark:text-sky-400">
-                {mission.scenario.distanceNm} NM · {alt} ft · {loadPct}% LOAD
-              </span>
+              {mission.badge && (
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-sky-300 border border-blue-200 dark:border-blue-800 shrink-0">
+                  {mission.badge}
+                </span>
+              )}
             </div>
-            <p className="text-[18px] text-slate-600 dark:text-slate-300 leading-snug">
-              {selectedMissionIndex === 0
-                ? "Ejemplo resuelto: Consulta los datos oficiales en la tabla derecha y verifica el cálculo de ruta."
-                : `Calcula los parámetros en crucero a ${alt} ft con ${loadPct}% de potencia bimotor.`}
+            <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-snug m-0 mt-0.5">
+              {mission.description} · <span className="font-semibold text-sky-700 dark:text-sky-300">Altitud: {alt} ft · Potencia: {loadPct}% · Distancia: {mission.scenario.distanceNm} NM</span>
             </p>
           </div>
 
-          {/* Form Inputs Grid (All text >= 18px) */}
-          <div className="grid grid-cols-2 gap-2 shrink-0">
-            {/* KTAS */}
-            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-              <label className="block text-[18px] font-bold text-slate-700 dark:text-slate-200">
-                1. KTAS:
-              </label>
-              <input
-                type="text"
-                disabled={selectedMissionIndex === 0}
-                value={currentInputs.ktas}
-                onChange={(e) => updateCurrentInput("ktas", e.target.value)}
-                placeholder="ej: 132"
-                className="w-full px-2 py-1 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 font-mono text-[18px] font-bold text-slate-900 dark:text-white"
-              />
-              {errors.ktas && <p className="text-rose-600 text-[18px] leading-tight font-medium">{errors.ktas}</p>}
+          {/* Form Content - Ajustado para no requerir scroll */}
+          <div className="flex-1 my-1 space-y-1.5 flex flex-col justify-start pt-0.5">
+            {/* Step 1: Reading from Table */}
+            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1 shadow-2xs">
+              <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block border-b pb-0.5">
+                1. Lectura en Tabla AFM ({alt} ft / {loadPct}% Load)
+              </span>
+              <div className="grid grid-cols-2 gap-2 text-xs sm:text-[13px]">
+                <div>
+                  <div className="flex items-center justify-between mb-0.5">
+                    <label className="font-semibold text-slate-600 dark:text-slate-300">
+                      Velocidad (KTAS):
+                    </label>
+                    {errors.ktas && (
+                      <span className="text-[11px] text-rose-600 dark:text-rose-400 font-bold">⚠️ Revisa</span>
+                    )}
+                  </div>
+                  <input
+                    type="text"
+                    placeholder={`Ej: ${expectedKtas}`}
+                    value={currentInputs.ktas}
+                    disabled={selectedMissionIndex === 0}
+                    onChange={(e) => updateCurrentInput("ktas", e.target.value)}
+                    className={`w-full px-2.5 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
+                      selectedMissionIndex === 0
+                        ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                        : errors.ktas
+                          ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                    }`}
+                  />
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between mb-0.5">
+                    <label className="font-semibold text-slate-600 dark:text-slate-300">
+                      Gasto Total (L/h o Gal/h):
+                    </label>
+                    {errors.fuelFlow && (
+                      <span className="text-[11px] text-rose-600 dark:text-rose-400 font-bold">⚠️ Revisa</span>
+                    )}
+                  </div>
+                  <input
+                    type="text"
+                    placeholder={`Ej: ${expectedFuelFlow} L/h o ${expectedFuelFlowGal} Gal/h`}
+                    value={currentInputs.fuelFlow}
+                    disabled={selectedMissionIndex === 0}
+                    onChange={(e) => updateCurrentInput("fuelFlow", e.target.value)}
+                    className={`w-full px-2.5 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
+                      selectedMissionIndex === 0
+                        ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                        : errors.fuelFlow
+                          ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                    }`}
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Fuel Flow */}
-            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-              <label className="block text-[18px] font-bold text-slate-700 dark:text-slate-200">
-                2. Gasto Bimotor (L/h):
-              </label>
-              <input
-                type="text"
-                disabled={selectedMissionIndex === 0}
-                value={currentInputs.fuelFlow}
-                onChange={(e) => updateCurrentInput("fuelFlow", e.target.value)}
-                placeholder="ej: 33.0"
-                className="w-full px-2 py-1 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 font-mono text-[18px] font-bold text-slate-900 dark:text-white"
-              />
-              {errors.fuelFlow && <p className="text-rose-600 text-[18px] leading-tight font-medium">{errors.fuelFlow}</p>}
+            {/* Step 2: Time & Fuel Consumption */}
+            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1 shadow-2xs">
+              <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block border-b pb-0.5">
+                2. Cálculos de Ruta ({mission.scenario.distanceNm} NM · Admite L o Galones)
+              </span>
+              <div className="grid grid-cols-3 gap-2 text-xs sm:text-[13px]">
+                <div>
+                  <div className="flex items-center justify-between mb-0.5">
+                    <label className="font-semibold text-slate-600 dark:text-slate-300">
+                      Tiempo (h):
+                    </label>
+                    {errors.timeHrs && (
+                      <span className="text-[11px] text-rose-600 dark:text-rose-400 font-bold">⚠️ Revisa</span>
+                    )}
+                  </div>
+                  <input
+                    type="text"
+                    placeholder={`Ej: ${expectedTimeHrs}`}
+                    value={currentInputs.timeHrs}
+                    disabled={selectedMissionIndex === 0}
+                    onChange={(e) => updateCurrentInput("timeHrs", e.target.value)}
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
+                      selectedMissionIndex === 0
+                        ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                        : errors.timeHrs
+                          ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                    }`}
+                  />
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between mb-0.5">
+                    <label className="font-semibold text-slate-600 dark:text-slate-300">
+                      Trip Fuel:
+                    </label>
+                    {errors.tripLiters && (
+                      <span className="text-[11px] text-rose-600 dark:text-rose-400 font-bold">⚠️ Revisa</span>
+                    )}
+                  </div>
+                  <input
+                    type="text"
+                    placeholder={`Ej: ${expectedTripLiters} L / ${expectedTripGallons} Gal`}
+                    value={currentInputs.tripLiters}
+                    disabled={selectedMissionIndex === 0}
+                    onChange={(e) => updateCurrentInput("tripLiters", e.target.value)}
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
+                      selectedMissionIndex === 0
+                        ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                        : errors.tripLiters
+                          ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                    }`}
+                  />
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between mb-0.5">
+                    <label className="font-semibold text-slate-600 dark:text-slate-300">
+                      Masa (Kg o Lbs):
+                    </label>
+                    {errors.tripKg && (
+                      <span className="text-[11px] text-rose-600 dark:text-rose-400 font-bold">⚠️ Revisa</span>
+                    )}
+                  </div>
+                  <input
+                    type="text"
+                    placeholder={`Ej: ${expectedTripKg} o ${expectedTripLbs}`}
+                    value={currentInputs.tripKg}
+                    disabled={selectedMissionIndex === 0}
+                    onChange={(e) => updateCurrentInput("tripKg", e.target.value)}
+                    className={`w-full px-2 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
+                      selectedMissionIndex === 0
+                        ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                        : errors.tripKg
+                          ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                          : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                    }`}
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* ETE */}
-            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-              <label className="block text-[18px] font-bold text-slate-700 dark:text-slate-200">
-                3. Tiempo en Ruta (h):
-              </label>
-              <input
-                type="text"
-                disabled={selectedMissionIndex === 0}
-                value={currentInputs.timeHrs}
-                onChange={(e) => updateCurrentInput("timeHrs", e.target.value)}
-                placeholder="ej: 0.45"
-                className="w-full px-2 py-1 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 font-mono text-[18px] font-bold text-slate-900 dark:text-white"
-              />
-              {errors.timeHrs && <p className="text-rose-600 text-[18px] leading-tight font-medium">{errors.timeHrs}</p>}
-            </div>
-
-            {/* Trip Liters */}
-            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-              <label className="block text-[18px] font-bold text-slate-700 dark:text-slate-200">
-                4. Trip Fuel (Litros):
-              </label>
-              <input
-                type="text"
-                disabled={selectedMissionIndex === 0}
-                value={currentInputs.tripLiters}
-                onChange={(e) => updateCurrentInput("tripLiters", e.target.value)}
-                placeholder="ej: 14.9"
-                className="w-full px-2 py-1 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 font-mono text-[18px] font-bold text-slate-900 dark:text-white"
-              />
-              {errors.tripLiters && <p className="text-rose-600 text-[18px] leading-tight font-medium">{errors.tripLiters}</p>}
-            </div>
-
-            {/* Trip Kg */}
-            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-              <label className="block text-[18px] font-bold text-slate-700 dark:text-slate-200">
-                5. Masa Trip (kg):
-              </label>
-              <input
-                type="text"
-                disabled={selectedMissionIndex === 0}
-                value={currentInputs.tripKg}
-                onChange={(e) => updateCurrentInput("tripKg", e.target.value)}
-                placeholder="ej: 12.5"
-                className="w-full px-2 py-1 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 font-mono text-[18px] font-bold text-slate-900 dark:text-white"
-              />
-              {errors.tripKg && <p className="text-rose-600 text-[18px] leading-tight font-medium">{errors.tripKg}</p>}
-            </div>
-
-            {/* Max Range */}
-            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
-              <label className="block text-[18px] font-bold text-slate-700 dark:text-slate-200">
-                6. Alcance Máx (NM):
-              </label>
-              <input
-                type="text"
-                disabled={selectedMissionIndex === 0}
-                value={currentInputs.maxRange}
-                onChange={(e) => updateCurrentInput("maxRange", e.target.value)}
-                placeholder="ej: 755"
-                className="w-full px-2 py-1 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-900 font-mono text-[18px] font-bold text-slate-900 dark:text-white"
-              />
-              {errors.maxRange && <p className="text-rose-600 text-[18px] leading-tight font-medium">{errors.maxRange}</p>}
+            {/* Step 3: Range Check */}
+            <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 space-y-1 shadow-2xs">
+              <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wide block">
+                3. Autonomía Máxima Teórica (Tanques Principales 189.0 L / 50.00 Gal Usable)
+              </span>
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  placeholder={`Alcance máximo NM (Ej: ${expectedMaxRange})`}
+                  value={currentInputs.maxRange}
+                  disabled={selectedMissionIndex === 0}
+                  onChange={(e) => updateCurrentInput("maxRange", e.target.value)}
+                  className={`flex-1 px-3 py-1 rounded-lg border font-mono text-xs sm:text-[13px] transition-colors ${
+                    selectedMissionIndex === 0
+                      ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                      : errors.maxRange
+                        ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300"
+                        : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
+                  }`}
+                />
+                <span className="text-xs sm:text-[13px] text-slate-500 font-medium shrink-0">NM disponibles</span>
+                {errors.maxRange && (
+                  <span className="text-[11px] text-rose-600 dark:text-rose-400 font-bold shrink-0">⚠️ Revisa</span>
+                )}
+              </div>
             </div>
           </div>
 
-          {/* Validation Button & Result status */}
-          <div className="pt-1 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between shrink-0">
-            {isCurrentMissionSolved ? (
-              <span className="text-emerald-700 dark:text-emerald-400 font-bold text-[18px] flex items-center gap-1.5">
-                <span>✅</span> {selectedMissionIndex === 0 ? "Ejemplo Modelo Resuelto" : `¡Misión M${selectedMissionIndex + 1} Aprobada!`}
+          {/* Bottom Actions & Feedback */}
+          <div className="space-y-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0">
+            <div className="flex items-center justify-between">
+              <span className="text-xs sm:text-[13px] text-slate-500 font-medium">
+                {selectedMissionIndex === 0 ? (
+                  <span>Modelo de referencia (Ejemplo)</span>
+                ) : (
+                  <span>Intentos en M{selectedMissionIndex + 1}: <strong>{attempts}</strong></span>
+                )}
               </span>
-            ) : (
-              <span className="text-slate-500 text-[18px]">Rellena los 6 valores de crucero.</span>
+
+              {selectedMissionIndex === 0 ? (
+                <button
+                  type="button"
+                  onClick={() => switchMission(1)}
+                  style={{
+                    backgroundColor: "#059669",
+                    color: "#ffffff",
+                    fontSize: "18px",
+                    fontWeight: 900,
+                  }}
+                  className="px-4 py-2 rounded-xl shadow-xs cursor-pointer transition-all hover:scale-105 active:scale-95 flex items-center gap-1.5"
+                >
+                  <span style={{ color: "#ffffff" }}>Pulsa aquí para ir a M2</span>
+                  <span style={{ color: "#ffffff" }}>➔</span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleValidate}
+                  style={{
+                    backgroundColor: "#0B2E59",
+                    color: "#ffffff",
+                    fontSize: "13px",
+                    fontWeight: 800,
+                  }}
+                  className="px-4 py-2 rounded-xl shadow-xs cursor-pointer transition-all hover:scale-105 active:scale-95"
+                >
+                  <span style={{ color: "#ffffff" }}>Validar Cálculos de Crucero ➔</span>
+                </button>
+              )}
+            </div>
+
+            {errorCount > 0 && (
+              <div className="p-1.5 rounded-lg border border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/40 text-rose-900 dark:text-rose-200 text-xs flex items-center justify-between">
+                <span>⚠️ <strong>{errorCount} {errorCount === 1 ? "valor a revisar" : "valores a revisar"}.</strong> Ver correcciones a la derecha 👉</span>
+              </div>
             )}
-            <button
-              type="button"
-              onClick={handleValidate}
-              style={{ fontSize: "18px", fontWeight: 800 }}
-              className="px-4 py-1.5 rounded-xl bg-[#0B2E59] hover:bg-[#154680] text-white shadow-sm cursor-pointer transition-all"
-            >
-              {selectedMissionIndex === 0 ? "Pasar a M2 →" : "Validar Misión"}
-            </button>
+
+            {isAllPracticeCompleted && (
+              <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px]">
+                <strong className="font-bold">🎉 ¡ENHORABUENA! HAS COMPLETADO LOS EJERCICIOS M2 Y M3</strong>
+                <p className="text-xs mt-0.5">
+                  Has validado correctamente los cálculos de crucero y combustible. Ya puedes pulsar en <strong>Siguiente Diapositiva</strong> para continuar.
+                </p>
+              </div>
+            )}
+
+            {!isAllPracticeCompleted && solvedMissions[selectedMissionIndex] && selectedMissionIndex === 1 && (
+              <div className="p-2 rounded-lg border border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/40 text-sky-900 dark:text-sky-200 text-xs flex items-center justify-between gap-2">
+                <div>
+                  <strong className="font-bold">✓ ¡Misión M2 completada!</strong>
+                  <p className="text-[11px] text-sky-800 dark:text-sky-300">Te queda la Misión M3 para desbloquear el avance.</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => switchMission(2)}
+                  style={{
+                    backgroundColor: "#0B2E59",
+                    color: "#ffffff",
+                    fontSize: "12px",
+                    fontWeight: 800,
+                  }}
+                  className="px-3 py-1.5 rounded-lg shrink-0 cursor-pointer transition hover:scale-105"
+                >
+                  <span style={{ color: "#ffffff" }}>Ir a M3 ➔</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Columna Derecha (Tabla AFM de Crucero) */}
+      {/* Columna Derecha (lg:col-span-5): Tabla AFM 5.3.11 + Panel de Correcciones Didácticas (Altura Fija 590px) */}
       <div className="lg:col-span-5 flex flex-col">
         <div
-          className="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden"
+          className="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
           style={{ height: "590px" }}
         >
-          {/* Header & Power Selectors */}
-          <div className="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-            <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">
-              TABLA AFM SECCIÓN 5.3.11
-            </span>
-          </div>
-
-          {/* Power Setting Buttons */}
-          <div className="flex items-center gap-1 flex-wrap shrink-0">
-            {([50, 60, 70, 80, 90, 100] as PowerSetting[]).map((load) => {
-              const isActive = selectedTablePower === load;
-              return (
-                <button
-                  key={load}
-                  type="button"
-                  onClick={() => setSelectedTablePower(load)}
-                  style={{
-                    backgroundColor: isActive ? "#0B2E59" : "#ffffff",
-                    color: isActive ? "#ffffff" : "#000000",
-                    fontSize: "18px",
-                    fontWeight: 700,
-                  }}
-                  className={`px-2.5 py-1 rounded-lg border transition-all cursor-pointer ${
-                    isActive
-                      ? "border-[#0B2E59] shadow-xs"
-                      : "border-slate-300 hover:bg-slate-100"
-                  }`}
-                >
-                  {load}%
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Data Table with all text >= 18px */}
-          <div className="w-full flex-1 min-h-0 overflow-y-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 p-2 shadow-2xs">
-            <div className="text-[18px] font-bold text-[#0B2E59] dark:text-sky-300 mb-1 border-b pb-0.5">
-              Potencia: {selectedTablePower}% LOAD · Bimotor DA42
+          {/* Header con selector de potencia */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0 gap-1.5">
+            <div>
+              <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px] block">
+                📖 TABLA DE CRUCERO (5.3.11)
+              </span>
+              <span className="text-[11px] sm:text-xs text-slate-500 font-medium">
+                DA42 Twin Star · Main Tanks (189.0 L / 50.0 Gal)
+              </span>
             </div>
-            <table className="w-full text-left text-[18px]">
+            <div className="flex flex-wrap items-center gap-1 shrink-0 justify-end">
+              {([50, 60, 70, 80, 90, 100] as const).map((p) => {
+                const isActive = selectedTablePower === p;
+                return (
+                  <button
+                    key={p}
+                    type="button"
+                    onClick={() => setSelectedTablePower(p)}
+                    style={{
+                      backgroundColor: isActive ? "#0B2E59" : "#f1f5f9",
+                      color: isActive ? "#ffffff" : "#000000",
+                      fontSize: "14px",
+                      fontWeight: 700,
+                    }}
+                    className={`px-2 py-1 rounded-md transition-all cursor-pointer border ${
+                      isActive
+                        ? "border-[#0B2E59] shadow-2xs"
+                        : "border-slate-300 hover:bg-slate-200"
+                    }`}
+                  >
+                    <span
+                      style={{
+                        color: isActive ? "#ffffff" : "#000000",
+                        fontSize: "14px",
+                        fontWeight: 700,
+                      }}
+                    >
+                      {p}%
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Tabla Fig. 5.3.11 compacta y clara - Alineada arriba */}
+          <div className="shrink-0 my-1.5">
+            <table className="w-full text-left text-xs sm:text-[12px] border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-slate-700 text-slate-500 font-bold">
-                  <th className="py-1">Altitud</th>
-                  <th className="py-1 text-center">KTAS</th>
-                  <th className="py-1 text-center">Gasto</th>
-                  <th className="py-1 text-right">Alcance</th>
+                <tr className="border-b border-slate-200 dark:border-slate-700 font-extrabold uppercase text-[#0B2E59] dark:text-sky-300 bg-slate-100/70 dark:bg-slate-800/60 text-[11px]">
+                  <th className="py-1 px-1.5">ALT</th>
+                  <th className="py-1 px-1 text-center">LOAD</th>
+                  <th className="py-1 px-1 text-center">KTAS</th>
+                  <th className="py-1 px-1 text-center text-emerald-700 dark:text-emerald-400">FUEL [L/H]</th>
+                  <th className="py-1 px-1 text-center text-teal-700 dark:text-teal-400">FUEL [GAL]</th>
+                  <th className="py-1 px-1 text-center">RANGE</th>
+                  <th className="py-1 px-1 text-center">ENDUR</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
-                {displayedRows.map((r) => {
-                  const isHighlighted = r.alt === alt && r.load === loadPct;
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 font-mono text-xs">
+                {displayedRows.map((row, idx) => {
+                  const isHighlighted = row.alt === alt && row.load === loadPct && row.load === selectedTablePower;
                   return (
                     <tr
-                      key={r.alt}
+                      key={idx}
                       className={
                         isHighlighted
-                          ? "bg-sky-50 dark:bg-sky-950/60 font-bold text-[#0B2E59] dark:text-sky-300"
-                          : "text-slate-700 dark:text-slate-300"
+                          ? "bg-amber-100/90 dark:bg-amber-950/70 font-bold text-amber-950 dark:text-amber-100"
+                          : "hover:bg-slate-50 dark:hover:bg-slate-800/40 text-slate-700 dark:text-slate-200"
                       }
                     >
-                      <td className="py-1">{r.alt} ft</td>
-                      <td className="py-1 text-center font-mono">{r.ktas}</td>
-                      <td className="py-1 text-center font-mono">{r.fuelFlowLh} L/h</td>
-                      <td className="py-1 text-right font-mono">{r.rangeNm} NM</td>
+                      <td className="py-1 px-1.5 font-semibold">{row.alt} ft</td>
+                      <td className="py-1 px-1 text-center text-blue-600 dark:text-sky-400 font-bold">{row.load}%</td>
+                      <td className="py-1 px-1 text-center text-sky-700 dark:text-sky-300 font-bold">{row.ktas} kt</td>
+                      <td className="py-1 px-1 text-center text-emerald-700 dark:text-emerald-300 font-bold">{row.fuelFlowLh}</td>
+                      <td className="py-1 px-1 text-center text-teal-700 dark:text-teal-300 font-bold">{row.fuelFlowGal}</td>
+                      <td className="py-1 px-1 text-center">{row.rangeNm} NM</td>
+                      <td className="py-1 px-1 text-center">{row.enduranceHrs} h</td>
                     </tr>
                   );
                 })}
@@ -555,18 +733,84 @@ export function DA42CruiseWidget({
             </table>
           </div>
 
-          {/* Table Footer Summary */}
-          <div className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[18px] text-slate-700 dark:text-slate-300 shrink-0">
-            Tanques principales: <strong>189 L</strong> utilizables (70 L/h máx).
-          </div>
+          {/* Unidades detectadas y equivalencias (si el alumno usó Galones o Libras) en columna derecha */}
+          {warnings.length > 0 && (
+            <div className="shrink-0 my-1 p-2 rounded-xl border border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/40 text-sky-950 dark:text-sky-200 text-xs space-y-0.5 shadow-2xs">
+              <span className="font-bold block text-[11px] uppercase tracking-wider text-sky-700 dark:text-sky-400">
+                ℹ️ Equivalencias Detectadas:
+              </span>
+              {warnings.map((w, idx) => (
+                <div key={idx} className="leading-snug">{w}</div>
+              ))}
+            </div>
+          )}
+
+          {/* Zona inferior dinámica: Panel de Correcciones cuando hay errores O Explicación didáctica si está correcto */}
+          {errorCount > 0 ? (
+            <div className="flex-1 min-h-0 overflow-y-auto mt-auto p-2 rounded-xl border border-rose-200 dark:border-rose-900/60 bg-rose-50/80 dark:bg-rose-950/30 space-y-1.5 shadow-2xs">
+              <div className="flex items-center justify-between border-b border-rose-200/80 dark:border-rose-800/60 pb-1">
+                <span className="text-xs font-bold text-rose-900 dark:text-rose-200 flex items-center gap-1.5">
+                  <span>💡</span>
+                  <span>CORRECCIONES DEL DESPACHO (INTENTO {attempts})</span>
+                </span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-rose-700 dark:text-rose-300 bg-rose-100 dark:bg-rose-900/60 px-2 py-0.5 rounded-full">
+                  {errorCount} pendientes
+                </span>
+              </div>
+
+              <div className="space-y-1.5 text-xs text-slate-800 dark:text-slate-200">
+                {errors.ktas && (
+                  <div className="p-1.5 rounded-lg bg-white/90 dark:bg-slate-900/90 border border-rose-100 dark:border-rose-900/40">
+                    <strong className="text-rose-700 dark:text-rose-400 block font-bold">1. Velocidad Verdadera (KTAS):</strong>
+                    <span>{errors.ktas}</span>
+                  </div>
+                )}
+                {errors.fuelFlow && (
+                  <div className="p-1.5 rounded-lg bg-white/90 dark:bg-slate-900/90 border border-rose-100 dark:border-rose-900/40">
+                    <strong className="text-rose-700 dark:text-rose-400 block font-bold">2. Gasto Horario (Fuel Flow):</strong>
+                    <span>{errors.fuelFlow}</span>
+                  </div>
+                )}
+                {errors.timeHrs && (
+                  <div className="p-1.5 rounded-lg bg-white/90 dark:bg-slate-900/90 border border-rose-100 dark:border-rose-900/40">
+                    <strong className="text-rose-700 dark:text-rose-400 block font-bold">3. Tiempo en Ruta:</strong>
+                    <span>{errors.timeHrs}</span>
+                  </div>
+                )}
+                {errors.tripLiters && (
+                  <div className="p-1.5 rounded-lg bg-white/90 dark:bg-slate-900/90 border border-rose-100 dark:border-rose-900/40">
+                    <strong className="text-rose-700 dark:text-rose-400 block font-bold">4. Trip Fuel (Litros o Galones):</strong>
+                    <span>{errors.tripLiters}</span>
+                  </div>
+                )}
+                {errors.tripKg && (
+                  <div className="p-1.5 rounded-lg bg-white/90 dark:bg-slate-900/90 border border-rose-100 dark:border-rose-900/40">
+                    <strong className="text-rose-700 dark:text-rose-400 block font-bold">5. Masa Trip Fuel (Kg o Lbs):</strong>
+                    <span>{errors.tripKg}</span>
+                  </div>
+                )}
+                {errors.maxRange && (
+                  <div className="p-1.5 rounded-lg bg-white/90 dark:bg-slate-900/90 border border-rose-100 dark:border-rose-900/40">
+                    <strong className="text-rose-700 dark:text-rose-400 block font-bold">6. Alcance Máximo (Range):</strong>
+                    <span>{errors.maxRange}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="mt-auto p-2.5 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-xs sm:text-[13px] space-y-1 text-slate-700 dark:text-slate-300 shrink-0">
+              <div className="text-[11px] sm:text-xs text-sky-900 dark:text-sky-300 font-medium flex items-center gap-1.5">
+                ⛽ Puedes introducir el combustible tanto en <strong>Litros</strong> como en <strong>US Galones</strong>, y la masa en <strong>Kg</strong> o <strong>Libras</strong>.
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Guide Modal */}
       <ExerciseInstructionsModal
         isOpen={showGuideModal}
         onClose={() => setShowGuideModal(false)}
-        title="Instrucciones: Cálculo de Crucero y Autonomía DA42"
+        title="Guía de Procedimiento: Rendimiento y Crucero DA42"
       />
     </div>
   );

@@ -8217,7 +8217,7 @@ export const DA42_LESSON_5 = {
       <div class="lg:col-span-6 flex flex-col">
         <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
           <!-- Header -->
-          <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
                 📋 PARTE 1: DESPEGUE (TOM &amp; CG)
@@ -8597,85 +8597,60 @@ export const DA42_LESSON_5 = {
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
       <!-- Columna Izquierda (lg:col-span-6) -->
       <div class="lg:col-span-6 flex flex-col">
-        <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
           <!-- Header -->
-          <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">
                 📊 CRUCERO AL 60% LOAD
               </span>
-              <div class="text-[18px] text-slate-500 font-medium">
+              <div class="text-[18px] text-slate-500 font-medium mt-0.5">
                 Régimen Estándar de Escuela DA42 Twin Star
               </div>
             </div>
-            <span class="px-2.5 py-0.5 rounded-lg text-[18px] font-bold uppercase tracking-wider bg-sky-100 text-[#0B2E59] border border-sky-300">
+            <span class="px-2.5 py-0.5 rounded text-[18px] font-bold uppercase tracking-wider bg-sky-100 text-[#0B2E59] border border-sky-300">
               SIMULADOR
             </span>
           </div>
 
           <!-- Tabla de Datos -->
-          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 shrink-0">
-            <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
-              Datos AFM Sección 5.3.11 (60% Carga Bimotor)
-            </strong>
-            <table class="w-full text-left text-[18px]">
-              <thead>
-                <tr class="border-b border-slate-200 text-slate-500 font-bold">
-                  <th class="py-1">Altitud</th>
-                  <th class="py-1 text-center">KTAS</th>
-                  <th class="py-1 text-center">Consumo</th>
-                  <th class="py-1 text-right">Alcance</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                <tr>
-                  <td class="py-0.5">2000 ft</td>
-                  <td class="py-0.5 text-center font-mono">128</td>
-                  <td class="py-0.5 text-center font-mono">33 L/h</td>
-                  <td class="py-0.5 text-right font-mono">733 NM</td>
-                </tr>
-                <tr>
-                  <td class="py-0.5">4000 ft</td>
-                  <td class="py-0.5 text-center font-mono">132</td>
-                  <td class="py-0.5 text-center font-mono">33 L/h</td>
-                  <td class="py-0.5 text-right font-mono">755 NM</td>
-                </tr>
-                <tr class="bg-sky-50 dark:bg-sky-950/60 font-bold text-[#0B2E59] dark:text-sky-300">
-                  <td class="py-0.5">6000 ft</td>
-                  <td class="py-0.5 text-center font-mono">136</td>
-                  <td class="py-0.5 text-center font-mono">33 L/h</td>
-                  <td class="py-0.5 text-right font-mono">778 NM</td>
-                </tr>
-                <tr>
-                  <td class="py-0.5">8000 ft</td>
-                  <td class="py-0.5 text-center font-mono">139</td>
-                  <td class="py-0.5 text-center font-mono">33 L/h</td>
-                  <td class="py-0.5 text-right font-mono">795 NM</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <div class="space-y-1.5 my-auto">
+            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
+                Datos AFM Sección 5.3.11 (60% Carga Bimotor)
+              </strong>
+              <div class="grid gap-1 text-[18px] font-mono text-slate-700 dark:text-slate-200 pt-0.5" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));">
+                <span class="font-bold">Altitud</span>
+                <span class="text-center font-bold">KTAS</span>
+                <span class="text-center font-bold">Consumo</span>
+                <span class="text-center font-bold">Alcance</span>
+                <span class="text-right font-bold">Autonomía</span>
+                <span>2000 ft</span><span class="text-center">128</span><span class="text-center">33,0 L/h</span><span class="text-center">733 NM</span><span class="text-right">5,7 h</span>
+                <span>4000 ft</span><span class="text-center">132</span><span class="text-center">33,0 L/h</span><span class="text-center">755 NM</span><span class="text-right">5,7 h</span>
+                <span class="font-bold text-[#0B2E59] dark:text-sky-300">6000 ft</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">136</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">33,0 L/h</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">778 NM</span><span class="text-right font-bold text-[#0B2E59] dark:text-sky-300">5,7 h</span>
+                <span>8000 ft</span><span class="text-center">139</span><span class="text-center">33,0 L/h</span><span class="text-center">795 NM</span><span class="text-right">5,7 h</span>
+              </div>
+            </div>
 
-          <div class="p-2.5 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/60 text-[18px] text-sky-900 dark:text-sky-200 space-y-0.5 shrink-0">
-            <strong class="text-[18px] block">Simulador Interactivo para el Alumno:</strong>
-            <p class="text-[18px] leading-snug">
-              Permite seleccionar el régimen de potencia (50% a 100%) y altitud para calcular automáticamente KTAS, gasto bimotor y tiempo de vuelo.
-            </p>
+            <div class="p-2 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/60 text-[18px] text-sky-900 dark:text-sky-200 space-y-0.5">
+              <strong>Simulador Interactivo para el Alumno:</strong>
+              <div>Permite seleccionar el régimen de potencia (50% a 100%) y altitud de vuelo para calcular automáticamente la velocidad verdadera (KTAS), gasto horario bimotor y tiempo de vuelo.</div>
+            </div>
           </div>
 
           <!-- Footer -->
-          <div class="pt-1 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[18px] text-slate-500 shrink-0">
-            <span>Régimen: <strong>60% Load</strong></span>
-            <span>Gasto: <strong>33,0 L/h (8,8 USG/h)</strong></span>
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[18px] text-slate-500 shrink-0">
+            <span>Régimen Estándar: <strong>60% Load</strong></span>
+            <span>Consumo Fijo: <strong>33,0 L/h (8,8 US gal/h)</strong></span>
           </div>
         </div>
       </div>
 
       <!-- Columna Derecha (lg:col-span-6) -->
       <div class="lg:col-span-6 flex flex-col">
-        <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
+        <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
           <!-- Header -->
-          <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <div class="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">
               🎯 RESOLUCIÓN OPERATIVA DE RUTA
             </span>
@@ -8683,22 +8658,22 @@ export const DA42_LESSON_5 = {
           </div>
 
           <!-- Centro Visual Gráfica -->
-          <div class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs text-center space-y-2">
-            <div class="w-16 h-16 rounded-full bg-sky-100 dark:bg-sky-950/60 flex items-center justify-center text-[#2361A8] dark:text-sky-300">
+          <div class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs my-2 text-center">
+            <div class="w-16 h-16 rounded-full bg-sky-100 dark:bg-sky-950/60 flex items-center justify-center text-[#2361A8] dark:text-sky-300 mb-2">
               <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <strong class="text-[18px] text-[#0B2E59] dark:text-sky-300 block">Módulo de Planificación de Crucero DA42</strong>
-            <p class="text-[18px] text-slate-600 dark:text-slate-400 leading-snug max-w-sm">
+            <strong class="text-[18px] text-[#0B2E59] dark:text-sky-300">Módulo de Planificación de Crucero DA42</strong>
+            <p class="text-[18px] text-slate-600 dark:text-slate-400 mt-1 max-w-sm">
               En el reproductor interactivo este panel compara el consumo bimotor a diferentes regímenes, verificando autonomía y reservas antes del vuelo.
             </p>
           </div>
 
           <!-- Footer -->
-          <div class="pt-1 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[18px] text-slate-500 shrink-0">
-            <span>Tanques principales: <strong>189 L</strong></span>
-            <span>Autonomía al 60%: <strong>5,7 horas</strong></span>
+          <div class="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[18px] text-slate-500 shrink-0">
+            <span>Tanques Principales: <strong>189 L utilizables</strong></span>
+            <span>Autonomía Máxima: <strong>5,7 horas</strong></span>
           </div>
         </div>
       </div>
