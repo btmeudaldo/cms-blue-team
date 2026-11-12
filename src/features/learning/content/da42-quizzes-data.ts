@@ -15,72 +15,72 @@ export const DA42_LESSON_1_QUIZ: Quiz = {
     {
       id: "da42-1-1",
       question:
-        "Según la sección 1 del AFM y la simbología oficial del curso de la DA42, ¿cuál es la distinción formal de seguridad entre un WARNING y un CAUTION, y cuál es la envergadura oficial de la aeronave?",
+        "En la documentación técnica oficial de la DA42 (AFM y suplementos), ¿cuál es la distinción formal de seguridad entre un WARNING y un CAUTION, y qué exigencia establece el manual respecto a la documentación obligatoria a bordo?",
       options: [
-        "Un WARNING indica que el incumplimiento del procedimiento provoca riesgo inmediato o grave de degradación en la seguridad de vuelo (lesiones severas o la muerte); un CAUTION indica posible daño en el motor, sistemas de la aeronave o degradación a largo plazo; la envergadura oficial es de 13,42 m.",
-        "Un WARNING se refiere a fallos de confort en cabina y un CAUTION a fallos estructurales; la envergadura es de 9,80 m.",
-        "Un WARNING indica un cambio en el plan de vuelo y un CAUTION una avería en la radio VHF; la envergadura es de 15,20 m.",
-        "No existe ninguna distinción operativa entre ambos términos técnicos; la envergadura es de 11,00 m.",
+        "Un WARNING alerta de un peligro inminente que puede provocar la muerte o lesiones graves; un CAUTION advierte de posibles daños al motor, sistemas o degradación a largo plazo; además, es obligatorio llevar el AFM en la bolsa lateral izquierda y la guía rápida G1000 CRG en la bolsa trasera del asiento delantero izquierdo.",
+        "Un WARNING indica fallos de confort en cabina y un CAUTION daños estructurales; los manuales pueden dejarse en la escuela si se dispone de tableta digital autorizada.",
+        "Un WARNING requiere apagar ambos motores en vuelo de inmediato y un CAUTION desviarse a un alternativo; solo es obligatorio llevar la lista de chequeo plastificada.",
+        "No existe ninguna distinción técnica entre ambos términos en el AFM y los manuales solo se exigen en operaciones internacionales.",
       ],
       correctAnswerIndex: 0,
       explanation:
-        "El AFM Sección 1.3 define WARNING como riesgo inmediato o grave de degradación en la seguridad o muerte, y CAUTION como daño al equipo o degradación operativa. La Sección 1.4 fija la envergadura en 13,42 m.",
+        "El AFM Sección 1.3 define WARNING como riesgo inminente de lesiones graves o muerte, y CAUTION como daño potencial a componentes o aeronave. El Caution de la Sección 1.2 impone el transporte obligatorio del AFM en la bolsa lateral izquierda y del Garmin G1000 CRG en la bolsa posterior del asiento delantero izquierdo.",
     },
     {
       id: "da42-1-2",
       question:
-        "En la planta motriz diésel Continental CD-135 / CD-155 de la DA42, ¿qué autonomía mínima garantiza la batería de respaldo de la ECU (ECU Backup Battery) en caso de fallo simultáneo del alternador y la batería principal, y qué mandos analógicos tradicionales se suprimen en cabina?",
+        "En la planta motriz Continental CD-135 / CD-155 de la DA42, ¿cómo se gestiona la combustión y qué salvaguarda eléctrica vital asegura el funcionamiento de cada motor ante un fallo simultáneo del alternador y la batería principal?",
       options: [
-        "Garantiza un mínimo de 30 minutos de operación eléctrica continua para la ECU y los inyectores Common Rail; se suprimen por completo las palancas de mezcla (Mixture), paso de hélice (Propeller), calefacción de carburador y magnetos.",
-        "Garantiza 5 minutos de funcionamiento manteniendo mandos manuales de mezcla enriquecida y palancas de paso de hélice.",
-        "Garantiza 2 horas completas, eliminando las palancas de potencia y pilotando solo con el compensador.",
-        "No dispone de batería de respaldo ya que los inyectores diésel funcionan por succión mecánica sin electricidad.",
+        "Los motores operan por ciclo diésel con inyección Common Rail y FADEC digital redundante (ECU A y B); si fallan el alternador y la batería principal del avión, cada motor dispone de su propia batería de reserva (ECU Backup Battery) que garantiza un mínimo de 30 minutos de operación eléctrica continua para inyectores y computadoras.",
+        "La combustión se alimenta por carburadores de flujo descendente; ante fallo eléctrico, los motores continúan funcionando indefinidamente gracias a las magnetos de encendido independientes.",
+        "Cada motor dispone de una dinamo manual en el pedestal de gases que el copiloto debe accionar para alimentar las bujías.",
+        "El motor se apaga de inmediato en menos de 5 segundos porque los inyectores se bloquean mecánicamente al faltar corriente del bus general.",
       ],
       correctAnswerIndex: 0,
       explanation:
-        "Cada motor cuenta con una ECU Backup Battery que asegura al menos 30 minutos de funcionamiento eléctrico de la ECU e inyectores Common Rail. La gestión FADEC elimina mandos de mezcla, paso de hélice, magnetos y calefacción de carburador.",
+        "Los motores CD-135/CD-155 utilizan ciclo diésel con inyección Common Rail controlada por FADEC. Al depender de la electricidad para inyectores y ECU, cada motor equipa una ECU Backup Battery que proporciona un mínimo de 30 minutos de autonomía eléctrica ante fallo de alternadores y batería principal (AFM 1.2).",
     },
     {
       id: "da42-1-3",
       question:
-        "En las hélices MT-Propeller tripala de la DA42, ¿cuáles son los ángulos característicos de las palas a 0.75 R en paso fino (Low pitch), seguro de arranque mecánico (Start lock) y posición de abanderado (Feathered)?",
+        "A diferencia de los aviones monomotor, las hélices MT-Propeller de la DA42 son abanderables (feathering). ¿Cómo actúan los seguros de arranque mecánicos (Start Locks) en tierra y qué ocurre con las palas si se corta el motor en vuelo?",
       options: [
-        "Low pitch: 12° ± 0.2°; Start lock: 15° ± 1°; Feathered (bandera): 81° ± 1°.",
-        "Low pitch: 0°; Start lock: 30°; Feathered: 90°.",
-        "Low pitch: 20°; Start lock: 45°; Feathered: 60°.",
-        "Low pitch: 5°; Start lock: 10°; Feathered: 45°.",
+        "En vuelo, al cortar el motor y caer la presión de aceite, contrapesos centrífugos y muelles llevan automáticamente las palas a bandera (81° ± 1°) para eliminar la resistencia de molinete; en tierra, por debajo de ~1.300 RPM, fiadores mecánicos (Start Locks) retienen las palas en 15° impidiendo que se abanderen, lo que garantiza el paso fino necesario para el siguiente arranque.",
+        "En vuelo las palas se bloquean a 0° para girar más rápido y en tierra los Start Locks impiden que la hélice gire mientras el avión esté calzado.",
+        "El abanderado se realiza exclusivamente accionando una palanca azul mecánica de paso y en tierra los Start Locks desconectan la reductora.",
+        "Las palas se abanderan solo si el piloto sale a la plataforma a girarlas con la mano con el freno de estacionamiento puesto.",
       ],
       correctAnswerIndex: 0,
       explanation:
-        "El AFM Sección 1 y manuales de MT-Propeller especifican los ángulos de pala a 0.75 de radio: paso fino 12° ± 0.2°, enclavamiento centrífugo de arranque (start lock) 15° ± 1° y bandera 81° ± 1°.",
+        "En la DA42, la caída de presión de aceite en vuelo acciona los muelles y contrapesos que llevan las palas a bandera (81° ± 1°), minimizando la resistencia tras fallo de motor. En tierra, al reducir por debajo de 1.300 RPM antes de parar, los pernos centrífugos Start Locks bloquean las palas a 15° (paso fino) para permitir arrancar de nuevo sin sobrecargar el motor de arranque (AFM 1.3).",
     },
     {
       id: "da42-1-4",
       question:
-        "¿Cuál es el combustible oficial homologado y utilizado en la flota DA42, cuál es su densidad estándar y cuál es la capacidad utilizable total en los depósitos principales (Main Tanks)?",
+        "En el sistema de combustible de la DA42 con depósitos principales (Main) y auxiliares (Aux), ¿cuál es la capacidad utilizable total de la flota, cuál es el límite de desbalance lateral y en qué condiciones está autorizada la posición CROSSFEED?",
       options: [
-        "Exclusivamente queroseno de aviación JET A-1 (densidad estándar de 0,84 kg/L), con una capacidad utilizable en depósitos principales de 2 x 25,0 US gal (50,0 US gal / 189,2 L en total).",
-        "Gasolina AVGAS 100LL (densidad 0,72 kg/L) con una capacidad utilizable de 80 US gal en depósitos principales.",
-        "Mezcla libre de diésel y AVGAS con 30 US gal utilizables por semiala.",
-        "Combustible Jet B sin restricción de selectores en cualquier posición de vuelo.",
+        "La capacidad total utilizable es de 76,4 US gal (~289 L); el desbalance máximo admisible entre depósitos principales es de 5,0 US gal (~19 L); y la posición CROSSFEED está autorizada en vuelo para alimentar un motor operativo desde el ala opuesta o corregir asimetrías, estando terminantemente prohibido despegar o aterrizar en CROSSFEED.",
+        "La capacidad total utilizable es de 100 US gal; no existe límite de desbalance entre alas; y el despegue debe realizarse obligatoriamente con ambas válvulas en CROSSFEED.",
+        "La capacidad es de 50 US gal en total; el desbalance máximo es de 15 US gal; y la posición CROSSFEED se utiliza únicamente en plataforma para llenar los depósitos por gravedad.",
+        "La capacidad total es de 60 US gal de AVGAS 100LL; el desbalance es ilimitado; y la posición CROSSFEED se selecciona automáticamente sin mando en cabina.",
       ],
       correctAnswerIndex: 0,
       explanation:
-        "La DA42 utiliza queroseno JET A-1 (ASTM D 1655, densidad nominal 0,84 kg/L). Sus depósitos principales albergan 2 x 26.0 USG totales con 2 x 25.0 USG utilizables (50.0 USG / 189.2 L en total).",
+        "La flota DA42 equipada con depósitos auxiliares dispone de 76,4 US gal utilizables (50 USG principales + 26,4 USG auxiliares). El desbalance máximo entre alas es de 5,0 US gal (~19 L). El AFM 2.14 prohíbe taxativamente el despegue y aterrizaje en posición CROSSFEED, la cual se reserva para vuelo con motor inoperativo (OEI) o corrección en ruta.",
     },
     {
       id: "da42-1-5",
       question:
-        "Respecto a los fluidos de mantenimiento y servicio de la DA42, ¿cuál es el fluido hidráulico mineral homologado para el sistema de frenos y qué características tiene el líquido refrigerante de motor?",
+        "Durante la comprobación de fluidos de servicio en la inspección prevuelo de la DA42, ¿cómo se verifican los niveles de lubricación del motor y de la reductora, y qué advertencia impone el AFM si aparece el aviso WATER LEVEL en el G1000?",
       options: [
-        "Fluido mineral AeroShell Fluid 41 (MIL-PRF-5606) para frenos y refrigerante al 50:50 de agua y anticongelante (BASF Glysantin Protect Plus G48 o G30) con punto de congelación a -36 °C.",
-        "Líquido sintético DOT 4 de automoción y agua pura del grifo sin aditivos.",
-        "Aceite vegetal refinado y alcohol metílico puro.",
-        "Fluido comercial Skydrol 500B con 100% de etilenglicol puro.",
+        "El aceite motor se verifica con su varilla tras esperar entre 5 y 15 minutos de reposo tras la parada; la reductora tiene circuito independiente y su nivel debe situarse por encima de la mitad de la mirilla en la góndola; y si el aviso WATER LEVEL (refrigerante bajo) permanece activo en tierra, el arranque y despegue quedan terminantemente prohibidos.",
+        "El motor y la reductora comparten un único depósito de aceite que se mide con una varilla común en el morro; el aviso WATER LEVEL solo es informativo y permite volar hasta 500 millas.",
+        "La reductora carece de aceite porque funciona por engranajes secos de teflón; el aceite motor debe rellenarse hasta que rebose el tapón.",
+        "El nivel de aceite motor solo se comprueba con el motor encendido a 2.000 RPM y el nivel de reductora se mide por el color del escape.",
       ],
       correctAnswerIndex: 0,
       explanation:
-        "El sistema de frenos requiere fluido hidráulico mineral MIL-PRF-5606 (AeroShell Fluid 41), y el circuito de refrigeración utiliza una mezcla al 50:50 de agua y BASF Glysantin G48/G30 con congelación a -36 °C.",
+        "El motor y la reductora cuentan con circuitos y lubricantes completamente independientes. El aceite motor se mide con la varilla dejando 5-15 min de reposo para drenaje al cárter; la reductora se comprueba en su mirilla transparente frontal (mitad o superior). El aviso WATER LEVEL indica bajo refrigerante en el vaso de expansión, prohibiendo el AFM el arranque si está activo en tierra (AFM 1.5 y 2.4).",
     },
     {
       id: "da42-1-6",
@@ -88,8 +88,8 @@ export const DA42_LESSON_1_QUIZ: Quiz = {
         "En el Garmin G1000 de la DA42, ¿cómo determina el totalizador de combustible de la página FUEL la cantidad remanente a bordo y qué advertencia operacional establece la Cockpit Reference Guide (CRG)?",
       options: [
         "El totalizador calcula el combustible restante integrando matemáticamente el consumo medido por los caudalímetros desde el último reset manual; no mide directamente las boyas físicas de los depósitos, siendo obligatoria la comprobación visual directa previa al vuelo.",
-        "El totalizador realiza una medición láser del nivel de los depósitos en tiempo real sin requerir comprobación física del piloto.",
-        "Mide la masa del avión mediante sensores en el tren de aterrizaje para deducir el combustible.",
+        "El totalizador realiza una medición láser directa de nivel en tiempo real sin requerir comprobación física del piloto.",
+        "Mide la masa del avión mediante sensores en el tren de aterrizaje para deducir el combustible consumido.",
         "Muestra únicamente la capacidad del depósito auxiliar izquierdo sin tener en cuenta los depósitos principales.",
       ],
       correctAnswerIndex: 0,
