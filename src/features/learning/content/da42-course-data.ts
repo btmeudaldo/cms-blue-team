@@ -8765,6 +8765,109 @@ export const DA42_LESSON_5 = {
       </div>
     </div>
   </div>
+</div>
+
+
+
+<!-- pagebreak -->
+
+
+
+<!-- DIAPOSITIVA 6.11: 6.11 Ejercicio Práctico: Planificación de Combustible F.OPS.02 -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 TWIN STAR · TALLER INTERACTIVO 3</div>
+      <h1 class="text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.11 Ejercicio Práctico: Planificación de Combustible F.OPS.02</h1>
+    </div>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Part-NCO.OP.125 & Manual OM</span>
+  </div>
+
+  <div data-interactive-exercise="fuel" data-aircraft="da42">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+      <!-- Columna Izquierda (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">
+                ⛽ F.OPS.02 · HOJA DE CARGA DE COMBUSTIBLE
+              </span>
+              <div class="text-[18px] text-slate-500 font-medium">
+                Cálculo de Despacho Operativo DA42 Twin Star
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded text-[18px] font-bold uppercase tracking-wider bg-sky-100 text-[#0B2E59] border border-sky-300">
+              SIMULADOR
+            </span>
+          </div>
+
+          <!-- Tabla de Datos -->
+          <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
+              Desglose F.OPS.02 de Combustible Mínimo Bimotor
+            </strong>
+            <div class="grid gap-1 text-[18px] font-mono text-slate-700 dark:text-slate-200 pt-0.5" style="display: grid; grid-template-columns: 2fr 1fr 1fr;">
+              <span class="font-bold">Concepto</span>
+              <span class="text-center font-bold">Tiempo</span>
+              <span class="text-right font-bold">Litros (60%)</span>
+              <span>Combustible de Ruta (Trip)</span><span class="text-center">1h 00min</span><span class="text-right">33,0 L</span>
+              <span class="font-bold text-amber-700 dark:text-amber-400">Reserva Final Blue Team</span><span class="text-center font-bold text-amber-700 dark:text-amber-400">1h 30min</span><span class="text-right font-bold text-amber-700 dark:text-amber-400">49,5 L</span>
+              <span>Proceder a Alternativo</span><span class="text-center">20min</span><span class="text-right">11,0 L</span>
+              <span>Rodaje y Calentamiento (Taxi)</span><span class="text-center">-</span><span class="text-right">6,0 L</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">Combustible Mínimo Rampa</span><span class="text-center font-bold text-emerald-700 dark:text-emerald-400">2h 50min</span><span class="text-right font-bold text-emerald-700 dark:text-emerald-400">99,5 L</span>
+            </div>
+          </div>
+
+          <div class="p-2 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/60 text-[18px] text-amber-900 dark:text-amber-200 space-y-0.5 shrink-0">
+            <strong class="text-[18px] block">Regla OM Blue Team:</strong>
+            <p class="text-[18px] leading-snug">
+              La escuela exige un mínimo de <strong>1h 30min de reserva final</strong> (49,5 L bimotor), superando el mínimo legal de 45 minutos de EASA Part-NCO para garantizar la máxima seguridad en instrucción.
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[18px] text-slate-500 shrink-0">
+            <span>Reserva Final OM: <strong>49,5 L (13,1 US gal)</strong></span>
+            <span>Densidad Jet A-1: <strong>0,84 kg/L</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">
+              📋 VERIFICACIÓN REGISTRAL F.OPS.02
+            </span>
+            <span class="text-[18px] text-slate-500 font-semibold">Validación Automática</span>
+          </div>
+
+          <!-- Centro Visual Gráfica -->
+          <div class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs text-center space-y-2">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950/60 flex items-center justify-center text-emerald-700 dark:text-emerald-300">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <strong class="text-[18px] text-[#0B2E59] dark:text-sky-300 block">Simulador de Planificación F.OPS.02 · DA42</strong>
+            <p class="text-[18px] text-slate-600 dark:text-slate-400 leading-snug max-w-sm">
+              En el reproductor interactivo este panel comprueba que el combustible embarcado sea suficiente para la ruta bimotor, la reserva final Blue Team (1h 30min) y la aproximación al alternativo.
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div class="pt-1 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[18px] text-slate-500 shrink-0">
+            <span>Part-NCO.OP.125: <strong>CUMPLIDO</strong></span>
+            <span>Manual OM Blue Team: <strong>CONFORME</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
 };
 

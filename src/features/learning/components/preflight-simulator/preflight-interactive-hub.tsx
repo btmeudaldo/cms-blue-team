@@ -14,6 +14,7 @@ import { DA40TakeoffChartsWidget } from "./da40-takeoff-charts-widget";
 import { DA42LoadsheetWidget } from "./da42-loadsheet-widget";
 import { DA42FuelChartWidget } from "./da42-fuel-chart-widget";
 import { DA42CruiseWidget } from "./da42-cruise-widget";
+import { DA42FuelWidget } from "./da42-fuel-widget";
 
 export type ExerciseType =
   | "loadsheet"
@@ -78,6 +79,14 @@ export function PreflightInteractiveHub({
       case "cruise":
         return (
           <DA42CruiseWidget
+            leftPct={leftPct}
+            onExerciseCompleted={onExerciseCompleted}
+            isAlreadyCompleted={isAlreadyCompleted}
+          />
+        );
+      case "fuel":
+        return (
+          <DA42FuelWidget
             leftPct={leftPct}
             onExerciseCompleted={onExerciseCompleted}
             isAlreadyCompleted={isAlreadyCompleted}
