@@ -30,6 +30,7 @@ import {
 } from "@/features/learning/content/da42-course-data";
 import { C172_QUIZZES } from "@/features/learning/content/c172-quizzes-data";
 import { DA40_QUIZZES } from "@/features/learning/content/da40-quizzes-data";
+import { DA42_QUIZZES } from "@/features/learning/content/da42-quizzes-data";
 
 // Extend Node.js global type for the mock state
 declare global {
@@ -935,6 +936,7 @@ const defaultQuizzes = [
   },
   ...C172_QUIZZES,
   ...DA40_QUIZZES,
+  ...DA42_QUIZZES,
 ];
 
 // Default initial attempt for demo student
