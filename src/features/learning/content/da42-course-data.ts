@@ -1980,9 +1980,9 @@ export const DA42_LESSON_3 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Modelos CD-135 (TAE 125-01 / -02-99) y CD-155 (TAE 125-02-114)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="54" style="--col-left: 54fr; --col-right: 46fr; grid-template-columns: minmax(0px, 54fr) minmax(0px, 46fr) !important;">
     <!-- Columna Izquierda (lg:col-span-7): Manual POH Suplemento Continental (Altura Fija 590px sin scroll) -->
-    <div class="lg:col-span-7 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-0.5 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENGINE SPECIFICATIONS</span>
@@ -2070,7 +2070,7 @@ export const DA42_LESSON_3 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Planta Motriz Continental CD-135 / CD-155 (Altura Fija 590px sin scroll) -->
-    <div class="lg:col-span-5 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
@@ -2085,7 +2085,7 @@ export const DA42_LESSON_3 = {
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
             <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.1-cd155-engine.png?v=1" alt="Motor Continental CD-135 / CD-155 Turbo Diésel" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.1-cd155-engine.png?v=1" alt="Motor Continental CD-135 / CD-155 Turbo Diésel" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
             </div>
             <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
               <strong class="text-[#0B2E59] dark:text-sky-300">Continental CD-135 / CD-155</strong> · Arquitectura de la Planta Motriz en Góndola Alar (AFM Sección 7.9)
@@ -2109,12 +2109,12 @@ export const DA42_LESSON_3 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Reducción (CD-135 i=1.69 / CD-155 i=1.66) y Hélices Abanderables Constant Speed</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr; grid-template-columns: minmax(0px, 50fr) minmax(0px, 50fr) !important;">
     <!-- Columna Izquierda (lg:col-span-6): Manual POH Suplemento Continental (Altura Fija 590px sin scroll) -->
-    <div class="lg:col-span-6 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-0.5 border-b border-slate-200 dark:border-slate-800 mb-1">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GEARBOX & PROPELLER (AFM SECCIÓN 7.9.2)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">GEARBOX &amp; PROPELLER (AFM SECCIÓN 7.9.2)</span>
         </div>
 
         <div class="space-y-1.5 py-0">
@@ -2187,7 +2187,7 @@ export const DA42_LESSON_3 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-6): Reductora Integrada y Hélice MT-Propeller (Altura Fija 590px - Imagen Máxima) -->
-    <div class="lg:col-span-6 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
@@ -2196,11 +2196,9 @@ export const DA42_LESSON_3 = {
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
             <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.2-gearbox-propeller.jpg?v=1" alt="Reductora Integrada y Hélice MT-Propeller" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.2-gearbox-propeller.jpg?v=1" alt="Reductora Integrada y Hélice MT-Propeller" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
             </div>
-            <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
-              <strong class="text-[#0B2E59] dark:text-sky-300">Diamond DA42 Twin Star</strong> · Caja Reductora Integrada y Hélice MT-Propeller MTV-6 Abanderable (AFM 7.9.2)
-            </figcaption>
+            
           </div>
 
           <!-- WARNING DIFERENCIA VITAL RESPECTO A MONOMOTOR -->
