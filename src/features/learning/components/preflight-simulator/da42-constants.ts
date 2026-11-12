@@ -41,7 +41,7 @@ export const DA42_PREFLIGHT_MISSIONS: DA42PreflightMission[] = [
     id: "da42-mision-1",
     name: "Misión 1: Vuelo Local Multimotor (GCXO - Tenerife Norte)",
     badge: "Básico · Normal",
-    description: "Vuelo de maniobras multimotor en zona local de Tenerife Norte (GCXO) con Instructor y Alumno (160 kg total), 10 kg equipaje en morro y 15 kg en cabina. 140 kg (166,7 L) de Jet A-1 en tanques principales. Crucero bimotor al 60% de carga (21 kg/h).",
+    description: "Vuelo local de Tenerife Norte (GCXO) con Instructor y Alumno (160 kg total), 10 kg equipaje en morro y 15 kg en cabina. 140 kg (166,7 L) Jet A-1 en tanques principales. Crucero bimotor al 60% de carga (21 kg/h).",
     baggageNoseKg: 10,
     baggageCabinKg: 15,
     scenario: {
