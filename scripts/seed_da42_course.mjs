@@ -8,6 +8,7 @@ import {
   DA42_COURSE_IMAGE_URL,
   DA42_LESSONS,
 } from "../src/features/learning/content/da42-course-data.ts";
+import { DA42_QUIZZES } from "../src/features/learning/content/da42-quizzes-data.ts";
 
 dotenv.config({ path: ".env.local" });
 
@@ -152,6 +153,28 @@ async function seedDA42() {
       console.error(`❌ Error en lección ${lesson.slug}:`, lessonError);
     } else {
       console.log(`✅ Lección guardada: ${lesson.title}`);
+    }
+  }
+
+  // 2.5 Upsert quizzes
+  for (const q of DA42_QUIZZES) {
+    const { error: quizError } = await supabase.from("quizzes").upsert(
+      {
+        id: q.id,
+        course_id: q.course_id,
+        lesson_id: q.lesson_id,
+        lesson_slug: q.id.replace("quiz-", ""),
+        title: q.title,
+        description: q.description || null,
+        min_pass_score_percentage: q.minPassScorePercentage || 75,
+        questions: q.questions,
+      },
+      { onConflict: "id" }
+    );
+    if (quizError) {
+      console.error(`❌ Error en quiz ${q.id}:`, quizError);
+    } else {
+      console.log(`✅ Examen guardado: ${q.title} (${q.questions.length} preguntas)`);
     }
   }
 
