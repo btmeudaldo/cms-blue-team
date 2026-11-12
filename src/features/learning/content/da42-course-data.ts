@@ -8418,6 +8418,95 @@ export const DA42_LESSON_5 = {
       </div>
     </div>
   </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.7: 6.7 Régimen de Crucero: Rendimiento y Consumo de Combustible -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[11px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 TWIN STAR · RENDIMIENTO DE CRUCERO</div>
+      <h1 class="text-xl sm:text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.7 Régimen de Crucero: Rendimiento y Consumo de Combustible</h1>
+    </div>
+    <span class="text-xs sm:text-sm text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Tablas y Gráficas de Rendimiento</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+    <!-- Columna Izquierda (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-between p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[13px]">REGÍMENES DE CRUCERO Y CONSUMO (CD-135 / CD-155)</span>
+        </div>
+
+        <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-[11px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">GESTIÓN MONO-PALANCA Y EFICIENCIA BIMOTOR</strong>
+          <p class="text-xs text-slate-700 dark:text-slate-300 leading-snug">
+            En el Diamond DA42 Twin Star, cada motor cuenta con su propia palanca monomando que comanda directamente el porcentaje de potencia deseado (<em>% LOAD</em>). La doble FADEC/ECU gestiona automáticamente la dosificación óptima de combustible (inyección directa Common Rail) y el paso de ambas hélices para cada régimen de vuelo.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 text-xs">
+          <!-- 60% CRUCERO ECONÓMICO -->
+          <div class="p-1.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <span class="font-bold text-sky-600 dark:text-sky-400 block uppercase text-[10.5px]">60% (ECONÓMICO)</span>
+            <div class="text-[10.5px] text-slate-700 dark:text-slate-300 leading-tight">
+              1 motor: <strong>4,4 USG/h</strong><br>
+              Total: <strong>8,8 USG/h (33 L/h)</strong><br>
+              TAS: ~138 kts a FL80<br>
+              <span class="text-slate-500 dark:text-slate-400 text-[9.5px]">Máximo alcance</span>
+            </div>
+          </div>
+
+          <!-- 70% CRUCERO NORMAL -->
+          <div class="p-1.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 block uppercase text-[10.5px]">70% (NORMAL)</span>
+            <div class="text-[10.5px] text-slate-700 dark:text-slate-300 leading-tight">
+              1 motor: <strong>5,3 USG/h</strong><br>
+              Total: <strong>10,6 USG/h (40 L/h)</strong><br>
+              TAS: ~148 kts a FL80<br>
+              <span class="text-slate-500 dark:text-slate-400 text-[9.5px]">Crucero balanceado</span>
+            </div>
+          </div>
+
+          <!-- 80% CRUCERO RÁPIDO -->
+          <div class="p-1.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <span class="font-bold text-amber-600 dark:text-amber-400 block uppercase text-[10.5px]">80% (RÁPIDO)</span>
+            <div class="text-[10.5px] text-slate-700 dark:text-slate-300 leading-tight">
+              1 motor: <strong>6,2 USG/h</strong><br>
+              Total: <strong>12,4 USG/h (47 L/h)</strong><br>
+              TAS: ~158 kts a FL80<br>
+              <span class="text-slate-500 dark:text-slate-400 text-[9.5px]">Crucero continuo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-2 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs leading-snug shadow-2xs shrink-0">
+          <strong class="text-sky-800 dark:text-sky-300 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[11px]">
+            <span>ℹ️</span> LECTURA DIRECTA DEL ÁBACO (FUEL FLOW POR MOTOR)
+          </strong>
+          <span class="text-[11.5px] leading-snug">Conforme al ábaco oficial del AFM de la DA42 (figura derecha), la curva representa el consumo <strong>por motor</strong>. En el ejemplo oficial a <strong>60% LOAD</strong> el consumo por motor es exactamente de <strong>4,4 US gal/h (16,5 L/h)</strong>, resultando en <strong>8,8 US gal/h (33,0 L/h)</strong> total bimotor. A <strong>70% LOAD</strong> es de <strong>5,3 US gal/h (10,6 total)</strong> y a <strong>80% LOAD</strong> es de <strong>6,2 US gal/h (12,4 total)</strong>.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO INTERACTIVO: FUEL FLOW</span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950/80 dark:text-sky-300 border border-sky-300">INTERACTIVO</span>
+        </div>
+
+        <div
+          data-interactive-exercise="fuel_chart"
+          data-aircraft="da42"
+          class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 shadow-xs flex flex-col"
+        ></div>
+      </div>
+    </div>
+  </div>
 </div>`,
 };
 
