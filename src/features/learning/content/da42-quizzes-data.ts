@@ -2,6 +2,103 @@ import type { Quiz } from "../domain/quiz-types";
 
 export const DA42_COURSE_ID = "da420000-0000-0000-0000-000000000042";
 
+export const DA42_LESSON_1_QUIZ: Quiz = {
+  id: "quiz-da42-lesson-1",
+  course_id: DA42_COURSE_ID,
+  lesson_id: "da420000-0000-0000-0000-000000000010",
+  title:
+    "Examen de Verificación: 1. Generalidades y Especificaciones Técnicas",
+  description:
+    "Evaluación teórica de verificación sobre dimensiones generales, simbología oficial AFM, especificaciones de la planta motriz Continental CD-135 / CD-155, hélices MT-Propeller, combustible JET-A1 y depósitos, fluidos de servicio e instrumentación Garmin G1000 EIS de la Diamond DA42 Twin Star.",
+  minPassScorePercentage: 75,
+  questions: [
+    {
+      id: "da42-1-1",
+      question:
+        "Según la sección 1 del AFM y la simbología oficial del curso de la DA42, ¿cuál es la distinción formal de seguridad entre un WARNING y un CAUTION, y cuál es la envergadura oficial de la aeronave?",
+      options: [
+        "Un WARNING indica que el incumplimiento del procedimiento provoca riesgo inmediato o grave de degradación en la seguridad de vuelo (lesiones severas o la muerte); un CAUTION indica posible daño en el motor, sistemas de la aeronave o degradación a largo plazo; la envergadura oficial es de 13,42 m.",
+        "Un WARNING se refiere a fallos de confort en cabina y un CAUTION a fallos estructurales; la envergadura es de 9,80 m.",
+        "Un WARNING indica un cambio en el plan de vuelo y un CAUTION una avería en la radio VHF; la envergadura es de 15,20 m.",
+        "No existe ninguna distinción operativa entre ambos términos técnicos; la envergadura es de 11,00 m.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM Sección 1.3 define WARNING como riesgo inmediato o grave de degradación en la seguridad o muerte, y CAUTION como daño al equipo o degradación operativa. La Sección 1.4 fija la envergadura en 13,42 m.",
+    },
+    {
+      id: "da42-1-2",
+      question:
+        "En la planta motriz diésel Continental CD-135 / CD-155 de la DA42, ¿qué autonomía mínima garantiza la batería de respaldo de la ECU (ECU Backup Battery) en caso de fallo simultáneo del alternador y la batería principal, y qué mandos analógicos tradicionales se suprimen en cabina?",
+      options: [
+        "Garantiza un mínimo de 30 minutos de operación eléctrica continua para la ECU y los inyectores Common Rail; se suprimen por completo las palancas de mezcla (Mixture), paso de hélice (Propeller), calefacción de carburador y magnetos.",
+        "Garantiza 5 minutos de funcionamiento manteniendo mandos manuales de mezcla enriquecida y palancas de paso de hélice.",
+        "Garantiza 2 horas completas, eliminando las palancas de potencia y pilotando solo con el compensador.",
+        "No dispone de batería de respaldo ya que los inyectores diésel funcionan por succión mecánica sin electricidad.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Cada motor cuenta con una ECU Backup Battery que asegura al menos 30 minutos de funcionamiento eléctrico de la ECU e inyectores Common Rail. La gestión FADEC elimina mandos de mezcla, paso de hélice, magnetos y calefacción de carburador.",
+    },
+    {
+      id: "da42-1-3",
+      question:
+        "En las hélices MT-Propeller tripala de la DA42, ¿cuáles son los ángulos característicos de las palas a 0.75 R en paso fino (Low pitch), seguro de arranque mecánico (Start lock) y posición de abanderado (Feathered)?",
+      options: [
+        "Low pitch: 12° ± 0.2°; Start lock: 15° ± 1°; Feathered (bandera): 81° ± 1°.",
+        "Low pitch: 0°; Start lock: 30°; Feathered: 90°.",
+        "Low pitch: 20°; Start lock: 45°; Feathered: 60°.",
+        "Low pitch: 5°; Start lock: 10°; Feathered: 45°.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM Sección 1 y manuales de MT-Propeller especifican los ángulos de pala a 0.75 de radio: paso fino 12° ± 0.2°, enclavamiento centrífugo de arranque (start lock) 15° ± 1° y bandera 81° ± 1°.",
+    },
+    {
+      id: "da42-1-4",
+      question:
+        "¿Cuál es el combustible oficial homologado y utilizado en la flota DA42, cuál es su densidad estándar y cuál es la capacidad utilizable total en los depósitos principales (Main Tanks)?",
+      options: [
+        "Exclusivamente queroseno de aviación JET A-1 (densidad estándar de 0,84 kg/L), con una capacidad utilizable en depósitos principales de 2 x 25,0 US gal (50,0 US gal / 189,2 L en total).",
+        "Gasolina AVGAS 100LL (densidad 0,72 kg/L) con una capacidad utilizable de 80 US gal en depósitos principales.",
+        "Mezcla libre de diésel y AVGAS con 30 US gal utilizables por semiala.",
+        "Combustible Jet B sin restricción de selectores en cualquier posición de vuelo.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "La DA42 utiliza queroseno JET A-1 (ASTM D 1655, densidad nominal 0,84 kg/L). Sus depósitos principales albergan 2 x 26.0 USG totales con 2 x 25.0 USG utilizables (50.0 USG / 189.2 L en total).",
+    },
+    {
+      id: "da42-1-5",
+      question:
+        "Respecto a los fluidos de mantenimiento y servicio de la DA42, ¿cuál es el fluido hidráulico mineral homologado para el sistema de frenos y qué características tiene el líquido refrigerante de motor?",
+      options: [
+        "Fluido mineral AeroShell Fluid 41 (MIL-PRF-5606) para frenos y refrigerante al 50:50 de agua y anticongelante (BASF Glysantin Protect Plus G48 o G30) con punto de congelación a -36 °C.",
+        "Líquido sintético DOT 4 de automoción y agua pura del grifo sin aditivos.",
+        "Aceite vegetal refinado y alcohol metílico puro.",
+        "Fluido comercial Skydrol 500B con 100% de etilenglicol puro.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El sistema de frenos requiere fluido hidráulico mineral MIL-PRF-5606 (AeroShell Fluid 41), y el circuito de refrigeración utiliza una mezcla al 50:50 de agua y BASF Glysantin G48/G30 con congelación a -36 °C.",
+    },
+    {
+      id: "da42-1-6",
+      question:
+        "En el Garmin G1000 de la DA42, ¿cómo determina el totalizador de combustible de la página FUEL la cantidad remanente a bordo y qué advertencia operacional establece la Cockpit Reference Guide (CRG)?",
+      options: [
+        "El totalizador calcula el combustible restante integrando matemáticamente el consumo medido por los caudalímetros desde el último reset manual; no mide directamente las boyas físicas de los depósitos, siendo obligatoria la comprobación visual directa previa al vuelo.",
+        "El totalizador realiza una medición láser del nivel de los depósitos en tiempo real sin requerir comprobación física del piloto.",
+        "Mide la masa del avión mediante sensores en el tren de aterrizaje para deducir el combustible.",
+        "Muestra únicamente la capacidad del depósito auxiliar izquierdo sin tener en cuenta los depósitos principales.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "La G1000 Cockpit Reference Guide (CRG) advierte que el totalizador de combustible integra matemáticamente el flujo registrado por los transductores (FF) desde la inicialización manual, por lo que no sustituye la inspección física visual con varilla prevuelo.",
+    },
+  ],
+};
+
 export const DA42_LESSON_2_QUIZ: Quiz = {
   id: "quiz-da42-lesson-2",
   course_id: DA42_COURSE_ID,
@@ -1215,6 +1312,7 @@ export const DA42_LESSON_6_QUIZ: Quiz = {
 };
 
 export const DA42_QUIZZES: Quiz[] = [
+  DA42_LESSON_1_QUIZ,
   DA42_LESSON_2_QUIZ,
   DA42_LESSON_3_QUIZ,
   DA42_LESSON_4_QUIZ,
