@@ -2285,10 +2285,7 @@ export const DA42_LESSON_3 = {
               <span>ℹ️</span>
               <span>NOTE (AFM 7.9.2):</span>
             </strong>
-            <ul class="list-disc pl-3 space-y-0.5 text-[11px] leading-tight">
-              <li>Cada planta motriz de la DA42 cuenta con su propio sistema FADEC redundante e independiente. En vuelo normal, la ECU A controla el motor y la ECU B permanece en espera activa (hot standby).</li>
-              <li>Al colocar el interruptor <code>ENGINE MASTER</code> en OFF, se desenergizan los inyectores y la ECU del motor respectivo, provocando su parada inmediata y el abanderamiento automático de la hélice.</li>
-            </ul>
+            <div class="text-[11px] leading-tight">Cada planta motriz de la DA42 cuenta con su propio sistema FADEC redundante e independiente. En vuelo normal, la ECU A controla el motor y la ECU B permanece en espera activa (hot standby).</div>
           </div>
         </div>
       </div>
@@ -2300,9 +2297,18 @@ export const DA42_LESSON_3 = {
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ARQUITECTURA DEL SISTEMA FADEC</span>
         </div>
-        <div class="w-full flex-1 min-h-0 flex flex-col justify-start space-y-1.5 overflow-hidden">
+        <div class="w-full flex-1 min-h-0 flex flex-col justify-between items-center space-y-1.5 overflow-hidden">
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/90 flex flex-col items-center justify-center p-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/Gemini_Generated_Image_8v05wd8v05wd8v05.jpg" alt="Arquitectura del Sistema FADEC Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+          </div>
+
+          <!-- NOTA ENGINE MASTER Y ABANDERAMIENTO -->
+          <div class="p-2 px-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-[11px] leading-tight shadow-2xs shrink-0 w-full">
+            <strong class="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>ℹ️</span>
+              <span>NOTE (AFM 7.9.2):</span>
+            </strong>
+            <div>Al colocar el interruptor <code>ENGINE MASTER</code> en OFF, se desenergizan los inyectores y la ECU del motor respectivo, provocando su parada inmediata y el abanderamiento automático de la hélice.</div>
           </div>
         </div>
       </div>
