@@ -1124,7 +1124,7 @@ export function DA42LoadsheetWidget({
               {selectedMissionIndex === 0 ? (
                 <div className="flex items-center gap-1.5">
                   <div className="text-[11px] text-emerald-800 dark:text-emerald-300 font-semibold hidden md:block">
-                    ✓ M1 es tu ejemplo guiado resuelto:
+                    ✓ M1 ejemplo resuelto:
                   </div>
                   <button
                     type="button"

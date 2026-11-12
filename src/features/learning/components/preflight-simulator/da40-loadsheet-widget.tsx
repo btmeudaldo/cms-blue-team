@@ -1191,7 +1191,7 @@ export function DA40LoadsheetWidget({
               {selectedMissionIndex === 0 ? (
                 <div className="flex items-center gap-2">
                   <div className="text-[11px] text-emerald-800 dark:text-emerald-300 font-semibold hidden md:block">
-                    ✓ M1 es tu ejemplo resuelto de referencia. Pulsa en M2 para resolver tu ejercicio:
+                    ✓ M1 ejemplo resuelto:
                   </div>
                   <button
                     type="button"
