@@ -27,7 +27,8 @@
     "db:backup": "node scripts/pull_c172_from_db.mjs",
     "db:pull": "node scripts/sync_c172_from_db.mjs",
     "db:push": "node scripts/push_c172_to_db.mjs",
-    "db:push:da40": "node scripts/seed_da40_course.mjs"
+    "db:push:da40": "node scripts/seed_da40_course.mjs",
+    "db:push:da42": "node scripts/seed_da42_course.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
