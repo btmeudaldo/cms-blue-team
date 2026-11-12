@@ -137,41 +137,28 @@ export function DA42FuelChartWidget() {
   return (
     <div className="w-full h-full flex flex-col justify-between bg-white dark:bg-slate-900 rounded-xl p-2 select-none overflow-hidden">
       {/* Top Value Readout Bar */}
-      <div className="h-10 shrink-0 flex items-center justify-between px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80">
+      <div className="h-12 shrink-0 flex items-center justify-between px-3 py-1 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80">
         <div className="flex items-center gap-2">
-          <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
+          <span className="font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide text-[18px]">
             POTENCIA:
           </span>
-          <span className="font-mono font-extrabold text-base text-[#0B2E59] dark:text-sky-300">
+          <span className="font-mono font-black text-[20px] text-[#0B2E59] dark:text-sky-300">
             {point.load.toFixed(1)}% LOAD
           </span>
         </div>
 
-        <div className="flex items-center gap-3 font-mono text-xs font-bold">
-          {/* 1 Engine */}
-          <div className="flex items-center gap-1 text-slate-700 dark:text-slate-300">
-            <span className="text-[10px] text-slate-500 font-sans font-semibold">
-              1 Motor:
+        <div className="flex items-center gap-4 font-mono font-bold">
+          <div className="flex items-center gap-1.5 text-blue-700 dark:text-sky-300">
+            <span className="text-slate-500 dark:text-slate-400 font-sans font-bold text-[18px]">
+              USG/h:
             </span>
-            <span className="text-xs font-bold text-blue-700 dark:text-sky-300">
-              {point.usg.toFixed(2)} USG/h
-            </span>
-            <span className="text-slate-400 font-normal">({point.lph.toFixed(1)} L/h)</span>
+            <span className="font-black text-[20px]">{point.usg.toFixed(2)}</span>
           </div>
-
-          <span className="text-slate-300 dark:text-slate-600">|</span>
-
-          {/* Both Engines Total */}
-          <div className="flex items-center gap-1 text-emerald-700 dark:text-emerald-400">
-            <span className="text-[10px] font-sans font-bold uppercase tracking-wider bg-emerald-100 dark:bg-emerald-950/80 px-1 py-0.5 rounded text-emerald-800 dark:text-emerald-300">
-              TOTAL BIMOTOR:
+          <div className="flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400">
+            <span className="text-slate-500 dark:text-slate-400 font-sans font-bold text-[18px]">
+              L/h:
             </span>
-            <span className="text-sm font-extrabold text-emerald-700 dark:text-emerald-300">
-              {totalUsg.toFixed(2)} USG/h
-            </span>
-            <span className="text-xs text-emerald-600 dark:text-emerald-400 font-bold">
-              ({totalLph.toFixed(1)} L/h)
-            </span>
+            <span className="font-black text-[20px]">{point.lph.toFixed(1)}</span>
           </div>
         </div>
       </div>
@@ -349,7 +336,7 @@ export function DA42FuelChartWidget() {
                 fontFamily="monospace"
                 fontWeight="800"
               >
-                1 Mot: {point.usg.toFixed(2)} USG | Tot: {totalUsg.toFixed(1)}
+                {point.usg.toFixed(2)} USG &bull; {point.lph.toFixed(1)} L/h
               </text>
             </g>
           </svg>
@@ -358,7 +345,7 @@ export function DA42FuelChartWidget() {
 
       {/* Preset Buttons & Instruction Hint */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0">
-        <span className="text-[11px] text-slate-600 dark:text-slate-400 font-medium flex items-center gap-1">
+        <span className="text-xs text-slate-600 dark:text-slate-400 font-medium flex items-center gap-1">
           <span className="text-base">👆</span> Mueve el cursor sobre la gráfica o selecciona:
         </span>
         <div className="flex items-center gap-1.5 flex-wrap">
@@ -377,8 +364,8 @@ export function DA42FuelChartWidget() {
                 style={{
                   backgroundColor: isActive ? "#0B2E59" : "#f1f5f9",
                   color: isActive ? "#ffffff" : "#000000",
-                  fontSize: "14px",
-                  fontWeight: 700,
+                  fontSize: "18px",
+                  fontWeight: 800,
                 }}
                 className={`px-3 py-1 rounded-lg transition-all cursor-pointer border ${
                   isActive
@@ -397,3 +384,4 @@ export function DA42FuelChartWidget() {
     </div>
   );
 }
+
