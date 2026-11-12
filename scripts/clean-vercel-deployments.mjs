@@ -3,10 +3,34 @@ import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { execSync } from "node:child_process";
-import dotenv from "dotenv";
+function loadEnvFile(filePath) {
+  try {
+    if (fs.existsSync(filePath)) {
+      const content = fs.readFileSync(filePath, "utf8");
+      for (const line of content.split(/\r?\n/)) {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith("#")) continue;
+        const eqIdx = trimmed.indexOf("=");
+        if (eqIdx !== -1) {
+          const key = trimmed.slice(0, eqIdx).trim();
+          let val = trimmed.slice(eqIdx + 1).trim();
+          if (
+            (val.startsWith('"') && val.endsWith('"')) ||
+            (val.startsWith("'") && val.endsWith("'"))
+          ) {
+            val = val.slice(1, -1);
+          }
+          if (key && process.env[key] === undefined) {
+            process.env[key] = val;
+          }
+        }
+      }
+    }
+  } catch {}
+}
 
-dotenv.config({ path: ".env.local" });
-dotenv.config();
+loadEnvFile(".env.local");
+loadEnvFile(".env");
 
 /**
  * @file clean-vercel-deployments.mjs
@@ -187,6 +211,17 @@ function runViaGitHubActions({ projectName = "all", dryRun = false } = {}) {
           )
           .map((l) => l.replace(/^.*?\t.*?\t/, "   "));
         console.log(relevantLines.join("\n"));
+      } catch {}
+
+      try {
+        const statusOutput = execSync(`gh run view ${runId} --json conclusion`, {
+          encoding: "utf8",
+        });
+        const statusJson = JSON.parse(statusOutput);
+        if (statusJson.conclusion !== "success") {
+          console.error(`\n❌ El workflow terminó con estado: ${statusJson.conclusion}`);
+          return false;
+        }
       } catch {}
     } else {
       console.log("✅ El workflow de limpieza ha sido encolado en GitHub Actions.");
