@@ -1906,8 +1906,8 @@ export function DA42LoadsheetWidget({
             </div>
           </div>
 
-          {/* Footer de Estado de la Envolvente */}
-          {isStepPassed ? (
+          {/* Footer de Estado de la Envolvente (solo al completar, dando máximo espacio a la gráfica) */}
+          {isStepPassed && (
             <div className="space-y-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 text-xs sm:text-[13px]">
               {currentStep === "takeoff" ? (
                 <>
@@ -1983,15 +1983,6 @@ export function DA42LoadsheetWidget({
                   </div>
                 </>
               )}
-            </div>
-          ) : (
-            <div className="pt-1 border-t border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 flex items-center justify-between shrink-0">
-              <span>
-                * Límites CG DA42: <strong>2,35 m</strong> (hasta 1.468 kg) → <strong>2,40 m</strong> (1.700 kg) · Trasero: <strong>2,48 m</strong>
-              </span>
-              <span className="font-semibold text-emerald-700 dark:text-emerald-400">
-                MTOM: 1.700 kg (1.785 kg MÄM)
-              </span>
             </div>
           )}
         </div>
