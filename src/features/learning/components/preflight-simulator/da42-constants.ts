@@ -230,3 +230,107 @@ export function mapSvgCoordsToCgDA42(x: number, y: number): { massKg: number; cg
   };
 }
 
+export type DA42PerformanceScenario = {
+  id: string;
+  icao: string;
+  name: string;
+  shortName: string;
+  runway: string;
+  elevationDesc: string;
+  pressAltFt: number;
+  oatC: number;
+  windKt: number;
+  windDesc: string;
+  surfaceDesc: string;
+  runwayToraM: number;
+  runwayTodaM: number;
+  runwayAsdaM: number;
+  runwayLdaM: number;
+  declaredDistancesNote: string;
+  baseToRun: number;
+  baseTo50: number;
+  baseLd50: number;
+  toRun: number;
+  to50ft: number;
+  ld50ft: number;
+  tip: string;
+};
+
+export const DA42_PERFORMANCE_SCENARIOS: DA42PerformanceScenario[] = [
+  {
+    id: "gcxo",
+    icao: "GCXO",
+    name: "GCXO · Tenerife Norte (Los Rodeos)",
+    shortName: "GCXO · Los Rodeos",
+    runway: "RWY 30",
+    elevationDesc: "Elevación 2.077 ft · Alt. Presión: 2.000 ft",
+    pressAltFt: 2000,
+    oatC: 20,
+    windKt: 9,
+    windDesc: "9 kt en cara (-6% a distancias según AFM Fig. 5.3.6)",
+    surfaceDesc: "Asfalto seco nivelado (sin penalización)",
+    runwayToraM: 3171,
+    runwayTodaM: 3171,
+    runwayAsdaM: 3171,
+    runwayLdaM: 3171,
+    declaredDistancesNote: "AIP AD 2-GCXO: RWY 30 (pista preferente / habitual). TORA = TODA = ASDA = LDA = 3.171 m.",
+    baseToRun: 405,
+    baseTo50: 625,
+    baseLd50: 630,
+    toRun: 380,
+    to50ft: 588,
+    ld50ft: 592,
+    tip: "Los Rodeos (2.000 ft): Requiere 588 m sobre 50 ft (+90 m frente a nivel del mar a 1.700 kg).",
+  },
+  {
+    id: "gcts",
+    icao: "GCTS",
+    name: "GCTS · Tenerife Sur (Reina Sofía)",
+    shortName: "GCTS · Tenerife Sur",
+    runway: "RWY 07",
+    elevationDesc: "Elevación 209 ft · Alt. Presión: 0 ft (S.L.)",
+    pressAltFt: 0,
+    oatC: 20,
+    windKt: 9,
+    windDesc: "9 kt en cara (-6% a distancias según AFM Fig. 5.3.6)",
+    surfaceDesc: "Asfalto seco nivelado (sin penalización)",
+    runwayToraM: 3200,
+    runwayTodaM: 3260,
+    runwayAsdaM: 3200,
+    runwayLdaM: 3200,
+    declaredDistancesNote: "AIP AD 2-GCTS: RWY 07/25 cuenta con CWY de 60 m (TODA = 3.260 m ≠ TORA 3.200 m).",
+    baseToRun: 348,
+    baseTo50: 530,
+    baseLd50: 572,
+    toRun: 327,
+    to50ft: 498,
+    ld50ft: 538,
+    tip: "Reina Sofía (Nivel del mar / 0 ft): Óptima densidad bimotor; solo 498 m sobre 50 ft.",
+  },
+  {
+    id: "gcgm",
+    icao: "GCGM",
+    name: "GCGM · La Gomera",
+    shortName: "GCGM · La Gomera",
+    runway: "RWY 09",
+    elevationDesc: "Elevación 715 ft · Alt. Presión: 1.000 ft",
+    pressAltFt: 1000,
+    oatC: 20,
+    windKt: 9,
+    windDesc: "9 kt en cara (-6% a distancias según AFM Fig. 5.3.6)",
+    surfaceDesc: "Asfalto seco nivelado",
+    runwayToraM: 1500,
+    runwayTodaM: 1560,
+    runwayAsdaM: 1500,
+    runwayLdaM: 1500,
+    declaredDistancesNote: "AIP AD 2-GCGM: RWY 09/27 cuenta con CWY de 60 m (TODA = 1.560 m ≠ TORA 1.500 m).",
+    baseToRun: 375,
+    baseTo50: 575,
+    baseLd50: 600,
+    toRun: 352,
+    to50ft: 540,
+    ld50ft: 564,
+    tip: "La Gomera (1.000 ft): Pista de 1.500 m. Verificación clave de aceleración-parada insular.",
+  },
+];
+

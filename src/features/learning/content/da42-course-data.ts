@@ -9007,6 +9007,107 @@ export const DA42_LESSON_5 = {
       </div>
     </div>
   </div>
+</div>
+
+
+
+<!-- pagebreak -->
+
+
+
+<!-- DIAPOSITIVA 6.14: 6.14 Ejercicio Práctico 4A: Distancias de Despegue (TORA & TODA) -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 TWIN STAR · TALLER INTERACTIVO 4A</div>
+      <h1 class="text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.14 Ejercicio Práctico 4A: Distancias de Despegue (TORA & TODA)</h1>
+    </div>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">F.OPS.02 Distancias Prevuelo · Parte 1</span>
+  </div>
+
+  <div data-interactive-exercise="performance_takeoff" data-aircraft="da42">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+      <!-- Columna Izquierda (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <div>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">
+                🛫 PERFORMANCE DE DESPEGUE
+              </span>
+              <div class="text-[18px] text-slate-500 font-medium">
+                Cálculo de Carrera (TORA) y Distancia sobre 50 ft (TODA)
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded text-[18px] font-bold uppercase tracking-wider bg-sky-100 text-[#0B2E59] border border-sky-300">
+              SIMULADOR
+            </span>
+          </div>
+
+          <!-- Tabla de Datos -->
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 shrink-0">
+            <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] uppercase border-b border-slate-100 dark:border-slate-700 pb-0.5">
+              Modelo de Cálculo GCXO (Tenerife Norte · RWY 30)
+            </strong>
+            <div class="grid gap-1 text-[18px] font-mono text-slate-700 dark:text-slate-200 pt-0.5" style="display: grid; grid-template-columns: 2fr 1fr 1fr;">
+              <span class="font-bold">Parámetro</span>
+              <span class="text-center font-bold">Valor</span>
+              <span class="text-right font-bold">Distancia</span>
+              <span>Elevación Aeródromo</span><span class="text-center">2077 ft</span><span class="text-right">-</span>
+              <span>Temperatura</span><span class="text-center">ISA+10°C (20°C)</span><span class="text-right">-</span>
+              <span>Viento de Cara</span><span class="text-center">9 kt</span><span class="text-right">-</span>
+              <span class="font-bold text-[#0B2E59] dark:text-sky-300">Carrera en Suelo (Ground Roll)</span><span class="text-center font-bold text-[#0B2E59] dark:text-sky-300">Flaps UP</span><span class="text-right font-bold text-[#0B2E59] dark:text-sky-300">380 m</span>
+              <span class="font-bold text-emerald-700 dark:text-emerald-400">Distancia sobre 50 ft</span><span class="text-center font-bold text-emerald-700 dark:text-emerald-400">Flaps UP</span><span class="text-right font-bold text-emerald-700 dark:text-emerald-400">588 m</span>
+            </div>
+          </div>
+
+          <div class="p-2 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/60 text-[18px] text-sky-900 dark:text-sky-200 leading-tight shrink-0">
+            <strong>Factores Oficiales AFM DA42:</strong>
+            <div>Hierba seca: +10% en carrera; hierba alta: +25%; cola: +10% c/2 kt; pendiente: +10%.</div>
+          </div>
+
+          <!-- Footer -->
+          <div class="mt-auto pt-1 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[18px] text-slate-500 shrink-0">
+            <span>TODA Requerida: <strong>588 m</strong></span>
+            <span>TORA Disponible RWY 30: <strong>3171 m</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha (lg:col-span-6) -->
+      <div class="lg:col-span-6 flex flex-col">
+        <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+          <!-- Header -->
+          <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">
+              📈 MARGEN DE DESPEGUE Y SEGURIDAD
+            </span>
+            <span class="text-[18px] text-slate-500 font-semibold">AFM Fig. 5.3.5 / 5.3.6</span>
+          </div>
+
+          <!-- Centro Visual Gráfica -->
+          <div class="flex-1 flex flex-col items-center justify-center p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs text-center shrink-0">
+            <div class="w-14 h-14 rounded-full bg-sky-100 dark:bg-sky-950/60 flex items-center justify-center text-[#2361A8] dark:text-sky-300 mb-2">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+              </svg>
+            </div>
+            <strong class="text-[18px] text-[#0B2E59] dark:text-sky-300 block">Simulador de Performance 4A · DA42</strong>
+            <p class="text-[18px] text-slate-600 dark:text-slate-400 mt-1 max-w-sm leading-snug">
+              En el reproductor interactivo este panel valida que la distancia requerida con factores no supere la longitud de pista física disponible (TODA disp. &ge; TODA req.).
+            </p>
+          </div>
+
+          <!-- Footer -->
+          <div class="mt-auto pt-1 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[18px] text-slate-500 shrink-0">
+            <span>Margen de Pista: <strong>&gt; 2500 m</strong></span>
+            <span>Despacho: <strong>AUTORIZADO</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
 };
 

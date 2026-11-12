@@ -16,6 +16,7 @@ import { DA42FuelChartWidget } from "./da42-fuel-chart-widget";
 import { DA42CruiseWidget } from "./da42-cruise-widget";
 import { DA42FuelWidget } from "./da42-fuel-widget";
 import { DA42TakeoffChartsWidget } from "./da42-takeoff-charts-widget";
+import { DA42PerformanceWidget } from "./da42-performance-widget";
 
 export type ExerciseType =
   | "loadsheet"
@@ -95,6 +96,33 @@ export function PreflightInteractiveHub({
         );
       case "takeoff_charts":
         return <DA42TakeoffChartsWidget />;
+      case "performance":
+        return (
+          <DA42PerformanceWidget
+            mode="all"
+            leftPct={leftPct}
+            onExerciseCompleted={onExerciseCompleted}
+            isAlreadyCompleted={isAlreadyCompleted}
+          />
+        );
+      case "performance_takeoff":
+        return (
+          <DA42PerformanceWidget
+            mode="takeoff"
+            leftPct={leftPct}
+            onExerciseCompleted={onExerciseCompleted}
+            isAlreadyCompleted={isAlreadyCompleted}
+          />
+        );
+      case "performance_landing":
+        return (
+          <DA42PerformanceWidget
+            mode="landing"
+            leftPct={leftPct}
+            onExerciseCompleted={onExerciseCompleted}
+            isAlreadyCompleted={isAlreadyCompleted}
+          />
+        );
       default:
         return null;
     }
