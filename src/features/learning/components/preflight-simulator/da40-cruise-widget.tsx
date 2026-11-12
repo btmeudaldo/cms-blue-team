@@ -613,37 +613,6 @@ export function DA40CruiseWidget({
                 <span>⚠️ <strong>{errorCount} {errorCount === 1 ? "valor a revisar" : "valores a revisar"}.</strong> Ver correcciones a la derecha 👉</span>
               </div>
             )}
-
-            {isAllPracticeCompleted && (
-              <div className="p-2 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px]">
-                <strong className="font-bold">🎉 ¡ENHORABUENA! HAS COMPLETADO LOS EJERCICIOS M2 Y M3</strong>
-                <p className="text-xs mt-0.5">
-                  Has validado correctamente los cálculos de crucero y combustible. Ya puedes pulsar en <strong>Siguiente Diapositiva</strong> para continuar.
-                </p>
-              </div>
-            )}
-
-            {!isAllPracticeCompleted && solvedMissions[selectedMissionIndex] && selectedMissionIndex === 1 && (
-              <div className="p-2 rounded-lg border border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/40 text-sky-900 dark:text-sky-200 text-xs flex items-center justify-between gap-2">
-                <div>
-                  <strong className="font-bold">✓ ¡Misión M2 completada!</strong>
-                  <p className="text-[11px] text-sky-800 dark:text-sky-300">Te queda la Misión M3 para desbloquear el avance.</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => switchMission(2)}
-                  style={{
-                    backgroundColor: "#0B2E59",
-                    color: "#ffffff",
-                    fontSize: "12px",
-                    fontWeight: 800,
-                  }}
-                  className="px-3 py-1.5 rounded-lg shrink-0 cursor-pointer transition hover:scale-105"
-                >
-                  <span style={{ color: "#ffffff" }}>Ir a M3 ➔</span>
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>
@@ -802,6 +771,35 @@ export function DA40CruiseWidget({
                   </div>
                 )}
               </div>
+            </div>
+          ) : isAllPracticeCompleted ? (
+            <div className="mt-auto p-3 rounded-xl border-2 border-emerald-400 dark:border-emerald-700 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 text-xs sm:text-[13px] shadow-xs shrink-0">
+              <strong className="font-bold text-sm flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300">
+                🎉 ¡ENHORABUENA! HAS COMPLETADO LOS EJERCICIOS M2 Y M3
+              </strong>
+              <p className="text-xs mt-1 leading-snug">
+                Has validado correctamente los cálculos de crucero y combustible de la DA40. Ya puedes pulsar en <strong>Siguiente Diapositiva</strong> para continuar.
+              </p>
+            </div>
+          ) : !isAllPracticeCompleted && solvedMissions[selectedMissionIndex] && selectedMissionIndex === 1 ? (
+            <div className="mt-auto p-3 rounded-xl border-2 border-sky-400 dark:border-sky-700 bg-sky-50 dark:bg-sky-950/50 text-sky-900 dark:text-sky-200 text-xs sm:text-[13px] flex items-center justify-between gap-3 shadow-xs shrink-0">
+              <div>
+                <strong className="font-bold text-sm block text-sky-900 dark:text-sky-200">✓ ¡Misión M2 completada!</strong>
+                <p className="text-xs text-sky-800 dark:text-sky-300 mt-0.5">Te queda la Misión M3 para desbloquear el avance.</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => switchMission(2)}
+                style={{
+                  backgroundColor: "#0B2E59",
+                  color: "#ffffff",
+                  fontSize: "13px",
+                  fontWeight: 800,
+                }}
+                className="px-4 py-2 rounded-xl shrink-0 cursor-pointer transition hover:scale-105 shadow-xs"
+              >
+                <span style={{ color: "#ffffff" }}>Ir a M3 ➔</span>
+              </button>
             </div>
           ) : (
             <div className="mt-auto p-2.5 rounded-xl bg-sky-50/70 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 text-xs sm:text-[13px] space-y-1 text-slate-700 dark:text-slate-300 shrink-0">
