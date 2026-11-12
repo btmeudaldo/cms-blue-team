@@ -266,14 +266,14 @@ export function QuizModule({
                   <span>📖</span>
                   <span>
                     {passed
-                      ? "Fundamentos Técnicos y Justificación POH"
-                      : "Revisión del Examen y Justificación POH"}
+                      ? "Fundamentos Técnicos y Justificación AFM / POH"
+                      : "Revisión del Examen y Justificación AFM / POH"}
                   </span>
                 </h3>
                 <p className="text-base text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
                   {passed
                     ? "Consulta la justificación técnica de cada pregunta para consolidar tus conocimientos de vuelo."
-                    : "Revisa las preguntas contestadas y consulta los fundamentos oficiales del POH antes de reintentar."}
+                    : "Revisa las preguntas contestadas y consulta los fundamentos oficiales del AFM / POH antes de reintentar."}
                 </p>
               </div>
             </div>
@@ -358,7 +358,7 @@ export function QuizModule({
                         <div className="rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 p-3.5 text-base leading-relaxed text-sky-950 dark:text-sky-200">
                           <strong className="text-sky-700 dark:text-sky-400 flex items-center gap-1.5 mb-1.5 uppercase tracking-wide text-sm sm:text-base font-bold">
                             <span>💡</span>
-                            <span>Fundamento Oficial POH:</span>
+                            <span>Fundamento Oficial AFM / POH:</span>
                           </strong>
                           <div className="text-slate-800 dark:text-slate-200 text-base leading-relaxed">
                             {q.explanation}
