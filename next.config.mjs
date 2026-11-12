@@ -5,6 +5,15 @@ try {
 } catch {}
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/images/da42/:path*",
+        destination: "/images/DA42/:path*",
+      },
+    ];
+  },
+};
 
 export default nextConfig;

@@ -8926,7 +8926,13 @@ export const DA42_LESSON_5 = {
     <!-- Columna Derecha (lg:col-span-6 con Selector Interactivo de Ábacos) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="w-full h-full flex-1 min-h-0" data-interactive-exercise="takeoff_charts" data-aircraft="da42"></div>
+        <div class="w-full h-full flex-1 min-h-0 flex flex-col justify-center items-center overflow-hidden" data-interactive-exercise="takeoff_charts" data-aircraft="da42">
+          <img
+            src="/images/DA42/da42-takeoff-ground-roll.png"
+            alt="Ábaco Take-Off Ground Roll DA42"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
       </div>
     </div>
   </div>
