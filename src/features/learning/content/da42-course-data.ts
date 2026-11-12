@@ -2182,14 +2182,6 @@ export const DA42_LESSON_3 = {
             </div>
           </div>
 
-          <!-- WARNING DIFERENCIA VITAL RESPECTO A MONOMOTOR -->
-          <div class="p-1.5 px-2 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
-            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
-              <span>⚠️</span>
-              <span>WARNING:</span>
-            </strong>
-            <div>En el DA42 bimotor, la falta de aceite o cortar <code>ENGINE MASTER</code> lleva automáticamente las palas a <strong>bandera</strong>. Para abanderar en vuelo, cortar con RPM &gt;950 - 1.300. ¡Prohibido girar la hélice con la mano!</div>
-          </div>
         </div>
       </div>
     </div>
@@ -2202,12 +2194,6 @@ export const DA42_LESSON_3 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CAJA REDUCTORA Y HÉLICE MT-PROPELLER</span>
           </div>
 
-          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2 px-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
-            <p class="text-[11px] text-slate-700 dark:text-slate-200 leading-snug font-medium">
-              Arquitectura de la caja reductora integrada (i=1.69 / 1.66), amortiguador torsional, embrague de sobrecarga y sistema electrohidráulico de hélice MTV-6 abanderable con acumulador de nitrógeno.
-            </p>
-          </div>
-
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
             <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
               <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.2-gearbox-propeller.jpg?v=1" alt="Reductora Integrada y Hélice MT-Propeller" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
@@ -2215,6 +2201,15 @@ export const DA42_LESSON_3 = {
             <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
               <strong class="text-[#0B2E59] dark:text-sky-300">Diamond DA42 Twin Star</strong> · Caja Reductora Integrada y Hélice MT-Propeller MTV-6 Abanderable (AFM 7.9.2)
             </figcaption>
+          </div>
+
+          <!-- WARNING DIFERENCIA VITAL RESPECTO A MONOMOTOR -->
+          <div class="p-2 px-2.5 rounded-xl border-l-4 border-red-500 bg-red-50/90 dark:bg-red-950/30 text-red-950 dark:text-red-200 text-[11px] leading-tight shadow-2xs shrink-0">
+            <strong class="text-red-700 dark:text-red-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs shrink-0">
+              <span>⚠️</span>
+              <span>WARNING:</span>
+            </strong>
+            <div>En el DA42 bimotor, la falta de aceite o cortar <code>ENGINE MASTER</code> lleva automáticamente las palas a <strong>bandera</strong>. Para abanderar en vuelo, cortar con RPM &gt;950 - 1.300. ¡Prohibido girar la hélice con la mano!</div>
           </div>
         </div>
       </div>
