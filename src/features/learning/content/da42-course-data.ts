@@ -8705,7 +8705,7 @@ export const DA42_LESSON_5 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">POLÍTICA DE COMBUSTIBLE OFICIAL DA42</span>
         </div>
 
-        <div class="space-y-1 text-[18px] text-slate-700 dark:text-slate-300 flex-1 flex flex-col justify-between">
+        <div class="space-y-1.5 text-[18px] text-slate-700 dark:text-slate-300 flex flex-col justify-start">
           <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
             <div class="flex justify-between items-center mb-0.5">
               <strong class="text-[#0B2E59] dark:text-sky-300">1. Taxi Fuel (Rodaje y Run-up FADEC):</strong>
@@ -8757,7 +8757,7 @@ export const DA42_LESSON_5 = {
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex flex-col justify-center items-center p-1.5 shadow-xs">
           <img
-            src="/images/DA42/fuel-planning-blocks.png"
+            src="/images/DA42/fuel-planning-blocks.jpg"
             alt="Esquema reglamentario de política de combustible EASA Part-NCO y OM Blue Team DA42"
             class="w-full h-full object-contain rounded-lg"
           />
