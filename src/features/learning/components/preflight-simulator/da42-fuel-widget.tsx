@@ -642,3 +642,4 @@ export function DA42FuelWidget({
     </div>
   );
 }
+

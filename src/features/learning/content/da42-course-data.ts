@@ -8868,6 +8868,68 @@ export const DA42_LESSON_5 = {
       </div>
     </div>
   </div>
+</div>
+
+
+
+<!-- pagebreak -->
+
+
+
+<!-- DIAPOSITIVA 6.12: 6.12 Performance de Despegue: Parámetros y Factores de Corrección -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 TWIN STAR · PERFORMANCE DE DESPEGUE</div>
+      <h1 class="text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.12 Performance de Despegue: Parámetros y Factores de Corrección</h1>
+    </div>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Procedimientos de Certificación AFM</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+    <!-- Columna Izquierda (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1" style="height: 590px;">
+        <div class="flex items-center justify-between pb-0.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">CONDICIONES DE DESPEGUE</span>
+        </div>
+
+        <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 text-[18px]">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">CONDICIONES DE REFERENCIA (AFM SECCIÓN 5)</strong>
+          <p class="text-[18px] text-slate-700 dark:text-slate-300 leading-snug m-0">
+            Potencia: <strong>MAX (100% Load bimotor)</strong> &bull; Flaps: <strong>UP</strong> (o T/O) &bull; Asfalto seco.<br>
+            &bull; Rotación v<sub>r</sub>: <strong>70 KIAS</strong> (UP) / 67 (T/O) &bull; 50 ft: <strong>77 KIAS</strong>.<br>
+            &bull; Ascenso bimotor v<sub>y</sub>: <strong>79 KIAS</strong> &bull; Monomotor v<sub>ySE</sub>: <strong>82 KIAS</strong>.
+          </p>
+        </div>
+
+        <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 text-[18px]">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES OFICIALES DE CORRECCIÓN DE PISTA</strong>
+          <div class="space-y-0.5 text-slate-700 dark:text-slate-300 text-[18px] leading-snug">
+            <div>&bull; <strong>Viento cara / cola:</strong> Corrección gráfica directa en ábaco.</div>
+            <div>&bull; <strong>Hierba seca corta (&le; 5 cm):</strong> <strong>+10%</strong> en carrera de despegue.</div>
+            <div>&bull; <strong>Hierba media (5-10 cm) / alta (&gt; 10 cm):</strong> <strong>+15%</strong> / <strong>+25%</strong>.</div>
+            <div>&bull; <strong>Pista húmeda o blanda:</strong> hasta <strong>+20% / +25%</strong> adicional.</div>
+            <div>&bull; <strong>Pendiente ascendente (+2%):</strong> <strong>+10%</strong> en distancia total 50 ft.</div>
+          </div>
+        </div>
+
+        <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs shrink-0">
+          <strong class="text-amber-800 dark:text-amber-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
+            <span>⚠️</span> CRITERIO LEGAL Y SEGURIDAD BIMOTOR
+          </strong>
+          <span>TORA / TODA debe ser <strong>&ge; distancia total sobre obstáculo 50 ft</strong> con factores. En bimotor, evaluar aceleración-parada y ascenso monomotor tras v<sub>ySE</sub>.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6 con Selector Interactivo de Ábacos) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
+        <div class="w-full h-full flex-1 min-h-0" data-interactive-exercise="takeoff_charts" data-aircraft="da42"></div>
+      </div>
+    </div>
+  </div>
 </div>`,
 };
 
