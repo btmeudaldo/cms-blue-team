@@ -2,6 +2,47 @@ import type { Quiz } from "../domain/quiz-types";
 
 export const DA42_COURSE_ID = "da420000-0000-0000-0000-000000000042";
 
+export const DA42_LESSON_3_QUIZ: Quiz = {
+  id: "quiz-da42-lesson-3",
+  course_id: DA42_COURSE_ID,
+  lesson_id: "da420000-0000-0000-0000-000000000030",
+  title:
+    "Examen de Verificación: 3. Descripción del Avión y sus Sistemas (AFM Sección 7)",
+  description:
+    "Evaluación teórica de verificación sobre la planta de potencia Continental CD-135 / CD-155, caja reductora integrada y hélices MT-Propeller abanderables de la Diamond DA42 Twin Star.",
+  minPassScorePercentage: 75,
+  questions: [
+    {
+      id: "da42-3-1",
+      question:
+        "¿Cuáles son las potencias máximas y características de arquitectura de los motores Continental CD-135 y CD-155 en la DA42, y qué mandos y componentes tradicionales quedan totalmente suprimidos en cabina gracias a la gestión FADEC?",
+      options: [
+        "El CD-135 entrega 99 kW (135 HP) y el CD-155 entrega 114 kW (155 HP) a 2.300 RPM de hélice; al ser diésel Common Rail gobernados por FADEC, se suprimen mezcla (Mixture), paso de hélice (Propeller), calefacción de carburador, magnetos, bujías y cebador manual, controlándose cada motor exclusivamente mediante su monopalanca Power Lever.",
+        "Ambos entregan 180 HP a 2.700 RPM, manteniendo mandos manuales de mezcla enriquecida y palancas azules de paso de hélice.",
+        "El CD-135 rinde 80 kW y el CD-155 rinde 160 kW con carburador doble flotante y dos magnetos por bancada.",
+        "Son motores de 6 cilindros refrigerados por aire donde el FADEC solo controla el alternador principal.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El motor CD-135 entrega 99 kW (135 HP) y el CD-155 entrega 114 kW (155 HP). La combustión por compresión diésel y el control FADEC eliminan mandos manuales de mezcla, paso de hélice, bujías, magnetos y cebador, unificando todo el control en una única Power Lever por motor.",
+    },
+    {
+      id: "da42-3-2",
+      question:
+        "En el sistema de reductora y hélice MT-Propeller tripala de la DA42, ¿a qué ángulo exacto se abanderan las palas (feathering) al colocar el ENGINE MASTER en OFF en vuelo y qué función cumplen los seguros centrífugos (start locks) en tierra?",
+      options: [
+        "Las palas se abanderan a 45° y los start locks evitan que el alternador se sobrecargue durante el rodaje.",
+        "Las palas se abanderan a 81° ± 1° por acción de contrapesos y presión de nitrógeno para minimizar la resistencia aerodinámica; en tierra, a menos de 950–1.300 RPM, los fiadores mecánicos (start locks) impiden el abanderamiento para mantener la hélice en paso fino y facilitar el próximo arranque.",
+        "Las palas se orientan a 0° para entrar en autorrotación constante; los start locks bloquean el timón de dirección para que no vibre.",
+        "El abanderamiento es exclusivamente eléctrico y los start locks impiden el paso de combustible a los inyectores.",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "Al cortar el ENGINE MASTER en vuelo (con RPM > 950-1.300), la válvula drena aceite y los contrapesos junto al nitrógeno colocan las palas a 81° ± 1°. En tierra a bajas RPM (< 950-1.300 RPM), los fiadores mecánicos de bloqueo centrífugo impiden que las palas entren en bandera para permitir el arranque con baja resistencia de paso fino.",
+    },
+  ],
+};
+
 export const DA42_LESSON_4_QUIZ: Quiz = {
   id: "quiz-da42-lesson-4",
   course_id: DA42_COURSE_ID,
@@ -980,6 +1021,7 @@ export const DA42_LESSON_6_QUIZ: Quiz = {
 };
 
 export const DA42_QUIZZES: Quiz[] = [
+  DA42_LESSON_3_QUIZ,
   DA42_LESSON_4_QUIZ,
   DA42_LESSON_5_QUIZ,
   DA42_LESSON_6_QUIZ,
