@@ -1115,66 +1115,7 @@ export function DA42LoadsheetWidget({
           </div>
 
           {/* Footer Informativo y Botones de Acción */}
-          <div className="pt-1 border-t border-slate-200 dark:border-slate-800 shrink-0 space-y-1">
-            {/* Aviso de punto obligatorio en la envolvente */}
-            {!isStepPassed && selectedMissionIndex !== 0 && (
-              <div
-                className={`flex items-center justify-between px-2 py-1 rounded-lg border text-[11px] ${
-                  errors.envelopePoint
-                    ? "bg-rose-50/90 dark:bg-rose-950/40 border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200"
-                    : (currentStep === "takeoff" ? (interactiveZfmPoint && interactiveTomPoint) : studentEstimated)
-                    ? "bg-sky-50/80 dark:bg-sky-950/30 border-sky-200 dark:border-sky-800 text-sky-950 dark:text-sky-200"
-                    : "bg-amber-50/80 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800 text-amber-950 dark:text-amber-200"
-                }`}
-              >
-                <div className="flex items-center gap-1.5">
-                  <span>{errors.envelopePoint ? "⚠️" : "📍"}</span>
-                  <span>
-                    {errors.envelopePoint ? (
-                      <strong>{errors.envelopePoint}</strong>
-                    ) : currentStep === "takeoff" ? (
-                      interactiveZfmPoint && interactiveTomPoint ? (
-                        <>
-                          Has situado <strong>ZFM (~{studentZfmEstimated?.massKg} kg)</strong> y <strong>TOW (~{studentTomEstimated?.massKg} kg)</strong>.
-                        </>
-                      ) : !interactiveZfmPoint ? (
-                        <>
-                          <strong className="text-amber-800 dark:text-amber-300">Paso 1:</strong> Haz clic en la gráfica para situar tu punto <strong>ZFM estimado</strong>.
-                        </>
-                      ) : (
-                        <>
-                          <strong className="text-amber-800 dark:text-amber-300">Paso 2:</strong> Haz clic en la gráfica para situar tu punto <strong>TOW estimado</strong>.
-                        </>
-                      )
-                    ) : studentEstimated ? (
-                      <>
-                        Has situado tu marca en <strong>~{studentEstimated.massKg} kg</strong> · CG <strong>{studentEstimated.cgM.toFixed(3)} m</strong>.
-                      </>
-                    ) : (
-                      <>
-                        <strong className="text-amber-800 dark:text-amber-300">Obligatorio:</strong> Haz clic en la gráfica para situar tu punto <strong>LW estimado</strong> antes de comprobar.
-                      </>
-                    )}
-                  </span>
-                </div>
-                <span
-                  className={`text-[10px] font-bold shrink-0 ${
-                    errors.envelopePoint
-                      ? "text-rose-600 dark:text-rose-400"
-                      : (currentStep === "takeoff" ? (interactiveZfmPoint && interactiveTomPoint) : studentEstimated)
-                      ? "text-sky-700 dark:text-sky-400"
-                      : "text-amber-700 dark:text-amber-400"
-                  }`}
-                >
-                  {errors.envelopePoint
-                    ? "Revisar marca"
-                    : (currentStep === "takeoff" ? (interactiveZfmPoint && interactiveTomPoint) : studentEstimated)
-                    ? "Puntos fijados"
-                    : "Obligatorio"}
-                </span>
-              </div>
-            )}
-
+          <div className="pt-1 border-t border-slate-200 dark:border-slate-800 shrink-0">
             <div className="flex items-center justify-between">
               <span className="text-[11px] text-slate-500 italic">
                 * Jet A-1 = 0,84 kg/L · Brazo Fuel = 2,630 m · MTOM = 1.700 kg (1.785 kg MÄM)
@@ -1906,8 +1847,8 @@ export function DA42LoadsheetWidget({
             </div>
           </div>
 
-          {/* Footer de Estado de la Envolvente (solo al completar, dando máximo espacio a la gráfica) */}
-          {isStepPassed && (
+          {/* Footer de Estado de la Envolvente / Instrucciones para M2 y M3 */}
+          {isStepPassed ? (
             <div className="space-y-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 text-xs sm:text-[13px]">
               {currentStep === "takeoff" ? (
                 <>
@@ -1984,7 +1925,45 @@ export function DA42LoadsheetWidget({
                 </>
               )}
             </div>
-          )}
+          ) : selectedMissionIndex !== 0 ? (
+            <div className="pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0">
+              <div
+                className={`flex items-center justify-between px-3 py-1.5 rounded-xl border text-xs sm:text-[13px] ${
+                  errors.envelopePoint
+                    ? "bg-rose-50/90 dark:bg-rose-950/40 border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200"
+                    : "bg-blue-50/80 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800 text-blue-950 dark:text-blue-200"
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-base">{errors.envelopePoint ? "⚠️" : "📝"}</span>
+                  <span className="font-medium">
+                    {errors.envelopePoint ? (
+                      <strong className="font-bold">{errors.envelopePoint}</strong>
+                    ) : (
+                      <>
+                        <strong className="font-bold">Instrucciones:</strong> Rellena los datos en la hoja y coloca los puntos en la gráfica.
+                      </>
+                    )}
+                  </span>
+                </div>
+                <span
+                  className={`text-xs font-bold shrink-0 ${
+                    errors.envelopePoint
+                      ? "text-rose-600 dark:text-rose-400"
+                      : (currentStep === "takeoff" ? (interactiveZfmPoint && interactiveTomPoint) : studentEstimated)
+                      ? "text-emerald-700 dark:text-emerald-400"
+                      : "text-blue-700 dark:text-blue-400"
+                  }`}
+                >
+                  {errors.envelopePoint
+                    ? "Revisar marca"
+                    : (currentStep === "takeoff" ? (interactiveZfmPoint && interactiveTomPoint) : studentEstimated)
+                    ? "Puntos situados ✓"
+                    : "Misión " + (selectedMissionIndex + 1)}
+                </span>
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
 
