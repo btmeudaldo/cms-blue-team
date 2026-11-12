@@ -2,6 +2,200 @@ import type { Quiz } from "../domain/quiz-types";
 
 export const DA42_COURSE_ID = "da420000-0000-0000-0000-000000000042";
 
+export const DA42_LESSON_2_QUIZ: Quiz = {
+  id: "quiz-da42-lesson-2",
+  course_id: DA42_COURSE_ID,
+  lesson_id: "da420000-0000-0000-0000-000000000020",
+  title: "Examen de Verificación: 2. Limitaciones Operacionales AFM",
+  description:
+    "Evaluación teórica de verificación sobre velocidades estructurales (vNE, vNO, vA, vFE, vLOR, vMCA), marcas del anemómetro, límites de masa y centrado, factores de carga, limitaciones de motores Continental CD-135 / CD-155, temperaturas, presiones, instrumentación G1000 EIS y tipos de operaciones de la Diamond DA42 Twin Star.",
+  minPassScorePercentage: 75,
+  questions: [
+    {
+      id: "da42-2-1",
+      question:
+        "¿Cuáles son la velocidad máxima para la retracción del tren de aterrizaje (vLOR) y la velocidad mínima de control en vuelo con un motor inoperativo (vMCA) según las limitaciones del AFM de la DA42?",
+      options: [
+        "vLOR = 156 KIAS (debido a la resistencia aerodinámica en compuertas de tren) y vMCA = 68 KIAS (velocidad de control direccional con motor crítico inoperativo).",
+        "vLOR = 194 KIAS y vMCA = 82 KIAS.",
+        "vLOR = 111 KIAS y vMCA = 56 KIAS.",
+        "vLOR = 137 KIAS y vMCA = 79 KIAS.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM Sección 2 fija vLOR en 156 KIAS para proteger mecánicamente las compuertas del tren durante el repliegue y vMCA en 68 KIAS como límite crítico de control direccional monomotor.",
+    },
+    {
+      id: "da42-2-2",
+      question:
+        "En la cinta anemométrica del Garmin G1000 PFD de la DA42, ¿qué significado operacional tienen la línea radial azul a 82 KIAS y el arco blanco comprendido entre 56 y 111 KIAS?",
+      options: [
+        "Línea azul: mejor régimen de ascenso monomotor (vYSE = 82 KIAS); arco blanco: rango de operación con flaps totalmente extendidos en posición Landing (vSO = 56 KIAS a vFE = 111 KIAS).",
+        "Línea azul: velocidad de rotación; arco blanco: rango de crucero rápido en aire turbulento.",
+        "Línea azul: velocidad de nunca exceder; arco blanco: velocidad de planeo sin motores.",
+        "Línea azul: velocidad mínima de control; arco blanco: rango de retracción de flaps.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "La línea radial azul marca vYSE (82 KIAS) para obtener el máximo ascenso o mínimo descenso con un motor inoperativo. El arco blanco abarca el margen operativo con flaps LDG extendidos (56 a 111 KIAS).",
+    },
+    {
+      id: "da42-2-3",
+      question:
+        "¿Cuáles son la masa máxima autorizada de aterrizaje (MLM), la masa máxima sin combustible (MZFM) y el límite de peso en el maletero de morro (Nose Baggage) de la DA42?",
+      options: [
+        "MLM = 1.700 kg (3.748 lb), MZFM = 1.650 kg (3.638 lb) y maletero de morro máximo 30 kg (66 lb) combinado entre compartimentos izquierdo y derecho.",
+        "MLM = 1.785 kg, MZFM = 1.785 kg y maletero de morro máximo 100 kg.",
+        "MLM = 1.542 kg, MZFM = 1.250 kg y maletero de morro máximo 45 kg.",
+        "MLM = 1.600 kg, MZFM = 1.450 kg y maletero de morro máximo 15 kg.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM Sección 2.3 establece una masa máxima de aterrizaje MLM de 1.700 kg para todas las versiones, MZFM de 1.650 kg y un límite estricto de 30 kg en el maletero delantero con redes de retención obligatorias.",
+    },
+    {
+      id: "da42-2-4",
+      question:
+        "¿Dónde se ubica físicamente el Plano de Referencia (Datum Plane) de la DA42 y cuál es el límite de centro de gravedad posterior a la masa máxima al despegue (1.700 kg o 1.785 kg)?",
+      options: [
+        "Ubicado exactamente a 2,196 m (86,46 in) por delante del punto más adelantado del encastre alar; el límite posterior de CG a MTOM se sitúa a 2,480 m (97,64 in).",
+        "Ubicado en el cortafuegos del motor izquierdo con límite posterior a 1,500 m.",
+        "Ubicado en el cono de morro de la aeronave con límite posterior a 3,200 m.",
+        "Ubicado en el borde de ataque del timón de profundidad con límite posterior a 2,350 m.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Según el AFM 2.4, el Datum Plane se sitúa a 2,196 m por delante del encastre alar (Root Rib on Stub Wing), y el límite posterior de CG a masa máxima es 2,480 m (97,64 pulgadas).",
+    },
+    {
+      id: "da42-2-5",
+      question:
+        "En la categoría Normal (JAR-23) de la DA42, ¿cuáles son los factores de carga límite estructurales a la velocidad de maniobra (vA) con flaps UP y con flaps extendidos (APP o LDG)?",
+      options: [
+        "A vA con flaps UP: +3.8 g / -1.52 g; con flaps extendidos (APP o LDG): +2.0 g / 0 g.",
+        "A vA con flaps UP: +6.0 g / -3.0 g; con flaps extendidos: +3.8 g / -1.52 g.",
+        "A vA con flaps UP: +2.5 g / -1.0 g; con flaps extendidos: +1.5 g / -0.5 g.",
+        "A vA con flaps UP: +4.4 g / -1.76 g; con flaps extendidos: +2.2 g / -1.0 g.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM Sección 2.5 limita la envolvente estructural en categoría Normal a +3.8 g / -1.52 g con flaps UP a vA, y a +2.0 g / 0 g en cualquier posición de flaps extendidos.",
+    },
+    {
+      id: "da42-2-6",
+      question:
+        "¿Cuáles son las RPM máximas continuas de hélice en la DA42, el límite de sobrevelocidad admisible (overspeed) y el ciclo de enfriamiento requerido tras 6 intentos consecutivos de arranque?",
+      options: [
+        "Máximo continuo de 2.300 RPM; sobrevelocidad máxima de 2.500 RPM durante 20 segundos; tras 6 intentos consecutivos, dejar enfriar el motor de arranque al menos 30 minutos.",
+        "Máximo continuo de 2.700 RPM; sobrevelocidad de 3.000 RPM durante 1 minuto; reposo del arrancador de 2 horas.",
+        "Máximo continuo de 1.800 RPM; sobrevelocidad de 2.000 RPM durante 10 segundos; sin reposo de arrancador.",
+        "Máximo continuo de 2.400 RPM; sobrevelocidad de 2.600 RPM durante 45 segundos; reposo de 5 minutos.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Las hélices MT-Propeller operan a 2.300 RPM continuas máximas, admitiendo un overspeed transitorio de 2.500 RPM (20 s máx.). El arrancador admite accionamientos de 10 s y tras 6 intentos requiere 30 minutos de enfriamiento.",
+    },
+    {
+      id: "da42-2-7",
+      question:
+        "¿Cuáles son las temperaturas mínimas que deben alcanzar el aceite del motor y el refrigerante antes de poder aplicar potencia de despegue (100% Load) en la DA42?",
+      options: [
+        "Aceite al menos 50 °C y refrigerante al menos 60 °C (ambos dentro del arco verde).",
+        "Aceite al menos 0 °C y refrigerante al menos 20 °C.",
+        "Aceite al menos 100 °C y refrigerante al menos 95 °C.",
+        "No existe ninguna temperatura mínima requerida si la temperatura ambiente supera 15 °C.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM Sección 2.4 prohíbe taxativamente aplicar potencia máxima (100% Load) hasta que la temperatura de aceite alcance 50 °C y el refrigerante 60 °C para asegurar la fluidez y protección de los componentes internos.",
+    },
+    {
+      id: "da42-2-8",
+      question:
+        "¿Cuál es el rango normal de presión de aceite (arco verde) en los motores Continental de la DA42 y cuáles son los niveles mínimo y máximo de lubricante en el cárter?",
+      options: [
+        "Presión normal de 2.3 a 5.2 bar; capacidad en cárter mínima de 4,5 L (4.8 US qts) y máxima de 6,0 L (6.3 US qts).",
+        "Presión normal de 1.0 a 2.0 bar; capacidad en cárter mínima de 2,0 L y máxima de 3,5 L.",
+        "Presión normal de 5.2 a 8.0 bar; capacidad en cárter mínima de 7,0 L y máxima de 10,0 L.",
+        "Presión normal de 0.5 a 1.5 bar; capacidad en cárter mínima de 1,0 L y máxima de 5,0 L.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El circuito de cárter húmedo opera entre 2.3 y 5.2 bar en verde, con límites de llenado físico entre 4,5 L mínimo y 6,0 L máximo por cada motor Continental.",
+    },
+    {
+      id: "da42-2-9",
+      question:
+        "En la DA42 con motores Continental CD-155, ¿cuál es la temperatura mínima de combustible JET A-1 en depósitos requerida para el despegue y cuál es la temperatura máxima absoluta admisible?",
+      options: [
+        "Temperatura mínima para despegue de +5 °C (+41 °F) y temperatura máxima admisible de +75 °C (+167 °F).",
+        "Temperatura mínima para despegue de -50 °C y máxima de +40 °C.",
+        "Temperatura mínima para despegue de +25 °C y máxima de +120 °C.",
+        "Temperatura mínima para despegue de 0 °C y máxima de +50 °C.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Para el motor Continental CD-155 con JET A-1, la temperatura mínima en el depósito para iniciar el despegue es +5 °C (+41 °F), mientras que el límite superior absoluto es +75 °C.",
+    },
+    {
+      id: "da42-2-10",
+      question:
+        "Según la tabla oficial de marcas del Garmin G1000 EIS en el AFM Sección 2, ¿qué límites de temperatura de refrigerante (Coolant Temp) delimitan el arco verde y la línea roja superior de advertencia?",
+      options: [
+        "Arco verde de 60 a 96 °C (hasta 101 °C en CD-155) y línea roja superior a partir de 105 °C.",
+        "Arco verde de 40 a 70 °C y línea roja a partir de 80 °C.",
+        "Arco verde de 80 a 120 °C y línea roja a partir de 150 °C.",
+        "Arco verde de 0 a 50 °C y línea roja a partir de 90 °C.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "La tabla 2.5 del AFM especifica el rango verde normal entre 60 y 96 °C (101 °C en motor CD-155), entrando en advertencia ámbar hasta 105 °C y alerta roja de alta temperatura por encima de 105 °C.",
+    },
+    {
+      id: "da42-2-11",
+      question:
+        "En el sistema eléctrico de 28 V de la DA42 monitoreado en el G1000 EIS, ¿cuál es el rango de voltaje normal (arco verde) y qué condición de carga activa la zona roja en los amperímetros L/R?",
+      options: [
+        "Voltaje normal en arco verde de 24.1 a 32.0 V y zona roja en amperímetros si la corriente generada excede de 70 A.",
+        "Voltaje normal en arco verde de 12.0 a 14.5 V y zona roja si excede de 20 A.",
+        "Voltaje normal en arco verde de 35.0 a 40.0 V y zona roja si excede de 100 A.",
+        "El sistema eléctrico no se monitoriza en la pantalla EIS, solo cuenta con voltímetro analógico externo.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El sistema eléctrico de 28V opera normalmente entre 24.1 y 32.0 V en arco verde. Los alternadores generan hasta 60-70 A, activándose la advertencia roja por sobrecorriente por encima de 70 A.",
+    },
+    {
+      id: "da42-2-12",
+      question:
+        "¿Cuál es la capacidad total utilizable combinada de combustible (depósitos principales + auxiliares), el desbalance máximo permitido entre depósitos principales y qué posición deben tener las válvulas en despegue y aterrizaje?",
+      options: [
+        "Total utilizable de 76.4 US gal (~289.2 L), desbalance máximo admisible de 5.0 US gal (~19 L) y válvulas obligatoriamente en posición ON (prohibido CROSSFEED en despegue o aterrizaje).",
+        "Total utilizable de 100 US gal, desbalance máximo de 15 US gal y válvulas en CROSSFEED obligatorio.",
+        "Total utilizable de 40 US gal, desbalance máximo de 10 US gal y válvulas en posición OFF.",
+        "Total utilizable de 50 US gal, sin límite de desbalance y despegue en posición AUX.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "La DA42 dispone de 50 USG utilizables en tanques principales y 26.4 USG en auxiliares (total 76.4 USG). El desbalance máximo entre alas es de 5.0 US gal y las válvulas deben estar estrictamente en ON para despegue y aterrizaje.",
+    },
+    {
+      id: "da42-2-13",
+      question:
+        "Respecto al techo operativo, tripulación mínima y limitaciones de engelamiento de la DA42 en la flota escolar, ¿cuáles son las limitaciones oficiales del AFM?",
+      options: [
+        "Techo operativo máximo de 18.000 ft (5.486 m), tripulación mínima de 1 piloto en el asiento delantero izquierdo y aeronave estrictamente NO autorizada para vuelo en engelamiento conocido (Known Icing).",
+        "Techo operativo de 25.000 ft, tripulación mínima obligatoria de 2 pilotos y autorizada en cualquier condición de engelamiento severo.",
+        "Techo operativo de 10.000 ft, autorizada únicamente en VFR diurno con 3 tripulantes.",
+        "Techo operativo de 14.000 ft, vuelo acrobático autorizado y deshielo por botas neumáticas.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM Sección 2 fija el techo de servicio en 18.000 ft, tripulación mínima de un piloto en el asiento izquierdo y prohíbe el vuelo en engelamiento conocido (Known Icing) al estar el sistema TKS inoperativo en la flota.",
+    },
+  ],
+};
+
 export const DA42_LESSON_3_QUIZ: Quiz = {
   id: "quiz-da42-lesson-3",
   course_id: DA42_COURSE_ID,
@@ -1021,6 +1215,7 @@ export const DA42_LESSON_6_QUIZ: Quiz = {
 };
 
 export const DA42_QUIZZES: Quiz[] = [
+  DA42_LESSON_2_QUIZ,
   DA42_LESSON_3_QUIZ,
   DA42_LESSON_4_QUIZ,
   DA42_LESSON_5_QUIZ,
