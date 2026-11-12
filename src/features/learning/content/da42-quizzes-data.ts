@@ -2,6 +2,397 @@ import type { Quiz } from "../domain/quiz-types";
 
 export const DA42_COURSE_ID = "da420000-0000-0000-0000-000000000042";
 
+export const DA42_LESSON_4_QUIZ: Quiz = {
+  id: "quiz-da42-lesson-4",
+  course_id: DA42_COURSE_ID,
+  lesson_id: "da420000-0000-0000-0000-000000000040",
+  title:
+    "Examen de Verificación: 4. Procedimientos Normales y Operación Diésel",
+  description:
+    "Evaluación teórica de verificación sobre inspección de cabina (Cabin Check), inspección exterior (Walkaround), arranque de motores diésel Continental, rodaje, pruebas FADEC en punto de espera, despegue, ascenso, crucero, aproximación, aterrizaje, enfriamiento de turbos y repostaje de la Diamond DA42 Twin Star.",
+  minPassScorePercentage: 75,
+  questions: [
+    {
+      id: "da42-4-1",
+      question:
+        "¿Cuál es el primer paso obligatorio que debe ejecutarse al iniciar la lista de chequeo de cabina (Cabin Check) en la DA42 antes de cualquier otra comprobación?",
+      options: [
+        "Fijar el freno de estacionamiento (Parking Brake) en posición ON para inmovilizar la aeronave.",
+        "Encender la bomba eléctrica de combustible izquierda.",
+        "Extender los flaps a posición LDG.",
+        "Conectar la batería principal (ELECT. MASTER ON).",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El primer paso de la lista de chequeo de cabina según el AFM Sección 4A.3.1 es verificar y fijar el freno de estacionamiento (Parking Brake - SET ON) para asegurar mecánicamente que el avión no pueda desplazarse inadvertidamente.",
+    },
+    {
+      id: "da42-4-2",
+      question:
+        "Durante la comprobación de cabina previa a conectar la electricidad, ¿en qué posición deben estar los interruptores ENGINE MASTER y las llaves de contacto?",
+      options: [
+        "ENGINE MASTER en ON y llave en posición START.",
+        "ENGINE MASTER izquierdo en ON y derecho en OFF.",
+        "Ambos ENGINE MASTER en posición OFF y la llave de contacto (START KEY) retirada del panel.",
+        "ENGINE MASTER en OFF con la llave girada a BOTH.",
+      ],
+      correctAnswerIndex: 2,
+      explanation:
+        "Antes de energizar el sistema eléctrico principal, ambos ENGINE MASTER deben estar firmemente en OFF y la llave de arranque retirada para prevenir cualquier activación intempestiva del circuito de inyección o del motor de arranque.",
+    },
+    {
+      id: "da42-4-3",
+      question:
+        "Al realizar la prueba de detección de incendio de motores (FIRE TEST) con la alimentación eléctrica conectada, ¿qué indicaciones sensoriales deben presentarse en cabina para validar el sistema?",
+      options: [
+        "Se apagan todas las pantallas del G1000 y se corta el bus esencial.",
+        "Se iluminan los avisos luminosos rojos L/R FIRE en el panel anunciador y suena la alarma acústica de advertencia continua.",
+        "Se disparan automáticamente los extintores de halón en las góndolas.",
+        "Únicamente parpadea un mensaje blanco en la pantalla PFD sin sonido.",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "La prueba FIRE TEST comprueba la continuidad de los lazos detectores de fuego en ambas góndolas de motor, iluminando las alertas rojas L FIRE y R FIRE en el panel de anunciadores y activando el zumbador acústico de cabina.",
+    },
+    {
+      id: "da42-4-4",
+      question:
+        "Durante la comprobación del tope variable de profundidad (Variable Elevator Backstop), ¿qué movimiento debe observarse en la palanca de mandos cuando los flaps están en LDG y se aplica potencia de comprobación (ambas palancas > 20% de potencia)?",
+      options: [
+        "La palanca de mandos se bloquea rígidamente hacia atrás sin poder moverse.",
+        "La palanca de mandos mantenida hacia atrás se mueve notablemente y de forma perceptible hacia adelante (restringiendo el recorrido ascendente a 13°).",
+        "La palanca vibra emitiendo una alarma de pérdida acústica.",
+        "El timón de profundidad se desplaza lateralmente hacia la izquierda.",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "Al comprobar el Elevator Backstop con flaps LDG y potencia aplicada, el limitador mecánico accionado eléctricamente se enclava reduciendo el deflexión máxima del timón de 15,5° a 13°, lo que empuja visiblemente la palanca hacia adelante.",
+    },
+    {
+      id: "da42-4-5",
+      question:
+        "Al iniciar la inspección exterior en el tren de aterrizaje principal izquierdo, ¿cuál es la longitud mínima recomendada de vástago cromado limpio y visible en el pistón amortiguador oleoneumático?",
+      options: [
+        "Al menos 4 cm (1,6 in) de pistón cromado visible, libre de fugas de fluido hidráulico.",
+        "Menos de 1 cm para mantener el centro de gravedad bajo.",
+        "Exactamente 15 cm con las ruedas bloqueadas.",
+        "No debe verse metal cromado, debe estar totalmente comprimido.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM y el manual de mantenimiento especifican que en reposo el pistón del amortiguador del tren principal debe mostrar al menos 4 cm (1,6 pulgadas) de vástago limpio sin trazas de fuga hidráulica ni mellas.",
+    },
+    {
+      id: "da42-4-6",
+      question:
+        "¿Dónde y cómo se comprueba visualmente el nivel de aceite lubricante de la caja reductora de la hélice en la góndola del motor izquierdo durante el walkaround?",
+      options: [
+        "A través de la mirilla (sight glass) transparente situada en la parte inferior del morro de la góndola, comprobando que el nivel esté centrado en el visor.",
+        "Desmontando la hélice y utilizando una varilla metálica graduada.",
+        "Únicamente en la página de motor de la pantalla MFD del G1000 en vuelo.",
+        "En el tapón de drenaje de combustible del ala izquierda.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "La caja reductora dispone de un visor o mirilla de cristal en la tobera inferior del capó delantero de la góndola, permitiendo al piloto verificar que el aceite de reductora se encuentra en la marca central.",
+    },
+    {
+      id: "da42-4-7",
+      question:
+        "Al drenar las válvulas de combustible situadas bajo la góndola y el ala izquierda, ¿cuál es el procedimiento y criterio de aceptación requerido?",
+      options: [
+        "Purgar combustible en un vaso de muestreo transparente comprobando la ausencia total de agua, sedimentos o impurezas y el color característico del combustible de aviación.",
+        "Drenar combustible directamente sobre el suelo de la plataforma hasta que huela a queroseno.",
+        "Abrir el drenador solo si el indicador de cabina marca menos de 10 galones.",
+        "Comprobar que el combustible drenado contenga alcohol etílico anticongelante.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El muestreo debe realizarse con un vaso de prueba limpio y transparente para inspeccionar visualmente la ausencia de agua (que decanta al fondo) y partículas sólidas antes de cada vuelo.",
+    },
+    {
+      id: "da42-4-8",
+      question:
+        "Durante la inspección del borde de salida del ala izquierda (alerón y flap), ¿qué elementos mecánicos específicos deben verificarse?",
+      options: [
+        "Libertad y suavidad de movimiento del alerón, holguras dentro de límites, bisagras con pasadores de seguridad (split pins) colocados y varillas de accionamiento del flap íntegras.",
+        "Que los alerones estén soldados rígidamente para evitar oscilaciones.",
+        "Que el flap no se mueva bajo ninguna circunstancia eléctrica.",
+        "Que la aleta de compensación del timón de dirección esté pegada con cinta adhesiva.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "En el borde de salida se verifica el recorrido suave y sin rozamiento del alerón, la ausencia de juego excesivo, el aseguramiento con pasadores en las bisagras y la integridad de las varillas de empuje del flap.",
+    },
+    {
+      id: "da42-4-9",
+      question:
+        "Al inspeccionar el empenaje de cola en T de la DA42, ¿cuáles son los componentes críticos que deben revisarse en el estabilizador horizontal y timón de profundidad?",
+      options: [
+        "Las luces de aterrizaje y el sensor de temperatura exterior OAT.",
+        "El estado estructural del estabilizador horizontal, articulación y bisagras del elevador, la aleta de compensación (trim tab) y la antena de navegación VOR/LOC montada en la deriva.",
+        "El radiador de aceite y la caja reductora de la hélice trasera.",
+        "La toma estática alternativa de cabina y la válvula de combustible cruzado.",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "El empenaje en T aloja el estabilizador horizontal, el timón de profundidad con su aleta y varillaje de compensador, las bisagras y la antena dipolo VOR/LOC en la parte superior del timón de dirección.",
+    },
+    {
+      id: "da42-4-10",
+      question:
+        "En el tren de aterrizaje principal derecho, además de neumático, frenos y amortiguador, ¿qué componentes eléctricos de señalización deben inspeccionarse visualmente?",
+      options: [
+        "Los microinterruptores de posición de tren bloqueado abajo (downlock switch) y arriba (uplock switch) con su cableado intacto.",
+        "Las bujías de precalentamiento y la ECU B.",
+        "El sensor de flujo de combustible y la válvula de bypass del radiador.",
+        "Las antenas DME y transpondedor montadas en el tambor de freno.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El mecanismo de retracción del tren de aterrizaje cuenta con microinterruptores mecánicos que confirman al sistema G1000 el enclavamiento arriba o abajo del tren; deben inspeccionarse por suciedad, roturas o cables sueltos.",
+    },
+    {
+      id: "da42-4-11",
+      question:
+        "Al revisar el ala derecha y sus bocas de combustible (principal y auxiliar si está instalado), ¿qué comprobación física debe realizarse con los tapones de llenado?",
+      options: [
+        "Verificar visualmente el nivel de combustible y asegurar que los tapones queden firmemente enclavados, con la lengüeta orientada hacia atrás y sellando herméticamente.",
+        "Dejar los tapones flojos para permitir la entrada de aire y ventilación natural de los depósitos.",
+        "Rellenar ambos depósitos con gasolina AVGAS 100LL de forma obligatoria.",
+        "Retirar los tapones y guardarlos en el compartimento de equipaje delantero.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Los tapones de combustible deben comprobarse visualmente asegurando que su junta esté sana, el mecanismo de presión enclave perfectamente y la palanquilla quede alineada hacia popa para evitar que el flujo de aire aerodinámico la levante en vuelo.",
+    },
+    {
+      id: "da42-4-12",
+      question:
+        "En la inspección de la hélice de paso variable MT-Propeller del motor derecho, ¿qué detalle del borde de ataque debe examinarse con especial atención?",
+      options: [
+        "La ausencia de golpes, mellas profundas, delaminaciones y daños en la chapa metálica de protección de acero inoxidable del borde de ataque.",
+        "Que las palas giren libremente a más de 3.000 RPM empujándolas con la mano con el contacto puesto.",
+        "Que la pala esté recubierta de grasa lubricante en toda su superficie externa.",
+        "Que los contrapesos de paso de la hélice hayan sido desmontados.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Las hélices MT-Propeller de madera compuesta disponen de un blindaje metálico en el borde de ataque para protegerlas de piedras y erosión; cualquier daño o delaminación requiere evaluación técnica antes del vuelo.",
+    },
+    {
+      id: "da42-4-13",
+      question:
+        "En el morro de la aeronave, ¿qué comprobación de seguridad es imprescindible en las compuertas de equipaje (Nose Baggage Doors) antes de dar por finalizado el walkaround?",
+      options: [
+        "Comprobar que ambas compuertas estén completamente cerradas, pestillos enrasados y cerraduras bloqueadas con llave.",
+        "Dejar las compuertas entreabiertas para refrigerar el radar meteorológico.",
+        "Llenar los compartimentos de morro por encima de 45 kg en cada lado sin pesar el equipaje.",
+        "Desconectar los actuadores del tren delantero desde el interior del compartimento.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Una apertura intempestiva de la compuerta de equipaje de morro en vuelo causaría daños aerodinámicos severos e impacto contra el parabrisas; es obligatorio verificar su bloqueo físico con llave.",
+    },
+    {
+      id: "da42-4-14",
+      question:
+        "¿Cuál es la longitud mínima visible de pistón cromado del tren delantero (Nose Gear) en reposo durante la inspección exterior de la DA42?",
+      options: [
+        "Al menos 15 cm (aprox. 5,9 in) de vástago cromado visible y limpio en el amortiguador oleoneumático.",
+        "Exactamente 2 cm.",
+        "50 cm con el morro levantado.",
+        "No debe haber ningún pistón visible porque es un tren rígido de ballesta.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El tren delantero de la DA42 requiere una extensión mínima en reposo de al menos 15 cm (5,9 pulgadas) de pistón cromado para garantizar la amortiguación adecuada durante la carrera de despegue y aterrizaje.",
+    },
+    {
+      id: "da42-4-15",
+      question:
+        "En la lista de chequeo 'Before Engine Start' (Antes del arranque de motores), ¿cuál de las siguientes acciones es obligatoria para garantizar la seguridad de los ocupantes y de la estructura?",
+      options: [
+        "Ajustar la posición de los pedales del timón a la talla del piloto, abrochar y ajustar cinturones/arneses, y verificar cúpula delantera y puerta trasera cerradas y enclavadas.",
+        "Seleccionar flaps en posición LDG y encender las luces de aterrizaje.",
+        "Poner las palancas de potencia al 100% antes de conectar la batería.",
+        "Desbloquear el freno de estacionamiento para permitir que el avión ruede con la puesta en marcha.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Antes de arrancar se debe asegurar la ergonomía del piloto mediante el ajuste del pedalier, amarrar arneses de cuatro puntos y enclavar las cerraduras de cabina (cúpula con palanca y cerrojo de puerta trasera).",
+    },
+    {
+      id: "da42-4-16",
+      question:
+        "Tras girar la llave de arranque (START) y arrancar un motor diésel de la DA42, ¿cuál es el tiempo máximo permitido para que la presión de aceite entre en el rango verde?",
+      options: [
+        "3 segundos; si no se observa presión de aceite verde en ese plazo, debe cortarse el ENGINE MASTER inmediatamente.",
+        "60 segundos a ralentí.",
+        "5 minutos mientras sube la temperatura del refrigerante.",
+        "No hay límite de tiempo mientras el motor siga encendido.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "En los motores diésel Continental CD-135/CD-155, la presión de aceite debe alcanzar el rango verde en un máximo de 3 segundos tras el arranque; la falta de presión en ese tiempo obliga al corte inmediato del ENGINE MASTER para evitar daños mecánicos irreversibles.",
+    },
+    {
+      id: "da42-4-17",
+      question:
+        "Antes de aplicar potencia de rodaje o someter a carga los motores diésel de la DA42, ¿cuál es la temperatura mínima de aceite recomendada en el G1000?",
+      options: [
+        "Al menos 50 °C (rango verde en la escala de OIL TEMP).",
+        "Al menos 150 °C con aviso de advertencia amarillo.",
+        "0 °C si se utiliza combustible diésel para automoción.",
+        "No es necesario esperar a ninguna temperatura ya que el FADEC compensa la viscosidad fría.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El AFM establece que la temperatura de aceite del motor debe alcanzar al menos 50 °C (indicador en verde) antes de aumentar potencia para rodar o someter el motor a cargas operativas elevadas.",
+    },
+    {
+      id: "da42-4-18",
+      question:
+        "Durante el rodaje (Taxiing), la rueda de morro orientable de la DA42 gira con los pedales hasta ±20°. Si se necesita un viraje más cerrado (hasta 52°), ¿qué técnica debe emplearse?",
+      options: [
+        "Aplicar frenado diferencial suave en el pedal de la rueda principal interior al viraje mientras se mantiene potencia mínima en los motores.",
+        "Pedir a un asistente exterior que empuje físicamente la punta del ala.",
+        "Apagar el motor del lado exterior al viraje.",
+        "Subir la palanca de flaps a posición LDG para ayudar al giro por sustentación asimétrica.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El guiado por pedales proporciona ±20° de ángulo; la aplicación combinada de pedal a fondo y freno diferencial en la rueda principal interior desacopla el resorte del tren de morro permitiendo giros cerrados de hasta 52°.",
+    },
+    {
+      id: "da42-4-19",
+      question:
+        "Durante la comprobación de motores en el punto de espera (ECU Test), ¿qué secuencia automatizada realiza el FADEC cuando el piloto mantiene pulsado el botón ECU TEST?",
+      options: [
+        "El motor apaga ambos canales FADEC y detiene la hélice en seco.",
+        "Aumenta las RPM a ~1.900, conmuta de ECU A a ECU B comprobando el gobernador de la hélice y ciclos de control, y regresa a ECU A en ralentí apagando las luces de aviso.",
+        "Dispara el extintor de fuego simulado durante 15 segundos.",
+        "Acelera el motor al 100% de potencia con frenos calados.",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "El test FADEC en punto de espera automatiza el chequeo cruzado de las computadoras A y B a ~1.900 RPM comprobando la conmutación de mando, el gobernador de hélice y la inyección sin intervención manual.",
+    },
+    {
+      id: "da42-4-20",
+      question:
+        "Al realizar la prueba de máxima potencia (Full Power Check) durante 10 segundos antes del despegue, ¿qué parámetros mínimos de motor deben verificarse en el G1000?",
+      options: [
+        "Carga del motor (LOAD) entre 95% y 100% y velocidad de giro de hélice entre 2.250 y 2.300 RPM en ambos motores con todos los parámetros en arco verde.",
+        "Carga inferior al 50% y 1.200 RPM.",
+        "LOAD al 110% en arco rojo y hélice a 3.000 RPM.",
+        "Solo es necesario comprobar que el horizonte artificial esté nivelado.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "El Full Power Check confirma que ambos motores entregan la potencia máxima nominal de despegue (95-100% LOAD) y que los gobernadores de hélice clavan las RPM en el régimen de trabajo (2.250 a 2.300 RPM).",
+    },
+    {
+      id: "da42-4-21",
+      question:
+        "Para un despegue normal en la DA42 (Flaps UP, peso máximo típico de 1.700 kg), ¿cuáles son las velocidades indicadas de rotación (vr) y de mejor régimen de ascenso bimotor (vy)?",
+      options: [
+        "vr = 70 KIAS y vy = 79 KIAS (o vx = 76 KIAS si se requiere el mejor ángulo).",
+        "vr = 50 KIAS y vy = 65 KIAS.",
+        "vr = 85 KIAS y vy = 120 KIAS.",
+        "vr = 60 KIAS y vy = 70 KIAS.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Las velocidades publicadas en el AFM para despegue normal con flaps UP a 1.700 kg son vr = 70 KIAS y vy = 79 KIAS para el ascenso inicial en ambos motores.",
+    },
+    {
+      id: "da42-4-22",
+      question:
+        "¿En qué momento exacto durante el despegue inicial debe subirse la palanca del tren de aterrizaje (Gear UP)?",
+      options: [
+        "Inmediatamente al despegar las ruedas de la pista, sin mirar los instrumentos.",
+        "Únicamente cuando se confirme ascenso positivo simultáneo en el altímetro y variómetro (VSI) y no quede longitud de pista remanente para aterrizar y frenar con seguridad.",
+        "Al alcanzar el nivel de crucero a 10.000 ft.",
+        "Al cruzar la velocidad vA de maniobra.",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "La regla de oro bimotor exige mantener el tren abajo mientras exista pista física remanente para frenar en caso de fallo prematuro, retrayéndolo solo con ascenso positivo firme y sin pista utilizable.",
+    },
+    {
+      id: "da42-4-23",
+      question:
+        "Si la DA42 está equipada con depósitos de combustible auxiliares (Auxiliary Tanks), ¿cuándo y cómo se realiza el trasvase a los depósitos principales en crucero?",
+      options: [
+        "Cuando la cantidad en los depósitos principales baje a ≤ 17 US gal (aprox. 64 L), activando los interruptores FUEL AUX PUMPS de cada ala durante el tiempo necesario para rellenarlos.",
+        "Antes de encender los motores en tierra con las llaves de contacto en OFF.",
+        "Los depósitos auxiliares alimentan directamente a los inyectores sin pasar por los principales.",
+        "Solo en el tramo de viento en cola justo antes de aterrizar.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Los depósitos auxiliares trasvasan combustible a los depósitos principales mediante bombas eléctricas auxiliares; debe iniciarse cuando los tanques principales descienden a 17 galones o menos para no rebosarlos.",
+    },
+    {
+      id: "da42-4-24",
+      question:
+        "¿Cuáles son las velocidades máximas de extensión de flaps (vFE) en la DA42 para las posiciones T/O y LDG?",
+      options: [
+        "Flaps T/O hasta 133 KIAS y Flaps LDG hasta 113 KIAS.",
+        "Flaps T/O hasta 90 KIAS y Flaps LDG hasta 80 KIAS.",
+        "Flaps T/O hasta 155 KIAS y Flaps LDG hasta 140 KIAS.",
+        "No tienen limitación de velocidad.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Las limitaciones estructurales del AFM Sección 2 fijan vFE en 133 KIAS para la posición intermedia Takeoff (T/O) y en 113 KIAS para la deflexión completa Landing (LDG).",
+    },
+    {
+      id: "da42-4-25",
+      question:
+        "Al iniciar una maniobra de motor y al aire / frustrada bimotor (Go-Around) desde la configuración de aterrizaje completo, ¿cuál es el primer cambio de configuración de flaps requerido?",
+      options: [
+        "Subir los flaps completamente a posición UP de golpe.",
+        "Retraer los flaps inmediatamente de posición LDG a posición T/O (intermedia) mientras se aplica potencia máxima (MAX Power) y se adopta actitud de ascenso.",
+        "Mantener los flaps en LDG durante todo el ascenso hasta altitud de crucero.",
+        "Cortar la potencia de ambos motores y planear hacia el terreno.",
+      ],
+      correctAnswerIndex: 1,
+      explanation:
+        "En frustrada bimotor, la resistencia parásita excesiva de la posición LDG se elimina de inmediato seleccionando Flaps T/O mientras se aplica máxima potencia, retrayendo a UP solo cuando se alcance una altitud segura y velocidad superior a 79 KIAS.",
+    },
+    {
+      id: "da42-4-26",
+      question:
+        "Tras el aterrizaje y rodaje al estacionamiento, ¿por qué es obligatorio mantener los motores diésel Continental a ralentí (IDLE) durante al menos 2 minutos antes de cortar el ENGINE MASTER?",
+      options: [
+        "Para permitir que los turbocompresores se enfríen gradualmente con flujo continuo de aceite y evitar la coquización o carbonización del lubricante en sus cojinetes de alta temperatura.",
+        "Para vaciar completamente el combustible de las líneas de inyección.",
+        "Para calentar los frenos de disco antes de parar.",
+        "Para descargar las baterías principales a cero voltios.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "Los turbocompresores operan a temperaturas extremas; detener el flujo de aceite de golpe con el turbo caliente quemaría el aceite residual en los cojinetes (coquización), provocando fallos catastróficos prematuros.",
+    },
+    {
+      id: "da42-4-27",
+      question:
+        "Durante las operaciones de repostaje de combustible Jet A-1 en la DA42, ¿qué medida de prevención electrostática es obligatoria antes de retirar los tapones de los depósitos?",
+      options: [
+        "Conectar firmemente el cable de toma de tierra/masa (grounding wire) del camión cisterna o manguera al perno de puesta a tierra de la aeronave.",
+        "Humedecer las alas con agua salada.",
+        "Dejar conectada la alimentación externa de corriente (GPU).",
+        "Mantener un motor en ralentí para disipar la carga.",
+      ],
+      correctAnswerIndex: 0,
+      explanation:
+        "La fricción del combustible al fluir genera cargas electrostáticas elevadas; conectar el cable de masa al perno específico de la aeronave antes de abrir tapones iguala los potenciales y elimina el riesgo de chispas inflamables.",
+    },
+  ],
+};
+
 export const DA42_LESSON_5_QUIZ: Quiz = {
   id: "quiz-da42-lesson-5",
   course_id: DA42_COURSE_ID,
@@ -589,6 +980,7 @@ export const DA42_LESSON_6_QUIZ: Quiz = {
 };
 
 export const DA42_QUIZZES: Quiz[] = [
+  DA42_LESSON_4_QUIZ,
   DA42_LESSON_5_QUIZ,
   DA42_LESSON_6_QUIZ,
 ];
