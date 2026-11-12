@@ -9209,6 +9209,108 @@ export const DA42_LESSON_5 = {
       </div>
     </div>
   </div>
+</div>
+
+
+
+<!-- pagebreak -->
+
+
+
+<!-- DIAPOSITIVA 6.16: 6.16 Validación Final del Despacho y Firma Operativa -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 TWIN STAR · DESPACHO OPERATIVO</div>
+      <h1 class="text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.16 Validación Final del Despacho y Firma Operativa</h1>
+    </div>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Aprobación Go / No-Go y Doble Firma</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+    <!-- Columna Izquierda (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">CHECKLIST DE VALIDACIÓN F.OPS.02</span>
+        </div>
+
+        <div class="space-y-1 text-[18px] text-slate-700 dark:text-slate-300">
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-between gap-2">
+            <div>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block">1. Pilar Masa y Centrado:</strong>
+              <span class="text-slate-600 dark:text-slate-400 text-[18px]">TOM (1.621,4 kg) &le; 1700 kg &bull; CG (2,448 m) en envolvente.</span>
+            </div>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold font-mono text-[18px] shrink-0">CONFORME ✓</span>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-between gap-2">
+            <div>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block">2. Pilar Plan de Combustible:</strong>
+              <span class="text-slate-600 dark:text-slate-400 text-[18px]">Ramp Fuel (166,7 L) &ge; Mínimo 99,5 L (con 1:30 OM Blue Team).</span>
+            </div>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold font-mono text-[18px] shrink-0">CONFORME ✓</span>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-between gap-2">
+            <div>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block">3. Pilar Performance Despegue:</strong>
+              <span class="text-slate-600 dark:text-slate-400 text-[18px]">Distancia 50 ft (588 m) &le; TORA disponible (3171 m en GCXO).</span>
+            </div>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold font-mono text-[18px] shrink-0">CONFORME ✓</span>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs flex items-center justify-between gap-2">
+            <div>
+              <strong class="text-[#0B2E59] dark:text-sky-300 block">4. Pilar Performance Aterrizaje:</strong>
+              <span class="text-slate-600 dark:text-slate-400 text-[18px]">Distancia x1,43 (847 m) &le; LDA disponible (3171 m en GCXO).</span>
+            </div>
+            <span class="text-emerald-600 dark:text-emerald-400 font-bold font-mono text-[18px] shrink-0">CONFORME ✓</span>
+          </div>
+        </div>
+
+        <div class="mt-auto p-2 rounded-xl border-l-4 border-emerald-500 bg-emerald-50/90 dark:bg-emerald-950/30 text-emerald-950 dark:text-emerald-200 text-[18px] leading-snug shadow-2xs shrink-0">
+          <strong class="text-emerald-800 dark:text-emerald-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
+            <span>✍️</span> DOBLE FIRMA OPERATIVA OBLIGATORIA
+          </strong>
+          <span>El formulario F.OPS.02 debe ser firmado por el alumno (PIC) y por el Instructor de Vuelo habilitado antes de poner en marcha los motores.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <div>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px] block">F.OPS.02 · MODELO CUMPLIMENTADO</span>
+            <span class="text-[18px] text-slate-500 font-medium">Vuelo Multimotor DA42 · EC-NME</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-[18px]">GO / AUTORIZADO</span>
+            <a
+              href="/images/DA42/f-ops-02-ejemplo-rellenado-da42.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[18px] font-bold text-sky-600 dark:text-sky-400 hover:underline flex items-center gap-0.5 shrink-0"
+              title="Abrir PDF cumplimentado en nueva pestaña"
+            >
+              <span>Abrir PDF</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
+          <img
+            src="/images/DA42/f-ops-02-ejemplo-rellenado-da42.png"
+            alt="Ejemplo de despacho completado y firmado F.OPS.02 para DA42 Twin Star (EC-NME)"
+            class="w-full h-auto block rounded-lg shadow-xs"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
 };
 
