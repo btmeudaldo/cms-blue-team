@@ -9284,7 +9284,7 @@ export const DA42_LESSON_5 = {
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
           <div>
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px] block">F.OPS.02 · MODELO CUMPLIMENTADO</span>
-            <span class="text-[18px] text-slate-500 font-medium">Vuelo Multimotor DA42 · EC-NME</span>
+            <span class="text-[18px] text-slate-500 font-medium">Vuelo BTM62K · EC-OKM (Despacho Prevuelo)</span>
           </div>
           <div class="flex items-center gap-2">
             <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 font-bold text-[18px]">GO / AUTORIZADO</span>
@@ -9304,7 +9304,7 @@ export const DA42_LESSON_5 = {
         <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
           <img
             src="/images/DA42/f-ops-02-ejemplo-rellenado-da42.png"
-            alt="Ejemplo de despacho completado y firmado F.OPS.02 para DA42 Twin Star (EC-NME)"
+            alt="Ejemplo de despacho completado y firmado F.OPS.02 para DA42 Twin Star (EC-OKM · BTM62K)"
             class="w-full h-auto block rounded-lg shadow-xs"
           />
         </div>
