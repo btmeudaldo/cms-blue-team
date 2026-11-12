@@ -8506,6 +8506,79 @@ export const DA42_LESSON_5 = {
       </div>
     </div>
   </div>
+</div>
+
+<!-- pagebreak -->
+
+<!-- DIAPOSITIVA 6.8: 6.8 Ground Speed, Viento y Cálculo de Combustible Horario -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 TWIN STAR · NAVEGACIÓN Y VIENTO</div>
+      <h1 class="text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.8 Ground Speed, Viento y Cálculo de Combustible Horario</h1>
+    </div>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Cinemática de Vuelo</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+    <!-- Columna Izquierda (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between pb-0.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">EFECTO DEL VIENTO EN RUTA</span>
+        </div>
+
+        <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 shrink-0">
+          <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">EL TRIÁNGULO DE VELOCIDADES</strong>
+          <p class="text-[18px] text-slate-700 dark:text-slate-300 leading-snug">
+            La velocidad verdadera (TAS) proporciona la velocidad respecto al aire. El viento en altura modifica la trayectoria, resultando en la deriva y la velocidad respecto al suelo (Ground Speed / GS).
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 shrink-0">
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 block uppercase text-[18px]">Tiempo en Ruta (ETE):</span>
+            <div class="font-mono text-sky-600 dark:text-sky-400 font-bold text-[18px]">ETE = (Dist / GS) × 60</div>
+            <div class="text-slate-600 dark:text-slate-400 text-[18px] leading-tight">Cálculo de cada tramo en minutos.</div>
+          </div>
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5">
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 block uppercase text-[18px]">Trip Fuel Bimotor:</span>
+            <div class="font-mono text-emerald-600 dark:text-emerald-400 font-bold text-[18px]">Trip [L] = ETE [h] × 33 L/h</div>
+            <div class="text-slate-600 dark:text-slate-400 text-[18px] leading-tight">Consumo total al 60% (8,8 USG/h).</div>
+          </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 shadow-2xs shrink-0 space-y-1">
+          <strong class="text-sky-800 dark:text-sky-300 flex items-center gap-1.5 uppercase tracking-wide font-black text-[18px] leading-tight">
+            <span>ℹ️</span> EJEMPLO PRÁCTICO DA42 (100 NM)
+          </strong>
+          <p class="font-medium text-[18px] leading-snug">
+            Para un tramo de <strong>100 NM</strong> a FL80 a 60% LOAD (TAS = 140 kt) y viento en cara de 15 kt (GS = 125 kt):<br>
+            &bull; <strong>ETE</strong> = (100 / 125) &times; 60 = <strong>48,0 min</strong> (0,80 h).<br>
+            &bull; <strong>Trip Fuel</strong> = 0,80 h &times; 33,0 L/h = <strong>26,4 Litros</strong> (7,04 USG).<br>
+            &bull; <strong>Masa JET A-1</strong> = 26,4 L &times; 0,84 kg/L = <strong>22,18 kg</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">TRIÁNGULO DE VELOCIDADES</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex items-center justify-center p-2 shadow-xs">
+          <img
+            src="/images/DA42/triangulo-velocidades.png"
+            alt="Triángulo de velocidades y cinemática del viento en navegación"
+            class="max-w-full max-h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
 };
 
