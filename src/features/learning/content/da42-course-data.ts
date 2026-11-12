@@ -2301,12 +2301,6 @@ export const DA42_LESSON_3 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ARQUITECTURA DEL SISTEMA FADEC</span>
         </div>
         <div class="w-full flex-1 min-h-0 flex flex-col justify-start space-y-1.5 overflow-hidden">
-          <div class="w-full shrink-0 flex flex-col items-start justify-start rounded-xl bg-white dark:bg-slate-800/80 p-2.5 border border-slate-200 dark:border-slate-700/80 shadow-2xs">
-            <p class="text-xs text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
-              Esquema de control digital redundante bimotor: doble ECU (A y B) por motor, sensórica duplicada y regulación automática monomando de inyección y hélice abanderable.
-            </p>
-          </div>
-
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/90 flex flex-col items-center justify-center p-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/Gemini_Generated_Image_8v05wd8v05wd8v05.jpg" alt="Arquitectura del Sistema FADEC Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
           </div>
