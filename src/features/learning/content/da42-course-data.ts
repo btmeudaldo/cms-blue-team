@@ -8679,6 +8679,92 @@ export const DA42_LESSON_5 = {
       </div>
     </div>
   </div>
+</div>
+
+
+
+<!-- pagebreak -->
+
+
+
+<!-- DIAPOSITIVA 6.10: 6.10 Política de Combustible: Part-NCO.OP.125 & Manual OM Blue Team -->
+<div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
+  <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
+    <div>
+      <div class="text-[18px] font-bold text-[#2361A8] dark:text-sky-400 uppercase tracking-wider">DA42 TWIN STAR · POLÍTICA DE COMBUSTIBLE</div>
+      <h1 class="text-2xl font-bold text-[#0B2E59] dark:text-sky-300 tracking-tight leading-tight my-0">6.10 Política de Combustible: Part-NCO.OP.125 & Manual OM Blue Team</h1>
+    </div>
+    <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Seguridad Operacional y Reservas Bimotor</span>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr;">
+    <!-- Columna Izquierda (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">POLÍTICA DE COMBUSTIBLE OFICIAL DA42</span>
+        </div>
+
+        <div class="space-y-1 text-[18px] text-slate-700 dark:text-slate-300 flex-1 flex flex-col justify-between">
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex justify-between items-center mb-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300">1. Taxi Fuel (Rodaje y Run-up FADEC):</strong>
+              <span class="font-mono font-bold text-sky-600 dark:text-sky-400">6,0 L (1,58 USG)</span>
+            </div>
+            <div class="leading-snug">Puesta en marcha bimotor, rodaje al punto de espera y comprobación automática de ECU/FADEC de ambos motores.</div>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex justify-between items-center mb-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300">2. Trip Fuel (Combustible de Ruta):</strong>
+              <span class="font-mono font-bold text-sky-600 dark:text-sky-400">Según ETE (33,0 L/h)</span>
+            </div>
+            <div class="leading-snug">Calculado con el ETE de cada tramo y el consumo horario bimotor de 33,0 L/h (8,8 USG/h / 16,5 L/h por motor al 60% Load).</div>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex justify-between items-center mb-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300">3. Alternativo (Desvío):</strong>
+              <span class="font-mono font-bold text-sky-600 dark:text-sky-400">11,0 L (2,91 USG)</span>
+            </div>
+            <div class="leading-snug">Combustible para maniobra de aproximación frustrada en destino y vuelo al aeródromo alternativo asignado (~20 min).</div>
+          </div>
+
+          <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <div class="flex justify-between items-center mb-0.5">
+              <strong class="text-[#0B2E59] dark:text-sky-300">4. Reserva Final Obligatoria OM:</strong>
+              <span class="font-mono font-bold text-emerald-600 dark:text-emerald-400">49,5 L (13,1 USG)</span>
+            </div>
+            <div class="leading-snug">EASA Part-NCO exige 45 min (24,8 L). <strong>Blue Team exige por OM 1 hora 30 minutos obligatoria</strong> (49,5 L) para máxima seguridad bimotor.</div>
+          </div>
+        </div>
+
+        <div class="p-2 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-snug shadow-2xs shrink-0">
+          <strong class="text-amber-800 dark:text-amber-400 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide">
+            <span>⚠️</span> RAMP FUEL MÍNIMO
+          </strong>
+          <span><strong>Ramp Fuel = Taxi (6,0 L) + Trip + Alternativo (11,0 L) + Reserva OM 1:30 (49,5 L)</strong>. Nunca se despegará si la cantidad a bordo es inferior a este total.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha (lg:col-span-6) -->
+    <div class="lg:col-span-6 flex flex-col">
+      <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
+        <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">POLÍTICA DE COMBUSTIBLE EASA & OM</span>
+        </div>
+
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white flex flex-col justify-center items-center p-1.5 shadow-xs">
+          <img
+            src="/images/DA42/fuel-planning-blocks.png"
+            alt="Esquema reglamentario de política de combustible EASA Part-NCO y OM Blue Team DA42"
+            class="w-full h-full object-contain rounded-lg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
 </div>`,
 };
 
