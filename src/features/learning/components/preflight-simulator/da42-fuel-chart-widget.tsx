@@ -202,35 +202,35 @@ export function DA42FuelChartWidget() {
               fill="#1d4ed8"
             />
             {/* Badge on Right Axis */}
-            <g transform={`translate(${BOX.right + 4}, ${Math.max(55, Math.min(450, point.y))})`}>
+            <g transform={`translate(${BOX.right + 4}, ${Math.max(55, Math.min(440, point.y))})`}>
               <rect
                 x="0"
-                y="-18"
-                width="125"
-                height="36"
-                rx="6"
+                y="-24"
+                width="165"
+                height="50"
+                rx="8"
                 fill="#1d4ed8"
                 stroke="#ffffff"
-                strokeWidth="2"
-                filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.35))"
+                strokeWidth="2.5"
+                filter="drop-shadow(0px 2px 5px rgba(0,0,0,0.35))"
               />
               <text
-                x="62"
+                x="82"
                 y="-2"
                 textAnchor="middle"
                 fill="#ffffff"
-                fontSize="13"
+                fontSize="18"
                 fontFamily="monospace"
                 fontWeight="900"
               >
                 {point.usg.toFixed(2)} USG/h
               </text>
               <text
-                x="62"
-                y="12"
+                x="82"
+                y="18"
                 textAnchor="middle"
                 fill="#bfdbfe"
-                fontSize="11"
+                fontSize="18"
                 fontFamily="monospace"
                 fontWeight="800"
               >
@@ -256,22 +256,22 @@ export function DA42FuelChartWidget() {
             {/* Badge on Bottom Axis */}
             <g transform={`translate(${Math.max(65, Math.min(475, point.x))}, ${BOX.bottom + 6})`}>
               <rect
-                x="-45"
+                x="-55"
                 y="0"
-                width="90"
-                height="32"
-                rx="6"
+                width="110"
+                height="38"
+                rx="8"
                 fill="#1d4ed8"
                 stroke="#ffffff"
-                strokeWidth="2"
-                filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.35))"
+                strokeWidth="2.5"
+                filter="drop-shadow(0px 2px 5px rgba(0,0,0,0.35))"
               />
               <text
                 x="0"
-                y="22"
+                y="26"
                 textAnchor="middle"
                 fill="#ffffff"
-                fontSize="16"
+                fontSize="20"
                 fontFamily="monospace"
                 fontWeight="900"
               >
@@ -283,45 +283,45 @@ export function DA42FuelChartWidget() {
             <circle
               cx={point.x}
               cy={point.y}
-              r="10"
+              r="12"
               fill="#3b82f6"
               fillOpacity="0.25"
               stroke="#2563eb"
-              strokeWidth="2"
+              strokeWidth="2.5"
             />
             <circle
               cx={point.x}
               cy={point.y}
-              r="5"
+              r="6"
               fill="#1d4ed8"
               stroke="#ffffff"
-              strokeWidth="2"
+              strokeWidth="2.5"
             />
 
             {/* Floating Info Tooltip */}
             <g
               transform={`translate(${Math.min(
-                BOX.right - 95,
-                Math.max(BOX.left + 95, point.x)
-              )}, ${point.y < 120 ? point.y + 40 : point.y - 40})`}
+                BOX.right - 125,
+                Math.max(BOX.left + 125, point.x)
+              )}, ${point.y < 120 ? point.y + 45 : point.y - 45})`}
             >
               <rect
-                x="-90"
-                y="-25"
-                width="180"
-                height="50"
-                rx="8"
+                x="-120"
+                y="-30"
+                width="240"
+                height="62"
+                rx="10"
                 fill="#1d4ed8"
                 stroke="#ffffff"
-                strokeWidth="2"
+                strokeWidth="2.5"
                 filter="drop-shadow(0px 3px 6px rgba(0,0,0,0.35))"
               />
               <text
                 x="0"
-                y="-6"
+                y="-5"
                 textAnchor="middle"
                 fill="#ffffff"
-                fontSize="14"
+                fontSize="18"
                 fontFamily="sans-serif"
                 fontWeight="900"
               >
@@ -329,10 +329,10 @@ export function DA42FuelChartWidget() {
               </text>
               <text
                 x="0"
-                y="14"
+                y="19"
                 textAnchor="middle"
                 fill="#bfdbfe"
-                fontSize="12"
+                fontSize="18"
                 fontFamily="monospace"
                 fontWeight="800"
               >
@@ -345,8 +345,8 @@ export function DA42FuelChartWidget() {
 
       {/* Preset Buttons & Instruction Hint */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0">
-        <span className="text-xs text-slate-600 dark:text-slate-400 font-medium flex items-center gap-1">
-          <span className="text-base">👆</span> Mueve el cursor sobre la gráfica o selecciona:
+        <span className="text-[18px] text-slate-600 dark:text-slate-400 font-medium flex items-center gap-1">
+          <span className="text-xl">👆</span> Mueve el cursor sobre la gráfica o selecciona:
         </span>
         <div className="flex items-center gap-1.5 flex-wrap">
           {[
