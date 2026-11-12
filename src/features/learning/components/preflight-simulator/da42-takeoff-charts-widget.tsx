@@ -184,3 +184,4 @@ export function DA42TakeoffChartsWidget() {
     </div>
   );
 }
+
