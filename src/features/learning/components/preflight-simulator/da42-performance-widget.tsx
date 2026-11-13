@@ -213,11 +213,11 @@ export function DA42PerformanceWidget({
       {/* Columna Izquierda (lg:col-span-6): Formulario de Cálculo F.OPS.02 */}
       <div className="lg:col-span-6 flex flex-col">
         <div
-          className="h-[590px] flex flex-col justify-between p-3.5 rounded-2xl bg-slate-50/90 dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs"
+          className="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-slate-50/90 dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden"
           style={{ height: "590px" }}
         >
           {/* Header & Step / Airport Selector */}
-          <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800 shrink-0">
+          <div className="flex items-center justify-between pb-1.5 border-b border-slate-200 dark:border-slate-800 shrink-0">
             <div>
               <span className="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px] block">
                 {currentStep === "takeoff"
@@ -364,7 +364,7 @@ export function DA42PerformanceWidget({
           </div>
 
           {/* Cuadro de Enunciado del Escenario de Pista */}
-          <div className="p-2 sm:p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs my-1 shrink-0">
+          <div className={`${currentStep === "takeoff" ? "p-1.5 px-2.5 my-0.5" : "p-2 sm:p-2.5 my-1"} rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs shrink-0`}>
             <div className="flex items-center justify-between gap-2">
               <strong className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
                 <span>📍</span>
@@ -378,13 +378,15 @@ export function DA42PerformanceWidget({
                 {selectedScenarioIndex === 0 ? "Ejemplo Guiado Resuelto" : "Ejercicio Evaluable"}
               </span>
             </div>
-            <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-snug m-0 mt-0.5">
-              {scenario.elevationDesc} · OAT: {scenario.oatC} °C · Viento: {scenario.windDesc} · {scenario.surfaceDesc}
-            </p>
+            {currentStep !== "takeoff" && (
+              <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-300 leading-snug m-0 mt-0.5">
+                {scenario.elevationDesc} · OAT: {scenario.oatC} °C · Viento: {scenario.windDesc} · {scenario.surfaceDesc}
+              </p>
+            )}
           </div>
 
           {/* Form Content - Aligned to top */}
-          <div className="flex-1 min-h-0 flex flex-col justify-start space-y-2 pt-1 overflow-y-auto">
+          <div className={`flex-1 min-h-0 flex flex-col justify-start ${currentStep === "takeoff" ? "space-y-1.5 pt-0.5 overflow-hidden" : "space-y-2 pt-1 overflow-y-auto"}`}>
             {/* Direct Link to Relevant AFM Table (Landing stays on left; Takeoff moved to right) */}
             {currentStep !== "takeoff" && (
               <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-sky-50/70 dark:bg-slate-800/90 border border-sky-200 dark:border-slate-700 shadow-2xs">
@@ -433,7 +435,7 @@ export function DA42PerformanceWidget({
             {currentStep === "takeoff" ? (
               <>
                 {/* Item 1: Take-off run */}
-                <div className="p-2.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5">
+                <div className="p-2 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div>
                       <span className="font-bold text-xs sm:text-[14px] text-[#0B2E59] dark:text-sky-300 block">
@@ -449,14 +451,14 @@ export function DA42PerformanceWidget({
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2 pt-0.5">
+                  <div className="flex items-center gap-2">
                     <div className="flex-1 relative">
                       <input
                         type="text"
                         placeholder="Introduce metros calculados (Ej: 211)"
                         value={currentInputs.takeoffRun}
                         onChange={(e) => updateCurrentInput("takeoffRun", e.target.value)}
-                        className={`w-full px-3 py-1.5 rounded-lg border font-mono text-xs sm:text-[14px] ${
+                        className={`w-full px-3 py-1 rounded-lg border font-mono text-xs sm:text-[14px] ${
                           errors.takeoffRun
                             ? "border-rose-500 bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-200"
                             : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900"
@@ -468,7 +470,7 @@ export function DA42PerformanceWidget({
                 </div>
 
                 {/* Item 2: Take-off distance (50 ft) */}
-                <div className="p-2.5 rounded-xl bg-sky-50/50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 shadow-2xs space-y-1.5">
+                <div className="p-2 rounded-xl bg-sky-50/50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800 shadow-2xs space-y-1">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div>
                       <span className="font-bold text-xs sm:text-[14px] text-[#0B2E59] dark:text-sky-300 block">
@@ -484,14 +486,14 @@ export function DA42PerformanceWidget({
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2 pt-0.5">
+                  <div className="flex items-center gap-2">
                     <div className="flex-1 relative">
                       <input
                         type="text"
                         placeholder="Introduce metros calculados (Ej: 329)"
                         value={currentInputs.takeoff50ft}
                         onChange={(e) => updateCurrentInput("takeoff50ft", e.target.value)}
-                        className={`w-full px-3 py-1.5 rounded-lg border font-mono text-xs sm:text-[14px] font-bold ${
+                        className={`w-full px-3 py-1 rounded-lg border font-mono text-xs sm:text-[14px] font-bold ${
                           errors.takeoff50ft
                             ? "border-rose-500 bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-200"
                             : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-sky-700 dark:text-sky-300"
@@ -550,7 +552,7 @@ export function DA42PerformanceWidget({
           </div>
 
           {/* Validation & Status Button */}
-          <div className="pt-2 border-t border-slate-200 dark:border-slate-800 shrink-0 space-y-1.5">
+          <div className="pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0 space-y-1">
             <div className="flex items-center justify-between gap-2">
               <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                 {selectedScenarioIndex === 0 ? (
@@ -572,7 +574,7 @@ export function DA42PerformanceWidget({
                   fontSize: "1.125rem",
                   fontWeight: 800,
                 }}
-                className="px-4 py-2 rounded-xl shadow-xs cursor-pointer flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95"
+                className="px-4 py-1.5 rounded-xl shadow-xs cursor-pointer flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95"
               >
                 <span style={{ color: "#ffffff", fontSize: "1.125rem", fontWeight: 800 }}>
                   {selectedScenarioIndex === 0
