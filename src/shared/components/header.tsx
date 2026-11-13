@@ -66,7 +66,7 @@ export function Header({
           autoHideOnScroll && isHidden ? "-translate-y-full" : "translate-y-0"
         }`}
       >
-        <div className="mx-auto flex min-h-[72px] sm:min-h-[112px] max-w-[1540px] items-center justify-between gap-2 sm:gap-6 px-3 sm:px-8 lg:px-12">
+        <div className="mx-auto flex h-[72px] sm:h-[112px] max-w-[1540px] items-center justify-between gap-2 sm:gap-6 px-3 sm:px-8 lg:px-12">
           {/* Brand Logo (Left) */}
           <Link
             href={isLoginPage ? "/" : "/courses"}
@@ -114,7 +114,7 @@ export function Header({
             <Link
               href="/courses"
               onClick={() => setIsMenuOpen(false)}
-              className="whitespace-nowrap px-0 py-1.5 text-[0.95rem] font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
+              className="whitespace-nowrap px-0 py-1.5 min-[992px]:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
             >
               Cursos
             </Link>
@@ -122,7 +122,7 @@ export function Header({
             <Link
               href="/quizzes"
               onClick={() => setIsMenuOpen(false)}
-              className="whitespace-nowrap px-0 py-1.5 text-[0.95rem] font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
+              className="whitespace-nowrap px-0 py-1.5 min-[992px]:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
             >
               Evaluaciones
             </Link>
@@ -132,21 +132,21 @@ export function Header({
                 <Link
                   href="/admin/courses"
                   onClick={() => setIsMenuOpen(false)}
-                  className="whitespace-nowrap px-0 py-1.5 text-[0.95rem] font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
+                  className="whitespace-nowrap px-0 py-1.5 min-[992px]:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
                 >
                   Gestión
                 </Link>
                 <Link
                   href="/admin/users"
                   onClick={() => setIsMenuOpen(false)}
-                  className="whitespace-nowrap px-0 py-1.5 text-[0.95rem] font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
+                  className="whitespace-nowrap px-0 py-1.5 min-[992px]:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
                 >
                   Matrículas
                 </Link>
                 <Link
                   href="/admin/progress"
                   onClick={() => setIsMenuOpen(false)}
-                  className="whitespace-nowrap px-0 py-1.5 text-[0.95rem] font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
+                  className="whitespace-nowrap px-0 py-1.5 min-[992px]:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
                 >
                   Auditoría
                 </Link>
@@ -163,11 +163,11 @@ export function Header({
             {userEmail ? (
               <div className="flex items-center gap-2 sm:gap-3">
                 {/* Compact User Name and Role Badge */}
-                <div className="hidden sm:flex flex-col items-end leading-tight max-w-[140px] sm:max-w-[160px]">
-                  <span className="text-xs font-bold text-slate-800 dark:text-slate-200 truncate w-full text-right">
+                <div className="hidden sm:flex flex-col items-end leading-tight max-w-[160px] sm:max-w-[190px]">
+                  <span className="text-sm font-bold text-slate-800 dark:text-slate-200 truncate w-full text-right">
                     {userName || userEmail.split("@")[0]}
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 text-[10px] font-extrabold text-[#1a80ff] mt-0.5">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 text-xs font-extrabold text-[#1a80ff] mt-0.5">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#1a80ff]"></span>
                     {roleLabel}
                   </span>
@@ -204,7 +204,7 @@ export function Header({
             ) : (
               <Link
                 href={isLoginPage ? "/" : "/login"}
-                className="inline-flex items-center justify-center rounded-xl bg-[#1a80ff] px-3.5 py-2 text-xs font-bold text-white shadow-sm hover:bg-[#0066e6] transition-colors whitespace-nowrap"
+                className="inline-flex items-center justify-center rounded-xl bg-[#1a80ff] px-3.5 py-2 text-sm sm:text-base font-bold text-white shadow-sm hover:bg-[#0066e6] transition-colors whitespace-nowrap"
               >
                 {isLoginPage ? "← Volver al inicio" : "Iniciar sesión"}
               </Link>
