@@ -1018,7 +1018,7 @@ export const DA42_LESSON_5_QUIZ: Quiz = {
     {
       id: "da42-5-9",
       question:
-        "Si un motor falla o presenta anomalías graves durante la carrera de despegue en pista antes de la rotación, ¿cuál es la primera y prioritaria acción del piloto?",
+        "Si un motor falla o presenta anomalías graves durante la carrera de despegue en pista antes de la rotación, disponiendo de pista remanente suficiente para detener el avión, ¿cuál es la primera y prioritaria acción del piloto?",
       options: [
         "Reducir ambas palancas de potencia inmediatamente a ralentí (IDLE), mantener el eje de pista con timón y aplicar frenada máxima según sea necesario.",
         "Aplicar potencia máxima en el motor sano y continuar el despegue monomotor en pista.",
@@ -1027,7 +1027,7 @@ export const DA42_LESSON_5_QUIZ: Quiz = {
       ],
       correctAnswerIndex: 0,
       explanation:
-        "Con pista restante y por debajo de vr, el despegue se aborta siempre: ambas palancas a IDLE, timón para evitar la guiñada asimétrica y frenar enérgicamente dentro del pavimento.",
+        "Con pista remanente suficiente y por debajo de Vr, el despegue se aborta siempre: ambas palancas a IDLE, timón para evitar la guiñada asimétrica y frenar enérgicamente dentro del pavimento.",
     },
     {
       id: "da42-5-10",
@@ -1228,16 +1228,16 @@ export const DA42_LESSON_5_QUIZ: Quiz = {
     {
       id: "da42-5-24",
       question:
-        "Al realizar una puesta en marcha con toma de corriente externa (EPU) conectada en el morro de la DA42, ¿qué verificación de tensión debe realizarse antes de arrancar los motores?",
+        "Si es necesario aterrizar con una masa superior a la máxima de aterrizaje (entre 1.700 kg y 1.785 kg MTOW), ¿qué velocidades y precauciones operativas exige el procedimiento anómalo 4B.8 del AFM?",
       options: [
-        "Comprobar que el voltaje sea inferior a 12 V para no sobrecargar el sistema.",
-        "Mantener los dos ENGINE MASTER en ON antes de enchufar la clavija de morro.",
-        "Arrancar primero el motor derecho y luego conectar la clavija EPU con el motor girando.",
-        "Comprobar que el interruptor ELECT. MASTER estaba en OFF al conectar y que, tras colocarlo en ON, la indicación de voltaje en el G1000 supera los 24 V.",
+        "Mantener al menos 84 KIAS (FLAPS APP) u 86 KIAS, limitar el régimen de descenso con toma suave, evitar frenadas bruscas e inspeccionar el tren tras aterrizar.",
+        "Aterrizar por debajo de 75 KIAS con FLAPS LDG, aplicar frenada máxima nada más tocar pista y continuar el siguiente vuelo con normalidad.",
+        "Aumentar el régimen de descenso en corta final para tocar firme en la zona de toma y detener el avión antes de consumir pista.",
+        "Vaciar combustible en vuelo mediante las válvulas de vaciado rápido de emergencia hasta quedar por debajo de 1.500 kg.",
       ],
-      correctAnswerIndex: 3,
+      correctAnswerIndex: 0,
       explanation:
-        "El procedimiento 4B.7 exige ELECT. MASTER en OFF durante la conexión de la clavija, encenderlo después y verificar que la lectura en el sistema eléctrico del G1000 sea superior a 24 V antes del encendido.",
+        "El procedimiento 4B.8 (Landing with High Mass > 1700 kg) exige mantener una velocidad mínima de aproximación (84 KIAS con FLAPS APP / 86 KIAS), efectuar una toma suave con mínima velocidad vertical para evitar daños estructurales en el tren, evitar frenadas bruscas para prevenir sobrecalentamiento de frenos e inspeccionar el tren y anotarlo en el libro de mantenimiento tras aterrizar.",
     },
   ],
 };
@@ -1409,16 +1409,16 @@ export const DA42_LESSON_6_QUIZ: Quiz = {
     {
       id: "da42-6-12",
       question:
-        "Según la Sección 5 del AFM de la DA42, ¿qué incrementos reglamentarios deben aplicarse a la carrera de despegue en tierra (Ground Roll) al operar en hierba seca corta (hasta 5 cm) y en hierba alta (5 a 10 cm)?",
+        "Según las condiciones de referencia de despegue del AFM (Sección 5) de la DA42, ¿cuáles son las velocidades de rotación (Vr) con Flaps UP / T/O, cruce de obstáculo de 50 ft y ascenso monomotor (Vyse)?",
       options: [
-        "+5% en hierba corta y +10% en hierba alta.",
-        "+25% en hierba corta y +50% en hierba alta.",
-        "No se aplica incremento si la hierba no supera los 10 cm.",
-        "+10% en hierba seca corta y +25% en hierba alta sobre la carrera de despegue en tierra.",
+        "Vr = 70 KIAS (UP) / 67 KIAS (T/O), 50 ft = 77 KIAS y Vyse = 82 KIAS.",
+        "Vr = 60 KIAS (UP) / 55 KIAS (T/O), 50 ft = 68 KIAS y Vyse = 75 KIAS.",
+        "Vr = 76 KIAS (UP) / 72 KIAS (T/O), 50 ft = 85 KIAS y Vyse = 90 KIAS.",
+        "Vr = 82 KIAS (UP) / 79 KIAS (T/O), 50 ft = 88 KIAS y Vyse = 95 KIAS.",
       ],
-      correctAnswerIndex: 3,
+      correctAnswerIndex: 0,
       explanation:
-        "El AFM de la DA42 establece en sus notas de performance de despegue que la carrera en suelo aumenta un 10% en hierba seca corta (hasta 5 cm) y un 25% en hierba alta (5 a 10 cm).",
+        "En condiciones de referencia AFM Sección 5 (MAX 100% Load), la DA42 rota a Vr = 70 KIAS con Flaps UP (67 KIAS con Flaps T/O), cruza los 50 ft a 77 KIAS, asciende con dos motores a Vy = 79 KIAS y con un solo motor operativo a Vyse = 82 KIAS.",
     },
     {
       id: "da42-6-13",
