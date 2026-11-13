@@ -116,11 +116,10 @@ export function StudentEnrollmentManager({
             setSaveError(null);
             setIsOpen(true);
           }}
-          className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-sm sm:text-base font-bold transition-all cursor-pointer border ${
-            enrolledCount > 0
+          className={`inline-flex flex-wrap items-center gap-x-2 gap-y-0.5 rounded-xl px-3 py-1.5 text-sm font-bold text-left transition-all cursor-pointer border ${enrolledCount > 0
               ? "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] border-blue-200 dark:border-blue-800 hover:bg-[#1a80ff] hover:text-white"
               : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-blue-300 hover:text-[#1a80ff]"
-          }`}
+            }`}
         >
           <span>
             🎓{" "}
@@ -196,33 +195,30 @@ export function StudentEnrollmentManager({
                 <button
                   type="button"
                   onClick={() => setFilterTab("all")}
-                  className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                    filterTab === "all"
+                  className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${filterTab === "all"
                       ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-xs"
                       : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                  }`}
+                    }`}
                 >
                   Todos ({courses.length})
                 </button>
                 <button
                   type="button"
                   onClick={() => setFilterTab("enrolled")}
-                  className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                    filterTab === "enrolled"
+                  className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${filterTab === "enrolled"
                       ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-xs"
                       : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                  }`}
+                    }`}
                 >
                   Matriculados ({validSelectedCourseIds.length})
                 </button>
                 <button
                   type="button"
                   onClick={() => setFilterTab("available")}
-                  className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${
-                    filterTab === "available"
+                  className={`px-3 py-1 rounded-lg transition-all cursor-pointer ${filterTab === "available"
                       ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-xs"
                       : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                  }`}
+                    }`}
                 >
                   Sin Matricular (
                   {courses.length - validSelectedCourseIds.length})
@@ -266,17 +262,16 @@ export function StudentEnrollmentManager({
                     <label
                       key={course.id}
                       onClick={() => toggleCourse(course.id)}
-                      className={`flex items-center justify-between p-3 rounded-2xl border transition-all cursor-pointer ${
-                        isChecked
+                      className={`flex items-center justify-between p-3 rounded-2xl border transition-all cursor-pointer ${isChecked
                           ? "bg-blue-50/70 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800"
                           : "bg-slate-50 dark:bg-slate-950/50 border-slate-200 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700"
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center gap-3">
                         <input
                           type="checkbox"
                           checked={isChecked}
-                          onChange={() => {}} // Handled by outer label onClick
+                          onChange={() => { }} // Handled by outer label onClick
                           className="h-4 w-4 rounded-md border-slate-300 dark:border-slate-700 text-[#1a80ff] focus:ring-[#1a80ff]"
                         />
                         <div>
@@ -291,11 +286,10 @@ export function StudentEnrollmentManager({
                       </div>
 
                       <span
-                        className={`text-xs sm:text-sm font-extrabold px-2.5 py-1 rounded-full border ${
-                          isChecked
+                        className={`text-xs sm:text-sm font-extrabold px-2.5 py-1 rounded-full border ${isChecked
                             ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800"
                             : "bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-transparent"
-                        }`}
+                          }`}
                       >
                         {isChecked ? "✓ Matriculado" : "+ Sin Matricular"}
                       </span>

@@ -49,7 +49,7 @@ export default async function AdminUsersPage() {
         role={currentProfile?.role}
       />
 
-      <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="flex-1 mx-auto w-full max-w-[1540px] px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Navigation & Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
           <div>
@@ -78,10 +78,10 @@ export default async function AdminUsersPage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
           {/* Create User Card Form (Admin ONLY) */}
           {isFullAdmin ? (
-            <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm space-y-6">
+            <div className="xl:col-span-4 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm space-y-6">
               <div className="border-b border-slate-100 dark:border-slate-800 pb-4">
                 <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 text-xs sm:text-sm font-extrabold mb-1">
                   Exclusivo Director / Administrador
@@ -173,7 +173,7 @@ export default async function AdminUsersPage() {
               </form>
             </div>
           ) : (
-            <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm space-y-3">
+            <div className="xl:col-span-4 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm space-y-3">
               <div className="flex items-center gap-2 text-sm sm:text-base font-bold text-[#1a80ff]">
                 <span>👨‍✈️</span> Modo Instructor de Vuelo
               </div>
