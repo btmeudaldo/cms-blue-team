@@ -51,7 +51,7 @@ export default async function CoursesPage() {
               <span className="h-2 w-2 rounded-full bg-[#1a80ff] animate-pulse"></span>
               {isAdmin
                 ? "Portal de Instructor / Docencia"
-                : "Portal del Alumno · Anticheating Temporal"}
+                : "Portal del Alumno"}
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
               Bienvenido, {profile?.full_name || user.email?.split("@")[0]}
