@@ -86,9 +86,9 @@ export default async function StudentCourseDetailPage({
         role={role}
       />
 
-      <main className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="flex-1 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Breadcrumb & Navigation */}
-        <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+        <div className="flex items-center gap-2 text-sm sm:text-base font-semibold text-slate-500 dark:text-slate-400">
           <Link
             href="/courses"
             className="hover:text-[#1a80ff] transition-colors"
@@ -104,15 +104,15 @@ export default async function StudentCourseDetailPage({
         {/* Course Header Banner */}
         <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-sm space-y-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 px-3 py-1 text-xs font-bold text-[#1a80ff]">
+            <div className="space-y-2.5 max-w-2xl">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 px-3.5 py-1 text-sm sm:text-base font-bold text-[#1a80ff]">
                 <span className="h-2 w-2 rounded-full bg-[#1a80ff]"></span>
                 Curso de Formación
               </span>
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">
+              <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
                 {course.title}
               </h1>
-              <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
                 {course.description || "Sin descripción proporcionada."}
               </p>
             </div>
@@ -120,7 +120,7 @@ export default async function StudentCourseDetailPage({
             {lessons.length > 0 && (
               <Link
                 href={`/courses/${course.slug || course.id}/lessons/${lessons[0].slug || lessons[0].id}`}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#1a80ff] px-6 py-3 text-sm font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all shrink-0"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#1a80ff] px-6 py-3.5 text-base sm:text-lg font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all shrink-0"
               >
                 <span>
                   {completedLessonsCount > 0
@@ -152,10 +152,10 @@ export default async function StudentCourseDetailPage({
                   👨‍🏫
                 </div>
                 <div>
-                  <h4 className="text-xs font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
+                  <h4 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white uppercase tracking-wider">
                     Supervisión Docente y Control Académico
                   </h4>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                  <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-0.5">
                     {lessons.length} lecciones con control de lectura y{" "}
                     {courseQuizzes.length > 0
                       ? `${courseQuizzes.length} evaluaciones teóricas activas.`
@@ -167,13 +167,13 @@ export default async function StudentCourseDetailPage({
               <div className="flex items-center gap-2 shrink-0">
                 <Link
                   href="/admin/progress"
-                  className="rounded-xl bg-[#1a80ff] px-3.5 py-2 text-xs font-bold text-white shadow-xs hover:bg-[#0066e6] transition-colors"
+                  className="rounded-xl bg-[#1a80ff] px-4 py-2.5 text-sm sm:text-base font-bold text-white shadow-xs hover:bg-[#0066e6] transition-colors"
                 >
                   <span>📊 Ver Expedientes de Alumnos</span>
                 </Link>
                 <Link
                   href="/admin/courses"
-                  className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                  className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2.5 text-sm sm:text-base font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                 >
                   <span>✏️ Gestionar Cursos</span>
                 </Link>
@@ -181,7 +181,7 @@ export default async function StudentCourseDetailPage({
             </div>
           ) : (
             <div className="space-y-2 pt-4 border-t border-slate-100 dark:border-slate-800">
-              <div className="flex justify-between text-xs font-bold text-slate-600 dark:text-slate-400">
+              <div className="flex justify-between text-sm sm:text-base font-bold text-slate-600 dark:text-slate-400">
                 <span>Mi avance en el curso</span>
                 <span>
                   {completedLessonsCount}/{lessons.length} lecciones &middot;{" "}
@@ -192,7 +192,7 @@ export default async function StudentCourseDetailPage({
                   )}
                 </span>
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">{`Lecturas verificadas: ${summary.readLessonsCount}/${lessons.length}`}</p>
+              <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">{`Lecturas verificadas: ${summary.readLessonsCount}/${lessons.length}`}</p>
               <div className="h-2.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                 <div
                   className={`h-full transition-all duration-300 rounded-full ${
@@ -223,15 +223,15 @@ export default async function StudentCourseDetailPage({
 
         {/* Syllabus / Lessons & Quizzes List */}
         <div className="space-y-4">
-          <h2 className="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2.5">
             <span>Contenido del Curso y Evaluaciones</span>
-            <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">
+            <span className="text-base font-semibold text-slate-400 dark:text-slate-500">
               ({lessons.length} temas)
             </span>
           </h2>
 
           {lessons.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center text-slate-500 dark:text-slate-400 text-sm">
+            <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center text-slate-500 dark:text-slate-400 text-base">
               Este curso no tiene lecciones creadas todavía.
             </div>
           ) : (
@@ -254,7 +254,7 @@ export default async function StudentCourseDetailPage({
                     >
                       <div className="flex items-center gap-4">
                         <div
-                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-bold text-sm transition-colors ${
+                          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl font-bold text-lg transition-colors ${
                             isCompleted
                               ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
                               : "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] border border-blue-100 dark:border-blue-900 group-hover:bg-[#1a80ff] group-hover:text-white"
@@ -264,12 +264,12 @@ export default async function StudentCourseDetailPage({
                         </div>
 
                         <div>
-                          <div className="flex items-center gap-2">
-                            <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors">
+                          <div className="flex items-center gap-2.5 flex-wrap">
+                            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors">
                               {lesson.title}
                             </h3>
                             {isCompleted && (
-                              <span className="rounded-full bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                              <span className="rounded-full bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 text-xs sm:text-sm font-bold text-emerald-600 dark:text-emerald-400">
                                 {readingCompleted
                                   ? "Lectura OK"
                                   : quizPassed
@@ -278,14 +278,14 @@ export default async function StudentCourseDetailPage({
                               </span>
                             )}
                           </div>
-                          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 flex items-center gap-2 flex-wrap">
+                          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2 flex-wrap">
                             <span>{lesson.word_count || 0} palabras</span>
                             <span>&middot;</span>
                             <span>Tiempo mín. exigido: {lesson.min_seconds}s</span>
                             {!quiz && (
                               <>
                                 <span>&middot;</span>
-                                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-400 dark:text-slate-500">
+                                <span className="inline-flex items-center gap-1 text-sm sm:text-base font-semibold text-slate-400 dark:text-slate-500">
                                   <span>⚪</span>
                                   <span>Examen: No aplica</span>
                                 </span>
@@ -295,11 +295,11 @@ export default async function StudentCourseDetailPage({
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3">
-                        <span className="hidden sm:inline-block text-xs font-bold text-[#1a80ff] opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="flex items-center gap-3 shrink-0">
+                        <span className="hidden sm:inline-block text-sm sm:text-base font-bold text-[#1a80ff] opacity-0 group-hover:opacity-100 transition-opacity">
                           Estudiar lección
                         </span>
-                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-400 group-hover:bg-blue-50 dark:group-hover:bg-slate-700 group-hover:text-[#1a80ff] transition-colors">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-lg text-slate-400 group-hover:bg-blue-50 dark:group-hover:bg-slate-700 group-hover:text-[#1a80ff] transition-colors">
                           &rarr;
                         </div>
                       </div>
@@ -311,43 +311,43 @@ export default async function StudentCourseDetailPage({
                         {quizPassed ? (
                           <Link
                             href={`/quizzes/${quiz.id}`}
-                            className="flex items-center justify-between rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 p-3 text-xs transition-all hover:bg-emerald-100/70"
+                            className="flex items-center justify-between gap-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 p-3.5 text-base transition-all hover:bg-emerald-100/70"
                           >
-                            <div className="flex items-center gap-2 font-bold text-emerald-800 dark:text-emerald-300">
+                            <div className="flex items-center gap-2.5 font-bold text-emerald-800 dark:text-emerald-300 flex-wrap">
                               <span>📝</span>
                               <span>{quiz.title}</span>
-                              <span className="rounded-full bg-emerald-200 dark:bg-emerald-900 px-2 py-0.5 text-[10px] font-black text-emerald-900 dark:text-emerald-200">
+                              <span className="rounded-full bg-emerald-200 dark:bg-emerald-900 px-2.5 py-0.5 text-xs sm:text-sm font-black text-emerald-900 dark:text-emerald-200">
                                 ✓ Examen Aprobado (
                                 {quizAttempt.score_percentage}%)
                               </span>
                             </div>
-                            <span className="font-bold text-emerald-700 dark:text-emerald-400 hover:underline">
+                            <span className="font-bold text-emerald-700 dark:text-emerald-400 hover:underline shrink-0">
                               Revisar Examen &rarr;
                             </span>
                           </Link>
                         ) : isCompleted ? (
                           <Link
                             href={`/quizzes/${quiz.id}`}
-                            className="flex items-center justify-between rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 p-3 text-xs transition-all hover:bg-blue-100 dark:hover:bg-blue-900/50"
+                            className="flex items-center justify-between gap-3 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 p-3.5 text-base transition-all hover:bg-blue-100 dark:hover:bg-blue-900/50"
                           >
-                            <div className="flex items-center gap-2 font-bold text-[#1a80ff]">
+                            <div className="flex items-center gap-2.5 font-bold text-[#1a80ff] flex-wrap">
                               <span>📝</span>
                               <span>{quiz.title}</span>
-                              <span className="rounded-full bg-blue-200 dark:bg-blue-900 px-2 py-0.5 text-[10px] font-black text-[#1a80ff] dark:text-blue-200">
+                              <span className="rounded-full bg-blue-200 dark:bg-blue-900 px-2.5 py-0.5 text-xs sm:text-sm font-black text-[#1a80ff] dark:text-blue-200">
                                 ✨ Habilitado (70% Mín.)
                               </span>
                             </div>
-                            <span className="font-extrabold text-[#1a80ff] hover:underline">
+                            <span className="font-extrabold text-[#1a80ff] hover:underline shrink-0">
                               Iniciar Examen Teórico &rarr;
                             </span>
                           </Link>
                         ) : (
-                          <div className="flex items-center justify-between rounded-xl bg-slate-100/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 p-3 text-xs opacity-75">
-                            <div className="flex items-center gap-2 font-semibold text-slate-500 dark:text-slate-400">
+                          <div className="flex items-center justify-between gap-3 rounded-xl bg-slate-100/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 p-3.5 text-base opacity-75">
+                            <div className="flex items-center gap-2.5 font-semibold text-slate-500 dark:text-slate-400">
                               <span>🔒</span>
                               <span>{quiz.title}</span>
                             </div>
-                            <span className="text-[11px] font-medium text-slate-400 italic">
+                            <span className="text-sm sm:text-base font-medium text-slate-400 italic shrink-0">
                               Completa la lectura para desbloquear
                             </span>
                           </div>
