@@ -991,6 +991,10 @@ export function LessonEditorToolbar({
           if (preset === "reset") {
             wrapper.style.width = isInSlide ? "100%" : "auto";
             wrapper.style.maxWidth = "100%";
+            if (isInSlide && wrapper.classList.contains("flex-1")) {
+              wrapper.classList.remove("p-2", "p-2.5", "p-3", "p-4", "p-5", "justify-start", "justify-between");
+              wrapper.classList.add("p-0.5", "min-h-0", "justify-center");
+            }
           } else {
             wrapper.style.width = isInSlide ? preset : `${widthPx}px`;
             wrapper.style.maxWidth = "100%";
@@ -998,15 +1002,36 @@ export function LessonEditorToolbar({
 
           const img = wrapper.querySelector("img");
           if (img) {
-            img.style.width = "100%";
-            img.style.maxWidth = "100%";
-            if (isInSlide && (img.classList.contains("h-full") || wrapper.classList.contains("flex-1"))) {
-              img.style.height = "100%";
-              if (!img.style.objectFit) {
-                img.style.objectFit = "contain";
+            if (preset === "reset" && isInSlide && wrapper.classList.contains("flex-1")) {
+              if (img.parentElement === wrapper) {
+                const innerFrame = document.createElement("div");
+                innerFrame.className = "w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden";
+                wrapper.insertBefore(innerFrame, img);
+                innerFrame.appendChild(img);
               }
+              img.className = img.className
+                .split(/\s+/)
+                .filter((cls) => cls && !cls.startsWith("max-h-"))
+                .join(" ");
+              img.classList.add("w-full", "h-full", "object-contain");
+              img.style.width = "100%";
+              img.style.height = "100%";
+              img.style.maxWidth = "100%";
+              img.style.maxHeight = "100%";
+              img.style.aspectRatio = "auto";
+              img.style.objectFit = "contain";
+              img.style.objectPosition = "";
             } else {
-              img.style.height = "auto";
+              img.style.width = "100%";
+              img.style.maxWidth = "100%";
+              if (isInSlide && (img.classList.contains("h-full") || wrapper.classList.contains("flex-1"))) {
+                img.style.height = "100%";
+                if (!img.style.objectFit) {
+                  img.style.objectFit = "contain";
+                }
+              } else {
+                img.style.height = "auto";
+              }
             }
           }
           if (preset === "100%") {
