@@ -385,50 +385,49 @@ export function DA42PerformanceWidget({
 
           {/* Form Content - Aligned to top */}
           <div className="flex-1 min-h-0 flex flex-col justify-start space-y-2 pt-1 overflow-y-auto">
-
-
-
-            {/* Direct Link to Relevant AFM Table */}
-            <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-sky-50/70 dark:bg-slate-800/90 border border-sky-200 dark:border-slate-700 shadow-2xs">
-              <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
-                <span>📖</span>
-                <span>{currentStep === "takeoff" ? "TABLA DE DESPEGUE:" : "TABLA DE ATERRIZAJE:"}</span>
-              </span>
-              <div className="flex items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => setIsChartModalOpen(true)}
-                  style={{
-                    backgroundColor: "#0B2E59",
-                    color: "#ffffff",
-                    fontSize: "1.125rem",
-                    fontWeight: 700,
-                  }}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#0B2E59] hover:bg-[#082242] transition-all cursor-pointer shadow-2xs"
-                  title="Ver Gráfica en Pantalla"
-                >
-                  <span style={{ color: "#ffffff", fontSize: "1.125rem", fontWeight: 700 }}>
-                    {currentStep === "takeoff" ? "🛫 Ver Tabla Takeoff Distance 50ft" : "🛬 Ver Tabla Landing Distance"}
-                  </span>
-                  <span>🔍</span>
-                </button>
-                <a
-                  href={chartSrc}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    backgroundColor: "#f1f5f9",
-                    color: "#000000",
-                    fontSize: "1.125rem",
-                    fontWeight: 700,
-                  }}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
-                  title="Abrir imagen en nueva pestaña"
-                >
-                  <span style={{ color: "#000000", fontSize: "1.125rem", fontWeight: 700 }}>↗</span>
-                </a>
+            {/* Direct Link to Relevant AFM Table (Landing stays on left; Takeoff moved to right) */}
+            {currentStep !== "takeoff" && (
+              <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-sky-50/70 dark:bg-slate-800/90 border border-sky-200 dark:border-slate-700 shadow-2xs">
+                <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
+                  <span>📖</span>
+                  <span>TABLA DE ATERRIZAJE:</span>
+                </span>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setIsChartModalOpen(true)}
+                    style={{
+                      backgroundColor: "#0B2E59",
+                      color: "#ffffff",
+                      fontSize: "1.125rem",
+                      fontWeight: 700,
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#0B2E59] hover:bg-[#082242] transition-all cursor-pointer shadow-2xs"
+                    title="Ver Gráfica en Pantalla"
+                  >
+                    <span style={{ color: "#ffffff", fontSize: "1.125rem", fontWeight: 700 }}>
+                      🛬 Ver Tabla Landing Distance
+                    </span>
+                    <span>🔍</span>
+                  </button>
+                  <a
+                    href={chartSrc}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      backgroundColor: "#f1f5f9",
+                      color: "#000000",
+                      fontSize: "1.125rem",
+                      fontWeight: 700,
+                    }}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
+                    title="Abrir imagen en nueva pestaña"
+                  >
+                    <span style={{ color: "#000000", fontSize: "1.125rem", fontWeight: 700 }}>↗</span>
+                  </a>
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Calculation Cards */}
             {currentStep === "takeoff" ? (
@@ -638,6 +637,48 @@ export function DA42PerformanceWidget({
 
           {/* Reference and Conditions Content - Aligned to top */}
           <div className="flex-1 min-h-0 flex flex-col justify-start py-1 space-y-2 text-xs sm:text-[13px] overflow-y-auto">
+            {currentStep === "takeoff" && (
+              <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-sky-50/70 dark:bg-slate-800/90 border border-sky-200 dark:border-slate-700 shadow-2xs">
+                <span className="text-xs sm:text-[13px] font-bold text-[#0B2E59] dark:text-sky-300 flex items-center gap-1.5">
+                  <span>📖</span>
+                  <span>TABLA DE DESPEGUE:</span>
+                </span>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setIsChartModalOpen(true)}
+                    style={{
+                      backgroundColor: "#0B2E59",
+                      color: "#ffffff",
+                      fontSize: "1.125rem",
+                      fontWeight: 700,
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-[#0B2E59] hover:bg-[#082242] transition-all cursor-pointer shadow-2xs"
+                    title="Ver Gráfica en Pantalla"
+                  >
+                    <span style={{ color: "#ffffff", fontSize: "1.125rem", fontWeight: 700 }}>
+                      🛫 Ver Tabla Takeoff Distance 50ft
+                    </span>
+                    <span>🔍</span>
+                  </button>
+                  <a
+                    href={chartSrc}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      backgroundColor: "#f1f5f9",
+                      color: "#000000",
+                      fontSize: "1.125rem",
+                      fontWeight: 700,
+                    }}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-slate-300 hover:bg-slate-200 transition-all shadow-2xs"
+                    title="Abrir imagen en nueva pestaña"
+                  >
+                    <span style={{ color: "#000000", fontSize: "1.125rem", fontWeight: 700 }}>↗</span>
+                  </a>
+                </div>
+              </div>
+            )}
             {/* Operational Conditions Card (Moved from Left) */}
             <div className="p-3 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2">
               <div className="flex items-center justify-between text-xs sm:text-[13px]">
