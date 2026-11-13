@@ -176,8 +176,8 @@ export function QuizModule({
 
     return (
       <div
-        className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8 lg:p-10 shadow-md space-y-6 ${
-          isEmbedded ? "max-w-full" : "w-full max-w-5xl lg:max-w-6xl mx-auto"
+        className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 shadow-md space-y-4 ${
+          isEmbedded ? "max-w-full" : "w-full flex-1 min-h-0 flex flex-col mx-auto"
         }`}
       >
         <div className="text-center space-y-3">
@@ -259,8 +259,8 @@ export function QuizModule({
 
         {/* Sección de Explicaciones Técnicas POH */}
         {enrichedQuiz?.questions && enrichedQuiz.questions.length > 0 && (
-          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-4">
-            <div className="flex items-center justify-between pb-1">
+          <div className="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-3 flex-1 min-h-0 flex flex-col">
+            <div className="flex items-center justify-between shrink-0">
               <div>
                 <h3 className="text-lg sm:text-xl font-extrabold text-[#0B2E59] dark:text-sky-300 flex items-center gap-2">
                   <span>📖</span>
@@ -270,7 +270,7 @@ export function QuizModule({
                       : "Revisión del Examen y Justificación AFM / POH"}
                   </span>
                 </h3>
-                <p className="text-base text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                <p className="text-base text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">
                   {passed
                     ? "Consulta la justificación técnica de cada pregunta para consolidar tus conocimientos de vuelo."
                     : "Revisa las preguntas contestadas y consulta los fundamentos oficiales del AFM / POH antes de reintentar."}
@@ -278,7 +278,7 @@ export function QuizModule({
               </div>
             </div>
 
-            <div className="space-y-4 max-h-[640px] lg:max-h-[720px] overflow-y-auto pr-1 sm:pr-2">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 flex-1 min-h-0 overflow-y-auto pr-1 sm:pr-2">
               {enrichedQuiz.questions.map((q, idx) => {
                 const userAnswerIndex = userAnswers[q.id];
                 const hasUserAnswer =
@@ -435,7 +435,7 @@ export function QuizModule({
 
   if (!startedAttempt) {
     return (
-      <section className="mx-auto max-w-3xl space-y-4 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900 text-base">
+      <section className="mx-auto w-full space-y-4 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900 text-base">
         <h2 className="text-xl sm:text-2xl font-bold">{quiz.title}</h2>
         <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">{quiz.description}</p>
         <p className="text-base text-slate-600 dark:text-slate-400">
@@ -470,61 +470,65 @@ export function QuizModule({
 
   return (
     <div
-      className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 md:p-8 shadow-sm space-y-6 ${
-        isEmbedded ? "max-w-full" : "max-w-4xl mx-auto"
+      className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-5 lg:px-6 lg:py-4 shadow-sm w-full flex-1 min-h-0 flex flex-col justify-between gap-3 ${
+        isEmbedded ? "max-w-full" : "mx-auto"
       }`}
     >
-      {/* Quiz Header Bar */}
-      <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
-        <div>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 px-3 py-1 text-sm font-extrabold text-[#1a80ff] uppercase tracking-wider">
-            Examen Teórico Aeronáutico
-          </span>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mt-1.5">
-            {startedAttempt?.quiz.title ?? quiz.title}
-          </h2>
+      <div className="space-y-3 shrink-0">
+        {/* Quiz Header Bar */}
+        <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+          <div>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 px-3 py-1 text-sm font-extrabold text-[#1a80ff] uppercase tracking-wider">
+              Examen Teórico Aeronáutico
+            </span>
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mt-1">
+              {startedAttempt?.quiz.title ?? quiz.title}
+            </h2>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 px-3.5 py-2 text-base font-mono font-bold text-slate-700 dark:text-slate-300">
+              <span>⏱️</span>
+              <span>
+                {Math.floor(elapsedSeconds / 60)
+                  .toString()
+                  .padStart(2, "0")}
+                :{(elapsedSeconds % 60).toString().padStart(2, "0")}
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 px-3.5 py-2 text-base font-mono font-bold text-slate-700 dark:text-slate-300">
-            <span>⏱️</span>
-            <span>
-              {Math.floor(elapsedSeconds / 60)
-                .toString()
-                .padStart(2, "0")}
-              :{(elapsedSeconds % 60).toString().padStart(2, "0")}
+        {/* Progress Dots */}
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between gap-2 text-base">
+            <span className="font-extrabold text-slate-700 dark:text-slate-300">
+              Pregunta {currentQuestionIndex + 1} de {questions.length}
             </span>
+            <span className="text-slate-500 dark:text-slate-400">
+              Respondidas: {answeredCount} / {questions.length}
+            </span>
+          </div>
+
+          <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+            <div
+              className="h-full bg-[#1a80ff] transition-all duration-300 rounded-full"
+              style={{
+                width: `${((currentQuestionIndex + 1) / questions.length) * 100}%`,
+              }}
+            ></div>
           </div>
         </div>
       </div>
 
-      {/* Progress Dots */}
-      <div className="flex items-center justify-between gap-2 text-base">
-        <span className="font-extrabold text-slate-700 dark:text-slate-300">
-          Pregunta {currentQuestionIndex + 1} de {questions.length}
-        </span>
-        <span className="text-slate-500 dark:text-slate-400">
-          Respondidas: {answeredCount} / {questions.length}
-        </span>
-      </div>
-
-      <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
-        <div
-          className="h-full bg-[#1a80ff] transition-all duration-300 rounded-full"
-          style={{
-            width: `${((currentQuestionIndex + 1) / questions.length) * 100}%`,
-          }}
-        ></div>
-      </div>
-
       {/* Question Card */}
-      <div className="space-y-4 pt-2">
+      <div className="flex-1 min-h-0 flex flex-col justify-center space-y-4 py-2 overflow-y-auto">
         <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed">
           {currentQuestion.question}
         </h3>
 
-        {/* Options List */}
-        <div className="space-y-3">
+        {/* Options List (2 columns on desktop to avoid vertical scroll) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
           {currentQuestion.options.map((option, optIdx) => {
             const isSelected = selectedAnswers[currentQuestion.id] === optIdx;
 
@@ -581,7 +585,7 @@ export function QuizModule({
         </div>
       )}
       {/* Navigation Buttons */}
-      <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+      <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 shrink-0">
         <button
           type="button"
           disabled={currentQuestionIndex === 0}

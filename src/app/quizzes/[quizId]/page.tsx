@@ -49,16 +49,16 @@ export default async function StandaloneQuizPage({
   const previousAttempt = passedAttempt || latestAttempt;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
+    <div className="min-h-screen lg:h-screen lg:overflow-hidden bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
       <Header
         userEmail={user.email}
         userName={profile?.full_name}
         role={profile?.role}
       />
 
-      <main className="flex-1 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <main className="flex-1 min-h-0 mx-auto w-full px-3 sm:px-6 lg:px-8 py-2.5 flex flex-col space-y-2.5">
         {/* Breadcrumb Navigation */}
-        <div className="flex items-center justify-between text-base font-semibold text-slate-500 dark:text-slate-400">
+        <div className="flex items-center justify-between text-base font-semibold text-slate-500 dark:text-slate-400 shrink-0">
           <div className="flex items-center gap-2">
             {quiz.course_id ? (
               <Link
@@ -76,7 +76,7 @@ export default async function StandaloneQuizPage({
               </Link>
             )}
             <span>&rsaquo;</span>
-            <span className="text-slate-900 dark:text-white truncate max-w-xs">
+            <span className="text-slate-900 dark:text-white truncate max-w-md lg:max-w-xl">
               {quiz.title}
             </span>
           </div>
@@ -90,12 +90,14 @@ export default async function StandaloneQuizPage({
         </div>
 
         {/* Interactive Standalone Quiz Module */}
-        <QuizModule
-          quiz={quiz}
-          previousAttempt={previousAttempt}
-          nextLessonUrl={nextLessonUrl}
-          nextLessonTitle={nextLessonTitle}
-        />
+        <div className="flex-1 min-h-0 flex flex-col">
+          <QuizModule
+            quiz={quiz}
+            previousAttempt={previousAttempt}
+            nextLessonUrl={nextLessonUrl}
+            nextLessonTitle={nextLessonTitle}
+          />
+        </div>
       </main>
     </div>
   );
