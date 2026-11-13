@@ -1249,7 +1249,7 @@ export const DA42_LESSON_6_QUIZ: Quiz = {
   title:
     "Examen de Verificación: 6. Documentación Prevuelo, Masa y Centrado, Combustible y Performance",
   description:
-    "Evaluación teórica de verificación sobre despacho operativo F.OPS.02, teoría de masa y centrado, loadsheet F.OPS.04, envolvente de CG, planificación de combustible bimotor (reserva 1h 30min OM Blue Team), densidades JET A-1 y ábacos de performance de despegue y aterrizaje de la Diamond DA42 Twin Star (Continental CD-135 / CD-155).",
+    "Evaluación teórica de verificación sobre despacho operativo F.OPS.02, teoría de masa y centrado, loadsheet F.OPS.04, envolvente de CG, planificación de combustible bimotor (reserva 1h 30min OM Blue Team), densidades JET A-1 y tablas de performance de despegue y aterrizaje de la Diamond DA42 Twin Star (Continental CD-135 / CD-155).",
   minPassScorePercentage: 75,
   questions: [
     {

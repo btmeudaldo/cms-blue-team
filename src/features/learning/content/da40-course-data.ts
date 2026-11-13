@@ -9846,9 +9846,9 @@ export const DA40_LESSON_6 = {
 
         <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 text-xs sm:text-[13px] leading-relaxed shadow-2xs shrink-0">
           <strong class="text-sky-800 dark:text-sky-300 flex items-center gap-1.5 mb-0.5 uppercase tracking-wide text-xs">
-            <span>ℹ️</span> LECTURA DIRECTA DEL ÁBACO (FUEL FLOW)
+            <span>ℹ️</span> LECTURA DIRECTA DE LA TABLA (FUEL FLOW)
           </strong>
-          <span>Conforme al ábaco oficial de consumo horario del AFM (figura derecha), a un <strong>60% LOAD</strong> el consumo resultante es exactamente de <strong>4,0 US gal/h (15,1 L/h)</strong>. A <strong>70% LOAD</strong> es de <strong>4,9 US gal/h (18,5 L/h)</strong> y a <strong>80% LOAD</strong> asciende a <strong>5,8 US gal/h (22,0 L/h)</strong>.</span>
+          <span>Conforme a la figura oficial de consumo horario del AFM (figura derecha), a un <strong>60% LOAD</strong> el consumo resultante es exactamente de <strong>4,0 US gal/h (15,1 L/h)</strong>. A <strong>70% LOAD</strong> es de <strong>4,9 US gal/h (18,5 L/h)</strong> y a <strong>80% LOAD</strong> asciende a <strong>5,8 US gal/h (22,0 L/h)</strong>.</span>
         </div>
       </div>
     </div>
@@ -9857,7 +9857,7 @@ export const DA40_LESSON_6 = {
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ÁBACO INTERACTIVO: FUEL FLOW</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FIGURA INTERACTIVA: FUEL FLOW</span>
           <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950/80 dark:text-sky-300 border border-sky-300">INTERACTIVO</span>
         </div>
 
@@ -10274,7 +10274,7 @@ export const DA40_LESSON_6 = {
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-xs sm:text-[13px]">
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES OFICIALES DE CORRECCIÓN DE PISTA</strong>
           <div class="space-y-1 text-slate-700 dark:text-slate-300">
-            <div>&bull; <strong>Viento en cara / cola:</strong> Corrección gráfica directa mediante las curvas del ábaco.</div>
+            <div>&bull; <strong>Viento en cara / cola:</strong> Corrección gráfica directa mediante las curvas de la figura.</div>
             <div>&bull; <strong>Hierba seca corta (&le; 5 cm / 2 in):</strong> <strong>+10%</strong> en la carrera de despegue (Ground Roll).</div>
             <div>&bull; <strong>Hierba media (5 a 10 cm / 2 a 4 in):</strong> <strong>+15%</strong> en la carrera de despegue (Ground Roll).</div>
             <div>&bull; <strong>Hierba alta (> 10 cm / 4 in):</strong> al menos <strong>+25%</strong> en la carrera de despegue (Ground Roll).</div>
@@ -10291,7 +10291,7 @@ export const DA40_LESSON_6 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6 con Selector Interactivo de Ábacos) -->
+    <!-- Columna Derecha (lg:col-span-6 con Selector Interactivo de Tablas) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="w-full h-full flex-1 min-h-0" data-interactive-exercise="takeoff_charts" data-aircraft="da40"></div>
@@ -10336,7 +10336,7 @@ export const DA40_LESSON_6 = {
         <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1.5 text-xs sm:text-[13px]">
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-xs border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES OFICIALES DE CORRECCIÓN DE PISTA</strong>
           <div class="space-y-1 text-slate-700 dark:text-slate-300">
-            <div>&bull; <strong>Viento en cara / cola:</strong> Corrección gráfica en el ábaco.</div>
+            <div>&bull; <strong>Viento en cara / cola:</strong> Corrección gráfica en la figura.</div>
             <div>&bull; <strong>Hierba seca corta (&le; 5 cm):</strong> <strong>+5%</strong> en la carrera de aterrizaje (Ground Roll).</div>
             <div>&bull; <strong>Hierba media (5 a 10 cm):</strong> <strong>+15%</strong> en la carrera de aterrizaje (Ground Roll).</div>
             <div>&bull; <strong>Hierba alta (> 10 cm):</strong> al menos <strong>+25%</strong> en la carrera de parada.</div>
@@ -10360,7 +10360,7 @@ export const DA40_LESSON_6 = {
         <div class="w-full rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 flex flex-col justify-start items-center p-2 shadow-xs mt-1">
           <img
             src="/images/da40/da40-landing-distance.png?v=2"
-            alt="Ábaco oficial de distancia de aterrizaje DA40 TDI"
+            alt="Figura oficial de distancia de aterrizaje DA40 TDI"
             class="max-w-full max-h-full object-contain rounded-lg"
           />
         </div>
@@ -10445,7 +10445,7 @@ export const DA40_LESSON_6 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
               📈 MARGEN DE DESPEGUE Y SEGURIDAD
             </span>
-            <span class="text-xs text-slate-500 font-semibold">Ábaco de Despegue (Fig. 5.3.5)</span>
+            <span class="text-xs text-slate-500 font-semibold">Tabla de Despegue (Fig. 5.3.5)</span>
           </div>
 
           <!-- Centro Visual Gráfica -->
@@ -10548,7 +10548,7 @@ export const DA40_LESSON_6 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-[14px]">
               📉 COMPROBACIÓN DE MARGEN LDA
             </span>
-            <span class="text-xs text-slate-500 font-semibold">Ábaco de Aterrizaje (Fig. 5.3.14)</span>
+            <span class="text-xs text-slate-500 font-semibold">Tabla de Aterrizaje (Fig. 5.3.14)</span>
           </div>
 
           <!-- Centro Visual Gráfica -->

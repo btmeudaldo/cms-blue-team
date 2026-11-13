@@ -9629,10 +9629,10 @@ export const DA42_LESSON_5 = {
 
         <div class="p-2.5 rounded-xl border-l-4 border-sky-500 bg-sky-50/90 dark:bg-sky-950/30 text-sky-950 dark:text-sky-200 shadow-2xs shrink-0 space-y-1">
           <strong class="text-sky-800 dark:text-sky-300 flex items-center gap-1.5 uppercase tracking-wide font-black text-[18px] leading-tight">
-            <span>ℹ️</span> LECTURA DIRECTA DEL ÁBACO (FUEL FLOW POR MOTOR)
+            <span>ℹ️</span> LECTURA DIRECTA DE LA TABLA (FUEL FLOW POR MOTOR)
           </strong>
           <p class="font-medium text-[18px] leading-snug">
-            Conforme al ábaco oficial del AFM de la DA42 (figura derecha), la curva representa el consumo <strong>por motor</strong>. En el ejemplo oficial a <strong>60% LOAD</strong> el consumo por motor es exactamente de <strong>4,4 US gal/h (16,5 L/h)</strong>, resultando en <strong>8,8 US gal/h (33,0 L/h)</strong> total bimotor. A <strong>70% LOAD</strong> es de <strong>5,3 US gal/h (10,6 total)</strong> y a <strong>80% LOAD</strong> es de <strong>6,2 US gal/h (12,4 total)</strong>.
+            Conforme a la figura oficial del AFM de la DA42 (figura derecha), la curva representa el consumo <strong>por motor</strong>. En el ejemplo oficial a <strong>60% LOAD</strong> el consumo por motor es exactamente de <strong>4,4 US gal/h (16,5 L/h)</strong>, resultando en <strong>8,8 US gal/h (33,0 L/h)</strong> total bimotor. A <strong>70% LOAD</strong> es de <strong>5,3 US gal/h (10,6 total)</strong> y a <strong>80% LOAD</strong> es de <strong>6,2 US gal/h (12,4 total)</strong>.
           </p>
         </div>
       </div>
@@ -9642,7 +9642,7 @@ export const DA42_LESSON_5 = {
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">ÁBACO INTERACTIVO: FUEL FLOW</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">FIGURA INTERACTIVA: FUEL FLOW</span>
           <span class="text-[18px] font-bold px-3 py-0.5 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-950/80 dark:text-sky-300 border border-sky-300">INTERACTIVO</span>
         </div>
 
@@ -10054,7 +10054,7 @@ export const DA42_LESSON_5 = {
         <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 text-[18px]">
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES OFICIALES DE CORRECCIÓN DE PISTA</strong>
           <div class="space-y-0.5 text-slate-700 dark:text-slate-300 text-[18px] leading-snug">
-            <div>&bull; <strong>Viento cara / cola:</strong> Corrección gráfica directa en ábaco.</div>
+            <div>&bull; <strong>Viento cara / cola:</strong> Corrección gráfica directa en la figura.</div>
             <div>&bull; <strong>Hierba seca corta (&le; 5 cm):</strong> <strong>+10%</strong> en carrera de despegue.</div>
             <div>&bull; <strong>Hierba media (5-10 cm) / alta (&gt; 10 cm):</strong> <strong>+15%</strong> / <strong>+25%</strong>.</div>
             <div>&bull; <strong>Pista húmeda o blanda:</strong> hasta <strong>+20% / +25%</strong> adicional.</div>
@@ -10071,13 +10071,13 @@ export const DA42_LESSON_5 = {
       </div>
     </div>
 
-    <!-- Columna Derecha (lg:col-span-6 con Selector Interactivo de Ábacos) -->
+    <!-- Columna Derecha (lg:col-span-6 con Selector Interactivo de Tablas) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="w-full h-full flex-1 min-h-0 flex flex-col justify-center items-center overflow-hidden" data-interactive-exercise="takeoff_charts" data-aircraft="da42">
           <img
             src="/images/DA42/da42-takeoff-ground-roll.png"
-            alt="Ábaco Take-Off Ground Roll DA42"
+            alt="Figura Take-Off Ground Roll DA42"
             class="max-w-full max-h-full object-contain rounded-lg"
           />
         </div>
@@ -10122,7 +10122,7 @@ export const DA42_LESSON_5 = {
         <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 text-[18px]">
           <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">FACTORES OFICIALES DE CORRECCIÓN DE PISTA</strong>
           <div class="space-y-0.5 text-slate-700 dark:text-slate-300 text-[18px] leading-snug">
-            <div>&bull; <strong>Viento cara / cola:</strong> Corrección gráfica directa en ábaco.</div>
+            <div>&bull; <strong>Viento cara / cola:</strong> Corrección gráfica directa en la figura.</div>
             <div>&bull; <strong>Hierba seca corta (&le; 5 cm):</strong> <strong>+5%</strong> en carrera de aterrizaje.</div>
             <div>&bull; <strong>Hierba media (5-10 cm) / alta (&gt; 10 cm):</strong> <strong>+15%</strong> / <strong>+25%</strong>.</div>
             <div>&bull; <strong>Hierba mojada o blanda:</strong> <strong>+10% adicional</strong> sobre hierba.</div>
@@ -10143,12 +10143,12 @@ export const DA42_LESSON_5 = {
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5" style="height: 590px;">
         <div class="flex items-center justify-between pb-1 border-b border-slate-200 dark:border-slate-800 shrink-0">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">ÁBACO DE DISTANCIA DE ATERRIZAJE (AFM 5.3.11)</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">FIGURA DE DISTANCIA DE ATERRIZAJE (AFM 5.3.11)</span>
         </div>
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 flex flex-col justify-center items-center p-1.5 shadow-xs">
           <img
             src="/images/DA42/da42-landing-distance.png"
-            alt="Ábaco oficial de distancia de aterrizaje DA42 Twin Star"
+            alt="Figura oficial de distancia de aterrizaje DA42 Twin Star"
             class="max-w-full max-h-full object-contain rounded-lg"
           />
         </div>

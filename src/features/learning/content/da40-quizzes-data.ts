@@ -1150,7 +1150,7 @@ export const DA40_LESSON_6_QUIZ: Quiz = {
   title:
     "Examen de Verificación: 6. Documentación Prevuelo, Masa y Centrado, Combustible y Performance",
   description:
-    "Evaluación teórica de verificación sobre despacho operativo F.OPS.02, teoría de masa y centrado, loadsheet F.OPS.04, envolvente de CG, planificación de combustible (reserva 1h 30min OM Blue Team), densidades JET A-1 y ábacos de performance de despegue y aterrizaje de la Diamond DA40 TDI.",
+    "Evaluación teórica de verificación sobre despacho operativo F.OPS.02, teoría de masa y centrado, loadsheet F.OPS.04, envolvente de CG, planificación de combustible (reserva 1h 30min OM Blue Team), densidades JET A-1 y tablas de performance de despegue y aterrizaje de la Diamond DA40 TDI.",
   minPassScorePercentage: 75,
   questions: [
     {
@@ -1324,7 +1324,7 @@ export const DA40_LESSON_6_QUIZ: Quiz = {
     {
       id: "da40-6-13",
       question:
-        "Al consultar el ábaco de aterrizaje del AFM de la DA40 TDI, ¿cuál es la penalización estándar en la distancia de aterrizaje cuando se aterriza con componente de viento en cola (tailwind)?",
+        "Al consultar la tabla de aterrizaje del AFM de la DA40 TDI, ¿cuál es la penalización estándar en la distancia de aterrizaje cuando se aterriza con componente de viento en cola (tailwind)?",
       options: [
         "La distancia de toma y parada se incrementa en un 10% por cada 2 nudos de viento en cola.",
         "La distancia se incrementa en un 5% por cada 10 nudos de viento en cola.",
