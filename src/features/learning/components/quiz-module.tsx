@@ -177,7 +177,7 @@ export function QuizModule({
     return (
       <div
         className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 shadow-md space-y-4 ${
-          isEmbedded ? "max-w-full" : "w-full flex-1 min-h-0 flex flex-col mx-auto"
+          isEmbedded ? "max-w-full" : "w-full max-w-7xl flex-1 min-h-0 flex flex-col mx-auto"
         }`}
       >
         <div className="text-center space-y-3">
@@ -435,7 +435,7 @@ export function QuizModule({
 
   if (!startedAttempt) {
     return (
-      <section className="mx-auto w-full space-y-4 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900 text-base">
+      <section className="mx-auto w-full max-w-4xl space-y-4 rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900 text-base">
         <h2 className="text-xl sm:text-2xl font-bold">{quiz.title}</h2>
         <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">{quiz.description}</p>
         <p className="text-base text-slate-600 dark:text-slate-400">
@@ -471,7 +471,7 @@ export function QuizModule({
   return (
     <div
       className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-5 lg:px-6 lg:py-4 shadow-sm w-full flex-1 min-h-0 flex flex-col justify-between gap-3 ${
-        isEmbedded ? "max-w-full" : "mx-auto"
+        isEmbedded ? "max-w-full" : "max-w-7xl mx-auto"
       }`}
     >
       <div className="space-y-3 shrink-0">
