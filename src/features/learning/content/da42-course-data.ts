@@ -3303,8 +3303,10 @@ export const DA42_LESSON_3 = {
             <div><strong>Posiciones e Indicador Lumínico:</strong> Tres posiciones: Cruise UP (0°, luz verde), Approach APP (20°, luz blanca, V<sub>FE</sub> = 137 KIAS) y Landing LDG (42°, luz blanca, V<sub>FE</sub> = 111 KIAS). El encendido de dos luces simultáneas indica flaps en movimiento de tránsito.</div>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-start p-1 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: 100%; max-width: 100%; float: none; clear: both; opacity: 1;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-flaps-system.jpg?v=1" alt="Sistema de Flaps y Mandos de Vuelo Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center top;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-flaps-system.jpg?v=1" alt="Sistema de Flaps y Mandos de Vuelo Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent;">
+            </div>
           </div>
         </div>
       </div>
@@ -4929,13 +4931,21 @@ ay               </div>
           </div>
         </div>
 
-        <div class="mt-1 shrink-0">
+        <div class="mt-1 space-y-1 shrink-0">
           <div class="p-1.5 rounded-xl border-l-4 border-rose-500 bg-rose-50/90 dark:bg-rose-950/30 text-rose-950 dark:text-rose-200 text-[18px] leading-tight shadow-2xs">
             <strong class="text-rose-700 dark:text-rose-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
               <span>🛑</span>
               <span>WARNING:</span>
             </strong>
             <div>If Diesel fuel or blend with Jet A-1 is used (approved only if M&Auml;M 42-037 is carried out), or if fuel grade is unknown, engine must not be started if fuel temperature indication prior to operation is below -5 &deg;C (+23 &deg;F). Operation below -5 &deg;C is not permitted as safe engine operation cannot be ensured and engine can stop.</div>
+          </div>
+
+          <div class="p-1.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-tight shadow-2xs">
+            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
+              <span>⚠️</span>
+              <span>CAUTION:</span>
+            </strong>
+            <div>When operating canopy, ensure no obstructions between canopy and mating frame (seat belts, clothing). Do NOT apply undue force to locking handle. Slight downward pressure may ease handle operation.</div>
           </div>
         </div>
       </div>
@@ -4949,10 +4959,7 @@ ay               </div>
               <span>⚠️</span>
               <span>CAUTION:</span>
             </strong>
-            <ul class="list-disc pl-6 space-y-0.5 text-[18px] leading-tight" style="padding-left: 1.5rem;">
-              <li>When operating canopy, ensure no obstructions between canopy and mating frame (seat belts, clothing). Do NOT apply undue force to locking handle. Slight downward pressure may ease handle operation.</li>
-              <li>When switching ELECT. MASTER ON, hydraulic gear pump may activate for 5&ndash;20 s. If pump operates continuously or periodically, terminate flight preparation (landing gear malfunction).</li>
-            </ul>
+            <div>When switching ELECT. MASTER ON, hydraulic gear pump may activate for 5&ndash;20 s. If pump operates continuously or periodically, terminate flight preparation (landing gear malfunction).</div>
           </div>
 
           <div class="p-1.5 rounded-xl border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-tight shadow-2xs">
@@ -5482,18 +5489,6 @@ ay               </div>
         </div>
       </div>
     </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-3 text-center mt-1">
-          <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shadow-xs mb-1">
-            📷
-          </div>
-          <span class="text-[18px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-0.5">Imagen Recomendada</span>
-          <p class="text-[18px] font-semibold text-slate-700 dark:text-slate-200 max-w-sm leading-snug">
-            Pulsador ECU TEST en consola izquierda inferior y luces anunciadoras ECU A / ECU B FAIL durante los ciclos automáticos de autoprueba FADEC.
-          </p>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -5823,18 +5818,6 @@ ay               </div>
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-full min-h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden">
         <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-3 text-center">
-          <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shadow-xs mb-1">
-            📷
-          </div>
-          <span class="text-[18px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-0.5">Imagen Recomendada</span>
-          <p class="text-[18px] font-semibold text-slate-700 dark:text-slate-200 max-w-sm leading-snug">
-            Despegue de la DA42 en rotaci&oacute;n y ascenso inicial: tren de aterrizaje retrayéndose, velocidad vySE (82 KIAS) y palancas de potencia al 100%.
-          </p>
-        </div>
-      </div>
-    </div>
-
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-3 text-center mt-1">
           <div class="w-10 h-10 rounded-xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-xl shadow-xs mb-1">
             📷
           </div>
