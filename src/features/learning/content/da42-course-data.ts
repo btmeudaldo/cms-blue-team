@@ -134,11 +134,7 @@ export const DA42_LESSON_1 = {
   </div>
 </div>
 
-
-
 <!-- pagebreak -->
-
-
 
 <!-- DIAPOSITIVA 1.2: 1.2 Especificaciones de los Motores Continental CD-135 / CD-155 -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -218,11 +214,7 @@ export const DA42_LESSON_1 = {
   </div>
 </div>
 
-
-
 <!-- pagebreak -->
-
-
 
 <!-- DIAPOSITIVA 1.3: 1.3 Hélice MT-Propeller Tripala de Paso Constante y Feathering -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -235,9 +227,9 @@ export const DA42_LESSON_1 = {
     <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Gobernador Hidráulico, FADEC y Sistema de Abanderado</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="56" style="--col-left: 56fr; --col-right: 44fr; grid-template-columns: minmax(0px, 56fr) minmax(0px, 44fr) !important;">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr; grid-template-columns: minmax(0px, 50fr) minmax(0px, 50fr) !important;">
     <!-- Columna Izquierda (lg:col-span-7): Información Técnica (Altura Fija 590px) -->
-    <div class="lg:col-span-5 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESPECIFICACIONES DE HÉLICES (PROPELLERS)</span>
@@ -290,7 +282,7 @@ export const DA42_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Hélice MT-Propeller Tripala (Altura Fija 590px) -->
-    <div class="lg:col-span-5 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 w-full flex flex-col justify-start items-start">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
@@ -312,11 +304,7 @@ export const DA42_LESSON_1 = {
   </div>
 </div>
 
-
-
 <!-- pagebreak -->
-
-
 
 <!-- DIAPOSITIVA 1.4: 1.4 Combustibles Autorizados y Sistema de Depósitos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -396,11 +384,7 @@ export const DA42_LESSON_1 = {
   </div>
 </div>
 
-
-
 <!-- pagebreak -->
-
-
 
 <!-- DIAPOSITIVA 1.5: 1.5 Fluidos de Servicio: Aceite, Reductora y Refrigerante -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -413,9 +397,9 @@ export const DA42_LESSON_1 = {
     <span class="text-[18px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Fluidos de Motor, Caja Reductora y Sistema de Refrigeración</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="56" style="--col-left: 56fr; --col-right: 44fr; grid-template-columns: minmax(0px, 56fr) minmax(0px, 44fr) !important;">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr; grid-template-columns: minmax(0px, 50fr) minmax(0px, 50fr) !important;">
     <!-- Columna Izquierda (lg:col-span-7): Información Técnica (Altura Fija 590px) -->
-    <div class="lg:col-span-5 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">LUBRICACIÓN Y REFRIGERACIÓN (LIQUIDS SPECIFICATION)</span>
@@ -467,7 +451,7 @@ export const DA42_LESSON_1 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Supervisión en Prevuelo (Altura Fija 590px) -->
-    <div class="lg:col-span-5 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-3 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 w-full flex-1 flex flex-col justify-start items-start min-h-0">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 w-full">
@@ -483,11 +467,7 @@ export const DA42_LESSON_1 = {
   </div>
 </div>
 
-
-
 <!-- pagebreak -->
-
-
 
 <!-- DIAPOSITIVA 1.6: 1.6 Mandos e Instrumentación de Motor en Cabina -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -786,12 +766,7 @@ export const DA42_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/Gemini_Generated_Image_o30fd0o30fd0o30f.jpg"
-              alt="Marcas del Anemómetro Garmin G1000 Diamond DA42"
-              class="w-full h-full max-h-[500px] object-contain rounded-lg"
-              style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
-            />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/Gemini_Generated_Image_o30fd0o30fd0o30f.jpg" alt="Marcas del Anemómetro Garmin G1000 Diamond DA42" class="w-full h-full max-h-[500px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
         </div>
       </div>
@@ -886,12 +861,7 @@ export const DA42_LESSON_2 = {
 
           <!-- Imagen de Límites de Masa AFM -->
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-mass-limits-table.png"
-              alt="Tabla de Masas Máximas y Compartimentos de Equipaje Diamond DA42"
-              class="w-full h-full max-h-[380px] object-contain rounded-lg"
-              style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
-            />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-mass-limits-table.png" alt="Tabla de Masas Máximas y Compartimentos de Equipaje Diamond DA42" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
         </div>
       </div>
@@ -978,12 +948,7 @@ export const DA42_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-cg-datum-screenshot.png"
-              alt="Plano de Referencia y Envolvente de Centro de Gravedad Diamond DA42"
-              class="w-full h-full max-h-[500px] object-contain rounded-lg"
-              style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
-            />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-cg-datum-screenshot.png" alt="Plano de Referencia y Envolvente de Centro de Gravedad Diamond DA42" class="w-full h-full max-h-[500px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
         </div>
       </div>
@@ -1070,20 +1035,15 @@ export const DA42_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-flight-load-factors-screenshot.png"
-              alt="Diagrama de Factores de Carga en Vuelo Diamond DA42"
-              class="w-full h-full max-h-[500px] object-contain rounded-lg"
-              style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
-            />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-flight-load-factors-screenshot.png" alt="Diagrama de Factores de Carga en Vuelo Diamond DA42" class="w-full h-full max-h-[500px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-  </div>
-</div>
+  
+
 
 <!-- pagebreak -->
 
@@ -1248,12 +1208,7 @@ export const DA42_LESSON_2 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col justify-center items-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img
-              src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-engine-operating-limits-table.png"
-              alt="Límites Operacionales de Motor y Fluidos AFM Diamond DA42"
-              class="w-full h-full max-h-[500px] object-contain rounded-lg"
-              style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;"
-            />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-engine-operating-limits-table.png" alt="Límites Operacionales de Motor y Fluidos AFM Diamond DA42" class="w-full h-full max-h-[500px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
         </div>
       </div>
@@ -1279,7 +1234,7 @@ export const DA42_LESSON_2 = {
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="space-y-2 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">OIL PRESSURE & CONSUMPTION LIMITS (AFM 2.4)</span>
+            <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">OIL PRESSURE &amp; CONSUMPTION LIMITS (AFM 2.4)</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
@@ -1573,9 +1528,9 @@ export const DA42_LESSON_2 = {
     <!-- Columna Derecha (lg:col-span-6): Instrumentación Garmin G1000 EIS y NOTA (Altura Fija 590px sin scroll) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
           <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/Gemini_Generated_Image_qdo2epqdo2epqdo2.jpg" alt="Garmin G1000 EIS y Sistema de Alertas CAS Diamond DA42 Twin Star" class="w-full h-full max-h-[385px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/Gemini_Generated_Image_qdo2epqdo2epqdo2.jpg" alt="Garmin G1000 EIS y Sistema de Alertas CAS Diamond DA42 Twin Star" class="w-full h-full max-h-[385px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-700 dark:text-slate-300 font-medium shrink-0">
             <strong class="text-[#0B2E59] dark:text-sky-300">Garmin G1000 EIS</strong> · Sistema de Alertas CAS, Fuel, System y Engine Display
@@ -1612,7 +1567,7 @@ export const DA42_LESSON_2 = {
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-2 overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">G1000 EIS AUXILIAR & LÓGICA DE ALERTAS CAS</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">G1000 EIS AUXILIAR &amp; LÓGICA DE ALERTAS CAS</span>
         </div>
 
         <!-- TABLA DE PARÁMETROS ELÉCTRICOS Y COMBUSTIBLE (G1000 EIS) -->
@@ -1709,24 +1664,24 @@ export const DA42_LESSON_2 = {
             <div class="flex-1 min-h-0 grid grid-cols-3 gap-1 items-center justify-center overflow-hidden py-1">
               <!-- 1. Engine Display -->
               <div class="h-full flex flex-col items-center justify-between min-h-0">
-                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden bg-white dark:bg-white rounded p-0.5 lesson-img-wrapper">
-                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-engine.png" alt="Garmin G1000 EIS Engine Display DA42" class="w-full h-full object-contain rounded" style="max-height: 460px;" />
+                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden bg-white dark:bg-white rounded p-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
+                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-engine.png" alt="Garmin G1000 EIS Engine Display DA42" class="w-full h-full object-contain rounded" style="max-height: 460px; aspect-ratio: auto; object-fit: contain; max-width: 100%;">
                 </div>
                 <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 mt-1 shrink-0">ENGINE</span>
               </div>
 
               <!-- 2. System Display -->
               <div class="h-full flex flex-col items-center justify-between min-h-0">
-                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden bg-white dark:bg-white rounded p-0.5 lesson-img-wrapper">
-                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-system.png" alt="Garmin G1000 EIS System Display DA42" class="w-full h-full object-contain rounded" style="max-height: 460px;" />
+                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden bg-white dark:bg-white rounded p-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
+                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-system.png" alt="Garmin G1000 EIS System Display DA42" class="w-full h-full object-contain rounded" style="max-height: 460px; aspect-ratio: auto; object-fit: contain; max-width: 100%;">
                 </div>
                 <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 mt-1 shrink-0">SYSTEM</span>
               </div>
 
               <!-- 3. Fuel Display -->
               <div class="h-full flex flex-col items-center justify-between min-h-0">
-                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden bg-white dark:bg-white rounded p-0.5 lesson-img-wrapper">
-                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-fuel.png" alt="Garmin G1000 EIS Fuel Display DA42" class="w-full h-full object-contain rounded" style="max-height: 460px;" />
+                <div class="w-full flex-1 flex items-center justify-center min-h-0 overflow-hidden bg-white dark:bg-white rounded p-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
+                  <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-eis-fuel.png" alt="Garmin G1000 EIS Fuel Display DA42" class="w-full h-full object-contain rounded" style="max-height: 460px; aspect-ratio: auto; object-fit: contain; max-width: 100%;">
                 </div>
                 <span class="text-[11px] font-bold text-slate-700 dark:text-slate-300 mt-1 shrink-0">FUEL</span>
               </div>
@@ -1742,8 +1697,8 @@ export const DA42_LESSON_2 = {
             </div>
 
             <!-- Imagen de la ventana de Alertas CAS -->
-            <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden p-1 bg-white dark:bg-white rounded-lg lesson-img-wrapper">
-              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-cas-alerts.png" alt="Sistema de Alertas CAS Garmin G1000 DA42" class="w-full h-full max-h-[360px] object-contain rounded-lg" />
+            <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden p-1 bg-white dark:bg-white rounded-lg lesson-img-wrapper" draggable="false" style="position: relative;">
+              <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-cas-alerts.png" alt="Sistema de Alertas CAS Garmin G1000 DA42" class="w-full h-full max-h-[360px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
             </div>
 
             <!-- NOTA -->
@@ -1779,7 +1734,7 @@ export const DA42_LESSON_2 = {
     <div class="lg:col-span-7 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5 overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-0.5">
-          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FUEL LIMITATIONS & TANK CAPACITIES</span>
+          <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FUEL LIMITATIONS &amp; TANK CAPACITIES</span>
         </div>
 
         <div class="space-y-1.5 py-0.5">
@@ -1873,7 +1828,7 @@ export const DA42_LESSON_2 = {
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-between p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
           <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-fuel-schematic.png" alt="Esquema Oficial del Sistema de Combustible Diamond DA42 Twin Star" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-fuel-schematic.png" alt="Esquema Oficial del Sistema de Combustible Diamond DA42 Twin Star" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
             <strong class="text-[#0B2E59] dark:text-sky-300">Esquema del Sistema de Combustible DA42</strong> · Main Tanks (2x25 USG), Aux Tanks (2x13.2 USG), Válvulas Selectoras y Retorno con Enfriadores
