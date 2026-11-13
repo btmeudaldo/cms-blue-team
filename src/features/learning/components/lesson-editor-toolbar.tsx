@@ -980,15 +980,19 @@ export function LessonEditorToolbar({
           else if (btnSize75) preset = "75%";
           else if (btnSize100) preset = "100%";
 
+          const isInSlide = Boolean(wrapper.closest(".lesson-slide-container"));
+          const parentEl = wrapper.parentElement;
           const containerW =
-            editorRef.current?.getBoundingClientRect().width || 720;
+            (isInSlide && parentEl ? parentEl.getBoundingClientRect().width : 0) ||
+            editorRef.current?.getBoundingClientRect().width ||
+            720;
           const { widthPx } = getImageWidthFromPreset(preset, containerW);
 
           if (preset === "reset") {
-            wrapper.style.width = "auto";
+            wrapper.style.width = isInSlide ? "100%" : "auto";
             wrapper.style.maxWidth = "100%";
           } else {
-            wrapper.style.width = `${widthPx}px`;
+            wrapper.style.width = isInSlide ? preset : `${widthPx}px`;
             wrapper.style.maxWidth = "100%";
           }
 
@@ -996,7 +1000,14 @@ export function LessonEditorToolbar({
           if (img) {
             img.style.width = "100%";
             img.style.maxWidth = "100%";
-            img.style.height = "auto";
+            if (isInSlide && (img.classList.contains("h-full") || wrapper.classList.contains("flex-1"))) {
+              img.style.height = "100%";
+              if (!img.style.objectFit) {
+                img.style.objectFit = "contain";
+              }
+            } else {
+              img.style.height = "auto";
+            }
           }
           if (preset === "100%") {
             wrapper.style.float = "none";

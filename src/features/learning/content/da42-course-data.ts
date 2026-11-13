@@ -2359,7 +2359,7 @@ export const DA42_LESSON_3 = {
 
         <div class="w-full flex-1 min-h-0 flex flex-col items-center justify-center p-1 overflow-hidden">
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-900/60 flex flex-col justify-center items-center p-1.5 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-cas-alerts.png" alt="Mandos FADEC y Sistema de Alertas CAS Diamond DA42" class="w-full h-full max-h-[500px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-cas-alerts.png" alt="Mandos FADEC y Sistema de Alertas CAS Diamond DA42" class="w-full h-full max-h-[500px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto; width: 100%;">
           </div>
         </div>
       </div>
@@ -2675,9 +2675,9 @@ export const DA42_LESSON_3 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Bombas Mecánicas (LP/HP), Bombas Eléctricas Auxiliares (L/R), Common Rail, Retorno y Enfriadores (&gt;20°C)</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="52" style="--col-left: 52fr; --col-right: 48fr; grid-template-columns: minmax(0px, 52fr) minmax(0px, 48fr) !important;">
     <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
-    <div class="lg:col-span-7 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BOMBAS, COMMON RAIL Y RETORNO BIMOTOR (AFM 7.9.5)</span>
@@ -2743,7 +2743,7 @@ export const DA42_LESSON_3 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquema y Limitaciones (Altura Fija 590px sin scroll) -->
-    <div class="lg:col-span-5 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
@@ -2751,7 +2751,7 @@ export const DA42_LESSON_3 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-fuel-schematic-afm.png" alt="Esquema Oficial del Sistema de Combustible (AFM 7.9.5) Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-fuel-schematic-afm.png" alt="Esquema Oficial del Sistema de Combustible (AFM 7.9.5) Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;">
           </div>
 
           <!-- NOTA / ADVERTENCIA DESCEBADO -->
@@ -2782,9 +2782,9 @@ export const DA42_LESSON_3 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Termostato (~88°C / 190°F), Radiador en Góndola, Vaso de Expansión, Calefacción y Alertas L/R WATER LEVEL</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="58">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr; grid-template-columns: minmax(0px, 50fr) minmax(0px, 50fr) !important;">
     <!-- Columna Izquierda (lg:col-span-7): Altura Fija 590px sin scroll -->
-    <div class="lg:col-span-7 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SISTEMA DE REFRIGERACIÓN LÍQUIDA (AFM 7.9.6)</span>
@@ -2850,7 +2850,7 @@ export const DA42_LESSON_3 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquema del Sistema de Refrigeración (Altura Fija 590px sin scroll) -->
-    <div class="lg:col-span-5 flex flex-col">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
@@ -2858,7 +2858,7 @@ export const DA42_LESSON_3 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-cooling-system.png" alt="Esquema del Sistema de Refrigeración Líquida Continental CD-135 / CD-155 Diamond DA42" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;" />
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-cooling-system.png" alt="Esquema del Sistema de Refrigeración Líquida Continental CD-135 / CD-155 Diamond DA42" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;">
           </div>
 
           <!-- PRECAUCIÓN DE SEGURIDAD AFM -->
@@ -3221,7 +3221,7 @@ export const DA42_LESSON_3 = {
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative; background-color: #ffffff;">
-          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-cas-alerts.png" alt="Ventana de Alertas CAS Garmin G1000 Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: #ffffff; object-position: center;" />
+          <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/g1000-cas-alerts.png" alt="Ventana de Alertas CAS Garmin G1000 Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: #ffffff; object-position: center;">
         </div>
       </div>
     </div>
@@ -3240,9 +3240,9 @@ export const DA42_LESSON_3 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Flight Controls, Doble Compensación (Elevator &amp; Rudder), Tope Variable y Flaps de 2 Tramos</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="56" style="--col-left: 56fr; --col-right: 44fr; grid-template-columns: minmax(0px, 56fr) minmax(0px, 44fr) !important;">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="51" style="--col-left: 51fr; --col-right: 49fr; grid-template-columns: minmax(0px, 51fr) minmax(0px, 49fr) !important;">
     <!-- Columna Izquierda (lg:col-span-7): Mandos y Flaps (Altura Fija 590px, Sin Scroll) -->
-    <div class="flex flex-col lg:col-span-7" style="grid-column: auto !important;">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs space-y-1.5 overflow-hidden" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FLIGHT CONTROLS &amp; TRIM SYSTEM (AFM 7.3)</span>
@@ -3291,7 +3291,7 @@ export const DA42_LESSON_3 = {
     </div>
 
     <!-- Columna Derecha (lg:col-span-5): Esquema y Datos Técnicos (Altura Fija 590px sin scroll) -->
-    <div class="flex flex-col lg:col-span-5" style="grid-column: auto !important;">
+    <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-1.5 flex-1 min-h-0 flex flex-col">
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
@@ -3303,8 +3303,8 @@ export const DA42_LESSON_3 = {
             <div><strong>Posiciones e Indicador Lumínico:</strong> Tres posiciones: Cruise UP (0°, luz verde), Approach APP (20°, luz blanca, V<sub>FE</sub> = 137 KIAS) y Landing LDG (42°, luz blanca, V<sub>FE</sub> = 111 KIAS). El encendido de dos luces simultáneas indica flaps en movimiento de tránsito.</div>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da40/da40-flaps-system.jpg" alt="Sistema de Flaps y Mandos de Vuelo Diamond DA42 Twin Star" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 460px; width: 100%; height: auto; background-color: transparent; object-position: center center;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both; opacity: 1;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-flaps-system.jpg?v=1" alt="Sistema de Flaps y Mandos de Vuelo Diamond DA42 Twin Star" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 460px; width: 100%; height: 100%; background-color: transparent; object-position: center center;">
           </div>
         </div>
       </div>
