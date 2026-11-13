@@ -4945,7 +4945,10 @@ ay               </div>
               <span>⚠️</span>
               <span>CAUTION:</span>
             </strong>
-            <div>When operating canopy, ensure no obstructions between canopy and mating frame (seat belts, clothing). Do NOT apply undue force to locking handle. Slight downward pressure may ease handle operation.</div>
+            <ul class="list-disc pl-6 space-y-0.5 text-[18px] leading-tight" style="padding-left: 1.5rem;">
+              <li>When operating canopy, ensure no obstructions between canopy and mating frame (seat belts, clothing).</li>
+              <li>When switching ELECT. MASTER ON, hydraulic gear pump may activate for 5&ndash;20 s. If pump operates continuously or periodically, terminate flight preparation (landing gear malfunction).</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -4954,14 +4957,6 @@ ay               </div>
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="space-y-1 flex flex-col justify-start shrink-0">
-          <div class="p-1.5 rounded-xl border-l-4 border-amber-500 bg-amber-50/90 dark:bg-amber-950/30 text-amber-950 dark:text-amber-200 text-[18px] leading-tight shadow-2xs">
-            <strong class="text-amber-700 dark:text-amber-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
-              <span>⚠️</span>
-              <span>CAUTION:</span>
-            </strong>
-            <div>When switching ELECT. MASTER ON, hydraulic gear pump may activate for 5&ndash;20 s. If pump operates continuously or periodically, terminate flight preparation (landing gear malfunction).</div>
-          </div>
-
           <div class="p-1.5 rounded-xl border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-tight shadow-2xs">
             <strong class="text-blue-700 dark:text-blue-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
               <span>ℹ️</span>
