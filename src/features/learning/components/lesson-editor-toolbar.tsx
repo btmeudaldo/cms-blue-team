@@ -2390,7 +2390,7 @@ export function LessonEditorToolbar({
             <>
               {isStudentPreview && (
                 <article
-                  className="w-full max-w-[1550px] mx-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 p-3.5 sm:p-5 lg:px-6 lg:py-4 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
+                  className="w-full rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 p-3.5 sm:p-5 lg:px-6 lg:py-4 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
                   dangerouslySetInnerHTML={{
                     __html: sanitizeLessonHtml(
                       slides[currentSlideIndex] || "",
@@ -2414,11 +2414,11 @@ export function LessonEditorToolbar({
                 onDrop={handleDrop}
                 onDragEnd={handleDragEnd}
                 onPaste={handleCanvasPaste}
-                className={`${isStudentPreview ? "hidden" : "flex flex-col"} visual-canvas w-full max-w-[1550px] mx-auto min-h-[620px] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-5 lg:px-6 lg:py-4 text-slate-800 dark:text-slate-200 [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm`}
+                className={`${isStudentPreview ? "hidden" : "flex flex-col"} visual-canvas w-full min-h-[620px] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-5 lg:px-6 lg:py-4 text-slate-800 dark:text-slate-200 [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm`}
               />
             </>
           ) : (
-            <div className="space-y-6 max-w-[1550px] mx-auto">
+            <div className="space-y-6 w-full">
               {slides.map((slideContent, idx) => (
                 <div
                   key={idx}
