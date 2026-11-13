@@ -3303,8 +3303,8 @@ export const DA42_LESSON_3 = {
             <div><strong>Posiciones e Indicador Lumínico:</strong> Tres posiciones: Cruise UP (0°, luz verde), Approach APP (20°, luz blanca, V<sub>FE</sub> = 137 KIAS) y Landing LDG (42°, luz blanca, V<sub>FE</sub> = 111 KIAS). El encendido de dos luces simultáneas indica flaps en movimiento de tránsito.</div>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: auto; max-width: 100%; float: none; clear: both; opacity: 1;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-flaps-system.jpg?v=1" alt="Sistema de Flaps y Mandos de Vuelo Diamond DA42 Twin Star" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 460px; width: 100%; height: 100%; background-color: transparent; object-position: center center;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex flex-col items-center justify-start p-1 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: 100%; max-width: 100%; float: none; clear: both; opacity: 1;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/da42/da42-flaps-system.jpg?v=1" alt="Sistema de Flaps y Mandos de Vuelo Diamond DA42 Twin Star" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center top;">
           </div>
         </div>
       </div>
