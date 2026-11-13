@@ -138,30 +138,30 @@ export const DA40_LESSON_2_QUIZ: Quiz = {
     {
       id: "da40-2-3",
       question:
-        "De acuerdo con las limitaciones de la Sección 2 del AFM de la DA40 TDI, ¿cuáles son los pesos máximos al despegue (MTOW) autorizados para la Categoría Normal y la Categoría Utilidad respectivamente?",
+        "De acuerdo con las limitaciones de la Sección 2 del AFM de la DA40 TDI, ¿cuáles son los pesos máximos al despegue (MTOW) autorizados para la Categoría Normal y la Categoría Utility respectivamente?",
       options: [
-        "1.150 kg (2.535 lb) en Categoría Normal y 980 kg (2.161 lb) en Categoría Utilidad.",
-        "1.043 kg (2.300 lb) en Categoría Normal y 907 kg (2.000 lb) en Categoría Utilidad.",
-        "1.250 kg en Categoría Normal y 1.100 kg en Categoría Utilidad.",
+        "1.150 kg (2.535 lb) en Categoría Normal y 980 kg (2.161 lb) en Categoría Utility.",
+        "1.043 kg (2.300 lb) en Categoría Normal y 907 kg (2.000 lb) en Categoría Utility.",
+        "1.250 kg en Categoría Normal y 1.100 kg en Categoría Utility.",
         "980 kg en ambas categorías, variando únicamente el límite de equipaje.",
       ],
       correctAnswerIndex: 0,
       explanation:
-        "El AFM certifica a la DA40 TDI con un peso máximo al despegue (MTOW) de 1.150 kg (2.535 lb) en Categoría Normal y de 980 kg (2.161 lb) en Categoría Utilidad para entrenamiento de maniobras avanzadas.",
+        "El AFM certifica a la DA40 TDI con un peso máximo al despegue (MTOW) de 1.150 kg (2.535 lb) en Categoría Normal y de 980 kg (2.161 lb) en Categoría Utility para entrenamiento de maniobras avanzadas.",
     },
     {
       id: "da40-2-4",
       question:
-        "¿Cuál es el peso máximo admisible en el compartimento de equipaje trasero de la DA40 TDI y cuál es el requisito reglamentario para operar en Categoría Utilidad respecto a los asientos traseros y equipaje?",
+        "¿Cuál es el peso máximo admisible en el compartimento de equipaje trasero de la DA40 TDI y cuál es el requisito reglamentario para operar en Categoría Utility respecto a los asientos traseros y equipaje?",
       options: [
-        "Máximo 50 kg; en Categoría Utilidad se permite un pasajero trasero si no lleva equipaje.",
-        "Máximo 30 kg (66 lb) asegurado con red reglamentaria; en Categoría Utilidad los asientos traseros deben estar totalmente vacíos y sin ningún equipaje.",
-        "Máximo 15 kg; en Categoría Utilidad se permite equipaje siempre que no sobrepase 10 kg.",
-        "Máximo 60 kg; en Categoría Utilidad se permite cargar equipaje si el combustible está al 50%.",
+        "Máximo 50 kg; en Categoría Utility se permite un pasajero trasero si no lleva equipaje.",
+        "Máximo 30 kg (66 lb) asegurado con red reglamentaria; en Categoría Utility los asientos traseros deben estar totalmente vacíos y sin ningún equipaje.",
+        "Máximo 15 kg; en Categoría Utility se permite equipaje siempre que no sobrepase 10 kg.",
+        "Máximo 60 kg; en Categoría Utility se permite cargar equipaje si el combustible está al 50%.",
       ],
       correctAnswerIndex: 1,
       explanation:
-        "El compartimento de equipaje principal tras los respaldos traseros tiene un límite estructural de 30 kg (66 lb) y debe fijarse con la red de 4 puntos. Para operar en Categoría Utilidad (MTOW 980 kg), el AFM exige que los asientos traseros permanezcan desocupados y no se transporte equipaje.",
+        "El compartimento de equipaje principal tras los respaldos traseros tiene un límite estructural de 30 kg (66 lb) y debe fijarse con la red de 4 puntos. Para operar en Categoría Utility (MTOW 980 kg), el AFM exige que los asientos traseros permanezcan desocupados y no se transporte equipaje.",
     },
     {
       id: "da40-2-5",
