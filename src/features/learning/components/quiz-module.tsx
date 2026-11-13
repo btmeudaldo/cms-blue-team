@@ -176,8 +176,9 @@ export function QuizModule({
 
     return (
       <div
-        className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 shadow-md space-y-4 ${
-          isEmbedded ? "max-w-full" : "w-full max-w-7xl flex-1 min-h-0 flex flex-col mx-auto"
+        data-quiz-review="true"
+        className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 shadow-md space-y-6 ${
+          isEmbedded ? "max-w-full" : "w-full max-w-7xl mx-auto"
         }`}
       >
         <div className="text-center space-y-3">
@@ -259,8 +260,8 @@ export function QuizModule({
 
         {/* Sección de Explicaciones Técnicas POH */}
         {enrichedQuiz?.questions && enrichedQuiz.questions.length > 0 && (
-          <div className="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-3 flex-1 min-h-0 flex flex-col">
-            <div className="flex items-center justify-between shrink-0">
+          <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-4">
+            <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-lg sm:text-xl font-extrabold text-[#0B2E59] dark:text-sky-300 flex items-center gap-2">
                   <span>📖</span>
@@ -278,7 +279,7 @@ export function QuizModule({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 flex-1 min-h-0 overflow-y-auto pr-1 sm:pr-2">
+            <div className="grid grid-cols-1 gap-4">
               {enrichedQuiz.questions.map((q, idx) => {
                 const userAnswerIndex = userAnswers[q.id];
                 const hasUserAnswer =

@@ -49,7 +49,7 @@ export default async function StandaloneQuizPage({
   const previousAttempt = passedAttempt || latestAttempt;
 
   return (
-    <div className="min-h-screen lg:h-screen lg:overflow-hidden bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
+    <div className="min-h-screen lg:h-screen lg:overflow-hidden lg:has-[[data-quiz-review]]:h-auto lg:has-[[data-quiz-review]]:overflow-visible bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
       <Header
         userEmail={user.email}
         userName={profile?.full_name}
