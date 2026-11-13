@@ -90,6 +90,7 @@ export function LessonEditorToolbar({
   });
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [viewMode, setViewMode] = useState<"slide" | "all">("slide");
+  const [isStudentPreview, setIsStudentPreview] = useState(false);
   const [previewSlideIndex, setPreviewSlideIndex] = useState(0);
 
   const slidesRef = useRef<string[]>(slides);
@@ -187,15 +188,20 @@ export function LessonEditorToolbar({
         }
       };
 
-      // Default to natural aspect ratio (auto) with responsive containment
+      // Default to natural aspect ratio (auto) with responsive containment,
+      // without overriding explicit height: 100% / h-full from slide templates
       if (!img.style.aspectRatio) {
         img.style.aspectRatio = "auto";
       }
       if (!img.style.objectFit) {
         img.style.objectFit = "contain";
       }
-      img.style.maxWidth = "100%";
-      img.style.height = "auto";
+      if (!img.style.maxWidth) {
+        img.style.maxWidth = "100%";
+      }
+      if (!img.style.height && !img.classList.contains("h-full")) {
+        img.style.height = "auto";
+      }
 
       let wrapper = img.closest(".lesson-img-wrapper") as HTMLElement | null;
       if (!wrapper) {
@@ -215,11 +221,11 @@ export function LessonEditorToolbar({
       wrapper.style.position = "relative";
       wrapper.setAttribute("draggable", "false");
 
-      // Add Top Floating Quick Bar if not present
+      // Add Top Floating Quick Bar if not present (absolute overlay so it never shifts image layout)
       if (!wrapper.querySelector(".img-editor-controls")) {
         const controls = document.createElement("div");
         controls.className =
-          "img-editor-controls mb-3 space-y-2 rounded-xl border border-blue-100 bg-blue-50/70 p-2.5 dark:border-blue-900/60 dark:bg-blue-950/30 select-none shadow-2xs";
+          "img-editor-controls absolute top-2 left-2 right-2 z-30 space-y-1.5 rounded-xl border border-blue-200/90 bg-white/95 p-2 dark:border-blue-800/80 dark:bg-slate-900/95 select-none shadow-lg backdrop-blur-xs";
         controls.setAttribute("contenteditable", "false");
         controls.innerHTML = `
           <div class="flex flex-wrap items-center justify-between gap-2 border-b border-blue-200/50 dark:border-blue-800/40 pb-1.5">
@@ -454,7 +460,7 @@ export function LessonEditorToolbar({
       if (!controls) {
         controls = document.createElement("div");
         controls.className =
-          "col-resize-controls mb-2.5 flex items-center justify-between gap-2 px-3 py-1.5 rounded-xl bg-slate-900/95 text-white dark:bg-slate-800/95 dark:text-slate-100 text-[11px] font-sans shadow-md border border-slate-700/80 select-none z-20 backdrop-blur-xs transition-opacity";
+          "col-resize-controls absolute top-1.5 right-2 flex items-center justify-between gap-2 px-2.5 py-1 rounded-xl bg-slate-900/90 text-white dark:bg-slate-800/95 dark:text-slate-100 text-[11px] font-sans shadow-md border border-slate-700/80 select-none z-30 backdrop-blur-xs transition-opacity";
         controls.setAttribute("contenteditable", "false");
         controls.innerHTML = `
           <div class="flex items-center gap-1.5 font-bold">
@@ -2203,9 +2209,14 @@ export function LessonEditorToolbar({
               <div className="flex items-center gap-1 rounded-xl bg-slate-100 dark:bg-slate-800 p-0.5 border border-slate-200 dark:border-slate-700 ml-1">
                 <button
                   type="button"
-                  onClick={() => setViewMode("slide")}
+                  onClick={() => {
+                    if (isStudentPreview) {
+                      setIsStudentPreview(false);
+                    }
+                    setViewMode("slide");
+                  }}
                   className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
-                    viewMode === "slide"
+                    viewMode === "slide" && !isStudentPreview
                       ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-2xs"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
                   }`}
@@ -2217,6 +2228,23 @@ export function LessonEditorToolbar({
                   type="button"
                   onClick={() => {
                     syncCurrentSlideToState();
+                    setViewMode("slide");
+                    setIsStudentPreview((prev) => !prev);
+                  }}
+                  className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                    viewMode === "slide" && isStudentPreview
+                      ? "bg-emerald-600 text-white shadow-2xs"
+                      : "text-slate-600 dark:text-slate-400 hover:text-emerald-600"
+                  }`}
+                  title="Previsualizar esta diapositiva exactamente como la ve el alumno (1:1)"
+                >
+                  👁️ Vista 1:1
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    syncCurrentSlideToState();
+                    setIsStudentPreview(false);
                     setViewMode("all");
                   }}
                   className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
@@ -2261,35 +2289,35 @@ export function LessonEditorToolbar({
       {!showCodeMode ? (
         <div className="relative">
           <style>{`
-            .visual-canvas h2 {
+            .visual-canvas h2:not(.lesson-slide-container h2) {
               font-size: 1.5rem !important;
               font-weight: 800 !important;
               margin-top: 1.25rem !important;
               margin-bottom: 0.5rem !important;
               line-height: 1.3 !important;
             }
-            .visual-canvas h3 {
+            .visual-canvas h3:not(.lesson-slide-container h3) {
               font-size: 1.2rem !important;
               font-weight: 700 !important;
               margin-top: 1rem !important;
               margin-bottom: 0.35rem !important;
               line-height: 1.35 !important;
             }
-            .visual-canvas ul {
+            .visual-canvas ul:not(.lesson-slide-container ul) {
               list-style-type: disc !important;
               padding-left: 1.5rem !important;
               margin-top: 0.5rem !important;
               margin-bottom: 0.5rem !important;
             }
-            .visual-canvas li {
+            .visual-canvas li:not(.lesson-slide-container li) {
               margin-bottom: 0.25rem !important;
             }
-            .visual-canvas table {
+            .visual-canvas table:not(.lesson-slide-container table) {
               width: 100% !important;
               border-collapse: collapse !important;
               margin: 1.25rem 0 !important;
             }
-            .visual-canvas blockquote {
+            .visual-canvas blockquote:not(.lesson-slide-container blockquote) {
               border-left: 4px solid #1a80ff !important;
               padding-left: 1rem !important;
               margin: 1rem 0 !important;
@@ -2301,11 +2329,21 @@ export function LessonEditorToolbar({
             }
             .lesson-img-wrapper:hover {
               outline: 2px dashed #1a80ff;
-              outline-offset: 4px;
+              outline-offset: 2px;
+            }
+            .img-editor-controls {
+              opacity: 0;
+              pointer-events: none;
+              transition: opacity 0.15s ease;
+            }
+            .lesson-img-wrapper:hover .img-editor-controls,
+            .lesson-img-wrapper:focus-within .img-editor-controls {
+              opacity: 1;
+              pointer-events: auto;
             }
             .img-resize-handle {
-              opacity: 0.7;
-              transition: opacity 0.2s ease, transform 0.15s ease;
+              opacity: 0;
+              transition: opacity 0.15s ease, transform 0.15s ease;
             }
             .lesson-img-wrapper:hover .img-resize-handle {
               opacity: 1;
@@ -2316,10 +2354,12 @@ export function LessonEditorToolbar({
               border-color: #ffffff !important;
             }
             .col-resize-controls {
-              opacity: 0.88;
+              opacity: 0.45;
               transition: opacity 0.2s ease, transform 0.15s ease;
             }
-            .col-resize-controls:hover {
+            .col-resize-controls:hover,
+            .col-resize-controls:focus-within,
+            .visual-canvas [data-left-pct] > div:hover > .col-resize-controls {
               opacity: 1;
             }
             @media (min-width: 1024px) {
@@ -2337,6 +2377,7 @@ export function LessonEditorToolbar({
             }
             .visual-canvas [data-left-pct] > div:not(.col-resize-controls) {
               grid-column: auto !important;
+              position: relative;
             }
           `}</style>
           {isUploadingMedia && (
@@ -2346,24 +2387,36 @@ export function LessonEditorToolbar({
             </div>
           )}
           {viewMode === "slide" ? (
-            <div
-              ref={editorRef}
-              contentEditable
-              onFocus={clearPlaceholderIfPresent}
-              onInput={handleVisualInput}
-              onChange={handleCanvasChange}
-              onBlur={handleVisualInput}
-              onKeyDown={handleKeyDown}
-              onKeyUp={handleKeyUp}
-              onClick={handleCanvasClick}
-              onMouseDown={handleCanvasMouseDown}
-              onDragStart={handleDragStart}
-              onDragOver={handleDragOver}
-              onDrop={handleDrop}
-              onDragEnd={handleDragEnd}
-              onPaste={handleCanvasPaste}
-              className="visual-canvas lesson-slide-container w-full max-w-[1550px] mx-auto min-h-[620px] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 lg:p-10 text-slate-900 dark:text-slate-100 text-sm leading-relaxed focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm"
-            />
+            <>
+              {isStudentPreview && (
+                <article
+                  className="w-full max-w-[1550px] mx-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 p-3.5 sm:p-5 lg:px-6 lg:py-4 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
+                  dangerouslySetInnerHTML={{
+                    __html: sanitizeLessonHtml(
+                      slides[currentSlideIndex] || "",
+                    ),
+                  }}
+                />
+              )}
+              <div
+                ref={editorRef}
+                contentEditable
+                onFocus={clearPlaceholderIfPresent}
+                onInput={handleVisualInput}
+                onChange={handleCanvasChange}
+                onBlur={handleVisualInput}
+                onKeyDown={handleKeyDown}
+                onKeyUp={handleKeyUp}
+                onClick={handleCanvasClick}
+                onMouseDown={handleCanvasMouseDown}
+                onDragStart={handleDragStart}
+                onDragOver={handleDragOver}
+                onDrop={handleDrop}
+                onDragEnd={handleDragEnd}
+                onPaste={handleCanvasPaste}
+                className={`${isStudentPreview ? "hidden" : "flex flex-col"} visual-canvas w-full max-w-[1550px] mx-auto min-h-[620px] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-5 lg:px-6 lg:py-4 text-slate-800 dark:text-slate-200 [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm`}
+              />
+            </>
           ) : (
             <div className="space-y-6 max-w-[1550px] mx-auto">
               {slides.map((slideContent, idx) => (
@@ -2702,8 +2755,8 @@ export function LessonEditorToolbar({
 
             {/* Modal Content - Exact Mirror of Lesson Player */}
             <div className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 flex flex-col items-center">
-              <div
-                className="lesson-slide-container w-full max-w-[1550px] mx-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 lg:p-10 shadow-sm text-slate-800 dark:text-slate-200"
+              <article
+                className="w-full max-w-[1550px] mx-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-5 lg:px-6 lg:py-4 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 shadow-sm text-slate-800 dark:text-slate-200"
                 dangerouslySetInnerHTML={{
                   __html: sanitizeLessonHtml(
                     slides[previewSlideIndex] || slides[0] || "",
