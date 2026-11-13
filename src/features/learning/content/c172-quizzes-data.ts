@@ -406,15 +406,17 @@ export const C172_LESSON_3_QUIZ: Quiz = {
     },
     {
       id: "c172-3-13",
-      question: "¿Qué tipo aerodinámico y mecanismo de actuación tienen los flaps del Cessna 172 y cuál es la particularidad de diseño de sus alerones convencionales?",
+      question:
+        "¿Qué tipo aerodinámico y mecanismo de actuación tienen los flaps del Cessna 172 y cuál es la particularidad de diseño de sus alerones convencionales?",
       options: [
         "Son flaps de intradós mecánicos operados por palanca manual; los alerones son simétricos para vuelo acrobático.",
-        "Son flaps Fowler de ranura simple (single-slot) accionados eléctricamente por un motor en el ala derecha (con posiciones de 10°, 20°, 30° y 40° protegidos por breaker de 15A); los alerones son de tipo diferencial (el alerón que sube deflexiona más que el que baja) para mitigar la guiñada adversa.",
+        "Son flaps Fowler de ranura simple (single-slot) accionados eléctricamente por un motor en la semiala derecha (con posiciones de 10°, 20°, 30° y 40° protegidos por breaker de 15A); los alerones son de tipo diferencial (el alerón que sube deflexiona más que el que baja) para mitigar la guiñada adversa.",
         "Son flaps ranurados dobles de accionamiento hidráulico; los alerones actúan simultáneamente como frenos aerodinámicos (flaperones).",
         "Son slats de borde de ataque automáticos; el trim de profundidad se acciona mediante servomotores neumáticos de vacío.",
       ],
       correctAnswerIndex: 1,
-      explanation: "El C172 emplea flaps Fowler eléctricos de ranura simple que se deslizan hacia atrás y hacia abajo aumentando superficie y curvatura alar. Los alerones son diferenciales: el alerón que se desplaza hacia arriba tiene un ángulo mayor que el que baja, generando una resistencia parásita equilibrada que neutraliza la guiñada adversa.",
+      explanation:
+        "El C172 emplea flaps Fowler eléctricos de ranura simple que se deslizan hacia atrás y hacia abajo aumentando superficie y curvatura alar. Los alerones son diferenciales: el alerón que se desplaza hacia arriba tiene un ángulo mayor que el que baja, generando una resistencia parásita equilibrada que neutraliza la guiñada adversa.",
     },
     {
       id: "c172-3-14",
@@ -481,7 +483,8 @@ export const C172_LESSON_4_QUIZ: Quiz = {
     },
     {
       id: "c172-4-4",
-      question: "Si tras tomar muestras repetidas de combustible en las válvulas de purga (sumideros) del ala continúa habiendo indicios de agua, turbidez o contaminación, ¿cuál es la decisión operativa y procedimiento reglamentario que exige el POH?",
+      question:
+        "Si tras tomar muestras repetidas de combustible en las válvulas de purga (sumideros) del semiala continúa habiendo indicios de agua, turbidez o contaminación, ¿cuál es la decisión operativa y procedimiento reglamentario que exige el POH?",
       options: [
         "Aplicar potencia plena en tierra con frenos pisados durante 2 minutos para que el filtro de combustible centrifugue las impurezas.",
         "No debe volarse el avión bajo ninguna circunstancia; personal de mantenimiento cualificado debe vaciar los depósitos y purgar el sistema por completo antes del vuelo.",
@@ -489,7 +492,8 @@ export const C172_LESSON_4_QUIZ: Quiz = {
         "Despegar con normalidad manteniendo una altitud de crucero inferior a 3.000 pies para evitar la congelación de las impurezas.",
       ],
       correctAnswerIndex: 1,
-      explanation: "La advertencia (WARNING) del POH y de la checklist exterior establece textualmente: si, después de tomar muestras repetidamente, sigue habiendo indicios de contaminación, no debe volarse el avión. El personal de mantenimiento cualificado debe vaciar los depósitos y purgar el sistema por completo para eliminar todo contaminante antes de volver a volar.",
+      explanation:
+        "La advertencia (WARNING) del POH y de la checklist exterior establece textualmente: si, después de tomar muestras repetidamente, sigue habiendo indicios de contaminación, no debe volarse el avión. El personal de mantenimiento cualificado debe vaciar los depósitos y purgar el sistema por completo para eliminar todo contaminante antes de volver a volar.",
     },
     {
       id: "c172-4-5",
@@ -517,7 +521,8 @@ export const C172_LESSON_4_QUIZ: Quiz = {
     },
     {
       id: "c172-4-7",
-      question: "Durante la inspección del ala izquierda y tren principal, ¿qué comprobación es requerida en el neumático de la rueda principal (Main Wheel Tire)?",
+      question:
+        "Durante la inspección del semiala izquierda y tren principal, ¿qué comprobación es requerida en el neumático de la rueda principal (Main Wheel Tire)?",
       options: [
         "Desinflar completamente la cámara para comprobar que la llanta no esté fisurada.",
         "Lubricar la superficie de la banda de rodadura con grasa aeronáutica antes de salir a pista.",
@@ -525,11 +530,13 @@ export const C172_LESSON_4_QUIZ: Quiz = {
         "Asegurar que el neumático no tenga ningún tipo de dibujo ni hendidura longitudinal.",
       ],
       correctAnswerIndex: 2,
-      explanation: "El checklist en la estación (6) LEFT WING exige: \"Main Wheel Tire - CHECK for proper inflation and general condition (weather checks, tread depth and wear, etc.)\", asegurando la integridad estructural del neumático para absorber cargas de aterrizaje y frenado.",
+      explanation:
+        "El checklist en la estación (6) LEFT WING exige: \"Main Wheel Tire - CHECK for proper inflation and general condition (weather checks, tread depth and wear, etc.)\", asegurando la integridad estructural del neumático para absorber cargas de aterrizaje y frenado.",
     },
     {
       id: "c172-4-8",
-      question: "Al inspeccionar el borde de ataque del ala izquierda, ¿cómo se comprueba de forma correcta el funcionamiento del avisador de pérdida (Stall Warning)?",
+      question:
+        "Al inspeccionar el borde de ataque del semiala izquierda, ¿cómo se comprueba de forma correcta el funcionamiento del avisador de pérdida (Stall Warning)?",
       options: [
         "Conectando la calefacción Pitot durante 2 minutos hasta escuchar el zumbador.",
         "Colocando un pañuelo limpio sobre la abertura del avisador y aplicando una suave succión con la boca, verificando que la bocina emita sonido en cabina.",
@@ -537,55 +544,8 @@ export const C172_LESSON_4_QUIZ: Quiz = {
         "Inyectando aire a presión desde un compresor industrial dentro del orificio del detector.",
       ],
       correctAnswerIndex: 1,
-      explanation: "La instrucción del POH para la estación (7) indica textualmente: \"Stall Warning Opening - CHECK for blockage. To check the system, place a clean handkerchief over the vent opening and apply suction; a sound from the warning horn will confirm system operation\". El sistema opera por depresión neumática pasiva hacia la cabina.",
-    },
-    {
-      id: "c172-4-9",
-      question: "En la checklist \"Before Starting Engine\", ¿por qué debe verificarse que el interruptor de potencia de aviónica (Avionics Power Switch) esté en OFF antes de dar arranque al motor?",
-      options: [
-        "Para evitar daños en los equipos de aviónica sensibles debido a picos y caídas transitorias de tensión durante el accionamiento del arrancador.",
-        "Para evitar que las radios aeronáuticas transmitan automáticamente una señal de emergencia por la frecuencia 121.5 MHz.",
-        "Para permitir que la bomba mecánica de combustible diésel de alta presión se cebe.",
-        "Porque la centralita electrónica FADEC bloquea el arranque si detecta el transponder encendido.",
-      ],
-      correctAnswerIndex: 0,
-      explanation: "El aviso de precaución (CAUTION) del POH advierte: \"El interruptor Avionics Power debe estar desconectado durante el arranque del motor para evitar posibles daños en la aviónica\". Al arrancar, el motor de arranque eléctrico consume intensidades muy elevadas generando transitorios y picos de voltaje perjudiciales para los equipos de radio y navegación.",
-    },
-    {
-      id: "c172-4-10",
-      question: "Tras accionar el arrancador y arrancar el motor diésel, ¿cuál es la limitación estricta de presión mínima de aceite indicada en el checklist POH?",
-      options: [
-        "Se dispone de hasta 30 segundos a ralentí para que la aguja de presión de aceite comience a moverse.",
-        "La presión de aceite puede permanecer en cero hasta que la temperatura de refrigerante alcance los 60 grados C.",
-        "Si después de 3 segundos no se indica la presión mínima de aceite de 1 bar, se debe parar el motor inmediatamente.",
-        "Solo es obligatorio apagar el motor si la presión de combustible supera los 5 bar en el CED 125.",
-      ],
-      correctAnswerIndex: 2,
-      explanation: "La advertencia (CAUTION) oficial del POH para la puesta en marcha estipula taxativamente: \"Si después de 3 segundos no se indica la presión mínima de aceite de 1 bar: ¡pare el motor inmediatamente!\". La lubricación inmediata del turbocompresor y cojinetes del cigüeñal es crítica en motores sobrealimentados.",
-    },
-    {
-      id: "c172-4-11",
-      question: "Durante la fase de calentamiento (Warm Up), ¿cuáles son las temperaturas mínimas requeridas antes de poder iniciar el vuelo o aplicar potencia de despegue?",
-      options: [
-        "Temperatura de aceite a 20 grados C y temperatura de refrigerante a 25 grados C.",
-        "Refrigerante a 100 grados C y aceite de caja reductora a 120 grados C.",
-        "No existen requisitos mínimos de temperatura ya que el FADEC gestiona el motor desde cualquier valor.",
-        "Temperatura de aceite mínimo a 50 grados C (122 grados F) y temperatura de refrigerante mínimo a 60 grados C (140 grados F).",
-      ],
-      correctAnswerIndex: 3,
-      explanation: "La checklist oficial de WARM UP especifica: calentar ~2 minutos a 890 RPM y luego aumentar las revoluciones a 1400 RPM hasta que la temperatura de aceite alcance al menos 50 °C (122 °F) y la de refrigerante alcance al menos 60 °C (140 °F) antes de iniciar pruebas a plena potencia o el despegue.",
-    },
-    {
-      id: "c172-4-12",
-      question: "En la checklist \"Before Take-Off\", ¿en qué posición obligatoria deben verificarse las válvulas del sistema de combustible?",
-      options: [
-        "Selector de combustible en LEFT y válvula Fuel Shut-off extraída hacia fuera.",
-        "Selector de combustible en BOTH y válvula Fuel Shut-off completamente introducida (OPEN / Push Full In).",
-        "Selector de combustible en RIGHT y bomba eléctrica de combustible apagada.",
-        "Selector de combustible en OFF para permitir suministro por gravedad desde el depósito colector.",
-      ],
-      correctAnswerIndex: 1,
-      explanation: "En las comprobaciones previas al despegue, el selector de combustible debe fijarse obligatoriamente en BOTH (paso 6) para permitir alimentación simétrica de ambos planos, y la válvula de corte Fuel Shut-off debe estar completamente empujada hacia dentro (OPEN / Push Full In).",
+      explanation:
+        "La instrucción del POH para la estación (7) indica textualmente: \"Stall Warning Opening - CHECK for blockage. To check the system, place a clean handkerchief over the vent opening and apply suction; a sound from the warning horn will confirm system operation\". El sistema opera por depresión neumática pasiva hacia la cabina.",
     },
     {
       id: "c172-4-13",
