@@ -46,7 +46,7 @@ export default async function AdminProgressAuditPage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
           <div>
-            <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">
+            <div className="flex items-center gap-2 text-sm sm:text-base font-semibold text-slate-500 dark:text-slate-400 mb-1">
               <Link
                 href="/admin"
                 className="hover:text-[#1a80ff] transition-colors"
@@ -58,14 +58,14 @@ export default async function AdminProgressAuditPage() {
                 Expedientes Académicos y Auditoría
               </span>
             </div>
-            <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
               Expedientes de Alumnos y Tiempos Anticheating
             </h1>
           </div>
 
           <Link
             href="/admin"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2.5 text-sm sm:text-base font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
           >
             &larr; Volver al Panel Admin
           </Link>

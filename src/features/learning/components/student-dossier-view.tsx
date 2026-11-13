@@ -219,7 +219,7 @@ export function StudentDossierView({
     <div className="space-y-6">
       {/* Top Header Navigation Tabs */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-3">
-        <div className="flex items-center gap-2 rounded-2xl bg-slate-200/60 dark:bg-slate-800/60 p-1 text-xs font-bold w-fit">
+        <div className="flex items-center gap-2 rounded-2xl bg-slate-200/60 dark:bg-slate-800/60 p-1 text-sm sm:text-base font-bold w-fit">
           <button
             type="button"
             onClick={() => {
@@ -257,7 +257,7 @@ export function StudentDossierView({
           <button
             type="button"
             onClick={() => setSelectedStudentId(null)}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-1.5 text-sm sm:text-base font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           >
             &larr; Volver al Directorio de Alumnos
           </button>
@@ -277,15 +277,15 @@ export function StudentDossierView({
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 text-[10px] font-extrabold text-[#1a80ff] uppercase tracking-wider">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 text-xs sm:text-sm font-extrabold text-[#1a80ff] uppercase tracking-wider">
                       Expediente Académico
                     </span>
                     {studentMetrics.complianceRate === 100 ? (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 text-[10px] font-extrabold text-emerald-600 dark:text-emerald-400">
+                      <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-0.5 text-xs sm:text-sm font-extrabold text-emerald-600 dark:text-emerald-400">
                         ✓ 100% Anticheating Verificado
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 dark:bg-amber-950/60 px-2.5 py-0.5 text-[10px] font-extrabold text-amber-600 dark:text-amber-400">
+                      <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 dark:bg-amber-950/60 px-2.5 py-0.5 text-xs sm:text-sm font-extrabold text-amber-600 dark:text-amber-400">
                         ⚠️ Cumplimiento: {studentMetrics.complianceRate}%
                       </span>
                     )}
@@ -293,12 +293,12 @@ export function StudentDossierView({
                   <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white mt-1">
                     {selectedStudent.full_name || "Piloto Alumno"}
                   </h2>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mt-0.5">
+                  <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-mono mt-0.5">
                     {selectedStudent.email}
                   </p>
 
                   <div className="mt-2.5 flex flex-wrap items-center gap-2">
-                    <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                    <span className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                       DNI / NIE / Pasaporte:
                     </span>
                     {isEditingDni ? (
@@ -308,7 +308,7 @@ export function StudentDossierView({
                           value={dniInput}
                           onChange={(e) => setDniInput(e.target.value)}
                           placeholder="Ej. 12345678Z"
-                          className="rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 px-2 py-0.5 text-xs font-mono font-bold text-slate-900 dark:text-white focus:outline-hidden focus:border-[#1a80ff]"
+                          className="rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 px-2 py-0.5 text-sm sm:text-base font-mono font-bold text-slate-900 dark:text-white focus:outline-hidden focus:border-[#1a80ff]"
                           autoFocus
                         />
                         <button
@@ -333,21 +333,21 @@ export function StudentDossierView({
                             }
                           }}
                           disabled={isSavingDni}
-                          className="rounded-lg bg-[#1a80ff] px-2.5 py-1 text-[11px] font-bold text-white hover:bg-[#0066e6] transition-colors cursor-pointer"
+                          className="rounded-lg bg-[#1a80ff] px-2.5 py-1 text-sm font-bold text-white hover:bg-[#0066e6] transition-colors cursor-pointer"
                         >
                           {isSavingDni ? "..." : "Guardar"}
                         </button>
                         <button
                           type="button"
                           onClick={() => setIsEditingDni(false)}
-                          className="rounded-lg bg-slate-200 dark:bg-slate-700 px-2 py-1 text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-300 cursor-pointer"
+                          className="rounded-lg bg-slate-200 dark:bg-slate-700 px-2 py-1 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-300 cursor-pointer"
                         >
                           ✕
                         </button>
                       </div>
                     ) : (
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-bold text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-md border border-slate-200 dark:border-slate-700">
+                        <span className="font-mono text-sm sm:text-base font-bold text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-md border border-slate-200 dark:border-slate-700">
                           {selectedStudent.dni_nie || "Sin registrar"}
                         </span>
                         <button
@@ -356,7 +356,7 @@ export function StudentDossierView({
                             setDniInput(selectedStudent.dni_nie || "");
                             setIsEditingDni(true);
                           }}
-                          className="text-[11px] text-[#1a80ff] hover:underline font-bold cursor-pointer"
+                          className="text-sm text-[#1a80ff] hover:underline font-bold cursor-pointer"
                         >
                           {selectedStudent.dni_nie ? "Editar" : "+ Asignar DNI (AESA)"}
                         </button>
@@ -374,7 +374,7 @@ export function StudentDossierView({
                     setSelectedExamToEdit(null);
                     setIsExamModalOpen(true);
                   }}
-                  className="rounded-xl bg-amber-600 hover:bg-amber-700 px-3.5 py-2 text-xs font-bold text-white shadow-xs transition-all cursor-pointer flex items-center gap-1.5"
+                  className="rounded-xl bg-amber-600 hover:bg-amber-700 px-3.5 py-2 text-sm sm:text-base font-bold text-white shadow-xs transition-all cursor-pointer flex items-center gap-1.5"
                 >
                   <span>📝</span>
                   <span>+ Examen Presencial</span>
@@ -391,7 +391,7 @@ export function StudentDossierView({
                       quizAttempts,
                     )
                   }
-                  className="rounded-xl bg-[#1a80ff] px-3.5 py-2 text-xs font-bold text-white shadow-xs hover:bg-[#0066e6] transition-all cursor-pointer flex items-center gap-1.5"
+                  className="rounded-xl bg-[#1a80ff] px-3.5 py-2 text-sm sm:text-base font-bold text-white shadow-xs hover:bg-[#0066e6] transition-all cursor-pointer flex items-center gap-1.5"
                 >
                   <span>📄</span>
                   <span>Exportar PDF Oficial</span>
@@ -408,20 +408,20 @@ export function StudentDossierView({
                       quizAttempts,
                     )
                   }
-                  className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 px-3.5 py-2 text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all cursor-pointer flex items-center gap-1.5"
+                  className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 px-3.5 py-2 text-sm sm:text-base font-bold text-slate-800 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all cursor-pointer flex items-center gap-1.5"
                 >
                   <span>📊</span>
                   <span>CSV</span>
                 </button>
 
                 <div className="flex items-center gap-2 border-l border-slate-200 dark:border-slate-800 pl-3 ml-1">
-                  <label className="text-xs font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap hidden lg:inline">
+                  <label className="text-sm sm:text-base font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap hidden lg:inline">
                     Expediente:
                   </label>
                   <select
                     value={selectedStudent.id || selectedStudent.email}
                     onChange={(e) => setSelectedStudentId(e.target.value)}
-                    className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2 text-xs font-bold text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden cursor-pointer"
+                    className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-3 py-2 text-sm sm:text-base font-bold text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden cursor-pointer"
                   >
                     {studentList.map((s: any) => (
                       <option key={s.id || s.email} value={s.id || s.email}>
@@ -436,38 +436,38 @@ export function StudentDossierView({
             {/* Dossier Executive Metrics */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 p-4 space-y-1">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                   Tiempo Total de Estudio Registrado
                 </span>
                 <div className="text-2xl font-extrabold text-[#1a80ff]">
                   {Math.floor(studentMetrics.totalSeconds / 60)} min{" "}
                   {studentMetrics.totalSeconds % 60}s
                 </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                <p className="text-sm text-slate-500 dark:text-slate-400">
                   Acumulado en servidor
                 </p>
               </div>
 
               <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 p-4 space-y-1">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                   Lecciones Completadas
                 </span>
                 <div className="text-2xl font-extrabold text-slate-900 dark:text-white">
                   {studentMetrics.completedCount}
                 </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                <p className="text-sm text-slate-500 dark:text-slate-400">
                   Finalizadas por el alumno
                 </p>
               </div>
 
               <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 p-4 space-y-1">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                   Índice de Validación Anticheating
                 </span>
                 <div className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">
                   {studentMetrics.complianceRate}%
                 </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                <p className="text-sm text-slate-500 dark:text-slate-400">
                   {studentMetrics.compliantCount} de{" "}
                   {studentMetrics.completedCount} lecciones cumplen tiempo mín.
                 </p>
@@ -478,9 +478,9 @@ export function StudentDossierView({
           {/* Dossier Detail: Breakdown by Course */}
           <div className="space-y-6">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+              <h3 className="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
                 <span>Historial de Lecciones y Tiempos Servidor</span>
-                <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">
+                <span className="text-sm sm:text-base font-semibold text-slate-400 dark:text-slate-500">
                   ({studentProgressRecords.length} registros)
                 </span>
               </h3>
@@ -493,7 +493,7 @@ export function StudentDossierView({
                   El expediente de este alumno no tiene actividad registrada
                   aún.
                 </p>
-                <p className="text-xs text-slate-400 max-w-md mx-auto">
+                <p className="text-sm sm:text-base text-slate-400 max-w-md mx-auto">
                   Cuando el alumno ingrese a sus lecciones y cumpla el tiempo de
                   lectura, sus marcas atómicas de servidor aparecerán aquí
                   automáticamente.
@@ -502,8 +502,8 @@ export function StudentDossierView({
             ) : (
               <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs text-slate-700 dark:text-slate-300">
-                    <thead className="bg-slate-50 dark:bg-slate-800/60 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-200 dark:border-slate-800">
+                  <table className="w-full text-left text-sm sm:text-base text-slate-700 dark:text-slate-300">
+                    <thead className="bg-slate-50 dark:bg-slate-800/60 text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-200 dark:border-slate-800">
                       <tr>
                         <th className="px-6 py-4">Curso / Lección</th>
                         <th className="px-6 py-4">Marca de Inicio Servidor</th>
@@ -593,12 +593,12 @@ export function StudentDossierView({
                               <div className="font-bold text-slate-900 dark:text-white">
                                 {les?.title || item.lesson_id}
                               </div>
-                              <div className="text-[11px] text-[#1a80ff] font-semibold">
+                              <div className="text-sm text-[#1a80ff] font-semibold">
                                 {les?.courseTitle || "Modulo Formativo"}
                               </div>
                             </td>
 
-                            <td className="px-6 py-4 font-mono text-[11px] text-slate-600 dark:text-slate-400">
+                            <td className="px-6 py-4 font-mono text-sm text-slate-600 dark:text-slate-400">
                               {item.started_at
                                 ? new Date(item.started_at).toLocaleString(
                                     "es-ES",
@@ -606,7 +606,7 @@ export function StudentDossierView({
                                 : "—"}
                             </td>
 
-                            <td className="px-6 py-4 font-mono text-[11px] text-slate-600 dark:text-slate-400">
+                            <td className="px-6 py-4 font-mono text-sm text-slate-600 dark:text-slate-400">
                               {item.completed_at
                                 ? new Date(item.completed_at).toLocaleString(
                                     "es-ES",
@@ -618,27 +618,27 @@ export function StudentDossierView({
                               <div className="font-extrabold text-slate-900 dark:text-white">
                                 {isCompleted ? `${elapsed}s` : "En estudio..."}
                               </div>
-                              <div className="text-[10px] text-slate-400 dark:text-slate-500 font-semibold">
+                              <div className="text-xs sm:text-sm text-slate-400 dark:text-slate-500 font-semibold">
                                 Mín. exigido: {minSecs}s
                               </div>
                             </td>
 
                             <td className="px-6 py-4">
                               {evaluation.statusBadgeVariant === "success" ? (
-                                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-1 text-sm sm:text-base font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
                                   {evaluation.statusLabel}
                                 </span>
                               ) : evaluation.statusBadgeVariant === "error" ? (
-                                <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 dark:bg-rose-950/60 px-2.5 py-1 text-xs font-bold text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 dark:bg-rose-950/60 px-2.5 py-1 text-sm sm:text-base font-bold text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
                                   {evaluation.statusLabel}
                                 </span>
                               ) : evaluation.statusBadgeVariant ===
                                 "warning" ? (
-                                <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 dark:bg-amber-950/60 px-2.5 py-1 text-xs font-bold text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 dark:bg-amber-950/60 px-2.5 py-1 text-sm sm:text-base font-bold text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">
                                   {evaluation.statusLabel}
                                 </span>
                               ) : (
-                                <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-1 text-xs font-bold text-[#1a80ff]">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-1 text-sm sm:text-base font-bold text-[#1a80ff]">
                                   {evaluation.statusLabel}
                                 </span>
                               )}
@@ -657,13 +657,13 @@ export function StudentDossierView({
           <div className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
               <div>
-                <h3 className="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+                <h3 className="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
                   <span>📝 Registro de Exámenes Presenciales en Papel</span>
-                  <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">
+                  <span className="text-sm sm:text-base font-semibold text-slate-400 dark:text-slate-500">
                     ({studentInPersonExams.length} convocatorias)
                   </span>
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-0.5">
                   Pruebas físicas oficiales custodiadas para garantizar que no copian. Corte mínimo reglamentario: 75%.
                 </p>
               </div>
@@ -674,7 +674,7 @@ export function StudentDossierView({
                   setSelectedExamToEdit(null);
                   setIsExamModalOpen(true);
                 }}
-                className="inline-flex items-center gap-2 rounded-xl bg-amber-600 hover:bg-amber-700 px-4 py-2 text-xs font-bold text-white shadow-xs transition-colors cursor-pointer self-start sm:self-auto"
+                className="inline-flex items-center gap-2 rounded-xl bg-amber-600 hover:bg-amber-700 px-4 py-2 text-sm sm:text-base font-bold text-white shadow-xs transition-colors cursor-pointer self-start sm:self-auto"
               >
                 <span>➕</span>
                 <span>Registrar Examen Presencial</span>
@@ -684,18 +684,18 @@ export function StudentDossierView({
             {studentInPersonExams.length === 0 ? (
               <div className="rounded-3xl border border-dashed border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center text-slate-500 dark:text-slate-400 space-y-2">
                 <div className="text-2xl">📋</div>
-                <p className="font-bold text-slate-700 dark:text-slate-300 text-sm">
+                <p className="font-bold text-slate-700 dark:text-slate-300 text-base">
                   Sin exámenes presenciales registrados en papel.
                 </p>
-                <p className="text-xs text-slate-400 max-w-lg mx-auto">
+                <p className="text-sm sm:text-base text-slate-400 max-w-lg mx-auto">
                   Utiliza el botón superior para registrar la fecha, aula, examinador, nota (&ge; 75%) y adjuntar la hoja de respuestas firmada por el alumno para custodia documental ante AESA.
                 </p>
               </div>
             ) : (
               <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm overflow-hidden">
                 <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs text-slate-700 dark:text-slate-300">
-                    <thead className="bg-slate-50 dark:bg-slate-800/60 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-200 dark:border-slate-800">
+                  <table className="w-full text-left text-sm sm:text-base text-slate-700 dark:text-slate-300">
+                    <thead className="bg-slate-50 dark:bg-slate-800/60 text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-200 dark:border-slate-800">
                       <tr>
                         <th className="px-6 py-4">Fecha & Aula</th>
                         <th className="px-6 py-4">Programa / Curso</th>
@@ -724,7 +724,7 @@ export function StudentDossierView({
                                   year: "numeric",
                                 })}
                               </div>
-                              <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                              <div className="text-sm text-slate-500 dark:text-slate-400">
                                 📍 {exam.classroom || "Aula Principal"}
                               </div>
                             </td>
@@ -740,25 +740,25 @@ export function StudentDossierView({
                                 👨‍✈️ {exam.examiner_name}
                               </div>
                               {exam.notes && (
-                                <div className="text-[10px] text-slate-400 italic max-w-xs truncate" title={exam.notes}>
+                                <div className="text-xs sm:text-sm text-slate-400 italic max-w-xs truncate" title={exam.notes}>
                                   &ldquo;{exam.notes}&rdquo;
                                 </div>
                               )}
                             </td>
 
                             <td className="px-6 py-4">
-                              <span className="text-sm font-extrabold text-slate-900 dark:text-white">
+                              <span className="text-base font-extrabold text-slate-900 dark:text-white">
                                 {exam.score_percentage}%
                               </span>
                             </td>
 
                             <td className="px-6 py-4">
                               {isPassed ? (
-                                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-1 text-sm sm:text-base font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
                                   ✓ APTO (&ge; 75%)
                                 </span>
                               ) : (
-                                <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 dark:bg-rose-950/60 px-2.5 py-1 text-xs font-bold text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 dark:bg-rose-950/60 px-2.5 py-1 text-sm sm:text-base font-bold text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800">
                                   ⚠️ NO APTO (&lt; 75%)
                                 </span>
                               )}
@@ -770,13 +770,13 @@ export function StudentDossierView({
                                   href={exam.document_url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] px-2.5 py-1 text-xs font-bold hover:underline"
+                                  className="inline-flex items-center gap-1 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] px-2.5 py-1 text-sm sm:text-base font-bold hover:underline"
                                 >
                                   <span>📎</span>
                                   <span>Ver Documento</span>
                                 </a>
                               ) : (
-                                <span className="text-slate-400 text-xs italic">
+                                <span className="text-slate-400 text-sm sm:text-base italic">
                                   Sin adjunto
                                 </span>
                               )}
@@ -790,7 +790,7 @@ export function StudentDossierView({
                                     setSelectedExamToEdit(exam);
                                     setIsExamModalOpen(true);
                                   }}
-                                  className="rounded-lg border border-slate-200 dark:border-slate-700 px-2.5 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                                  className="rounded-lg border border-slate-200 dark:border-slate-700 px-2.5 py-1 text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                                 >
                                   Editar
                                 </button>
@@ -798,7 +798,7 @@ export function StudentDossierView({
                                   type="button"
                                   onClick={() => handleDeleteExam(exam.id)}
                                   disabled={deletingExamId === exam.id}
-                                  className="rounded-lg border border-rose-200 dark:border-rose-800 px-2.5 py-1 text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors disabled:opacity-50"
+                                  className="rounded-lg border border-rose-200 dark:border-rose-800 px-2.5 py-1 text-sm sm:text-base font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors disabled:opacity-50"
                                 >
                                   {deletingExamId === exam.id ? "..." : "Eliminar"}
                                 </button>
@@ -817,10 +817,10 @@ export function StudentDossierView({
           {/* Section: Official Certificate and Diplomas (AESA / ATO) */}
           <div className="space-y-4">
             <div className="border-b border-slate-200 dark:border-slate-800 pb-3">
-              <h3 className="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+              <h3 className="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
                 <span>🎓 Diplomas y Certificados Oficiales de Aprovechamiento</span>
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-0.5">
                 Emisión oficial Blue Team Flight School (ATO EASA). Requiere 100% de lecciones con tiempo mínimo cumplido y examen oficial aprobado (&ge; 75%).
               </p>
             </div>
@@ -842,30 +842,30 @@ export function StudentDossierView({
                   >
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 text-[10px] font-bold text-[#1a80ff]">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 text-xs sm:text-sm font-bold text-[#1a80ff]">
                           {course.slug || "ATO-COURSE"}
                         </span>
-                        <h4 className="text-base font-extrabold text-slate-900 dark:text-white mt-1">
+                        <h4 className="text-lg font-extrabold text-slate-900 dark:text-white mt-1">
                           {course.title}
                         </h4>
-                        <p className="text-xs text-slate-500 dark:text-slate-400">
+                        <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">
                           Horas Lectivas Oficiales: <strong>{course.theory_hours || 25} h</strong>
                         </p>
                       </div>
 
                       {isEligible ? (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 dark:bg-emerald-900/60 px-3 py-1 text-xs font-extrabold text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 dark:bg-emerald-900/60 px-3 py-1 text-sm sm:text-base font-extrabold text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700">
                           ✓ APTO DIPLOMA
                         </span>
                       ) : (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-xs font-bold text-slate-600 dark:text-slate-400">
+                        <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-sm sm:text-base font-bold text-slate-600 dark:text-slate-400">
                           En Progreso
                         </span>
                       )}
                     </div>
 
                     {/* Requirements checklist */}
-                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/60 p-3 space-y-2 text-xs">
+                    <div className="rounded-2xl bg-slate-50 dark:bg-slate-800/60 p-3 space-y-2 text-sm sm:text-base">
                       <div className="flex items-center justify-between">
                         <span className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300">
                           {stats.isAllLessonsRead ? "✅" : "⏳"} 100% Lecciones leídas y tiempo mínimo:
@@ -919,13 +919,13 @@ export function StudentDossierView({
                               issueDate: new Date().toISOString(),
                             });
                           }}
-                          className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#0a224a] to-[#1a80ff] hover:opacity-95 text-white py-2.5 text-xs font-extrabold shadow-md transition-all cursor-pointer"
+                          className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#0a224a] to-[#1a80ff] hover:opacity-95 text-white py-2.5 text-sm sm:text-base font-extrabold shadow-md transition-all cursor-pointer"
                         >
                           <span>🎓</span>
                           <span>Emitir / Descargar Diploma Oficial (PDF)</span>
                         </button>
                       ) : (
-                        <div className="text-[11px] text-slate-400 text-center italic py-1">
+                        <div className="text-sm text-slate-400 text-center italic py-1">
                           {eligibility.reasons.join(" • ")}
                         </div>
                       )}
@@ -954,20 +954,20 @@ export function StudentDossierView({
                 placeholder="🔍 Buscar por nombre o correo de alumno..."
                 value={dossierSearchQuery}
                 onChange={(e) => setDossierSearchQuery(e.target.value)}
-                className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:border-[#1a80ff] focus:outline-hidden"
+                className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm sm:text-base text-slate-900 dark:text-white placeholder-slate-400 focus:border-[#1a80ff] focus:outline-hidden"
               />
               {dossierSearchQuery && (
                 <button
                   type="button"
                   onClick={() => setDossierSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-slate-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-sm sm:text-base font-bold text-slate-400 hover:text-slate-600"
                 >
                   ✕
                 </button>
               )}
             </div>
 
-            <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+            <div className="text-sm sm:text-base font-semibold text-slate-500 dark:text-slate-400">
               Mostrando {filteredStudents.length} expedientes de alumnos
             </div>
           </div>
@@ -1012,31 +1012,31 @@ export function StudentDossierView({
                       {/* Header Avatar & Role */}
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex items-center gap-3">
-                          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] font-extrabold text-lg border border-blue-100 dark:border-blue-900 group-hover:bg-[#1a80ff] group-hover:text-white transition-colors">
+                          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] font-extrabold text-xl border border-blue-100 dark:border-blue-900 group-hover:bg-[#1a80ff] group-hover:text-white transition-colors">
                             {(st.full_name || st.email)[0].toUpperCase()}
                           </div>
                           <div className="leading-snug">
-                            <h4 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors">
+                            <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors">
                               {st.full_name || "Piloto Alumno"}
                             </h4>
-                            <p className="text-[11px] text-slate-400 dark:text-slate-500 font-mono truncate max-w-[180px]">
+                            <p className="text-sm text-slate-400 dark:text-slate-500 font-mono truncate max-w-[180px]">
                               {st.email}
                             </p>
-                            <p className="text-[10px] text-slate-500 dark:text-slate-400 font-mono mt-0.5">
+                            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-mono mt-0.5">
                               DNI: <span className="font-bold text-slate-700 dark:text-slate-300">{st.dni_nie || "—"}</span>
                             </p>
                           </div>
                         </div>
 
-                        <span className="shrink-0 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 text-[10px] font-extrabold text-[#1a80ff]">
+                        <span className="shrink-0 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 text-xs sm:text-sm font-extrabold text-[#1a80ff]">
                           Alumno
                         </span>
                       </div>
 
                       {/* Mini Metrics */}
-                      <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs">
+                      <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-sm sm:text-base">
                         <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-2.5 space-y-0.5">
-                          <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 block">
+                          <span className="text-xs sm:text-sm font-bold text-slate-400 dark:text-slate-500 block">
                             Tiempo Estudio
                           </span>
                           <span className="font-extrabold text-slate-900 dark:text-white">
@@ -1045,7 +1045,7 @@ export function StudentDossierView({
                         </div>
 
                         <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-2.5 space-y-0.5">
-                          <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 block">
+                          <span className="text-xs sm:text-sm font-bold text-slate-400 dark:text-slate-500 block">
                             Lecciones
                           </span>
                           <span className="font-extrabold text-emerald-600 dark:text-emerald-400">
@@ -1069,7 +1069,7 @@ export function StudentDossierView({
                               quizAttempts,
                             )
                           }
-                          className="flex items-center justify-center gap-1 rounded-xl bg-[#1a80ff] text-white py-2 text-xs font-bold hover:bg-[#0066e6] transition-colors cursor-pointer shadow-xs"
+                          className="flex items-center justify-center gap-1 rounded-xl bg-[#1a80ff] text-white py-2 text-sm sm:text-base font-bold hover:bg-[#0066e6] transition-colors cursor-pointer shadow-xs"
                           title="Descargar Expediente Oficial en PDF"
                         >
                           <span>📄</span>
@@ -1087,7 +1087,7 @@ export function StudentDossierView({
                               quizAttempts,
                             )
                           }
-                          className="flex items-center justify-center gap-1 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 py-2 text-xs font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
+                          className="flex items-center justify-center gap-1 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 py-2 text-sm sm:text-base font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
                           title="Descargar Excel / CSV"
                         >
                           <span>📊</span>
@@ -1100,7 +1100,7 @@ export function StudentDossierView({
                         onClick={() =>
                           setSelectedStudentId(st.id || st.email || null)
                         }
-                        className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2 text-xs font-bold group-hover:bg-[#1a80ff] transition-colors cursor-pointer"
+                        className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2 text-sm sm:text-base font-bold group-hover:bg-[#1a80ff] transition-colors cursor-pointer"
                       >
                         <span>Ver Expediente Completo</span>
                         <span>&rarr;</span>

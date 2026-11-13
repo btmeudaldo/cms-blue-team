@@ -79,7 +79,7 @@ export default async function QuizzesListPage() {
             <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed">
               {isAdmin
                 ? "Directorio general de evaluaciones estructuradas y agrupadas por programa académico."
-                : "Exámenes organizados por cada uno de tus cursos asignados (nota mínima aprobatoria 80%)."}
+                : "Exámenes organizados por cada uno de tus cursos asignados (nota mínima aprobatoria 75%)."}
             </p>
           </div>
         </div>
