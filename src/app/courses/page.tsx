@@ -176,47 +176,47 @@ export default async function CoursesPage() {
                     )}
 
                     <div className="flex items-center justify-between gap-1 flex-wrap">
-                      <span className="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 text-xs font-bold text-[#1a80ff]">
+                      <span className="inline-flex items-center rounded-full bg-blue-50 dark:bg-blue-950/60 px-3 py-0.5 text-sm font-bold text-[#1a80ff]">
                         {totalLessons}{" "}
                         {totalLessons === 1 ? "Lección" : "Lecciones"}
                       </span>
 
                       {isAdmin ? (
-                        <span className="inline-flex items-center gap-1 text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 rounded-full border border-slate-200 dark:border-slate-700">
+                        <span className="inline-flex items-center gap-1 text-sm font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-3 py-0.5 rounded-full border border-slate-200 dark:border-slate-700">
                           👥 {enrolledStudents}{" "}
                           {enrolledStudents === 1 ? "alumno" : "alumnos"}
                         </span>
                       ) : isFullyCompleted ? (
-                        <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
+                        <span className="inline-flex items-center gap-1 text-sm font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800">
                           ✓ Avance completado
                         </span>
                       ) : hasPendingQuizzes ? (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-full border border-amber-200 dark:border-amber-800">
+                        <span className="inline-flex items-center gap-1 text-sm font-extrabold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-0.5 rounded-full border border-amber-200 dark:border-amber-800">
                           📝 Exámenes Pendientes ({progressPercentage}%)
                         </span>
                       ) : progressPercentage > 0 ? (
-                        <span className="text-xs font-bold text-[#1a80ff]">
+                        <span className="text-sm font-bold text-[#1a80ff]">
                           {progressPercentage}% de avance
                         </span>
                       ) : (
-                        <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">
+                        <span className="text-sm font-semibold text-slate-400 dark:text-slate-500">
                           Sin iniciar
                         </span>
                       )}
                     </div>
 
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors leading-snug">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors leading-snug">
                       {course.title}
                     </h3>
 
-                    <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
                       {course.description || "Sin descripción disponible."}
                     </p>
 
                     {/* Progress Bar (Student) vs Management Summary (Admin/Instructor) */}
                     {isAdmin ? (
                       <div className="pt-2">
-                        <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-2.5 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-800">
+                        <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-3 flex items-center justify-between text-sm sm:text-base text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-800">
                           <span>{totalQuizzes} exámenes teóricos</span>
                           <span className="font-bold text-[#1a80ff]">
                             Supervisión Docente
@@ -224,7 +224,7 @@ export default async function CoursesPage() {
                         </div>
                       </div>
                     ) : (
-                      <div className="pt-2 space-y-1">
+                      <div className="pt-2 space-y-1.5">
                         <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                           <div
                             className={`h-full transition-all duration-500 rounded-full ${
@@ -237,7 +237,7 @@ export default async function CoursesPage() {
                             style={{ width: `${progressPercentage}%` }}
                           ></div>
                         </div>
-                        <div className="flex justify-between text-[11px] font-medium text-slate-400 dark:text-slate-500">
+                        <div className="flex justify-between text-sm font-medium text-slate-400 dark:text-slate-500">
                           <span>
                             {completedLessonsCount}/{totalLessons} lecciones
                             &middot; {passedQuizzesCount}/{totalQuizzes}{" "}
@@ -245,7 +245,7 @@ export default async function CoursesPage() {
                           </span>
                           <span>{progressPercentage}%</span>
                         </div>
-                        <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                        <p className="text-sm text-slate-500 dark:text-slate-400">
                           {`Lecturas verificadas: ${summary.readLessonsCount}/${totalLessons}`}
                         </p>
                       </div>
@@ -255,7 +255,7 @@ export default async function CoursesPage() {
                   <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
                     <Link
                       href={`/courses/${course.slug || course.id}`}
-                      className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2.5 text-xs font-bold shadow-xs group-hover:bg-[#1a80ff] transition-colors"
+                      className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2.5 text-sm sm:text-base font-bold shadow-xs group-hover:bg-[#1a80ff] transition-colors"
                     >
                       <span>
                         {isAdmin

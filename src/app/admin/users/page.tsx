@@ -53,7 +53,7 @@ export default async function AdminUsersPage() {
         {/* Navigation & Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
           <div>
-            <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">
+            <div className="flex items-center gap-2 text-sm sm:text-base font-semibold text-slate-500 dark:text-slate-400 mb-1">
               <Link
                 href="/admin"
                 className="hover:text-[#1a80ff] transition-colors"
@@ -72,7 +72,7 @@ export default async function AdminUsersPage() {
 
           <Link
             href="/admin"
-            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-2 text-sm sm:text-base font-bold text-slate-700 dark:text-slate-300 shadow-xs hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
           >
             &larr; Volver al Panel Admin
           </Link>
@@ -83,20 +83,20 @@ export default async function AdminUsersPage() {
           {isFullAdmin ? (
             <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm space-y-6">
               <div className="border-b border-slate-100 dark:border-slate-800 pb-4">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 text-[10px] font-extrabold mb-1">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 text-xs sm:text-sm font-extrabold mb-1">
                   Exclusivo Director / Administrador
                 </div>
-                <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white">
                   Registrar Nuevo Usuario
                 </h2>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-0.5">
                   Crea pilotos alumnos o instructores de vuelo.
                 </p>
               </div>
 
               <form action={createNewUserAction} className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     Nombre Completo
                   </label>
                   <input
@@ -104,12 +104,12 @@ export default async function AdminUsersPage() {
                     type="text"
                     placeholder="Ej. Capitán Mateo Rivas"
                     required
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden transition-all"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-base text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     Correo Electrónico
                   </label>
                   <input
@@ -117,14 +117,14 @@ export default async function AdminUsersPage() {
                     type="email"
                     placeholder="mateo@blueteam.com"
                     required
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden transition-all"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-base text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     DNI / NIE / Pasaporte{" "}
-                    <span className="text-[10px] text-slate-400 font-normal">
+                    <span className="text-xs sm:text-sm text-slate-400 font-normal">
                       (Exigido por AESA)
                     </span>
                   </label>
@@ -132,12 +132,12 @@ export default async function AdminUsersPage() {
                     name="dniNie"
                     type="text"
                     placeholder="Ej. 12345678Z"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden transition-all"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-base text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     Contraseña Inicial
                   </label>
                   <input
@@ -146,17 +146,17 @@ export default async function AdminUsersPage() {
                     defaultValue="blueteam"
                     placeholder="••••••••"
                     required
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden transition-all"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-base text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                  <label className="block text-sm sm:text-base font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     Rol Inicial
                   </label>
                   <select
                     name="role"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-sm text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden transition-all"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2.5 text-base text-slate-900 dark:text-white focus:border-[#1a80ff] focus:outline-hidden transition-all"
                   >
                     <option value="student">Piloto Alumno</option>
                     <option value="instructor">Instructor de Vuelo</option>
@@ -166,7 +166,7 @@ export default async function AdminUsersPage() {
 
                 <button
                   type="submit"
-                  className="w-full rounded-xl bg-[#1a80ff] py-3 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all cursor-pointer"
+                  className="w-full rounded-xl bg-[#1a80ff] py-3 text-sm sm:text-base font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all cursor-pointer"
                 >
                   + Registrar Usuario
                 </button>
@@ -174,10 +174,10 @@ export default async function AdminUsersPage() {
             </div>
           ) : (
             <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm space-y-3">
-              <div className="flex items-center gap-2 text-xs font-bold text-[#1a80ff]">
+              <div className="flex items-center gap-2 text-sm sm:text-base font-bold text-[#1a80ff]">
                 <span>👨‍✈️</span> Modo Instructor de Vuelo
               </div>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 leading-relaxed">
                 Como <strong>Instructor de Vuelo</strong> puedes matricular y
                 asignar a los alumnos los cursos que has creado o tienes
                 asignados. La creación de usuarios y cambio de roles de sistema

@@ -63,11 +63,11 @@ export function AdminUsersTable({
       <div className="border-b border-slate-100 dark:border-slate-800 p-6 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white">
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white">
               Gestión de Usuarios y Matrículas ({filteredUsers.length} de{" "}
               {manageableProfiles.length})
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-0.5">
               {isFullAdmin
                 ? "Modifica permisos de roles y gestiona las matrículas aeronáuticas de cada alumno."
                 : "Asigna o revoca matrículas en los módulos de aviación."}
@@ -79,7 +79,7 @@ export function AdminUsersTable({
         <div className="flex flex-col sm:flex-row items-center gap-3">
           {/* Real-time Instant Search Box */}
           <div className="relative flex-1 w-full">
-            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">
+            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-base">
               🔍
             </span>
             <input
@@ -87,13 +87,13 @@ export function AdminUsersTable({
               placeholder="Buscar por nombre de alumno o correo electrónico..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 pl-10 pr-4 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:border-[#1a80ff] focus:outline-hidden"
+              className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 pl-10 pr-4 py-2 text-sm sm:text-base text-slate-900 dark:text-white placeholder-slate-400 focus:border-[#1a80ff] focus:outline-hidden"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-xs font-bold p-1 cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm sm:text-base font-bold p-1 cursor-pointer"
               >
                 ✕
               </button>
@@ -105,7 +105,7 @@ export function AdminUsersTable({
             <select
               value={roleFilter}
               onChange={(e) => setRoleFilter(e.target.value)}
-              className="w-full sm:w-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2 text-xs font-semibold text-slate-900 dark:text-white focus:border-[#1a80ff] cursor-pointer"
+              className="w-full sm:w-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3.5 py-2 text-sm sm:text-base font-semibold text-slate-900 dark:text-white focus:border-[#1a80ff] cursor-pointer"
             >
               <option value="all">👥 Todos los Roles</option>
               <option value="student">🎓 Piloto Alumno</option>
@@ -118,19 +118,19 @@ export function AdminUsersTable({
 
       {/* Users Table */}
       {filteredUsers.length === 0 ? (
-        <div className="p-12 text-center text-sm text-slate-500 dark:text-slate-400 space-y-2">
+        <div className="p-12 text-center text-base text-slate-500 dark:text-slate-400 space-y-2">
           <div className="text-3xl">🔍</div>
           <p className="font-bold text-slate-700 dark:text-slate-300">
             No se encontraron usuarios o alumnos que coincidan con la búsqueda
           </p>
-          <p className="text-xs text-slate-400">
+          <p className="text-sm sm:text-base text-slate-400">
             Comprueba el nombre o correo ingresado en el buscador.
           </p>
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-700 dark:text-slate-300">
-            <thead className="bg-slate-50 dark:bg-slate-800/60 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-200 dark:border-slate-800">
+          <table className="w-full text-left text-sm sm:text-base text-slate-700 dark:text-slate-300">
+            <thead className="bg-slate-50 dark:bg-slate-800/60 text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-200 dark:border-slate-800">
               <tr>
                 <th className="px-6 py-4">Usuario / Alumno</th>
                 <th className="px-6 py-4">Rol en Escuela</th>
@@ -149,14 +149,14 @@ export function AdminUsersTable({
                     className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors"
                   >
                     <td className="px-6 py-4">
-                      <div className="font-bold text-slate-900 dark:text-white text-sm">
+                      <div className="font-bold text-slate-900 dark:text-white text-base">
                         {u.full_name || u.email?.split("@")[0]}
                       </div>
-                      <div className="text-slate-400 dark:text-slate-500 font-mono text-[11px]">
+                      <div className="text-slate-400 dark:text-slate-500 font-mono text-sm">
                         {u.email}
                       </div>
                       {u.dni_nie && (
-                        <div className="mt-0.5 inline-flex items-center gap-1 rounded-md bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 font-mono text-[10px] text-slate-600 dark:text-slate-300">
+                        <div className="mt-0.5 inline-flex items-center gap-1 rounded-md bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 font-mono text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                           <span className="font-bold text-slate-400">DNI:</span> {u.dni_nie}
                         </div>
                       )}
@@ -176,7 +176,7 @@ export function AdminUsersTable({
                           <select
                             name="role"
                             defaultValue={u.role || "student"}
-                            className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3 py-1.5 text-xs font-semibold text-slate-800 dark:text-slate-200 focus:border-[#1a80ff] cursor-pointer"
+                            className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-3 py-1.5 text-sm sm:text-base font-semibold text-slate-800 dark:text-slate-200 focus:border-[#1a80ff] cursor-pointer"
                           >
                             <option value="student">Piloto Alumno</option>
                             <option value="instructor">
@@ -186,14 +186,14 @@ export function AdminUsersTable({
                           </select>
                           <button
                             type="submit"
-                            className="rounded-lg bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 text-[11px] font-bold text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-950 hover:text-[#1a80ff] transition-colors cursor-pointer"
+                            className="rounded-lg bg-slate-100 dark:bg-slate-800 px-2.5 py-1.5 text-sm font-bold text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-950 hover:text-[#1a80ff] transition-colors cursor-pointer"
                           >
                             Guardar
                           </button>
                         </form>
                       ) : (
                         <span
-                          className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${
+                          className={`inline-flex items-center px-3 py-1 rounded-full text-sm sm:text-base font-bold ${
                             u.role === "superadmin"
                               ? "bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800"
                               : u.role === "admin"

@@ -116,7 +116,7 @@ export function StudentEnrollmentManager({
             setSaveError(null);
             setIsOpen(true);
           }}
-          className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all cursor-pointer border ${
+          className={`inline-flex items-center gap-2 rounded-xl px-3.5 py-1.5 text-sm sm:text-base font-bold transition-all cursor-pointer border ${
             enrolledCount > 0
               ? "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] border-blue-200 dark:border-blue-800 hover:bg-[#1a80ff] hover:text-white"
               : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-blue-300 hover:text-[#1a80ff]"
@@ -128,7 +128,7 @@ export function StudentEnrollmentManager({
               ? "Sin Matrículas"
               : `${enrolledCount} ${enrolledCount === 1 ? "Curso Matriculado" : "Cursos Matriculados"}`}
           </span>
-          <span className="text-[10px] opacity-60">▼ Modificar</span>
+          <span className="text-xs sm:text-sm opacity-60">▼ Modificar</span>
         </button>
       </div>
 
@@ -146,11 +146,11 @@ export function StudentEnrollmentManager({
               <div>
                 <h3
                   id={`enrollment-title-${userId}`}
-                  className="text-base font-extrabold text-slate-900 dark:text-white flex items-center gap-2"
+                  className="text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2"
                 >
                   <span>🎓</span> Gestión de Matrículas Aeronáuticas
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-0.5">
                   Estudiante:{" "}
                   <strong className="text-slate-800 dark:text-slate-200">
                     {userName}
@@ -164,7 +164,7 @@ export function StudentEnrollmentManager({
                 onClick={closeEditor}
                 aria-label="Cerrar matrículas"
                 disabled={isPending}
-                className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-bold cursor-pointer"
+                className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 text-base font-bold cursor-pointer"
               >
                 ✕
               </button>
@@ -177,13 +177,13 @@ export function StudentEnrollmentManager({
                 placeholder="🔍 Buscar curso por nombre, código o temática..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:border-[#1a80ff] focus:bg-white dark:focus:bg-slate-900 focus:outline-hidden transition-all"
+                className="w-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 px-4 py-2.5 text-sm sm:text-base text-slate-900 dark:text-white placeholder-slate-400 focus:border-[#1a80ff] focus:bg-white dark:focus:bg-slate-900 focus:outline-hidden transition-all"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-2.5 text-xs font-bold text-slate-400 hover:text-slate-600"
+                  className="absolute right-3 top-2.5 text-sm sm:text-base font-bold text-slate-400 hover:text-slate-600"
                 >
                   Limpiar
                 </button>
@@ -191,7 +191,7 @@ export function StudentEnrollmentManager({
             </div>
 
             {/* Filter Tabs & Quick Action Buttons */}
-            <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bold border-b border-slate-100 dark:border-slate-800 pb-3">
+            <div className="flex flex-wrap items-center justify-between gap-2 text-sm sm:text-base font-bold border-b border-slate-100 dark:border-slate-800 pb-3">
               <div className="flex gap-1 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl">
                 <button
                   type="button"
@@ -233,7 +233,7 @@ export function StudentEnrollmentManager({
                 <button
                   type="button"
                   onClick={handleSelectAll}
-                  className="text-[11px] text-[#1a80ff] hover:underline"
+                  className="text-sm text-[#1a80ff] hover:underline"
                 >
                   Marcar Todos
                 </button>
@@ -243,7 +243,7 @@ export function StudentEnrollmentManager({
                 <button
                   type="button"
                   onClick={handleDeselectAll}
-                  className="text-[11px] text-slate-500 dark:text-slate-400 hover:underline"
+                  className="text-sm text-slate-500 dark:text-slate-400 hover:underline"
                 >
                   Desmarcar Todos
                 </button>
@@ -253,7 +253,7 @@ export function StudentEnrollmentManager({
             {/* Scrollable Course Selection List (Handles 100+ Courses efficiently) */}
             <div className="max-h-64 overflow-y-auto space-y-2 pr-1 custom-scrollbar">
               {filteredCourses.length === 0 ? (
-                <div className="py-8 text-center text-xs text-slate-400">
+                <div className="py-8 text-center text-sm sm:text-base text-slate-400">
                   No se encontraron cursos que coincidan con &quot;{searchQuery}
                   &quot;.
                 </div>
@@ -280,10 +280,10 @@ export function StudentEnrollmentManager({
                           className="h-4 w-4 rounded-md border-slate-300 dark:border-slate-700 text-[#1a80ff] focus:ring-[#1a80ff]"
                         />
                         <div>
-                          <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                          <div className="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
                             <span>{course.title}</span>
                           </div>
-                          <div className="text-[10px] text-slate-400 dark:text-slate-500 font-mono mt-0.5">
+                          <div className="text-xs sm:text-sm text-slate-400 dark:text-slate-500 font-mono mt-0.5">
                             /{course.slug} &middot; {lessonCount}{" "}
                             {lessonCount === 1 ? "lección" : "lecciones"}
                           </div>
@@ -291,7 +291,7 @@ export function StudentEnrollmentManager({
                       </div>
 
                       <span
-                        className={`text-[10px] font-extrabold px-2.5 py-1 rounded-full border ${
+                        className={`text-xs sm:text-sm font-extrabold px-2.5 py-1 rounded-full border ${
                           isChecked
                             ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800"
                             : "bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-transparent"
@@ -306,19 +306,19 @@ export function StudentEnrollmentManager({
             </div>
 
             {/* Footer Action Bar */}
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400">
               Solo se muestran y modifican los cursos que puedes gestionar.
             </p>
             {saveError && (
               <p
                 role="alert"
-                className="text-xs text-red-600 dark:text-red-400"
+                className="text-sm sm:text-base text-red-600 dark:text-red-400"
               >
                 {saveError}
               </p>
             )}
             <div className="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 pt-4">
-              <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span className="text-sm sm:text-base font-semibold text-slate-500 dark:text-slate-400">
                 Total a guardar:{" "}
                 <strong className="text-[#1a80ff]">
                   {validSelectedCourseIds.length} cursos
@@ -330,7 +330,7 @@ export function StudentEnrollmentManager({
                   type="button"
                   onClick={closeEditor}
                   disabled={isPending}
-                  className="rounded-xl border border-slate-200 dark:border-slate-800 px-4 py-2 text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                  className="rounded-xl border border-slate-200 dark:border-slate-800 px-4 py-2 text-sm sm:text-base font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                 >
                   Cancelar
                 </button>
@@ -338,7 +338,7 @@ export function StudentEnrollmentManager({
                   type="button"
                   onClick={handleSaveChanges}
                   disabled={isPending || courses.length === 0}
-                  className="rounded-xl bg-[#1a80ff] px-5 py-2 text-xs font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all disabled:opacity-50 cursor-pointer"
+                  className="rounded-xl bg-[#1a80ff] px-5 py-2 text-sm sm:text-base font-bold text-white shadow-md shadow-blue-500/20 hover:bg-[#0066e6] transition-all disabled:opacity-50 cursor-pointer"
                 >
                   {isPending ? "Guardando..." : "Guardar Matrículas"}
                 </button>

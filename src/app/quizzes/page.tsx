@@ -69,14 +69,14 @@ export default async function QuizzesListPage() {
         {/* Title Hero */}
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#0a224a] via-[#1a80ff] to-[#0066e6] p-8 md:p-10 text-white shadow-xl">
           <div className="relative z-10 max-w-2xl space-y-3">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-3 py-1 text-xs font-semibold tracking-wide text-blue-100">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-3 py-1 text-sm sm:text-base font-semibold tracking-wide text-blue-100">
               <span className="h-2 w-2 rounded-full bg-[#1a80ff] animate-pulse"></span>
               Módulo de Evaluación Teórica Aeronáutica
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
               Evaluaciones por Curso
             </h1>
-            <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed">
+            <p className="text-base sm:text-lg text-blue-100/90 leading-relaxed">
               {isAdmin
                 ? "Directorio general de evaluaciones estructuradas y agrupadas por programa académico."
                 : "Exámenes organizados por cada uno de tus cursos asignados (nota mínima aprobatoria 75%)."}
@@ -92,13 +92,13 @@ export default async function QuizzesListPage() {
                 ? `Cursos en el Sistema (${coursesWithQuizzes.length})`
                 : `Mis Cursos con Evaluación (${coursesWithQuizzes.length})`}
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-0.5">
               Total de {totalVisibleQuizzes} exámenes teóricos distribuidos por módulo
             </p>
           </div>
           <Link
             href="/courses"
-            className="text-xs font-bold text-[#1a80ff] hover:underline inline-flex items-center gap-1"
+            className="text-sm sm:text-base font-bold text-[#1a80ff] hover:underline inline-flex items-center gap-1"
           >
             &larr; Volver a Mis Cursos
           </Link>
@@ -111,7 +111,7 @@ export default async function QuizzesListPage() {
             <p className="font-bold text-slate-700 dark:text-slate-300">
               No tienes cursos con evaluaciones asignadas actualmente.
             </p>
-            <p className="text-xs text-slate-400 max-w-md mx-auto">
+            <p className="text-sm sm:text-base text-slate-400 max-w-md mx-auto">
               Cuando te matricules en cursos con módulos evaluables, aparecerán organizados aquí.
             </p>
           </div>
@@ -135,15 +135,15 @@ export default async function QuizzesListPage() {
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#1a80ff]">
+                          <span className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-[#1a80ff]">
                             Curso Oficial
                           </span>
                           {isCourseFinished ? (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-[10px] font-extrabold text-emerald-600 dark:text-emerald-400">
+                            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-xs sm:text-sm font-extrabold text-emerald-600 dark:text-emerald-400">
                               ✓ 100% Exámenes Aprobados
                             </span>
                           ) : (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 text-[10px] font-extrabold text-[#1a80ff]">
+                            <span className="inline-flex items-center gap-1 rounded-full bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 text-xs sm:text-sm font-extrabold text-[#1a80ff]">
                               {course.passedCount} de {course.totalQuizzes} aprobados
                             </span>
                           )}
@@ -152,7 +152,7 @@ export default async function QuizzesListPage() {
                           {course.title}
                         </h3>
                         {course.description && (
-                          <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
+                          <p className="text-sm sm:text-base text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
                             {course.description}
                           </p>
                         )}
@@ -161,7 +161,7 @@ export default async function QuizzesListPage() {
 
                     <Link
                       href={`/courses/${course.slug || course.id}`}
-                      className="text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-[#1a80ff] transition-colors shrink-0"
+                      className="text-sm sm:text-base font-bold text-slate-600 dark:text-slate-400 hover:text-[#1a80ff] transition-colors shrink-0"
                     >
                       Ir al Curso &rarr;
                     </Link>
@@ -169,7 +169,7 @@ export default async function QuizzesListPage() {
 
                   {/* Quizzes in Course Grid */}
                   {course.quizzes.length === 0 ? (
-                    <div className="py-6 text-center text-xs text-slate-400">
+                    <div className="py-6 text-center text-sm sm:text-base text-slate-400">
                       Este curso aún no tiene exámenes configurados.
                     </div>
                   ) : (
@@ -186,32 +186,32 @@ export default async function QuizzesListPage() {
                           >
                             <div className="space-y-2.5">
                               <div className="flex items-center justify-between">
-                                <span className="inline-flex items-center gap-1 rounded-full bg-white dark:bg-slate-800 px-2.5 py-0.5 text-[11px] font-bold text-[#1a80ff] border border-slate-200/60 dark:border-slate-700">
+                                <span className="inline-flex items-center gap-1 rounded-full bg-white dark:bg-slate-800 px-2.5 py-0.5 text-sm font-bold text-[#1a80ff] border border-slate-200/60 dark:border-slate-700">
                                   {quiz.questions?.length || 0} Preguntas
                                 </span>
 
                                 {attempt ? (
                                   passed ? (
-                                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-sm font-bold text-emerald-600 dark:text-emerald-400">
                                       ✓ Aprobado ({score}%)
                                     </span>
                                   ) : (
-                                    <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 dark:bg-rose-950/60 px-2 py-0.5 text-[11px] font-bold text-rose-600 dark:text-rose-400">
+                                    <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 dark:bg-rose-950/60 px-2 py-0.5 text-sm font-bold text-rose-600 dark:text-rose-400">
                                       ⚠️ Reprobado ({score}%)
                                     </span>
                                   )
                                 ) : (
-                                  <span className="text-[11px] font-semibold text-slate-400">
+                                  <span className="text-sm font-semibold text-slate-400">
                                     Sin Rendir
                                   </span>
                                 )}
                               </div>
 
-                              <h4 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors leading-snug">
+                              <h4 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors leading-snug">
                                 {quiz.title}
                               </h4>
 
-                              <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
                                 {quiz.description}
                               </p>
                             </div>
@@ -219,7 +219,7 @@ export default async function QuizzesListPage() {
                             <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800">
                               <Link
                                 href={`/quizzes/${quiz.id}`}
-                                className={`flex items-center justify-center gap-2 rounded-xl py-2 text-xs font-bold shadow-xs transition-colors ${
+                                className={`flex items-center justify-center gap-2 rounded-xl py-2 text-sm sm:text-base font-bold shadow-xs transition-colors ${
                                   attempt?.passed
                                     ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/50"
                                     : "bg-slate-900 dark:bg-slate-800 text-white group-hover:bg-[#1a80ff]"
