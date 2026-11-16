@@ -8107,7 +8107,7 @@ export const DA42_LESSON_5 = {
 
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 flex flex-col justify-center items-center p-1">
           <img
-            src="/images/DA42/da42-complete-electrical-failure.jpg"
+            src="/images/DA42/da42-manual-gear-extension.jpg"
             alt="Fallo eléctrico y extensión manual de tren DA42 (AFM 3.7.1 & 3.6.2)"
             class="w-full h-full max-h-[520px] object-contain rounded-lg"
           />
