@@ -2583,31 +2583,12 @@ export const DA40_LESSON_3 = {
           <span class="text-[9px] font-bold text-amber-800 bg-amber-100 dark:bg-amber-950/70 dark:text-amber-300 px-1.5 py-0.5 rounded">Pendiente Grabación</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 flex flex-col items-center justify-center p-4 text-center space-y-3">
-          <div class="w-16 h-16 rounded-2xl bg-amber-100 dark:bg-amber-950/60 border-2 border-amber-300 dark:border-amber-700 flex items-center justify-center text-3xl shadow-sm text-amber-600 dark:text-amber-400 shrink-0">
-            🎥
-          </div>
-          <div class="space-y-1.5 max-w-sm">
-            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400 block">Acción Requerida · Material Audiovisual:</span>
-            <h3 class="text-base sm:text-lg font-bold text-[#0B2E59] dark:text-sky-200 leading-tight">
-              Hacer video prueba ECU TEST DA40 TDI
-            </h3>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-              Grabar video demostrativo del procedimiento real de prueba ECU en cabina: posicionamiento en IDLE, accionamiento del pulsador ECU TEST, ciclado de hélice y verificación de avisadores.
-            </p>
-          </div>
-
-          <div class="p-3 rounded-xl bg-amber-50/90 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-left w-full max-w-sm space-y-1.5 shadow-2xs">
-            <span class="text-[10px] font-bold text-amber-900 dark:text-amber-300 uppercase tracking-wide flex items-center gap-1.5">
-              Puntos clave para el video:
-            </span>
-            <ul class="text-[11px] text-amber-950 dark:text-amber-200/90 space-y-1 list-disc pl-4">
-              <li>Palanca monomando de potencia en ralentí (IDLE) y RPM &lt; 900</li>
-              <li>Pulsación continua del botón ECU TEST hasta la finalización del ciclo</li>
-              <li>Secuencia de avisadores: parpadeo de ECU A, ECU B, CAUTION y ECU BACKUP UNSAFE</li>
-              <li>Ciclado automático de RPM de hélice y retorno suave a ECU A con extinción de luces</li>
-            </ul>
-          </div>
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 flex flex-col justify-center items-center p-1">
+          <img
+            src="/images/da40/da40-ecu-test-swap.jpg"
+            alt="DA40 G1000 ECU TEST y conmutador ECU SWAP"
+            class="w-full h-full max-h-[520px] object-contain rounded-lg"
+          />
         </div>
       </div>
     </div>
