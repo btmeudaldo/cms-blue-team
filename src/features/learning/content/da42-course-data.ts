@@ -7350,31 +7350,15 @@ export const DA42_LESSON_5 = {
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 items-stretch">
-            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 flex flex-col justify-start text-[18px]">
-              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(b) Gear DOWN or No Climb</strong>
-              <div lang="en" class="flex items-start gap-1 py-0 text-[18px] leading-tight">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">1.</span>
-                <span class="text-slate-800 dark:text-slate-200">Airspeed &mdash; <span class="italic font-medium">maintain safe glide speed</span></span>
+            <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-1 flex flex-col justify-start text-[18px]">
+              <strong class="text-[#0B2E59] dark:text-sky-300 block text-[18px] border-b border-slate-100 dark:border-slate-700 pb-0.5 uppercase tracking-wide">(b) Engine Failure after lift-off</strong>
+              <div lang="en" class="text-[18px] leading-snug text-slate-800 dark:text-slate-200">
+                <div class="font-semibold">If landing gear is still extended and the remaining runway / surface is adequate:</div>
+                <div class="pl-2 italic font-medium">- abort the takeoff &amp; land straight ahead, turning to avoid obstacles</div>
               </div>
-              <div lang="en" class="flex items-start gap-1 py-0 text-[18px] leading-tight">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">2.</span>
-                <span class="text-slate-800 dark:text-slate-200">Direction &mdash; <span class="italic font-medium">land straight ahead</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-1 py-0 text-[18px] leading-tight">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">3.</span>
-                <span class="text-slate-800 dark:text-slate-200">POWER levers &mdash; <span class="italic font-medium">both IDLE</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-1 py-0 text-[18px] leading-tight">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">4.</span>
-                <span class="text-slate-800 dark:text-slate-200">FLAPS &mdash; <span class="italic font-medium">as required</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-1 py-0 text-[18px] leading-tight">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">5.</span>
-                <span class="text-slate-800 dark:text-slate-200">ENGINE MASTERS &mdash; <span class="italic font-medium">both OFF</span></span>
-              </div>
-              <div lang="en" class="flex items-start gap-1 py-0 text-[18px] leading-tight">
-                <span class="font-bold text-[#0B2E59] dark:text-sky-300 shrink-0 min-w-[20px]">6.</span>
-                <span class="text-slate-800 dark:text-slate-200">ELECT. MASTER &mdash; <span class="italic font-medium">OFF before touch</span></span>
+              <div lang="en" class="text-[18px] leading-snug text-slate-800 dark:text-slate-200 pt-0.5">
+                <div class="font-semibold">If the remaining runway / surface is inadequate:</div>
+                <div class="pl-2 italic font-medium">- decide whether to abort or to continue the take-off</div>
               </div>
             </div>
             <div class="p-2 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-0.5 flex flex-col justify-start text-[18px]">
