@@ -8639,14 +8639,12 @@ export const DA42_LESSON_5 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">CASOS ANÓMALOS DE SISTEMAS</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-4 text-center">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2">
-            📷
-          </div>
-          <span class="text-[18px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-[18px] font-semibold text-slate-700 dark:text-slate-200 max-w-sm leading-snug">
-            Panel de interruptores ECU SWAP bajo guarda en consola de la DA42, con avisador ámbar ECU FAIL activo y palanca selectora de flaps en verificación de circuito.
-          </p>
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 flex flex-col justify-center items-center p-1">
+          <img
+            src="/images/DA42/da42-prop-ecu-flaps-failures.jpg"
+            alt="Regulación de hélice, fallos de ECU y de flaps DA42 (AFM 3.9.3, 4B.4.2 & 4B.5)"
+            class="w-full h-full max-h-[520px] object-contain rounded-lg"
+          />
         </div>
       </div>
     </div>
