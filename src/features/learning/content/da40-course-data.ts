@@ -7405,15 +7405,12 @@ export const DA40_LESSON_5 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">DIAGRAMA Y SISTEMAS DE PROTECCIÓN</span>
         </div>
 
-        <div class="w-full flex flex-col justify-start items-start space-y-3 text-[18px] leading-relaxed mt-1">
-          <!-- Espacio reservado para diagrama/imagen -->
-          <div class="w-full p-4 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 min-h-[480px]">
-            <svg class="w-12 h-12 mb-2 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-            </svg>
-            <span class="text-[18px] font-semibold">Espacio reservado para Diagrama de Sistemas</span>
-            <span class="text-sm text-slate-400">Red eléctrica y conmutación de emergencia DA40 TDI</span>
-          </div>
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 flex flex-col justify-center items-center p-1 mt-1">
+          <img
+            src="/images/da40/da40-electrical-fire-in-flight.jpg"
+            alt="Procedimiento de humo e incendio eléctrico en vuelo DA40 TDI"
+            class="w-full h-full max-h-[500px] object-contain rounded-lg"
+          />
         </div>
       </div>
     </div>
