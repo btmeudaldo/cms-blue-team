@@ -7405,14 +7405,12 @@ export const DA42_LESSON_5 = {
 
         
 
-        <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-4 text-center">
-          <div class="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-900/40 text-sky-600 dark:text-sky-400 flex items-center justify-center text-2xl shadow-xs mb-2">
-            📷
-          </div>
-          <span class="text-[18px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-400 mb-1">Imagen Recomendada</span>
-          <p class="text-[18px] font-semibold text-slate-700 dark:text-slate-200 max-w-sm leading-snug">
-            Representación esquemática del vuelo sin resbalamiento (Zero Sideslip) en bimotor: alabeo de 5° hacia el motor operativo y bola medio inclinada para mínima resistencia aerodinámica.
-          </p>
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 flex flex-col justify-center items-center p-1">
+          <img
+            src="/images/DA42/da42-oei-flight-crossfeed.jpg"
+            alt="Vuelo con un motor inoperativo DA42 (AFM 3.5.9 Flight with One Engine Inoperative & Crossfeed)"
+            class="w-full h-full max-h-[520px] object-contain rounded-lg"
+          />
         </div>
       </div>
     </div>
