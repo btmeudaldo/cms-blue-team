@@ -8622,6 +8622,13 @@ export const DA42_LESSON_5 = {
               <li>Flaps UP/APP failure landing: land at a flat approach angle, use power lever to control speed and rate of descent.</li>
             </ul>
           </div>
+          <div class="p-1.5 rounded-xl border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-tight shadow-2xs">
+            <strong class="text-blue-700 dark:text-blue-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
+              <span>ℹ️</span>
+              <span>AFM 4B.5 FLAPLESS LANDING PERFORMANCE:</span>
+            </strong>
+            <div>Flapless landings require higher approach speed (86 KIAS) and flatter descent attitude. Ensure runway length is sufficient for the 40 % increase in landing roll.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -8630,16 +8637,6 @@ export const DA42_LESSON_5 = {
       <div class="h-full flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="min-height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-[18px]">CASOS ANÓMALOS DE SISTEMAS</span>
-        </div>
-
-        <div class="space-y-1 flex flex-col justify-start shrink-0 mb-1">
-          <div class="p-1.5 rounded-xl border-l-4 border-blue-500 bg-blue-50/90 dark:bg-blue-950/30 text-blue-950 dark:text-blue-200 text-[18px] leading-tight shadow-2xs">
-            <strong class="text-blue-700 dark:text-blue-400 flex items-center gap-1 mb-0.5 uppercase tracking-wide text-[18px]">
-              <span>ℹ️</span>
-              <span>AFM 4B.5 FLAPLESS LANDING PERFORMANCE:</span>
-            </strong>
-            <div>Flapless landings require higher approach speed (86 KIAS) and flatter descent attitude. Ensure runway length is sufficient for the 40 % increase in landing roll.</div>
-          </div>
         </div>
 
         <div class="w-full flex-1 min-h-0 rounded-xl border-2 border-dashed border-sky-300 dark:border-sky-700/60 bg-sky-50/50 dark:bg-sky-950/20 flex flex-col items-center justify-center p-4 text-center">
