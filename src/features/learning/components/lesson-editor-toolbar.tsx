@@ -67,7 +67,11 @@ function stripBasePathFromUrl(url: string): string {
   const trimmed = url.trim();
   if (!trimmed) return "";
   const prefixes = Array.from(
-    new Set([BASE_PATH, "/cms", "/cms-preview"].filter(Boolean)),
+    new Set(
+      [BASE_PATH, "/elearning", "/elearning-preview", "/cms", "/cms-preview"].filter(
+        Boolean,
+      ),
+    ),
   );
   for (const prefix of prefixes) {
     if (

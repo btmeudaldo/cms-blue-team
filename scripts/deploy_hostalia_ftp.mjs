@@ -18,17 +18,17 @@ const forceFull = process.argv.includes("--full");
 const HEAVY_TOP_DIRS = new Set(["images", "manuals", "assets", "course-assets"]);
 
 const basePathSegment = isPreview
-  ? "cms-preview"
-  : (process.env.NEXT_PUBLIC_BASE_PATH || "/cms")
+  ? "elearning-preview"
+  : (process.env.NEXT_PUBLIC_BASE_PATH || "/elearning")
       .trim()
-      .replace(/^\/+|\/+$/g, "") || "cms";
+      .replace(/^\/+|\/+$/g, "") || "elearning";
 const basePath = `/${basePathSegment}`;
 
 function buildHtaccess(targetBasePath, previewMode) {
   const heavyRules = previewMode
-    ? `  # Reutilizar imágenes, manuales y recursos pesados desde /cms/ sin duplicar ~400 MB
-  RewriteRule ^images/da42/(.*)$ /cms/images/DA42/$1 [L]
-  RewriteRule ^(images|manuals|assets|course-assets)/(.*)$ /cms/$1/$2 [L]`
+    ? `  # Reutilizar imágenes, manuales y recursos pesados desde /elearning/ sin duplicar ~400 MB
+  RewriteRule ^images/da42/(.*)$ /elearning/images/DA42/$1 [L]
+  RewriteRule ^(images|manuals|assets|course-assets)/(.*)$ /elearning/$1/$2 [L]`
     : `  # Compatibilidad mayúsculas/minúsculas DA42 en servidor Linux (Hostalia)
   RewriteRule ^images/da42/(.*)$ images/DA42/$1 [L]`;
 
@@ -86,8 +86,14 @@ function normalizeRemoteSubfolderDir(rawDir, requiredSegment) {
   ) {
     return normalized;
   }
-  if (requiredSegment === "cms-preview" && normalized.endsWith("/cms")) {
-    return `${normalized.slice(0, -4)}/cms-preview`;
+  if (
+    (requiredSegment === "elearning-preview" || requiredSegment === "elearning") &&
+    normalized.endsWith("/elearning")
+  ) {
+    return `${normalized.slice(0, -10)}/${requiredSegment}`;
+  }
+  if (normalized === "/cms" || normalized.endsWith("/cms")) {
+    return `${normalized.slice(0, -4)}/${requiredSegment}`;
   }
   return `${normalized === "/" ? "" : normalized}/${requiredSegment}`;
 }

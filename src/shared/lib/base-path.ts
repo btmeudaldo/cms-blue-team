@@ -1,5 +1,5 @@
 export const BASE_PATH = (
-  process.env.NEXT_PUBLIC_BASE_PATH ?? "/cms"
+  process.env.NEXT_PUBLIC_BASE_PATH ?? "/elearning"
 ).replace(/\/+$/, "");
 
 export function withBasePath(path?: string | null): string {

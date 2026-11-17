@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /cms/
+  RewriteBase /elearning/
 
   # Forzar HTTPS y dominio canónico www.blueteam.es (mismo origen que la web principal)
   RewriteCond %{HTTPS} off

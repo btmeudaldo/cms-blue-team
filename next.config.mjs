@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const resolvedBasePath =
   process.env.NEXT_PUBLIC_BASE_PATH ??
-  (process.env.VERCEL ? "" : "/cms");
+  (process.env.VERCEL ? "" : "/elearning");
 
 const nextConfig = {
   reactStrictMode: true,

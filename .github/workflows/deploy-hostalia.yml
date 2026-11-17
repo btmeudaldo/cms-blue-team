@@ -37,26 +37,26 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Determine deployment target (/cms vs /cms-preview)
+      - name: Determine deployment target (/elearning vs /elearning-preview)
         id: target
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             if [ "${{ github.event.inputs.target_env }}" = "preview" ]; then
               echo "is_preview=true" >> "$GITHUB_OUTPUT"
-              echo "base_path=/cms-preview" >> "$GITHUB_OUTPUT"
+              echo "base_path=/elearning-preview" >> "$GITHUB_OUTPUT"
               echo "flags=--skip-build --preview" >> "$GITHUB_OUTPUT"
             else
               echo "is_preview=false" >> "$GITHUB_OUTPUT"
-              echo "base_path=/cms" >> "$GITHUB_OUTPUT"
+              echo "base_path=/elearning" >> "$GITHUB_OUTPUT"
               echo "flags=--skip-build" >> "$GITHUB_OUTPUT"
             fi
           elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
             echo "is_preview=false" >> "$GITHUB_OUTPUT"
-            echo "base_path=/cms" >> "$GITHUB_OUTPUT"
+            echo "base_path=/elearning" >> "$GITHUB_OUTPUT"
             echo "flags=--skip-build" >> "$GITHUB_OUTPUT"
           else
             echo "is_preview=true" >> "$GITHUB_OUTPUT"
-            echo "base_path=/cms-preview" >> "$GITHUB_OUTPUT"
+            echo "base_path=/elearning-preview" >> "$GITHUB_OUTPUT"
             echo "flags=--skip-build --preview" >> "$GITHUB_OUTPUT"
           fi
 
