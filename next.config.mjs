@@ -1,9 +1,16 @@
 /** @type {import('next').NextConfig} */
+const resolvedBasePath =
+  process.env.NEXT_PUBLIC_BASE_PATH ??
+  (process.env.VERCEL ? "" : "/cms");
+
 const nextConfig = {
   reactStrictMode: true,
   output: "export",
   trailingSlash: true,
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? "/cms",
+  basePath: resolvedBasePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: resolvedBasePath,
+  },
   images: {
     unoptimized: true,
     remotePatterns: [
