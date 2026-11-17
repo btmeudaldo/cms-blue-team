@@ -5,6 +5,7 @@ import Link from "next/link";
 import { signOutAction } from "@/app/actions/auth.actions";
 import { ThemeToggle } from "./theme-toggle";
 import { CloudStatusBanner } from "./cloud-status-banner";
+import { withBasePath } from "@/shared/lib/base-path";
 
 type HeaderProps = {
   userEmail?: string;
@@ -74,7 +75,7 @@ export function Header({
           >
             {/* Official horizontal logo, shared with the public website */}
             <img
-              src="/logo-blue-team.svg"
+              src={withBasePath("/logo-blue-team.svg")}
               alt="BLUE TEAM Flight School"
               width={720}
               height={180}
@@ -89,7 +90,7 @@ export function Header({
             />
 
             <img
-              src="/logo-blue-team-white.svg"
+              src={withBasePath("/logo-blue-team-white.svg")}
               alt="BLUE TEAM Flight School"
               width={720}
               height={180}

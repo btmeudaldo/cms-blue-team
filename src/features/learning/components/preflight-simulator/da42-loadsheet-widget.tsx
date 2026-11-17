@@ -15,6 +15,7 @@ import {
   M1_DA42_LM_POINT,
 } from "./da42-constants";
 import { ExerciseInstructionsModal } from "./exercise-instructions-modal";
+import { withBasePath } from "@/shared/lib/base-path";
 
 type Props = {
   mode?: "all" | "takeoff" | "landing";
@@ -1213,7 +1214,7 @@ export function DA42LoadsheetWidget({
                 📈 ENVOLVENTE OFICIAL DE CG (DA42 AFM 6.4.4)
               </span>
               <a
-                href="/images/DA42/limits/da42-mass-limits-table.png"
+                href={withBasePath("/images/DA42/limits/da42-mass-limits-table.png")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[11px] font-bold text-sky-600 dark:text-sky-400 hover:underline"
@@ -1316,7 +1317,7 @@ export function DA42LoadsheetWidget({
                 }}
               >
                 <img
-                  src="/images/DA42/limits/da42-mass-limits-table.png"
+                  src={withBasePath("/images/DA42/limits/da42-mass-limits-table.png")}
                   alt="Envolvente oficial de masa y centrado Diamond DA42"
                   className="w-full h-full object-contain pointer-events-none select-none"
                 />

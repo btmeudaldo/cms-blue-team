@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { checkValueTolerance } from "./constants";
+import { withBasePath } from "@/shared/lib/base-path";
 
 export interface PerformanceScenario {
   id: string;
@@ -410,7 +411,7 @@ export function PreflightPerformanceWidget({
                   <span>TABLA POH ATERRIZAJE:</span>
                 </span>
                 <a
-                  href="/images/c172/landing_distance_table.pdf"
+                  href={withBasePath("/images/c172/landing_distance_table.pdf")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 font-bold text-xs sm:text-[13px] text-emerald-700 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-slate-600 transition-all shadow-2xs"
@@ -690,7 +691,7 @@ export function PreflightPerformanceWidget({
                   <span>TABLA POH DESPEGUE:</span>
                 </span>
                 <a
-                  href="/images/c172/takeoff-performance-tables.pdf"
+                  href={withBasePath("/images/c172/takeoff-performance-tables.pdf")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 font-bold text-xs sm:text-[13px] text-blue-600 dark:text-sky-300 hover:bg-blue-50 dark:hover:bg-slate-600 transition-all shadow-2xs"

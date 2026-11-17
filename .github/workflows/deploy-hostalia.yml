@@ -1,0 +1,53 @@
+name: Build & Deploy CMS to Hostalia
+
+on:
+  push:
+    branches:
+      - feat/hostalia-cms
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: hostalia-cms-production
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: Build, Test & Deploy CMS (/cms)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck & Unit Tests
+        run: |
+          npm run typecheck
+          npm run test
+
+      - name: Build static export for /cms
+        env:
+          NEXT_PUBLIC_BASE_PATH: /cms
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+        run: npm run build
+
+      - name: Deploy CMS to Hostalia (/cms)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.HOSTALIA_FTP_SERVER }}
+          username: ${{ secrets.HOSTALIA_FTP_USERNAME }}
+          password: ${{ secrets.HOSTALIA_FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          security: loose
+          local-dir: ./out/
+          server-dir: ./cms/
+          dangerous-clean-slate: false

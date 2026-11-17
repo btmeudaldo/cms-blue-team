@@ -29,6 +29,7 @@ import {
 } from "@/features/learning/domain/lesson-progress";
 import { Header } from "@/shared/components/header";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
+import { withBasePath, withBasePathHtml } from "@/shared/lib/base-path";
 import { getNextAdvanceButtonPosition } from "@/features/learning/domain/advance-button-position";
 import { getLessonScrollProgress } from "@/features/learning/domain/lesson-scroll-progress";
 import { getLessonLayoutClasses } from "@/features/learning/domain/lesson-layout";
@@ -177,7 +178,9 @@ export function LessonPlayer({
   );
   const currentSlideHtml =
     lessonPages[effectivePageIndex] ?? lessonPages[0] ?? "";
-  const safeContentHtml = sanitizeLessonHtml(currentSlideHtml);
+  const safeContentHtml = withBasePathHtml(
+    sanitizeLessonHtml(currentSlideHtml),
+  );
 
   // Interactive simulator widget state & gating
   const [exerciseContainer, setExerciseContainer] = useState<HTMLElement | null>(null);
@@ -1079,7 +1082,7 @@ export function LessonPlayer({
                           {items.map((doc, idx) => (
                             <a
                               key={idx}
-                              href={doc.url}
+                              href={withBasePath(doc.url)}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="group flex items-center justify-between p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-sky-500 bg-white dark:bg-slate-800/80 hover:bg-sky-50/50 dark:hover:bg-sky-950/30 transition shadow-2xs"

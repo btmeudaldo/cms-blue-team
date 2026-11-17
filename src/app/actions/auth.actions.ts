@@ -1,14 +1,12 @@
-"use server";
-
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { safeRedirect } from "@/shared/lib/client-navigation";
 import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
 import type { DemoRole } from "@/features/learning/domain/demo-account";
 
 async function clearLegacyIdentity() {
-  const cookieStore = await cookies();
-  for (const name of ["demo_email", "demo_role"]) {
-    cookieStore.set(name, "", { path: "/", expires: new Date(0) });
+  if (typeof document !== "undefined") {
+    for (const name of ["demo_email", "demo_role"]) {
+      document.cookie = `${name}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    }
   }
 }
 
@@ -35,7 +33,7 @@ export async function signInAction(formData: FormData) {
     };
   }
   await clearLegacyIdentity();
-  redirect("/courses");
+  safeRedirect("/courses");
 }
 
 export async function signUpAction(formData: FormData) {
@@ -67,7 +65,7 @@ export async function signUpAction(formData: FormData) {
     };
   }
   await clearLegacyIdentity();
-  redirect("/courses");
+  safeRedirect("/courses");
 }
 
 // Reject old clients explicitly; hiding their buttons alone would leave an endpoint open.
@@ -91,5 +89,5 @@ export async function signOutAction() {
   if (error)
     throw new Error("No se pudo cerrar la sesión. Inténtalo de nuevo.");
   await clearLegacyIdentity();
-  redirect("/login");
+  safeRedirect("/login");
 }

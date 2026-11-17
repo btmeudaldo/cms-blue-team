@@ -6,8 +6,17 @@ export default defineConfig({
     exclude: ["**/node_modules/**", "**/e2e/**"],
   },
   resolve: {
-    alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
-    },
+    alias: [
+      {
+        find: "@/shared/lib/revalidate-impl",
+        replacement: fileURLToPath(
+          new URL("./src/shared/lib/revalidate-impl.vitest.ts", import.meta.url),
+        ),
+      },
+      {
+        find: "@",
+        replacement: fileURLToPath(new URL("./src", import.meta.url)),
+      },
+    ],
   },
 });

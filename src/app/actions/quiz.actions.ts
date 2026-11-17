@@ -1,6 +1,4 @@
-"use server";
-
-import { revalidatePath } from "next/cache";
+import { safeRevalidatePath } from "@/shared/lib/client-navigation";
 import { requireVerifiedSession } from "@/shared/lib/supabase/session";
 import type {
   QuizAttemptResult,
@@ -73,9 +71,9 @@ export async function submitQuizAttemptAction(
         error:
           "No se pudo confirmar el resultado. Reintenta el envío de este intento.",
       };
-    revalidatePath("/courses", "layout");
-    revalidatePath("/quizzes", "layout");
-    revalidatePath("/admin/progress");
+    safeRevalidatePath("/courses", "layout");
+    safeRevalidatePath("/quizzes", "layout");
+    safeRevalidatePath("/admin/progress");
     return { success: true, attempt: data as QuizAttemptResult };
   } catch {
     return {
@@ -137,9 +135,9 @@ export async function saveQuizAction(
     throw new Error("No se pudo guardar el cuestionario en la base de datos.");
   }
 
-  revalidatePath(`/admin/courses/${courseId}/lessons/${lessonId}`);
-  revalidatePath(`/courses/${courseId}/lessons/${lessonId}`);
-  revalidatePath("/quizzes");
+  safeRevalidatePath(`/admin/courses/${courseId}/lessons/${lessonId}`);
+  safeRevalidatePath(`/courses/${courseId}/lessons/${lessonId}`);
+  safeRevalidatePath("/quizzes");
 
   return {
     ...savedQuiz,

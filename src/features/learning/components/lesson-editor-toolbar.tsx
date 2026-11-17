@@ -10,6 +10,7 @@ import {
 } from "../domain/image-size-presets";
 import { uploadLessonImageAction } from "@/app/actions/lesson.actions";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
+import { withBasePathHtml } from "@/shared/lib/base-path";
 import {
   detectMarkdownPrefix,
   filterSlashCommands,
@@ -2428,8 +2429,8 @@ export function LessonEditorToolbar({
                 <article
                   className="w-full rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 p-3.5 sm:p-5 lg:px-6 lg:py-4 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
                   dangerouslySetInnerHTML={{
-                    __html: sanitizeLessonHtml(
-                      slides[currentSlideIndex] || "",
+                    __html: withBasePathHtml(
+                      sanitizeLessonHtml(slides[currentSlideIndex] || ""),
                     ),
                   }}
                 />
@@ -2480,7 +2481,7 @@ export function LessonEditorToolbar({
                   <div
                     className="lesson-slide-container text-slate-800 dark:text-slate-200"
                     dangerouslySetInnerHTML={{
-                      __html: sanitizeLessonHtml(slideContent),
+                      __html: withBasePathHtml(sanitizeLessonHtml(slideContent)),
                     }}
                   />
                 </div>
@@ -2794,8 +2795,10 @@ export function LessonEditorToolbar({
               <article
                 className="w-full max-w-[1550px] mx-auto rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-5 lg:px-6 lg:py-4 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 shadow-sm text-slate-800 dark:text-slate-200"
                 dangerouslySetInnerHTML={{
-                  __html: sanitizeLessonHtml(
-                    slides[previewSlideIndex] || slides[0] || "",
+                  __html: withBasePathHtml(
+                    sanitizeLessonHtml(
+                      slides[previewSlideIndex] || slides[0] || "",
+                    ),
                   ),
                 }}
               />

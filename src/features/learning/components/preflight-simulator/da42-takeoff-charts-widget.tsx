@@ -1,17 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
+import { withBasePath } from "@/shared/lib/base-path";
 
 type ChartTab = "ground_roll" | "obstacle_50ft";
 
 const CHARTS = {
   ground_roll: {
-    src: "/images/DA42/da42-takeoff-ground-roll.png",
+    src: withBasePath("/images/DA42/da42-takeoff-ground-roll.png"),
     alt: "Ground Roll - Diamond DA42 Twin Star",
     label: "Ground Roll",
   },
   obstacle_50ft: {
-    src: "/images/DA42/da42-takeoff-50ft.png",
+    src: withBasePath("/images/DA42/da42-takeoff-50ft.png"),
     alt: "Takeoff Distance 50ft - Diamond DA42 Twin Star",
     label: "Takeoff Distance 50ft",
   },

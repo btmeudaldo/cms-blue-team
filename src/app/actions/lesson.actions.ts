@@ -1,6 +1,4 @@
-"use server";
-
-import { revalidatePath } from "next/cache";
+import { safeRevalidatePath } from "@/shared/lib/client-navigation";
 
 import { requireCourseEditor } from "@/features/learning/application/course-authorization";
 import { requireVerifiedSession } from "@/shared/lib/supabase/session";
@@ -39,7 +37,7 @@ export async function uploadLessonImageAction(formData: FormData): Promise<strin
   }
 
   const { client, user } = session;
-  const buffer = Buffer.from(await file.arrayBuffer());
+  const buffer = new Uint8Array(await file.arrayBuffer());
   const ext = file.type === "image/svg+xml" ? "svg" : file.type.split("/")[1] || "jpg";
   const objectPath = `${user.id}/lessons/${crypto.randomUUID()}.${ext}`;
 
@@ -105,8 +103,8 @@ export async function createLessonAction(
   });
 
   if (error) throw new Error(error.message);
-  revalidatePath(`/admin/courses/${courseId}`);
-  revalidatePath(`/courses/${courseId}`);
+  safeRevalidatePath(`/admin/courses/${courseId}`);
+  safeRevalidatePath(`/courses/${courseId}`);
 }
 
 export async function updateLessonAction(
@@ -158,8 +156,8 @@ export async function updateLessonAction(
   if (error) throw new Error(error.message);
   if (!data) throw new Error("Lección no encontrada o no autorizada.");
 
-  revalidatePath(`/admin/courses/${courseId}`);
-  revalidatePath(`/courses/${courseId}`);
+  safeRevalidatePath(`/admin/courses/${courseId}`);
+  safeRevalidatePath(`/courses/${courseId}`);
 }
 
 export async function deleteLessonAction(lessonId: string, courseId: string) {
@@ -181,10 +179,10 @@ export async function deleteLessonAction(lessonId: string, courseId: string) {
   if (error) throw new Error(error.message);
   if (!data) throw new Error("Lección no encontrada o no autorizada.");
 
-  revalidatePath(`/admin/courses/${courseId}`);
-  revalidatePath("/admin/courses");
-  revalidatePath("/courses");
-  revalidatePath(`/courses/${courseId}`);
+  safeRevalidatePath(`/admin/courses/${courseId}`);
+  safeRevalidatePath("/admin/courses");
+  safeRevalidatePath("/courses");
+  safeRevalidatePath(`/courses/${courseId}`);
 }
 
 export async function updateSlideVisibilityAction({
@@ -261,9 +259,9 @@ export async function updateSlideVisibilityAction({
 
   if (updateErr) throw new Error(updateErr.message);
 
-  revalidatePath(`/courses/${courseId}/lessons/${lessonId}`);
-  revalidatePath(`/courses/${courseId}`);
-  revalidatePath(`/admin/courses/${courseId}`);
+  safeRevalidatePath(`/courses/${courseId}/lessons/${lessonId}`);
+  safeRevalidatePath(`/courses/${courseId}`);
+  safeRevalidatePath(`/admin/courses/${courseId}`);
 
   return { success: true, visibility };
 }

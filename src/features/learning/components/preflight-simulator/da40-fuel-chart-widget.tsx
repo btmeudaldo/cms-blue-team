@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useCallback } from "react";
+import { withBasePath } from "@/shared/lib/base-path";
 
 // Official AFM curve points for reference & snap
 const AFM_CURVE = [
@@ -168,7 +169,7 @@ export function DA40FuelChartWidget() {
         <div className="relative aspect-[1070/917] h-full max-h-full max-w-full m-auto select-none">
           {/* 1. ORIGINAL AFM SCREENSHOT IMAGE AS BACKGROUND */}
           <img
-            src="/images/da40/da40-fuel-flow-load.png"
+            src={withBasePath("/images/da40/da40-fuel-flow-load.png")}
             alt="Ábaco oficial AFM de consumo horario Fuel Flow vs % Load"
             className="w-full h-full object-contain pointer-events-none select-none block"
           />

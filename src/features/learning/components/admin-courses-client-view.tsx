@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { CourseImageUploader } from "./course-image-uploader";
 import { AcademicDeleteForm } from "./academic-delete-form";
+import { withBasePath } from "@/shared/lib/base-path";
 
 type AdminCoursesClientViewProps = {
   courses: any[];
@@ -199,15 +200,15 @@ export function AdminCoursesClientView({
                   <div className="flex gap-4 items-start sm:items-center">
                     {course.image_url && (
                       <img
-                        src={
+                        src={withBasePath(
                           course.image_url.includes("/storage/v1/object/") &&
                           !course.image_url.includes("/storage/v1/object/public/")
                             ? course.image_url.replace(
                                 "/storage/v1/object/",
                                 "/storage/v1/object/public/",
                               )
-                            : course.image_url
-                        }
+                            : course.image_url,
+                        )}
                         alt={course.title}
                         className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover shrink-0 border border-slate-200 dark:border-slate-800"
                       />

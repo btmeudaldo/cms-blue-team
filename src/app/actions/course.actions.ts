@@ -1,7 +1,7 @@
-"use server";
-
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import {
+  safeRedirect,
+  safeRevalidatePath,
+} from "@/shared/lib/client-navigation";
 import { requireVerifiedSession } from "@/shared/lib/supabase/session";
 import { createSupabaseAdminClient } from "@/shared/lib/supabase/server";
 import { getCourseCoverUploadError } from "@/features/learning/domain/course-cover-upload";
@@ -30,9 +30,9 @@ function courseFields(formData: FormData) {
 }
 
 function revalidateCourses() {
-  revalidatePath("/admin/courses");
-  revalidatePath("/courses");
-  revalidatePath("/admin/users");
+  safeRevalidatePath("/admin/courses");
+  safeRevalidatePath("/courses");
+  safeRevalidatePath("/admin/users");
 }
 
 export async function createCourseAction(formData: FormData) {
@@ -53,7 +53,7 @@ export async function createCourseAction(formData: FormData) {
       `Curso creado, pero no se pudo registrar la matrícula: ${enrollmentError.message}`,
     );
   revalidateCourses();
-  redirect(`/admin/courses/${course.id}`);
+  safeRedirect(`/admin/courses/${course.id}`);
 }
 
 export async function uploadCourseCoverAction(formData: FormData) {
@@ -63,7 +63,7 @@ export async function uploadCourseCoverAction(formData: FormData) {
     throw new Error("No se seleccionó ningún archivo de imagen.");
   const validationError = getCourseCoverUploadError(file);
   if (validationError) throw new Error(validationError);
-  const buffer = Buffer.from(await file.arrayBuffer());
+  const buffer = new Uint8Array(await file.arrayBuffer());
   const extension = file.type.split("/")[1];
   const objectPath = `${user.id}/${crypto.randomUUID()}.${extension}`;
   const { error } = await client.storage
@@ -103,9 +103,9 @@ export async function updateCourseAction(courseId: string, formData: FormData) {
     throw new Error(`No se pudo actualizar el curso: ${error.message}`);
   if (!data)
     throw new Error("Curso no encontrado o sin permiso para actualizarlo.");
-  revalidatePath(`/admin/courses/${courseId}`);
-  revalidatePath(`/courses/${courseId}`);
-  revalidatePath(`/courses/${fields.slug}`);
+  safeRevalidatePath(`/admin/courses/${courseId}`);
+  safeRevalidatePath(`/courses/${courseId}`);
+  safeRevalidatePath(`/courses/${fields.slug}`);
   revalidateCourses();
 }
 

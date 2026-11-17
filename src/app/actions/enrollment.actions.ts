@@ -1,9 +1,9 @@
-"use server";
-
-import { revalidatePath } from "next/cache";
+import { createClient } from "@supabase/supabase-js";
+import { safeRevalidatePath } from "@/shared/lib/client-navigation";
 
 import { createSupabaseServerClient } from "@/shared/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/shared/lib/supabase/admin";
+import { getSupabasePublicEnv } from "@/shared/lib/supabase/env";
 import { requireVerifiedSession } from "@/shared/lib/supabase/session";
 
 async function requireEnrollmentStaff() {
@@ -42,19 +42,51 @@ export async function createNewUserAction(formData: FormData) {
     throw new Error("Solo un administrador puede crear usuarios.");
   }
 
-  const adminClient = createSupabaseAdminClient();
-  const { data: createdUser, error: createUserError } =
-    await adminClient.auth.admin.createUser({
-      email,
-      password,
-      email_confirm: true,
-      user_metadata: { full_name: fullName, dni_nie: dniNie },
+  let adminClient: ReturnType<typeof createSupabaseAdminClient> | null = null;
+  try {
+    adminClient = createSupabaseAdminClient();
+  } catch {
+    adminClient = null;
+  }
+
+  let createdUserId: string;
+
+  if (adminClient) {
+    const { data: createdUser, error: createUserError } =
+      await adminClient.auth.admin.createUser({
+        email,
+        password,
+        email_confirm: true,
+        user_metadata: { full_name: fullName, dni_nie: dniNie },
+      });
+
+    if (createUserError || !createdUser.user)
+      throw new Error(createUserError?.message ?? "No se pudo crear el usuario.");
+    createdUserId = createdUser.user.id;
+  } else {
+    const { url, publishableKey } = getSupabasePublicEnv();
+    const tempClient = createClient(url, publishableKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false,
+      },
     });
+    const { data: createdUser, error: createUserError } =
+      await tempClient.auth.signUp({
+        email,
+        password,
+        options: { data: { full_name: fullName, dni_nie: dniNie } },
+      });
 
-  if (createUserError || !createdUser.user)
-    throw new Error(createUserError?.message ?? "No se pudo crear el usuario.");
+    if (createUserError || !createdUser.user)
+      throw new Error(createUserError?.message ?? "No se pudo crear el usuario.");
+    createdUserId = createdUser.user.id;
+  }
 
-  const { error: profileError } = await adminClient
+  const dbClient = adminClient ?? supabase;
+
+  const { error: profileError } = await dbClient
     .from("profiles")
     .update({
       role,
@@ -62,26 +94,26 @@ export async function createNewUserAction(formData: FormData) {
       email,
       dni_nie: dniNie || null,
     })
-    .eq("id", createdUser.user.id);
+    .eq("id", createdUserId);
   if (profileError) throw new Error(profileError.message);
 
   if (role === "instructor" || role === "admin") {
     try {
-      const { data: courses } = await adminClient.from("courses").select("id");
+      const { data: courses } = await dbClient.from("courses").select("id");
       if (courses && courses.length > 0) {
         const enrollments = courses.map((c: any) => ({
-          user_id: createdUser.user.id,
+          user_id: createdUserId,
           course_id: c.id,
         }));
-        await adminClient
+        await dbClient
           .from("course_enrollments")
           .upsert(enrollments, { onConflict: "user_id,course_id", ignoreDuplicates: true });
       }
     } catch {}
   }
 
-  revalidatePath("/admin/users");
-  revalidatePath("/admin/progress");
+  safeRevalidatePath("/admin/users");
+  safeRevalidatePath("/admin/progress");
 }
 
 export async function updateUserDniAction(userId: string, dniNie: string) {
@@ -95,17 +127,29 @@ export async function updateUserDniAction(userId: string, dniNie: string) {
   });
 
   if (rpcError) {
-    // Fallback directly to admin client for reliable execution
-    const adminClient = createSupabaseAdminClient();
-    const { error: adminError } = await adminClient
+    const { error: directError } = await supabase
       .from("profiles")
       .update({ dni_nie: trimmedDni || null })
       .eq("id", userId);
-    if (adminError) throw new Error(adminError.message);
+
+    if (directError) {
+      let adminClient: ReturnType<typeof createSupabaseAdminClient> | null = null;
+      try {
+        adminClient = createSupabaseAdminClient();
+      } catch {
+        adminClient = null;
+      }
+      if (!adminClient) throw new Error(directError.message);
+      const { error: adminError } = await adminClient
+        .from("profiles")
+        .update({ dni_nie: trimmedDni || null })
+        .eq("id", userId);
+      if (adminError) throw new Error(adminError.message);
+    }
   }
 
-  revalidatePath("/admin/users");
-  revalidatePath("/admin/progress");
+  safeRevalidatePath("/admin/users");
+  safeRevalidatePath("/admin/progress");
 }
 
 export async function enrollStudentAction(courseId: string, userId: string) {
@@ -129,8 +173,8 @@ export async function updateStudentEnrollmentsAction(
   });
   if (error) throw new Error(error.message);
 
-  revalidatePath("/admin/users");
-  revalidatePath("/courses");
+  safeRevalidatePath("/admin/users");
+  safeRevalidatePath("/courses");
 }
 
 export async function updateUserRoleAction(
@@ -146,5 +190,5 @@ export async function updateUserRoleAction(
     .eq("id", userId);
   if (error) throw new Error(error.message);
 
-  revalidatePath("/admin/users");
+  safeRevalidatePath("/admin/users");
 }

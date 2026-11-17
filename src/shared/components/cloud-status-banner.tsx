@@ -1,6 +1,29 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getSupabasePublicEnv } from "@/shared/lib/supabase/env";
+
+async function checkSupabaseReachable(): Promise<boolean> {
+  try {
+    const { url, publishableKey } = getSupabasePublicEnv();
+    const baseUrl = url.replace(/\/+$/, "");
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+    try {
+      const res = await fetch(`${baseUrl}/auth/v1/health`, {
+        headers: { apikey: publishableKey },
+        cache: "no-store",
+        signal: controller.signal,
+      });
+      return res.status < 500;
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  } catch {
+    return false;
+  }
+}
 
 export function CloudStatusBanner() {
   const [status, setStatus] = useState<"checking" | "online" | "offline">(
@@ -13,15 +36,11 @@ export function CloudStatusBanner() {
 
     async function checkHealth() {
       setStatus("checking");
-      try {
-        const res = await fetch("/api/health", { cache: "no-store" });
-        if (res.ok) {
-          setConsecutiveFailures(0);
-          setStatus("online");
-        } else {
-          setConsecutiveFailures((failures) => failures + 1);
-        }
-      } catch {
+      const ok = await checkSupabaseReachable();
+      if (ok) {
+        setConsecutiveFailures(0);
+        setStatus("online");
+      } else {
         setConsecutiveFailures((failures) => failures + 1);
       }
     }
@@ -52,12 +71,10 @@ export function CloudStatusBanner() {
         onClick={() => {
           setConsecutiveFailures(0);
           setStatus("checking");
-          void fetch("/api/health", { cache: "no-store" })
-            .then((res) => {
-              if (res.ok) setStatus("online");
-              else setConsecutiveFailures(2);
-            })
-            .catch(() => setConsecutiveFailures(2));
+          void checkSupabaseReachable().then((ok) => {
+            if (ok) setStatus("online");
+            else setConsecutiveFailures(2);
+          });
         }}
         className="ml-2 rounded-lg bg-slate-950/20 hover:bg-slate-950/40 px-2 py-0.5 text-[10px] uppercase tracking-wider text-white font-bold cursor-pointer"
       >

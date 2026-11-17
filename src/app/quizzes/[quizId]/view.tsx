@@ -1,0 +1,104 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
+import { Header } from "@/shared/components/header";
+import { QuizModule } from "@/features/learning/components/quiz-module";
+import {
+  getResilientCourseDetail,
+  getResilientQuiz,
+  getResilientQuizAttempts,
+  getResilientUser,
+} from "@/shared/lib/supabase/resilient";
+
+export async function renderStandaloneQuizPage({
+  params,
+}: {
+  params: Promise<{ quizId: string }>;
+}) {
+  const { quizId } = await params;
+  const { user, profile, isDemo } = await getResilientUser();
+
+  const [quiz, attempts] = await Promise.all([
+    getResilientQuiz(quizId),
+    getResilientQuizAttempts(user.id),
+  ]);
+
+  if (!quiz) notFound();
+
+  let nextLessonUrl: string | null = null;
+  let nextLessonTitle: string | null = null;
+
+  if (quiz.course_id) {
+    try {
+      const course = await getResilientCourseDetail(quiz.course_id, isDemo);
+      if (course) {
+        nextLessonUrl = `/courses/${course.id}`;
+        nextLessonTitle = "Volver al Panel de Lecciones";
+      }
+    } catch {}
+  }
+
+  const userQuizAttempts = (attempts || []).filter(
+    (a: any) => a.quiz_id === quiz.id,
+  );
+  const passedAttempt = userQuizAttempts.find((a: any) => a.passed);
+  const latestAttempt =
+    userQuizAttempts.length > 0
+      ? userQuizAttempts[userQuizAttempts.length - 1]
+      : null;
+  const previousAttempt = passedAttempt || latestAttempt;
+
+  return (
+    <div className="min-h-screen lg:h-screen lg:overflow-hidden lg:has-[[data-quiz-review]]:h-auto lg:has-[[data-quiz-review]]:overflow-visible bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
+      <Header
+        userEmail={user.email}
+        userName={profile?.full_name}
+        role={profile?.role}
+      />
+
+      <main className="flex-1 min-h-0 mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-8 py-2.5 flex flex-col space-y-2.5">
+        {/* Breadcrumb Navigation */}
+        <div className="flex items-center justify-between text-base font-semibold text-slate-500 dark:text-slate-400 shrink-0">
+          <div className="flex items-center gap-2">
+            {quiz.course_id ? (
+              <Link
+                href={`/courses/${quiz.course_id}`}
+                className="hover:text-[#1a80ff] transition-colors"
+              >
+                Panel de Lecciones
+              </Link>
+            ) : (
+              <Link
+                href="/quizzes"
+                className="hover:text-[#1a80ff] transition-colors"
+              >
+                Evaluaciones
+              </Link>
+            )}
+            <span>&rsaquo;</span>
+            <span className="text-slate-900 dark:text-white truncate max-w-md lg:max-w-xl">
+              {quiz.title}
+            </span>
+          </div>
+
+          <Link
+            href={quiz.course_id ? `/courses/${quiz.course_id}` : "/quizzes"}
+            className="hover:text-[#1a80ff] transition-colors"
+          >
+            &larr; Volver al Panel de Lecciones
+          </Link>
+        </div>
+
+        {/* Interactive Standalone Quiz Module */}
+        <div className="flex-1 min-h-0 flex flex-col">
+          <QuizModule
+            quiz={quiz}
+            previousAttempt={previousAttempt}
+            nextLessonUrl={nextLessonUrl}
+            nextLessonTitle={nextLessonTitle}
+          />
+        </div>
+      </main>
+    </div>
+  );
+}

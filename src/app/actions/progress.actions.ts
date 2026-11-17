@@ -1,5 +1,4 @@
-"use server";
-import { revalidatePath } from "next/cache";
+import { safeRevalidatePath } from "@/shared/lib/client-navigation";
 import { requireVerifiedSession } from "@/shared/lib/supabase/session";
 import type { ProgressResult } from "@/features/learning/domain/lesson-progress";
 
@@ -79,8 +78,8 @@ export async function completeLessonAction(
 ): Promise<ProgressResult> {
   const result = await callProgressRpc("complete_lesson", lessonId);
   if ("success" in result) {
-    revalidatePath("/courses", "layout");
-    revalidatePath("/admin/progress");
+    safeRevalidatePath("/courses", "layout");
+    safeRevalidatePath("/admin/progress");
   }
   return result;
 }

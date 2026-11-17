@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { safeRedirect } from "@/shared/lib/client-navigation";
 import { AuthenticationRequiredError, requireVerifiedSession } from "./session";
 import { requireCourseEditor } from "@/features/learning/application/course-authorization";
 import type { StudentQuiz } from "@/features/learning/domain/quiz-types";
@@ -30,7 +30,7 @@ export async function getResilientUser() {
     const { user, profile } = await requireVerifiedSession();
     return { isDemo: false, user: { id: user.id, email: user.email }, profile };
   } catch (error) {
-    if (error instanceof AuthenticationRequiredError) redirect("/login");
+    if (error instanceof AuthenticationRequiredError) safeRedirect("/login");
     throw error;
   }
 }

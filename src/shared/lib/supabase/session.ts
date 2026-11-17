@@ -7,7 +7,7 @@ export class AuthenticationRequiredError extends Error {
   }
 }
 
-export const requireVerifiedSession = cache(async () => {
+async function loadVerifiedSession() {
   const client = await createSupabaseServerClient();
   const { data: auth, error: authError } = await client.auth.getUser();
   if (authError || !auth.user) throw new AuthenticationRequiredError();
@@ -96,4 +96,14 @@ export const requireVerifiedSession = cache(async () => {
       dni_nie: profile.dni_nie ? String(profile.dni_nie) : undefined,
     },
   };
-});
+}
+
+const cachedLoadVerifiedSession =
+  typeof cache === "function" ? cache(loadVerifiedSession) : loadVerifiedSession;
+
+export const requireVerifiedSession = async () => {
+  if (typeof window !== "undefined" && !process.env.VITEST) {
+    return loadVerifiedSession();
+  }
+  return cachedLoadVerifiedSession();
+};

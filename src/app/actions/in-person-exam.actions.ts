@@ -1,6 +1,4 @@
-"use server";
-
-import { revalidatePath } from "next/cache";
+import { safeRevalidatePath } from "@/shared/lib/client-navigation";
 import { requireVerifiedSession } from "@/shared/lib/supabase/session";
 import { mockStore } from "@/shared/lib/mock-store";
 
@@ -78,10 +76,10 @@ export async function recordInPersonExamAction(input: InPersonExamInput) {
       });
     }
 
-    revalidatePath("/admin/progress");
-    revalidatePath("/admin/users");
-    revalidatePath(`/courses/${input.courseId}`);
-    revalidatePath("/quizzes");
+    safeRevalidatePath("/admin/progress");
+    safeRevalidatePath("/admin/users");
+    safeRevalidatePath(`/courses/${input.courseId}`);
+    safeRevalidatePath("/quizzes");
 
     return { success: true, record: resultRecord };
   } catch (err: any) {
@@ -107,8 +105,8 @@ export async function deleteInPersonExamAction(recordId: string) {
       mockStore.deleteInPersonExam(recordId);
     }
 
-    revalidatePath("/admin/progress");
-    revalidatePath("/admin/users");
+    safeRevalidatePath("/admin/progress");
+    safeRevalidatePath("/admin/users");
 
     return { success: true };
   } catch (err: any) {

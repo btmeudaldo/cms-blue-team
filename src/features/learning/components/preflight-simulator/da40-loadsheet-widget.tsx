@@ -12,6 +12,7 @@ import {
 } from "./da40-constants";
 import { PreflightMission } from "./types";
 import { ExerciseInstructionsModal } from "./exercise-instructions-modal";
+import { withBasePath } from "@/shared/lib/base-path";
 
 type Props = {
   mode?: "all" | "takeoff" | "landing";
@@ -1377,7 +1378,7 @@ export function DA40LoadsheetWidget({
                 }}
               >
                 <img
-                  src="/images/da40/da40-cg-limits.png"
+                  src={withBasePath("/images/da40/da40-cg-limits.png")}
                   alt="Envolvente de masa y centrado oficial Diamond DA40 TDI"
                   className="w-full h-full object-contain pointer-events-none select-none"
                 />

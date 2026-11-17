@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useCallback } from "react";
+import { withBasePath } from "@/shared/lib/base-path";
 
 // Official AFM curve points for DA42 (Continental CD-135 / Thielert TAE 125-01)
 // Fuel Flow is per engine
@@ -175,7 +176,7 @@ export function DA42FuelChartWidget() {
         <div className="relative aspect-[660/535] h-full max-h-full max-w-full m-auto select-none">
           {/* 1. ORIGINAL AFM SCREENSHOT IMAGE AS BACKGROUND */}
           <img
-            src="/images/DA42/fuel-flow-chart.png"
+            src={withBasePath("/images/DA42/fuel-flow-chart.png")}
             alt="Ábaco oficial AFM de consumo horario Fuel Flow vs % Load DA42"
             className="w-full h-full object-contain pointer-events-none select-none block"
           />

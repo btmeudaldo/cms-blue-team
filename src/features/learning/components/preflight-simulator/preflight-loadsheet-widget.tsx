@@ -12,6 +12,7 @@ import {
 } from "./constants";
 import { PreflightMission } from "./types";
 import { ExerciseInstructionsModal } from "./exercise-instructions-modal";
+import { withBasePath } from "@/shared/lib/base-path";
 
 type Props = {
   mode?: "all" | "takeoff" | "landing";
@@ -1396,7 +1397,7 @@ export function PreflightLoadsheetWidget({
                 }}
               >
                 <img
-                  src="/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg"
+                  src={withBasePath("/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg")}
                   alt="Center of Gravity Limits SVG"
                   className="w-full h-full object-contain pointer-events-none select-none"
                 />

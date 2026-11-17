@@ -1,18 +1,17 @@
-import dns from "node:dns";
-
-try {
-  dns.setDefaultResultOrder("ipv4first");
-} catch {}
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async rewrites() {
-    return [
+  reactStrictMode: true,
+  output: "export",
+  trailingSlash: true,
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? "/cms",
+  images: {
+    unoptimized: true,
+    remotePatterns: [
       {
-        source: "/images/da42/:path*",
-        destination: "/images/DA42/:path*",
+        protocol: "https",
+        hostname: "**",
       },
-    ];
+    ],
   },
 };
 

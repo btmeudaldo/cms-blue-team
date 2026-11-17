@@ -1,0 +1,39 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /cms/
+
+  # Forzar HTTPS y dominio canónico www.blueteam.es (mismo origen que la web principal)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  RewriteCond %{HTTP_HOST} ^blueteam\.es$ [NC]
+  RewriteRule ^ https://www.blueteam.es%{REQUEST_URI} [L,R=301]
+
+  # Compatibilidad mayúsculas/minúsculas DA42 en servidor Linux (Hostalia)
+  RewriteRule ^images/da42/(.*)$ images/DA42/$1 [L]
+
+  # Si el archivo o directorio existe físicamente, servirlo tal cual
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Payloads RSC (.txt) y HTML de rutas dinámicas hacia su plantilla _placeholder
+  RewriteRule ^courses/[^/]+/lessons/[^/]+/(.+\.txt)$ courses/_placeholder/lessons/_placeholder/$1 [L]
+  RewriteRule ^courses/[^/]+/lessons/[^/]+/?$ courses/_placeholder/lessons/_placeholder/index.html [L]
+
+  RewriteRule ^courses/[^/]+/(.+\.txt)$ courses/_placeholder/$1 [L]
+  RewriteRule ^courses/[^/]+/?$ courses/_placeholder/index.html [L]
+
+  RewriteRule ^quizzes/[^/]+/(.+\.txt)$ quizzes/_placeholder/$1 [L]
+  RewriteRule ^quizzes/[^/]+/?$ quizzes/_placeholder/index.html [L]
+
+  RewriteRule ^admin/courses/[^/]+/lessons/new/(.+\.txt)$ admin/courses/_placeholder/lessons/new/$1 [L]
+  RewriteRule ^admin/courses/[^/]+/lessons/new/?$ admin/courses/_placeholder/lessons/new/index.html [L]
+
+  RewriteRule ^admin/courses/[^/]+/lessons/[^/]+/(.+\.txt)$ admin/courses/_placeholder/lessons/_placeholder/$1 [L]
+  RewriteRule ^admin/courses/[^/]+/lessons/[^/]+/?$ admin/courses/_placeholder/lessons/_placeholder/index.html [L]
+
+  RewriteRule ^admin/courses/[^/]+/(.+\.txt)$ admin/courses/_placeholder/$1 [L]
+  RewriteRule ^admin/courses/[^/]+/?$ admin/courses/_placeholder/index.html [L]
+</IfModule>

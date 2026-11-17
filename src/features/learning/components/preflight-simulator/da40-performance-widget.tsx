@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { DA40_PERFORMANCE_SCENARIOS, checkValueTolerance } from "./da40-constants";
 import { ExerciseInstructionsModal } from "./exercise-instructions-modal";
+import { withBasePath } from "@/shared/lib/base-path";
 
 
 type Props = {
@@ -99,8 +100,8 @@ export function DA40PerformanceWidget({
 
   const chartSrc =
     currentStep === "takeoff"
-      ? "/images/da40/da40-takeoff-50ft.png"
-      : "/images/da40/da40-landing-distance.png";
+      ? withBasePath("/images/da40/da40-takeoff-50ft.png")
+      : withBasePath("/images/da40/da40-landing-distance.png");
   const chartTitle =
     currentStep === "takeoff"
       ? "Takeoff Distance 50ft (AFM Fig. 5.3.5) - Diamond DA40 TDI"
