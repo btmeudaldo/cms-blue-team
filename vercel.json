@@ -1,0 +1,56 @@
+{
+  "rewrites": [
+    {
+      "source": "/images/da42/:path*",
+      "destination": "/images/DA42/:path*"
+    },
+    {
+      "source": "/courses/:courseId/lessons/:lessonId/:file(.*\\.txt)",
+      "destination": "/courses/_placeholder/lessons/_placeholder/:file"
+    },
+    {
+      "source": "/courses/:courseId/lessons/:lessonId",
+      "destination": "/courses/_placeholder/lessons/_placeholder/index.html"
+    },
+    {
+      "source": "/courses/:courseId/:file(.*\\.txt)",
+      "destination": "/courses/_placeholder/:file"
+    },
+    {
+      "source": "/courses/:courseId",
+      "destination": "/courses/_placeholder/index.html"
+    },
+    {
+      "source": "/quizzes/:quizId/:file(.*\\.txt)",
+      "destination": "/quizzes/_placeholder/:file"
+    },
+    {
+      "source": "/quizzes/:quizId",
+      "destination": "/quizzes/_placeholder/index.html"
+    },
+    {
+      "source": "/admin/courses/:courseId/lessons/new/:file(.*\\.txt)",
+      "destination": "/admin/courses/_placeholder/lessons/new/:file"
+    },
+    {
+      "source": "/admin/courses/:courseId/lessons/new",
+      "destination": "/admin/courses/_placeholder/lessons/new/index.html"
+    },
+    {
+      "source": "/admin/courses/:courseId/lessons/:lessonId/:file(.*\\.txt)",
+      "destination": "/admin/courses/_placeholder/lessons/_placeholder/:file"
+    },
+    {
+      "source": "/admin/courses/:courseId/lessons/:lessonId",
+      "destination": "/admin/courses/_placeholder/lessons/_placeholder/index.html"
+    },
+    {
+      "source": "/admin/courses/:courseId/:file(.*\\.txt)",
+      "destination": "/admin/courses/_placeholder/:file"
+    },
+    {
+      "source": "/admin/courses/:courseId",
+      "destination": "/admin/courses/_placeholder/index.html"
+    }
+  ]
+}
