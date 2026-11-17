@@ -5,6 +5,7 @@
   "scripts": {
     "build": "next build --webpack",
     "deploy:hostalia": "node scripts/deploy_hostalia_ftp.mjs",
+    "deploy:hostalia:preview": "node scripts/deploy_hostalia_ftp.mjs --preview",
     "dev": "next dev",
     "test": "vitest run",
     "test:watch": "vitest",

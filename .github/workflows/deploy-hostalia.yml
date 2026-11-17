@@ -3,17 +3,30 @@ name: Build & Deploy CMS to Hostalia
 on:
   push:
     branches:
-      - feat/hostalia-cms
       - main
+      - staging
+      - dev
+      - "feat/**"
+      - "feature/**"
+      - "fix/**"
   workflow_dispatch:
+    inputs:
+      target_env:
+        description: "Entorno de despliegue en Hostalia"
+        required: true
+        default: "preview"
+        type: choice
+        options:
+          - preview
+          - production
 
 concurrency:
-  group: hostalia-cms-production
+  group: hostalia-cms-deploy
   cancel-in-progress: false
 
 jobs:
   build-and-deploy:
-    name: Build, Test & Deploy CMS (/cms)
+    name: Build, Test & Deploy CMS
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -24,6 +37,29 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Determine deployment target (/cms vs /cms-preview)
+        id: target
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            if [ "${{ github.event.inputs.target_env }}" = "preview" ]; then
+              echo "is_preview=true" >> "$GITHUB_OUTPUT"
+              echo "base_path=/cms-preview" >> "$GITHUB_OUTPUT"
+              echo "flags=--skip-build --preview" >> "$GITHUB_OUTPUT"
+            else
+              echo "is_preview=false" >> "$GITHUB_OUTPUT"
+              echo "base_path=/cms" >> "$GITHUB_OUTPUT"
+              echo "flags=--skip-build" >> "$GITHUB_OUTPUT"
+            fi
+          elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "is_preview=false" >> "$GITHUB_OUTPUT"
+            echo "base_path=/cms" >> "$GITHUB_OUTPUT"
+            echo "flags=--skip-build" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_preview=true" >> "$GITHUB_OUTPUT"
+            echo "base_path=/cms-preview" >> "$GITHUB_OUTPUT"
+            echo "flags=--skip-build --preview" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Install dependencies
         run: npm ci
 
@@ -32,22 +68,17 @@ jobs:
           npm run typecheck
           npm run test
 
-      - name: Build static export for /cms
+      - name: Build static export (${{ steps.target.outputs.base_path }})
         env:
-          NEXT_PUBLIC_BASE_PATH: /cms
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.target.outputs.base_path }}
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
         run: npm run build
 
-      - name: Deploy CMS to Hostalia (/cms)
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.HOSTALIA_FTP_SERVER }}
-          username: ${{ secrets.HOSTALIA_FTP_USERNAME }}
-          password: ${{ secrets.HOSTALIA_FTP_PASSWORD }}
-          protocol: ftp
-          port: 21
-          security: loose
-          local-dir: ./out/
-          server-dir: ./cms/
-          dangerous-clean-slate: false
+      - name: Deploy CMS to Hostalia (${{ steps.target.outputs.base_path }})
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.target.outputs.base_path }}
+          FTP_HOST: ${{ secrets.HOSTALIA_FTP_SERVER }}
+          FTP_USER: ${{ secrets.HOSTALIA_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.HOSTALIA_FTP_PASSWORD }}
+        run: node scripts/deploy_hostalia_ftp.mjs ${{ steps.target.outputs.flags }}
