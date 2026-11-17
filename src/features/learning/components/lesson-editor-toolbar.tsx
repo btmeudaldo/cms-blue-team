@@ -10,7 +10,11 @@ import {
 } from "../domain/image-size-presets";
 import { uploadLessonImageAction } from "@/app/actions/lesson.actions";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
-import { withBasePathHtml } from "@/shared/lib/base-path";
+import {
+  BASE_PATH,
+  withBasePath,
+  withBasePathHtml,
+} from "@/shared/lib/base-path";
 import {
   detectMarkdownPrefix,
   filterSlashCommands,
@@ -58,6 +62,23 @@ const PRESET_IMAGES = [
     caption: "Briefing de seguridad de vuelo y protocolos de emergencia",
   },
 ];
+
+function stripBasePathFromUrl(url: string): string {
+  const trimmed = url.trim();
+  if (!trimmed) return "";
+  const prefixes = Array.from(
+    new Set([BASE_PATH, "/cms", "/cms-preview"].filter(Boolean)),
+  );
+  for (const prefix of prefixes) {
+    if (
+      trimmed.startsWith(`${prefix}/images/`) ||
+      trimmed.startsWith(`${prefix}/manuals/`)
+    ) {
+      return trimmed.slice(prefix.length);
+    }
+  }
+  return trimmed;
+}
 
 export function LessonEditorToolbar({
   contentHtml,
@@ -181,9 +202,37 @@ export function LessonEditorToolbar({
   function attachImageControlsToDom(container: HTMLElement) {
     const images = container.querySelectorAll("img");
     images.forEach((img) => {
-      // Ensure fallback if image fails to load
+      const rawAttrSrc = img.getAttribute("src") || "";
+      const isFallbackSvg =
+        rawAttrSrc === FALLBACK_SVG ||
+        rawAttrSrc.includes("Recurso Gráfico Aeronáutico");
+
+      if (!img.getAttribute("data-canonical-src") && rawAttrSrc && !isFallbackSvg) {
+        img.setAttribute("data-canonical-src", stripBasePathFromUrl(rawAttrSrc));
+      }
+
+      if (
+        rawAttrSrc.startsWith("/images/") ||
+        rawAttrSrc.startsWith("/manuals/")
+      ) {
+        const prefixedSrc = withBasePath(rawAttrSrc);
+        if (prefixedSrc !== rawAttrSrc) {
+          img.setAttribute("src", prefixedSrc);
+        }
+      }
+
+      // Ensure fallback visually if image fails to load without clobbering canonical src
       img.onerror = function () {
         const el = this as HTMLImageElement;
+        const currentAttr = el.getAttribute("src") || "";
+        if (
+          !el.getAttribute("data-canonical-src") &&
+          currentAttr &&
+          currentAttr !== FALLBACK_SVG &&
+          !currentAttr.includes("Recurso Gráfico Aeronáutico")
+        ) {
+          el.setAttribute("data-canonical-src", stripBasePathFromUrl(currentAttr));
+        }
         if (el.src !== FALLBACK_SVG) {
           el.src = FALLBACK_SVG;
         }
@@ -516,6 +565,19 @@ export function LessonEditorToolbar({
     placeholders.forEach((p) => p.remove());
     const colControls = clone.querySelectorAll(".col-resize-controls");
     colControls.forEach((c) => c.remove());
+    clone.querySelectorAll("img").forEach((img) => {
+      const canonicalSrc = img.getAttribute("data-canonical-src");
+      const currentSrc = img.getAttribute("src") || "";
+      if (canonicalSrc) {
+        img.setAttribute("src", stripBasePathFromUrl(canonicalSrc));
+        img.removeAttribute("data-canonical-src");
+      } else if (currentSrc) {
+        const stripped = stripBasePathFromUrl(currentSrc);
+        if (stripped !== currentSrc) {
+          img.setAttribute("src", stripped);
+        }
+      }
+    });
     return clone.innerHTML;
   }
 
@@ -602,7 +664,7 @@ export function LessonEditorToolbar({
       if (!initialSlideContent) {
         editorRef.current.innerHTML = `<p class="placeholder-text text-slate-400 dark:text-slate-500 italic">${DEFAULT_PLACEHOLDER_TEXT}</p>`;
       } else {
-        editorRef.current.innerHTML = initialSlideContent;
+        editorRef.current.innerHTML = withBasePathHtml(initialSlideContent);
       }
       attachImageControlsToDom(editorRef.current);
       attachGridControlsToDom(editorRef.current);
@@ -679,7 +741,7 @@ export function LessonEditorToolbar({
       if (!content) {
         editorRef.current.innerHTML = `<p class="placeholder-text text-slate-400 dark:text-slate-500 italic">${DEFAULT_PLACEHOLDER_TEXT}</p>`;
       } else {
-        editorRef.current.innerHTML = content;
+        editorRef.current.innerHTML = withBasePathHtml(content);
       }
       attachImageControlsToDom(editorRef.current);
       attachGridControlsToDom(editorRef.current);
@@ -700,7 +762,7 @@ export function LessonEditorToolbar({
     currentSlideIndexRef.current = insertIndex;
 
     if (editorRef.current) {
-      editorRef.current.innerHTML = newSlideHtml;
+      editorRef.current.innerHTML = withBasePathHtml(newSlideHtml);
       attachImageControlsToDom(editorRef.current);
       attachGridControlsToDom(editorRef.current);
     }
@@ -731,7 +793,7 @@ export function LessonEditorToolbar({
       if (!content) {
         editorRef.current.innerHTML = `<p class="placeholder-text text-slate-400 dark:text-slate-500 italic">${DEFAULT_PLACEHOLDER_TEXT}</p>`;
       } else {
-        editorRef.current.innerHTML = content;
+        editorRef.current.innerHTML = withBasePathHtml(content);
       }
       attachImageControlsToDom(editorRef.current);
       attachGridControlsToDom(editorRef.current);
@@ -751,7 +813,7 @@ export function LessonEditorToolbar({
     currentSlideIndexRef.current = insertIndex;
 
     if (editorRef.current) {
-      editorRef.current.innerHTML = source;
+      editorRef.current.innerHTML = withBasePathHtml(source);
       attachImageControlsToDom(editorRef.current);
       attachGridControlsToDom(editorRef.current);
     }
@@ -768,7 +830,7 @@ export function LessonEditorToolbar({
     setSlides(updated);
 
     if (editorRef.current) {
-      editorRef.current.innerHTML = modifiedHtml;
+      editorRef.current.innerHTML = withBasePathHtml(modifiedHtml);
       attachImageControlsToDom(editorRef.current);
       attachGridControlsToDom(editorRef.current);
     }
@@ -1192,9 +1254,10 @@ export function LessonEditorToolbar({
           if (!content) {
             editorRef.current.innerHTML = `<p class="placeholder-text text-slate-400 dark:text-slate-500 italic">${DEFAULT_PLACEHOLDER_TEXT}</p>`;
           } else {
-            editorRef.current.innerHTML = content;
+            editorRef.current.innerHTML = withBasePathHtml(content);
           }
           attachImageControlsToDom(editorRef.current);
+          attachGridControlsToDom(editorRef.current);
         }
       }, 0);
     }
@@ -1540,12 +1603,16 @@ export function LessonEditorToolbar({
   }
 
   function handleInsertImage(url: string, captionText: string = "") {
-    if (!url) return;
-    const finalUrl = url.trim() || FALLBACK_SVG;
+    const canonicalUrl = stripBasePathFromUrl(url);
+    if (!canonicalUrl) return;
+    const displayUrl =
+      canonicalUrl.startsWith("/images/") || canonicalUrl.startsWith("/manuals/")
+        ? withBasePath(canonicalUrl)
+        : canonicalUrl;
 
     const imgHtml = `
 <div class="lesson-img-wrapper my-6 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-lg max-w-xl mx-auto text-center" style="width: auto; max-width: 100%;">
-  <img src="${finalUrl}" alt="${captionText || "Diagrama aeronáutico"}" class="w-full max-w-full rounded-xl mx-auto my-2 shadow-xs" onerror="if (this.src !== '${FALLBACK_SVG}') this.src='${FALLBACK_SVG}';" style="aspect-ratio: auto; object-fit: contain; width: 100%; height: auto;" />
+  <img src="${displayUrl}" data-canonical-src="${canonicalUrl}" alt="${captionText || "Diagrama aeronáutico"}" class="w-full max-w-full rounded-xl mx-auto my-2 shadow-xs" style="aspect-ratio: auto; object-fit: contain; width: 100%; height: auto;" />
   ${captionText ? `<p class="text-xs text-slate-500 dark:text-slate-400 mt-2 text-center italic">${captionText}</p>` : ""}
 </div>
 <p><br></p>
