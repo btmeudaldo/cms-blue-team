@@ -43,7 +43,7 @@ async function callProgressRpc(
           data = retry.data;
           error = retry.error;
         }
-      } catch {}
+      } catch { }
     }
     if (
       error ||

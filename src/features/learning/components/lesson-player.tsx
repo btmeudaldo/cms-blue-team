@@ -29,6 +29,7 @@ import {
 } from "@/features/learning/domain/lesson-progress";
 import { Header } from "@/shared/components/header";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
+import { ImageLightbox } from "./image-lightbox";
 import { withBasePath, withBasePathHtml } from "@/shared/lib/base-path";
 import { getNextAdvanceButtonPosition } from "@/features/learning/domain/advance-button-position";
 import { getLessonScrollProgress } from "@/features/learning/domain/lesson-scroll-progress";
@@ -99,6 +100,7 @@ export function LessonPlayer({
     {},
   );
   const contentRef = useRef<HTMLDivElement>(null);
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
   const progressQueue = useRef(Promise.resolve());
   const completingRef = useRef(false);
   const hasUserScrolledRef = useRef(true);
@@ -1479,7 +1481,13 @@ export function LessonPlayer({
               <>
                 <article
                   ref={contentRef}
-                  className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 ${
+                  onClick={(e) => {
+                    const img = (e.target as HTMLElement).closest("img");
+                    if (img && contentRef.current?.contains(img)) {
+                      setLightboxImage({ src: img.currentSrc || img.src, alt: img.alt || "" });
+                    }
+                  }}
+                  className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 [&_img]:cursor-zoom-in ${
                     isSlideMode
                       ? "flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-5 lg:px-6 lg:py-4 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
                       : "prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
@@ -1496,6 +1504,13 @@ export function LessonPlayer({
                     isAlreadyCompleted={false}
                   />,
                   exerciseContainer
+                )}
+                {lightboxImage && (
+                  <ImageLightbox
+                    src={lightboxImage.src}
+                    alt={lightboxImage.alt}
+                    onClose={() => setLightboxImage(null)}
+                  />
                 )}
               </>
             )}

@@ -687,11 +687,10 @@ export function DA40LoadsheetWidget({
                       setPanOffset({ x: 0, y: 0 });
                       setZoomLevel(1);
                     }}
-                    className={`px-2.5 py-1 rounded-md text-xs sm:text-[13px] font-bold transition-all cursor-pointer ${
-                      activeTab === "takeoff"
-                        ? "bg-white dark:bg-slate-700 text-[#0B2E59] dark:text-sky-300 shadow-2xs"
-                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
-                    }`}
+                    className={`px-2.5 py-1 rounded-md text-xs sm:text-[13px] font-bold transition-all cursor-pointer ${activeTab === "takeoff"
+                      ? "bg-white dark:bg-slate-700 text-[#0B2E59] dark:text-sky-300 shadow-2xs"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+                      }`}
                   >
                     1. Despegue
                   </button>
@@ -707,11 +706,10 @@ export function DA40LoadsheetWidget({
                       setPanOffset({ x: 0, y: 0 });
                       setZoomLevel(1);
                     }}
-                    className={`px-2.5 py-1 rounded-md text-xs sm:text-[13px] font-bold transition-all cursor-pointer ${
-                      activeTab === "landing"
-                        ? "bg-white dark:bg-slate-700 text-[#0B2E59] dark:text-sky-300 shadow-2xs"
-                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
-                    }`}
+                    className={`px-2.5 py-1 rounded-md text-xs sm:text-[13px] font-bold transition-all cursor-pointer ${activeTab === "landing"
+                      ? "bg-white dark:bg-slate-700 text-[#0B2E59] dark:text-sky-300 shadow-2xs"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+                      }`}
                   >
                     2. Aterrizaje
                   </button>
@@ -731,11 +729,10 @@ export function DA40LoadsheetWidget({
               <button
                 type="button"
                 onClick={() => loadMissionScenario(DA40_PREFLIGHT_MISSIONS[0], 0)}
-                className={`px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
-                  selectedMissionIndex === 0
-                    ? "bg-emerald-600 text-white shadow-2xs"
-                    : "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
-                }`}
+                className={`px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${selectedMissionIndex === 0
+                  ? "bg-emerald-600 text-white shadow-2xs"
+                  : "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700 hover:bg-emerald-100"
+                  }`}
                 title="Misión 1: Ejemplo guiado resuelto"
               >
                 <span>M1</span>
@@ -747,13 +744,12 @@ export function DA40LoadsheetWidget({
                     key={idx}
                     type="button"
                     onClick={() => loadMissionScenario(DA40_PREFLIGHT_MISSIONS[idx], idx)}
-                    className={`px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${
-                      selectedMissionIndex === idx
-                        ? "bg-[#1a80ff] text-white shadow-2xs"
-                        : isSolved
-                          ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
-                          : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
-                    }`}
+                    className={`px-2.5 py-1 rounded-lg text-xs sm:text-[12px] font-extrabold transition-all cursor-pointer flex items-center gap-1 ${selectedMissionIndex === idx
+                      ? "bg-[#1a80ff] text-white shadow-2xs"
+                      : isSolved
+                        ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700"
+                        : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100"
+                      }`}
                   >
                     <span>M{idx + 1}</span>
                     <span>{isSolved ? "✓" : "⏳"}</span>
@@ -824,13 +820,12 @@ export function DA40LoadsheetWidget({
                         value={pilotsMoment}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setPilotsMoment(e.target.value)}
-                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
-                          selectedMissionIndex === 0
-                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                            : errors.pilotsMoment
-                              ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700"
-                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                        }`}
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${selectedMissionIndex === 0
+                          ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          : errors.pilotsMoment
+                            ? "border-rose-500 bg-rose-50 dark:bg-rose-950/40 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          }`}
                       />
                     </td>
                   </tr>
@@ -849,13 +844,12 @@ export function DA40LoadsheetWidget({
                         placeholder={expected.paxMass === 0 ? "0" : "Momento"}
                         value={expected.paxMass === 0 ? "0" : paxMoment}
                         onChange={(e) => setPaxMoment(e.target.value)}
-                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
-                          selectedMissionIndex === 0
-                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                            : errors.paxMoment
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                        }`}
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${selectedMissionIndex === 0
+                          ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          : errors.paxMoment
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          }`}
                       />
                     </td>
                   </tr>
@@ -874,13 +868,12 @@ export function DA40LoadsheetWidget({
                         value={baggageMoment}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setBaggageMoment(e.target.value)}
-                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
-                          selectedMissionIndex === 0
-                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                            : errors.baggageMoment
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                        }`}
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${selectedMissionIndex === 0
+                          ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          : errors.baggageMoment
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          }`}
                       />
                     </td>
                   </tr>
@@ -895,13 +888,12 @@ export function DA40LoadsheetWidget({
                         value={zfmMass}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setZfmMass(e.target.value)}
-                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
-                          selectedMissionIndex === 0
-                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                            : errors.zfmMass
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                        }`}
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${selectedMissionIndex === 0
+                          ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          : errors.zfmMass
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          }`}
                       />
                     </td>
                     <td className="py-1 px-1.5 text-right">
@@ -911,13 +903,12 @@ export function DA40LoadsheetWidget({
                         value={zfmCg}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setZfmCg(e.target.value)}
-                        className={`w-full text-right px-1 py-0.5 rounded border font-mono text-xs font-bold ${
-                          selectedMissionIndex === 0
-                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                            : errors.zfmCg
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                        }`}
+                        className={`w-full text-right px-1 py-0.5 rounded border font-mono text-xs font-bold ${selectedMissionIndex === 0
+                          ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          : errors.zfmCg
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          }`}
                       />
                     </td>
                     <td className="py-1 px-1.5 text-right">
@@ -927,13 +918,12 @@ export function DA40LoadsheetWidget({
                         value={zfmMoment}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setZfmMoment(e.target.value)}
-                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
-                          selectedMissionIndex === 0
-                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                            : errors.zfmMoment
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                        }`}
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${selectedMissionIndex === 0
+                          ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          : errors.zfmMoment
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          }`}
                       />
                     </td>
                   </tr>
@@ -950,13 +940,12 @@ export function DA40LoadsheetWidget({
                         value={fuelMass}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setFuelMass(e.target.value)}
-                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
-                          selectedMissionIndex === 0
-                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                            : errors.fuelMass
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                        }`}
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${selectedMissionIndex === 0
+                          ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          : errors.fuelMass
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          }`}
                       />
                     </td>
                     <td className="py-1 px-1.5 text-right font-mono text-slate-500">2,630</td>
@@ -967,13 +956,12 @@ export function DA40LoadsheetWidget({
                         value={fuelMoment}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setFuelMoment(e.target.value)}
-                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
-                          selectedMissionIndex === 0
-                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                            : errors.fuelMoment
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                        }`}
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${selectedMissionIndex === 0
+                          ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          : errors.fuelMoment
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
+                          }`}
                       />
                     </td>
                   </tr>
@@ -990,13 +978,12 @@ export function DA40LoadsheetWidget({
                         value={tomMass}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setTomMass(e.target.value)}
-                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${
-                          selectedMissionIndex === 0
-                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                            : errors.tomMass
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
-                        }`}
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${selectedMissionIndex === 0
+                          ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          : errors.tomMass
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                          }`}
                       />
                     </td>
                     <td className="py-1 px-1.5 text-right">
@@ -1006,13 +993,12 @@ export function DA40LoadsheetWidget({
                         value={tomCg}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setTomCg(e.target.value)}
-                        className={`w-full text-right px-1 py-0.5 rounded border font-mono text-xs font-bold ${
-                          selectedMissionIndex === 0
-                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                            : errors.tomCg
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
-                        }`}
+                        className={`w-full text-right px-1 py-0.5 rounded border font-mono text-xs font-bold ${selectedMissionIndex === 0
+                          ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          : errors.tomCg
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                          }`}
                       />
                     </td>
                     <td className="py-1 px-1.5 text-right">
@@ -1022,13 +1008,12 @@ export function DA40LoadsheetWidget({
                         value={tomMoment}
                         disabled={selectedMissionIndex === 0}
                         onChange={(e) => setTomMoment(e.target.value)}
-                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${
-                          selectedMissionIndex === 0
-                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
-                            : errors.tomMoment
-                              ? "border-rose-500 bg-rose-50 text-rose-700"
-                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
-                        }`}
+                        className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${selectedMissionIndex === 0
+                          ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          : errors.tomMoment
+                            ? "border-rose-500 bg-rose-50 text-rose-700"
+                            : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                          }`}
                       />
                     </td>
                   </tr>
@@ -1094,13 +1079,12 @@ export function DA40LoadsheetWidget({
                           value={tripFuelMassInput}
                           disabled={selectedMissionIndex === 0}
                           onChange={(e) => setTripFuelMassInput(e.target.value)}
-                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${
-                            selectedMissionIndex === 0
-                              ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
-                              : errors.tripFuelMass
-                                ? "border-rose-500 bg-rose-50 text-rose-700"
-                                : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-400"
-                          }`}
+                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
+                            : errors.tripFuelMass
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-amber-700 dark:text-amber-400"
+                            }`}
                         />
                       </td>
                       <td className="py-1 px-1.5 text-right font-mono text-slate-500">2,630</td>
@@ -1111,13 +1095,12 @@ export function DA40LoadsheetWidget({
                           value={tripFuelMoment}
                           disabled={selectedMissionIndex === 0}
                           onChange={(e) => setTripFuelMoment(e.target.value)}
-                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${
-                            selectedMissionIndex === 0
-                              ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
+                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs ${selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 font-bold"
                             : errors.tripFuelMoment
                               ? "border-rose-500 bg-rose-50 text-rose-700"
                               : "border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800"
-                          }`}
+                            }`}
                         />
                       </td>
                     </tr>
@@ -1134,13 +1117,12 @@ export function DA40LoadsheetWidget({
                           value={lmMass}
                           disabled={selectedMissionIndex === 0}
                           onChange={(e) => setLmMass(e.target.value)}
-                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${
-                            selectedMissionIndex === 0
-                              ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
-                              : errors.lmMass
-                                ? "border-rose-500 bg-rose-50 text-rose-700"
-                                : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
-                          }`}
+                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
+                            : errors.lmMass
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                            }`}
                         />
                       </td>
                       <td className="py-1 px-1.5 text-right">
@@ -1150,13 +1132,12 @@ export function DA40LoadsheetWidget({
                           value={lmCg}
                           disabled={selectedMissionIndex === 0}
                           onChange={(e) => setLmCg(e.target.value)}
-                          className={`w-full text-right px-1 py-0.5 rounded border font-mono text-xs font-bold ${
-                            selectedMissionIndex === 0
-                              ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
-                              : errors.lmCg
-                                ? "border-rose-500 bg-rose-50 text-rose-700"
-                                : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
-                          }`}
+                          className={`w-full text-right px-1 py-0.5 rounded border font-mono text-xs font-bold ${selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
+                            : errors.lmCg
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                            }`}
                         />
                       </td>
                       <td className="py-1 px-1.5 text-right">
@@ -1166,13 +1147,12 @@ export function DA40LoadsheetWidget({
                           value={lmMoment}
                           disabled={selectedMissionIndex === 0}
                           onChange={(e) => setLmMoment(e.target.value)}
-                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${
-                            selectedMissionIndex === 0
-                              ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
-                              : errors.lmMoment
-                                ? "border-rose-500 bg-rose-50 text-rose-700"
-                                : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
-                          }`}
+                          className={`w-full text-right px-1.5 py-0.5 rounded border font-mono text-xs font-bold ${selectedMissionIndex === 0
+                            ? "bg-emerald-50/60 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200"
+                            : errors.lmMoment
+                              ? "border-rose-500 bg-rose-50 text-rose-700"
+                              : "border-emerald-400 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300"
+                            }`}
                         />
                       </td>
                     </tr>
@@ -1284,22 +1264,20 @@ export function DA40LoadsheetWidget({
                 <button
                   type="button"
                   onClick={() => setActivePlotPoint("zfm")}
-                  className={`px-2 py-0.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
-                    activePlotPoint === "zfm"
-                      ? "bg-purple-600 text-white shadow-xs"
-                      : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300"
-                  }`}
+                  className={`px-2 py-0.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${activePlotPoint === "zfm"
+                    ? "bg-purple-600 text-white shadow-xs"
+                    : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300"
+                    }`}
                 >
                   📍 1. Situar ZFM {interactiveZfmPoint ? "✓" : ""}
                 </button>
                 <button
                   type="button"
                   onClick={() => setActivePlotPoint("tom")}
-                  className={`px-2 py-0.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
-                    activePlotPoint === "tom"
-                      ? "bg-amber-500 text-white shadow-xs"
-                      : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300"
-                  }`}
+                  className={`px-2 py-0.5 rounded-lg text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${activePlotPoint === "tom"
+                    ? "bg-amber-500 text-white shadow-xs"
+                    : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300"
+                    }`}
                 >
                   📍 2. Situar TOW {interactiveTomPoint ? "✓" : ""}
                 </button>
@@ -1383,534 +1361,533 @@ export function DA40LoadsheetWidget({
                   className="w-full h-full object-contain pointer-events-none select-none"
                 />
 
-              <svg
-                viewBox="0 0 961 705"
-                className={`absolute inset-0 w-full h-full select-none ${
-                  isPanning ? "cursor-grabbing" : zoomLevel > 1 ? "cursor-grab" : "cursor-crosshair"
-                }`}
-                onMouseDown={(e) => {
-                  if (e.button !== 0) return;
-                  isDraggingRef.current = true;
-                  hasMovedRef.current = false;
-                  dragStartRef.current = { x: e.clientX, y: e.clientY };
-                  panStartRef.current = { ...panOffset };
-                }}
-                onMouseMove={(e) => {
-                  if (isDraggingRef.current && zoomLevel > 1) {
-                    const dx = e.clientX - dragStartRef.current.x;
-                    const dy = e.clientY - dragStartRef.current.y;
-                    if (Math.hypot(dx, dy) > 4) {
-                      hasMovedRef.current = true;
-                      setIsPanning(true);
-                      setPanOffset(clampPan(panStartRef.current.x + dx, panStartRef.current.y + dy, zoomLevel));
-                    }
-                  }
-
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const clickX = ((e.clientX - rect.left) / rect.width) * 961;
-                  const clickY = ((e.clientY - rect.top) / rect.height) * 705;
-                  if (clickX >= 160 && clickX <= 730 && clickY >= 130 && clickY <= 620) {
-                    setHoverPoint({ x: clickX, y: clickY });
-                  } else {
-                    setHoverPoint(null);
-                  }
-                }}
-                onMouseUp={(e) => {
-                  const wasDragging = hasMovedRef.current;
-                  isDraggingRef.current = false;
-                  hasMovedRef.current = false;
-                  setIsPanning(false);
-
-                  if (wasDragging || selectedMissionIndex === 0) return;
-
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const clickX = ((e.clientX - rect.left) / rect.width) * 961;
-                  const clickY = ((e.clientY - rect.top) / rect.height) * 705;
-                  if (clickX >= 160 && clickX <= 730 && clickY >= 130 && clickY <= 620) {
-                    if (currentStep === "takeoff") {
-                      if (activePlotPoint === "zfm") {
-                        setInteractiveZfmPoint({ x: clickX, y: clickY });
-                        if (!interactiveTomPoint) {
-                          setActivePlotPoint("tom");
-                        }
-                      } else {
-                        setInteractiveTomPoint({ x: clickX, y: clickY });
-                      }
-                    } else {
-                      setInteractiveClickPoint({ x: clickX, y: clickY });
-                    }
-                    setErrors((prev) => {
-                      if (!prev.envelopePoint) return prev;
-                      const next = { ...prev };
-                      delete next.envelopePoint;
-                      return next;
-                    });
-                  }
-                }}
-                onMouseLeave={() => {
-                  isDraggingRef.current = false;
-                  hasMovedRef.current = false;
-                  setIsPanning(false);
-                  setHoverPoint(null);
-                }}
-                onTouchStart={(e) => {
-                  if (e.touches.length === 1) {
+                <svg
+                  viewBox="0 0 961 705"
+                  className={`absolute inset-0 w-full h-full select-none ${isPanning ? "cursor-grabbing" : zoomLevel > 1 ? "cursor-grab" : "cursor-crosshair"
+                    }`}
+                  onMouseDown={(e) => {
+                    if (e.button !== 0) return;
                     isDraggingRef.current = true;
                     hasMovedRef.current = false;
-                    dragStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                    dragStartRef.current = { x: e.clientX, y: e.clientY };
                     panStartRef.current = { ...panOffset };
-                  }
-                }}
-                onTouchMove={(e) => {
-                  if (isDraggingRef.current && zoomLevel > 1 && e.touches.length === 1) {
-                    const dx = e.touches[0].clientX - dragStartRef.current.x;
-                    const dy = e.touches[0].clientY - dragStartRef.current.y;
-                    if (Math.hypot(dx, dy) > 4) {
-                      hasMovedRef.current = true;
-                      setIsPanning(true);
-                      setPanOffset(clampPan(panStartRef.current.x + dx, panStartRef.current.y + dy, zoomLevel));
+                  }}
+                  onMouseMove={(e) => {
+                    if (isDraggingRef.current && zoomLevel > 1) {
+                      const dx = e.clientX - dragStartRef.current.x;
+                      const dy = e.clientY - dragStartRef.current.y;
+                      if (Math.hypot(dx, dy) > 4) {
+                        hasMovedRef.current = true;
+                        setIsPanning(true);
+                        setPanOffset(clampPan(panStartRef.current.x + dx, panStartRef.current.y + dy, zoomLevel));
+                      }
                     }
-                  }
-                }}
-                onTouchEnd={(e) => {
-                  const wasDragging = hasMovedRef.current;
-                  isDraggingRef.current = false;
-                  hasMovedRef.current = false;
-                  setIsPanning(false);
 
-                  if (wasDragging || e.changedTouches.length === 0 || selectedMissionIndex === 0) return;
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const clickX = ((e.clientX - rect.left) / rect.width) * 961;
+                    const clickY = ((e.clientY - rect.top) / rect.height) * 705;
+                    if (clickX >= 160 && clickX <= 730 && clickY >= 130 && clickY <= 620) {
+                      setHoverPoint({ x: clickX, y: clickY });
+                    } else {
+                      setHoverPoint(null);
+                    }
+                  }}
+                  onMouseUp={(e) => {
+                    const wasDragging = hasMovedRef.current;
+                    isDraggingRef.current = false;
+                    hasMovedRef.current = false;
+                    setIsPanning(false);
 
-                  const touch = e.changedTouches[0];
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const clickX = ((touch.clientX - rect.left) / rect.width) * 961;
-                  const clickY = ((touch.clientY - rect.top) / rect.height) * 705;
-                  if (clickX >= 160 && clickX <= 730 && clickY >= 130 && clickY <= 620) {
-                    if (currentStep === "takeoff") {
-                      if (activePlotPoint === "zfm") {
-                        setInteractiveZfmPoint({ x: clickX, y: clickY });
-                        if (!interactiveTomPoint) {
-                          setActivePlotPoint("tom");
+                    if (wasDragging || selectedMissionIndex === 0) return;
+
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const clickX = ((e.clientX - rect.left) / rect.width) * 961;
+                    const clickY = ((e.clientY - rect.top) / rect.height) * 705;
+                    if (clickX >= 160 && clickX <= 730 && clickY >= 130 && clickY <= 620) {
+                      if (currentStep === "takeoff") {
+                        if (activePlotPoint === "zfm") {
+                          setInteractiveZfmPoint({ x: clickX, y: clickY });
+                          if (!interactiveTomPoint) {
+                            setActivePlotPoint("tom");
+                          }
+                        } else {
+                          setInteractiveTomPoint({ x: clickX, y: clickY });
                         }
                       } else {
-                        setInteractiveTomPoint({ x: clickX, y: clickY });
+                        setInteractiveClickPoint({ x: clickX, y: clickY });
                       }
-                    } else {
-                      setInteractiveClickPoint({ x: clickX, y: clickY });
+                      setErrors((prev) => {
+                        if (!prev.envelopePoint) return prev;
+                        const next = { ...prev };
+                        delete next.envelopePoint;
+                        return next;
+                      });
                     }
-                    setErrors((prev) => {
-                      if (!prev.envelopePoint) return prev;
-                      const next = { ...prev };
-                      delete next.envelopePoint;
-                      return next;
-                    });
-                  }
-                }}
-              >
-                {/* 1. LÍNEAS GUÍA DE MOUSE HOVER A LOS EJES (Arriba: CG, Derecha: Masa en kg) - TAMAÑO GRANDE */}
-                {hoverPoint && hoverData && (
-                  <g pointerEvents="none">
-                    {/* Línea horizontal hacia el eje vertical IZQUIERDO (Masa en kg) */}
-                    <line
-                      x1={hoverPoint.x}
-                      y1={hoverPoint.y}
-                      x2={190}
-                      y2={hoverPoint.y}
-                      stroke="#1d4ed8"
-                      strokeWidth="3.5"
-                      strokeDasharray="8 5"
-                    />
-                    {/* Badge indicador en el eje izquierdo (Masa en kg) */}
-                    <rect
-                      x={75}
-                      y={hoverPoint.y - 18}
-                      width="110"
-                      height="36"
-                      rx="8"
-                      fill="#1d4ed8"
-                      stroke="#ffffff"
-                      strokeWidth="2.5"
-                    />
-                    <text
-                      x={130}
-                      y={hoverPoint.y + 7}
-                      fill="#ffffff"
-                      fontSize="18"
-                      fontWeight="900"
-                      textAnchor="middle"
-                    >
-                      {hoverData.massKg} kg
-                    </text>
+                  }}
+                  onMouseLeave={() => {
+                    isDraggingRef.current = false;
+                    hasMovedRef.current = false;
+                    setIsPanning(false);
+                    setHoverPoint(null);
+                  }}
+                  onTouchStart={(e) => {
+                    if (e.touches.length === 1) {
+                      isDraggingRef.current = true;
+                      hasMovedRef.current = false;
+                      dragStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+                      panStartRef.current = { ...panOffset };
+                    }
+                  }}
+                  onTouchMove={(e) => {
+                    if (isDraggingRef.current && zoomLevel > 1 && e.touches.length === 1) {
+                      const dx = e.touches[0].clientX - dragStartRef.current.x;
+                      const dy = e.touches[0].clientY - dragStartRef.current.y;
+                      if (Math.hypot(dx, dy) > 4) {
+                        hasMovedRef.current = true;
+                        setIsPanning(true);
+                        setPanOffset(clampPan(panStartRef.current.x + dx, panStartRef.current.y + dy, zoomLevel));
+                      }
+                    }
+                  }}
+                  onTouchEnd={(e) => {
+                    const wasDragging = hasMovedRef.current;
+                    isDraggingRef.current = false;
+                    hasMovedRef.current = false;
+                    setIsPanning(false);
 
-                    {/* Línea vertical hacia el eje horizontal INFERIOR (CG en m) */}
-                    <line
-                      x1={hoverPoint.x}
-                      y1={hoverPoint.y}
-                      x2={hoverPoint.x}
-                      y2={605}
-                      stroke="#1d4ed8"
-                      strokeWidth="3.5"
-                      strokeDasharray="8 5"
-                    />
-                    {/* Badge indicador en el eje inferior (Brazo CG en m) */}
-                    <rect
-                      x={Math.max(160, Math.min(600, hoverPoint.x - 60))}
-                      y={610}
-                      width="120"
-                      height="36"
-                      rx="8"
-                      fill="#1d4ed8"
-                      stroke="#ffffff"
-                      strokeWidth="2.5"
-                    />
-                    <text
-                      x={Math.max(220, Math.min(660, hoverPoint.x))}
-                      y={635}
-                      fill="#ffffff"
-                      fontSize="18"
-                      fontWeight="900"
-                      textAnchor="middle"
-                    >
-                      {hoverData.cgM.toFixed(3)} m
-                    </text>
+                    if (wasDragging || e.changedTouches.length === 0 || selectedMissionIndex === 0) return;
 
-                    {/* Cursor Crosshair Center Dot */}
-                    <circle
-                      cx={hoverPoint.x}
-                      cy={hoverPoint.y}
-                      r="9"
-                      fill="#2563eb"
-                      stroke="#ffffff"
-                      strokeWidth="3.5"
-                    />
-                  </g>
-                )}
+                    const touch = e.changedTouches[0];
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const clickX = ((touch.clientX - rect.left) / rect.width) * 961;
+                    const clickY = ((touch.clientY - rect.top) / rect.height) * 705;
+                    if (clickX >= 160 && clickX <= 730 && clickY >= 130 && clickY <= 620) {
+                      if (currentStep === "takeoff") {
+                        if (activePlotPoint === "zfm") {
+                          setInteractiveZfmPoint({ x: clickX, y: clickY });
+                          if (!interactiveTomPoint) {
+                            setActivePlotPoint("tom");
+                          }
+                        } else {
+                          setInteractiveTomPoint({ x: clickX, y: clickY });
+                        }
+                      } else {
+                        setInteractiveClickPoint({ x: clickX, y: clickY });
+                      }
+                      setErrors((prev) => {
+                        if (!prev.envelopePoint) return prev;
+                        const next = { ...prev };
+                        delete next.envelopePoint;
+                        return next;
+                      });
+                    }
+                  }}
+                >
+                  {/* 1. LÍNEAS GUÍA DE MOUSE HOVER A LOS EJES (Arriba: CG, Derecha: Masa en kg) - TAMAÑO GRANDE */}
+                  {hoverPoint && hoverData && (
+                    <g pointerEvents="none">
+                      {/* Línea horizontal hacia el eje vertical IZQUIERDO (Masa en kg) */}
+                      <line
+                        x1={hoverPoint.x}
+                        y1={hoverPoint.y}
+                        x2={190}
+                        y2={hoverPoint.y}
+                        stroke="#1d4ed8"
+                        strokeWidth="3.5"
+                        strokeDasharray="8 5"
+                      />
+                      {/* Badge indicador en el eje izquierdo (Masa en kg) */}
+                      <rect
+                        x={75}
+                        y={hoverPoint.y - 18}
+                        width="110"
+                        height="36"
+                        rx="8"
+                        fill="#1d4ed8"
+                        stroke="#ffffff"
+                        strokeWidth="2.5"
+                      />
+                      <text
+                        x={130}
+                        y={hoverPoint.y + 7}
+                        fill="#ffffff"
+                        fontSize="18"
+                        fontWeight="900"
+                        textAnchor="middle"
+                      >
+                        {hoverData.massKg} kg
+                      </text>
 
-                {/* 2. PASO 1: DESPEGUE (6.5) - ZFM y TOW */}
-                {currentStep === "takeoff" && (
-                  <>
-                    {/* Líneas de proyección a los ejes para ZFM (sin cuadros de medidas que tapen) */}
-                    {interactiveZfmPoint && (
-                      <g pointerEvents="none">
+                      {/* Línea vertical hacia el eje horizontal INFERIOR (CG en m) */}
+                      <line
+                        x1={hoverPoint.x}
+                        y1={hoverPoint.y}
+                        x2={hoverPoint.x}
+                        y2={605}
+                        stroke="#1d4ed8"
+                        strokeWidth="3.5"
+                        strokeDasharray="8 5"
+                      />
+                      {/* Badge indicador en el eje inferior (Brazo CG en m) */}
+                      <rect
+                        x={Math.max(160, Math.min(600, hoverPoint.x - 60))}
+                        y={610}
+                        width="120"
+                        height="36"
+                        rx="8"
+                        fill="#1d4ed8"
+                        stroke="#ffffff"
+                        strokeWidth="2.5"
+                      />
+                      <text
+                        x={Math.max(220, Math.min(660, hoverPoint.x))}
+                        y={635}
+                        fill="#ffffff"
+                        fontSize="18"
+                        fontWeight="900"
+                        textAnchor="middle"
+                      >
+                        {hoverData.cgM.toFixed(3)} m
+                      </text>
+
+                      {/* Cursor Crosshair Center Dot */}
+                      <circle
+                        cx={hoverPoint.x}
+                        cy={hoverPoint.y}
+                        r="9"
+                        fill="#2563eb"
+                        stroke="#ffffff"
+                        strokeWidth="3.5"
+                      />
+                    </g>
+                  )}
+
+                  {/* 2. PASO 1: DESPEGUE (6.5) - ZFM y TOW */}
+                  {currentStep === "takeoff" && (
+                    <>
+                      {/* Líneas de proyección a los ejes para ZFM (sin cuadros de medidas que tapen) */}
+                      {interactiveZfmPoint && (
+                        <g pointerEvents="none">
+                          <line
+                            x1={interactiveZfmPoint.x}
+                            y1={interactiveZfmPoint.y}
+                            x2={190}
+                            y2={interactiveZfmPoint.y}
+                            stroke="#9333ea"
+                            strokeWidth="2.5"
+                            strokeDasharray="6 4"
+                            opacity="0.85"
+                          />
+                          <line
+                            x1={interactiveZfmPoint.x}
+                            y1={interactiveZfmPoint.y}
+                            x2={interactiveZfmPoint.x}
+                            y2={605}
+                            stroke="#9333ea"
+                            strokeWidth="2.5"
+                            strokeDasharray="6 4"
+                            opacity="0.85"
+                          />
+                        </g>
+                      )}
+
+                      {/* Líneas de proyección a los ejes para TOW (sin cuadros de medidas que tapen) */}
+                      {interactiveTomPoint && (
+                        <g pointerEvents="none">
+                          <line
+                            x1={interactiveTomPoint.x}
+                            y1={interactiveTomPoint.y}
+                            x2={190}
+                            y2={interactiveTomPoint.y}
+                            stroke="#d97706"
+                            strokeWidth="2.5"
+                            strokeDasharray="6 4"
+                            opacity="0.85"
+                          />
+                          <line
+                            x1={interactiveTomPoint.x}
+                            y1={interactiveTomPoint.y}
+                            x2={interactiveTomPoint.x}
+                            y2={605}
+                            stroke="#d97706"
+                            strokeWidth="2.5"
+                            strokeDasharray="6 4"
+                            opacity="0.85"
+                          />
+                        </g>
+                      )}
+
+                      {/* Punto estimado fijado por el alumno para ZFM */}
+                      {interactiveZfmPoint && studentZfmEstimated && (
+                        <g transform={`translate(${interactiveZfmPoint.x}, ${interactiveZfmPoint.y})`}>
+                          <circle r="22" fill="none" stroke="#9333ea" strokeWidth="3" opacity="0.6" className="animate-pulse" />
+                          <circle r="13" fill="#a855f7" stroke="#ffffff" strokeWidth="3" />
+                          {/* Cuadro a la IZQUIERDA del punto ZFM para nunca solaparse con TOW */}
+                          {!isStepPassed && !showTargetHint && (
+                            <g transform="translate(-24, 0)">
+                              <rect x="-220" y="-30" width="220" height="60" rx="10" fill="#7e22ce" stroke="#ffffff" strokeWidth="2.5" />
+                              <text x="-110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
+                                TU PUNTO ZFM
+                              </text>
+                              <text x="-110" y="18" fill="#f3e8ff" fontSize="16" fontWeight="800" textAnchor="middle">
+                                ~{studentZfmEstimated.massKg} kg · {studentZfmEstimated.cgM.toFixed(3)} m
+                              </text>
+                            </g>
+                          )}
+                        </g>
+                      )}
+
+                      {/* Punto estimado fijado por el alumno para TOW */}
+                      {interactiveTomPoint && studentTomEstimated && (
+                        <g transform={`translate(${interactiveTomPoint.x}, ${interactiveTomPoint.y})`}>
+                          <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
+                          <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
+                          {/* Cuadro a la DERECHA del punto TOW para nunca solaparse con ZFM */}
+                          {!isStepPassed && !showTargetHint && (
+                            <g transform="translate(24, 0)">
+                              <rect x="0" y="-30" width="220" height="60" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
+                              <text x="110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
+                                TU PUNTO TOW
+                              </text>
+                              <text x="110" y="18" fill="#fef3c7" fontSize="16" fontWeight="800" textAnchor="middle">
+                                ~{studentTomEstimated.massKg} kg · {studentTomEstimated.cgM.toFixed(3)} m
+                              </text>
+                            </g>
+                          )}
+                        </g>
+                      )}
+
+                      {/* Línea conectando puntos del alumno ZFM -> TOW */}
+                      {interactiveZfmPoint && interactiveTomPoint && (
                         <line
                           x1={interactiveZfmPoint.x}
                           y1={interactiveZfmPoint.y}
-                          x2={190}
-                          y2={interactiveZfmPoint.y}
-                          stroke="#9333ea"
-                          strokeWidth="2.5"
-                          strokeDasharray="6 4"
-                          opacity="0.85"
-                        />
-                        <line
-                          x1={interactiveZfmPoint.x}
-                          y1={interactiveZfmPoint.y}
-                          x2={interactiveZfmPoint.x}
-                          y2={605}
-                          stroke="#9333ea"
-                          strokeWidth="2.5"
-                          strokeDasharray="6 4"
-                          opacity="0.85"
-                        />
-                      </g>
-                    )}
-
-                    {/* Líneas de proyección a los ejes para TOW (sin cuadros de medidas que tapen) */}
-                    {interactiveTomPoint && (
-                      <g pointerEvents="none">
-                        <line
-                          x1={interactiveTomPoint.x}
-                          y1={interactiveTomPoint.y}
-                          x2={190}
+                          x2={interactiveTomPoint.x}
                           y2={interactiveTomPoint.y}
                           stroke="#d97706"
-                          strokeWidth="2.5"
+                          strokeWidth="3"
                           strokeDasharray="6 4"
-                          opacity="0.85"
                         />
+                      )}
+
+                      {/* Línea de combustible calculada ZFM -> TOW (revelada tras validar o tras 3 intentos) */}
+                      {(isStepPassed || showTargetHint) && (
+                        <line
+                          x1={zfmCoords.x}
+                          y1={zfmCoords.y}
+                          x2={tomCoords.x}
+                          y2={tomCoords.y}
+                          stroke="#2563eb"
+                          strokeWidth="3.5"
+                          strokeDasharray="7 5"
+                        />
+                      )}
+
+                      {/* Líneas de comparación alumno vs cálculo exacto */}
+                      {(isStepPassed || showTargetHint) && interactiveZfmPoint && (
+                        <line
+                          x1={interactiveZfmPoint.x}
+                          y1={interactiveZfmPoint.y}
+                          x2={zfmCoords.x}
+                          y2={zfmCoords.y}
+                          stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#9333ea"}
+                          strokeWidth="3"
+                          strokeDasharray="5 3"
+                        />
+                      )}
+                      {(isStepPassed || showTargetHint) && interactiveTomPoint && (
                         <line
                           x1={interactiveTomPoint.x}
                           y1={interactiveTomPoint.y}
-                          x2={interactiveTomPoint.x}
-                          y2={605}
-                          stroke="#d97706"
-                          strokeWidth="2.5"
-                          strokeDasharray="6 4"
-                          opacity="0.85"
+                          x2={tomCoords.x}
+                          y2={tomCoords.y}
+                          stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#f59e0b"}
+                          strokeWidth="3"
+                          strokeDasharray="5 3"
                         />
-                      </g>
-                    )}
+                      )}
 
-                    {/* Punto estimado fijado por el alumno para ZFM */}
-                    {interactiveZfmPoint && studentZfmEstimated && (
-                      <g transform={`translate(${interactiveZfmPoint.x}, ${interactiveZfmPoint.y})`}>
-                        <circle r="22" fill="none" stroke="#9333ea" strokeWidth="3" opacity="0.6" className="animate-pulse" />
-                        <circle r="13" fill="#a855f7" stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro a la IZQUIERDA del punto ZFM para nunca solaparse con TOW */}
-                        {!isStepPassed && !showTargetHint && (
+                      {/* Punto exacto calculado ZFM - Cuadro a la IZQUIERDA */}
+                      {(isStepPassed || showTargetHint) && (
+                        <g transform={`translate(${zfmCoords.x}, ${zfmCoords.y})`}>
+                          <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#7c3aed"} strokeWidth="3" opacity="0.8" className="animate-ping" />
+                          <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#6d28d9"} stroke="#ffffff" strokeWidth="3" />
+                          {/* Cuadro de ZFM hacia la IZQUIERDA */}
                           <g transform="translate(-24, 0)">
-                            <rect x="-220" y="-30" width="220" height="60" rx="10" fill="#7e22ce" stroke="#ffffff" strokeWidth="2.5" />
-                            <text x="-110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
-                              TU PUNTO ZFM
+                            <rect x="-225" y="-30" width="225" height="60" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#581c87"} stroke="#ffffff" strokeWidth="2.5" />
+                            <text x="-112" y="-6" fill="#ffffff" fontSize="17" fontWeight="900" textAnchor="middle">
+                              {showTargetHint && !isStepPassed ? "ZFM CALCULADO (AQUÍ)" : "ZFM (Zero Fuel)"}
                             </text>
-                            <text x="-110" y="18" fill="#f3e8ff" fontSize="16" fontWeight="800" textAnchor="middle">
-                              ~{studentZfmEstimated.massKg} kg · {studentZfmEstimated.cgM.toFixed(3)} m
+                            <text x="-112" y="18" fill="#e9d5ff" fontSize="15" fontWeight="800" textAnchor="middle">
+                              {expected.zfmMass} kg · {expected.zfmCg} m
                             </text>
                           </g>
-                        )}
-                      </g>
-                    )}
+                        </g>
+                      )}
 
-                    {/* Punto estimado fijado por el alumno para TOW */}
-                    {interactiveTomPoint && studentTomEstimated && (
-                      <g transform={`translate(${interactiveTomPoint.x}, ${interactiveTomPoint.y})`}>
-                        <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
-                        <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro a la DERECHA del punto TOW para nunca solaparse con ZFM */}
-                        {!isStepPassed && !showTargetHint && (
+                      {/* Punto exacto calculado TOW - Cuadro a la DERECHA */}
+                      {(isStepPassed || showTargetHint) && (
+                        <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
+                          <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#2563eb"} strokeWidth="3" opacity="0.8" className="animate-ping" />
+                          <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#1d4ed8"} stroke="#ffffff" strokeWidth="3" />
+                          {/* Cuadro de TOW hacia la DERECHA */}
                           <g transform="translate(24, 0)">
-                            <rect x="0" y="-30" width="220" height="60" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
-                            <text x="110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
-                              TU PUNTO TOW
+                            <rect x="0" y="-30" width="225" height="60" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#1e40af"} stroke="#ffffff" strokeWidth="2.5" />
+                            <text x="112" y="-6" fill="#ffffff" fontSize="17" fontWeight="900" textAnchor="middle">
+                              {showTargetHint && !isStepPassed ? "TOW CALCULADO (AQUÍ)" : "TOW (Despegue)"}
                             </text>
-                            <text x="110" y="18" fill="#fef3c7" fontSize="16" fontWeight="800" textAnchor="middle">
-                              ~{studentTomEstimated.massKg} kg · {studentTomEstimated.cgM.toFixed(3)} m
+                            <text x="112" y="18" fill="#bfdbfe" fontSize="15" fontWeight="800" textAnchor="middle">
+                              {expected.tomMass} kg · {expected.tomCg} m
                             </text>
                           </g>
-                        )}
-                      </g>
-                    )}
-
-                    {/* Línea conectando puntos del alumno ZFM -> TOW */}
-                    {interactiveZfmPoint && interactiveTomPoint && (
-                      <line
-                        x1={interactiveZfmPoint.x}
-                        y1={interactiveZfmPoint.y}
-                        x2={interactiveTomPoint.x}
-                        y2={interactiveTomPoint.y}
-                        stroke="#d97706"
-                        strokeWidth="3"
-                        strokeDasharray="6 4"
-                      />
-                    )}
-
-                    {/* Línea de combustible calculada ZFM -> TOW (revelada tras validar o tras 3 intentos) */}
-                    {(isStepPassed || showTargetHint) && (
-                      <line
-                        x1={zfmCoords.x}
-                        y1={zfmCoords.y}
-                        x2={tomCoords.x}
-                        y2={tomCoords.y}
-                        stroke="#2563eb"
-                        strokeWidth="3.5"
-                        strokeDasharray="7 5"
-                      />
-                    )}
-
-                    {/* Líneas de comparación alumno vs cálculo exacto */}
-                    {(isStepPassed || showTargetHint) && interactiveZfmPoint && (
-                      <line
-                        x1={interactiveZfmPoint.x}
-                        y1={interactiveZfmPoint.y}
-                        x2={zfmCoords.x}
-                        y2={zfmCoords.y}
-                        stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#9333ea"}
-                        strokeWidth="3"
-                        strokeDasharray="5 3"
-                      />
-                    )}
-                    {(isStepPassed || showTargetHint) && interactiveTomPoint && (
-                      <line
-                        x1={interactiveTomPoint.x}
-                        y1={interactiveTomPoint.y}
-                        x2={tomCoords.x}
-                        y2={tomCoords.y}
-                        stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#f59e0b"}
-                        strokeWidth="3"
-                        strokeDasharray="5 3"
-                      />
-                    )}
-
-                    {/* Punto exacto calculado ZFM - Cuadro a la IZQUIERDA */}
-                    {(isStepPassed || showTargetHint) && (
-                      <g transform={`translate(${zfmCoords.x}, ${zfmCoords.y})`}>
-                        <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#7c3aed"} strokeWidth="3" opacity="0.8" className="animate-ping" />
-                        <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#6d28d9"} stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro de ZFM hacia la IZQUIERDA */}
-                        <g transform="translate(-24, 0)">
-                          <rect x="-225" y="-30" width="225" height="60" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#581c87"} stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="-112" y="-6" fill="#ffffff" fontSize="17" fontWeight="900" textAnchor="middle">
-                            {showTargetHint && !isStepPassed ? "ZFM CALCULADO (AQUÍ)" : "ZFM (Zero Fuel)"}
-                          </text>
-                          <text x="-112" y="18" fill="#e9d5ff" fontSize="15" fontWeight="800" textAnchor="middle">
-                            {expected.zfmMass} kg · {expected.zfmCg} m
-                          </text>
                         </g>
-                      </g>
-                    )}
+                      )}
+                    </>
+                  )}
 
-                    {/* Punto exacto calculado TOW - Cuadro a la DERECHA */}
-                    {(isStepPassed || showTargetHint) && (
-                      <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
-                        <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#2563eb"} strokeWidth="3" opacity="0.8" className="animate-ping" />
-                        <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#1d4ed8"} stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro de TOW hacia la DERECHA */}
-                        <g transform="translate(24, 0)">
-                          <rect x="0" y="-30" width="225" height="60" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#1e40af"} stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="112" y="-6" fill="#ffffff" fontSize="17" fontWeight="900" textAnchor="middle">
-                            {showTargetHint && !isStepPassed ? "TOW CALCULADO (AQUÍ)" : "TOW (Despegue)"}
-                          </text>
-                          <text x="112" y="18" fill="#bfdbfe" fontSize="15" fontWeight="800" textAnchor="middle">
-                            {expected.tomMass} kg · {expected.tomCg} m
-                          </text>
+                  {/* 3. PASO 2: ATERRIZAJE (6.6) - ZFW, TOW y LW */}
+                  {currentStep === "landing" && (
+                    <>
+                      {/* Punto ZFW (de 6.5) - Cuadro a la IZQUIERDA */}
+                      {(isStepPassed || showTargetHint) && (
+                        <g transform={`translate(${zfmCoords.x}, ${zfmCoords.y})`}>
+                          <circle r="12" fill="#7c3aed" stroke="#ffffff" strokeWidth="3" />
+                          <g transform="translate(-24, 0)">
+                            <rect x="-205" y="-28" width="205" height="56" rx="9" fill="#6d28d9" stroke="#ffffff" strokeWidth="2.5" />
+                            <text x="-102" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
+                              ZFW (de 6.5)
+                            </text>
+                            <text x="-102" y="15" fill="#e9d5ff" fontSize="13" fontWeight="bold" textAnchor="middle">
+                              {expected.zfmMass} kg · {expected.zfmCg} m
+                            </text>
+                          </g>
                         </g>
-                      </g>
-                    )}
-                  </>
-                )}
+                      )}
 
-                {/* 3. PASO 2: ATERRIZAJE (6.6) - ZFW, TOW y LW */}
-                {currentStep === "landing" && (
-                  <>
-                    {/* Punto ZFW (de 6.5) - Cuadro a la IZQUIERDA */}
-                    {(isStepPassed || showTargetHint) && (
-                      <g transform={`translate(${zfmCoords.x}, ${zfmCoords.y})`}>
-                        <circle r="12" fill="#7c3aed" stroke="#ffffff" strokeWidth="3" />
-                        <g transform="translate(-24, 0)">
-                          <rect x="-205" y="-28" width="205" height="56" rx="9" fill="#6d28d9" stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="-102" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
-                            ZFW (de 6.5)
-                          </text>
-                          <text x="-102" y="15" fill="#e9d5ff" fontSize="13" fontWeight="bold" textAnchor="middle">
-                            {expected.zfmMass} kg · {expected.zfmCg} m
-                          </text>
+                      {/* Línea ZFW -> TOW (Carga de combustible) */}
+                      {(isStepPassed || showTargetHint) && (
+                        <line
+                          x1={zfmCoords.x}
+                          y1={zfmCoords.y}
+                          x2={tomCoords.x}
+                          y2={tomCoords.y}
+                          stroke="#7c3aed"
+                          strokeWidth="2.5"
+                          strokeDasharray="5 4"
+                        />
+                      )}
+
+                      {/* Punto de Despegue (TOW) - Cuadro ARRIBA para no solapar con ZFW ni LW */}
+                      {(isStepPassed || showTargetHint) && (
+                        <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
+                          <circle r="13" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3" />
+                          {/* Cuadro hacia ARRIBA del punto TOW */}
+                          <g transform="translate(0, -68)">
+                            <rect x="-105" y="-28" width="210" height="56" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
+                            <text x="0" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
+                              TOW (Despegue)
+                            </text>
+                            <text x="0" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
+                              {expected.tomMass} kg · {expected.tomCg} m
+                            </text>
+                          </g>
                         </g>
-                      </g>
-                    )}
+                      )}
 
-                    {/* Línea ZFW -> TOW (Carga de combustible) */}
-                    {(isStepPassed || showTargetHint) && (
-                      <line
-                        x1={zfmCoords.x}
-                        y1={zfmCoords.y}
-                        x2={tomCoords.x}
-                        y2={tomCoords.y}
-                        stroke="#7c3aed"
-                        strokeWidth="2.5"
-                        strokeDasharray="5 4"
-                      />
-                    )}
+                      {/* Línea de consumo TOW -> LW (Consumo en ruta) */}
+                      {(isStepPassed || showTargetHint) && (
+                        <line
+                          x1={tomCoords.x}
+                          y1={tomCoords.y}
+                          x2={lmCoords.x}
+                          y2={lmCoords.y}
+                          stroke="#1a80ff"
+                          strokeWidth="3.5"
+                          strokeDasharray="7 5"
+                        />
+                      )}
 
-                    {/* Punto de Despegue (TOW) - Cuadro ARRIBA para no solapar con ZFW ni LW */}
-                    {(isStepPassed || showTargetHint) && (
-                      <g transform={`translate(${tomCoords.x}, ${tomCoords.y})`}>
-                        <circle r="13" fill="#1d4ed8" stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro hacia ARRIBA del punto TOW */}
-                        <g transform="translate(0, -68)">
-                          <rect x="-105" y="-28" width="210" height="56" rx="9" fill="#1e40af" stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="0" y="-5" fill="#ffffff" fontSize="15" fontWeight="bold" textAnchor="middle">
-                            TOW (Despegue)
-                          </text>
-                          <text x="0" y="15" fill="#bfdbfe" fontSize="13" fontWeight="bold" textAnchor="middle">
-                            {expected.tomMass} kg · {expected.tomCg} m
-                          </text>
+                      {/* Líneas de proyección a los ejes para LW (sin cuadros de medidas que tapen) */}
+                      {interactiveClickPoint && (
+                        <g pointerEvents="none">
+                          <line
+                            x1={interactiveClickPoint.x}
+                            y1={interactiveClickPoint.y}
+                            x2={190}
+                            y2={interactiveClickPoint.y}
+                            stroke="#059669"
+                            strokeWidth="2.5"
+                            strokeDasharray="6 4"
+                            opacity="0.85"
+                          />
+                          <line
+                            x1={interactiveClickPoint.x}
+                            y1={interactiveClickPoint.y}
+                            x2={interactiveClickPoint.x}
+                            y2={605}
+                            stroke="#059669"
+                            strokeWidth="2.5"
+                            strokeDasharray="6 4"
+                            opacity="0.85"
+                          />
                         </g>
-                      </g>
-                    )}
+                      )}
 
-                    {/* Línea de consumo TOW -> LW (Consumo en ruta) */}
-                    {(isStepPassed || showTargetHint) && (
-                      <line
-                        x1={tomCoords.x}
-                        y1={tomCoords.y}
-                        x2={lmCoords.x}
-                        y2={lmCoords.y}
-                        stroke="#1a80ff"
-                        strokeWidth="3.5"
-                        strokeDasharray="7 5"
-                      />
-                    )}
+                      {/* Punto estimado fijado por el alumno para LW - Cuadro a la DERECHA antes de comprobar */}
+                      {interactiveClickPoint && studentEstimated && (
+                        <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
+                          <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
+                          <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
+                          {!isStepPassed && !showTargetHint && (
+                            <g transform="translate(24, 0)">
+                              <rect x="0" y="-30" width="220" height="60" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
+                              <text x="110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
+                                TU PUNTO LW
+                              </text>
+                              <text x="110" y="18" fill="#fef3c7" fontSize="16" fontWeight="800" textAnchor="middle">
+                                ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
+                              </text>
+                            </g>
+                          )}
+                        </g>
+                      )}
 
-                    {/* Líneas de proyección a los ejes para LW (sin cuadros de medidas que tapen) */}
-                    {interactiveClickPoint && (
-                      <g pointerEvents="none">
+                      {/* Línea de comparación alumno vs LW exacto */}
+                      {(isStepPassed || showTargetHint) && interactiveClickPoint && (
                         <line
                           x1={interactiveClickPoint.x}
                           y1={interactiveClickPoint.y}
-                          x2={190}
-                          y2={interactiveClickPoint.y}
-                          stroke="#059669"
-                          strokeWidth="2.5"
+                          x2={lmCoords.x}
+                          y2={lmCoords.y}
+                          stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#f59e0b"}
+                          strokeWidth="3.5"
                           strokeDasharray="6 4"
-                          opacity="0.85"
                         />
-                        <line
-                          x1={interactiveClickPoint.x}
-                          y1={interactiveClickPoint.y}
-                          x2={interactiveClickPoint.x}
-                          y2={605}
-                          stroke="#059669"
-                          strokeWidth="2.5"
-                          strokeDasharray="6 4"
-                          opacity="0.85"
-                        />
-                      </g>
-                    )}
+                      )}
 
-                    {/* Punto estimado fijado por el alumno para LW - Cuadro a la DERECHA antes de comprobar */}
-                    {interactiveClickPoint && studentEstimated && (
-                      <g transform={`translate(${interactiveClickPoint.x}, ${interactiveClickPoint.y})`}>
-                        <circle r="22" fill="none" stroke="#d97706" strokeWidth="3" opacity="0.6" className="animate-pulse" />
-                        <circle r="13" fill="#f59e0b" stroke="#ffffff" strokeWidth="3" />
-                        {!isStepPassed && !showTargetHint && (
+                      {/* Punto exacto de aterrizaje (LW) - Cuadro hacia la DERECHA */}
+                      {(isStepPassed || showTargetHint) && (
+                        <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
+                          <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#059669"} strokeWidth="3" opacity="0.8" className="animate-ping" />
+                          <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#059669"} stroke="#ffffff" strokeWidth="3" />
+                          {/* Cuadro de LW hacia la DERECHA */}
                           <g transform="translate(24, 0)">
-                            <rect x="0" y="-30" width="220" height="60" rx="10" fill="#b45309" stroke="#ffffff" strokeWidth="2.5" />
-                            <text x="110" y="-6" fill="#ffffff" fontSize="18" fontWeight="900" textAnchor="middle">
-                              TU PUNTO LW
+                            <rect x="0" y="-28" width="220" height="56" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#065f46"} stroke="#ffffff" strokeWidth="2.5" />
+                            <text x="110" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
+                              {showTargetHint && !isStepPassed ? "LW CALCULADO (AQUÍ)" : "LW (Aterrizaje)"}
                             </text>
-                            <text x="110" y="18" fill="#fef3c7" fontSize="16" fontWeight="800" textAnchor="middle">
-                              ~{studentEstimated.massKg} kg · {studentEstimated.cgM.toFixed(3)} m
+                            <text x="110" y="17" fill="#a7f3d0" fontSize="14" fontWeight="800" textAnchor="middle">
+                              {expected.lmMass} kg · {expected.lmCg} m
                             </text>
                           </g>
-                        )}
-                      </g>
-                    )}
-
-                    {/* Línea de comparación alumno vs LW exacto */}
-                    {(isStepPassed || showTargetHint) && interactiveClickPoint && (
-                      <line
-                        x1={interactiveClickPoint.x}
-                        y1={interactiveClickPoint.y}
-                        x2={lmCoords.x}
-                        y2={lmCoords.y}
-                        stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#f59e0b"}
-                        strokeWidth="3.5"
-                        strokeDasharray="6 4"
-                      />
-                    )}
-
-                    {/* Punto exacto de aterrizaje (LW) - Cuadro hacia la DERECHA */}
-                    {(isStepPassed || showTargetHint) && (
-                      <g transform={`translate(${lmCoords.x}, ${lmCoords.y})`}>
-                        <circle r="24" fill="none" stroke={showTargetHint && !isStepPassed ? "#ef4444" : "#059669"} strokeWidth="3" opacity="0.8" className="animate-ping" />
-                        <circle r="13" fill={showTargetHint && !isStepPassed ? "#dc2626" : "#059669"} stroke="#ffffff" strokeWidth="3" />
-                        {/* Cuadro de LW hacia la DERECHA */}
-                        <g transform="translate(24, 0)">
-                          <rect x="0" y="-28" width="220" height="56" rx="10" fill={showTargetHint && !isStepPassed ? "#991b1b" : "#065f46"} stroke="#ffffff" strokeWidth="2.5" />
-                          <text x="110" y="-5" fill="#ffffff" fontSize="16" fontWeight="900" textAnchor="middle">
-                            {showTargetHint && !isStepPassed ? "LW CALCULADO (AQUÍ)" : "LW (Aterrizaje)"}
-                          </text>
-                          <text x="110" y="17" fill="#a7f3d0" fontSize="14" fontWeight="800" textAnchor="middle">
-                            {expected.lmMass} kg · {expected.lmCg} m
-                          </text>
                         </g>
-                      </g>
-                    )}
-                  </>
-                )}
-              </svg>
+                      )}
+                    </>
+                  )}
+                </svg>
+              </div>
             </div>
           </div>
-        </div>
 
           {/* Footer de Estado de la Envolvente / Instrucciones para M2 y M3 */}
           {isStepPassed ? (
@@ -1993,11 +1970,10 @@ export function DA40LoadsheetWidget({
           ) : selectedMissionIndex !== 0 ? (
             <div className="pt-1.5 border-t border-slate-200 dark:border-slate-800 shrink-0">
               <div
-                className={`flex items-center justify-between px-3 py-1.5 rounded-xl border text-xs sm:text-[13px] ${
-                  errors.envelopePoint
-                    ? "bg-rose-50/90 dark:bg-rose-950/40 border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200"
-                    : "bg-blue-50/80 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800 text-blue-950 dark:text-blue-200"
-                }`}
+                className={`flex items-center justify-between px-3 py-1.5 rounded-xl border text-xs sm:text-[13px] ${errors.envelopePoint
+                  ? "bg-rose-50/90 dark:bg-rose-950/40 border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200"
+                  : "bg-blue-50/80 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800 text-blue-950 dark:text-blue-200"
+                  }`}
               >
                 <div className="flex items-center gap-2">
                   <span className="text-base">{errors.envelopePoint ? "⚠️" : "📝"}</span>
@@ -2012,19 +1988,18 @@ export function DA40LoadsheetWidget({
                   </span>
                 </div>
                 <span
-                  className={`text-xs font-bold shrink-0 ${
-                    errors.envelopePoint
-                      ? "text-rose-600 dark:text-rose-400"
-                      : (currentStep === "takeoff" ? (interactiveZfmPoint && interactiveTomPoint) : studentEstimated)
+                  className={`text-xs font-bold shrink-0 ${errors.envelopePoint
+                    ? "text-rose-600 dark:text-rose-400"
+                    : (currentStep === "takeoff" ? (interactiveZfmPoint && interactiveTomPoint) : studentEstimated)
                       ? "text-emerald-700 dark:text-emerald-400"
                       : "text-blue-700 dark:text-blue-400"
-                  }`}
+                    }`}
                 >
                   {errors.envelopePoint
                     ? "Revisar marca"
                     : (currentStep === "takeoff" ? (interactiveZfmPoint && interactiveTomPoint) : studentEstimated)
-                    ? "Puntos situados ✓"
-                    : "Misión " + (selectedMissionIndex + 1)}
+                      ? "Puntos situados ✓"
+                      : "Misión " + (selectedMissionIndex + 1)}
                 </span>
               </div>
             </div>

@@ -16,6 +16,9 @@ const skipBuild = process.argv.includes("--skip-build");
 const forceFull = process.argv.includes("--full");
 
 const HEAVY_TOP_DIRS = new Set(["images", "manuals", "assets", "course-assets"]);
+// Carpetas gestionadas en runtime en Hostalia (imágenes subidas desde el CMS):
+// el deploy nunca debe borrarlas, limpiarlas ni sobreescribirlas.
+const PROTECTED_REMOTE_DIRS = new Set(["media"]);
 
 const basePathSegment = isPreview
   ? "elearning-preview"
@@ -123,6 +126,9 @@ function collectFilesByDir(rootDir) {
 
   function walk(currentDir, relDir) {
     const topDir = relDir.split("/")[0];
+    if (topDir && PROTECTED_REMOTE_DIRS.has(topDir)) {
+      return;
+    }
     if (isPreview && topDir && HEAVY_TOP_DIRS.has(topDir)) {
       return;
     }

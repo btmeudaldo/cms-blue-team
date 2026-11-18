@@ -9,6 +9,8 @@ import {
   ImageWidthPreset,
 } from "../domain/image-size-presets";
 import { uploadLessonImageAction } from "@/app/actions/lesson.actions";
+import { registerLessonMediaAction } from "@/app/actions/media.actions";
+import { MediaLibraryTab } from "./media-library-tab";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 import {
   BASE_PATH,
@@ -34,6 +36,30 @@ import {
   getNextGridColumnSpan,
   getSpanFromPercentage,
 } from "../domain/grid-column-spans";
+import {
+  BOX_PRESETS,
+  buildBoxHtml,
+  readBoxStyle,
+  serializeBoxStyle,
+  type BoxStyle,
+} from "../domain/box-styles";
+import {
+  detectLegacyBox,
+  stripLegacyVisualClasses,
+} from "../domain/legacy-box-detect";
+import { BoxPropertiesPanel } from "./box-properties-panel";
+import { ImagePropertiesPanel } from "./image-properties-panel";
+import {
+  buildWrapperClasses,
+  normalizeAlign,
+  normalizeAspectRatio,
+  normalizeObjectFit,
+  normalizeObjectPosition,
+  normalizeShadow,
+  parseWidthPct,
+  type ImageStyle,
+} from "../domain/image-styles";
+import { optimizeImageForUpload } from "../domain/image-optimizer";
 
 type LessonEditorToolbarProps = {
   contentHtml: string;
@@ -91,7 +117,7 @@ export function LessonEditorToolbar({
   const editorRef = useRef<HTMLDivElement>(null);
   const initialContentHtmlRef = useRef(contentHtml);
   const [showImageModal, setShowImageModal] = useState(false);
-  const [imageTab, setImageTab] = useState<"file" | "url" | "presets">("file");
+  const [imageTab, setImageTab] = useState<"library" | "file" | "url" | "presets">("file");
   const [customImageUrl, setCustomImageUrl] = useState("");
   const [customCaption, setCustomCaption] = useState("");
   const [fileDataUrl, setFileDataUrl] = useState<string | null>(null);
@@ -130,52 +156,46 @@ export function LessonEditorToolbar({
     "Escribe aquí el contenido de la lección para los alumnos de aviación...";
 
   async function uploadOrCompressImageFile(file: File): Promise<string> {
+    setUploadStatusMessage("Optimizando imagen a WebP...");
+    const optimized = await optimizeImageForUpload(file);
+
+    const formData = new FormData();
+    formData.append("file", optimized);
+
+    // 1. Try Hostalia PHP endpoint first (saves Supabase Storage quota)
+    let uploadedUrl: string | null = null;
     try {
-      setUploadStatusMessage("Subiendo recurso a almacenamiento seguro...");
-      const formData = new FormData();
-      formData.append("file", file);
-      return await uploadLessonImageAction(formData);
-    } catch (err) {
-      console.warn("Server storage upload failed, falling back to compressed local data URL:", err);
-      setUploadStatusMessage("Optimizando imagen localmente...");
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const raw = e.target?.result as string;
-          const img = new Image();
-          img.onload = () => {
-            try {
-              const canvas = document.createElement("canvas");
-              const maxDim = 1280;
-              let w = img.width;
-              let h = img.height;
-              if (w > maxDim || h > maxDim) {
-                if (w > h) {
-                  h = Math.round((h * maxDim) / w);
-                  w = maxDim;
-                } else {
-                  w = Math.round((w * maxDim) / h);
-                  h = maxDim;
-                }
-              }
-              canvas.width = w;
-              canvas.height = h;
-              const ctx = canvas.getContext("2d");
-              if (ctx) {
-                ctx.drawImage(img, 0, 0, w, h);
-                resolve(canvas.toDataURL("image/jpeg", 0.8));
-                return;
-              }
-            } catch (e) {}
-            resolve(raw);
-          };
-          img.onerror = () => resolve(raw);
-          img.src = raw;
-        };
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
+      setUploadStatusMessage("Subiendo imagen a Hostalia...");
+      const res = await fetch(`${BASE_PATH}/api/upload-media.php`, {
+        method: "POST",
+        body: formData,
       });
+      if (res.ok) {
+        const data = (await res.json()) as { url?: string };
+        if (data?.url) uploadedUrl = data.url;
+      }
+    } catch {
+      // Hostalia PHP endpoint not available (e.g. local Next dev): fall through to Supabase
     }
+
+    // 2. Fallback to Supabase Storage action (no base64 in DB)
+    if (!uploadedUrl) {
+      setUploadStatusMessage("Subiendo imagen a almacenamiento seguro...");
+      uploadedUrl = await uploadLessonImageAction(formData);
+    }
+
+    // 3. Register in Supabase media library (best-effort)
+    try {
+      await registerLessonMediaAction({
+        url: uploadedUrl,
+        filename: optimized.name,
+        sizeBytes: optimized.size,
+      });
+    } catch {
+      // Non-blocking if migration is not yet applied
+    }
+
+    return uploadedUrl;
   }
 
   function clearPlaceholderIfPresent() {
@@ -274,68 +294,6 @@ export function LessonEditorToolbar({
 
       wrapper.style.position = "relative";
       wrapper.setAttribute("draggable", "false");
-
-      // Add Top Floating Quick Bar if not present (absolute overlay so it never shifts image layout)
-      if (!wrapper.querySelector(".img-editor-controls")) {
-        const controls = document.createElement("div");
-        controls.className =
-          "img-editor-controls absolute top-2 left-2 right-2 z-30 space-y-1.5 rounded-xl border border-blue-200/90 bg-white/95 p-2 dark:border-blue-800/80 dark:bg-slate-900/95 select-none shadow-lg backdrop-blur-xs";
-        controls.setAttribute("contenteditable", "false");
-        controls.innerHTML = `
-          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-blue-200/50 dark:border-blue-800/40 pb-1.5">
-            <div class="flex items-center gap-1.5">
-              <span class="text-[11px] font-extrabold text-blue-700 dark:text-blue-300 flex items-center gap-1">
-                <span>🖼️</span>
-                <span>Diagrama</span>
-              </span>
-              <div class="flex items-center gap-0.5 rounded-lg border border-blue-200/80 bg-white p-0.5 dark:border-blue-800/80 dark:bg-slate-900 shadow-2xs">
-                <span class="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase px-1">Ancho:</span>
-                <button type="button" class="img-btn-size-25 px-1.5 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] hover:bg-blue-50 dark:hover:bg-blue-950 text-[10px] font-bold rounded cursor-pointer transition-colors" title="25% del ancho">25%</button>
-                <button type="button" class="img-btn-size-50 px-1.5 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] hover:bg-blue-50 dark:hover:bg-blue-950 text-[10px] font-bold rounded cursor-pointer transition-colors" title="50% del ancho">50%</button>
-                <button type="button" class="img-btn-size-75 px-1.5 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] hover:bg-blue-50 dark:hover:bg-blue-950 text-[10px] font-bold rounded cursor-pointer transition-colors" title="75% del ancho">75%</button>
-                <button type="button" class="img-btn-size-100 px-1.5 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] hover:bg-blue-50 dark:hover:bg-blue-950 text-[10px] font-bold rounded cursor-pointer transition-colors" title="100% (Ancho completo)">100%</button>
-                <button type="button" class="img-btn-size-auto px-1.5 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] hover:bg-blue-50 dark:hover:bg-blue-950 text-[10px] font-bold rounded cursor-pointer transition-colors" title="Tamaño original / Ajuste natural">Auto</button>
-              </div>
-            </div>
-            <div class="img-drag-handle flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-600 text-white text-[10px] font-extrabold cursor-grab active:cursor-grabbing hover:bg-blue-700 transition-colors shadow-2xs" draggable="true" title="Haz clic y arrastra para mover la imagen a cualquier párrafo">
-              <span>✥</span>
-              <span>Mover</span>
-            </div>
-          </div>
-          <div class="flex flex-wrap items-center gap-1.5 pt-1">
-            <button type="button" class="img-btn-aspect px-2 py-1 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Cambiar relación de aspecto (Auto / 16:9 / 1:1 / 4:3)">
-              📐 Proporción
-            </button>
-            <button type="button" class="img-btn-fit px-2 py-1 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Ver imagen completa sin recortar (contain / cover)">
-              🎯 Ajuste
-            </button>
-            <button type="button" class="img-btn-pos px-2 py-1 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-blue-950 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Mover enfoque vertical (Arriba / Centro / Abajo)">
-              ↕️ Enfoque
-            </button>
-            <div class="flex items-center gap-0.5 rounded-lg border border-slate-200 bg-white p-0.5 dark:border-slate-700 dark:bg-slate-800">
-              <button type="button" class="img-btn-align-left px-2 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer" title="Alinear a la izquierda">
-                ⬅️ Izq
-              </button>
-              <button type="button" class="img-btn-align-center px-2 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer" title="Centrar">
-                ↔️ Centro
-              </button>
-              <button type="button" class="img-btn-align-right px-2 py-0.5 text-slate-700 dark:text-slate-300 hover:text-[#1a80ff] text-[11px] font-bold rounded-md hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer" title="Alinear a la derecha">
-                ➡️ Der
-              </button>
-            </div>
-            <button type="button" class="img-btn-up px-2 py-1 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Subir un bloque">
-              ▲ Subir
-            </button>
-            <button type="button" class="img-btn-down px-2 py-1 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-bold rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer" title="Bajar un bloque">
-              ▼ Bajar
-            </button>
-            <button type="button" class="img-btn-remove px-2 py-1 bg-rose-50 dark:bg-rose-950/60 hover:bg-rose-100 text-rose-600 dark:text-rose-400 text-[11px] font-bold rounded-lg border border-rose-200 dark:border-rose-800 transition-colors cursor-pointer ml-auto" title="Eliminar imagen">
-              🗑️
-            </button>
-          </div>
-        `;
-        wrapper.insertBefore(controls, wrapper.firstChild);
-      }
 
       // Add Corner Interactive Resize Handles if not present
       if (!wrapper.querySelector(".img-resize-handle")) {
@@ -569,6 +527,10 @@ export function LessonEditorToolbar({
     placeholders.forEach((p) => p.remove());
     const colControls = clone.querySelectorAll(".col-resize-controls");
     colControls.forEach((c) => c.remove());
+    clone.querySelectorAll(".cbt-box-selected, .cbt-img-selected").forEach((el) => {
+      el.classList.remove("cbt-box-selected", "cbt-img-selected");
+      if (!el.getAttribute("class")) el.removeAttribute("class");
+    });
     clone.querySelectorAll("img").forEach((img) => {
       const canonicalSrc = img.getAttribute("data-canonical-src");
       const currentSrc = img.getAttribute("src") || "";
@@ -627,8 +589,15 @@ export function LessonEditorToolbar({
 
     function handleGlobalMouseUp() {
       if (!resizingStateRef.current) return;
-      const { badgeEl } = resizingStateRef.current;
+      const { wrapper, badgeEl } = resizingStateRef.current;
       if (badgeEl) badgeEl.remove();
+
+      // Convert pixel drag width to responsive percentage (15%..100%)
+      const containerWidth = editorRef.current?.getBoundingClientRect().width || 700;
+      const currentPx = wrapper.getBoundingClientRect().width;
+      const pct = Math.max(15, Math.min(100, Math.round((currentPx / containerWidth) * 100)));
+      wrapper.style.width = `${pct}%`;
+      wrapper.style.maxWidth = "100%";
 
       resizingStateRef.current = null;
       document.body.style.cursor = "";
@@ -983,9 +952,344 @@ export function LessonEditorToolbar({
     }
   }
 
+  // ── Editable boxes (.cbt-box) ─────────────────────────────────────────────
+  const selectedBoxRef = useRef<HTMLElement | null>(null);
+  const [boxPanel, setBoxPanel] = useState<{ style: BoxStyle; isLegacy: boolean; slideKey: string } | null>(null);
+
+  function readBoxAttrs(el: HTMLElement) {
+    return readBoxStyle({
+      style: el.getAttribute("style"),
+      "data-cbt-box": el.getAttribute("data-cbt-box"),
+      "data-border": el.getAttribute("data-border"),
+      "data-shadow": el.getAttribute("data-shadow"),
+      "data-align": el.getAttribute("data-align"),
+    });
+  }
+
+  function findBoxFromTarget(target: HTMLElement): { el: HTMLElement; isLegacy: boolean } | null {
+    const root = editorRef.current;
+    if (!root || target.closest(".img-editor-controls, .col-resize-controls, .img-resize-handle")) {
+      return null;
+    }
+    const cbt = target.closest(".cbt-box") as HTMLElement | null;
+    if (cbt && root.contains(cbt)) return { el: cbt, isLegacy: false };
+    let node: HTMLElement | null = target;
+    while (node && node !== root) {
+      if (node.tagName === "DIV" && detectLegacyBox(node.getAttribute("class") || "")) {
+        return { el: node, isLegacy: true };
+      }
+      node = node.parentElement;
+    }
+    return null;
+  }
+
+  function clearBoxSelection() {
+    selectedBoxRef.current?.classList.remove("cbt-box-selected");
+    selectedBoxRef.current = null;
+    setBoxPanel(null);
+  }
+
+  function selectBox(el: HTMLElement, isLegacy: boolean) {
+    if (selectedBoxRef.current !== el) {
+      selectedBoxRef.current?.classList.remove("cbt-box-selected");
+    }
+    el.classList.add("cbt-box-selected");
+    selectedBoxRef.current = el;
+    const style = isLegacy
+      ? detectLegacyBox(el.getAttribute("class") || "")!.style
+      : readBoxAttrs(el);
+    setBoxPanel({ style, isLegacy, slideKey: boxSlideKey });
+  }
+
+  function writeBoxAttrs(el: HTMLElement, style: BoxStyle) {
+    const attrs = serializeBoxStyle(style, el.getAttribute("style") || "");
+    for (const [name, val] of Object.entries(attrs)) {
+      if (val === null) el.removeAttribute(name);
+      else el.setAttribute(name, val);
+    }
+  }
+
+  function handleBoxStyleChange(style: BoxStyle) {
+    const el = selectedBoxRef.current;
+    if (!el?.isConnected) return;
+    writeBoxAttrs(el, style);
+    setBoxPanel({ style, isLegacy: false, slideKey: boxSlideKey });
+    syncCurrentSlideToState();
+  }
+
+  function handleBoxConvert() {
+    const el = selectedBoxRef.current;
+    const match = el && detectLegacyBox(el.getAttribute("class") || "");
+    if (!el || !match) return;
+    const kept = stripLegacyVisualClasses(el.getAttribute("class") || "");
+    el.setAttribute("class", `cbt-box ${kept} cbt-box-selected`.replace(/\s+/g, " ").trim());
+    writeBoxAttrs(el, match.style);
+    setBoxPanel({ style: match.style, isLegacy: false, slideKey: boxSlideKey });
+    syncCurrentSlideToState();
+  }
+
+  function handleBoxIcon(icon: string) {
+    const el = selectedBoxRef.current;
+    if (!el?.isConnected) return;
+    const existing = el.querySelector(".cbt-box__icon");
+    if (!icon) {
+      existing?.remove();
+    } else if (existing) {
+      existing.textContent = icon;
+    } else {
+      const span = document.createElement("span");
+      span.className = "cbt-box__icon";
+      span.textContent = icon;
+      const host = el.querySelector("strong, b") || el.querySelector("p") || el;
+      host.insertBefore(document.createTextNode(" "), host.firstChild);
+      host.insertBefore(span, host.firstChild);
+    }
+    syncCurrentSlideToState();
+  }
+
+  function isEditorChrome(node: Element | null) {
+    return !!node?.matches(".img-editor-controls, .col-resize-controls, .img-resize-handle");
+  }
+
+  function handleBoxMove(dir: -1 | 1) {
+    const el = selectedBoxRef.current;
+    if (!el?.parentElement) return;
+    let sibling = dir === -1 ? el.previousElementSibling : el.nextElementSibling;
+    while (sibling && isEditorChrome(sibling)) {
+      sibling = dir === -1 ? sibling.previousElementSibling : sibling.nextElementSibling;
+    }
+    if (!sibling) return;
+    if (dir === -1) el.parentElement.insertBefore(el, sibling);
+    else el.parentElement.insertBefore(sibling, el);
+    el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    syncCurrentSlideToState();
+  }
+
+  function handleBoxDuplicate() {
+    const el = selectedBoxRef.current;
+    if (!el?.isConnected) return;
+    const copy = el.cloneNode(true) as HTMLElement;
+    copy.classList.remove("cbt-box-selected");
+    el.after(copy);
+    syncCurrentSlideToState();
+  }
+
+  function handleBoxDelete() {
+    const el = selectedBoxRef.current;
+    if (!el?.isConnected) return;
+    if (!window.confirm("¿Eliminar este cuadro?")) return;
+    el.remove();
+    clearBoxSelection();
+    syncCurrentSlideToState();
+  }
+
+  // The editor DOM is replaced when switching slides/views: a selection made on
+  // another slide/view is considered stale and the panel is hidden.
+  const boxSlideKey = `${currentSlideIndex}|${viewMode}|${isStudentPreview}`;
+  const activeBoxPanel = boxPanel && boxPanel.slideKey === boxSlideKey ? boxPanel : null;
+
+  // ── Editable images (.lesson-img-wrapper) ────────────────────────────────
+  const selectedImageRef = useRef<HTMLElement | null>(null);
+  const [imagePanel, setImagePanel] = useState<{ style: ImageStyle; slideKey: string } | null>(null);
+
+  function readImageStyleFromDom(wrapper: HTMLElement): ImageStyle {
+    const img = wrapper.querySelector("img");
+    const captionEl = wrapper.querySelector("figcaption");
+    const cls = wrapper.getAttribute("class") || "";
+    const rawRadius = parseFloat(wrapper.style.borderRadius || "16");
+    return {
+      widthPct: parseWidthPct(wrapper.style.width),
+      aspectRatio: normalizeAspectRatio(img?.style.aspectRatio),
+      objectFit: normalizeObjectFit(img?.style.objectFit),
+      objectPosition: normalizeObjectPosition(img?.style.objectPosition),
+      align: normalizeAlign(cls),
+      radius: Number.isFinite(rawRadius) ? Math.max(0, Math.min(32, Math.round(rawRadius))) : 16,
+      shadow: normalizeShadow(cls),
+      border: !/(?:^|\s)border-0(?:\s|$)/.test(cls),
+      alt: img?.getAttribute("alt") || "",
+      caption: captionEl?.textContent || "",
+    };
+  }
+
+  function clearImageSelection() {
+    selectedImageRef.current?.classList.remove("cbt-img-selected");
+    selectedImageRef.current = null;
+    setImagePanel(null);
+  }
+
+  function selectImage(wrapper: HTMLElement) {
+    clearBoxSelection();
+    if (selectedImageRef.current !== wrapper) {
+      selectedImageRef.current?.classList.remove("cbt-img-selected");
+    }
+    wrapper.classList.add("cbt-img-selected");
+    selectedImageRef.current = wrapper;
+    setImagePanel({ style: readImageStyleFromDom(wrapper), slideKey: boxSlideKey });
+  }
+
+  function handleImageStyleChange(next: ImageStyle) {
+    const wrapper = selectedImageRef.current;
+    if (!wrapper?.isConnected) return;
+    const img = wrapper.querySelector("img");
+
+    const isAutoFill = next.widthPct === "auto";
+    wrapper.style.width = isAutoFill ? "100%" : `${next.widthPct}%`;
+    wrapper.style.maxWidth = "100%";
+    wrapper.style.borderRadius = `${next.radius}px`;
+    wrapper.setAttribute(
+      "class",
+      `${buildWrapperClasses(next.align, next.shadow, next.border, wrapper.getAttribute("class") || "")} cbt-img-selected`,
+    );
+
+    if (img) {
+      img.style.display = "block";
+      img.style.width = "100%";
+      img.style.maxWidth = "100%";
+      img.style.aspectRatio = next.aspectRatio;
+      img.style.objectFit = isAutoFill ? "cover" : next.objectFit;
+      img.style.objectPosition = next.objectPosition;
+      img.style.height = isAutoFill || next.aspectRatio !== "auto" ? "100%" : "auto";
+      img.setAttribute("alt", next.alt);
+    }
+
+    let captionEl = wrapper.querySelector("figcaption");
+    if (next.caption.trim()) {
+      if (!captionEl) {
+        captionEl = document.createElement("figcaption");
+        captionEl.className = "mt-2.5 text-xs font-medium text-slate-500 dark:text-slate-400 italic text-center";
+        wrapper.appendChild(captionEl);
+      }
+      captionEl.textContent = next.caption;
+    } else if (captionEl) {
+      captionEl.remove();
+    }
+
+    setImagePanel({ style: next, slideKey: boxSlideKey });
+    syncCurrentSlideToState();
+  }
+
+  function handleImageMove(dir: -1 | 1) {
+    const el = selectedImageRef.current;
+    if (!el?.parentElement) return;
+    let sibling = dir === -1 ? el.previousElementSibling : el.nextElementSibling;
+    while (sibling && isEditorChrome(sibling)) {
+      sibling = dir === -1 ? sibling.previousElementSibling : sibling.nextElementSibling;
+    }
+    if (!sibling) return;
+    if (dir === -1) el.parentElement.insertBefore(el, sibling);
+    else el.parentElement.insertBefore(sibling, el);
+    el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    syncCurrentSlideToState();
+  }
+
+  function handleImageDuplicate() {
+    const el = selectedImageRef.current;
+    if (!el?.isConnected) return;
+    const copy = el.cloneNode(true) as HTMLElement;
+    copy.classList.remove("cbt-img-selected");
+    el.after(copy);
+    syncCurrentSlideToState();
+  }
+
+  function handleImageDelete() {
+    const el = selectedImageRef.current;
+    if (!el?.isConnected) return;
+    if (!window.confirm("¿Eliminar esta imagen?")) return;
+    el.remove();
+    clearImageSelection();
+    syncCurrentSlideToState();
+  }
+
+  function handleImageRotate() {
+    const img = selectedImageRef.current?.querySelector("img");
+    if (!img) return;
+    const prev = img.style.transform || "";
+    const m = prev.match(/rotate\((\d+)deg\)/);
+    const nextDeg = ((m ? parseInt(m[1], 10) : 0) + 90) % 360;
+    const withoutRot = prev.replace(/rotate\(\d+deg\)/g, "").trim();
+    img.style.transform = `${withoutRot} ${nextDeg ? `rotate(${nextDeg}deg)` : ""}`.trim();
+    syncCurrentSlideToState();
+  }
+
+  function handleImageFlip() {
+    const img = selectedImageRef.current?.querySelector("img");
+    if (!img) return;
+    const prev = img.style.transform || "";
+    img.style.transform = prev.includes("scaleX(-1)")
+      ? prev.replace(/scaleX\(-1\)/g, "").trim()
+      : `${prev} scaleX(-1)`.trim();
+    syncCurrentSlideToState();
+  }
+
+  function ensureAnnotationSvg(wrapper: HTMLElement): SVGSVGElement {
+    let svg = wrapper.querySelector("svg.cbt-img-annotations") as SVGSVGElement | null;
+    if (!svg) {
+      svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("class", "cbt-img-annotations pointer-events-none absolute inset-0 w-full h-full z-10");
+      svg.setAttribute("viewBox", "0 0 1000 1000");
+      svg.setAttribute("preserveAspectRatio", "none");
+      wrapper.appendChild(svg);
+    }
+    return svg;
+  }
+
+  function handleImageAddPin() {
+    const wrapper = selectedImageRef.current;
+    if (!wrapper?.isConnected) return;
+    const svg = ensureAnnotationSvg(wrapper);
+    const count = svg.querySelectorAll('[data-ann="pin"]').length + 1;
+    const offset = ((count - 1) % 5) * 120;
+    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    g.setAttribute("data-ann", "pin");
+    g.innerHTML = `<circle cx="${200 + offset}" cy="250" r="26" fill="#ef4444" stroke="#ffffff" stroke-width="5" /><text x="${200 + offset}" y="259" text-anchor="middle" fill="#ffffff" font-size="26" font-weight="800" font-family="sans-serif">${count}</text>`;
+    svg.appendChild(g);
+    syncCurrentSlideToState();
+  }
+
+  function handleImageAddCircle() {
+    const wrapper = selectedImageRef.current;
+    if (!wrapper?.isConnected) return;
+    const svg = ensureAnnotationSvg(wrapper);
+    const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    c.setAttribute("data-ann", "circle");
+    c.setAttribute("cx", "500");
+    c.setAttribute("cy", "500");
+    c.setAttribute("r", "110");
+    c.setAttribute("fill", "none");
+    c.setAttribute("stroke", "#1a80ff");
+    c.setAttribute("stroke-width", "8");
+    svg.appendChild(c);
+    syncCurrentSlideToState();
+  }
+
+  function handleImageClearAnnotations() {
+    const wrapper = selectedImageRef.current;
+    if (!wrapper?.isConnected) return;
+    wrapper.querySelector("svg.cbt-img-annotations")?.remove();
+    syncCurrentSlideToState();
+  }
+
+  const activeImagePanel =
+    imagePanel && imagePanel.slideKey === boxSlideKey ? imagePanel : null;
+
   function handleCanvasClick(e: React.MouseEvent<HTMLDivElement>) {
     clearPlaceholderIfPresent();
     const target = e.target as HTMLElement;
+
+    const imgWrapper = target.closest(".lesson-img-wrapper") as HTMLElement | null;
+    if (imgWrapper && editorRef.current?.contains(imgWrapper)) {
+      selectImage(imgWrapper);
+      return;
+    }
+
+    const boxHit = findBoxFromTarget(target);
+    if (boxHit) {
+      clearImageSelection();
+      selectBox(boxHit.el, boxHit.isLegacy);
+    } else if (!target.closest(".img-editor-controls, .col-resize-controls")) {
+      clearBoxSelection();
+      clearImageSelection();
+    }
 
     // Column 50/50 symmetry quick button
     const btnColEqual = target.closest(".col-btn-equal") as HTMLElement | null;
@@ -1764,38 +2068,25 @@ export function LessonEditorToolbar({
 
               {showBlocksMenu && (
                 <div className="absolute top-11 left-0 z-40 w-64 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-2 shadow-2xl space-y-1">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      insertBlockSnippet(
-                        '<div class="my-4 rounded-2xl bg-sky-50 dark:bg-sky-950/50 border border-sky-200 dark:border-sky-800 p-4 text-xs text-sky-900 dark:text-sky-200 font-semibold">\n  <strong>✈️ Procedimiento de Vuelo:</strong> Comprueba siempre la lista de verificación antes del despegue.\n</div><p><br></p>',
-                      );
-                      setShowBlocksMenu(false);
-                    }}
-                    className="w-full text-left px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-950/50 hover:text-[#1a80ff] transition-colors flex items-center gap-2.5 cursor-pointer"
-                  >
-                    <span className="text-base">✈️</span>
-                    <div>
-                      <div className="font-bold text-slate-900 dark:text-white">Procedimiento de Vuelo</div>
-                      <div className="text-[10px] text-slate-400">Cuadro informativo azul</div>
-                    </div>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      insertBlockSnippet(
-                        '<div class="my-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700 p-4 text-xs text-amber-900 dark:text-amber-200 font-semibold shadow-2xs">\n  <strong>⚠️ ATENCIÓN / PRECAUCIÓN:</strong> Compruebe siempre las presiones y temperaturas antes de aplicar potencia de despegue.\n</div><p><br></p>',
-                      );
-                      setShowBlocksMenu(false);
-                    }}
-                    className="w-full text-left px-3 py-2 rounded-xl text-xs text-slate-700 dark:text-slate-200 hover:bg-amber-50 dark:hover:bg-amber-950/50 hover:text-amber-600 transition-colors flex items-center gap-2.5 cursor-pointer"
-                  >
-                    <span className="text-base">⚠️</span>
-                    <div>
-                      <div className="font-bold text-slate-900 dark:text-white">Alerta / Precaución</div>
-                      <div className="text-[10px] text-slate-400">Cuadro de advertencia ámbar</div>
-                    </div>
-                  </button>
+                  <div className="px-1 pt-1 pb-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-400">Cuadros editables</div>
+                  <div className="grid grid-cols-2 gap-1 pb-1 border-b border-slate-100 dark:border-slate-800">
+                    {BOX_PRESETS.map((preset) => (
+                      <button
+                        key={preset.id}
+                        type="button"
+                        onClick={() => {
+                          insertBlockSnippet(buildBoxHtml(preset.id));
+                          setShowBlocksMenu(false);
+                        }}
+                        className="flex items-center gap-1.5 rounded-xl border-l-4 px-2 py-1.5 text-left text-[11px] font-bold cursor-pointer hover:brightness-95"
+                        style={{ background: preset.bg, borderColor: preset.border, color: preset.text }}
+                        title={`Insertar cuadro: ${preset.label}`}
+                      >
+                        <span>{preset.icon}</span>
+                        <span className="truncate">{preset.label}</span>
+                      </button>
+                    ))}
+                  </div>
                   <button
                     type="button"
                     onClick={() => {
@@ -2506,6 +2797,7 @@ export function LessonEditorToolbar({
                   }}
                 />
               )}
+              <div className={`${isStudentPreview ? "hidden" : "flex"} flex-col lg:flex-row gap-4 items-stretch`}>
               <div
                 ref={editorRef}
                 contentEditable
@@ -2522,8 +2814,38 @@ export function LessonEditorToolbar({
                 onDrop={handleDrop}
                 onDragEnd={handleDragEnd}
                 onPaste={handleCanvasPaste}
-                className={`${isStudentPreview ? "hidden" : "flex flex-col"} visual-canvas w-full min-h-[620px] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-5 lg:px-6 lg:py-4 text-slate-800 dark:text-slate-200 [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm`}
+                className={`${isStudentPreview ? "hidden" : "flex flex-col"} visual-canvas w-full min-w-0 flex-1 min-h-[620px] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-5 lg:px-6 lg:py-4 text-slate-800 dark:text-slate-200 [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm`}
               />
+              {activeImagePanel && (
+                <ImagePropertiesPanel
+                  value={activeImagePanel.style}
+                  onChange={handleImageStyleChange}
+                  onRotate={handleImageRotate}
+                  onFlip={handleImageFlip}
+                  onAddPin={handleImageAddPin}
+                  onAddCircle={handleImageAddCircle}
+                  onClearAnnotations={handleImageClearAnnotations}
+                  onMove={handleImageMove}
+                  onDuplicate={handleImageDuplicate}
+                  onReplace={() => setShowImageModal(true)}
+                  onDelete={handleImageDelete}
+                  onClose={clearImageSelection}
+                />
+              )}
+              {activeBoxPanel && (
+                <BoxPropertiesPanel
+                  value={activeBoxPanel.style}
+                  isLegacy={activeBoxPanel.isLegacy}
+                  onChange={handleBoxStyleChange}
+                  onIcon={handleBoxIcon}
+                  onConvert={handleBoxConvert}
+                  onDuplicate={handleBoxDuplicate}
+                  onDelete={handleBoxDelete}
+                  onMove={handleBoxMove}
+                  onClose={clearBoxSelection}
+                />
+              )}
+              </div>
             </>
           ) : (
             <div className="space-y-6 w-full">
@@ -2681,7 +3003,27 @@ export function LessonEditorToolbar({
               >
                 🔗 URL Directa
               </button>
+              <button
+                type="button"
+                onClick={() => setImageTab("library")}
+                className={`pb-2 px-3 transition-colors border-b-2 ${
+                  imageTab === "library"
+                    ? "border-[#1a80ff] text-[#1a80ff]"
+                    : "border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300"
+                }`}
+              >
+                📚 Biblioteca
+              </button>
             </div>
+
+            {imageTab === "library" && (
+              <MediaLibraryTab
+                onSelect={(url, filename) => {
+                  handleInsertImage(url, filename);
+                  setShowImageModal(false);
+                }}
+              />
+            )}
 
             {/* Tab 1: Upload File from Computer */}
             {imageTab === "file" && (

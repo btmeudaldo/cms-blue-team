@@ -120,14 +120,14 @@ export async function saveQuizAction(
 
   const writeQuery = existingQuiz
     ? supabase
-        .from("quizzes")
-        .update(quizRecord)
-        .eq("id", existingQuiz.id)
-        .eq("course_id", courseId)
-        .eq("lesson_id", lessonId)
+      .from("quizzes")
+      .update(quizRecord)
+      .eq("id", existingQuiz.id)
+      .eq("course_id", courseId)
+      .eq("lesson_id", lessonId)
     : supabase
-        .from("quizzes")
-        .insert({ ...quizRecord, id: crypto.randomUUID() });
+      .from("quizzes")
+      .insert({ ...quizRecord, id: crypto.randomUUID() });
   const { data: savedQuiz, error: writeError } = await withTimeout(
     writeQuery.select().single(),
   );
