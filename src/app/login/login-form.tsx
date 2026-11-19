@@ -1,7 +1,59 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { signInAction, signUpAction } from "@/app/actions/auth.actions";
+import { createSupabaseBrowserClient } from "@/shared/lib/supabase/browser";
+
+function SessionAutoRedirect() {
+  const router = useRouter();
+
+  // Si el usuario ya tiene sesión activa en Supabase (en cookies o en localStorage
+  // desde la web principal en el mismo dominio), redirigir directo a /courses.
+  useEffect(() => {
+    let cancelled = false;
+    async function checkExistingSession() {
+      try {
+        const supabase = createSupabaseBrowserClient();
+        const { data } = await supabase.auth.getUser();
+        if (data?.user) {
+          if (!cancelled) router.replace("/courses");
+          return;
+        }
+
+        // Compatibilidad si la web principal usa supabase-js clásico (localStorage)
+        for (let i = 0; i < window.localStorage.length; i++) {
+          const key = window.localStorage.key(i);
+          if (!key || !/^sb-.*-auth-token$/.test(key)) continue;
+          const raw = window.localStorage.getItem(key);
+          if (!raw) continue;
+          const parsed = JSON.parse(raw) as {
+            access_token?: string;
+            refresh_token?: string;
+          };
+          if (parsed?.access_token && parsed?.refresh_token) {
+            const { data: synced } = await supabase.auth.setSession({
+              access_token: parsed.access_token,
+              refresh_token: parsed.refresh_token,
+            });
+            if (synced?.user && !cancelled) {
+              router.replace("/courses");
+              return;
+            }
+          }
+        }
+      } catch {
+        // Sin sesión previa: mostrar formulario de login normalmente
+      }
+    }
+    checkExistingSession();
+    return () => {
+      cancelled = true;
+    };
+  }, [router]);
+
+  return null;
+}
 
 export function LoginForm() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -46,6 +98,7 @@ export function LoginForm() {
 
   return (
     <div className="w-full max-w-md space-y-6">
+      <SessionAutoRedirect />
       {/* Main Auth Card */}
       <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-xl shadow-slate-100 dark:shadow-none space-y-6">
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
