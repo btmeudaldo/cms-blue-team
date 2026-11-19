@@ -15,7 +15,8 @@ import {
 export async function renderCoursesPage() {
   const { user, profile, isDemo } = await getResilientUser();
   const role = profile?.role ?? "student";
-  const isAdmin = role === "admin" || role === "instructor";
+  const isAdmin =
+    role === "superadmin" || role === "admin" || role === "instructor";
 
   // Fetch courses, user progress, quizzes, quiz attempts, and enrollments concurrently
   const [coursesData, userProgress, quizzes, quizAttempts, enrollments] =
