@@ -1,5 +1,3 @@
-"use server";
-
 import { requireVerifiedSession } from "@/shared/lib/supabase/session";
 
 export type MediaCourseTag = "C172" | "DA40" | "DA42" | "general";
