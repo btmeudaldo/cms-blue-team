@@ -229,7 +229,7 @@ export const C172_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">FLOTA C172</span></div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
-            <img src="/images/c172/1.2-dimensiones.png" alt="Dimensiones Principales Cessna 172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.2-dimensiones.png" alt="Dimensiones Principales Cessna 172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
       </div>
@@ -343,7 +343,7 @@ export const C172_LESSON_1 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
-            <img src="/images/c172/1.4-fadec-electrica.png" alt="Sistemas Convencionales Eliminados y Dependencia Eléctrica FADEC C172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.4-fadec-electrica.png" alt="Sistemas Convencionales Eliminados y Dependencia Eléctrica FADEC C172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
       </div>
@@ -535,7 +535,7 @@ export const C172_LESSON_1 = {
           </div>
 
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
-            <img src="/images/c172/1.7-densidad-repostaje.png" alt="Diferencia de Densidad JET A-1 vs AVGAS y Repostaje C172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
+            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.7-densidad-repostaje.png" alt="Diferencia de Densidad JET A-1 vs AVGAS y Repostaje C172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
       </div>
@@ -688,7 +688,7 @@ export const C172_LESSON_1 = {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">Disposición de Instrumentos y Panel Anunciador</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr; grid-template-columns: minmax(0px, 50fr) minmax(0px, 50fr) !important;">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="51" style="--col-left: 51fr; --col-right: 49fr; grid-template-columns: minmax(0px, 51fr) minmax(0px, 49fr) !important;">
     <!-- Columna Izquierda (lg:col-span-6): Información Técnica (Altura Fija 590px) -->
     <div class="lg:col-span-6 flex flex-col">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">

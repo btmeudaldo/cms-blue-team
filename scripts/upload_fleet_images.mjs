@@ -40,6 +40,9 @@ const uploads = [
   { local: "public/images/da40/da40-electrical-buses.png", remote: "fleet/da40/da40-electrical-buses.png", mime: "image/png" },
   { local: "public/images/da40/3.3-fadec.jpg", remote: "fleet/da40/3.3-fadec.jpg", mime: "image/jpeg" },
   { local: "public/images/c172/cockpit-instruments.jpg", remote: "fleet/c172/cockpit-instruments.jpg", mime: "image/jpeg" },
+  { local: "public/images/c172/1.2-dimensiones.png", remote: "fleet/c172/1.2-dimensiones.png", mime: "image/png" },
+  { local: "public/images/c172/1.4-fadec-electrica.png", remote: "fleet/c172/1.4-fadec-electrica.png", mime: "image/png" },
+  { local: "public/images/c172/1.7-densidad-repostaje.png", remote: "fleet/c172/1.7-densidad-repostaje.png", mime: "image/png" },
 ];
 
 async function run() {
