@@ -28,13 +28,11 @@ export function Header({
   const isAdmin =
     role === "superadmin" || role === "admin" || role === "instructor";
   const roleLabel =
-    role === "superadmin"
-      ? "Superadmin"
+    role === "superadmin" || role === "admin"
+      ? "Admin"
       : role === "instructor"
         ? "Instructor"
-        : role === "admin"
-          ? "Director / Admin"
-          : "Piloto Alumno";
+        : "Piloto Alumno";
 
   useEffect(() => {
     if (!autoHideOnScroll) return;
