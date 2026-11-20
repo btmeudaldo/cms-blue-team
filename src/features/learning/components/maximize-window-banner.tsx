@@ -1,10 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  isWindowUnmaximized,
-  MAXIMIZE_BANNER_DISMISSED_KEY,
-} from "../domain/window-maximized";
+import { isWindowUnmaximized } from "../domain/window-maximized";
 
 type MaximizeWindowBannerProps = {
   compact?: boolean;
@@ -13,29 +10,22 @@ type MaximizeWindowBannerProps = {
 export function MaximizeWindowBanner({
   compact = false,
 }: MaximizeWindowBannerProps) {
-  const [visible, setVisible] = useState(false);
+  const [unmaximized, setUnmaximized] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | null = null;
 
     const evaluate = () => {
-      try {
-        if (window.sessionStorage.getItem(MAXIMIZE_BANNER_DISMISSED_KEY) === "1") {
-          setVisible(false);
-          return;
-        }
-      } catch {
-        // Ignore storage errors in restricted contexts
-      }
-
-      const unmaximized = isWindowUnmaximized({
-        availWidth: window.screen?.availWidth ?? 0,
-        availHeight: window.screen?.availHeight ?? 0,
-        outerWidth: window.outerWidth ?? 0,
-        outerHeight: window.outerHeight ?? 0,
-        isFullscreen: Boolean(document?.fullscreenElement),
-      });
-      setVisible(unmaximized);
+      setUnmaximized(
+        isWindowUnmaximized({
+          availWidth: window.screen?.availWidth ?? 0,
+          availHeight: window.screen?.availHeight ?? 0,
+          outerWidth: window.outerWidth ?? 0,
+          outerHeight: window.outerHeight ?? 0,
+          isFullscreen: Boolean(document?.fullscreenElement),
+        }),
+      );
     };
 
     const onResize = () => {
@@ -53,14 +43,7 @@ export function MaximizeWindowBanner({
     };
   }, []);
 
-  if (!visible) return null;
-
-  function handleDismiss() {
-    try {
-      window.sessionStorage.setItem(MAXIMIZE_BANNER_DISMISSED_KEY, "1");
-    } catch {}
-    setVisible(false);
-  }
+  if (!unmaximized || dismissed) return null;
 
   async function handleFullscreen() {
     try {
@@ -96,9 +79,9 @@ export function MaximizeWindowBanner({
         </button>
         <button
           type="button"
-          onClick={handleDismiss}
+          onClick={() => setDismissed(true)}
           aria-label="Cerrar aviso"
-          title="Ocultar durante esta sesión"
+          title="Ocultar aviso"
           className="rounded-lg px-1.5 py-0.5 text-xs font-bold text-sky-700 dark:text-sky-300 hover:bg-sky-100 dark:hover:bg-sky-900/60 transition-colors cursor-pointer"
         >
           ✕
