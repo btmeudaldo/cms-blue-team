@@ -94,6 +94,9 @@ export async function renderStandaloneQuizPage({
           <QuizModule
             quiz={quiz}
             previousAttempt={previousAttempt}
+            canRetakeWhenPassed={
+              profile?.role === "superadmin" || profile?.role === "admin"
+            }
             nextLessonUrl={nextLessonUrl}
             nextLessonTitle={nextLessonTitle}
           />

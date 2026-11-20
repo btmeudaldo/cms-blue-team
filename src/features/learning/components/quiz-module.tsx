@@ -29,6 +29,7 @@ type QuizModuleProps = {
   quiz: StudentQuiz;
   previousAttempt?: QuizAttemptResult | null;
   isEmbedded?: boolean;
+  canRetakeWhenPassed?: boolean;
   onComplete?: (result: { success: true; attempt: QuizAttemptResult }) => void;
   nextLessonUrl?: string | null;
   nextLessonTitle?: string | null;
@@ -38,6 +39,7 @@ export function QuizModule({
   quiz,
   previousAttempt = null,
   isEmbedded = false,
+  canRetakeWhenPassed = false,
   onComplete,
   nextLessonUrl = null,
   nextLessonTitle = null,
@@ -406,6 +408,18 @@ export function QuizModule({
               >
                 <span>Volver a Evaluaciones</span>
               </Link>
+
+              {canRetakeWhenPassed && (
+                <button
+                  type="button"
+                  onClick={handleStart}
+                  disabled={isStarting}
+                  className="w-full sm:w-auto rounded-xl border border-[#1a80ff] bg-blue-50 dark:bg-blue-950/40 hover:bg-blue-100 dark:hover:bg-blue-900/60 px-5 py-3 text-base font-bold text-[#1a80ff] dark:text-sky-300 transition-all cursor-pointer shadow-xs inline-flex items-center justify-center gap-2"
+                >
+                  <span>🔄</span>
+                  <span>{isStarting ? "Iniciando..." : "Repetir Examen"}</span>
+                </button>
+              )}
             </>
           ) : (
             <>
