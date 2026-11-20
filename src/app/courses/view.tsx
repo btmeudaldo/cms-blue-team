@@ -154,9 +154,10 @@ export async function renderCoursesPage() {
                 enrollmentCountByCourse.get(course.id) || 0;
 
               return (
-                <div
+                <Link
                   key={course.id}
-                  className="group flex flex-col justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm card-hover transition-all"
+                  href={`/courses/${course.slug || course.id}`}
+                  className="group flex flex-col justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm card-hover transition-all cursor-pointer hover:border-[#1a80ff]/60"
                 >
                   <div className="space-y-3">
                     {course.image_url && (
@@ -255,8 +256,7 @@ export async function renderCoursesPage() {
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800">
-                    <Link
-                      href={`/courses/${course.slug || course.id}`}
+                    <span
                       className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2.5 text-sm sm:text-base font-bold shadow-xs group-hover:bg-[#1a80ff] transition-colors"
                     >
                       <span>
@@ -277,9 +277,9 @@ export async function renderCoursesPage() {
                           d="M14 5l7 7m0 0l-7 7m7-7H3"
                         />
                       </svg>
-                    </Link>
+                    </span>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

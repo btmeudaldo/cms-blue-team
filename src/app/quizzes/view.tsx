@@ -181,9 +181,10 @@ export async function renderQuizzesListPage() {
                         const score = attempt?.score_percentage;
 
                         return (
-                          <div
+                          <Link
                             key={quiz.id}
-                            className="group rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900 p-5 shadow-2xs card-hover transition-all flex flex-col justify-between space-y-4"
+                            href={`/quizzes/${quiz.id}`}
+                            className="group rounded-2xl border border-slate-200 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900 p-5 shadow-2xs card-hover transition-all flex flex-col justify-between space-y-4 cursor-pointer hover:border-[#1a80ff]/60"
                           >
                             <div className="space-y-2.5">
                               <div className="flex items-center justify-between">
@@ -218,11 +219,10 @@ export async function renderQuizzesListPage() {
                             </div>
 
                             <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800">
-                              <Link
-                                href={`/quizzes/${quiz.id}`}
+                              <span
                                 className={`flex items-center justify-center gap-2 rounded-xl py-2 text-sm sm:text-base font-bold shadow-xs transition-colors ${
                                   attempt?.passed
-                                    ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/50"
+                                    ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/50"
                                     : "bg-slate-900 dark:bg-slate-800 text-white group-hover:bg-[#1a80ff]"
                                 }`}
                               >
@@ -234,9 +234,9 @@ export async function renderQuizzesListPage() {
                                       : "Iniciar Examen"}
                                 </span>
                                 <span>&rarr;</span>
-                              </Link>
+                              </span>
                             </div>
-                          </div>
+                          </Link>
                         );
                       })}
                     </div>

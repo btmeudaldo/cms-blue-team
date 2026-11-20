@@ -58,8 +58,10 @@ export function MaximizeWindowBanner({
   return (
     <div
       role="status"
-      className={`flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-sky-200 dark:border-sky-800/80 bg-sky-50/90 dark:bg-sky-950/40 text-sky-950 dark:text-sky-100 shadow-2xs ${
-        compact ? "px-3 py-1.5 text-xs" : "px-4 py-2.5 text-xs sm:text-sm"
+      className={`flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-sky-200 dark:border-sky-800/80 bg-sky-50/95 dark:bg-slate-900/95 text-sky-950 dark:text-sky-100 ${
+        compact
+          ? "fixed bottom-4 right-4 z-40 max-w-md px-3.5 py-2 text-xs shadow-xl backdrop-blur-md"
+          : "px-4 py-2.5 text-xs sm:text-sm shadow-2xs"
       }`}
     >
       <div className="flex items-center gap-2">

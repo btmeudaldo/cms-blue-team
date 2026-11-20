@@ -267,7 +267,7 @@ export async function renderStudentCourseDetailPage({
                     {/* Lesson Main Row */}
                     <Link
                       href={`/courses/${course.slug || course.id}/lessons/${lesson.slug || lesson.id}`}
-                      className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-xs card-hover transition-all group"
+                      className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-xs card-hover transition-all group cursor-pointer hover:border-[#1a80ff]/60"
                     >
                       <div className="flex items-center gap-4">
                         <div
@@ -328,7 +328,7 @@ export async function renderStudentCourseDetailPage({
                         {quizPassed ? (
                           <Link
                             href={`/quizzes/${quiz.id}`}
-                            className="flex items-center justify-between gap-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 p-3.5 text-base transition-all hover:bg-emerald-100/70"
+                            className="flex items-center justify-between gap-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 p-3.5 text-base transition-all hover:bg-emerald-100/70 cursor-pointer"
                           >
                             <div className="flex items-center gap-2.5 font-bold text-emerald-800 dark:text-emerald-300 flex-wrap">
                               <span>📝</span>
@@ -345,7 +345,7 @@ export async function renderStudentCourseDetailPage({
                         ) : isCompleted ? (
                           <Link
                             href={`/quizzes/${quiz.id}`}
-                            className="flex items-center justify-between gap-3 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 p-3.5 text-base transition-all hover:bg-blue-100 dark:hover:bg-blue-900/50"
+                            className="flex items-center justify-between gap-3 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 p-3.5 text-base transition-all hover:bg-blue-100 dark:hover:bg-blue-900/50 cursor-pointer"
                           >
                             <div className="flex items-center gap-2.5 font-bold text-[#1a80ff] flex-wrap">
                               <span>📝</span>
