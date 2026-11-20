@@ -83,9 +83,6 @@ export async function renderAdminUsersPage() {
           {isFullAdmin ? (
             <div className="xl:col-span-4 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm space-y-6">
               <div className="border-b border-slate-100 dark:border-slate-800 pb-4">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 text-xs sm:text-sm font-extrabold mb-1">
-                  Exclusivo Director / Administrador
-                </div>
                 <h2 className="text-xl font-bold text-slate-900 dark:text-white">
                   Registrar Nuevo Usuario
                 </h2>

@@ -45,29 +45,30 @@ export async function renderCoursesPage() {
         role={role}
       />
 
-      <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <main className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-5 space-y-5">
         {/* Welcome Hero Banner */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#0a224a] via-[#1a80ff] to-[#0066e6] p-8 md:p-10 text-white shadow-xl">
-          <div className="relative z-10 max-w-2xl space-y-3">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-3 py-1 text-xs font-semibold tracking-wide text-blue-100">
-              <span className="h-2 w-2 rounded-full bg-[#1a80ff] animate-pulse"></span>
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0a224a] via-[#1a80ff] to-[#0066e6] px-6 py-4 md:px-8 md:py-5 text-white shadow-lg">
+          <div className="relative z-10 max-w-2xl space-y-1.5">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-2.5 py-0.5 text-[11px] font-semibold tracking-wide text-blue-100">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#1a80ff] animate-pulse"></span>
               {isAdmin
                 ? "Portal de Instructor / Docencia"
                 : "Portal del Alumno"}
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight">
               Bienvenido, {profile?.full_name || user.email?.split("@")[0]}
             </h1>
-            <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed">
-              {isAdmin
-                ? "Supervisa los cursos de la academia, audita el cumplimiento anticheating y gestiona el contenido de formación."
-                : "Explora tus cursos asignados, completa lecciones verificadas por el servidor y haz seguimiento a tu avance en tiempo real."}
-            </p>
+            {!isAdmin && (
+              <p className="text-xs sm:text-sm text-blue-100/90 leading-snug">
+                Explora tus cursos asignados, completa lecciones verificadas por
+                el servidor y haz seguimiento a tu avance en tiempo real.
+              </p>
+            )}
           </div>
 
-          <div className="absolute right-0 bottom-0 top-0 hidden lg:flex items-center justify-center pr-12 opacity-20 pointer-events-none">
+          <div className="absolute right-0 bottom-0 top-0 hidden lg:flex items-center justify-center pr-10 opacity-20 pointer-events-none">
             <svg
-              className="w-80 h-80 text-white"
+              className="w-44 h-44 text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -83,9 +84,9 @@ export async function renderCoursesPage() {
         </div>
 
         {/* Action Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
           <div>
-            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+            <h2 className="text-xl font-extrabold text-slate-900 dark:text-white">
               {isAdmin ? "Cursos Disponibles en Academia" : "Mis Cursos"}
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -212,21 +213,8 @@ export async function renderCoursesPage() {
                       {course.title}
                     </h3>
 
-                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
-                      {course.description || "Sin descripción disponible."}
-                    </p>
-
-                    {/* Progress Bar (Student) vs Management Summary (Admin/Instructor) */}
-                    {isAdmin ? (
-                      <div className="pt-2">
-                        <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-3 flex items-center justify-between text-sm sm:text-base text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-800">
-                          <span>{totalQuizzes} exámenes teóricos</span>
-                          <span className="font-bold text-[#1a80ff]">
-                            Supervisión Docente
-                          </span>
-                        </div>
-                      </div>
-                    ) : (
+                    {/* Progress Bar (Student only) */}
+                    {!isAdmin && (
                       <div className="pt-2 space-y-1.5">
                         <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                           <div
@@ -259,11 +247,7 @@ export async function renderCoursesPage() {
                     <span
                       className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-slate-800 text-white py-2.5 text-sm sm:text-base font-bold shadow-xs group-hover:bg-[#1a80ff] transition-colors"
                     >
-                      <span>
-                        {isAdmin
-                          ? "Supervisar / Entrar al Curso"
-                          : "Entrar al Curso"}
-                      </span>
+                      <span>Entrar al Curso</span>
                       <svg
                         className="w-4 h-4"
                         fill="none"
