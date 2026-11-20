@@ -310,14 +310,14 @@ export function LessonPlayer({
       if (savedLayout === "top-header" || savedLayout === "vertical-left") {
         setLayoutMode(savedLayout);
       }
-    } catch (e) {}
+    } catch (e) { }
   }, []);
 
   const toggleLayoutMode = (mode: "top-header" | "vertical-left") => {
     setLayoutMode(mode);
     try {
       localStorage.setItem("cms_lesson_layout_mode", mode);
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const toggleIndexOpen = () => {
@@ -325,7 +325,7 @@ export function LessonPlayer({
       const next = !prev;
       try {
         localStorage.setItem("cms_lesson_index_open", String(next));
-      } catch (e) {}
+      } catch (e) { }
       return next;
     });
   };
@@ -658,13 +658,13 @@ export function LessonPlayer({
     totalLessonPages > 1
       ? minSecondsPerPage > 0
         ? Math.min(
+          100,
+          Math.round(
+            ((minSecondsPerPage - currentPageRemainingSeconds) /
+              minSecondsPerPage) *
             100,
-            Math.round(
-              ((minSecondsPerPage - currentPageRemainingSeconds) /
-                minSecondsPerPage) *
-                100,
-            ),
-          )
+          ),
+        )
         : 100
       : minSeconds > 0
         ? Math.round(((minSeconds - remainingSeconds) / minSeconds) * 100)
@@ -681,22 +681,20 @@ export function LessonPlayer({
             key={les.id}
             href={`/courses/${courseId}/lessons/${les.slug || les.id}`}
             onClick={() => setIsMobileSidebarOpen(false)}
-            className={`flex items-center gap-3 p-2.5 rounded-2xl text-xs font-semibold transition-colors ${
-              isCurrent
+            className={`flex items-center gap-3 p-2.5 rounded-2xl text-xs font-semibold transition-colors ${isCurrent
                 ? "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] border border-blue-200 dark:border-blue-900/40"
                 : isDone
                   ? "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/60"
                   : "text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60"
-            }`}
+              }`}
           >
             <span
-              className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-extrabold ${
-                isCurrent
+              className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-extrabold ${isCurrent
                   ? "bg-[#1a80ff] text-white"
                   : isDone
                     ? "bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-400"
-              }`}
+                }`}
             >
               {isDone ? "✓" : index + 1}
             </span>
@@ -709,18 +707,16 @@ export function LessonPlayer({
 
   return (
     <div
-      className={`flex ${
-        isSlideMode ? "h-screen max-h-screen overflow-hidden" : "min-h-screen"
-      } bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 transition-colors`}
+      className={`flex ${isSlideMode ? "h-screen max-h-screen overflow-hidden" : "min-h-screen"
+        } bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 transition-colors`}
     >
       {/* ------------------------------------------------------------- */}
       {/* MODE 1: LEFT VERTICAL NAVBAR (Navbar & Header on Left)       */}
       {/* ------------------------------------------------------------- */}
       {layoutMode === "vertical-left" && (
         <aside
-          className={`hidden lg:flex flex-col shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-all duration-300 z-30 sticky top-0 h-screen overflow-y-auto ${
-            isIndexOpen ? "w-80 p-5 space-y-4" : "w-16 p-3 items-center"
-          }`}
+          className={`hidden lg:flex flex-col shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-all duration-300 z-30 sticky top-0 h-screen overflow-y-auto ${isIndexOpen ? "w-80 p-5 space-y-4" : "w-16 p-3 items-center"
+            }`}
         >
           {/* Top Bar inside Left Sidebar */}
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3 w-full">
@@ -765,9 +761,9 @@ export function LessonPlayer({
                     <span>
                       {lessonsSummary.length > 0
                         ? Math.round(
-                            (completedLessonSet.size / lessonsSummary.length) *
-                              100,
-                          )
+                          (completedLessonSet.size / lessonsSummary.length) *
+                          100,
+                        )
                         : 0}
                       %
                     </span>
@@ -776,15 +772,14 @@ export function LessonPlayer({
                     <div
                       className="h-full bg-[#1a80ff] transition-all duration-300"
                       style={{
-                        width: `${
-                          lessonsSummary.length > 0
+                        width: `${lessonsSummary.length > 0
                             ? Math.round(
-                                (completedLessonSet.size /
-                                  lessonsSummary.length) *
-                                  100,
-                              )
+                              (completedLessonSet.size /
+                                lessonsSummary.length) *
+                              100,
+                            )
                             : 0
-                        }%`,
+                          }%`,
                       }}
                     />
                   </div>
@@ -828,9 +823,8 @@ export function LessonPlayer({
 
       {/* Main Content & Top Bar Area */}
       <div
-        className={`flex-1 flex flex-col min-w-0 ${
-          isSlideMode ? "h-screen max-h-screen overflow-hidden" : "min-h-screen"
-        }`}
+        className={`flex-1 flex flex-col min-w-0 ${isSlideMode ? "h-screen max-h-screen overflow-hidden" : "min-h-screen"
+          }`}
       >
         {/* MODE 2: TOP HEADER (if in top-header mode) */}
         {layoutMode === "top-header" && (
@@ -844,16 +838,14 @@ export function LessonPlayer({
 
         {/* Sticky Control Bar */}
         <div
-          className={`sticky z-50 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs ${
-            isSlideMode ? "py-1.5 sm:py-2" : "py-3"
-          } px-4 sm:px-6 lg:px-8 transition-transform duration-300 ease-out ${
-            layoutMode === "top-header" ? "top-[112px]" : "top-0"
-          }`}
+          className={`sticky z-50 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs ${isSlideMode ? "py-1.5 sm:py-2" : "py-3"
+            } px-4 sm:px-6 lg:px-8 transition-transform duration-300 ease-out ${layoutMode === "top-header" ? "top-[112px]" : "top-0"
+            }`}
           style={
             layoutMode === "top-header" && isSiteHeaderHidden
               ? {
-                  transform: "translateY(-112px)",
-                }
+                transform: "translateY(-112px)",
+              }
               : undefined
           }
         >
@@ -879,11 +871,10 @@ export function LessonPlayer({
                     toggleIndexOpen();
                   }
                 }}
-                className={`flex h-9 px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
-                  isIndexOpen || isMobileSidebarOpen
+                className={`flex h-9 px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${isIndexOpen || isMobileSidebarOpen
                     ? "bg-[#1a80ff] text-white border-blue-600 shadow-xs"
                     : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-                }`}
+                  }`}
                 title="Mostrar u Ocultar el Temario de lecciones"
               >
                 <span>📑</span>
@@ -896,11 +887,10 @@ export function LessonPlayer({
                 <button
                   type="button"
                   onClick={() => setIsDocsOpen((prev) => !prev)}
-                  className={`flex h-9 px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${
-                    isDocsOpen
+                  className={`flex h-9 px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${isDocsOpen
                       ? "bg-sky-600 text-white border-sky-600 shadow-xs"
                       : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-                  }`}
+                    }`}
                   title="Mostrar u Ocultar Documentación y Manuales POH"
                 >
                   <span>📚</span>
@@ -1151,9 +1141,9 @@ export function LessonPlayer({
                   <span>
                     {lessonsSummary.length > 0
                       ? Math.round(
-                          (completedLessonSet.size / lessonsSummary.length) *
-                            100,
-                        )
+                        (completedLessonSet.size / lessonsSummary.length) *
+                        100,
+                      )
                       : 0}
                     %
                   </span>
@@ -1162,15 +1152,14 @@ export function LessonPlayer({
                   <div
                     className="h-full bg-[#1a80ff] transition-all duration-300"
                     style={{
-                      width: `${
-                        lessonsSummary.length > 0
+                      width: `${lessonsSummary.length > 0
                           ? Math.round(
-                              (completedLessonSet.size /
-                                lessonsSummary.length) *
-                                100,
-                            )
+                            (completedLessonSet.size /
+                              lessonsSummary.length) *
+                            100,
+                          )
                           : 0
-                      }%`,
+                        }%`,
                     }}
                   />
                 </div>
@@ -1232,11 +1221,10 @@ export function LessonPlayer({
                       setCurrentPageIndex((prev) => Math.max(0, prev - 1));
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      currentPageIndex === 0
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${currentPageIndex === 0
                         ? "opacity-30 cursor-not-allowed text-slate-400"
                         : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-950/40 hover:text-sky-600 cursor-pointer border border-slate-200 dark:border-slate-700"
-                    }`}
+                      }`}
                     title="Diapositiva anterior"
                   >
                     <span>&larr;</span>
@@ -1272,8 +1260,7 @@ export function LessonPlayer({
                               window.scrollTo({ top: 0, behavior: "smooth" });
                             }
                           }}
-                          className={`h-2.5 rounded-full transition-all ${
-                            !isAfterLastSlide && idx === effectivePageIndex
+                          className={`h-2.5 rounded-full transition-all ${!isAfterLastSlide && idx === effectivePageIndex
                               ? isPrivate
                                 ? "w-6 bg-amber-500"
                                 : "w-6 bg-[#1a80ff]"
@@ -1282,7 +1269,7 @@ export function LessonPlayer({
                                 : isClickable
                                   ? "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 cursor-pointer"
                                   : "w-2.5 bg-slate-200 dark:bg-slate-800 opacity-40 cursor-not-allowed"
-                          }`}
+                            }`}
                           title={
                             isPrivate
                               ? `Ir a Diapositiva ${idx + 1} (🔒 Solo visible para mí)`
@@ -1300,11 +1287,10 @@ export function LessonPlayer({
                           setCurrentPageIndex(totalLessonPages);
                           window.scrollTo({ top: 0, behavior: "smooth" });
                         }}
-                        className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                          isAfterLastSlide
+                        className={`h-2.5 rounded-full transition-all cursor-pointer ${isAfterLastSlide
                             ? "w-6 bg-emerald-500 shadow-xs"
                             : "w-2.5 bg-emerald-300 dark:bg-emerald-700 hover:bg-emerald-400"
-                        }`}
+                          }`}
                         title="Ir a Evaluación / Examen (Fin de Lección)"
                       />
                     )}
@@ -1318,31 +1304,27 @@ export function LessonPlayer({
                       type="button"
                       disabled={isUpdatingVisibility}
                       onClick={() => handleLiveVisibilityChange("public")}
-                      className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                        currentSlideVisibility === "public"
+                      className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${currentSlideVisibility === "public"
                           ? "bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-2xs border border-emerald-200 dark:border-emerald-800"
                           : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-                      }`}
+                        }`}
+                      aria-label="Visible para todos los alumnos y personal"
                       title="Visible para todos los alumnos y personal"
                     >
                       <span>🌐</span>
-                      <span className="hidden sm:inline">Visible para todos</span>
-                      <span className="sm:hidden">Todos</span>
                     </button>
                     <button
                       type="button"
                       disabled={isUpdatingVisibility}
                       onClick={() => handleLiveVisibilityChange("private")}
-                      className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                        currentSlideVisibility === "private"
+                      className={`flex items-center justify-center px-2.5 py-1 rounded-lg text-sm transition-all cursor-pointer ${currentSlideVisibility === "private"
                           ? "bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 shadow-2xs border border-amber-300 dark:border-amber-700"
                           : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-                      }`}
+                        }`}
+                      aria-label="Solo a la vista para mí (Borrador de instructor)"
                       title="Solo a la vista para mí (Borrador de instructor)"
                     >
                       <span>🔒</span>
-                      <span className="hidden sm:inline">Solo para mí</span>
-                      <span className="sm:hidden">Solo yo</span>
                     </button>
                   </div>
                 ) : (
@@ -1490,11 +1472,10 @@ export function LessonPlayer({
                       setLightboxImage({ src: img.currentSrc || img.src, alt: img.alt || "" });
                     }
                   }}
-                  className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 [&_img]:cursor-zoom-in ${
-                    isSlideMode
+                  className={`rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm text-slate-800 dark:text-slate-200 [&_img]:cursor-zoom-in ${isSlideMode
                       ? "flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-5 lg:px-6 lg:py-4 flex flex-col [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0"
                       : "prose prose-slate lg:prose-lg xl:prose-xl dark:prose-invert max-w-none p-5 sm:p-7 lg:p-9 shadow-sm leading-relaxed space-y-4 [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-md [&_iframe]:w-full [&_iframe]:aspect-video [&_iframe]:rounded-2xl"
-                  }`}
+                    }`}
                   dangerouslySetInnerHTML={{ __html: safeContentHtml }}
                 />
                 {exerciseContainer && activeExerciseType && createPortal(
@@ -1663,13 +1644,12 @@ export function LessonPlayer({
         {!canAdvance && (
           <div className="lg:hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 dark:bg-slate-900/95 text-white backdrop-blur-xl px-5 py-2 rounded-full shadow-2xl border border-slate-700/80 text-xs font-semibold flex items-center gap-2.5 whitespace-nowrap pointer-events-none max-w-[95vw] overflow-x-auto">
             <span
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
-                activeRemainingSeconds === 0
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${activeRemainingSeconds === 0
                   ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
                   : isActivityPaused || !isWindowFocused
                     ? "bg-rose-500/20 text-rose-300 border border-rose-500/30 animate-pulse"
                     : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
-              }`}
+                }`}
             >
               {activeRemainingSeconds === 0
                 ? "✓ Tiempo cumplido"
@@ -1682,11 +1662,10 @@ export function LessonPlayer({
 
             {showScrollIndicator && (
               <span
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${
-                  reachedScrollThreshold
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${reachedScrollThreshold
                     ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
                     : "bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
-                }`}
+                  }`}
               >
                 {reachedScrollThreshold
                   ? "✓ Desplazamiento cumplido"
@@ -1720,11 +1699,10 @@ export function LessonPlayer({
                         handleAdvanceSlide();
                       }
                     }}
-                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${
-                      !isCurrentExerciseCompleted
+                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${!isCurrentExerciseCompleted
                         ? "bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20 hover:scale-105 active:scale-95"
                         : "text-white bg-[#1a80ff] hover:bg-[#0066e6] shadow-blue-500/30 hover:scale-105 active:scale-95"
-                    }`}
+                      }`}
                   >
                     {!isCurrentExerciseCompleted ? (
                       <span>🔒 Ejercicios pendientes (pulsa para info)</span>
@@ -1749,13 +1727,12 @@ export function LessonPlayer({
                       }
                     }}
                     disabled={!canAdvance && isCurrentExerciseCompleted}
-                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${
-                      !isCurrentExerciseCompleted
+                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${!isCurrentExerciseCompleted
                         ? "bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20 hover:scale-105 active:scale-95"
                         : canAdvance
                           ? "bg-[#1a80ff] hover:bg-[#0066e6] text-white shadow-blue-500/30 hover:scale-105 active:scale-95"
                           : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
-                    }`}
+                      }`}
                   >
                     {!isCurrentExerciseCompleted ? (
                       <span>🔒 Ejercicios pendientes (pulsa para info)</span>
@@ -1780,13 +1757,12 @@ export function LessonPlayer({
                       }
                     }}
                     disabled={!canAdvance && isCurrentExerciseCompleted}
-                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${
-                      !isCurrentExerciseCompleted
+                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${!isCurrentExerciseCompleted
                         ? "bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20 hover:scale-105 active:scale-95"
                         : canAdvance
                           ? "bg-[#1a80ff] hover:bg-[#0066e6] text-white shadow-blue-500/30 hover:scale-105 active:scale-95"
                           : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
-                    }`}
+                      }`}
                   >
                     {!isCurrentExerciseCompleted ? (
                       <span>🔒 Ejercicios pendientes (pulsa para info)</span>

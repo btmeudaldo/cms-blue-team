@@ -2534,25 +2534,23 @@ export function LessonEditorToolbar({
                     ? "bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-2xs border border-emerald-200 dark:border-emerald-800"
                     : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
                 }`}
+                aria-label="Visible para todos los alumnos y personal"
                 title="Visible para todos los alumnos y personal"
               >
                 <span>🌐</span>
-                <span className="hidden sm:inline">Visible para todos</span>
-                <span className="sm:hidden">Todos</span>
               </button>
               <button
                 type="button"
                 onClick={() => handleToggleSlideVisibility("private")}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                className={`flex items-center justify-center px-2.5 py-1 rounded-lg text-sm transition-all cursor-pointer ${
                   getSlideVisibility(slides[currentSlideIndex] || "") === "private"
                     ? "bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 shadow-2xs border border-amber-300 dark:border-amber-700"
                     : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
                 }`}
+                aria-label="Solo a la vista para mí (Borrador de instructor)"
                 title="Solo a la vista para mí (Borrador de instructor)"
               >
                 <span>🔒</span>
-                <span className="hidden sm:inline">Solo para mí</span>
-                <span className="sm:hidden">Solo yo</span>
               </button>
             </div>
 
