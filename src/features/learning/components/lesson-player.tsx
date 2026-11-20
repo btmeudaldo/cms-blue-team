@@ -1204,10 +1204,8 @@ export function LessonPlayer({
               </div>
             )}
 
-            <MaximizeWindowBanner compact />
-
             {/* Top Slide / Page Navigator Bar (Shown when lesson has multiple slides or isSlideMode) */}
-            {(totalLessonPages > 1 || isSlideMode) && (
+            {(totalLessonPages > 1 || isSlideMode) ? (
               <nav
                 aria-label="Navegación de diapositivas"
                 className="relative flex items-center justify-between gap-3 px-4 py-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-2xs backdrop-blur-sm min-h-[44px]"
@@ -1330,7 +1328,18 @@ export function LessonPlayer({
                 ) : (
                   <div className="w-16 hidden sm:block pointer-events-none" />
                 )}
+                <div
+                  className={`absolute top-1/2 -translate-y-1/2 z-30 ${
+                    isSuperAdmin ? "right-[116px]" : "right-[32px]"
+                  }`}
+                >
+                  <MaximizeWindowBanner compact />
+                </div>
               </nav>
+            ) : (
+              <div className="fixed bottom-4 right-4 z-40">
+                <MaximizeWindowBanner compact />
+              </div>
             )}
 
             {/* SuperAdmin Private Slide Banner ocultado a petición del usuario para evitar scroll vertical */}

@@ -11,7 +11,6 @@ export function MaximizeWindowBanner({
   compact = false,
 }: MaximizeWindowBannerProps) {
   const [unmaximized, setUnmaximized] = useState(false);
-  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -43,7 +42,7 @@ export function MaximizeWindowBanner({
     };
   }, []);
 
-  if (!unmaximized || dismissed) return null;
+  if (!unmaximized) return null;
 
   async function handleFullscreen() {
     try {
@@ -58,17 +57,27 @@ export function MaximizeWindowBanner({
   return (
     <div
       role="status"
-      className={`flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-sky-200 dark:border-sky-800/80 bg-sky-50/95 dark:bg-slate-900/95 text-sky-950 dark:text-sky-100 ${
+      className={`flex items-center justify-between gap-2 rounded-2xl border border-sky-200 dark:border-sky-800/80 bg-sky-50/95 dark:bg-slate-900/95 text-sky-950 dark:text-sky-100 ${
         compact
-          ? "fixed bottom-4 right-4 z-40 max-w-md px-3.5 py-2 text-xs shadow-xl backdrop-blur-md"
-          : "px-4 py-2.5 text-xs sm:text-sm shadow-2xs"
+          ? "px-2.5 py-1 text-[11px] shadow-md backdrop-blur-md whitespace-nowrap"
+          : "flex-wrap px-4 py-2.5 text-xs sm:text-sm shadow-2xs"
       }`}
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1.5">
         <span aria-hidden="true">🖥️</span>
         <span>
-          Las diapositivas y diagramas están optimizados para verse con la{" "}
-          <strong>ventana maximizada</strong>.
+          {compact ? (
+            <>
+              Optimizado para <strong>ventana maximizada</strong> o{" "}
+              <strong>pantalla completa</strong>
+            </>
+          ) : (
+            <>
+              Las diapositivas y diagramas están optimizados para{" "}
+              <strong>ventana maximizada</strong> o{" "}
+              <strong>pantalla completa</strong>.
+            </>
+          )}
         </span>
       </div>
       <div className="flex items-center gap-2 ml-auto">
@@ -78,15 +87,6 @@ export function MaximizeWindowBanner({
           className="rounded-xl bg-[#1a80ff] hover:bg-[#0066e6] px-2.5 py-1 text-[11px] font-bold text-white transition-colors cursor-pointer"
         >
           ⛶ Pantalla completa
-        </button>
-        <button
-          type="button"
-          onClick={() => setDismissed(true)}
-          aria-label="Cerrar aviso"
-          title="Ocultar aviso"
-          className="rounded-lg px-1.5 py-0.5 text-xs font-bold text-sky-700 dark:text-sky-300 hover:bg-sky-100 dark:hover:bg-sky-900/60 transition-colors cursor-pointer"
-        >
-          ✕
         </button>
       </div>
     </div>
