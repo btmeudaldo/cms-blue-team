@@ -13,6 +13,7 @@ import {
 } from "@/shared/lib/supabase/resilient";
 import { checkCourseCertificateEligibility } from "@/features/learning/domain/course-completion";
 import { CourseCertificateCard } from "@/features/learning/components/course-certificate-card";
+import { MaximizeWindowBanner } from "@/features/learning/components/maximize-window-banner";
 
 export async function renderStudentCourseDetailPage({
   params,
@@ -112,6 +113,9 @@ export async function renderStudentCourseDetailPage({
             {course.title}
           </span>
         </div>
+
+        {/* Unmaximized Window Hint */}
+        <MaximizeWindowBanner />
 
         {/* Course Header Banner */}
         <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-sm space-y-6">

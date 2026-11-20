@@ -30,6 +30,7 @@ import {
 import { Header } from "@/shared/components/header";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 import { ImageLightbox } from "./image-lightbox";
+import { MaximizeWindowBanner } from "./maximize-window-banner";
 import { withBasePath, withBasePathHtml } from "@/shared/lib/base-path";
 import { getNextAdvanceButtonPosition } from "@/features/learning/domain/advance-button-position";
 import { getLessonScrollProgress } from "@/features/learning/domain/lesson-scroll-progress";
@@ -1213,6 +1214,8 @@ export function LessonPlayer({
                 </span>
               </div>
             )}
+
+            <MaximizeWindowBanner compact />
 
             {/* Top Slide / Page Navigator Bar (Shown when lesson has multiple slides or isSlideMode) */}
             {(totalLessonPages > 1 || isSlideMode) && (
