@@ -23,7 +23,8 @@ export async function renderStudentCourseDetailPage({
   const { courseId } = await params;
   const { user, profile, isDemo } = await getResilientUser();
   const role = profile?.role ?? "student";
-  const isAdmin = role === "admin" || role === "instructor";
+  const isAdmin =
+    role === "superadmin" || role === "admin" || role === "instructor";
 
   // Fetch course, progress, quizzes, quiz attempts and in-person exams concurrently
   const [course, userProgress, quizzes, quizAttempts, inPersonExams] = await Promise.all([

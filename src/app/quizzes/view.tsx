@@ -10,7 +10,8 @@ import {
 export async function renderQuizzesListPage() {
   const { user, profile, isDemo } = await getResilientUser();
   const role = profile?.role ?? "student";
-  const isAdmin = role === "admin" || role === "instructor";
+  const isAdmin =
+    role === "superadmin" || role === "admin" || role === "instructor";
 
   const [allQuizzes, attempts, courses] = await Promise.all([
     getResilientQuizzes(),
