@@ -707,7 +707,7 @@ export function LessonPlayer({
 
   return (
     <div
-      className={`flex ${isSlideMode ? "h-screen max-h-screen overflow-hidden" : "min-h-screen"
+      className={`flex ${isSlideMode ? "min-h-screen xl:h-screen xl:max-h-screen xl:overflow-hidden" : "min-h-screen"
         } bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 transition-colors`}
     >
       {/* ------------------------------------------------------------- */}
@@ -823,7 +823,7 @@ export function LessonPlayer({
 
       {/* Main Content & Top Bar Area */}
       <div
-        className={`flex-1 flex flex-col min-w-0 ${isSlideMode ? "h-screen max-h-screen overflow-hidden" : "min-h-screen"
+        className={`flex-1 flex flex-col min-w-0 ${isSlideMode ? "min-h-screen xl:h-screen xl:max-h-screen xl:overflow-hidden" : "min-h-screen"
           }`}
       >
         {/* MODE 2: TOP HEADER (if in top-header mode) */}
@@ -1231,13 +1231,13 @@ export function LessonPlayer({
                 </div>
 
                 {/* Center: Slide Indicator strictly centered */}
-                <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-auto">
-                  <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-auto max-w-[55vw] sm:max-w-none">
+                  <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300 whitespace-nowrap truncate">
                     {isAfterLastSlide
                       ? "Fin de la Lección · Evaluación"
                       : `Diapositiva ${effectivePageIndex + 1} de ${totalLessonPages}`}
                   </span>
-                  <div className="flex items-center gap-1">
+                  <div className="hidden md:flex items-center gap-1">
                     {lessonPages.map((slide, idx) => {
                       const isClickable =
                         isStaff ||
@@ -1329,7 +1329,7 @@ export function LessonPlayer({
                   <div className="w-16 hidden sm:block pointer-events-none" />
                 )}
                 <div
-                  className={`absolute top-1/2 -translate-y-1/2 z-30 ${
+                  className={`hidden xl:block absolute top-1/2 -translate-y-1/2 z-30 ${
                     isSuperAdmin ? "right-[116px]" : "right-[32px]"
                   }`}
                 >

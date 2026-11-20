@@ -416,6 +416,45 @@ article::after,
   opacity: 1;
 }
 
+@media (max-width: 1279px) {
+  .lesson-slide-container,
+  .lesson-slide-container > div,
+  .lesson-slide-container [data-left-pct],
+  .lesson-slide-container [data-left-pct] > div,
+  .lesson-slide-container [style*="height"],
+  .lesson-slide-container [class*="h-["] {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .lesson-slide-container [data-left-pct] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+  .lesson-slide-container {
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+  .lesson-slide-container div,
+  .lesson-slide-container section,
+  .lesson-slide-container article {
+    min-width: 0 !important;
+    max-width: 100%;
+  }
+  .lesson-slide-container table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .lesson-slide-container .grid-cols-3 {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 0.5rem 0.75rem !important;
+  }
+}
+
 /* Force pure white numbers for exercise modal step badges with individual colors */
 .exercise-badge-1, .exercise-badge-1 * {
   background-color: #047857 !important;

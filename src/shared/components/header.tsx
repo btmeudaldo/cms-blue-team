@@ -108,12 +108,12 @@ export function Header({
           <nav
             className={`${
               isMenuOpen ? "flex" : "hidden"
-            } absolute left-3 right-3 top-full z-50 flex-col items-stretch gap-1 rounded-2xl border border-slate-200 bg-white/95 p-3 text-xs font-semibold shadow-xl backdrop-blur-lg dark:border-slate-800 dark:bg-[#0b1426]/95 min-[992px]:static min-[992px]:flex min-[992px]:w-auto min-[992px]:flex-1 min-[992px]:flex-row min-[992px]:items-center min-[992px]:justify-center min-[992px]:gap-8 min-[992px]:rounded-none min-[992px]:border-0 min-[992px]:!bg-transparent min-[992px]:dark:!bg-transparent min-[992px]:!backdrop-blur-none min-[992px]:p-0 min-[992px]:text-sm min-[992px]:shadow-none`}
+            } absolute left-3 right-3 top-full z-50 flex-col items-stretch gap-1 rounded-2xl border border-slate-200 bg-white/95 p-3 text-xs font-semibold shadow-xl backdrop-blur-lg dark:border-slate-800 dark:bg-[#0b1426]/95 xl:static xl:flex xl:w-auto xl:flex-1 xl:flex-row xl:items-center xl:justify-center xl:gap-4 xl:gap-8 xl:rounded-none xl:border-0 xl:!bg-transparent xl:dark:!bg-transparent xl:!backdrop-blur-none xl:p-0 xl:text-sm xl:shadow-none`}
           >
             <Link
               href="/courses"
               onClick={() => setIsMenuOpen(false)}
-              className="whitespace-nowrap px-0 py-1.5 min-[992px]:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
+              className="whitespace-nowrap px-0 py-1.5 xl:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
             >
               Cursos
             </Link>
@@ -121,7 +121,7 @@ export function Header({
             <Link
               href="/quizzes"
               onClick={() => setIsMenuOpen(false)}
-              className="whitespace-nowrap px-0 py-1.5 min-[992px]:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
+              className="whitespace-nowrap px-0 py-1.5 xl:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
             >
               Evaluaciones
             </Link>
@@ -131,21 +131,21 @@ export function Header({
                 <Link
                   href="/admin/courses"
                   onClick={() => setIsMenuOpen(false)}
-                  className="whitespace-nowrap px-0 py-1.5 min-[992px]:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
+                  className="whitespace-nowrap px-0 py-1.5 xl:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
                 >
                   Gestión
                 </Link>
                 <Link
                   href="/admin/users"
                   onClick={() => setIsMenuOpen(false)}
-                  className="whitespace-nowrap px-0 py-1.5 min-[992px]:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
+                  className="whitespace-nowrap px-0 py-1.5 xl:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
                 >
                   Matrículas
                 </Link>
                 <Link
                   href="/admin/progress"
                   onClick={() => setIsMenuOpen(false)}
-                  className="whitespace-nowrap px-0 py-1.5 min-[992px]:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
+                  className="whitespace-nowrap px-0 py-1.5 xl:py-1 text-[18px] leading-none font-semibold text-slate-900 transition-colors duration-200 hover:text-[#1a80ff] dark:text-slate-50 dark:hover:text-white"
                 >
                   Auditoría
                 </Link>
@@ -215,7 +215,7 @@ export function Header({
               aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={isMenuOpen}
               onClick={() => setIsMenuOpen((open) => !open)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white/80 text-slate-600 dark:border-slate-700 dark:bg-[#0b1426]/80 dark:text-slate-300 min-[992px]:hidden shrink-0"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-white/80 text-slate-600 dark:border-slate-700 dark:bg-[#0b1426]/80 dark:text-slate-300 xl:hidden shrink-0"
             >
               <svg
                 className="h-5 w-5"

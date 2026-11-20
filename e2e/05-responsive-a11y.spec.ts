@@ -68,4 +68,23 @@ test.describe("05: Adaptabilidad Móvil y Accesibilidad", () => {
     await page.keyboard.press("Enter");
     await expect(menuButton).toHaveAttribute("aria-expanded", "false");
   });
+
+  test("las vistas principales no desbordan horizontalmente en tablet", async ({
+    page,
+  }) => {
+    await signInAsStudent(page);
+    for (const viewport of [
+      { width: 768, height: 1024 },
+      { width: 1024, height: 768 },
+    ]) {
+      await page.setViewportSize(viewport);
+      for (const url of ["/courses", "/quizzes"]) {
+        await page.goto(url);
+        const scrollWidth = await page.evaluate(
+          () => document.documentElement.scrollWidth,
+        );
+        expect(scrollWidth).toBeLessThanOrEqual(viewport.width);
+      }
+    }
+  });
 });

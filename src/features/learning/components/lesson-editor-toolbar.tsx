@@ -2812,7 +2812,7 @@ export function LessonEditorToolbar({
                 onDrop={handleDrop}
                 onDragEnd={handleDragEnd}
                 onPaste={handleCanvasPaste}
-                className={`${isStudentPreview ? "hidden" : "flex flex-col"} visual-canvas w-full min-w-0 flex-1 min-h-[620px] rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-5 lg:px-6 lg:py-4 text-slate-800 dark:text-slate-200 [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm`}
+                className={`${isStudentPreview ? "hidden" : "flex flex-col"} visual-canvas w-full min-w-0 flex-1 min-h-[620px] overflow-x-auto lg:overflow-x-visible rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-5 lg:px-6 lg:py-4 text-slate-800 dark:text-slate-200 [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm`}
               />
               {activeImagePanel && (
                 <ImagePropertiesPanel
