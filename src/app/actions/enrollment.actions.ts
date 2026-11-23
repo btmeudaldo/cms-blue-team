@@ -9,6 +9,7 @@ import { requireVerifiedSession } from "@/shared/lib/supabase/session";
 async function requireEnrollmentStaff() {
   const session = await requireVerifiedSession();
   if (
+    session.profile.role !== "superadmin" &&
     session.profile.role !== "admin" &&
     session.profile.role !== "instructor"
   ) {
@@ -38,7 +39,10 @@ export async function createNewUserAction(formData: FormData) {
     .select("role")
     .eq("id", auth.user.id)
     .single();
-  if (currentProfileError || currentProfile?.role !== "admin") {
+  if (
+    currentProfileError ||
+    (currentProfile?.role !== "admin" && currentProfile?.role !== "superadmin")
+  ) {
     throw new Error("Solo un administrador puede crear usuarios.");
   }
 
@@ -182,7 +186,7 @@ export async function updateUserRoleAction(
   newRole: "student" | "admin" | "instructor",
 ) {
   const { client: supabase, profile } = await requireVerifiedSession();
-  if (profile.role !== "admin")
+  if (profile.role !== "admin" && profile.role !== "superadmin")
     throw new Error("Solo un administrador puede cambiar roles.");
   const { error } = await supabase
     .from("profiles")

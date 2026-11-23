@@ -205,6 +205,17 @@ describe("atomic enrollment commands", () => {
     });
     expect(client.from).not.toHaveBeenCalled();
   });
+  it("allows superadmin to manage enrollments and user roles", async () => {
+    const { client } = setup("superadmin");
+    await updateStudentEnrollmentsAction("student", ["course"], ["course"]);
+    expect(client.rpc).toHaveBeenCalledWith("set_student_enrollments", {
+      p_user_id: "student",
+      p_enrolled_course_ids: ["course"],
+      p_scope_course_ids: ["course"],
+    });
+    await updateUserRoleAction("student", "instructor");
+    expect(client.from).toHaveBeenCalledWith("profiles");
+  });
 });
 
 describe("academic lesson retention", () => {
