@@ -1,6 +1,6 @@
 import { requireVerifiedSession } from "@/shared/lib/supabase/session";
 
-export type MediaCourseTag = "C172" | "DA40" | "DA42" | "general";
+export type MediaCourseTag = "C172" | "DA40" | "DA42" | "MCC" | "general";
 
 export type LessonMediaItem = {
   id: string;

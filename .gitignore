@@ -12,6 +12,8 @@ playwright-report/
 
 .vercel
 /Manuales/
+/MCC/
+/docs/mcc/
 scratch/
 *.pptx
 backups/

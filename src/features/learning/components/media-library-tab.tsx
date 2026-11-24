@@ -17,6 +17,7 @@ const COURSE_FILTERS: { id: MediaCourseTag | "all"; label: string }[] = [
   { id: "C172", label: "C172" },
   { id: "DA40", label: "DA40" },
   { id: "DA42", label: "DA42" },
+  { id: "MCC", label: "APS MCC" },
   { id: "general", label: "General" },
 ];
 

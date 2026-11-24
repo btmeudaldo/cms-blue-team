@@ -145,22 +145,9 @@ async function seedMCC() {
     }
   }
 
-  // 3. Auto enroll existing users so it appears in everyone's dashboard
-  const { data: users } = await supabase.from("profiles").select("id, email");
-  if (users && users.length > 0) {
-    const enrollments = users.map((u) => ({
-      user_id: u.id,
-      course_id: MCC_COURSE_ID,
-    }));
-    const { error: enrollError } = await supabase
-      .from("course_enrollments")
-      .upsert(enrollments, { onConflict: "user_id,course_id", ignoreDuplicates: true });
-    if (!enrollError) {
-      console.log(`✅ Matriculados ${users.length} usuarios automáticamente en el curso APS MCC.`);
-    }
-  }
-
-  console.log(`\n🎉 Curso APS MCC listo y disponible en la plataforma!`);
+  console.log(
+    `\n🎉 Curso APS MCC listo en Supabase (sin matriculación automática masiva: matricular alumnos desde Admin/Instructor).`,
+  );
 }
 
 seedMCC().catch((err) => {
