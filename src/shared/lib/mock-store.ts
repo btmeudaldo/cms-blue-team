@@ -28,6 +28,15 @@ import {
   DA42_COURSE_IMAGE_URL,
   DA42_LESSONS,
 } from "@/features/learning/content/da42-course-data";
+import {
+  MCC_COURSE_ID,
+  MCC_COURSE_SLUG,
+  MCC_COURSE_TITLE,
+  MCC_COURSE_DESCRIPTION,
+  MCC_COURSE_IMAGE_URL,
+  MCC_COURSE_REQUIRES_EXAM,
+  MCC_LESSONS,
+} from "@/features/learning/content/mcc-course-data";
 import { C172_QUIZZES } from "@/features/learning/content/c172-quizzes-data";
 import { DA40_QUIZZES } from "@/features/learning/content/da40-quizzes-data";
 import { DA42_QUIZZES } from "@/features/learning/content/da42-quizzes-data";
@@ -178,6 +187,25 @@ const mockCourses: MockCourse[] = [
     requires_exam: false,
     created_at: new Date().toISOString(),
     lessons: DA42_LESSONS.map((l) => ({
+      id: l.id,
+      course_id: l.course_id,
+      title: l.title,
+      slug: l.slug,
+      content_html: l.content_html,
+      sequence_order: l.sequence_order,
+      word_count: l.content_html.split(/\s+/).filter(Boolean).length,
+      min_seconds: l.min_seconds,
+    })),
+  },
+  {
+    id: MCC_COURSE_ID,
+    title: MCC_COURSE_TITLE,
+    slug: MCC_COURSE_SLUG,
+    description: MCC_COURSE_DESCRIPTION,
+    image_url: MCC_COURSE_IMAGE_URL,
+    requires_exam: MCC_COURSE_REQUIRES_EXAM,
+    created_at: new Date().toISOString(),
+    lessons: MCC_LESSONS.map((l) => ({
       id: l.id,
       course_id: l.course_id,
       title: l.title,

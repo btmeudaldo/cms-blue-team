@@ -6,6 +6,7 @@ export function generateStaticParams() {
     { courseId: "cessna-172-continental-diesel" },
     { courseId: "da40-tdi" },
     { courseId: "da42-twin-star" },
+    { courseId: "aps-mcc-a320" },
   ];
 }
 

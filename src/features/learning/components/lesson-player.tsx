@@ -41,6 +41,17 @@ import {
   C172_DOCUMENTATION,
   type CourseDocumentationItem,
 } from "@/features/learning/content/c172-course-data";
+import {
+  MCC_COURSE_ID,
+  MCC_COURSE_SLUG,
+} from "@/features/learning/content/mcc-course-data";
+import {
+  MCC_GLOSSARY,
+  MCC_GLOSSARY_MAP,
+  type GlossaryEntry,
+} from "@/features/learning/content/mcc-glossary";
+import { annotateGlossaryHtml } from "@/features/learning/domain/glossary-markup";
+import { GlossaryDrawer, GlossaryPopover } from "./glossary-popover";
 
 export type LessonSummary = {
   id: string;
@@ -144,9 +155,32 @@ export function LessonPlayer({
   // Documentation Drawer State (POH & flight manuals)
   const isC172Course =
     courseId === C172_COURSE_SLUG || courseId === C172_COURSE_ID;
+  const isMccCourse =
+    courseId === MCC_COURSE_SLUG || courseId === MCC_COURSE_ID;
   const activeDocs =
     courseDocs ?? (isC172Course ? C172_DOCUMENTATION : undefined);
   const [isDocsOpen, setIsDocsOpen] = useState(false);
+
+  // Interactive Glossary State (hover + click/tap + drawer)
+  const [isGlossaryDrawerOpen, setIsGlossaryDrawerOpen] = useState(false);
+  const [activeGlossary, setActiveGlossary] = useState<{
+    entry: GlossaryEntry;
+    rect: { top: number; bottom: number; left: number; width: number };
+    pinned: boolean;
+  } | null>(null);
+  const glossaryOpenTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const glossaryCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearGlossaryTimers = () => {
+    if (glossaryOpenTimerRef.current) {
+      clearTimeout(glossaryOpenTimerRef.current);
+      glossaryOpenTimerRef.current = null;
+    }
+    if (glossaryCloseTimerRef.current) {
+      clearTimeout(glossaryCloseTimerRef.current);
+      glossaryCloseTimerRef.current = null;
+    }
+  };
 
   // Hydration-safe random horizontal & vertical position for anti-cheating button
   const [horizontalPosition, setHorizontalPosition] = useState(50);
@@ -181,9 +215,38 @@ export function LessonPlayer({
   );
   const currentSlideHtml =
     lessonPages[effectivePageIndex] ?? lessonPages[0] ?? "";
-  const safeContentHtml = withBasePathHtml(
-    sanitizeLessonHtml(currentSlideHtml),
+  const sanitizedSlideHtml = useMemo(
+    () => withBasePathHtml(sanitizeLessonHtml(currentSlideHtml)),
+    [currentSlideHtml],
   );
+  const safeContentHtml = useMemo(
+    () =>
+      isMccCourse
+        ? annotateGlossaryHtml(sanitizedSlideHtml, MCC_GLOSSARY)
+        : sanitizedSlideHtml,
+    [isMccCourse, sanitizedSlideHtml],
+  );
+
+  useEffect(() => {
+    clearGlossaryTimers();
+    setActiveGlossary(null);
+  }, [effectivePageIndex]);
+
+  useEffect(() => {
+    if (!activeGlossary?.pinned) return;
+    const handleOutsideClick = (e: MouseEvent) => {
+      const el = e.target as HTMLElement | null;
+      if (
+        el?.closest("[data-glossary-term]") ||
+        el?.closest("[data-glossary-popover]")
+      ) {
+        return;
+      }
+      setActiveGlossary(null);
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, [activeGlossary?.pinned]);
 
   // Interactive simulator widget state & gating
   const [exerciseContainer, setExerciseContainer] = useState<HTMLElement | null>(null);
@@ -886,7 +949,10 @@ export function LessonPlayer({
               {activeDocs && activeDocs.length > 0 && (
                 <button
                   type="button"
-                  onClick={() => setIsDocsOpen((prev) => !prev)}
+                  onClick={() => {
+                    setActiveGlossary(null);
+                    setIsDocsOpen((prev) => !prev);
+                  }}
                   className={`flex h-9 px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${isDocsOpen
                       ? "bg-sky-600 text-white border-sky-600 shadow-xs"
                       : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
@@ -896,6 +962,26 @@ export function LessonPlayer({
                   <span>📚</span>
                   <span className="hidden sm:inline">{isDocsOpen ? "Ocultar Docs" : "Documentación POH"}</span>
                   <span className="sm:hidden">Docs</span>
+                </button>
+              )}
+
+              {/* Toggle Glossary Drawer Button (APS MCC) */}
+              {isMccCourse && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveGlossary(null);
+                    setIsGlossaryDrawerOpen((prev) => !prev);
+                  }}
+                  className={`flex h-9 px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${isGlossaryDrawerOpen
+                      ? "bg-sky-600 text-white border-sky-600 shadow-xs"
+                      : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                    }`}
+                  title="Mostrar u Ocultar Glosario A320 (siglas y conceptos)"
+                >
+                  <span>📖</span>
+                  <span className="hidden sm:inline">{isGlossaryDrawerOpen ? "Ocultar Glosario" : "Glosario A320"}</span>
+                  <span className="sm:hidden">Glosario</span>
                 </button>
               )}
 
@@ -1110,6 +1196,14 @@ export function LessonPlayer({
               </div>
             </aside>
           </div>
+        )}
+
+        {isMccCourse && (
+          <GlossaryDrawer
+            open={isGlossaryDrawerOpen}
+            onClose={() => setIsGlossaryDrawerOpen(false)}
+            entries={MCC_GLOSSARY}
+          />
         )}
 
         {/* Panoramic layout: the index reserves space and aligns with the lesson card. */}
@@ -1475,7 +1569,85 @@ export function LessonPlayer({
               <>
                 <article
                   ref={contentRef}
+                  onMouseOver={(e) => {
+                    if (!isMccCourse) return;
+                    const trigger = (e.target as HTMLElement).closest<HTMLElement>("[data-glossary-term]");
+                    if (!trigger || !contentRef.current?.contains(trigger)) return;
+                    const termKey = trigger.getAttribute("data-glossary-term");
+                    const entry = termKey ? MCC_GLOSSARY_MAP.get(termKey) : undefined;
+                    if (!entry) return;
+                    if (glossaryCloseTimerRef.current) {
+                      clearTimeout(glossaryCloseTimerRef.current);
+                      glossaryCloseTimerRef.current = null;
+                    }
+                    const rect = trigger.getBoundingClientRect();
+                    const snap = { top: rect.top, bottom: rect.bottom, left: rect.left, width: rect.width };
+                    if (activeGlossary?.pinned && activeGlossary.entry.term !== entry.term) return;
+                    const delay = activeGlossary ? 0 : 120;
+                    if (glossaryOpenTimerRef.current) clearTimeout(glossaryOpenTimerRef.current);
+                    glossaryOpenTimerRef.current = setTimeout(() => {
+                      setActiveGlossary((prev) =>
+                        prev?.pinned && prev.entry.term !== entry.term
+                          ? prev
+                          : { entry, rect: snap, pinned: prev?.pinned ?? false },
+                      );
+                    }, delay);
+                  }}
+                  onMouseOut={(e) => {
+                    if (!isMccCourse) return;
+                    const trigger = (e.target as HTMLElement).closest<HTMLElement>("[data-glossary-term]");
+                    if (!trigger) return;
+                    if (glossaryOpenTimerRef.current) {
+                      clearTimeout(glossaryOpenTimerRef.current);
+                      glossaryOpenTimerRef.current = null;
+                    }
+                    if (activeGlossary?.pinned) return;
+                    glossaryCloseTimerRef.current = setTimeout(() => {
+                      setActiveGlossary((prev) => (prev?.pinned ? prev : null));
+                    }, 160);
+                  }}
+                  onFocus={(e) => {
+                    if (!isMccCourse) return;
+                    const trigger = (e.target as HTMLElement).closest<HTMLElement>("[data-glossary-term]");
+                    if (!trigger || !contentRef.current?.contains(trigger)) return;
+                    const termKey = trigger.getAttribute("data-glossary-term");
+                    const entry = termKey ? MCC_GLOSSARY_MAP.get(termKey) : undefined;
+                    if (!entry) return;
+                    const rect = trigger.getBoundingClientRect();
+                    setActiveGlossary({
+                      entry,
+                      rect: { top: rect.top, bottom: rect.bottom, left: rect.left, width: rect.width },
+                      pinned: false,
+                    });
+                  }}
+                  onBlur={(e) => {
+                    if (!isMccCourse || activeGlossary?.pinned) return;
+                    const nextTarget = e.relatedTarget as HTMLElement | null;
+                    if (nextTarget?.closest("[data-glossary-popover]") || nextTarget?.closest("[data-glossary-term]")) {
+                      return;
+                    }
+                    setActiveGlossary(null);
+                  }}
                   onClick={(e) => {
+                    const trigger = (e.target as HTMLElement).closest<HTMLElement>("[data-glossary-term]");
+                    if (trigger && contentRef.current?.contains(trigger)) {
+                      e.stopPropagation();
+                      const termKey = trigger.getAttribute("data-glossary-term");
+                      const entry = termKey ? MCC_GLOSSARY_MAP.get(termKey) : undefined;
+                      if (!entry) return;
+                      clearGlossaryTimers();
+                      const rect = trigger.getBoundingClientRect();
+                      setActiveGlossary((prev) =>
+                        prev?.pinned && prev.entry.term === entry.term
+                          ? null
+                          : {
+                              entry,
+                              rect: { top: rect.top, bottom: rect.bottom, left: rect.left, width: rect.width },
+                              pinned: true,
+                            },
+                      );
+                      return;
+                    }
                     const img = (e.target as HTMLElement).closest("img");
                     if (img && contentRef.current?.contains(img)) {
                       setLightboxImage({ src: img.currentSrc || img.src, alt: img.alt || "" });
@@ -1487,6 +1659,29 @@ export function LessonPlayer({
                     }`}
                   dangerouslySetInnerHTML={{ __html: safeContentHtml }}
                 />
+                {activeGlossary &&
+                  typeof document !== "undefined" &&
+                  createPortal(
+                    <GlossaryPopover
+                      entry={activeGlossary.entry}
+                      anchorRect={activeGlossary.rect}
+                      pinned={activeGlossary.pinned}
+                      onClose={() => setActiveGlossary(null)}
+                      onMouseEnter={() => {
+                        if (glossaryCloseTimerRef.current) {
+                          clearTimeout(glossaryCloseTimerRef.current);
+                          glossaryCloseTimerRef.current = null;
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        if (activeGlossary.pinned) return;
+                        glossaryCloseTimerRef.current = setTimeout(() => {
+                          setActiveGlossary((prev) => (prev?.pinned ? prev : null));
+                        }, 160);
+                      }}
+                    />,
+                    document.body,
+                  )}
                 {exerciseContainer && activeExerciseType && createPortal(
                   <PreflightInteractiveHub
                     key={`${activeAircraft}_${activeExerciseType}_slide_${effectivePageIndex}`}
