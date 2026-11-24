@@ -138,7 +138,7 @@ export const C172_LESSON_1 = {
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">FLOTA C172</span></div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/C172-tarjeta.jpg" alt="Cessna 172 Continental Diésel" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
@@ -147,7 +147,11 @@ export const C172_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.2: 1.2 Dimensiones Principales de la Aeronave -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -228,7 +232,7 @@ export const C172_LESSON_1 = {
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-base sm:text-lg">FLOTA C172</span></div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-950 flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.2-dimensiones.png" alt="Dimensiones Principales Cessna 172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
@@ -237,7 +241,11 @@ export const C172_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.3: 1.3 Especificaciones del Motor Continental CD-135 / CD-155 -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -284,7 +292,7 @@ export const C172_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLANTA DE POTENCIA CONTINENTAL CD-155</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/Continental-Engine-Jet-A-CD-155-View-latest.png" alt="Motor Continental CD-155 Jet-A" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
@@ -293,7 +301,11 @@ export const C172_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.4: 1.4 Sistemas Convencionales Eliminados y Energía Eléctrica -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -342,7 +354,7 @@ export const C172_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">PLANTA DE POTENCIA CONTINENTAL CD-155</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.4-fadec-electrica.png" alt="Sistemas Convencionales Eliminados y Dependencia Eléctrica FADEC C172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
@@ -351,7 +363,11 @@ export const C172_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.5: 1.5 Hélice MT-Propeller Tripala de Paso Constante -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -417,7 +433,7 @@ export const C172_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">HÉLICE MT-PROPELLER TRIPALA</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.3-propeller.jpg?v=1" alt="Hélice MT-Propeller Tripala MTV-6" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
@@ -426,7 +442,11 @@ export const C172_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.6: 1.6 Combustibles Autorizados y Prohibición de AVGAS -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -472,7 +492,7 @@ export const C172_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">COMBUSTIBLES Y FLUIDOS AUTORIZADOS</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/jet-fuel-only.jpg" alt="Rótulo JET FUEL ONLY C172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
@@ -481,7 +501,11 @@ export const C172_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.7: 1.7 Diferencia de Densidad con AVGAS y Repostaje -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -534,7 +558,7 @@ export const C172_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">COMBUSTIBLES Y FLUIDOS AUTORIZADOS</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.7-densidad-repostaje.png" alt="Diferencia de Densidad JET A-1 vs AVGAS y Repostaje C172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
@@ -543,7 +567,11 @@ export const C172_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.8: 1.8 Fluidos de Servicio: Aceite, Reductora y Refrigerante -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -602,7 +630,7 @@ export const C172_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FLUIDOS DE SERVICIO Y SUPERVISIÓN</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.5-fluidos.jpg?v=1" alt="Fluidos de Servicio C172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
@@ -611,7 +639,11 @@ export const C172_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.9: 1.9 Notas, Aditivos Oficiales y Supervisión Prevuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -667,8 +699,8 @@ export const C172_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FLUIDOS DE SERVICIO Y SUPERVISIÓN</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
-            <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/1.5-fluidos.jpg?v=1" alt="Fluidos de Servicio C172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
+            <img src="/images/c172/1.9-prevuelo.png" alt="Fluidos de Servicio C172" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
         </div>
       </div>
@@ -676,7 +708,11 @@ export const C172_LESSON_1 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 1.10: 1.10 Mandos e Instrumentación de Motor en Cabina -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -741,7 +777,7 @@ export const C172_LESSON_1 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DISPLAYS CED 125, AED 125 Y LIGHTPANEL</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/cockpit-instruments.jpg" alt="Displays CED 125, AED 125 y Lightpanel FADEC" class="w-full h-full object-contain rounded-lg" style="object-fit: contain; width: 100%; height: 100%; max-width: 100%; max-height: 100%;">
           </div>
 
@@ -885,7 +921,7 @@ export const C172_LESSON_2 = {
               El anemómetro presenta lecturas en <strong>KIAS</strong> (Knots Indicated Airspeed). Las velocidades en <strong>KCAS</strong> corrigen los errores de el instrumento, instalación y posición del tubo Pitot.</p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 calibrado en nudos" class="w-full h-full max-h-[290px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
 
@@ -899,7 +935,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.2: 2.2 Marcas del Indicador de Velocidad (Airspeed Indicator Markings) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1033,7 +1077,7 @@ export const C172_LESSON_2 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="/images/c172/anemometro-final.jpg" alt="Anemómetro oficial Cessna 172 con arcos de colores" class="w-full h-full max-h-[250px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
 
@@ -1059,7 +1103,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.3: 2.3 Límites de Peso Estructural (Weight Limits) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1175,7 +1227,7 @@ export const C172_LESSON_2 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE DE MASA Y CENTRADO</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1.5 lesson-img-wrapper mx-auto img-align-center" draggable="false" style="position: relative; width: 100%; max-width: 100%; height: 100%; float: none; clear: both; opacity: 1;">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-1.5 lesson-img-wrapper mx-auto img-align-center bg-transparent border-0 shadow-none" draggable="false" style="position: relative; width: 100%; max-width: 100%; height: 100%; float: none; clear: both; opacity: 1;">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.1-cg-limits.png?v=2" alt="Envolvente de Masa y Centrado C172" class="w-full h-full object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; max-height: 100%; width: 100%; height: 100%; background-color: transparent; object-position: center;">
         </div>
       </div>
@@ -1183,7 +1235,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.4: 2.4 Compartimentos de Equipaje y Categorías de Vuelo (Normal vs Utilidad) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1296,7 +1356,7 @@ export const C172_LESSON_2 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="/images/c172/figure_6_3_loading_arrangements.jpg?v=2" alt="Disposición de Carga y Compartimentos de Equipaje Cessna 172" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
           </div>
         </div>
@@ -1305,7 +1365,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.5: 2.5 Límites de Maniobra y Factores de Carga -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1399,7 +1467,7 @@ export const C172_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA DE MANIOBRA V-n</span>
           </div>
 
-          <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 rounded-xl overflow-hidden flex items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/vn.jpg" alt="Diagrama de Maniobra V-n C172" class="w-full h-full max-h-[500px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
           </div>
         </div>
@@ -1408,7 +1476,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.6: 2.6 Límites de Motor: Potencia, RPM y Techo Operativo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1505,7 +1581,7 @@ export const C172_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RÉGIMEN DE POTENCIA Y MONOMANDO FADEC</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/potencia-altitud-fadec.jpg" alt="Régimen de Potencia vs Altitud y Monomando FADEC C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
           </div>
         </div>
@@ -1514,7 +1590,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.7: 2.7 Límites Operacionales de Temperatura -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1607,7 +1691,7 @@ export const C172_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">DIAGRAMA SINÓPTICO DE TEMPERATURAS</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/limites-temperatura.jpg" alt="Límites Operacionales de Temperatura C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
           </div>
         </div>
@@ -1616,7 +1700,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.8: 2.8 Límites de Presión y Consumo de Aceite -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1702,7 +1794,7 @@ export const C172_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CIRCUITO DE LUBRICACIÓN Y MANÓMETRO</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/presion-aceite-lubricacion.jpg" alt="Circuito de Lubricación y Manómetro de Presión de Aceite C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
           </div>
         </div>
@@ -1711,7 +1803,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.9: 2.9 Límites Térmicos de Combustible en Depósito -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1804,7 +1904,7 @@ export const C172_LESSON_2 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">SONDAS TÉRMICAS Y RETORNO DE COMBUSTIBLE</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/temperatura-combustible-retorno.jpg" alt="Sondas Térmicas en Depósitos y Circuito de Retorno C172" class="w-full h-full max-h-[480px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
           </div>
         </div>
@@ -1813,7 +1913,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.10: 2.10 Marcas de Instrumentos CED 125 (Motor y Reductora) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -1928,7 +2036,7 @@ export const C172_LESSON_2 = {
     <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-between p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-hidden" style="height: 590px;">
         <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-between p-2">
-          <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.7-v2.jpg?v=2" alt="Compact Engine Display CED 125" class="w-full h-full max-h-[385px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
           </div>
           <figcaption class="mt-1 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
@@ -1949,7 +2057,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.11: 2.11 Marcas de Instrumentos AED 125 y Botón Confirm/Test -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2071,7 +2187,7 @@ export const C172_LESSON_2 = {
 
             <div class="flex-1 min-h-0 grid grid-cols-12 gap-3 items-center">
               <!-- AED 125 a la izquierda (col-span-6, tamaño optimizado) -->
-              <div class="col-span-6 h-full flex items-center justify-center overflow-hidden py-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
+              <div class="col-span-6 h-full flex items-center justify-center overflow-hidden py-0.5 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
                 <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-aed.jpg?v=1" alt="Auxiliary Engine Display AED 125" class="w-full h-full max-h-[205px] object-contain rounded-md" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
               </div>
 
@@ -2096,7 +2212,7 @@ export const C172_LESSON_2 = {
               <span class="text-[9px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.5 rounded">CED/AED Caution</span>
             </div>
 
-            <div class="w-full flex-1 min-h-0 bg-white flex items-center justify-center overflow-hidden py-0.5 lesson-img-wrapper" draggable="false" style="position: relative;">
+            <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden py-0.5 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
               <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.8-annunciator.jpg?v=1" alt="Panel Anunciador de Cabina C172" class="w-full h-full max-h-[165px] object-contain rounded-md" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
             </div>
           </div>
@@ -2106,7 +2222,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.12: 2.12 Combustibles Autorizados y Capacidades de Depósitos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2192,7 +2316,7 @@ export const C172_LESSON_2 = {
     <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-center items-center p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
         <div class="w-full h-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-between p-2">
-          <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 flex items-center justify-center overflow-hidden lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.9-fuel.jpg?v=1" alt="Diagrama del sistema de combustible (Left, Right, Both)" class="w-full h-full max-h-[530px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
           </div>
           <figcaption class="mt-1.5 text-center text-xs text-slate-600 dark:text-slate-300 font-medium shrink-0">
@@ -2204,7 +2328,15 @@ export const C172_LESSON_2 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 2.13: 2.13 Fluidos Autorizados y Placards Obligatorios -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2281,7 +2413,7 @@ export const C172_LESSON_2 = {
     <!-- Columna Derecha (lg:col-span-5): Placards y Accesos de Servicio (Altura Fija 590px) -->
     <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-center items-center p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs" style="height: 590px;">
-        <div class="w-full h-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+        <div class="w-full h-full flex-1 rounded-xl overflow-hidden flex items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/2.10-v2.jpg?v=2" alt="Placards Obligatorios de Cabina y Accesos de Servicio C172" class="w-full h-full max-h-[570px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%;">
         </div>
       </div>
@@ -2387,7 +2519,7 @@ export const C172_LESSON_3 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex flex-col items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.1-cd155-engine.png?v=1" alt="Motor Continental Jet-A CD-155" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
@@ -2396,7 +2528,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.2: 3.2 Reductora Integrada y Hélice MT-Propeller -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2493,7 +2633,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.3: 3.3 Sistema FADEC: Control Digital y Redundancia Dual -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2583,7 +2731,7 @@ export const C172_LESSON_3 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex flex-col items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.3-fadec.jpg?v=1" alt="Arquitectura del Sistema FADEC Continental CD-135 / CD-155" class="w-full h-full max-h-[380px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
@@ -2592,7 +2740,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.4: 3.4 Gestión FADEC: Autoprueba, Categorías de Fallo y FORCE B -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2708,7 +2864,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.5: 3.5 Sistema Eléctrico I: Fuentes de Potencia y Alternador -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2789,7 +2953,7 @@ export const C172_LESSON_3 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">FUENTES DE POTENCIA Y DISTRIBUCIÓN</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex flex-col items-center justify-center p-1">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.4-fadec-test.jpg?v=1" alt="Esquema Eléctrico General: Alternador, Batería y Distribución" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
@@ -2797,7 +2961,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.6: 3.6 Sistema Eléctrico II: FADEC Backup Battery y Main Bus -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2881,7 +3053,7 @@ export const C172_LESSON_3 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">BATERÍA FADEC BACKUP Y MAIN BUS</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex flex-col items-center justify-center p-1">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.5-electrical.jpg?v=1" alt="Esquema Eléctrico: Batería FADEC Backup (Alimentación Exclusiva a ECU A) y Main Bus" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
@@ -2889,7 +3061,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.7: 3.7 Sistema de Combustible I: Depósitos y Alimentación -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -2973,7 +3153,7 @@ export const C172_LESSON_3 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESQUEMA DE COMBUSTIBLE · DEPÓSITOS</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex flex-col items-center justify-center p-1">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.7-fuel-tanks.jpg?v=1" alt="Esquema de Combustible: Depósitos, Selector y Depósito Nodriza" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
@@ -2981,7 +3161,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.8: 3.8 Sistema de Combustible II: Bombas, Retorno y Enfriador -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3062,7 +3250,7 @@ export const C172_LESSON_3 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RETORNO Y ENFRIADOR (FUEL COOLER)</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex flex-col items-center justify-center p-1">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.8-fuel-return.jpg?v=2" alt="Esquema de Retorno de Combustible, Fuel Cooler y Deflector Térmico" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
@@ -3070,7 +3258,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.9: 3.9 Sistema de Refrigeración Líquida (Cooling System) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3151,7 +3347,7 @@ export const C172_LESSON_3 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESQUEMA DE REFRIGERACIÓN (TAE 125)</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex flex-col items-center justify-center p-1">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.9-cooling-system.jpg?v=1" alt="Esquema de Refrigeración Líquida TAE 125" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
@@ -3159,7 +3355,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.10: 3.10 Sistemas de Lubricación: Motor y Caja Reductora -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3240,7 +3444,7 @@ export const C172_LESSON_3 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CIRCUITOS DE LUBRICACIÓN (TAE 125)</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex flex-col items-center justify-center p-1">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/3.10-lubrication.jpg?v=1" alt="Esquema de Circuitos de Aceite de Motor y Caja Reductora" class="w-full h-full max-h-[515px] object-contain rounded-lg" />
         </div>
       </div>
@@ -3248,7 +3452,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.11: 3.11 Instrumentación de Motor: CED 125 y AED 125 -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3372,7 +3584,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.12: 3.12 Panel de Alarmas (Lightpanel) y Mandos de Cabina -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3470,7 +3690,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.13: 3.13 Sistemas de Célula I: Mandos de Vuelo, Compensación y Flaps Fowler Eléctricos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3541,7 +3769,7 @@ export const C172_LESSON_3 = {
             <div><strong>Protección Eléctrica:</strong> Circuito protegido por un disyuntor automático (<em>circuit breaker</em>) de <strong>15 Amperios</strong> identificado como <code class="font-mono font-bold text-[#1a80ff] dark:text-sky-400">FLAP</code>.</div>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/80 flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="/images/c172/3.13-flaps-fowler.jpg" alt="Sistema de Flaps Fowler Cessna 172" class="w-full h-full max-h-[460px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
@@ -3550,7 +3778,15 @@ export const C172_LESSON_3 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 3.14: 3.14 Sistemas de Célula II: Tren de Aterrizaje, Frenos, Dirección en Tierra y Aviso Neumático de Pérdida -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3608,7 +3844,7 @@ export const C172_LESSON_3 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white dark:bg-slate-800/80 flex items-center justify-center p-2 lesson-img-wrapper" draggable="false" style="position: relative;">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-2 lesson-img-wrapper bg-transparent border-0 shadow-none" draggable="false" style="position: relative;">
             <img src="/images/c172/3.14-tren-frenos-direccion.jpg" alt="Esquema de Tren de Aterrizaje, Dirección en Tierra y Aviso de Pérdida Cessna 172" class="w-full h-full max-h-[420px] object-contain rounded-lg" style="aspect-ratio: auto; object-fit: contain; max-width: 100%; height: auto;">
           </div>
         </div>
@@ -3712,7 +3948,7 @@ export const C172_LESSON_4 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">RUTA DE INSPECCIÓN PREVUELO (WALKAROUND)</span>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex flex-col items-center justify-center p-1">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex flex-col items-center justify-center p-1">
           <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/4.1-preflight-walkaround.jpg" alt="Ruta de Inspección Exterior Prevuelo (Walkaround C172)" class="w-full h-full max-h-[515px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/4.1-preflight-walkaround.jpg')this.src='/images/c172/4.1-preflight-walkaround.jpg'" />
         </div>
       </div>
@@ -3720,7 +3956,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.2: 4.2 Inspección de Cabina II: Combustible y Cierre -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3805,7 +4049,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.3: 4.3 Inspección Exterior I: Empenaje y Ala Derecha -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3886,7 +4138,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.4: 4.4 Inspección Exterior II: Combustible Ala Derecha -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -3974,7 +4234,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.5: 4.5 Inspección Exterior III: Drenajes de Reserva y Filtro -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4060,7 +4328,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.6: 4.6 Inspección Exterior IV: Motor y Hélice -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4171,7 +4447,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.7: 4.7 Inspección Exterior V: ala Izquierda (Combustible y Tren) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4244,7 +4528,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.8: 4.8 Inspección Exterior VI: ala Izquierda (Bordes de Ataque y Salida) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4324,7 +4616,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.9: 4.9 Antes del Arranque del Motor -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4448,7 +4748,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.10: 4.10 Puesta en Marcha: Procedimiento de Arranque -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4569,7 +4877,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.11: 4.11 Calentamiento del Motor y Rodaje -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4701,7 +5017,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.12: 4.12 Antes del Despegue I: Cabina y Mandos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4824,7 +5148,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.13: 4.13 Antes del Despegue II: Autoprueba FADEC -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -4925,7 +5257,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.14: 4.14 Antes del Despegue III: Force B y Criterios Críticos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5009,7 +5349,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.15: 4.15 Antes del Despegue IV: Potencia y Configuración Final -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5116,7 +5464,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.16: 4.16 Velocidades Operativas de Vuelo y Viento Cruzado Demostrado -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5227,7 +5583,7 @@ export const C172_LESSON_4 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-2">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/4.16.jpg" alt="Stall Speeds Cessna 172 POH" class="w-full h-full max-h-[460px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/4.16.jpg')this.src='/images/c172/4.16.jpg'" />
           </div>
         </div>
@@ -5236,7 +5592,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.17: 4.17 Despegue y Ascenso -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5365,7 +5729,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.18: 4.18 Vuelo de Crucero y Gestión de Combustible -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5483,7 +5855,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.19: 4.19 Descenso y Aterrizaje Normal -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5614,7 +5994,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.20: 4.20 Maniobra de Escape: Aproximación Frustrada -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5704,7 +6092,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.21: 4.21 Tras el Aterrizaje y Parada de Motor -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -5803,7 +6199,15 @@ export const C172_LESSON_4 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 4.22: 4.22 Procedimientos Especiales -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6017,7 +6421,7 @@ export const C172_LESSON_5 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-2">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-2 bg-transparent border-0 shadow-none">
             <img src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.1.jpg" alt="Maximum Glide Cessna 172 POH" class="w-full h-full max-h-[460px] object-contain rounded-lg" onerror="if(this.src!=='/images/c172/5.1.jpg')this.src='/images/c172/5.1.jpg'" />
           </div>
         </div>
@@ -6026,7 +6430,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.2: 5.2 Fallo de Motor en Despegue: En Pista y Tras el Despegue -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6139,7 +6547,7 @@ export const C172_LESSON_5 = {
             <div>La altitud y la velocidad rara vez son suficientes para regresar al aeródromo con un viraje de 180° en planeo.</div>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-1 bg-transparent border-0 shadow-none">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.2.jpg"
               alt="Perfil de Fallo de Motor en Despegue C172: aterrizaje en pista o al frente (+-30 grados)"
@@ -6153,7 +6561,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.3: 5.3 Fallo de Motor en Vuelo y Reencendido -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6272,7 +6684,7 @@ export const C172_LESSON_5 = {
             </div>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-1 bg-transparent border-0 shadow-none">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.3.jpg"
               alt="Protocolo de Reencendido de Motor en Vuelo C172 CD-155: 65-85 KIAS, BOTH y ciclo de Engine Master"
@@ -6286,7 +6698,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.4: 5.4 Avisos Luminosos FADEC en Vuelo -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6374,7 +6790,7 @@ export const C172_LESSON_5 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-800 bg-slate-950 flex items-center justify-center p-1.5 shadow-inner">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-1.5 bg-transparent border-0 shadow-none">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.4.jpg?v=3"
               alt="Panel anunciador real con avisos luminosos FADEC y pulsador FADEC TEST en cabina Cessna 172 CD-155"
@@ -6399,7 +6815,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.5: 5.5 Comportamiento Anómalo del Motor y Force B -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6459,7 +6879,7 @@ export const C172_LESSON_5 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">INTERRUPTOR FORCE B</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-1 bg-transparent border-0 shadow-none">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.5.jpg"
               alt="Interruptor de seguridad FORCE B (Automático / FADEC B) en cabina Cessna 172 CD-155"
@@ -6484,7 +6904,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.6: 5.6 Incendios: Motor en Tierra, en Vuelo y Eléctrico -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6593,7 +7017,7 @@ export const C172_LESSON_5 = {
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">CONTROLES DE CORTE Y AISLAMIENTO</span>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-1 bg-transparent border-0 shadow-none">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.6.jpg"
               alt="Controles de corte de emergencia: Fuel Shut-off, calefacción de cabina y panel de interruptores en Cessna 172 CD-155"
@@ -6620,7 +7044,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.7: 5.7 Parada de Motor en Vuelo y Aterrizaje Forzoso -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6729,7 +7157,7 @@ export const C172_LESSON_5 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-1 bg-transparent border-0 shadow-none">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.7.jpg"
               alt="Procedimiento de parada de motor en vuelo y aproximación para aterrizaje de emergencia en Cessna 172"
@@ -6743,7 +7171,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.8: 5.8 Engelamiento Inadvertido y Recuperación de Barrena -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6868,7 +7300,7 @@ export const C172_LESSON_5 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-1 bg-transparent border-0 shadow-none">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.8.jpg"
               alt="Mandos de cabina ante engelamiento inadvertido y salida de espiral en picado en Cessna 172"
@@ -6882,7 +7314,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.9: 5.9 Fallo del Alternador y Descarga de Batería -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -6990,7 +7426,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.10: 5.10 Fallo Eléctrico Total y Batería FADEC Backup -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7062,7 +7502,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.11: 5.11 Anomalías de Aceite: Presión y Temperatura -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7148,7 +7592,7 @@ export const C172_LESSON_5 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-1 bg-transparent border-0 shadow-none">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.11.jpg"
               alt="Indicador CED 125 con fallo de presión y sobretemperatura de aceite en Cessna 172 CD-155"
@@ -7162,7 +7606,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.12: 5.12 Anomalías Térmicas: Refrigerante, Water Level y Reductora -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7250,7 +7698,7 @@ export const C172_LESSON_5 = {
             </p>
           </div>
 
-          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-900 flex items-center justify-center p-1">
+          <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden flex items-center justify-center p-1 bg-transparent border-0 shadow-none">
             <img
               src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/5.12.jpg"
               alt="Display CED 125 con sobretemperatura de refrigerante, temperatura de reductora y alerta luminosa WATER LEVEL"
@@ -7264,7 +7712,11 @@ export const C172_LESSON_5 = {
   </div>
 </div>
 
+
+
 <!-- pagebreak -->
+
+
 
 <!-- DIAPOSITIVA 5.13: 5.13 Pérdida de Potencia, Combustible y Malfunciones de Hélice -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7461,7 +7913,7 @@ export const C172_LESSON_6 = {
           </a>
         </div>
 
-        <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
+        <div class="w-full flex-1 rounded-xl overflow-y-auto p-1 bg-transparent border-0 shadow-none">
           <img
             src="/images/c172/f-ops-02-documentacion-prevuelo.png"
             alt="Formulario oficial F.OPS.02 Documentación Prevuelo"
@@ -7473,7 +7925,15 @@ export const C172_LESSON_6 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.2: 6.2 Teoría de Carga y Centrado: Datum, Brazos y Momentos -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7526,7 +7986,7 @@ export const C172_LESSON_6 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ESTACIONES DE CARGA (EC-NNA)</span>
         </div>
 
-        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 my-1">
+        <div class="w-full flex-1 rounded-xl overflow-hidden flex items-center justify-center p-1 my-1 bg-transparent border-0 shadow-none">
           <img
             src="/images/c172/6.2.jpg"
             alt="Estaciones de carga y brazos Cessna 172"
@@ -7541,7 +8001,15 @@ export const C172_LESSON_6 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.3: 6.3 Estructura del Loadsheet Oficial F.OPS.04.NNA -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7611,7 +8079,7 @@ export const C172_LESSON_6 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">HOJA F.OPS.04.NNA</span>
         </div>
 
-        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 my-1">
+        <div class="w-full flex-1 rounded-xl overflow-hidden flex items-center justify-center p-1 my-1 bg-transparent border-0 shadow-none">
           <img
             src="/images/c172/6.3.jpg"
             alt="Hoja oficial de masa y centrado F.OPS.04.NNA"
@@ -7626,7 +8094,15 @@ export const C172_LESSON_6 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.4: 6.4 La Envolvente de Centro de Gravedad -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7675,7 +8151,7 @@ export const C172_LESSON_6 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">ENVOLVENTE OFICIAL DE CG</span>
         </div>
 
-        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1.5 my-1">
+        <div class="w-full flex-1 rounded-xl overflow-hidden flex items-center justify-center p-1.5 my-1 bg-transparent border-0 shadow-none">
           <img
             src="/images/c172/figure_6_8_center_of_gravity_limits_modificado.svg"
             alt="Límites de Centro de Gravedad C172"
@@ -7690,7 +8166,15 @@ export const C172_LESSON_6 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.5: 6.5 Taller Práctico: Cumplimentación de Hoja de Carga F.OPS.04.NNA -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7705,7 +8189,15 @@ export const C172_LESSON_6 = {
   <div class="py-0.5" data-interactive-exercise="loadsheet_takeoff"></div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.6: 6.6 Taller Práctico 1B: Masa y Centrado F.OPS.04 (Consumo y Aterrizaje - LM & Envolvente) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7720,7 +8212,15 @@ export const C172_LESSON_6 = {
   <div class="py-0.5" data-interactive-exercise="loadsheet_landing"></div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.7: 6.7 Régimen de Crucero: Rendimiento y Consumo al 50% de Potencia -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7773,7 +8273,7 @@ export const C172_LESSON_6 = {
           </a>
         </div>
 
-        <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
+        <div class="w-full flex-1 rounded-xl overflow-y-auto p-1 bg-transparent border-0 shadow-none">
           <img
             src="/images/c172/cruise-performance-range.png"
             alt="Tablas oficiales de rendimiento de crucero y alcance"
@@ -7785,7 +8285,15 @@ export const C172_LESSON_6 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.8: 6.8 Ground Speed, Viento y Cálculo de Combustible Horario -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7838,7 +8346,7 @@ export const C172_LESSON_6 = {
           </a>
         </div>
 
-        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-white flex items-center justify-center p-1.5 my-1">
+        <div class="w-full flex-1 rounded-xl overflow-hidden flex items-center justify-center p-1.5 my-1 bg-transparent border-0 shadow-none">
           <img
             src="/images/c172/triangulo-velocidades.png"
             alt="Triángulo de Velocidades: TAS, Viento, Deriva (WCA) y Ground Speed (GS)"
@@ -7872,7 +8380,15 @@ export const C172_LESSON_6 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.9: 6.9 Taller Interactivo 2: Crucero y Autonomía -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7887,7 +8403,15 @@ export const C172_LESSON_6 = {
   <div class="py-0.5" data-interactive-exercise="cruise"></div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.10: 6.10 Política de Combustible: Part-NCO.OP.125 y Manual OM Blue Team -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7937,7 +8461,7 @@ export const C172_LESSON_6 = {
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">POLÍTICA OM BLUE TEAM</span>
         </div>
 
-        <div class="w-full flex-1 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700/80 shadow-xs bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-1 my-1">
+        <div class="w-full flex-1 rounded-xl overflow-hidden flex items-center justify-center p-1 my-1 bg-transparent border-0 shadow-none">
           <img
             src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/6.10.jpg"
             alt="Política de combustible y desglose de bloques Blue Team"
@@ -7952,7 +8476,15 @@ export const C172_LESSON_6 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.11: 6.11 Taller Interactivo 3: Planificación de Combustible F.OPS.02 -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -7967,7 +8499,15 @@ export const C172_LESSON_6 = {
   <div class="py-0.5" data-interactive-exercise="fuel"></div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.12: 6.12 Performance de Despegue: Tabla 5-1a y Factores de Corrección -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -8020,7 +8560,7 @@ export const C172_LESSON_6 = {
           </a>
         </div>
 
-        <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
+        <div class="w-full flex-1 rounded-xl overflow-y-auto p-1 bg-transparent border-0 shadow-none">
           <img
             src="/images/c172/takeoff-performance-tables.png"
             alt="Tablas oficiales de rendimiento de despegue"
@@ -8032,7 +8572,15 @@ export const C172_LESSON_6 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.13: 6.13 Performance de Aterrizaje: Tabla Short Field 5-10 y Conversión ft -> m -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -8085,7 +8633,7 @@ export const C172_LESSON_6 = {
           </a>
         </div>
 
-        <div class="w-full flex-1 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1">
+        <div class="w-full flex-1 rounded-xl overflow-y-auto p-1 bg-transparent border-0 shadow-none">
           <img
             src="/images/c172/landing_distance_table.png"
             alt="Tabla oficial de rendimiento de aterrizaje Short Field"
@@ -8097,7 +8645,15 @@ export const C172_LESSON_6 = {
   </div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.14: 6.14 Taller Interactivo 4A: Performance de Despegue (TORA & TODA) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -8112,7 +8668,15 @@ export const C172_LESSON_6 = {
   <div class="py-0.5" data-interactive-exercise="performance_takeoff"></div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.15: 6.15 Taller Interactivo 4B: Distancia de Aterrizaje (LDA) -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -8127,7 +8691,15 @@ export const C172_LESSON_6 = {
   <div class="py-0.5" data-interactive-exercise="performance_landing"></div>
 </div>
 
+
+
+
+
 <!-- pagebreak -->
+
+
+
+
 
 <!-- DIAPOSITIVA 6.16: 6.16 Validación Final del Despacho y Firma Operativa -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
@@ -8190,7 +8762,7 @@ export const C172_LESSON_6 = {
           </a>
         </div>
 
-        <div class="w-full flex-1 min-h-0 rounded-xl overflow-y-auto border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-inner p-1 my-1">
+        <div class="w-full flex-1 min-h-0 rounded-xl overflow-y-auto p-1 my-1 bg-transparent border-0 shadow-none">
           <img
             src="https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/c172/f-ops-02-ejemplo-rellenado-btm26c.png?v=2"
             alt="F.OPS.02 Documentación Prevuelo rellenada con los datos del ejemplo resuelto (Vuelo BTM26C)"
