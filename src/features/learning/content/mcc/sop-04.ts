@@ -29,6 +29,7 @@ const img = (page: number) =>
   `${PDP_IMG}/p${String(page).padStart(3, "0")}_before_pushback_start_engine_start_after.webp${CROPPED_PAGES.has(page) ? `?v=${IMG_VERSION}` : ""}`;
 const IMG_PITCH_TRIM_A320 = `${PDP_IMG}/p168_after_start_pitch_trim_a320.webp`;
 const IMG_AFTER_START_FLOW_A320 = `${PDP_IMG}/p030_flow_patterns.webp`;
+const fcomImg = (name: string) => `${PDP_IMG}/${name}.webp`;
 const fcom = (sections: string) => `Source: FCOM A320 ${sections}`;
 const both = (sections: string, page: number) => `Source: FCOM A320 ${sections} & ${PDP} (p.${page})`;
 
@@ -290,13 +291,16 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-04.9: ECAM indications during the start and idle parameters",
+    comment: "SLIDE SOP-04.9: ECAM indications during the start",
     eyebrow: EYEBROW,
-    title: "4.9 Indicaciones ECAM durante el arranque y parámetros de ralentí",
+    title: "4.9 Indicaciones ECAM durante el arranque",
     subtitle: "PRO-NOR-SOP-08 · Start Indications (CFM56-5B)",
+    leftPct: 54,
     leftTitle: "ON ECAM UPPER / LOWER DISPLAY",
-    rightTitle: "ENG IDLE PARAMETERS ……… CHECK",
-    sourceRef: fcom("PRO-NOR-SOP-08 Automatic Engine Start"),
+    rightTitle: "ENG SD PAGE (CFM56-5B)",
+    image: fcomImg("fcom_a320_eng_sd_page"),
+    imageAlt: "ECAM Engine SD page indications for CFM56-5B",
+    sourceRef: fcom("PRO-NOR-SOP-08 Automatic Engine Start / DSC-70-90-40 ENG SD Page"),
     cards: [],
     table: {
       headers: ["When", "Indication"],
@@ -312,16 +316,19 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
       level: "NOTE",
       text: "(1) With the current ECU standard, the FF indication may be crossed up to approximately 200 kg/h (440 lb/h).",
     },
-    rightTable: {
-      headers: ["At ISA sea level", "About"],
-      rows: [
-        ["N1", "19.5 %"],
-        ["N2", "58.5 %"],
-        ["EGT", "390 °C"],
-        ["FF", "275 kg/h (600 lb/h)"],
-      ],
-    },
-    rightCards: [
+  },
+  {
+    comment: "SLIDE SOP-04.10: Engine idle parameters and engine 1 start",
+    eyebrow: EYEBROW,
+    title: "4.10 Parámetros de ralentí y arranque del motor 1",
+    subtitle: "PRO-NOR-SOP-08 · Engine Idle Parameters (CFM56-5B)",
+    leftPct: 50,
+    leftTitle: "ENG IDLE PARAMETERS ……… CHECK",
+    rightTitle: "E/WD ENGINE INDICATIONS",
+    image: fcomImg("fcom_a320_ewd_cfm"),
+    imageAlt: "Engine/Warning Display indications for CFM56-5B at idle",
+    sourceRef: fcom("PRO-NOR-SOP-08 Automatic Engine Start / DSC-70-90-40 E/WD"),
+    cards: [
       {
         heading: "When idle is reached (AVAIL indication is displayed)",
         bullets: [
@@ -331,15 +338,27 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
+    table: {
+      headers: ["At ISA sea level", "About"],
+      rows: [
+        ["N1", "19.5 %"],
+        ["N2", "58.5 %"],
+        ["EGT", "390 °C"],
+        ["FF", "275 kg/h (600 lb/h)"],
+      ],
+    },
   },
   {
-    comment: "SLIDE SOP-04.10: FADEC start protection and ignition",
+    comment: "SLIDE SOP-04.11: FADEC start protection",
     eyebrow: EYEBROW,
-    title: "4.10 Protecciones del FADEC e ignición en el arranque",
-    subtitle: "DSC-70-80 · Protection / Ignition for Starting",
+    title: "4.11 Protecciones del FADEC en el arranque",
+    subtitle: "DSC-70-80 · Protection",
+    leftPct: 50,
     leftTitle: "FADEC PROTECTION",
-    rightTitle: "IGNITION FOR STARTING — ON THE GROUND",
-    sourceRef: fcom("DSC-70-80-40 Protection / DSC-70-80-30 Ignition for Starting"),
+    rightTitle: "IGNITION AND STARTING ARCHITECTURE",
+    image: fcomImg("fcom_a320_eng_start_arch"),
+    imageAlt: "FADEC ignition and starting architecture schematic",
+    sourceRef: fcom("DSC-70-80-40 Protection / DSC-70-80-20 Architecture"),
     cards: [
       {
         heading: "The FADEC",
@@ -359,7 +378,19 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
-    rightCards: [
+  },
+  {
+    comment: "SLIDE SOP-04.12: Ignition for starting",
+    eyebrow: EYEBROW,
+    title: "4.12 Sistema de ignición en el arranque",
+    subtitle: "DSC-70-80-30 · Ignition for Starting",
+    leftPct: 50,
+    leftTitle: "IGNITION FOR STARTING — ON THE GROUND",
+    rightTitle: "IGNITION SYSTEM — FADEC A / B",
+    image: fcomImg("fcom_a320_eng_ignition"),
+    imageAlt: "FADEC dual channel ignition system schematic",
+    sourceRef: fcom("DSC-70-80-30 Ignition for Starting"),
+    cards: [
       {
         heading: "Automatic start",
         bullets: [
@@ -378,13 +409,16 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-04.11: Manual engine start — when and how to abort",
+    comment: "SLIDE SOP-04.13: Manual engine start — when and how to abort",
     eyebrow: EYEBROW,
-    title: "4.11 Arranque manual: cuándo se usa y cómo se aborta",
+    title: "4.13 Arranque manual: cuándo se usa y cómo se aborta",
     subtitle: "PRO-NOR-SUP-ENG · Manual Engine Start",
-    leftTitle: "MANUAL STARTING IS RECOMMENDED",
-    rightTitle: "ABORTING A MANUAL START",
-    sourceRef: fcom("PRO-NOR-SUP-ENG Manual Engine Start"),
+    leftPct: 55,
+    leftTitle: "WHEN RECOMMENDED · ABORTING A MANUAL START",
+    rightTitle: "ENG PANEL — PEDESTAL",
+    image: fcomImg("fcom_a320_eng_master_panel"),
+    imageAlt: "Pedestal ENG MASTER levers and ENG MODE selector",
+    sourceRef: fcom("PRO-NOR-SUP-ENG Manual Engine Start / DSC-70-90-20 Pedestal"),
     cards: [
       {
         heading: "Pilots normally use automatic starting to start an engine. However, manual starting is recommended:",
@@ -393,8 +427,6 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
           "<strong>When expecting a start abort, because of:</strong> Degraded bleed performance, due to hot conditions, or at a high-altitude airfields · An engine with a reduced EGT margin, in hot conditions, or at a high-altitude airfields · Marginal performance of the external pneumatic power group · Intermittent ECAM ENG 1(2) IGN A(B) FAULT alert, during the first start of the day.",
         ],
       },
-    ],
-    rightCards: [
       {
         heading: "If the flight crew suspects an engine start malfunction, or if an engine-related ECAM alert is triggered, the PF must abort the start sequence as follows:",
         bullets: [
@@ -412,13 +444,16 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-04.12: Manual engine start procedure",
+    comment: "SLIDE SOP-04.14: Manual engine start procedure — motoring",
     eyebrow: EYEBROW,
-    title: "4.12 Procedimiento de arranque manual",
+    title: "4.14 Procedimiento de arranque manual (1/2): motoring",
     subtitle: "PRO-NOR-SUP-ENG · Manual Engine Start Procedure",
+    leftPct: 52,
     leftTitle: "MOTORING (ENG MAN START ON)",
-    rightTitle: "LIGHT-UP AND STABILIZATION",
-    sourceRef: fcom("PRO-NOR-SUP-ENG Manual Engine Start Procedure"),
+    rightTitle: "ENG MAN START PANEL — OVERHEAD",
+    image: fcomImg("fcom_a320_eng_man_start_panel"),
+    imageAlt: "Overhead ENG MAN START 1 and 2 pushbutton-switches",
+    sourceRef: fcom("PRO-NOR-SUP-ENG Manual Engine Start Procedure / DSC-70-90-10 Overhead Panel"),
     cards: [
       {
         heading: "Set up",
@@ -440,7 +475,19 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
       level: "NOTE",
       text: "The maximum motoring speed is defined as the speed at which N2 acceleration is less than 1 % in approximately 5 s.",
     },
-    rightCards: [
+  },
+  {
+    comment: "SLIDE SOP-04.15: Manual engine start procedure — light-up and stabilization",
+    eyebrow: EYEBROW,
+    title: "4.15 Procedimiento de arranque manual (2/2): encendido y estabilización",
+    subtitle: "PRO-NOR-SUP-ENG · Manual Engine Start Procedure",
+    leftPct: 52,
+    leftTitle: "LIGHT-UP AND STABILIZATION",
+    rightTitle: "STARTING SEQUENCE INDICATION",
+    image: fcomImg("fcom_a320_eng_start_indications"),
+    imageAlt: "ECAM starting sequence indications: start valve, ignition and inlet pressure",
+    sourceRef: fcom("PRO-NOR-SUP-ENG Manual Engine Start Procedure / DSC-70-90-40 Starting Sequence Indication"),
+    cards: [
       {
         heading: "When N2 reaches 22 % or the maximum motoring speed (20 % minimum)",
         bullets: [
@@ -460,13 +507,16 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-04.13: Engine start with an air start unit",
+    comment: "SLIDE SOP-04.16: Engine start with an air start unit — setup and engine 2",
     eyebrow: EYEBROW,
-    title: "4.13 Arranque con unidad de aire de tierra",
+    title: "4.16 Arranque con unidad de aire de tierra (1/2): preparación y motor 2",
     subtitle: "PRO-NOR-SUP-ENG · Engine Start with an Air Start Unit",
+    leftPct: 52,
     leftTitle: "BEFORE CONNECTING · ENGINE 2 START",
-    rightTitle: "ENGINE 1 START · RESTORE",
-    sourceRef: fcom("PRO-NOR-SUP-ENG Engine Start with an Air Start Unit"),
+    rightTitle: "AIR COND / BLEED PANEL (30VU)",
+    image: fcomImg("fcom_a320_air_bleed_panel"),
+    imageAlt: "Overhead AIR COND and BLEED panel 30VU",
+    sourceRef: fcom("PRO-NOR-SUP-ENG Engine Start with an Air Start Unit / DSC-36-20 Air Bleed Panel"),
     cards: [
       {
         heading: "Before connecting the air start unit",
@@ -484,7 +534,19 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
-    rightCards: [
+  },
+  {
+    comment: "SLIDE SOP-04.17: Engine start with an air start unit — engine 1 and restore",
+    eyebrow: EYEBROW,
+    title: "4.17 Arranque con unidad de aire de tierra (2/2): motor 1 y restauración",
+    subtitle: "PRO-NOR-SUP-ENG · Engine Start with an Air Start Unit",
+    leftPct: 52,
+    leftTitle: "ENGINE 1 START · RESTORE",
+    rightTitle: "ECAM BLEED PAGE — GND HP",
+    image: fcomImg("fcom_a320_ecam_bleed_page"),
+    imageAlt: "ECAM BLEED page showing GND HP ground connection and bleed valves",
+    sourceRef: fcom("PRO-NOR-SUP-ENG Engine Start with an Air Start Unit / DSC-36-20 ECAM Bleed Page"),
+    cards: [
       {
         heading: "After engine 2 is started",
         bullets: [
@@ -501,16 +563,16 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
-    rightAlert: {
+    alert: {
       level: "WARNING",
       text: "Disconnection of the external power with the EXT PWR pb-sw set to ON may cause injury to the ground engineer. Request disconnection of the external power only with the EXT PWR pb-sw set to AVAIL.",
     },
   },
   // ── D. After start ───────────────────────────────────────────────────────
   {
-    comment: "SLIDE SOP-04.14: After start PF actions",
+    comment: "SLIDE SOP-04.18: After start PF actions",
     eyebrow: EYEBROW,
-    title: "4.14 Después del arranque: acciones del PF",
+    title: "4.18 Después del arranque: acciones del PF",
     subtitle: "After Start · PF",
     leftPct: 50,
     leftTitle: "ENG MODE · APU BLEED · ANTI ICE",
@@ -541,9 +603,9 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-04.15: After start PM actions and pitch trim",
+    comment: "SLIDE SOP-04.19: After start PM actions and pitch trim",
     eyebrow: EYEBROW,
-    title: "4.15 Después del arranque: acciones del PM y pitch trim",
+    title: "4.19 Después del arranque: acciones del PM y pitch trim",
     subtitle: "After Start · PM",
     leftPct: 50,
     leftTitle: "GND SPLRS · RUDDER TRIM · FLAPS",
@@ -577,9 +639,9 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-04.16: ECAM status, ground crew disconnection and after start checklist",
+    comment: "SLIDE SOP-04.20: ECAM status, ground crew disconnection and after start checklist",
     eyebrow: EYEBROW,
-    title: "4.16 Status ECAM, desconexión del personal de tierra y checklist",
+    title: "4.20 Status ECAM, desconexión del personal de tierra y checklist",
     subtitle: "After Start · Flow Pattern",
     leftPct: 50,
     leftTitle: "ECAM STATUS · NWS · GROUND CREW · C/L",

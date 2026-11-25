@@ -1,7 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
-const testCourse = {
+const baseCourse = {
   id: "cessna-172",
   slug: "cessna-172-continental-diesel",
   title: "Curso Cessna 172",
@@ -34,14 +34,23 @@ const testCourse = {
   ],
 };
 
+const { mockState } = vi.hoisted(() => ({
+  mockState: {
+    user: { id: "student-regular", email: "student@blueteam.com" },
+    profile: { role: "student" },
+    course: null as any,
+  },
+}));
+mockState.course = baseCourse;
+
 vi.mock("@/shared/components/header", () => ({ Header: () => null }));
 vi.mock("@/shared/lib/supabase/resilient", () => ({
   getResilientUser: async () => ({
-    user: { id: "student-regular", email: "student@blueteam.com" },
-    profile: { role: "student" },
+    user: mockState.user,
+    profile: mockState.profile,
     isDemo: false,
   }),
-  getResilientCourseDetail: async () => testCourse,
+  getResilientCourseDetail: async () => mockState.course,
   getResilientUserProgress: async () => [],
   getResilientQuizzes: async () => [],
   getResilientQuizAttempts: async () => [],
@@ -49,6 +58,12 @@ vi.mock("@/shared/lib/supabase/resilient", () => ({
 }));
 
 import StudentCourseDetailPage from "./page";
+
+afterEach(() => {
+  mockState.user = { id: "student-regular", email: "student@blueteam.com" };
+  mockState.profile = { role: "student" };
+  mockState.course = baseCourse;
+});
 
 describe("StudentCourseDetailPage lesson accessibility", () => {
   it("renders all lessons as accessible clickable links for regular students", async () => {
@@ -72,5 +87,43 @@ describe("StudentCourseDetailPage lesson accessibility", () => {
     expect(html).toContain("1. Generalidades y Especificaciones");
     expect(html).toContain("2. Limitaciones Operacionales");
     expect(html).toContain("3. Ingeniería y Sistemas");
+  });
+
+  it("hides 100%-private lessons for students and badges them for superadmin", async () => {
+    mockState.course = {
+      ...baseCourse,
+      lessons: [
+        ...baseCourse.lessons,
+        {
+          id: "lesson-hidden",
+          slug: "legacy-hidden",
+          title: "4. Lección Antigua Oculta",
+          sequence_order: 4,
+          min_seconds: 1,
+          word_count: 100,
+          content_html:
+            '<div class="lesson-slide-container" data-slide-visibility="private">Slide 1</div><!-- pagebreak --><div class="lesson-slide-container" data-slide-visibility="private">Slide 2</div>',
+        },
+      ],
+    };
+
+    const studentHtml = renderToStaticMarkup(
+      await StudentCourseDetailPage({
+        params: Promise.resolve({ courseId: "cessna-172-continental-diesel" }),
+      }),
+    );
+    expect(studentHtml).not.toContain("4. Lección Antigua Oculta");
+    expect(studentHtml).not.toContain("legacy-hidden");
+    expect(studentHtml).toContain("(3 temas)");
+
+    mockState.profile = { role: "superadmin" };
+    const superAdminHtml = renderToStaticMarkup(
+      await StudentCourseDetailPage({
+        params: Promise.resolve({ courseId: "cessna-172-continental-diesel" }),
+      }),
+    );
+    expect(superAdminHtml).toContain("4. Lección Antigua Oculta");
+    expect(superAdminHtml).toContain("Oculta (Solo superadmin)");
+    expect(superAdminHtml).toContain("(4 temas)");
   });
 });

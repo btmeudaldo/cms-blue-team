@@ -3,6 +3,8 @@ import {
   getSlideVisibility,
   setSlideVisibility,
   getVisibleSlidesForUser,
+  isLessonFullyPrivate,
+  filterVisibleLessonsForUser,
 } from "./slide-visibility";
 
 describe("slide-visibility domain", () => {
@@ -86,6 +88,60 @@ describe("slide-visibility domain", () => {
       const forAnon = getVisibleSlidesForUser(slides);
       expect(forAnon.visibleSlides).toHaveLength(2);
       expect(forAnon.visibleToOriginalIndexMap).toEqual([0, 2]);
+    });
+  });
+
+  describe("isLessonFullyPrivate", () => {
+    it("returns false for empty, null or undefined content", () => {
+      expect(isLessonFullyPrivate("")).toBe(false);
+      expect(isLessonFullyPrivate(null)).toBe(false);
+      expect(isLessonFullyPrivate(undefined)).toBe(false);
+    });
+
+    it("returns false when all slides are public or mixed", () => {
+      const allPublic = `<div class="lesson-slide-container">A</div><!-- pagebreak --><div class="lesson-slide-container" data-slide-visibility="public">B</div>`;
+      const mixed = `<div class="lesson-slide-container" data-slide-visibility="private">A</div><!-- pagebreak --><div class="lesson-slide-container">B</div>`;
+      expect(isLessonFullyPrivate(allPublic)).toBe(false);
+      expect(isLessonFullyPrivate(mixed)).toBe(false);
+    });
+
+    it("returns true when every slide is marked private", () => {
+      const allPrivate = `<div class="lesson-slide-container" data-slide-visibility="private">A</div><!-- pagebreak --><div class="lesson-slide-container" data-slide-visibility="private">B</div>`;
+      expect(isLessonFullyPrivate(allPrivate)).toBe(true);
+    });
+  });
+
+  describe("filterVisibleLessonsForUser", () => {
+    const lessons = [
+      { id: "pub", content_html: `<div class="lesson-slide-container">Public</div>` },
+      {
+        id: "mixed",
+        content_html: `<div class="lesson-slide-container" data-slide-visibility="private">A</div><!-- pagebreak --><div class="lesson-slide-container">B</div>`,
+      },
+      {
+        id: "hidden",
+        content_html: `<div class="lesson-slide-container" data-slide-visibility="private">Draft 1</div><!-- pagebreak --><div class="lesson-slide-container" data-slide-visibility="private">Draft 2</div>`,
+      },
+    ];
+
+    it("hides 100%-private lessons for students, instructors, admins, and undefined role", () => {
+      for (const role of ["student", "instructor", "admin", undefined]) {
+        const visible = filterVisibleLessonsForUser(lessons, role);
+        expect(visible.map((l) => l.id)).toEqual(["pub", "mixed"]);
+      }
+    });
+
+    it("keeps all lessons for superadmin role or isSuperAdmin flag", () => {
+      expect(filterVisibleLessonsForUser(lessons, "superadmin").map((l) => l.id)).toEqual([
+        "pub",
+        "mixed",
+        "hidden",
+      ]);
+      expect(filterVisibleLessonsForUser(lessons, "admin", true).map((l) => l.id)).toEqual([
+        "pub",
+        "mixed",
+        "hidden",
+      ]);
     });
   });
 });

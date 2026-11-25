@@ -1,5 +1,6 @@
 import { LessonPlayer } from "@/features/learning/components/lesson-player";
 import { resolveLessonByIdentifier } from "@/features/learning/domain/lesson-route";
+import { filterVisibleLessonsForUser } from "@/features/learning/domain/slide-visibility";
 import { notFound } from "next/navigation";
 import {
   C172_COURSE_ID,
@@ -72,15 +73,21 @@ export async function renderStudentLessonPage({
     } catch {}
   }
 
-  const lessons = (course.lessons || []).sort(
+  const isSuperAdmin =
+    profile?.role === "superadmin" || user?.email === "btmeudaldo@gmail.com";
+
+  const sortedLessons = [...(course.lessons || [])].sort(
     (a: any, b: any) => a.sequence_order - b.sequence_order,
+  );
+  const lessons = filterVisibleLessonsForUser(
+    sortedLessons,
+    profile?.role,
+    isSuperAdmin,
   );
 
   const currentLesson = resolveLessonByIdentifier<any>(lessons, lessonId);
   if (!currentLesson) notFound();
   const currentIndex = lessons.indexOf(currentLesson);
-
-  const isSuperAdmin = user?.email === "btmeudaldo@gmail.com";
 
   const [quiz, quizAttempts] = await Promise.all([
     getResilientQuizForLesson(currentLesson.id),

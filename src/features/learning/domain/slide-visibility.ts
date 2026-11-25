@@ -1,3 +1,5 @@
+import { splitLessonPages } from "./lesson-pages";
+
 export type SlideVisibility = "public" | "private";
 
 /**
@@ -88,4 +90,30 @@ export function getVisibleSlidesForUser(
   });
 
   return { visibleSlides, visibleToOriginalIndexMap };
+}
+
+/**
+ * Returns true only when a lesson has non-empty content and every slide is marked private.
+ * Lessons without content_html default to false (public).
+ */
+export function isLessonFullyPrivate(contentHtml?: string | null): boolean {
+  if (!contentHtml || typeof contentHtml !== "string" || contentHtml.trim() === "") {
+    return false;
+  }
+  const slides = splitLessonPages(contentHtml);
+  return slides.length > 0 && slides.every((slide) => getSlideVisibility(slide) === "private");
+}
+
+/**
+ * Excludes 100%-private lessons for everyone except superadmins.
+ */
+export function filterVisibleLessonsForUser<T extends { content_html?: string | null }>(
+  lessons: T[],
+  role?: string,
+  isSuperAdmin?: boolean,
+): T[] {
+  if (isSuperAdmin || role === "superadmin") {
+    return lessons;
+  }
+  return lessons.filter((lesson) => !isLessonFullyPrivate(lesson.content_html));
 }

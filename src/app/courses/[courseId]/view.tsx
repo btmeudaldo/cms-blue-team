@@ -14,6 +14,10 @@ import {
 import { checkCourseCertificateEligibility } from "@/features/learning/domain/course-completion";
 import { CourseCertificateCard } from "@/features/learning/components/course-certificate-card";
 import { MaximizeWindowBanner } from "@/features/learning/components/maximize-window-banner";
+import {
+  filterVisibleLessonsForUser,
+  isLessonFullyPrivate,
+} from "@/features/learning/domain/slide-visibility";
 
 export async function renderStudentCourseDetailPage({
   params,
@@ -23,6 +27,8 @@ export async function renderStudentCourseDetailPage({
   const { courseId } = await params;
   const { user, profile, isDemo } = await getResilientUser();
   const role = profile?.role ?? "student";
+  const isSuperAdmin =
+    role === "superadmin" || user?.email === "btmeudaldo@gmail.com";
   const isAdmin =
     role === "superadmin" || role === "admin" || role === "instructor";
 
@@ -65,10 +71,11 @@ export async function renderStudentCourseDetailPage({
     } catch {}
   }
 
-  // Sort lessons
-  const lessons = (course.lessons || []).sort(
+  // Sort lessons and hide 100%-private lessons for non-superadmin users
+  const sortedLessons = [...(course.lessons || [])].sort(
     (a: any, b: any) => a.sequence_order - b.sequence_order,
   );
+  const lessons = filterVisibleLessonsForUser(sortedLessons, role, isSuperAdmin);
 
   const summary = summarizeCourseProgress(
     { id: course.id, lessons },
@@ -84,7 +91,7 @@ export async function renderStudentCourseDetailPage({
   const hasPendingQuizzes = summary.hasPendingQuizzes;
 
   const certificateEligibility = checkCourseCertificateEligibility(
-    course,
+    { ...course, lessons },
     userProgress ?? [],
     inPersonExams ?? [],
     quizAttempts ?? [],
@@ -261,13 +268,19 @@ export async function renderStudentCourseDetailPage({
                   readingCompleted,
                   advanced: isCompleted,
                 } = summary.lessons[index];
+                const isHiddenLesson =
+                  isSuperAdmin && isLessonFullyPrivate(lesson.content_html);
 
                 return (
                   <div key={lesson.id} className="space-y-2">
                     {/* Lesson Main Row */}
                     <Link
                       href={`/courses/${course.slug || course.id}/lessons/${lesson.slug || lesson.id}`}
-                      className="flex items-center justify-between rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-xs card-hover transition-all group cursor-pointer hover:border-[#1a80ff]/60"
+                      className={`flex items-center justify-between rounded-2xl border bg-white dark:bg-slate-900 p-5 shadow-xs card-hover transition-all group cursor-pointer hover:border-[#1a80ff]/60 ${
+                        isHiddenLesson
+                          ? "opacity-75 border-dashed border-amber-300 dark:border-amber-800/70"
+                          : "border-slate-200 dark:border-slate-800"
+                      }`}
                     >
                       <div className="flex items-center gap-4">
                         <div
@@ -285,6 +298,11 @@ export async function renderStudentCourseDetailPage({
                             <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors">
                               {lesson.title}
                             </h3>
+                            {isHiddenLesson && (
+                              <span className="rounded-full bg-amber-100 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 px-2.5 py-0.5 text-xs sm:text-sm font-bold text-amber-800 dark:text-amber-300">
+                                🔒 Oculta (Solo superadmin)
+                              </span>
+                            )}
                             {isCompleted && (
                               <span className="rounded-full bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 text-xs sm:text-sm font-bold text-emerald-600 dark:text-emerald-400">
                                 {readingCompleted

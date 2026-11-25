@@ -127,11 +127,14 @@ describe("SOP-04", () => {
     expect(MCC_SOP_04.sequence_order).toBe(MCC_SOP_03.sequence_order + 1);
   });
 
-  it("uses only A320 pages of the PDP chapter (p.156–171) and hides sources", () => {
-    const files = [...MCC_SOP_04.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/(p(\d{3})_[a-z0-9_]+)\.webp(?:\?v=\d+)?"/g)];
-    expect(files).toHaveLength(SOP_04_SLIDE_COUNT - 5); // 4.9–4.13 son solo texto
-    // Única lámina de fuera del capítulo: el flujo After Start solo A320 (Flow Patterns p.30) en lugar de p.171.
-    const pages = files.filter((m) => m[1] !== "p030_flow_patterns").map((m) => Number(m[2]));
+  it("uses only A320 pages of the PDP chapter (p.156–171) or FCOM diagrams and hides sources", () => {
+    const files = [...MCC_SOP_04.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/((?:p(\d{3})|fcom_a320)_[a-z0-9_]+)\.webp(?:\?v=\d+)?"/g)];
+    expect(files).toHaveLength(SOP_04_SLIDE_COUNT);
+    // Única lámina de fuera del capítulo: el flujo After Start solo A320 (Flow Patterns p.30) en lugar de p.171;
+    // el resto son láminas p.156–170 o diagramas oficiales FCOM A320 (`fcom_a320_*`).
+    const pages = files
+      .filter((m) => m[1] !== "p030_flow_patterns" && !m[1].startsWith("fcom_a320_"))
+      .map((m) => Number(m[2]));
     expect(pages).not.toContain(171);
     for (const p of pages) {
       expect(p).toBeGreaterThanOrEqual(156);
@@ -192,8 +195,12 @@ describe("SOP-06", () => {
     expect(MCC_SOP_06.sequence_order).toBe(MCC_SOP_05.sequence_order + 1);
   });
 
-  it("uses climb/cruise/descent PDP images (p.198–227) without A330-only or SOP-02 duplicate pages", () => {
-    const pages = [...MCC_SOP_06.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:climb|cruise|descent)[a-z0-9_]*\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+  it("uses climb/cruise/descent PDP images (p.198–227) or FCOM diagrams without A330-only or SOP-02 duplicate pages", () => {
+    const files = [...MCC_SOP_06.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/((?:p(\d{3})_(?:climb|cruise|descent)|fcom_a320)[a-z0-9_]*)\.webp(?:\?v=\d+)?"/g)];
+    expect(files).toHaveLength(SOP_06_SLIDE_COUNT);
+    const pages = files
+      .filter((m) => !m[1].startsWith("fcom_a320_"))
+      .map((m) => Number(m[2]));
     expect(pages.length).toBeGreaterThan(0);
     for (const p of pages) {
       expect(p).toBeGreaterThanOrEqual(198);

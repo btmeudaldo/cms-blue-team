@@ -23,6 +23,7 @@ const EYEBROW = "APS MCC · A320 · SOP-06";
 const IMG_VERSION = 1795621000;
 const chapter = (page: number) => (page <= 204 ? "climb" : page <= 211 ? "cruise" : "descent");
 const img = (page: number) => `${PDP_IMG}/p${String(page).padStart(3, "0")}_${chapter(page)}.webp?v=${IMG_VERSION}`;
+const fcomImg = (name: string) => `${PDP_IMG}/${name}.webp`;
 const IMG_SOFT_ALT_A320 = `${PDP_IMG}/p204_climb_soft_altitude_a320.webp?v=${IMG_VERSION}`;
 const PDP_NAME: Record<string, string> = { climb: "Climb", cruise: "Cruise", descent: "Descent" };
 const src = (sections: string, page: number) =>
@@ -225,10 +226,18 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "6.8 Revisión periódica de las páginas del ECAM",
     subtitle: "Cruise · SD Pages Review",
-    leftTitle: "SD PAGES ……… REVIEW (PF-PM)",
-    rightTitle: "OXYGEN MASKS",
-    sourceRef: "Source: FCOM A320 PRO-NOR-SOP-15 ECAM / Oxygen Masks",
-    cards: [],
+    leftPct: 54,
+    leftTitle: "SD PAGES ……… REVIEW · OXYGEN MASKS (PF-PM)",
+    rightTitle: "ECAM CONTROL PANEL (ECP)",
+    image: fcomImg("fcom_a320_ecam_control_panel"),
+    imageAlt: "ECAM Control Panel pushbuttons for system display pages",
+    sourceRef: "Source: FCOM A320 PRO-NOR-SOP-15 ECAM / Oxygen Masks / DSC-31-30 ECAM Control Panel",
+    cards: [
+      {
+        heading: "If the oxygen mask has been used",
+        paragraph: "OXYGEN MASK ……… CHECK (PF-PM) — Check that the oxygen mask has been properly stowed.",
+      },
+    ],
     table: {
       headers: ["Page", "Periodically review"],
       rows: [
@@ -242,12 +251,6 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
         ["DOOR", "Oxygen pressure."],
       ],
     },
-    rightCards: [
-      {
-        heading: "If the oxygen mask has been used",
-        paragraph: "OXYGEN MASK ……… CHECK (PF-PM) — Check that the oxygen mask has been properly stowed.",
-      },
-    ],
   },
   {
     comment: "SLIDE SOP-06.9: Level change and recommended maximum level",
@@ -446,14 +449,16 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-06.16: RAD NAV, SEC F-PLN, LDG ELEV and autobrake",
+    comment: "SLIDE SOP-06.16: RAD NAV, SEC F-PLN, GPWS and landing elevation",
     eyebrow: EYEBROW,
-    title: "6.16 RAD NAV, plan secundario y autobrake",
-    subtitle: "Descent Preparation · RAD NAV / SEC F-PLN / AUTO BRK",
-    leftPct: 56,
+    title: "6.16 RAD NAV, plan secundario y LDG ELEV",
+    subtitle: "Descent Preparation · RAD NAV / SEC F-PLN / LDG ELEV",
+    leftPct: 55,
     leftTitle: "RAD NAV · SEC F-PLN · GPWS · LDG ELEV (PF)",
-    rightTitle: "AUTO BRK ……… AS RQRD (PF)",
-    sourceRef: "Source: FCOM A320 PRO-NOR-SOP-16 RAD NAV / SEC F-PLN / GPWS LDG FLAP 3 / Landing Elevation / Autobrake",
+    rightTitle: "CRUISE PAGE — LDG ELEV AUTO",
+    image: fcomImg("fcom_a320_ecam_cruise_page"),
+    imageAlt: "ECAM CRUISE page showing LDG ELEV AUTO indication",
+    sourceRef: "Source: FCOM A320 PRO-NOR-SOP-16 RAD NAV / SEC F-PLN / GPWS LDG FLAP 3 / Landing Elevation / DSC-21-20-40",
     cards: [
       {
         heading: "RAD NAV page ……… CHECK",
@@ -475,7 +480,26 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
-    rightTable: {
+  },
+  {
+    comment: "SLIDE SOP-06.17: Autobrake for landing",
+    eyebrow: EYEBROW,
+    title: "6.17 Autobrake para el aterrizaje",
+    subtitle: "Descent Preparation · Autobrake",
+    leftPct: 48,
+    leftTitle: "AUTO BRK ……… AS RQRD (PF)",
+    rightTitle: "AUTO BRK PANEL",
+    image: fcomImg("fcom_a320_autobrk_panel"),
+    imageAlt: "Autobrake panel LO, MED and MAX pushbuttons",
+    sourceRef: "Source: FCOM A320 PRO-NOR-SOP-16 Autobrake / DSC-32-30-20 Auto BRK Panel",
+    cards: [
+      {
+        heading: "Note",
+        paragraph:
+          "If, on very long runways, the flight crew anticipates that braking will not be needed, use of the autobrake is not necessary. Firmly press the appropriate pushbutton and check that the related ON light comes on.",
+      },
+    ],
+    table: {
       headers: ["Runway", "Autobrake"],
       rows: [
         ["Landing (general)", "Use of autobrake is preferable. Use of MAX mode is not recommended at landing."],
@@ -483,19 +507,12 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
         ["Long runways", "LO"],
       ],
     },
-    rightCards: [
-      {
-        heading: "Note",
-        paragraph:
-          "If, on very long runways, the flight crew anticipates that braking will not be needed, use of the autobrake is not necessary. Firmly press the appropriate pushbutton and check that the related ON light comes on.",
-      },
-    ],
   },
   // ── D. Descent ───────────────────────────────────────────────────────────
   {
-    comment: "SLIDE SOP-06.17: Descent initiation",
+    comment: "SLIDE SOP-06.18: Descent initiation",
     eyebrow: EYEBROW,
-    title: "6.17 Inicio del descenso",
+    title: "6.18 Inicio del descenso",
     subtitle: "Descent · Descent Initiation",
     leftPct: 50,
     leftTitle: "DESCENT ……… INITIATE (PF)",
@@ -520,9 +537,9 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-06.18: Descent monitoring",
+    comment: "SLIDE SOP-06.19: Descent monitoring",
     eyebrow: EYEBROW,
-    title: "6.18 Vigilancia del descenso",
+    title: "6.19 Vigilancia del descenso",
     subtitle: "Descent · Descent Monitoring",
     leftPct: 52,
     leftTitle: "DESCENT MONITORING",
@@ -550,9 +567,9 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-06.19: Descent adjustment, speedbrakes and anti-ice",
+    comment: "SLIDE SOP-06.20: Descent adjustment, speedbrakes and anti-ice",
     eyebrow: EYEBROW,
-    title: "6.19 Ajuste del descenso, speedbrakes y antihielo",
+    title: "6.20 Ajuste del descenso, speedbrakes y antihielo",
     subtitle: "Descent · Descent Adjustment",
     leftPct: 55,
     leftTitle: "RATE OF DESCENT ……… ADJUST, AS RQRD (PF)",
@@ -579,9 +596,9 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-06.20: Terrain on ND",
+    comment: "SLIDE SOP-06.21: Terrain on ND",
     eyebrow: EYEBROW,
-    title: "6.20 Energy circle y terreno en el ND",
+    title: "6.21 Energy circle y terreno en el ND",
     subtitle: "Descent · Terrain on ND",
     leftPct: 45,
     leftTitle: "TERR ON ND ……… AS RQRD (PF-PM)",
@@ -601,9 +618,9 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-06.21: Barometric reference at transition level",
+    comment: "SLIDE SOP-06.22: Barometric reference at transition level",
     eyebrow: EYEBROW,
-    title: "6.21 Referencia barométrica en el nivel de transición",
+    title: "6.22 Referencia barométrica en el nivel de transición",
     subtitle: "Descent · Baro Reference",
     leftPct: 45,
     leftTitle: "BAROMETRIC REFERENCE ……… SET/CROSSCHECK",
@@ -626,9 +643,9 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-06.22: At 10 000 ft AAL in descent",
+    comment: "SLIDE SOP-06.23: At 10 000 ft AAL in descent",
     eyebrow: EYEBROW,
-    title: "6.22 Descenso: pasando 10 000 ft AAL",
+    title: "6.23 Descenso: pasando 10 000 ft AAL",
     subtitle: "Descent · At 10 000 FT AAL",
     leftPct: 55,
     leftTitle: "AT 10 000 FT AAL (PRO-NOR-SOP-17)",
