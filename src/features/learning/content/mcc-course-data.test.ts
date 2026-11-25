@@ -5,6 +5,7 @@ import { MCC_SOP_01, SOP_01_SLIDE_COUNT } from "./mcc/sop-01";
 import { MCC_SOP_02, SOP_02_SLIDE_COUNT } from "./mcc/sop-02";
 import { MCC_SOP_03, SOP_03_SLIDE_COUNT } from "./mcc/sop-03";
 import { MCC_SOP_04, SOP_04_SLIDE_COUNT } from "./mcc/sop-04";
+import { MCC_SOP_05, SOP_05_SLIDE_COUNT } from "./mcc/sop-05";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -143,6 +144,37 @@ describe("SOP-04", () => {
 
   it("excludes airline names and aircraft registrations", () => {
     const htmlNoUrls = MCC_SOP_04.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("SOP-05", () => {
+  const slides = MCC_SOP_05.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable 1 h lesson placed after SOP-04", () => {
+    expect(MCC_SOP_05.min_seconds).toBe(3600);
+    expect(slides).toHaveLength(SOP_05_SLIDE_COUNT);
+    expect(MCC_SOP_05.sequence_order).toBe(MCC_SOP_04.sequence_order + 1);
+  });
+
+  it("uses one taxi/takeoff PDP image per slide (p.172–197) and hides sources", () => {
+    const pages = [...MCC_SOP_05.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:taxi_before_takeoff|takeoff)\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+    expect(pages).toHaveLength(SOP_05_SLIDE_COUNT);
+    for (const p of pages) {
+      expect(p).toBeGreaterThanOrEqual(172);
+      expect(p).toBeLessThanOrEqual(197);
+      // Flujos ya usados en SOP-02, lámina ya usada en SOP-01 y callouts de SOP-01.
+      expect([180, 188, 191, 194, 195, 197]).not.toContain(p);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE SOP-05\.\d+: [^>]*\| Source: [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("excludes airline names and aircraft registrations", () => {
+    const htmlNoUrls = MCC_SOP_05.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|ec-[a-z]{3})\b/i);
   });
 });
