@@ -19,6 +19,7 @@ type ImagePropertiesPanelProps = {
   onClearAnnotations?: () => void;
   onMove: (dir: -1 | 1) => void;
   onDuplicate: () => void;
+  onCrop?: () => void;
   onReplace: () => void;
   onDelete: () => void;
   onClose: () => void;
@@ -67,6 +68,7 @@ export function ImagePropertiesPanel({
   onClearAnnotations,
   onMove,
   onDuplicate,
+  onCrop,
   onReplace,
   onDelete,
   onClose,
@@ -297,6 +299,11 @@ export function ImagePropertiesPanel({
 
       {/* Acciones */}
       <div className="grid grid-cols-2 gap-1.5 border-t border-slate-100 dark:border-slate-800 pt-3">
+        {onCrop && (
+          <button type="button" onClick={onCrop} className={`${chip} ${chipOn} col-span-2`}>
+            ✂️ Recortar imagen
+          </button>
+        )}
         <button type="button" onClick={onReplace} className={`${chip} ${chipOff} col-span-2`}>
           🔄 Reemplazar imagen
         </button>

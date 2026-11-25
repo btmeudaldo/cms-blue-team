@@ -17,6 +17,7 @@ export type RouteId =
   | "admin/courses/[courseId]/lessons/new"
   | "admin/courses/[courseId]/lessons/[lessonId]"
   | "admin/progress"
+  | "admin/media"
   | "admin/users";
 
 let historyPatched = false;
@@ -139,6 +140,10 @@ async function renderRouteView(route: RouteId): Promise<ReactNode> {
     case "admin/progress": {
       const mod = await import("@/app/admin/progress/view");
       return mod.renderAdminProgressAuditPage();
+    }
+    case "admin/media": {
+      const mod = await import("@/app/admin/media/view");
+      return mod.renderAdminMediaPage();
     }
     case "admin/users": {
       const mod = await import("@/app/admin/users/view");

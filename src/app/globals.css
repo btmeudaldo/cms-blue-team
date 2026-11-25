@@ -481,3 +481,12 @@ article::after,
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
+
+/* Native top-layer <dialog> scroll containment */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+}

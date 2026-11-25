@@ -51,6 +51,28 @@ if (!isset($extMap[$mime])) {
 }
 
 $ext = $extMap[$mime];
+
+// Allow safe in-place overwrite ONLY for existing MCC PDP WebP images
+$overwriteMcc = isset($_POST['overwriteMccFilename']) ? trim((string)$_POST['overwriteMccFilename']) : '';
+if ($overwriteMcc !== '' && $ext === 'webp' && preg_match('/^p\d{3}_[a-z0-9_]+\.webp$/', $overwriteMcc)) {
+    $pdpDir = dirname(__DIR__) . '/media/mcc/pdp';
+    $pdpTarget = $pdpDir . '/' . $overwriteMcc;
+    if (is_dir($pdpDir) && file_exists($pdpTarget)) {
+        if (!move_uploaded_file($file['tmp_name'], $pdpTarget)) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Failed to overwrite MCC PDP image']);
+            exit;
+        }
+        $version = time();
+        echo json_encode([
+            'url' => '/media/mcc/pdp/' . $overwriteMcc . '?v=' . $version,
+            'canonicalUrl' => '/media/mcc/pdp/' . $overwriteMcc,
+            'overwritten' => true,
+        ]);
+        exit;
+    }
+}
+
 $subDir = date('Y-m');
 $baseDir = dirname(__DIR__) . '/media/lessons/' . $subDir;
 

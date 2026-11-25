@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createClient } from "@supabase/supabase-js";
@@ -199,8 +200,41 @@ async function uploadToHostalia(items) {
 
   try {
     const remoteRoot = await resolveRemoteDir(client);
-    const remoteMediaDir = path.posix.join(remoteRoot, "media", "mcc", "pdp");
+    const remoteParentMediaDir = path.posix.join(remoteRoot, "media");
+    await client.ensureDir(remoteParentMediaDir);
+    const htaccessTmp = path.join(os.tmpdir(), "blueteam_media_htaccess.txt");
+    fs.writeFileSync(
+      htaccessTmp,
+      [
+        "<IfModule mod_headers.c>",
+        '  Header always set Access-Control-Allow-Origin "*"',
+        '  Header always set Access-Control-Allow-Methods "GET, HEAD, OPTIONS"',
+        "</IfModule>",
+        "",
+      ].join("\n"),
+      "utf8",
+    );
+    await client.uploadFrom(htaccessTmp, ".htaccess");
+    fs.rmSync(htaccessTmp, { force: true });
+    console.log(`🛡️  CORS .htaccess actualizado en ${remoteParentMediaDir}/.htaccess`);
+
+    const remoteMediaDir = path.posix.join(remoteParentMediaDir, "mcc", "pdp");
     await client.ensureDir(remoteMediaDir);
+    const pdpHtaccessTmp = path.join(os.tmpdir(), "blueteam_pdp_htaccess.txt");
+    fs.writeFileSync(
+      pdpHtaccessTmp,
+      [
+        "<IfModule mod_headers.c>",
+        '  Header always set Access-Control-Allow-Origin "*"',
+        '  Header always set Access-Control-Allow-Methods "GET, HEAD, OPTIONS"',
+        '  Header set Cache-Control "public, max-age=0, must-revalidate"',
+        "</IfModule>",
+        "",
+      ].join("\n"),
+      "utf8",
+    );
+    await client.uploadFrom(pdpHtaccessTmp, ".htaccess");
+    fs.rmSync(pdpHtaccessTmp, { force: true });
 
     const remoteSizes = new Map();
     try {
@@ -286,6 +320,7 @@ async function registerInSupabase(items) {
     const existing = existingByUrl.get(item.url);
     const payload = {
       url: item.url,
+      original_url: item.url,
       filename: item.filename,
       course_tag: "MCC",
       width: item.width,

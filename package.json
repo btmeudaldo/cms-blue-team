@@ -7,6 +7,8 @@
     "deploy:hostalia": "node scripts/deploy_hostalia_ftp.mjs",
     "deploy:hostalia:preview": "node scripts/deploy_hostalia_ftp.mjs --preview",
     "dev": "next dev",
+    "dev:media": "node scripts/dev_with_media_sync.mjs",
+    "sync:mcc-images": "node scripts/upload_mcc_pdp_images.mjs",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test e2e/0 --project=chromium",

@@ -134,7 +134,7 @@ export async function renderAdminDashboardPage() {
         </div>
 
         {/* Quick Management Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <Link
             href="/admin/courses"
             className="group rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-xs card-hover transition-all space-y-4"
@@ -195,6 +195,27 @@ export async function renderAdminDashboardPage() {
             </div>
             <div className="text-xs font-bold text-[#1a80ff] flex items-center gap-1">
               Ver registros de auditoría &rarr;
+            </div>
+          </Link>
+
+          <Link
+            href="/admin/media"
+            className="group rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-xs card-hover transition-all space-y-4"
+          >
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff] text-xl font-bold group-hover:bg-[#1a80ff] group-hover:text-white transition-colors">
+              ✂️
+            </div>
+            <div className="space-y-1">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors">
+                Biblioteca y Recorte de Medios
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Recorta láminas del PDP o diagramas directamente en la web y
+                sincroniza al instante con Supabase.
+              </p>
+            </div>
+            <div className="text-xs font-bold text-[#1a80ff] flex items-center gap-1">
+              Abrir galería y recortar &rarr;
             </div>
           </Link>
         </div>

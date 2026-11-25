@@ -8,9 +8,16 @@ import {
   getImageWidthFromPreset,
   ImageWidthPreset,
 } from "../domain/image-size-presets";
-import { uploadLessonImageAction } from "@/app/actions/lesson.actions";
 import { registerLessonMediaAction } from "@/app/actions/media.actions";
+import {
+  ImageCropModal,
+  type ImageCropSaveResult,
+} from "./image-crop-modal";
 import { MediaLibraryTab } from "./media-library-tab";
+import {
+  uploadCroppedMediaFile,
+  uploadMediaFile,
+} from "../domain/media-upload";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 import {
   BASE_PATH,
@@ -132,6 +139,11 @@ export function LessonEditorToolbar({
   const [slashSelectedIndex, setSlashSelectedIndex] = useState(0);
   const [slashPosition, setSlashPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
   const [showWidthMenu, setShowWidthMenu] = useState(false);
+  const [cropSlideImage, setCropSlideImage] = useState<{
+    imgEl: HTMLImageElement;
+    imageUrl: string;
+    filename: string;
+  } | null>(null);
   const [currentGridLeftSpan, setCurrentGridLeftSpan] = useState(5);
   const [currentGridLeftPct, setCurrentGridLeftPct] = useState(42);
 
@@ -159,30 +171,9 @@ export function LessonEditorToolbar({
     setUploadStatusMessage("Optimizando imagen a WebP...");
     const optimized = await optimizeImageForUpload(file);
 
-    const formData = new FormData();
-    formData.append("file", optimized);
-
-    // 1. Try Hostalia PHP endpoint first (saves Supabase Storage quota)
-    let uploadedUrl: string | null = null;
-    try {
-      setUploadStatusMessage("Subiendo imagen a Hostalia...");
-      const res = await fetch(`${BASE_PATH}/api/upload-media.php`, {
-        method: "POST",
-        body: formData,
-      });
-      if (res.ok) {
-        const data = (await res.json()) as { url?: string };
-        if (data?.url) uploadedUrl = data.url;
-      }
-    } catch {
-      // Hostalia PHP endpoint not available (e.g. local Next dev): fall through to Supabase
-    }
-
-    // 2. Fallback to Supabase Storage action (no base64 in DB)
-    if (!uploadedUrl) {
-      setUploadStatusMessage("Subiendo imagen a almacenamiento seguro...");
-      uploadedUrl = await uploadLessonImageAction(formData);
-    }
+    const uploadedUrl = await uploadMediaFile(optimized, (msg) =>
+      setUploadStatusMessage(msg),
+    );
 
     // 3. Register in Supabase media library (best-effort)
     try {
@@ -1198,6 +1189,50 @@ export function LessonEditorToolbar({
     el.remove();
     clearImageSelection();
     syncCurrentSlideToState();
+  }
+
+  function handleImageCropOpen() {
+    const img = selectedImageRef.current?.querySelector("img");
+    if (!img) return;
+    const rawSrc =
+      img.getAttribute("data-canonical-src") || img.getAttribute("src") || "";
+    if (!rawSrc) return;
+    const resolvedUrl = withBasePath(rawSrc);
+    const derivedName = decodeURIComponent(
+      resolvedUrl.split("/").pop()?.split("?")[0] || "lamina_leccion.webp",
+    );
+    setCropSlideImage({
+      imgEl: img,
+      imageUrl: resolvedUrl,
+      filename: derivedName,
+    });
+  }
+
+  async function handleSaveSlideImageCrop(result: ImageCropSaveResult) {
+    if (!cropSlideImage) return;
+    const uploaded = await uploadCroppedMediaFile({
+      file: result.file,
+      targetFilename: cropSlideImage.filename,
+    });
+    const canonicalUrl = stripBasePathFromUrl(uploaded.canonicalUrl);
+    if (cropSlideImage.imgEl.isConnected) {
+      cropSlideImage.imgEl.setAttribute("src", uploaded.url);
+      cropSlideImage.imgEl.setAttribute("data-canonical-src", canonicalUrl);
+      syncCurrentSlideToState();
+    }
+    try {
+      await registerLessonMediaAction({
+        url: uploaded.url,
+        originalUrl: uploaded.canonicalUrl,
+        filename: cropSlideImage.filename,
+        width: result.width,
+        height: result.height,
+        sizeBytes: result.sizeBytes,
+      });
+    } catch {
+      // Best-effort library registration
+    }
+    setCropSlideImage(null);
   }
 
   function handleImageRotate() {
@@ -2372,11 +2407,10 @@ export function LessonEditorToolbar({
                           <button
                             type="button"
                             onClick={() => setGridPercentage(33)}
-                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${
-                              currentGridLeftPct === 33
+                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${currentGridLeftPct === 33
                                 ? "bg-sky-50 dark:bg-sky-950 border-sky-400 text-sky-700 dark:text-sky-300"
                                 : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
-                            }`}
+                              }`}
                           >
                             <div className="font-extrabold">33% / 67%</div>
                             <div className="text-[9px] text-slate-400 font-normal">Izq estrecho</div>
@@ -2384,11 +2418,10 @@ export function LessonEditorToolbar({
                           <button
                             type="button"
                             onClick={() => setGridPercentage(42)}
-                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${
-                              currentGridLeftPct === 42
+                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${currentGridLeftPct === 42
                                 ? "bg-sky-50 dark:bg-sky-950 border-sky-400 text-sky-700 dark:text-sky-300"
                                 : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
-                            }`}
+                              }`}
                           >
                             <div className="font-extrabold">42% / 58%</div>
                             <div className="text-[9px] text-slate-400 font-normal">Equilibrado (Recomendado)</div>
@@ -2396,11 +2429,10 @@ export function LessonEditorToolbar({
                           <button
                             type="button"
                             onClick={() => setGridPercentage(50)}
-                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left col-span-2 ${
-                              currentGridLeftPct === 50
+                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left col-span-2 ${currentGridLeftPct === 50
                                 ? "bg-sky-50 dark:bg-sky-950 border-sky-400 text-sky-700 dark:text-sky-300"
                                 : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
-                            }`}
+                              }`}
                           >
                             <div className="font-extrabold">50% / 50% (Mitad y Mitad)</div>
                             <div className="text-[9px] text-slate-400 font-normal">Columnas simétricas</div>
@@ -2408,11 +2440,10 @@ export function LessonEditorToolbar({
                           <button
                             type="button"
                             onClick={() => setGridPercentage(58)}
-                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${
-                              currentGridLeftPct === 58
+                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${currentGridLeftPct === 58
                                 ? "bg-sky-50 dark:bg-sky-950 border-sky-400 text-sky-700 dark:text-sky-300"
                                 : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
-                            }`}
+                              }`}
                           >
                             <div className="font-extrabold">58% / 42%</div>
                             <div className="text-[9px] text-slate-400 font-normal">Der ligero</div>
@@ -2420,11 +2451,10 @@ export function LessonEditorToolbar({
                           <button
                             type="button"
                             onClick={() => setGridPercentage(67)}
-                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${
-                              currentGridLeftPct === 67
+                            className={`px-2 py-1.5 rounded-lg text-xs font-bold border transition-colors cursor-pointer text-left ${currentGridLeftPct === 67
                                 ? "bg-sky-50 dark:bg-sky-950 border-sky-400 text-sky-700 dark:text-sky-300"
                                 : "bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
-                            }`}
+                              }`}
                           >
                             <div className="font-extrabold">67% / 33%</div>
                             <div className="text-[9px] text-slate-400 font-normal">Der estrecho</div>
@@ -2483,11 +2513,10 @@ export function LessonEditorToolbar({
                 type="button"
                 disabled={currentSlideIndex === 0}
                 onClick={() => goToSlide(currentSlideIndex - 1)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                  currentSlideIndex === 0
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${currentSlideIndex === 0
                     ? "opacity-30 cursor-not-allowed text-slate-400"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-950/40 hover:text-sky-600 cursor-pointer border border-slate-200 dark:border-slate-700"
-                }`}
+                  }`}
                 title="Diapositiva anterior"
               >
                 <span>&larr;</span>
@@ -2508,15 +2537,14 @@ export function LessonEditorToolbar({
                       key={idx}
                       type="button"
                       onClick={() => goToSlide(idx)}
-                      className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                        idx === currentSlideIndex
+                      className={`h-2.5 rounded-full transition-all cursor-pointer ${idx === currentSlideIndex
                           ? isPrivate
                             ? "w-6 bg-amber-500"
                             : "w-6 bg-[#1a80ff]"
                           : isPrivate
                             ? "w-2.5 bg-amber-400 dark:bg-amber-600 hover:bg-amber-500"
                             : "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
-                      }`}
+                        }`}
                       title={`Ir a Diapositiva ${idx + 1} (${isPrivate ? "🔒 Solo visible para mí" : "🌐 Visible para todos"})`}
                     />
                   );
@@ -2529,11 +2557,10 @@ export function LessonEditorToolbar({
               <button
                 type="button"
                 onClick={() => handleToggleSlideVisibility("public")}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                  getSlideVisibility(slides[currentSlideIndex] || "") === "public"
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${getSlideVisibility(slides[currentSlideIndex] || "") === "public"
                     ? "bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-2xs border border-emerald-200 dark:border-emerald-800"
                     : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-                }`}
+                  }`}
                 aria-label="Visible para todos los alumnos y personal"
                 title="Visible para todos los alumnos y personal"
               >
@@ -2542,11 +2569,10 @@ export function LessonEditorToolbar({
               <button
                 type="button"
                 onClick={() => handleToggleSlideVisibility("private")}
-                className={`flex items-center justify-center px-2.5 py-1 rounded-lg text-sm transition-all cursor-pointer ${
-                  getSlideVisibility(slides[currentSlideIndex] || "") === "private"
+                className={`flex items-center justify-center px-2.5 py-1 rounded-lg text-sm transition-all cursor-pointer ${getSlideVisibility(slides[currentSlideIndex] || "") === "private"
                     ? "bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 shadow-2xs border border-amber-300 dark:border-amber-700"
                     : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-                }`}
+                  }`}
                 aria-label="Solo a la vista para mí (Borrador de instructor)"
                 title="Solo a la vista para mí (Borrador de instructor)"
               >
@@ -2560,11 +2586,10 @@ export function LessonEditorToolbar({
                 type="button"
                 disabled={currentSlideIndex === slides.length - 1}
                 onClick={() => goToSlide(currentSlideIndex + 1)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                  currentSlideIndex === slides.length - 1
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${currentSlideIndex === slides.length - 1
                     ? "opacity-30 cursor-not-allowed text-slate-400"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-sky-950/40 hover:text-sky-600 cursor-pointer border border-slate-200 dark:border-slate-700"
-                }`}
+                  }`}
                 title="Diapositiva siguiente"
               >
                 <span className="hidden sm:inline">Siguiente</span>
@@ -2612,11 +2637,10 @@ export function LessonEditorToolbar({
                     }
                     setViewMode("slide");
                   }}
-                  className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
-                    viewMode === "slide" && !isStudentPreview
+                  className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${viewMode === "slide" && !isStudentPreview
                       ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-2xs"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
-                  }`}
+                    }`}
                   title="Ver y editar por diapositiva individual (estilo curso)"
                 >
                   Por Diapositiva
@@ -2628,11 +2652,10 @@ export function LessonEditorToolbar({
                     setViewMode("slide");
                     setIsStudentPreview((prev) => !prev);
                   }}
-                  className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
-                    viewMode === "slide" && isStudentPreview
+                  className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${viewMode === "slide" && isStudentPreview
                       ? "bg-emerald-600 text-white shadow-2xs"
                       : "text-slate-600 dark:text-slate-400 hover:text-emerald-600"
-                  }`}
+                    }`}
                   title="Previsualizar esta diapositiva exactamente como la ve el alumno (1:1)"
                 >
                   👁️ Vista 1:1
@@ -2644,11 +2667,10 @@ export function LessonEditorToolbar({
                     setIsStudentPreview(false);
                     setViewMode("all");
                   }}
-                  className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
-                    viewMode === "all"
+                  className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${viewMode === "all"
                       ? "bg-white dark:bg-slate-900 text-[#1a80ff] shadow-2xs"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
-                  }`}
+                    }`}
                   title="Ver todas las diapositivas ordenadas"
                 >
                   Todas ({slides.length})
@@ -2668,11 +2690,10 @@ export function LessonEditorToolbar({
                   key={idx}
                   type="button"
                   onClick={() => goToSlide(idx)}
-                  className={`px-3 py-1 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
-                    idx === currentSlideIndex
+                  className={`px-3 py-1 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${idx === currentSlideIndex
                       ? "bg-[#1a80ff] text-white shadow-xs"
                       : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-blue-400 hover:text-[#1a80ff]"
-                  }`}
+                    }`}
                 >
                   Diapositiva {idx + 1}
                 </button>
@@ -2796,53 +2817,54 @@ export function LessonEditorToolbar({
                 />
               )}
               <div className={`${isStudentPreview ? "hidden" : "flex"} flex-col lg:flex-row gap-4 items-stretch`}>
-              <div
-                ref={editorRef}
-                contentEditable
-                onFocus={clearPlaceholderIfPresent}
-                onInput={handleVisualInput}
-                onChange={handleCanvasChange}
-                onBlur={handleVisualInput}
-                onKeyDown={handleKeyDown}
-                onKeyUp={handleKeyUp}
-                onClick={handleCanvasClick}
-                onMouseDown={handleCanvasMouseDown}
-                onDragStart={handleDragStart}
-                onDragOver={handleDragOver}
-                onDrop={handleDrop}
-                onDragEnd={handleDragEnd}
-                onPaste={handleCanvasPaste}
-                className={`${isStudentPreview ? "hidden" : "flex flex-col"} visual-canvas w-full min-w-0 flex-1 min-h-[620px] overflow-x-auto lg:overflow-x-visible rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-5 lg:px-6 lg:py-4 text-slate-800 dark:text-slate-200 [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm`}
-              />
-              {activeImagePanel && (
-                <ImagePropertiesPanel
-                  value={activeImagePanel.style}
-                  onChange={handleImageStyleChange}
-                  onRotate={handleImageRotate}
-                  onFlip={handleImageFlip}
-                  onAddPin={handleImageAddPin}
-                  onAddCircle={handleImageAddCircle}
-                  onClearAnnotations={handleImageClearAnnotations}
-                  onMove={handleImageMove}
-                  onDuplicate={handleImageDuplicate}
-                  onReplace={() => setShowImageModal(true)}
-                  onDelete={handleImageDelete}
-                  onClose={clearImageSelection}
+                <div
+                  ref={editorRef}
+                  contentEditable
+                  onFocus={clearPlaceholderIfPresent}
+                  onInput={handleVisualInput}
+                  onChange={handleCanvasChange}
+                  onBlur={handleVisualInput}
+                  onKeyDown={handleKeyDown}
+                  onKeyUp={handleKeyUp}
+                  onClick={handleCanvasClick}
+                  onMouseDown={handleCanvasMouseDown}
+                  onDragStart={handleDragStart}
+                  onDragOver={handleDragOver}
+                  onDrop={handleDrop}
+                  onDragEnd={handleDragEnd}
+                  onPaste={handleCanvasPaste}
+                  className={`${isStudentPreview ? "hidden" : "flex flex-col"} visual-canvas w-full min-w-0 flex-1 min-h-[620px] overflow-x-auto lg:overflow-x-visible rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 sm:p-5 lg:px-6 lg:py-4 text-slate-800 dark:text-slate-200 [&_.lesson-slide-container]:h-full [&_.lesson-slide-container]:flex-1 [&_.lesson-slide-container]:min-h-0 focus:outline-hidden focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 shadow-sm`}
                 />
-              )}
-              {activeBoxPanel && (
-                <BoxPropertiesPanel
-                  value={activeBoxPanel.style}
-                  isLegacy={activeBoxPanel.isLegacy}
-                  onChange={handleBoxStyleChange}
-                  onIcon={handleBoxIcon}
-                  onConvert={handleBoxConvert}
-                  onDuplicate={handleBoxDuplicate}
-                  onDelete={handleBoxDelete}
-                  onMove={handleBoxMove}
-                  onClose={clearBoxSelection}
-                />
-              )}
+                {activeImagePanel && (
+                  <ImagePropertiesPanel
+                    value={activeImagePanel.style}
+                    onChange={handleImageStyleChange}
+                    onRotate={handleImageRotate}
+                    onFlip={handleImageFlip}
+                    onAddPin={handleImageAddPin}
+                    onAddCircle={handleImageAddCircle}
+                    onClearAnnotations={handleImageClearAnnotations}
+                    onMove={handleImageMove}
+                    onDuplicate={handleImageDuplicate}
+                    onCrop={handleImageCropOpen}
+                    onReplace={() => setShowImageModal(true)}
+                    onDelete={handleImageDelete}
+                    onClose={clearImageSelection}
+                  />
+                )}
+                {activeBoxPanel && (
+                  <BoxPropertiesPanel
+                    value={activeBoxPanel.style}
+                    isLegacy={activeBoxPanel.isLegacy}
+                    onChange={handleBoxStyleChange}
+                    onIcon={handleBoxIcon}
+                    onConvert={handleBoxConvert}
+                    onDuplicate={handleBoxDuplicate}
+                    onDelete={handleBoxDelete}
+                    onMove={handleBoxMove}
+                    onClose={clearBoxSelection}
+                  />
+                )}
               </div>
             </>
           ) : (
@@ -2900,51 +2922,50 @@ export function LessonEditorToolbar({
                 }}
                 className="w-72 max-h-80 overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-2xl p-2 animate-in fade-in zoom-in-95 duration-100"
               >
-              <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800/60 mb-1 flex items-center justify-between">
-                <span>Comandos Rápidos</span>
-                <span className="font-mono text-[9px] lowercase text-[#1a80ff]">
-                  {slashQuery ? `/${slashQuery}` : "Escribe para filtrar"}
-                </span>
-              </div>
-              {filterSlashCommands(slashQuery).length === 0 ? (
-                <div className="p-3 text-center text-xs text-slate-400">
-                  No se encontraron comandos para &quot;{slashQuery}&quot;
+                <div className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800/60 mb-1 flex items-center justify-between">
+                  <span>Comandos Rápidos</span>
+                  <span className="font-mono text-[9px] lowercase text-[#1a80ff]">
+                    {slashQuery ? `/${slashQuery}` : "Escribe para filtrar"}
+                  </span>
                 </div>
-              ) : (
-                filterSlashCommands(slashQuery).map((cmd, idx) => {
-                  const isSelected = idx === slashSelectedIndex;
-                  return (
-                    <button
-                      key={cmd.id}
-                      type="button"
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        executeSlashCommand(cmd);
-                      }}
-                      className={`w-full text-left px-2.5 py-2 rounded-xl text-xs flex items-center gap-2.5 transition-colors cursor-pointer ${
-                        isSelected
-                          ? "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff]"
-                          : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-                      }`}
-                    >
-                      <span className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-sm shrink-0">
-                        {cmd.icon}
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        <div className="font-bold truncate text-slate-900 dark:text-white">
-                          {cmd.label}
+                {filterSlashCommands(slashQuery).length === 0 ? (
+                  <div className="p-3 text-center text-xs text-slate-400">
+                    No se encontraron comandos para &quot;{slashQuery}&quot;
+                  </div>
+                ) : (
+                  filterSlashCommands(slashQuery).map((cmd, idx) => {
+                    const isSelected = idx === slashSelectedIndex;
+                    return (
+                      <button
+                        key={cmd.id}
+                        type="button"
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          executeSlashCommand(cmd);
+                        }}
+                        className={`w-full text-left px-2.5 py-2 rounded-xl text-xs flex items-center gap-2.5 transition-colors cursor-pointer ${isSelected
+                            ? "bg-blue-50 dark:bg-blue-950/60 text-[#1a80ff]"
+                            : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                          }`}
+                      >
+                        <span className="w-6 h-6 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-sm shrink-0">
+                          {cmd.icon}
+                        </span>
+                        <div className="flex-1 min-w-0">
+                          <div className="font-bold truncate text-slate-900 dark:text-white">
+                            {cmd.label}
+                          </div>
+                          <div className="text-[10px] text-slate-400 truncate">
+                            {cmd.description}
+                          </div>
                         </div>
-                        <div className="text-[10px] text-slate-400 truncate">
-                          {cmd.description}
-                        </div>
-                      </div>
-                    </button>
-                  );
-                })
-              )}
-            </div>
-          </>
-        )}
+                      </button>
+                    );
+                  })
+                )}
+              </div>
+            </>
+          )}
 
           <div className="absolute bottom-3 right-4 text-[10px] font-bold text-slate-400 dark:text-slate-500 pointer-events-none">
             ✍️ Editor Visual Activo · Escribe / para comandos o atajos Markdown (#, ##, -, 1.)
@@ -2982,33 +3003,30 @@ export function LessonEditorToolbar({
               <button
                 type="button"
                 onClick={() => setImageTab("file")}
-                className={`pb-2 px-3 transition-colors border-b-2 ${
-                  imageTab === "file"
+                className={`pb-2 px-3 transition-colors border-b-2 ${imageTab === "file"
                     ? "border-[#1a80ff] text-[#1a80ff]"
                     : "border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300"
-                }`}
+                  }`}
               >
                 📁 Cargar de Ordenador
               </button>
               <button
                 type="button"
                 onClick={() => setImageTab("url")}
-                className={`pb-2 px-3 transition-colors border-b-2 ${
-                  imageTab === "url"
+                className={`pb-2 px-3 transition-colors border-b-2 ${imageTab === "url"
                     ? "border-[#1a80ff] text-[#1a80ff]"
                     : "border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300"
-                }`}
+                  }`}
               >
                 🔗 URL Directa
               </button>
               <button
                 type="button"
                 onClick={() => setImageTab("library")}
-                className={`pb-2 px-3 transition-colors border-b-2 ${
-                  imageTab === "library"
+                className={`pb-2 px-3 transition-colors border-b-2 ${imageTab === "library"
                     ? "border-[#1a80ff] text-[#1a80ff]"
                     : "border-transparent text-slate-400 hover:text-slate-700 dark:hover:text-slate-300"
-                }`}
+                  }`}
               >
                 📚 Biblioteca
               </button>
@@ -3154,11 +3172,10 @@ export function LessonEditorToolbar({
                     onClick={() =>
                       setPreviewSlideIndex((p) => Math.max(0, p - 1))
                     }
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold ${
-                      previewSlideIndex === 0
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold ${previewSlideIndex === 0
                         ? "opacity-30 cursor-not-allowed text-slate-400"
                         : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-600 cursor-pointer"
-                    }`}
+                      }`}
                   >
                     &larr; Anterior
                   </button>
@@ -3172,11 +3189,10 @@ export function LessonEditorToolbar({
                           key={idx}
                           type="button"
                           onClick={() => setPreviewSlideIndex(idx)}
-                          className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                            idx === previewSlideIndex
+                          className={`h-2.5 rounded-full transition-all cursor-pointer ${idx === previewSlideIndex
                               ? "w-6 bg-[#1a80ff]"
                               : "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"
-                          }`}
+                            }`}
                         />
                       ))}
                     </div>
@@ -3189,11 +3205,10 @@ export function LessonEditorToolbar({
                         Math.min(slides.length - 1, p + 1),
                       )
                     }
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold ${
-                      previewSlideIndex === slides.length - 1
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold ${previewSlideIndex === slides.length - 1
                         ? "opacity-30 cursor-not-allowed text-slate-400"
                         : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-sky-600 cursor-pointer"
-                    }`}
+                      }`}
                   >
                     Siguiente &rarr;
                   </button>
@@ -3228,6 +3243,17 @@ export function LessonEditorToolbar({
             </div>
           </div>
         </div>
+      )}
+
+      {cropSlideImage && (
+        <ImageCropModal
+          isOpen={true}
+          imageUrl={cropSlideImage.imageUrl}
+          filename={cropSlideImage.filename}
+          title="Recortar imagen de la diapositiva"
+          onSaveCrop={handleSaveSlideImageCrop}
+          onClose={() => setCropSlideImage(null)}
+        />
       )}
     </div>
   );

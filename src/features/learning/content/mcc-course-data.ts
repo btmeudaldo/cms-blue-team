@@ -58,6 +58,13 @@ interface MccSlideSpec {
   cards: MccCard[];
   table?: MccTable;
   alert?: MccAlert;
+  /** Initial width (%) of the left text column; the lesson editor can adjust it later. Default 50. */
+  leftPct?: number;
+}
+
+/** Same clamping as the lesson editor's column resizer (lesson-editor-toolbar.tsx). */
+export function clampLeftPct(leftPct = 50): number {
+  return Math.max(15, Math.min(85, Math.round(leftPct)));
 }
 
 function renderAlert(alert?: MccAlert): string {
@@ -120,6 +127,9 @@ function buildMccSlide(spec: MccSlideSpec): string {
     })
     .join("");
 
+  const leftPct = clampLeftPct(spec.leftPct);
+  const rightPct = 100 - leftPct;
+
   return `<!-- ${spec.comment} -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
@@ -130,7 +140,7 @@ function buildMccSlide(spec: MccSlideSpec): string {
     <span class="text-[11px] text-[#6A7686] dark:text-slate-400 font-semibold hidden sm:block">${spec.subtitle}</span>
   </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="50" style="--col-left: 50fr; --col-right: 50fr; grid-template-columns: minmax(0px, 50fr) minmax(0px, 50fr) !important;">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-2 items-stretch py-0.5" data-left-pct="${leftPct}" style="--col-left: ${leftPct}fr; --col-right: ${rightPct}fr; grid-template-columns: minmax(0px, ${leftPct}fr) minmax(0px, ${rightPct}fr) !important;">
     <div class="flex flex-col lg:col-span-6" style="grid-column: auto !important;">
       <div class="h-[590px] flex flex-col justify-start p-2.5 rounded-2xl bg-[#F8FAFC] dark:bg-slate-900/90 border-2 border-slate-200 dark:border-slate-800 shadow-xs overflow-y-auto" style="height: 590px;">
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
