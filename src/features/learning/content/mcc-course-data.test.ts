@@ -123,8 +123,11 @@ describe("SOP-04", () => {
   });
 
   it("uses only A320 pages of the PDP chapter (p.156–171) and hides sources", () => {
-    const pages = [...MCC_SOP_04.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_[a-z0-9_]+\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
-    expect(pages.length).toBeGreaterThan(0);
+    const files = [...MCC_SOP_04.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/(p(\d{3})_[a-z0-9_]+)\.webp(?:\?v=\d+)?"/g)];
+    expect(files).toHaveLength(SOP_04_SLIDE_COUNT - 5); // 4.9–4.13 son solo texto
+    // Única lámina de fuera del capítulo: el flujo After Start solo A320 (Flow Patterns p.30) en lugar de p.171.
+    const pages = files.filter((m) => m[1] !== "p030_flow_patterns").map((m) => Number(m[2]));
+    expect(pages).not.toContain(171);
     for (const p of pages) {
       expect(p).toBeGreaterThanOrEqual(156);
       expect(p).toBeLessThanOrEqual(171);

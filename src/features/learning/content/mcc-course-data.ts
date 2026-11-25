@@ -11,7 +11,7 @@ export const MCC_COURSE_TITLE = "Curso APS MCC — Airbus A320";
 export const MCC_COURSE_DESCRIPTION =
   "Curso teórico APS MCC (30 horas online + 5 horas presenciales) basado estrictamente en el Anexo 10 del Manual de Formación, FCOM A320, Procedures APS MCC, Standard Callouts y Performance Manual.";
 export const MCC_COURSE_IMAGE_URL =
-  "https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/mcc/entrol-a32-cover.webp";
+  "https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/mcc/entrol-a32-cover.webp?v=1795616500";
 export const MCC_COURSE_REQUIRES_EXAM = false;
 
 export const MCC_DOCUMENTATION: CourseDocumentationItem[] = [

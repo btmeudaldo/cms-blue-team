@@ -11,7 +11,8 @@
  * información complementaria del FCOM (textos L1/L2, WARNING/CAUTION/NOTE) en inglés y literal. Solo se
  * repite algo de la lámina cuando es crítico. De las variantes por avión del FCOM se toma la del A320ceo
  * CFM56-5B. Las láminas exclusivas de A330 (págs. 164, 166 y 169) no se usan; de la pág. 168 solo se usa la
- * mitad A320.
+ * mitad A320, y en lugar de la pág. 171 (con "(A330) ENG START SEL") se usa el flujo After Start de Flow
+ * Patterns (pág. 30). Las láminas 156, 157, 160, 163, 165 y 167 llevan recortado el pie (© y banda A320/A330).
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
 import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
@@ -21,9 +22,13 @@ const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SOP-04";
 const PDP = "Airbus Tutorial PDP Jan 2024 — Before Pushback/Start – Engine Start – After Start";
 
+/** Versión (caché) de las láminas re-subidas con el pie recortado. */
+const CROPPED_PAGES = new Set([156, 157, 160, 163, 165, 167]);
+const IMG_VERSION = 1795617213;
 const img = (page: number) =>
-  `${PDP_IMG}/p${String(page).padStart(3, "0")}_before_pushback_start_engine_start_after.webp`;
+  `${PDP_IMG}/p${String(page).padStart(3, "0")}_before_pushback_start_engine_start_after.webp${CROPPED_PAGES.has(page) ? `?v=${IMG_VERSION}` : ""}`;
 const IMG_PITCH_TRIM_A320 = `${PDP_IMG}/p168_after_start_pitch_trim_a320.webp`;
+const IMG_AFTER_START_FLOW_A320 = `${PDP_IMG}/p030_flow_patterns.webp`;
 const fcom = (sections: string) => `Source: FCOM A320 ${sections}`;
 const both = (sections: string, page: number) => `Source: FCOM A320 ${sections} & ${PDP} (p.${page})`;
 
@@ -427,7 +432,7 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
         bullets: [
           "ENG MAN START pb-sw ……… ON",
           "START VALVE ……… CHECK IN-LINE · N2 INCREASE ……… CHECK · OIL PRESS INCREASE ……… CHECK",
-          "If the N2 does not reach 20 %: PACK VALVES ……… CHECK CLOSED. If the APU bleed is used for engine start, shed the APU electrical loads (GALY &amp; CAB ……… OFF) — this enables to increase bleed air pressure.",
+          "If the N2 does not reach 20 %: PACK VALVES ……… CHECK CLOSED. If the APU bleed is used for engine start and the pack valves are closed, shed the APU electrical loads as follows: GALY &amp; CAB ……… OFF — Shedding APU electrical loads enables to increase bleed air pressure.",
         ],
       },
     ],
@@ -548,6 +553,10 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     sourceRef: both("PRO-NOR-SOP-09 Ground Spoilers / Rudder Trim / Flaps / Pitch Trim", 168),
     cards: [
       {
+        heading: "Ground spoilers (PM)",
+        bullets: ["GND SPLRS ……… ARM"],
+      },
+      {
         heading: "Rudder trim (PM)",
         bullets: [
           "RUD TRIM RESET pb ……… PRESS — Press the RESET pb on the RUDDER TRIM panel.",
@@ -559,7 +568,6 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
         bullets: [
           "FLAPS lever ……… SET FOR TAKEOFF",
           "FLAPS ……… CHECK POSITION — Check the position of the flaps on the ECAM upper display.",
-          "PITCH TRIM handwheel ……… SET — Set takeoff CG on pitch trim handwheel.",
         ],
       },
     ],
@@ -576,9 +584,12 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     leftPct: 50,
     leftTitle: "ECAM STATUS · NWS · GROUND CREW · C/L",
     rightTitle: "AFTER START FLOW PATTERN",
-    image: img(171),
+    // p.171 del capítulo incluye "(A330) ENG START SEL"; se usa la lámina equivalente solo A320 de Flow Patterns (p.30).
+    image: IMG_AFTER_START_FLOW_A320,
     imageAlt: "After start flow pattern for PF and PM",
-    sourceRef: both("PRO-NOR-SOP-09 ECAM Status / N/W Steer Disc Memo / Ground Crew / After Start Checklist", 171),
+    sourceRef: fcom(
+      "PRO-NOR-SOP-09 ECAM Status / N/W Steer Disc Memo / Ground Crew / After Start Checklist & Airbus Tutorial PDP Jan 2024 — Flow Patterns (p.30)",
+    ),
     cards: [
       {
         heading: "ECAM STATUS ……… CHECK (PF-PM)",

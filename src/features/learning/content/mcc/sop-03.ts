@@ -613,7 +613,7 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
         heading: "INIT B · PERF TAKEOFF (PF)",
         bullets: [
           "* ZFW/ZFWCG ……… INSERT · * BLOCK FUEL ……… INSERT",
-          "* T.O SHIFT ……… INSERT AS RQRD — Insert T.O shift if taking off from an intersection, to keep awareness of runway length reduction.",
+          "* T.O SHIFT ……… INSERT AS RQRD — If the aircraft takes off from an intersection, insert a T.O shift value to increase flight crew awareness of the runway length reduction.",
           "* V1, VR, V2 · * FLX TO TEMP ……… INSERT · * THR RED/ACC and ENG OUT ACC altitude ……… SET or CHECK · * FLAPS/THS ……… INSERT",
         ],
       },
@@ -751,7 +751,7 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
         heading: "Fast alignment · aircraft stopped",
         bullets: [
           "A fast IRS alignment must be performed if a complete IRS alignment is not necessary and the difference between the IRS position and the FMGC position is at or above 5 NM (see MCDU POSITION MONITOR page).",
-          "To perform an alignment, the aircraft must be stopped on ground. Do not align IRS during engine start, or while the engines are running.",
+          "To perform an alignment, the aircraft must be stopped on ground. Do not align IRS during engine start, or while the engines are running. In the case of aircraft movement during the IRS alignment, the flight crew must perform a new full alignment.",
           "Select ND in ROSE NAV or ARC mode, and confirm that the aircraft position is consistent with the position of the airport, the SID and the surrounding NAVAIDs.",
         ],
       },
