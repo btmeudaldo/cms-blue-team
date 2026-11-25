@@ -34,6 +34,7 @@ export interface MccSlideSpec {
   /** Imagen de la columna derecha. Sin imagen, la columna derecha muestra `rightCards` / `rightTable` / `rightAlert`. */
   image?: string;
   imageAlt?: string;
+  /** Fuente de la diapositiva. No se muestra: se guarda en el comentario HTML de la diapositiva. */
   sourceRef: string;
   cards: MccCard[];
   table?: MccTable;
@@ -127,7 +128,8 @@ export function buildMccSlide(spec: MccSlideSpec): string {
   const leftPct = clampLeftPct(spec.leftPct);
   const rightPct = 100 - leftPct;
 
-  return `<!-- ${spec.comment} -->
+  // La fuente no se muestra al alumno: queda como comentario HTML para trazabilidad y revisión.
+  return `<!-- ${spec.comment} | ${spec.sourceRef} -->
 <div class="lesson-slide-container h-full flex flex-col justify-start text-slate-800 dark:text-slate-100">
   <div class="border-b border-[#DCE4EE] dark:border-slate-800 pb-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1 shrink-0">
     <div>
@@ -154,7 +156,6 @@ export function buildMccSlide(spec: MccSlideSpec): string {
           <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800">
             <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">${spec.rightTitle}</span>
           </div>${renderRightBody(spec)}
-          <div class="text-[10px] text-slate-500 dark:text-slate-400 font-medium pt-1 border-t border-slate-200 dark:border-slate-800 shrink-0">${spec.sourceRef}</div>
         </div>
       </div>
     </div>

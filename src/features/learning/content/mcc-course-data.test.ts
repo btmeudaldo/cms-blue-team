@@ -48,8 +48,14 @@ describe("SOP-01", () => {
       expect(src).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p\d{3}_[a-z0-9_]+\.webp$/);
     }
     for (const slide of slides) {
-      expect(slide).toMatch(/(Source|Fuente): /);
+      // La fuente se conserva solo en el comentario HTML, nunca como texto visible.
+      expect(slide).toMatch(/<!-- SLIDE SOP-01\.\d+: [^>]*\| (Source|Fuente): [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
       expect(slide).not.toContain("undefined");
     }
+  });
+
+  it("does not include the First FFS, navigation or PIR slides", () => {
+    expect(MCC_SOP_01.content_html).not.toMatch(/First FFS|p01[1-7]_|Navigation buttons/);
   });
 });

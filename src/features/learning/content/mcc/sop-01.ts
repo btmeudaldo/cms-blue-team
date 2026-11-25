@@ -2,7 +2,8 @@
  * SOP-01 — Filosofía Airbus y fundamentos MCC (1 h).
  *
  * Fuentes (texto literal):
- * - Airbus Tutorial PDP Jan 2024 (PDP) págs. 3–22: Use of Tutorials, First FFS, Golden Rules.
+ * - Airbus Tutorial PDP Jan 2024 (PDP) págs. 3–10 y 18–22: Use of Tutorials, Golden Rules.
+ *   (First FFS, navegación y PIR retirados a petición de la escuela: el simulador del curso es otro.)
  * - FCOM PRO-NOR-SOP-01 (Foreword) y PRO-NOR-SCO (Standard Callouts), FCOM IBS A320/A321 25 MAY 23.
  * - Callouts FCU.pdf (Iberia, Manual de Operaciones D, Curso de Refresco OPS 2.2/2015, pág. 38).
  * Imágenes: láminas del PDP en Hostalia (IMAGENES_URLS.json). Las diapositivas de tablas de callouts
@@ -74,143 +75,11 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
       },
     ],
   },
-  {
-    comment: "SLIDE SOP-01.3: Navigation and Preventing Identified Risks",
-    eyebrow: EYEBROW,
-    title: "1.3 Navegación de los tutoriales y riesgos identificados (PIR)",
-    subtitle: "Navigation · Preventing Identified Risks",
-    leftPct: 56,
-    leftTitle: "NAVIGATION",
-    rightTitle: "PREVENTING IDENTIFIED RISKS (PIR)",
-    image: img("p011_use_of_tutorials"),
-    imageAlt: "Preventing Identified Risks icons",
-    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — Use of Tutorials (p.7, p.11)",
-    cards: [
-      {
-        heading: "Navigation buttons",
-        paragraph: "Several buttons are used to navigate through the different pages of the tutorial. The buttons are:",
-        bullets: [
-          "<strong>BACK:</strong> The BACK button is used to go back one step.",
-          "<strong>i:</strong> The i button is used to open an information page.",
-          "<strong>SOP:</strong> The SOP button is used to open a Standard Operating Procedure (SOP) page.",
-          "<strong>PROC:</strong> The PROC button is used to open a procedure (normal or abnormal) page.",
-          "<strong>NEXT / PREV:</strong> The NEXT and PREV buttons are used to navigate within a procedure that is on more than one page.",
-          "<strong>FLOW:</strong> The FLOW button is used to open an action flow page.",
-          "<strong>CALLOUTS:</strong> The CALLOUT button is used to open a callout page.",
-          "<strong>GOLD:</strong> The GOLD button is used to page with a reminder of the Golden Rules.",
-        ],
-      },
-      {
-        heading: "Preventing Identified Risks (PIR)",
-        paragraph:
-          "GROUND CREW · AIRCRAFT · PAX · NAVIGATION · FLIGHT · HANDLING. Refer to FCTM for definition and PIR list.",
-      },
-    ],
-    alert: {
-      level: "NOTE",
-      text: "En este curso el contenido de los tutoriales se presenta en las diapositivas; los botones se refieren al documento PDP original.",
-    },
-  },
-  // ── First FFS ────────────────────────────────────────────────────────────
-  {
-    comment: "SLIDE SOP-01.4: First FFS — safety equipment and cockpit facility",
-    eyebrow: EYEBROW,
-    title: "1.4 Primer FFS: equipos de seguridad y cabina",
-    subtitle: "First FFS",
-    leftTitle: "FFS SAFETY EQUIPMENT & COCKPIT FACILITY",
-    rightTitle: "FFS COCKPIT FACILITY",
-    image: img("p014_first_ffs"),
-    imageAlt: "FFS cockpit facility",
-    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — First FFS (p.12–14)",
-    cards: [
-      {
-        heading: "FFS safety equipment",
-        bullets: ["Emergency Stop", "Fire extinguishers", "Escape ropes", "Torch"],
-      },
-      {
-        heading: "FFS cockpit facility",
-        bullets: [
-          "Seat, pedal and armrest adjustments: Seat · Pedal · Armrest",
-          "Sliding table",
-          "Cockpit lights",
-          "Oxygen masks",
-          "Hand mike, headset, RMP, ACP",
-        ],
-      },
-    ],
-  },
-  {
-    comment: "SLIDE SOP-01.5: First FFS — seat adjustments",
-    eyebrow: EYEBROW,
-    title: "1.5 Primer FFS: ajuste del asiento",
-    subtitle: "First FFS · Seat adjustments",
-    leftTitle: "SEAT ADJUSTMENTS",
-    rightTitle: "EYE REFERENCE PANEL",
-    image: img("p015_first_ffs"),
-    imageAlt: "Seat adjustment and eye reference panel",
-    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — First FFS (p.15)",
-    cards: [
-      {
-        heading: "Seat adjustments",
-        bullets: [
-          "Move the pedals full forward.",
-          "Move the seat full forward (Use either mechanical or electrical controls. Get familiar with both.).",
-          "Adjust the seat vertically and horizontally according to sidestick position.",
-          "Both surfaces must be visible by just looking up and down.",
-        ],
-      },
-    ],
-  },
-  {
-    comment: "SLIDE SOP-01.6: First FFS — pedal adjustments",
-    eyebrow: EYEBROW,
-    title: "1.6 Primer FFS: ajuste de los pedales",
-    subtitle: "First FFS · Pedal adjustments",
-    leftTitle: "PEDAL ADJUSTMENTS",
-    rightTitle: "PEDAL ADJUSTMENTS",
-    image: img("p016_first_ffs"),
-    imageAlt: "Pedal adjustment",
-    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — First FFS (p.16)",
-    cards: [
-      {
-        heading: "Pedal adjustments",
-        bullets: [
-          "Put your feet “inside” the pedals.",
-          "Apply full deflection of the pedal, then apply full braking action.",
-          "The leg should be almost fully extended at this point, but there should not be any body movement or sliding on the seat to achieve that position.",
-        ],
-      },
-    ],
-  },
-  {
-    comment: "SLIDE SOP-01.7: First FFS — armrest adjustments",
-    eyebrow: EYEBROW,
-    title: "1.7 Primer FFS: ajuste del reposabrazos",
-    subtitle: "First FFS · Armrest adjustments",
-    leftTitle: "ARMREST ADJUSTMENTS",
-    rightTitle: "ARMREST ADJUSTMENTS",
-    image: img("p017_first_ffs"),
-    imageAlt: "Armrest adjustment",
-    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — First FFS (p.17)",
-    cards: [
-      {
-        heading: "Armrest controls",
-        bullets: ["HEIGHT ADJUST: Button A", "PITCH ADJUST: Button B", "INDICATION HEIGHT · INDICATION PITCH"],
-      },
-      {
-        heading: "When your seat is adjusted",
-        bullets: [
-          "Position your arm like shown on the picture 1, slide it forward without moving your wrist.",
-          "If the armrest is correctly positioned, your hand should come naturally around the side stick as shown on picture 2.",
-        ],
-      },
-    ],
-  },
   // ── Golden Rules ─────────────────────────────────────────────────────────
   {
-    comment: "SLIDE SOP-01.8: The Golden Rules",
+    comment: "SLIDE SOP-01.3: The Golden Rules",
     eyebrow: EYEBROW,
-    title: "1.8 Las Golden Rules de Airbus",
+    title: "1.3 Las Golden Rules de Airbus",
     subtitle: "Golden Rules",
     leftTitle: "GOLDEN RULES",
     rightTitle: "GOLDEN RULES",
@@ -230,9 +99,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-01.9: Golden Rule #1",
+    comment: "SLIDE SOP-01.4: Golden Rule #1",
     eyebrow: EYEBROW,
-    title: "1.9 Golden Rule #1: Fly, Navigate, Communicate",
+    title: "1.4 Golden Rule #1: Fly, Navigate, Communicate",
     subtitle: "Golden Rules · #1",
     leftPct: 58,
     leftTitle: "#1 FLY, NAVIGATE, COMMUNICATE",
@@ -270,9 +139,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.10: Golden Rules #2 and #3",
+    comment: "SLIDE SOP-01.5: Golden Rules #2 and #3",
     eyebrow: EYEBROW,
-    title: "1.10 Golden Rules #2 y #3: automatización y FMA",
+    title: "1.5 Golden Rules #2 y #3: automatización y FMA",
     subtitle: "Golden Rules · #2 · #3",
     leftTitle: "AUTOMATION & FMA",
     rightTitle: "AP/FD ENGAGEMENT AND FMA",
@@ -297,9 +166,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-01.11: Golden Rule #4",
+    comment: "SLIDE SOP-01.6: Golden Rule #4",
     eyebrow: EYEBROW,
-    title: "1.11 Golden Rule #4: actuar si algo no va según lo previsto",
+    title: "1.6 Golden Rule #4: actuar si algo no va según lo previsto",
     subtitle: "Golden Rules · #4",
     leftTitle: "#4 TAKE ACTIONS IF THINGS DO NOT GO AS EXPECTED",
     rightTitle: "TAKE ACTION !",
@@ -328,9 +197,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
   },
   // ── SOP ──────────────────────────────────────────────────────────────────
   {
-    comment: "SLIDE SOP-01.12: Standard Operating Procedures — foreword",
+    comment: "SLIDE SOP-01.7: Standard Operating Procedures — foreword",
     eyebrow: EYEBROW,
-    title: "1.12 Qué son los Standard Operating Procedures (SOP)",
+    title: "1.7 Qué son los Standard Operating Procedures (SOP)",
     subtitle: "FCOM PRO-NOR-SOP-01 · Foreword",
     leftPct: 58,
     leftTitle: "STANDARD OPERATING PROCEDURES",
@@ -359,9 +228,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
   },
   // ── Standard callouts ────────────────────────────────────────────────────
   {
-    comment: "SLIDE SOP-01.13: Communications, standard terms and checklist callouts",
+    comment: "SLIDE SOP-01.8: Communications, standard terms and checklist callouts",
     eyebrow: EYEBROW,
-    title: "1.13 Comunicación estándar y callouts de checklist",
+    title: "1.8 Comunicación estándar y callouts de checklist",
     subtitle: `${SCO} · Standard Callouts`,
     leftTitle: "COMMUNICATIONS AND STANDARD TERMS",
     rightTitle: "CHECKLIST CALLOUTS",
@@ -391,9 +260,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.14: Actions commanded by PF — general and SET",
+    comment: "SLIDE SOP-01.9: Actions commanded by PF — general and SET",
     eyebrow: EYEBROW,
-    title: "1.14 Acciones ordenadas por el PF: generalidades y SET",
+    title: "1.9 Acciones ordenadas por el PF: generalidades y SET",
     subtitle: `${SCO} · Actions commanded by PF`,
     leftTitle: "GENERAL & SET",
     rightTitle: "FCU ACTION CHECKED ON PFD / FMA",
@@ -420,9 +289,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-01.15: Actions commanded by PF — MANAGE / PULL",
+    comment: "SLIDE SOP-01.10: Actions commanded by PF — MANAGE / PULL",
     eyebrow: EYEBROW,
-    title: "1.15 Acciones ordenadas por el PF: MANAGE y PULL",
+    title: "1.10 Acciones ordenadas por el PF: MANAGE y PULL",
     subtitle: `${SCO} · Actions commanded by PF`,
     leftTitle: "MANAGE / PULL",
     rightTitle: "FCU ACTION CHECKED ON PFD / FMA",
@@ -453,9 +322,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.16: V/S-FPA knob, ARM and ON/OFF commands",
+    comment: "SLIDE SOP-01.11: V/S-FPA knob, ARM and ON/OFF commands",
     eyebrow: EYEBROW,
-    title: "1.16 Mando V/S-FPA, ARM y ON/OFF",
+    title: "1.11 Mando V/S-FPA, ARM y ON/OFF",
     subtitle: `${SCO} · Actions commanded by PF`,
     leftTitle: "V/S-FPA · ARM · ON/OFF",
     rightTitle: "BIRD ON (TRK-FPA)",
@@ -487,9 +356,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-01.17: FCU callouts guide — SET",
+    comment: "SLIDE SOP-01.12: FCU callouts guide — SET",
     eyebrow: EYEBROW,
-    title: "1.17 Guía de callouts del FCU: SET",
+    title: "1.12 Guía de callouts del FCU: SET",
     subtitle: "Callouts FCU · 01 SET",
     leftTitle: "01 | SET",
     rightTitle: "PF COMMAND · PF CALLOUT · PM CALLOUT",
@@ -504,7 +373,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "Guía gráfica de Iberia (curso de refresco A330/A340) incluida por la escuela en el material del curso. Las definiciones de SET, MANAGE y PULL coinciden con las del FCOM A320 PRO-NOR-SCO (diapositivas 1.14–1.16).",
+      text: "Guía gráfica de Iberia (curso de refresco A330/A340) incluida por la escuela en el material del curso. Las definiciones de SET, MANAGE y PULL coinciden con las del FCOM A320 PRO-NOR-SCO (diapositivas 1.9–1.11).",
     },
     rightTable: {
       headers: ["PF command", "PF callout", "PM callout"],
@@ -518,9 +387,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.18: FCU callouts guide — PULL and MANAGE",
+    comment: "SLIDE SOP-01.13: FCU callouts guide — PULL and MANAGE",
     eyebrow: EYEBROW,
-    title: "1.18 Guía de callouts del FCU: PULL y MANAGE",
+    title: "1.13 Guía de callouts del FCU: PULL y MANAGE",
     subtitle: "Callouts FCU · 02 PULL · 03 MANAGE",
     leftTitle: "02 | PULL",
     rightTitle: "03 | MANAGE",
@@ -565,9 +434,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.19: FMA and altitude callouts",
+    comment: "SLIDE SOP-01.14: FMA and altitude callouts",
     eyebrow: EYEBROW,
-    title: "1.19 Callouts de FMA y de altitud",
+    title: "1.14 Callouts de FMA y de altitud",
     subtitle: `${SCO} · FMA · Altitude`,
     leftTitle: "FMA & ALTITUDE",
     rightTitle: "TAKEOFF FMA CALLOUTS",
@@ -593,9 +462,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-01.20: Flaps and gear callouts",
+    comment: "SLIDE SOP-01.15: Flaps and gear callouts",
     eyebrow: EYEBROW,
-    title: "1.20 Callouts de flaps y tren",
+    title: "1.15 Callouts de flaps y tren",
     subtitle: `${SCO} · Flaps or Gear Callouts`,
     leftTitle: "FLAPS & GEAR CALLOUTS",
     rightTitle: "ACCELERATION FLOW (FLAPS · L/G)",
@@ -631,9 +500,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.21: Flight parameters deviation callouts — approach",
+    comment: "SLIDE SOP-01.16: Flight parameters deviation callouts — approach",
     eyebrow: EYEBROW,
-    title: "1.21 Callouts de desviación en aproximación",
+    title: "1.16 Callouts de desviación en aproximación",
     subtitle: `${SCO} · Flight Parameters`,
     leftTitle: "APPROACH",
     rightTitle: "PM CALLOUTS ON FINAL APPROACH",
@@ -662,9 +531,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.22: Flight parameters deviation callouts — landing and go-around",
+    comment: "SLIDE SOP-01.17: Flight parameters deviation callouts — landing and go-around",
     eyebrow: EYEBROW,
-    title: "1.22 Callouts de desviación en aterrizaje y motor y al aire",
+    title: "1.17 Callouts de desviación en aterrizaje y motor y al aire",
     subtitle: `${SCO} · Flight Parameters`,
     leftTitle: "LANDING · GO-AROUND",
     rightTitle: "GO-AROUND PF/PM CALLOUTS",
@@ -690,9 +559,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-01.23: PF/PM duties transfer and ground supply",
+    comment: "SLIDE SOP-01.18: PF/PM duties transfer and ground supply",
     eyebrow: EYEBROW,
-    title: "1.23 Transferencia de mandos y alimentación de tierra",
+    title: "1.18 Transferencia de mandos y alimentación de tierra",
     subtitle: `${SCO} · Duties Transfer · Ground`,
     leftTitle: "PF/PM DUTIES TRANSFER",
     rightTitle: "TO REMOVE GROUND SUPPLY",
@@ -715,9 +584,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.24: Pushback and engine start callouts",
+    comment: "SLIDE SOP-01.19: Pushback and engine start callouts",
     eyebrow: EYEBROW,
-    title: "1.24 Callouts de pushback y arranque",
+    title: "1.19 Callouts de pushback y arranque",
     subtitle: `${SCO} · Pushback/Engine Start`,
     leftTitle: "PUSHBACK / ENGINE START",
     rightTitle: "BEFORE PUSHBACK / START FLOW",
@@ -746,9 +615,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.25: Taxi callouts",
+    comment: "SLIDE SOP-01.20: Taxi callouts",
     eyebrow: EYEBROW,
-    title: "1.25 Callouts de rodaje",
+    title: "1.20 Callouts de rodaje",
     subtitle: `${SCO} · Taxi`,
     leftTitle: "TAXI",
     rightTitle: "PUSHBACK → TAXI → LINE-UP",
@@ -775,9 +644,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.26: Takeoff and altimeter setting callouts",
+    comment: "SLIDE SOP-01.21: Takeoff and altimeter setting callouts",
     eyebrow: EYEBROW,
-    title: "1.26 Callouts de despegue y cambio de altímetro",
+    title: "1.21 Callouts de despegue y cambio de altímetro",
     subtitle: `${SCO} · Takeoff · Altimeter`,
     leftTitle: "TAKEOFF · ALTIMETER SETTING",
     rightTitle: "TAKEOFF SEQUENCE",
@@ -801,9 +670,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.27: Approach callouts — approach phase and go-around altitude",
+    comment: "SLIDE SOP-01.22: Approach callouts — approach phase and go-around altitude",
     eyebrow: EYEBROW,
-    title: "1.27 Callouts de aproximación: fase de aproximación y altitud de motor y al aire",
+    title: "1.22 Callouts de aproximación: fase de aproximación y altitud de motor y al aire",
     subtitle: `${SCO}-D · Approach and Landing`,
     leftTitle: "APPROACH PHASE · GO-AROUND ALTITUDE",
     rightTitle: "ARM APPROACH vs ACTIVATE APPROACH PHASE",
@@ -826,9 +695,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.28: Approach callouts — FDP, 1 000 ft and minima",
+    comment: "SLIDE SOP-01.23: Approach callouts — FDP, 1 000 ft and minima",
     eyebrow: EYEBROW,
-    title: "1.28 Callouts de aproximación: FDP, 1 000 ft y mínimos",
+    title: "1.23 Callouts de aproximación: FDP, 1 000 ft y mínimos",
     subtitle: `${SCO}-D · Approach and Landing`,
     leftTitle: "FDP · 1 000 FT · MINIMA",
     rightTitle: "PM CALLOUTS ON FINAL APPROACH",
@@ -849,9 +718,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.29: Landing, discontinued approach and go-around callouts",
+    comment: "SLIDE SOP-01.24: Landing, discontinued approach and go-around callouts",
     eyebrow: EYEBROW,
-    title: "1.29 Callouts de aterrizaje, aproximación interrumpida y motor y al aire",
+    title: "1.24 Callouts de aterrizaje, aproximación interrumpida y motor y al aire",
     subtitle: `${SCO}-D · Landing · Discontinued Approach · Go Around`,
     leftTitle: "AFTER TOUCHDOWN · GO AROUND",
     rightTitle: "DISCONTINUED APPROACH vs GO-AROUND",
@@ -875,9 +744,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.30: Approach and landing callouts — notes",
+    comment: "SLIDE SOP-01.25: Approach and landing callouts — notes",
     eyebrow: EYEBROW,
-    title: "1.30 Notas a los callouts de aproximación y aterrizaje",
+    title: "1.25 Notas a los callouts de aproximación y aterrizaje",
     subtitle: `${SCO}-D · Approach and Landing · Notes`,
     leftTitle: "NOTES (1) – (5)",
     rightTitle: "NOTES (6) – (8)",
@@ -910,7 +779,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
 export const MCC_SOP_01: MccLesson = {
   id: "a3200000-0000-0000-0000-000000000101",
   course_id: MCC_COURSE_ID,
-  title: "SOP-01. Filosofía Airbus y fundamentos MCC: tutoriales, primer FFS, Golden Rules y callouts estándar",
+  title: "SOP-01. Filosofía Airbus y fundamentos MCC: tutoriales, Golden Rules y callouts estándar",
   slug: "sop-01-filosofia-airbus-fundamentos-mcc",
   sequence_order: 1,
   lesson_order: 1,
