@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import * as dotenv from "dotenv";
 import {
@@ -36,6 +38,7 @@ const onlyArg = args.find((a) => a.startsWith("--only="));
 const ONLY_SLUGS = onlyArg ? onlyArg.slice("--only=".length).split(",").map((s) => s.trim()).filter(Boolean) : null;
 const FORCE_PRIVATE_NEW = args.includes("--private");
 const DRY_RUN = args.includes("--dry-run");
+const FORCE_LAYOUT = args.includes("--force-layout");
 
 if (ONLY_SLUGS) {
   const unknown = ONLY_SLUGS.filter((s) => !MCC_LESSONS.some((l) => l.slug === s));
@@ -134,6 +137,17 @@ async function upsertLessons(lessons) {
 
       existsRemotely = Boolean(dbLesson);
       if (dbLesson && dbLesson.content_html) {
+        if (!DRY_RUN) {
+          const backupDir = path.join(process.cwd(), "scratch", "backups");
+          fs.mkdirSync(backupDir, { recursive: true });
+          const stamp = new Date().toISOString().replace(/[:.]/g, "-");
+          fs.writeFileSync(
+            path.join(backupDir, `${lesson.slug}_${stamp}.html`),
+            dbLesson.content_html,
+            "utf8",
+          );
+        }
+
         const pagebreakRegex = /(?:<!--\s*(?:pagebreak|slidebreak|page-break|slide-break)\s*-->)/gi;
         const remoteSlides = dbLesson.content_html.split(pagebreakRegex);
         const localSlides = contentToSave.split(pagebreakRegex);
@@ -144,6 +158,32 @@ async function upsertLessons(lessons) {
           const headingMatch = slideText.match(/<h[1-4][^>]*>\s*([0-9.]+)/i);
           if (headingMatch) return headingMatch[1].trim();
           return `index_${index}`;
+        };
+
+        const extractLeftPct = (slideText) => {
+          const m = slideText.match(/data-left-pct=["'](\d{1,3})["']/i);
+          if (!m) return null;
+          const n = Number(m[1]);
+          return Number.isInteger(n) && n >= 15 && n <= 85 ? n : null;
+        };
+
+        const applyLeftPct = (slideText, leftPct) => {
+          const rightPct = 100 - leftPct;
+          return slideText
+            .replace(/data-left-pct=["']\d{1,3}["']/i, `data-left-pct="${leftPct}"`)
+            .replace(/--col-left:\s*\d{1,3}fr;\s*--col-right:\s*\d{1,3}fr;/i, `--col-left: ${leftPct}fr; --col-right: ${rightPct}fr;`)
+            .replace(/grid-template-columns:\s*minmax\(0px,\s*\d{1,3}fr\)\s*minmax\(0px,\s*\d{1,3}fr\)\s*!important;/i, `grid-template-columns: minmax(0px, ${leftPct}fr) minmax(0px, ${rightPct}fr) !important;`);
+        };
+
+        const extractImgVersionByFile = (slideText) => {
+          const map = new Map();
+          for (const m of slideText.matchAll(/<img[^>]+src=["']([^"']+)["']/gi)) {
+            const raw = m[1];
+            const clean = raw.split("?")[0].split("/").pop();
+            const q = raw.match(/\?v=(\d+)/i);
+            if (clean && q) map.set(clean, raw);
+          }
+          return map;
         };
 
         const isSlidePrivate = (slideText) => {
@@ -170,17 +210,22 @@ async function upsertLessons(lessons) {
             .replace(/\b(?:slide-private)\b/gi, "");
         };
 
-        const remoteVisibilityMap = new Map();
+        const remoteMetaMap = new Map();
         remoteSlides.forEach((rSlide, rIdx) => {
           const key = extractSlideKey(rSlide, rIdx);
-          const vis = isSlidePrivate(rSlide) ? "private" : "public";
-          remoteVisibilityMap.set(key, vis);
-          remoteVisibilityMap.set(`index_${rIdx}`, vis);
+          const meta = {
+            vis: isSlidePrivate(rSlide) ? "private" : "public",
+            leftPct: extractLeftPct(rSlide),
+            imgVersions: extractImgVersionByFile(rSlide),
+          };
+          remoteMetaMap.set(key, meta);
+          remoteMetaMap.set(`index_${rIdx}`, meta);
         });
 
         const mergedSlides = localSlides.map((lSlide, lIdx) => {
           const key = extractSlideKey(lSlide, lIdx);
-          const remoteVis = remoteVisibilityMap.get(key) ?? remoteVisibilityMap.get(`index_${lIdx}`);
+          const remoteMeta = remoteMetaMap.get(key) ?? remoteMetaMap.get(`index_${lIdx}`);
+          const remoteVis = remoteMeta?.vis;
           // Con --private, una diapositiva sin equivalente remoto (nueva) se crea privada.
           const finalVis =
             remoteVis !== undefined
@@ -188,7 +233,19 @@ async function upsertLessons(lessons) {
               : FORCE_PRIVATE_NEW || isSlidePrivate(lSlide)
                 ? "private"
                 : "public";
-          return finalVis === "private" ? setSlidePrivateAttr(lSlide) : setSlidePublicAttr(lSlide);
+          let nextSlide = finalVis === "private" ? setSlidePrivateAttr(lSlide) : setSlidePublicAttr(lSlide);
+          if (!FORCE_LAYOUT && remoteMeta?.leftPct !== null && remoteMeta?.leftPct !== undefined) {
+            nextSlide = applyLeftPct(nextSlide, remoteMeta.leftPct);
+          }
+          if (remoteMeta?.imgVersions?.size) {
+            nextSlide = nextSlide.replace(/(<img[^>]+src=["'])([^"']+)(["'])/gi, (full, pre, src, post) => {
+              if (/\?v=\d+/i.test(src)) return full;
+              const cleanFile = src.split("?")[0].split("/").pop();
+              const versioned = cleanFile ? remoteMeta.imgVersions.get(cleanFile) : null;
+              return versioned ? `${pre}${versioned}${post}` : full;
+            });
+          }
+          return nextSlide;
         });
 
         contentToSave = mergedSlides.join("\n\n<!-- pagebreak -->\n\n");

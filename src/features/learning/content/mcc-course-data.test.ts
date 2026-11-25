@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import { MCC_LEGACY_LESSONS, MCC_LESSONS, MCC_PDP_LESSONS, clampLeftPct } from "./mcc-course-data";
 import { MCC_SOP_01, SOP_01_SLIDE_COUNT } from "./mcc/sop-01";
 import { MCC_SOP_02, SOP_02_SLIDE_COUNT } from "./mcc/sop-02";
+import { MCC_SOP_03, SOP_03_SLIDE_COUNT } from "./mcc/sop-03";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -46,7 +47,7 @@ describe("SOP-01", () => {
     const imgs = [...MCC_SOP_01.content_html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
     expect(imgs).toHaveLength(SOP_01_SLIDE_COUNT);
     for (const src of imgs) {
-      expect(src).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/(?:p\d{3}|fcom_a320_fcu)_[a-z0-9_]+\.webp$/);
+      expect(src).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/(?:p\d{3}|fcom_a320_fcu)_[a-z0-9_]+\.webp(?:\?v=\d+)?$/);
     }
     for (const slide of slides) {
       // La fuente se conserva solo en el comentario HTML, nunca como texto visible.
@@ -79,5 +80,34 @@ describe("SOP-02", () => {
   it("covers every flow pattern page of the PDP (p.23–41)", () => {
     const pages = [...MCC_SOP_02.content_html.matchAll(/p0(\d\d)_flow_patterns/g)].map((m) => Number(m[1]));
     expect(new Set(pages)).toEqual(new Set([23, ...Array.from({ length: 18 }, (_, i) => 24 + i)]));
+  });
+});
+
+describe("SOP-03", () => {
+  const slides = MCC_SOP_03.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable 1 h lesson placed after SOP-02", () => {
+    expect(MCC_SOP_03.min_seconds).toBe(3600);
+    expect(slides).toHaveLength(SOP_03_SLIDE_COUNT);
+    expect(MCC_SOP_03.sequence_order).toBe(MCC_SOP_02.sequence_order + 1);
+  });
+
+  it("uses only cockpit preparation images from the PDP (p.138–155) and hides sources", () => {
+    const pages = [...MCC_SOP_03.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_cockpit_preparation\.webp"/g)].map((m) => Number(m[1]));
+    expect(pages.length).toBeGreaterThan(0);
+    for (const p of pages) {
+      expect(p).toBeGreaterThanOrEqual(138);
+      expect(p).toBeLessThanOrEqual(155);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE SOP-03\.\d+: [^>]*\| Source: [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("excludes airline names and aircraft registrations", () => {
+    const htmlNoUrls = MCC_SOP_03.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|ec-[a-z]{3})\b/i);
   });
 });

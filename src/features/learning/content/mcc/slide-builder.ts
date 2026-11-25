@@ -37,6 +37,8 @@ export interface MccSlideSpec {
   /** Fuente de la diapositiva. No se muestra: se guarda en el comentario HTML de la diapositiva. */
   sourceRef: string;
   cards: MccCard[];
+  /** Par de tarjetas lado a lado (p. ej. columnas PF | PM o CAPT | F/O) dentro del panel izquierdo. */
+  splitCards?: [MccCard, MccCard];
   table?: MccTable;
   alert?: MccAlert;
   rightCards?: MccCard[];
@@ -112,6 +114,13 @@ export function renderCards(cards: MccCard[] = []): string {
     .join("");
 }
 
+function renderSplitCards(splitCards?: [MccCard, MccCard]): string {
+  if (!splitCards) return "";
+  return `
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">${renderCards(splitCards)}
+          </div>`;
+}
+
 function renderRightBody(spec: MccSlideSpec): string {
   if (spec.image) {
     return `
@@ -145,7 +154,7 @@ export function buildMccSlide(spec: MccSlideSpec): string {
         <div class="flex items-center justify-between shrink-0 pb-1 border-b border-slate-200 dark:border-slate-800 mb-1">
           <span class="font-bold text-[#0B2E59] dark:text-sky-300 uppercase tracking-wider text-xs sm:text-sm">${spec.leftTitle}</span>
         </div>
-        <div class="space-y-1.5 py-0.5 text-[13px] sm:text-sm">${renderCards(spec.cards)}${renderTable(spec.table)}${renderAlert(spec.alert)}
+        <div class="space-y-1.5 py-0.5 text-[13px] sm:text-sm">${renderSplitCards(spec.splitCards)}${renderCards(spec.cards)}${renderTable(spec.table)}${renderAlert(spec.alert)}
         </div>
       </div>
     </div>

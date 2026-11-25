@@ -15,7 +15,28 @@ const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SOP-01";
 const SCO = "FCOM PRO-NOR-SCO";
 
-const img = (file: string) => `${PDP_IMG}/${file}.webp`;
+const IMAGE_VERSIONS: Record<string, number> = {
+  p006_use_of_tutorials: 1795607846,
+  p009_use_of_tutorials: 1795607846,
+  p018_golden_rules: 1795607846,
+  p019_golden_rules: 1795607846,
+  p022_golden_rules: 1795607846,
+  p139_cockpit_preparation: 1795607846,
+  p146_cockpit_preparation: 1795607846,
+  p172_taxi_before_takeoff: 1795607846,
+  p184_takeoff: 1795607846,
+  p188_takeoff: 1795607846,
+  p233_2d_approach: 1795607846,
+  p237_2d_approach: 1795607846,
+  p278_go_around: 1795607846,
+  p286_after_landing_parking_securing_the_a_c: 1795607846,
+  p407_use_of_bird: 1795607846,
+};
+
+const img = (file: string) => {
+  const v = IMAGE_VERSIONS[file];
+  return v ? `${PDP_IMG}/${file}.webp?v=${v}` : `${PDP_IMG}/${file}.webp`;
+};
 
 const SOP_01_SLIDES: MccSlideSpec[] = [
   // ── Use of tutorials ─────────────────────────────────────────────────────
@@ -24,51 +45,57 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "1.1 Uso de los tutoriales",
     subtitle: "Use of Tutorials",
-    leftTitle: "WHEN AND HOW TO USE THE TUTORIALS",
+    leftPct: 54,
+    leftTitle: "OBJECTIVE · NAVIGATION · ENTRENAMIENTO A320",
     rightTitle: "APT & FFS TUTORIAL USAGE",
     image: img("p006_use_of_tutorials"),
     imageAlt: "When and how to use the tutorials in APT and FFS sessions",
-    sourceRef: "Source: FCOM A320 · Use of Tutorials (APT & FFS)",
+    sourceRef: "Source: FCOM A320 · Use of Tutorials & Part-FCL APS MCC",
     cards: [
       {
         heading: "Objective",
         paragraph: "The objective is to provide a good mental picturing before a training exercise.",
       },
       {
-        heading: "APT sessions",
+        heading: "Entrenamiento en simulador (Entrol A32)",
         bullets: [
-          "The trainee studies the tutorials before the APT session.",
-          "During briefing of the APT session, the instructor discusses with the trainees any question regarding the exercises.",
-          "The instructor conducts the exercises in the APT assisted if needed by the tutorials.",
-        ],
-      },
-      {
-        heading: "FFS sessions",
-        bullets: [
-          "The trainee studies the tutorials before the FFS session.",
-          "During briefing of the FFS session, the instructor briefs the trainees with the support of the tutorials, if needed.",
-          "Tutorials are used to assist debriefing after the session as required.",
+          "<strong>Briefing y debriefing:</strong> Se realizará una hora de briefing previa a cada sesión de simulador y media hora de debriefing tras la finalización de cada sesión.",
+          "<strong>Metodología LOFT:</strong> Ejercicios de vuelo LOFT (Line Oriented Flight Training), empleando el reparto de roles como Pilot Flying (PF) y Pilot Monitoring (PM).",
+          "<strong>Documentación técnica:</strong> FCOM A320 (Vol. 1–4), QRH y A32 FCOM differences.",
         ],
       },
     ],
+    alert: {
+      level: "NOTE",
+      text: "En los diagramas estándar de Airbus, los términos APT y FFS equivalen a las sesiones preparatorias y de simulador A320 (Entrol A32) del curso.",
+    },
   },
   {
     comment: "SLIDE SOP-01.2: Organization of the tutorials",
     eyebrow: EYEBROW,
     title: "1.2 Organización de los tutoriales",
     subtitle: "Use of Tutorials · Organization",
-    leftTitle: "ORGANIZATION OF THE TUTORIALS",
+    leftPct: 45,
+    leftTitle: "SLIDE READING ORDER · FCOM DEFINITIONS",
     rightTitle: "PROCEDURE SLIDE",
     image: img("p009_use_of_tutorials"),
     imageAlt: "Organization of the tutorials: procedure slide",
-    sourceRef: "Source: FCOM A320 · Use of Tutorials (Organization)",
+    sourceRef: "Source: FCOM A320 · GEN & Use of Tutorials (Organization)",
     cards: [
       {
-        heading: "Organization of the tutorials",
+        heading: "Main Slide & Information Slides",
         bullets: [
-          "<strong>Main slide:</strong> Slides must be read from top to bottom and from left to right. Title of the Tutorial · Procedure steps · Complementary information · Illustration of the situation · Indication that the Tutorial contains memory items.",
-          "<strong>Procedure slide:</strong> Title of slide · Condition or information · Action · Callout · Link to more information · Memory item.",
+          "<strong>Reading order:</strong> Slides must be read from top to bottom and from left to right.",
+          "<strong>Main slide:</strong> Title of the Tutorial · Procedure steps · Complementary information · Illustration of the situation · Indication that the Tutorial contains memory items.",
           "<strong>Information slides:</strong> Title · BACK button · Information / Information box.",
+        ],
+      },
+      {
+        heading: "Definitions of Warnings, Cautions and Notes (FCOM GEN)",
+        bullets: [
+          "<strong>WARNING:</strong> An operating procedure, technique, etc. that may result in personal injury or loss of life if not followed.",
+          "<strong>CAUTION:</strong> An operating procedure, technique, etc. that may result in damage to equipment if not followed.",
+          "<strong>NOTE:</strong> An operating procedure, technique, etc. considered essential to emphasize. Information contained in notes may also be safety related.",
         ],
       },
     ],
@@ -78,20 +105,27 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     comment: "SLIDE SOP-01.3: The Golden Rules",
     eyebrow: EYEBROW,
     title: "1.3 Las Golden Rules de Airbus",
-    subtitle: "Golden Rules",
-    leftTitle: "GOLDEN RULES",
+    subtitle: "Golden Rules · FCOM Purpose",
+    leftTitle: "PURPOSE OF THE FCOM · INFORMATION LAYERS",
     rightTitle: "GOLDEN RULES",
     image: img("p018_golden_rules"),
     imageAlt: "The four Airbus Golden Rules",
-    sourceRef: "Source: Airbus A320 · Golden Rules",
+    sourceRef: "Source: FCOM A320 · GEN & Golden Rules",
     cards: [
       {
-        heading: "The four Golden Rules",
+        heading: "The purpose of the FCOM is to:",
         bullets: [
-          "<strong>GOLDEN RULE #1:</strong> Fly, Navigate, Communicate. In that order, with the appropriate tasksharing.",
-          "<strong>GOLDEN RULE #2:</strong> Use the appropriate level of automation at all times.",
-          "<strong>GOLDEN RULE #3:</strong> Understand the FMA at all times.",
-          "<strong>GOLDEN RULE #4:</strong> Take actions if things do not go as expected.",
+          "Provide all necessary operating limitations, procedures, performance and system information the flight crew needs to safely and efficiently operate A320 family aircraft during normal, abnormal, and emergency situations.",
+          "Serve as a comprehensive reference guide during initial and refresher flight crew training.",
+          "The FCOM complements the Airplane Flight Manual. If the FCOM data differs from the AFM data, the AFM remains the reference. As a supplement to the FCOM, the FCTM may provide additional information that the flight crew should read in conjunction with the FCOM.",
+        ],
+      },
+      {
+        heading: "FCOM Information Type and Layers",
+        bullets: [
+          "<strong>Layer 1 (“Need to know”):</strong> Layer 1 presents information that is necessary in the cockpit.",
+          "<strong>Layer 2 (“Nice to know”):</strong> Layer 2 presents information that is used as a reference, in order to fully understand the logic of the aircraft and pilot interfaces.",
+          "<strong>Layer 3 (Detailed information):</strong> Layer 3 provides more detailed explanations, that are not necessarily needed in flight.",
         ],
       },
     ],
@@ -100,40 +134,38 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     comment: "SLIDE SOP-01.4: Golden Rule #1",
     eyebrow: EYEBROW,
     title: "1.4 Golden Rule #1: Fly, Navigate, Communicate",
-    subtitle: "Golden Rules · #1",
-    leftPct: 58,
-    leftTitle: "#1 FLY, NAVIGATE, COMMUNICATE",
+    subtitle: "Golden Rules · #1 · Tasksharing & PIR",
+    leftPct: 56,
+    leftTitle: "COCKPIT TASKSHARING · PREVENTING IDENTIFIED RISKS",
     rightTitle: "FLY · NAVIGATE · COMMUNICATE",
     image: img("p019_golden_rules"),
     imageAlt: "Golden Rule 1 Fly Navigate Communicate",
-    sourceRef: "Source: Airbus A320 · Golden Rules #1",
+    sourceRef: "Source: FCOM A320 · PRO-NOR-SOP-04 / SOP-06 & PIR",
     cards: [
       {
-        heading: "Fly! Navigate! Communicate!",
+        heading: "Cockpit Preparation & Tasksharing (FCOM PRO-NOR-SOP-04 / SOP-06)",
         paragraph:
-          "The flight crew must perform these three actions in sequence and must use appropriate tasksharing in normal and abnormal operations, in manual flight or in flight with the AP engaged.",
-      },
-      {
-        heading: "Fly",
+          "The PF and PM should perform the cockpit preparation, in accordance with the defined panel scan sequence and tasksharing.",
         bullets: [
-          "<strong>PF:</strong> Fly the aircraft (Pitch, bank, airspeed, thrust, sideslip, heading, etc...) → Achieve and maintain desired targets and flight path.",
-          "<strong>PM:</strong> Actively monitor the flight parameters → Call out any excessive deviation.",
+          "The flight crew performs the preliminary cockpit preparation to ensure that all required safety checks are completed. The safety checks prevent the inadvertent operation of aircraft systems, danger to the aircraft, and danger to the personnel.",
+          "The PF prepares the overhead panel, the center instrument panel and the pedestal while the PM performs the external walkaround. When both flight crewmembers are seated and the PM checked the FMS, both flight crewmembers continue the cockpit preparation.",
         ],
       },
       {
-        heading: "Navigate — Situational awareness",
-        paragraph:
-          "Know where you are... · Know where you should be... · Know where you should go... · Know where the weather, terrain and obstacles are...",
-      },
-      {
-        heading: "Communicate",
-        paragraph:
-          "Flight Crew (PF ↔ PM) ↔ Cabin Crew, ATC, Ground crew. To ensure good communication, the flight crew should use standard phraseology and the applicable callouts.",
+        heading: "Preventing Identified Risks (PIR)",
+        bullets: [
+          "Possibility of injury to the ground personnel.",
+          "Possibility of damage to the aircraft.",
+          "Possibility of injury to passengers.",
+          "The navigation may be affected.",
+          "The handling or control of the aircraft may be affected.",
+          "It may not be possible to complete the initial flight.",
+        ],
       },
     ],
     alert: {
       level: "WARNING",
-      text: "Always keep in mind the key message: Fly the aircraft! Fly the aircraft! Fly the aircraft!",
+      text: "Do not pressurize the hydraulic systems until clearance is obtained from ground personnel.",
     },
   },
   {
@@ -141,11 +173,12 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "1.5 Golden Rules #2 y #3: automatización y FMA",
     subtitle: "Golden Rules · #2 · #3",
-    leftTitle: "AUTOMATION & FMA",
+    leftPct: 57,
+    leftTitle: "AUTOMATION & FMA (DSC-22_30-80-20)",
     rightTitle: "AP/FD ENGAGEMENT AND FMA",
     image: img("p300_ap_fd_and_a_thr_engagement_disengagement"),
     imageAlt: "AP/FD engagement and FMA check",
-    sourceRef: "Source: Airbus A320 · Golden Rules #2 & #3",
+    sourceRef: "Source: FCOM A320 · DSC-22_30-80-20 & Golden Rules #2 / #3",
     cards: [
       {
         heading: "#2 Use the appropriate level of automation at all times",
@@ -161,34 +194,43 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
         paragraph: "To ensure correct situational awareness at all times, the flight crew must:",
         bullets: ["Monitor the FMA.", "Announce the FMA.", "Confirm the FMA.", "Understand the FMA."],
       },
+      {
+        heading: "FMA Display (FCOM DSC-22_30-80-20)",
+        paragraph:
+          "The FMA is located on the upper part of the PFD, and displays information associated to flight guidance: A/THR messages and modes · AP/FD modes (Vertical, Lateral, Common) · Approach and landing capability · AP, FD, and A/THR engagement status · Special Messages.",
+        bullets: [
+          "A white box appears for 10 s around the annunciation of an A/THR mode engagement, an AP/FD mode engagement, the approach and landing capability change, or an AP, FD, or A/THR engagement status change.",
+        ],
+      },
     ],
   },
   {
     comment: "SLIDE SOP-01.6: Golden Rule #4",
     eyebrow: EYEBROW,
     title: "1.6 Golden Rule #4: actuar si algo no va según lo previsto",
-    subtitle: "Golden Rules · #4",
-    leftTitle: "#4 TAKE ACTIONS IF THINGS DO NOT GO AS EXPECTED",
+    subtitle: "Golden Rules · #4 · Guidance & FMGC Logic",
+    leftTitle: "FCU GUIDANCE PHILOSOPHY · MASTER FMGC LOGIC",
     rightTitle: "TAKE ACTION !",
     image: img("p022_golden_rules"),
     imageAlt: "Golden Rule 4 take action PF and PM",
-    sourceRef: "Source: Airbus A320 · Golden Rules #4",
+    sourceRef: "Source: FCOM A320 · DSC-22_10-30 & DSC-22_10-40-20",
     cards: [
       {
-        heading: "If the aircraft does not follow the desired flight path, or the selected targets",
-        paragraph: "<strong>Take action !</strong>",
-      },
-      {
-        heading: "PF",
-        paragraph: "Change the level of automation:",
-        bullets: ["Managed guidance → Selected guidance, or", "Selected guidance → Manual flying."],
-      },
-      {
-        heading: "PM",
+        heading: "Two Types of Guidance (FCOM DSC-22_10-40-20)",
+        paragraph:
+          "The flight crew can use two types of guidance to control the aircraft in auto flight. One type is managed by the Flight Management Guidance System (FMGS). The other uses target quantities which are manually entered by the flight crew.",
         bullets: [
-          "Communicate with the PF",
-          "Challenge the actions of the PF, if necessary",
-          "Take over, if necessary.",
+          "When the aircraft uses target quantities from the FMGS (managed guidance), the FCU windows display dashes and the white dots next to those windows light up.",
+          "When the aircraft uses target quantities, entered by the flight crew (selected guidance), the windows display the selected numbers and the white dots do not light up.",
+        ],
+      },
+      {
+        heading: "Master FMGC Logic (FCOM DSC-22_10-30)",
+        bullets: [
+          "If one autopilot (AP) is engaged, the related FMGC is master: it uses the onside FD for guidance, controls the A/THR, and controls the FMA 1 and 2.",
+          "If two APs are engaged, FMGC1 is master.",
+          "If no AP is engaged, and the FD1 pb is on, then FMGC1 is master; if the FD1 pb is off, and FD2 pb on, then FMGC2 is master.",
+          "If no AP/FD is engaged, A/THR is controlled by FMGC1.",
         ],
       },
     ],
@@ -199,7 +241,6 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "1.7 Qué son los Standard Operating Procedures (SOP)",
     subtitle: "FCOM PRO-NOR-SOP-01 · Foreword",
-    leftPct: 58,
     leftTitle: "STANDARD OPERATING PROCEDURES",
     rightTitle: "STANDARDIZED COCKPIT SCAN SEQUENCE",
     image: img("p139_cockpit_preparation"),
@@ -229,7 +270,6 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "1.8 Comunicación estándar y callouts de checklist",
     subtitle: `${SCO} · Standard Callouts`,
-    leftPct: 54,
     leftTitle: "COMMUNICATIONS & CHECKLIST CALLOUTS",
     rightTitle: "FINAL COCKPIT PREPARATION (PF / PM)",
     image: img("p146_cockpit_preparation"),
@@ -360,7 +400,6 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "1.12 Guía de callouts del FCU: SET",
     subtitle: `${SCO} · FCU SET (A320)`,
-    leftPct: 55,
     leftTitle: "01 | SET (ROTAR SELECTOR)",
     rightTitle: "A320 FCU & EFIS CONTROL PANELS",
     image: img("fcom_a320_fcu_panels"),
@@ -751,7 +790,6 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "1.25 Notas a los callouts de aproximación y aterrizaje",
     subtitle: `${SCO}-D · Approach and Landing · Notes`,
-    leftPct: 54,
     leftTitle: "NOTES (1) – (8)",
     rightTitle: "TOUCHDOWN · ROLLOUT · AFTER LANDING",
     image: img("p286_after_landing_parking_securing_the_a_c"),

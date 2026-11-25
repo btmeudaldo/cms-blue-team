@@ -2,6 +2,7 @@ import type { CourseDocumentationItem } from "@/features/learning/content/c172-c
 import { joinSlides, type MccLesson, type MccSlideSpec } from "./mcc/slide-builder.ts";
 import { MCC_SOP_01 } from "./mcc/sop-01.ts";
 import { MCC_SOP_02 } from "./mcc/sop-02.ts";
+import { MCC_SOP_03 } from "./mcc/sop-03.ts";
 
 export const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 export const MCC_COURSE_SLUG = "aps-mcc-a320";
@@ -3270,7 +3271,7 @@ export const MCC_LEGACY_LESSONS = [
 ];
 
 /** Nueva estructura basada en el PDP Jan 2024 (docs/mcc/08_ARQUITECTURA_PDP.md). */
-export const MCC_PDP_LESSONS: MccLesson[] = [MCC_SOP_01, MCC_SOP_02];
+export const MCC_PDP_LESSONS: MccLesson[] = [MCC_SOP_01, MCC_SOP_02, MCC_SOP_03];
 
 /** Mientras conviven ambas estructuras, las lecciones antiguas se ordenan detrás (secuencia +100). */
 const LEGACY_SEQUENCE_OFFSET = 100;
