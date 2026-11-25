@@ -15,6 +15,12 @@ dotenv.config({ path: path.join(projectRoot, ".env") });
 
 const isDryRun = process.argv.includes("--dry-run");
 const forceUpload = process.argv.includes("--force");
+// --only=p009_use_of_tutorials.webp,p011_use_of_tutorials.webp → sube/registra solo esos archivos
+// (deben estar en SELECCION.md) y fusiona IMAGENES_URLS.json en lugar de sobrescribirlo.
+const onlyArg = process.argv.find((a) => a.startsWith("--only="));
+const ONLY_FILES = onlyArg
+  ? new Set(onlyArg.slice("--only=".length).split(",").map((s) => s.trim()).filter(Boolean))
+  : null;
 
 const PDP_DIR = path.join(projectRoot, "scratch", "mcc_md", "08_pdp_jan2024");
 const SELECCION_PATH = path.join(PDP_DIR, "SELECCION.md");
@@ -356,7 +362,10 @@ async function registerInSupabase(items) {
 }
 
 function writeUrlMappingFile(items) {
-  const mapping = {};
+  const mapping =
+    ONLY_FILES && fs.existsSync(URL_MAP_OUTPUT)
+      ? JSON.parse(fs.readFileSync(URL_MAP_OUTPUT, "utf8"))
+      : {};
   for (const item of items) {
     mapping[item.relFile] = {
       block: item.block,
@@ -375,7 +384,15 @@ function writeUrlMappingFile(items) {
 }
 
 async function main() {
-  const items = parseSelectionFile(SELECCION_PATH);
+  let items = parseSelectionFile(SELECCION_PATH);
+  if (ONLY_FILES) {
+    const missing = [...ONLY_FILES].filter((f) => !items.some((item) => item.filename === f));
+    if (missing.length) {
+      throw new Error(`Archivos de --only que no están en SELECCION.md: ${missing.join(", ")}`);
+    }
+    items = items.filter((item) => ONLY_FILES.has(item.filename));
+    console.log(`📌 Solo se procesan: ${[...ONLY_FILES].join(", ")}`);
+  }
   const totalBytes = items.reduce((acc, item) => acc + item.size_bytes, 0);
   const byBlock = items.reduce((acc, item) => {
     acc[item.block] = (acc[item.block] || 0) + 1;

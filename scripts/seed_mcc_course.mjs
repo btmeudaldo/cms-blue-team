@@ -27,7 +27,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
  *                       curso que ya existan en Supabase solo se les actualiza el orden
  *                       (sequence_order / lesson_order), nunca el contenido. No toca la fila del curso.
  *   --private           Las lecciones que aún no existen en Supabase se crean con todas sus
- *                       diapositivas privadas (solo las ve el superadmin).
+ *                       diapositivas privadas (solo las ve el superadmin), y en las que ya existen
+ *                       las diapositivas nuevas (sin equivalente remoto) también se crean privadas.
  *   --dry-run           Muestra lo que haría sin escribir nada.
  */
 const args = process.argv.slice(2);
@@ -180,10 +181,11 @@ async function upsertLessons(lessons) {
         const mergedSlides = localSlides.map((lSlide, lIdx) => {
           const key = extractSlideKey(lSlide, lIdx);
           const remoteVis = remoteVisibilityMap.get(key) ?? remoteVisibilityMap.get(`index_${lIdx}`);
+          // Con --private, una diapositiva sin equivalente remoto (nueva) se crea privada.
           const finalVis =
             remoteVis !== undefined
               ? remoteVis
-              : isSlidePrivate(lSlide)
+              : FORCE_PRIVATE_NEW || isSlidePrivate(lSlide)
                 ? "private"
                 : "public";
           return finalVis === "private" ? setSlidePrivateAttr(lSlide) : setSlidePublicAttr(lSlide);

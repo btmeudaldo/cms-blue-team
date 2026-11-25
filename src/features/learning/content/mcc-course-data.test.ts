@@ -45,7 +45,7 @@ describe("SOP-01", () => {
     const imgs = [...MCC_SOP_01.content_html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
     expect(imgs.length).toBeGreaterThan(0);
     for (const src of imgs) {
-      expect(src).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p\d{3}_[a-z_]+\.webp$/);
+      expect(src).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p\d{3}_[a-z0-9_]+\.webp$/);
     }
     for (const slide of slides) {
       expect(slide).toMatch(/(Source|Fuente): /);
