@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { MCC_LEGACY_LESSONS, MCC_LESSONS, MCC_PDP_LESSONS, clampLeftPct } from "./mcc-course-data";
 import { MCC_SOP_01, SOP_01_SLIDE_COUNT } from "./mcc/sop-01";
+import { MCC_SOP_02, SOP_02_SLIDE_COUNT } from "./mcc/sop-02";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -57,5 +58,24 @@ describe("SOP-01", () => {
 
   it("does not include the First FFS, navigation or PIR slides", () => {
     expect(MCC_SOP_01.content_html).not.toMatch(/First FFS|p01[1-7]_|Navigation buttons/);
+  });
+});
+
+describe("SOP-02", () => {
+  const slides = MCC_SOP_02.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable 0.75 h lesson with one flow image per slide", () => {
+    expect(MCC_SOP_02.min_seconds).toBe(2700);
+    expect(slides).toHaveLength(SOP_02_SLIDE_COUNT);
+    for (const slide of slides) {
+      expect(slide).toMatch(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p0[2-4]\d_flow_patterns\.webp"/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("covers every flow pattern page of the PDP (p.23–41)", () => {
+    const pages = [...MCC_SOP_02.content_html.matchAll(/p0(\d\d)_flow_patterns/g)].map((m) => Number(m[1]));
+    expect(new Set(pages)).toEqual(new Set([23, ...Array.from({ length: 18 }, (_, i) => 24 + i)]));
   });
 });
