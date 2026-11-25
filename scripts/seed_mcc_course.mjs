@@ -21,10 +21,85 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-async function seedMCC() {
-  console.log(`🚀 Sincronizando curso APS MCC en Supabase...`);
+/*
+ * Opciones:
+ *   --only=slug1,slug2  Sube solo esas lecciones (contenido completo). Al resto de lecciones del
+ *                       curso que ya existan en Supabase solo se les actualiza el orden
+ *                       (sequence_order / lesson_order), nunca el contenido. No toca la fila del curso.
+ *   --private           Las lecciones que aún no existen en Supabase se crean con todas sus
+ *                       diapositivas privadas (solo las ve el superadmin).
+ *   --dry-run           Muestra lo que haría sin escribir nada.
+ */
+const args = process.argv.slice(2);
+const onlyArg = args.find((a) => a.startsWith("--only="));
+const ONLY_SLUGS = onlyArg ? onlyArg.slice("--only=".length).split(",").map((s) => s.trim()).filter(Boolean) : null;
+const FORCE_PRIVATE_NEW = args.includes("--private");
+const DRY_RUN = args.includes("--dry-run");
 
-  // 1. Upsert course
+if (ONLY_SLUGS) {
+  const unknown = ONLY_SLUGS.filter((s) => !MCC_LESSONS.some((l) => l.slug === s));
+  if (unknown.length) {
+    console.error(`❌ Slugs desconocidos en --only: ${unknown.join(", ")}`);
+    process.exit(1);
+  }
+}
+
+/** Reordena (solo orden) las lecciones existentes que no se van a subir, para liberar sus posiciones. */
+async function reorderExistingLessons(selectedIds) {
+  const others = MCC_LESSONS.filter((l) => !selectedIds.has(l.id));
+  const { data: remote, error } = await supabase
+    .from("lessons")
+    .select("id, slug, sequence_order, lesson_order")
+    .eq("course_id", MCC_COURSE_ID);
+  if (error) throw error;
+  const remoteById = new Map((remote ?? []).map((r) => [r.id, r]));
+
+  // Primero las que suben de posición (de mayor a menor) para no chocar con el índice único.
+  const moves = others
+    .filter((l) => remoteById.has(l.id))
+    .filter((l) => {
+      const r = remoteById.get(l.id);
+      return r.sequence_order !== l.sequence_order || r.lesson_order !== (l.lesson_order ?? l.sequence_order);
+    })
+    .sort((a, b) => b.sequence_order - a.sequence_order);
+
+  for (const l of moves) {
+    const r = remoteById.get(l.id);
+    const target = { sequence_order: l.sequence_order, lesson_order: l.lesson_order ?? l.sequence_order };
+    console.log(`↕️  Orden ${l.slug}: ${r.sequence_order}/${r.lesson_order} → ${target.sequence_order}/${target.lesson_order}`);
+    if (DRY_RUN) continue;
+    const { error: upErr } = await supabase.from("lessons").update(target).eq("id", l.id);
+    if (upErr) throw upErr;
+  }
+  if (!moves.length) console.log("↕️  No hay lecciones que reordenar.");
+}
+
+async function seedMCC() {
+  console.log(
+    `🚀 Sincronizando curso APS MCC en Supabase...${DRY_RUN ? " (DRY RUN: no se escribe nada)" : ""}`,
+  );
+
+  const lessonsToUpload = ONLY_SLUGS ? MCC_LESSONS.filter((l) => ONLY_SLUGS.includes(l.slug)) : MCC_LESSONS;
+
+  if (ONLY_SLUGS) {
+    console.log(`📌 Solo se suben: ${ONLY_SLUGS.join(", ")} (la fila del curso no se toca).`);
+    await reorderExistingLessons(new Set(lessonsToUpload.map((l) => l.id)));
+  } else {
+    await upsertCourse();
+  }
+
+  await upsertLessons(lessonsToUpload);
+
+  console.log(
+    `\n🎉 Curso APS MCC sincronizado (sin matriculación automática masiva: matricular alumnos desde Admin/Instructor).`,
+  );
+}
+
+async function upsertCourse() {
+  if (DRY_RUN) {
+    console.log(`📝 Se actualizaría la fila del curso ${MCC_COURSE_SLUG}.`);
+    return;
+  }
   const { error: courseError } = await supabase.from("courses").upsert(
     {
       id: MCC_COURSE_ID,
@@ -41,10 +116,12 @@ async function seedMCC() {
     process.exit(1);
   }
   console.log(`✅ Curso APS MCC registrado: ${MCC_COURSE_TITLE}`);
+}
 
-  // 2. Upsert lessons
-  for (const lesson of MCC_LESSONS) {
+async function upsertLessons(lessons) {
+  for (const lesson of lessons) {
     let contentToSave = lesson.content_html;
+    let existsRemotely = false;
 
     // Preservar visibilidad configurada desde la interfaz si ya existe en Supabase
     try {
@@ -54,6 +131,7 @@ async function seedMCC() {
         .eq("id", lesson.id)
         .maybeSingle();
 
+      existsRemotely = Boolean(dbLesson);
       if (dbLesson && dbLesson.content_html) {
         const pagebreakRegex = /(?:<!--\s*(?:pagebreak|slidebreak|page-break|slide-break)\s*-->)/gi;
         const remoteSlides = dbLesson.content_html.split(pagebreakRegex);
@@ -117,6 +195,28 @@ async function seedMCC() {
       console.warn("No se pudo verificar visibilidad previa en Supabase:", e);
     }
 
+    if (FORCE_PRIVATE_NEW && !existsRemotely) {
+      const pagebreakRegex = /(?:<!--\s*(?:pagebreak|slidebreak|page-break|slide-break)\s*-->)/gi;
+      contentToSave = contentToSave
+        .split(pagebreakRegex)
+        .map((slide) =>
+          /data-slide-visibility=/i.test(slide)
+            ? slide
+            : slide.replace(
+                /(<div[^>]*class=["'][^"']*lesson-slide-container[^"']*["'])/i,
+                '$1 data-slide-visibility="private"',
+              ),
+        )
+        .join("\n\n<!-- pagebreak -->\n\n");
+    }
+
+    const slides = contentToSave.split(/<!--\s*pagebreak\s*-->/gi);
+    const privateCount = slides.filter((s) => /data-slide-visibility=["']private["']/i.test(s)).length;
+    console.log(
+      `${DRY_RUN ? "📝 Se guardaría" : "💾 Guardando"}: ${lesson.slug} (orden ${lesson.sequence_order}, ${slides.length} diapositivas, ${privateCount} privadas, ${existsRemotely ? "actualización" : "nueva"}, min_seconds ${lesson.min_seconds})`,
+    );
+    if (DRY_RUN) continue;
+
     const wordCount = contentToSave
       .replace(/<[^>]*>/g, " ")
       .split(/\s+/)
@@ -144,10 +244,6 @@ async function seedMCC() {
       console.log(`✅ Lección guardada: ${lesson.title}`);
     }
   }
-
-  console.log(
-    `\n🎉 Curso APS MCC listo en Supabase (sin matriculación automática masiva: matricular alumnos desde Admin/Instructor).`,
-  );
 }
 
 seedMCC().catch((err) => {
