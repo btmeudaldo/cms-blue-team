@@ -23,6 +23,8 @@ import {
 } from "@/app/actions/progress.actions";
 import {
   canCompleteLesson,
+  formatLessonSeconds,
+  getSlideRealMinSeconds,
   remainingLessonSeconds,
   type LessonProgress,
   type ProgressResult,
@@ -138,6 +140,8 @@ export function LessonPlayer({
   const [isActivityPaused, setIsActivityPaused] = useState(false);
   const [retryVersion, setRetryVersion] = useState(0);
   const [isAdvanceArmed, setIsAdvanceArmed] = useState(isAlreadyCompleted);
+  const [staffTimerMode, setStaffTimerMode] = useState<"fast" | "real">("fast");
+  const [isPreviewFinished, setIsPreviewFinished] = useState(false);
 
   // Focus & Visibility state
   const [isWindowFocused, setIsWindowFocused] = useState(true);
@@ -202,7 +206,7 @@ export function LessonPlayer({
 
   const isSuperAdmin = Boolean(isSuperAdminProp || role === "superadmin");
   const isStaff =
-    role === "superadmin" || role === "admin" || role === "instructor";
+    isSuperAdmin || role === "admin" || role === "instructor";
   const { visibleSlides, visibleToOriginalIndexMap } = useMemo(
     () => getVisibleSlidesForUser(rawLessonPages, role),
     [rawLessonPages, role],
@@ -328,13 +332,15 @@ export function LessonPlayer({
     }
   };
 
-  // 1 second per page for fast review as requested
-  const minSecondsPerPage = 1;
-  const effectiveMinSeconds = 1;
   const isSlideMode =
     totalLessonPages > 1 ||
     contentHtml.includes("lesson-slide-container") ||
     contentHtml.includes("<!-- DIAPOSITIVA");
+  const realSecondsPerPage = getSlideRealMinSeconds(minSeconds, totalLessonPages);
+  const isStaffFastTimer =
+    isStaff && staffTimerMode === "fast" && (totalLessonPages > 1 || isSlideMode);
+  const minSecondsPerPage = isStaffFastTimer ? 1 : realSecondsPerPage;
+  const isOnLastSlide = !isSlideMode || effectivePageIndex >= totalLessonPages - 1;
   const isAfterLastSlide = isSlideMode && currentPageIndex >= totalLessonPages;
   const isCurrentPageDone =
     isAfterLastSlide ||
@@ -346,8 +352,29 @@ export function LessonPlayer({
   const currentPageRemainingSeconds = isCurrentPageDone
     ? 0
     : Math.max(0, minSecondsPerPage - elapsedOnCurrentPage);
+  const needsTotalTimeOnSlide =
+    !isStaffFastTimer &&
+    isOnLastSlide &&
+    !isAlreadyCompleted &&
+    !isCompletedSuccess &&
+    remainingSeconds > 0;
   const activeRemainingSeconds =
-    totalLessonPages > 1 ? currentPageRemainingSeconds : remainingSeconds;
+    totalLessonPages > 1 && !needsTotalTimeOnSlide
+      ? currentPageRemainingSeconds
+      : remainingSeconds;
+
+  const handleStaffTimerModeChange = (mode: "fast" | "real") => {
+    if (!isStaff) return;
+    setStaffTimerMode(mode);
+    setIsPreviewFinished(false);
+    if (mode === "fast") {
+      setErrorMessage(null);
+      setIsActivityPaused(false);
+    }
+    try {
+      localStorage.setItem("cms_lesson_staff_timer_mode", mode);
+    } catch { }
+  };
 
   const completedLessonSet = new Set(completedLessonIds);
   const lessonLayoutClasses = getLessonLayoutClasses(isIndexOpen, isSlideMode);
@@ -373,8 +400,14 @@ export function LessonPlayer({
       if (savedLayout === "top-header" || savedLayout === "vertical-left") {
         setLayoutMode(savedLayout);
       }
+      if (isStaff) {
+        const savedTimerMode = localStorage.getItem("cms_lesson_staff_timer_mode");
+        if (savedTimerMode === "real" || savedTimerMode === "fast") {
+          setStaffTimerMode(savedTimerMode);
+        }
+      }
     } catch (e) { }
-  }, []);
+  }, [isStaff]);
 
   const toggleLayoutMode = (mode: "top-header" | "vertical-left") => {
     setLayoutMode(mode);
@@ -445,7 +478,7 @@ export function LessonPlayer({
   ]);
 
   useEffect(() => {
-    if (isAlreadyCompleted || isCompletedSuccess) return;
+    if (isAlreadyCompleted || isCompletedSuccess || isStaffFastTimer) return;
     let mounted = true;
     let started = false;
     let activityConfirmed = false;
@@ -577,10 +610,10 @@ export function LessonPlayer({
           : { error: "Registro no iniciado" },
       );
     };
-  }, [isAlreadyCompleted, isCompletedSuccess, lessonId, retryVersion]);
+  }, [isAlreadyCompleted, isCompletedSuccess, lessonId, retryVersion, isStaffFastTimer]);
 
   const requirementsMet =
-    (totalLessonPages > 1
+    (totalLessonPages > 1 && (!isOnLastSlide || isStaffFastTimer)
       ? currentPageRemainingSeconds === 0
       : remainingSeconds === 0) && reachedScrollThreshold;
   const canAdvance =
@@ -588,7 +621,7 @@ export function LessonPlayer({
     (isCurrentExerciseCompleted &&
       canCompleteLesson(
         serverProgress,
-        effectiveMinSeconds,
+        minSeconds,
         reachedScrollThreshold,
         isAdvanceArmed,
         isCompleting || Boolean(errorMessage) || !isWindowFocused,
@@ -718,7 +751,7 @@ export function LessonPlayer({
   }, [showCompletionToast]);
 
   const timerPct =
-    totalLessonPages > 1
+    totalLessonPages > 1 && !needsTotalTimeOnSlide
       ? minSecondsPerPage > 0
         ? Math.min(
           100,
@@ -1033,9 +1066,9 @@ export function LessonPlayer({
                 </div>
                 <div className="flex flex-col leading-tight">
                   <span className="text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500">
-                    {totalLessonPages > 1 || isSlideMode
-                      ? `Tiempo Diapositiva ${activeRemainingSeconds > 0 ? `(${activeRemainingSeconds}s)` : ""}`
-                      : "Tiempo Exigido"}
+                    {(totalLessonPages > 1 || isSlideMode) && !needsTotalTimeOnSlide
+                      ? `Tiempo Diapositiva ${activeRemainingSeconds > 0 ? `(${formatLessonSeconds(activeRemainingSeconds)})` : ""}`
+                      : `Tiempo Exigido ${activeRemainingSeconds > 0 ? `(${formatLessonSeconds(activeRemainingSeconds)})` : ""}`}
                   </span>
                   <span className="text-xs font-extrabold text-slate-800 dark:text-slate-200">
                     {activeRemainingSeconds === 0
@@ -1305,14 +1338,15 @@ export function LessonPlayer({
             {(totalLessonPages > 1 || isSlideMode) ? (
               <nav
                 aria-label="Navegación de diapositivas"
-                className="relative flex items-center justify-between gap-3 px-4 py-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-2xs backdrop-blur-sm min-h-[44px]"
+                className="relative flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 sm:gap-3 px-3 sm:px-4 py-2 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-2xs backdrop-blur-sm min-h-[44px]"
               >
-                {/* Left: Previous Button */}
-                <div className="flex items-center">
+                {/* Left: Previous Button + Staff Slide Timer Mode Selector (1s vs Real) */}
+                <div className="flex items-center gap-2 shrink-0 z-10">
                   <button
                     type="button"
                     disabled={currentPageIndex === 0}
                     onClick={() => {
+                      setIsPreviewFinished(false);
                       setCurrentPageIndex((prev) => Math.max(0, prev - 1));
                       window.scrollTo({ top: 0, behavior: "smooth" });
                     }}
@@ -1325,13 +1359,55 @@ export function LessonPlayer({
                     <span>&larr;</span>
                     <span className="hidden sm:inline">Anterior</span>
                   </button>
+
+                  {isStaff && (
+                    <div
+                      role="group"
+                      aria-label="Modo de tiempo por diapositiva"
+                      className="flex items-center gap-0.5 rounded-xl bg-slate-100 dark:bg-slate-800 p-0.5 border border-slate-200 dark:border-slate-700"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => handleStaffTimerModeChange("fast")}
+                        aria-pressed={staffTimerMode === "fast"}
+                        title="Modo revisión rápida (1s por diapositiva; no registra la lección ni el curso como realizados)"
+                        className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer whitespace-nowrap ${
+                          staffTimerMode === "fast"
+                            ? "bg-white dark:bg-slate-900 text-sky-600 dark:text-sky-400 shadow-2xs border border-sky-200 dark:border-sky-800"
+                            : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                        }`}
+                      >
+                        <span>⚡</span>
+                        <span>1s</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleStaffTimerModeChange("real")}
+                        aria-pressed={staffTimerMode === "real"}
+                        title={`Modo tiempo real (${formatLessonSeconds(realSecondsPerPage)} por diapositiva, igual que el alumno)`}
+                        className={`flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer whitespace-nowrap ${
+                          staffTimerMode === "real"
+                            ? "bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-2xs border border-emerald-200 dark:border-emerald-800"
+                            : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                        }`}
+                      >
+                        <span>⏱️</span>
+                        <span>Real</span>
+                        <span className="hidden md:inline opacity-75">
+                          ({formatLessonSeconds(realSecondsPerPage)})
+                        </span>
+                      </button>
+                    </div>
+                  )}
                 </div>
 
-                {/* Center: Slide Indicator strictly centered */}
-                <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 pointer-events-auto max-w-[55vw] sm:max-w-none">
+                {/* Center: Slide Indicator cleanly centered without overlapping left/right controls */}
+                <div className="flex-1 min-w-0 flex items-center justify-center gap-2 pointer-events-auto">
                   <span className="text-xs font-extrabold text-slate-700 dark:text-slate-300 whitespace-nowrap truncate">
                     {isAfterLastSlide
-                      ? "Fin de la Lección · Evaluación"
+                      ? isPreviewFinished && !isAlreadyCompleted && !isCompletedSuccess
+                        ? "Vista previa finalizada · Sin registrar"
+                        : "Fin de la Lección · Evaluación"
                       : `Diapositiva ${effectivePageIndex + 1} de ${totalLessonPages}`}
                   </span>
                   <div className="hidden md:flex items-center gap-1">
@@ -1351,6 +1427,7 @@ export function LessonPlayer({
                           disabled={!isClickable}
                           onClick={() => {
                             if (isClickable) {
+                              setIsPreviewFinished(false);
                               setCurrentPageIndex(idx);
                               window.scrollTo({ top: 0, behavior: "smooth" });
                             }
@@ -1379,6 +1456,7 @@ export function LessonPlayer({
                       <button
                         type="button"
                         onClick={() => {
+                          setIsPreviewFinished(false);
                           setCurrentPageIndex(totalLessonPages);
                           window.scrollTo({ top: 0, behavior: "smooth" });
                         }}
@@ -1392,45 +1470,43 @@ export function LessonPlayer({
                   </div>
                 </div>
 
-                {/* Right: SuperAdmin Visibility Selector or Balance spacer */}
-                {isSuperAdmin ? (
-                  <div className="flex items-center gap-1 rounded-xl bg-slate-100 dark:bg-slate-800 p-0.5 border border-slate-200 dark:border-slate-700 pointer-events-auto">
-                    <button
-                      type="button"
-                      disabled={isUpdatingVisibility}
-                      onClick={() => handleLiveVisibilityChange("public")}
-                      className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${currentSlideVisibility === "public"
-                          ? "bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-2xs border border-emerald-200 dark:border-emerald-800"
-                          : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-                        }`}
-                      aria-label="Visible para todos los alumnos y personal"
-                      title="Visible para todos los alumnos y personal"
-                    >
-                      <span>🌐</span>
-                    </button>
-                    <button
-                      type="button"
-                      disabled={isUpdatingVisibility}
-                      onClick={() => handleLiveVisibilityChange("private")}
-                      className={`flex items-center justify-center px-2.5 py-1 rounded-lg text-sm transition-all cursor-pointer ${currentSlideVisibility === "private"
-                          ? "bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 shadow-2xs border border-amber-300 dark:border-amber-700"
-                          : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-                        }`}
-                      aria-label="Solo a la vista para mí (Borrador de instructor)"
-                      title="Solo a la vista para mí (Borrador de instructor)"
-                    >
-                      <span>🔒</span>
-                    </button>
+                {/* Right: Maximize + SuperAdmin Visibility Selector */}
+                <div className="flex items-center gap-2 shrink-0 z-10">
+                  <div className="hidden xl:block">
+                    <MaximizeWindowBanner compact />
                   </div>
-                ) : (
-                  <div className="w-16 hidden sm:block pointer-events-none" />
-                )}
-                <div
-                  className={`hidden xl:block absolute top-1/2 -translate-y-1/2 z-30 ${
-                    isSuperAdmin ? "right-[116px]" : "right-[32px]"
-                  }`}
-                >
-                  <MaximizeWindowBanner compact />
+                  {isSuperAdmin ? (
+                    <div className="flex items-center gap-1 rounded-xl bg-slate-100 dark:bg-slate-800 p-0.5 border border-slate-200 dark:border-slate-700 pointer-events-auto">
+                      <button
+                        type="button"
+                        disabled={isUpdatingVisibility}
+                        onClick={() => handleLiveVisibilityChange("public")}
+                        className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${currentSlideVisibility === "public"
+                            ? "bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-2xs border border-emerald-200 dark:border-emerald-800"
+                            : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                          }`}
+                        aria-label="Visible para todos los alumnos y personal"
+                        title="Visible para todos los alumnos y personal"
+                      >
+                        <span>🌐</span>
+                      </button>
+                      <button
+                        type="button"
+                        disabled={isUpdatingVisibility}
+                        onClick={() => handleLiveVisibilityChange("private")}
+                        className={`flex items-center justify-center px-2.5 py-1 rounded-lg text-sm transition-all cursor-pointer ${currentSlideVisibility === "private"
+                            ? "bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-300 shadow-2xs border border-amber-300 dark:border-amber-700"
+                            : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
+                          }`}
+                        aria-label="Solo a la vista para mí (Borrador de instructor)"
+                        title="Solo a la vista para mí (Borrador de instructor)"
+                      >
+                        <span>🔒</span>
+                      </button>
+                    </div>
+                  ) : !isStaff ? (
+                    <div className="w-16 hidden sm:block pointer-events-none" />
+                  ) : null}
                 </div>
               </nav>
             ) : (
@@ -1448,7 +1524,59 @@ export function LessonPlayer({
               </div>
             ) : isAfterLastSlide ? (
               <div className="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm p-6 sm:p-10 flex flex-col justify-center items-center my-auto min-h-[460px] max-w-3xl mx-auto w-full text-center space-y-6 animate-in fade-in zoom-in-95 duration-200">
-                {quiz ? (
+                {isPreviewFinished && !isAlreadyCompleted && !isCompletedSuccess ? (
+                  <div className="space-y-6 w-full">
+                    <div className="w-16 h-16 rounded-2xl bg-sky-50 dark:bg-sky-950 text-sky-600 dark:text-sky-300 flex items-center justify-center text-3xl mx-auto shadow-inner">
+                      👁️
+                    </div>
+                    <div className="space-y-2">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 dark:bg-amber-950 px-3.5 py-1 text-xs font-extrabold text-amber-800 dark:text-amber-300">
+                        ⚡ Modo revisión (1s) · Sin registro en progreso
+                      </span>
+                      <h2 className="text-2xl font-black text-slate-900 dark:text-white">
+                        Vista previa finalizada
+                      </h2>
+                      <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
+                        Has recorrido todas las diapositivas en modo rápido (1s). Esta lección y el curso <strong>no</strong> se han registrado como completados.
+                      </p>
+                    </div>
+                    <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 pt-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsPreviewFinished(false);
+                          setCurrentPageIndex(totalLessonPages - 1);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className="w-full sm:w-auto rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 transition-all text-center cursor-pointer"
+                      >
+                        &larr; Repasar Diapositivas
+                      </button>
+                      <Link
+                        href={`/courses/${courseId}`}
+                        className="w-full sm:w-auto rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-5 py-2.5 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center"
+                      >
+                        Volver al Panel de Lecciones
+                      </Link>
+                      {quiz && (
+                        <Link
+                          href={`/quizzes/${quiz.id}`}
+                          className="w-full sm:w-auto rounded-2xl border border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/60 px-5 py-2.5 text-xs font-bold text-sky-800 dark:text-sky-200 hover:bg-sky-100 transition-all text-center"
+                        >
+                          📝 Abrir Examen (Vista previa)
+                        </Link>
+                      )}
+                      {nextLessonId && (
+                        <Link
+                          href={`/courses/${courseId}/lessons/${nextLessonId}`}
+                          className="w-full sm:w-auto rounded-2xl bg-[#1a80ff] px-6 py-2.5 text-xs font-bold text-white hover:bg-[#0066e6] transition-all text-center shadow-xs"
+                        >
+                          Siguiente Lección &rarr;
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                ) : quiz ? (
                   quizAttempt?.passed ? (
                     <div className="space-y-6 w-full">
                       <div className="w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-300 flex items-center justify-center text-3xl mx-auto shadow-inner">
@@ -1848,7 +1976,7 @@ export function LessonPlayer({
         </div>
 
         {/* Requirements Checklist Floating Capsule for Mobile Screens */}
-        {!canAdvance && (
+        {!canAdvance && !isStaffFastTimer && (
           <div className="lg:hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-40 bg-slate-900/95 dark:bg-slate-900/95 text-white backdrop-blur-xl px-5 py-2 rounded-full shadow-2xl border border-slate-700/80 text-xs font-semibold flex items-center gap-2.5 whitespace-nowrap pointer-events-none max-w-[95vw] overflow-x-auto">
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold transition-all whitespace-nowrap shrink-0 ${activeRemainingSeconds === 0
@@ -1921,38 +2049,83 @@ export function LessonPlayer({
                     )}
                   </button>
                 ) : isSlideMode ? (
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      if (!isCurrentExerciseCompleted) {
-                        setShowExercisePendingModal(true);
-                      } else if (isAlreadyCompleted || isCompletedSuccess) {
-                        setCurrentPageIndex(totalLessonPages);
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                      } else {
-                        handleComplete(e);
-                      }
-                    }}
-                    disabled={!canAdvance && isCurrentExerciseCompleted}
-                    className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${!isCurrentExerciseCompleted
-                        ? "bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20 hover:scale-105 active:scale-95"
-                        : canAdvance
-                          ? "bg-[#1a80ff] hover:bg-[#0066e6] text-white shadow-blue-500/30 hover:scale-105 active:scale-95"
-                          : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-500 cursor-not-allowed shadow-none"
-                      }`}
-                  >
-                    {!isCurrentExerciseCompleted ? (
-                      <span>🔒 Ejercicios pendientes (pulsa para info)</span>
-                    ) : isCompleting ? (
-                      "Verificando en servidor..."
-                    ) : isCompletedSuccess || isAlreadyCompleted ? (
-                      "Finalizar y Ver Examen ➔"
-                    ) : quiz && !quizAttempt?.passed ? (
-                      "Completar y Ver Examen ➔"
-                    ) : (
-                      "Completar y Salir ➔"
-                    )}
-                  </button>
+                  isStaffFastTimer && !isAlreadyCompleted && !isCompletedSuccess ? (
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (!isCurrentExerciseCompleted) {
+                            setShowExercisePendingModal(true);
+                          } else {
+                            setIsPreviewFinished(true);
+                            setCurrentPageIndex(totalLessonPages);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }
+                        }}
+                        className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${!isCurrentExerciseCompleted
+                            ? "bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20 hover:scale-105 active:scale-95"
+                            : "bg-[#1a80ff] hover:bg-[#0066e6] text-white shadow-blue-500/30 hover:scale-105 active:scale-95"
+                          }`}
+                      >
+                        {!isCurrentExerciseCompleted
+                          ? "🔒 Ejercicios pendientes (pulsa para info)"
+                          : "Finalizar vista previa (sin registrar) ➔"}
+                      </button>
+                      {nextLessonId && (
+                        <Link
+                          href={`/courses/${courseId}/lessons/${nextLessonId}`}
+                          className="inline-flex items-center justify-center rounded-2xl px-4 py-2.5 text-xs font-bold border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap"
+                        >
+                          Siguiente lección ➔
+                        </Link>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          if (!isCurrentExerciseCompleted) {
+                            setShowExercisePendingModal(true);
+                          } else if (isAlreadyCompleted || isCompletedSuccess) {
+                            setCurrentPageIndex(totalLessonPages);
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          } else {
+                            handleComplete(e);
+                          }
+                        }}
+                        disabled={!canAdvance && isCurrentExerciseCompleted}
+                        className={`inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-2.5 text-xs font-extrabold shadow-lg transition-all whitespace-nowrap cursor-pointer ${!isCurrentExerciseCompleted
+                            ? "bg-amber-600 hover:bg-amber-700 text-white shadow-amber-500/20 hover:scale-105 active:scale-95"
+                            : canAdvance
+                              ? "bg-[#1a80ff] hover:bg-[#0066e6] text-white shadow-blue-500/30 hover:scale-105 active:scale-95"
+                              : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-400 cursor-not-allowed shadow-none"
+                          }`}
+                      >
+                        {!isCurrentExerciseCompleted ? (
+                          <span>🔒 Ejercicios pendientes (pulsa para info)</span>
+                        ) : isCompleting ? (
+                          "Verificando en servidor..."
+                        ) : isCompletedSuccess || isAlreadyCompleted ? (
+                          "Finalizar y Ver Examen ➔"
+                        ) : !canAdvance && remainingSeconds > 0 ? (
+                          `⏳ Tiempo mínimo restante: ${formatLessonSeconds(remainingSeconds)}`
+                        ) : quiz && !quizAttempt?.passed ? (
+                          "Completar y Ver Examen ➔"
+                        ) : (
+                          "Completar y Salir ➔"
+                        )}
+                      </button>
+                      {isStaff && !canAdvance && !isAlreadyCompleted && !isCompletedSuccess && (
+                        <Link
+                          href={`/courses/${courseId}`}
+                          className="inline-flex items-center justify-center rounded-2xl px-4 py-2.5 text-xs font-bold border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors whitespace-nowrap"
+                        >
+                          Salir (vista previa)
+                        </Link>
+                      )}
+                    </div>
+                  )
                 ) : (
                   <button
                     type="button"

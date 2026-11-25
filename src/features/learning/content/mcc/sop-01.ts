@@ -1,14 +1,12 @@
 /**
  * SOP-01 — Filosofía Airbus y fundamentos MCC (1 h).
  *
- * Fuentes (texto literal):
- * - Airbus Tutorial PDP Jan 2024 (PDP) págs. 3–10 y 18–22: Use of Tutorials, Golden Rules.
- *   (First FFS, navegación y PIR retirados a petición de la escuela: el simulador del curso es otro.)
- * - FCOM PRO-NOR-SOP-01 (Foreword) y PRO-NOR-SCO (Standard Callouts), FCOM IBS A320/A321 25 MAY 23.
- * - Callouts FCU.pdf (Iberia, Manual de Operaciones D, Curso de Refresco OPS 2.2/2015, pág. 38).
- * Imágenes: láminas del PDP en Hostalia (IMAGENES_URLS.json). Las diapositivas de tablas de callouts
- * sin lámina equivalente en el PDP llevan el contenido en las dos columnas.
- * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
+ * Alcance: Curso APS MCC — Airbus A320 (simulador Entrol A32).
+ * Referencias técnicas estándar: Golden Rules, Use of Tutorials,
+ * FCOM A320 PRO-NOR-SOP-01 (Foreword), PRO-NOR-SCO (Standard Callouts)
+ * y DSC-22_10-40-20 (FCU Philosophy).
+ *
+ * Imágenes: láminas A320 e ilustraciones FCU alojadas en Hostalia (lesson_media, tag MCC).
  */
 import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
@@ -27,10 +25,10 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     title: "1.1 Uso de los tutoriales",
     subtitle: "Use of Tutorials",
     leftTitle: "WHEN AND HOW TO USE THE TUTORIALS",
-    rightTitle: "EXAMPLE OF A TUTORIAL — PROCEDURE SLIDE",
-    image: img("p009_use_of_tutorials"),
-    imageAlt: "Example of a tutorial procedure slide",
-    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — Use of Tutorials (p.3–6, p.9)",
+    rightTitle: "APT & FFS TUTORIAL USAGE",
+    image: img("p006_use_of_tutorials"),
+    imageAlt: "When and how to use the tutorials in APT and FFS sessions",
+    sourceRef: "Source: FCOM A320 · Use of Tutorials (APT & FFS)",
     cards: [
       {
         heading: "Objective",
@@ -63,7 +61,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "PROCEDURE SLIDE",
     image: img("p009_use_of_tutorials"),
     imageAlt: "Organization of the tutorials: procedure slide",
-    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — Use of Tutorials (p.8–10)",
+    sourceRef: "Source: FCOM A320 · Use of Tutorials (Organization)",
     cards: [
       {
         heading: "Organization of the tutorials",
@@ -85,7 +83,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "GOLDEN RULES",
     image: img("p018_golden_rules"),
     imageAlt: "The four Airbus Golden Rules",
-    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — Golden Rules (p.18)",
+    sourceRef: "Source: Airbus A320 · Golden Rules",
     cards: [
       {
         heading: "The four Golden Rules",
@@ -108,7 +106,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "FLY · NAVIGATE · COMMUNICATE",
     image: img("p019_golden_rules"),
     imageAlt: "Golden Rule 1 Fly Navigate Communicate",
-    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — Golden Rules (p.19)",
+    sourceRef: "Source: Airbus A320 · Golden Rules #1",
     cards: [
       {
         heading: "Fly! Navigate! Communicate!",
@@ -147,7 +145,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "AP/FD ENGAGEMENT AND FMA",
     image: img("p300_ap_fd_and_a_thr_engagement_disengagement"),
     imageAlt: "AP/FD engagement and FMA check",
-    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — Golden Rules (p.20–21) · Image: AP/FD and A/THR Engagement (p.300)",
+    sourceRef: "Source: Airbus A320 · Golden Rules #2 & #3",
     cards: [
       {
         heading: "#2 Use the appropriate level of automation at all times",
@@ -174,7 +172,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "TAKE ACTION !",
     image: img("p022_golden_rules"),
     imageAlt: "Golden Rule 4 take action PF and PM",
-    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — Golden Rules (p.22)",
+    sourceRef: "Source: Airbus A320 · Golden Rules #4",
     cards: [
       {
         heading: "If the aircraft does not follow the desired flight path, or the selected targets",
@@ -203,11 +201,10 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     subtitle: "FCOM PRO-NOR-SOP-01 · Foreword",
     leftPct: 58,
     leftTitle: "STANDARD OPERATING PROCEDURES",
-    rightTitle: "CM1 / CM2 SOP SEQUENCE",
-    image: img("p138_cockpit_preparation"),
-    imageAlt: "CM1 and CM2 SOP and flow sequence before departure",
-    sourceRef:
-      "Source: FCOM IBS A320/A321 — PRO-NOR-SOP-01 Foreword (Ident. PRO-NOR-SOP-01-00010142) · Image: PDP Cockpit Preparation (p.138)",
+    rightTitle: "STANDARDIZED COCKPIT SCAN SEQUENCE",
+    image: img("p139_cockpit_preparation"),
+    imageAlt: "Cockpit preparation standardized scan sequence",
+    sourceRef: "Source: FCOM A320 · PRO-NOR-SOP-01 Foreword",
     cards: [
       {
         heading: "Foreword",
@@ -232,9 +229,12 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "1.8 Comunicación estándar y callouts de checklist",
     subtitle: `${SCO} · Standard Callouts`,
-    leftTitle: "COMMUNICATIONS AND STANDARD TERMS",
-    rightTitle: "CHECKLIST CALLOUTS",
-    sourceRef: `Source: ${SCO} — Communications and Standard Terms, Checklist Callouts (Standard Callouts p.1)`,
+    leftPct: 54,
+    leftTitle: "COMMUNICATIONS & CHECKLIST CALLOUTS",
+    rightTitle: "FINAL COCKPIT PREPARATION (PF / PM)",
+    image: img("p146_cockpit_preparation"),
+    imageAlt: "PF and PM ready for checklist completion during cockpit preparation",
+    sourceRef: `Source: FCOM A320 · ${SCO} — Communications and Checklist Callouts`,
     cards: [
       {
         heading: "Standard phraseology",
@@ -247,8 +247,8 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
           "These standard Airbus callouts are also designed to promote situational awareness, and to ensure crew understanding of systems and their use in line operation.",
       },
     ],
-    rightTable: {
-      headers: ["Callout", "Meaning"],
+    table: {
+      headers: ["Checklist callout", "Meaning"],
       rows: [
         ["“CHECK”", "A command for the other pilot to check an item."],
         ["“CHECKED”", "A response that an item has been checked."],
@@ -268,7 +268,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "FCU ACTION CHECKED ON PFD / FMA",
     image: img("p300_ap_fd_and_a_thr_engagement_disengagement"),
     imageAlt: "FCU action and FMA verification",
-    sourceRef: `Source: ${SCO}-A — Actions Commanded by PF (Standard Callouts p.1–2) · Image: PDP p.300`,
+    sourceRef: `Source: FCOM A320 · ${SCO}-A — Actions Commanded by PF (SET)`,
     cards: [
       {
         heading: "General",
@@ -297,7 +297,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "FCU ACTION CHECKED ON PFD / FMA",
     image: img("p300_ap_fd_and_a_thr_engagement_disengagement"),
     imageAlt: "FCU action and FMA verification",
-    sourceRef: `Source: ${SCO}-A — Actions Commanded by PF (Standard Callouts p.2) · Image: PDP p.300`,
+    sourceRef: `Source: FCOM A320 · ${SCO}-A — Actions Commanded by PF (MANAGE / PULL)`,
     cards: [
       {
         heading: "MANAGE / PULL",
@@ -330,7 +330,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "BIRD ON (TRK-FPA)",
     image: img("p407_use_of_bird"),
     imageAlt: "HDG-V/S / TRK-FPA selection on FCU and PFD",
-    sourceRef: `Source: ${SCO}-A — Actions Commanded by PF (Standard Callouts p.2) · Image: PDP Use of Bird (p.407)`,
+    sourceRef: `Source: FCOM A320 · ${SCO}-A — V/S-FPA, ARM and ON/OFF`,
     cards: [
       {
         heading: "V/S/FPA knob",
@@ -356,81 +356,78 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-01.12: FCU callouts guide — SET",
+    comment: "SLIDE SOP-01.12: FCU callouts guide — SET (A320)",
     eyebrow: EYEBROW,
     title: "1.12 Guía de callouts del FCU: SET",
-    subtitle: "Callouts FCU · 01 SET",
-    leftTitle: "01 | SET",
-    rightTitle: "PF COMMAND · PF CALLOUT · PM CALLOUT",
-    sourceRef:
-      "Fuente: Callouts FCU.pdf — Iberia, Manual de Operaciones D, Curso de Refresco OPS 2.2/2015 (Guía del Briefing, Cap. 3, pág. 38)",
+    subtitle: `${SCO} · FCU SET (A320)`,
+    leftPct: 55,
+    leftTitle: "01 | SET (ROTAR SELECTOR)",
+    rightTitle: "A320 FCU & EFIS CONTROL PANELS",
+    image: img("fcom_a320_fcu_panels"),
+    imageAlt: "A320 FCU and EFIS control panels schematic showing windows, dots and selector knobs",
+    sourceRef: `Source: FCOM A320 · ${SCO}-A · DSC-22_10-40-20 — FCU Overview & SET`,
     cards: [
       {
-        heading: "SET",
-        paragraph: "Girar un selector para cambiar un <strong>valor</strong> sin cambiar el <strong>modo</strong>.",
-        bullets: ["SET SPD XXX KNOTS", "SET HDG XXX", "SET FL/ALT XXX", "SET V/S MINUS/PLUS XXX"],
+        heading: "SET — Cambiar un valor sin cambiar el modo",
+        paragraph:
+          "Girar un selector del FCU sin empujar ni tirar modifica únicamente el <strong>valor preseleccionado</strong> (en azul en PFD/ND) sin alterar el modo activo.",
       },
     ],
+    table: {
+      headers: ["PF command", "Verificación PFD / ND (PF)", "PM"],
+      rows: [
+        ["“SET SPEED ___ KT”", "SPEED ___ BLUE", "CHECKED"],
+        ["“SET HDG ___” <em>(3 dígitos, ej. 090)</em>", "HDG ___ BLUE", "CHECKED"],
+        ["“SET FL ___” / “SET ALT ____ FT”", "FL ___ / ALT ____ BLUE", "CHECKED"],
+        ["“SET V/S PLUS (MINUS) ___”", "V/S ±___ BLUE", "CHECKED"],
+        [
+          "“SET GO AROUND ALTITUDE __ FT”",
+          "<em>— (si ordena PF al PM)</em>",
+          "“GA ALTITUDE __ SET”",
+        ],
+      ],
+    },
     alert: {
       level: "NOTE",
-      text: "Guía gráfica de Iberia (curso de refresco A330/A340) incluida por la escuela en el material del curso. Las definiciones de SET, MANAGE y PULL coinciden con las del FCOM A320 PRO-NOR-SCO (diapositivas 1.9–1.11).",
-    },
-    rightTable: {
-      headers: ["PF command", "PF callout", "PM callout"],
-      rows: [
-        ["SET SPEED XXX KT", "SPEED XXX BLUE", "CHECKED"],
-        ["SET HEADING XX", "HEADING XX BLUE", "CHECKED"],
-        ["SET ALT/FL XX", "ALT/FL XX BLUE", "CHECKED"],
-        ["SET V/S MINUS/PLUS XXX", "V/S MINUS/PLUS XXX", "CHECKED"],
-        ["SET GA ALT XXX FT", "—", "GA ALT XXX FT SET <em>(excepción)</em>"],
-      ],
+      text: "En modo <em>managed</em> (guiones), al girar SPD/MACH o HDG/TRK o V/S la ventana muestra el valor temporalmente (10 s en SPD/MACH; 45 s en HDG/TRK y V/S) antes de volver a guiones. La ventana ALT siempre muestra altitud.",
     },
   },
   {
-    comment: "SLIDE SOP-01.13: FCU callouts guide — PULL and MANAGE",
+    comment: "SLIDE SOP-01.13: FCU callouts guide — PULL and MANAGE (A320)",
     eyebrow: EYEBROW,
     title: "1.13 Guía de callouts del FCU: PULL y MANAGE",
-    subtitle: "Callouts FCU · 02 PULL · 03 MANAGE",
-    leftTitle: "02 | PULL",
-    rightTitle: "03 | MANAGE",
-    sourceRef:
-      "Fuente: Callouts FCU.pdf — Iberia, Manual de Operaciones D, Curso de Refresco OPS 2.2/2015 (Guía del Briefing, Cap. 3, pág. 38)",
+    subtitle: `${SCO} · FCU PULL & MANAGE (A320)`,
+    leftPct: 56,
+    leftTitle: "02 | PULL · 03 | MANAGE",
+    rightTitle: "FCU PHILOSOPHY: MANAGED (PUSH) vs SELECTED (PULL)",
+    image: img("fcom_a320_fcu_push_pull"),
+    imageAlt: "A320 FCU philosophy showing managed dashed window with white dot versus selected value",
+    sourceRef: `Source: FCOM A320 · ${SCO}-A · DSC-22_10-40-20 — FCU PULL & MANAGE`,
     cards: [
       {
-        heading: "PULL",
-        paragraph: "Tirar de un selector para cambiar de un modo <em>managed</em> a uno <em>selected</em>.",
+        heading: "Cambio entre guiado Managed (PUSH) y Selected (PULL)",
         bullets: [
-          "PULL SPEED XXX KNOTS / PULL SPD (FLAP LCKD)",
-          "PULL HEADING XXX / PULL HDG (EO PROC.)",
-          "ALTITUDE XXX FT PULL / FL XX PULL",
-          "V/S MINUS/PLUS XXX PULL / FPA MINUS/PLUS X° PULL",
+          "<strong>PULL (Selected):</strong> Tirar del selector para enganchar un modo o target seleccionado por la tripulación (se apaga el punto blanco).",
+          "<strong>MANAGE (Managed):</strong> Empujar el selector para armar o enganchar el guiado calculado por el FMGS (se ilumina el punto blanco). El mando <strong>V/S-FPA no tiene función managed</strong>.",
         ],
       },
     ],
     table: {
-      headers: ["PF command", "PF callout", "PM"],
+      headers: ["Acción", "PF command", "FMA / PFD (PF)", "PM"],
       rows: [
-        ["PULL SPD XXX KTS", "SPEED XXX BLUE", "CHECKED"],
-        ["PULL HDG XXX", "HEADING XXX BLUE", "CHECKED"],
-        ["ALT/FL XXX PULL", "OPEN CLB XXX BLUE <em>(OPEN CLB / OPEN DES)</em>", "CHECKED"],
-        ["V/S MINUS/PLUS XXX PULL", "V/S MINUS/PLUS XXX PULL", "CHECKED"],
+        ["PULL", "“PULL SPEED 250 KNOTS”", "SPEED 250 BLUE", "CHECKED"],
+        ["PULL", "“PULL HDG 090”", "HDG <em>(activo, sin color)</em> · 090 BLUE", "CHECKED"],
+        ["PULL", "“FL 190 PULL”", "OPEN CLB <em>(o OPEN DES)</em> · FL 190 BLUE", "CHECKED"],
+        ["PULL", "“V/S PLUS (MINUS) 700 PULL”", "V/S +700 <em>(o FPA -3.0°)</em>", "CHECKED"],
+        ["MANAGE", "“MANAGE SPEED”", "SPEED / MACH <em>(target magenta)</em>", "CHECKED"],
+        ["MANAGE", "“MANAGE NAV”", "NAV <em>(sin color; o NAV BLUE si armado)</em>", "CHECKED"],
+        ["MANAGE", "“FL 190 MANAGE”", "CLB / DES <em>(sin color)</em> · FL 190", "CHECKED"],
+        ["LEVEL OFF", "“PUSH TO LEVEL OFF”", "V/S 0 / ALT <em>(sin color)</em>", "CHECKED"],
       ],
     },
-    rightCards: [
-      {
-        heading: "MANAGE",
-        paragraph: "Empujar un selector para cambiar de un modo <em>selected</em> a uno <em>managed</em>.",
-        bullets: ["MANAGE SPEED", "MANAGE NAV", "ALT XXX MANAGE / FL XX MANAGE", "PUSH TO LEVEL OFF"],
-      },
-    ],
-    rightTable: {
-      headers: ["PF command", "PF callout", "PM"],
-      rows: [
-        ["MANAGE SPEED", "SPEED 250 MAGENTA / SPEED G/D, S, F", "CHECKED"],
-        ["MANAGE NAV", "NAV", "CHECKED"],
-        ["ALT/FL XXX MANAGE", "CLB/DES XXX BLUE", "CHECKED"],
-        ["PUSH TO LEVEL OFF", "V/S ZERO <em>(no existe V/S MNG)</em>", "CHECKED"],
-      ],
+    alert: {
+      level: "NOTE",
+      text: "Regla FMA A320: modos <strong>armados</strong> con color (<em>“LOC blue”</em>, <em>“G/S blue”</em>); modos <strong>activos</strong> sin color (<em>“NAV”</em>, <em>“ALT”</em>, <em>“OPEN CLB”</em>). Si el valor ya estaba preseleccionado, basta con llamar <em>“PULL HDG”</em>, <em>“PULL SPEED”</em> o <em>“FL PULL”</em>.",
     },
   },
   {
@@ -439,10 +436,10 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     title: "1.14 Callouts de FMA y de altitud",
     subtitle: `${SCO} · FMA · Altitude`,
     leftTitle: "FMA & ALTITUDE",
-    rightTitle: "TAKEOFF FMA CALLOUTS",
-    image: img("p184_takeoff"),
-    imageAlt: "Takeoff sequence with FMA callouts",
-    sourceRef: `Source: ${SCO} — FMA, Altitude (Standard Callouts p.3) · Image: PDP Takeoff (p.184)`,
+    rightTitle: "INITIAL TAKEOFF FMA: NAV vs RWY TRK",
+    image: img("p188_takeoff"),
+    imageAlt: "Initial takeoff FMA with NAV armed versus RWY TRK",
+    sourceRef: `Source: FCOM A320 · ${SCO} — FMA & Altitude`,
     cards: [
       {
         heading: "FMA",
@@ -470,7 +467,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "ACCELERATION FLOW (FLAPS · L/G)",
     image: img("p191_takeoff"),
     imageAlt: "Acceleration flow pattern with flaps and landing gear",
-    sourceRef: `Source: ${SCO}-B — Flaps or Gear Callouts (Standard Callouts p.3–4) · Image: PDP Takeoff (p.191)`,
+    sourceRef: `Source: FCOM A320 · ${SCO}-B — Flaps or Gear Callouts`,
     cards: [],
     table: {
       headers: ["", "Callout", "Remark"],
@@ -508,7 +505,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "PM CALLOUTS ON FINAL APPROACH",
     image: img("p258_3d_approach"),
     imageAlt: "PM deviation callouts on final approach",
-    sourceRef: `Source: ${SCO}-C — Flight Parameters (Standard Callouts p.4) · Image: PDP 3D Approach (p.258)`,
+    sourceRef: `Source: FCOM A320 · ${SCO}-C — Approach Flight Parameters`,
     cards: [
       {
         heading: "During approach, the PM announces:",
@@ -536,10 +533,10 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     title: "1.17 Callouts de desviación en aterrizaje y motor y al aire",
     subtitle: `${SCO} · Flight Parameters`,
     leftTitle: "LANDING · GO-AROUND",
-    rightTitle: "GO-AROUND PF/PM CALLOUTS",
-    image: img("p268_go_around"),
-    imageAlt: "Go-around PF and PM callouts",
-    sourceRef: `Source: ${SCO}-C — Flight Parameters (Standard Callouts p.6) · Image: PDP Go Around (p.268)`,
+    rightTitle: "LANDING DEVIATION CALLOUTS (PM)",
+    image: img("p285_landing"),
+    imageAlt: "PM flight parameters callouts during landing: BANK BANK and PITCH PITCH",
+    sourceRef: `Source: FCOM A320 · ${SCO}-C — Landing & Go-Around Flight Parameters`,
     cards: [
       {
         heading: "During landing, the PM announces:",
@@ -563,9 +560,11 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "1.18 Transferencia de mandos y alimentación de tierra",
     subtitle: `${SCO} · Duties Transfer · Ground`,
-    leftTitle: "PF/PM DUTIES TRANSFER",
-    rightTitle: "TO REMOVE GROUND SUPPLY",
-    sourceRef: `Source: ${SCO} — PF/PM Duties Transfer, Summary for each phase (Standard Callouts p.6)`,
+    leftTitle: "PF/PM TRANSFER & GROUND SUPPLY",
+    rightTitle: "EXTERNAL POWER & GROUND CREW",
+    image: img("p158_before_pushback_start_engine_start_after"),
+    imageAlt: "External power disconnection and ground crew coordination",
+    sourceRef: `Source: FCOM A320 · ${SCO} — PF/PM Duties Transfer & Ground Supply`,
     cards: [
       {
         heading: "To transfer control, flight crewmembers must use the following callouts:",
@@ -575,7 +574,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
-    rightTable: {
+    table: {
       headers: ["Event", "PF or PM", "GND Mech"],
       rows: [
         ["Initial ground contact", "GROUND (from) COCKPIT", "COCKPIT (from) GROUND"],
@@ -592,7 +591,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "BEFORE PUSHBACK / START FLOW",
     image: img("p029_flow_patterns"),
     imageAlt: "Before pushback and start flow pattern",
-    sourceRef: `Source: ${SCO}-D — Pushback/Engine Start (Standard Callouts p.7) · Image: PDP Flow Patterns (p.29)`,
+    sourceRef: `Source: FCOM A320 · ${SCO}-D — Pushback / Engine Start`,
     cards: [],
     table: {
       headers: ["Event", "PF", "GND Mech."],
@@ -605,7 +604,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
         ["Start of push", "BRAKES RELEASED READY TO PUSH", "—"],
         ["When ready to start engines", "CLEAR TO START ?", "CLEAR TO START"],
         ["", "STARTING ENG(S) __", "—"],
-        ["When pushback completed", "BRAKES SET", "SET BRAKES"],
+        ["When pushback completed", "2º — BRAKES SET", "1º — SET BRAKES"],
         [
           "When ready to disconnect (after engine started, and parameters are stabilized)",
           "CLEAR TO DISCONNECT (hand signals on left/right)",
@@ -623,7 +622,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "PUSHBACK → TAXI → LINE-UP",
     image: img("p172_taxi_before_takeoff"),
     imageAlt: "Pushback, taxi and line-up sequence",
-    sourceRef: `Source: ${SCO}-D — Taxi (Standard Callouts p.7–8) · Image: PDP Taxi - Before Takeoff (p.172)`,
+    sourceRef: `Source: FCOM A320 · ${SCO}-D — Taxi`,
     cards: [],
     table: {
       headers: ["Event", "PF", "PM"],
@@ -635,7 +634,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
           "FLIGHT CONTROL CHECK",
           "1. Elevators: FULL UP, FULL DOWN, NEUTRAL · 2. Ailerons/Spoilers: FULL LEFT, FULL RIGHT, NEUTRAL",
         ],
-        ["", "3. Rudder: RUDDER", "FULL LEFT, FULL RIGHT, NEUTRAL"],
+        ["3. Rudder", "RUDDER", "FULL LEFT, FULL RIGHT, NEUTRAL"],
       ],
     },
     alert: {
@@ -652,7 +651,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "TAKEOFF SEQUENCE",
     image: img("p184_takeoff"),
     imageAlt: "Takeoff sequence with callouts",
-    sourceRef: `Source: ${SCO}-D — Takeoff, Altimeter Setting Changes (Standard Callouts p.8) · Image: PDP Takeoff (p.184)`,
+    sourceRef: `Source: FCOM A320 · ${SCO}-D — Takeoff & Altimeter Setting Changes`,
     cards: [],
     table: {
       headers: ["Event", "PF", "PM"],
@@ -663,9 +662,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
         ["At V1", "—", "V1"],
         ["At VR", "—", "ROTATE"],
         ["Gear retraction", "GEAR UP", "POSITIVE CLIMB · GEAR UP"],
-        ["If AP is engaged by PM", "—", "AP 1(2) ON"],
+        ["If AP is engaged by PM", "AP 1(2) ON", "—"],
         ["Barometric setting change", "SET STANDARD (SET QNH/QFE)", "STANDARD (QNH/QFE) CROSS-CHECKED"],
-        ["Subsequent altimeter cross-check", "PASSING FL__ (__FT) NOW", "CHECKED"],
+        ["Subsequent altimeter cross-check", "CHECKED", "PASSING FL__ (__FT) NOW"],
       ],
     },
   },
@@ -678,7 +677,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "ARM APPROACH vs ACTIVATE APPROACH PHASE",
     image: img("p233_2d_approach"),
     imageAlt: "Arm approach versus activate approach phase",
-    sourceRef: `Source: ${SCO}-D — Approach and Landing (Standard Callouts p.9–10) · Image: PDP 2D Approach (p.233)`,
+    sourceRef: `Source: FCOM A320 · ${SCO}-D — Approach Phase & Go-Around Altitude`,
     cards: [],
     table: {
       headers: ["Event", "PF", "PM"],
@@ -690,7 +689,11 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
           "If the PF requests the PM to set the go-around altitude: SET GA ALTITUDE __ FT",
           "GA ALTITUDE __ SET",
         ],
-        ["(same)", "If the PF sets the go-around altitude: GA ALTITUDE __ SET", "CHECKED"],
+        [
+          "At F-G/S*, G/S*, FINAL APP or below GA alt (if the PF sets it)",
+          "GA ALTITUDE __ SET",
+          "CHECKED",
+        ],
       ],
     },
   },
@@ -700,10 +703,10 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     title: "1.23 Callouts de aproximación: FDP, 1 000 ft y mínimos",
     subtitle: `${SCO}-D · Approach and Landing`,
     leftTitle: "FDP · 1 000 FT · MINIMA",
-    rightTitle: "PM CALLOUTS ON FINAL APPROACH",
-    image: img("p258_3d_approach"),
-    imageAlt: "PM callouts on final approach",
-    sourceRef: `Source: ${SCO}-D — Approach and Landing (Standard Callouts p.10) · Image: PDP 3D Approach (p.258)`,
+    rightTitle: "FDP & EARLY STABILIZED APPROACH",
+    image: img("p237_2d_approach"),
+    imageAlt: "Final Descent Point and stabilized approach profile",
+    sourceRef: `Source: FCOM A320 · ${SCO}-D — FDP, 1 000 ft & Minima`,
     cards: [],
     table: {
       headers: ["Event", "PF", "PM"],
@@ -713,7 +716,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
         ["100 ft above MDA/DH", "CHECKED", "ONE HUNDRED ABOVE (2)"],
         ["MDA/DH visual reference (6)", "CONTINUE", "MINIMUM (2)"],
         ["MDA/DH no visual reference (6)", "GO AROUND-FLAPS", "MINIMUM (2)"],
-        ["—", "—", "ONE HUNDRED (2) · FIFTY (2)"],
+        ["Before touchdown (RA auto-callouts)", "—", "ONE HUNDRED (2) · FIFTY (2)"],
       ],
     },
   },
@@ -726,7 +729,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "DISCONTINUED APPROACH vs GO-AROUND",
     image: img("p278_go_around"),
     imageAlt: "Discontinued approach versus go-around",
-    sourceRef: `Source: ${SCO}-D — Approach and Landing, Discontinued Approach, Go Around (Standard Callouts p.10–11) · Image: PDP Go Around (p.278)`,
+    sourceRef: `Source: FCOM A320 · ${SCO}-D — Landing, Discontinued Approach & Go-Around`,
     cards: [],
     table: {
       headers: ["Event", "PF", "PM"],
@@ -748,12 +751,15 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "1.25 Notas a los callouts de aproximación y aterrizaje",
     subtitle: `${SCO}-D · Approach and Landing · Notes`,
-    leftTitle: "NOTES (1) – (5)",
-    rightTitle: "NOTES (6) – (8)",
-    sourceRef: `Source: ${SCO}-D — Approach and Landing (Standard Callouts p.11)`,
+    leftPct: 54,
+    leftTitle: "NOTES (1) – (8)",
+    rightTitle: "TOUCHDOWN · ROLLOUT · AFTER LANDING",
+    image: img("p286_after_landing_parking_securing_the_a_c"),
+    imageAlt: "Touchdown, runway rollout and after landing sequence",
+    sourceRef: `Source: FCOM A320 · ${SCO}-D — Approach and Landing Notes`,
     cards: [
       {
-        heading: "Notes",
+        heading: "Notes (1) – (5)",
         bullets: [
           "(1) Flight crew awareness, flight crew should now keep RA in scan to landing.",
           "(2) PM monitors pin-programmed auto callout, or announces if inoperative.",
@@ -762,10 +768,8 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
           "(5) DECEL callout means that the deceleration is felt by the flight crew, and confirmed by the speed trend on the PFD. If no positive deceleration, NO DECEL.",
         ],
       },
-    ],
-    rightCards: [
       {
-        heading: "Notes",
+        heading: "Notes (6) – (8)",
         bullets: [
           "(6) In the case of circling approach, this callout should be performed at the latest, at the MAP.",
           "(7) PF announces MANUAL BRAKING when using the brake pedals if: Autobrake was selected for the landing, and No AUTOBRAKE OFF callout from the PM.",

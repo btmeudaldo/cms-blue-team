@@ -147,4 +147,28 @@ describe("verified lesson progress", () => {
       { onConflict: "user_id,course_id", ignoreDuplicates: true },
     );
   });
+
+  it("does not retry complete_lesson when server rejects minimum reading time (22023)", async () => {
+    mocks.session.mockResolvedValue({
+      user: { id: "admin-id" },
+      profile: { role: "superadmin" },
+      client: { rpc: mocks.rpc, from: mocks.from },
+    });
+    mocks.rpc.mockResolvedValueOnce({
+      data: null,
+      error: {
+        code: "22023",
+        message: "Minimum active reading time has not elapsed",
+      },
+    });
+
+    const result = await actions.completeLessonAction("lesson", "/courses/course");
+    expect(result).toEqual({
+      error:
+        "Aún no ha transcurrido el tiempo mínimo de lectura requerido en el servidor para completar la lección.",
+    });
+    expect(mocks.rpc).toHaveBeenCalledTimes(1);
+    expect(mocks.admin).not.toHaveBeenCalled();
+    expect(mocks.revalidate).not.toHaveBeenCalled();
+  });
 });

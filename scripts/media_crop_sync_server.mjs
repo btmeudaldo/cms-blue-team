@@ -16,7 +16,13 @@ const PORT = Number(process.env.MEDIA_SYNC_PORT || "3099");
 const PDP_DIR = path.join(projectRoot, "scratch", "mcc_md", "08_pdp_jan2024");
 const IMAGES_ROOT = path.join(PDP_DIR, "imagenes");
 const ORIGINALS_ROOT = path.join(PDP_DIR, "imagenes_originales");
+const FCU_ROOT = path.join(PDP_DIR, "imagenes_fcu");
 const URL_MAP_PATH = path.join(PDP_DIR, "IMAGENES_URLS.json");
+const ALLOWED_PROXY_HOSTS = new Set([
+  "www.blueteam.es",
+  "blueteam.es",
+  "wkxylgsauhruoopclfwm.supabase.co",
+]);
 
 const basePathSegment =
   (process.env.NEXT_PUBLIC_BASE_PATH || "/elearning")
@@ -187,9 +193,54 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (req.method === "GET" && reqUrl.pathname === "/proxy") {
+    try {
+      const targetRaw = reqUrl.searchParams.get("url") || "";
+      const targetUrl = new URL(targetRaw);
+      if (targetUrl.protocol !== "https:" || !ALLOWED_PROXY_HOSTS.has(targetUrl.hostname.toLowerCase())) {
+        sendJson(res, 403, { error: "Host o protocolo no permitido para proxy local" });
+        return;
+      }
+      const upstream = await fetch(targetUrl.toString(), { cache: "no-store", redirect: "error" });
+      if (!upstream.ok) {
+        sendJson(res, upstream.status, { error: `Error upstream HTTP ${upstream.status}` });
+        return;
+      }
+      const contentType = upstream.headers.get("content-type") || "image/webp";
+      if (!contentType.startsWith("image/")) {
+        sendJson(res, 415, { error: "El recurso remoto no es una imagen" });
+        return;
+      }
+      const bytes = Buffer.from(await upstream.arrayBuffer());
+      res.writeHead(200, {
+        "Content-Type": contentType,
+        "Content-Length": bytes.length,
+        "Cache-Control": "no-store",
+        "Access-Control-Allow-Origin": "*",
+      });
+      res.end(bytes);
+    } catch (err) {
+      sendJson(res, 502, { error: err instanceof Error ? err.message : "Error de proxy local" });
+    }
+    return;
+  }
+
   if (req.method === "GET" && reqUrl.pathname.startsWith("/original/")) {
     try {
       const requested = decodeURIComponent(reqUrl.pathname.slice("/original/".length));
+      const cleanName = path.posix.basename(requested.split("?")[0]);
+      const fcuCandidate = path.join(FCU_ROOT, cleanName);
+      if (/^fcom_a320_fcu_[a-z0-9_]+\.webp$/.test(cleanName) && fs.existsSync(fcuCandidate)) {
+        const bytes = fs.readFileSync(fcuCandidate);
+        res.writeHead(200, {
+          "Content-Type": "image/webp",
+          "Content-Length": bytes.length,
+          "Cache-Control": "no-store",
+          "Access-Control-Allow-Origin": "*",
+        });
+        res.end(bytes);
+        return;
+      }
       const map = readUrlMap();
       const hit = findEntryByFilename(map, requested);
       if (!hit) {

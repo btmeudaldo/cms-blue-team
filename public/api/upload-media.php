@@ -54,7 +54,7 @@ $ext = $extMap[$mime];
 
 // Allow safe in-place overwrite ONLY for existing MCC PDP WebP images
 $overwriteMcc = isset($_POST['overwriteMccFilename']) ? trim((string)$_POST['overwriteMccFilename']) : '';
-if ($overwriteMcc !== '' && $ext === 'webp' && preg_match('/^p\d{3}_[a-z0-9_]+\.webp$/', $overwriteMcc)) {
+if ($overwriteMcc !== '' && $ext === 'webp' && preg_match('/^(?:p\d{3}|fcom_a320_fcu)_[a-z0-9_]+\.webp$/', $overwriteMcc)) {
     $pdpDir = dirname(__DIR__) . '/media/mcc/pdp';
     $pdpTarget = $pdpDir . '/' . $overwriteMcc;
     if (is_dir($pdpDir) && file_exists($pdpTarget)) {

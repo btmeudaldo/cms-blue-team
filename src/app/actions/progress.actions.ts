@@ -17,11 +17,16 @@ async function callProgressRpc(
       p_lesson_id: lessonId,
     });
 
-    // Auto-enroll staff/admin previewing a lesson if enrollment is missing
-    if (
-      error &&
-      (profile?.role === "admin" || profile?.role === "instructor")
-    ) {
+    // Auto-enroll staff/admin/superadmin previewing a lesson only when access/enrollment was missing
+    const isStaffRole =
+      profile?.role === "superadmin" ||
+      profile?.role === "admin" ||
+      profile?.role === "instructor";
+    const isMissingEnrollment =
+      error?.code === "42501" ||
+      /not available/i.test(error?.message ?? "");
+
+    if (error && isStaffRole && isMissingEnrollment) {
       try {
         const { createSupabaseAdminClient } = await import(
           "@/shared/lib/supabase/admin"
@@ -56,9 +61,13 @@ async function callProgressRpc(
       typeof data.is_active !== "boolean" ||
       (functionName === "complete_lesson" && !data.is_completed)
     ) {
+      const isMinimumTimeError =
+        error?.code === "22023" ||
+        /minimum active reading time/i.test(error?.message ?? "");
       return {
-        error:
-          "No se pudo confirmar el progreso. Comprueba tu conexión y reintenta; el tiempo mínimo debe estar registrado en el servidor.",
+        error: isMinimumTimeError
+          ? "Aún no ha transcurrido el tiempo mínimo de lectura requerido en el servidor para completar la lección."
+          : "No se pudo confirmar el progreso. Comprueba tu conexión y reintenta; el tiempo mínimo debe estar registrado en el servidor.",
       };
     }
     return { success: true, progress: data };

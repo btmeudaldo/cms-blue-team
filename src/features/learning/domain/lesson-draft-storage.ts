@@ -20,6 +20,39 @@ function getStorage(): Storage | null {
   return null;
 }
 
+function pruneStorageForDrafts(
+  storage: Storage,
+  preserveKey: string,
+): void {
+  const historyKeys: string[] = [];
+  const otherDraftKeys: Array<{ key: string; savedAt: string }> = [];
+
+  for (let i = 0; i < storage.length; i++) {
+    const k = storage.key(i);
+    if (!k || k === preserveKey) continue;
+    if (k.startsWith("cms_lesson_history_")) {
+      historyKeys.push(k);
+    } else if (k.startsWith("cms_lesson_draft_")) {
+      let savedAt = "";
+      try {
+        const parsed = JSON.parse(storage.getItem(k) || "{}") as Partial<LessonDraft>;
+        if (typeof parsed.savedAt === "string") savedAt = parsed.savedAt;
+      } catch {}
+      otherDraftKeys.push({ key: k, savedAt });
+    }
+  }
+
+  // First remove revision history snapshots (heaviest entries)
+  for (const k of historyKeys) {
+    storage.removeItem(k);
+  }
+  // Then remove oldest other drafts if needed
+  otherDraftKeys.sort((a, b) => a.savedAt.localeCompare(b.savedAt));
+  for (const item of otherDraftKeys) {
+    storage.removeItem(item.key);
+  }
+}
+
 export function saveLessonDraft(
   courseId: string,
   identifier: string,
@@ -27,15 +60,22 @@ export function saveLessonDraft(
 ): void {
   const storage = getStorage();
   if (!storage) return;
+  const key = getLessonDraftStorageKey(courseId, identifier);
+  const payload = JSON.stringify({
+    contentHtml,
+    savedAt: new Date().toISOString(),
+  } satisfies LessonDraft);
+
   try {
-    const key = getLessonDraftStorageKey(courseId, identifier);
-    const draft: LessonDraft = {
-      contentHtml,
-      savedAt: new Date().toISOString(),
-    };
-    storage.setItem(key, JSON.stringify(draft));
-  } catch (e) {
-    console.warn("Failed to save lesson draft to localStorage:", e);
+    storage.setItem(key, payload);
+  } catch {
+    // Reclaim quota from older cached drafts/history and retry once cleanly
+    try {
+      pruneStorageForDrafts(storage, key);
+      storage.setItem(key, payload);
+    } catch {
+      // Ignore if payload alone exceeds total browser quota
+    }
   }
 }
 
@@ -120,10 +160,10 @@ export function saveLessonRevision(
       contentHtml,
       savedAt: new Date().toISOString(),
     };
-    const updated = [newRevision, ...revisions].slice(0, 20);
+    const updated = [newRevision, ...revisions].slice(0, 3);
     storage.setItem(key, JSON.stringify(updated));
-  } catch (e) {
-    console.warn("Failed to save lesson revision history:", e);
+  } catch {
+    // Skip local revision cache when browser storage quota is full
   }
 }
 

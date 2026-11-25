@@ -79,6 +79,7 @@ beforeEach(() => {
     cancelAnimationFrame: vi.fn(),
     setInterval: vi.fn(),
     clearInterval: vi.fn(),
+    scrollTo: vi.fn(),
   });
   vi.stubGlobal("document", {
     visibilityState: "visible",
@@ -86,7 +87,7 @@ beforeEach(() => {
     addEventListener: vi.fn(),
     removeEventListener: vi.fn(),
   });
-  vi.stubGlobal("localStorage", { getItem: () => null });
+  vi.stubGlobal("localStorage", { getItem: () => null, setItem: vi.fn() });
   harness.resume.mockResolvedValue({ success: true, progress });
   harness.pause.mockResolvedValue({ success: true, progress });
 });
@@ -340,18 +341,20 @@ it("renders slide pagination when content contains pagebreaks", () => {
   expect(html).not.toContain("Slide Dos");
 });
 
-it("controls time per slide, hiding bottom dock bar until slide time is fulfilled and displaying Siguiente Diapositiva", () => {
+it("controls real time per slide for students and never renders the staff speed selector", () => {
   // Initial render: slide 1 of 2 with 10s total (5s per slide)
   const initialHtml = renderToStaticMarkup(
     render({
       contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
       minSeconds: 10,
+      role: "student",
       isAlreadyCompleted: false,
     }),
   );
-  // Bottom dock bar must be hidden while slide timer is active
+  // Bottom dock bar must be hidden while real per-slide timer is active
   expect(initialHtml).not.toContain('aria-label="Avance de lección"');
-  expect(initialHtml).toContain("Tiempo Diapositiva (1s)");
+  expect(initialHtml).toContain("Tiempo Diapositiva (5s)");
+  expect(initialHtml).not.toContain('aria-label="Modo de tiempo por diapositiva"');
 
   // Run effects to register intervals
   for (const effect of harness.effects) effect();
@@ -359,16 +362,30 @@ it("controls time per slide, hiding bottom dock bar until slide time is fulfille
   // Find the slide timer interval callback (first setInterval call when totalLessonPages > 1)
   const slideTimerCallback = vi.mocked(window.setInterval).mock.calls[0][0];
 
-  // Tick 1 time to fulfill the 1s requirement of slide 1
-  for (let i = 0; i < 1; i++) {
+  // After 4 ticks, slide 1 still needs 1s before advancing
+  for (let i = 0; i < 4; i++) {
     if (typeof slideTimerCallback === "function") slideTimerCallback();
   }
+  const notReadyHtml = renderToStaticMarkup(
+    render({
+      contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+      minSeconds: 10,
+      role: "student",
+      isAlreadyCompleted: false,
+    }),
+  );
+  expect(notReadyHtml).toContain("Tiempo Diapositiva (1s)");
+  expect(notReadyHtml).not.toContain("Siguiente Diapositiva");
+
+  // 5th tick fulfills the 5s real duration of slide 1
+  if (typeof slideTimerCallback === "function") slideTimerCallback();
 
   // Re-render: bottom dock bar must now appear with "Siguiente Diapositiva (2/2)"
   const fulfilledHtml = renderToStaticMarkup(
     render({
       contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
       minSeconds: 10,
+      role: "student",
       isAlreadyCompleted: false,
     }),
   );
@@ -422,5 +439,158 @@ it("links to course lesson panel when quiz is already passed", () => {
   expect(html).toContain("Volver al Panel de Lecciones");
   expect(html).toContain('href="/courses/cessna-172"');
   expect(html).not.toContain('href="/courses/cessna-172/lessons/lesson-2"');
+});
+
+function findButtonByText(
+  node: ReactNode,
+  needle: string,
+): { props: { onClick?: (e?: unknown) => void; disabled?: boolean } } | undefined {
+  if (!isValidElement<{ children?: ReactNode; onClick?: (e?: unknown) => void; disabled?: boolean }>(node)) return;
+  if (node.type === "button" && renderToStaticMarkup(node).includes(needle)) return node;
+  for (const child of [node.props.children].flat()) {
+    const match = findButtonByText(child, needle);
+    if (match) return match;
+  }
+}
+
+it("defaults staff to 1s preview selector without recording lesson/course completion in Supabase", async () => {
+  render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    nextLessonId: "sop-03",
+    role: "instructor",
+    isAlreadyCompleted: false,
+  });
+  for (const effect of harness.effects) effect();
+  await flush();
+
+  // Zero progress RPC calls in default 1s preview mode
+  expect(harness.start).not.toHaveBeenCalled();
+
+  const slide1Timer = vi.mocked(window.setInterval).mock.calls[0][0];
+  if (typeof slide1Timer === "function") slide1Timer();
+
+  const afterSlide1Tree = render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    nextLessonId: "sop-03",
+    role: "instructor",
+    isAlreadyCompleted: false,
+  });
+  const afterSlide1Html = renderToStaticMarkup(afterSlide1Tree);
+  expect(afterSlide1Html).toContain('aria-label="Modo de tiempo por diapositiva"');
+  expect(afterSlide1Html).toContain("Real");
+  expect(afterSlide1Html).toContain("22:30");
+
+  findButtonByText(afterSlide1Tree, "Siguiente Diapositiva")?.props.onClick?.();
+
+  const intervalBeforeSlide2 = vi.mocked(window.setInterval).mock.calls.length;
+  render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    nextLessonId: "sop-03",
+    role: "instructor",
+    isAlreadyCompleted: false,
+  });
+  for (const effect of harness.effects) effect();
+  const slide2Timer = vi.mocked(window.setInterval).mock.calls[intervalBeforeSlide2]?.[0];
+  if (typeof slide2Timer === "function") slide2Timer();
+
+  const finalSlideTree = render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    nextLessonId: "sop-03",
+    role: "instructor",
+    isAlreadyCompleted: false,
+  });
+  const finalSlideHtml = renderToStaticMarkup(finalSlideTree);
+  expect(finalSlideHtml).toContain("Finalizar vista previa (sin registrar)");
+  expect(finalSlideHtml).toContain("Siguiente lección");
+
+  findButtonByText(finalSlideTree, "Finalizar vista previa")?.props.onClick?.();
+  const previewDoneHtml = renderToStaticMarkup(
+    render({
+      contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+      minSeconds: 2700,
+      nextLessonId: "sop-03",
+      role: "instructor",
+      isAlreadyCompleted: false,
+    }),
+  );
+  await flush();
+  expect(previewDoneHtml).toContain("Vista previa finalizada");
+  expect(previewDoneHtml).toContain("no</strong> se han registrado como completados");
+  expect(previewDoneHtml).toContain('href="/courses/c/lessons/sop-03"');
+  expect(harness.complete).not.toHaveBeenCalled();
+  expect(harness.start).not.toHaveBeenCalled();
+});
+
+it("keeps completion locked when staff switches to Real mode until persisted minSeconds elapses, avoiding 400 RPC calls", async () => {
+  const partialProgress = { ...progress, active_seconds: 120 };
+  harness.start.mockResolvedValue({ success: true, progress: partialProgress });
+  harness.resume.mockResolvedValue({ success: true, progress: partialProgress });
+
+  // Switch from default 1s mode to Real mode via left selector
+  const initialTree = render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    role: "superadmin",
+    isAlreadyCompleted: false,
+  });
+  findButtonByText(initialTree, "Real")?.props.onClick?.();
+
+  render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    role: "superadmin",
+    isAlreadyCompleted: false,
+  });
+  for (const effect of harness.effects) effect();
+  await flush();
+  expect(harness.start).toHaveBeenCalledOnce();
+
+  // Fulfill real per-slide time (1350s = 22:30 on 2 slides) to reach slide 2
+  const slideTimerCallback = vi.mocked(window.setInterval).mock.calls[0][0];
+  for (let i = 0; i < 1350; i++) {
+    if (typeof slideTimerCallback === "function") slideTimerCallback();
+  }
+  const renderedAfterSlide1 = render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    role: "superadmin",
+    isAlreadyCompleted: false,
+  });
+
+  findButtonByText(renderedAfterSlide1, "Siguiente Diapositiva")?.props.onClick?.();
+
+  // Re-render on slide 2 so its fresh useEffect captures currentPageIndex = 1
+  const slide2CallCountBefore = vi.mocked(window.setInterval).mock.calls.length;
+  render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    role: "superadmin",
+    isAlreadyCompleted: false,
+  });
+  for (const effect of harness.effects) effect();
+  const slide2TimerCallback = vi.mocked(window.setInterval).mock.calls[slide2CallCountBefore]?.[0];
+  for (let i = 0; i < 1350; i++) {
+    if (typeof slide2TimerCallback === "function") slide2TimerCallback();
+  }
+
+  const finalSlideTree = render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    role: "superadmin",
+    isAlreadyCompleted: false,
+  });
+  const finalSlideHtml = renderToStaticMarkup(finalSlideTree);
+  expect(finalSlideHtml).toContain("Tiempo mínimo restante: 43:00");
+  expect(finalSlideHtml).toContain("Salir (vista previa)");
+  expect(finalSlideHtml).not.toContain("✓ Tiempo cumplido");
+  const completeBtn = findButtonByText(finalSlideTree, "Tiempo mínimo restante");
+  expect(completeBtn?.props.disabled).toBe(true);
+  completeBtn?.props.onClick?.({ isTrusted: true });
+  await flush();
+  expect(harness.complete).not.toHaveBeenCalled();
 });
 

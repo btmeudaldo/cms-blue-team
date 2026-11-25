@@ -2,9 +2,10 @@ import { uploadLessonImageAction } from "@/app/actions/lesson.actions";
 import { BASE_PATH } from "@/shared/lib/base-path";
 
 const LOCAL_SYNC_BASE = "http://127.0.0.1:3099";
-const MCC_PDP_FILENAME_RE = /^p\d{3}_[a-z0-9_]+\.webp$/;
+const MCC_PDP_FILENAME_RE = /^(?:p\d{3}|fcom_a320_fcu)_[a-z0-9_]+\.webp$/;
+const HOSTALIA_PUBLIC_PROXY = "https://www.blueteam.es/elearning/api/media-proxy.php";
 
-function isLocalhostBrowser(): boolean {
+export function isLocalhostBrowser(): boolean {
   if (typeof window === "undefined") return false;
   const host = window.location.hostname;
   return host === "localhost" || host === "127.0.0.1";
@@ -19,7 +20,18 @@ export function isMccPdpFilename(filename: string): boolean {
 }
 
 export function getLocalOriginalPreviewUrl(filename: string): string {
-  return `${LOCAL_SYNC_BASE}/original/${encodeURIComponent(filename)}`;
+  return `${LOCAL_SYNC_BASE}/original/${encodeURIComponent(stripUrlQuery(filename))}`;
+}
+
+export function getLocalMediaProxyUrl(url: string): string {
+  return `${LOCAL_SYNC_BASE}/proxy?url=${encodeURIComponent(url)}`;
+}
+
+export function getHostaliaMediaProxyUrl(url: string): string {
+  if (typeof window !== "undefined" && window.location.hostname.endsWith("blueteam.es")) {
+    return `${BASE_PATH}/api/media-proxy.php?url=${encodeURIComponent(url)}`;
+  }
+  return `${HOSTALIA_PUBLIC_PROXY}?url=${encodeURIComponent(url)}`;
 }
 
 export async function checkLocalMediaSyncServer(): Promise<boolean> {

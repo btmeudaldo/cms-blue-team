@@ -42,11 +42,11 @@ describe("SOP-01", () => {
     expect(slides).toHaveLength(SOP_01_SLIDE_COUNT);
   });
 
-  it("only uses PDP images hosted on Hostalia and cites a source on every slide", () => {
+  it("only uses A320 Hostalia images, hides sources cleanly and excludes airlines/registrations", () => {
     const imgs = [...MCC_SOP_01.content_html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
-    expect(imgs.length).toBeGreaterThan(0);
+    expect(imgs).toHaveLength(SOP_01_SLIDE_COUNT);
     for (const src of imgs) {
-      expect(src).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p\d{3}_[a-z0-9_]+\.webp$/);
+      expect(src).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/(?:p\d{3}|fcom_a320_fcu)_[a-z0-9_]+\.webp$/);
     }
     for (const slide of slides) {
       // La fuente se conserva solo en el comentario HTML, nunca como texto visible.
@@ -54,6 +54,8 @@ describe("SOP-01", () => {
       expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
       expect(slide).not.toContain("undefined");
     }
+    const htmlNoUrls = MCC_SOP_01.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|ops\s*2\.2|callouts fcu|ec-[a-z]{3})\b/i);
   });
 
   it("does not include the First FFS, navigation or PIR slides", () => {

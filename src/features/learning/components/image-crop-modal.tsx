@@ -19,6 +19,14 @@ import {
   nudgeCropRect,
   toPixelCropRect,
 } from "@/features/learning/domain/image-crop";
+import {
+  checkLocalMediaSyncServer,
+  getHostaliaMediaProxyUrl,
+  getLocalMediaProxyUrl,
+  getLocalOriginalPreviewUrl,
+  isLocalhostBrowser,
+  isMccPdpFilename,
+} from "@/features/learning/domain/media-upload";
 
 export type ImageCropSaveResult = {
   file: File;
@@ -75,7 +83,7 @@ export function ImageCropModal({
   const activeRemoteUrl =
     useOriginalSource && originalUrl ? originalUrl : imageUrl;
 
-  const [displaySrc, setDisplaySrc] = useState<string>(activeRemoteUrl);
+  const [displaySrc, setDisplaySrc] = useState<string | null>(null);
   const [naturalSize, setNaturalSize] = useState<{ w: number; h: number }>({
     w: 0,
     h: 0,
@@ -135,37 +143,86 @@ export function ImageCropModal({
     }
   }, [isOpen, isSaving]);
 
-  // Load image via fresh CORS fetch -> ObjectURL so <canvas> is never tainted by non-CORS cache
+  // Load image via CORS-safe blob/proxy -> ObjectURL so <canvas> is never tainted and console stays clean
   useEffect(() => {
     if (!isOpen || !activeRemoteUrl) return;
     let cancelled = false;
     let objectUrl: string | null = null;
 
+    async function fetchImageBlob(url: string): Promise<Blob> {
+      const res = await fetch(url, {
+        mode: "cors",
+        cache: "no-store",
+      });
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+      return res.blob();
+    }
+
     async function loadCorsCleanBlob() {
       setIsLoadingSource(true);
       setErrorMessage(null);
+      setDisplaySrc(null);
       setNaturalSize({ w: 0, h: 0 });
-      try {
-        const res = await fetch(activeRemoteUrl, {
-          mode: "cors",
-          cache: "no-store",
-        });
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
+
+      const candidates: string[] = [];
+      const isDirectLocalOrBlob =
+        activeRemoteUrl.startsWith("blob:") ||
+        activeRemoteUrl.startsWith("data:") ||
+        activeRemoteUrl.startsWith("http://127.0.0.1:") ||
+        activeRemoteUrl.startsWith("/");
+
+      if (isDirectLocalOrBlob) {
+        candidates.push(activeRemoteUrl);
+      } else if (isLocalhostBrowser()) {
+        const hasLocalSync = await checkLocalMediaSyncServer();
+        if (hasLocalSync) {
+          if (isMccPdpFilename(filename)) {
+            candidates.push(getLocalOriginalPreviewUrl(filename));
+          }
+          candidates.push(getLocalMediaProxyUrl(activeRemoteUrl));
+        } else {
+          // On localhost without dev:media, go straight through Hostalia PHP CORS proxy first
+          // so the browser does not emit a blocked cross-origin console error first.
+          candidates.push(getHostaliaMediaProxyUrl(activeRemoteUrl));
+          candidates.push(activeRemoteUrl);
         }
-        const blob = await res.blob();
+      } else {
+        let sameOrigin = false;
+        try {
+          sameOrigin =
+            typeof window !== "undefined" &&
+            new URL(activeRemoteUrl, window.location.origin).origin ===
+              window.location.origin;
+        } catch { }
+        candidates.push(activeRemoteUrl);
+        if (!sameOrigin) {
+          candidates.push(getHostaliaMediaProxyUrl(activeRemoteUrl));
+        }
+      }
+
+      for (const candidate of candidates) {
         if (cancelled) return;
-        objectUrl = URL.createObjectURL(blob);
-        setDisplaySrc(objectUrl);
-      } catch {
-        // Fallback: direct crossOrigin <img> load (requires server CORS header)
-        if (!cancelled) {
-          setDisplaySrc(activeRemoteUrl);
-        }
-      } finally {
-        if (!cancelled) {
+        try {
+          const blob = await fetchImageBlob(candidate);
+          if (cancelled) return;
+          objectUrl = URL.createObjectURL(blob);
+          setDisplaySrc(objectUrl);
           setIsLoadingSource(false);
+          return;
+        } catch {
+          // Try next CORS-safe candidate
         }
+      }
+
+      if (!cancelled) {
+        setIsLoadingSource(false);
+        setErrorMessage(
+          isLocalhostBrowser()
+            ? "No se pudo cargar la imagen con permisos CORS para recortar. Inicia el servidor local con 'npm run dev:media' o comprueba tu conexión."
+            : "No se pudo cargar la imagen con permisos CORS para recortar.",
+        );
       }
     }
 
@@ -177,7 +234,7 @@ export function ImageCropModal({
         URL.revokeObjectURL(objectUrl);
       }
     };
-  }, [isOpen, activeRemoteUrl]);
+  }, [isOpen, activeRemoteUrl, filename]);
 
   const pixelInfo = useMemo(() => {
     if (naturalSize.w <= 0 || naturalSize.h <= 0) return null;
@@ -473,28 +530,36 @@ export function ImageCropModal({
             ref={stageRef}
             className="relative inline-block max-w-full max-h-[62vh] select-none overflow-hidden rounded-lg shadow-xl ring-1 ring-white/10"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              ref={imgRef}
-              src={displaySrc}
-              alt={filename}
-              crossOrigin="anonymous"
-              draggable={false}
-              onLoad={(e) => {
-                const el = e.currentTarget;
-                setNaturalSize({
-                  w: el.naturalWidth,
-                  h: el.naturalHeight,
-                });
-                setErrorMessage(null);
-              }}
-              onError={() => {
-                setErrorMessage(
-                  "No se pudo cargar la imagen con permisos CORS para recortar.",
-                );
-              }}
-              className="block max-h-[62vh] max-w-full w-auto h-auto pointer-events-none select-none"
-            />
+            {displaySrc ? (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                ref={imgRef}
+                src={displaySrc}
+                alt={filename}
+                crossOrigin="anonymous"
+                draggable={false}
+                onLoad={(e) => {
+                  const el = e.currentTarget;
+                  setNaturalSize({
+                    w: el.naturalWidth,
+                    h: el.naturalHeight,
+                  });
+                  setErrorMessage(null);
+                }}
+                onError={() => {
+                  setErrorMessage(
+                    "No se pudo cargar la imagen con permisos CORS para recortar.",
+                  );
+                }}
+                className="block max-h-[62vh] max-w-full w-auto h-auto pointer-events-none select-none"
+              />
+            ) : (
+              <div className="flex items-center justify-center min-w-[320px] min-h-[240px] text-xs font-semibold text-slate-300">
+                {isLoadingSource
+                  ? "Cargando imagen para recorte..."
+                  : "Imagen no disponible para recorte"}
+              </div>
+            )}
 
             {naturalSize.w > 0 && (
               <div

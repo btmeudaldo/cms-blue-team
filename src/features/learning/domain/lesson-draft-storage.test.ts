@@ -16,6 +16,10 @@ describe("lesson-draft-storage domain", () => {
       delete store[key];
     }
     vi.stubGlobal("localStorage", {
+      get length() {
+        return Object.keys(store).length;
+      },
+      key: (i: number) => Object.keys(store)[i] ?? null,
       getItem: (k: string) => store[k] || null,
       setItem: (k: string, v: string) => {
         store[k] = v;
@@ -61,5 +65,34 @@ describe("lesson-draft-storage domain", () => {
     expect(hasUnsavedDraftDifference(server, draftDifferent)).toBe(true);
     expect(hasUnsavedDraftDifference(server, draftIdentical)).toBe(false);
     expect(hasUnsavedDraftDifference(server, draftEmpty)).toBe(false);
+  });
+
+  it("prunes stale history/drafts and retries when localStorage hits QuotaExceededError", () => {
+    store["cms_lesson_history_c1_old"] = "heavy-history";
+    store["cms_lesson_draft_c1_old"] = JSON.stringify({
+      contentHtml: "old",
+      savedAt: "2020-01-01T00:00:00.000Z",
+    });
+
+    vi.stubGlobal("localStorage", {
+      get length() {
+        return Object.keys(store).length;
+      },
+      key: (i: number) => Object.keys(store)[i] ?? null,
+      getItem: (k: string) => store[k] || null,
+      setItem: (k: string, v: string) => {
+        if ("cms_lesson_history_c1_old" in store) {
+          throw new DOMException("Quota exceeded", "QuotaExceededError");
+        }
+        store[k] = v;
+      },
+      removeItem: (k: string) => {
+        delete store[k];
+      },
+    });
+
+    saveLessonDraft("c1", "active", "<p>Updated SOP-01</p>");
+    expect(store["cms_lesson_history_c1_old"]).toBeUndefined();
+    expect(loadLessonDraft("c1", "active")?.contentHtml).toBe("<p>Updated SOP-01</p>");
   });
 });
