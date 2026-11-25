@@ -3,13 +3,15 @@ import { joinSlides, type MccLesson, type MccSlideSpec } from "./mcc/slide-build
 import { MCC_SOP_01 } from "./mcc/sop-01.ts";
 import { MCC_SOP_02 } from "./mcc/sop-02.ts";
 import { MCC_SOP_03 } from "./mcc/sop-03.ts";
+import { MCC_SOP_04 } from "./mcc/sop-04.ts";
 
 export const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 export const MCC_COURSE_SLUG = "aps-mcc-a320";
 export const MCC_COURSE_TITLE = "Curso APS MCC — Airbus A320";
 export const MCC_COURSE_DESCRIPTION =
   "Curso teórico APS MCC (30 horas online + 5 horas presenciales) basado estrictamente en el Anexo 10 del Manual de Formación, FCOM A320, Procedures APS MCC, Standard Callouts y Performance Manual.";
-export const MCC_COURSE_IMAGE_URL = "/images/mcc/ac_gen_cockpit_p158.png";
+export const MCC_COURSE_IMAGE_URL =
+  "https://wkxylgsauhruoopclfwm.supabase.co/storage/v1/object/public/course-covers/fleet/mcc/entrol-a32-cover.webp";
 export const MCC_COURSE_REQUIRES_EXAM = false;
 
 export const MCC_DOCUMENTATION: CourseDocumentationItem[] = [
@@ -3271,7 +3273,7 @@ export const MCC_LEGACY_LESSONS = [
 ];
 
 /** Nueva estructura basada en el PDP Jan 2024 (docs/mcc/08_ARQUITECTURA_PDP.md). */
-export const MCC_PDP_LESSONS: MccLesson[] = [MCC_SOP_01, MCC_SOP_02, MCC_SOP_03];
+export const MCC_PDP_LESSONS: MccLesson[] = [MCC_SOP_01, MCC_SOP_02, MCC_SOP_03, MCC_SOP_04];
 
 /** Mientras conviven ambas estructuras, las lecciones antiguas se ordenan detrás (secuencia +100). */
 const LEGACY_SEQUENCE_OFFSET = 100;

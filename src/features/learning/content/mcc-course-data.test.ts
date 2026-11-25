@@ -4,6 +4,7 @@ import { MCC_LEGACY_LESSONS, MCC_LESSONS, MCC_PDP_LESSONS, clampLeftPct } from "
 import { MCC_SOP_01, SOP_01_SLIDE_COUNT } from "./mcc/sop-01";
 import { MCC_SOP_02, SOP_02_SLIDE_COUNT } from "./mcc/sop-02";
 import { MCC_SOP_03, SOP_03_SLIDE_COUNT } from "./mcc/sop-03";
+import { MCC_SOP_04, SOP_04_SLIDE_COUNT } from "./mcc/sop-04";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -93,7 +94,7 @@ describe("SOP-03", () => {
   });
 
   it("uses only cockpit preparation images from the PDP (p.138–155) and hides sources", () => {
-    const pages = [...MCC_SOP_03.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_cockpit_preparation\.webp"/g)].map((m) => Number(m[1]));
+    const pages = [...MCC_SOP_03.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_cockpit_preparation\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
     expect(pages.length).toBeGreaterThan(0);
     for (const p of pages) {
       expect(p).toBeGreaterThanOrEqual(138);
@@ -108,6 +109,37 @@ describe("SOP-03", () => {
 
   it("excludes airline names and aircraft registrations", () => {
     const htmlNoUrls = MCC_SOP_03.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("SOP-04", () => {
+  const slides = MCC_SOP_04.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable 1 h lesson placed after SOP-03", () => {
+    expect(MCC_SOP_04.min_seconds).toBe(3600);
+    expect(slides).toHaveLength(SOP_04_SLIDE_COUNT);
+    expect(MCC_SOP_04.sequence_order).toBe(MCC_SOP_03.sequence_order + 1);
+  });
+
+  it("uses only A320 pages of the PDP chapter (p.156–171) and hides sources", () => {
+    const pages = [...MCC_SOP_04.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_[a-z0-9_]+\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+    expect(pages.length).toBeGreaterThan(0);
+    for (const p of pages) {
+      expect(p).toBeGreaterThanOrEqual(156);
+      expect(p).toBeLessThanOrEqual(171);
+      // 164, 166 y 169 son láminas solo de A330.
+      expect([164, 166, 169]).not.toContain(p);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE SOP-04\.\d+: [^>]*\| Source: [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("excludes airline names and aircraft registrations", () => {
+    const htmlNoUrls = MCC_SOP_04.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|ec-[a-z]{3})\b/i);
   });
 });

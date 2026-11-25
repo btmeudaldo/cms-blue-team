@@ -58,7 +58,7 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "2.1 Flow patterns del A320",
     subtitle: "Flow Patterns",
-    leftPct: 55,
+    leftPct: 48,
     leftTitle: "PANEL SCAN & TASKSHARING PHILOSOPHY",
     rightTitle: "FLOW PATTERNS — INDEX",
     image: img(23),
@@ -91,7 +91,6 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
     page: 24,
     title: "Preparación de cabina: overhead panel",
     subtitle: "Cockpit Preparation – Overhead Panel",
-    leftPct: 52,
     sourceRef: "Source: FCOM A320 PRO-NOR-SOP-06 C Overhead Panel & PDP Flow Patterns (p.24)",
     cards: [
       {
@@ -157,19 +156,19 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
     sourceRef: "Source: FCOM A320 PRO-NOR-SOP-06 I/J/K/L/M/N & PDP Flow Patterns (p.27)",
     splitCards: [
       steps("PF (CM1)", [
-        "GLARESHIELD (EFIS CP &amp; FCU): *BARO REF SET/CROSSCHECK · *FD CHECK ON · *SPD/MACH DASHED · *HDG-V/S · *ALT INITIAL EXPECTED CLEARANCE ALTITUDE",
-        "LATERAL CONSOLES &amp; INSTRUMENT PANELS: Oxygen mask test (CREW SUPPLY ON, REGUL LO PR CHECK OFF) · *PFD &amp; *ND CHECK · ECAM PRESS pb (LDG ELEV AUTO) &amp; STS pb (INOP SYS vs. MEL)",
+        "GLARESHIELD (EFIS CP &amp; FCU): *BARO REF SET/CROSSCHECK · *FD CHECK ON · *SPD/MACH DASHED · *HDG-V/S · *ALT INITIAL CLEARANCE",
+        "CONSOLES &amp; PANELS: O2 MASK TEST (CREW SUPPLY ON, REGUL LO PR OFF) · *PFD &amp; *ND CHECK · ECAM PRESS (LDG ELEV AUTO) &amp; STS",
       ]),
       steps("PM (CM2)", [
-        "GLARESHIELD (EFIS CP): *BARO REF SET/CROSSCHECK · *FD CHECK ON · *ILS/LS, ND MODE/RANGE, ADF/VOR AS RQRD",
-        "LATERAL CONSOLES &amp; INSTRUMENT PANELS: Oxygen mask test · *PFD &amp; *ND CHECK · *IRS ALIGN CHECK (NAV mode, &lt; 5 NM from FMS position) · *FUEL ON BOARD CHECK (PF-PM)",
+        "GLARESHIELD (EFIS CP): *BARO REF SET/CROSSCHECK · *FD CHECK ON · *ILS/LS · ND MODE/RANGE · ADF/VOR AS RQRD",
+        "CONSOLES &amp; PANELS: O2 MASK TEST · *PFD &amp; *ND CHECK · *IRS ALIGN (NAV, &lt; 5 NM) · *FOB CHECK (PF-PM)",
       ]),
     ],
     cards: [
       {
         heading: "Barometric & FCU Checks (FCOM PRO-NOR-SOP-06)",
         bullets: [
-          "Maximum difference: ±20 ft between both PFDs, and ±100 ft between ISIS and PFDs (±300 ft between mechanical standby altimeter and PFDs).",
+          "Max difference: ±20 ft between PFDs; ±100 ft ISIS vs. PFDs (±300 ft mechanical STBY altimeter vs. PFDs).",
           "Do not engage the autothrust on ground, as it may generate the AUTO FLT A/THR OFF warning at engine start.",
         ],
       },
@@ -188,23 +187,22 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
     sourceRef: "Source: FCOM A320 PRO-NOR-SOP-06 O Departure Briefing & PRO-NOR-SOP-10 Taxi (p.28)",
     splitCards: [
       {
-        heading: "PF — Briefing Role",
+        heading: "PM — PLAN",
         paragraph:
-          "Sets a distraction-free environment and briefs operational plan &amp; contingencies: hotspots of planned taxi route, stop-margin for RTO, EOSID, return/diversion considerations, special and non-standard operations, plus PF identified threats.",
+          "The PM should start to brief the main items of the PLAN. This ensures that both pilots share the same mental image of the flight trajectory.",
       },
       {
-        heading: "PM — Briefing Role",
+        heading: "PF — PLAN",
         paragraph:
-          "Confirms clearance and trajectory data: T/O RWY (intersection), SID designator, first cleared altitude, MSA/MORA for climb trajectory, extra fuel and time, plus PM identified threats.",
+          "The PF briefs the hotspots of potential taxi-routes if any, and considers at least the following items: The EOSID/Engine-out trajectory · Consideration for RTO (weather/weight) · The considerations for a return landing or diversion if so required.",
       },
     ],
     cards: [
       {
-        heading: "FCOM Departure Briefing Verification (PRO-NOR-SOP-06 / SOP-10)",
+        heading: "FCOM & Miscellaneous (PRO-NOR-SOP-06 / SOP-10 / PDP p.154)",
         bullets: [
-          "* DEPARTURE BRIEFING ……… PERFORM (BOTH) before completing the Cockpit Preparation Checklist.",
-          "During Taxi (PRO-NOR-SOP-10): DEPARTURE BRIEFING ……… CONFIRM (BOTH) after ATC clearance confirmation, F-PLN (SID, TRANS) check, cleared altitude set on FCU, and PFD/ND checks.",
-          "Close the briefing jointly with MITIGATIONS and MISCELLANEOUS so both flight crewmembers share the same mental model before pushback.",
+          "* DEPARTURE BRIEFING ……… PERFORM (BOTH) · During Taxi: DEPARTURE BRIEFING ……… CONFIRM (BOTH).",
+          "MISCELLANEOUS is intended to consider additional items e.g.: Intended use of automation after takeoff · Supplementary Procedures if not yet briefed.",
         ],
       },
     ],
@@ -242,17 +240,17 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
     sourceRef: "Source: FCOM A320 PRO-NOR-SOP-09 After Start & PDP Flow Patterns (p.30)",
     splitCards: [
       steps("PF", [
-        "ENG MODE SEL ……… NORM (permits normal pack operation and begins the After Start flow)",
-        "APU BLEED pb-sw ……… OFF (avoids ingestion of engine exhaust gases)",
-        "ENG / WING ANTI-ICE ……… AS RQRD (turn on ENG ANTI-ICE during all ground operations when icing conditions exist or are anticipated)",
-        "APU MASTER SW ……… OFF (if APU is not required)",
+        "ENG MODE SEL ……… NORM",
+        "APU BLEED pb-sw ……… OFF",
+        "ENG / WING ANTI-ICE ……… AS RQRD",
+        "APU MASTER SW ……… OFF (if not required)",
         "ECAM STATUS ……… CROSSCHECK",
         "NW STRG DISC MEMO ……… CHECK NOT DISPLAYED",
       ]),
       steps("PM", [
         "GND SPOILERS ……… ARM",
-        "RUDDER TRIM ……… RESET pb PRESS / CHECK NEUTRAL (up to 0.3° L or R)",
-        "FLAPS lever ……… SET FOR TAKEOFF &amp; CHECK POSITION (ECAM upper display)",
+        "RUDDER TRIM ……… RESET / CHECK NEUTRAL (≤ 0.3°)",
+        "FLAPS lever ……… SET FOR TAKEOFF &amp; CHECK (ECAM)",
         "PITCH TRIM handwheel ……… SET (takeoff CG)",
         "ECAM STATUS ……… CHECK",
       ]),
@@ -261,8 +259,8 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
       {
         heading: "Engine Warm-Up & Icing Notes (FCOM PRO-NOR-SOP-09)",
         bullets: [
-          "After start, to avoid thermal shock, operate the engine at idle or near idle for at least 2 min (or 3–5 min depending on engine variant/shutdown period) before advancing the thrust lever to high power.",
-          "If taxiing in icing conditions with rain, slush or snow: maintain the flaps retracted until the aircraft reaches the holding point of the takeoff runway.",
+          "After start, to avoid thermal shock, operate the engine at idle or near idle for at least 2 min (or 3–5 min per engine/shutdown time) before advancing thrust levers to high power.",
+          "If taxiing in icing conditions with rain, slush or snow: maintain the flaps retracted until the holding point of the takeoff runway.",
         ],
       },
     ],
@@ -392,14 +390,14 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
     sourceRef: "Source: FCOM A320 PRO-NOR-SOP-16 Descent Preparation (Arrival Briefing) & PDP Flow Patterns (p.36)",
     splitCards: [
       {
-        heading: "PF — Briefing Role",
+        heading: "PM — PLAN",
         paragraph:
-          "Sets a distraction-free environment and briefs approach execution: guidance for APP, landing FLAP setting, stop-margin, use of reverse, use of autobrake, planned RWY exit, hotspots for taxi-in, special operation, non-standard operation, and PF identified threats.",
+          "The PM should start to brief the main items of the PLAN. This ensures that both pilots share the same mental image of the flight trajectory.",
       },
       {
-        heading: "PM — Briefing Role",
+        heading: "PF — PLAN",
         paragraph:
-          "Confirms arrival &amp; go-around constraints: MORA/MOCA/MSA for planned trajectory, STAR, type of APP, MINIMUM, G/A TRAJECTORY, extra fuel and time, plus PM identified threats.",
+          "The PF briefs what she/he considers for landing. After the PF prepares the FMS, the PM crosschecks all the data entered in the FMS.",
       },
     ],
     cards: [
@@ -407,7 +405,7 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
         heading: "FCOM Descent Preparation & Anti-Ice (PRO-NOR-SOP-16)",
         bullets: [
           "NAV CHARTS CLIPBOARD ……… PREPARE (BOTH): verify that both flight crewmembers refer to the same chart reference.",
-          "ARRIVAL BRIEFING ……… PERFORM (BOTH) before top of descent, closing jointly with MITIGATIONS and MISCELLANEOUS.",
+          "ARRIVAL BRIEFING ……… PERFORM (BOTH) before top of descent.",
           "ENG 1 and 2 ANTI-ICE must be set to ON before and during descent when icing conditions exist or are anticipated, even if the SAT is below -40 °C (-40 °F).",
         ],
       },
@@ -475,20 +473,20 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
     sourceRef: "Source: FCOM A320 PRO-NOR-SOP-22 Parking & PDP Flow Patterns (p.39)",
     splitCards: [
       steps("PF", [
-        "ACCU PRESS indicator ……… CHECK (green band; chocks required before engine 1 shutdown if low)",
-        "PARK BRK handle ……… ON (keep brake pedals pressed until brakes pressure above green band)",
-        "ALL ENG MASTER LEVERS ……… OFF (no less than 3 min after high thrust operations; check engine parameters decrease)",
+        "ACCU PRESS indicator ……… CHECK (green band; chocks if low)",
+        "PARK BRK handle ……… ON (press pedals above green band)",
+        "ALL ENG MASTER LEVERS ……… OFF (check parameters decrease)",
         "EXTERIOR LIGHTS ……… BEACON OFF / AS RQRD",
         "SLIDES ……… CHECK DISARMED (DOOR/OXY SD page)",
         "SEAT BELTS sw ……… OFF",
       ]),
       steps("PM", [
         "ANTI-ICE ……… OFF",
-        "APU BLEED pb-sw ……… ON (immediately before engine shutdown to prevent engine exhaust fumes entering air conditioning)",
+        "APU BLEED pb-sw ……… ON (immediately before engine shutdown)",
         "FUEL PUMPS ……… OFF",
       ]),
     ],
-    note: "If the temperature of one brake is above 500 °C (or above 350 °C with the brake fans ON), avoid applying the parking brake unless operationally necessary. Operate engines at or near idle for a cooling period of 3 min before shutdown (FCOM PRO-NOR-SOP-22).",
+    note: "If the temperature of one brake is above 500 °C (or above 350 °C with brake fans ON), avoid applying the parking brake unless operationally necessary. Operate engines at or near idle for a 3 min cooling period before shutdown (FCOM PRO-NOR-SOP-22).",
   }),
   flowSlide({
     n: 18,
@@ -498,14 +496,14 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
     sourceRef: "Source: Airbus Tutorial Emergency Descent & PDP Flow Patterns (p.40)",
     splitCards: [
       steps("PF", [
-        "CREW OXY MASKS ……… USE (INT/RAD sw INT · INT reception ON · establish comm: “EMERGENCY DESCENT”)",
-        "EMER DESCENT ……… INITIATE — ALT ……… TURN PULL · HDG ……… TURN PULL · SPD ……… PULL",
-        "FMA ……… ANNOUNCE (“THRUST IDLE, OPEN DESCENT, HEADING, ALT BLUE”)",
-        "If A/THR is not active: THR LEVERS ……… IDLE",
+        "CREW OXY MASKS ……… USE (INT/RAD INT · “EMERGENCY DESCENT”)",
+        "EMER DESCENT ……… INITIATE (ALT · HDG · SPD PULL)",
+        "FMA ……… ANNOUNCE (“THRUST IDLE, OPEN DESCENT, HDG, ALT BLUE”)",
+        "If A/THR not active: THR LEVERS ……… IDLE",
         "SPD BRK ……… FULL",
       ]),
       steps("PM", [
-        "CREW OXY MASKS ……… USE (Communication Established)",
+        "CREW OXY MASKS ……… USE (Comm Established)",
         "SIGNS (ALL) ……… ON",
         "FMA ……… CHECK (“CHECKED”)",
       ]),
@@ -514,9 +512,9 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
       {
         heading: "Critical Operational Highlights (Airbus Tutorial)",
         bullets: [
-          "Action on the altitude knob-selector is TURN, then PULL. If you PULL first, then TURN, the aircraft will not descend.",
-          "Perform the Read &amp; Do procedures (ECAM or QRH) once established in descent and Memory Items are completed. Announce “EMERGENCY DESCENT” on PA, notify ATC, and select CSTR (ND range 40 NM or more) to display MORA.",
-          "Below FL 100, limit the rate of descent to approximately 1 000 ft/min, except during the approach phase.",
+          "ALT knob: TURN, then PULL. If you PULL first, then TURN, the aircraft will not descend.",
+          "Once descent established &amp; Memory Items done: perform Read &amp; Do (ECAM/QRH), PA “EMERGENCY DESCENT”, notify ATC, and select CSTR (ND ≥ 40 NM) for MORA.",
+          "Below FL 100, limit the rate of descent to approximately 1 000 ft/min, except during approach.",
         ],
       },
     ],
@@ -545,8 +543,8 @@ const SOP_02_SLIDES: MccSlideSpec[] = [
       {
         heading: "Decision Management & RTO Below 72 kt (Airbus Tutorial)",
         bullets: [
-          "Many ECAM alerts are inhibited during takeoff phase. Any ECAM Warning or Caution triggered below V1 must be considered significant; takeoff should be rejected. For non-ECAM events: below 100 kt reject takeoff; above 100 kt consider continuing takeoff (GO-MINDED).",
-          "In case of an RTO below 72 kt: no ground spoilers deployment and no autobrake activation — use manual braking, nosewheel steering and differential braking if needed.",
+          "Many ECAM alerts are inhibited during takeoff; any ECAM Warning/Caution below V1 must be considered significant (reject takeoff). Non-ECAM events: below 100 kt reject; above 100 kt consider continue takeoff (GO-MINDED).",
+          "RTO below 72 kt: no ground spoilers deployment, no autobrake activation — use manual braking, nosewheel steering and differential braking if needed.",
         ],
       },
     ],

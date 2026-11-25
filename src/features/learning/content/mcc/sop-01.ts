@@ -17,7 +17,7 @@ const SCO = "FCOM PRO-NOR-SCO";
 
 const IMAGE_VERSIONS: Record<string, number> = {
   p006_use_of_tutorials: 1795607846,
-  p009_use_of_tutorials: 1795607846,
+  p009_use_of_tutorials: 1795615600,
   p018_golden_rules: 1795607846,
   p019_golden_rules: 1795607846,
   p022_golden_rules: 1795607846,
@@ -134,39 +134,28 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     comment: "SLIDE SOP-01.4: Golden Rule #1",
     eyebrow: EYEBROW,
     title: "1.4 Golden Rule #1: Fly, Navigate, Communicate",
-    subtitle: "Golden Rules · #1 · Tasksharing & PIR",
+    subtitle: "Golden Rules · #1 · Tasksharing",
     leftPct: 56,
-    leftTitle: "COCKPIT TASKSHARING · PREVENTING IDENTIFIED RISKS",
+    leftTitle: "MULTICREW TASKSHARING · COMMUNICATION",
     rightTitle: "FLY · NAVIGATE · COMMUNICATE",
     image: img("p019_golden_rules"),
     imageAlt: "Golden Rule 1 Fly Navigate Communicate",
-    sourceRef: "Source: FCOM A320 · PRO-NOR-SOP-04 / SOP-06 & PIR",
+    sourceRef: "Source: FCOM A320 · PRO-NOR-SCO & Anexo 10 APS MCC",
     cards: [
       {
-        heading: "Cockpit Preparation & Tasksharing (FCOM PRO-NOR-SOP-04 / SOP-06)",
+        heading: "Entorno multipiloto (Anexo 10 · APS MCC)",
         paragraph:
-          "The PF and PM should perform the cockpit preparation, in accordance with the defined panel scan sequence and tasksharing.",
-        bullets: [
-          "The flight crew performs the preliminary cockpit preparation to ensure that all required safety checks are completed. The safety checks prevent the inadvertent operation of aircraft systems, danger to the aircraft, and danger to the personnel.",
-          "The PF prepares the overhead panel, the center instrument panel and the pedestal while the PM performs the external walkaround. When both flight crewmembers are seated and the PM checked the FMS, both flight crewmembers continue the cockpit preparation.",
-        ],
+          "El curso desarrolla la toma de decisiones, la comunicación, el reparto de tareas, el uso de listas de comprobación, la supervisión mutua, el trabajo en equipo y el apoyo al compañero en todas las fases del vuelo, tanto en operación normal como en condiciones anormales y de emergencia.",
       },
       {
-        heading: "Preventing Identified Risks (PIR)",
+        heading: "Communications & Control Transfer (FCOM PRO-NOR-SCO)",
         bullets: [
-          "Possibility of injury to the ground personnel.",
-          "Possibility of damage to the aircraft.",
-          "Possibility of injury to passengers.",
-          "The navigation may be affected.",
-          "The handling or control of the aircraft may be affected.",
-          "It may not be possible to complete the initial flight.",
+          "Standard phraseology is essential to ensure effective crew communication. The phraseology should be concise and exact.",
+          "These standard Airbus callouts are also designed to promote situational awareness, and to ensure crew understanding of systems and their use in line operation.",
+          "PF/PM duties transfer: “YOU HAVE CONTROL” → “I HAVE CONTROL” (to give control) and “I HAVE CONTROL” → “YOU HAVE CONTROL” (to take control).",
         ],
       },
     ],
-    alert: {
-      level: "WARNING",
-      text: "Do not pressurize the hydraulic systems until clearance is obtained from ground personnel.",
-    },
   },
   {
     comment: "SLIDE SOP-01.5: Golden Rules #2 and #3",
@@ -192,7 +181,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
       {
         heading: "#3 Understand the FMA at all times",
         paragraph: "To ensure correct situational awareness at all times, the flight crew must:",
-        bullets: ["Monitor the FMA.", "Announce the FMA.", "Confirm the FMA.", "Understand the FMA."],
+        bullets: ["Monitor the FMA · Announce the FMA · Confirm the FMA · Understand the FMA."],
       },
       {
         heading: "FMA Display (FCOM DSC-22_30-80-20)",
@@ -250,7 +239,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
       {
         heading: "Foreword",
         paragraph:
-          "The procedures contained in this Chapter are recommended by Airbus, and are consistent with the other Chapters of this manual. The Authorities do not certificate Standard Operating Procedures. The manufacturer presents them herein as the best way to proceed, from a technical and operational standpoint. They are continually updated and the revisions take into account Operator input, as well as manufacturer experience. Operators may amend them, as needed.",
+          "The procedures contained in this Chapter are recommended by Airbus, and are consistent with the other Chapters of this manual. The Authorities do not certificate Standard Operating Procedures. The manufacturer presents them herein as the best way to proceed, from a technical and operational standpoint.",
       },
       {
         heading: "Content of the SOP",
@@ -259,7 +248,6 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
           "All items of a given procedure are listed in a sequence that follows a standardized scan of the cockpit panels, unless that sequence goes against the action priority logic, to ensure that all actions are performed in the most efficient way.",
           "These procedures assume that all systems are operating normally, and that all automatic functions are used normally.",
           "Standard Operating Procedures consider that both pilots use Electronic Flight Bag (EFB). Airbus recommends operating with two EFBs in order to reduce the risk of erroneous inputs.",
-          "The FCOM also contains normal procedures that are non-routine procedures in the Supplementary Procedures chapter and in the Special Operations chapter.",
         ],
       },
     ],
@@ -445,10 +433,8 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     cards: [
       {
         heading: "Cambio entre guiado Managed (PUSH) y Selected (PULL)",
-        bullets: [
-          "<strong>PULL (Selected):</strong> Tirar del selector para enganchar un modo o target seleccionado por la tripulación (se apaga el punto blanco).",
-          "<strong>MANAGE (Managed):</strong> Empujar el selector para armar o enganchar el guiado calculado por el FMGS (se ilumina el punto blanco). El mando <strong>V/S-FPA no tiene función managed</strong>.",
-        ],
+        paragraph:
+          "<strong>PULL (Selected):</strong> tira del selector para enganchar un modo o target seleccionado (punto blanco apagado). <strong>MANAGE (Managed):</strong> empuja el selector para armar o enganchar el guiado del FMGS (punto blanco encendido; <strong>V/S-FPA no tiene función managed</strong>).",
       },
     ],
     table: {
@@ -466,7 +452,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
     alert: {
       level: "NOTE",
-      text: "Regla FMA A320: modos <strong>armados</strong> con color (<em>“LOC blue”</em>, <em>“G/S blue”</em>); modos <strong>activos</strong> sin color (<em>“NAV”</em>, <em>“ALT”</em>, <em>“OPEN CLB”</em>). Si el valor ya estaba preseleccionado, basta con llamar <em>“PULL HDG”</em>, <em>“PULL SPEED”</em> o <em>“FL PULL”</em>.",
+      text: "Regla FMA A320: modos <strong>armados</strong> con color (<em>“LOC blue”</em>, <em>“G/S blue”</em>); modos <strong>activos</strong> sin color (<em>“NAV”</em>, <em>“ALT”</em>, <em>“OPEN CLB”</em>).",
     },
   },
   {

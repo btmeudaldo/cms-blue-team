@@ -19,8 +19,10 @@ const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SOP-03";
 const PDP = "Airbus Tutorial PDP Jan 2024 — Cockpit Preparation";
+const IMG_VERSION = 1795612605;
 
-const img = (page: number) => `${PDP_IMG}/p${String(page).padStart(3, "0")}_cockpit_preparation.webp`;
+const img = (page: number) =>
+  `${PDP_IMG}/p${String(page).padStart(3, "0")}_cockpit_preparation.webp?v=${IMG_VERSION}`;
 const fcom = (sections: string) => `Source: FCOM A320 PRO-NOR-${sections}`;
 const both = (sections: string, page: number) => `Source: FCOM A320 PRO-NOR-${sections} & ${PDP} (p.${page})`;
 
@@ -433,7 +435,6 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "3.10 Overhead panel",
     subtitle: "Cockpit Preparation · Overhead Panel",
-    leftPct: 58,
     leftTitle: "WHAT THE FCOM ADDS",
     rightTitle: "OVERHEAD PANEL — PF",
     image: img(140),
@@ -495,7 +496,7 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "3.12 Pedestal",
     subtitle: "Cockpit Preparation · Pedestal",
-    leftPct: 54,
+    leftPct: 45,
     leftTitle: "ACP · RMP · ATC · PARKING BRAKE",
     rightTitle: "PEDESTAL — PF",
     image: img(142),
@@ -514,7 +515,6 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
         heading: "ATC",
         bullets: [
           "ATC and TCAS are on standby. To prevent possible interference to radar surveillance systems, TCAS should not be selected before the holding point/lining up.",
-          "ALT RPTG ……… ON · ATC SYS 1 ……… SELECT — For RVSM operations, select SYS 1 if AP 1 is used, and SYS 2 if AP 2 is used.",
         ],
       },
       {
@@ -564,7 +564,7 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "3.14 Plan de vuelo activo y secundario",
     subtitle: "Cockpit Preparation · F-PLN / SEC F-PLN",
-    leftPct: 68,
+    leftPct: 52,
     leftTitle: "ACTIVE F-PLN · WINDS · SEC F-PLN",
     rightTitle: "F-PLN A PAGE",
     image: img(144),
@@ -573,8 +573,6 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
     cards: [
       {
         heading: "* F-PLN A page ……… COMPLETE AND CHECK",
-        paragraph:
-          "The flight crew must check, modify, or insert (as applicable) the F-PLN in the following order, according to the data given by ATIS, ATC, or MET:",
         bullets: [
           "Lateral revision at departure airport. Select RWY, then SID, then TRANS using scroll keys.",
           "Vertical revision. Check or enter climb speed limit, constraints according to ATC clearance. Enter step altitude as appropriate.",
@@ -583,7 +581,6 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
       },
       {
         heading: "* SECONDARY FLIGHT PLAN ……… AS APPROPRIATE",
-        paragraph: "This is routinely a copy of the active flight plan. However, consideration may be given to the following:",
         bullets: [
           "Copy the active F-PLN, but modify it at a suitable WPT for an immediate return to the departure airfield in the event of, for example, engine failure.",
           "If weather is below landings minima at the departure airfield, the secondary flight plan should be that required for a diversion immediately after takeoff.",
@@ -601,7 +598,6 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "3.15 Radio NAV, pesos, despegue y crosscheck del PM",
     subtitle: "Cockpit Preparation · INIT B / PERF / Crosscheck",
-    leftPct: 62,
     leftTitle: "RAD NAV · INIT B · PERF TAKEOFF · GREEN DOT",
     rightTitle: "FMGS PREPARATION — PM CROSSCHECK",
     image: img(145),
@@ -611,13 +607,13 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
       {
         heading: "* RADIO NAV ……… CHECK",
         paragraph:
-          "Check the VOR, ILS and ADF tuned by the FMGC. Modify them if required, and check that the correct identifier is displayed on the ND and PFD. If unsatisfactory, go through the audio check.",
+          "Check the VOR, ILS and ADF tuned by the FMGC. Modify them if required, and check that the correct identifier is displayed on the ND and PFD.",
       },
       {
         heading: "INIT B · PERF TAKEOFF (PF)",
         bullets: [
           "* ZFW/ZFWCG ……… INSERT · * BLOCK FUEL ……… INSERT",
-          "* T.O SHIFT ……… INSERT AS RQRD — If the aircraft takes off from an intersection, insert a T.O shift value to increase flight crew awareness of the runway length reduction.",
+          "* T.O SHIFT ……… INSERT AS RQRD — Insert T.O shift if taking off from an intersection, to keep awareness of runway length reduction.",
           "* V1, VR, V2 · * FLX TO TEMP ……… INSERT · * THR RED/ACC and ENG OUT ACC altitude ……… SET or CHECK · * FLAPS/THS ……… INSERT",
         ],
       },
@@ -672,7 +668,6 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "3.17 Test de la máscara de oxígeno",
     subtitle: "Final Cockpit Preparation · Oxygen Mask Test",
-    leftPct: 52,
     leftTitle: "OXYGEN MASK TEST — STEP BY STEP (PF-PM)",
     rightTitle: "OXYGEN MASK ……… TEST",
     image: img(149),
@@ -773,13 +768,7 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
     image: img(152),
     imageAlt: "Fuel on board check",
     sourceRef: both("SOP-06 Fuel On Board", 152),
-    cards: [
-      {
-        heading: "* FUEL ON BOARD ……… CHECK (PF-PM)",
-        paragraph:
-          "Crosscheck that the sum of the FOB recorded at the end of the last flight and the fuel uplift (if any) is consistent with the current FOB. If an abnormal difference is found, a maintenance action is due.",
-      },
-    ],
+    cards: [],
     table: {
       headers: ["FOB after refueling", "Abnormal difference above"],
       rows: [
@@ -797,10 +786,10 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
     subtitle: "Cockpit Preparation · Departure Briefing",
     leftPct: 42,
     leftTitle: "DEPARTURE BRIEFING · C/L",
-    rightTitle: "STRUCTURE OF THE DEPARTURE BRIEFING",
-    image: img(154),
-    imageAlt: "Structure and minimum items of the departure briefing",
-    sourceRef: both("SOP-06 Departure Briefing / Cockpit Preparation Checklist", 153),
+    rightTitle: "BRIEFING RECOMMENDATIONS",
+    image: img(155),
+    imageAlt: "Departure briefing recommendations",
+    sourceRef: `Source: FCOM A320 PRO-NOR-SOP-06 Departure Briefing / Cockpit Preparation Checklist & ${PDP} (p.153–155)`,
     cards: [
       {
         heading: "Sequence",
@@ -822,52 +811,6 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
       level: "NOTE",
       text: "The PM should start to brief the main items of the PLAN. This ensures that both pilots share the same mental image of the flight trajectory.",
     },
-  },
-  {
-    comment: "SLIDE SOP-03.22: Departure briefing items and recommendations",
-    eyebrow: EYEBROW,
-    title: "3.22 Contenido del departure briefing",
-    subtitle: "Departure Briefing · Items",
-    leftPct: 50,
-    leftTitle: "PLAN · THREATS · MISCELLANEOUS",
-    rightTitle: "BRIEFING RECOMMENDATIONS",
-    image: img(155),
-    imageAlt: "Departure briefing recommendations",
-    sourceRef: `Source: ${PDP} (p.154–155)`,
-    splitCards: [
-      {
-        heading: "PM — PLAN",
-        bullets: [
-          "T/O RWY (Intersection)",
-          "SID Designator",
-          "First cleared ALT",
-          "MSA/MORA for climb trajectory",
-          "Extra-fuel &amp; -time",
-        ],
-      },
-      {
-        heading: "PF — PLAN",
-        bullets: [
-          "Return/Diversion Considerations",
-          "Special Operation · Non-standard operation",
-          "EOSID",
-          "Stop-margin for RTO",
-          "Hotspots of planned taxi route",
-        ],
-      },
-    ],
-    cards: [
-      {
-        heading: "PF considerations",
-        paragraph:
-          "The PF briefs the hotspots of potential taxi-routes if any, and considers at least the following items: The EOSID/Engine-out trajectory · Consideration for RTO (weather/weight) · The considerations for a return landing or diversion if so required.",
-      },
-      {
-        heading: "Identified threats → Mitigations · Miscellaneous",
-        paragraph:
-          "MISCELLANEOUS is intended to consider additional items e.g.: Intended use of automation after takeoff · Supplementary Procedures if not yet briefed.",
-      },
-    ],
   },
 ];
 
