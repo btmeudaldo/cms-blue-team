@@ -22,9 +22,9 @@ const EYEBROW = "APS MCC · A320 · SOP-05";
 const PDP_TAXI = "Airbus Tutorial PDP Jan 2024 — Taxi - Before Takeoff";
 const PDP_TO = "Airbus Tutorial PDP Jan 2024 — Takeoff";
 
-/** Láminas exportadas para esta lección (pie recortado salvo la 185); llevan versión para la caché. */
-const NEW_PAGES = new Set([173, 174, 175, 176, 177, 178, 182, 183, 185, 187, 189, 190, 192, 193, 196]);
-const IMG_VERSION = 1795620000;
+/** Láminas con el pie recortado (© y banda; en la 185 también la fila ROTATION); llevan versión para la caché. */
+const NEW_PAGES = new Set([173, 174, 175, 176, 177, 178, 179, 181, 182, 183, 185, 186, 187, 189, 190, 192, 193, 196]);
+const IMG_VERSION = 1795618539;
 const img = (page: number) => {
   const chapter = page <= 182 ? "taxi_before_takeoff" : "takeoff";
   const v = NEW_PAGES.has(page) ? `?v=${IMG_VERSION}` : "";
@@ -41,7 +41,7 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
     title: "5.1 Inicio del rodaje",
     subtitle: "Taxi Initiation",
     leftPct: 45,
-    leftTitle: "BRAKES · BRAKE FAN · FLIGHT CONTROLS",
+    leftTitle: "BRAKES · FLIGHT CONTROLS",
     rightTitle: "TAXI INITIATION — PF / PM",
     image: img(173),
     imageAlt: "Taxi initiation items and callouts for PF and PM",
@@ -50,10 +50,6 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
       {
         heading: "BRAKES PRESSURE ……… CHECK AT ZERO (PF)",
         paragraph: "The flight crew may observe slight residual pressure on the triple indicator for a short period of time.",
-      },
-      {
-        heading: "BRAKE FAN pb ……… AS RQRD (PM)",
-        paragraph: "If an arc is displayed above the brake temperature on the WHEEL SD page, set to ON the BRAKE FAN pb.",
       },
       {
         heading: "FLIGHT CONTROLS ……… CHECK (PF-PM)",
@@ -68,30 +64,33 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
   {
     comment: "SLIDE SOP-05.2: Taxi speed",
     eyebrow: EYEBROW,
-    title: "5.2 Velocidad de rodaje y luces",
+    title: "5.2 Velocidad de rodaje y limitaciones en tierra",
     subtitle: "Taxi · Taxi Speed",
     leftPct: 50,
-    leftTitle: "TAXI SPEED LIMITATION · EXTERIOR LIGHTS",
+    leftTitle: "TAXI LIMITATIONS (LIM-AG-SPD · LIM-LG)",
     rightTitle: "TAXI SPEED",
     image: img(182),
     imageAlt: "Taxi speed technique on long straight taxiways",
-    sourceRef: src("LIM-AG-SPD Taxi Speed / PRO-NOR-SOP-10 Exterior Lights", 182),
+    sourceRef: src("LIM-AG-SPD Taxi Speed / LIM-LG Braking System / Taxi with Deflated or Damaged Tires", 182),
+    alert: {
+      level: "CAUTION",
+      text: "When the takeoff weight is higher than 76 000 kg (167 550 lb): Do not exceed a taxi speed of 20 kt during a turn.",
+    },
     cards: [
       {
-        heading: "Taxi speed (LIM-AG-SPD)",
-        paragraph: "When the takeoff weight is higher than 76 000 kg (167 550 lb):",
-      },
-      {
-        heading: "Exterior lights during taxi",
-        bullets: [
-          "During taxi, the PF may request the PM to set the exterior lights.",
-          "NOSE sw ……… TAXI (PF)",
-          "When crossing a runway: STROBE sw ……… ON (PF)",
-          "RWY TURN OFF sw ……… ON (PF)",
-        ],
+        heading: "Braking system",
+        paragraph:
+          "The braking system is not designed to hold the aircraft in a stationary position when a high thrust level is applied on at least one engine. During ground procedures that require a thrust increase with braking, the flight crew must ensure that the aircraft remains stationary, and must be ready to immediately retard the thrust levers to IDLE.",
       },
     ],
-    alert: { level: "CAUTION", text: "Do not exceed a taxi speed of 20 kt during a turn." },
+    table: {
+      headers: ["Taxi with deflated (not damaged) tires", "Limit"],
+      rows: [
+        ["Maximum one tire per gear deflated — maximum taxi speed during turn", "7 kt"],
+        ["Two tires deflated on the same main gear — maximum taxi speed", "3 kt"],
+        ["Maximum NWS angle", "30 °"],
+      ],
+    },
   },
   {
     comment: "SLIDE SOP-05.3: Taxi — ATC clearance and flight instruments",
@@ -194,11 +193,14 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
     rightTitle: "BEFORE TAKEOFF 1/2",
     image: img(177),
     imageAlt: "Brake temperature check before takeoff",
-    sourceRef: src("PRO-NOR-SOP-11 Brake Fans / TCAS", 177),
+    sourceRef: src("PRO-NOR-SOP-11 Brake Fans / TCAS / LIM-LG Brake Temperature", 177),
     cards: [
       {
         heading: "TAKEOFF ……… DELAY (one brake at or more than 150 °C)",
-        paragraph: "This prevents the display of the BRAKES HOT alert when the BRAKE FAN is set to OFF.",
+        bullets: [
+          "This prevents the display of the BRAKES HOT alert when the BRAKE FAN is set to OFF.",
+          "LIM-LG: Maximum brake temperature for takeoff (brake fans off) ……… 300 °C",
+        ],
       },
       {
         heading: "TCAS Mode selector ……… TA or TA/RA (PM)",
@@ -243,11 +245,11 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
     title: "5.8 Alineación: packs, EFB, cabina y luces",
     subtitle: "Before Takeoff · Packs / EFB / Cabin Crew",
     leftPct: 50,
-    leftTitle: "PACKS · EFB · CABIN CREW · STROBE",
+    leftTitle: "PACKS · EFB · CABIN CREW",
     rightTitle: "EXTERIOR LIGHTS",
     image: img(179),
     imageAlt: "Exterior lights at line-up and at takeoff clearance",
-    sourceRef: src("PRO-NOR-SOP-11 Packs / Sliding Table-EFB / Cabin Crew / Exterior Lights", 179),
+    sourceRef: src("PRO-NOR-SOP-11 Packs / Sliding Table-EFB / Cabin Crew", 179),
     cards: [
       {
         heading: "PACK 1 and PACK 2 pb-sw ……… AS RQRD (PM)",
@@ -263,10 +265,6 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
           "ALL EFB (with no mounted equipment) ……… STOW — In flight, both flight crewmembers should not use EFB applications at the same time.",
           "CABIN CREW ……… ADVISE (PM) — Advise the cabin crew that takeoff is imminent.",
         ],
-      },
-      {
-        heading: "STROBE sw ……… ON (PF)",
-        paragraph: "Set the STROBE sw to ON to cross or enter a runway. The PF can request the PM to set the exterior lights.",
       },
     ],
   },
@@ -344,10 +342,7 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
       },
       {
         heading: "THRUST LEVERS ……… FLX or TOGA",
-        bullets: [
-          "Increase thrust rapidly to about 70 % N1 (1.15 EPR) then progressively to reach takeoff thrust by 40 kt ground speed.",
-          "Note: ENG SD page replaces WHEEL SD page on the ECAM lower display.",
-        ],
+        paragraph: "Note: ENG SD page replaces WHEEL SD page on the ECAM lower display.",
       },
       {
         heading: "DIRECTIONAL CONTROL ……… USE RUDDER (PF) · PFD/ND ……… MONITOR (PM)",
@@ -383,6 +378,10 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
           "The maximum demonstrated crosswind value is not an Airplane Flight Manual (AFM) limitation : It is the maximum crosswind condition experienced during the aircraft certification campaign.",
           "Airbus recommends that operators should not intentionally operate in crosswinds that exceed this value.",
         ],
+      },
+      {
+        heading: "THRUST LEVERS ……… FLX or TOGA (tailwind, or crosswind above 20 kt)",
+        paragraph: "Increase thrust rapidly to about 70 % N1 (1.15 EPR) then progressively to reach takeoff thrust by 40 kt ground speed.",
       },
     ],
   },
@@ -440,27 +439,24 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
   {
     comment: "SLIDE SOP-05.15: Lift off",
     eyebrow: EYEBROW,
-    title: "5.15 Despegue: positive climb, tren y AP",
+    title: "5.15 Despegue: tren, AP y límites de velocidad",
     subtitle: "Takeoff · Lift Off",
     leftPct: 45,
-    leftTitle: "WHEN POSITIVE CLIMB",
+    leftTitle: "LIMITATIONS AFTER LIFT-OFF",
     rightTitle: "LIFT OFF — PF / PM",
     image: img(187),
     imageAlt: "Lift off callouts, landing gear up and autopilot engagement",
-    sourceRef: src("PRO-NOR-SOP-12 When Positive Climb / PRO-NOR-SOP-10 AFS", 187),
-    cards: [
-      {
-        heading: "POSITIVE CLIMB ……… ANNOUNCE (PM)",
-        paragraph: "Announce positive climb, when the vertical speed indication is positive and radio altitude has increased.",
-      },
-      {
-        heading: "L/G · AP",
-        bullets: [
-          "L/G UP ……… ORDER (PF) · L/G lever ……… SELECT UP (PM)",
-          "AP ……… AS RQRD (PF) — Above 100 ft AGL, AP 1 or 2 may be engaged.",
-        ],
-      },
-    ],
+    sourceRef: src("LIM-AG-SPD Maximum Speeds with the Landing Gear Extended / Maximum Tire Speed / LIM-AFS-10-10 Autopilot", 187),
+    cards: [],
+    table: {
+      headers: ["Limitation", "Value"],
+      rows: [
+        ["Maximum ground speed (tire speed)", "195 kt"],
+        ["Maximum speed at which the landing gear may be retracted (VLO retraction)", "220 kt / M 0.54"],
+        ["Maximum speed with the landing gear extended (VLE)", "280 kt / M 0.67"],
+        ["Autopilot minimum use — at takeoff", "100 ft AGL and at least 5 s after liftoff"],
+      ],
+    },
   },
   {
     comment: "SLIDE SOP-05.16: Thrust reduction",
