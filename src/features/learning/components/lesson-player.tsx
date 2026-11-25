@@ -912,13 +912,13 @@ export function LessonPlayer({
               : undefined
           }
         >
-          <div className="mx-auto max-w-[1400px] flex flex-wrap items-center justify-between gap-4">
-            {/* Title & Index Toggle */}
-            <div className="flex items-center gap-3">
+          <div className="mx-auto max-w-[1400px] flex flex-wrap lg:flex-nowrap items-center justify-between gap-4">
+            {/* Title & Index Toggle (min-w-0: long lesson titles truncate instead of wrapping the bar) */}
+            <div className="flex min-w-0 flex-1 items-center gap-3">
               {layoutMode === "top-header" && (
                 <Link
                   href={`/courses/${courseId}`}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                   title="Volver al curso"
                 >
                   &larr;
@@ -934,7 +934,7 @@ export function LessonPlayer({
                     toggleIndexOpen();
                   }
                 }}
-                className={`flex h-9 px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${isIndexOpen || isMobileSidebarOpen
+                className={`flex h-9 shrink-0 whitespace-nowrap px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${isIndexOpen || isMobileSidebarOpen
                     ? "bg-[#1a80ff] text-white border-blue-600 shadow-xs"
                     : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                   }`}
@@ -953,7 +953,7 @@ export function LessonPlayer({
                     setActiveGlossary(null);
                     setIsDocsOpen((prev) => !prev);
                   }}
-                  className={`flex h-9 px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${isDocsOpen
+                  className={`flex h-9 shrink-0 whitespace-nowrap px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${isDocsOpen
                       ? "bg-sky-600 text-white border-sky-600 shadow-xs"
                       : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                     }`}
@@ -973,7 +973,7 @@ export function LessonPlayer({
                     setActiveGlossary(null);
                     setIsGlossaryDrawerOpen((prev) => !prev);
                   }}
-                  className={`flex h-9 px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${isGlossaryDrawerOpen
+                  className={`flex h-9 shrink-0 whitespace-nowrap px-2.5 sm:px-3 items-center gap-1.5 rounded-xl border text-xs font-bold transition-all cursor-pointer ${isGlossaryDrawerOpen
                       ? "bg-sky-600 text-white border-sky-600 shadow-xs"
                       : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                     }`}
@@ -985,18 +985,21 @@ export function LessonPlayer({
                 </button>
               )}
 
-              <div>
-                <h2 className="text-sm font-extrabold text-slate-900 dark:text-white line-clamp-1">
+              <div className="min-w-0">
+                <h2
+                  className="text-sm font-extrabold text-slate-900 dark:text-white truncate"
+                  title={lessonTitle}
+                >
                   {lessonTitle}
                 </h2>
-                <p className="text-[11px] text-slate-400 dark:text-slate-500 font-medium">
+                <p className="text-[11px] text-slate-400 dark:text-slate-500 font-medium truncate">
                   {courseTitle}
                 </p>
               </div>
             </div>
 
             {/* Monitor Badges */}
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex shrink-0 flex-wrap lg:flex-nowrap items-center gap-3">
               {/* Timer Countdown Badge */}
               <div className="flex items-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 px-3 py-1.5 border border-slate-200 dark:border-slate-700">
                 <div className="relative flex h-5 w-5 items-center justify-center">
