@@ -9,6 +9,7 @@ import { MCC_SOP_05, SOP_05_SLIDE_COUNT } from "./mcc/sop-05";
 import { MCC_SOP_06, SOP_06_SLIDE_COUNT } from "./mcc/sop-06";
 import { MCC_SOP_07, SOP_07_SLIDE_COUNT } from "./mcc/sop-07";
 import { MCC_SOP_08, SOP_08_SLIDE_COUNT } from "./mcc/sop-08";
+import { MCC_SOP_09, SOP_09_SLIDE_COUNT } from "./mcc/sop-09";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -269,5 +270,34 @@ describe("SOP-08", () => {
   it("excludes airline names and aircraft registrations", () => {
     const htmlNoUrls = MCC_SOP_08.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("SOP-09", () => {
+  const slides = MCC_SOP_09.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable 1 h lesson placed after SOP-08", () => {
+    expect(MCC_SOP_09.min_seconds).toBe(3600);
+    expect(slides).toHaveLength(SOP_09_SLIDE_COUNT);
+    expect(MCC_SOP_09.sequence_order).toBe(MCC_SOP_08.sequence_order + 1);
+  });
+
+  it("uses normal procedures PDP images (p.299–318, 400–419) without SOP-01 duplicates or A330/neo pages", () => {
+    const pages = [...MCC_SOP_09.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:ap_fd_and_a_thr_engagement_disengagement|circling|glide_slope_interception_from_above|ground_speed_mini_function|normal_law_protections|use_of_bird|visual_pattern)\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+    expect(pages).toHaveLength(SOP_09_SLIDE_COUNT);
+    for (const p of pages) {
+      expect((p >= 299 && p <= 318) || (p >= 400 && p <= 419)).toBe(true);
+      expect([300, 307, 308, 315, 407]).not.toContain(p);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE SOP-09\.\d+: [^>]*\| Source: [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("excludes airline names, other types and aircraft registrations", () => {
+    const htmlNoUrls = MCC_SOP_09.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|a320neo|neo|ec-[a-z]{3})\b/i);
   });
 });
