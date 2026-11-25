@@ -6,6 +6,7 @@ import { MCC_SOP_02, SOP_02_SLIDE_COUNT } from "./mcc/sop-02";
 import { MCC_SOP_03, SOP_03_SLIDE_COUNT } from "./mcc/sop-03";
 import { MCC_SOP_04, SOP_04_SLIDE_COUNT } from "./mcc/sop-04";
 import { MCC_SOP_05, SOP_05_SLIDE_COUNT } from "./mcc/sop-05";
+import { MCC_SOP_06, SOP_06_SLIDE_COUNT } from "./mcc/sop-06";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -175,6 +176,36 @@ describe("SOP-05", () => {
 
   it("excludes airline names and aircraft registrations", () => {
     const htmlNoUrls = MCC_SOP_05.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("SOP-06", () => {
+  const slides = MCC_SOP_06.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable 1 h lesson placed after SOP-05", () => {
+    expect(MCC_SOP_06.min_seconds).toBe(3600);
+    expect(slides).toHaveLength(SOP_06_SLIDE_COUNT);
+    expect(MCC_SOP_06.sequence_order).toBe(MCC_SOP_05.sequence_order + 1);
+  });
+
+  it("uses climb/cruise/descent PDP images (p.198–227) without A330-only or SOP-02 duplicate pages", () => {
+    const pages = [...MCC_SOP_06.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:climb|cruise|descent)[a-z0-9_]*\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+    expect(pages.length).toBeGreaterThan(0);
+    for (const p of pages) {
+      expect(p).toBeGreaterThanOrEqual(198);
+      expect(p).toBeLessThanOrEqual(227);
+      expect([198, 200, 202, 217, 218, 225, 227]).not.toContain(p);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE SOP-06\.\d+: [^>]*\| Source: [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("excludes airline names and aircraft registrations", () => {
+    const htmlNoUrls = MCC_SOP_06.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|ec-[a-z]{3})\b/i);
   });
 });
