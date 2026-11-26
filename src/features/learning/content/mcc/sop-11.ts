@@ -251,7 +251,7 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
       {
         heading: "General",
         paragraph:
-          "The OEB reminder function enables the flight crew to clearly identify on the ECAM any procedure and STATUS message superseded by an OEB procedure. When an ECAM alert triggers, a message informs the flight crew in real time if there is an OEB for the displayed ECAM alert and/or STATUS messages. In this case, a specific ECAM message informs the flight crew to refer to the QRH.",
+          "The OEB reminder function provides operational help to the flight crew. This function enables the flight crew to clearly identify on the ECAM any procedure and STATUS message superseded by an OEB procedure. When a situation causes an ECAM alert to trigger, a message informs the flight crew in real time if there is an OEB for the displayed ECAM alert and/or STATUS messages. In this case, a specific ECAM message informs the flight crew to refer to the QRH.",
       },
       {
         heading: "The OEB reminder flag may apply to:",
@@ -264,7 +264,7 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "OEB reminder function needs to be activated by an appropriate maintenance procedure.",
+      text: "When an OEB with an associated OEB reminder code is applicable to the aircraft, the OEB reminder code needs to be activated by a maintenance action. When the OEB is no longer applicable to the aircraft, the OEB reminder code must be deactivated by the maintenance team.",
     },
   },
   {
@@ -315,7 +315,7 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
       {
         heading: "LDG DIST PROC APPLY",
         paragraph:
-          "The ECAM alert items are displayed on the ECAM STATUS page. The ECAM displays LDG DIST PROC APPLY if an ECAM alert item affects landing performance.",
+          "If an ECAM alert/QRH procedure affects landing performance, the ECAM/QRH procedure requests LDG DIST PROC... APPLY. In this case the flight crew must verify the landing performance.",
       },
       {
         heading: "STS reminder",
@@ -390,13 +390,14 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
       {
         heading: "Landing performance calculation",
         paragraph:
-          "The flight crew enters the ECAM alerts item that affect performance and expected landing conditions in the LDG PERF application to calculate the landing performance.",
+          "The flight crew enters the expected landing conditions and the ECAM alert/QRH procedure items that affect performance in the landing performance application.",
       },
       {
         heading: "Flaps lever position and VAPP",
         bullets: [
-          "The flight crew selects the FLAPS lever position requested by the ECAM. If there are no ECAM instructions, the FLAPS lever position for landing is at flight crew's discretion.",
-          "If the ECAM displays LDG DIST PROC APPLY: the flight crew enters into the FMS - PERF - APPR page the VAPP value computed by the LDG PERF application.",
+          "The flight crew selects the FLAPS lever position requested by the ECAM/QRH procedure. If there are no instructions in the ECAM/QRH procedure, the FLAPS lever position for landing is at flight crew's discretion.",
+          "VAPP = VREF + ΔVREF + APPR COR + ΔV Pilot. In the case of ΔVREF + APPR COR above 20 kt, an additional ΔV Pilot is not recommended.",
+          "The flight crew enters into the FMS-PERF-APPR page the VAPP value computed by the landing performance application.",
         ],
       },
       {
