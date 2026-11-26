@@ -232,6 +232,7 @@ export function mccMinSeconds(slideCount: number, videoSeconds = 0): number {
 }
 
 export const MCC_MODULES = {
+  INTRO: "Módulo 0 · Introducción a la filosofía Airbus",
   NORMAL_SOP: "Módulo 1 · Procedimientos Estándar y Normales",
   ABNORMAL_SOP: "Módulo 2 · Situaciones Anormales y Emergencias",
   SYSTEMS: "Módulo 3 · Sistemas del Avión y FMS",

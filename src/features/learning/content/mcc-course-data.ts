@@ -1,5 +1,6 @@
 import type { CourseDocumentationItem } from "@/features/learning/content/c172-course-data";
 import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./mcc/slide-builder.ts";
+import { MCC_INT_01 } from "./mcc/int-01.ts";
 import { MCC_SOP_01 } from "./mcc/sop-01.ts";
 import { MCC_SOP_02 } from "./mcc/sop-02.ts";
 import { MCC_SOP_03 } from "./mcc/sop-03.ts";
@@ -3288,7 +3289,10 @@ export const MCC_LEGACY_LESSONS = [
 export const MCC_SIS_LESSONS: MccLesson[] = [MCC_SIS_01, MCC_SIS_02];
 
 /** Nueva estructura basada en el PDP Jan 2024 (docs/mcc/08_ARQUITECTURA_PDP.md); al final, el bloque SIS. */
-export const MCC_PDP_LESSONS: MccLesson[] = [MCC_SOP_01, MCC_SOP_02, MCC_SOP_03, MCC_SOP_04, MCC_SOP_05, MCC_SOP_06, MCC_SOP_07, MCC_SOP_08, MCC_SOP_09, MCC_SOP_10, MCC_SOP_11, MCC_SOP_12, MCC_SOP_13, MCC_SOP_14, ...MCC_SIS_LESSONS];
+/** Módulo de introducción (FCTM, filosofía Airbus): va antes de las SOP. */
+export const MCC_INT_LESSONS: MccLesson[] = [MCC_INT_01];
+
+export const MCC_PDP_LESSONS: MccLesson[] = [...MCC_INT_LESSONS, MCC_SOP_01, MCC_SOP_02, MCC_SOP_03, MCC_SOP_04, MCC_SOP_05, MCC_SOP_06, MCC_SOP_07, MCC_SOP_08, MCC_SOP_09, MCC_SOP_10, MCC_SOP_11, MCC_SOP_12, MCC_SOP_13, MCC_SOP_14, ...MCC_SIS_LESSONS];
 
 /** Mientras conviven ambas estructuras, las lecciones antiguas se ordenan detrás (secuencia +100). */
 const LEGACY_SEQUENCE_OFFSET = 100;

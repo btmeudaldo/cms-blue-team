@@ -10,6 +10,7 @@ import {
   youtubeEmbedUrl,
 } from "./mcc/slide-builder";
 import { sanitizeLessonHtml } from "../domain/sanitize-html";
+import { INT_01_SLIDE_COUNT, MCC_INT_01 } from "./mcc/int-01";
 import { MCC_SOP_01, SOP_01_SLIDE_COUNT } from "./mcc/sop-01";
 import { MCC_SOP_02, SOP_02_SLIDE_COUNT } from "./mcc/sop-02";
 import { MCC_SOP_03, SOP_03_SLIDE_COUNT } from "./mcc/sop-03";
@@ -137,6 +138,38 @@ describe("MCC pacing", () => {
   it("keeps the built lessons within the 30 h online budget", () => {
     const total = MCC_PDP_LESSONS.reduce((sum, l) => sum + l.min_seconds, 0);
     expect(total).toBeLessThanOrEqual(108_000);
+  });
+});
+
+describe("INT-01", () => {
+  const slides = MCC_INT_01.content_html.split("<!-- pagebreak -->");
+
+  it("opens the course in the introduction module, before SOP-01", () => {
+    expect(MCC_PDP_LESSONS[0]).toBe(MCC_INT_01);
+    expect(MCC_INT_01.sequence_order).toBe(1);
+    expect(MCC_SOP_01.sequence_order).toBe(MCC_INT_01.sequence_order + 1);
+    expect(MCC_INT_01.module_title).toBe(MCC_MODULES.INTRO);
+    expect(slides).toHaveLength(INT_01_SLIDE_COUNT);
+    expect(MCC_INT_01.min_seconds).toBe(mccMinSeconds(INT_01_SLIDE_COUNT));
+  });
+
+  it("uses FCOM/FCTM figures hosted on Hostalia and keeps the FCTM source in the comment", () => {
+    const images = [...MCC_INT_01.content_html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
+    expect(images).toHaveLength(INT_01_SLIDE_COUNT);
+    for (const url of images) {
+      expect(url).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/fcom_a320_[a-z0-9_]+\.webp(\?v=\d+)?$/);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE INT-01\.\d+: [^>]*\| Source: FCTM A320 AOP-10[^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("excludes optional equipment, airlines, other types and registrations", () => {
+    const htmlNoUrls = MCC_INT_01.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:HUD|DCDU)\b/);
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });
 
