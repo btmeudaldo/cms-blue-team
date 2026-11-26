@@ -10,8 +10,9 @@
  * información complementaria del FCOM (textos L1/L2, WARNING/CAUTION/NOTE) en inglés y literal. Solo se
  * repite algo de la lámina cuando es crítico. Variante FCOM: A320ceo CFM56-5B.
  * Fuera de esta lección: circling, visual y RNAV visual (SOP-09); FLS no aplica a la variante de referencia.
- * Láminas no usadas: 233, 237 y 258 (ya en SOP-01); 242, 245, 253 y 261 (incluyen valores/líneas A330);
- * 248–251 y 263 (repetidas de 232–235 y 244); 252 (energy circle ya en SOP-06).
+ * Láminas no usadas: 233, 237 y 258 (ya en SOP-01); 239 (sustituida por diagrama FCOM Pattern Decelerated);
+ * 242, 245 y 253 (incluyen valores/líneas A330); 248–251 y 263 (repetidas de 232–235 y 244); 252 (energy
+ * circle ya en SOP-06); 244 y 261 usadas en versiones limpias A320 (EC-ILQ).
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
 import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
@@ -24,6 +25,9 @@ const EYEBROW = "APS MCC · A320 · SOP-07";
 const IMG_VERSION = 1795622000;
 const chapter = (page: number) => (page <= 244 ? "2d_approach" : "3d_approach");
 const img = (page: number) => `${PDP_IMG}/p${String(page).padStart(3, "0")}_${chapter(page)}.webp?v=${IMG_VERSION}`;
+const fcomImg = (name: string) => `${PDP_IMG}/${name}.webp`;
+const IMG_EXCEEDANCE_A320 = `${PDP_IMG}/p261_3d_approach_a320.webp?v=${IMG_VERSION}`;
+const IMG_AP_OFF_A320 = `${PDP_IMG}/p244_2d_approach_a320.webp?v=${IMG_VERSION}`;
 const src = (sections: string, page: number) =>
   `Source: FCOM A320 ${sections} & Airbus Tutorial PDP Jan 2024 — ${page <= 244 ? "2D" : "3D"} Approach (p.${page})`;
 const fcom = (sections: string) => `Source: FCOM A320 ${sections}`;
@@ -48,7 +52,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
           "ILS approaches",
           "Conventional approaches: VOR, VOR-DME, NDB, NDB-DME",
           "Approaches based on a LOC signal without any G/S signal: LOC ONLY, ILS G/S OUT, LOC B/C",
-          "RNAV approaches including RNAV(GNSS) approaches with LNAV or LNAV/VNAV minima, and RNAV(RNP) approaches for which Authorization is Required (AR).",
+          "RNAV approaches including RNAV(GNSS) approaches with LNAV or LNAV/VNAV minima, and RNAV(RNP) approaches for which Authorization is Required (AR) - If capability installed.",
         ],
       },
     ],
@@ -73,11 +77,12 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
       headers: ["Approach type", "Guidance mode"],
       rows: [
         ["ILS", "APPR using LOC G/S"],
-        ["LOC ONLY · ILS G/S OUT · LOC B/C", "APPR using FPA guidance"],
+        ["LOC ONLY · ILS G/S OUT", "LOC FPA (APPR using FPA guidance)"],
+        ["LOC B/C", "TRK FPA (APPR using FPA guidance)"],
         ["RNP or RNAV(GNSS) with LNAV/VNAV minima", "APPR using FINAL APP"],
-        ["RNP or RNAV(GNSS) with LNAV minima", "FINAL APP (1) or FPA guidance"],
+        ["RNP or RNAV(GNSS) with LNAV minima", "FINAL APP (1) or NAV FPA (TRK FPA Not Authorized)"],
         ["RNP or RNAV(GNSS) with LPV minima", "Not Authorized"],
-        ["VOR · VOR-DME · NDB · NDB-DME", "FINAL APP (1) or FPA guidance"],
+        ["VOR · VOR-DME · NDB · NDB-DME", "FINAL APP (1) or NAV FPA / TRK FPA"],
       ],
     },
     alert: {
@@ -112,7 +117,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
       {
         heading: "Early stabilized approach",
         paragraph:
-          "Under certain circumstances, the flight crew may decide to reduce the speed down to VAPP in the landing configuration at the Final Descent Point (i.e. approach via selected guidance, high glide path angle, low altitude intermediate approach, etc.). The flight crew should enter VAPP as a speed constraint at the Final Descent Point.",
+          "Under certain circumstances, the flight crew may decide to reduce the speed down to VAPP in the landing configuration at the Final Descent Point (i.e. approach via selected guidance, high glide path angle, low altitude intermediate approach, etc.). In order to obtain a valuable deceleration pseudo waypoint and to ensure a timely deceleration, the flight crew should enter VAPP as a speed constraint at the Final Descent Point.",
       },
     ],
   },
@@ -171,19 +176,19 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "If one of the above-mentioned conditions is not satisfied, the flight crew must initiate a go-around, unless they estimate that only small corrections are required to recover stabilized approach conditions. If the predicted tailwind at landing is greater than 10 kt, decelerated approach is not permitted, and the aircraft speed should be stabilized at around VREF + 5 kt in final.",
+      text: "If one of the above-mentioned conditions is not satisfied, the flight crew must initiate a go-around, unless they estimate that only small corrections are required to recover stabilized approach conditions.",
     },
     rightCards: [
       {
         heading: "At or above the FCU altitude",
         paragraph:
-          "The flight crew can either apply the GO AROUND procedure, or apply the discontinued approach technique. When the aircraft is below the FCU altitude, the flight crew must apply the GO AROUND procedure.",
+          "In order to discontinue an approach when the aircraft is at or above the altitude selected on the FCU, the flight crew can either apply the GO AROUND procedure, or apply the discontinued approach technique. When the aircraft is below the FCU altitude, the flight crew must apply the GO AROUND procedure.",
       },
       {
         heading: "Discontinued approach technique",
         bullets: [
           "Announce “CANCEL APPROACH”.",
-          "To disarm any AP/FD approach mode, press APPR pb or LOC pb.",
+          "To disarm any AP/FD approach mode, press APPR pb or LOC pb. Note: Valid only for ILS or FINAL APP guidance.",
           "Select lateral mode as required (NAV or HDG mode) · Select vertical mode as required (level off or adjust V/S) · Select SPEED and adjust.",
           "If F-PLN has no destination anymore: perform a LAT REV at the last waypoint and redefine the destination in the NEW DEST field.",
         ],
@@ -194,14 +199,14 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
   {
     comment: "SLIDE SOP-07.6: Initial approach",
     eyebrow: EYEBROW,
-    title: "7.6 Initial approach: secuenciado, fase y velocidad",
-    subtitle: "Initial Approach",
+    title: "7.6 Initial approach: secuenciado del F-PLN y fase de aproximación",
+    subtitle: "Initial Approach · F-PLN Sequencing / Phase",
     leftPct: 50,
     leftTitle: "INITIAL APPROACH (PRO-NOR-SOP-18-B)",
-    rightTitle: "INITIAL APPROACH — PF / PM",
-    image: img(231),
-    imageAlt: "Initial approach items for PF and PM",
-    sourceRef: src("PRO-NOR-SOP-18-B Initial Approach", 231),
+    rightTitle: "F-PLN SEQUENCING",
+    image: img(232),
+    imageAlt: "Why and how to sequence the flight plan before the approach",
+    sourceRef: src("PRO-NOR-SOP-18-B Initial Approach", 232),
     cards: [
       {
         heading: "F-PLN SEQUENCING ……… ADJUST (PF)",
@@ -217,24 +222,24 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
           "If the aircraft is in HDG or TRK mode, approximately 15 NM from touchdown, activate and confirm APPR phase on the PERF DES page.",
         ],
       },
-      {
-        heading: "MANAGED SPEED ……… CHECK (PF)",
-        paragraph: "If ATC requires a particular speed, use selected speed. When the ATC speed constraint no longer applies, return to managed speed.",
-      },
     ],
   },
   {
     comment: "SLIDE SOP-07.7: Flight path and speed brakes",
     eyebrow: EYEBROW,
-    title: "7.7 Trayectoria y uso de speedbrakes en la aproximación",
-    subtitle: "Initial Approach · Flight Path / Speed Brakes",
-    leftPct: 50,
-    leftTitle: "FLIGHT PATH · SPEED BRAKES (PF)",
-    rightTitle: "F-PLN SEQUENCING",
-    image: img(232),
-    imageAlt: "Why and how to sequence the flight plan before the approach",
-    sourceRef: src("PRO-NOR-SOP-18-B Initial Approach - Flight Path / Speed Brakes", 232),
+    title: "7.7 Velocidad, trayectoria y uso de speedbrakes",
+    subtitle: "Initial Approach · Speed / Flight Path / Speed Brakes",
+    leftPct: 55,
+    leftTitle: "SPEED · FLIGHT PATH · SPEED BRAKES (PF)",
+    rightTitle: "INITIAL APPROACH — PF / PM",
+    image: img(231),
+    imageAlt: "Initial approach items for PF and PM",
+    sourceRef: src("PRO-NOR-SOP-18-B Initial Approach - Speed / Flight Path / Speed Brakes", 231),
     cards: [
+      {
+        heading: "MANAGED SPEED ……… CHECK (PF)",
+        paragraph: "If ATC requires a particular speed, use selected speed. When the ATC speed constraint no longer applies, return to managed speed.",
+      },
       {
         heading: "FLIGHT PATH ……… MONITOR",
         bullets: [
@@ -322,13 +327,13 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
         bullets: [
           "FLAPS 1 should be selected more than 3 NM before the Final Descent Point",
           "For decelerated approaches, the aircraft must reach or be established on the final descent with FLAPS 1 and S speed at or above 2 000 ft AGL",
-          "If the aircraft does not decelerate on the flight path or aircraft speed is significantly higher than S speed, extend the landing gear in order to slow down. The use of speed brakes is possible. However, the use of speed brakes causes an increase in VLS.",
+          "If the aircraft does not decelerate on the flight path or aircraft speed is significantly higher than S speed, extend the landing gear in order to slow down. The use of speed brakes is possible. However, the flight crew should be aware that the use of speed brakes causes an increase in VLS.",
         ],
       },
       {
         heading: "TCAS Mode selector ……… TA or TA/RA (PM)",
         paragraph:
-          "FAA recommends to select TA only mode in the case of known nearby traffic which is in visual contact, and at particular airports and during particular procedures identified by an Operator as having a significant potential for unwanted or inappropriate resolution advisories.",
+          "FAA recommends to select TA only mode: in the case of known nearby traffic which is in visual contact · at particular airports and during particular procedures identified by an Operator as having a significant potential for unwanted or inappropriate resolution advisories.",
       },
     ],
     alert: { level: "CAUTION", text: "The flight crew should avoid extended flight in icing conditions with the slats extended." },
@@ -340,10 +345,10 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
     subtitle: "Aircraft Configuration · Flaps 2 / L/G Down",
     leftPct: 50,
     leftTitle: "AT 2 000 FT AGL MINIMUM · WHEN FLAPS ARE AT 2",
-    rightTitle: "AIRCRAFT CONFIGURATION FOR APPROACH 2/2",
-    image: img(239),
-    imageAlt: "Aircraft configuration for approach: flaps 3 and flaps full",
-    sourceRef: src("PRO-NOR-SOP-18-B At 2 000 ft AGL Minimum / When Flaps are at 2", 239),
+    rightTitle: "PATTERN (DECELERATED) — FCOM A320",
+    image: fcomImg("fcom_a320_decelerated_pattern"),
+    imageAlt: "Official FCOM A320 decelerated approach pattern from green dot to landing configuration",
+    sourceRef: fcom("PRO-NOR-SOP-18-B At 2 000 ft AGL Minimum / When Flaps are at 2 / Pattern (Decelerated)"),
     cards: [
       {
         heading: "FLAPS 2 ……… ORDER (PF) / SELECT (PM)",
@@ -351,7 +356,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
           "Check the aircraft deceleration toward F speed",
           "For ILS, if the aircraft intercepts the flight path below 2 000 ft AGL, select FLAPS 2 at one dot below the flight path",
           "If the aircraft speed is significantly higher than F speed on the flight path, or the aircraft does not decelerate on the flight path, extend the landing gear in order to slow down the aircraft. The use of speed brakes is not recommended",
-          "When the speed brakes are deployed, extending the flaps beyond FLAPS 1 may induce a slight roll movement.",
+          "When the speed brakes are deployed, extending the flaps beyond FLAPS 1 may induce a slight roll movement, and in calm conditions a small lateral control asymmetry may remain until disturbed by a control input or by an atmospheric disturbance.",
         ],
       },
       {
@@ -399,18 +404,19 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "7.13 Vigilancia de parámetros en la aproximación final",
     subtitle: "Approach · Flight Parameters",
-    leftPct: 52,
+    leftPct: 48,
     leftTitle: "FLIGHT PARAMETERS ……… MONITOR (PM)",
-    rightTitle: "EXCESSIVE DEVIATION CALLOUTS",
-    sourceRef: fcom("PRO-NOR-SOP-18-B Flight Parameters / PRO-NOR-SOP-18-C Final Approach - Flight Parameters"),
+    rightTitle: "PM FLIGHT PARAMETERS EXCEEDANCE CALLOUTS",
+    image: IMG_EXCEEDANCE_A320,
+    imageAlt: "PM flight parameters exceedance callouts on PFD and ND for A320",
+    sourceRef: src("PRO-NOR-SOP-18-B Flight Parameters / PRO-NOR-SOP-18-C Final Approach - Flight Parameters", 261),
     cards: [
       {
         heading: "The PF announces any FMA modification. The PM calls out, if:",
         bullets: [
           "The speed goes lower than the speed target -5 kt, or more than the speed target +10 kt",
           "The pitch attitude goes lower than -2.5 °, or more than +10 ° nose up",
-          "The bank angle becomes more than 7 °",
-          "The descent rate becomes more than 1 000 ft/min.",
+          "The bank angle becomes more than 7 ° · The descent rate becomes more than 1 000 ft/min.",
         ],
       },
       {
@@ -422,15 +428,9 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
-    rightTable: {
-      headers: ["Guidance", "PM calls out if"],
-      rows: [
-        ["ILS (LOC G/S)", "LOC: ½ dot · G/S: ½ dot"],
-        ["FINAL APP", "XTK > 0.1 NM · V/DEV > ½ dot (50 ft)"],
-        ["NAV FPA", "XTK more than 0.1 NM"],
-        ["LOC FPA", "LOC ½ dot"],
-        ["TRK FPA", "VOR: ½ dot or 2.5 ° · NDB: 5 °"],
-      ],
+    alert: {
+      level: "NOTE",
+      text: "Excessive deviation callouts: ILS (LOC G/S): LOC ½ dot · G/S ½ dot · LOC FPA: LOC ½ dot · NAV FPA: XTK is more than 0.1 NM.",
     },
   },
   // ── D. 2D approach — FPA guidance ────────────────────────────────────────
@@ -456,7 +456,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
       },
       {
         heading: "LATERAL PATH ……… INTERCEPT",
-        paragraph: "Monitor NAV or LOC engagement as appropriate. TRK FPA pb (Bird) ……… SELECT · FPA FOR FINAL APPROACH ……… SET",
+        paragraph: "Monitor NAV or LOC engagement as appropriate.",
       },
     ],
     alert: { level: "CAUTION", text: "Do not press the APPR pb." },
@@ -467,7 +467,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
     title: "7.15 Aproximación 2D: enganche del FPA en el FDP",
     subtitle: "Approach using FPA Guidance · Final 1/2",
     leftPct: 45,
-    leftTitle: "AT 0.3 NM FROM THE FINAL DESCENT POINT",
+    leftTitle: "AT 0.3 NM FROM THE FDP · AT THE FDP",
     rightTitle: "FINAL APPROACH 1/2 — PF / PM",
     image: img(240),
     imageAlt: "Final 2D approach: FPA pull, go-around altitude, landing checklist and stabilization",
@@ -500,13 +500,14 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
     rightTitle: "POSITION / FLIGHT PATH",
     image: img(241),
     imageAlt: "Position and flight path monitoring with raw data, bird and DME/altitude table",
-    sourceRef: src("PRO-NOR-SOP-18-C Approach using FPA Guidance - Descent Preparation / Descent", 241),
+    sourceRef: src("PRO-NOR-SOP-18-C Approach using FPA Guidance - Descent Preparation / Descent / Final Approach", 241),
     cards: [
       {
         heading: "F-PLN A page ……… CHECK",
         bullets: [
           "If a TOO STEEP PATH message is displayed after the FDP, disregard the V/DEV or yoyo information on the PFD",
-          "For approaches using NAV FPA: 1 degree of difference between the MCDU and the charted final lateral track is acceptable; 3 degree for conventional radio NAVAID approach",
+          "For approaches using NAV FPA: 1 degree of difference between the MCDU and the charted final lateral track is acceptable.",
+          "3 degree of difference between the MCDU and the charted final lateral track is acceptable for conventional radio NAVAID approach.",
           "In all other cases, use TRK FPA mode for approach.",
         ],
       },
@@ -544,8 +545,8 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
         heading: "Management of degraded navigation",
         bullets: [
           "For VOR and NDB approaches in NAV-FPA, if lateral guidance is not satisfactory: be prepared to continue the approach with reference to appropriate raw data by reverting to TRK-FPA.",
-          "For RNAV(GNSS) approaches with LNAV minima: use the appropriate remaining AP/FD in the case of GPS PRIMARY LOST or NAV ACCUR DOWNGRAD on one ND.",
-          "Discontinue the approach, if external visual references are not sufficient to proceed visually: GPS PRIMARY LOST on both NDs · XTK > 0.3 NM · NAV FM/GPS POS DISAGREE · NAV ACCUR DOWNGRAD on both NDs.",
+          "For RNAV(GNSS) approaches, with LNAV minima: use the appropriate remaining AP/FD in the following cases: GPS PRIMARY LOST on one ND · NAV ACCUR DOWNGRAD on one ND.",
+          "Discontinue the approach in the following cases, if external visual references are not sufficient to proceed visually: GPS PRIMARY LOST on both NDs · XTK > 0.3 NM · NAV FM/GPS POS DISAGREE · NAV ACCUR DOWNGRAD on both NDs.",
         ],
       },
     ],
@@ -558,7 +559,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
     leftPct: 52,
     leftTitle: "THE AUTOPILOT CAN BE USED WITH THE FOLLOWING MINIMUM VALUES",
     rightTitle: "AP OFF · FDs OFF · BIRD ON",
-    image: img(244),
+    image: IMG_AP_OFF_A320,
     imageAlt: "Autopilot off, flight directors off, bird on and runway track set",
     sourceRef: src("LIM-AFS-10 Autopilot Function", 244),
     cards: [],
@@ -621,7 +622,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
         bullets: [
           "This arms the LOC and G/S modes. LOC and/or G/S capture modes will engage no sooner than 3 s after being armed.",
           "Note: In NAV mode, the aircraft may leave the F-PLN to capture the LOC.",
-          "ICAO defines the envelope where the quality of the G/S signal ensures a normal capture: within 10 NM, ±8 ° of the centerline of the ILS glide path and up to 1.75 θ and down to 0.3 θ. When arming the approach well outside of the normal G/S capture envelope, a spurious G/S* engagement may occur due to a wrong G/S deviation signal.",
+          "ICAO defines the envelope where the quality of the G/S signal ensures a normal capture. This envelope is within 10 NM, ±8 ° of the centerline of the ILS glide path and up to 1.75 θ and down to 0.3 θ (θ = nominal glide path angle). When arming the approach well outside of the normal G/S capture envelope, a spurious G/S* engagement may occur due to a wrong G/S deviation signal.",
         ],
       },
       {
@@ -648,7 +649,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
       {
         heading: "General",
         paragraph:
-          "The following procedure must only be applied when established on the localizer. The flight crew must react without delay to meet the stabilization criteria. Lower the landing gear and select flaps as required (at least CONF 2 should be selected to ensure that the aircraft speed will not increase).",
+          "The following procedure must only be applied when established on the localizer. The flight crew must react without delay to meet the stabilization criteria. In order to get the best rate of descent when cleared by ATC and below the limiting speeds, the flight crew should lower the landing gear and select flaps as required (at least CONF 2 should be selected to ensure that the aircraft speed will not increase).",
       },
       {
         heading: "If above the glideslope (PF)",
@@ -708,7 +709,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
       {
         heading: "WEATHER AND LANDING INFORMATION ……… OBTAIN (PM)",
         bullets: [
-          "The FMS vertical profile does not take into account the effect of low OAT. Therefore, vertical managed guidance must not be used when the actual OAT is below the minimum temperature indicated on the approach chart or defined by the Operator, and may not be used when temperature corrections are required (FINAL APP mode may not engage).",
+          "The FMS vertical profile does not take into account the effect of low OAT. Therefore, vertical managed guidance must not be used when the actual OAT is below the minimum temperature indicated on the approach chart or defined by the Operator, or may not be used when temperature corrections are required (FINAL APP mode may not engage).",
           "For RNAV (GNSS) approach with LNAV VNAV minima, use of QNH from a remote station is prohibited.",
         ],
       },
@@ -717,7 +718,8 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
         bullets: [
           "If a TOO STEEP PATH is displayed after the FDP, do not use FINAL APP guidance for approach. Use NAV FPA or TRK FPA for approach",
           "0.1 degree of difference between the MCDU and the charted final vertical path is acceptable",
-          "1 degree of difference between the MCDU and the charted final lateral track is acceptable (3 degree for conventional radio NAVAID approach).",
+          "1 degree of difference between the MCDU and the charted final lateral track is acceptable.",
+          "3 degree of difference between the MCDU and the charted final lateral track is acceptable for conventional radio NAVAID approach.",
         ],
       },
     ],
@@ -746,7 +748,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
         heading: "Approach (PF)",
         bullets: [
           "POSITION ……… MONITOR — After a radar vectoring, consider a DIR TO RDL IN to sequence the F-PLN.",
-          "APPR pb on FCU ……… PRESS — when the aircraft is cleared for approach and the TO waypoint is the FDP.",
+          "APPR pb on FCU ……… PRESS — Press the APPR pb when all of the following conditions are satisfied: the aircraft is cleared for approach · TO waypoint is the FDP.",
           "FINAL ……… CHECK ARMED — Check that the V/DEV scale is displayed on the PFD. At the FDP, a blue arrow on ND indicates that FINAL APP engagement conditions are met.",
         ],
       },
@@ -783,7 +785,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "7.26 FINAL APP: vigilancia y navegación degradada",
     subtitle: "Approach using FINAL APP Guidance · Monitoring",
-    leftPct: 50,
+    leftPct: 48,
     leftTitle: "FLIGHT PARAMETERS ……… MONITOR (PM)",
     rightTitle: "MANAGEMENT OF DEGRADED NAVIGATION",
     sourceRef: fcom("PRO-NOR-SOP-18-C Approach using FINAL APP Guidance - Flight Parameters / Management of Degraded Navigation"),
@@ -805,11 +807,12 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
         paragraph: "Be prepared to continue the approach with reference to appropriate raw data by reverting to NAV-FPA, if the vertical guidance is not satisfactory, or TRK-FPA, if the lateral guidance is not satisfactory.",
       },
       {
-        heading: "RNAV(GNSS) approaches with LNAV/VNAV minima",
+        heading: "RNAV(GNSS) approaches (LNAV and LNAV/VNAV minima)",
         bullets: [
-          "Use the appropriate remaining AP/FD in the case of GPS PRIMARY LOST or NAV ACCUR DOWNGRAD on one ND.",
-          "Discontinue the approach, if external visual references are not sufficient to proceed visually: GPS PRIMARY LOST on both NDs · XTK > 0.3 NM · NAV FM/GPS POS DISAGREE · NAV ACCUR DOWNGRAD on both NDs.",
-          "Discontinue the approach in the case of deviation of 75 ft below the vertical path (V/DEV > ¾ dot).",
+          "Use the appropriate remaining AP/FD in the following cases: GPS PRIMARY LOST on one ND · NAV ACCUR DOWNGRAD on one ND.",
+          "For LNAV minima: be prepared to continue the approach by reverting to NAV-FPA, if the vertical guidance is not satisfactory.",
+          "Discontinue the approach in the following cases, if external visual references are not sufficient to proceed visually: GPS PRIMARY LOST on both NDs · XTK > 0.3 NM · NAV FM/GPS POS DISAGREE · NAV ACCUR DOWNGRAD on both NDs.",
+          "For LNAV/VNAV minima: Discontinue the approach in the case of deviation of 75 ft below the vertical path (V/DEV > ¾ dot).",
         ],
       },
     ],

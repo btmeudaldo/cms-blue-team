@@ -229,13 +229,18 @@ describe("SOP-07", () => {
     expect(MCC_SOP_07.sequence_order).toBe(MCC_SOP_06.sequence_order + 1);
   });
 
-  it("uses 2D/3D approach PDP images (p.228–263) without SOP-01 duplicates, A330 values or repeated pages", () => {
-    const pages = [...MCC_SOP_07.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:2d|3d)_approach\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+  it("uses 2D/3D approach PDP images (p.228–263) or FCOM diagrams without SOP-01 duplicates, A330 values or repeated pages", () => {
+    const files = [...MCC_SOP_07.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/((?:p(\d{3})_(?:2d|3d)_approach(?:_a320)?|fcom_a320_[a-z0-9_]+))\.webp(?:\?v=\d+)?"/g)];
+    expect(files.length).toBeGreaterThan(0);
+    expect(MCC_SOP_07.content_html).not.toMatch(/\/(?:p239_2d|p244_2d|p261_3d)_approach\.webp/);
+    const pages = files
+      .filter((m) => !m[1].startsWith("fcom_a320_"))
+      .map((m) => Number(m[2]));
     expect(pages.length).toBeGreaterThan(0);
     for (const p of pages) {
       expect(p).toBeGreaterThanOrEqual(228);
       expect(p).toBeLessThanOrEqual(263);
-      expect([233, 237, 242, 245, 248, 249, 250, 251, 253, 258, 261, 263]).not.toContain(p);
+      expect([233, 237, 239, 242, 245, 248, 249, 250, 251, 253, 258, 263]).not.toContain(p);
     }
     for (const slide of slides) {
       expect(slide).toMatch(/<!-- SLIDE SOP-07\.\d+: [^>]*\| Source: [^>]*-->/);
