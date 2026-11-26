@@ -135,6 +135,9 @@ function parseSelectionFile(markdownPath) {
     if (!match) continue;
 
     const [, block, pageStr, relFile, usage] = match;
+    // Con --only solo se validan y procesan los archivos pedidos: una fila ajena con su imagen aún sin
+    // generar no debe bloquear la subida del resto.
+    if (ONLY_FILES && !ONLY_FILES.has(path.basename(relFile))) continue;
     const page = Number(pageStr);
     const localPath = path.join(IMAGES_ROOT, relFile);
     if (!fs.existsSync(localPath)) {
