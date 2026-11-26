@@ -182,9 +182,17 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     sourceRef: src("PRO-NOR-SOP-15 Navigation Accuracy", 206),
     cards: [
       {
-        heading: "NAV ACCURACY ……… MONITOR (PF-PM)",
-        paragraph: "Monitor the navigation accuracy, particularly if any of the following occurs:",
-        bullets: ["IRS only navigation", "The PROG page displays LOW accuracy", "The NAV ACCUR DOWNGRAD message appears on the MCDU."],
+        heading: "If GPS PRIMARY LOST: NAVIGATION ACCURACY ……… MONITOR (PF-PM)",
+        paragraph:
+          "Check on FMS PROGRESS page that the required navigation accuracy is appropriate according to the flown airspace. For more information, Refer to PRO SPO 51 PBN.",
+      },
+      {
+        heading: "PDP — NAV ACCURACY",
+        bullets: [
+          "When GPS PRIMARY available: No NAV ACCURACY check is required.",
+          "When GPS PRIMARY is lost on both sides: periodically check that NAV ACCUR HIGH is displayed on the PROG page, and check the position data.",
+          "If the PROG page displays LOW (NAV ACCUR DOWNGRAD will be also displayed on the MCDU's scratchpad and on the ND), the crew should check the position.",
+        ],
       },
     ],
   },
@@ -198,18 +206,21 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     rightTitle: "ESTIMATE THE POSITION ERROR",
     image: img(207),
     imageAlt: "Method to estimate the position error with raw data and PROG page",
-    sourceRef: src("PRO-NOR-SOP-15 Navigation Accuracy - Note", 207),
-    table: {
-      headers: ["Check", "Then"],
-      rows: [
-        ["Positive (error ≤ 3 N.m)", "FM position is reliable. Use ND (ARC or NAV) and managed lateral guidance."],
-        ["Negative (error > 3 N.m)", "FM position is not reliable. Use raw data for navigation and monitor it."],
-      ],
-    },
-    cards: [],
+    sourceRef: src("PRO-NOR-SOP-15 Navigation Accuracy", 207),
+    cards: [
+      {
+        heading: "Estimate the position error — method (GPS PRIMARY LOST)",
+        bullets: [
+          "Use an auto tuned radio NAVAID (VOR/DME, VOR...), or tune it manually using the RADNAV page.",
+          "Display this radio NAVAID on the ND, and read its bearing and DME distance (raw data).",
+          "Enter its ident on the BRG/DIST TO field of the PROG page (FM computed data).",
+          "Compare raw and FM data to evaluate the position error.",
+        ],
+      },
+    ],
     alert: {
       level: "NOTE",
-      text: "If there is a significant mismatch between the display and the real position: disengage MANAGED NAV mode and use raw data navigation (possibly switching to ROSE VOR, so as not to be misled by FM data).",
+      text: "El FCOM 23MAR26 y el PDP 2024 ya no dan el criterio de 3 NM: la precisión requerida depende del espacio aéreo (PRO SPO 51 PBN).",
     },
   },
   {
@@ -249,7 +260,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     title: "6.9 Cambio de nivel y nivel máximo recomendado",
     subtitle: "Cruise · Level Change",
     leftPct: 50,
-    leftTitle: "STEP FLIGHT LEVEL · OPT FL · MAX REC FL",
+    leftTitle: "STEP FLIGHT LEVEL · OPT FL · REC MAX FL",
     rightTitle: "LEVEL CHANGE — PF / PM",
     image: img(208),
     imageAlt: "Level change in cruise with a new ATC clearance",
@@ -258,8 +269,8 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
       {
         heading: "STEP FLIGHT LEVEL ……… AS APPROPRIATE (PF-PM)",
         bullets: [
-          "The PROG page displays OPT FL and MAX REC FL. It is worth noting that this OPT FL is a function of the cost index (CI).",
-          "The displayed MAX REC FL gives the aircraft at least a 0.3 g buffet margin. The flight crew may enter a cruise flight level above this level into the MCDU and the FMGS will accept it, provided that it does not exceed the level at which the margin is reduced to 0.2 g.",
+          "The PROG page displays OPT FL and REC MAX FL. It is worth noting that this OPT FL is a function of the CI.",
+          "The displayed REC MAX FL gives the aircraft at least a 0.3 g buffet margin. The flight crew may enter a cruise flight level above this level into the MCDU and the FMGS will accept it, provided that it does not exceed the level at which the margin is reduced to 0.2 g.",
         ],
       },
     ],
@@ -425,7 +436,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
         bullets: [
           "Enter the QNH, temperature, and wind at destination. Insert the average wind given by the ATC or ATIS. Do not insert the gust value — For example, if the wind is 15020G35KT, insert 150/20.",
           "Insert the minimum. Changing the RWY or the type of approach automatically erases the previous minimum.",
-          "Always select the landing configuration on the PERF APPR page: CONF FULL in the normal landing configuration. CONF 3 should be considered, depending on the available runway length and go-around performance, or if windshear/severe turbulence is considered possible during approach.",
+          "Always select the landing configuration on the PERF APPR page: CONF FULL or CONF 3 is the normal landing configuration. CONF 3 should be considered, depending on the available runway length and go-around performance, or if windshear/severe turbulence is considered possible during approach.",
           "Check or modify the transition altitude/flight level.",
         ],
       },
@@ -435,8 +446,8 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
       },
     ],
     alert: {
-      level: "CAUTION",
-      text: "During QFE operations, the flight crew must convert QFE into QNH. The CPC uses the QNH to compute the cabin pressurization profile. Therefore, the entry of QFE in QNH field of the PERF APPR page leads to an erroneous cabin pressurization profile.",
+      level: "NOTE",
+      text: "After the activation of the SEC F-PLN, check the VAPP, and modify if necessary.",
     },
   },
   {
@@ -551,7 +562,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
         bullets: [
           "Monitor the VERT DEV. The VERT DEV appears on the PFD and on the PROG page.",
           "Monitor the FMA when the aircraft reaches the level-off symbol.",
-          "Whenever the lateral mode is changed from NAV to HDG/TRK the vertical mode reverts to V/S at the value pertaining at the time of the mode change.",
+          "When the lateral mode is changed from NAV to HDG/TRK, the vertical mode reverts to V/S or FPA. The V/S or FPA will be the current value at the time of mode reversion.",
           "From time to time during stabilized descent, the flight crew may select FPA to check that the remaining distance to destination is approximately the altitude change required divided by the FPA in degrees: FPA (°) = ΔFL/DIST (NM).",
         ],
       },
@@ -581,7 +592,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
         heading: "ENG 1 and 2 ANTI-ICE pb-sw ……… AS RQRD (PM)",
         bullets: [
           "Engine anti-ice must be set to ON before and during descent, even if the SAT is below -40 °C (-40 °F). When ENG ANTI ICE is ON, the FADEC selects a higher idle thrust which gives better protection against flame-out.",
-          "ANTI ICE ON reduces the descent path angle (when the engines are at idle). The flight crew can compensate for this by increasing the descent speed, or by extending up to half speedbrakes.",
+          "ANTI ICE ON reduces the descent path angle (when the engines are at idle). The flight crew can compensate for this by increasing the descent speed, or by extending up to half speed brakes.",
         ],
       },
     ],
@@ -664,7 +675,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "In flight, at operation at or close to idle, each engine may use different fuel nozzle modes. This may lead to EGT differences up to 150 °C between both engine. This is to be considered as normal operation.",
+      text: "If GPS PRIMARY LOST: NAVIGATION ACCURACY ……… MONITOR (PF) — Check on FMS PROGRESS page that the required navigation accuracy is appropriate according to the flown airspace.",
     },
   },
 ];
