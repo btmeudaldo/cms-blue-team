@@ -213,7 +213,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "9.6 Circling: preparación y aproximación",
     subtitle: "Circling · Approach Preparation",
-    leftPct: 40,
+    leftPct: 52,
     leftTitle: "CIRCLING APPROACH (PRO-NOR-SOP-18-C)",
     rightTitle: "CIRCLING",
     image: img(306),
@@ -228,8 +228,10 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
       {
         heading: "Approach preparation",
         bullets: [
-          "F-PLN: Introduce the instrument approach procedure, including the missed approach procedure for instrument approach.",
-          "Instrument approach: stabilized at F speed, configuration 3 and landing gear down. F speed must be selected for approach when landing FLAPS 3 is inserted in the APPR PERF page.",
+          "F-PLN INSTRUMENT APPROACH ……… INSERT (PF) — On the ARRIVAL page, insert the instrument approach preceding the circling.",
+          "F SPEED CONSTRAINT AT FAF ……… INSERT (PF) — The circling approach will be flown in CONF 3, landing gear down and F speed.",
+          "SEC F-PLN: COPY ACTIVE · LANDING RUNWAY ……… REVISE (PF) — Insert appropriate landing runway; keep the F-PLN discontinuity.",
+          "Instrument approach: the flight crew flies an early stabilized approach at F speed, configuration 3 and landing gear down.",
           "AP minimum use height — In circling approach: 500 ft AGL for aircraft category C (600 ft AGL for aircraft category D).",
         ],
       },
@@ -244,7 +246,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "9.7 Circling: MDA y tramo de viento en cola",
     subtitle: "Circling · Level Off / Downwind",
-    leftPct: 50,
+    leftPct: 60,
     leftTitle: "CIRCLING APPROACH (PRO-NOR-SOP-18-C)",
     rightTitle: "DOWNWIND LEG",
     image: img(309),
@@ -254,23 +256,25 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
       {
         heading: "At the Circling MDA(H) at the latest",
         bullets: [
-          "Perform a level off: push the V/S / FPA knob with some anticipation (10 % of V/S in ft/min; e.g. V/S -1000 ft/min > 100 ft).",
-          "At MAP, if the flight crew finds no visual reference: initiate a go around.",
+          "LEVEL OFF ……… PERFORM (PF) — push the V/S / FPA knob with some anticipation (10 % of V/S).",
+          "At MAP, if the flight crew does not obtain required visual reference: GO AROUND ……… PERFORM.",
         ],
       },
       {
-        heading: "When required conditions for circling are satisfied",
+        heading: "If the flight crew obtains required visual references",
         bullets: [
-          "Select TRK FPA. Proceed to downwind leg.",
-          "At any time in the downwind leg, activate the SEC F-PLN.",
-          "Disconnect the AP and remove the FDs at the latest before starting the descent toward the runway.",
-          "Set the landing configuration when appropriate, but ensure early stabilization in final.",
+          "TRK FPA ……… SELECT (PF) — Select a track 45 ° away from final approach course (or as required by the published procedure).",
+          "When wings are level: CHRONO ……… START. After 30 s: DOWNWIND TRACK ……… SELECT (parallel to the landing runway).",
+          "During the downwind leg: ACTIVATE SEC F-PLN ……… ORDER (PF) · SEC F-PLN ……… ACTIVE (PM).",
+          "Abeam the landing runway threshold: CHRONO ……… START (PM) — approximately 3 s/100 ft to the beginning of the base turn.",
+          "BASE TURN ……… PERFORM — initially 25 ° bank, maintaining altitude until the runway is distinctly visible and identifiable.",
+          "FLAPS FULL · LANDING C/L · AP and FDs OFF at the latest before starting the descent toward the runway.",
         ],
       },
     ],
     alert: {
       level: "NOTE",
-      text: "If, at any time during the circling procedure, the required visual references are lost, initiate a go around following the missed approach of the initial instrument approach (unless otherwise specified).",
+      text: "If the required visual references are lost: GO AROUND, following the missed approach of the initial instrument approach (unless otherwise specified).",
     },
   },
   // ── C. G/S desde arriba ──────────────────────────────────────────────────
@@ -668,13 +672,13 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
       {
         heading: "General",
         paragraph:
-          "Perform the approach on a nominal 3 ° glideslope using visual references. Approach to be stabilized by 500 ft AGL on the correct approach path, in the landing configuration, at VAPP.",
+          "Perform the approach on a nominal 3 ° glideslope using visual references. Approach is to be stabilized by 500 ft AAL on the correct approach path, in the landing configuration, at VAPP.",
       },
       {
         heading: "Method",
         bullets: [
-          "The AP is not used. Both FDs are OFF. FPV use is recommended.",
-          "A/THR use is recommended with managed speed.",
+          "The AP is not used. Both FDs are OFF. The use of FPV is recommended.",
+          "The use of A/THR is recommended with managed speed.",
           "The flight plan selected on the MCDU should include the selection of the landing runway. However, visual references must be used.",
           "Turn into base leg with a maximum of 30 ° of bank. Descent with approximate FPA, in FLAPS 2, at F speed.",
         ],
@@ -682,7 +686,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "Bear in mind the possible risk of optical illusions due to hindered night vision.",
+      text: "Keep in mind the possible risk of optical illusions due to hindered night vision.",
     },
   },
   {
@@ -706,9 +710,9 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
         heading: "Final approach",
         bullets: [
           "The speed trend arrow and FPV help the flight crew make timely and correct thrust settings (if in manual thrust), and approach path corrections.",
-          "Avoid descending through the correct approach path with idle thrust. (Late recognition of this situation without a prompt thrust increase may lead to considerable speed decay and altitude loss).",
-          "Ensure that the aircraft is stabilized on the final descent path at VAPP (or ground speed mini) in the landing configuration with the thrust stabilized (usually above idle) at 500 ft above airfield elevation.",
-          "Avoid any tendency to \"duck under\" in the late stages of the approach. Avoid destabilizing the approach in the last 100 ft.",
+          "Avoid descent through the correct approach path with idle thrust. (Late recognition of this situation without a prompt thrust increase may lead to considerable speed decay and altitude loss).",
+          "Ensure that the aircraft is stabilized on the final descent path at VAPP (or ground speed mini) in the landing configuration with the thrust stabilized (usually above idle) at 500 ft AAL or as restricted by operator policies/regulations.",
+          "Avoid any tendency to \"duck under\" in the late stages of the approach. Avoid destabilizing the approach in the last 100 ft AGL.",
         ],
       },
     ],
