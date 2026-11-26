@@ -163,19 +163,18 @@ const SOP_12_SLIDES: MccSlideSpec[] = [
     sourceRef: src("DSC-23-40-10 Emergency Evacuation - Controls and Indicators", 493),
     cards: [
       {
-        heading: "COMMAND pb (guarded) ON",
+        heading: "COMMAND pb-sw",
         bullets: [
-          "In the cockpit: EVAC light flashes red; depending on aircraft configuration, horn sounds.",
-          "In the cabin: EVAC lights flash at FWD and AFT attendant panels; evacuation tone sounds.",
-          "OFF: the alert is stopped.",
+          "Evacuation initiated from the cabin — in the cockpit: the EVAC light flashes; a horn sounds continuously if CAPT & PURS is selected or for 3 s if CAPT is selected.",
+          "Evacuation initiated from the cockpit (regardless of the position of the CAPT and PURS sw) — in the cockpit: the ON light and EVAC light flash.",
+          "In the cabin (both cases): the EVAC light flashes at FWD and AFT attendant panels; an evacuation tone sounds continuously.",
         ],
       },
       {
         heading: "Other controls",
         bullets: [
-          "HORN SHUT OFF pb: silences the cockpit horn.",
-          "CAPT and PURS: the alert may either be activated from the cockpit or the cabin. CAPT: the alert may only be activated from the cockpit.",
-          "RESET pb (cabin): silences the EVAC tone.",
+          "HORN SHUT OFF pb: silences the cockpit horn (generated when evacuation is activated from the cabin).",
+          "CAPT and PURS sw — CAPT: the alert may only be activated from the cockpit; if one of the cabin EVAC CMD key is pressed, only the cockpit horn sounds for 3 s. CAPT & PURS: the alert may either be activated from the cockpit or from the cabin.",
         ],
       },
     ],
