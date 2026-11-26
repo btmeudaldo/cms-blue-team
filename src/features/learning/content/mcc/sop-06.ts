@@ -220,7 +220,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "El FCOM 23MAR26 y el PDP 2024 ya no dan el criterio de 3 NM: la precisión requerida depende del espacio aéreo (PRO SPO 51 PBN).",
+      text: "La precisión requerida ya no usa un umbral fijo de 3 NM: depende del espacio aéreo volado (PRO SPO 51 PBN).",
     },
   },
   {

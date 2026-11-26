@@ -369,7 +369,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "8.12 Después del aterrizaje",
     subtitle: "After Landing",
-    leftPct: 56,
+    leftPct: 62,
     leftTitle: "AFTER LANDING (PRO-NOR-SOP-21)",
     rightTitle: "AFTER LANDING — PF / PM",
     image: img(288),
@@ -390,6 +390,10 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
+    alert: {
+      level: "NOTE",
+      text: "FCOM vigente: APU AS RQRD (la lámina muestra APU START).",
+    },
   },
   {
     comment: "SLIDE SOP-08.13: Brake temperature after landing",
@@ -420,7 +424,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "8.14 Parking: frenos, APU BLEED y parada de motores",
     subtitle: "Parking 1/2",
-    leftPct: 56,
+    leftPct: 60,
     leftTitle: "PARKING (PRO-NOR-SOP-22)",
     rightTitle: "PARKING — PF / PM",
     image: img(290),
@@ -430,9 +434,9 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
       {
         heading: "Parking brake (PF) · APU bleed (PM)",
         bullets: [
-          "In case of low accumulator pressure, chocks are required before engine 1 shutdown · Keep brake pedals pressed after parking brake application until brakes pressure indications are above the green band on the triple pressure indicator.",
+          "In case of low accumulator pressure, chocks are required before engine 1 shutdown · CAUTION: Keep the brake pedals pressed, until both needles of the brakes pressure indicator are above the green area, to avoid inadvertent movement of the aircraft.",
           "If the temperature of one brake is above 500 °C (or above 350 °C with the brake fans ON), avoid applying the parking brake, unless operationally necessary.",
-          "APU BLEED pb-sw ……… ON (PM) — Set the APU BLEED pb-sw to ON immediately before engine shutdown to prevent engine exhaust fumes from entering the air conditioning.",
+          "APU BLEED pb-sw ……… AS RQRD (PM) — If the APU is used, set the APU BLEED pb-sw to ON immediately before engine shutdown to prevent engine exhaust fumes from entering the air conditioning.",
         ],
       },
       {

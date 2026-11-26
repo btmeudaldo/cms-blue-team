@@ -207,7 +207,7 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
         bullets: [
           "* RCL pb ……… PRESS 3 s (CM1) — This action recalls all the warnings that the flight crew cleared or cancelled during the last flight.",
           "* LOGBOOK AND MEL/CDL ITEMS ……… CHECK (BOTH) — Check the deferred items list. Crosscheck with ECAM recall.",
-          "* AIRCRAFT CONFIGURATION SUMMARY ……… CHECK (BOTH) — Both flight crewmembers discuss together the optional installed aircraft systems and functions, and their influence on the ongoing flight.",
+          "AIRCRAFT CONFIGURATION SUMMARY ……… CHECK (BOTH) — For awareness of the current aircraft configuration, both flight crewmembers discuss together the optional installed aircraft systems and functions, and their influence on the ongoing flight.",
           "* OEB ……… CHECK (BOTH) — All flight crewmembers review and discuss together all OEBs and associated procedures applicable to the aircraft.",
         ],
       },
@@ -226,7 +226,7 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
         heading: "CM1-CM2 / BOTH",
         bullets: [
           "* AIRFIELD DATA ……… OBTAIN — RUNWAY IN USE, ALTIMETER SETTING, and WEATHER DATA.",
-          "* NAV CHARTS CLIPBOARD ……… PREPARE — Verify that both flight crewmembers refer to the same chart reference.",
+          "* NAVIGATION CHARTS ……… PREPARE — Prepare the necessary charts and verify that both flight crewmembers refer to the same chart reference.",
           "* PRELIMINARY TAKEOFF PERF DATA ……… COMPUTE — RWY to be used · RWY intersection · Flaps setting · Use of anti-ice · Use of packs · Takeoff thrust setting options (FLEX, TOGA, DERATE).",
           "* PRELIMINARY TAKEOFF PERF DATA ……… CROSSCHECK — The PF and the PM compare and ensure that the computations are the same.",
         ],
@@ -514,7 +514,7 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
       {
         heading: "ATC",
         bullets: [
-          "ATC and TCAS are on standby. To prevent possible interference to radar surveillance systems, TCAS should not be selected before the holding point/lining up.",
+          "* ATC ……… STBY · * TCAS ……… STBY — To prevent possible interference to radar surveillance systems, TCAS should not be selected before the holding point/lining up.",
         ],
       },
       {

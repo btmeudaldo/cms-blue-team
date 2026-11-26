@@ -267,7 +267,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
           "When wings are level: CHRONO ……… START. After 30 s: DOWNWIND TRACK ……… SELECT (parallel to the landing runway).",
           "During the downwind leg: ACTIVATE SEC F-PLN ……… ORDER (PF) · SEC F-PLN ……… ACTIVE (PM).",
           "Abeam the landing runway threshold: CHRONO ……… START (PM) — approximately 3 s/100 ft to the beginning of the base turn.",
-          "BASE TURN ……… PERFORM — initially 25 ° bank, maintaining altitude until the runway is distinctly visible and identifiable.",
+          "BASE TURN ……… PERFORM — Initially maintain 25 ° bank angle and maintain the altitude until the visual references for the intended runway are distinctly visible and identifiable.",
           "FLAPS FULL · LANDING C/L · AP and FDs OFF at the latest before starting the descent toward the runway.",
         ],
       },

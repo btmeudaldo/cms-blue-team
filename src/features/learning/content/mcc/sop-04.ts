@@ -335,7 +335,7 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     sourceRef: fcom("PRO-NOR-SOP-08 Automatic Engine Start / DSC-70-90-40 E/WD"),
     cards: [
       {
-        heading: "When idle is reached (AVAIL indication is displayed)",
+        heading: "ENG IDLE PARAMETERS ……… CHECK",
         bullets: [
           "Grey background on N2 indication disappears.",
           "In the case of all engine taxi at departure: ENGINE 2 START ……… ANNOUNCE · ENG 2 MASTER lever ……… ON — Apply the same procedure as indicated for engine 1.",

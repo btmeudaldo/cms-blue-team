@@ -119,6 +119,10 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
           "Check that the PFD (e.g. airspeeds, initial target altitude, heading, FMA modes) and the ND indications (SID) are in accordance with the departure.",
       },
     ],
+    alert: {
+      level: "NOTE",
+      text: "En el FCOM vigente se retiró la comprobación FMS F-PLN/SPD en rodaje y el FCU ALT es CHECK (HDG solo PRESET si ATC da vectores), aunque la lámina de apoyo aún muestre el esquema anterior.",
+    },
   },
   {
     comment: "SLIDE SOP-05.4: Taxi flow pattern",
@@ -184,6 +188,10 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
+    alert: {
+      level: "NOTE",
+      text: "El FCOM vigente incluye además FCU ALT SET y T.O CONFIG pb TEST en el cambio de salida, pasos no detallados en la lámina de apoyo.",
+    },
   },
   // ── B. Before takeoff ────────────────────────────────────────────────────
   {

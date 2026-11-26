@@ -738,7 +738,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
         bullets: [
           "NAV ACCURACY ……… CHECK — If NAV accuracy is LOW, use TRK FPA mode for approach.",
           "For RNAV(GNSS) approach: GPS PRIMARY must be available on at least one FMS.",
-          "BARO REFERENCE ……… SET/CROSSCHECK (BOTH) — The vertical guidance requires a precise BARO setting. The maximum acceptable difference between altimeters is 100 ft.",
+          "BAROMETRIC REFERENCE ……… SET/CROSSCHECK (BOTH) — The vertical guidance requires a precise BARO setting. The maximum acceptable difference between altimeters is 100 ft.",
         ],
       },
       {
@@ -746,7 +746,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
         bullets: [
           "POSITION ……… MONITOR — After a radar vectoring, consider a DIR TO RDL IN to sequence the F-PLN.",
           "APPR pb on FCU ……… PRESS — Press the APPR pb when all of the following conditions are satisfied: the aircraft is cleared for approach · TO waypoint is the FDP.",
-          "FINAL ……… CHECK ARMED — Check that the V/DEV scale is displayed on the PFD. At the FDP, a blue arrow on ND indicates that FINAL APP engagement conditions are met.",
+          "FINAL ……… CHECK ARMED — Check that the V/DEV scale is displayed on the PFD. At the FDP, a blue arrow on ND indicates that FINAL APP engagement conditions are satisfied.",
         ],
       },
     ],
