@@ -11,7 +11,8 @@
  * información complementaria del FCOM (textos L1/L2, WARNING/CAUTION/NOTE) en inglés y literal. Solo se
  * repite algo de la lámina cuando es crítico. Variante FCOM: A320ceo CFM56-5B.
  * Láminas no usadas: 268, 278 y 286 (ya en SOP-01); 273–275, 287 y 294 (flujos ya en SOP-02); 295 (línea
- * A330 BAT); 265, 270, 272, 276, 279, 281, 285, 292 y 296 (texto redundante).
+ * A330 BAT); 271 (sustituida por diagrama FCOM Acceleration Flow Pattern); 265, 270, 272, 276, 279, 281,
+ * 285, 292 y 296 (texto redundante); 267 usada en versión limpia A320 (sin rotulación A330).
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
 import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
@@ -30,6 +31,8 @@ const CHAPTER_NAME: Record<string, string> = {
   after_landing_parking_securing_the_a_c: "After Landing – Parking – Securing the A/C",
 };
 const img = (page: number) => `${PDP_IMG}/p${String(page).padStart(3, "0")}_${chapter(page)}.webp?v=${IMG_VERSION}`;
+const fcomImg = (name: string) => `${PDP_IMG}/${name}.webp`;
+const IMG_SPATIAL_DISORIENTATION_A320 = `${PDP_IMG}/p267_go_around_a320.webp?v=${IMG_VERSION}`;
 const src = (sections: string, page: number) =>
   `Source: FCOM A320 ${sections} & Airbus Tutorial PDP Jan 2024 — ${CHAPTER_NAME[chapter(page)]} (p.${page})`;
 const fcom = (sections: string) => `Source: FCOM A320 ${sections}`;
@@ -118,7 +121,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
     leftPct: 45,
     leftTitle: "GA THRUST REDUCTION · GA ACCELERATION ALTITUDE",
     rightTitle: "SPATIAL DISORIENTATION",
-    image: img(267),
+    image: IMG_SPATIAL_DISORIENTATION_A320,
     imageAlt: "Spatial disorientation risk in a light aircraft go-around and speed limit with ALT star",
     sourceRef: src("PRO-NOR-SOP-20 At Go-Around Thrust Reduction / Acceleration Altitude", 267),
     cards: [
@@ -142,10 +145,10 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
     subtitle: "Go Around · Acceleration Flow Pattern",
     leftPct: 50,
     leftTitle: "ACCELERATION FLOW PATTERN (PRO-NOR-SOP-20)",
-    rightTitle: "FLIGHT PARAMETERS CALLOUTS",
-    image: img(271),
-    imageAlt: "Go-around flight parameters callouts: bank, pitch and sink rate",
-    sourceRef: src("PRO-NOR-SOP-20 Acceleration Flow Pattern / LIM-AFS-10 Autopilot Function", 271),
+    rightTitle: "ACCELERATION FLOW PATTERN — FCOM A320",
+    image: fcomImg("fcom_a320_go_around_accel_flow"),
+    imageAlt: "Official FCOM A320 go-around acceleration flow pattern on pedestal and overhead panel",
+    sourceRef: fcom("PRO-NOR-SOP-20 Acceleration Flow Pattern / LIM-AFS-10 Autopilot Function"),
     cards: [
       {
         heading: "Flaps",
@@ -159,7 +162,10 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
-    alert: { level: "NOTE", text: "LIM-AFS-10: the autopilot can be used after a manual go-around from 100 ft AGL." },
+    alert: {
+      level: "NOTE",
+      text: "The autopilot can be used with the following minimum values: After a manual go-around — 100 ft AGL.",
+    },
   },
   {
     comment: "SLIDE SOP-08.6: Diversion — enable ALTN",
@@ -191,7 +197,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "This enables the flight crew to initiate a diversion by entering the alternate flight plan just after the revision waypoint (with a discontinuity). The flight crew may have to adjust the resulting flight plan depending on the circumstances.",
+      text: "This enables the flight crew to initiate a diversion by entering the alternate flight plan just after the revision waypoint (with a discontinuity). The flight crew may have to adjust the resulting flight plan (use “direct to”, or add or suppress waypoints), depending on the circumstances.",
     },
   },
   // ── B. Landing ───────────────────────────────────────────────────────────
@@ -238,7 +244,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
         ],
       },
       {
-        heading: "The flight crew must immediately select REV MAX, if any of the following occurs:",
+        heading: "The flight crew must immediately select REV MAX, if any of the following occurs at any time during the landing:",
         bullets: [
           "An emergency · The deceleration is not as expected · A failure affects the landing performance",
           "A long flare or a long touchdown · An unexpected tailwind.",
@@ -280,7 +286,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
       {
         heading: "DIRECTIONAL CONTROL ……… MONITOR/ENSURE (PF)",
         bullets: [
-          "Use the rudder pedals for directional control. During rollout, avoid sidestick inputs (either lateral or longitudinal)",
+          "Ensure directional control. Use the rudder pedals for directional control. During rollout, avoid sidestick inputs (either lateral or longitudinal)",
           "If the flight crew encounters directional control problems, they should reduce the thrust to REV IDLE until directional control is satisfactory.",
           "Do not use the nosewheel steering control handle before reaching taxi speed.",
         ],
@@ -344,11 +350,11 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
         paragraph: "It is recommended to reduce thrust when passing 70 kt. However, high levels of reverse thrust may be used in order to control aircraft speed in the case of an emergency.",
       },
       {
-        heading: "At taxi speed: REVERSERS ……… STOW (PF)",
+        heading: "At taxi speed · Before 20 kt · End of roll out",
         bullets: [
-          "On snow-covered grounds, the reversers should be stowed when the aircraft speed reaches 25 kt.",
-          "When deselecting the reversers, be careful not to apply forward thrust by moving the thrust levers beyond the FWD IDLE position.",
+          "REVERSERS ……… STOW (PF) — On snow-covered grounds, the reversers should be stowed when the aircraft speed reaches 25 kt. When deselecting the reversers, be careful not to apply forward thrust by moving the thrust levers beyond the FWD IDLE position.",
           "Before 20 kt: AUTO BRK ……… DISENGAGE — The flight crew should use brake pedals to disengage the autobrake.",
+          "End of roll out (Autoland): AP ……… OFF (PF) — Disengage the APs at the end of the roll out (before leaving the runway at the latest). In the case of NWS or Anti-Skid failure, set the AP OFF at touchdown.",
         ],
       },
     ],
@@ -363,7 +369,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "8.12 Después del aterrizaje",
     subtitle: "After Landing",
-    leftPct: 52,
+    leftPct: 56,
     leftTitle: "AFTER LANDING (PRO-NOR-SOP-21)",
     rightTitle: "AFTER LANDING — PF / PM",
     image: img(288),
@@ -371,20 +377,16 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
     sourceRef: src("PRO-NOR-SOP-21 After Landing", 288),
     cards: [
       {
-        heading: "PF",
-        bullets: [
-          "When the runway is vacated: GRND SPLRS ……… DISARM",
-          "LAND lights sw ……… RETRACT · When leaving the runway: STROBE sw ……… AUTO · NOSE sw ……… TAXI",
-        ],
+        heading: "PF · Radar & Anti-Ice",
+        paragraph:
+          "LAND lights sw ……… RETRACT · When leaving the runway: STROBE sw ……… AUTO · NOSE sw ……… TAXI · When crossing a runway: STROBE sw ……… ON. Switching the radar and predictive windshear system to OFF after landing avoids risk of radiating persons at the gate area.",
       },
       {
-        heading: "PM",
+        heading: "PM — Flaps · APU · Anti-ice",
         bullets: [
-          "Switching the radar and predictive windshear system to OFF after landing avoids risk of radiating persons at the gate area.",
           "FLAPS: if the approach was performed in icing conditions, or if the runway was contaminated with slush or snow, do not retract the flaps until after engine shutdown, and after the ground crew confirmed that flaps and slats are clear of obstruction due to ice.",
-          "To avoid damage on the RTLU mechanical stop, the SLATS/FLAPS should be retracted before all ADIRS are set to OFF simultaneously.",
-          "APU start may be delayed until before engine shutdown. Before the flight crew shuts down the engines, they must check that the AVAIL light of the APU START pb is on.",
-          "If engine anti-ice is used, carefully control taxi speed, particularly on wet or slippery surfaces because ground idle is increased.",
+          "On ground, hot weather conditions may cause overheating to be detected around the bleed ducts in the wings, resulting in AIR L (R) WING LEAK alert. Such warnings may be avoided during transit by keeping the slats in CONF 1, when the OAT is above 30 °C · To avoid damage on the RTLU (Rudder Travel Limit Unit) mechanical stop, the SLATS/FLAPS should be retracted before all ADIRS are set to OFF simultaneously.",
+          "APU start may be delayed until before engine shutdown. Before the flight crew shuts down the engines, they must check that the AVAIL light of the APU START pb is on · If engine anti-ice is used, carefully control taxi speed, particularly on wet or slippery surfaces because ground idle is increased.",
         ],
       },
     ],
@@ -418,7 +420,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "8.14 Parking: frenos, APU BLEED y parada de motores",
     subtitle: "Parking 1/2",
-    leftPct: 52,
+    leftPct: 56,
     leftTitle: "PARKING (PRO-NOR-SOP-22)",
     rightTitle: "PARKING — PF / PM",
     image: img(290),
@@ -426,18 +428,17 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
     sourceRef: src("PRO-NOR-SOP-22 Parking Brake / APU Bleed / Engines / Exterior Lights", 290),
     cards: [
       {
-        heading: "Parking brake (PF)",
+        heading: "Parking brake (PF) · APU bleed (PM)",
         bullets: [
-          "In case of low accumulator pressure, chocks are required before engine 1 shutdown.",
+          "In case of low accumulator pressure, chocks are required before engine 1 shutdown · Keep brake pedals pressed after parking brake application until brakes pressure indications are above the green band on the triple pressure indicator.",
           "If the temperature of one brake is above 500 °C (or above 350 °C with the brake fans ON), avoid applying the parking brake, unless operationally necessary.",
-          "Keep brake pedals pressed after parking brake application until brakes pressure indications are above the green band on the triple pressure indicator.",
+          "APU BLEED pb-sw ……… ON (PM) — Set the APU BLEED pb-sw to ON immediately before engine shutdown to prevent engine exhaust fumes from entering the air conditioning.",
         ],
       },
       {
         heading: "Engines",
         bullets: [
-          "The flight crew should operate the engines at or near idle thrust for a cooling period of 3 min before engine shutdown, in order to thermally stabilize the engines.",
-          "If the flight crew uses idle reverse thrust for landing, the cooling period starts when the flight crew retards the thrust lever during the flare; with maximum reverse, it starts when the thrust lever is set to idle reverse during the landing rollout.",
+          "The flight crew should operate the engines at or near idle thrust for a cooling period of 3 min before engine shutdown, in order to thermally stabilize the engines. · Idle reverse: starts when retarding the thrust lever during flare; maximum reverse: starts when set to idle reverse during rollout.",
           "BEACON sw ……… OFF — Turn off the beacon lights when all engines spooled down.",
         ],
       },
@@ -471,7 +472,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
         heading: "PARK BRK handle ……… AS RQRD (PF)",
         bullets: [
           "The parking brake should be released after chocks are in place, if a temperature of one brake is above 300 °C (or above 150 °C with brake fans ON). However, if operational conditions require (e.g. slippery tarmac), the parking brake may remain applied.",
-          "The flight crew should not press the brake pedals before releasing the parking brake.",
+          "The flight crew should not press the brake pedals before releasing the parking brake. However, the flight crew must be prepared to press the brake pedals after parking brake release, if necessary.",
           "When parking with a flat tire on the nose gear, keep the parking brake on, to avoid aircraft yawing at parking brake release.",
         ],
       },
@@ -487,7 +488,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
     rightTitle: "IRS PERFORMANCE",
     image: img(293),
     imageAlt: "IRS performance check: drift versus block time and POSITION MONITOR page",
-    sourceRef: src("PRO-NOR-SOP-22 Fuel Quantity / Logbook / Report Severe Icing / Display Units", 293),
+    sourceRef: src("PRO-NOR-SOP-22 IRS Performance / Fuel Quantity / Logbook / Report Severe Icing / Display Units", 293),
     cards: [
       {
         heading: "FUEL QUANTITY ……… CHECK (PM)",
@@ -525,7 +526,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
         bullets: [
           "The flight crew should apply the following procedure as per company policy, when the last passenger left the aircraft and the securing of the aircraft is intended.",
           "Airbus recommends performing the following procedure when the aircraft is left unattended: i.e. no qualified flight crew or ground crew are in the cockpit to supervise and monitor the aircraft systems.",
-          "Prior to performing this check, take into account the SUP Adverse Weather procedures when appropriate: cold soak, water system draining, heavy rain, contaminated airports, volcanic ash, sand or dust.",
+          "Prior to performing this check, the following SUP Adverse Weather procedures should be taken into account when appropriate: Securing the aircraft for cold soak · Water system draining · Ground operations in heavy rain · Operations on contaminated airports · Operations with volcanic ash, sand or dust.",
         ],
       },
       {

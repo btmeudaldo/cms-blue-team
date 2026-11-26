@@ -265,13 +265,18 @@ describe("SOP-08", () => {
     expect(MCC_SOP_08.sequence_order).toBe(MCC_SOP_07.sequence_order + 1);
   });
 
-  it("uses go-around/landing/parking PDP images (p.264–298) without SOP-01/02 duplicates or A330 lines", () => {
-    const pages = [...MCC_SOP_08.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:go_around|landing|after_landing_parking_securing_the_a_c)\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+  it("uses go-around/landing/parking PDP images (p.264–298) or FCOM diagrams without SOP-01/02 duplicates or A330 lines", () => {
+    const files = [...MCC_SOP_08.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/((?:p(\d{3})_(?:go_around|landing|after_landing_parking_securing_the_a_c)(?:_a320)?|fcom_a320_[a-z0-9_]+))\.webp(?:\?v=\d+)?"/g)];
+    expect(files.length).toBeGreaterThan(0);
+    expect(MCC_SOP_08.content_html).not.toMatch(/\/p267_go_around\.webp/);
+    const pages = files
+      .filter((m) => !m[1].startsWith("fcom_a320_"))
+      .map((m) => Number(m[2]));
     expect(pages.length).toBeGreaterThan(0);
     for (const p of pages) {
       expect(p).toBeGreaterThanOrEqual(264);
       expect(p).toBeLessThanOrEqual(298);
-      expect([268, 273, 274, 275, 278, 286, 287, 294, 295]).not.toContain(p);
+      expect([268, 271, 273, 274, 275, 278, 286, 287, 294, 295]).not.toContain(p);
     }
     for (const slide of slides) {
       expect(slide).toMatch(/<!-- SLIDE SOP-08\.\d+: [^>]*\| Source: [^>]*-->/);
@@ -314,7 +319,6 @@ describe("SOP-09", () => {
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|a320neo|neo|ec-[a-z]{3})\b/i);
   });
 });
-
 describe("SOP-10", () => {
   const slides = MCC_SOP_10.content_html.split("<!-- pagebreak -->");
 
