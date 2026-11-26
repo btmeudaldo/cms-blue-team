@@ -54,7 +54,7 @@ const SOP_14_SLIDES: MccSlideSpec[] = [
       {
         heading: "Overview",
         bullets: [
-          "The purpose of the Ground Proximity Warning System (GPWS) is to warn the flight crew of potentially hazardous situations, such as a collision with terrain.",
+          "The purpose of the Ground Proximity Warning System (GPWS), also named Terrain Awareness Warning System (TAWS), is to warn the flight crew of potentially hazardous situations, such as a collision with terrain.",
           "Five basic modes active up to radio height of 2 500 ft: excessive rate of descent (Mode 1), excessive terrain closure rate (Mode 2), altitude loss after takeoff or go-around (Mode 3), terrain clearance not sufficient, if not in landing configuration (Mode 4), excessive descent below the glide slope (Mode 5).",
           "A predictive GPWS function, based on a GPWS database, to display terrain information, provided by Honeywell through Enhanced GPWS (EGPWS).",
         ],
@@ -62,7 +62,7 @@ const SOP_14_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "The terrain data are displayed on the ND and the brightness is controlled via the weather radar brightness control knob. If the weather radar brightness was set to low (due to bad weather) and a terrain alert occurs, then the brightness of the terrain display will also be low.",
+      text: "The terrain data are displayed on the ND and the brightness is controlled via the ND brightness control knob. If the weather radar brightness was set to low (due to bad weather) and a terrain alert occurs, then the brightness of the terrain display will also be low.",
     },
   },
   {
@@ -342,7 +342,7 @@ const SOP_14_SLIDES: MccSlideSpec[] = [
       {
         heading: "The warning consists of:",
         bullets: [
-          "A visual \"WINDSHEAR\" red message displayed on both PFDs for a minimum of 15 s.",
+          "A visual \"WINDSHEAR\" message displayed on one or both PFDs for a minimum of 15 s.",
           "An aural synthetic voice announcing \"WINDSHEAR\" three times.",
         ],
       },
