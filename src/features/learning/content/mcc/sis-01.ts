@@ -375,7 +375,7 @@ const SIS_01_SLIDES: MccSlideSpec[] = [
       {
         heading: "Barometer reference",
         bullets: [
-          "The minimum QNH value that can be selected is 745 hPa (22.00 inHg) and the maximum is 1 050 hPa (31.00 inHg).",
+          "The minimum QNH value that can be selected is 745 hPa (22.00 inHg) and the maximum is 1 100 hPa (32.48 inHg).",
           "When the flight crew pulls the barometric reference knob, the barometric reference value is set to STD; when it pushes it, the barometric reference is set to QNH.",
         ],
       },

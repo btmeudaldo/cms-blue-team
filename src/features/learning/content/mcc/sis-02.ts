@@ -483,13 +483,12 @@ const SIS_02_SLIDES: MccSlideSpec[] = [
     table: {
       headers: ["Indication", "Meaning"],
       rows: [
-        ["Wing pump · inline green", "Pump pressure is normal (pump contactor on)."],
         ["Wing pump · \"LO\" amber", "Pump pressure is low (pump contactor on)."],
         ["Wing pump · crossline amber", "Pump contactor is off."],
         ["CTR pump · crossline green", "Pump contactor is off, and auto shut-off is required."],
         ["CTR pump · crossline amber", "Pump contactor is off, and auto shut-off is not required."],
-        ["LP valve · inline amber", "The valve is open, with the ENG MASTER lever (APU MASTER sw) OFF or FIRE pb out."],
-        ["LP valve · crossline amber", "The ENG valve is fully closed or APU valve is closed with master switch ON."],
+        ["LP valve · inline amber", "The valve is open when the associated ENG MASTER lever (APU MASTER SW pb-sw) is set to OFF, or the ENG FIRE pb-sw (APU FIRE pb-sw) is released."],
+        ["LP valve · crossline amber", "The ENG valve is fully closed, or the APU valve is closed with the APU MASTER SW pb-sw set to ON."],
         ["LP valve · transit amber", "The valve is in transit."],
       ],
     },
