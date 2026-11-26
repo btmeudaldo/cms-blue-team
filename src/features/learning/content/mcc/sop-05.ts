@@ -105,18 +105,18 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
     sourceRef: src("PRO-NOR-SOP-10 ATC Clearance / AFS-Flight Instruments", 174),
     cards: [
       {
-        heading: "F-PLN · Speeds · FCU",
+        heading: "ATC clearance · FCU · FD",
         bullets: [
-          "F-PLN (SID,TRANS) ……… CHECK — Carefully confirm that the ATC clearance agrees with the FMS, if NAV mode is to be used.",
-          "INITIAL CLIMB SPEED AND SPEED LIMIT ……… CHECK — Use VERT REV at departure, or at a CLB waypoint.",
-          "CLEARED ALTITUDE ON FCU ……… SET — On the PFD, crosscheck and confirm the first cleared altitude.",
+          "ATC clearance ……… CONFIRM (PM)",
+          "CLEARED ALTITUDE ON FCU ……… CHECK — On the PFD, crosscheck and confirm the cleared altitude.",
           "HDG ON FCU ……… IF REQUIRED, PRESET — If a heading is required by the ATC after takeoff, in the case of a radar vector departure, preset the heading on the FCU. NAV mode will be disarmed. RWY TRK mode will keep the aircraft on the runway track.",
+          "BOTH FD ……… CHECK ON (PM)",
         ],
       },
       {
         heading: "PFD/ND ……… CHECK (PF-PM)",
         paragraph:
-          "Check that the PFD (e.g. airspeeds, initial target altitude, heading, slats/flaps configuration, FMA modes) and the ND indications (SID) are in accordance with the departure.",
+          "Check that the PFD (e.g. airspeeds, initial target altitude, heading, FMA modes) and the ND indications (SID) are in accordance with the departure.",
       },
     ],
   },
@@ -134,7 +134,7 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
     cards: [
       {
         heading: "ENG MODE selector ……… AS RQRD",
-        paragraph: "Select IGN, if: the runway has standing water, or heavy rain is falling, or heavy rain or severe turbulence is expected after takeoff.",
+        paragraph: "Select IGN, if: there is standing water on the runway, or heavy rain is falling, or heavy rain or severe turbulence is expected after takeoff.",
       },
       {
         heading: "Weather radar",
@@ -155,7 +155,7 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "5.5 Cambio de salida durante el rodaje",
     subtitle: "PRO-NOR-SOP-10B · Departure Change",
-    leftPct: 50,
+    leftPct: 55,
     leftTitle: "WHO DOES WHAT (FCOM)",
     rightTitle: "DEPARTURE CHANGE — PF / PM",
     image: img(176),
@@ -163,24 +163,27 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
     sourceRef: src("PRO-NOR-SOP-10B Departure Change", 176),
     cards: [
       {
-        heading: "PM",
+        heading: "PF-PM · BOTH",
         bullets: [
-          "FMS TAKEOFF DATA ……… REVISE — The PM revises the takeoff data in the FMS.",
-          "FLAPS lever ……… AS APPROPRIATE — Select takeoff position.",
+          "FINAL TAKEOFF PERF DATA ……… RECOMPUTE — The PF and the PM independently compute again the takeoff performance data.",
+          "RE-BRIEFING ……… PERFORM · DEPARTURE CHANGE C/L ……… COMPLETE",
+        ],
+      },
+      {
+        heading: "PM (el PF hace el crosscheck)",
+        bullets: [
+          "FMS ……… REVISE — The PM revises the FMS as necessary, including the takeoff data, runway and/or SID, as applicable. Carefully confirm that the ATC clearance agrees with the FMS, if NAV mode is to be used.",
+          "FLAPS lever ……… SET · FCU ALT ……… SET · T.O CONFIG pb ……… TEST",
         ],
       },
       {
         heading: "PF",
         bullets: [
-          "FMS REVISED TAKEOFF PERF DATA ……… CROSSCHECK — The PF crosschecks the performance data displayed on the PF's EFB with the FMS PERF T.O page.",
+          "REVISED FMS ……… CROSSCHECK — The PF crosschecks the performance data displayed on the PF's EFB with the FMS PERF TAKE OFF page.",
           "EFB/MCDU GREEN DOT ……… COMPARE — A discrepancy indicates a difference in the TOW used in both systems (EFB/FMGS).",
         ],
       },
     ],
-    alert: {
-      level: "NOTE",
-      text: "En el cambio de salida los papeles se invierten respecto a «Before Pushback/Start»: aquí el PM revisa los datos en el FMS y el PF hace el crosscheck. If the flight crew uses the optimum configuration option for the computation, they should pay specific attention to changes to the configuration of the slats/flaps at takeoff.",
-    },
   },
   // ── B. Before takeoff ────────────────────────────────────────────────────
   {
