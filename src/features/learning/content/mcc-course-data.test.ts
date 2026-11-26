@@ -10,6 +10,7 @@ import { MCC_SOP_06, SOP_06_SLIDE_COUNT } from "./mcc/sop-06";
 import { MCC_SOP_07, SOP_07_SLIDE_COUNT } from "./mcc/sop-07";
 import { MCC_SOP_08, SOP_08_SLIDE_COUNT } from "./mcc/sop-08";
 import { MCC_SOP_09, SOP_09_SLIDE_COUNT } from "./mcc/sop-09";
+import { MCC_SOP_10, SOP_10_SLIDE_COUNT } from "./mcc/sop-10";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -311,5 +312,35 @@ describe("SOP-09", () => {
   it("excludes airline names, other types and aircraft registrations", () => {
     const htmlNoUrls = MCC_SOP_09.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a321|a320neo|neo|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("SOP-10", () => {
+  const slides = MCC_SOP_10.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable 30 min lesson placed after SOP-09", () => {
+    expect(MCC_SOP_10.min_seconds).toBe(1800);
+    expect(slides).toHaveLength(SOP_10_SLIDE_COUNT);
+    expect(MCC_SOP_10.sequence_order).toBe(MCC_SOP_09.sequence_order + 1);
+  });
+
+  it("uses ILS raw data / LVO PDP images (p.341–399) without multi-type or duplicated pages", () => {
+    const pages = [...MCC_SOP_10.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:ils_raw_data|low_visibility_operations)\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+    expect(pages).toHaveLength(SOP_10_SLIDE_COUNT);
+    for (const p of pages) {
+      expect(p).toBeGreaterThanOrEqual(341);
+      expect(p).toBeLessThanOrEqual(399);
+      expect([341, 370, 371, 372, 374, 376, 377, 378, 380, 392, 398, 399]).not.toContain(p);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE SOP-10\.\d+: [^>]*\| Source: [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("excludes airline names, other types, options not fitted and aircraft registrations", () => {
+    const htmlNoUrls = MCC_SOP_10.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|fls|bxl|hud|ec-[a-z]{3})\b/i);
   });
 });
