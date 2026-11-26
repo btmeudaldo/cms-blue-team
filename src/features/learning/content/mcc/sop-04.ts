@@ -13,6 +13,9 @@
  * CFM56-5B. Las láminas exclusivas de A330 (págs. 164, 166 y 169) no se usan; de la pág. 168 solo se usa la
  * mitad A320, y en lugar de la pág. 171 (con "(A330) ENG START SEL") se usa el flujo After Start de Flow
  * Patterns (pág. 30). Las láminas 156, 157, 160, 163, 165 y 167 llevan recortado el pie (© y banda A320/A330).
+ * FCOM 23MAR26: en esta variante se arranca primero el motor 1 (el motor 2 solo con rodaje con todos los
+ * motores). Por eso la p.163 se recorta a los pasos comunes y la p.165 («ENG 2 is started first») se sustituye
+ * por la figura FCOM de la secuencia automática.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
 import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
@@ -27,6 +30,8 @@ const CROPPED_PAGES = new Set([156, 157, 160, 163, 165, 167]);
 const IMG_VERSION = 1795617213;
 const img = (page: number) =>
   `${PDP_IMG}/p${String(page).padStart(3, "0")}_before_pushback_start_engine_start_after.webp${CROPPED_PAGES.has(page) ? `?v=${IMG_VERSION}` : ""}`;
+/** p163 recortada a los pasos comunes (FCOM 23MAR26: en esta variante se arranca primero el motor 1). */
+const IMG_P163_COMMON = `${PDP_IMG}/p163_before_pushback_start_engine_start_after.webp?v=1795632000`;
 const IMG_PITCH_TRIM_A320 = `${PDP_IMG}/p168_after_start_pitch_trim_a320.webp`;
 const IMG_AFTER_START_FLOW_A320 = `${PDP_IMG}/p030_flow_patterns.webp`;
 const fcomImg = (name: string) => `${PDP_IMG}/${name}.webp`;
@@ -53,12 +58,12 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
       },
       {
         heading: "BEACON sw ……… ON (PF)",
-        paragraph: "When cleared for start or pushback, set to ON the BEACON sw.",
+        paragraph: "When cleared for start or pushback, set the BEACON sw to ON.",
       },
       {
         heading: "After start flow pattern",
         paragraph:
-          "When the engines have started, the PF sets the ENG MODE selector to NORM to permit normal pack operation. At this time, the After Start Flow Pattern begins.",
+          "When all engines are started, the PF sets the ENG MODE selector to NORM to permit normal pack operation. At this time, the After Start Flow Pattern begins.",
       },
     ],
   },
@@ -85,13 +90,13 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
       {
         heading: "Takeoff data",
         bullets: [
-          "If takeoff conditions changed: the PF and the PM independently compute again the takeoff performance data. The PF revises the takeoff data in the FMS; the PM crosschecks the performance data displayed on the PM's EFB with the FMS PERF T.O page.",
+          "If takeoff conditions changed: the PF and the PM independently compute again the takeoff performance data. The PF revises the takeoff data in the FMS; the PM crosschecks the performance data displayed on the PM's EFB with the FMS PERF TAKE OFF page.",
         ],
       },
     ],
     alert: {
       level: "NOTE",
-      text: "If the flight crew uses the optimum configuration option for the computation, they should pay specific attention to changes to the configuration of the slats/flaps at takeoff.",
+      text: "If the flight crew uses an optimum configuration option for the computation, they should pay specific attention to any change of the configuration of the slats/flaps at takeoff.",
     },
   },
   {
@@ -108,7 +113,7 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     cards: [
       {
         heading: "SEATS, SEAT BELTS, HARNESSES, RUDDER PEDALS, ARMRESTS ……… ADJUST (PF-PM)",
-        paragraph: "The seat is correctly adjusted when the pilot’s eyes are in line with the red ball and white light.",
+        paragraph: "The seat is correctly adjusted when the flight crew's eyes are aligned with the red and white balls.",
       },
       {
         heading: "MCDU",
@@ -233,8 +238,8 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     leftPct: 50,
     leftTitle: "AUTOMATIC ENGINE START — FCOM NOTES",
     rightTitle: "ENGINE START — PF",
-    image: img(163),
-    imageAlt: "Engine start sequence for the PF",
+    image: IMG_P163_COMMON,
+    imageAlt: "Engine start for the PF: clear to start, thrust levers idle, ENG MODE selector IGN/START",
     sourceRef: both("PRO-NOR-SOP-08 Automatic Engine Start", 163),
     cards: [
       {
@@ -245,7 +250,7 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
         heading: "Notes",
         bullets: [
           "Parameter callouts are not mandatory.",
-          "In case the electrical power supply is interrupted during the start sequence (indicated by the loss of ECAM DUs), abort the start by setting to OFF the ENG 2 MASTER lever. Then, perform a 30 s dry crank.",
+          "In case the electrical power supply is interrupted during the start sequence (indicated by the loss of ECAM DUs), abort the start by setting to OFF the ENG 1 MASTER lever. Then, perform a 30 s dry crank.",
           "CFM Eng 56–5–B1/2 or CFM Eng 56–5–B4/2 engines accelerate slowly from 50 % N2 to idle. Start abort is not required as long as N2 is increasing.",
           "A PTU FAULT is triggered, if the last engine is started within 40 s following the end of the cargo doors operation.",
         ],
@@ -264,9 +269,9 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     leftPct: 52,
     leftTitle: "SEQUENCE OF THE AUTOMATIC START",
     rightTitle: "STARTING THE ENGINES",
-    image: img(165),
-    imageAlt: "Notes for starting the engines: engine 2 first and amber crosses",
-    sourceRef: both("DSC-70-80-40 Automatic Starting Sequence", 165),
+    image: fcomImg("fcom_a320_eng_auto_start_sequence"),
+    imageAlt: "Automatic starting sequence: initial configuration, ENG MODE selector to IGN/START, ENG MASTER lever to ON, interruption of the start",
+    sourceRef: fcom("DSC-70-80-40 Automatic Starting Sequence"),
     cards: [
       {
         heading: "Initial configuration of the controls",
@@ -318,9 +323,9 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-04.10: Engine idle parameters and engine 1 start",
+    comment: "SLIDE SOP-04.10: Engine idle parameters and engine 2 start (all engine taxi)",
     eyebrow: EYEBROW,
-    title: "4.10 Parámetros de ralentí y arranque del motor 1",
+    title: "4.10 Parámetros de ralentí y arranque del motor 2",
     subtitle: "PRO-NOR-SOP-08 · Engine Idle Parameters (CFM56-5B)",
     leftPct: 50,
     leftTitle: "ENG IDLE PARAMETERS ……… CHECK",
@@ -333,7 +338,7 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
         heading: "When idle is reached (AVAIL indication is displayed)",
         bullets: [
           "Grey background on N2 indication disappears.",
-          "ENGINE 1 START ……… ANNOUNCE · ENG 1 MASTER lever ……… ON — Apply the same procedure as indicated for engine 2.",
+          "In the case of all engine taxi at departure: ENGINE 2 START ……… ANNOUNCE · ENG 2 MASTER lever ……… ON — Apply the same procedure as indicated for engine 1.",
           "Both pack valves reopen with 30 s delay after the second engine N2 is above 50 %.",
         ],
       },
@@ -656,7 +661,7 @@ const SOP_04_SLIDES: MccSlideSpec[] = [
       {
         heading: "ECAM STATUS ……… CHECK (PF-PM)",
         paragraph:
-          "The PM checks and the PF crosschecks that there is no status reminder (STS) on the WD. If STS appears on the WD, press the STATUS pb to display the STATUS page.",
+          "The PM checks and the PF crosschecks that there is no status reminder (STS) on the E/WD. If STS appears on the E/WD, press the STATUS pb to display the STATUS page.",
       },
       {
         heading: "CLEAR TO DISCONNECT ……… ANNOUNCE (PF)",
