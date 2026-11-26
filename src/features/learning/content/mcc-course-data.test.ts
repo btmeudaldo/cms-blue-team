@@ -14,6 +14,7 @@ import { MCC_SOP_10, SOP_10_SLIDE_COUNT } from "./mcc/sop-10";
 import { MCC_SOP_11, SOP_11_SLIDE_COUNT } from "./mcc/sop-11";
 import { MCC_SOP_12, SOP_12_SLIDE_COUNT } from "./mcc/sop-12";
 import { MCC_SOP_13, SOP_13_SLIDE_COUNT } from "./mcc/sop-13";
+import { MCC_SOP_14, SOP_14_SLIDE_COUNT } from "./mcc/sop-14";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -437,5 +438,36 @@ describe("SOP-13", () => {
   it("excludes airline names, other types, options not fitted and aircraft registrations", () => {
     const htmlNoUrls = MCC_SOP_13.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|buss|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("SOP-14", () => {
+  const slides = MCC_SOP_14.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable 45 min lesson placed after SOP-13", () => {
+    expect(MCC_SOP_14.min_seconds).toBe(2700);
+    expect(slides).toHaveLength(SOP_14_SLIDE_COUNT);
+    expect(MCC_SOP_14.sequence_order).toBe(MCC_SOP_13.sequence_order + 1);
+  });
+
+  it("uses EGPWS/stall/TCAS/windshear PDP images without covers, multi-type or AP/FD TCAS pages", () => {
+    const pages = [...MCC_SOP_14.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:egpws|stall_recovery|tcas|windshear)\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+    expect(pages).toHaveLength(SOP_14_SLIDE_COUNT);
+    for (const p of pages) {
+      expect((p >= 461 && p <= 482) || (p >= 541 && p <= 556) || (p >= 672 && p <= 685)).toBe(true);
+      expect([461, 480, 481, 541, 545, 548, 549, 550, 556, 672]).not.toContain(p);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE SOP-14\.\d+: [^>]*\| Source: [^>]*-->/);
+      const visible = slide.replace(/<!--[\s\S]*?-->/g, "");
+      expect(visible).not.toMatch(/(Source|Fuente): /);
+      expect(visible).not.toContain("AP/FD TCAS");
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("excludes airline names, other types and aircraft registrations", () => {
+    const htmlNoUrls = MCC_SOP_14.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });
