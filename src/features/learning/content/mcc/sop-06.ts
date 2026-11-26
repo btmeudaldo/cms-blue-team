@@ -20,7 +20,7 @@ const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SOP-06";
 
 /** Todas las láminas llevan el pie recortado y se re-subieron: versión común para la caché. */
-const IMG_VERSION = 1795621000;
+const IMG_VERSION = 1795622000;
 const chapter = (page: number) => (page <= 204 ? "climb" : page <= 211 ? "cruise" : "descent");
 const img = (page: number) => `${PDP_IMG}/p${String(page).padStart(3, "0")}_${chapter(page)}.webp?v=${IMG_VERSION}`;
 const fcomImg = (name: string) => `${PDP_IMG}/${name}.webp`;
@@ -91,11 +91,11 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     title: "6.3 Cambios de velocidad en subida y EXPEDITE",
     subtitle: "Climb · Speed Modifications",
     leftPct: 50,
-    leftTitle: "CLIMB SPEED · EXPEDITE · STD",
+    leftTitle: "CLIMB SPEED · EXPEDITE",
     rightTitle: "TRANSITION TO CRZ PHASE",
     image: img(203),
     imageAlt: "Transition to cruise phase depending on the final ATC clearance",
-    sourceRef: src("PRO-NOR-SOP-14 Climb Speed Modifications / Expedite Climb / At the Transition Altitude", 203),
+    sourceRef: src("PRO-NOR-SOP-14 Climb Speed Modifications / Expedite Climb", 203),
     cards: [
       {
         heading: "Climb speed modifications",
@@ -111,22 +111,18 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
           "If ATC requires a rapid climb through a particular level: push the EXP pb on the FCU. The target speed is now green dot speed. Use EXP only for short-term tactical situations. For the best overall economy fly at ECON IAS.",
       },
     ],
-    alert: {
-      level: "NOTE",
-      text: "When STD is set on the EFIS control panel, the transponder does not transmit to the Air Traffic Control (ATC) the standard barometric reference but the last QNH or QFE previously selected. The transmitted aircraft altitude is not affected.",
-    },
   },
   {
     comment: "SLIDE SOP-06.4: Soft altitude mode, engine anti-ice and radar",
     eyebrow: EYEBROW,
     title: "6.4 Soft altitude, antihielo y radar",
     subtitle: "Climb · Soft Altitude Mode",
-    leftPct: 52,
-    leftTitle: "ENG ANTI-ICE · RADAR",
+    leftPct: 45,
+    leftTitle: "ENG ANTI-ICE · RADAR TILT",
     rightTitle: "A320 SOFT ALTITUDE MODE",
     image: IMG_SOFT_ALT_A320,
     imageAlt: "A320 soft altitude mode: plus or minus 50 ft after cruise capture",
-    sourceRef: src("PRO-NOR-SOP-14 Eng Anti-Ice / Radar", 204),
+    sourceRef: src("PRO-NOR-SOP-14 Eng Anti-Ice / Radar Tilt", 204),
     cards: [
       {
         heading: "ENG ANTI-ICE pb-sw ……… AS RQRD (PM)",
@@ -134,13 +130,8 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
           "Engine anti-ice must be set to ON when icing conditions exist or are anticipated, except during climb and cruise when the SAT is below - 40 °C (-40 °F).",
       },
       {
-        heading: "RADAR ……… ADJUST AS APPROPRIATE (PF)",
-        bullets: [
-          "If the weather is good, or not significant, in order to check that the radar is operating correctly: down tilt until displaying ground echoes.",
-          "If the weather display is ambiguous or unexpected, in order to better analyze the weather situation, use manual tilt according to standard technique.",
-          "In particular below FL 200, for situations with low-level weather, weather with low reflectivity or in front of suspected active cells, the flight crew should switch to Manual mode and adjust the tilt setting downward until the weather is detected or the ground clutter appears on the upper part of the display.",
-          "The flight crew may increase the manual gain control to display lower reflectivity targets. Ground clutter may also be displayed as a result of low settings and/or increased gain.",
-        ],
+        heading: "RADAR (PRO-NOR-SOP-14)",
+        bullets: ["RADAR TILT ……… ADJUST AS APPROPRIATE (PF)"],
       },
     ],
   },
@@ -278,7 +269,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "6.10 Offset lateral",
     subtitle: "Cruise · Offset",
-    leftPct: 48,
+    leftPct: 52,
     leftTitle: "OFFSET (DSC-22_20)",
     rightTitle: "OFFSET — PF / PM",
     image: img(210),
@@ -290,8 +281,8 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
         bullets: [
           "The offset can be immediate or deferred to start on a downstream leg. The offset will end by default or at a pre-planned end waypoint. Additionally, the flight crew can specify the intercept angle used for the transitions to and from the offset path.",
           "This page is accessed from LAT REV page at the FROM waypoint or at any waypoint downpath the flight plan, except the destination airport.",
-          "After inserting the offset in the flight plan, the flight plan page shows OFST in its title, and the navigation display shows the offset flight plan with a solid green line and the original flight plan with a dashed green line.",
-          "The offset is cleared automatically (holding pattern, approach), or manually.",
+          "After inserting the offset in the flight plan, the flight plan page shows OFST in its title, left or right arrows are displayed on every label line between the start and end waypoints of the offset, and the navigation display shows the offset flight plan with a solid green line and the original flight plan with a dashed green line.",
+          "The offset is cleared: Automatically (holding pattern, approach), or Manually with the clear (CLR) key, or by entering “o” in the offset value field [ 1L ] or by using the delete prompt in the OFFSET page.",
         ],
       },
     ],
@@ -377,7 +368,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
         bullets: [
           "If the weather conditions are expected to change at the landing airport, or in the event of significant precipitation, the flight crew should consider a second calculation of the in-flight landing distance with the worst possible runway condition.",
           "The selection of REV MAX is the standard practice for landing. However, on DRY runways the flight crew may select REV IDLE.",
-          "On WET runways (runway surface condition GOOD), the flight crew may select REV IDLE, if a landing distance assessment has been made with MEDIUM TO POOR landing performance level for the in-flight landing distance computation and no reverser credit, and the result is within the LDA.",
+          "On WET runways (runway surface condition GOOD), the flight crew may select REV IDLE, if all the following conditions are satisfied: A landing distance assessment has been made with MEDIUM TO POOR landing performance level for the in-flight landing distance computation and no reverser credit · The result of this landing distance assessment is within the LDA.",
         ],
       },
       {
@@ -391,7 +382,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "6.14 Preparación del FMS: llegada, F-PLN y descenso",
     subtitle: "Descent Preparation · FMS",
-    leftPct: 55,
+    leftPct: 58,
     leftTitle: "ARRIVAL · F-PLN · DES WIND · PERF DES (PF)",
     rightTitle: "FMS ……… PREPARE",
     image: img(215),
@@ -402,8 +393,8 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
         heading: "ARRIVAL page · F-PLN A page",
         bullets: [
           "Insert APPR, STAR, APPR VIA and TRANS if applicable. (Access by lateral revision at destination.)",
-          "Check the F-PLN (approach and Missed Approach tracks and distances) vs. the approach charts, using the ND in PLAN mode as necessary. Check speed and altitude constraints.",
-          "The FMS may have deleted the altitude constraints that are at or above the CRZ FL. In that case, insert again the affected procedures, and manually enter the altitude constraints that are below current CRZ FL.",
+          "Check the F-PLN (approach and Missed Approach tracks and distances) vs. the approach charts, using the ND in PLAN mode as necessary · Check speed constraints. Add new speed constraints if required · Check altitude constraints. Add new altitude constraints if required.",
+          "The FMS may have deleted the altitude constraints that are at or above the CRZ FL, or at or above any previous lower CRZ FL in the case of step climbs. In that case: Insert again the affected procedures (STAR, APPR VIA or TRANS) · Manually enter the altitude constraints that are below current CRZ FL using the MCDU Vertical Revision pages.",
           "In all cases, do not modify the final approach (FAF to runway or MAP), including altitude constraints.",
         ],
       },
@@ -432,7 +423,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
       {
         heading: "PERF APPR",
         bullets: [
-          "Enter the QNH, temperature, and wind at destination. Insert the average wind given by the ATC or ATIS. Do not insert the gust value — e.g. if the wind is 15020G35KT, insert 150/20.",
+          "Enter the QNH, temperature, and wind at destination. Insert the average wind given by the ATC or ATIS. Do not insert the gust value — For example, if the wind is 15020G35KT, insert 150/20.",
           "Insert the minimum. Changing the RWY or the type of approach automatically erases the previous minimum.",
           "Always select the landing configuration on the PERF APPR page: CONF FULL in the normal landing configuration. CONF 3 should be considered, depending on the available runway length and go-around performance, or if windshear/severe turbulence is considered possible during approach.",
           "Check or modify the transition altitude/flight level.",
@@ -496,15 +487,15 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
       {
         heading: "Note",
         paragraph:
-          "If, on very long runways, the flight crew anticipates that braking will not be needed, use of the autobrake is not necessary. Firmly press the appropriate pushbutton and check that the related ON light comes on.",
+          "If, on very long runways, the flight crew anticipates that braking will not be needed, use of the autobrake is not necessary. Firmly press the appropriate pushbutton, according to the runway length and condition, and check that the related ON light comes on.",
       },
     ],
     table: {
       headers: ["Runway", "Autobrake"],
       rows: [
         ["Landing (general)", "Use of autobrake is preferable. Use of MAX mode is not recommended at landing."],
-        ["Short or contaminated runways", "MED"],
-        ["Long runways", "LO"],
+        ["Short or contaminated runways", "On short or contaminated runways, use MED mode."],
+        ["Long runways", "On long runways, LO mode is recommended."],
       ],
     },
   },
@@ -532,7 +523,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
       {
         heading: "CLEARED ALTITUDE ON FCU ……… SET (PF)",
         paragraph:
-          "Set the cleared altitude (FL) on the FCU taking into account the safe altitudes. If the lowest safe altitude is above the cleared altitude, check with the ATC to determine if this constraint applies; if it applies, set the safe altitude on the FCU until it is safe to reach the cleared altitude.",
+          "When the flight crew obtains the ATC clearance, they should set the cleared altitude (FL) on the FCU taking into account the safe altitudes. If the lowest safe altitude is above the cleared altitude, check with the ATC to determine if this constraint applies. If the ATC confirms that this constraint applies, set the safe altitude on the FCU until it is safe to reach the cleared altitude.",
       },
     ],
   },
@@ -589,7 +580,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
       {
         heading: "ENG 1 and 2 ANTI-ICE pb-sw ……… AS RQRD (PM)",
         bullets: [
-          "Engine anti-ice must be set to ON before and during descent, event if the SAT is below -40 °C (-40 °F). When ENG ANTI ICE is ON, the FADEC selects a higher idle thrust which gives better protection against flame-out.",
+          "Engine anti-ice must be set to ON before and during descent, even if the SAT is below -40 °C (-40 °F). When ENG ANTI ICE is ON, the FADEC selects a higher idle thrust which gives better protection against flame-out.",
           "ANTI ICE ON reduces the descent path angle (when the engines are at idle). The flight crew can compensate for this by increasing the descent speed, or by extending up to half speedbrakes.",
         ],
       },
@@ -659,7 +650,7 @@ const SOP_06_SLIDES: MccSlideSpec[] = [
         bullets: [
           "L&R LAND selector ……… SET (PM) — LAND lights may be switched ON, depending on the airline policy or regulatory recommendation.",
           "EFIS option pb ……… CSTR (PF-PM) — Select CSTR on both sides.",
-          "ILS/LS pb ……… AS RQRD (PF-PM) — Press it if an ILS, ILS G/S out, LOC only or LOC B/C approach, or an approach with the FLS function, is planned. Check that deviation scales and the IDENT are displayed on the PFD.",
+          "ILS/LS pb ……… AS RQRD (PF-PM) — Press the ILS/LS pb, if one of the following approaches is planned: ILS · ILS G/S out, LOC only or LOC B/C. The flight crew checks that: Deviation scales are displayed on the PFD · The IDENT is properly displayed on the PFD.",
         ],
       },
       {

@@ -296,10 +296,6 @@ const SOP_05_SLIDES: MccSlideSpec[] = [
         paragraph: "FOR 180 ° TURN ON RUNWAY: INITIATE THE TURN DOWNWIND — In order to prevent ash, sand or dust ingestion.",
       },
     ],
-    alert: {
-      level: "NOTE",
-      text: "La lámina del PDP indica 30 m; el FCOM del A320ceo de referencia da 24 m sin margen (30 m corresponde a otras variantes de la flota).",
-    },
   },
   // ── C. Takeoff ───────────────────────────────────────────────────────────
   {
