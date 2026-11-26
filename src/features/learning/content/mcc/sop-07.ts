@@ -15,7 +15,7 @@
  * circle ya en SOP-06); 244 y 261 usadas en versiones limpias A320 (EC-ILQ).
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, mccMinSeconds, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -823,7 +823,7 @@ export const MCC_SOP_07: MccLesson = {
   slug: "sop-07-aproximacion-2d-3d",
   sequence_order: 7,
   lesson_order: 7,
-  min_seconds: 5400,
+  min_seconds: mccMinSeconds(SOP_07_SLIDES.length),
   module_title: MCC_MODULES.NORMAL_SOP,
   content_html: joinSlides(SOP_07_SLIDES),
 };

@@ -18,7 +18,7 @@
  * rótulos de tipo de la barra y la caja de alerta del otro tipo.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, mccMinSeconds, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -567,7 +567,7 @@ export const MCC_SOP_12: MccLesson = {
   slug: "sop-12-emergencias-i",
   sequence_order: 12,
   lesson_order: 12,
-  min_seconds: 3600,
+  min_seconds: mccMinSeconds(SOP_12_SLIDES.length),
   module_title: MCC_MODULES.ABNORMAL_SOP,
   content_html: joinSlides(SOP_12_SLIDES),
 };

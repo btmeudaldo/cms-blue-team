@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { MCC_LEGACY_LESSONS, MCC_LESSONS, MCC_PDP_LESSONS, clampLeftPct } from "./mcc-course-data";
-import { MCC_MODULES } from "./mcc/slide-builder";
+import { MCC_MODULES, MCC_SECONDS_PER_SLIDE, mccMinSeconds } from "./mcc/slide-builder";
 import { MCC_SOP_01, SOP_01_SLIDE_COUNT } from "./mcc/sop-01";
 import { MCC_SOP_02, SOP_02_SLIDE_COUNT } from "./mcc/sop-02";
 import { MCC_SOP_03, SOP_03_SLIDE_COUNT } from "./mcc/sop-03";
@@ -75,11 +75,30 @@ describe("MCC lessons", () => {
   });
 });
 
+describe("MCC pacing", () => {
+  it("computes min_seconds at 2.5 min per slide, rounded to 5 min", () => {
+    expect(MCC_SECONDS_PER_SLIDE).toBe(150);
+    expect(mccMinSeconds(20)).toBe(3000);
+    expect(mccMinSeconds(25)).toBe(3900);
+    expect(mccMinSeconds(15)).toBe(2400);
+    for (const lesson of MCC_PDP_LESSONS) {
+      const slides = lesson.content_html.split("<!-- pagebreak -->").length;
+      expect(lesson.min_seconds).toBe(mccMinSeconds(slides));
+      expect(lesson.min_seconds % 300).toBe(0);
+    }
+  });
+
+  it("keeps the built lessons within the 30 h online budget", () => {
+    const total = MCC_PDP_LESSONS.reduce((sum, l) => sum + l.min_seconds, 0);
+    expect(total).toBeLessThanOrEqual(108_000);
+  });
+});
+
 describe("SOP-01", () => {
   const slides = MCC_SOP_01.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 1 h lesson", () => {
-    expect(MCC_SOP_01.min_seconds).toBe(3600);
+  it("is a computable lesson (2.5 min/slide)", () => {
+    expect(MCC_SOP_01.min_seconds).toBe(mccMinSeconds(SOP_01_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_01_SLIDE_COUNT);
   });
 
@@ -107,8 +126,8 @@ describe("SOP-01", () => {
 describe("SOP-02", () => {
   const slides = MCC_SOP_02.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 0.75 h lesson with one flow image per slide", () => {
-    expect(MCC_SOP_02.min_seconds).toBe(2700);
+  it("is a computable lesson (2.5 min/slide) with one flow image per slide", () => {
+    expect(MCC_SOP_02.min_seconds).toBe(mccMinSeconds(SOP_02_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_02_SLIDE_COUNT);
     for (const slide of slides) {
       expect(slide).toMatch(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p0[2-4]\d_flow_patterns\.webp"/);
@@ -126,8 +145,8 @@ describe("SOP-02", () => {
 describe("SOP-03", () => {
   const slides = MCC_SOP_03.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 1 h lesson placed after SOP-02", () => {
-    expect(MCC_SOP_03.min_seconds).toBe(3600);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-02", () => {
+    expect(MCC_SOP_03.min_seconds).toBe(mccMinSeconds(SOP_03_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_03_SLIDE_COUNT);
     expect(MCC_SOP_03.sequence_order).toBe(MCC_SOP_02.sequence_order + 1);
   });
@@ -155,8 +174,8 @@ describe("SOP-03", () => {
 describe("SOP-04", () => {
   const slides = MCC_SOP_04.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 1 h lesson placed after SOP-03", () => {
-    expect(MCC_SOP_04.min_seconds).toBe(3600);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-03", () => {
+    expect(MCC_SOP_04.min_seconds).toBe(mccMinSeconds(SOP_04_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_04_SLIDE_COUNT);
     expect(MCC_SOP_04.sequence_order).toBe(MCC_SOP_03.sequence_order + 1);
   });
@@ -192,8 +211,8 @@ describe("SOP-04", () => {
 describe("SOP-05", () => {
   const slides = MCC_SOP_05.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 1 h lesson placed after SOP-04", () => {
-    expect(MCC_SOP_05.min_seconds).toBe(3600);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-04", () => {
+    expect(MCC_SOP_05.min_seconds).toBe(mccMinSeconds(SOP_05_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_05_SLIDE_COUNT);
     expect(MCC_SOP_05.sequence_order).toBe(MCC_SOP_04.sequence_order + 1);
   });
@@ -223,8 +242,8 @@ describe("SOP-05", () => {
 describe("SOP-06", () => {
   const slides = MCC_SOP_06.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 1 h lesson placed after SOP-05", () => {
-    expect(MCC_SOP_06.min_seconds).toBe(3600);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-05", () => {
+    expect(MCC_SOP_06.min_seconds).toBe(mccMinSeconds(SOP_06_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_06_SLIDE_COUNT);
     expect(MCC_SOP_06.sequence_order).toBe(MCC_SOP_05.sequence_order + 1);
   });
@@ -257,8 +276,8 @@ describe("SOP-06", () => {
 describe("SOP-07", () => {
   const slides = MCC_SOP_07.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 1.5 h lesson placed after SOP-06", () => {
-    expect(MCC_SOP_07.min_seconds).toBe(5400);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-06", () => {
+    expect(MCC_SOP_07.min_seconds).toBe(mccMinSeconds(SOP_07_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_07_SLIDE_COUNT);
     expect(MCC_SOP_07.sequence_order).toBe(MCC_SOP_06.sequence_order + 1);
   });
@@ -292,8 +311,8 @@ describe("SOP-07", () => {
 describe("SOP-08", () => {
   const slides = MCC_SOP_08.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 1 h lesson placed after SOP-07", () => {
-    expect(MCC_SOP_08.min_seconds).toBe(3600);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-07", () => {
+    expect(MCC_SOP_08.min_seconds).toBe(mccMinSeconds(SOP_08_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_08_SLIDE_COUNT);
     expect(MCC_SOP_08.sequence_order).toBe(MCC_SOP_07.sequence_order + 1);
   });
@@ -327,8 +346,8 @@ describe("SOP-08", () => {
 describe("SOP-09", () => {
   const slides = MCC_SOP_09.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 1 h lesson placed after SOP-08", () => {
-    expect(MCC_SOP_09.min_seconds).toBe(3600);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-08", () => {
+    expect(MCC_SOP_09.min_seconds).toBe(mccMinSeconds(SOP_09_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_09_SLIDE_COUNT);
     expect(MCC_SOP_09.sequence_order).toBe(MCC_SOP_08.sequence_order + 1);
   });
@@ -356,8 +375,8 @@ describe("SOP-09", () => {
 describe("SOP-10", () => {
   const slides = MCC_SOP_10.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 30 min lesson placed after SOP-09", () => {
-    expect(MCC_SOP_10.min_seconds).toBe(1800);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-09", () => {
+    expect(MCC_SOP_10.min_seconds).toBe(mccMinSeconds(SOP_10_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_10_SLIDE_COUNT);
     expect(MCC_SOP_10.sequence_order).toBe(MCC_SOP_09.sequence_order + 1);
   });
@@ -386,8 +405,8 @@ describe("SOP-10", () => {
 describe("SOP-11", () => {
   const slides = MCC_SOP_11.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 45 min lesson placed after SOP-10", () => {
-    expect(MCC_SOP_11.min_seconds).toBe(2700);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-10", () => {
+    expect(MCC_SOP_11.min_seconds).toBe(mccMinSeconds(SOP_11_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_11_SLIDE_COUNT);
     expect(MCC_SOP_11.sequence_order).toBe(MCC_SOP_10.sequence_order + 1);
   });
@@ -416,8 +435,8 @@ describe("SOP-11", () => {
 describe("SOP-12", () => {
   const slides = MCC_SOP_12.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 1 h lesson placed after SOP-11", () => {
-    expect(MCC_SOP_12.min_seconds).toBe(3600);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-11", () => {
+    expect(MCC_SOP_12.min_seconds).toBe(mccMinSeconds(SOP_12_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_12_SLIDE_COUNT);
     expect(MCC_SOP_12.sequence_order).toBe(MCC_SOP_11.sequence_order + 1);
   });
@@ -444,8 +463,8 @@ describe("SOP-12", () => {
 describe("SOP-13", () => {
   const slides = MCC_SOP_13.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 45 min lesson placed after SOP-12", () => {
-    expect(MCC_SOP_13.min_seconds).toBe(2700);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-12", () => {
+    expect(MCC_SOP_13.min_seconds).toBe(mccMinSeconds(SOP_13_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_13_SLIDE_COUNT);
     expect(MCC_SOP_13.sequence_order).toBe(MCC_SOP_12.sequence_order + 1);
   });
@@ -472,8 +491,8 @@ describe("SOP-13", () => {
 describe("SOP-14", () => {
   const slides = MCC_SOP_14.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 45 min lesson placed after SOP-13", () => {
-    expect(MCC_SOP_14.min_seconds).toBe(2700);
+  it("is a computable lesson (2.5 min/slide) placed after SOP-13", () => {
+    expect(MCC_SOP_14.min_seconds).toBe(mccMinSeconds(SOP_14_SLIDE_COUNT));
     expect(slides).toHaveLength(SOP_14_SLIDE_COUNT);
     expect(MCC_SOP_14.sequence_order).toBe(MCC_SOP_13.sequence_order + 1);
   });
@@ -502,8 +521,8 @@ describe("SOP-14", () => {
 describe("SIS-01", () => {
   const slides = MCC_SIS_01.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 45 min lesson placed right after SOP-14 (SOP → systems)", () => {
-    expect(MCC_SIS_01.min_seconds).toBe(2700);
+  it("is a computable lesson (2.5 min/slide) placed right after SOP-14 (SOP → systems)", () => {
+    expect(MCC_SIS_01.min_seconds).toBe(mccMinSeconds(SIS_01_SLIDE_COUNT));
     expect(slides).toHaveLength(SIS_01_SLIDE_COUNT);
     expect(SIS_01_SLIDE_COUNT).toBe(15);
     expect(MCC_SIS_01.sequence_order).toBe(MCC_SOP_14.sequence_order + 1);
@@ -531,8 +550,8 @@ describe("SIS-01", () => {
 describe("SIS-02", () => {
   const slides = MCC_SIS_02.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 45 min lesson placed right after SIS-01", () => {
-    expect(MCC_SIS_02.min_seconds).toBe(2700);
+  it("is a computable lesson (2.5 min/slide) placed right after SIS-01", () => {
+    expect(MCC_SIS_02.min_seconds).toBe(mccMinSeconds(SIS_02_SLIDE_COUNT));
     expect(slides).toHaveLength(SIS_02_SLIDE_COUNT);
     expect(SIS_02_SLIDE_COUNT).toBe(15);
     expect(MCC_SIS_02.sequence_order).toBe(MCC_SIS_01.sequence_order + 1);

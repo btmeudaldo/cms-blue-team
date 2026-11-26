@@ -14,7 +14,7 @@
  * (callouts ya cubiertos en SOP-01). La 184 se reutiliza de SOP-01.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, mccMinSeconds, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -577,7 +577,7 @@ export const MCC_SOP_05: MccLesson = {
   slug: "sop-05-rodaje-despegue",
   sequence_order: 5,
   lesson_order: 5,
-  min_seconds: 3600,
+  min_seconds: mccMinSeconds(SOP_05_SLIDES.length),
   module_title: MCC_MODULES.NORMAL_SOP,
   content_html: joinSlides(SOP_05_SLIDES),
 };

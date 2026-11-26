@@ -176,6 +176,14 @@ export function joinSlides(slides: MccSlideSpec[]): string {
   return slides.map(buildMccSlide).join("\n\n<!-- pagebreak -->\n\n");
 }
 
+/** Ritmo de estudio acordado con el HT (26-nov-2026): ~2,5 min por diapositiva. */
+export const MCC_SECONDS_PER_SLIDE = 150;
+
+/** Tiempo mínimo computable de una lección: diapositivas × 150 s, redondeado a 5 min. */
+export function mccMinSeconds(slideCount: number): number {
+  return Math.round((slideCount * MCC_SECONDS_PER_SLIDE) / 300) * 300;
+}
+
 export const MCC_MODULES = {
   NORMAL_SOP: "Módulo 1 · Procedimientos Estándar y Normales",
   ABNORMAL_SOP: "Módulo 2 · Situaciones Anormales y Emergencias",

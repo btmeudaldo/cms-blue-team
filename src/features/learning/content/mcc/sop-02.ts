@@ -8,7 +8,7 @@
  * lado a lado en el panel izquierdo junto con acciones, verificaciones y notas literales del FCOM.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { MCC_MODULES, joinSlides, type MccAlert, type MccCard, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, mccMinSeconds, type MccAlert, type MccCard, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -558,7 +558,7 @@ export const MCC_SOP_02: MccLesson = {
   slug: "sop-02-flow-patterns",
   sequence_order: 2,
   lesson_order: 2,
-  min_seconds: 2700,
+  min_seconds: mccMinSeconds(SOP_02_SLIDES.length),
   module_title: MCC_MODULES.NORMAL_SOP,
   content_html: joinSlides(SOP_02_SLIDES),
 };

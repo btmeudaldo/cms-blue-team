@@ -8,7 +8,7 @@
  *
  * Imágenes: láminas A320 e ilustraciones FCU alojadas en Hostalia (lesson_media, tag MCC).
  */
-import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, mccMinSeconds, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -117,7 +117,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
         bullets: [
           "Provide all necessary operating limitations, procedures, performance and system information the flight crew needs to safely and efficiently operate A320 family aircraft during normal, abnormal, and emergency situations.",
           "Serve as a comprehensive reference guide during initial and refresher flight crew training.",
-          "The FCOM is a document developed by a manufacturer that describes, in detail, the characteristics and operation of the aeroplane or its systems. If the FCOM data differs from the AFM data, the AFM remains the reference. As a supplement to the FCOM, the FCTM may provide additional information that the flight crew should read in conjunction with the FCOM.",
+          "If the FCOM data differs from the AFM data, the AFM remains the reference. As a supplement to the FCOM, the FCTM may provide additional information that the flight crew should read in conjunction with the FCOM.",
         ],
       },
       {
@@ -810,7 +810,7 @@ export const MCC_SOP_01: MccLesson = {
   slug: "sop-01-filosofia-airbus-fundamentos-mcc",
   sequence_order: 1,
   lesson_order: 1,
-  min_seconds: 3600,
+  min_seconds: mccMinSeconds(SOP_01_SLIDES.length),
   module_title: MCC_MODULES.NORMAL_SOP,
   content_html: joinSlides(SOP_01_SLIDES),
 };
