@@ -13,6 +13,7 @@ import { MCC_SOP_09, SOP_09_SLIDE_COUNT } from "./mcc/sop-09";
 import { MCC_SOP_10, SOP_10_SLIDE_COUNT } from "./mcc/sop-10";
 import { MCC_SOP_11, SOP_11_SLIDE_COUNT } from "./mcc/sop-11";
 import { MCC_SOP_12, SOP_12_SLIDE_COUNT } from "./mcc/sop-12";
+import { MCC_SOP_13, SOP_13_SLIDE_COUNT } from "./mcc/sop-13";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -407,5 +408,34 @@ describe("SOP-12", () => {
   it("excludes airline names, other types, options not fitted and aircraft registrations", () => {
     const htmlNoUrls = MCC_SOP_12.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|rops|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("SOP-13", () => {
+  const slides = MCC_SOP_13.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable 45 min lesson placed after SOP-12", () => {
+    expect(MCC_SOP_13.min_seconds).toBe(2700);
+    expect(slides).toHaveLength(SOP_13_SLIDE_COUNT);
+    expect(MCC_SOP_13.sequence_order).toBe(MCC_SOP_12.sequence_order + 1);
+  });
+
+  it("uses emergency PDP images without covers, multi-type pages or equipment not fitted", () => {
+    const pages = [...MCC_SOP_13.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:dual_fmgc_failure|emergency_descent|flight_control_laws|flight_crew_incapacitation|smoke|unreliable_speed_indication)\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+    expect(pages).toHaveLength(SOP_13_SLIDE_COUNT);
+    for (const p of pages) {
+      expect((p >= 451 && p <= 460) || (p >= 483 && p <= 491) || (p >= 512 && p <= 521) || (p >= 534 && p <= 540) || (p >= 557 && p <= 563)).toBe(true);
+      expect([451, 454, 458, 460, 483, 491, 512, 513, 516, 534, 535, 539, 563]).not.toContain(p);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE SOP-13\.\d+: [^>]*\| Source: [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("excludes airline names, other types, options not fitted and aircraft registrations", () => {
+    const htmlNoUrls = MCC_SOP_13.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|buss|ec-[a-z]{3})\b/i);
   });
 });

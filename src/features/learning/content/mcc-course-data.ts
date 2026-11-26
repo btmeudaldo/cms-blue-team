@@ -12,6 +12,7 @@ import { MCC_SOP_09 } from "./mcc/sop-09.ts";
 import { MCC_SOP_10 } from "./mcc/sop-10.ts";
 import { MCC_SOP_11 } from "./mcc/sop-11.ts";
 import { MCC_SOP_12 } from "./mcc/sop-12.ts";
+import { MCC_SOP_13 } from "./mcc/sop-13.ts";
 
 export const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 export const MCC_COURSE_SLUG = "aps-mcc-a320";
@@ -3281,7 +3282,7 @@ export const MCC_LEGACY_LESSONS = [
 ];
 
 /** Nueva estructura basada en el PDP Jan 2024 (docs/mcc/08_ARQUITECTURA_PDP.md). */
-export const MCC_PDP_LESSONS: MccLesson[] = [MCC_SOP_01, MCC_SOP_02, MCC_SOP_03, MCC_SOP_04, MCC_SOP_05, MCC_SOP_06, MCC_SOP_07, MCC_SOP_08, MCC_SOP_09, MCC_SOP_10, MCC_SOP_11, MCC_SOP_12];
+export const MCC_PDP_LESSONS: MccLesson[] = [MCC_SOP_01, MCC_SOP_02, MCC_SOP_03, MCC_SOP_04, MCC_SOP_05, MCC_SOP_06, MCC_SOP_07, MCC_SOP_08, MCC_SOP_09, MCC_SOP_10, MCC_SOP_11, MCC_SOP_12, MCC_SOP_13];
 
 /** Mientras conviven ambas estructuras, las lecciones antiguas se ordenan detrás (secuencia +100). */
 const LEGACY_SEQUENCE_OFFSET = 100;
