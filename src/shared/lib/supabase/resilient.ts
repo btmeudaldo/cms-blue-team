@@ -111,7 +111,7 @@ export async function getResilientCourseDetail(
     client
       .from("courses")
       .select(
-        "id, title, slug, description, image_url, lessons(id, title, slug, sequence_order, word_count, min_seconds, content_html)",
+        "id, title, slug, description, image_url, lessons(id, title, slug, sequence_order, word_count, min_seconds, content_html, module_title)",
       )
       .eq(isUuid ? "id" : "slug", courseId)
       .maybeSingle(),

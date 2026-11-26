@@ -114,6 +114,7 @@ describe("StudentCourseDetailPage lesson accessibility", () => {
     );
     expect(studentHtml).not.toContain("4. Lección Antigua Oculta");
     expect(studentHtml).not.toContain("legacy-hidden");
+    expect(studentHtml).not.toContain('aria-label="Visibilidad de la lección"');
     expect(studentHtml).toContain("(3 temas)");
 
     mockState.profile = { role: "superadmin" };
@@ -123,7 +124,114 @@ describe("StudentCourseDetailPage lesson accessibility", () => {
       }),
     );
     expect(superAdminHtml).toContain("4. Lección Antigua Oculta");
-    expect(superAdminHtml).toContain("Oculta (Solo superadmin)");
+    expect(superAdminHtml).toContain("🔒 Oculta");
+    expect(superAdminHtml).not.toContain("Solo superadmin");
+    expect(superAdminHtml).toContain('aria-label="Visibilidad de la lección"');
+    expect(superAdminHtml).toContain('aria-label="Hacer visible toda la lección"');
+    expect(superAdminHtml).toContain('aria-label="Ocultar toda la lección"');
     expect(superAdminHtml).toContain("(4 temas)");
+  });
+
+  it("groups lessons visually by module_title when defined while keeping continuous numbering", async () => {
+    mockState.course = {
+      ...baseCourse,
+      id: "aps-mcc",
+      slug: "aps-mcc-a320",
+      title: "Curso APS MCC",
+      lessons: [
+        {
+          id: "m1-l1",
+          slug: "sop-01",
+          title: "SOP-01. Fundamentos",
+          sequence_order: 1,
+          min_seconds: 3600,
+          word_count: 500,
+          module_title: "Módulo 1 · Procedimientos Estándar y Normales",
+        },
+        {
+          id: "m1-l2",
+          slug: "sop-02",
+          title: "SOP-02. Flow patterns",
+          sequence_order: 2,
+          min_seconds: 2700,
+          word_count: 450,
+          module_title: "Módulo 1 · Procedimientos Estándar y Normales",
+        },
+        {
+          id: "m2-l1",
+          slug: "sop-11",
+          title: "SOP-11. Anormales",
+          sequence_order: 3,
+          min_seconds: 2700,
+          word_count: 400,
+          module_title: "Módulo 2 · Situaciones Anormales y Emergencias",
+        },
+      ],
+    };
+
+    const html = renderToStaticMarkup(
+      await StudentCourseDetailPage({
+        params: Promise.resolve({ courseId: "aps-mcc-a320" }),
+      }),
+    );
+
+    expect(html).toContain("Módulo 1 · Procedimientos Estándar y Normales");
+    expect(html).toContain("Módulo 2 · Situaciones Anormales y Emergencias");
+    expect(html).toContain("2 temas");
+    expect(html).toContain("1 h 45 min");
+    expect(html).toContain("1 tema");
+    expect(html).toContain("45 min");
+    expect(html).toContain("0/2 completados");
+    expect(html).toContain("0/1 completados");
+    expect(html.indexOf("SOP-01. Fundamentos")).toBeLessThan(
+      html.indexOf("SOP-02. Flow patterns"),
+    );
+    expect(html.indexOf("SOP-02. Flow patterns")).toBeLessThan(
+      html.indexOf("Módulo 2 · Situaciones Anormales y Emergencias"),
+    );
+  });
+
+  it("renders archive modules collapsed by default inside <details>", async () => {
+    mockState.profile = { role: "superadmin" };
+    mockState.course = {
+      ...baseCourse,
+      id: "aps-mcc",
+      slug: "aps-mcc-a320",
+      title: "Curso APS MCC",
+      lessons: [
+        {
+          id: "m1-l1",
+          slug: "sop-01",
+          title: "SOP-01. Fundamentos",
+          sequence_order: 1,
+          min_seconds: 3600,
+          word_count: 500,
+          module_title: "Módulo 1 · Procedimientos Estándar y Normales",
+        },
+        {
+          id: "arch-1",
+          slug: "cta-1",
+          title: "1. Aircraft General (CTA-1)",
+          sequence_order: 101,
+          min_seconds: 1,
+          word_count: 300,
+          module_title: "Archivo · Versión anterior (CTA / VAAF)",
+          content_html:
+            '<div class="lesson-slide-container" data-slide-visibility="private">Legacy</div>',
+        },
+      ],
+    };
+
+    const html = renderToStaticMarkup(
+      await StudentCourseDetailPage({
+        params: Promise.resolve({ courseId: "aps-mcc-a320" }),
+      }),
+    );
+
+    expect(html).toContain("<details class=\"group\">");
+    expect(html).not.toContain("<details class=\"group\" open");
+    expect(html).toContain("Archivo · Versión anterior (CTA / VAAF)");
+    expect(html).toContain("Mostrar");
+    expect(html).toContain("🔒 Oculta");
   });
 });

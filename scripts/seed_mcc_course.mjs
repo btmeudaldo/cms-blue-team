@@ -26,8 +26,10 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 /*
  * Opciones:
  *   --only=slug1,slug2  Sube solo esas lecciones (contenido completo). Al resto de lecciones del
- *                       curso que ya existan en Supabase solo se les actualiza el orden
- *                       (sequence_order / lesson_order), nunca el contenido. No toca la fila del curso.
+ *                       curso que ya existan en Supabase solo se les actualiza el orden y módulo
+ *                       (sequence_order / lesson_order / module_title), nunca el contenido. No toca la fila del curso.
+ *   --order-only        Solo actualiza sequence_order, lesson_order y module_title de las lecciones
+ *                       existentes del curso sin modificar content_html, min_seconds ni word_count.
  *   --private           Las lecciones que aún no existen en Supabase se crean con todas sus
  *                       diapositivas privadas (solo las ve el superadmin), y en las que ya existen
  *                       las diapositivas nuevas (sin equivalente remoto) también se crean privadas.
@@ -36,9 +38,15 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 const args = process.argv.slice(2);
 const onlyArg = args.find((a) => a.startsWith("--only="));
 const ONLY_SLUGS = onlyArg ? onlyArg.slice("--only=".length).split(",").map((s) => s.trim()).filter(Boolean) : null;
+const ORDER_ONLY = args.includes("--order-only");
 const FORCE_PRIVATE_NEW = args.includes("--private");
 const DRY_RUN = args.includes("--dry-run");
 const FORCE_LAYOUT = args.includes("--force-layout");
+
+if (ONLY_SLUGS && ORDER_ONLY) {
+  console.error("❌ No puedes combinar --only y --order-only.");
+  process.exit(1);
+}
 
 if (ONLY_SLUGS) {
   const unknown = ONLY_SLUGS.filter((s) => !MCC_LESSONS.some((l) => l.slug === s));
@@ -48,40 +56,77 @@ if (ONLY_SLUGS) {
   }
 }
 
-/** Reordena (solo orden) las lecciones existentes que no se van a subir, para liberar sus posiciones. */
+/** Reordena (en 2 fases para evitar colisiones de índice único) y sincroniza module_title sin tocar contenido. */
 async function reorderExistingLessons(selectedIds) {
   const others = MCC_LESSONS.filter((l) => !selectedIds.has(l.id));
   const { data: remote, error } = await supabase
     .from("lessons")
-    .select("id, slug, sequence_order, lesson_order")
+    .select("id, slug, sequence_order, lesson_order, module_title")
     .eq("course_id", MCC_COURSE_ID);
   if (error) throw error;
   const remoteById = new Map((remote ?? []).map((r) => [r.id, r]));
 
-  // Primero las que suben de posición (de mayor a menor) para no chocar con el índice único.
-  const moves = others
-    .filter((l) => remoteById.has(l.id))
-    .filter((l) => {
-      const r = remoteById.get(l.id);
-      return r.sequence_order !== l.sequence_order || r.lesson_order !== (l.lesson_order ?? l.sequence_order);
-    })
-    .sort((a, b) => b.sequence_order - a.sequence_order);
-
-  for (const l of moves) {
+  const existingTargets = others.filter((l) => remoteById.has(l.id));
+  const orderChanges = existingTargets.filter((l) => {
     const r = remoteById.get(l.id);
-    const target = { sequence_order: l.sequence_order, lesson_order: l.lesson_order ?? l.sequence_order };
-    console.log(`↕️  Orden ${l.slug}: ${r.sequence_order}/${r.lesson_order} → ${target.sequence_order}/${target.lesson_order}`);
+    const targetLessonOrder = l.lesson_order ?? l.sequence_order;
+    return r.sequence_order !== l.sequence_order || r.lesson_order !== targetLessonOrder;
+  });
+
+  // Fase 1: desplazar todas las lecciones que cambian de orden a posiciones temporales (+10000).
+  const TEMP_OFFSET = 10000;
+  for (const l of orderChanges) {
+    const tempOrder = TEMP_OFFSET + l.sequence_order;
+    const tempLessonOrder = TEMP_OFFSET + (l.lesson_order ?? l.sequence_order);
     if (DRY_RUN) continue;
-    const { error: upErr } = await supabase.from("lessons").update(target).eq("id", l.id);
+    const { error: tmpErr } = await supabase
+      .from("lessons")
+      .update({ sequence_order: tempOrder, lesson_order: tempLessonOrder })
+      .eq("id", l.id);
+    if (tmpErr) throw tmpErr;
+  }
+
+  // Fase 2: escribir orden definitivo y module_title actualizado.
+  let updatedCount = 0;
+  for (const l of existingTargets) {
+    const r = remoteById.get(l.id);
+    const targetOrder = l.sequence_order;
+    const targetLessonOrder = l.lesson_order ?? l.sequence_order;
+    const targetModuleTitle = l.module_title ?? null;
+    const orderChanged = r.sequence_order !== targetOrder || r.lesson_order !== targetLessonOrder;
+    const moduleChanged = (r.module_title ?? null) !== targetModuleTitle;
+    if (!orderChanged && !moduleChanged) continue;
+
+    updatedCount += 1;
+    console.log(
+      `↕️  ${l.slug}: orden ${r.sequence_order} → ${targetOrder} | módulo: ${targetModuleTitle ?? "—"}`,
+    );
+    if (DRY_RUN) continue;
+    const { error: upErr } = await supabase
+      .from("lessons")
+      .update({
+        sequence_order: targetOrder,
+        lesson_order: targetLessonOrder,
+        module_title: targetModuleTitle,
+      })
+      .eq("id", l.id);
     if (upErr) throw upErr;
   }
-  if (!moves.length) console.log("↕️  No hay lecciones que reordenar.");
+
+  if (!updatedCount) console.log("↕️  No hay lecciones que reordenar ni actualizar de módulo.");
 }
 
 async function seedMCC() {
   console.log(
     `🚀 Sincronizando curso APS MCC en Supabase...${DRY_RUN ? " (DRY RUN: no se escribe nada)" : ""}`,
   );
+
+  if (ORDER_ONLY) {
+    console.log("📌 Modo --order-only: solo se actualizan sequence_order, lesson_order y module_title.");
+    await reorderExistingLessons(new Set());
+    console.log("\n🎉 Orden y módulos sincronizados sin modificar el contenido ni la visibilidad.");
+    return;
+  }
 
   const lessonsToUpload = ONLY_SLUGS ? MCC_LESSONS.filter((l) => ONLY_SLUGS.includes(l.slug)) : MCC_LESSONS;
 
@@ -289,6 +334,7 @@ async function upsertLessons(lessons) {
         slug: lesson.slug,
         sequence_order: lesson.sequence_order,
         lesson_order: lesson.lesson_order ?? lesson.sequence_order,
+        module_title: lesson.module_title ?? null,
         content_html: contentToSave,
         word_count: wordCount,
         min_seconds: lesson.min_seconds,

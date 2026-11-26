@@ -8,7 +8,7 @@
  * lado a lado en el panel izquierdo junto con acciones, verificaciones y notas literales del FCOM.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { joinSlides, type MccAlert, type MccCard, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, type MccAlert, type MccCard, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -556,9 +556,10 @@ export const MCC_SOP_02: MccLesson = {
   course_id: MCC_COURSE_ID,
   title: "SOP-02. Flow patterns: preparación de cabina, rodaje, despegue, llegada, aparcamiento y flujos anormales",
   slug: "sop-02-flow-patterns",
-  sequence_order: 8,
-  lesson_order: 8,
+  sequence_order: 2,
+  lesson_order: 2,
   min_seconds: 2700,
+  module_title: MCC_MODULES.NORMAL_SOP,
   content_html: joinSlides(SOP_02_SLIDES),
 };
 

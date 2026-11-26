@@ -5,10 +5,17 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { CourseImageUploader } from "./course-image-uploader";
 import { AcademicDeleteForm } from "./academic-delete-form";
+import {
+  groupLessonsByModule,
+  isArchiveModule,
+} from "@/features/learning/domain/lesson-modules";
+import { getLessonVisibilityState } from "@/features/learning/domain/slide-visibility";
+import { LessonVisibilityToggle } from "./lesson-visibility-toggle";
 
 type AdminCourseDetailClientViewProps = {
   course: any;
   lessons: any[];
+  isSuperAdmin?: boolean;
   updateThisCourse: (formData: FormData) => Promise<any>;
   deleteLessonAction: (
     lessonId: string,
@@ -19,6 +26,7 @@ type AdminCourseDetailClientViewProps = {
 export function AdminCourseDetailClientView({
   course,
   lessons = [],
+  isSuperAdmin = false,
   updateThisCourse,
   deleteLessonAction,
 }: AdminCourseDetailClientViewProps) {
@@ -285,56 +293,153 @@ export function AdminCourseDetailClientView({
               </Link>
             </div>
           </div>
-        ) : (
-          <div className="space-y-3">
-            {lessons.map((lesson: any) => {
-              const deleteThisLesson = deleteLessonAction.bind(
-                null,
-                lesson.id,
-                course.id,
-              );
+        ) : (() => {
+          const { hasModules, groups } = groupLessonsByModule(lessons);
 
-              return (
-                <div
-                  key={lesson.id}
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-xs card-hover transition-all"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/60 font-extrabold text-[#1a80ff] text-sm">
-                      #{lesson.sequence_order}
-                    </div>
-                    <div>
+          const renderAdminLessonCard = (lesson: any) => {
+            const deleteThisLesson = deleteLessonAction.bind(
+              null,
+              lesson.id,
+              course.id,
+            );
+            const lessonVisibility = getLessonVisibilityState(lesson.content_html);
+            const isHiddenLesson = isSuperAdmin && lessonVisibility === "private";
+
+            return (
+              <div
+                key={lesson.id}
+                className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border bg-white dark:bg-slate-900 p-5 shadow-xs card-hover transition-all ${
+                  isHiddenLesson
+                    ? "opacity-80 border-dashed border-amber-300 dark:border-amber-800/70"
+                    : "border-slate-200 dark:border-slate-800"
+                }`}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/60 font-extrabold text-[#1a80ff] text-sm">
+                    #{lesson.sequence_order}
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="text-base font-bold text-slate-900 dark:text-white">
                         {lesson.title}
                       </h3>
-                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                        {lesson.word_count || 0} palabras &middot; Tiempo mín.
-                        exigido:{" "}
-                        <span className="font-bold text-[#1a80ff]">
-                          {lesson.min_seconds}s
+                      {isHiddenLesson && (
+                        <span className="rounded-full bg-amber-100 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 px-2 py-0.5 text-[11px] font-bold text-amber-800 dark:text-amber-300">
+                          🔒 Oculta
                         </span>
-                      </p>
+                      )}
                     </div>
-                  </div>
-
-                  <div className="flex items-center gap-2 shrink-0 border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100 dark:border-slate-800">
-                    <Link
-                      href={`/admin/courses/${course.id}/lessons/${lesson.id}`}
-                      className="rounded-xl border border-slate-200 dark:border-slate-800 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
-                    >
-                      Editar Contenido
-                    </Link>
-
-                    <AcademicDeleteForm
-                      action={deleteThisLesson}
-                      label="Eliminar lección"
-                    />
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                      {lesson.word_count || 0} palabras &middot; Tiempo mín.
+                      exigido:{" "}
+                      <span className="font-bold text-[#1a80ff]">
+                        {lesson.min_seconds}s
+                      </span>
+                    </p>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        )}
+
+                <div className="flex items-center gap-2 shrink-0 border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100 dark:border-slate-800">
+                  {isSuperAdmin && (
+                    <LessonVisibilityToggle
+                      lessonId={lesson.id}
+                      courseId={course.id}
+                      initialVisibility={lessonVisibility}
+                    />
+                  )}
+                  <Link
+                    href={`/admin/courses/${course.id}/lessons/${lesson.id}`}
+                    className="rounded-xl border border-slate-200 dark:border-slate-800 px-4 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                  >
+                    Editar Contenido
+                  </Link>
+
+                  <AcademicDeleteForm
+                    action={deleteThisLesson}
+                    label="Eliminar lección"
+                  />
+                </div>
+              </div>
+            );
+          };
+
+          if (!hasModules) {
+            return (
+              <div className="space-y-3">
+                {groups[0].items.map(({ lesson }) =>
+                  renderAdminLessonCard(lesson),
+                )}
+              </div>
+            );
+          }
+
+          return (
+            <div className="space-y-6">
+              {groups.map((group, groupIndex) => {
+                if (isArchiveModule(group.moduleTitle)) {
+                  return (
+                    <details
+                      key={group.moduleTitle ?? `group-${groupIndex}`}
+                      className="group"
+                    >
+                      <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer select-none flex items-center justify-between rounded-xl bg-slate-100/70 dark:bg-slate-900/50 border border-dashed border-slate-300 dark:border-slate-700 px-4 py-2.5 hover:border-slate-400 dark:hover:border-slate-600 transition-colors">
+                        <div className="flex items-center gap-2.5">
+                          <svg
+                            className="w-4 h-4 shrink-0 text-slate-500 dark:text-slate-400 transition-transform duration-200 group-open:rotate-90"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2.5}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                          <h3 className="text-sm font-extrabold text-slate-700 dark:text-slate-200">
+                            {group.moduleTitle}
+                          </h3>
+                        </div>
+                        <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                          {group.items.length}{" "}
+                          {group.items.length === 1 ? "lección" : "lecciones"}
+                        </span>
+                      </summary>
+                      <div className="space-y-3 mt-3">
+                        {group.items.map(({ lesson }) =>
+                          renderAdminLessonCard(lesson),
+                        )}
+                      </div>
+                    </details>
+                  );
+                }
+
+                return (
+                  <section
+                    key={group.moduleTitle ?? `group-${groupIndex}`}
+                    className="space-y-3"
+                  >
+                    <div className="flex items-center justify-between rounded-xl bg-slate-100/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 px-4 py-2.5">
+                      <h3 className="text-sm font-extrabold text-slate-800 dark:text-slate-100">
+                        {group.moduleTitle ?? "Otros temas"}
+                      </h3>
+                      <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                        {group.items.length}{" "}
+                        {group.items.length === 1 ? "lección" : "lecciones"}
+                      </span>
+                    </div>
+                    <div className="space-y-3">
+                      {group.items.map(({ lesson }) =>
+                        renderAdminLessonCard(lesson),
+                      )}
+                    </div>
+                  </section>
+                );
+              })}
+            </div>
+          );
+        })()}
       </div>
     </main>
   );

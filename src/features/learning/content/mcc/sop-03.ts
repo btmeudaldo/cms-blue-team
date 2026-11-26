@@ -13,7 +13,7 @@
  * texto en ambas columnas.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -819,9 +819,10 @@ export const MCC_SOP_03: MccLesson = {
   course_id: MCC_COURSE_ID,
   title: "SOP-03. Inspección exterior y preparación de cabina: safety checks, walkaround, FMGS y departure briefing",
   slug: "sop-03-inspeccion-exterior-preparacion-cabina",
-  sequence_order: 9,
-  lesson_order: 9,
+  sequence_order: 3,
+  lesson_order: 3,
   min_seconds: 3600,
+  module_title: MCC_MODULES.NORMAL_SOP,
   content_html: joinSlides(SOP_03_SLIDES),
 };
 

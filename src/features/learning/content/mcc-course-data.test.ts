@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { MCC_LEGACY_LESSONS, MCC_LESSONS, MCC_PDP_LESSONS, clampLeftPct } from "./mcc-course-data";
+import { MCC_MODULES } from "./mcc/slide-builder";
 import { MCC_SOP_01, SOP_01_SLIDE_COUNT } from "./mcc/sop-01";
 import { MCC_SOP_02, SOP_02_SLIDE_COUNT } from "./mcc/sop-02";
 import { MCC_SOP_03, SOP_03_SLIDE_COUNT } from "./mcc/sop-03";
@@ -41,8 +42,34 @@ describe("MCC lessons", () => {
 
   it("list the PDP lessons first and the legacy lessons after them", () => {
     expect(MCC_LESSONS[0]).toBe(MCC_PDP_LESSONS[0]);
-    const legacyOrders = MCC_LESSONS.slice(MCC_PDP_LESSONS.length).map((l) => l.sequence_order);
+    const pdpOrders = MCC_PDP_LESSONS.map((l) => l.sequence_order);
+    expect(pdpOrders).toEqual(Array.from({ length: MCC_PDP_LESSONS.length }, (_, i) => i + 1));
+    expect(MCC_SOP_02.sequence_order).toBe(MCC_SOP_01.sequence_order + 1);
+    const legacyLessons = MCC_LESSONS.slice(MCC_PDP_LESSONS.length);
+    const legacyOrders = legacyLessons.map((l) => l.sequence_order);
     expect(Math.min(...legacyOrders)).toBeGreaterThan(100);
+    expect(legacyLessons.every((l) => l.module_title === MCC_MODULES.LEGACY)).toBe(true);
+    expect(
+      [
+        MCC_SOP_01,
+        MCC_SOP_02,
+        MCC_SOP_03,
+        MCC_SOP_04,
+        MCC_SOP_05,
+        MCC_SOP_06,
+        MCC_SOP_07,
+        MCC_SOP_08,
+        MCC_SOP_09,
+        MCC_SOP_10,
+      ].every((l) => l.module_title === MCC_MODULES.NORMAL_SOP),
+    ).toBe(true);
+    expect(
+      [MCC_SOP_11, MCC_SOP_12, MCC_SOP_13, MCC_SOP_14].every(
+        (l) => l.module_title === MCC_MODULES.ABNORMAL_SOP,
+      ),
+    ).toBe(true);
+    expect(MCC_SIS_01.module_title).toBe(MCC_MODULES.SYSTEMS);
+    expect(MCC_SIS_02.module_title).toBe(MCC_MODULES.SYSTEMS);
     expect(new Set(MCC_LESSONS.map((l) => l.id)).size).toBe(MCC_LESSONS.length);
     expect(new Set(MCC_LESSONS.map((l) => l.sequence_order)).size).toBe(MCC_LESSONS.length);
   });
@@ -475,11 +502,11 @@ describe("SOP-14", () => {
 describe("SIS-01", () => {
   const slides = MCC_SIS_01.content_html.split("<!-- pagebreak -->");
 
-  it("is a computable 45 min lesson placed right after SOP-01 (fundamentals → systems)", () => {
+  it("is a computable 45 min lesson placed right after SOP-14 (SOP → systems)", () => {
     expect(MCC_SIS_01.min_seconds).toBe(2700);
     expect(slides).toHaveLength(SIS_01_SLIDE_COUNT);
     expect(SIS_01_SLIDE_COUNT).toBe(15);
-    expect(MCC_SIS_01.sequence_order).toBe(MCC_SOP_01.sequence_order + 1);
+    expect(MCC_SIS_01.sequence_order).toBe(MCC_SOP_14.sequence_order + 1);
   });
 
   it("uses only FCOM figures hosted on Hostalia and keeps the source in the comment", () => {
@@ -501,7 +528,6 @@ describe("SIS-01", () => {
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });
-
 describe("SIS-02", () => {
   const slides = MCC_SIS_02.content_html.split("<!-- pagebreak -->");
 

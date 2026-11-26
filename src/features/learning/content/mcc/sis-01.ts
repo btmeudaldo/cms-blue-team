@@ -13,7 +13,7 @@
  * página STATUS están en SOP-11 y no se repiten.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const IMG_BASE = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -461,9 +461,10 @@ export const MCC_SIS_01: MccLesson = {
   course_id: MCC_COURSE_ID,
   title: "SIS-01. Generalidades, cabina, EIS y ECAM",
   slug: "sis-01-generalidades-cabina-eis-ecam",
-  sequence_order: 2,
-  lesson_order: 2,
+  sequence_order: 15,
+  lesson_order: 15,
   min_seconds: 2700,
+  module_title: MCC_MODULES.SYSTEMS,
   content_html: joinSlides(SIS_01_SLIDES),
 };
 

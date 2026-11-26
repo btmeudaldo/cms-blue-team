@@ -19,7 +19,7 @@
  * (texto de otros tipos); resto, texto redundante.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -465,9 +465,10 @@ export const MCC_SOP_13: MccLesson = {
   course_id: MCC_COURSE_ID,
   title: "SOP-13. Emergencias II: descenso de emergencia, humo, incapacitación, FMGC, leyes de mandos y velocidad poco fiable",
   slug: "sop-13-emergencias-ii",
-  sequence_order: 19,
-  lesson_order: 19,
+  sequence_order: 13,
+  lesson_order: 13,
   min_seconds: 2700,
+  module_title: MCC_MODULES.ABNORMAL_SOP,
   content_html: joinSlides(SOP_13_SLIDES),
 };
 

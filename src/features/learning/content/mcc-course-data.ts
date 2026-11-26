@@ -1,5 +1,5 @@
 import type { CourseDocumentationItem } from "@/features/learning/content/c172-course-data";
-import { joinSlides, type MccLesson, type MccSlideSpec } from "./mcc/slide-builder.ts";
+import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./mcc/slide-builder.ts";
 import { MCC_SOP_01 } from "./mcc/sop-01.ts";
 import { MCC_SOP_02 } from "./mcc/sop-02.ts";
 import { MCC_SOP_03 } from "./mcc/sop-03.ts";
@@ -3299,5 +3299,6 @@ export const MCC_LESSONS: MccLesson[] = [
     ...lesson,
     sequence_order: lesson.sequence_order + LEGACY_SEQUENCE_OFFSET,
     lesson_order: lesson.lesson_order + LEGACY_SEQUENCE_OFFSET,
+    module_title: MCC_MODULES.LEGACY,
   })),
 ];

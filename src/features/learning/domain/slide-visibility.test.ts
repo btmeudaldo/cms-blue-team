@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import {
   getSlideVisibility,
   setSlideVisibility,
+  getLessonVisibilityState,
+  setLessonVisibility,
   getVisibleSlidesForUser,
   isLessonFullyPrivate,
   filterVisibleLessonsForUser,
@@ -108,6 +110,39 @@ describe("slide-visibility domain", () => {
     it("returns true when every slide is marked private", () => {
       const allPrivate = `<div class="lesson-slide-container" data-slide-visibility="private">A</div><!-- pagebreak --><div class="lesson-slide-container" data-slide-visibility="private">B</div>`;
       expect(isLessonFullyPrivate(allPrivate)).toBe(true);
+    });
+  });
+
+  describe("getLessonVisibilityState & setLessonVisibility", () => {
+    it("detects public, private and mixed lesson states", () => {
+      expect(getLessonVisibilityState("")).toBe("public");
+      expect(getLessonVisibilityState(null)).toBe("public");
+      expect(
+        getLessonVisibilityState(
+          `<div class="lesson-slide-container">A</div><!-- pagebreak --><div class="lesson-slide-container" data-slide-visibility="public">B</div>`,
+        ),
+      ).toBe("public");
+      expect(
+        getLessonVisibilityState(
+          `<div class="lesson-slide-container" data-slide-visibility="private">A</div><!-- pagebreak --><div class="lesson-slide-container" data-slide-visibility="private">B</div>`,
+        ),
+      ).toBe("private");
+      expect(
+        getLessonVisibilityState(
+          `<div class="lesson-slide-container" data-slide-visibility="private">A</div><!-- pagebreak --><div class="lesson-slide-container">B</div>`,
+        ),
+      ).toBe("mixed");
+    });
+
+    it("updates every slide visibility in a multi-slide lesson", () => {
+      const html = `<!-- SLIDE 1 --><div class="lesson-slide-container">A</div>\n\n<!-- pagebreak -->\n\n<!-- SLIDE 2 --><div class="lesson-slide-container" data-slide-visibility="public">B</div>`;
+      const hidden = setLessonVisibility(html, "private");
+      expect(getLessonVisibilityState(hidden)).toBe("private");
+      expect(hidden.match(/data-slide-visibility="private"/g)).toHaveLength(2);
+
+      const shown = setLessonVisibility(hidden, "public");
+      expect(getLessonVisibilityState(shown)).toBe("public");
+      expect(shown.match(/data-slide-visibility="public"/g)).toHaveLength(2);
     });
   });
 

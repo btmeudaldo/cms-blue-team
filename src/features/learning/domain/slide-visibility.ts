@@ -1,6 +1,7 @@
 import { splitLessonPages } from "./lesson-pages";
 
 export type SlideVisibility = "public" | "private";
+export type LessonVisibilityState = "public" | "private" | "mixed";
 
 /**
  * Extracts the visibility of a slide HTML string.
@@ -90,6 +91,46 @@ export function getVisibleSlidesForUser(
   });
 
   return { visibleSlides, visibleToOriginalIndexMap };
+}
+
+/**
+ * Returns "public", "private", or "mixed" depending on the slides in contentHtml.
+ * Lessons without content_html default to "public".
+ */
+export function getLessonVisibilityState(
+  contentHtml?: string | null,
+): LessonVisibilityState {
+  if (!contentHtml || typeof contentHtml !== "string" || contentHtml.trim() === "") {
+    return "public";
+  }
+  const slides = splitLessonPages(contentHtml);
+  if (slides.length === 0) return "public";
+  let privateCount = 0;
+  for (const slide of slides) {
+    if (getSlideVisibility(slide) === "private") {
+      privateCount += 1;
+    }
+  }
+  if (privateCount === 0) return "public";
+  if (privateCount === slides.length) return "private";
+  return "mixed";
+}
+
+/**
+ * Sets the visibility of every slide in a lesson's contentHtml.
+ */
+export function setLessonVisibility(
+  contentHtml: string,
+  visibility: SlideVisibility,
+): string {
+  if (!contentHtml || typeof contentHtml !== "string" || contentHtml.trim() === "") {
+    return contentHtml;
+  }
+  const slides = splitLessonPages(contentHtml);
+  if (slides.length === 0) return contentHtml;
+  return slides
+    .map((slide) => setSlideVisibility(slide, visibility))
+    .join("\n\n<!-- pagebreak -->\n\n");
 }
 
 /**

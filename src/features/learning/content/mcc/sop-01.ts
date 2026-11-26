@@ -8,7 +8,7 @@
  *
  * Imágenes: láminas A320 e ilustraciones FCU alojadas en Hostalia (lesson_media, tag MCC).
  */
-import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -117,7 +117,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
         bullets: [
           "Provide all necessary operating limitations, procedures, performance and system information the flight crew needs to safely and efficiently operate A320 family aircraft during normal, abnormal, and emergency situations.",
           "Serve as a comprehensive reference guide during initial and refresher flight crew training.",
-          "The FCOM complements the Airplane Flight Manual. If the FCOM data differs from the AFM data, the AFM remains the reference. As a supplement to the FCOM, the FCTM may provide additional information that the flight crew should read in conjunction with the FCOM.",
+          "The FCOM is a document developed by a manufacturer that describes, in detail, the characteristics and operation of the aeroplane or its systems. If the FCOM data differs from the AFM data, the AFM remains the reference. As a supplement to the FCOM, the FCTM may provide additional information that the flight crew should read in conjunction with the FCOM.",
         ],
       },
       {
@@ -280,7 +280,6 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
       rows: [
         ["“CHECK”", "A command for the other pilot to check an item."],
         ["“CHECKED”", "A response that an item has been checked."],
-        ["“CROSSCHECKED”", "A callout verifying information from both pilot stations."],
         ["“HOLD CHECKLIST AT ___”", "If a checklist needs to be interrupted."],
         ["“RESUME CHECKLIST AT ___”", "For the continuation."],
         ["“__ CHECKLIST COMPLETE”", "Upon completion of a checklist."],
@@ -796,7 +795,7 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
         heading: "Notes (6) – (8)",
         bullets: [
           "(6) In the case of circling approach, this callout should be performed at the latest, at the MAP.",
-          "(7) PF announces MANUAL BRAKING when using the brake pedals if: Autobrake was selected for the landing, and No AUTOBRAKE OFF callout from the PM.",
+          "(7) PF announces MANUAL BRAKING when using the brake pedals if: Autobrake was selected for the landing, and No AUTOBRAKE OFF callout.",
           "(8) PM announces AUTOBRAKE OFF if: autobrake does not engage as expected or autobrake disengages, and No MANUAL BRAKING callout from the PF.",
         ],
       },
@@ -812,6 +811,7 @@ export const MCC_SOP_01: MccLesson = {
   sequence_order: 1,
   lesson_order: 1,
   min_seconds: 3600,
+  module_title: MCC_MODULES.NORMAL_SOP,
   content_html: joinSlides(SOP_01_SLIDES),
 };
 

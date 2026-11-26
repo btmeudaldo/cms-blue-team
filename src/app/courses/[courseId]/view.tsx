@@ -16,8 +16,15 @@ import { CourseCertificateCard } from "@/features/learning/components/course-cer
 import { MaximizeWindowBanner } from "@/features/learning/components/maximize-window-banner";
 import {
   filterVisibleLessonsForUser,
+  getLessonVisibilityState,
   isLessonFullyPrivate,
 } from "@/features/learning/domain/slide-visibility";
+import { LessonVisibilityToggle } from "@/features/learning/components/lesson-visibility-toggle";
+import {
+  formatModuleDuration,
+  groupLessonsByModule,
+  isArchiveModule,
+} from "@/features/learning/domain/lesson-modules";
 
 export async function renderStudentCourseDetailPage({
   params,
@@ -258,31 +265,36 @@ export async function renderStudentCourseDetailPage({
             <div className="rounded-2xl border border-dashed border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 text-center text-slate-500 dark:text-slate-400 text-base">
               Este curso no tiene lecciones creadas todavía.
             </div>
-          ) : (
-            <div className="space-y-4">
-              {lessons.map((lesson: any, index: number) => {
-                const {
-                  quiz,
-                  attempt: quizAttempt,
-                  quizPassed,
-                  readingCompleted,
-                  advanced: isCompleted,
-                } = summary.lessons[index];
-                const isHiddenLesson =
-                  isSuperAdmin && isLessonFullyPrivate(lesson.content_html);
+          ) : (() => {
+            const { hasModules, groups } = groupLessonsByModule(lessons);
 
-                return (
-                  <div key={lesson.id} className="space-y-2">
-                    {/* Lesson Main Row */}
+            const renderLessonItem = (lesson: any, index: number) => {
+              const {
+                quiz,
+                attempt: quizAttempt,
+                quizPassed,
+                readingCompleted,
+                advanced: isCompleted,
+              } = summary.lessons[index];
+              const lessonVisibility = getLessonVisibilityState(lesson.content_html);
+              const isHiddenLesson =
+                isSuperAdmin && isLessonFullyPrivate(lesson.content_html);
+
+              return (
+                <div key={lesson.id} className="space-y-2">
+                  {/* Lesson Main Row */}
+                  <div
+                    className={`flex items-center justify-between gap-4 rounded-2xl border bg-white dark:bg-slate-900 p-5 shadow-xs card-hover transition-all hover:border-[#1a80ff]/60 ${
+                      isHiddenLesson
+                        ? "opacity-75 border-dashed border-amber-300 dark:border-amber-800/70"
+                        : "border-slate-200 dark:border-slate-800"
+                    }`}
+                  >
                     <Link
                       href={`/courses/${course.slug || course.id}/lessons/${lesson.slug || lesson.id}`}
-                      className={`flex items-center justify-between rounded-2xl border bg-white dark:bg-slate-900 p-5 shadow-xs card-hover transition-all group cursor-pointer hover:border-[#1a80ff]/60 ${
-                        isHiddenLesson
-                          ? "opacity-75 border-dashed border-amber-300 dark:border-amber-800/70"
-                          : "border-slate-200 dark:border-slate-800"
-                      }`}
+                      className="flex items-center justify-between gap-4 flex-1 min-w-0 group cursor-pointer"
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-4 min-w-0">
                         <div
                           className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl font-bold text-lg transition-colors ${
                             isCompleted
@@ -293,14 +305,14 @@ export async function renderStudentCourseDetailPage({
                           {isCompleted ? "✓" : index + 1}
                         </div>
 
-                        <div>
+                        <div className="min-w-0">
                           <div className="flex items-center gap-2.5 flex-wrap">
                             <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#1a80ff] transition-colors">
                               {lesson.title}
                             </h3>
                             {isHiddenLesson && (
                               <span className="rounded-full bg-amber-100 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 px-2.5 py-0.5 text-xs sm:text-sm font-bold text-amber-800 dark:text-amber-300">
-                                🔒 Oculta (Solo superadmin)
+                                🔒 Oculta
                               </span>
                             )}
                             {isCompleted && (
@@ -340,60 +352,192 @@ export async function renderStudentCourseDetailPage({
                       </div>
                     </Link>
 
-                    {/* Associated Quiz Row (Displayed underneath lesson if available) */}
-                    {quiz && (
-                      <div className="ml-6 sm:ml-12 pl-4 border-l-2 border-slate-200 dark:border-slate-800">
-                        {quizPassed ? (
-                          <Link
-                            href={`/quizzes/${quiz.id}`}
-                            className="flex items-center justify-between gap-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 p-3.5 text-base transition-all hover:bg-emerald-100/70 cursor-pointer"
-                          >
-                            <div className="flex items-center gap-2.5 font-bold text-emerald-800 dark:text-emerald-300 flex-wrap">
-                              <span>📝</span>
-                              <span>{quiz.title}</span>
-                              <span className="rounded-full bg-emerald-200 dark:bg-emerald-900 px-2.5 py-0.5 text-xs sm:text-sm font-black text-emerald-900 dark:text-emerald-200">
-                                ✓ Examen Aprobado (
-                                {quizAttempt.score_percentage}%)
-                              </span>
-                            </div>
-                            <span className="font-bold text-emerald-700 dark:text-emerald-400 hover:underline shrink-0">
-                              Revisar Examen &rarr;
-                            </span>
-                          </Link>
-                        ) : isCompleted ? (
-                          <Link
-                            href={`/quizzes/${quiz.id}`}
-                            className="flex items-center justify-between gap-3 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 p-3.5 text-base transition-all hover:bg-blue-100 dark:hover:bg-blue-900/50 cursor-pointer"
-                          >
-                            <div className="flex items-center gap-2.5 font-bold text-[#1a80ff] flex-wrap">
-                              <span>📝</span>
-                              <span>{quiz.title}</span>
-                              <span className="rounded-full bg-blue-200 dark:bg-blue-900 px-2.5 py-0.5 text-xs sm:text-sm font-black text-[#1a80ff] dark:text-blue-200">
-                                ✨ Habilitado (70% Mín.)
-                              </span>
-                            </div>
-                            <span className="font-extrabold text-[#1a80ff] hover:underline shrink-0">
-                              Iniciar Examen Teórico &rarr;
-                            </span>
-                          </Link>
-                        ) : (
-                          <div className="flex items-center justify-between gap-3 rounded-xl bg-slate-100/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 p-3.5 text-base opacity-75">
-                            <div className="flex items-center gap-2.5 font-semibold text-slate-500 dark:text-slate-400">
-                              <span>🔒</span>
-                              <span>{quiz.title}</span>
-                            </div>
-                            <span className="text-sm sm:text-base font-medium text-slate-400 italic shrink-0">
-                              Completa la lectura para desbloquear
-                            </span>
-                          </div>
-                        )}
-                      </div>
+                    {isSuperAdmin && (
+                      <LessonVisibilityToggle
+                        lessonId={lesson.id}
+                        courseId={course.slug || course.id}
+                        initialVisibility={lessonVisibility}
+                      />
                     )}
                   </div>
-                );
-              })}
-            </div>
-          )}
+
+                  {/* Associated Quiz Row (Displayed underneath lesson if available) */}
+                  {quiz && (
+                    <div className="ml-6 sm:ml-12 pl-4 border-l-2 border-slate-200 dark:border-slate-800">
+                      {quizPassed ? (
+                        <Link
+                          href={`/quizzes/${quiz.id}`}
+                          className="flex items-center justify-between gap-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 p-3.5 text-base transition-all hover:bg-emerald-100/70 cursor-pointer"
+                        >
+                          <div className="flex items-center gap-2.5 font-bold text-emerald-800 dark:text-emerald-300 flex-wrap">
+                            <span>📝</span>
+                            <span>{quiz.title}</span>
+                            <span className="rounded-full bg-emerald-200 dark:bg-emerald-900 px-2.5 py-0.5 text-xs sm:text-sm font-black text-emerald-900 dark:text-emerald-200">
+                              ✓ Examen Aprobado (
+                              {quizAttempt.score_percentage}%)
+                            </span>
+                          </div>
+                          <span className="font-bold text-emerald-700 dark:text-emerald-400 hover:underline shrink-0">
+                            Revisar Examen &rarr;
+                          </span>
+                        </Link>
+                      ) : isCompleted ? (
+                        <Link
+                          href={`/quizzes/${quiz.id}`}
+                          className="flex items-center justify-between gap-3 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 p-3.5 text-base transition-all hover:bg-blue-100 dark:hover:bg-blue-900/50 cursor-pointer"
+                        >
+                          <div className="flex items-center gap-2.5 font-bold text-[#1a80ff] flex-wrap">
+                            <span>📝</span>
+                            <span>{quiz.title}</span>
+                            <span className="rounded-full bg-blue-200 dark:bg-blue-900 px-2.5 py-0.5 text-xs sm:text-sm font-black text-[#1a80ff] dark:text-blue-200">
+                              ✨ Habilitado (70% Mín.)
+                            </span>
+                          </div>
+                          <span className="font-extrabold text-[#1a80ff] hover:underline shrink-0">
+                            Iniciar Examen Teórico &rarr;
+                          </span>
+                        </Link>
+                      ) : (
+                        <div className="flex items-center justify-between gap-3 rounded-xl bg-slate-100/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 p-3.5 text-base opacity-75">
+                          <div className="flex items-center gap-2.5 font-semibold text-slate-500 dark:text-slate-400">
+                            <span>🔒</span>
+                            <span>{quiz.title}</span>
+                          </div>
+                          <span className="text-sm sm:text-base font-medium text-slate-400 italic shrink-0">
+                            Completa la lectura para desbloquear
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            };
+
+            if (!hasModules) {
+              return (
+                <div className="space-y-4">
+                  {groups[0].items.map(({ lesson, index }) =>
+                    renderLessonItem(lesson, index),
+                  )}
+                </div>
+              );
+            }
+
+            return (
+              <div className="space-y-8">
+                {groups.map((group, groupIndex) => {
+                  const totalSeconds = group.items.reduce(
+                    (acc, { lesson }) => acc + Number(lesson.min_seconds || 0),
+                    0,
+                  );
+                  const durationLabel = formatModuleDuration(totalSeconds);
+                  const completedCount = group.items.filter(
+                    ({ index }) => summary.lessons[index]?.advanced,
+                  ).length;
+                  const topicCount = group.items.length;
+
+                  if (isArchiveModule(group.moduleTitle)) {
+                    return (
+                      <details
+                        key={group.moduleTitle ?? `group-${groupIndex}`}
+                        className="group"
+                      >
+                        <summary className="list-none [&::-webkit-details-marker]:hidden cursor-pointer select-none flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-900/50 px-5 py-3.5 hover:border-slate-400 dark:hover:border-slate-600 transition-colors">
+                          <div className="flex items-center gap-3">
+                            <svg
+                              className="w-4 h-4 shrink-0 text-slate-500 dark:text-slate-400 transition-transform duration-200 group-open:rotate-90"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={2.5}
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                            <div className="space-y-0.5">
+                              <h3 className="text-base sm:text-lg font-extrabold text-slate-700 dark:text-slate-200">
+                                {group.moduleTitle}
+                              </h3>
+                              <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-2 flex-wrap">
+                                <span>
+                                  {topicCount} {topicCount === 1 ? "tema" : "temas"}
+                                </span>
+                                {durationLabel && (
+                                  <>
+                                    <span>&middot;</span>
+                                    <span>{durationLabel}</span>
+                                  </>
+                                )}
+                              </p>
+                            </div>
+                          </div>
+
+                          <span className="self-start sm:self-center rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3 py-1 text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300">
+                            <span className="group-open:hidden">Mostrar</span>
+                            <span className="hidden group-open:inline">Ocultar</span>
+                          </span>
+                        </summary>
+
+                        <div className="space-y-4 mt-3">
+                          {group.items.map(({ lesson, index }) =>
+                            renderLessonItem(lesson, index),
+                          )}
+                        </div>
+                      </details>
+                    );
+                  }
+
+                  return (
+                    <section
+                      key={group.moduleTitle ?? `group-${groupIndex}`}
+                      className="space-y-3"
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-900/70 px-5 py-3.5">
+                        <div className="space-y-0.5">
+                          <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">
+                            {group.moduleTitle ?? "Otros temas"}
+                          </h3>
+                          <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-2 flex-wrap">
+                            <span>
+                              {topicCount} {topicCount === 1 ? "tema" : "temas"}
+                            </span>
+                            {durationLabel && (
+                              <>
+                                <span>&middot;</span>
+                                <span>{durationLabel}</span>
+                              </>
+                            )}
+                          </p>
+                        </div>
+
+                        {!isAdmin && (
+                          <span
+                            className={`self-start sm:self-center rounded-full px-3 py-1 text-xs sm:text-sm font-bold ${
+                              completedCount === topicCount
+                                ? "bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800"
+                                : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+                            }`}
+                          >
+                            {completedCount}/{topicCount} completados
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="space-y-4">
+                        {group.items.map(({ lesson, index }) =>
+                          renderLessonItem(lesson, index),
+                        )}
+                      </div>
+                    </section>
+                  );
+                })}
+              </div>
+            );
+          })()}
         </div>
       </main>
     </div>

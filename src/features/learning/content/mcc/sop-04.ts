@@ -15,7 +15,7 @@
  * Patterns (pág. 30). Las láminas 156, 157, 160, 163, 165 y 167 llevan recortado el pie (© y banda A320/A330).
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -678,9 +678,10 @@ export const MCC_SOP_04: MccLesson = {
   course_id: MCC_COURSE_ID,
   title: "SOP-04. Antes del pushback, arranque de motores y después del arranque",
   slug: "sop-04-pushback-arranque-after-start",
-  sequence_order: 10,
-  lesson_order: 10,
+  sequence_order: 4,
+  lesson_order: 4,
   min_seconds: 3600,
+  module_title: MCC_MODULES.NORMAL_SOP,
   content_html: joinSlides(SOP_04_SLIDES),
 };
 

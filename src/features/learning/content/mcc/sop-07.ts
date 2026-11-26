@@ -15,7 +15,7 @@
  * circle ya en SOP-06); 244 y 261 usadas en versiones limpias A320 (EC-ILQ).
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -824,9 +824,10 @@ export const MCC_SOP_07: MccLesson = {
   course_id: MCC_COURSE_ID,
   title: "SOP-07. Aproximación 2D y 3D: ILS, FINAL APP y guiado FPA",
   slug: "sop-07-aproximacion-2d-3d",
-  sequence_order: 13,
-  lesson_order: 13,
+  sequence_order: 7,
+  lesson_order: 7,
   min_seconds: 5400,
+  module_title: MCC_MODULES.NORMAL_SOP,
   content_html: joinSlides(SOP_07_SLIDES),
 };
 

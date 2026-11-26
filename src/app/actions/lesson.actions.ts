@@ -6,7 +6,11 @@ import { calculateReadingTime } from "@/features/learning/domain/reading-time";
 import { getNextLessonOrder } from "@/features/learning/domain/lesson-order";
 import { sanitizeLessonHtml } from "@/features/learning/domain/sanitize-html";
 import { splitLessonPages } from "@/features/learning/domain/lesson-pages";
-import { setSlideVisibility, type SlideVisibility } from "@/features/learning/domain/slide-visibility";
+import {
+  setLessonVisibility,
+  setSlideVisibility,
+  type SlideVisibility,
+} from "@/features/learning/domain/slide-visibility";
 
 export async function uploadLessonImageAction(formData: FormData): Promise<string> {
   const session = await requireVerifiedSession();
@@ -264,4 +268,78 @@ export async function updateSlideVisibilityAction({
   safeRevalidatePath(`/admin/courses/${courseId}`);
 
   return { success: true, visibility };
+}
+
+export async function updateLessonVisibilityAction({
+  lessonId,
+  courseId,
+  visibility,
+}: {
+  lessonId: string;
+  courseId: string;
+  visibility: SlideVisibility;
+}): Promise<{ success: boolean; visibility: SlideVisibility; slidesUpdated: number }> {
+  const { client: supabase, profile } = await requireCourseEditor(courseId);
+  if (profile.role !== "superadmin") {
+    throw new Error(
+      "Solo el superadministrador puede modificar la visibilidad de lecciones.",
+    );
+  }
+
+  const isLessonUuid =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      lessonId,
+    );
+  const isCourseUuid =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+      courseId,
+    );
+
+  let query = supabase.from("lessons").select("id, slug, content_html");
+
+  if (isLessonUuid) {
+    query = query.eq("id", lessonId);
+  } else {
+    query = query.eq("slug", lessonId);
+    if (isCourseUuid) {
+      query = query.eq("course_id", courseId);
+    } else {
+      try {
+        if (typeof supabase.from("courses")?.select === "function") {
+          const { data: courseRow } = await supabase
+            .from("courses")
+            .select("id")
+            .eq("slug", courseId)
+            .maybeSingle();
+          if (courseRow?.id) {
+            query = query.eq("course_id", courseRow.id);
+          }
+        }
+      } catch {
+        // Fallback for mock environments
+      }
+    }
+  }
+
+  const { data: lesson, error: fetchErr } = await query.single();
+
+  if (fetchErr || !lesson) {
+    throw new Error("No se pudo encontrar la lección para actualizar visibilidad.");
+  }
+
+  const slides = splitLessonPages(lesson.content_html || "");
+  const newContentHtml = setLessonVisibility(lesson.content_html || "", visibility);
+
+  const { error: updateErr } = await supabase
+    .from("lessons")
+    .update({ content_html: newContentHtml })
+    .eq("id", lesson.id);
+
+  if (updateErr) throw new Error(updateErr.message);
+
+  safeRevalidatePath(`/courses/${courseId}`);
+  safeRevalidatePath(`/courses/${courseId}/lessons/${lesson.slug || lessonId}`);
+  safeRevalidatePath(`/admin/courses/${courseId}`);
+
+  return { success: true, visibility, slidesUpdated: slides.length };
 }

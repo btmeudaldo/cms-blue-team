@@ -35,6 +35,8 @@ export async function renderAdminCourseDetailPage({
   const lessons = (course.lessons || []).sort(
     (a: any, b: any) => a.sequence_order - b.sequence_order,
   );
+  const isSuperAdmin =
+    profile?.role === "superadmin" || user?.email === "btmeudaldo@gmail.com";
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
@@ -47,6 +49,7 @@ export async function renderAdminCourseDetailPage({
       <AdminCourseDetailClientView
         course={course}
         lessons={lessons}
+        isSuperAdmin={isSuperAdmin}
         updateThisCourse={updateThisCourse}
         deleteLessonAction={deleteLessonAction}
       />

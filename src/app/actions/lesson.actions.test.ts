@@ -16,6 +16,7 @@ vi.mock("next/cache", () => ({ revalidatePath: mocks.revalidate }));
 
 import {
   uploadLessonImageAction,
+  updateLessonVisibilityAction,
   updateSlideVisibilityAction,
 } from "./lesson.actions";
 
@@ -226,6 +227,80 @@ describe("updateSlideVisibilityAction", () => {
         visibility: "private",
       }),
     ).rejects.toThrow("Índice de diapositiva no válido.");
+  });
+});
+
+describe("updateLessonVisibilityAction", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("updates every slide in a multi-slide lesson and revalidates course and lesson routes", async () => {
+    const singleMock = vi.fn().mockResolvedValue({
+      data: {
+        id: "lesson-uuid-1",
+        slug: "sop-10-ils-raw-data-lvo",
+        content_html:
+          '<div class="lesson-slide-container"><p>Slide 1</p></div>\n\n<!-- pagebreak -->\n\n<div class="lesson-slide-container"><p>Slide 2</p></div>',
+      },
+      error: null,
+    });
+    const updateEqMock = vi.fn().mockResolvedValue({ error: null });
+    const updateMock = vi.fn().mockReturnValue({ eq: updateEqMock });
+
+    const queryMock: any = {
+      eq: vi.fn(),
+      single: singleMock,
+    };
+    queryMock.eq.mockReturnValue(queryMock);
+
+    const clientMock = {
+      from: vi.fn(() => ({
+        select: vi.fn().mockReturnValue(queryMock),
+        update: updateMock,
+      })),
+    };
+
+    mocks.editor.mockResolvedValue({
+      client: clientMock,
+      profile: { role: "superadmin" },
+    });
+
+    const res = await updateLessonVisibilityAction({
+      lessonId: "lesson-uuid-1",
+      courseId: "aps-mcc-a320",
+      visibility: "private",
+    });
+
+    expect(res).toEqual({
+      success: true,
+      visibility: "private",
+      slidesUpdated: 2,
+    });
+    const updatedHtml = updateMock.mock.calls[0][0].content_html as string;
+    expect(updatedHtml.match(/data-slide-visibility="private"/g)).toHaveLength(2);
+    expect(mocks.revalidate).toHaveBeenCalledWith("/courses/aps-mcc-a320");
+    expect(mocks.revalidate).toHaveBeenCalledWith(
+      "/courses/aps-mcc-a320/lessons/sop-10-ils-raw-data-lvo",
+    );
+    expect(mocks.revalidate).toHaveBeenCalledWith("/admin/courses/aps-mcc-a320");
+  });
+
+  it("rejects non-superadmin users trying to change whole-lesson visibility", async () => {
+    mocks.editor.mockResolvedValue({
+      client: {},
+      profile: { role: "admin" },
+    });
+
+    await expect(
+      updateLessonVisibilityAction({
+        lessonId: "lesson-uuid-1",
+        courseId: "aps-mcc-a320",
+        visibility: "private",
+      }),
+    ).rejects.toThrow(
+      "Solo el superadministrador puede modificar la visibilidad de lecciones.",
+    );
   });
 });
 

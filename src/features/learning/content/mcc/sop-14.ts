@@ -17,7 +17,7 @@
  * resto, texto redundante.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -454,9 +454,10 @@ export const MCC_SOP_14: MccLesson = {
   course_id: MCC_COURSE_ID,
   title: "SOP-14. Avisos de trayectoria: EGPWS, pérdida, TCAS y windshear",
   slug: "sop-14-avisos-trayectoria",
-  sequence_order: 20,
-  lesson_order: 20,
+  sequence_order: 14,
+  lesson_order: 14,
   min_seconds: 2700,
+  module_title: MCC_MODULES.ABNORMAL_SOP,
   content_html: joinSlides(SOP_14_SLIDES),
 };
 

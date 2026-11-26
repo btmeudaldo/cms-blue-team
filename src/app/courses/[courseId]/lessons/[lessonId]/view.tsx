@@ -123,6 +123,7 @@ export async function renderStudentLessonPage({
     title: l.title,
     sequence_order: l.sequence_order,
     slug: l.slug,
+    ...(l.module_title ? { module_title: l.module_title } : {}),
   }));
 
   const courseLessonIds = new Set(lessons.map((lesson: any) => lesson.id));

@@ -17,7 +17,7 @@
  * (A330 / A340)" y su botón.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -467,9 +467,10 @@ export const MCC_SOP_11: MccLesson = {
   course_id: MCC_COURSE_ID,
   title: "SOP-11. Gestión de situaciones anormales: ECAM, OEB, QRH y uso del Summary",
   slug: "sop-11-gestion-anormales-ecam-qrh",
-  sequence_order: 17,
-  lesson_order: 17,
+  sequence_order: 11,
+  lesson_order: 11,
   min_seconds: 2700,
+  module_title: MCC_MODULES.ABNORMAL_SOP,
   content_html: joinSlides(SOP_11_SLIDES),
 };
 
