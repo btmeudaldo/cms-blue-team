@@ -11,6 +11,7 @@ import {
 } from "./mcc/slide-builder";
 import { sanitizeLessonHtml } from "../domain/sanitize-html";
 import { INT_01_SLIDE_COUNT, MCC_INT_01 } from "./mcc/int-01";
+import { INT_02_SLIDE_COUNT, MCC_INT_02 } from "./mcc/int-02";
 import { MCC_SOP_01, SOP_01_SLIDE_COUNT } from "./mcc/sop-01";
 import { MCC_SOP_02, SOP_02_SLIDE_COUNT } from "./mcc/sop-02";
 import { MCC_SOP_03, SOP_03_SLIDE_COUNT } from "./mcc/sop-03";
@@ -147,7 +148,6 @@ describe("INT-01", () => {
   it("opens the course in the introduction module, before SOP-01", () => {
     expect(MCC_PDP_LESSONS[0]).toBe(MCC_INT_01);
     expect(MCC_INT_01.sequence_order).toBe(1);
-    expect(MCC_SOP_01.sequence_order).toBe(MCC_INT_01.sequence_order + 1);
     expect(MCC_INT_01.module_title).toBe(MCC_MODULES.INTRO);
     expect(slides).toHaveLength(INT_01_SLIDE_COUNT);
     expect(MCC_INT_01.min_seconds).toBe(mccMinSeconds(INT_01_SLIDE_COUNT));
@@ -169,6 +169,38 @@ describe("INT-01", () => {
   it("excludes optional equipment, airlines, other types and registrations", () => {
     const htmlNoUrls = MCC_INT_01.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).not.toMatch(/\b(?:HUD|DCDU)\b/);
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("INT-02", () => {
+  const slides = MCC_INT_02.content_html.split("<!-- pagebreak -->");
+
+  it("follows INT-01 in the introduction module, before SOP-01", () => {
+    expect(MCC_INT_02.sequence_order).toBe(MCC_INT_01.sequence_order + 1);
+    expect(MCC_SOP_01.sequence_order).toBe(MCC_INT_02.sequence_order + 1);
+    expect(MCC_INT_02.module_title).toBe(MCC_MODULES.INTRO);
+    expect(slides).toHaveLength(INT_02_SLIDE_COUNT);
+    expect(MCC_INT_02.min_seconds).toBe(mccMinSeconds(INT_02_SLIDE_COUNT));
+  });
+
+  it("uses hosted FCOM figures or PDP briefing slides and keeps the FCTM source in the comment", () => {
+    const images = [...MCC_INT_02.content_html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
+    expect(images).toHaveLength(INT_02_SLIDE_COUNT);
+    for (const url of images) {
+      expect(url).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/(fcom_a320_[a-z0-9_]+|p\d{3}_[a-z_]+)\.webp(\?v=\d+)?$/);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE INT-02\.\d+: [^>]*\| Source: FCTM A320 AOP-20[^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("includes the TEM briefing structure and excludes airlines, other types and registrations", () => {
+    const htmlNoUrls = MCC_INT_02.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).toContain("MITIGATIONS");
+    expect(htmlNoUrls).toContain("shared mental model");
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });
