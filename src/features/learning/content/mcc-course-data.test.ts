@@ -1,7 +1,15 @@
 import { describe, expect, it } from "vitest";
 
 import { MCC_LEGACY_LESSONS, MCC_LESSONS, MCC_PDP_LESSONS, clampLeftPct } from "./mcc-course-data";
-import { MCC_MODULES, MCC_SECONDS_PER_SLIDE, mccMinSeconds } from "./mcc/slide-builder";
+import {
+  MCC_MODULES,
+  MCC_SECONDS_PER_SLIDE,
+  buildMccSlide,
+  mccMinSeconds,
+  mccVideoSeconds,
+  youtubeEmbedUrl,
+} from "./mcc/slide-builder";
+import { sanitizeLessonHtml } from "../domain/sanitize-html";
 import { MCC_SOP_01, SOP_01_SLIDE_COUNT } from "./mcc/sop-01";
 import { MCC_SOP_02, SOP_02_SLIDE_COUNT } from "./mcc/sop-02";
 import { MCC_SOP_03, SOP_03_SLIDE_COUNT } from "./mcc/sop-03";
@@ -75,6 +83,43 @@ describe("MCC lessons", () => {
   });
 });
 
+describe("MCC video embeds", () => {
+  const video = { youtubeId: "abcDEF123_-", title: 'Briefing "demo"', channel: "Canal de prueba", durationSeconds: 245, start: 30 };
+  const spec = {
+    comment: "SLIDE TEST.1: video",
+    eyebrow: "E",
+    title: "T",
+    subtitle: "S",
+    leftTitle: "L",
+    rightTitle: "R",
+    image: "https://www.blueteam.es/elearning/media/mcc/pdp/x.webp",
+    sourceRef: "Source: test",
+    cards: [],
+    video,
+  };
+
+  it("renders a privacy-enhanced YouTube iframe instead of the image", () => {
+    const html = buildMccSlide(spec);
+    expect(html).toContain('src="https://www.youtube-nocookie.com/embed/abcDEF123_-?rel=0&start=30"');
+    expect(html).toContain('data-video-seconds="245"');
+    expect(html).toContain('title="Briefing &quot;demo&quot;"');
+    expect(html).toContain("Vídeo: Canal de prueba (YouTube)");
+    expect(html).not.toContain("<img ");
+  });
+
+  it("survives the lesson HTML sanitizer", () => {
+    const clean = sanitizeLessonHtml(buildMccSlide(spec));
+    expect(clean).toContain("<iframe");
+    expect(clean).toContain("youtube-nocookie.com/embed/abcDEF123_-?rel=0&start=30");
+  });
+
+  it("rejects invalid IDs and adds the video time to the lesson time", () => {
+    expect(() => youtubeEmbedUrl({ ...video, youtubeId: "https://youtu.be/x" })).toThrow();
+    expect(mccVideoSeconds([spec, { ...spec, video: undefined }])).toBe(245);
+    expect(mccMinSeconds(20, 245)).toBe(3300);
+  });
+});
+
 describe("MCC pacing", () => {
   it("computes min_seconds at 2.5 min per slide, rounded to 5 min", () => {
     expect(MCC_SECONDS_PER_SLIDE).toBe(150);
@@ -83,7 +128,8 @@ describe("MCC pacing", () => {
     expect(mccMinSeconds(15)).toBe(2400);
     for (const lesson of MCC_PDP_LESSONS) {
       const slides = lesson.content_html.split("<!-- pagebreak -->").length;
-      expect(lesson.min_seconds).toBe(mccMinSeconds(slides));
+      const videoSeconds = [...lesson.content_html.matchAll(/data-video-seconds="(\d+)"/g)].reduce((s, m) => s + Number(m[1]), 0);
+      expect(lesson.min_seconds).toBe(mccMinSeconds(slides, videoSeconds));
       expect(lesson.min_seconds % 300).toBe(0);
     }
   });

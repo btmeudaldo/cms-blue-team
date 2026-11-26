@@ -13,7 +13,7 @@
  * (briefing ya en SOP-02/03), 221 y 225 (incluye líneas A330). De la 204 solo se usa la caja A320.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { MCC_MODULES, joinSlides, mccMinSeconds, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, mccMinSeconds, mccVideoSeconds, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -687,7 +687,7 @@ export const MCC_SOP_06: MccLesson = {
   slug: "sop-06-subida-crucero-descenso",
   sequence_order: 6,
   lesson_order: 6,
-  min_seconds: mccMinSeconds(SOP_06_SLIDES.length),
+  min_seconds: mccMinSeconds(SOP_06_SLIDES.length, mccVideoSeconds(SOP_06_SLIDES)),
   module_title: MCC_MODULES.NORMAL_SOP,
   content_html: joinSlides(SOP_06_SLIDES),
 };

@@ -24,6 +24,20 @@ export interface MccAlert {
   text: string;
 }
 
+/** Vídeo público de YouTube embebido (reproductor oficial, dominio sin cookies). Debe aprobarlo el HT. */
+export interface MccVideo {
+  /** ID de YouTube (11 caracteres), p. ej. el de https://www.youtube.com/watch?v=<id>. */
+  youtubeId: string;
+  /** Título accesible del iframe. */
+  title: string;
+  /** Canal que publica el vídeo, para el crédito visible. */
+  channel: string;
+  /** Duración que se suma al tiempo computable de la lección (s). */
+  durationSeconds: number;
+  /** Segundo de inicio opcional. */
+  start?: number;
+}
+
 export interface MccSlideSpec {
   comment: string;
   eyebrow: string;
@@ -34,6 +48,8 @@ export interface MccSlideSpec {
   /** Imagen de la columna derecha. Sin imagen, la columna derecha muestra `rightCards` / `rightTable` / `rightAlert`. */
   image?: string;
   imageAlt?: string;
+  /** Vídeo de YouTube en la columna derecha; tiene prioridad sobre `image`. */
+  video?: MccVideo;
   /** Fuente de la diapositiva. No se muestra: se guarda en el comentario HTML de la diapositiva. */
   sourceRef: string;
   cards: MccCard[];
@@ -121,7 +137,35 @@ function renderSplitCards(splitCards?: [MccCard, MccCard]): string {
           </div>`;
 }
 
+const YOUTUBE_ID = /^[A-Za-z0-9_-]{11}$/;
+
+const escapeAttr = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+
+/** URL de inserción sin cookies; solo usa caracteres que admite `sanitizeLessonHtml`. */
+export function youtubeEmbedUrl(video: MccVideo): string {
+  if (!YOUTUBE_ID.test(video.youtubeId)) throw new Error(`ID de YouTube no válido: ${video.youtubeId}`);
+  const start = video.start ? `&start=${Math.floor(video.start)}` : "";
+  return `https://www.youtube-nocookie.com/embed/${video.youtubeId}?rel=0${start}`;
+}
+
+export function renderVideo(video: MccVideo): string {
+  if (!(video.durationSeconds > 0)) throw new Error(`Duración no válida para el vídeo ${video.youtubeId}`);
+  return `
+          <div class="w-full flex-1 min-h-0 flex flex-col items-center justify-center gap-1 p-1 lesson-video-wrapper" data-video-seconds="${Math.round(video.durationSeconds)}">
+            <div class="w-full rounded-xl overflow-hidden bg-black" style="aspect-ratio: 16 / 9;">
+              <iframe src="${youtubeEmbedUrl(video)}" title="${escapeAttr(video.title)}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full" style="border: 0; width: 100%; height: 100%;"></iframe>
+            </div>
+            <p class="text-[11px] text-[#6A7686] dark:text-slate-400 my-0">Vídeo: ${video.channel} (YouTube)</p>
+          </div>`;
+}
+
+/** Segundos de vídeo de un conjunto de diapositivas (se suman al tiempo computable). */
+export function mccVideoSeconds(slides: MccSlideSpec[]): number {
+  return slides.reduce((sum, s) => sum + (s.video ? Math.round(s.video.durationSeconds) : 0), 0);
+}
+
 function renderRightBody(spec: MccSlideSpec): string {
+  if (spec.video) return renderVideo(spec.video);
   if (spec.image) {
     return `
           <div class="w-full flex-1 min-h-0 rounded-xl overflow-hidden bg-transparent border-0 shadow-none flex items-center justify-center p-1 lesson-img-wrapper" draggable="false" style="position: relative; width: 100%; float: none; clear: both;">
@@ -179,9 +223,12 @@ export function joinSlides(slides: MccSlideSpec[]): string {
 /** Ritmo de estudio acordado con el HT (26-nov-2026): ~2,5 min por diapositiva. */
 export const MCC_SECONDS_PER_SLIDE = 150;
 
-/** Tiempo mínimo computable de una lección: diapositivas × 150 s, redondeado a 5 min. */
-export function mccMinSeconds(slideCount: number): number {
-  return Math.round((slideCount * MCC_SECONDS_PER_SLIDE) / 300) * 300;
+/**
+ * Tiempo mínimo computable de una lección: diapositivas × 150 s más la duración de los vídeos,
+ * redondeado a 5 min.
+ */
+export function mccMinSeconds(slideCount: number, videoSeconds = 0): number {
+  return Math.round((slideCount * MCC_SECONDS_PER_SLIDE + videoSeconds) / 300) * 300;
 }
 
 export const MCC_MODULES = {

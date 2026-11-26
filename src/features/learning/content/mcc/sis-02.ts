@@ -13,7 +13,7 @@
  * solo la arquitectura y las reconfiguraciones que esas lecciones no tratan.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { MCC_MODULES, joinSlides, mccMinSeconds, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, mccMinSeconds, mccVideoSeconds, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const IMG_BASE = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -502,7 +502,7 @@ export const MCC_SIS_02: MccLesson = {
   slug: "sis-02-electrico-hidraulico-combustible",
   sequence_order: 16,
   lesson_order: 16,
-  min_seconds: mccMinSeconds(SIS_02_SLIDES.length),
+  min_seconds: mccMinSeconds(SIS_02_SLIDES.length, mccVideoSeconds(SIS_02_SLIDES)),
   module_title: MCC_MODULES.SYSTEMS,
   content_html: joinSlides(SIS_02_SLIDES),
 };

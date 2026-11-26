@@ -17,7 +17,7 @@
  * (A330 / A340)" y su botón.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
-import { MCC_MODULES, joinSlides, mccMinSeconds, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
+import { MCC_MODULES, joinSlides, mccMinSeconds, mccVideoSeconds, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
 const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
@@ -470,7 +470,7 @@ export const MCC_SOP_11: MccLesson = {
   slug: "sop-11-gestion-anormales-ecam-qrh",
   sequence_order: 11,
   lesson_order: 11,
-  min_seconds: mccMinSeconds(SOP_11_SLIDES.length),
+  min_seconds: mccMinSeconds(SOP_11_SLIDES.length, mccVideoSeconds(SOP_11_SLIDES)),
   module_title: MCC_MODULES.ABNORMAL_SOP,
   content_html: joinSlides(SOP_11_SLIDES),
 };
