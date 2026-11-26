@@ -68,15 +68,15 @@ const SOP_13_SLIDES: MccSlideSpec[] = [
       {
         heading: "MASK MAN ON pb",
         bullets: [
-          "The guard keeps this button in the AUTO position.",
-          "AUTO: The mask doors open automatically, when the cabin altitude exceeds 14 000 ft.",
-          "Pressed: The mask doors open.",
+          "The MASK MAN ON pb is a guarded pushbutton.",
+          "Normal position (AUTO): The cabin oxygen mask doors open automatically, when the cabin altitude exceeds 14 000 ft.",
+          "The guard is open, and the pushbutton is pressed: The cabin oxygen masks will drop.",
         ],
       },
       {
         heading: "PASSENGER SYS ON light",
         paragraph:
-          "This light comes on in white, when the control for the oxygen mask doors is activated, and it remains on until the TMR RESET pb is pressed.",
+          "This light comes on, when the control for the cabin oxygen mask doors is activated. It remains on, until TMR RESET pb is pressed.",
       },
     ],
   },
@@ -311,7 +311,7 @@ const SOP_13_SLIDES: MccSlideSpec[] = [
           "The MCDU reverts to the A/C STATUS page, with \"PLEASE WAIT\" displayed in the scratchpad",
           "Autotuning of Navaids (VOR, DME, ADF) are lost on the failed side",
           "AP and managed modes may be transiently lost (reversion to HDG/V/S or TRK/FPA)",
-          "If the pilot presses a key while the scratchpad is showing \"PLEASE WAIT\", there is no change at MCDU level. This is normal, and the crew should not respond by pulling the MCDU circuit breaker.",
+          "If the flight crew presses a key while the scratchpad is showing \"PLEASE WAIT\", there is no change at MCDU level. This is normal, and the crew should not respond by pulling the MCDU circuit breaker.",
         ],
       },
     ],
