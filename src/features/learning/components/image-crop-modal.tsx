@@ -118,8 +118,11 @@ export function ImageCropModal({
     return 4 / 3;
   }, [naturalSize]);
 
-  // Reset source toggle when modal opens for a new image
-  useEffect(() => {
+  // Reset source toggle and crop state when modal opens for a new image
+  const resetKey = isOpen ? `${imageUrl}|${originalUrl ?? ""}` : null;
+  const [prevResetKey, setPrevResetKey] = useState<string | null>(resetKey);
+  if (resetKey !== prevResetKey) {
+    setPrevResetKey(resetKey);
     if (isOpen) {
       setUseOriginalSource(Boolean(originalUrl && originalUrl !== imageUrl));
       setCropRect(FULL_CROP_RECT);
@@ -127,7 +130,7 @@ export function ImageCropModal({
       setErrorMessage(null);
       setLiveAnnouncement("");
     }
-  }, [isOpen, imageUrl, originalUrl]);
+  }
 
   // Synchronize native <dialog> top-layer modal open/close state and closedby policy
   useEffect(() => {
