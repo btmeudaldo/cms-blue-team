@@ -217,7 +217,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
         heading: "Around 30 ft RA: FLARE ……… PERFORM (PF) · ATTITUDE ……… MONITOR (PM)",
         bullets: [
           "THRUST LEVERS ……… IDLE — Move the thrust levers to idle, and begin a gentle progressive flare to enable the aircraft to touch down without a prolonged float.",
-          "If autothrust is engaged, it automatically disconnects when the flight crew sets both thrust levers to the IDLE detent.",
+          "If the autothrust is engaged, it automatically disconnects when both thrust levers are set to the IDLE detent.",
           "At 20 ft, an automatic “RETARD” callout will trigger, as a reminder.",
         ],
       },
@@ -386,7 +386,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
         bullets: [
           "FLAPS: if the approach was performed in icing conditions, or if the runway was contaminated with slush or snow, do not retract the flaps until after engine shutdown, and after the ground crew confirmed that flaps and slats are clear of obstruction due to ice.",
           "On ground, hot weather conditions may cause overheating to be detected around the bleed ducts in the wings, resulting in AIR L (R) WING LEAK alert. Such warnings may be avoided during transit by keeping the slats in CONF 1, when the OAT is above 30 °C · To avoid damage on the RTLU (Rudder Travel Limit Unit) mechanical stop, the SLATS/FLAPS should be retracted before all ADIRS are set to OFF simultaneously.",
-          "APU start may be delayed until before engine shutdown. Before the flight crew shuts down the engines, they must check that the AVAIL light of the APU START pb is on · If engine anti-ice is used, carefully control taxi speed, particularly on wet or slippery surfaces because ground idle is increased.",
+          "APU ……… AS RQRD · In the case of one engine taxi: one engine taxi without APU is possible; however, the APU can be started in order to avoid electrical transients and load shedding (e.g. galley and IFE) · If engine anti-ice is used, carefully control taxi speed, particularly on wet or slippery surfaces because ground idle is increased.",
         ],
       },
     ],
@@ -445,7 +445,7 @@ const SOP_08_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "CAUTION",
-      text: "If JP4 fuel is used at ambient temperatures higher than 10 °C, dry motor the engines for 2 min after engine shutdown. This dry motor period should start approximately 90 s after the master lever is selected OFF.",
+      text: "If JP4 fuel is used at ambient temperatures higher than 10 °C, dry motor the engines for 2 min after engine shutdown. This dry motor period should start approximately 90 s after the flight crew set the ENG MASTER lever to OFF.",
     },
   },
   {
