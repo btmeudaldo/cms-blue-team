@@ -306,8 +306,9 @@ describe("SOP-09", () => {
   });
 
   it("uses normal procedures PDP images (p.299–318, 400–419) without SOP-01 duplicates or A330/neo pages", () => {
-    const pages = [...MCC_SOP_09.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:ap_fd_and_a_thr_engagement_disengagement|circling|glide_slope_interception_from_above|ground_speed_mini_function|normal_law_protections|use_of_bird|visual_pattern)\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+    const pages = [...MCC_SOP_09.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:ap_fd_and_a_thr_engagement_disengagement|circling|glide_slope_interception_from_above|ground_speed_mini_function|normal_law_protections|use_of_bird|visual_pattern)(?:_a320)?\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
     expect(pages).toHaveLength(SOP_09_SLIDE_COUNT);
+    expect(MCC_SOP_09.content_html).not.toMatch(/\/(?:p311_glide_slope_interception_from_above|p314_ground_speed_mini_function|p316_ground_speed_mini_function|p317_ground_speed_mini_function)\.webp/);
     for (const p of pages) {
       expect((p >= 299 && p <= 318) || (p >= 400 && p <= 419)).toBe(true);
       expect([300, 307, 308, 315, 407]).not.toContain(p);
@@ -334,8 +335,9 @@ describe("SOP-10", () => {
   });
 
   it("uses ILS raw data / LVO PDP images (p.341–399) without multi-type or duplicated pages", () => {
-    const pages = [...MCC_SOP_10.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:ils_raw_data|low_visibility_operations)\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+    const pages = [...MCC_SOP_10.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:ils_raw_data|low_visibility_operations)(?:_a320)?\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
     expect(pages).toHaveLength(SOP_10_SLIDE_COUNT);
+    expect(MCC_SOP_10.content_html).not.toMatch(/\/(?:p353_ils_raw_data|p368_ils_raw_data|p397_low_visibility_operations)\.webp/);
     for (const p of pages) {
       expect(p).toBeGreaterThanOrEqual(341);
       expect(p).toBeLessThanOrEqual(399);
@@ -353,7 +355,6 @@ describe("SOP-10", () => {
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|fls|bxl|hud|ec-[a-z]{3})\b/i);
   });
 });
-
 describe("SOP-11", () => {
   const slides = MCC_SOP_11.content_html.split("<!-- pagebreak -->");
 
@@ -364,8 +365,9 @@ describe("SOP-11", () => {
   });
 
   it("uses abnormal operations / summary PDP images (p.420–442) without the multi-type covers", () => {
-    const pages = [...MCC_SOP_11.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:management_of_abnormal_operations|use_of_summary)\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
+    const pages = [...MCC_SOP_11.content_html.matchAll(/<img src="https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/p(\d{3})_(?:management_of_abnormal_operations|use_of_summary)(?:_a320)?\.webp(?:\?v=\d+)?"/g)].map((m) => Number(m[1]));
     expect(pages).toHaveLength(SOP_11_SLIDE_COUNT);
+    expect(MCC_SOP_11.content_html).not.toMatch(/\/(?:p424|p425)_management_of_abnormal_operations\.webp/);
     for (const p of pages) {
       expect(p).toBeGreaterThanOrEqual(420);
       expect(p).toBeLessThanOrEqual(442);
@@ -383,7 +385,6 @@ describe("SOP-11", () => {
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });
-
 describe("SOP-12", () => {
   const slides = MCC_SOP_12.content_html.split("<!-- pagebreak -->");
 
@@ -412,7 +413,6 @@ describe("SOP-12", () => {
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|rops|ec-[a-z]{3})\b/i);
   });
 });
-
 describe("SOP-13", () => {
   const slides = MCC_SOP_13.content_html.split("<!-- pagebreak -->");
 
@@ -441,7 +441,6 @@ describe("SOP-13", () => {
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|buss|ec-[a-z]{3})\b/i);
   });
 });
-
 describe("SOP-14", () => {
   const slides = MCC_SOP_14.content_html.split("<!-- pagebreak -->");
 
@@ -472,7 +471,6 @@ describe("SOP-14", () => {
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });
-
 describe("SIS-01", () => {
   const slides = MCC_SIS_01.content_html.split("<!-- pagebreak -->");
 

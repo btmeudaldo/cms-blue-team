@@ -13,7 +13,8 @@
  * repite algo de la lámina cuando es crítico. Variante FCOM: A320ceo CFM56-5B.
  * Láminas no usadas: 300 y 407 (ya en SOP-01); 307 y 308 (texto con A330; su parte A320 va en tarjetas de
  * 9.6 y 9.7); 315 (nota A320neo); 299, 400 y 411 (portadas); 310, 313, 318, 408, 413–416, 418 y 419
- * (texto redundante). p404 lleva tapadas la caja A330 y la línea "VMO + 4kt (A330)".
+ * (texto redundante). p404 lleva tapadas la caja A330 y la línea "VMO + 4kt (A330)"; p311, p314,
+ * p316 y p317 usan versiones *_a320.webp sin rotulación A330 en las siluetas.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
 import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
@@ -48,6 +49,7 @@ const CHAPTER_NAME: Record<string, string> = {
   visual_pattern: "Visual Pattern",
 };
 const img = (page: number) => `${PDP_IMG}/p${String(page).padStart(3, "0")}_${chapter(page)}.webp?v=${IMG_VERSION}`;
+const imgA320 = (page: number) => `${PDP_IMG}/p${String(page).padStart(3, "0")}_${chapter(page)}_a320.webp?v=${IMG_VERSION}`;
 const src = (sections: string, page: number) =>
   `Source: FCOM A320 ${sections} & Airbus Tutorial PDP Jan 2024 — ${CHAPTER_NAME[chapter(page)]} (p.${page})`;
 
@@ -63,7 +65,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
     rightTitle: "BEFORE SETTING AP ON",
     image: img(301),
     imageAlt: "Center the FD bars before setting AP ON if large orders are required",
-    sourceRef: src("DSC-22_30-30-10 / 30-20 AP Engagement", 301),
+    sourceRef: src("DSC-22_30-30-20 AP Engagement", 301),
     cards: [
       {
         heading: "Engagement of one AP",
@@ -77,7 +79,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
       {
         heading: "Engagement of both APs",
         paragraph:
-          "The second AP can engage only when LOC and G/S are armed or engaged, or go-around is engaged. When both APs are engaged, AP1 is active, and AP2 is on standby, regardless of the order of AP engagement.",
+          "The second AP can engage only when: LOC is armed, or LOC* or LOC is engaged, and G/S is armed, or G/S* or G/S is engaged; or go-around is engaged. When both APs are engaged, AP1 is active, and AP2 is on standby, regardless of the order of AP engagement.",
       },
     ],
   },
@@ -96,7 +98,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
       {
         heading: "Manual disengagement",
         bullets: [
-          "The APs disengage if the flight crew presses the takeover pb or the AP pb on the FCU, moves the pitch trim wheel, the sidestick or the rudder pedals above a specific threshold, or, on ground, sets all the thrust levers above the MCT detent.",
+          "The APs disengage if the flight crew presses the takeover pb on the sidestick or the AP1(2) pb on the FCU, moves the pitch trim wheel, the sidestick or the rudder pedals above a specific threshold, or, on ground, sets all the thrust levers above the MCT detent.",
           "The other ways of disengagement are to be avoided. In particular, the disengagement of the APs with the sidestick, or the rudder pedal deflection is very uncomfortable for passengers.",
         ],
       },
@@ -104,13 +106,13 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
         heading: "Automatic disengagement",
         bullets: [
           "With FINAL APP mode engaged, the aircraft reaches the MAP, or the MDA/MDH -50 ft (if entered), or 400 ft AGL (if no MDA/MDH is entered).",
-          "In normal law: high speed protection or angle-of-attack protection activates, or pitch attitude exceeds 25 ° up, or 13 ° down, or bank angle exceeds 45 °.",
+          "In normal law with all protections available: high speed protection or angle-of-attack protection activates, or pitch attitude exceeds 25 ° up, or 13 ° down, or bank angle exceeds 45 °.",
         ],
       },
     ],
     alert: {
       level: "NOTE",
-      text: "If the flight crew does not quickly press the takeover pb a second time, the cavalry charge sounds and the AUTO FLT AP OFF alert is displayed on the E/WD.",
+      text: "If the flight crew does not quickly press the takeover pb a second time, the cavalry charge audio indicator sounds and the AUTO FLT AP OFF alert is displayed on the E/WD.",
     },
   },
   {
@@ -163,7 +165,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
         heading: "Standard disconnection",
         bullets: [
           "The flight crew presses an A/THR instinctive disconnect pb, or sets all the thrust levers to the IDLE detent.",
-          "AUTO FLT A/THR OFF on the ECAM, MASTER CAUT light and single chime. If the aircraft is below 50 ft RA, and the flight crew sets all thrust levers to IDLE, no alert appears.",
+          "AUTO FLT A/THR OFF on the ECAM (max 9 s), MASTER CAUT light (max 3 s) and single chime. If the aircraft is below 50 ft RA, and the flight crew sets all thrust levers to IDLE, no alert appears.",
         ],
       },
       {
@@ -199,7 +201,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
         bullets: [
           "The thrust lock function activates if an A/THR non-standard disconnection occurs.",
           "The engines maintain the thrust at the value set before the A/THR disconnection.",
-          "The FMA displays the flashing THR LK message; the ECAM alert ENG THRUST LOCKED appears every 5 s.",
+          "The FMA displays the flashing THR LK message on the third line of the first column; the ECAM alert ENG THRUST LOCKED appears every 5 s.",
           "The thrust lock deactivates as soon as the flight crew moves the thrust levers.",
         ],
       },
@@ -216,7 +218,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
     rightTitle: "CIRCLING",
     image: img(306),
     imageAlt: "Circling pattern: preparation, before FAF, at MDA, downwind, abeam, base turn and threshold",
-    sourceRef: src("PRO-NOR-SOP-18-C Circling Approach / LIM-AFS-10", 306),
+    sourceRef: "Source: FCOM A320 PRO-NOR-SOP-18-C Circling Approach / LIM-AFS-10 & Airbus Tutorial PDP Jan 2024 — Circling (p.306, p.307)",
     cards: [
       {
         heading: "General",
@@ -227,9 +229,8 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
         heading: "Approach preparation",
         bullets: [
           "F-PLN: Introduce the instrument approach procedure, including the missed approach procedure for instrument approach.",
-          "SEC F-PLN: Copy the active F-PLN and revise the landing runway.",
           "Instrument approach: stabilized at F speed, configuration 3 and landing gear down. F speed must be selected for approach when landing FLAPS 3 is inserted in the APPR PERF page.",
-          "AP minimum use height in circling approach: 500 ft AGL for aircraft category C (LIM-AFS).",
+          "AP minimum use height — In circling approach: 500 ft AGL for aircraft category C (600 ft AGL for aircraft category D).",
         ],
       },
     ],
@@ -248,7 +249,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
     rightTitle: "DOWNWIND LEG",
     image: img(309),
     imageAlt: "Downwind leg: missed approach of the instrument approach, flown in selected modes",
-    sourceRef: src("PRO-NOR-SOP-18-C Circling Approach", 309),
+    sourceRef: "Source: FCOM A320 PRO-NOR-SOP-18-C Circling Approach & Airbus Tutorial PDP Jan 2024 — Circling (p.308, p.309)",
     cards: [
       {
         heading: "At the Circling MDA(H) at the latest",
@@ -281,7 +282,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
     leftPct: 45,
     leftTitle: "G/S MODE (DSC-22_30-40-80-20)",
     rightTitle: "CLEAR FOR ILS APPROACH",
-    image: img(311),
+    image: imgA320(311),
     imageAlt: "Arm APPR, set the FCU altitude above the aircraft and select V/S -1500 ft/min with G/S armed",
     sourceRef: src("DSC-22_30-40-80-20 G/S Arming / G/S* Engagement", 311),
     cards: [
@@ -326,7 +327,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
         heading: "G/S disarming conditions",
         bullets: [
           "G/S disarms, when G/S* engages.",
-          "G/S also disarms, when the flight crew presses the APPR pb, or the LOC pb, or LOC disarms, or LOC*, or LOC is lost, or the flight crew modifies the approach selection, or performs a go around.",
+          "G/S also disarms, when the flight crew presses the APPR pb, or the LOC pb, or LOC disarms, or LOC*, or LOC is lost, or the flight crew modifies the approach selection, or performs a go around (SRS GA and GA TRK engage), or AP/FD TCAS engages.",
         ],
       },
     ],
@@ -340,7 +341,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
     leftPct: 45,
     leftTitle: "GROUND SPEED MINI FUNCTION (DSC-22_30-60-20)",
     rightTitle: "MAIN PRINCIPLE",
-    image: img(314),
+    image: imgA320(314),
     imageAlt: "Tower wind 330/20 kt with headwind increasing to 50 kt and decreasing to 25 kt",
     sourceRef: src("DSC-22_30-60-20 Ground Speed Mini Function", 314),
     cards: [
@@ -372,16 +373,16 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
     leftPct: 45,
     leftTitle: "VAPP · HEADWIND COMPONENTS (DSC-22_30-60-20)",
     rightTitle: "CURRENT HEADWIND 20 KT",
-    image: img(316),
+    image: imgA320(316),
     imageAlt: "Example with tower wind 330/20 kt: GS mini 120 kt and IAS target 140 kt",
     sourceRef: src("DSC-22_30-60-20 Managed Speed Target Computation", 316),
     cards: [
       {
         heading: "VAPP computation",
         bullets: [
-          "VAPP = VLS+5+1/3 of the TWR HEADWIND COMPONENT.",
-          "1/3 of the TWR HEADWIND COMPONENT has two limits: 0 kt as the minimum value (no wind or tailwind), +15 kt as the maximum value.",
-          "The flight crew can manually modify the VAPP and MAG WIND values on the PERF APPR page.",
+          "VAPP is the highest of the following computations: VAPP = VLS + 1/3 x TWR HEADWIND COMPONENT, or VAPP = VLS + 5 kt.",
+          "\"1/3 of the TWR HEADWIND COMPONENT\" has 2 limits: 0 kt as the minimum value (no wind or tailwind), +15 kt as the maximum value.",
+          "The flight crew can manually modify the VAPP and the MAG WIND values on the PERF APPR page.",
         ],
       },
       {
@@ -401,7 +402,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
     leftPct: 40,
     leftTitle: "MANAGED SPEED TARGET (DSC-22_30-60-20)",
     rightTitle: "HEADWIND INCREASES TO 50 KT",
-    image: img(317),
+    image: imgA320(317),
     imageAlt: "Managed speed keeps the energy when the headwind increases; selected speed lets the ground speed decrease",
     sourceRef: src("DSC-22_30-60-20 Managed Speed Target Computation / Disengagement Conditions", 317),
     cards: [
@@ -410,7 +411,7 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
         bullets: [
           "The FG continuously computes the managed speed target that is equal to VAPP plus an additional increment. This increment takes into account the headwind variation during the final approach.",
           "Managed speed target = VAPP + (CURRENT HEADWIND COMPONENT - TWR HEADWIND COMPONENT).",
-          "The limit of the managed speed target is VAPP, as the minimum value.",
+          "The managed speed target has the following limits: VAPP, as the minimum value; VFE next, in CONF 0, 1, 2, 3, VFE - 5 kt in CONF FULL, as the maximum value.",
         ],
       },
       {
@@ -505,11 +506,6 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
           "If the bank angle exceeds 45 °, the autopilot disconnects and the FD bars disappear. The FD bars return when the bank angle decreases to less than 40 °.",
         ],
       },
-      {
-        heading: "Steep turns (bank angle greater than 33 °)",
-        paragraph:
-          "The flight crew must apply lateral pressure on the sidestick to maintain bank, and aft pressure on the sidestick to maintain level flight.",
-      },
     ],
   },
   {
@@ -540,10 +536,6 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
-    alert: {
-      level: "NOTE",
-      text: "The ECAM displays an overspeed warning at VMO + 4 kt and MMO + 0.006.",
-    },
   },
   {
     comment: "SLIDE SOP-09.17: High angle of attack protection",
@@ -706,12 +698,12 @@ const SOP_09_SLIDES: MccSlideSpec[] = [
     sourceRef: src("DSC-22_20-40-30 Energy Circle / PRO-NOR-SOP-18-C Visual Approach", 417),
     cards: [
       {
-        heading: "Energy circle (DSC-22_20)",
+        heading: "Energy circle",
         paragraph:
-          "The energy circle is a green arc, centered on the aircraft's position and oriented towards the current track line. It is displayed on the NDs during descent, when HDG or TRK mode is selected, considering all speed constraints on the vertical profile.",
+          "The energy circle is a green arc, centered on the aircraft's position and oriented towards the current track line. It is displayed on the NDs during descent, when HDG or TRK mode is selected.",
       },
       {
-        heading: "Final approach (PRO-NOR-SOP-18-C)",
+        heading: "Final approach",
         bullets: [
           "The speed trend arrow and FPV help the flight crew make timely and correct thrust settings (if in manual thrust), and approach path corrections.",
           "Avoid descending through the correct approach path with idle thrust. (Late recognition of this situation without a prompt thrust increase may lead to considerable speed decay and altitude loss).",

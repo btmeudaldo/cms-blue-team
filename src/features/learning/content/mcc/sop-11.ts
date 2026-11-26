@@ -12,7 +12,8 @@
  * A320ceo CFM56-5B (grupo EC-ILQ). El FCOM seleccionado no incluye el QRH: en 11.14 y 11.15 las
  * tarjetas resumen el texto PDP de las láminas no usadas del Summary (436, 439–441).
  * Láminas no usadas: 420 y 436 (portadas con otros tipos); 434 y 435 (LAND ASAP y fuel penalty, ya en
- * p428); 437 y 439–441 (Summary, texto en tarjetas). p432 lleva tapada la línea "Reset buttons
+ * p428); 437 y 439–441 (Summary, texto en tarjetas). p424 y p425 usan versiones *_a320.webp (sin caja
+ * cortada al pie y con páginas SD F/CTL y ELEC de A320); p432 lleva tapada la línea "Reset buttons
  * (A330 / A340)" y su botón.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
@@ -30,6 +31,7 @@ const CHAPTER_NAME: Record<string, string> = {
   use_of_summary: "Use of Summary",
 };
 const img = (page: number) => `${PDP_IMG}/p${String(page).padStart(3, "0")}_${chapter(page)}.webp?v=${IMG_VERSION}`;
+const imgA320 = (page: number) => `${PDP_IMG}/p${String(page).padStart(3, "0")}_${chapter(page)}_a320.webp?v=${IMG_VERSION}`;
 const src = (sections: string, page: number) =>
   `Source: FCOM A320 ${sections} & Airbus Tutorial PDP Jan 2024 — ${CHAPTER_NAME[chapter(page)]} (p.${page})`;
 
@@ -78,7 +80,7 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
         ["Continuous repetitive chime", "Red warnings (permanent)", "Press MASTER WARN lt"],
         ["Single chime", "Amber caution (0.5 s)", "—"],
         ["Cavalry charge", "A/P disconnection by take over pb (1.5 s) or due to failure (permanent)", "Second push on TAKE OVER pb, or MASTER WARN lt"],
-        ["Triple click", "Landing capability downgrade or some cases of mode reversion", "—"],
+        ["Triple click", "Landing capability downgrade or some cases of mode reversion (0.5 s, 3 pulses)", "—"],
         ["Cricket + \"STALL\"", "Stall (permanent)", "NIL"],
       ],
     },
@@ -123,7 +125,7 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
     leftPct: 45,
     leftTitle: "INDICATIONS ON E/WD (DSC-31-15)",
     rightTitle: "ECAM ACTIONS",
-    image: img(424),
+    image: imgA320(424),
     imageAlt: "ECAM actions sequence with tasksharing for abnormal operations",
     sourceRef: src("DSC-31-15 Indications on E/WD", 424),
     cards: [
@@ -152,7 +154,7 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
     rightTitle: "WHEN TO STOP ECAM ACTIONS",
     image: img(430),
     imageAlt: "PF calls ECAM ACTIONS for the first ECAM only; STOP ECAM and CONTINUE ECAM",
-    sourceRef: src("DSC-31-15 Flight Phases / DSC-31-30 RCL pb", 430),
+    sourceRef: src("DSC-31-15 Flight Phases", 430),
     cards: [
       {
         heading: "Flight phases",
@@ -180,7 +182,7 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
     leftPct: 45,
     leftTitle: "ECAM CONTROLS (DSC-31-30 · DSC-31-25-10)",
     rightTitle: "SYSTEM DISPLAY",
-    image: img(425),
+    image: imgA320(425),
     imageAlt: "Analyze each SD page and clear each secondary failure",
     sourceRef: src("DSC-31-30 ECAM Controls / DSC-31-25-10 ECAM Sequence", 425),
     cards: [
@@ -197,7 +199,7 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
       {
         heading: "ALL pb",
         paragraph:
-          "When this pushbutton is pressed and held down, the SD successively displays all the system pages at 3 s intervals. If the ECAM control panel fails, the flight crew can use this pushbutton to page through the system pages until it reaches the desired page.",
+          "When this pushbutton is pressed and held down, the SD successively displays all the system pages at one-second intervals. If the ECAM control panel fails, the flight crew can use this pushbutton to page through the system pages until it reaches the desired page.",
       },
     ],
   },
@@ -318,7 +320,7 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
       {
         heading: "STS reminder",
         paragraph:
-          "The STS reminder appears on the E/WD if the STATUS page is not empty (it displays message other than \"CANCELLED CAUTION\" or MAINTENANCE status), and there is a MAINTENANCE status at engines shutdown.",
+          "The STS reminder appears on the E/WD when the STATUS page is not empty (displaying a message other than \"CANCELLED CAUTION\" or MAINTENANCE status), or when there is a MAINTENANCE status at engines shutdown.",
       },
     ],
   },
@@ -410,11 +412,11 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
     title: "11.14 Summary: evaluación de la situación",
     subtitle: "Use of Summary · Situation Assessment",
     leftPct: 40,
-    leftTitle: "QRH SUMMARIES",
+    leftTitle: "QRH SUMMARIES (DSC-31-15)",
     rightTitle: "SITUATION ASSESSMENT",
     image: img(438),
     imageAlt: "After ECAM actions, the PM refers to the CRUISE section, fuel consumption and landing performance",
-    sourceRef: src("DSC-31-15 Primary and Secondary Failure", 438),
+    sourceRef: "Source: FCOM A320 DSC-31-15 Primary and Secondary Failure & Airbus Tutorial PDP Jan 2024 — Use of Summary (p.436–438)",
     cards: [
       {
         heading: "Use of summary",
@@ -425,7 +427,7 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
         ],
       },
       {
-        heading: "ELEC EMER CONFIG (DSC-31-15)",
+        heading: "ELEC EMER CONFIG",
         paragraph:
           "The DU displays the overflow symbol, if primary or secondary failures overflow. In case of ELEC EMER CONFIG, the secondary failures are inhibited.",
       },
@@ -441,7 +443,7 @@ const SOP_11_SLIDES: MccSlideSpec[] = [
     rightTitle: "APPROACH",
     image: img(442),
     imageAlt: "To perform the approach refer to the APPROACH section; review LANDING and GO AROUND in final configuration",
-    sourceRef: src("DSC-31-20 Status Page", 442),
+    sourceRef: "Source: Airbus Tutorial PDP Jan 2024 — Use of Summary (p.439–442)",
     cards: [
       {
         heading: "Approach preparation",

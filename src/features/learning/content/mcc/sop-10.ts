@@ -14,6 +14,7 @@
  * El HUD (págs. 319–340) no se incluye: es equipo opcional.
  * Láminas no usadas: 341 y 370 (portadas); 371, 372, 374, 380 y 392 (otros tipos); 398 y 399 (rollout,
  * ya en SOP-08); 376–378 (alineación, ya en SOP-05); resto, secuencias animadas o texto redundante.
+ * p353, p368 y p397 usan versiones *_a320.webp (limpias de botones UI recortados arriba y de rotulación A340).
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
  */
 import { joinSlides, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
@@ -30,6 +31,7 @@ const CHAPTER_NAME: Record<string, string> = {
   low_visibility_operations: "Low Visibility Operations",
 };
 const img = (page: number) => `${PDP_IMG}/p${String(page).padStart(3, "0")}_${chapter(page)}.webp?v=${IMG_VERSION}`;
+const imgA320 = (page: number) => `${PDP_IMG}/p${String(page).padStart(3, "0")}_${chapter(page)}_a320.webp?v=${IMG_VERSION}`;
 const src = (sections: string, page: number) =>
   `Source: FCOM A320 ${sections} & Airbus Tutorial PDP Jan 2024 — ${CHAPTER_NAME[chapter(page)]} (p.${page})`;
 
@@ -60,7 +62,7 @@ const SOP_10_SLIDES: MccSlideSpec[] = [
       {
         heading: "Note",
         paragraph:
-          "If a NON PRECISION approach is selected in the active flight plan and the flight crew manually tunes an ILS, the MCDU displays \"CHECK APPR SELECTION\" and the PFD displays \"CHECK APP GUIDANCE\" or \"CHECK APP SEL\". The available approach guidance modes are APP NAV-FINAL when the APPR pushbutton is pressed in on the FCU.",
+          "If a NON PRECISION approach is selected in the active flight plan and if the flight crew manually tunes an ILS on the RAD NAV page, the MCDU displays \"CHECK APPR SELECTION\" and the PFD displays \"CHECK APP GUIDANCE\" or \"CHECK APP SEL\". The available approach guidance modes are APP NAV-FINAL when the APPR pushbutton is pressed in on the FCU.",
       },
     ],
   },
@@ -72,7 +74,7 @@ const SOP_10_SLIDES: MccSlideSpec[] = [
     leftPct: 45,
     leftTitle: "ILS WARNINGS (PRO-NOR-SRP-01-70)",
     rightTitle: "REACHING FINAL DESCENT POINT",
-    image: img(353),
+    image: imgA320(353),
     imageAlt: "PFD half a dot below the glide slope before flying the Bird down to the glide path angle",
     sourceRef: src("PRO-NOR-SRP-01-70 ILS Warnings", 353),
     cards: [
@@ -98,7 +100,7 @@ const SOP_10_SLIDES: MccSlideSpec[] = [
     leftPct: 45,
     leftTitle: "TRANSMITTER FAILURE (PRO-NOR-SRP-01-70)",
     rightTitle: "LOC DEVIATION",
-    image: img(368),
+    image: imgA320(368),
     imageAlt: "Check unwanted residual bank angle; close to the ground avoid too large lateral corrections",
     sourceRef: src("PRO-NOR-SRP-01-70 ILS Warnings", 368),
     cards: [
@@ -123,11 +125,11 @@ const SOP_10_SLIDES: MccSlideSpec[] = [
     title: "10.4 Despegue con baja visibilidad: RVR",
     subtitle: "Low Visibility Operations · Takeoff RVR",
     leftPct: 40,
-    leftTitle: "LOW VISIBILITY TAKEOFF · RVR",
+    leftTitle: "LOW VISIBILITY TAKEOFF · RVR (DSC-20-50)",
     rightTitle: "TAKEOFF: RVR",
     image: img(375),
     imageAlt: "Requirements for takeoffs with a minimum RVR of 125 m",
-    sourceRef: src("DSC-20-50 Minimum Visual Ground Segments", 375),
+    sourceRef: "Source: FCOM A320 DSC-20-50 Minimum Visual Ground Segments & Airbus Tutorial PDP Jan 2024 — Low Visibility Operations (p.373, p.375)",
     cards: [
       {
         heading: "Low visibility takeoff (LVTO)",
@@ -137,7 +139,7 @@ const SOP_10_SLIDES: MccSlideSpec[] = [
         ],
       },
       {
-        heading: "Minimum visual ground segments (DSC-20-50)",
+        heading: "Minimum visual ground segments",
         paragraph:
           "For a CAT III landing (60 m minimum visual segment), the minimum Runway Visual Range (RVR) is 103 m at 15 ft.",
       },
@@ -165,7 +167,7 @@ const SOP_10_SLIDES: MccSlideSpec[] = [
     },
     alert: {
       level: "NOTE",
-      text: "A/THR must be used in selected or managed speed for CAT III. Maximum wind (CAT II/III): headwind 30 kt, tailwind 10 kt, crosswind 20 kt. CAT II and CAT III fail passive autoland are only approved in configuration FULL, and if engine-out procedures are completed before reaching 1 000 ft in approach.",
+      text: "A/THR must be used in selected or managed speed for CAT III. Maximum wind (CAT II/III): headwind 30 kt, tailwind 10 kt, crosswind 20 kt. Wind limitation is based on the surface wind reported by ATC; if beyond limitations, only CAT I automatic approach without autoland can be performed. CAT II and CAT III fail passive autoland are only approved in configuration FULL, and if engine-out procedures are completed before reaching 1 000 ft in approach.",
     },
   },
   {
@@ -226,38 +228,9 @@ const SOP_10_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-10.8: Alert height",
+    comment: "SLIDE SOP-10.8: AUTOLAND warning light",
     eyebrow: EYEBROW,
-    title: "10.8 Alert height",
-    subtitle: "Low Visibility Operations · Alert Height",
-    leftPct: 45,
-    leftTitle: "FAIL-OPERATIONAL · FAIL-PASSIVE (SRP-01-70)",
-    rightTitle: "ALERT HEIGHT (AH)",
-    image: img(391),
-    imageAlt: "For CAT 3 without DH approach: CONTINUE callout at alert height if no failure is detected",
-    sourceRef: src("PRO-NOR-SRP-01-70 Landing Categories", 391),
-    cards: [
-      {
-        heading: "Fail-operational automatic landing system",
-        paragraph:
-          "An automatic landing system is fail-operational if, in the event of a failure below alert height, the remaining part of the automatic system allows the aircraft to complete the approach, flare, and landing. A CAT 3 DUAL system is a fail-operational automatic landing system.",
-      },
-      {
-        heading: "Fail-passive automatic landing system",
-        paragraph:
-          "An automatic landing system is fail-passive if, in the event of a failure, there is no significant out-of-trim condition or deviation of flight path or attitude, but the landing is not completed automatically. A CAT3 single system is a fail-passive automatic landing system. The pilot assumes control of the aircraft after a failure.",
-      },
-      {
-        heading: "Alert height",
-        paragraph:
-          "The alert height is the height above touch down, above which a CAT3 autoland would be discontinued and a missed approach executed, if a failure occurred in either the airplane systems or the relevant ground equipments. Below the alert height, the flare, touchdown and roll out may be accomplished using the remaining automatic system.",
-      },
-    ],
-  },
-  {
-    comment: "SLIDE SOP-10.9: AUTOLAND warning light",
-    eyebrow: EYEBROW,
-    title: "10.9 Luz AUTOLAND",
+    title: "10.8 Luz AUTOLAND",
     subtitle: "Low Visibility Operations · AUTOLAND Warning",
     leftPct: 45,
     leftTitle: "AUTOLAND WARNING LIGHT (DSC-22_30-80-10)",
@@ -286,6 +259,35 @@ const SOP_10_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
+    comment: "SLIDE SOP-10.9: Alert height",
+    eyebrow: EYEBROW,
+    title: "10.9 Alert height",
+    subtitle: "Low Visibility Operations · Alert Height",
+    leftPct: 45,
+    leftTitle: "FAIL-OPERATIONAL · FAIL-PASSIVE (SRP-01-70)",
+    rightTitle: "ALERT HEIGHT (AH)",
+    image: img(391),
+    imageAlt: "For CAT 3 without DH approach: CONTINUE callout at alert height if no failure is detected",
+    sourceRef: src("PRO-NOR-SRP-01-70 Landing Categories", 391),
+    cards: [
+      {
+        heading: "Fail-operational automatic landing system",
+        paragraph:
+          "An automatic landing system is fail-operational if, in the event of a failure below alert height, the remaining part of the automatic system allows the aircraft to complete the approach, flare, and landing. A CAT 3 DUAL system is a fail-operational automatic landing system.",
+      },
+      {
+        heading: "Fail-passive automatic landing system",
+        paragraph:
+          "An automatic landing system is fail-passive if, in the event of a failure, there is no significant out-of-trim condition or deviation of flight path or attitude, but the landing is not completed automatically. A CAT3 single system is a fail-passive automatic landing system. With a fail-passive automatic landing system the pilot assumes control of the aircraft after a failure.",
+      },
+      {
+        heading: "Alert height",
+        paragraph:
+          "The alert height is the height above touch down, above which a CAT3 autoland would be discontinued and a missed approach executed, if a failure occurred in either the airplane systems or the relevant ground equipments. Below the alert height, if such a failure occurs, the flare, touchdown and roll out may be accomplished using the remaining automatic system.",
+      },
+    ],
+  },
+  {
     comment: "SLIDE SOP-10.10: Low go-around",
     eyebrow: EYEBROW,
     title: "10.10 Motor y al aire a baja altura",
@@ -293,9 +295,9 @@ const SOP_10_SLIDES: MccSlideSpec[] = [
     leftPct: 40,
     leftTitle: "SRS GA · GA TRK (DSC-22_30-40-90)",
     rightTitle: "LOW GO-AROUND",
-    image: img(397),
+    image: imgA320(397),
     imageAlt: "TOGA applied before touchdown versus after touchdown",
-    sourceRef: src("DSC-22_30-40-90 SRS GA / GA TRK Engagement Conditions / LIM-AFS-20", 397),
+    sourceRef: src("DSC-22_30-40-90 SRS GA / GA TRK", 397),
     cards: [
       {
         heading: "SRS GA engages when all of the following conditions are applicable:",
@@ -307,13 +309,15 @@ const SOP_10_SLIDES: MccSlideSpec[] = [
       },
       {
         heading: "GA TRK",
-        paragraph:
-          "The GA TRK mode maintains the track of the aircraft, when the mode engages. GA TRK simultaneously engages with SRS GA.",
+        bullets: [
+          "The GA TRK mode maintains the track of the aircraft, when the mode engages. GA TRK simultaneously engages with SRS GA if NAV, HDG, or TRACK is not engaged.",
+          "GA TRK cannot be disengaged below 100 ft RA.",
+        ],
       },
     ],
     alert: {
       level: "NOTE",
-      text: "Wind limitation is based on the surface wind reported by ATC. If the tower reports a surface wind beyond limitations, only CAT I automatic approach without autoland can be performed.",
+      text: "In dual AP configuration, disengagement of the go-around mode, on either axis, causes AP 2 to disconnect.",
     },
   },
 ];
