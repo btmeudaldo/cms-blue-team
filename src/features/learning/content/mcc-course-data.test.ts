@@ -104,10 +104,14 @@ describe("MCC video embeds", () => {
   it("renders a privacy-enhanced YouTube iframe instead of the image", () => {
     const html = buildMccSlide(spec);
     expect(html).toContain('src="https://www.youtube-nocookie.com/embed/abcDEF123_-?rel=0&start=30"');
+    expect(html).toContain('referrerpolicy="strict-origin-when-cross-origin"');
     expect(html).toContain('data-video-seconds="245"');
     expect(html).toContain('title="Briefing &quot;demo&quot;"');
-    expect(html).toContain("Vídeo: Canal de prueba (YouTube)");
+    expect(html).toContain('data-glossary-skip="true">Vídeo: Canal de prueba (YouTube)</p>');
     expect(html).not.toContain("<img ");
+
+    const escaped = buildMccSlide({ ...spec, video: { ...video, channel: "A&B <Channel>" } });
+    expect(escaped).toContain("Vídeo: A&amp;B &lt;Channel> (YouTube)");
   });
 
   it("survives the lesson HTML sanitizer", () => {
@@ -116,8 +120,9 @@ describe("MCC video embeds", () => {
     expect(clean).toContain("youtube-nocookie.com/embed/abcDEF123_-?rel=0&start=30");
   });
 
-  it("rejects invalid IDs and adds the video time to the lesson time", () => {
+  it("rejects invalid IDs or negative starts and adds the video time to the lesson time", () => {
     expect(() => youtubeEmbedUrl({ ...video, youtubeId: "https://youtu.be/x" })).toThrow();
+    expect(() => youtubeEmbedUrl({ ...video, start: -5 })).toThrow();
     expect(mccVideoSeconds([spec, { ...spec, video: undefined }])).toBe(245);
     expect(mccMinSeconds(20, 245)).toBe(3300);
   });

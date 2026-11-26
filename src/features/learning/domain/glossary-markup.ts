@@ -70,7 +70,7 @@ export function annotateGlossaryHtml(
   const parts = html.split(/(<[^>]+>)/g);
   let skipDepth = 0;
   const skipTagStack: string[] = [];
-  const SKIP_TAGS = new Set(["h1", "a", "button", "script", "style", "svg", "textarea"]);
+  const SKIP_TAGS = new Set(["h1", "a", "button", "script", "style", "svg", "textarea", "iframe"]);
 
   const out: string[] = [];
 
@@ -90,7 +90,8 @@ export function annotateGlossaryHtml(
           const isSourceFooter =
             tagName === "div" &&
             /border-t\s+border-slate-200[\s\S]*shrink-0/i.test(part);
-          if (SKIP_TAGS.has(tagName) || isSourceFooter) {
+          const isGlossarySkipped = /data-glossary-skip=["']true["']/i.test(part);
+          if (SKIP_TAGS.has(tagName) || isSourceFooter || isGlossarySkipped) {
             skipTagStack.push(tagName);
             skipDepth++;
           } else if (skipDepth > 0) {

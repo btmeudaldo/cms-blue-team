@@ -86,10 +86,10 @@ const INT_01_SLIDES: MccSlideSpec[] = [
     subtitle: "Cockpit Philosophy · Design Principles",
     leftPct: 50,
     leftTitle: "ARRANGEMENT OF PANELS (AOP-10-20-20)",
-    rightTitle: "OVERHEAD PANEL — ELEC",
-    image: sis2Fig("elec_overhead"),
-    imageAlt: "ELEC overhead panel with the engine-related controls arranged vertically",
-    sourceRef: src("AOP-10-20-20 Arrangement of Panels"),
+    rightTitle: "GLARESHIELD — FCU & EFIS CONTROL PANELS",
+    image: pubFig("fcu_panels"),
+    imageAlt: "Glareshield with the FCU and EFIS control panels within easy access for both pilots",
+    sourceRef: "Source: FCTM A320 AOP-10-20-20 Arrangement of Panels & FCOM A320 DSC-22_10-40-20 FCU",
     cards: [
       {
         heading: "General",
@@ -122,7 +122,7 @@ const INT_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "PEDESTAL",
     image: fig("int_pedestal"),
     imageAlt: "Pedestal: speed brake lever, rudder trim and flaps lever",
-    sourceRef: src("AOP-10-20-20 Arrangement of Panels"),
+    sourceRef: "Source: FCTM A320 AOP-10-20-20 Arrangement of Panels & FCOM A320 DSC-27-20-30 Pedestal",
     cards: [
       {
         heading: "Main instrument panel",
@@ -131,7 +131,6 @@ const INT_01_SLIDES: MccSlideSpec[] = [
           "FLY (PFD)",
           "NAVIGATE (ND)",
           "MONITOR the various aircraft systems (ECAM).",
-          "The display units are located in the full and non-obstructed view of both pilots.",
         ],
       },
       {
@@ -144,13 +143,17 @@ const INT_01_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
+    alert: {
+      level: "NOTE",
+      text: "The display units are located in the full and non-obstructed view of both pilots.",
+    },
   },
   {
     comment: "SLIDE INT-01.5: Alerts — triggering and indication",
     eyebrow: EYEBROW,
     title: "1.5 Alertas: cuándo se activan y cómo se presentan",
     subtitle: "Cockpit Philosophy · Alerts",
-    leftPct: 56,
+    leftPct: 60,
     leftTitle: "ALERTS (AOP-10-20-20)",
     rightTitle: "ECAM DISPLAY UNITS",
     image: sisFig("ecam_du_arrangement"),
@@ -178,7 +181,7 @@ const INT_01_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "The flight crew is responsible to take any appropriate or required action to ensure a safe operation of the aircraft, even in the absence of alert(s)…",
+      text: "The flight crew is responsible to take any appropriate or required action to ensure a safe operation of the aircraft, even in the absence of alert(s) and shall take into account the entire operational environment.",
     },
   },
   {
@@ -360,7 +363,7 @@ const INT_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "SIDESTICK",
     image: fig("int_sidestick"),
     imageAlt: "Sidestick with the sidestick pushbutton and the push to talk trigger",
-    sourceRef: "Source: FCTM A320 AOP-10-30-10 Sidestick & FCOM A320 DSC-27-20-20 Sidesticks",
+    sourceRef: "Source: FCTM A320 AOP-10-30-10 Sidestick & FCOM A320 DSC-27-20-30 Sidesticks",
     cards: [
       {
         heading: "The main operational benefits of the side-mounted stick",
@@ -391,7 +394,7 @@ const INT_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "SIDE STICK PRIORITY LIGHTS",
     image: fig("int_glareshield_priority"),
     imageAlt: "SIDE STICK PRIORITY lights on the glareshield, CAPT and F/O",
-    sourceRef: "Source: FCTM A320 AOP-10-30-20 Use of Sidestick & FCOM A320 DSC-27-20-20 Glareshield",
+    sourceRef: "Source: FCTM A320 AOP-10-30-20 Use of Sidestick & FCOM A320 DSC-27-20-30 Glareshield",
     cards: [
       {
         heading: "Only one flight crew flies at a time",

@@ -144,7 +144,10 @@ const escapeAttr = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;
 /** URL de inserción sin cookies; solo usa caracteres que admite `sanitizeLessonHtml`. */
 export function youtubeEmbedUrl(video: MccVideo): string {
   if (!YOUTUBE_ID.test(video.youtubeId)) throw new Error(`ID de YouTube no válido: ${video.youtubeId}`);
-  const start = video.start ? `&start=${Math.floor(video.start)}` : "";
+  if (video.start !== undefined && (!Number.isFinite(video.start) || video.start < 0)) {
+    throw new Error(`Segundo de inicio no válido para el vídeo ${video.youtubeId}: ${video.start}`);
+  }
+  const start = video.start && video.start > 0 ? `&start=${Math.floor(video.start)}` : "";
   return `https://www.youtube-nocookie.com/embed/${video.youtubeId}?rel=0${start}`;
 }
 
@@ -153,9 +156,9 @@ export function renderVideo(video: MccVideo): string {
   return `
           <div class="w-full flex-1 min-h-0 flex flex-col items-center justify-center gap-1 p-1 lesson-video-wrapper" data-video-seconds="${Math.round(video.durationSeconds)}">
             <div class="w-full rounded-xl overflow-hidden bg-black" style="aspect-ratio: 16 / 9;">
-              <iframe src="${youtubeEmbedUrl(video)}" title="${escapeAttr(video.title)}" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full" style="border: 0; width: 100%; height: 100%;"></iframe>
+              <iframe src="${youtubeEmbedUrl(video)}" title="${escapeAttr(video.title)}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full" style="border: 0; width: 100%; height: 100%;"></iframe>
             </div>
-            <p class="text-[11px] text-[#6A7686] dark:text-slate-400 my-0">Vídeo: ${video.channel} (YouTube)</p>
+            <p class="text-[11px] text-[#6A7686] dark:text-slate-400 my-0" data-glossary-skip="true">Vídeo: ${escapeAttr(video.channel)} (YouTube)</p>
           </div>`;
 }
 

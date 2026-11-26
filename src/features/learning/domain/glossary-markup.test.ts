@@ -79,4 +79,12 @@ describe("annotateGlossaryHtml", () => {
     expect(annotated).toContain('data-glossary-term="FMA">FMA</button>');
     expect(annotated).toContain('data-glossary-term="FCU">FCU</button>');
   });
+
+  it("skips elements marked with data-glossary-skip='true' and iframes", () => {
+    const input = `<div><p data-glossary-skip="true">Vídeo: A320 ECAM Training (YouTube)</p><p>Check ECAM.</p></div>`;
+    const output = annotateGlossaryHtml(input, MCC_GLOSSARY);
+    expect(output).toContain('<p data-glossary-skip="true">Vídeo: A320 ECAM Training (YouTube)</p>');
+    expect(output).toContain('<p>Check <button type="button"');
+    expect(output).toContain('data-glossary-term="ECAM">ECAM</button>.</p>');
+  });
 });

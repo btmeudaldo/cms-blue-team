@@ -24,7 +24,7 @@ import {
 import {
   canCompleteLesson,
   formatLessonSeconds,
-  getSlideRealMinSeconds,
+  getSlideRealMinSecondsForIndex,
   remainingLessonSeconds,
   type LessonProgress,
   type ProgressResult,
@@ -341,7 +341,7 @@ export function LessonPlayer({
     totalLessonPages > 1 ||
     contentHtml.includes("lesson-slide-container") ||
     contentHtml.includes("<!-- DIAPOSITIVA");
-  const realSecondsPerPage = getSlideRealMinSeconds(minSeconds, totalLessonPages);
+  const realSecondsPerPage = getSlideRealMinSecondsForIndex(minSeconds, lessonPages, effectivePageIndex);
   const isStaffFastTimer =
     isStaff && staffTimerMode === "fast" && (totalLessonPages > 1 || isSlideMode);
   const minSecondsPerPage = isStaffFastTimer ? 1 : realSecondsPerPage;
