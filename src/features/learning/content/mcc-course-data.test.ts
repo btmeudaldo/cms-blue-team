@@ -12,6 +12,7 @@ import {
 import { sanitizeLessonHtml } from "../domain/sanitize-html";
 import { INT_01_SLIDE_COUNT, MCC_INT_01 } from "./mcc/int-01";
 import { INT_02_SLIDE_COUNT, MCC_INT_02 } from "./mcc/int-02";
+import { INT_03_SLIDE_COUNT, MCC_INT_03 } from "./mcc/int-03";
 import { MCC_SOP_01, SOP_01_SLIDE_COUNT } from "./mcc/sop-01";
 import { MCC_SOP_02, SOP_02_SLIDE_COUNT } from "./mcc/sop-02";
 import { MCC_SOP_03, SOP_03_SLIDE_COUNT } from "./mcc/sop-03";
@@ -178,7 +179,6 @@ describe("INT-02", () => {
 
   it("follows INT-01 in the introduction module, before SOP-01", () => {
     expect(MCC_INT_02.sequence_order).toBe(MCC_INT_01.sequence_order + 1);
-    expect(MCC_SOP_01.sequence_order).toBe(MCC_INT_02.sequence_order + 1);
     expect(MCC_INT_02.module_title).toBe(MCC_MODULES.INTRO);
     expect(slides).toHaveLength(INT_02_SLIDE_COUNT);
     expect(MCC_INT_02.min_seconds).toBe(mccMinSeconds(INT_02_SLIDE_COUNT));
@@ -201,6 +201,38 @@ describe("INT-02", () => {
     const htmlNoUrls = MCC_INT_02.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).toContain("MITIGATIONS");
     expect(htmlNoUrls).toContain("shared mental model");
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("INT-03", () => {
+  const slides = MCC_INT_03.content_html.split("<!-- pagebreak -->");
+
+  it("closes the introduction module, right before SOP-01", () => {
+    expect(MCC_INT_03.sequence_order).toBe(MCC_INT_02.sequence_order + 1);
+    expect(MCC_SOP_01.sequence_order).toBe(MCC_INT_03.sequence_order + 1);
+    expect(MCC_INT_03.module_title).toBe(MCC_MODULES.INTRO);
+    expect(slides).toHaveLength(INT_03_SLIDE_COUNT);
+    expect(MCC_INT_03.min_seconds).toBe(mccMinSeconds(INT_03_SLIDE_COUNT));
+  });
+
+  it("uses hosted figures and keeps the FCTM source in the comment", () => {
+    const images = [...MCC_INT_03.content_html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
+    expect(images).toHaveLength(INT_03_SLIDE_COUNT);
+    for (const url of images) {
+      expect(url).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/(fcom_a320_[a-z0-9_]+|p\d{3}_[a-z0-9_]+)\.webp(\?v=\d+)?$/);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE INT-03\.\d+: [^>]*\| Source: FCTM A320 AOP-(30|40)[^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("owns the Golden Rules (moved out of SOP-01) and excludes airlines, other types and registrations", () => {
+    expect(MCC_INT_03.content_html).toContain("Golden Rules for Pilots");
+    expect(MCC_SOP_01.content_html).not.toMatch(/Golden Rule/);
+    const htmlNoUrls = MCC_INT_03.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });

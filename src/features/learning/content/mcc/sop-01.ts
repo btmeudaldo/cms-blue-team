@@ -2,7 +2,7 @@
  * SOP-01 — Filosofía Airbus y fundamentos MCC (1 h).
  *
  * Alcance: Curso APS MCC — Airbus A320 (simulador Entrol A32).
- * Referencias técnicas estándar: Golden Rules, Use of Tutorials,
+ * Referencias técnicas estándar: Use of Tutorials (las Golden Rules están en INT-03 desde el 26-nov-2026),
  * FCOM A320 PRO-NOR-SOP-01 (Foreword), PRO-NOR-SCO (Standard Callouts)
  * y DSC-22_10-40-20 (FCU Philosophy).
  *
@@ -100,135 +100,12 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
       },
     ],
   },
-  // ── Golden Rules ─────────────────────────────────────────────────────────
-  {
-    comment: "SLIDE SOP-01.3: The Golden Rules",
-    eyebrow: EYEBROW,
-    title: "1.3 Las Golden Rules de Airbus",
-    subtitle: "Golden Rules · FCOM Purpose",
-    leftTitle: "PURPOSE OF THE FCOM · INFORMATION LAYERS",
-    rightTitle: "GOLDEN RULES",
-    image: img("p018_golden_rules"),
-    imageAlt: "The four Airbus Golden Rules",
-    sourceRef: "Source: FCOM A320 · GEN & Golden Rules",
-    cards: [
-      {
-        heading: "The purpose of the FCOM is to:",
-        bullets: [
-          "Provide all necessary operating limitations, procedures, performance and system information the flight crew needs to safely and efficiently operate A320 family aircraft during normal, abnormal, and emergency situations.",
-          "Serve as a comprehensive reference guide during initial and refresher flight crew training.",
-          "If the FCOM data differs from the AFM data, the AFM remains the reference. As a supplement to the FCOM, the FCTM may provide additional information that the flight crew should read in conjunction with the FCOM.",
-        ],
-      },
-      {
-        heading: "FCOM Information Type and Layers",
-        bullets: [
-          "<strong>Layer 1 (“Need to know”):</strong> Layer 1 presents information that is necessary in the cockpit.",
-          "<strong>Layer 2 (“Nice to know”):</strong> Layer 2 presents information that is used as a reference, in order to fully understand the logic of the aircraft and pilot interfaces.",
-          "<strong>Layer 3 (Detailed information):</strong> Layer 3 provides more detailed explanations, that are not necessarily needed in flight.",
-        ],
-      },
-    ],
-  },
-  {
-    comment: "SLIDE SOP-01.4: Golden Rule #1",
-    eyebrow: EYEBROW,
-    title: "1.4 Golden Rule #1: Fly, Navigate, Communicate",
-    subtitle: "Golden Rules · #1 · Tasksharing",
-    leftPct: 56,
-    leftTitle: "MULTICREW TASKSHARING · COMMUNICATION",
-    rightTitle: "FLY · NAVIGATE · COMMUNICATE",
-    image: img("p019_golden_rules"),
-    imageAlt: "Golden Rule 1 Fly Navigate Communicate",
-    sourceRef: "Source: FCOM A320 · PRO-NOR-SCO & Anexo 10 APS MCC",
-    cards: [
-      {
-        heading: "Entorno multipiloto (Anexo 10 · APS MCC)",
-        paragraph:
-          "El curso desarrolla la toma de decisiones, la comunicación, el reparto de tareas, el uso de listas de comprobación, la supervisión mutua, el trabajo en equipo y el apoyo al compañero en todas las fases del vuelo, tanto en operación normal como en condiciones anormales y de emergencia.",
-      },
-      {
-        heading: "Communications & Control Transfer (FCOM PRO-NOR-SCO)",
-        bullets: [
-          "Standard phraseology is essential to ensure effective crew communication. The phraseology should be concise and exact.",
-          "These standard Airbus callouts are also designed to promote situational awareness, and to ensure crew understanding of systems and their use in line operation.",
-          "PF/PM duties transfer: “YOU HAVE CONTROL” → “I HAVE CONTROL” (to give control) and “I HAVE CONTROL” → “YOU HAVE CONTROL” (to take control).",
-        ],
-      },
-    ],
-  },
-  {
-    comment: "SLIDE SOP-01.5: Golden Rules #2 and #3",
-    eyebrow: EYEBROW,
-    title: "1.5 Golden Rules #2 y #3: automatización y FMA",
-    subtitle: "Golden Rules · #2 · #3",
-    leftPct: 57,
-    leftTitle: "AUTOMATION & FMA (DSC-22_30-80-20)",
-    rightTitle: "AP/FD ENGAGEMENT AND FMA",
-    image: img("p300_ap_fd_and_a_thr_engagement_disengagement"),
-    imageAlt: "AP/FD engagement and FMA check",
-    sourceRef: "Source: FCOM A320 · DSC-22_30-80-20 & Golden Rules #2 / #3",
-    cards: [
-      {
-        heading: "#2 Use the appropriate level of automation at all times",
-        paragraph: "To use the appropriate level of automation at all times, the flight crew must:",
-        bullets: [
-          "Determine and select the appropriate level of automation, that can include manual flight.",
-          "Understand the operational effect of the selected level of automation.",
-          "Confirm that the aircraft reacts as expected.",
-        ],
-      },
-      {
-        heading: "#3 Understand the FMA at all times",
-        paragraph: "To ensure correct situational awareness at all times, the flight crew must:",
-        bullets: ["Monitor the FMA · Announce the FMA · Confirm the FMA · Understand the FMA."],
-      },
-      {
-        heading: "FMA Display (FCOM DSC-22_30-80-20)",
-        paragraph:
-          "The FMA is located on the upper part of the PFD, and displays information associated to flight guidance: A/THR messages and modes · AP/FD modes (Vertical, Lateral, Common) · Approach and landing capability · AP, FD, and A/THR engagement status · Special Messages.",
-        bullets: [
-          "A white box appears for 10 s around the annunciation of an A/THR mode engagement, an AP/FD mode engagement, the approach and landing capability change, or an AP, FD, or A/THR engagement status change.",
-        ],
-      },
-    ],
-  },
-  {
-    comment: "SLIDE SOP-01.6: Golden Rule #4",
-    eyebrow: EYEBROW,
-    title: "1.6 Golden Rule #4: actuar si algo no va según lo previsto",
-    subtitle: "Golden Rules · #4 · Guidance & FMGC Logic",
-    leftTitle: "FCU GUIDANCE PHILOSOPHY · MASTER FMGC LOGIC",
-    rightTitle: "TAKE ACTION !",
-    image: img("p022_golden_rules"),
-    imageAlt: "Golden Rule 4 take action PF and PM",
-    sourceRef: "Source: FCOM A320 · DSC-22_10-30 & DSC-22_10-40-20",
-    cards: [
-      {
-        heading: "Two Types of Guidance (FCOM DSC-22_10-40-20)",
-        paragraph:
-          "The flight crew can use two types of guidance to control the aircraft in auto flight. One type is managed by the Flight Management Guidance System (FMGS). The other uses target quantities which are manually entered by the flight crew.",
-        bullets: [
-          "When the aircraft uses target quantities from the FMGS (managed guidance), the FCU windows display dashes and the white dots next to those windows light up.",
-          "When the aircraft uses target quantities, entered by the flight crew (selected guidance), the windows display the selected numbers and the white dots do not light up.",
-        ],
-      },
-      {
-        heading: "Master FMGC Logic (FCOM DSC-22_10-30)",
-        bullets: [
-          "If one autopilot (AP) is engaged, the related FMGC is master: it uses the onside FD for guidance, controls the A/THR, and controls the FMA 1 and 2.",
-          "If two APs are engaged, FMGC1 is master.",
-          "If no AP is engaged, and the FD1 pb is on, then FMGC1 is master; if the FD1 pb is off, and FD2 pb on, then FMGC2 is master.",
-          "If no AP/FD is engaged, A/THR is controlled by FMGC1.",
-        ],
-      },
-    ],
-  },
+  // ── SOP y comunicación estándar ───────────────────────────────────────────
   // ── SOP ──────────────────────────────────────────────────────────────────
   {
-    comment: "SLIDE SOP-01.7: Standard Operating Procedures — foreword",
+    comment: "SLIDE SOP-01.3: Standard Operating Procedures — foreword",
     eyebrow: EYEBROW,
-    title: "1.7 Qué son los Standard Operating Procedures (SOP)",
+    title: "1.3 Qué son los Standard Operating Procedures (SOP)",
     subtitle: "FCOM PRO-NOR-SOP-01 · Foreword",
     leftTitle: "STANDARD OPERATING PROCEDURES",
     rightTitle: "STANDARDIZED COCKPIT SCAN SEQUENCE",
@@ -254,9 +131,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
   },
   // ── Standard callouts ────────────────────────────────────────────────────
   {
-    comment: "SLIDE SOP-01.8: Communications, standard terms and checklist callouts",
+    comment: "SLIDE SOP-01.4: Communications, standard terms and checklist callouts",
     eyebrow: EYEBROW,
-    title: "1.8 Comunicación estándar y callouts de checklist",
+    title: "1.4 Comunicación estándar y callouts de checklist",
     subtitle: `${SCO} · Standard Callouts`,
     leftTitle: "COMMUNICATIONS & CHECKLIST CALLOUTS",
     rightTitle: "FINAL COCKPIT PREPARATION (PF / PM)",
@@ -287,9 +164,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.9: Actions commanded by PF — general and SET",
+    comment: "SLIDE SOP-01.5: Actions commanded by PF — general and SET",
     eyebrow: EYEBROW,
-    title: "1.9 Acciones ordenadas por el PF: generalidades y SET",
+    title: "1.5 Acciones ordenadas por el PF: generalidades y SET",
     subtitle: `${SCO} · Actions commanded by PF`,
     leftTitle: "GENERAL & SET",
     rightTitle: "FCU ACTION CHECKED ON PFD / FMA",
@@ -316,9 +193,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-01.10: Actions commanded by PF — MANAGE / PULL",
+    comment: "SLIDE SOP-01.6: Actions commanded by PF — MANAGE / PULL",
     eyebrow: EYEBROW,
-    title: "1.10 Acciones ordenadas por el PF: MANAGE y PULL",
+    title: "1.6 Acciones ordenadas por el PF: MANAGE y PULL",
     subtitle: `${SCO} · Actions commanded by PF`,
     leftTitle: "MANAGE / PULL",
     rightTitle: "FCU ACTION CHECKED ON PFD / FMA",
@@ -349,9 +226,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.11: V/S-FPA knob, ARM and ON/OFF commands",
+    comment: "SLIDE SOP-01.7: V/S-FPA knob, ARM and ON/OFF commands",
     eyebrow: EYEBROW,
-    title: "1.11 Mando V/S-FPA, ARM y ON/OFF",
+    title: "1.7 Mando V/S-FPA, ARM y ON/OFF",
     subtitle: `${SCO} · Actions commanded by PF`,
     leftTitle: "V/S-FPA · ARM · ON/OFF",
     rightTitle: "BIRD ON (TRK-FPA)",
@@ -383,9 +260,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-01.12: FCU callouts guide — SET (A320)",
+    comment: "SLIDE SOP-01.8: FCU callouts guide — SET (A320)",
     eyebrow: EYEBROW,
-    title: "1.12 Guía de callouts del FCU: SET",
+    title: "1.8 Guía de callouts del FCU: SET",
     subtitle: `${SCO} · FCU SET (A320)`,
     leftTitle: "01 | SET (ROTAR SELECTOR)",
     rightTitle: "A320 FCU & EFIS CONTROL PANELS",
@@ -419,9 +296,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.13: FCU callouts guide — PULL and MANAGE (A320)",
+    comment: "SLIDE SOP-01.9: FCU callouts guide — PULL and MANAGE (A320)",
     eyebrow: EYEBROW,
-    title: "1.13 Guía de callouts del FCU: PULL y MANAGE",
+    title: "1.9 Guía de callouts del FCU: PULL y MANAGE",
     subtitle: `${SCO} · FCU PULL & MANAGE (A320)`,
     leftPct: 56,
     leftTitle: "02 | PULL · 03 | MANAGE",
@@ -455,9 +332,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.14: FMA and altitude callouts",
+    comment: "SLIDE SOP-01.10: FMA and altitude callouts",
     eyebrow: EYEBROW,
-    title: "1.14 Callouts de FMA y de altitud",
+    title: "1.10 Callouts de FMA y de altitud",
     subtitle: `${SCO} · FMA · Altitude`,
     leftTitle: "FMA & ALTITUDE",
     rightTitle: "INITIAL TAKEOFF FMA: NAV vs RWY TRK",
@@ -483,9 +360,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-01.15: Flaps and gear callouts",
+    comment: "SLIDE SOP-01.11: Flaps and gear callouts",
     eyebrow: EYEBROW,
-    title: "1.15 Callouts de flaps y tren",
+    title: "1.11 Callouts de flaps y tren",
     subtitle: `${SCO} · Flaps or Gear Callouts`,
     leftTitle: "FLAPS & GEAR CALLOUTS",
     rightTitle: "ACCELERATION FLOW (FLAPS · L/G)",
@@ -521,9 +398,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.16: Flight parameters deviation callouts — approach",
+    comment: "SLIDE SOP-01.12: Flight parameters deviation callouts — approach",
     eyebrow: EYEBROW,
-    title: "1.16 Callouts de desviación en aproximación",
+    title: "1.12 Callouts de desviación en aproximación",
     subtitle: `${SCO} · Flight Parameters`,
     leftTitle: "APPROACH",
     rightTitle: "PM CALLOUTS ON FINAL APPROACH",
@@ -552,9 +429,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.17: Flight parameters deviation callouts — landing and go-around",
+    comment: "SLIDE SOP-01.13: Flight parameters deviation callouts — landing and go-around",
     eyebrow: EYEBROW,
-    title: "1.17 Callouts de desviación en aterrizaje y motor y al aire",
+    title: "1.13 Callouts de desviación en aterrizaje y motor y al aire",
     subtitle: `${SCO} · Flight Parameters`,
     leftTitle: "LANDING · GO-AROUND",
     rightTitle: "LANDING DEVIATION CALLOUTS (PM)",
@@ -580,9 +457,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SOP-01.18: PF/PM duties transfer and ground supply",
+    comment: "SLIDE SOP-01.14: PF/PM duties transfer and ground supply",
     eyebrow: EYEBROW,
-    title: "1.18 Transferencia de mandos y alimentación de tierra",
+    title: "1.14 Transferencia de mandos y alimentación de tierra",
     subtitle: `${SCO} · Duties Transfer · Ground`,
     leftTitle: "PF/PM TRANSFER & GROUND SUPPLY",
     rightTitle: "EXTERNAL POWER & GROUND CREW",
@@ -607,9 +484,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.19: Pushback and engine start callouts",
+    comment: "SLIDE SOP-01.15: Pushback and engine start callouts",
     eyebrow: EYEBROW,
-    title: "1.19 Callouts de pushback y arranque",
+    title: "1.15 Callouts de pushback y arranque",
     subtitle: `${SCO} · Pushback/Engine Start`,
     leftTitle: "PUSHBACK / ENGINE START",
     rightTitle: "BEFORE PUSHBACK / START FLOW",
@@ -638,9 +515,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.20: Taxi callouts",
+    comment: "SLIDE SOP-01.16: Taxi callouts",
     eyebrow: EYEBROW,
-    title: "1.20 Callouts de rodaje",
+    title: "1.16 Callouts de rodaje",
     subtitle: `${SCO} · Taxi`,
     leftTitle: "TAXI",
     rightTitle: "PUSHBACK → TAXI → LINE-UP",
@@ -667,9 +544,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.21: Takeoff and altimeter setting callouts",
+    comment: "SLIDE SOP-01.17: Takeoff and altimeter setting callouts",
     eyebrow: EYEBROW,
-    title: "1.21 Callouts de despegue y cambio de altímetro",
+    title: "1.17 Callouts de despegue y cambio de altímetro",
     subtitle: `${SCO} · Takeoff · Altimeter`,
     leftTitle: "TAKEOFF · ALTIMETER SETTING",
     rightTitle: "TAKEOFF SEQUENCE",
@@ -693,9 +570,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.22: Approach callouts — approach phase and go-around altitude",
+    comment: "SLIDE SOP-01.18: Approach callouts — approach phase and go-around altitude",
     eyebrow: EYEBROW,
-    title: "1.22 Callouts de aproximación: fase de aproximación y altitud de motor y al aire",
+    title: "1.18 Callouts de aproximación: fase de aproximación y altitud de motor y al aire",
     subtitle: `${SCO}-D · Approach and Landing`,
     leftTitle: "APPROACH PHASE · GO-AROUND ALTITUDE",
     rightTitle: "ARM APPROACH vs ACTIVATE APPROACH PHASE",
@@ -722,9 +599,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.23: Approach callouts — FDP, 1 000 ft and minima",
+    comment: "SLIDE SOP-01.19: Approach callouts — FDP, 1 000 ft and minima",
     eyebrow: EYEBROW,
-    title: "1.23 Callouts de aproximación: FDP, 1 000 ft y mínimos",
+    title: "1.19 Callouts de aproximación: FDP, 1 000 ft y mínimos",
     subtitle: `${SCO}-D · Approach and Landing`,
     leftTitle: "FDP · 1 000 FT · MINIMA",
     rightTitle: "FDP & EARLY STABILIZED APPROACH",
@@ -745,9 +622,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.24: Landing, discontinued approach and go-around callouts",
+    comment: "SLIDE SOP-01.20: Landing, discontinued approach and go-around callouts",
     eyebrow: EYEBROW,
-    title: "1.24 Callouts de aterrizaje, aproximación interrumpida y motor y al aire",
+    title: "1.20 Callouts de aterrizaje, aproximación interrumpida y motor y al aire",
     subtitle: `${SCO}-D · Landing · Discontinued Approach · Go Around`,
     leftTitle: "AFTER TOUCHDOWN · GO AROUND",
     rightTitle: "DISCONTINUED APPROACH vs GO-AROUND",
@@ -771,9 +648,9 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
     },
   },
   {
-    comment: "SLIDE SOP-01.25: Approach and landing callouts — notes",
+    comment: "SLIDE SOP-01.21: Approach and landing callouts — notes",
     eyebrow: EYEBROW,
-    title: "1.25 Notas a los callouts de aproximación y aterrizaje",
+    title: "1.21 Notas a los callouts de aproximación y aterrizaje",
     subtitle: `${SCO}-D · Approach and Landing · Notes`,
     leftTitle: "NOTES (1) – (8)",
     rightTitle: "TOUCHDOWN · ROLLOUT · AFTER LANDING",
@@ -806,10 +683,10 @@ const SOP_01_SLIDES: MccSlideSpec[] = [
 export const MCC_SOP_01: MccLesson = {
   id: "a3200000-0000-0000-0000-000000000101",
   course_id: MCC_COURSE_ID,
-  title: "SOP-01. Filosofía Airbus y fundamentos MCC: tutoriales, Golden Rules y callouts estándar",
+  title: "SOP-01. Fundamentos MCC: tutoriales, SOP y callouts estándar",
   slug: "sop-01-filosofia-airbus-fundamentos-mcc",
-  sequence_order: 3,
-  lesson_order: 3,
+  sequence_order: 4,
+  lesson_order: 4,
   min_seconds: mccMinSeconds(SOP_01_SLIDES.length, mccVideoSeconds(SOP_01_SLIDES)),
   module_title: MCC_MODULES.NORMAL_SOP,
   content_html: joinSlides(SOP_01_SLIDES),
