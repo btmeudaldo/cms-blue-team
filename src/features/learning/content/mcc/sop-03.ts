@@ -575,7 +575,7 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
         heading: "* F-PLN A page ……… COMPLETE AND CHECK",
         bullets: [
           "Lateral revision at departure airport. Select RWY, then SID, then TRANS using scroll keys.",
-          "Vertical revision. Check or enter climb speed limit, constraints according to ATC clearance. Enter step altitude as appropriate.",
+          "Vertical revision. Check or enter climb speed limit and speed constraints according to ATC clearance. Enter step altitude, as appropriate.",
           "* WINDS ……… AS APPROPRIATE — Choose between using trip wind and the forecast wind for CLB, CRZ and DES phases.",
         ],
       },
@@ -620,7 +620,7 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
       {
         heading: "* EFB/MCDU GREEN DOT ……… COMPARE (PM)",
         paragraph:
-          "The PM compares Green Dot speed computed by the FMGS and the Green Dot speed computed using the TAKEOFF application. A discrepancy indicates a difference in the TOW used in both systems (EFB/FMGS).",
+          "The PM compares Green Dot speed computed by the FMGS and the Green Dot speed computed by the EFB takeoff performance application. A discrepancy indicates a difference in the TOW used in both systems (EFB/FMGS).",
       },
     ],
     alert: {
@@ -682,9 +682,9 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
       {
         heading: "On the mask stowage box",
         bullets: [
-          "Press and hold the reset/test pb in the direction of the arrow. Check that the blinker turns yellow for a short time, and then goes black.",
-          "Hold the reset/test pb down, and press the emergency pressure selector. Check that the blinker turns yellow and remains yellow, as long as the emergency pressure selector is pressed. Listen for oxygen flow through the loudspeakers.",
-          "Check that the reset/test pb returns to the up position and the N 100 % selector is in the 100 % position.",
+          "Press and hold the reset/test button in the direction of the arrow. Check that the blinker turns yellow for a short time, and then goes black.",
+          "Hold the reset/test button down, and press the emergency pressure selector. Check that the blinker turns yellow and remains yellow, as long as the emergency pressure selector is pressed. Listen for oxygen flow through the loudspeakers.",
+          "Check that the reset/test button returns to the up position and the N/100% selector is in the 100 % position.",
           "Press the emergency pressure selector again, and check that the blinker does not turn yellow. This ensures that the mask is not supplied.",
         ],
       },
@@ -717,7 +717,7 @@ const SOP_03_SLIDES: MccSlideSpec[] = [
       },
       {
         heading: "* ND ……… CHECK",
-        bullets: ["Check for correct display.", "Check heading, initial waypoint, VOR ADF indications."],
+        bullets: ["Check for correct display.", "Check heading, initial waypoint, VOR/ADF indications."],
       },
       {
         heading: "LOUDSPEAKER knob ……… SET",
