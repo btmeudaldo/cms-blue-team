@@ -117,7 +117,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
       {
         heading: "Early stabilized approach",
         paragraph:
-          "Under certain circumstances, the flight crew may decide to reduce the speed down to VAPP in the landing configuration at the Final Descent Point (i.e. approach via selected guidance, high glide path angle, low altitude intermediate approach, etc.). In order to obtain a valuable deceleration pseudo waypoint and to ensure a timely deceleration, the flight crew should enter VAPP as a speed constraint at the Final Descent Point.",
+          "Under certain circumstances, the flight crew may decide to reduce the speed down to VAPP in the landing configuration by the FDP (approach via selected guidance, high glide path angle, low altitude intermediate approach, etc.). In order to obtain a valuable deceleration pseudo waypoint and to ensure a timely deceleration, the flight crew should enter VAPP as a speed constraint at the FDP.",
       },
     ],
   },
@@ -143,7 +143,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
       },
       {
         heading: "The approach is flown in TRK FPA when:",
-        bullets: ["The approach is not stored in the database or", "NAV accuracy is LOW."],
+        bullets: ["The approach is not stored in the database, or", "NAV accuracy is LOW."],
       },
     ],
   },
@@ -300,12 +300,9 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
     sourceRef: src("PRO-NOR-SOP-18-B Navigation Accuracy", 235),
     cards: [
       {
-        heading: "Navigation accuracy",
-        bullets: [
-          "When GPS PRIMARY is available, no NAV ACCURACY monitoring is required",
-          "If GPS PRIMARY LOST is displayed, or GPS not installed, check on PROG page that the required navigation accuracy is appropriate to the phase of flight",
-          "If the accuracy is LOW, at least one ND must be in ROSE LS/VOR depending on the approach.",
-        ],
+        heading: "If GPS PRIMARY LOST: NAVIGATION ACCURACY ……… MONITOR (PM)",
+        paragraph:
+          "Check on FMS PROGRESS page that the required navigation accuracy is appropriate according to the flown airspace. For more information, Refer to PRO SPO 51 PBN.",
       },
     ],
   },
@@ -475,11 +472,11 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
     cards: [
       {
         heading: "FPA MODE ……… CHECK ENGAGED (PF)",
-        paragraph: "Check NAV FPA, TRK FPA or LOC FPA is engaged.",
+        paragraph: "Check that NAV FPA, TRK FPA or LOC FPA is engaged.",
       },
       {
         heading: "GO-AROUND ALTITUDE ……… SET (BOTH)",
-        paragraph: "Set when below the go-around altitude to avoid unexpected altitude capture.",
+        paragraph: "Set when below the go-around altitude to avoid not expected altitude capture.",
       },
       {
         heading: "FLIGHT PARAMETERS ……… MONITOR (PM)",
@@ -741,7 +738,7 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
         bullets: [
           "NAV ACCURACY ……… CHECK — If NAV accuracy is LOW, use TRK FPA mode for approach.",
           "For RNAV(GNSS) approach: GPS PRIMARY must be available on at least one FMS.",
-          "BARO REF ……… SET — The vertical guidance requires a precise BARO setting. The maximum acceptable discrepancy between altimeters is 100 ft.",
+          "BARO REFERENCE ……… SET/CROSSCHECK (BOTH) — The vertical guidance requires a precise BARO setting. The maximum acceptable difference between altimeters is 100 ft.",
         ],
       },
       {
@@ -795,9 +792,9 @@ const SOP_07_SLIDES: MccSlideSpec[] = [
         bullets: [
           "Monitor XTK error on ND",
           "Monitor V/DEV on PFD",
-          "Check altitude crossing at FAF and waypoints of the final, as published on the chart",
+          "Check altitude crossing at FAF and waypoints of the final approach, as published on the chart",
           "If approaching on a conventional radio NAVAID procedure, monitor the lateral and vertical guidance using raw data",
-          "The PM calls out if excessive deviation occurs: XTK > 0.1 NM · V/DEV > ½ dot. On the vertical scale, one dot corresponds to 100 ft. Thus ½ dot is 50 ft.",
+          "The PM calls out if excessive deviation occurs: XTK > 0.1 NM · V/DEV > ½ dot. On the vertical scale, one dot corresponds to 100 ft. Therefore ½ dot is 50 ft.",
         ],
       },
     ],
