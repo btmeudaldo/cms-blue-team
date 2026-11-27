@@ -1,10 +1,11 @@
 /**
- * SIS-06 — Uso del FMS: FMGS y MCDU (1 h aprox.).
+ * SIS-06 — Uso del FMS: FMGS y MCDU (70 min · 1,17 h).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Fuente: FCOM 23MAR26 DSC-22_20-20-10-25 (Controls and Indicators - MCDU - Page Description), solo bloques del
  * grupo EC-ILQ. La variante de cada figura se ha comprobado con `scratch/fcom_fig_applic.py`; en RADIO NAV se han
- * tapado las líneas de ADF y en PERF APPR se han recortado las casillas BARO/RADIO (equipos opcionales).
+ * tapado las líneas de ADF, en PERF APPR se han recortado las casillas BARO/RADIO y en ARRIVAL se han eliminado
+ * GLS07 y LPV-LP/(SLS) (equipos opcionales).
  * Sin repetir: la secuencia de preparación del FMGS (orden de entrada de datos y comprobaciones) está en SOP-03; el
  * briefing de salida, en SOP-06. Aquí se explica qué muestra cada página del MCDU y para qué sirve.
  */
@@ -15,7 +16,7 @@ const IMG_BASE = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SIS-06";
 
 /** Versión común de caché de las figuras FCOM de esta lección. */
-const IMG_VERSION = 1795638000;
+const IMG_VERSION = 1795638001;
 const fig = (name: string) => `${IMG_BASE}/fcom_a320_sis6_${name}.webp?v=${IMG_VERSION}`;
 const src = (sections: string) => `Source: FCOM A320 DSC-22_20-20-10-25 ${sections}`;
 
@@ -274,13 +275,18 @@ const SIS_06_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "6.10 Página F-PLN B y lectura del plan de vuelo",
     subtitle: "ATA 22 · FLIGHT PLAN Pages",
-    leftPct: 50,
+    leftPct: 55,
     leftTitle: "FLIGHT PLAN PAGES",
     rightTitle: "F-PLN B",
     image: fig("fpln_b"),
     imageAlt: "F-PLN B page reached with NEXT PAGE from F-PLN A: EFOB and T.WIND at each waypoint",
     sourceRef: src("FLIGHT PLAN Pages"),
     cards: [
+      {
+        heading: "General",
+        paragraph:
+          "The F-PLN B page displays fuel predictions (EFOB) and forecast true winds (T.WIND) at each waypoint. The flight crew calls it up by pressing the NEXT PAGE key when the F-PLN A page is displayed.",
+      },
       {
         heading: "Key fields",
         bullets: [
@@ -432,7 +438,7 @@ const SIS_06_SLIDES: MccSlideSpec[] = [
       {
         heading: "Key fields",
         bullets: [
-          "[2L] ABEAM PTS: projects the flight plan waypoints perpendiculary on the DIR TO leg.",
+          "[2L] ABEAM PTS: projects the flight plan waypoints perpendicularly on the DIR TO leg.",
           "[1R] RADIAL IN and [2R] RADIAL OUT: activate the DIR TO/INTERCEPT TO and DIR TO/INTERCEPT FROM functions.",
         ],
       },
@@ -693,7 +699,7 @@ const SIS_06_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "6.25 Página PROG",
     subtitle: "ATA 22 · PROG Pages",
-    leftPct: 52,
+    leftPct: 55,
     leftTitle: "PROG PAGES",
     rightTitle: "PROG",
     image: fig("prog"),
@@ -712,6 +718,7 @@ const SIS_06_SLIDES: MccSlideSpec[] = [
           "[2R] VDEV: during descent and approach, the vertical deviation between the aircraft's current altitude and the FMS-computed vertical profile.",
           "Line 3 UPDATE AT: the flight crew confirms the update when the aircraft overflies the inserted position.",
           "Line 4 BRG/DIST: FMGC-computed bearing and distance to the site from the aircraft's present position.",
+          "Line 5–6 GPS PRIMARY · REQUIRED / ACCUR / ESTIMATED: displays GPS PRIMARY when active and compares required vs estimated navigation accuracy (HIGH or LOW).",
         ],
       },
     ],

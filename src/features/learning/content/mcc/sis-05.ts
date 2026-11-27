@@ -1,11 +1,11 @@
 /**
- * SIS-05 — Motores CFM56-5B, auto flight y navegación (0,75 h aprox.).
+ * SIS-05 — Motores CFM56-5B, auto flight y navegación (40 min · 0,67 h).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Sustituye a CTA-5. Fuentes: FCOM 23MAR26 DSC-70 (Engines, solo bloques CFM56-5B / grupo EC-ILQ o ALL),
  * DSC-22_10 (Auto Flight - General) y DSC-34-NAV (ADIRS, GPS, Radio Nav). La variante de cada figura se ha
  * comprobado con `scratch/fcom_fig_applic.py`; en la figura del sistema de combustible del motor se ha tapado la
- * nota de tipo de avión.
+ * nota de tipo de avión y en la de sintonía de radioayudas se han eliminado GLS, MLS y ADF.
  * Sin repetir: arranque, ignición y FADEC en el arranque están en SOP-04; EGPWS y TCAS, en SOP-14; las palancas
  * de empuje desde la filosofía, en INT-01. Sin equipos opcionales (tercera MCDU, ADF, GLS/MLS, RMP3).
  */
@@ -16,7 +16,7 @@ const IMG_BASE = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SIS-05";
 
 /** Versión común de caché de las figuras FCOM de esta lección. */
-const IMG_VERSION = 1795637000;
+const IMG_VERSION = 1795637001;
 const fig = (name: string) => `${IMG_BASE}/fcom_a320_sis5_${name}.webp?v=${IMG_VERSION}`;
 const pubFig = (name: string) => `${IMG_BASE}/fcom_a320_${name}.webp`;
 const src = (sections: string) => `Source: FCOM A320 ${sections}`;
@@ -171,12 +171,12 @@ const SIS_05_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "5.6 Sistema de aceite del motor",
     subtitle: "ATA 70 · Oil System",
-    leftPct: 45,
-    leftTitle: "OIL SYSTEM (DSC-70-50)",
+    leftPct: 52,
+    leftTitle: "OIL SYSTEM (DSC-70-50 · 70-90-40)",
     rightTitle: "OIL SYSTEM",
     image: fig("eng_oil"),
     imageAlt: "Engine oil system: tank, supply and scavenge pumps, filters, fuel/oil heat exchanger and ECAM indications",
-    sourceRef: src("DSC-70-50 Oil System"),
+    sourceRef: src("DSC-70-50 Oil System / DSC-70-90-40 Engine Display"),
     cards: [
       {
         heading: "Oil system",
@@ -186,6 +186,14 @@ const SIS_05_SLIDES: MccSlideSpec[] = [
           "The lube and scavenge pump modules",
           "The fuel/oil heat exchanger",
           "The filters, chip detectors, pressure relief and bypass valves.",
+        ],
+      },
+      {
+        heading: "ECAM ENG oil indications",
+        bullets: [
+          "Oil quantity: green in normal range (scale 0 to 22 QT); pulses green below the oil advisory level.",
+          "Oil pressure: green in normal range (scale 0 to 100 PSI); pulses green above 90 PSI or between 13 and 16 PSI when N2 is above 75 %; red between 0 and 13 PSI.",
+          "Oil temperature: green in normal range; pulses green between 140 °C and 155 °C for less than 15 min; amber for more than 15 min or above 155 °C.",
         ],
       },
     ],
@@ -213,7 +221,7 @@ const SIS_05_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "Los parámetros de arranque (EGT, N2, ignición, válvula de arranque) y la página ECAM ENG se ven en SOP-04.",
+      text: "If the system detects a discrepancy between the N1, N2, EGT and fuel flow values on the FADEC-DMC bus and the corresponding displayed values, an amber CHECK appears underneath the affected parameter.",
     },
   },
   // ── B. Auto flight (ATA 22) ──────────────────────────────────────────────
@@ -232,7 +240,7 @@ const SIS_05_SLIDES: MccSlideSpec[] = [
       {
         heading: "Components",
         paragraph:
-          "Two Flight Management Guidance Computers (FMGC), two Multipurpose Control and Display Units (MCDU), one Flight Control Unit (FCU) and two Flight Augmentation Computers (FAC). The aircraft is equipped with FMS2 HONEYWELL Release 1A H2C and FG C14.",
+          "Two Flight Management Guidance Computers (FMGC), two Multipurpose Control and Display Units (MCDU), one Flight Control Unit (FCU) and two Flight Augmentation Computers (FAC).",
       },
       {
         heading: "Each FMGC is divided into two main parts",
@@ -277,23 +285,26 @@ const SIS_05_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "5.10 FCU: guiado seleccionado y gestionado",
     subtitle: "ATA 22 · Flight Control Unit",
-    leftPct: 45,
-    leftTitle: "FCU (DSC-22_10)",
+    leftPct: 52,
+    leftTitle: "FCU — GUIDANCE & LATERAL CONTROL (DSC-22_10-40-20)",
     rightTitle: "FCU — LATERAL CONTROL AREA",
     image: fig("fcu_lateral"),
     imageAlt: "FCU lateral control area: HDG/TRK window, managed lateral dot, HDG/TRK selector knob and LOC pushbutton",
-    sourceRef: src("DSC-22_10-10 Flight Crew Interface with FMGC / DSC-22_10-40 FCU"),
+    sourceRef: src("DSC-22_10-40-20 FCU"),
     cards: [
       {
-        heading: "General philosophy",
-        paragraph:
-          "The FMGS provides predictions of flight time, mileage, speed, economy profiles and altitude. It reduces cockpit workload, improves efficiency, and eliminates many routine operations generally performed by the flight crew.",
+        heading: "Managed vs selected guidance",
+        bullets: [
+          "Managed guidance (target quantities from the FMGS): the FCU windows display dashes and the white dots next to those windows light up.",
+          "Selected guidance (target quantities entered by the flight crew): the windows display the selected numbers and the white dots do not light up.",
+        ],
       },
       {
-        heading: "Managed and selected guidance",
+        heading: "Lateral control area",
         bullets: [
-          "During cockpit preparation the flight crew uses the MCDU to insert a preplanned route from origin to destination (SID, EN ROUTE, WAYPOINTS, STAR, APPROACH, MISSED APPR, and ALTN route).",
-          "The system then defines a vertical profile and a speed profile, taking into account ATC requirements.",
+          "HDG/TRK knob: display range between 0 ° and 359 ° (1 ° per click).",
+          "HDG V/S – TRK FPA pb: selects HDG (associated with V/S) or TRK (associated with FPA); displays or deletes the Flight Path Vector (FPV) on the PFD.",
+          "LOC pb: pushing this pushbutton arms, engages, or disengages the LOC mode.",
         ],
       },
     ],
@@ -323,7 +334,7 @@ const SIS_05_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "El uso del AP/FD y del A/THR en vuelo, y los callouts del FMA, están en SOP-01 y SOP-09.",
+      text: "A/THR active range: from IDLE (0) up to CL with both engines operating, or up to MCT with one engine inoperative. FMA displays A/THR in blue when armed and in white when active.",
     },
   },
   // ── C. Navegación (ATA 34) ───────────────────────────────────────────────
@@ -362,7 +373,7 @@ const SIS_05_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "5.13 Panel ADIRS",
     subtitle: "ATA 34 · ADIRS Controls",
-    leftPct: 45,
+    leftPct: 50,
     leftTitle: "ADIRS CONTROL PANEL (DSC-34-NAV-10)",
     rightTitle: "ADIRS PANEL",
     image: fig("adirs_panel"),
@@ -372,11 +383,12 @@ const SIS_05_SLIDES: MccSlideSpec[] = [
       {
         heading: "ADIRS control panel",
         paragraph:
-          "One ADIRS control panel on the overhead panel for selection of modes (NAV, ATT, OFF) and for display of ADIRS data.",
+          "The ADIRS CDU on the overhead panel permits selection of power supplies, selection and display of navigation data, status and fault indication, and backup manual IRS initialization.",
         bullets: [
           "IR MODE selector (one per ADIRU): NAV, ATT or OFF.",
           "IR and ADR pushbuttons with FAULT lights.",
           "DATA and SYS selectors and display.",
+          "ON BAT light: batteries supply at least one ADIRU. Also comes on for a few seconds at the beginning of a complete IRS alignment (not during a fast alignment).",
         ],
       },
     ],
