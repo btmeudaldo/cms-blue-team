@@ -30,6 +30,7 @@ import { MCC_SOP_14, SOP_14_SLIDE_COUNT } from "./mcc/sop-14";
 import { MCC_SIS_01, SIS_01_SLIDE_COUNT } from "./mcc/sis-01";
 import { MCC_SIS_02, SIS_02_SLIDE_COUNT } from "./mcc/sis-02";
 import { MCC_SIS_03, SIS_03_SLIDE_COUNT } from "./mcc/sis-03";
+import { MCC_SIS_04, SIS_04_SLIDE_COUNT } from "./mcc/sis-04";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -754,6 +755,36 @@ describe("SIS-03", () => {
   it("excludes optional equipment, airlines, other types and registrations", () => {
     const htmlNoUrls = MCC_SIS_03.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).not.toMatch(/\b(?:FTIS|ACSC|RPCU)\b|cargo heating|rain repellent/i);
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("SIS-04", () => {
+  const slides = MCC_SIS_04.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable lesson (2.5 min/slide) placed right after SIS-03", () => {
+    expect(MCC_SIS_04.min_seconds).toBe(mccMinSeconds(SIS_04_SLIDE_COUNT));
+    expect(slides).toHaveLength(SIS_04_SLIDE_COUNT);
+    expect(MCC_SIS_04.sequence_order).toBe(MCC_SIS_03.sequence_order + 1);
+    expect(MCC_SIS_04.module_title).toBe(MCC_MODULES.SYSTEMS);
+  });
+
+  it("uses only FCOM figures hosted on Hostalia and keeps the source in the comment", () => {
+    const images = [...MCC_SIS_04.content_html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
+    expect(images).toHaveLength(SIS_04_SLIDE_COUNT);
+    for (const url of images) {
+      expect(url).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/fcom_a320_sis4_[a-z_]+\.webp\?v=\d+$/);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE SIS-04\.\d+: [^>]*\| Source: FCOM A320 [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("excludes optional equipment, airlines, other types and registrations", () => {
+    const htmlNoUrls = MCC_SIS_04.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/bulk cargo|four\)? full-face|\(or four/i);
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });
