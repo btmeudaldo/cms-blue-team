@@ -35,6 +35,7 @@ import { MCC_SIS_05, SIS_05_SLIDE_COUNT } from "./mcc/sis-05";
 import { MCC_SIS_06, SIS_06_SLIDE_COUNT } from "./mcc/sis-06";
 import { MCC_VAAF_T1, VAAF_T1_SLIDE_COUNT } from "./mcc/vaaf-t1";
 import { MCC_VAAF_T2, VAAF_T2_SLIDE_COUNT } from "./mcc/vaaf-t2";
+import { MCC_VAAF_T3, VAAF_T3_SLIDE_COUNT } from "./mcc/vaaf-t3";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -917,5 +918,37 @@ describe("VAAF-T2", () => {
     const htmlNoUrls = MCC_VAAF_T2.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
     expect(htmlNoUrls).not.toMatch(/\bLido\b|\bOM ?[AB]\b|\bOMA\b|FlySmart|Marseille|Montpellier/i);
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|express|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("VAAF-T3", () => {
+  const slides = MCC_VAAF_T3.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable lesson (2.5 min/slide) placed right after VAAF-T2", () => {
+    expect(MCC_VAAF_T3.min_seconds).toBe(mccMinSeconds(VAAF_T3_SLIDE_COUNT));
+    expect(slides).toHaveLength(VAAF_T3_SLIDE_COUNT);
+    expect(MCC_VAAF_T3.sequence_order).toBe(MCC_VAAF_T2.sequence_order + 1);
+    expect(MCC_VAAF_T3.module_title).toBe(MCC_MODULES.VAAF);
+  });
+
+  it("uses only figures hosted on Hostalia and keeps the source in the comment", () => {
+    const images = [...MCC_VAAF_T3.content_html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
+    expect(images).toHaveLength(VAAF_T3_SLIDE_COUNT);
+    for (const url of images) {
+      expect(url).toMatch(
+        /^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/(fcom_a320_(sis|sis4|sis6|int)_[a-z0-9_]+\.webp\?v=\d+|p5\d{2}_elements_of_aerodynamics\.webp|p600_elements_of_aerodynamics\.webp)$/,
+      );
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE VAAF-T3\.\d+: [^>]*\| Source: PDP Jan 2024 UPRT [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("uses only the A320 VA figure and excludes other types, airlines and registrations", () => {
+    expect(MCC_VAAF_T3.content_html).not.toMatch(/p(598|599|601|602|603|604|605)_elements_of_aerodynamics/);
+    const htmlNoUrls = MCC_VAAF_T3.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a300|a310|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });

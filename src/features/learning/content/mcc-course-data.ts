@@ -25,6 +25,7 @@ import { MCC_SIS_05 } from "./mcc/sis-05.ts";
 import { MCC_SIS_06 } from "./mcc/sis-06.ts";
 import { MCC_VAAF_T1 } from "./mcc/vaaf-t1.ts";
 import { MCC_VAAF_T2 } from "./mcc/vaaf-t2.ts";
+import { MCC_VAAF_T3 } from "./mcc/vaaf-t3.ts";
 
 export const MCC_COURSE_ID = "a3200000-0000-0000-0000-000000000320";
 export const MCC_COURSE_SLUG = "aps-mcc-a320";
@@ -3297,7 +3298,7 @@ export const MCC_LEGACY_LESSONS = [
 export const MCC_SIS_LESSONS: MccLesson[] = [MCC_SIS_01, MCC_SIS_02, MCC_SIS_03, MCC_SIS_04, MCC_SIS_05, MCC_SIS_06];
 
 /** Bloque VAAF teórico (limitaciones, performance, planificación y UPRT). */
-export const MCC_VAAF_LESSONS: MccLesson[] = [MCC_VAAF_T1, MCC_VAAF_T2];
+export const MCC_VAAF_LESSONS: MccLesson[] = [MCC_VAAF_T1, MCC_VAAF_T2, MCC_VAAF_T3];
 
 /** Nueva estructura basada en el PDP Jan 2024 (docs/mcc/08_ARQUITECTURA_PDP.md); al final, el bloque SIS. */
 /** Módulo de introducción (FCTM, filosofía Airbus): va antes de las SOP. */
