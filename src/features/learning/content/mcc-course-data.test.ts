@@ -29,6 +29,7 @@ import { MCC_SOP_13, SOP_13_SLIDE_COUNT } from "./mcc/sop-13";
 import { MCC_SOP_14, SOP_14_SLIDE_COUNT } from "./mcc/sop-14";
 import { MCC_SIS_01, SIS_01_SLIDE_COUNT } from "./mcc/sis-01";
 import { MCC_SIS_02, SIS_02_SLIDE_COUNT } from "./mcc/sis-02";
+import { MCC_SIS_03, SIS_03_SLIDE_COUNT } from "./mcc/sis-03";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -723,6 +724,36 @@ describe("SIS-02", () => {
     expect(htmlNoUrls).toContain("18 729");
     expect(htmlNoUrls).toContain("5 435");
     expect(htmlNoUrls).not.toMatch(/\bACT\b|Additional Center Tank/);
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("SIS-03", () => {
+  const slides = MCC_SIS_03.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable lesson (2.5 min/slide) placed right after SIS-02", () => {
+    expect(MCC_SIS_03.min_seconds).toBe(mccMinSeconds(SIS_03_SLIDE_COUNT));
+    expect(slides).toHaveLength(SIS_03_SLIDE_COUNT);
+    expect(MCC_SIS_03.sequence_order).toBe(MCC_SIS_02.sequence_order + 1);
+    expect(MCC_SIS_03.module_title).toBe(MCC_MODULES.SYSTEMS);
+  });
+
+  it("uses only FCOM figures hosted on Hostalia and keeps the source in the comment", () => {
+    const images = [...MCC_SIS_03.content_html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
+    expect(images).toHaveLength(SIS_03_SLIDE_COUNT);
+    for (const url of images) {
+      expect(url).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/fcom_a320_sis3_[a-z_]+\.webp\?v=\d+$/);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE SIS-03\.\d+: [^>]*\| Source: FCOM A320 [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("excludes optional equipment, airlines, other types and registrations", () => {
+    const htmlNoUrls = MCC_SIS_03.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\b(?:FTIS|ACSC|RPCU)\b|cargo heating|rain repellent/i);
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });
