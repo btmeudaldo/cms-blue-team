@@ -330,6 +330,16 @@ it("shows the lateral documentation toggle button for C172 courses and keeps dra
   expect(html).not.toContain("Biblioteca Oficial de Flota");
 });
 
+it("hides the POH documentation button for the APS MCC course even when course docs are provided", () => {
+  const html = renderToStaticMarkup(
+    render({
+      courseId: "aps-mcc-a320",
+      courseDocs: [{ category: "Docs", title: "Doc", url: "https://example.com/doc.pdf", badge: "PDF" }],
+    }),
+  );
+  expect(html).not.toContain("Documentación POH");
+});
+
 it("renders slide pagination when content contains pagebreaks", () => {
   const html = renderToStaticMarkup(
     render({

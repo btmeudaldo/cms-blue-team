@@ -169,8 +169,10 @@ export function LessonPlayer({
     courseId === C172_COURSE_SLUG || courseId === C172_COURSE_ID;
   const isMccCourse =
     courseId === MCC_COURSE_SLUG || courseId === MCC_COURSE_ID;
-  const activeDocs =
-    courseDocs ?? (isC172Course ? C172_DOCUMENTATION : undefined);
+  // The APS MCC course has no POH documentation drawer (hidden on request).
+  const activeDocs = isMccCourse
+    ? undefined
+    : (courseDocs ?? (isC172Course ? C172_DOCUMENTATION : undefined));
   const [isDocsOpen, setIsDocsOpen] = useState(false);
 
   // Interactive Glossary State (hover + click/tap + drawer)
