@@ -1,5 +1,5 @@
 /**
- * SOP-14 — Avisos de trayectoria: EGPWS, pérdida, TCAS y windshear (0,75 h).
+ * SOP-14 — Avisos de trayectoria: EGPWS, pérdida, TCAS y windshear (40 min · 0,67 h).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Fuentes: Airbus Tutorial PDP Jan 2024 — Abnormal and Emergency Procedures: EGPWS (págs. 461–482),
@@ -56,7 +56,7 @@ const SOP_14_SLIDES: MccSlideSpec[] = [
         bullets: [
           "The purpose of the Ground Proximity Warning System (GPWS), also named Terrain Awareness Warning System (TAWS), is to warn the flight crew of potentially hazardous situations, such as a collision with terrain.",
           "Five basic modes active up to radio height of 2 500 ft: excessive rate of descent (Mode 1), excessive terrain closure rate (Mode 2), altitude loss after takeoff or go-around (Mode 3), terrain clearance not sufficient, if not in landing configuration (Mode 4), excessive descent below the glide slope (Mode 5).",
-          "A predictive GPWS function, based on a GPWS database, to display terrain information, provided by Honeywell through Enhanced GPWS (EGPWS).",
+          "A predictive GPWS function, based on a GPWS database, to display terrain information (Enhanced GPWS — EGPWS).",
         ],
       },
     ],

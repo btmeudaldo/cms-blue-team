@@ -1,5 +1,5 @@
 /**
- * SOP-10 — Procedimientos normales II: ILS raw data y operaciones de baja visibilidad (0,5 h).
+ * SOP-10 — Procedimientos normales II: ILS raw data y operaciones de baja visibilidad (25 min · 0,42 h).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Fuentes: Airbus Tutorial PDP Jan 2024 — Normal Procedures: ILS Raw Data (págs. 341–369) y Low
@@ -24,7 +24,7 @@ const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SOP-10";
 
 /** Versión común de caché para las láminas de esta lección. */
-const IMG_VERSION = 1795625000;
+const IMG_VERSION = 1795625001;
 const chapter = (page: number) => (page <= 369 ? "ils_raw_data" : "low_visibility_operations");
 const CHAPTER_NAME: Record<string, string> = {
   ils_raw_data: "ILS Raw Data",
@@ -134,8 +134,7 @@ const SOP_10_SLIDES: MccSlideSpec[] = [
       {
         heading: "Low visibility takeoff (LVTO)",
         bullets: [
-          "A Low Visibility takeoff (LVTO) is a takeoff where the runway visual range is less than 550 meters.",
-          "Below 400 meters, training and authorization are required.",
+          "A Low Visibility Takeoff (LVTO) is a takeoff with a runway visual range (RVR) lower than 400 m (specific training, crew qualification and operational approval are required; minimum RVR 125 m).",
         ],
       },
       {

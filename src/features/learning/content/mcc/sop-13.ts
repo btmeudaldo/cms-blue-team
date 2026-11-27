@@ -1,6 +1,6 @@
 /**
  * SOP-13 — Emergencias II: descenso de emergencia, humo, incapacitación, fallo de FMGC, leyes de mandos y
- * velocidad poco fiable (0,75 h).
+ * velocidad poco fiable (40 min · 0,67 h).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Fuentes: Airbus Tutorial PDP Jan 2024 — Abnormal and Emergency Procedures: Dual FMGC Failure (págs.
@@ -13,7 +13,7 @@
  * información complementaria del FCOM en inglés y literal, solo de bloques aplicables a la variante
  * A320ceo CFM56-5B (grupo EC-ILQ).
  * La variante de referencia no lleva BUSS ni NAV B/UP en el MCDU: no se usan las págs. 454, 458, 460 y
- * 563, y en p559 se ha tapado la línea "use reversible BUSS (if installed)". En p540 se ha aplanado la
+ * 563, y en p559 se ha tapado la línea "use reversible BUSS (if installed)" y en p459 la mención al equipo opcional ADF. En p540 se ha aplanado la
  * franja de ruido del efecto de animación del PDF.
  * Láminas no usadas: portadas 451, 483, 512, 516 y 534; 491 y 513 (ya en SOP-02 y SOP-09); 535 y 539
  * (texto de otros tipos); resto, texto redundante.
@@ -26,7 +26,7 @@ const PDP_IMG = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SOP-13";
 
 /** Versión común de caché para las láminas de esta lección (pie recortado). */
-const IMG_VERSION = 1795628000;
+const IMG_VERSION = 1795628001;
 const chapter = (page: number) =>
   page <= 460
     ? "dual_fmgc_failure"
@@ -309,7 +309,7 @@ const SOP_13_SLIDES: MccSlideSpec[] = [
         bullets: [
           "The ND shows \"MAP NOT AVAIL\"",
           "The MCDU reverts to the A/C STATUS page, with \"PLEASE WAIT\" displayed in the scratchpad",
-          "Autotuning of Navaids (VOR, DME, ADF) are lost on the failed side",
+          "Autotuning of Navaids (VOR, DME) are lost on the failed side",
           "AP and managed modes may be transiently lost (reversion to HDG/V/S or TRK/FPA)",
           "If the flight crew presses a key while the scratchpad is showing \"PLEASE WAIT\", there is no change at MCDU level. This is normal, and the crew should not respond by pulling the MCDU circuit breaker.",
         ],
@@ -338,7 +338,7 @@ const SOP_13_SLIDES: MccSlideSpec[] = [
       {
         heading: "FM resynchronization",
         paragraph:
-          "One single resynchronization lasts approximately 25 s. If 5 several resynchronizations occur within 5 min, independent mode commences.",
+          "One single resynchronization lasts approximately 25 s. If 5 resynchronizations occur within 5 min, independent mode commences.",
       },
     ],
     alert: {

@@ -1,5 +1,5 @@
 /**
- * SOP-11 — Gestión de situaciones anormales: ECAM, OEB, QRH y uso del Summary (0,75 h).
+ * SOP-11 — Gestión de situaciones anormales: ECAM, OEB, QRH y uso del Summary (40 min · 0,67 h).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Fuentes: Airbus Tutorial PDP Jan 2024 — Abnormal and Emergency Procedures: Management of Abnormal

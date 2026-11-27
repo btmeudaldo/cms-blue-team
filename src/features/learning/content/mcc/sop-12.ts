@@ -1,6 +1,6 @@
 /**
  * SOP-12 — Emergencias I: despegue abortado, evacuación, fallo de motor tras V1 y en crucero, todos los
- * motores parados y aviso de baja energía (1 h).
+ * motores parados y aviso de baja energía (50 min · 0,83 h).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Fuentes: Airbus Tutorial PDP Jan 2024 — Abnormal and Emergency Procedures: All Engine Flameout (págs.
@@ -230,7 +230,7 @@ const SOP_12_SLIDES: MccSlideSpec[] = [
     },
     alert: {
       level: "NOTE",
-      text: "Takeoff includes TOGA, FLEX, and DERATE thrust modes.",
+      text: "Takeoff includes TOGA and FLEX thrust modes.",
     },
   },
   {
