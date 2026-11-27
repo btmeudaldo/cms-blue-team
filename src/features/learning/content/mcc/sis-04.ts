@@ -1,5 +1,5 @@
 /**
- * SIS-04 — Mandos de vuelo, tren, puertas y oxígeno (0,75 h aprox.).
+ * SIS-04 — Mandos de vuelo, tren, puertas y oxígeno (0,67 h · 40 min).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Sustituye a CTA-4. Fuentes: FCOM 23MAR26 DSC-27 (Flight Controls), DSC-32 (Landing Gear), DSC-52 (Doors) y
@@ -7,7 +7,7 @@
  * figura se ha comprobado con `scratch/fcom_fig_applic.py`.
  * Sin repetir: la filosofía fly-by-wire, las protecciones y el sidestick están en INT-01; las leyes degradadas en
  * situación anormal, en SOP-13; las máscaras de oxígeno de cabina, en SOP-13. Aquí, la arquitectura y los
- * paneles/páginas ECAM. Sin equipos opcionales (bulk cargo door, cuarta máscara).
+ * paneles/páginas ECAM. Sin equipos opcionales (puerta de carga trasera tapada en la figura, cuarta máscara).
  */
 import { MCC_MODULES, joinSlides, mccMinSeconds, mccVideoSeconds, type MccLesson, type MccSlideSpec } from "./slide-builder.ts";
 
@@ -16,7 +16,7 @@ const IMG_BASE = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SIS-04";
 
 /** Versión común de caché de las figuras FCOM de esta lección. */
-const IMG_VERSION = 1795636000;
+const IMG_VERSION = 1795636001;
 const fig = (name: string) => `${IMG_BASE}/fcom_a320_sis4_${name}.webp?v=${IMG_VERSION}`;
 const src = (sections: string) => `Source: FCOM A320 ${sections}`;
 
@@ -124,12 +124,14 @@ const SIS_04_SLIDES: MccSlideSpec[] = [
     table: {
       headers: ["Indication", "Meaning"],
       rows: [
-        ["(1) Spoilers/Speed brakes", "Green: spoiler deflected by more than 2.5 ° or retracted. Amber: spoiler fault deflected or retracted. Amber ×: spoiler position not valid."],
-        ["(2) Hydraulic system pressure", "It is normally green. It becomes amber, if the hydraulic system's pressure decreases."],
-        ["(3) ELAC/SEC", "Normally green. Changes to amber if there is a failure in the ELAC or the SEC, or if ELAC or SEC pushbutton is off, or if both FCDCs fail."],
-        ["(4) Aileron position", "White scale and green index. It changes to amber, when neither (green nor blue) servojack is available."],
-        ["(5) Aileron and elevator actuators", "“G” and “B” normally green. Amber in case of a green or blue hydraulic system low pressure; the partial box also changes to amber, if the associated computer or actuator fails."],
-        ["(6) Elevator position", "White scale and green index. The index becomes amber, when both associated actuators are not available."],
+        ["(1) Spoilers / Speed brakes", "Green: deflected > 2.5 ° or retracted. Amber: fault. Amber ×: not valid."],
+        ["(2) Hydraulic pressure", "Normally green. Becomes amber if hydraulic system pressure decreases."],
+        ["(3) ELAC / SEC", "Normally green. Amber if computer fails, pb-sw is OFF, or both FCDCs fail."],
+        ["(4) Aileron position", "White scale and green index. Amber when neither (G nor B) servojack is available."],
+        ["(5) AIL / ELEV actuators", "“G” and “B” green; amber on low hydraulic press. Partial box amber if computer/actuator fails."],
+        ["(6) Elevator position", "White scale and green index. Index amber when both actuators are unavailable."],
+        ["(7) Pitch trim position", "Green numbers; amber if G and Y hydraulic pressure decreases. “PITCH TRIM” white; amber if jammed."],
+        ["(8) Rudder & travel limiter", "Normally green. Rudder symbol amber if G, B, and Y hydraulic pressures are low."],
       ],
     },
     alert: {
@@ -264,11 +266,11 @@ const SIS_04_SLIDES: MccSlideSpec[] = [
     sourceRef: src("DSC-32-10-40 Landing Gear Indicator Panel / Landing Gear Selector Lever"),
     cards: [
       {
-        heading: "Landing gear selector lever",
+        heading: "(1) Landing gear selector lever · (2) Red arrow",
         bullets: [
-          "A two-position selector lever sends electrical signals to the two LGCIUs, which control the green hydraulic supply to the landing gear system by means of selector valves.",
+          "(1) Two-position selector lever sends electrical signals to the two LGCIUs, which control the green hydraulic supply to the landing gear system by means of selector valves.",
           "The flight crew must always move the L/G lever in one continuous movement (i.e. with no stop between both positions).",
-          "When the flight crew selects UP or DOWN (and if the airspeed is below 260 kt): all landing gear doors open, each landing gear moves to the selected position, all landing gear doors close.",
+          "When UP or DOWN is selected (< 260 kt): all doors open, each gear moves to the selected position, all doors close. (2) Red arrow lights up if gear is not locked down in landing configuration.",
         ],
       },
       {
@@ -285,7 +287,7 @@ const SIS_04_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "4.10 Página ECAM WHEEL",
     subtitle: "ATA 32 · WHEEL SD Page",
-    leftPct: 45,
+    leftPct: 50,
     leftTitle: "WHEEL SD PAGE (DSC-32)",
     rightTitle: "ECAM WHEEL PAGE",
     image: fig("ecam_wheel"),
@@ -302,10 +304,11 @@ const SIS_04_SLIDES: MccSlideSpec[] = [
         ],
       },
       {
-        heading: "(3) UP LOCK · (4) L/G CTL",
+        heading: "(2) Doors · (3) UP LOCK · (4) L/G CTL",
         bullets: [
-          "UP LOCK appears amber along with a caution on the ECAM if the landing gear uplock is engaged when the landing gear is down locked.",
-          "L/G CTL appears amber along with an ECAM caution if the landing gear lever and the landing gear position do not agree.",
+          "(2) Landing gear door position: green line when doors fully closed; amber when not fully closed; amber crosses if position not valid.",
+          "(3) UP LOCK appears amber along with an ECAM caution if the landing gear uplock is engaged when the landing gear is down locked.",
+          "(4) L/G CTL appears amber along with an ECAM caution if the landing gear lever and the landing gear position do not agree.",
         ],
       },
     ],
@@ -382,10 +385,10 @@ const SIS_04_SLIDES: MccSlideSpec[] = [
     subtitle: "ATA 32 · Auto Brake",
     leftPct: 58,
     leftTitle: "AUTO BRAKE (DSC-32-30-10)",
-    rightTitle: "ACCU / BRAKES PRESSURE",
+    rightTitle: "AUTO/BRK PANEL",
     image: fig("autobrake"),
-    imageAlt: "Triple indicator: accumulator pressure and left and right brake pressure",
-    sourceRef: src("DSC-32-30-10 Auto Brake - System Arming / Activation / Disarming"),
+    imageAlt: "AUTO/BRK panel (3) with LO, MED and MAX pushbuttons (DECEL and ON)",
+    sourceRef: src("DSC-32-30-10 Auto Brake - System Arming / Activation / Disarming / DSC-32-30-20 Panel"),
     cards: [
       {
         heading: "Purpose",
@@ -395,8 +398,8 @@ const SIS_04_SLIDES: MccSlideSpec[] = [
       {
         heading: "Arming · Activation · Disarming",
         bullets: [
-          "Arming (LO, MED or MAX): green pressure available · anti-skid electrically-powered · no failure in the braking system · at least one ADIRU available. MAX autobrake mode cannot be armed in flight.",
-          "Activation: when the command for ground spoilers extension is detected (LO and MED), and with wheel speed above 40 kt (MAX). For autobrake to activate, at least two SEC's must be operative.",
+          "Arming ((3) LO, MED or MAX): green pressure available · anti-skid electrically-powered · no failure in the braking system · at least one ADIRU available. MAX autobrake mode cannot be armed in flight.",
+          "Activation: when ground spoilers extension is detected (LO and MED), and with wheel speed > 40 kt (MAX); at least two SECs must be operative. In an acceleration stop below 72 kt, automatic braking will not activate because ground spoilers will not extend.",
           "Disarming: pushbutton pressed · arming condition lost · after take-off/touch and go · enough deflection of at least one brake pedal.",
         ],
       },
@@ -413,7 +416,7 @@ const SIS_04_SLIDES: MccSlideSpec[] = [
     rightTitle: "DOORS AND EXITS",
     image: fig("doors"),
     imageAlt: "Doors and exits: passenger doors, cabin emergency exits, cockpit emergency exits, cargo and avionics doors",
-    sourceRef: src("DSC-52-10-10 Description"),
+    sourceRef: src("DSC-52-10-10 Description / DSC-52-10-20 Passenger Doors"),
     cards: [
       {
         heading: "The A320's fuselage has",
@@ -425,11 +428,15 @@ const SIS_04_SLIDES: MccSlideSpec[] = [
           "Four avionic compartment access doors.",
         ],
       },
+      {
+        heading: "Passenger doors (DSC-52-10-20)",
+        bullets: [
+          "Four plug-type doors that open outward and forward (two on each side: FWD and AFT).",
+          "Operated from inside or outside; normal operation is manual, with hydraulic damping.",
+          "Each door has a slide stowed in a container attached to the inboard lower side of the door, and a cabin pressure warning light.",
+        ],
+      },
     ],
-    alert: {
-      level: "NOTE",
-      text: "El estado de puertas y salidas se ve en la página ECAM DOOR/OXY (ver SIS-01). La evacuación y el panel EVAC están en SOP-12.",
-    },
   },
   {
     comment: "SLIDE SIS-04.15: Oxygen — system and cockpit fixed oxygen",

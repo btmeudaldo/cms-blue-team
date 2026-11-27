@@ -1,5 +1,5 @@
 /**
- * SIS-03 — Neumático, aire acondicionado, presurización, APU, fuego, hielo y lluvia (0,75 h aprox.).
+ * SIS-03 — Neumático, aire acondicionado, presurización, APU, fuego, hielo y lluvia (0,67 h · 40 min).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Sustituye a CTA-3. Fuentes: FCOM 23MAR26 DSC-36 (Pneumatic), DSC-21 (Air Cond/Press), DSC-49 (APU),
@@ -16,7 +16,7 @@ const IMG_BASE = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SIS-03";
 
 /** Versión común de caché de las figuras FCOM de esta lección. */
-const IMG_VERSION = 1795635000;
+const IMG_VERSION = 1795635001;
 const fig = (name: string) => `${IMG_BASE}/fcom_a320_sis3_${name}.webp?v=${IMG_VERSION}`;
 const src = (sections: string) => `Source: FCOM A320 ${sections}`;
 
@@ -93,17 +93,17 @@ const SIS_03_SLIDES: MccSlideSpec[] = [
     sourceRef: src("DSC-36-10-30 APU Bleed Air Supply / DSC-36-10-40 Crossbleed / DSC-36-10-50 Leak Detection / DSC-36-20 Overhead Panel"),
     cards: [
       {
-        heading: "APU bleed",
+        heading: "(2) APU bleed",
         paragraph:
           "When the flight crew selects ON the APU BLEED pb-sw, APU bleed air supplies the pneumatic system, if the APU speed is above 95 %. This opens the crossbleed valve and closes the engine bleed automatically.",
       },
       {
-        heading: "Crossbleed",
+        heading: "(3) Crossbleed",
         paragraph:
           "The X-BLEED rotary selector controls the crossbleed valve. In AUTO, the valve opens when the system uses APU bleed air and closes if the system detects an air leak (except during engine start). OPEN / SHUT select the valve manually.",
       },
       {
-        heading: "Leak detection",
+        heading: "Leak detection · (1) ENG 1(2) BLEED",
         bullets: [
           "Leak detection loops detect any overheating near the hot air ducts in the fuselage, pylons, and wings (single loop for pylon and APU, double loop for the wing).",
           "A wing or pylon leak closes the bleed valve on the related side and the x-bleed valve (except during an engine start), and the associated FAULT light comes on.",
@@ -241,15 +241,15 @@ const SIS_03_SLIDES: MccSlideSpec[] = [
     subtitle: "ATA 21 · System Operation",
     leftPct: 55,
     leftTitle: "AUTOMATIC PRESSURE CONTROL MODE (DSC-21-20-30)",
-    rightTitle: "ECAM CRUISE PAGE — AIR",
+    rightTitle: "CABIN PRESS PANEL (25VU)",
     image: fig("press_overhead"),
-    imageAlt: "ECAM cruise page air section: landing elevation, ΔP, cabin vertical speed and cabin altitude",
-    sourceRef: src("DSC-21-20-10 Automatic Operation / DSC-21-20-30 Automatic Pressure Control Mode"),
+    imageAlt: "CABIN PRESS overhead panel (25VU): (1) LDG ELEV, (2) MODE SEL, (3) MAN V/S CTL and (4) DITCHING",
+    sourceRef: src("DSC-21-20-10 Automatic Operation / DSC-21-20-30 Automatic Pressure Control Mode / DSC-21-20-40 Overhead Panel"),
     cards: [
       {
         heading: "Automatic operation",
         paragraph:
-          "The flight crew monitors the operation of the system, but does nothing to control it. Air pressure in the cabin follows external schedules that the system receives from the FMGS. When FMGS data is not available, the crew only needs to select the landing field elevation.",
+          "The flight crew monitors the operation of the system, but does nothing to control it. Air pressure in the cabin follows external schedules that the system receives from the FMGS. When FMGS data is not available, the crew only needs to select the landing field elevation using (1) LDG ELEV.",
       },
       {
         heading: "Automatic pressure control mode",
@@ -262,7 +262,7 @@ const SIS_03_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "In manual mode, the flight crew controls the cabin altitude via the manual motor of the outflow valve, by operating controls on the pressurization control panel.",
+      text: "In manual mode ((2) MODE SEL MAN), the flight crew controls cabin altitude via the outflow valve manual motor using (3) MAN V/S CTL; (4) DITCHING closes valves below waterline.",
     },
   },
   // ── C. APU (ATA 49) ──────────────────────────────────────────────────────
@@ -297,16 +297,16 @@ const SIS_03_SLIDES: MccSlideSpec[] = [
     ],
   },
   {
-    comment: "SLIDE SIS-03.10: APU controls and ECAM APU page",
+    comment: "SLIDE SIS-03.10: APU overhead panel controls",
     eyebrow: EYEBROW,
-    title: "3.10 APU: MASTER SW, START y página ECAM",
+    title: "3.10 APU: panel de techo (MASTER SW y START)",
     subtitle: "ATA 49 · Controls and Indicators",
     leftPct: 55,
     leftTitle: "APU PANEL (DSC-49-20)",
-    rightTitle: "ECAM APU PAGE",
+    rightTitle: "APU OVERHEAD PANEL",
     image: fig("ecam_apu"),
-    imageAlt: "ECAM APU page: AVAIL, APU GEN, APU bleed, N, EGT, fuel low pressure, flap open and low oil level",
-    sourceRef: src("DSC-49-20 Overhead Panel / ECAM APU Page"),
+    imageAlt: "APU overhead panel with MASTER SW pb-sw and START pb-sw pushbuttons",
+    sourceRef: src("DSC-49-20 Overhead Panel"),
     cards: [
       {
         heading: "MASTER SW pb-sw",
