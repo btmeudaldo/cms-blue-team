@@ -1,5 +1,5 @@
 /**
- * SIS-02 — Eléctrico, hidráulico y combustible (0,75 h).
+ * SIS-02 — Eléctrico, hidráulico y combustible (0,67 h · 40 min).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Sustituye a CTA-2. Fuentes: FCOM A320 DSC-24 (Electrical), DSC-29 (Hydraulic) y DSC-28 (Fuel), solo
@@ -8,7 +8,8 @@
  * Criterio de redacción: a la derecha, la figura del propio FCOM (imagen incrustada, sin cabecera ni
  * marcas); a la izquierda, el texto FCOM literal en inglés que la explica.
  * Correcciones respecto a CTA-2: depósitos interiores y exteriores con las cantidades usables del grupo
- * EC-ILQ (DSC-28-10-20, densidad 0.785 kg/l); sin ACT (opcional, tapado en las figuras de combustible).
+ * EC-ILQ (DSC-28-10-20, densidad 0.785 kg/l); sin ACT (opcional, tapado en las figuras de combustible);
+ * sin DC BUS Ent (IFE opcional, tapado en el esquema eléctrico).
  * La generación de emergencia (RAT, EMER GEN) está en SOP-12 y la configuración de humo en SOP-13; aquí
  * solo la arquitectura y las reconfiguraciones que esas lecciones no tratan.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
@@ -20,7 +21,7 @@ const IMG_BASE = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SIS-02";
 
 /** Versión común de caché de las figuras FCOM de esta lección. */
-const IMG_VERSION = 1795631000;
+const IMG_VERSION = 1795631001;
 const fig = (name: string) => `${IMG_BASE}/fcom_a320_sis_${name}.webp?v=${IMG_VERSION}`;
 const src = (sections: string) => `Source: FCOM A320 ${sections}`;
 
@@ -113,7 +114,7 @@ const SIS_02_SLIDES: MccSlideSpec[] = [
         heading: "Failure of one engine generator",
         bullets: [
           "The system automatically replaces the failed generator, with the APU GEN, if available, or other engine generator.",
-          "Part of the galley load and the DC BUS Ent are automatically shed.",
+          "Part of the galley load is automatically shed.",
         ],
       },
       {
@@ -126,7 +127,7 @@ const SIS_02_SLIDES: MccSlideSpec[] = [
     ],
     alert: {
       level: "NOTE",
-      text: "One engine generator can supply the entire network, except the DC BUS Entertainment.",
+      text: "One engine generator can supply the entire network.",
     },
   },
   {
@@ -193,7 +194,7 @@ const SIS_02_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "2.6 Página ECAM ELEC",
     subtitle: "ATA 24 · ECAM ELEC Page",
-    leftPct: 45,
+    leftPct: 50,
     leftTitle: "ECAM ELEC PAGE (DSC-24-20)",
     rightTitle: "ECAM ELEC PAGE",
     image: fig("ecam_elec"),
@@ -201,15 +202,17 @@ const SIS_02_SLIDES: MccSlideSpec[] = [
     sourceRef: src("DSC-24-20 ECAM ELEC Page"),
     cards: [],
     table: {
-      headers: ["Indication", "Abnormal"],
+      headers: ["Callout · Indication", "Abnormal / threshold"],
       rows: [
-        ["Battery voltage", "Below 25 V, or above 31 V."],
-        ["Battery current", "Discharge current above 5 A."],
-        ["DC BAT", "Voltage equal to, or less than 25 V."],
-        ["Bus bar", "The corresponding bus bar is not powered. SHED appears when AC or DC SHED ESS BUS is shed."],
-        ["TR voltage", "Below 25 V, or above 31 V."],
-        ["TR current", "Equal to, or below 5 A."],
-        ["ESS TR", "Follows the logic of the TR 1(2) legend; the ESS TR contactor is open."],
+        ["(1)-(2) BAT 1(2) & current", "Voltage < 25 V or > 31 V; discharge current > 5 A."],
+        ["(3) DC BAT", "Voltage ≤ 25 V."],
+        ["(4) Bus bars", "Bus bar not powered. SHED appears when AC or DC SHED ESS BUS is shed."],
+        ["(5)-(6) TR 1(2) & ESS TR", "Voltage < 25 V or > 31 V; current ≤ 5 A; ESS TR contactor open."],
+        ["(7) EMER GEN", "Voltage < 110 V or > 120 V; frequency < 390 Hz or > 410 Hz."],
+        ["(8)-(9) GEN 1(2) & APU GEN", "Load > 100 %; voltage < 110 V or > 120 V; frequency < 390 Hz or > 410 Hz."],
+        ["(10) EXT PWR", "Voltage < 110 V or > 120 V; frequency < 390 Hz or > 410 Hz."],
+        ["(11) IDG 1(2)", "Oil outlet temp > 147 °C (pulsing advisory) or > 180 °C (OVHT); LO PR; DISC."],
+        ["(12) GALLEY SHED", "GALLEY pb-sw OFF, or main galleys shed (1 gen in flight, or 1 eng gen on ground)."],
       ],
     },
   },
@@ -318,7 +321,7 @@ const SIS_02_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "2.10 Página ECAM HYD",
     subtitle: "ATA 29 · ECAM HYD Page",
-    leftPct: 45,
+    leftPct: 55,
     leftTitle: "ECAM HYD PAGE (DSC-29-20)",
     rightTitle: "ECAM HYD PAGE",
     image: fig("ecam_hyd"),
@@ -326,17 +329,17 @@ const SIS_02_SLIDES: MccSlideSpec[] = [
     sourceRef: src("DSC-29-20 ECAM HYD Page"),
     cards: [],
     table: {
-      headers: ["Indication", "Meaning"],
+      headers: ["Callout · Indication", "Meaning"],
       rows: [
-        ["Reservoir quantity", "Green, unless the fluid level goes below the warning level (amber)."],
-        ["LO AIR PRESS", "Amber, with ECAM caution: reservoir air pressure below normal."],
-        ["Reservoir OVHT", "Amber, with ECAM caution: returning fluid temperature above normal."],
-        ["FIRE VALVE", "Cross line amber: the valve is fully closed."],
-        ["ELEC OVHT", "Amber if the electric pump for that system (blue or yellow) overheats."],
-        ["RAT", "White: stowed. Green: not stowed. Amber: stowing pressure applied, or RAT pump not available."],
-        ["PTU", "Green: AUTO, not transferring. Amber: PTU pb-sw OFF."],
-        ["ENG PUMP", "Cross line amber: PUMP pb-sw OFF. \"LO\" amber: pb-sw on and pressure low."],
-        ["System label", "Amber when pressure < 1 450 PSI."],
+        ["(1) Reservoir quantity", "Green; amber below warning level."],
+        ["(2)-(3) LO AIR PRESS / OVHT", "Amber (with ECAM caution): reservoir air press low, or return fluid temp high."],
+        ["(4) FIRE VALVE", "Cross line amber: fully closed (in line green: not fully closed)."],
+        ["(5)-(7) ELEC & OVHT", "ELEC amber: power supply fails; OVHT amber: B/Y electric pump overheats."],
+        ["(6) RAT", "White: stowed. Green: not stowed. Amber: stowing press or pump not available."],
+        ["(8) YELLOW ELEC PUMP", "White: OFF. Green: ON. Amber: ON with yellow low pressure."],
+        ["(9) PTU", "Green: AUTO (idle or supplying G/Y). Amber: PTU pb-sw OFF."],
+        ["(10)-(13) ENG PUMP & ID", "Cross line amber: OFF. \"LO\" amber: ON, low press. ID amber if N2 < idle."],
+        ["(11)-(12) System label & press", "Amber when system pressure < 1 450 PSI."],
       ],
     },
   },
@@ -429,7 +432,7 @@ const SIS_02_SLIDES: MccSlideSpec[] = [
         heading: "Feed sequence",
         bullets: [
           "The center tank feeds the engines, when the center tank pumps are not stopped by the control logic. The inner tanks feed the engines when the center tank pumps are stopped.",
-          "Each center tank pump stops, until approximately 500 kg (1 100 lb) of the fuel in its associated inner tank has been used.",
+          "When an inner tank reaches full level (overflow), each center tank pump stops until approximately 500 kg (1 100 lb) of the fuel in its associated inner tank has been used (when the fuel level reaches the underfull sensors).",
           "Each inner tank empties down to 750 kg (1 650 lb). The transfer valves then open and the outer tanks drain into the inner tanks. When open, the valves are latched open; they close at the next refueling.",
         ],
       },

@@ -1,5 +1,5 @@
 /**
- * SIS-01 — Generalidades, cabina, EIS y ECAM (0,75 h).
+ * SIS-01 — Generalidades, cabina, EIS y ECAM (0,67 h · 40 min).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Sustituye a CTA-1. Fuentes: FCOM A320 DSC-20 (Aircraft General) y DSC-31 (Indicating/Recording
@@ -8,7 +8,7 @@
  * Criterio de redacción: a la derecha, la figura del propio FCOM (imagen incrustada, sin cabecera ni
  * marcas); a la izquierda, el texto FCOM literal en inglés que la explica.
  * Correcciones respecto a CTA-1: altura 11.755 m y envergadura 34.1 m de la figura del FCOM; DUs de tubo
- * de rayos catódicos y DMC con canal EFIS y canal ECAM en esta variante; sin Golden Rules (ya en SOP-01),
+ * de rayos catódicos y DMC con canal EFIS y canal ECAM en esta variante; sin Golden Rules (ya en INT-03),
  * sin contenedores LD3 ni otros datos sin fuente. La clasificación de avisos, los botones del ECP y la
  * página STATUS están en SOP-11 y no se repiten.
  * Arquitectura: docs/mcc/08_ARQUITECTURA_PDP.md.
@@ -20,7 +20,7 @@ const IMG_BASE = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · SIS-01";
 
 /** Versión común de caché de las figuras FCOM de esta lección. */
-const IMG_VERSION = 1795630000;
+const IMG_VERSION = 1795630001;
 const fig = (name: string) => `${IMG_BASE}/fcom_a320_sis_${name}.webp?v=${IMG_VERSION}`;
 const src = (sections: string) => `Source: FCOM A320 ${sections}`;
 
@@ -291,7 +291,7 @@ const SIS_01_SLIDES: MccSlideSpec[] = [
     leftTitle: "AIRSPEED (DSC-31-40)",
     rightTitle: "AIRSPEED",
     image: fig("pfd_airspeed"),
-    imageAlt: "Airspeed scale with speed trend, target airspeed, ECON speed range, speed protection and Mach number",
+    imageAlt: "Airspeed scale in normal law and alternate/direct law: VMAX, VLS, Alpha Prot, Alpha MAX and VSW",
     sourceRef: src("DSC-31-40 Airspeed"),
     cards: [
       {
@@ -300,7 +300,7 @@ const SIS_01_SLIDES: MccSlideSpec[] = [
           "Speed trend: the tip indicates the speed that the aircraft will reach in 10 s if its acceleration remains constant.",
           "Target airspeed: managed (magenta triangle) or selected on the FCU (blue triangle).",
           "VLS: the top of the amber strip; the lowest selectable speed providing an appropriate margin to the stall speed. Inhibited from touchdown until 10 s after liftoff.",
-          "Alpha protection speed (black and amber strip) and alpha max speed (red strip): displayed when in pitch normal law.",
+          "Alpha protection speed (black and amber strip) and alpha max speed (red strip): displayed when in pitch normal law. In alternate and direct law, stall warning speed (VSW, red and black strip) replaces alpha protection.",
           "VMAX: the lower end of a red and black strip; the lowest of VMO (or the speed corresponding to MMO), VLE and VFE.",
           "F and S: minimum flap and slat retraction speeds. VFE next: amber = for the next flap lever position.",
         ],
@@ -370,7 +370,7 @@ const SIS_01_SLIDES: MccSlideSpec[] = [
     rightTitle: "EFIS CONTROL PANEL",
     image: fig("efis_cp"),
     imageAlt: "EFIS control panel: barometer reference, FD and LS pushbuttons, mode and range selectors, ADF/VOR switches, option pushbuttons",
-    sourceRef: src("DSC-31-50 EFIS Control Panel"),
+    sourceRef: src("DSC-31-50 EFIS Control Panel / DSC-31-45 PLAN Mode"),
     cards: [
       {
         heading: "Barometer reference",
