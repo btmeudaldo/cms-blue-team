@@ -1,5 +1,5 @@
 /**
- * VAAF-T3 — UPRT I: monitorización activa, leyes de mandos y aerodinámica (0,7 h aprox.).
+ * VAAF-T3 — UPRT I: monitorización activa, leyes de mandos y aerodinámica (40 min · 0,67 h).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Fuente: Airbus Tutorial PDP Jan 2024, Airplane Upset Prevention and Recovery Training: Elements of Active Monitoring
@@ -18,9 +18,9 @@ const EYEBROW = "APS MCC · A320 · VAAF-T3";
 const aero = (page: number) => `${IMG_BASE}/p${page}_elements_of_aerodynamics.webp`;
 /** Figuras FCOM ya publicadas (misma URL y versión que en su lección). */
 const sisFig = (name: string, version: number) => `${IMG_BASE}/fcom_a320_${name}.webp?v=${version}`;
-const SIS1 = 1795630000;
-const SIS4 = 1795636000;
-const SIS6 = 1795638000;
+const SIS1 = 1795630001;
+const SIS4 = 1795636001;
+const SIS6 = 1795638001;
 const INT1 = 1795633000;
 const src = (sections: string) => `Source: PDP Jan 2024 UPRT ${sections}`;
 
@@ -231,7 +231,7 @@ const VAAF_T3_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "3.9 Ángulo de ataque: pitch, FPA y AoA",
     subtitle: "UPRT · Elements of Aerodynamics · The Angle of Attack",
-    leftPct: 38,
+    leftPct: 42,
     leftTitle: "THE ANGLE OF ATTACK",
     rightTitle: "STALL AWARENESS",
     image: aero(580),
@@ -240,7 +240,11 @@ const VAAF_T3_SLIDES: MccSlideSpec[] = [
     cards: [
       {
         heading: "Stall awareness",
-        bullets: ["PITCH: +13DEG · FPA: +08DEG · AOA: +05DEG.", "Horizon, chord line and relative wind (Vw)."],
+        bullets: [
+          "Angle of Attack (AoA) is the angle between the wing chord line and the relative wind (Vw).",
+          "Pitch is the angle between the chord line and the horizon; Flight Path Angle (FPA) is the angle between the flight path and the horizon (Pitch = FPA + AoA).",
+          "Example on the PFD: PITCH +13°, FPA +08°, AOA +05°.",
+        ],
       },
     ],
   },
@@ -249,13 +253,21 @@ const VAAF_T3_SLIDES: MccSlideSpec[] = [
     eyebrow: EYEBROW,
     title: "3.10 La pérdida es un problema de ángulo de ataque",
     subtitle: "UPRT · Elements of Aerodynamics · The Angle of Attack",
-    leftPct: 38,
+    leftPct: 42,
     leftTitle: "STALL > THE ANGLE OF ATTACK",
     rightTitle: "STALL",
     image: aero(581),
     imageAlt: "Airflow separation at high angle of attack: stall is only an AOA problem",
     sourceRef: src("Elements of Aerodynamics p. 581"),
-    cards: [{ heading: "Stall", paragraph: "Stall is only an AOA problem, and not directly a speed problem." }],
+    cards: [
+      {
+        heading: "Stall",
+        paragraph: "Stall is only an AOA problem, and not directly a speed problem.",
+        bullets: [
+          "A wing stalls whenever airflow separates from the upper surface upon exceeding the critical angle of attack, regardless of airspeed or pitch attitude.",
+        ],
+      },
+    ],
   },
   {
     comment: "SLIDE VAAF-T3.11: Critical angle of attack",

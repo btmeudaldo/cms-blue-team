@@ -1,5 +1,5 @@
 /**
- * VAAF-T2 — Performance y planificación del vuelo: cartas IFR y CFP (0,8 h aprox.).
+ * VAAF-T2 — Performance y planificación del vuelo: cartas IFR y CFP (50 min · 0,83 h).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Fuentes: Performance Manual B4 REV69 (secciones 2 Take-off, 3 Engine Failure Procedure, 4 Cruise, 5 Landing,
@@ -15,12 +15,12 @@ const IMG_BASE = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · VAAF-T2";
 
 /** Versión común de caché de las figuras nuevas del Performance Manual. */
-const IMG_VERSION = 1795640000;
+const IMG_VERSION = 1795640001;
 const pmFig = (name: string) => `${IMG_BASE}/fcom_a320_vaaf2_${name}.webp?v=${IMG_VERSION}`;
 /** Figuras ya publicadas en SIS-04 y SIS-06 (misma URL y versión que en su lección). */
 const sisFig = (name: string, version: number) => `${IMG_BASE}/fcom_a320_${name}.webp?v=${version}`;
-const SIS4 = 1795636000;
-const SIS6 = 1795638000;
+const SIS4 = 1795636001;
+const SIS6 = 1795638001;
 const chart = (page: number) => `${IMG_BASE}/p${String(page).padStart(3, "0")}_ifr_charts.webp`;
 const cfp = (page: number) => `${IMG_BASE}/p${String(page).padStart(3, "0")}_computerized_flight_plan.webp`;
 const pm = (sections: string) => `Source: Performance Manual ${sections}`;
@@ -260,8 +260,8 @@ const VAAF_T2_SLIDES: MccSlideSpec[] = [
       headers: ["Operation", "DH", "Minimum RVR (touchdown)"],
       rows: [
         ["CAT II", "100 ft", "300 m"],
-        ["CAT IIIA", "50 ft", "200 m"],
-        ["CAT IIIB", "20 ft", "75 m"],
+        ["CAT IIIA (fail passive)", "50 ft", "200 m"],
+        ["CAT IIIB (fail operational)", "20 ft", "75 m"],
         ["LVTO", "—", "≥ 125 m"],
       ],
     },

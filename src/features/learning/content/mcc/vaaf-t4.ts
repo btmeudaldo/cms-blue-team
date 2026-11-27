@@ -18,7 +18,7 @@ const upset = (page: number) => `${IMG_BASE}/p${page}_airplane_upset_recovery_te
 const extreme = (page: number) => `${IMG_BASE}/p${page}_extreme_attitude_training.webp`;
 /** Figuras FCOM ya publicadas (misma URL y versión que en su lección). */
 const sisFig = (name: string, version: number) => `${IMG_BASE}/fcom_a320_${name}.webp?v=${version}`;
-const SIS5 = 1795637000;
+const SIS5 = 1795637001;
 const INT1 = 1795633000;
 const src = (sections: string) => `Source: PDP Jan 2024 UPRT ${sections}`;
 
@@ -299,7 +299,7 @@ const VAAF_T4_SLIDES: MccSlideSpec[] = [
         bullets: [
           "Apply nose down pitch order.",
           "Adjust the thrust.",
-          "If all normal pitch control techniques are unsuccessful, adjust the roll not to exceed 60º.",
+          "If all normal pitch control techniques are unsuccessful, adjust the roll not to exceed 60°.",
           "Recover the level flight.",
         ],
       },
@@ -328,7 +328,7 @@ const VAAF_T4_SLIDES: MccSlideSpec[] = [
   {
     comment: "SLIDE VAAF-T4.13: Extreme attitude 4",
     eyebrow: EYEBROW,
-    title: "4.13 Actitud extrema 4: morro bajo, alabeo a la izquierda",
+    title: "4.13 Actitud extrema 4: morro bajo, alabeo a la derecha",
     subtitle: "UPRT · Extreme Attitude Training",
     leftPct: 38,
     leftTitle: "NOSE LOW ACTIONS",
@@ -340,6 +340,7 @@ const VAAF_T4_SLIDES: MccSlideSpec[] = [
       {
         heading: "Answer",
         bullets: [
+          "PFD: nose low (-30°), ~80° right bank, rapidly increasing airspeed, V/S -20 300 ft/min.",
           "Roll to the left to wings level.",
           "Adjust the thrust and/or the drag, if necessary.",
           "Recover the level flight avoiding excessive g-loading.",
@@ -362,7 +363,7 @@ const VAAF_T4_SLIDES: MccSlideSpec[] = [
     cards: [
       {
         heading: "Answer",
-        bullets: ["Apply nose down pitch order.", "Adjust the thrust.", "Reduce the roll not to exceed 60º.", "Recover the level flight."],
+        bullets: ["Apply nose down pitch order.", "Adjust the thrust.", "Reduce the roll not to exceed 60°.", "Recover the level flight."],
       },
     ],
     alert: { level: "NOTE", text: QUESTIONS },
@@ -370,7 +371,7 @@ const VAAF_T4_SLIDES: MccSlideSpec[] = [
   {
     comment: "SLIDE VAAF-T4.15: Extreme attitude 6",
     eyebrow: EYEBROW,
-    title: "4.15 Actitud extrema 6: morro bajo, alabeo a la derecha",
+    title: "4.15 Actitud extrema 6: morro bajo, alabeo a la izquierda",
     subtitle: "UPRT · Extreme Attitude Training",
     leftPct: 38,
     leftTitle: "NOSE LOW ACTIONS",
@@ -381,7 +382,9 @@ const VAAF_T4_SLIDES: MccSlideSpec[] = [
     cards: [
       {
         heading: "Answer",
-        bullets: ["Roll to the right to wings level.", "Adjust the thrust and the drag.", "Recover the level flight avoiding excessive g-loading."],
+        bullets: [
+          "PFD: nose low (-45°), ~140° left bank (near inverted), airspeed above VMO, V/S -29 400 ft/min.",
+          "Roll to the right to wings level.", "Adjust the thrust and the drag.", "Recover the level flight avoiding excessive g-loading."],
       },
     ],
     alert: { level: "NOTE", text: QUESTIONS },

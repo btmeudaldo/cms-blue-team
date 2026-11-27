@@ -1,5 +1,5 @@
 /**
- * VAAF-T1 — Limitaciones del A320 (FCOM LIM) (0,75 h aprox.).
+ * VAAF-T1 — Limitaciones del A320 (FCOM LIM) (50 min · 0,83 h).
  *
  * Alcance: Curso APS MCC — Airbus A320ceo CFM56-5B (simulador Entrol A32).
  * Fuente: FCOM 23MAR26 Limitations (LIM-AG, AIR, AFS, APU, ENG, F_CTL, FUEL, ICE_RAIN, LG, NAV, OXY, SURV), solo
@@ -19,12 +19,12 @@ const IMG_VERSION = 1795639000;
 const fig = (name: string) => `${IMG_BASE}/fcom_a320_vaaf1_${name}.webp?v=${IMG_VERSION}`;
 /** Figuras ya publicadas en SIS-01…06 (misma URL y versión que en su lección). */
 const sisFig = (name: string, version: number) => `${IMG_BASE}/fcom_a320_${name}.webp?v=${version}`;
-const SIS1 = 1795630000;
-const SIS2 = 1795631000;
-const SIS3 = 1795635000;
-const SIS4 = 1795636000;
-const SIS5 = 1795637000;
-const SIS6 = 1795638000;
+const SIS1 = 1795630001;
+const SIS2 = 1795631001;
+const SIS3 = 1795635001;
+const SIS4 = 1795636001;
+const SIS5 = 1795637001;
+const SIS6 = 1795638001;
 const src = (sections: string) => `Source: FCOM A320 ${sections}`;
 
 const VAAF_T1_SLIDES: MccSlideSpec[] = [
@@ -65,9 +65,9 @@ const VAAF_T1_SLIDES: MccSlideSpec[] = [
     subtitle: "LIM-AG-OPS · Airport Operations and Wind Limitations",
     leftPct: 55,
     leftTitle: "AIRPORT OPERATIONS AND WIND LIMITATIONS",
-    rightTitle: "ENVIRONMENTAL ENVELOPE",
-    image: fig("env"),
-    imageAlt: "Environmental envelope of the aircraft",
+    rightTitle: "PASSENGER & CARGO DOORS",
+    image: sisFig("sis4_doors", SIS4),
+    imageAlt: "Passenger and cargo doors locations on the A320",
     sourceRef: src("LIM-AG-OPS Airport Operations and Wind Limitations"),
     cards: [
       {
@@ -175,7 +175,6 @@ const VAAF_T1_SLIDES: MccSlideSpec[] = [
       {
         heading: "Taxi",
         bullets: [
-          "When the takeoff weight is higher than 76 000 kg: do not exceed a taxi speed of 20 kt during a turn.",
           "With maximum one tire per gear deflated: maximum taxi speed during turn 7 kt. With two tires deflated on the same main gear: maximum taxi speed 3 kt. Maximum NWS angle: 30 °.",
           "If tire damage is suspected, the flight crew must ask for an aircraft inspection prior to vacate the runway or taxi.",
         ],
@@ -257,7 +256,6 @@ const VAAF_T1_SLIDES: MccSlideSpec[] = [
       headers: ["Phase", "Minimum"],
       rows: [
         ["At takeoff", "100 ft AGL and at least 5 s after liftoff"],
-        ["In approach with F-G/S mode", "200 ft AGL"],
         ["In approach with FINAL APP, V/S or FPA mode", "250 ft AGL"],
         ["In circling approach", "500 ft AGL for aircraft category C (600 ft AGL for category D)"],
         ["ILS approach when CAT1 is displayed on the FMA", "160 ft AGL"],
@@ -417,6 +415,10 @@ const VAAF_T1_SLIDES: MccSlideSpec[] = [
         ],
       },
     ],
+    alert: {
+      level: "NOTE",
+      text: "When a value of the environmental envelope of the aircraft is more limited than the operational envelope of the APU, the value of the environmental envelope of the aircraft must not be exceeded.",
+    },
   },
   {
     comment: "SLIDE VAAF-T1.14: Engine thrust setting, EGT and shaft speeds",
