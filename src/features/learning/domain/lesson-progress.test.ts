@@ -4,8 +4,11 @@ import {
   formatLessonSeconds,
   getSlideRealMinSeconds,
   getSlideRealMinSecondsForIndex,
+  getSlideTargetSecondsList,
   getSlideVideoSeconds,
+  getSlideWordCount,
   remainingLessonSeconds,
+  restoreSlideProgressFromActiveSeconds,
 } from "./lesson-progress";
 describe("server acknowledged lesson time", () => {
   it("computes real per-slide durations and formats seconds cleanly", () => {
@@ -87,5 +90,54 @@ describe("server acknowledged lesson time", () => {
 
     expect(getSlideRealMinSecondsForIndex(300, [textSlide, videoSlide], 0)).toBe(1);
     expect(getSlideRealMinSecondsForIndex(300, [textSlide, videoSlide], 1)).toBe(452);
+  });
+
+  it("weights per-slide target times by content density while preserving lesson totals", () => {
+    const makeSlide = (words: number) =>
+      `<div class="lesson-slide-container"><div class="space-y-1.5 py-0.5 text-sm">${Array.from({ length: words }, (_, i) => `w${i}`).join(" ")}</div></div></div>`;
+    const shortSlide = makeSlide(54);
+    const mediumSlide = makeSlide(110);
+    const denseSlide = makeSlide(229);
+
+    expect(getSlideWordCount(shortSlide)).toBe(54);
+    expect(getSlideWordCount(denseSlide)).toBe(229);
+
+    const targets = getSlideTargetSecondsList(900, [shortSlide, mediumSlide, denseSlide]);
+    expect(targets).toHaveLength(3);
+    expect(targets[0]).toBeLessThan(targets[1]);
+    expect(targets[1]).toBeLessThan(targets[2]);
+    expect(targets.reduce((a, b) => a + b, 0)).toBeGreaterThanOrEqual(900);
+
+    const withVideo = `${mediumSlide}<div class="lesson-video-wrapper" data-video-seconds="300"></div>`;
+    const targetsWithVideo = getSlideTargetSecondsList(1200, [shortSlide, withVideo, denseSlide]);
+    expect(targetsWithVideo[1] - targets[1]).toBe(300);
+  });
+
+  it("restores completed slides, partial elapsed time and resume index from active_seconds", () => {
+    const targets = [90, 270, 200, 150];
+
+    expect(restoreSlideProgressFromActiveSeconds(0, targets)).toEqual({
+      completedPages: {},
+      pageSecondsElapsed: {},
+      resumePageIndex: 0,
+    });
+
+    expect(restoreSlideProgressFromActiveSeconds(360, targets)).toEqual({
+      completedPages: { 0: true, 1: true },
+      pageSecondsElapsed: { 0: 90, 1: 270 },
+      resumePageIndex: 2,
+    });
+
+    expect(restoreSlideProgressFromActiveSeconds(150, targets)).toEqual({
+      completedPages: { 0: true },
+      pageSecondsElapsed: { 0: 90, 1: 60 },
+      resumePageIndex: 1,
+    });
+
+    expect(restoreSlideProgressFromActiveSeconds(900, targets)).toEqual({
+      completedPages: { 0: true, 1: true, 2: true, 3: true },
+      pageSecondsElapsed: { 0: 90, 1: 270, 2: 200, 3: 150 },
+      resumePageIndex: 3,
+    });
   });
 });

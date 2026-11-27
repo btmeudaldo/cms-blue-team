@@ -19,7 +19,6 @@ const EYEBROW = "APS MCC · A320 · INT-03";
 /** Figuras y láminas ya publicadas (se reutilizan tal cual). */
 const sisFig = (name: string) => `${IMG_BASE}/fcom_a320_sis_${name}.webp?v=1795630000`;
 const sis2Fig = (name: string) => `${IMG_BASE}/fcom_a320_sis_${name}.webp?v=1795631000`;
-const int2Fig = (name: string) => `${IMG_BASE}/fcom_a320_${name}.webp?v=1795634000`;
 const pubFig = (name: string) => `${IMG_BASE}/fcom_a320_${name}.webp`;
 const pdp = (file: string, v?: number) => `${IMG_BASE}/${file}.webp${v ? `?v=${v}` : ""}`;
 const GR_V = 1795607846;
@@ -44,7 +43,7 @@ const INT_03_SLIDES: MccSlideSpec[] = [
         paragraph: "Below-listed procedures are performed using the \"READ & DO\" principle (except MEMORY items or OEB immediate actions):",
         bullets: [
           "ECAM procedures, are triggered automatically in response to an abnormal behavior of the systems monitored by the Flight Warning System (FWS)",
-          "QRH procedures, are applied by the flight crew in response to an abnormal event detected by any",
+          "QRH procedures, are applied by the flight crew in response to an abnormal event detected by any flight crewmember",
           "OEB procedures, are triggered in some situations.",
         ],
       },
@@ -66,9 +65,9 @@ const INT_03_SLIDES: MccSlideSpec[] = [
     subtitle: "Management of Abnormal Operations · General",
     leftPct: 52,
     leftTitle: "GENERAL (AOP-30-10)",
-    rightTitle: "FCU — AP / A/THR",
-    image: int2Fig("int2_fcu_ap_athr"),
-    imageAlt: "FCU AP 1, AP 2 and A/THR pushbuttons",
+    rightTitle: "FCU & EFIS CONTROL PANELS",
+    image: pubFig("fcu_panels"),
+    imageAlt: "FCU with AP 1, AP 2 and A/THR pushbuttons",
     sourceRef: src("AOP-30-10 One Procedure at a Time / Use of Autopilot / LAND ASAP Definition"),
     cards: [
       {

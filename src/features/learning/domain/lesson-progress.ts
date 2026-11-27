@@ -36,22 +36,88 @@ export function getSlideVideoSeconds(slideHtml: string): number {
   return total;
 }
 
+export function getSlideWordCount(slideHtml: string): number {
+  if (!slideHtml) return 0;
+  const noComments = slideHtml.replace(/<!--[\s\S]*?-->/g, "");
+  const leftBodyMatch = noComments.match(
+    /<div class="space-y-1\.5 py-0\.5[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/,
+  );
+  const target = leftBodyMatch ? leftBodyMatch[0] : noComments;
+  const plainText = target.replace(/<[^>]+>/g, " ").trim();
+  if (!plainText) return 0;
+  return plainText.split(/\s+/).filter(Boolean).length;
+}
+
+export function getSlideTargetSecondsList(
+  minSeconds: number,
+  slides: string[],
+): number[] {
+  const safeMin = Math.max(0, Math.floor(minSeconds));
+  if (slides.length === 0) return [];
+  if (safeMin === 0) return slides.map(() => 0);
+
+  const videoSecondsList = slides.map(getSlideVideoSeconds);
+  const totalVideoSeconds = videoSecondsList.reduce((sum, s) => sum + s, 0);
+  const remainingBudget = Math.max(0, safeMin - totalVideoSeconds);
+  const weights = slides.map(
+    (s) => Math.max(25, Math.min(220, getSlideWordCount(s))) + 25,
+  );
+  const totalWeight = weights.reduce((sum, w) => sum + w, 0);
+
+  return weights.map((weight, idx) => {
+    const base =
+      remainingBudget > 0 && totalWeight > 0
+        ? Math.ceil((remainingBudget * weight) / totalWeight)
+        : 0;
+    return Math.max(1, base + videoSecondsList[idx]);
+  });
+}
+
 export function getSlideRealMinSecondsForIndex(
   minSeconds: number,
   slides: string[],
   slideIndex: number,
 ): number {
-  const safeMin = Math.max(0, Math.floor(minSeconds));
-  if (safeMin === 0) return 0;
-  const totalSlides = Math.max(1, slides.length);
-  const videoSecondsList = slides.map(getSlideVideoSeconds);
-  const totalVideoSeconds = videoSecondsList.reduce((sum, s) => sum + s, 0);
-  if (totalVideoSeconds === 0) {
-    return getSlideRealMinSeconds(safeMin, totalSlides);
+  const targets = getSlideTargetSecondsList(minSeconds, slides);
+  return (
+    targets[slideIndex] ?? getSlideRealMinSeconds(minSeconds, slides.length)
+  );
+}
+
+export type RestoredSlideProgress = {
+  completedPages: Record<number, boolean>;
+  pageSecondsElapsed: Record<number, number>;
+  resumePageIndex: number;
+};
+
+export function restoreSlideProgressFromActiveSeconds(
+  activeSeconds: number,
+  slideTargets: number[],
+): RestoredSlideProgress {
+  if (slideTargets.length === 0) {
+    return { completedPages: {}, pageSecondsElapsed: {}, resumePageIndex: 0 };
   }
-  const remainingBudget = Math.max(0, safeMin - totalVideoSeconds);
-  const basePerSlide = remainingBudget > 0 ? Math.ceil(remainingBudget / totalSlides) : 0;
-  return Math.max(1, basePerSlide + (videoSecondsList[slideIndex] ?? 0));
+  let remaining = Math.max(0, Math.floor(activeSeconds));
+  const completedPages: Record<number, boolean> = {};
+  const pageSecondsElapsed: Record<number, number> = {};
+  let resumePageIndex = slideTargets.length - 1;
+
+  for (let i = 0; i < slideTargets.length; i++) {
+    const target = Math.max(1, Math.floor(slideTargets[i]));
+    if (remaining >= target) {
+      completedPages[i] = true;
+      pageSecondsElapsed[i] = target;
+      remaining -= target;
+    } else {
+      if (remaining > 0) {
+        pageSecondsElapsed[i] = remaining;
+      }
+      resumePageIndex = i;
+      break;
+    }
+  }
+
+  return { completedPages, pageSecondsElapsed, resumePageIndex };
 }
 export function remainingLessonSeconds(
   minimum: number,

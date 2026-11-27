@@ -21,7 +21,7 @@ const fig = (name: string) => `${IMG_BASE}/fcom_a320_${name}.webp?v=${IMG_VERSIO
 /** Figuras y láminas ya publicadas en otras lecciones. */
 const sisFig = (name: string) => `${IMG_BASE}/fcom_a320_sis_${name}.webp?v=1795630000`;
 const pubFig = (name: string) => `${IMG_BASE}/fcom_a320_${name}.webp`;
-const pdp = (file: string) => `${IMG_BASE}/${file}.webp`;
+const pdp = (file: string, v?: number) => `${IMG_BASE}/${file}.webp${v ? `?v=${v}` : ""}`;
 const src = (sections: string) => `Source: FCTM A320 ${sections}`;
 
 const INT_02_SLIDES: MccSlideSpec[] = [
@@ -114,10 +114,10 @@ const INT_02_SLIDES: MccSlideSpec[] = [
     subtitle: "Tasksharing Rules and Communication · FCU and EFIS CP",
     leftPct: 52,
     leftTitle: "FCU AND EFIS CONTROL PANELS (AOP-20)",
-    rightTitle: "FCU — AP / A/THR",
-    image: fig("int2_fcu_ap_athr"),
-    imageAlt: "FCU AP 1, AP 2 and A/THR pushbuttons",
-    sourceRef: "Source: FCTM A320 AOP-20 FCU and EFIS Control Panels & FCOM A320 DSC-22_10 FCU",
+    rightTitle: "FCU & EFIS CONTROL PANELS",
+    image: pubFig("fcu_panels"),
+    imageAlt: "FCU and EFIS control panels with AP, A/THR and FD pushbuttons",
+    sourceRef: "Source: FCTM A320 AOP-20 FCU and EFIS Control Panels & FCOM A320 DSC-22_10-40-20 FCU",
     cards: [
       {
         heading: "General",
@@ -129,7 +129,7 @@ const INT_02_SLIDES: MccSlideSpec[] = [
       headers: ["Selection", "PF", "PM"],
       rows: [
         ["AP / A/THR", "Engagement: YES · Disconnection: YES (via instinctive disconnect pb)", "Engagement: upon PF request · Disconnection: NO"],
-        ["FD", "YES", "Upon PF request"],
+        ["FD", "NO", "Upon PF request"],
         ["Other selections on FCU (AP OFF)", "NO", "Upon PF request"],
         ["Other selections on FCU (AP ON)", "YES", "Upon PF request"],
         ["EFIS CP", "Onside selections", "Onside selections"],
@@ -174,7 +174,7 @@ const INT_02_SLIDES: MccSlideSpec[] = [
     leftPct: 55,
     leftTitle: "OBJECTIVE OF OPERATIONAL BRIEFINGS (AOP-20)",
     rightTitle: "BRIEFING RECOMMENDATIONS",
-    image: pdp("p155_cockpit_preparation"),
+    image: pdp("p155_cockpit_preparation", 1795612605),
     imageAlt: "Briefing recommendations from the tutorial",
     sourceRef: "Source: FCTM A320 AOP-20 How to Conduct Briefings & Airbus Tutorial PDP Jan 2024 — Cockpit Preparation (p.155)",
     cards: [
@@ -354,7 +354,7 @@ const INT_02_SLIDES: MccSlideSpec[] = [
     leftPct: 55,
     leftTitle: "DEPARTURE BRIEFING — NOTES (AOP-20)",
     rightTitle: "TEM — DEPARTURE BRIEFING",
-    image: pdp("p154_cockpit_preparation"),
+    image: pdp("p154_cockpit_preparation", 1795612605),
     imageAlt: "Threat and error management structure of the departure briefing",
     sourceRef: "Source: FCTM A320 AOP-20 Departure Briefing & Airbus Tutorial PDP Jan 2024 — Cockpit Preparation (p.154)",
     cards: [

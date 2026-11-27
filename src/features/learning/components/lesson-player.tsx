@@ -24,8 +24,9 @@ import {
 import {
   canCompleteLesson,
   formatLessonSeconds,
-  getSlideRealMinSecondsForIndex,
+  getSlideTargetSecondsList,
   remainingLessonSeconds,
+  restoreSlideProgressFromActiveSeconds,
   type LessonProgress,
   type ProgressResult,
 } from "@/features/learning/domain/lesson-progress";
@@ -123,6 +124,7 @@ export function LessonPlayer({
   const progressQueue = useRef(Promise.resolve());
   const completingRef = useRef(false);
   const hasUserScrolledRef = useRef(true);
+  const hasHydratedServerProgressRef = useRef(false);
 
   const [serverProgress, setServerProgress] = useState<LessonProgress | null>(
     null,
@@ -341,7 +343,11 @@ export function LessonPlayer({
     totalLessonPages > 1 ||
     contentHtml.includes("lesson-slide-container") ||
     contentHtml.includes("<!-- DIAPOSITIVA");
-  const realSecondsPerPage = getSlideRealMinSecondsForIndex(minSeconds, lessonPages, effectivePageIndex);
+  const slideTargets = useMemo(
+    () => getSlideTargetSecondsList(minSeconds, lessonPages),
+    [minSeconds, lessonPages],
+  );
+  const realSecondsPerPage = slideTargets[effectivePageIndex] ?? 0;
   const isStaffFastTimer =
     isStaff && staffTimerMode === "fast" && (totalLessonPages > 1 || isSlideMode);
   const minSecondsPerPage = isStaffFastTimer ? 1 : realSecondsPerPage;
@@ -445,6 +451,51 @@ export function LessonPlayer({
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
+  useEffect(() => {
+    hasHydratedServerProgressRef.current = false;
+    setCurrentPageIndex(0);
+    setCompletedPages({});
+    setPageSecondsElapsed({});
+  }, [lessonId]);
+
+  useEffect(() => {
+    if (
+      isAlreadyCompleted ||
+      isCompletedSuccess ||
+      isStaffFastTimer ||
+      !serverProgress ||
+      serverProgress.lesson_id !== lessonId ||
+      hasHydratedServerProgressRef.current ||
+      totalLessonPages <= 1
+    )
+      return;
+    hasHydratedServerProgressRef.current = true;
+    if (serverProgress.active_seconds > 0) {
+      const restored = restoreSlideProgressFromActiveSeconds(
+        serverProgress.active_seconds,
+        slideTargets,
+      );
+      setCompletedPages((prev) => ({ ...restored.completedPages, ...prev }));
+      setPageSecondsElapsed((prev) => {
+        const next = { ...prev };
+        for (const [k, v] of Object.entries(restored.pageSecondsElapsed)) {
+          const idx = Number(k);
+          next[idx] = Math.max(next[idx] ?? 0, v);
+        }
+        return next;
+      });
+      setCurrentPageIndex(restored.resumePageIndex);
+    }
+  }, [
+    isAlreadyCompleted,
+    isCompletedSuccess,
+    isStaffFastTimer,
+    serverProgress,
+    lessonId,
+    totalLessonPages,
+    slideTargets,
+  ]);
+
   // Per-slide countdown timer when lesson has multiple pages
   useEffect(() => {
     if (totalLessonPages <= 1) return;
@@ -479,6 +530,30 @@ export function LessonPlayer({
     errorMessage,
     isCompleting,
     currentPageIndex,
+    minSecondsPerPage,
+  ]);
+
+  useEffect(() => {
+    if (totalLessonPages <= 1 || isStaffFastTimer || isAfterLastSlide) return;
+    if (isAlreadyCompleted || isCompletedSuccess) return;
+    if (!isCurrentExerciseCompleted) return;
+    if (
+      minSecondsPerPage > 0 &&
+      (pageSecondsElapsed[effectivePageIndex] ?? 0) >= minSecondsPerPage
+    ) {
+      setCompletedPages((prev) =>
+        prev[effectivePageIndex] ? prev : { ...prev, [effectivePageIndex]: true },
+      );
+    }
+  }, [
+    totalLessonPages,
+    isStaffFastTimer,
+    isAfterLastSlide,
+    isAlreadyCompleted,
+    isCompletedSuccess,
+    isCurrentExerciseCompleted,
+    pageSecondsElapsed,
+    effectivePageIndex,
     minSecondsPerPage,
   ]);
 
@@ -1475,12 +1550,14 @@ export function LessonPlayer({
                   </span>
                   <div className="hidden md:flex items-center gap-1">
                     {lessonPages.map((slide, idx) => {
+                      const isCompletedSlide = Boolean(completedPages[idx]);
                       const isClickable =
                         isStaff ||
                         idx <= effectivePageIndex ||
                         isAlreadyCompleted ||
                         isCompletedSuccess ||
-                        Boolean(completedPages[idx]);
+                        isCompletedSlide ||
+                        (idx > 0 && Boolean(completedPages[idx - 1]));
                       const isPrivate =
                         isStaff && getSlideVisibility(slide) === "private";
                       return (
@@ -1501,16 +1578,20 @@ export function LessonPlayer({
                                 : "w-6 bg-[#1a80ff]"
                               : isPrivate
                                 ? "w-2.5 bg-amber-400 dark:bg-amber-600 hover:bg-amber-500 cursor-pointer"
-                                : isClickable
-                                  ? "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 cursor-pointer"
-                                  : "w-2.5 bg-slate-200 dark:bg-slate-800 opacity-40 cursor-not-allowed"
+                                : isCompletedSlide
+                                  ? "w-2.5 bg-emerald-400 dark:bg-emerald-600 hover:bg-emerald-500 cursor-pointer"
+                                  : isClickable
+                                    ? "w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 cursor-pointer"
+                                    : "w-2.5 bg-slate-200 dark:bg-slate-800 opacity-40 cursor-not-allowed"
                             }`}
                           title={
                             isPrivate
                               ? `Ir a Diapositiva ${idx + 1} (🔒 Solo visible para mí)`
-                              : isClickable
-                                ? `Ir a Diapositiva ${idx + 1}`
-                                : `Diapositiva ${idx + 1} bloqueada (completa el tiempo de las anteriores)`
+                              : isCompletedSlide
+                                ? `Ir a Diapositiva ${idx + 1} (✓ Tiempo cumplido)`
+                                : isClickable
+                                  ? `Ir a Diapositiva ${idx + 1}`
+                                  : `Diapositiva ${idx + 1} bloqueada (completa el tiempo de las anteriores)`
                           }
                         />
                       );
