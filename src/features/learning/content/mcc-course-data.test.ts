@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { MCC_LEGACY_LESSONS, MCC_LESSONS, MCC_PDP_LESSONS, clampLeftPct } from "./mcc-course-data";
+import { MCC_LESSONS, MCC_PDP_LESSONS, clampLeftPct } from "./mcc-course-data";
 import {
   MCC_MODULES,
   MCC_SECONDS_PER_SLIDE,
@@ -54,21 +54,36 @@ describe("clampLeftPct", () => {
 
 describe("MCC lessons", () => {
   it("keep the 50/50 grid for slides without leftPct", () => {
-    const html = MCC_LEGACY_LESSONS[0].content_html;
+    const html = buildMccSlide({
+      comment: "SLIDE 1.1: Default split test",
+      eyebrow: "APS MCC · A320",
+      title: "1.1 Test Slide",
+      subtitle: "Default Grid",
+      leftTitle: "LEFT",
+      rightTitle: "RIGHT",
+      image: "https://www.blueteam.es/elearning/media/mcc/pdp/x.webp",
+      sourceRef: "Source: test",
+      cards: [],
+    });
     expect(html).toContain('data-left-pct="50"');
     expect(html).toContain("grid-template-columns: minmax(0px, 50fr) minmax(0px, 50fr) !important;");
     expect(html).not.toContain("undefined");
   });
 
-  it("list the PDP lessons first and the legacy lessons after them", () => {
-    expect(MCC_LESSONS[0]).toBe(MCC_PDP_LESSONS[0]);
-    const pdpOrders = MCC_PDP_LESSONS.map((l) => l.sequence_order);
-    expect(pdpOrders).toEqual(Array.from({ length: MCC_PDP_LESSONS.length }, (_, i) => i + 1));
+  it("expose the 28 active lessons in continuous module order without legacy archive lessons", () => {
+    expect(MCC_LESSONS).toEqual(MCC_PDP_LESSONS);
+    expect(MCC_LESSONS).toHaveLength(28);
+    const orders = MCC_LESSONS.map((l) => l.sequence_order);
+    expect(orders).toEqual(Array.from({ length: MCC_PDP_LESSONS.length }, (_, i) => i + 1));
+    expect(Math.max(...orders)).toBe(28);
     expect(MCC_SOP_02.sequence_order).toBe(MCC_SOP_01.sequence_order + 1);
-    const legacyLessons = MCC_LESSONS.slice(MCC_PDP_LESSONS.length);
-    const legacyOrders = legacyLessons.map((l) => l.sequence_order);
-    expect(Math.min(...legacyOrders)).toBeGreaterThan(100);
-    expect(legacyLessons.every((l) => l.module_title === MCC_MODULES.LEGACY)).toBe(true);
+    expect(
+      [
+        MCC_INT_01,
+        MCC_INT_02,
+        MCC_INT_03,
+      ].every((l) => l.module_title === MCC_MODULES.INTRO),
+    ).toBe(true);
     expect(
       [
         MCC_SOP_01,
@@ -872,7 +887,7 @@ describe("VAAF-T1", () => {
     expect(images).toHaveLength(VAAF_T1_SLIDE_COUNT);
     for (const url of images) {
       expect(url).toMatch(
-        /^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/fcom_a320_((vaaf1|sis|sis[3-6])_[a-z0-9_]+\.webp\?v=\d+|ewd_cfm\.webp)$/,
+        /^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/fcom_a320_((vaaf1|sis|sis[3-6])_[a-z0-9_]+\.webp\?v=\d+|ewd_cfm\.webp(?:\?v=\d+)?)$/,
       );
     }
     for (const slide of slides) {
@@ -906,7 +921,7 @@ describe("VAAF-T2", () => {
     expect(images).toHaveLength(VAAF_T2_SLIDE_COUNT);
     for (const url of images) {
       expect(url).toMatch(
-        /^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/(fcom_a320_(vaaf2|sis[46])_[a-z0-9_]+\.webp\?v=\d+|p\d{3}_(ifr_charts|computerized_flight_plan)\.webp)$/,
+        /^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/(fcom_a320_(vaaf2|sis[46])_[a-z0-9_]+\.webp\?v=\d+|p\d{3}_(ifr_charts|computerized_flight_plan)\.webp\?v=\d+)$/,
       );
     }
     for (const slide of slides) {

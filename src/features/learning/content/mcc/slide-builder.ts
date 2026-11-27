@@ -240,7 +240,6 @@ export const MCC_MODULES = {
   ABNORMAL_SOP: "Módulo 2 · Situaciones Anormales y Emergencias",
   SYSTEMS: "Módulo 3 · Sistemas del Avión y FMS",
   VAAF: "Módulo 4 · Ala en Flecha, Performance y UPRT",
-  LEGACY: "Archivo · Versión anterior (CTA / VAAF)",
 } as const;
 
 /** Lección del curso MCC tal como la consumen mock-store y el script de siembra. */

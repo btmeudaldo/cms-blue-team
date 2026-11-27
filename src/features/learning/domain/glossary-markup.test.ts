@@ -32,7 +32,7 @@ describe("annotateGlossaryHtml", () => {
     const input = `
       <div>
         <h1>1.8 ND and ECAM Overview</h1>
-        <img src="/images/mcc/efis_nd_modes_p644.png" alt="ND and PFD Diagram" />
+        <img src="https://www.blueteam.es/elearning/media/mcc/pdp/fcom_a320_sis_nd.webp" alt="ND and PFD Diagram" />
         <p>The ND shows F-PLN and TCAS.</p>
         <button type="button">Existing ND button</button>
         <div class="text-[10px] border-t border-slate-200 dark:border-slate-800 shrink-0">Source: FCOM ND ATA 31</div>
@@ -86,5 +86,31 @@ describe("annotateGlossaryHtml", () => {
     expect(output).toContain('<p data-glossary-skip="true">Vídeo: A320 ECAM Training (YouTube)</p>');
     expect(output).toContain('<p>Check <button type="button"');
     expect(output).toContain('data-glossary-term="ECAM">ECAM</button>.</p>');
+  });
+
+  it("keeps MCC_GLOSSARY integrity without empty fields or duplicate terms/aliases", () => {
+    const seen = new Map<string, string>();
+    for (const entry of MCC_GLOSSARY) {
+      expect(entry.term.trim().length).toBeGreaterThan(0);
+      expect(entry.definition.trim().length).toBeGreaterThan(0);
+      expect(entry.source.trim().length).toBeGreaterThan(0);
+
+      for (const form of [entry.term, ...(entry.aliases ?? [])]) {
+        const key = form.toUpperCase();
+        expect(seen.has(key), `Duplicate glossary term/alias: ${form}`).toBe(false);
+        seen.set(key, entry.term);
+      }
+    }
+  });
+
+  it("annotates new FMGS/FMA, navigation, performance and FCOM terms cleanly", () => {
+    const input = `<p>Check FCOM RTOW and LVTO limits; expect FINAL APP, OP CLB, ALT*, G/S*, CAT III, and VSW above FLAPS and LANDING.</p>`;
+    const output = annotateGlossaryHtml(input, MCC_GLOSSARY);
+
+    for (const term of ["FCOM", "RTOW", "LVTO", "FINAL APP", "OP CLB", "ALT*", "G/S*", "CAT III", "VSW"]) {
+      expect(output).toContain(`data-glossary-term="${term}">${term}</button>`);
+    }
+    expect(output).not.toContain("FLAPS</button>");
+    expect(output).not.toContain("LANDING</button>");
   });
 });

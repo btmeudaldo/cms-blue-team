@@ -15,14 +15,14 @@ const IMG_BASE = "https://www.blueteam.es/elearning/media/mcc/pdp";
 const EYEBROW = "APS MCC · A320 · VAAF-T2";
 
 /** Versión común de caché de las figuras nuevas del Performance Manual. */
-const IMG_VERSION = 1795640001;
+const IMG_VERSION = 1795640002;
 const pmFig = (name: string) => `${IMG_BASE}/fcom_a320_vaaf2_${name}.webp?v=${IMG_VERSION}`;
 /** Figuras ya publicadas en SIS-04 y SIS-06 (misma URL y versión que en su lección). */
 const sisFig = (name: string, version: number) => `${IMG_BASE}/fcom_a320_${name}.webp?v=${version}`;
 const SIS4 = 1795636001;
 const SIS6 = 1795638001;
-const chart = (page: number) => `${IMG_BASE}/p${String(page).padStart(3, "0")}_ifr_charts.webp`;
-const cfp = (page: number) => `${IMG_BASE}/p${String(page).padStart(3, "0")}_computerized_flight_plan.webp`;
+const chart = (page: number) => `${IMG_BASE}/p${String(page).padStart(3, "0")}_ifr_charts.webp?v=${IMG_VERSION}`;
+const cfp = (page: number) => `${IMG_BASE}/p${String(page).padStart(3, "0")}_computerized_flight_plan.webp?v=${IMG_VERSION}`;
 const pm = (sections: string) => `Source: Performance Manual ${sections}`;
 const pdp = (sections: string) => `Source: PDP Jan 2024 ${sections}`;
 

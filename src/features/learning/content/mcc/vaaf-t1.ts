@@ -428,7 +428,7 @@ const VAAF_T1_SLIDES: MccSlideSpec[] = [
     leftPct: 55,
     leftTitle: "THRUST SETTING/EGT LIMITS · STARTER (LIM-ENG)",
     rightTitle: "ENGINE/WARNING DISPLAY",
-    image: `${IMG_BASE}/fcom_a320_ewd_cfm.webp`,
+    image: `${IMG_BASE}/fcom_a320_ewd_cfm.webp?v=${SIS1}`,
     imageAlt: "Engine/Warning display with N1, EGT, N2 and fuel flow indications",
     sourceRef: src("LIM-ENG Thrust Setting/EGT Limits, Shaft Speeds, Starter"),
     cards: [
