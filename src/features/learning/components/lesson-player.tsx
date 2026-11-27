@@ -125,6 +125,7 @@ export function LessonPlayer({
   const completingRef = useRef(false);
   const hasUserScrolledRef = useRef(true);
   const hasHydratedServerProgressRef = useRef(false);
+  const prevLessonIdRef = useRef(lessonId);
 
   const [serverProgress, setServerProgress] = useState<LessonProgress | null>(
     null,
@@ -452,6 +453,8 @@ export function LessonPlayer({
   }, []);
 
   useEffect(() => {
+    if (prevLessonIdRef.current === lessonId) return;
+    prevLessonIdRef.current = lessonId;
     hasHydratedServerProgressRef.current = false;
     setCurrentPageIndex(0);
     setCompletedPages({});
@@ -484,7 +487,7 @@ export function LessonPlayer({
         }
         return next;
       });
-      setCurrentPageIndex(restored.resumePageIndex);
+      setCurrentPageIndex((prev) => Math.max(prev, restored.resumePageIndex));
     }
   }, [
     isAlreadyCompleted,
@@ -1588,7 +1591,7 @@ export function LessonPlayer({
                             isPrivate
                               ? `Ir a Diapositiva ${idx + 1} (🔒 Solo visible para mí)`
                               : isCompletedSlide
-                                ? `Ir a Diapositiva ${idx + 1} (✓ Tiempo cumplido)`
+                                ? `Ir a Diapositiva ${idx + 1} (✓ completada)`
                                 : isClickable
                                   ? `Ir a Diapositiva ${idx + 1}`
                                   : `Diapositiva ${idx + 1} bloqueada (completa el tiempo de las anteriores)`

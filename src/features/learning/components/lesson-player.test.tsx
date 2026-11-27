@@ -594,3 +594,35 @@ it("keeps completion locked when staff switches to Real mode until persisted min
   expect(harness.complete).not.toHaveBeenCalled();
 });
 
+it("restores completed slides and jumps to the frontier slide from persisted server active_seconds", async () => {
+  const resumedProgress = { ...progress, active_seconds: 1400 };
+  harness.start.mockResolvedValue({ success: true, progress: resumedProgress });
+  harness.resume.mockResolvedValue({ success: true, progress: resumedProgress });
+
+  render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    isAlreadyCompleted: false,
+  });
+  for (const effect of harness.effects) effect();
+  await flush();
+
+  render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    isAlreadyCompleted: false,
+  });
+  for (const effect of harness.effects) effect();
+  await flush();
+
+  const resumedTree = render({
+    contentHtml: "<p>Slide Uno</p><!-- pagebreak --><p>Slide Dos</p>",
+    minSeconds: 2700,
+    isAlreadyCompleted: false,
+  });
+  const resumedHtml = renderToStaticMarkup(resumedTree);
+  expect(resumedHtml).toContain("Diapositiva 2 de 2");
+  expect(resumedHtml).toContain("Ir a Diapositiva 1 (✓ completada)");
+  expect(resumedHtml).not.toContain("Diapositiva 1 de 2");
+});
+
