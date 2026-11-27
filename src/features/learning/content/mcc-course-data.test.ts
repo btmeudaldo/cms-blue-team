@@ -37,6 +37,7 @@ import { MCC_VAAF_T1, VAAF_T1_SLIDE_COUNT } from "./mcc/vaaf-t1";
 import { MCC_VAAF_T2, VAAF_T2_SLIDE_COUNT } from "./mcc/vaaf-t2";
 import { MCC_VAAF_T3, VAAF_T3_SLIDE_COUNT } from "./mcc/vaaf-t3";
 import { MCC_VAAF_T4, VAAF_T4_SLIDE_COUNT } from "./mcc/vaaf-t4";
+import { MCC_VAAF_T5, VAAF_T5_SLIDE_COUNT } from "./mcc/vaaf-t5";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -984,5 +985,36 @@ describe("VAAF-T4", () => {
     expect(htmlNoUrls).toContain("RECOVER FROM STALL FIRST");
     expect(htmlNoUrls).toContain("not to exceed 60 degrees");
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a300|a310|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("VAAF-T5", () => {
+  const slides = MCC_VAAF_T5.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable lesson (2.5 min/slide) placed right after VAAF-T4", () => {
+    expect(MCC_VAAF_T5.min_seconds).toBe(mccMinSeconds(VAAF_T5_SLIDE_COUNT));
+    expect(slides).toHaveLength(VAAF_T5_SLIDE_COUNT);
+    expect(MCC_VAAF_T5.sequence_order).toBe(MCC_VAAF_T4.sequence_order + 1);
+    expect(MCC_VAAF_T5.module_title).toBe(MCC_MODULES.VAAF);
+  });
+
+  it("uses only figures hosted on Hostalia and keeps the source in the comment", () => {
+    const images = [...MCC_VAAF_T5.content_html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
+    expect(images).toHaveLength(VAAF_T5_SLIDE_COUNT);
+    for (const url of images) {
+      expect(url).toMatch(/^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/fcom_a320_(vaaf5|sis|sis6)_[a-z0-9_]+\.webp\?v=\d+$/);
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE VAAF-T5\.\d+: [^>]*\| Source: MEL REV80 [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("keeps the repair interval categories and omits the operator, its manuals and registrations", () => {
+    const htmlNoUrls = MCC_VAAF_T5.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).toContain("Ten (10) consecutive calendar days");
+    expect(htmlNoUrls).not.toMatch(/\bOM ?B\b|\bCAME\b|\bAESA\b/);
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|express|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });
