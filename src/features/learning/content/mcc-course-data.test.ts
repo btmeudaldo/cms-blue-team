@@ -34,6 +34,7 @@ import { MCC_SIS_04, SIS_04_SLIDE_COUNT } from "./mcc/sis-04";
 import { MCC_SIS_05, SIS_05_SLIDE_COUNT } from "./mcc/sis-05";
 import { MCC_SIS_06, SIS_06_SLIDE_COUNT } from "./mcc/sis-06";
 import { MCC_VAAF_T1, VAAF_T1_SLIDE_COUNT } from "./mcc/vaaf-t1";
+import { MCC_VAAF_T2, VAAF_T2_SLIDE_COUNT } from "./mcc/vaaf-t2";
 
 describe("clampLeftPct", () => {
   it("defaults to a 50/50 split", () => {
@@ -884,5 +885,37 @@ describe("VAAF-T1", () => {
     expect(htmlNoUrls).toContain("177 kt");
     expect(htmlNoUrls).not.toMatch(/\bGLS\b|\bMLS\b|\bHUD\b|DERATE|brake fans|rain repellent|\bQFE\b|Thrust Bump|\bSLS\b/i);
     expect(htmlNoUrls).not.toMatch(/\b(?:iberia|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
+  });
+});
+
+describe("VAAF-T2", () => {
+  const slides = MCC_VAAF_T2.content_html.split("<!-- pagebreak -->");
+
+  it("is a computable lesson (2.5 min/slide) placed right after VAAF-T1", () => {
+    expect(MCC_VAAF_T2.min_seconds).toBe(mccMinSeconds(VAAF_T2_SLIDE_COUNT));
+    expect(slides).toHaveLength(VAAF_T2_SLIDE_COUNT);
+    expect(MCC_VAAF_T2.sequence_order).toBe(MCC_VAAF_T1.sequence_order + 1);
+    expect(MCC_VAAF_T2.module_title).toBe(MCC_MODULES.VAAF);
+  });
+
+  it("uses only figures hosted on Hostalia and keeps the source in the comment", () => {
+    const images = [...MCC_VAAF_T2.content_html.matchAll(/<img src="([^"]+)"/g)].map((m) => m[1]);
+    expect(images).toHaveLength(VAAF_T2_SLIDE_COUNT);
+    for (const url of images) {
+      expect(url).toMatch(
+        /^https:\/\/www\.blueteam\.es\/elearning\/media\/mcc\/pdp\/(fcom_a320_(vaaf2|sis[46])_[a-z0-9_]+\.webp\?v=\d+|p\d{3}_(ifr_charts|computerized_flight_plan)\.webp)$/,
+      );
+    }
+    for (const slide of slides) {
+      expect(slide).toMatch(/<!-- SLIDE VAAF-T2\.\d+: [^>]*\| Source: (Performance Manual|PDP Jan 2024) [^>]*-->/);
+      expect(slide.replace(/<!--[\s\S]*?-->/g, "")).not.toMatch(/(Source|Fuente): /);
+      expect(slide).not.toContain("undefined");
+    }
+  });
+
+  it("omits operator, procedure supplier and manual references, other types and registrations", () => {
+    const htmlNoUrls = MCC_VAAF_T2.content_html.replace(/https:\/\/[^\s"'>]+/g, "");
+    expect(htmlNoUrls).not.toMatch(/\bLido\b|\bOM ?[AB]\b|\bOMA\b|FlySmart|Marseille|Montpellier/i);
+    expect(htmlNoUrls).not.toMatch(/\b(?:iberia|express|vueling|ibs|a330|a340|a350|a380|a321|neo|ec-[a-z]{3})\b/i);
   });
 });
